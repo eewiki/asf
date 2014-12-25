@@ -134,6 +134,7 @@
 //@{
 #define LCD_BACKLIGHT_ENABLE_PIN        IOPORT_CREATE_PIN(PORTE, 4)
 #define LCD_BACKLIGHT_ENABLE_LEVEL      true
+#define LCD_BACKLIGHT_DISABLE_LEVEL      false
 //@}
 
 //! \name LCD controller (NHD-C12832A1Z-FSW-FBW-3V3)
