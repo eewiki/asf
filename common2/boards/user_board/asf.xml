@@ -26,4 +26,22 @@
 		<require idref="sam0.utils.linker_scripts"/>
 		<device-support value="samd20e"/>
 	</board>
+
+	<board id="board.user_board.samd21j" caption="User Board template">
+		<require idref="common2.boards.user_board.common"/>
+		<require idref="sam0.utils.linker_scripts"/>
+		<device-support value="samd21j"/>
+	</board>
+
+	<board id="board.user_board.samd21g" caption="User Board template">
+		<require idref="common2.boards.user_board.common"/>
+		<require idref="sam0.utils.linker_scripts"/>
+		<device-support value="samd21g"/>
+	</board>
+
+	<board id="board.user_board.samd21e" caption="User Board template">
+		<require idref="common2.boards.user_board.common"/>
+		<require idref="sam0.utils.linker_scripts"/>
+		<device-support value="samd21e"/>
+	</board>
 </asf>

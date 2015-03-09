@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4 DSP Variance Example on SAM4CP16BMB" id="sam.utils.cmsis.dsp_lib.examples.arm_variance_example.sam4cp16bmb">
+		<require idref="sam.utils.cmsis.dsp_lib.examples.arm_variance_example"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="board.sam4cp16bmb"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4cp16b_0"/>
+	</project>
+</asf>

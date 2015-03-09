@@ -3,7 +3,7 @@
  *
  * \brief SAM D20 Master SPI Bootloader
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -278,10 +278,8 @@ static void start_application(void)
 	wdt_config.clock_source = GCLK_GENERATOR_4;
 	wdt_config.timeout_period = WDT_PERIOD_256CLK;
 
-	/* Initialize WDT */
-	wdt_init(&wdt_config);
-
-	wdt_enable();
+	/* Initialize and enable the Watchdog with the user settings */
+	wdt_set_config(&wdt_config);
 
 	while (1) {
 		port_pin_toggle_output_level(BOOT_LED);

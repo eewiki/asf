@@ -8,7 +8,7 @@
  *
  * To use this board define BOARD=XMEGA_RF233_ZIGBIT
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -49,7 +49,7 @@
 #define _XMEGA_ZIGBIT_RF233_H_
 
 #include <compiler.h>
-
+# include "conf_board.h"
 /**
  * \defgroup xmega_rf233_zigbit_group XMEGA-A3BU Xplained board
  * @{

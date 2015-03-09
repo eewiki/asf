@@ -72,5 +72,24 @@
 			<device-support value="sam4e"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
+		<module type="application" id="common.services.usb.class.msc.device.example#3" caption="USB Device MSC Example">
+			<info type="description" value="summary">
+			Provide an application example of USB Device Mass Storage implementation. Relies on the native MSC driver on OS*, displays all available memories of the board as removable disk* (*except for Windows 98).
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="memories_initialization_samd.c"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="samd21"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
 	</select-by-device>
 </asf>

@@ -7,6 +7,7 @@
 		<build type="distribute" subtype="file" value="readme.txt"/>
 		<build type="distribute" subtype="file" value="Source/readme.txt"/>
 		<build type="distribute" subtype="license" value="License/license.txt"/>
+		<build type="define" name="__FREERTOS__" value=""/>
 		<build type="c-source" value="Source/croutine.c"/>
 		<build type="c-source" value="Source/list.c"/>
 		<build type="c-source" value="Source/queue.c"/>

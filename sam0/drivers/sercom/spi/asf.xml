@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.sercom.spi" name="config.sam0.drivers.sercom.spi" caption="SERCOM SPI - Serial Peripheral Interface" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20 SERCOM SPI module. Provides a unified
+			Driver for the SAM D20/D21 SERCOM SPI module. Provides a unified
 			interface for the configuration and management of the SERCOM module
 			in SPI mode.
 		</info>
@@ -15,15 +15,20 @@
 			<build type="header-file" subtype="api" value="spi.h"/>
 			<build type="header-file" value="quick_start_slave/qs_spi_slave_basic.h"/>
 			<build type="header-file" value="quick_start_master/qs_spi_master_basic.h"/>
+			<build type="header-file" value="quick_start_dma/qs_spi_dma_use.h"/>
 			<build type="include-path" value="."/>
-			<build type="doxygen-entry-point" value="asfdoc_samd20_sercom_spi_group"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_spi.h"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_sercom_spi_group"/>
 			<build type="doxygen-example-path" value="quick_start_master"/>
 			<build type="doxygen-example-path" value="quick_start_slave"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_spi_exqsg"/>
+			<build type="doxygen-example-path" value="quick_start_dma"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_sercom_spi_exqsg"/>
 
 			<build type="define" name="SPI_CALLBACK_MODE" value="false"/>
 
 			<device-support value="samd20"/>
+			<device-support value="samd21"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.sercom"/>
@@ -50,7 +55,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Serial Peripheral
-				Interface in master mode on the SAM D20, both the ASF driver
+				Interface in master mode on the SAM D20/D21, both the ASF driver
 				and the peripheral itself.
 			</info>
 
@@ -62,18 +67,23 @@
 			<build type="header-file" value="quick_start_slave_callback/qs_spi_slave_callback.h"/>
 			<build type="header-file" value="quick_start_slave/qs_spi_slave_basic.h"/>
 			<build type="header-file" value="quick_start_master/qs_spi_master_basic.h"/>
+			<build type="header-file" value="quick_start_dma/qs_spi_dma_use.h"/>
 			<build type="include-path" value="."/>
-			<build type="doxygen-entry-point" value="asfdoc_samd20_sercom_spi_group"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_spi.h"/>	
+			<build type="doxygen-entry-point" value="asfdoc_sam0_sercom_spi_group"/>
 			<build type="doxygen-example-path" value="quick_start_master_callback"/>
 			<build type="doxygen-example-path" value="quick_start_slave_callback"/>
 			<build type="doxygen-example-path" value="quick_start_master"/>
 			<build type="doxygen-example-path" value="quick_start_slave"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_spi_exqsg"/>
+			<build type="doxygen-example-path" value="quick_start_dma"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_sercom_spi_exqsg"/>
 
 			<build type="define" name="SPI_CALLBACK_MODE" value="true"/>
 			<build type="doxygen-enable-section" value="SPI_CALLBACK_MODE"/>
 
 			<device-support value="samd20"/>
+			<device-support value="samd21"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.sercom"/>

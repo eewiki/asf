@@ -7,7 +7,7 @@
  * CSMA-CA after reception of a beacon request frame in a nonbeacon-enabled PAN.
  *
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -78,7 +78,7 @@
  */
 #define ADVNC_BCN_PREP_TIME                 (50)
 /* Minimum Wakeup time for beacon synchronization when handling Wakeup from application sleep*/
-#define MAC_MIN_WAKEUP_US                   (100)
+#define MAC_MIN_WAKEUP_US                   (200)
 /*
  * (Minimal) Beacon payload length
  * 2 octets Superframe Spec

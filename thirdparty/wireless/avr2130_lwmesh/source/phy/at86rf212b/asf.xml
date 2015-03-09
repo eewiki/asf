@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2130_lwmesh.source.phy.at86rf212b" caption="PHY AT86RF212B">
+		<info type="description" value="summary">
+
+		</info>
+        <info type="gui-flag" value="hidden"/>
+		<build type="c-source"      value="src/phy.c"/>
+		<build type="header-file"   value="inc/at86rf212b.h"/>
+		<build type="header-file"   value="inc/phy.h"/>
+		<build type="include-path"  value="inc/"/>
+		<build type="doxygen-entry-point" value="group_phy_212B"/>
+		<build type="define" name="PHY_AT86RF212B" value =""/>
+		<device-support-alias value="avr2130_lwmesh_support"/>
+	</module>
+</asf>

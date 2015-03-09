@@ -415,6 +415,26 @@
 			<build type="linker-config" subtype="aux-script" value="sam4c/iar/sam4c32e_1_sram.icf" toolchain="iarewarm"/>
 			<device-support value="atsam4c32e_1"/>
 		</module>
+		<module type="build-specific" caption="Linker script for SAM4CP16B Core 0" id="sam.utils.linker_scripts#atsam4cp16b_0">
+			<info type="description" value="summary">
+			Linker script for SAM4CP16B core 0 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="sam4cp/gcc/sam4cp16b_0_flash.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="aux-script" value="sam4cp/gcc/sam4cp16b_0_sram.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="script" value="sam4cp/iar/sam4cp16b_0_flash.icf" toolchain="iarewarm"/>
+			<build type="linker-config" subtype="aux-script" value="sam4cp/iar/sam4cp16b_0_sram.icf" toolchain="iarewarm"/>
+			<device-support value="atsam4cp16b_0"/>
+		</module>
+		<module type="build-specific" caption="Linker script for SAM4CP16B Core 1" id="sam.utils.linker_scripts#atsam4cp16b_1">
+			<info type="description" value="summary">
+			Linker script for SAM4CP16B core 1 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="sam4cp/gcc/sam4cp16b_1_sram.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="aux-script" value="sam4cp/gcc/sam4cp16b_1_sram.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="script" value="sam4cp/iar/sam4cp16b_1_sram.icf" toolchain="iarewarm"/>
+			<build type="linker-config" subtype="aux-script" value="sam4cp/iar/sam4cp16b_1_sram.icf" toolchain="iarewarm"/>
+			<device-support value="atsam4cp16b_1"/>
+		</module>
 
 		<module type="build-specific" caption="Linker script for SAMG51G18" id="sam.utils.linker_scripts#atsamg51g18">
 			<info type="description" value="summary">

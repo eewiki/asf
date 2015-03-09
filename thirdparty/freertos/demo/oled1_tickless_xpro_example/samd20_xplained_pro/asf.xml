@@ -8,6 +8,7 @@
 		<build type="header-file" value="conf_demo.h"/>
 		<build type="header-file" value="conf_ssd1306.h"/>
 		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_spi.h"/>
 		<build type="header-file" value="FreeRTOSConfig.h"/>
 		<build type="include-path" value="."/>
 		<config name="common2.services.gfx_mono.display" value="ug_2832hsweg04"/>

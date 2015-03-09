@@ -10,5 +10,6 @@
 		<build type="doxygen-image-path" value="docimg"/>
 
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 	</module>
 </asf>

@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.sercom.usart" name="config.sam0.drivers.sercom.usart" caption="SERCOM USART - Serial Communications" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20 SERCOM USART module. Provides a unified
+			Driver for the SAM D20/D21 SERCOM USART module. Provides a unified
 			interface for the configuration and management of the SERCOM module
 			in USART mode.
 		</info>
@@ -19,17 +19,19 @@
 			<build type="c-source" value="usart.c"/>
 
 			<build type="define" name="USART_CALLBACK_MODE" value="false"/>
+			<build type="header-file" value="quick_start_dma/qs_usart_dma_use.h" />
 
-			<build type="doxygen-entry-point" value="asfdoc_samd20_sercom_usart_group"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_sercom_usart_group"/>
 			<build type="doxygen-image-path" value="docimg"/>
 			<build type="doxygen-example-path" value="quick_start"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_usart_exqsg"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_sercom_usart_exqsg"/>
+			<build type="doxygen-example-path" value="quick_start_dma"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.sercom"/>
-			<require idref="sam0.drivers.port"/>
 
 			<device-support value="samd20"/>
+			<device-support value="samd21"/>
 
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>
@@ -51,7 +53,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Universal
-				Synchronous/Asynchronous Receiver/Transmitter on the SAM D20,
+				Synchronous/Asynchronous Receiver/Transmitter on the SAM D20/D21,
 				both the ASF driver and the peripheral itself.
 			</info>
 
@@ -59,6 +61,7 @@
 
 			<build type="header-file" value="quick_start/qs_usart_basic_use.h"/>
 			<build type="header-file" value="quick_start_callback/qs_usart_callback.h"/>
+			<build type="header-file" value="quick_start_dma/qs_usart_dma_use.h" />
 
 			<build type="header-file" subtype="api" value="usart.h"/>
 			<build type="header-file" subtype="api" value="usart_interrupt.h"/>
@@ -68,17 +71,18 @@
 			<build type="define" name="USART_CALLBACK_MODE" value="true"/>
 			<build type="doxygen-enable-section" value="USART_CALLBACK_MODE"/>
 
-			<build type="doxygen-entry-point" value="asfdoc_samd20_sercom_usart_group"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_sercom_usart_group"/>
 			<build type="doxygen-image-path" value="docimg"/>
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-example-path" value="quick_start_callback"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_usart_exqsg"/>
+			<build type="doxygen-example-path" value="quick_start_dma"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_sercom_usart_exqsg"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.sercom"/>
-			<require idref="sam0.drivers.port"/>
 
 			<device-support value="samd20"/>
+			<device-support value="samd21"/>
 
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>

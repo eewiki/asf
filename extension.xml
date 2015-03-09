@@ -1,5 +1,5 @@
 <extension-container xmlversion="2.0">
-	<extension uuid="Atmel.ASF" org="Atmel" shortname="ASF" version="3.14.0" fullname="Atmel Software Framework">
+	<extension uuid="Atmel.ASF" org="Atmel" shortname="ASF" version="3.15.0" fullname="Atmel Software Framework">
 		<author name="Atmel Corp." website="http://www.atmel.com/" email="support@atmel.com"/>
 		<description/>
 		<icon-image path="icon.png"/>

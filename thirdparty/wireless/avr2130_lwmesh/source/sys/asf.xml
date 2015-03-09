@@ -1,0 +1,41 @@
+<asf xmlversion="1.0">
+	<module type="component" id="thirdparty.wireless.avr2130_lwmesh.source.sys" caption="SYS(System/Stack Services)">
+		<info type="description" value="summary">
+		System services provide common functions for all layers, which are necessary for normal stack operation. System services include basic types and definitions, software timers, default configuration parameters, encryption module access, etc.
+		</info>
+        <info type="gui-flag" value="hidden"/>
+		<build type="c-source"      value="src/sys.c"/>
+		<build type="c-source"      value="src/sysEncrypt.c"/>
+		<build type="c-source"      value="src/sysTimer.c"/>
+		<build type="header-file"   value="inc/sys.h"/>
+		<build type="header-file"   value="inc/sysEncrypt.h"/>
+		<build type="header-file"   value="inc/sysTimer.h"/>
+		<build type="header-file"   value="inc/sysConfig.h"/>
+		<build type="header-file"   value="inc/sysTypes.h"/>
+		<build type="include-path"  value="inc/"/>
+		<require idref="thirdparty.wireless.common_services.trx_access"/>
+		<require idref="thirdparty.wireless.common_services.common_hw_timer"/>
+		<require idref="thirdparty.wireless.common_services.sleep_mgr"/>		
+		<build type="doxygen-entry-point" value="group_lwmesh_sys"/>
+		<device-support-alias value="avr2130_lwmesh_support"/>
+	</module>
+
+<device-alias-map name="avr2130_lwmesh_support">
+	<device-support value="atxmega256a3u"/>
+	<device-support value="atmega256rfr2"/>
+	<device-support value="atmega2564rfr2"/>
+	<device-support value="atmega128rfa1"/>
+	<device-support value="atxmega256a3bu"/>
+	<device-support value="samd20"/>
+	<device-support value="sam4l"/>
+</device-alias-map>	
+
+<device-alias-map name="avr2130_lwmesh_spi_support">
+	<device-support value="atxmega256a3u"/>
+	<device-support value="atxmega256a3bu"/>
+	<device-support value="samd20"/>
+	<device-support value="sam4l"/>
+</device-alias-map>	
+	
+</asf>
+

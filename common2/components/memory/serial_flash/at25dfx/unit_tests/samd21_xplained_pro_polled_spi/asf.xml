@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project id="common2.components.memory.serial_flash.at25dfx.unit_test.polled_spi.samd21_xplained_pro" caption="Unit Tests for the AT25DFx SerialFlash Component with polled SPI - SAM D21 Xplained Pro" force-caption="true" type="unit-test">
+		<info type="description" value="summary">
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+		<build type="header-file" value="conf_at25dfx.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common2.components.memory.serial_flash.at25dfx.unit_test"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<device-support value="atsamd21j18a"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="iarewarm"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+	</project>
+</asf>

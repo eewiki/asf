@@ -1,0 +1,94 @@
+<asf xmlversion="1.0">
+	<select-by-config id="sam0.drivers.i2s" name="config.sam0.drivers.i2s" caption="I2S - Inter-IC Sound Controller" default="callback">
+		<info type="description" value="summary">
+		  Driver for the SAM D21 Inter-IC Sound Controller (I2S) module.
+		  Provides a unified interface for the configuration and management of
+		  the device's I2S hardware.
+		</info>
+
+		<module caption="I2S - Inter-IC Sound Controller (Polled APIs)" id="sam0.drivers.i2s#polled" type="driver">
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+
+			<build type="include-path" value="." />
+
+			<build name="I2S_CALLBACK_MODE" type="define" value="false" />
+
+			<build subtype="api" type="header-file" value="i2s.h" />
+			<build type="c-source" value="i2s.c" />
+
+			<build type="header-file" value="quick_start/qs_i2s_basic.h" />
+			<build type="header-file" value="quick_start_dma/qs_i2s_dma.h" />
+
+			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-example-path" value="quick_start/samd21_xplained_pro"/>
+			<build type="doxygen-example-path" value="quick_start_dma"/>
+			<build type="doxygen-example-path" value="quick_start_dma/samd21_xplained_pro"/>
+			<build type="doxygen-image-path" value="docimg"/>
+
+			<build type="doxygen-entry-point" value="asfdoc_sam0_i2s_group" />
+			<build type="doxygen-quick-start" value="asfdoc_sam0_i2s_exqsg"/>
+
+			<device-support value="samd21" />
+
+			<require idref="sam0.utils" />
+			<require idref="sam0.drivers.system" />
+			<require idref="sam0.drivers.port" />
+
+			<generator default-mcu="unspecified-samd21" value="doxygen-module-v2" />
+		</module>
+
+		<module caption="I2S - Inter-IC Sound Controller (Callback APIs)" id="sam0.drivers.i2s#callback" type="driver">
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+
+			<info type="appnote" value="AT07451"/>
+			<info type="keyword" value="pdf">
+				<keyword value="I/O"/>
+				<keyword value="Communication" />
+				<keyword value="Audio"/>
+				<keyword value="I2S"/>
+			</info>
+
+			<info type="description" value="pdf">
+				This document describes how to use the Inter-IC Sound Controller on the SAM D21,
+				both the ASF driver and the peripheral itself.
+			</info>
+
+			<build type="include-path" value="." />
+
+			<build name="I2S_CALLBACK_MODE" type="define" value="true" />
+			<build type="doxygen-enable-section" value="I2S_CALLBACK_MODE"/>
+
+			<build subtype="api" type="header-file" value="i2s.h" />
+			<build subtype="api" type="header-file" value="i2s_callback.h" />
+			<build type="c-source" value="i2s_callback.c" />
+			<build type="c-source" value="i2s.c" />
+
+			<build type="header-file" value="quick_start_callback/qs_i2s_callback.h" />
+			<build type="header-file" value="quick_start/qs_i2s_basic.h" />
+			<build type="header-file" value="quick_start_dma/qs_i2s_dma.h" />
+
+			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-example-path" value="quick_start/samd21_xplained_pro"/>
+			<build type="doxygen-example-path" value="quick_start_callback"/>
+			<build type="doxygen-example-path" value="quick_start_callback/samd21_xplained_pro"/>
+			<build type="doxygen-example-path" value="quick_start_dma"/>
+			<build type="doxygen-example-path" value="quick_start_dma/samd21_xplained_pro"/>
+			<build type="doxygen-image-path" value="docimg"/>
+
+			<build type="doxygen-entry-point" value="asfdoc_sam0_i2s_group" />
+			<build type="doxygen-quick-start" value="asfdoc_sam0_i2s_exqsg"/>
+
+			<device-support value="samd21" />
+
+			<require idref="sam0.utils" />
+			<require idref="sam0.drivers.system" />
+			<require idref="sam0.drivers.port" />
+
+			<generator default-mcu="unspecified-samd21" value="doxygen-module-v2" />
+		</module>
+	</select-by-config>
+</asf>

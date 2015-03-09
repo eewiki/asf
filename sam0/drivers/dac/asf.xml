@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.dac" name="config.sam0.drivers.dac" caption="DAC - Digital-to-Analog Converter" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20 Digital to Analog Converter. Provides a unified
+			Driver for the SAM D20/D21 Digital to Analog Converter. Provides a unified
 			interface for the configuration and management of the DAC in the
 			device, including channel configuration and conversions.
 		</info>
@@ -16,15 +16,18 @@
 			<build type="c-source" value="dac.c"/>
 
 			<build type="header-file" value="quick_start/qs_dac_basic.h"/>
+			<build type="header-file" value="../adc/quick_start_dma/qs_adc_dma_use.h"/>
 
 			<build type="define" name="DAC_CALLBACK_MODE" value="false"/>
 
-			<build type="doxygen-entry-point" value="asfdoc_samd20_dac_group"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_dac_group"/>
 			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-example-path" value="../adc/quick_start_dma"/>
 			<build type="doxygen-image-path" value="docimg"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_dac_exqsg"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_dac_exqsg"/>
 
 			<device-support value="samd20"/>
+			<device-support value="samd21"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
@@ -46,7 +49,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Digital-to-Analog
-				Converter on the SAM D20, both the ASF driver and the
+				Converter on the SAM D20/D21, both the ASF driver and the
 				peripheral itself.
 			</info>
 
@@ -57,16 +60,21 @@
 			<build type="c-source" value="dac_callback.c"/>
 
 			<build type="header-file" value="quick_start/qs_dac_basic.h"/>
+			<build type="header-file" value="quick_start_callback/qs_dac_callback.h"/>
+			<build type="header-file" value="../adc/quick_start_dma/qs_adc_dma_use.h"/>
 
 			<build type="define" name="DAC_CALLBACK_MODE" value="true"/>
 			<build type="doxygen-enable-section" value="DAC_CALLBACK_MODE"/>
 
-			<build type="doxygen-entry-point" value="asfdoc_samd20_dac_group"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_dac_group"/>
 			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-example-path" value="quick_start_callback"/>
+			<build type="doxygen-example-path" value="../adc/quick_start_dma"/>
 			<build type="doxygen-image-path" value="docimg"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_dac_exqsg"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_dac_exqsg"/>
 
 			<device-support value="samd20"/>
+			<device-support value="samd21"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>

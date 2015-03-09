@@ -1,0 +1,113 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="common2.components.memory.serial_flash.at25dfx.common" caption="Common files for AT25DFx SerialFlash drivers">
+		<info type="description" value="summary">
+		The common files for the AT25DFx SerialFlash drivers.
+		</info>
+		<build type="c-source" value="at25dfx.c"/>
+		<build type="doxygen-example-path" value="quick_start_basic"/>
+		<build type="doxygen-image-path" value="docimg"/>
+		<build type="header-file" subtype="api" value="at25dfx.h"/>
+		<build type="header-file" value="quick_start_basic/qs_at25dfx_basic.h"/>
+		<build type="include-path" value="."/>
+		<!-- The two following tags must be copied into the driver modules (for Studio):
+		<build type="doxygen-entry-point" value="asfdoc_common2_at25dfx_group"/>
+		<build type="doxygen-quick-start" value="asfdoc_common2_at25dfx_exqsg"/>
+		-->
+	</module>
+
+	<module type="meta" id="common2.components.memory.serial_flash.at25dfx.hal.polled_spi" caption="Polled SPI HAL for AT25DFx SerialFlash driver">
+		<build type="include-path" value="hal/spi_polled/"/>
+		<build type="header-file" value="hal/spi_polled/at25dfx_hal.h"/>
+		<build type="header-file" value="hal/spi_polled/at25dfx_priv_hal.h"/>
+	</module>
+
+	<module type="meta" id="common2.components.memory.serial_flash.at25dfx.hal.vectored_master_spi" caption="Vectored master SPI HAL for AT25DFx SerialFlash driver">
+		<build type="include-path" value="hal/spi_master_vec/"/>
+		<build type="header-file" value="hal/spi_master_vec/at25dfx_hal.h"/>
+		<build type="header-file" value="hal/spi_master_vec/at25dfx_priv_hal.h"/>
+	</module>
+
+	<select-by-config id="common2.components.memory.serial_flash.at25dfx" caption="AT25DFx SerialFlash" name="config.at25dfx.hal" default="polled_spi">
+			<info type="description" value="summary">
+			AT25DFx SerialFlash driver, supplying basic functions for reading,
+			writing, (globally) protecting and unprotecting sectors, putting to
+			sleep and waking the SerialFlash device.
+
+			Functionality for permanently locking and securing the device is not
+			supplied by this driver.
+
+			Support for different SPI drivers or variants of them may be
+			available, depending on the device.
+			</info>
+
+			<select-by-device id="common2.components.memory.serial_flash.at25dfx#polled_spi" caption="AT25DFx SerialFlash with polled SPI">
+				<info type="description" value="summary">
+				Polled SPI variant of the AT25DFx SerialFlash driver.
+
+				This variant can give a speed benefit over interrupt based variant
+				at high baud rates, in single-threaded applications.
+				</info>
+
+				<module type="component" id="common2.components.memory.serial_flash.at25dfx#polled_spi#sam0" caption="SAM D20/D21 implementation of AT25DFx SerialFlash with polled SPI">
+					<info type="description" value="summary">
+					SAM D20/D21 implementation of AT25DFx SerialFlash driver with polled SPI.
+					</info>
+
+					<info type="description" value="pdf">
+					This document describes how to use the AT25DFx SerialFlash driver
+					with polled SPI on the SAM D20/D21.
+					</info>
+
+					<info type="keyword" value="technology">
+						<keyword value="Memory"/>
+					</info>
+
+					<build type="doxygen-entry-point" value="asfdoc_common2_at25dfx_group"/>
+					<build type="doxygen-quick-start" value="asfdoc_common2_at25dfx_exqsg"/>
+					<require idref="common2.components.memory.serial_flash.at25dfx.common"/>
+					<require idref="common2.components.memory.serial_flash.at25dfx.hal.polled_spi"/>
+					<require idref="sam0.drivers.sercom.spi"/>
+					<require idref="sam0.drivers.port"/>
+					<require idref="sam0.utils"/>
+					<device-support value="samd20"/>
+					<device-support value="samd21"/>
+					<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+				</module>
+
+		</select-by-device>
+
+		<select-by-device id="common2.components.memory.serial_flash.at25dfx#vectored_master_spi" caption="AT25DFx SerialFlash with vectored master SPI">
+				<info type="description" value="summary">
+				Vectored master SPI variant of the AT25DFx SerialFlash driver.
+				</info>
+
+				<module type="component" id="common2.components.memory.serial_flash.at25dfx#vectored_master_spi#sam0" caption="SAM D20/D21 implementation of AT25DFx SerialFlash with vectored master SPI">
+					<info type="description" value="summary">
+					SAM D20/D21 implementation of AT25DFx SerialFlash driver with vectored
+					master SPI.
+					</info>
+
+					<info type="description" value="pdf">
+					This document describes how to use the AT25DFx SerialFlash driver
+					with vectored master SPI on the SAM D20/D21.
+					</info>
+
+					<info type="keyword" value="technology">
+						<keyword value="Memory"/>
+					</info>
+
+					<build type="doxygen-entry-point" value="asfdoc_common2_at25dfx_group"/>
+					<build type="doxygen-quick-start" value="asfdoc_common2_at25dfx_exqsg"/>
+					<require idref="common2.components.memory.serial_flash.at25dfx.common"/>
+					<require idref="common2.components.memory.serial_flash.at25dfx.hal.vectored_master_spi"/>
+					<require idref="sam0.drivers.sercom.spi_master_vec"/>
+					<require idref="sam0.drivers.port"/>
+					<require idref="sam0.utils"/>
+					<device-support value="samd20"/>
+					<device-support value="samd21"/>
+					<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+				</module>
+
+		</select-by-device>
+	</select-by-config>
+</asf>

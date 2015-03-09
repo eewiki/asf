@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common2.components.memory.serial_flash.at25dfx.quick_start_basic" caption="Quick Start for the AT25DFx SerialFlash Component">
+		<info type="description" value="summary">
+			Quick start guide demonstrating some basic use of the AT25DFx SerialFlash driver.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_at25dfx_basic.c"/>
+		<build type="header-file" value="qs_at25dfx_basic.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_at25dfx.h"/>
+		<require idref="common2.components.memory.serial_flash.at25dfx"/>
+		<device-support value="samd20"/>
+		<device-support value="samd21"/>
+	</module>
+</asf>

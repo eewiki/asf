@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 TC - Timer Counter Callback Driver
+ * \brief SAM D20/D21 TC - Timer Counter Callback Driver
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -47,6 +47,10 @@
 #include "tc.h"
 #include <system_interrupt.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #if !defined(__DOXYGEN__)
 extern void *_tc_instances[TC_INST_NUM];
 
@@ -64,7 +68,7 @@ static enum system_interrupt_vector _tc_interrupt_get_interrupt_vector(
 {
 	static uint8_t tc_interrupt_vectors[TC_INST_NUM] =
 		{
-			MREPEAT(TC_INST_NUM, _TC_INTERRUPT_VECT_NUM, ~)
+			MRECURSION(TC_INST_NUM, _TC_INTERRUPT_VECT_NUM, TC_INST_MAX_ID)
 		};
 
 	return (enum system_interrupt_vector)tc_interrupt_vectors[inst_num];
@@ -157,5 +161,9 @@ static inline void tc_disable_callback(
 /**
  * @}
  */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* TC_INTERRUPT_H_INCLUDED */

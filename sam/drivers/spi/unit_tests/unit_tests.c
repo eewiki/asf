@@ -86,6 +86,7 @@
  * - sam4lc8c_sam4l8_xplained_pro
  * - sam4n16c_sam4n_xplained_pro
  * - sam4c16c_sam4c_ek
+ * - sam4cp16b_sam4cp16bmb
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers

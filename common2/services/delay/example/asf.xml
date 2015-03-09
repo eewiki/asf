@@ -6,6 +6,7 @@
 		</info>
 		<build type="c-source" value="delay_example.c"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 		<require idref="common2.services.delay"/>
 		<require idref="sam0.drivers.port"/>
 	</module>

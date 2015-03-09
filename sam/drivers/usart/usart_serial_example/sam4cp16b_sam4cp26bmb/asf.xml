@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="USART Serial Example for SAM4CP16BMB" id="sam.drivers.usart.usart_serial_example.sam4cp16bmb">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.usart.usart_serial_example"/>
+		<require idref="board.sam4cp16bmb"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam4cp16b_0"/>
+	</project>
+</asf>

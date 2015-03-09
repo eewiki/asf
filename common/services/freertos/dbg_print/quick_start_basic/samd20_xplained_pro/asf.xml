@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project id="common.services.freertos.dbg_print.quick_start.samd20_xplained_pro" caption="Quick Start for the Debug Print Service for FreeRTOS on SAM D20 Xplained Pro">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.samd20_xplained_pro"/>
+		<require idref="common.services.freertos.dbg_print.quick_start"/>
+		<device-support value="atsamd20j18"/>
+		<generator value="as5_arm"/>
+		<generator value="armgcc"/>
+	</project>
+</asf>

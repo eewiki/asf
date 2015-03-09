@@ -3,7 +3,7 @@
  *
  * \brief Implementation of low level disk I/O module skeleton for FatFS.
  *
- * Copyright (c) 2012 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -60,6 +60,36 @@ extern "C" {
 # include <rtc.h>
 #endif
 
+#if (SAMD21)
+# include <rtc_calendar.h>
+struct rtc_module rtc_instance;
+
+static void configure_rtc_calendar(void)
+{
+	/* Initialize RTC in calendar mode. */
+	struct rtc_calendar_config config_rtc_calendar;
+
+	rtc_calendar_get_config_defaults(&config_rtc_calendar);
+
+	struct rtc_calendar_time init_time;
+	rtc_calendar_get_time_defaults(&init_time);
+	init_time.year   = 2014;
+	init_time.month  = 1;
+	init_time.day    = 1;
+	init_time.hour   = 0;
+	init_time.minute = 0;
+	init_time.second = 4;
+
+	config_rtc_calendar.clock_24h     = true;
+	config_rtc_calendar.alarm[0].time = init_time;
+	config_rtc_calendar.alarm[0].mask = RTC_CALENDAR_ALARM_MASK_YEAR;
+
+	rtc_calendar_init(&rtc_instance, RTC, &config_rtc_calendar);
+
+	rtc_calendar_enable(&rtc_instance);
+}
+#endif
+
 /**
  * \defgroup thirdparty_fatfs_port_group Port of low level driver for FatFS
  *
@@ -95,6 +125,10 @@ DSTATUS disk_initialize(BYTE drv)
 #if (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S)
 	/* Default RTC configuration, 24-hour mode */
 	rtc_set_hour_mode(RTC, 0);
+#endif
+
+#if (SAMD21)
+	configure_rtc_calendar();
 #endif
 
 #if LUN_USB

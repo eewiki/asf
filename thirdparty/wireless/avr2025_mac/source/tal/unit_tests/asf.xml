@@ -8,7 +8,7 @@
 		<build type="header-file" value="unit_tests.h"/>
 		<build type="header-file" value="app_config.h"/>
 		<build type="header-file" value="conf_common_sw_timer.h"/>
-		<build type="header-file" value="conf_pal.h"/>
+		<build type="header-file" value="conf_trx_access.h"/>
 		<build type="include-path" value="."/>
 		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
 		<require idref="common.services.ioport"/>

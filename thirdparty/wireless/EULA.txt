@@ -1,5 +1,4 @@
 LIMITED LICENSE AGREEMENT
-IEEE 802.15.4 MAC Download Registration
 
 You ("Developer" or "You") must read this Limited License Agreement (this
 "Agreement") carefully and thoroughly before downloading, installing, and/or

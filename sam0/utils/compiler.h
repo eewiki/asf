@@ -3,7 +3,7 @@
  *
  * \brief Commonly used includes, types and macros.
  *
- * Copyright (C) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -510,8 +510,6 @@ typedef struct
  */
 #if (defined __GNUC__) || (defined __CC_ARM)
 #   define clz(u)              __builtin_clz(u)
-#elif (defined __ICCARM__)
-#   define clz(u)              __CLZ(u)
 #else
 #   define clz(u)              (((u) == 0)          ? 32 : \
                                 ((u) & (1ul << 31)) ?  0 : \

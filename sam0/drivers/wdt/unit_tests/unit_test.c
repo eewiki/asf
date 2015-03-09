@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 Watchdog Unit test
+ * \brief SAM D20/D21 Watchdog Unit test
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,7 +42,7 @@
  */
 
 /**
- * \mainpage SAM D20 WDT Unit Test
+ * \mainpage SAM D20/D21 WDT Unit Test
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -51,33 +51,33 @@
  * This unit test carries out tests for WDT driver.
  * It consists of test cases for the following functionalities:
  *      - Test for driver initialization.
- *      - Test for enabling and disabling.
  *      - Test for early warning callbacks.
  *      - Test for system reset upon timeout.
  */
 
 /**
- * \page appdoc_main SAM D20 WDT Unit Test
+ * \page appdoc_main SAM D20/D21 WDT Unit Test
  *
  * Overview:
- * - \ref appdoc_samd20_wdt_unit_test_intro
- * - \ref appdoc_samd20_wdt_unit_test_setup
- * - \ref appdoc_samd20_wdt_unit_test_usage
- * - \ref appdoc_samd20_wdt_unit_test_compinfo
- * - \ref appdoc_samd20_wdt_unit_test_contactinfo
+ * - \ref appdoc_sam0_wdt_unit_test_intro
+ * - \ref appdoc_sam0_wdt_unit_test_setup
+ * - \ref appdoc_sam0_wdt_unit_test_usage
+ * - \ref appdoc_sam0_wdt_unit_test_compinfo
+ * - \ref appdoc_sam0_wdt_unit_test_contactinfo
  *
- * \section appdoc_samd20_wdt_unit_test_intro Introduction
+ * \section appdoc_sam0_wdt_unit_test_intro Introduction
  * \copydetails appdoc_preface
  *
  * The following kit is required for carrying out the test:
  *      - SAM D20 Xplained Pro board
+ *      - SAM D21 Xplained Pro board
  *
- * \section appdoc_samd20_wdt_unit_test_setup Setup
+ * \section appdoc_sam0_wdt_unit_test_setup Setup
  * The following connections has to be made using wires:
  *  - None
  *
  * To run the test:
- *  - Connect the SAM D20 Xplained Pro board to the computer using a
+ *  - Connect the SAM D20/D21 Xplained Pro board to the computer using a
  *    micro USB cable.
  *  - Open the virtual COM port in a terminal application.
  *    \note The USB composite firmware running on the Embedded Debugger (EDBG)
@@ -86,14 +86,14 @@
  *  - Build the project, program the target and run the application.
  *    The terminal shows the results of the unit test.
  *
- * \section appdoc_samd20_wdt_unit_test_usage Usage
+ * \section appdoc_sam0_wdt_unit_test_usage Usage
  *  - The unit tests are carried out using the internal Watchdog.
  *
- * \section appdoc_samd20_wdt_unit_test_compinfo Compilation Info
+ * \section appdoc_sam0_wdt_unit_test_compinfo Compilation Info
  * This software was written for the GNU GCC and IAR for ARM.
  * Other compilers may or may not work.
  *
- * \section appdoc_samd20_wdt_unit_test_contactinfo Contact Information
+ * \section appdoc_sam0_wdt_unit_test_contactinfo Contact Information
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
  */
@@ -108,57 +108,6 @@ struct usart_module cdc_uart_module;
 
 /* Flag that indicates whether Watchdog was Reset cause */
 static volatile bool wdr_flag = false;
-
-/**
- * \brief Test WDT initialization, enabling and disabling
- *
- * If last reset cause was not by Watchdog module, this function will check the
- * initialization of Watchdog module with specified configurations and enabling
- * the module. If last reset was by Watchdog module, this function will check
- * the disabling of Watchdog module
- *
- * \param test Current test case.
- */
-static void run_wdt_enable_disable_test(const struct test_case *test)
-{
-	struct wdt_conf config;
-	enum status_code status;
-
-	/* Check if last reset was by Watchdog module */
-	if (wdr_flag == false) {
-		/* Initialize delay service*/
-		delay_init();
-
-		/* Get the Watchdog default configuration */
-		wdt_get_config_defaults(&config);
-
-		/* Set the desired configuration */
-		config.clock_source         = CONF_WDT_GCLK_GEN;
-		config.timeout_period       = CONF_WDT_TIMEOUT_PERIOD;
-		config.early_warning_period = WDT_PERIOD_1024CLK;
-
-		/* Initialize the Watchdog module */
-		status = wdt_init(&config);
-
-		/* Check if the initialization was successful */
-		test_assert_true(test, status == STATUS_OK,
-				"WDT initialization failed");
-
-		/* Enable Watchdog module */
-		status = wdt_enable();
-
-		/* Check if Watchdog module was successfully enabled */
-		test_assert_true(test, status == STATUS_OK,
-				"WDT Enabling failed");
-	} else {
-		/* Disable the Watchdog module */
-		status = wdt_disable();
-
-		/* Check if disabling the Watchdog module was successful */
-		test_assert_true(test, status == STATUS_OK,
-				"WDT disabling failed");
-	}
-}
 
 /**
  * \brief Test Early Warning of Watchdog module
@@ -253,12 +202,20 @@ int main(void)
 
 	/* Reset the Watchdog count */
 	wdt_reset_count();
-	cdc_uart_init();
 
-	/* Define Test Cases */
-	DEFINE_TEST_CASE(wdt_enable_disable_test, NULL,
-			run_wdt_enable_disable_test, NULL,
-			"WDT Initialization, Enabling/Disabling");
+	struct wdt_conf config_wdt;
+	/* Get the Watchdog default configuration */
+	wdt_get_config_defaults(&config_wdt);
+	if(wdr_flag) {
+		config_wdt.enable = false;
+	}
+	/* Set the desired configuration */
+	config_wdt.clock_source         = CONF_WDT_GCLK_GEN;
+	config_wdt.timeout_period       = CONF_WDT_TIMEOUT_PERIOD;
+	config_wdt.early_warning_period = CONF_WDT_EARLY_WARNING_PERIOD;
+	wdt_set_config(&config_wdt);
+
+	cdc_uart_init();
 
 	DEFINE_TEST_CASE(wdt_early_warning_test, NULL,
 			run_wdt_early_warning_test, wait_for_wdt_reset,
@@ -270,14 +227,13 @@ int main(void)
 
 	/* Put test case addresses in an array */
 	DEFINE_TEST_ARRAY(wdt_tests) = {
-			&wdt_enable_disable_test,
 			&wdt_early_warning_test,
 			&reset_cause_test,
 			};
 
 	/* Define the test suite */
 	DEFINE_TEST_SUITE(wdt_suite, wdt_tests,
-			"SAM D20 WDT driver test suite");
+			"SAM D20/D21 WDT driver test suite");
 
 	/* Run all tests in the suite*/
 	test_suite_run(&wdt_suite);

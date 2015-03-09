@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2130_lwmesh.source.phy.at86rf233" caption="PHY AT86RF233">
+		<info type="description" value="summary">
+
+		</info>
+        <info type="gui-flag" value="hidden"/>
+		<build type="c-source"      value="src/phy.c"/>
+		<build type="header-file"   value="inc/at86rf233.h"/>
+		<build type="header-file"   value="inc/phy.h"/>
+		<build type="include-path"  value="inc/"/>
+		<build type="doxygen-entry-point" value="group_phy_233"/>
+		<build type="define" name="PHY_AT86RF233" value =""/>
+		<device-support-alias value="avr2130_lwmesh_support"/>
+	</module>
+</asf>

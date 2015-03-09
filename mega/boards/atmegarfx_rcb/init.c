@@ -5,7 +5,7 @@
  *
  * To use this board, define BOARD=ATMEGA256RFR2_XPLAINED_PRO.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -51,6 +51,35 @@
 
 void board_init(void)
 {
+#ifdef KEY_RC_BOARD
+    /* On board Button initialization */
+	ioport_configure_pin(BUTTON_IRQ_PIN_1,IOPORT_DIR_INPUT | IOPORT_PULL_UP);
+	ioport_configure_pin(BUTTON_IRQ_PIN_2,IOPORT_DIR_INPUT | IOPORT_PULL_UP);
+	ioport_configure_pin(BUTTON_IRQ_PIN_3,IOPORT_DIR_INPUT | IOPORT_PULL_UP);
+	
+    set_button_pins_for_normal_mode();
+
+    /* Initialize the IRQ lines' interrupt behaviour. */
+    DISABLE_ALL_BUTTON_IRQS();
+		
+	/* LED Init */
+	/* LCD initialization for inactive use */    
+    /* On board LED initialization */
+	ioport_configure_pin(LCD_CS_ON_BOARD,	
+	IOPORT_DIR_OUTPUT |  IOPORT_INIT_HIGH);
+	
+	ioport_set_port_dir(IOPORT_PORTE,KEY_RC_IO_MASK,IOPORT_DIR_OUTPUT);
+	ioport_set_port_level(IOPORT_PORTE,KEY_RC_IO_MASK,KEY_RC_IO_MASK);
+	ioport_set_pin_dir(IOPORT_CREATE_PIN(PORTG , 2),IOPORT_DIR_INPUT);
+	ioport_set_pin_mode(IOPORT_CREATE_PIN(PORTG , 2), IOPORT_MODE_PULLUP);	
+
+    LATCH_INIT();    
+	update_latch_status();   
+
+    /* Apply latch pulse to set LED status */
+    pulse_latch();
+	
+#else
     /* To identify if it is a plain or STB*/
     board_identify();
 
@@ -61,15 +90,13 @@ void board_init(void)
 	ioport_configure_pin(LED2_RCB,IOPORT_DIR_OUTPUT |  IOPORT_INIT_HIGH);
 
 	/* On board Switch initialization */
-	ioport_configure_pin(GPIO_PUSH_BUTTON_0,IOPORT_DIR_INPUT | IOPORT_PULL_UP);
-
-    
+	ioport_configure_pin(GPIO_PUSH_BUTTON_0,IOPORT_DIR_INPUT | IOPORT_PULL_UP);      
 
 #ifdef BREAKOUT_BOARD
   //Enable RCB_BB RS232 level converter
-
-    DDRD = 0XD0; 	//(1 << 4) | (1 << 6) | (1 << 7);
-    PORTD = 0XC0 ;  //(0 << 4) | (1 << 6) | (1 << 7);
+	ioport_set_port_dir(IOPORT_PORTD,BB_SIO_MASK,IOPORT_DIR_OUTPUT);
+	ioport_set_port_level(IOPORT_PORTD,BB_SIO_MASK,BB_SIO_VAL);
+#endif
 #endif
 
 }

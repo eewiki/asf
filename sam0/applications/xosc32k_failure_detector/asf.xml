@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="application" id="sam0.applications.xosc32k_fail_detector" caption="XOSC32K Failure Detector Example">
 		<info type="description" value="summary">
-		Hardware based XOSC32K external 32KHz crystal oscillator runtime failure detector SAM D20 devices.
+		Hardware based XOSC32K external 32KHz crystal oscillator runtime failure detector SAM D20/D21 devices.
 		</info>
 
 		<info type="keyword" value="technology">
@@ -20,6 +20,6 @@
 		<require idref="sam0.drivers.events"/>
 		<require idref="sam0.drivers.tc"/>
 
-		<device-support value="samd20"/>
+		<device-support value="sam0"/>
 	</module>
 </asf>

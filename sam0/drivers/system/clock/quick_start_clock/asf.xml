@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.system.clock.quick_start_clock" caption="Quick Start for the SAM D20 SYSTEM Clock Source Driver">
+	<module type="application" id="sam0.drivers.system.clock.quick_start_clock" caption="Quick Start for the SAM D20/D21 SYSTEM Clock Source Driver">
 		<info type="description" value="summary">
 	Quick start guide demonstrating clock source configuration.
 		</info>
@@ -8,5 +8,6 @@
 		<build type="include-path" value="."/>
 		<require idref="sam0.drivers.system"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 	</module>
 </asf>

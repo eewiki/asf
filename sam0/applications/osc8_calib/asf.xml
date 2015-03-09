@@ -20,5 +20,6 @@
 		<require idref="sam0.drivers.port"/>
 		<require idref="sam0.drivers.sercom.usart"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 	</module>
 </asf>

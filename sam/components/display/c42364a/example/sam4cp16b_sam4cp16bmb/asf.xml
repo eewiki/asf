@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="C42364A LCD Glass Example for SAM4CP16BMB" id="sam.components.display.c42364a.example.sam4cp16bmb">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_c42364a_slcdc.h"/>
+		<build type="header-file" value="conf_slcdc.h"/>
+		<require idref="sam.components.display.c42364a.example"/>
+		<require idref="board.sam4cp16bmb"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4cp16b_0"/>
+	</project>
+</asf>

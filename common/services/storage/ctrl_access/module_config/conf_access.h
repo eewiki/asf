@@ -7,7 +7,7 @@
  * This file contains the possible external configuration of the memory access
  * control.
  *
- * Copyright (c) 2009 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -266,5 +266,10 @@
 #define GLOBAL_WR_PROTECT    false //!< Management of a global write protection.
 //! @}
 
+/*! \name Sector size option for different storage media.
+ */
+//! @{
+#define SECTOR_SIZE  512
+//! @}
 
 #endif  // _CONF_ACCESS_H_

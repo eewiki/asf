@@ -15,7 +15,6 @@
 		<require idref="common.services.basic.gpio"/>
 		<require idref="common.services.delay"/>
 		<build type="doxygen-entry-point" value="megarf_twi_master"/>
-		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
 		<info type="gui-flag" value="move-to-root"/>
 	</module>
 </asf>

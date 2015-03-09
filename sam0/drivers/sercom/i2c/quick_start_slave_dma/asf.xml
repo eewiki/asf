@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.sercom.i2c.quick_start_i2c_slave_dma" caption="Quick Start for the SAM D21 SERCOM I2C Slave Driver with DMA">
+		<info type="description" value="summary">
+		Quick start guide for the SERCOM I2C slave driver with DMA.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_i2c_slave_dma.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.sercom.i2c.slave"/>
+		<require idref="sam0.drivers.dma"/>
+		<device-support value="sam0"/>
+	</module>
+</asf>

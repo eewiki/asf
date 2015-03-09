@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 Peripheral Analog-to-Digital Converter Driver
+ * \brief SAM D20/D21 Peripheral Analog-to-Digital Converter Driver
  *
- * Copyright (C) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -55,10 +55,10 @@ static void _adc_interrupt_handler(const uint8_t instance)
 		/* clear interrupt flag */
 		module->hw->INTFLAG.reg = ADC_INTFLAG_RESRDY;
 
-		if (module->remaining_conversions > 0) {
-			/* store ADC result in job buffer */
-			*(module->job_buffer++) = module->hw->RESULT.reg;
-			module->remaining_conversions--;
+		/* store ADC result in job buffer */
+		*(module->job_buffer++) = module->hw->RESULT.reg;
+
+		if (--module->remaining_conversions > 0) {
 			if (module->software_trigger == true) {
 				adc_start_conversion(module);
 			}
@@ -68,6 +68,7 @@ static void _adc_interrupt_handler(const uint8_t instance)
 				 *and call callback */
 				module->job_status = STATUS_OK;
 				adc_disable_interrupt(module, ADC_INTERRUPT_RESULT_READY);
+
 				if(module->enabled_callback_mask & (1 << ADC_CALLBACK_READ_BUFFER)) {
 					(module->callback[ADC_CALLBACK_READ_BUFFER])(module);
 				}
@@ -186,9 +187,11 @@ enum status_code adc_read_buffer_job(
 	module_inst->job_buffer = buffer;
 
 	adc_enable_interrupt(module_inst, ADC_INTERRUPT_RESULT_READY);
+
 	if(module_inst->software_trigger == true) {
 		adc_start_conversion(module_inst);
 	}
+
 	return STATUS_OK;
 }
 

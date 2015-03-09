@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.can.example" caption="CAN Example">
+		<info type="description" value="summary">
+		This example demostrate basic functions of CAN controller.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4e"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.can"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

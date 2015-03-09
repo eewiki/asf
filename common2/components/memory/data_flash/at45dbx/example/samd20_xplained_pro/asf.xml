@@ -4,6 +4,7 @@
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_clocks.h"/>
 		<build type="header-file" value="conf_data_flash_example.h"/>
+		<build type="header-file" value="conf_spi.h"/>
 		<build type="include-path" value="."/>
 		<require idref="common2.components.memory.data_flash.at45dbx.example"/>
 		<require idref="board.samd20_xplained_pro"/>

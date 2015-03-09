@@ -1,0 +1,40 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.drivers.dma" caption="DMA - Direct Memory Access">
+		<info type="description" value="summary">
+			Driver for the SAM D21 Direct Memory Access. Provides a unified
+			interface for the configuration and management of the DMA modules.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<info type="appnote" value="AT07683"/>
+		<info type="keyword" value="pdf">
+			<keyword value="DMA"/>
+			<keyword value="Direct Memory Access"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver for interfacing the DMA on the SAM D21.
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="dma.h"/>
+		<build type="header-file" subtype="api" value="dma_crc.h"/>
+		<build type="c-source" value="dma.c"/>
+
+		<build type="module-config" subtype="required-header-file" value="conf_dma.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="header-file" value="quick_start/qs_dma_basic.h"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_sam0_dma_group"/>
+		<build type="doxygen-example-path" value="quick_start"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_dma_exqsg"/>
+
+		<device-support value="samd21"/>
+
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.system"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd21"/>
+	</module>
+</asf>

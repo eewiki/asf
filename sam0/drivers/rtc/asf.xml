@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.rtc" name="config.sam0.drivers.rtc" caption="RTC - Real Time Counter Driver" default="count_callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20 RTC. Provides a unified interface
+			Driver for the SAM D20/D21 RTC. Provides a unified interface
 			for the configuration and management of the RTC module.
 		</info>
 
@@ -18,12 +18,13 @@
 
 			<build type="define" name="RTC_COUNT_ASYNC" value="false"/>
 
-			<build type="doxygen-entry-point" value="asfdoc_samd20_rtc_count_group"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_rtc_count_group"/>
 			<build type="doxygen-example-path" value="quick_start_count"/>
-			<build type="doxygen-example-path" value="quick_start_count/samd20_xplained_pro"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_rtc_count_exqsg"/>
+			<build type="doxygen-example-path" value="quick_start_count/samd20_xplained_pro"/> 
+			<build type="doxygen-quick-start" value="asfdoc_sam0_rtc_count_exqsg"/>
 
 			<device-support value="samd20"/>
+			<device-support value="samd21"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
@@ -46,7 +47,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Real Time Counter in
-				Count mode on the SAM D20, both the ASF driver and the
+				Count mode on the SAM D20/D21, both the ASF driver and the
 				peripheral itself.
 			</info>
 
@@ -62,13 +63,14 @@
 			<build type="define" name="RTC_COUNT_ASYNC" value="true"/>
 			<build type="doxygen-enable-section" value="RTC_COUNT_CALLBACK_MODE"/>
 
-			<build type="doxygen-entry-point" value="asfdoc_samd20_rtc_count_group"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_rtc_count_group"/>
 			<build type="doxygen-example-path" value="quick_start_count"/>
 			<build type="doxygen-example-path" value="quick_start_count_callback"/>
 			<build type="doxygen-example-path" value="quick_start_count_callback/samd20_xplained_pro"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_rtc_count_exqsg"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_rtc_count_exqsg"/>
 
 			<device-support value="samd20"/>
+			<device-support value="samd21"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
@@ -85,12 +87,13 @@
 
 			<build type="define" name="RTC_CALENDAR_ASYNC" value="false"/>
 
-			<build type="doxygen-entry-point" value="asfdoc_samd20_rtc_calendar_group"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_rtc_calendar_group"/>
 			<build type="doxygen-example-path" value="quick_start_calendar"/>
 			<build type="doxygen-example-path" value="quick_start_calendar/samd20_xplained_pro"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_rtc_calendar_exqsg"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_rtc_calendar_exqsg"/>
 
 			<device-support value="samd20"/>
+			<device-support value="samd21"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
@@ -109,7 +112,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Real Time Counter in
-				Calendar mode on the SAM D20, both the ASF driver and the
+				Calendar mode on the SAM D20/D21, both the ASF driver and the
 				peripheral itself.
 			</info>
 
@@ -125,13 +128,14 @@
 			<build type="define" name="RTC_CALENDAR_ASYNC" value="true"/>
 			<build type="doxygen-enable-section" value="RTC_CALENDAR_CALLBACK_MODE"/>
 
-			<build type="doxygen-entry-point" value="asfdoc_samd20_rtc_calendar_group"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_rtc_calendar_group"/>
 			<build type="doxygen-example-path" value="quick_start_calendar"/>
 			<build type="doxygen-example-path" value="quick_start_calendar_callback"/>
 			<build type="doxygen-example-path" value="quick_start_calendar_callback/samd20_xplained_pro"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_rtc_calendar_exqsg"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_rtc_calendar_exqsg"/>
 
 			<device-support value="samd20"/>
+			<device-support value="samd21"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>

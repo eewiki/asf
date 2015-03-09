@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.events.unit_test" caption="Unit Tests for the SAM D20 Event System Driver">
+	<module type="application" id="sam0.drivers.events.unit_test" caption="Unit Tests for the SAM D20/D21 Event System Driver">
 		<info type="description" value="summary">
 		Unit test for the Event System module testing all functionality against hardware.
 		</info>
@@ -12,6 +12,6 @@
 		<require idref="sam0.drivers.rtc"/>
 		<require idref="sam0.drivers.system"/>
 		<require idref="common.utils.unit_test"/>
-		<device-support value="samd20"/>
+		<device-support value="sam0"/>
 	</module>
 </asf>

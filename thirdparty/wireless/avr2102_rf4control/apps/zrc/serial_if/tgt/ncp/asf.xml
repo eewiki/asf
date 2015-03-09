@@ -6,7 +6,7 @@
 		<build type="include-path" value="."/>
 		<build type="header-file" value="app_config.h"/>
 		<build type="header-file" value="conf_common_sw_timer.h"/>
-		<build type="header-file" value="conf_pal.h"/>
+		<build type="header-file" value="conf_trx_access.h"/>
 		<build type="define" name="HIGHEST_STACK_LAYER" value ="RF4CE"/>
 		<build type="define" name="PRIVATE_NIB" value =""/>
 		<build type="define" name="RF4CE_TARGET" value =""/>

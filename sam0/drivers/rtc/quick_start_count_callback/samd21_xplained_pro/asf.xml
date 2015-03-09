@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="Quick Start for the SAM D21 RTC Count Driver (Callback)" id="sam0.drivers.rtc.quick_start_count_interrupt.samd21_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<require idref="sam0.drivers.rtc.quick_start_count_interrupt"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsamd21j18a"/>
+		<config name="config.sam0.drivers.rtc" value="count_callback"/>
+	</project>
+</asf>

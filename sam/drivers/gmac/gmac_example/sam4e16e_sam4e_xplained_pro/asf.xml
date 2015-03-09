@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="GMAC example for SAM4E_EK" id="sam.drivers.gmac.gmac_example.sam4e_xplained_pro">
+		<info type="description" value="summary">
+		Ethernet example with ethernet GMAC, process simple ethernet packets.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_eth.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.gmac.gmac_example"/>
+		<require idref="board.sam4e_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4e16e"/>
+	</project>
+</asf>

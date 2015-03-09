@@ -3,7 +3,7 @@
  *
  * @brief Declares MAC internal functions, globals, and macros.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -802,9 +802,6 @@ void flush_gts_queues(void);
 void reset_gts_expiry(mac_pan_gts_mgmt_t *mac_pan_gts_entry);
 void handle_gts_sync_loss(void);
 #endif /* GTS_SUPPORT */
-#if  (defined ENABLE_SLEEP || defined RTC_SLEEP)
-void mac_wakeup(uint32_t res_time);
-#endif
 #if (MAC_INDIRECT_DATA_FFD == 1)
 
 /*

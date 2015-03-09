@@ -1,0 +1,10 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4cp.include.pio" caption="SAM4CP PIO definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4CP PIO
+		</info>
+		<build type="header-file" value="pio_sam4cp16b.h"/>
+		<device-support value="sam4cp"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

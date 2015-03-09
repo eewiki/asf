@@ -1,0 +1,29 @@
+<asf xmlversion="1.0">
+	<module type="component" id="thirdparty.wireless.avr2130_lwmesh.source.nwk" caption="NWK(Network Layer) ">
+		<info type="description" value="summary">
+		Network layer (NWK) provides core stack functionality and provides two routing algorithms,1.Native routing and 2.AODV routing.
+		</info>
+        <info type="gui-flag" value="hidden"/>
+		<build type="c-source"      value="src/nwk.c"/>
+		<build type="c-source"      value="src/nwkRx.c"/>
+		<build type="c-source"      value="src/nwkTx.c"/>
+		<build type="c-source"      value="src/nwkRoute.c"/>
+		<build type="c-source"      value="src/nwkRouteDiscovery.c"/>
+		<build type="c-source"      value="src/nwkGroup.c"/>
+		<build type="c-source"      value="src/nwkFrame.c"/>
+		<build type="c-source"      value="src/nwkSecurity.c"/>
+		<build type="c-source"      value="src/nwkDataReq.c"/>
+		<build type="header-file"   value="inc/nwk.h"/>
+		<build type="header-file"   value="inc/nwkCommand.h"/>
+		<build type="header-file"   value="inc/nwkDataReq.h"/>
+		<build type="header-file"   value="inc/nwkGroup.h"/>
+		<build type="header-file"   value="inc/nwkRoute.h"/>
+		<build type="header-file"   value="inc/nwkRouteDiscovery.h"/>
+		<build type="header-file"   value="inc/nwkFrame.h"/>
+		<build type="header-file"   value="inc/nwkSecurity.h"/>
+		<build type="header-file"   value="inc/nwkRx.h"/>
+		<build type="header-file"   value="inc/nwkTx.h"/>
+		<build type="include-path"  value="inc/"/>
+		<device-support-alias value="avr2130_lwmesh_support"/>		
+	</module>
+</asf>

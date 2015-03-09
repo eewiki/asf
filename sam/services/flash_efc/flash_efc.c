@@ -3,7 +3,7 @@
  *
  * \brief Embedded Flash service for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -62,7 +62,7 @@ extern "C" {
  * @{
  */
 
-#if SAM4E || SAM4N || SAM4S || SAM4C || SAMG
+#if (SAM4E || SAM4N || SAM4S || SAM4C || SAMG || SAM4CP)
 /* User signature size */
 # define FLASH_USER_SIG_SIZE   (512)
 #endif
@@ -122,7 +122,7 @@ extern "C" {
 # define GPNVM_NUM_MAX        2
 #endif
 
-#if SAM4C
+#if (SAM4C || SAM4CP)
 #if SAM4C32
 # define EFC     EFC0
 /* Internal Flash 0 base address. */
@@ -357,7 +357,7 @@ uint32_t flash_set_wait_state_adaptively(uint32_t ul_address)
 	} else {
 		efc_set_wait_state(p_efc, 4);
 	}
-#elif (SAM4S || SAM4E || SAM4N || SAM4C)
+#elif (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
 	} else if (clock < CHIP_FREQ_FWS_3) {
 		efc_set_wait_state(p_efc, 3);
 	} else if (clock < CHIP_FREQ_FWS_4) {
@@ -520,7 +520,7 @@ uint32_t flash_erase_plane(uint32_t ul_address)
 }
 #endif
 
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP)
 /**
  * \brief Erase the specified pages of flash.
  *
@@ -787,12 +787,12 @@ uint32_t flash_is_locked(uint32_t ul_start, uint32_t ul_end)
 	Assert(ul_end >= ul_start);
 
 #ifdef EFC1
-	Assert(((ul_start >= IFLASH0_ADDR) 
+	Assert(((ul_start >= IFLASH0_ADDR)
 				&& (ul_end <= IFLASH0_ADDR + IFLASH0_SIZE))
 				|| ((ul_start >= IFLASH1_ADDR)
 					&& (ul_end <= IFLASH1_ADDR + IFLASH1_SIZE)));
 #else
-	Assert((ul_start >= IFLASH_ADDR) 
+	Assert((ul_start >= IFLASH_ADDR)
 				&& (ul_end <= IFLASH_ADDR + IFLASH_SIZE));
 #endif
 
@@ -810,6 +810,7 @@ uint32_t flash_is_locked(uint32_t ul_start, uint32_t ul_end)
 	if (ul_error) {
 		return ul_error;
 	}
+    UNUSED(ul_error);
 
 	/* Skip unrequested regions (if necessary) */
 	ul_status = efc_get_result(p_efc);
@@ -970,20 +971,20 @@ uint32_t flash_read_unique_id(uint32_t *pul_data, uint32_t ul_size)
 	return FLASH_RC_OK;
 }
 
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP)
 /**
  * \brief Read the flash user signature.
  *
  * \param p_data Pointer to a data buffer to store 512 bytes of user signature.
- * \param ul_size Data buffer size.
+ * \param ul_size Data buffer size in 32 bit words.
  *
  * \return 0 if successful; otherwise returns an error code.
  */
 uint32_t flash_read_user_signature(uint32_t *p_data, uint32_t ul_size)
 {
-	if (ul_size > FLASH_USER_SIG_SIZE) {
-		/* Only 512 byte to store unique ID */
-		ul_size = FLASH_USER_SIG_SIZE;
+	if (ul_size > (FLASH_USER_SIG_SIZE / sizeof(uint32_t))) {
+		/* Only 512 byte to store user signature */
+		ul_size = FLASH_USER_SIG_SIZE / sizeof(uint32_t);
 	}
 
 	/* Send the read user signature commands */
@@ -998,22 +999,34 @@ uint32_t flash_read_user_signature(uint32_t *p_data, uint32_t ul_size)
 /**
  * \brief Write the flash user signature.
  *
- * \param ul_address Write address.
- * \param p_data Pointer to a data buffer to store 512 bytes of user signature.
- * \param ul_size Data buffer size.
+ * \param p_data Pointer to a data buffer to store info for the user signature.
+ * \param ul_size Data buffer size in 32 bit words.
  *
  * \return 0 if successful; otherwise returns an error code.
  */
-uint32_t flash_write_user_signature(uint32_t ul_address, const void *p_buffer,
-		uint32_t ul_size)
+uint32_t flash_write_user_signature(const void *p_buffer, uint32_t ul_size)
 {
+	uint32_t ul_idx;
+	uint32_t *p_dest;
+
 	/* The user signature should be no longer than 512 bytes */
-	if (ul_size > FLASH_USER_SIG_SIZE) {
+	if (ul_size > (IFLASH_PAGE_SIZE / sizeof(uint32_t))) {
 		return FLASH_RC_INVALID;
 	}
 
-	/* Write the full page */
-	flash_write(ul_address,  p_buffer, ul_size, 0);
+	/* Copy Buffer data */
+	memcpy((uint8_t *) gs_ul_page_buffer, p_buffer, 
+			ul_size * sizeof(uint32_t));
+
+	/* Write page buffer.
+	* Writing 8-bit and 16-bit data is not allowed and may lead to
+	* unpredictable data corruption.
+	*/
+	p_dest = (uint32_t *)IFLASH_ADDR;
+	for (ul_idx = 0; ul_idx < (IFLASH_PAGE_SIZE / sizeof(uint32_t)); 
+			ul_idx++) {
+		*p_dest++ = gs_ul_page_buffer[ul_idx];
+	}
 
 	/* Send the write signature command */
 	if (FLASH_RC_OK != efc_perform_command(EFC, EFC_FCMD_WUS, 0)) {

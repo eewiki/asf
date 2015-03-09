@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.freertos.dbg_print.quick_start" caption="Quick Start for Debug Print (FreeRTOS)">
+		<info type="description" value="summary">
+			Quick start guide demonstrating usage of the debug print service for FreeRTOS.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_dbg_print_basic.c"/>
+		<build type="header-file" value="conf_dbg_print.h"/>
+		<build type="header-file" value="qs_dbg_print_basic.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.freertos.dbg_print"/>
+		<require idref="thirdparty.os.freertos-7_4_2"/>
+		<device-support value="samd20"/>
+	</module>
+</asf>

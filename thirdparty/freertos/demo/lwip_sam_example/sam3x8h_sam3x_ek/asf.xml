@@ -19,6 +19,7 @@
 		<generator value="armgcc"/>
 		<generator value="as5_arm"/>
 		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
 		<config name="config.compiler.iarewarm.heap_size" value="0x8000"/>
 		<config name="config.compiler.iarewarm.stack_size" value="0x4000"/>
 		<config name="config.compiler.armgcc.optimization" value="high"/>

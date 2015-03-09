@@ -5,6 +5,7 @@
 		</info>
 		<build type="c-source" value="ssd1306_example.c"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 		<require idref="common2.components.display.ssd1306"/>
 		<require idref="sam0.drivers.system"/>
 	</module>

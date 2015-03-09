@@ -61,7 +61,7 @@ typedef enum {
 	MATRIX_ULBT_4_BEAT_BURST          = MATRIX_MCFG_ULBT(2),
 	MATRIX_ULBT_8_BEAT_BURST          = MATRIX_MCFG_ULBT(3),
 	MATRIX_ULBT_16_BEAT_BURST         = MATRIX_MCFG_ULBT(4),
-#if SAM4C
+#if SAM4C || SAM4CP
 	MATRIX_ULBT_32_BEAT_BURST  = MATRIX_MCFG_ULBT(5),
 	MATRIX_ULBT_64_BEAT_BURST  = MATRIX_MCFG_ULBT(6),
 	MATRIX_ULBT_128_BEAT_BURST = MATRIX_MCFG_ULBT(7),
@@ -75,7 +75,7 @@ typedef enum {
 	MATRIX_DEFMSTR_FIXED_DEFAULT_MASTER = MATRIX_SCFG_DEFMSTR_TYPE(2)
 } defaut_master_t;
 
-#if !SAM4E && !SAM4C
+#if !SAM4E && !SAM4C && !SAM4CP
 /** \brief Matrix slave: arbitration type */
 typedef enum {
 	MATRIX_ARBT_ROUND_ROBIN    = MATRIX_SCFG_ARBT(0),
@@ -93,7 +93,7 @@ void matrix_set_slave_fixed_default_master(uint32_t ul_id,
 		uint32_t ul_fixed_id);
 uint32_t matrix_get_slave_fixed_default_master(uint32_t ul_id);
 
-#if !SAM4E && !SAM4C
+#if !SAM4E && !SAM4C && !SAM4CP
 void matrix_set_slave_arbitration_type(uint32_t ul_id, arbitration_type_t type);
 arbitration_type_t matrix_get_slave_arbitration_type(uint32_t ul_id);
 #endif
@@ -107,16 +107,16 @@ uint32_t matrix_get_master_remap(void);
 
 #endif /* (SAM3XA || SAM3U || SAM4E) */
 
-#if (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
+#if (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP)
 void matrix_set_system_io(uint32_t ul_io);
 uint32_t matrix_get_system_io(void);
 
-#endif /* (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG) */
+#endif /* (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP) */
 
-#if (SAM3S || SAM4S || SAM4E || SAM4C)
+#if (SAM3S || SAM4S || SAM4E || SAM4C || SAM4CP)
 void matrix_set_nandflash_cs(uint32_t ul_cs);
 uint32_t matrix_get_nandflash_cs(void);
-#endif /* (SAM3S || SAM4S || SAM4E || SAM4C) */
+#endif /* (SAM3S || SAM4S || SAM4E || SAM4C || SAM4CP) */
 
 #if (!SAMG)
 void matrix_set_writeprotect(uint32_t ul_enable);

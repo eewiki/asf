@@ -75,6 +75,7 @@
 		<require idref="config.common.services.fs.fatfs.codepage"/>
 		<require idref="common.services.fs.fatfs-port"/>
 		<device-support value="sam"/>
+		<device-support value="sam0"/>
 		<device-support value="xmega"/>
 		<build type="doxygen-entry-point" value="thirdparty_fatfs_group"/>
 		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
@@ -88,6 +89,7 @@
 			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
 			<build type="module-config" subtype="path" value="module_config_932/"/>
 			<device-support value="sam"/>
+			<device-support value="sam0"/>
 			<device-support value="xmega"/>
 		</module>
 		<module type="meta" id="config.common.services.fs.fatfs.codepage#936" caption="FATFS OEM code page to be used on the target system">
@@ -98,6 +100,7 @@
 			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
 			<build type="module-config" subtype="path" value="module_config_936/"/>
 			<device-support value="sam"/>
+			<device-support value="sam0"/>
 			<device-support value="xmega"/>
 		</module>
 		<module type="meta" id="config.common.services.fs.fatfs.codepage#949" caption="FATFS OEM code page to be used on the target system">
@@ -108,6 +111,7 @@
 			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
 			<build type="module-config" subtype="path" value="module_config_949/"/>
 			<device-support value="sam"/>
+			<device-support value="sam0"/>
 			<device-support value="xmega"/>
 		</module>
 		<module type="meta" id="config.common.services.fs.fatfs.codepage#950" caption="FATFS OEM code page to be used on the target system">
@@ -118,6 +122,7 @@
 			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
 			<build type="module-config" subtype="path" value="module_config_950/"/>
 			<device-support value="sam"/>
+			<device-support value="sam0"/>
 			<device-support value="xmega"/>
 		</module>
 		<module type="meta" id="config.common.services.fs.fatfs.codepage#sbcs" caption="FATFS OEM code page to be used on the target system">
@@ -128,6 +133,7 @@
 			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
 			<build type="module-config" subtype="path" value="module_config_sbcs/"/>
 			<device-support value="sam"/>
+			<device-support value="sam0"/>
 			<device-support value="xmega"/>
 		</module>
 		<module type="meta" id="config.common.services.fs.fatfs.codepage#1" caption="FATFS OEM code page to be used on the target system">
@@ -137,6 +143,7 @@
 			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
 			<build type="module-config" subtype="path" value="module_config_1/"/>
 			<device-support value="sam"/>
+			<device-support value="sam0"/>
 			<device-support value="xmega"/>
 		</module>
 	</select-by-config>

@@ -3,7 +3,7 @@
  *
  * @brief This header file contains the interrupt handling definitions
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -278,7 +278,8 @@ extern "C" {
      */
     void trx_irq_timestamp_handler_cb(void);
 #endif
-
+    
+typedef void (*irq_handler_t)(void);
     //! @}
 #ifdef __cplusplus
 } /* extern "C" */

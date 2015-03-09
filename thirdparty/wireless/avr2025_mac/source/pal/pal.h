@@ -3,7 +3,7 @@
  *
  * @brief PAL related APIs
  *
- *  Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ *  Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -66,7 +66,7 @@
 #include "common_sw_timer.h"
 #include "board.h"
 #include "delay.h"
-#include "conf_pal.h"
+
 
 #if (PAL_USE_SPI_TRX == 1)
 #include "pal_ext_trx.h"
@@ -170,13 +170,6 @@ typedef enum pwr_mode_tag
     SYSTEM_SLEEP
 } pwr_mode_t;
 
-
-
-
-/**
- * @brief Transceiver ISR handler
- */
-typedef void (*irq_handler_t)(void);
 
 
 #ifdef TEST_HARNESS

@@ -57,17 +57,43 @@
 /** ASCII char definition for char 'a'. */
 #define   ASCII_LITTLE_A                  0x61
 
-/* Symbol pixel array definition */
-const enum c42364a_symbol_pixel symbol_d0[7] = C42364A_PATTERN_SYMBOL_D0;
-const enum c42364a_symbol_pixel symbol_d1[7] = C42364A_PATTERN_SYMBOL_D1;
-const enum c42364a_symbol_pixel symbol_d2[7] = C42364A_PATTERN_SYMBOL_D2;
-const enum c42364a_symbol_pixel symbol_d3[7] = C42364A_PATTERN_SYMBOL_D3;
+/** Definition for maximum length to display as string. */
+#if SAM4CP
+#define MAX_STRING_LEN  6
+#else
+#define MAX_STRING_LEN  5
+#endif
 
-const enum c42364a_symbol_pixel symbol_a2[14] = C42364A_PATTERN_SYMBOL_A2;
-const enum c42364a_symbol_pixel symbol_a3[14] = C42364A_PATTERN_SYMBOL_A3;
-const enum c42364a_symbol_pixel symbol_a4[14] = C42364A_PATTERN_SYMBOL_A4;
-const enum c42364a_symbol_pixel symbol_a5[14] = C42364A_PATTERN_SYMBOL_A5;
-const enum c42364a_symbol_pixel symbol_a6[14] = C42364A_PATTERN_SYMBOL_A6;
+/** Definition of length of symbols */
+#define NUM_SYMBOLS_D     6
+#define SYMBOL_D_LEN      7
+#define NUM_SYMBOLS_A     6
+#define SYMBOL_A_LEN      14
+
+/* Symbol pixel array definition */
+const enum c42364a_symbol_pixel symbol_d0[SYMBOL_D_LEN] = C42364A_PATTERN_SYMBOL_D0;
+const enum c42364a_symbol_pixel symbol_d1[SYMBOL_D_LEN] = C42364A_PATTERN_SYMBOL_D1;
+const enum c42364a_symbol_pixel symbol_d2[SYMBOL_D_LEN] = C42364A_PATTERN_SYMBOL_D2;
+const enum c42364a_symbol_pixel symbol_d3[SYMBOL_D_LEN] = C42364A_PATTERN_SYMBOL_D3;
+
+const enum c42364a_symbol_pixel symbol_d[NUM_SYMBOLS_D][SYMBOL_D_LEN] = {C42364A_PATTERN_SYMBOL_D0, \
+                                                   C42364A_PATTERN_SYMBOL_D1, \
+                                                   C42364A_PATTERN_SYMBOL_D2, \
+                                                   C42364A_PATTERN_SYMBOL_D3};
+
+const enum c42364a_symbol_pixel symbol_a1[SYMBOL_A_LEN] = C42364A_PATTERN_SYMBOL_A1;
+const enum c42364a_symbol_pixel symbol_a2[SYMBOL_A_LEN] = C42364A_PATTERN_SYMBOL_A2;
+const enum c42364a_symbol_pixel symbol_a3[SYMBOL_A_LEN] = C42364A_PATTERN_SYMBOL_A3;
+const enum c42364a_symbol_pixel symbol_a4[SYMBOL_A_LEN] = C42364A_PATTERN_SYMBOL_A4;
+const enum c42364a_symbol_pixel symbol_a5[SYMBOL_A_LEN] = C42364A_PATTERN_SYMBOL_A5;
+const enum c42364a_symbol_pixel symbol_a6[SYMBOL_A_LEN] = C42364A_PATTERN_SYMBOL_A6;
+
+const enum c42364a_symbol_pixel symbol_a[NUM_SYMBOLS_A][SYMBOL_A_LEN] = {C42364A_PATTERN_SYMBOL_A1, \
+                                                   C42364A_PATTERN_SYMBOL_A2, \
+                                                   C42364A_PATTERN_SYMBOL_A3, \
+                                                   C42364A_PATTERN_SYMBOL_A4, \
+                                                   C42364A_PATTERN_SYMBOL_A5, \
+                                                   C42364A_PATTERN_SYMBOL_A6};
 
 /* Symbol plot value definition */
 const uint8_t plot_number[10] = {C42364A_PLOT_NUMBER_0, C42364A_PLOT_NUMBER_1,
@@ -184,69 +210,24 @@ static void c42364a_slcdc_efface_symbol(Slcdc *p_slcdc,
  * This function will write the input string to the alphanumeric field of the
  * lcd glass.
  *
- * \param data Pointer to the input string(max length is 5)
+ * \param data Pointer to the input string(max length is 6 for SAM4CP
+ * and 5 for SAM4C)
  */
 static void c42364a_slcdc_display_alphanum_string(const uint8_t *data)
 {
-	if(data[0] == ASCII_SP) {
-		c42364a_slcdc_efface_symbol(SLCDC, symbol_a2, sizeof(symbol_a2));
-	} else if((ASCII_0 <= data[0]) && (data[0] < ASCII_BIG_A)) {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a2, sizeof(symbol_a2),
-				plot_letter_num[data[0] - ASCII_0]);
-	} else if((ASCII_BIG_A <= data[0]) && (data[0] < ASCII_LITTLE_A)) {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a2, sizeof(symbol_a2),
-				plot_letter[data[0] - ASCII_BIG_A]);
-	} else {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a2, sizeof(symbol_a2),
-				plot_letter[data[0] - ASCII_LITTLE_A]);
-	}
-	if(data[1] == ASCII_SP) {
-		c42364a_slcdc_efface_symbol(SLCDC, symbol_a3, sizeof(symbol_a3));
-	} else if((ASCII_0 <= data[1]) && (data[1] < ASCII_BIG_A)) {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a3, sizeof(symbol_a3),
-				plot_letter_num[data[1] - ASCII_0]);
-	} else if((ASCII_BIG_A <= data[1]) && (data[1] < ASCII_LITTLE_A)) {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a3, sizeof(symbol_a3),
-				plot_letter[data[1] - ASCII_BIG_A]);
-	} else {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a3, sizeof(symbol_a3),
-				plot_letter[data[1] - ASCII_LITTLE_A]);
-	}
-	if(data[2] == ASCII_SP) {
-		c42364a_slcdc_efface_symbol(SLCDC, symbol_a4, sizeof(symbol_a4));
-	} else if((ASCII_0 <= data[2]) && (data[2] < ASCII_BIG_A)) {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a4, sizeof(symbol_a4),
-				plot_letter_num[data[2] - ASCII_0]);
-	} else if((ASCII_BIG_A <= data[2]) && (data[2] < ASCII_LITTLE_A)) {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a4, sizeof(symbol_a4),
-				plot_letter[data[2] - ASCII_BIG_A]);
-	} else {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a4, sizeof(symbol_a4),
-				plot_letter[data[2] - ASCII_LITTLE_A]);
-	}
-	if(data[3] == ASCII_SP) {
-		c42364a_slcdc_efface_symbol(SLCDC, symbol_a5, sizeof(symbol_a5));
-	} else if((ASCII_0 <= data[3]) && (data[3] < ASCII_BIG_A)) {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a5, sizeof(symbol_a5),
-				plot_letter_num[data[3] - ASCII_0]);
-	} else if((ASCII_BIG_A <= data[3]) && (data[3] < ASCII_LITTLE_A)) {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a5, sizeof(symbol_a5),
-				plot_letter[data[3] - ASCII_BIG_A]);
-	} else {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a5, sizeof(symbol_a5),
-				plot_letter[data[3] - ASCII_LITTLE_A]);
-	}
-	if(data[4] == ASCII_SP) {
-		c42364a_slcdc_efface_symbol(SLCDC, symbol_a6, sizeof(symbol_a6));
-	} else if((ASCII_0 <= data[4]) && (data[4] < ASCII_BIG_A)) {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a6, sizeof(symbol_a6),
-				plot_letter_num[data[4] - ASCII_0]);
-	} else if((ASCII_BIG_A <= data[4]) && (data[4] < ASCII_LITTLE_A)) {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a6, sizeof(symbol_a6),
-				plot_letter[data[4] - ASCII_BIG_A]);
-	} else {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_a6, sizeof(symbol_a6),
-				plot_letter[data[4] - ASCII_LITTLE_A]);
+	for(uint8_t i=0; i<MAX_STRING_LEN; i++){
+		if(data[i] == ASCII_SP) {
+			c42364a_slcdc_efface_symbol(SLCDC, symbol_a[i], SYMBOL_A_LEN);
+		} else if((ASCII_0 <= data[i]) && (data[i] < ASCII_BIG_A)) {
+			c42364a_slcdc_display_symbol(SLCDC, symbol_a[i], SYMBOL_A_LEN,
+								plot_letter_num[data[i] - ASCII_0]);
+		} else if((ASCII_BIG_A <= data[i]) && (data[i] < ASCII_LITTLE_A)) {
+			c42364a_slcdc_display_symbol(SLCDC, symbol_a[i], SYMBOL_A_LEN,
+								plot_letter[data[i] - ASCII_BIG_A]);
+		} else {
+			c42364a_slcdc_display_symbol(SLCDC, symbol_a[i], SYMBOL_A_LEN,
+								plot_letter[data[i] - ASCII_LITTLE_A]);
+		}
 	}
 }
 
@@ -260,29 +241,13 @@ static void c42364a_slcdc_display_alphanum_string(const uint8_t *data)
  */
 static void c42364a_slcdc_display_num_string(const uint8_t *data)
 {
-	if(data[0] == ASCII_SP) {
-		c42364a_slcdc_efface_symbol(SLCDC, symbol_d0, sizeof(symbol_d0));
-	} else {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_d0, sizeof(symbol_d0),
-				plot_number[data[0] - ASCII_0]);
-	}
-	if(data[1] == ASCII_SP) {
-		c42364a_slcdc_efface_symbol(SLCDC, symbol_d1, sizeof(symbol_d1));
-	} else {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_d1, sizeof(symbol_d1),
-				plot_number[data[1] - ASCII_0]);
-	}
-	if(data[2] == ASCII_SP) {
-		c42364a_slcdc_efface_symbol(SLCDC, symbol_d2, sizeof(symbol_d2));
-	} else {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_d2, sizeof(symbol_d2),
-				plot_number[data[2] - ASCII_0]);
-	}
-	if(data[3] == ASCII_SP) {
-		c42364a_slcdc_efface_symbol(SLCDC, symbol_d3, sizeof(symbol_d3));
-	} else {
-		c42364a_slcdc_display_symbol(SLCDC, symbol_d3, sizeof(symbol_d3),
-				plot_number[data[3] - ASCII_0]);
+	for(uint8_t i=0; i<4; i++){
+		if(data[i] == ASCII_SP) {
+			c42364a_slcdc_efface_symbol(SLCDC, symbol_d[i], SYMBOL_D_LEN);
+		} else {
+			c42364a_slcdc_display_symbol(SLCDC, symbol_d[i], SYMBOL_D_LEN,
+								  plot_number[data[i] - ASCII_0]);
+		}
 	}
 }
 

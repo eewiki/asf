@@ -65,6 +65,7 @@
  * All SAM devices with an AES-GCM feature can be used. This example has been
  * tested with the following setup:<BR>
  * - SAM4C evaluation kit.
+ * - SAM4CP evaluation kit.
  *
  * \section setupinfo Setup Information
  * <BR>CPU speed: <i> 120 MHz </i>

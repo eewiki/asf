@@ -8,7 +8,7 @@
  *
  * To use this board, define BOARD= ATMEGA256RFR2_XPLAINED_PRO.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -60,7 +60,7 @@
  #define LED_ON_BOARD         IOPORT_CREATE_PIN(PORTB, 4)
  #define LED0_GPIO			  LED_ON_BOARD		  
  #define LED0                 LED0_GPIO
- 
+ #define LED_COUNT            1
  /*!  \name GPIO Connections of Switch
  * Push button is connected to PORTE pin 4. 
  */

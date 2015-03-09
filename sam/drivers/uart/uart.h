@@ -99,7 +99,7 @@ void uart_set_sleepwalking(Uart *p_uart, uint8_t ul_low_value,
 void uart_set_write_protection(Uart *p_uart, bool flag);
 #endif
 
-#if SAM4C
+#if (SAM4C || SAM4CP)
 enum uart_optical_duty_cycle {
 	UART_MOD_CLK_DUTY_50_00 = UART_MR_OPT_DUTY_DUTY_50,
 	UART_MOD_CLK_DUTY_43_75 = UART_MR_OPT_DUTY_DUTY_43P75,

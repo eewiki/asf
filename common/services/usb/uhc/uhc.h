@@ -3,7 +3,7 @@
  *
  * \brief Interface of the USB Host Controller (UHC)
  *
- * Copyright (C) 2011-2012 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -145,6 +145,10 @@ typedef struct{
 	//! USB current configuration descriptor
 	usb_conf_desc_t *conf_desc;
 
+#ifdef USB_HOST_LPM_SUPPORT
+	usb_dev_lpm_desc_t *lpm_desc;
+#endif
+
 #ifdef USB_HOST_HUB_SUPPORT
 	uhc_device_t *prev;
 	uhc_device_t *next;
@@ -220,6 +224,19 @@ bool uhc_is_suspend(void);
  * \brief Resumes the USB line
  */
 void uhc_resume(void);
+
+#ifdef USB_HOST_LPM_SUPPORT
+/**
+ * \brief Suspends a USB line through LPM feature
+ *
+ * \param b_remotewakeup Authorize the remote wakeup features, if true
+ * \param besl Best effort service latency value
+ *
+ * \return flase if the LPM is not supported by USB Device
+ */
+bool uhc_suspend_lpm(bool b_remotewakeup, uint8_t besl);
+#endif // USB_HOST_LPM_SUPPORT
+
 //@}
 
 

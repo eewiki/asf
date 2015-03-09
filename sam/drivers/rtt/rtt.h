@@ -55,7 +55,7 @@ extern "C" {
 /// @endcond
 
 uint32_t rtt_init(Rtt *p_rtt, uint16_t us_prescaler);
-#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG)
+#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG || SAM4CP)
 void rtt_sel_source(Rtt *p_rtt, bool is_rtc_sel);
 void rtt_enable(Rtt *p_rtt);
 void rtt_disable(Rtt *p_rtt);

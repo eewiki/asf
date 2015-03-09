@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 I2C Master Quick Start Guide
+ * \brief SAM D20/D21 I2C Master Quick Start Guide
  *
- * Copyright (C) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *

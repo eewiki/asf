@@ -3,7 +3,7 @@
  *
  * @brief Terminal Target application
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -93,22 +93,13 @@
 
 /* === INCLUDES ============================================================ */
 
-#include <stddef.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <inttypes.h>
-#include <stdio.h>
 
+#include <ctype.h>
 #include "conf_board.h"
 #include <asf.h>
 #include "app_config.h"
-#include "pal.h"
 #include "led.h"
 #include "delay.h"
-#include "tal.h"
 #include "vendor_data.h"
 #include "pb_pairing.h"
 #include "common_sw_timer.h"
@@ -282,7 +273,7 @@ int main(void)
 	sio2host_init();
 #endif
 
-	pal_timer_get_id(&led_timer);
+	sw_timer_get_id(&led_timer);
 
 	/* Endless while loop */
 	while (1) {
@@ -370,9 +361,9 @@ static void handle_input(uint8_t input_char)
 	case 'P':
 		printf("Push button pairing -\r\n");
 		node_status = PUSH_BUTTON_PAIRING;
-		pal_timer_start(led_timer,
+		sw_timer_start(led_timer,
 				500000,
-				TIMEOUT_RELATIVE,
+				SW_TIMEOUT_RELATIVE,
 				(FUNC_PTR)led_handling,
 				NULL);
 		LED_On(LED_NWK_SETUP);
@@ -502,9 +493,7 @@ static void print_main_menu(void)
  */
 static void print_node_status(void)
 {
-	uint8_t addr[8];
-	uint8_t i;
-
+		
 	printf("Node status: ");
 
 	switch (node_status) {
@@ -550,20 +539,7 @@ static void print_node_status(void)
 	}
 	printf("  No.of paired devices: %d", number_of_paired_dev);
 	printf("\r\n");
-
-	memcpy(addr, &tal_pib.IeeeAddress, 8);
-	printf("IEEE addr 0x");
-	for (i = 0; i < 8; i++) {
-		printf("%.2X", addr[7 - i]);
-	}
-#ifdef BIG_ENDIAN
-	printf(", PAN Id 0x%.2X%.2X, ", (uint8_t)tal_pib.PANId,
-			(uint8_t)(tal_pib.PANId >> 8));
-#else
-	printf(", PAN Id 0x%.2X%.2X, ", (uint8_t)(tal_pib.PANId >> 8),
-			(uint8_t)tal_pib.PANId);
-#endif
-	printf("channel %d\r\n", tal_pib.CurrentChannel);
+	nlme_get_request(nwkBaseChannel,0,(FUNC_PTR)nlme_get_confirm);
 	printf("Channel agility (periodic mode) ");
 	if (ch_ag_enabled) {
 		printf("enabled\r\n");
@@ -710,7 +686,7 @@ static void zrc_cmd_indication(uint8_t PairingRef, uint8_t nsduLength,
 
 	/* Switch LED on indicating data reception */
 	LED_On(LED_DATA);
-	pal_timer_start(led_timer, 250000, TIMEOUT_RELATIVE,
+	sw_timer_start(led_timer, 250000, SW_TIMEOUT_RELATIVE,
 			(FUNC_PTR)led_handling, NULL);
 
 	/* Check with frame control field which kind of data is indicated */
@@ -868,7 +844,8 @@ static void zrc_cmd_disc_indication(uint8_t PairingRef)
  */
 static void nlme_get_confirm(nwk_enum_t Status, nib_attribute_t NIBAttribute,
 		uint8_t NIBAttributeIndex, void *NIBAttributeValue)
-{
+{   
+	uint8_t channel;
 	if (Status == NWK_SUCCESS) {
 		switch (NIBAttribute) {
 		case nwkPairingTable:
@@ -921,6 +898,10 @@ static void nlme_get_confirm(nwk_enum_t Status, nib_attribute_t NIBAttribute,
 			memcpy(&nwk_ScanDuration, NIBAttributeValue, 1);
 			node_status = IDLE;
 			print_sub_mode_ch_ag_setup();
+			break;
+		case nwkBaseChannel:
+		    channel = *((uint8_t *)NIBAttributeValue);
+		    printf("channel %u\r\n",channel);
 			break;
 
 		default:
@@ -1028,9 +1009,9 @@ static void nlme_start_confirm(nwk_enum_t Status)
 				"\tPress SEL key then keeping SEL pressed press any FUNC key.\r\n");
 		printf(
 				"\tThis starts the push button pairing at the remote controller.\r\n");
-		pal_timer_start(led_timer,
+		sw_timer_start(led_timer,
 				500000,
-				TIMEOUT_RELATIVE,
+				SW_TIMEOUT_RELATIVE,
 				(FUNC_PTR)led_handling,
 				NULL);
 		LED_On(LED_NWK_SETUP);
@@ -1184,16 +1165,16 @@ static void led_handling(void *callback_parameter)
 	switch (node_status) {
 	case PUSH_BUTTON_PAIRING:
 	case ALL_IN_ONE_START:
-		pal_timer_start(led_timer,
+		sw_timer_start(led_timer,
 				500000,
-				TIMEOUT_RELATIVE,
+				SW_TIMEOUT_RELATIVE,
 				(FUNC_PTR)led_handling,
 				NULL);
 		LED_Toggle(LED_NWK_SETUP);
 		break;
 
 	default:
-		pal_timer_stop(led_timer);
+		sw_timer_stop(led_timer);
 		LED_Off(LED_DATA);
 		LED_Off(LED_NWK_SETUP);
 		break;

@@ -8,7 +8,7 @@
  *
  * To use this board, define BOARD= ATMEGA256RFR2_XPLAINED_PRO.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -50,14 +50,24 @@
 #include "compiler.h"
 #include "conf_board.h"
 #include "board.h"
-# include "gpio.h"
-# include "led.h"
+#include "gpio.h"
+#include "led.h"
 
+
+
+#ifdef KEY_RC_BOARD
+#define button_id_t             uint32_t
+void pulse_latch(void);
+void set_button_pins_for_normal_mode(void);
+void led_ctrl(led_id_t led_no, led_action_t led_setting);
+button_id_t pal_button_scan(void);
+void update_latch_status(void);
+#else /* KEY_RC_BOARD */
 
 typedef enum
 {
     PLAIN,
-    SENSOR_TERM_BOARD
+    SENSOR_TERM_BOARD    
 } board_t;
 
 typedef struct
@@ -89,4 +99,6 @@ bool stb_button_read(void);
 void led_helper_func(void);
 
 void led_ctrl(led_id_t led_no, led_action_t led_setting);
+#endif /* KEY_RC_BOARD */
+
 #endif  /* _HELPER_ */

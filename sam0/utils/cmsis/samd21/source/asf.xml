@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="driver" caption="SAMD21 startup code" id="sam0.utils.cmsis.samd21.source.template">
+		<build type="c-source" value="system_samd21.c"/>
+		<build type="header-file" value="system_samd21.h"/>
+		<build type="c-source" value="gcc/startup_samd21.c" toolchain="armgcc"/>
+		<build type="c-source" value="iar/startup_samd21.c" toolchain="iarewarm"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../include"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samd21"/>
+	</module>
+</asf>

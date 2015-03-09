@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Unit Tests for the SAM D21 WDT Driver" id="sam0.drivers.wdt.unit_test.samd21_xplained_pro" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<require idref="sam0.drivers.wdt.unit_test"/>
+		<config name="config.sam0.drivers.wdt" value="callback"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen-v2"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

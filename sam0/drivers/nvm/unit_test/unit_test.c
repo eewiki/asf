@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 NVM Unit test
+ * \brief SAM D20/D21 NVM Unit test
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,7 +42,7 @@
  */
 
 /**
- * \mainpage SAM D20 NVM Unit Test
+ * \mainpage SAM D20/D21 NVM Unit Test
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -58,27 +58,28 @@
  */
 
 /**
- * \page appdoc_main SAM D20 NVM Unit Test
+ * \page appdoc_main SAM D20/D21 NVM Unit Test
  *
  * Overview:
- * - \ref appdoc_samd20_nvm_unit_test_intro
- * - \ref appdoc_samd20_nvm_unit_test_setup
- * - \ref appdoc_samd20_nvm_unit_test_usage
- * - \ref appdoc_samd20_nvm_unit_test_compinfo
- * - \ref appdoc_samd20_nvm_unit_test_contactinfo
+ * - \ref appdoc_sam0_nvm_unit_test_intro
+ * - \ref appdoc_sam0_nvm_unit_test_setup
+ * - \ref appdoc_sam0_nvm_unit_test_usage
+ * - \ref appdoc_sam0_nvm_unit_test_compinfo
+ * - \ref appdoc_sam0_nvm_unit_test_contactinfo
  *
- * \section appdoc_samd20_nvm_unit_test_intro Introduction
+ * \section appdoc_sam0_nvm_unit_test_intro Introduction
  * \copydetails appdoc_preface
  *
- * The following kit is required for carrying out the test:
+ * The following kit can be used for carrying out the test:
  *      - SAM D20 Xplained Pro board
+ *      - SAM D21 Xplained Pro board
  *
- * \section appdoc_samd20_nvm_unit_test_setup Setup
+ * \section appdoc_sam0_nvm_unit_test_setup Setup
  * The following connections has to be made using wires:
  *  - None
  *
  * To run the test:
- *  - Connect the SAM D20 Xplained Pro board to the computer using a
+ *  - Connect the SAM D20/D21 Xplained Pro board to the computer using a
  *    micro USB cable.
  *  - Open the virtual COM port in a terminal application.
  *    \note The USB composite firmware running on the Embedded Debugger (EDBG)
@@ -87,14 +88,14 @@
  *  - Build the project, program the target and run the application.
  *    The terminal shows the results of the unit test.
  *
- * \section appdoc_samd20_nvm_unit_test_usage Usage
+ * \section appdoc_sam0_nvm_unit_test_usage Usage
  *  - The unit tests are carried out using the internal NVM controller.
  *
- * \section appdoc_samd20_nvm_unit_test_compinfo Compilation Info
+ * \section appdoc_sam0_nvm_unit_test_compinfo Compilation Info
  * This software was written for the GNU GCC and IAR for ARM.
  * Other compilers may or may not work.
  *
- * \section appdoc_samd20_nvm_unit_test_contactinfo Contact Information
+ * \section appdoc_sam0_nvm_unit_test_contactinfo Contact Information
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
  */
@@ -323,47 +324,6 @@ static void run_nvm_update_test(const struct test_case *test)
 }
 
 /**
- * \brief Test NVM fuses functions
- *
- * This test will test the fuse API functions
- * and returns an error in case of failure.
- *
- * \param test Current test case.
- */
-static void run_nvm_fuses_test(const struct test_case *test)
-{
-	struct nvm_fusebits fuses;
-	enum status_code status;
-	uint8_t eeprom_fuse_value;
-
-	/* Get the original configuration */
-	nvm_get_fuses(&fuses);
-
-	/* Set EEPROM size */
-	eeprom_fuse_value = fuses.eeprom_size;
-	if (eeprom_fuse_value == 7) {
-		eeprom_fuse_value = NVM_EEPROM_EMULATOR_SIZE_16384;
-	} else {
-		eeprom_fuse_value++;
-	}
-	fuses.eeprom_size = (enum nvm_eeprom_emulator_size)(eeprom_fuse_value);
-
-	/* Set the NVM configuration */
-	status = nvm_set_fuses(&fuses);
-
-	/* Validate whether the set configuration is complete */
-	test_assert_true(test, status == STATUS_OK,
-			"NVM fuses set error");
-
-	/* Get the configuration after change. */
-	nvm_get_fuses(&fuses);
-
-	/* Validate the changed EEPROM fuse value */
-	test_assert_true(test, fuses.eeprom_size == eeprom_fuse_value,
-			"NVM fuses set error");
-}
-
-/**
  * \brief Initialize USART for unit tests
  *
  * Initializes the USART used by the unit test. The USART connected to
@@ -419,10 +379,6 @@ int main(void)
 			run_nvm_update_test, NULL,
 			"NVM page update");
 
-	DEFINE_TEST_CASE(nvm_fuses_test, NULL,
-			run_nvm_fuses_test, NULL,
-			"NVM fuses test");
-
 	/* Put test case addresses in an array */
 	DEFINE_TEST_ARRAY(nvm_tests) = {
 			&nvm_paramter_test,
@@ -430,12 +386,11 @@ int main(void)
 			&nvm_erase_test,
 			&nvm_read_and_write_test,
 			&nvm_update_test,
-			&nvm_fuses_test,
 			};
 
 	/* Define the test suite */
 	DEFINE_TEST_SUITE(nvm_suite, nvm_tests,
-			"SAM D20 NVM driver test suite");
+			"SAM D20/D21 NVM driver test suite");
 
 	/* Run all tests in the suite*/
 	test_suite_run(&nvm_suite);

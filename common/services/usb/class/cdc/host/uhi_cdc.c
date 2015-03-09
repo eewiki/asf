@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief USB host Mass Storage Class interface.
+ * \brief USB host Communication Device Class interface.
  *
- * Copyright (C) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -330,7 +330,9 @@ uhc_enum_status_t uhi_cdc_install(uhc_device_t* dev)
 			if (!b_iface_comm) {
 				break;
 			}
-			ptr_port->iface_data = ((usb_cdc_call_mgmt_desc_t*)ptr_iface)->bDataInterface;
+			if (((usb_cdc_call_mgmt_desc_t*)ptr_iface)->bDescriptorSubtype == CDC_SCS_CALL_MGMT) {
+				ptr_port->iface_data = ((usb_cdc_call_mgmt_desc_t*)ptr_iface)->bDataInterface;
+			}
 			break;
 
 		case USB_DT_ENDPOINT:
@@ -606,7 +608,7 @@ static bool uhi_cdc_rx_update(uhi_cdc_line_t *line)
 		true,
 		buf_nosel->ptr,
 		line->buffer_size,
-		100,
+		0,
 		uhi_cdc_rx_received);
 }
 

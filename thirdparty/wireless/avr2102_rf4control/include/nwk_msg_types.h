@@ -3,7 +3,7 @@
  *
  * @brief This file defines all message structures for the RF4control stack.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -50,6 +50,8 @@
 #include <stdint.h>
 #include "nwk_msg_code.h"
 #include "rf4ce.h"
+#include "nwk_config.h"
+
 
 /* === Macros =============================================================== */
 

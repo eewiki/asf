@@ -4,7 +4,7 @@
  *
  * @brief MAC API for IEEE 802.15.4-2006
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -1346,6 +1346,15 @@ uint8_t mac_get_pib_attribute_size(uint8_t pib_attribute_id);
  * \ingroup group_mac_gen_int
  */
 uint32_t mac_ready_to_sleep(void);
+/*
+ * @brief MAC Wakeup Callback Function from application for Synchronizing beacon timing after Wakeup
+ *
+ * This function Handles the residual time for Beacon Synchronization after Wakeup
+ * @param res_time remaining time to be synchronized with next beacon timing.
+ */
+#if  (defined ENABLE_SLEEP || defined RTC_SLEEP)
+void mac_wakeup(uint32_t res_time);
+#endif
 /*@}*//* group_mac_cb */
 
 #ifdef __cplusplus

@@ -128,7 +128,7 @@ void wdt_restart(Wdt *p_wdt)
 	if (p_wdt == WDT) {
 		p_wdt->WDT_CR = WDT_KEY_PASSWORD | WDT_CR_WDRSTT;
 	}
-#if SAM4C
+#if (SAM4C || SAM4CP)
 	else {
 		p_wdt->WDT_CR = RSWDT_CR_KEY(0xC4u) | RSWDT_CR_WDRSTT;
 	}

@@ -27,6 +27,7 @@
 			<device-support value="sam4e"/>
 			<device-support value="sam4n"/>
 			<device-support value="sam4c"/>
+			<device-support value="sam4cp"/>
 			<require idref="sam.services.flash"/>
 			<require idref="common.services.ioport"/>
 			<require idref="common.utils.unit_test"/>

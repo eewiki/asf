@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.rtc.quick_start_calendar_interrupt" caption="Quick Start for the SAM D20 RTC Calendar Driver (Callback)">
+	<module type="application" id="sam0.drivers.rtc.quick_start_calendar_interrupt" caption="Quick Start for the SAM D20/D21 RTC Calendar Driver (Callback)">
 		<info type="description" value="summary">
 		Quick start guide for the RTC Calendar (Callback Mode) driver demonstrating configuration and initialization.
 		</info>
@@ -9,5 +9,6 @@
 		<require idref="sam0.drivers.rtc"/>
 		<require idref="sam0.drivers.port"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 	</module>
 </asf>

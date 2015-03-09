@@ -111,13 +111,13 @@ static void display_menu(void)
 			"  -- Select operation:\n\r"
 			"  c: Clear the screen \n\r"
 			"  h: Display menu \n\r"
-		#if SAM4C
+		#if ( SAM4C || SAM4CP )
 			"  1: Basic show feature \n\r"
 		#else
 			"  1: Basic show feature(need 'c' first if '4' selected) \n\r"
 		#endif
 			"  2: Blink feature \n\r"
-		#if !SAM4C
+		#if !( SAM4C || SAM4CP )
 			"  3: Circular animation feature \n\r"
 			"  4: Text scrolling feature \n\r"
 		#endif
@@ -130,10 +130,10 @@ static void display_menu(void)
 int main(void)
 {
 	uint8_t key;
-#if !SAM4C
+#if !( SAM4C || SAM4CP )
 	uint8_t const scrolling_str[] = "C42364A Example  ";
 #endif
-#if SAM4C
+#if ( SAM4C || SAM4CP )
 	int32_t value = 1234;
 #else
 	int32_t value = -12345;
@@ -152,8 +152,10 @@ int main(void)
 	printf("-- %s\n\r", BOARD_NAME);
 	printf("-- Compiled: %s %s --\n\r", __DATE__, __TIME__);
 
+#if !SAM4CP
 	/* Turn on the backlight. */
 	ioport_set_pin_level(LCD_BL_GPIO, LCD_BL_ACTIVE_LEVEL);
+#endif
 
 	/* Initialize the C42364A LCD glass component. */
 	status = c42364a_init();
@@ -189,13 +191,13 @@ int main(void)
 
 		case '1':
 			printf("Show icons, number and string.\r\n");
-		#if SAM4C
+		#if ( SAM4C || SAM4CP )
 			c42364a_clear_all();
 			c42364a_blink_disable();
 		#endif
 			c42364a_show_icon(C42364A_ICON_ARM);
 			c42364a_show_numeric_dec(value);
-		#if SAM4C
+		#if ( SAM4C || SAM4CP )
 			c42364a_show_text((const uint8_t *)"SAM4C");
 		#else
 			c42364a_show_text((const uint8_t *)"Welcome");
@@ -204,7 +206,7 @@ int main(void)
 			break;
 
 		case '2':
-		#if SAM4C
+		#if ( SAM4C || SAM4CP )
 			printf("Blink Full Screen.\r\n");
 			c42364a_clear_all();
 			c42364a_write_num_packet((const uint8_t *)"1023");
@@ -221,7 +223,7 @@ int main(void)
 			c42364a_blink_icon_start(C42364A_ICON_COLON);
 		#endif
 			break;
-	#if !SAM4C
+	#if !( SAM4C || SAM4CP )
 		case '3':
 			printf("Show the two dots circular animation.\r\n");
 			c42364a_circular_animation_start(C42364A_CSR_RIGHT, 7, 0x03);

@@ -60,6 +60,8 @@
 # include "sam4e/pll.h"
 #elif SAM4C
 # include "sam4c/pll.h"
+#elif SAM4CP
+# include "sam4cp/pll.h"
 #elif SAM4L
 # include "sam4l/pll.h"
 #elif SAM4N

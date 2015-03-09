@@ -20,6 +20,7 @@
 		<generator value="doxygen"/>
 		<generator value="as5_arm"/>
 		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
 		<config name="config.compiler.armgcc.stack_size" value="16K"/>
 		<config name="config.compiler.iarewarm.sys_stack_size" value="16K"/>
 		<device-support value="atsam3s4c"/>

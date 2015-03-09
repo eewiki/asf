@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device CDC Example for SAMD21 Xplained Pro" id="common.services.usb.class.cdc.device.example.samd21_xpro">
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<require idref="common.services.usb.class.cdc.device.example"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

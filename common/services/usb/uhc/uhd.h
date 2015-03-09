@@ -3,7 +3,7 @@
  *
  * \brief Common API for USB Host Drivers (UHD)
  *
- * Copyright (C) 2011 - 2012 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -218,6 +218,19 @@ bool uhd_is_suspend(void);
  */
 void uhd_resume(void);
 
+#ifdef USB_HOST_LPM_SUPPORT
+/**
+ * \brief Enables the suspend L1 state on the USB line.
+ * The SUSPEND LPM state is enable when a LPM transaction is done.
+ *
+ * \param b_remotewakeup Authorize the remote wakeup features, if true
+ * \param besl Best effort service latency value
+ *
+ * \return USB line in SUSPEND state, if true
+ */
+bool uhd_suspend_lpm(bool b_remotewakeup, uint8_t besl);
+#endif // USB_HOST_LPM_SUPPORT
+
 /**
  * \brief Add a setup request in the control endpoint setup queue.
  * Note: Request timeout is 5s.
@@ -384,6 +397,14 @@ extern void uhc_notify_sof(bool b_micro);
  * A resume can occur after a downstream or an upstream resume.
  */
 extern void uhc_notify_resume(void);
+
+#ifdef USB_HOST_LPM_SUPPORT
+/**
+ * \brief Notify that a resume bus occurs after a L1 state
+ * A resume can occur after a downstream or an upstream resume.
+ */
+extern void uhc_notify_resume_lpm(void);
+#endif
 
 //@}
 

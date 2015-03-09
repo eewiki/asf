@@ -15,11 +15,11 @@
 		<build type="module-config" subtype="path" value="module_config"/>
 		<build type="module-config" subtype="required-header-file" value="conf_at30tse75x.h"/>
 
-		<build type="doxygen-entry-point" value="asfdoc_samd20_at30tse75x_group"/>
-		<build type="doxygen-quick-start" value="asfdoc_samd20_at30tse75x_qs"/>
+		<build type="doxygen-entry-point" value="asfdoc_sam0_at30tse75x_group"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_at30tse75x_qs"/>
 		<build type="doxygen-example-path" value="quick_start/"/>
 
-		<device-support value="samd20"/>
+		<device-support value="sam0"/>
 
 		<require idref="sam0.drivers.sercom.i2c.master"/>
 

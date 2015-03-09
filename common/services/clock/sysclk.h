@@ -60,6 +60,8 @@
 # include "sam4e/sysclk.h"
 #elif SAM4C
 # include "sam4c/sysclk.h"
+#elif SAM4CP
+# include "sam4cp/sysclk.h"
 #elif SAM4L
 # include "sam4l/sysclk.h"
 #elif SAM4N

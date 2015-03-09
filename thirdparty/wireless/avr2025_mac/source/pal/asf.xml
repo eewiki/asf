@@ -10,15 +10,10 @@
             <build type="header-file"   value="pal_ext_trx.h"/>
             <build type="c-source"      value="pal_ext_trx.c"/>
             <build type="doxygen-entry-point" value="group_pal"/>
-			<build type="module-config" subtype="required-header-file" value="conf_pal.h"/>
-			<build type="module-config" subtype="path" value="module_config"/>
-
+			
             <require idref="thirdparty.wireless.avr2025_mac.source.pal.common_sw_timer"/>
             <require idref="thirdparty.wireless.avr2025_mac.source.pal.inc"/>
-            <require idref="common.services.delay"/>
-            <require idref="common.services.basic.spi_master"/>
-            <require idref="common.services.ioport"/>
-            <require idref="common.utils"/>
+            <require idref="thirdparty.wireless.common_services.trx_access"/>
             <device-support-alias value="avr2025_mac_pal_spi_common_support"/>
 		</module>
 
@@ -30,12 +25,9 @@
             <build type="c-source"      value="pal.c"/>
             <build type="header-file"   value="pal.h"/>
             <build type="doxygen-entry-point" value="group_pal"/>
-			<build type="module-config" subtype="required-header-file" value="conf_pal.h"/>
-			<build type="module-config" subtype="path" value="module_config"/>
-
             <require idref="thirdparty.wireless.avr2025_mac.source.pal.common_sw_timer"/>
             <require idref="thirdparty.wireless.avr2025_mac.source.pal.inc"/>
-            <require idref="common.services.delay"/>
+            <require idref="thirdparty.wireless.common_services.trx_access"/>
             <device-support-alias value="avr2025_mac_pal_soc_support"/>
 		</module>
 
@@ -51,17 +43,11 @@
             <build type="header-file"   value="pal_ext_trx.h"/>
             <build type="c-source"      value="pal_ext_trx.c"/>
             <build type="doxygen-entry-point" value="group_pal"/>
-			<build type="module-config" subtype="required-header-file" value="conf_pal.h"/>
-			<build type="module-config" subtype="path" value="module_config"/>
+
 
             <require idref="thirdparty.wireless.avr2025_mac.source.pal.common_sw_timer"/>
             <require idref="thirdparty.wireless.avr2025_mac.source.pal.inc"/>
-            <require idref="common2.services.delay"/>
-            <require idref="sam0.drivers.sercom.spi"/>
-			<require idref="sam0.drivers.extint"/>
-			<require idref="sam0.drivers.tc"/>
-            <require idref="sam0.drivers.port"/>
-            <require idref="sam0.utils"/>
+            <require idref="thirdparty.wireless.common_services.trx_access"/>
             <device-support-alias value="avr2025_mac_pal_spi_sam0_support"/>
 		</module>
     </select-by-device>

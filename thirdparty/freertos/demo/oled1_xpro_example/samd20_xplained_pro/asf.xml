@@ -8,6 +8,7 @@
 		<build type="header-file" value="conf_demo.h"/>
 		<build type="header-file" value="conf_ssd1306.h"/>
 		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_spi.h"/>
 		<build type="header-file" value="FreeRTOSConfig.h"/>
 		<build type="include-path" value="."/>
 		<config name="common2.services.gfx_mono.display" value="ug_2832hsweg04"/>
@@ -18,6 +19,7 @@
 		<require idref="common.services.freertos.oled1_xpro_example"/>
 		<generator value="as5_arm"/>
 		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
 		<generator value="doxygen-v2"/>
 	</project>
 </asf>

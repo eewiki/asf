@@ -3,7 +3,7 @@
  *
  * \brief Event handling Serial I/O  Functionalities
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -56,7 +56,7 @@
 #ifdef SENSOR_TERMINAL_BOARD
 
 
-#define SERIAL_RX_BUF_SIZE_HOST    156
+
 
 /*
  * USB transmit buffer size

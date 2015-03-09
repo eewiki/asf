@@ -8,7 +8,7 @@
  *
  * To use this board, define BOARD=ATMEGA256RFR2_XPLAINED_PRO.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -57,7 +57,10 @@ typedef enum led_id_tag
 {
     LED_0,
     LED_1,
-    LED_2
+    LED_2,
+    LED_3,
+    LED_4,
+    LED_5
 } SHORTENUM led_id_t;
 /**
  * \brief LED action

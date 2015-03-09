@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 Analog to Digital Converter (ADC) Unit test
+ * \brief SAM D20/D21 Analog to Digital Converter (ADC) Unit test
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,7 +42,7 @@
  */
 
 /**
- * \mainpage SAM D20 ADC Unit Test
+ * \mainpage SAM D20/D21 ADC Unit Test
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -58,29 +58,30 @@
  */
 
 /**
- * \page appdoc_main SAM D20 ADC Unit Test
+ * \page appdoc_main SAM D20/D21 ADC Unit Test
  *
  * Overview:
- * - \ref appdoc_samd20_adc_unit_test_intro
- * - \ref appdoc_samd20_adc_unit_test_setup
- * - \ref appdoc_samd20_adc_unit_test_usage
- * - \ref appdoc_samd20_adc_unit_test_compinfo
- * - \ref appdoc_samd20_adc_unit_test_contactinfo
+ * - \ref asfdoc_sam0_adc_unit_test_intro
+ * - \ref asfdoc_sam0_adc_unit_test_setup
+ * - \ref asfdoc_sam0_adc_unit_test_usage
+ * - \ref asfdoc_sam0_adc_unit_test_compinfo
+ * - \ref asfdoc_sam0_adc_unit_test_contactinfo
  *
- * \section appdoc_samd20_adc_unit_test_intro Introduction
+ * \section asfdoc_sam0_adc_unit_test_intro Introduction
  * \copydetails appdoc_preface
  *
  * Input to the ADC is provided with the DAC module.
  *
  * The following kit is required for carrying out the test:
  *      - SAM D20 Xplained Pro board
+ *      - SAM D21 Xplained Pro board
  *
- * \section appdoc_samd20_adc_unit_test_setup Setup
+ * \section asfdoc_sam0_adc_unit_test_setup Setup
  * The following connections has to be made using wires:
  *  - \b DAC VOUT (PA02) <-----> ADC2 (PB08)
  *
  * To run the test:
- *  - Connect the SAM D20 Xplained Pro board to the computer using a
+ *  - Connect the supported Xplained Pro board to the computer using a
  *    micro USB cable.
  *  - Open the virtual COM port in a terminal application.
  *    \note The USB composite firmware running on the Embedded Debugger (EDBG)
@@ -89,17 +90,17 @@
  *  - Build the project, program the target and run the application.
  *    The terminal shows the results of the unit test.
  *
- * \section appdoc_samd20_adc_unit_test_usage Usage
+ * \section asfdoc_sam0_adc_unit_test_usage Usage
  *  - The unit test configures DAC module to provide voltage to the ADC input.
  *  - DAC output is adjusted to generate various voltages which are measured by
  *    the ADC.
  *  - Different modes of the ADC are tested.
  *
- * \section appdoc_samd20_adc_unit_test_compinfo Compilation Info
+ * \section asfdoc_sam0_adc_unit_test_compinfo Compilation Info
  * This software was written for the GNU GCC and IAR for ARM.
  * Other compilers may or may not work.
  *
- * \section appdoc_samd20_adc_unit_test_contactinfo Contact Information
+ * \section asfdoc_sam0_adc_unit_test_contactinfo Contact Information
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
  */
@@ -461,7 +462,13 @@ static void run_adc_average_mode_test(const struct test_case *test)
 	adc_start_conversion(&adc_inst);
 	while (adc_read(&adc_inst, &adc_result) != STATUS_OK) {
 	}
+#if (SAMD20)
+	/*
+	 * Errata 10530 for SAMD20: The automatic right shift of the result
+	 * when accumulating/averaging ADC samples does not work.
+	 */
 	adc_result = adc_result >> 4;
+#endif
 
 	/* Test result */
 	test_assert_true(test,
@@ -623,7 +630,7 @@ int main(void)
 
 	/* Define the test suite */
 	DEFINE_TEST_SUITE(adc_test_suite, adc_tests,
-			"SAM D20 ADC driver test suite");
+			"SAM D20/D21 ADC driver test suite");
 
 	/* Run all tests in the suite*/
 	test_suite_run(&adc_test_suite);

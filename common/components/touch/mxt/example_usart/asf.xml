@@ -16,7 +16,6 @@
 		</info>
 		<device-support value="xmega"/>
 		<device-support value="uc3"/>
-		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
 		<info type="gui-flag" value="move-to-root"/>
 	</module>
 </asf>

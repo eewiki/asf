@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2130_lwmesh.source.phy.atmegarfr2" caption="PHY ATMEGARFR2">
+		<info type="description" value="summary">
+		The ATmegaRFR2 is a low-power CMOS 8-bit microcontroller based on the AVR
+		enhanced RISC architecture combined with a high data rate transceiver for the 2.4 GHz
+		ISM band
+		</info>
+        <info type="gui-flag" value="hidden"/>
+		<build type="c-source"      value="src/phy.c"/>
+		<build type="header-file"   value="inc/atmegarfr2.h"/>
+		<build type="header-file"   value="inc/phy.h"/>
+		<build type="include-path"  value="inc/"/>
+		<build type="doxygen-entry-point" value="group_phy_rfr2"/>
+		<build type="define" name="PHY_ATMEGARFR2" value =""/>
+		<device-support value="atmega256rfr2"/>
+		<device-support value="atmega2564rfr2"/>
+	</module>
+</asf>

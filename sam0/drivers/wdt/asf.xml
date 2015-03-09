@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.wdt" name="config.sam0.drivers.wdt" caption="WDT - Watchdog Timer" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20 WDT module. Provides a unified interface for
+			Driver for the SAM D20/D21 WDT module. Provides a unified interface for
 			the configuration and management of the Watchdog module, including
 			timeout period, window period and early warning indications.
 		</info>
@@ -22,11 +22,11 @@
 
 			<build type="header-file" value="quick_start/qs_wdt_basic.h"/>
 
-			<build type="doxygen-entry-point" value="asfdoc_samd20_wdt_group"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_wdt_group"/>
 			<build type="doxygen-example-path" value="quick_start"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_wdt_exqsg"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_wdt_exqsg"/>
 
-			<device-support value="samd20"/>
+			<device-support value="sam0"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
@@ -52,7 +52,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Watchdog Timer on the
-				SAM D20, both the ASF driver and the peripheral itself.
+				SAM D20/D21, both the ASF driver and the peripheral itself.
 			</info>
 
 			<build type="include-path" value="."/>
@@ -68,12 +68,12 @@
 			<build type="header-file" value="quick_start/qs_wdt_basic.h"/>
 			<build type="header-file" value="quick_start_callback/qs_wdt_callback.h"/>
 
-			<build type="doxygen-entry-point" value="asfdoc_samd20_wdt_group"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_wdt_group"/>
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-example-path" value="quick_start_callback"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_wdt_exqsg"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_wdt_exqsg"/>
 
-			<device-support value="samd20"/>
+			<device-support value="sam0"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>

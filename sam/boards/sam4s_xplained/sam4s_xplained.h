@@ -3,7 +3,7 @@
  *
  * \brief SAM4S-XPLAINED Board Definition.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -428,5 +428,11 @@
 #define PIN_USART_TXD_IDX          PIN_USART1_TXD_IDX
 #define PIN_USART_TXD_FLAGS        (PIO_PERIPH_A | PIO_DEFAULT)
 #define PIN_USART_TXD_IO_FLAGS     (PIO_OUTPUT_0 | PIO_DEFAULT)
+
+/* SRAM base address */
+#define SRAM_BASE_ADDRESS          EBI_CS0_ADDR
+
+/* SRAM chip select */
+#define SRAM_CHIP_SELECT           0
 
 #endif  /* SAM4S_XPLAINED_H_INCLUDED */

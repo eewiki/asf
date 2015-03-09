@@ -3,7 +3,7 @@
  *
  * \brief  Main of TAL Examples - Performance_Analyzer application
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -68,7 +68,7 @@
 /**
  * \mainpage
  * \section preface Preface
- * This is the reference manual for the Performance Analyzer Application
+ * This is the reference manual for the Performance Analyzer v2.3 Application
  * \section toc Table of Contents
  *  - \subpage overview
  *  - \ref group_perf_analyzer

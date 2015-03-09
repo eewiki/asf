@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<project force-caption="true" force-description="true" caption="ZID HID Class Device application" id="thirdparty.wireless.avr2102_rf4control.apps.zid.dev.qt_remote.atmega256rfr2_avr477">
+		<info type="description" value="summary">
+		HID Class Device application for RF4CE-ZID class-device setup
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_nvm.h"/>
+		<build type="header-file" value="conf_flash.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_board.h"/>
+	
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.api" value="no" />
+		<config name="config.common.drivers.nvm.mem_type" value="no_extmem"/>
+
+        <build type="linker-config" subtype="flags" value="--section-start=.bootloader=0x3f000" toolchain="avrgcc"/>
+		<build type="linker-config" subtype="script" value="link_iar.xcl" toolchain="iarew"/>
+		<require idref="thirdparty.wireless.avr2102_rf4control.apps.zid.dev.qt_remote"/>
+		<require idref="board.user.atmega256rfr2_avr477"/>
+		<require idref="board.dummy.atmega256rfr2"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega256rfr2"/>
+	</project>
+</asf>

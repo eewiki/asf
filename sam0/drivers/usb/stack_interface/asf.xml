@@ -1,0 +1,49 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.drivers.usb.dual" caption="SAMD21 USB Dual role interface">
+		<build type="include-path" value="."/>
+		<build type="c-source" value="usb_dual.c"/>
+		<build type="header-file" subtype="api" value="usb_dual.h"/>
+		<device-support value="samd21"/>
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.drivers.extint"/>
+		<require idref="sam0.drivers.port"/>
+
+		<info type="gui-flag" value="hidden"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication" />
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
+	</module>
+	<module type="driver" id="sam0.drivers.usb.uhd" caption="SAMD21 USB UHD interface">
+		<build type="include-path" value="."/>
+		<build type="c-source" value="usb_host_uhd.c"/>
+		<device-support value="samd21"/>
+		<require idref="sam0.drivers.usb"/>
+		<require idref="sam0.drivers.usb.dual"/>
+		<require idref="common.services.basic.sleepmgr"/>
+
+		<info type="gui-flag" value="hidden"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication" />
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
+		</module>
+	<module type="driver" id="sam0.drivers.usb.udd" caption="SAMD21 USB UDD interface">
+		<build type="include-path" value="."/>
+		<build type="c-source" value="usb_device_udd.c"/>
+		<device-support value="samd21"/>
+		<require idref="sam0.drivers.usb"/>
+		<require idref="sam0.drivers.usb.dual"/>
+		<require idref="common.services.basic.sleepmgr"/>
+
+		<info type="gui-flag" value="hidden"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication" />
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
+		</module>
+</asf>

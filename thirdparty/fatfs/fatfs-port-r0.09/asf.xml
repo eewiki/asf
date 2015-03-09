@@ -13,6 +13,7 @@
 			<device-support value="sam4e"/>
 			<device-support value="sam4n"/>
 			<device-support value="sam4c"/>
+			<device-support value="sam4cp"/>
 			<device-support value="samg"/>
 			<build type="include-path" value="../fatfs-r0.09/src"/>
 			<build type="header-file" subtype="api" value="../fatfs-r0.09/src/diskio.h"/>
@@ -20,6 +21,19 @@
 			<require idref="sam.drivers.rtc"/>
 			<build type="doxygen-entry-point" value="thirdparty_fatfs_port_group"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="service" id="common.services.fs.fatfs-port#sam0_rtc" caption="Supported ports of FatFS">
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="diskio.c"/>
+			<build type="c-source" value="sam0/fattime_rtc.c"/>
+			<build type="include-path" value="sam0/"/>
+			<device-support value="sam0"/>
+			<build type="include-path" value="../fatfs-r0.09/src"/>
+			<build type="header-file" subtype="api" value="../fatfs-r0.09/src/diskio.h"/>
+			<require idref="common.services.storage.ctrl_access"/>
+			<require idref="sam0.drivers.rtc"/>
+			<build type="doxygen-entry-point" value="thirdparty_fatfs_port_group"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
 		</module>
 		<module type="service" id="common.services.fs.fatfs-port#sam_ast" caption="Supported ports of FatFS">
 			<info type="gui-flag" value="hidden"/>

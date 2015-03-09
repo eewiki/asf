@@ -12,6 +12,7 @@
         
 			<build type="distribute" subtype="file" value="readme.txt"/>
 			<build type="distribute" subtype="file" value="ATMEL-disclaimer.txt"/>
+			<build type="define" name="__FREERTOS__" value=""/>
 			<build type="c-source" value="source/croutine.c"/>
 			<build type="c-source" value="source/list.c"/>
 			<build type="c-source" value="source/queue.c"/>
@@ -61,6 +62,7 @@
 
 			<build type="distribute" subtype="file" value="readme.txt"/>
 			<build type="distribute" subtype="file" value="ATMEL-disclaimer.txt"/>
+			<build type="define" name="__FREERTOS__" value=""/>
 			<build type="c-source" value="source/croutine.c"/>
 			<build type="c-source" value="source/list.c"/>
 			<build type="c-source" value="source/queue.c"/>
@@ -91,6 +93,7 @@
 			<device-support value="sam4l"/>
 			<device-support value="sam4n"/>
 			<device-support value="sam4c"/>
+			<device-support value="sam4cp"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3n"/>
 		</module>
 		<module type="service" id="common.services.os.freertos#sam_cm4f" caption="FreeRTOS mini Real-Time Kernel">
@@ -105,6 +108,7 @@
 
 			<build type="distribute" subtype="file" value="readme.txt"/>
 			<build type="distribute" subtype="file" value="ATMEL-disclaimer.txt"/>
+			<build type="define" name="__FREERTOS__" value=""/>
 			<build type="c-source" value="source/croutine.c"/>
 			<build type="c-source" value="source/list.c"/>
 			<build type="c-source" value="source/queue.c"/>
@@ -132,6 +136,7 @@
 			<build type="include-path" value="./source/portable/iar/sam_cm4f" toolchain="iarewarm"/>
 			<device-support value="sam4e"/>
 			<device-support value="atsam4c16c_1"/>
+			<device-support value="atsam4cp16b_1"/>
 			<device-support value="samg"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
 		</module>

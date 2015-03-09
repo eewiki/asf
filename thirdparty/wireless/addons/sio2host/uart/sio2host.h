@@ -3,7 +3,7 @@
  *
  * \brief Event handling Serial I/O  Functionalities
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -54,7 +54,6 @@
 #include "compiler.h"
 #include "status_codes.h"
 
-#define SERIAL_RX_BUF_SIZE_HOST    156
 
 /* === PROTOTYPES ============================================================
  **/
@@ -90,6 +89,13 @@ uint8_t sio2host_rx(uint8_t *data, uint8_t max_length);
  * \return returns the data which is received
  */
 uint8_t sio2host_getchar(void);
+
+/**
+ * \brief This function prints the character to the host
+ * \return void
+ */
+
+void sio2host_putchar(uint8_t);
 
 /**
  * \brief This function performs a non-blocking character receive functionality

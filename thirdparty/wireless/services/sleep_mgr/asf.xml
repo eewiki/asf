@@ -1,0 +1,78 @@
+<asf xmlversion="1.0">
+    <select-by-device id="thirdparty.wireless.common_services.sleep_mgr" caption="Common Sleep Manager">
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<info type="description" value="summary">
+		Sleep manager helps the application to put the MCU into sleep mode.
+		</info>
+	    <module type="meta" id="thirdparty.wireless.common_services.sleep_mgr#0" caption="Common Sleep Manager - MEGA ">
+			
+			<build type="header-file"   value="sleep_mgr.h"/>
+            <build type="include-path"  value="."/>			
+			<build type="c-source"      value="megarf/sleep_mgr.c"/>
+			<build type="doxygen-entry-point" value="sleep_mgr_group"/>
+			<require idref="mega.drivers.macsc"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<device-support-alias value="mega_sleep_mgr_support"/>
+		</module>
+
+		<module type="meta" id="thirdparty.wireless.common_services.sleep_mgr#2" caption="Common Sleep Manager - XMEGA A3U ">
+			
+			<build type="header-file"   value="sleep_mgr.h"/>
+            <build type="include-path"  value="."/>			
+			<build type="c-source"      value="xmega_a3u/sleep_mgr.c"/>
+			<build type="doxygen-entry-point" value="sleep_mgr_group"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<device-support-alias value="xmega_a3u_sleep_mgr_support"/>
+		</module>
+		<module type="meta" id="thirdparty.wireless.common_services.sleep_mgr#3" caption="Common Sleep Manager - XMEGA A3BU ">
+			
+			<build type="header-file"   value="sleep_mgr.h"/>
+            <build type="include-path"  value="."/>			
+			<build type="c-source"      value="xmega_a3bu/sleep_mgr.c"/>
+			<build type="doxygen-entry-point" value="sleep_mgr_group"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<device-support-alias value="xmega_a3bu_sleep_mgr_support"/>
+		</module>
+		<module type="meta" id="thirdparty.wireless.common_services.sleep_mgr#4" caption="Common Sleep Manager - SAM ">
+			
+			<build type="header-file"   value="sleep_mgr.h"/>
+            <build type="include-path"  value="."/>			
+			<build type="c-source"      value="sam4l/sleep_mgr.c"/>
+			<build type="doxygen-entry-point" value="sleep_mgr_group"/>
+			<require idref="sam.drivers.ast"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<device-support-alias value="sam_sleep_mgr_support"/>
+		</module>
+		<module type="meta" id="thirdparty.wireless.common_services.sleep_mgr#5" caption="Common Sleep Manager - SAM0 ">
+			
+			<build type="header-file"   value="sleep_mgr.h"/>
+            <build type="include-path"  value="."/>			
+			<build type="c-source"      value="sam0/sleep_mgr.c"/>
+			<build type="doxygen-entry-point" value="sleep_mgr_group"/>
+			<require idref="sam0.drivers.rtc"/>
+			<device-support-alias value="sam0_sleep_mgr_support"/>
+		</module> </select-by-device>
+		<device-alias-map name="xmega_a3u_sleep_mgr_support">
+			<device-support value="atxmega256a3"/>
+			<device-support value="atxmega256a3u"/>
+		</device-alias-map>
+		<device-alias-map name="xmega_a3bu_sleep_mgr_support">
+			<device-support value="atxmega256a3bu"/>
+		</device-alias-map>
+		<device-alias-map name="uc3_sleep_mgr_support">
+			<device-support value="uc3a3_a4"/>
+		</device-alias-map>
+		<device-alias-map name="sam_sleep_mgr_support">
+			<device-support value="sam4l"/>
+		</device-alias-map>
+		<device-alias-map name="sam0_sleep_mgr_support">
+			<device-support value="samd20"/>
+		</device-alias-map>    
+		<device-alias-map name="mega_sleep_mgr_support">
+			<device-support value="atmega256rfr2"/>
+			<device-support value="atmega2564rfr2"/>
+			<device-support value="atmega128rfa1"/>
+		</device-alias-map>	
+</asf>

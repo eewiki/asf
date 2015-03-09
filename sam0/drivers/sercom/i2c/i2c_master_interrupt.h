@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 I2C Master Interrupt Driver
+ * \brief SAM D20/D21 I2C Master Interrupt Driver
  *
- * Copyright (C) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -51,7 +51,7 @@ extern "C" {
 #endif
 
 /**
- * \addtogroup asfdoc_samd20_sercom_i2c_group
+ * \addtogroup asfdoc_sam0_sercom_i2c_group
  * @{
  *
  */

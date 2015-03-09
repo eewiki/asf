@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.sercom.spi_master_vec.quick_start" caption="Quick Start for the SAM D20/D21 SERCOM SPI Master Driver with Vectored I/O">
+		<info type="description" value="summary">
+		Quick start guide demonstrating usage of the SERCOM SPI master driver with vectored I/O.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_spi_master_vec_basic.c"/>
+		<build type="header-file" value="qs_spi_master_vec_basic.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.sercom.spi_master_vec"/>
+		<device-support value="samd20"/>
+		<device-support value="samd21"/>
+	</module>
+</asf>

@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.ac" name="config.sam0.drivers.ac" caption="AC - Analog Comparator" default="callback">
 		<info type="description" value="summary">
-		  Driver for the SAM D20 Analog Comparator module. Provides a unified
+			Driver for the SAM D20/D21 Analog Comparator module. Provides a unified
 		  interface for the configuration and management of the device's
 		  hardware analog comparators.
 		</info>
@@ -21,10 +21,10 @@
 			<build type="header-file" value="quick_start/qs_ac_basic.h" />
 
 			<build type="doxygen-example-path" value="quick_start"/>
-			<build type="doxygen-entry-point" value="asfdoc_samd20_ac_group" />
-			<build type="doxygen-quick-start" value="asfdoc_samd20_ac_exqsg"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_ac_group" />
+			<build type="doxygen-quick-start" value="asfdoc_sam0_ac_exqsg"/>
 
-			<device-support value="samd20" />
+			<device-support value="sam0" />
 
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />
@@ -45,7 +45,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Analog Comparator on the
-				SAM D20, both the ASF driver and the peripheral itself.
+				SAM D20/D21, both the ASF driver and the peripheral itself.
 			</info>
 
 			<build type="include-path" value="." />
@@ -62,10 +62,10 @@
 
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-example-path" value="quick_start_callback"/>
-			<build type="doxygen-entry-point" value="asfdoc_samd20_ac_group" />
-			<build type="doxygen-quick-start" value="asfdoc_samd20_ac_exqsg"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_ac_group" />
+			<build type="doxygen-quick-start" value="asfdoc_sam0_ac_exqsg"/>
 
-			<device-support value="samd20" />
+			<device-support value="sam0" />
 
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />

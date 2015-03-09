@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.tc" name="config.sam0.drivers.tc" caption="TC - Timer Counter" default="callback">
 		<info type="description" value="summary">
-		  Driver for the SAM D20 Timer/Counter module. Provides a unified
+		  Driver for the SAM D20/D21 Timer/Counter module. Provides a unified
 		  interface for the configuration and management of the device's
 		  hardware timers.
 		</info>
@@ -19,14 +19,19 @@
 			<build type="c-source" value="tc.c" />
 
 			<build type="header-file" value="quick_start/qs_tc_basic.h" />
+			<build type="header-file" value="quick_start_dma/qs_tc_dma.h" />
 
+			<build type="doxygen-example-path" value="quick_start_dma"/>
+			<build type="doxygen-example-path" value="quick_start_dma/samd21_xplained_pro"/>
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-example-path" value="quick_start/samd20_xplained_pro"/>
 			<build type="doxygen-image-path" value="docimg" />
-			<build type="doxygen-entry-point" value="asfdoc_samd20_tc_group" />
-			<build type="doxygen-quick-start" value="asfdoc_samd20_tc_exqsg"/>
+
+			<build type="doxygen-entry-point" value="asfdoc_sam0_tc_group" />
+			<build type="doxygen-quick-start" value="asfdoc_sam0_tc_exqsg"/>
 
 			<device-support value="samd20" />
+			<device-support value="samd21" />
 
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />
@@ -50,8 +55,8 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the Timer Counter on the
-				SAM D20, both the ASF driver and the peripheral itself.
+				This document describes how to use the Timer Counter on the SAM D20/D21, 
+				both the ASF driver and the peripheral itself.
 			</info>
 
 			<build type="include-path" value="." />
@@ -65,16 +70,20 @@
 			<build type="c-source" value="tc.c" />
 			<build type="header-file" value="quick_start_callback/qs_tc_callback.h" />
 			<build type="header-file" value="quick_start/qs_tc_basic.h" />
+			<build type="header-file" value="quick_start_dma/qs_tc_dma.h" />
 
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-example-path" value="quick_start/samd20_xplained_pro"/>
+			<build type="doxygen-example-path" value="quick_start_dma"/>
+			<build type="doxygen-example-path" value="quick_start_dma/samd21_xplained_pro"/>
 			<build type="doxygen-example-path" value="quick_start_callback"/>
 			<build type="doxygen-example-path" value="quick_start_callback/samd20_xplained_pro"/>
 			<build type="doxygen-image-path" value="docimg" />
-			<build type="doxygen-entry-point" value="asfdoc_samd20_tc_group" />
-			<build type="doxygen-quick-start" value="asfdoc_samd20_tc_exqsg"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_tc_group" />
+			<build type="doxygen-quick-start" value="asfdoc_sam0_tc_exqsg"/>
 
 			<device-support value="samd20" />
+			<device-support value="samd21" />
 
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />

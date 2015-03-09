@@ -75,7 +75,7 @@ void rstc_reset_extern(Rstc *p_rstc);
 uint32_t rstc_get_status(Rstc* p_rstc);
 uint32_t rstc_get_reset_cause(Rstc* p_rstc);
 
-#if SAM4C
+#if SAM4C || SAM4CP
 #ifndef RSTC_CPMR_KEY_PASSWD
 #define RSTC_CPMR_KEY_PASSWD  RSTC_CPMR_CPKEY(0x5AU)
 #endif

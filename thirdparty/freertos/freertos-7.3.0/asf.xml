@@ -12,6 +12,7 @@
 
 			<build type="distribute" subtype="file" value="readme.txt"/>
 			<build type="distribute" subtype="file" value="ATMEL-disclaimer.txt"/>
+			<build type="define" name="__FREERTOS__" value=""/>
 			<build type="c-source" value="source/FreeRTOS_CLI.c"/>
 			<build type="c-source" value="source/list.c"/>
 			<build type="c-source" value="source/queue.c"/>
@@ -43,6 +44,7 @@
 			<device-support value="sam4l"/>
 			<device-support value="sam4n"/>
 			<device-support value="sam4c"/>
+			<device-support value="sam4cp"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3n"/>
 		</module>
 		<module type="service" id="common.services.os.freertos.v7_3_0#sam_cm4f" caption="FreeRTOS mini Real-Time Kernel">
@@ -57,6 +59,7 @@
 
 			<build type="distribute" subtype="file" value="readme.txt"/>
 			<build type="distribute" subtype="file" value="ATMEL-disclaimer.txt"/>
+			<build type="define" name="__FREERTOS__" value=""/>
 			<build type="c-source" value="source/FreeRTOS_CLI.c"/>
 			<build type="c-source" value="source/list.c"/>
 			<build type="c-source" value="source/queue.c"/>

@@ -3,7 +3,7 @@
  *
  * \brief Low Power Application.
  *
- * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -123,6 +123,11 @@
 
 #ifndef example_disable_pll
 #define example_disable_pll()  pmc_disable_pllack()
+#endif
+
+#ifndef example_set_wakeup_from_wait_mode
+#define example_set_wakeup_from_wait_mode() \
+	pmc_set_fast_startup_input(WAKEUP_WAIT_INPUT_ID)
 #endif
 
 #ifndef example_set_wakeup_from_backup_mode
@@ -396,6 +401,9 @@ static void test_sleep_mode(void)
 	/* Select clock for sleep mode */
 	user_change_clock(STRING_SLEEP);
 
+	/* Disable UART */
+	pmc_disable_periph_clk(CONSOLE_UART_ID);
+
 	/* Enter into sleep Mode */
 	pmc_enable_sleepmode(0);
 
@@ -437,7 +445,7 @@ static void test_wait_mode(void)
 	example_disable_pll();
 
 	/* Set wakeup input for fast startup */
-	pmc_set_fast_startup_input(WAKEUP_WAIT_INPUT_ID);
+	example_set_wakeup_from_wait_mode();
 
 	/* Enter into wait Mode */
 	pmc_enable_waitmode();

@@ -1,0 +1,52 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4cp.include.instance" caption="SAM4CP instance definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4CP peripherals
+		</info>
+		<!--
+		<build type="include-path" value="."/>
+		-->
+		<build type="header-file" value="instance_adc.h"/>
+		<build type="header-file" value="instance_aes.h"/>
+		<build type="header-file" value="instance_chipid.h"/>
+		<build type="header-file" value="instance_cmcc0.h"/>
+		<build type="header-file" value="instance_cmcc1.h"/>
+		<build type="header-file" value="instance_efc.h"/>
+		<build type="header-file" value="instance_gpbr.h"/>
+		<build type="header-file" value="instance_icm.h"/>
+		<build type="header-file" value="instance_ipc0.h"/>
+		<build type="header-file" value="instance_ipc1.h"/>
+		<build type="header-file" value="instance_matrix0.h"/>
+		<build type="header-file" value="instance_matrix1.h"/>
+		<build type="header-file" value="instance_pioa.h"/>
+		<build type="header-file" value="instance_piob.h"/>
+		<build type="header-file" value="instance_pioc.h"/>
+		<build type="header-file" value="instance_pmc.h"/>
+		<build type="header-file" value="instance_pwm.h"/>
+		<build type="header-file" value="instance_rstc.h"/>
+		<build type="header-file" value="instance_rswdt.h"/>
+		<build type="header-file" value="instance_rtc.h"/>
+		<build type="header-file" value="instance_rtt.h"/>
+		<build type="header-file" value="instance_slcdc.h"/>
+		<build type="header-file" value="instance_smc0.h"/>
+		<build type="header-file" value="instance_smc1.h"/>
+		<build type="header-file" value="instance_spi0.h"/>
+		<build type="header-file" value="instance_spi1.h"/>
+		<build type="header-file" value="instance_supc.h"/>
+		<build type="header-file" value="instance_tc0.h"/>
+		<build type="header-file" value="instance_tc1.h"/>
+		<build type="header-file" value="instance_trng.h"/>
+		<build type="header-file" value="instance_twi0.h"/>
+		<build type="header-file" value="instance_twi1.h"/>
+		<build type="header-file" value="instance_uart0.h"/>
+		<build type="header-file" value="instance_uart1.h"/>
+		<build type="header-file" value="instance_usart0.h"/>
+		<build type="header-file" value="instance_usart1.h"/>
+		<build type="header-file" value="instance_usart2.h"/>
+		<build type="header-file" value="instance_usart3.h"/>
+		<build type="header-file" value="instance_usart4.h"/>
+		<build type="header-file" value="instance_wdt.h"/>
+		<device-support value="sam4cp"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

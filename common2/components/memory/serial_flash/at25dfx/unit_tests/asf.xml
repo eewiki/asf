@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common2.components.memory.serial_flash.at25dfx.unit_test" caption="Unit Tests for the AT25DFx SerialFlash Component">
+		<info type="description" value="summary">
+		Unit tests for AT25DFx driver.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="include-path" value="."/>
+		<build type="define" name="_ASSERT_ENABLE_" value=""/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_at25dfx.h"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common2.components.memory.serial_flash.at25dfx"/>
+		<device-support value="samd20"/>
+		<device-support value="samd21"/>
+	</module>
+</asf>

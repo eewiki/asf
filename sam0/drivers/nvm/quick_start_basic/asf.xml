@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.nvm.quick_start" caption="Quick Start for the SAM D20 NVM Driver (Polled)">
+	<module type="application" id="sam0.drivers.nvm.quick_start" caption="Quick Start for the SAM D20/D21 NVM Driver (Polled)">
 		<info type="description" value="summary">
 		Quick start guide for the NVM module demonstrating basic reading and writing of Non-Volatile memories.
 		</info>
@@ -9,5 +9,6 @@
 		<require idref="sam0.drivers.nvm"/>
 		<require idref="sam0.drivers.port"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 	</module>
 </asf>

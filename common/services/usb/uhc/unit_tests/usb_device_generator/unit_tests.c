@@ -3,7 +3,7 @@
  *
  * \brief Main functions to generate USB patterns
  *
- * Copyright (C) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -72,6 +72,7 @@
  * - #define  AVR32_USBC_TST     // AVR32 MCU with USBC interface
  * - #define  SAMX_UOTGHS_TST    // SAM MCU with UOTGHS interface
  * - #define  SAM4L_USBC_TST     // SAM4L MCU with USBC interface
+ * - #define  SAMD21_USB_TST     // SAMD21 MCU with USB interface
  *
  * Please, read "USB host core tests" project documentation for more information.
  */
@@ -79,6 +80,7 @@
 //#define  AVR32_USBC_TST     // AVR32 MCU with USBC interface
 //#define  SAMX_UOTGHS_TST    // SAM MCU with UOTGHS interface
 //#define  SAM4L_USBC_TST     // SAM4L MCU with USBC interface
+//#define  SAMD21_USB_TST     // SAMD21 MCU with USB interface
 
 #ifdef AVR32_USBC_TST
 #  define TST_15_DIS
@@ -87,11 +89,11 @@
 #ifdef SAMX_UOTGHS_TST
 #  define TST_15_DIS
 #endif
-#ifdef SAM4L_USBC_TST
+#if defined(SAM4L_USBC_TST) || defined(SAMD21_USB_TST)
 #  define TST_15_DIS
 #endif
 
-#ifdef SAM4L_USBC_TST
+#if defined(SAM4L_USBC_TST) || defined(SAMD21_USB_TST)
 #  define TST_DETACH_DELAY 800 // Delay more since clock slow
 #else
 #  define TST_DETACH_DELAY 200

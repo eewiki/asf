@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project id="common2.components.memory.serial_flash.at25dfx.quick_start_basic.samd20_xplained_pro" caption="Quick Start for the AT25DFx SerialFlash Component with polled SPI - SAM D20 Xplained Pro" force-caption="true">
+		<info type="description" value="summary">
+			Quick start guide demonstrating some basic use of the AT25DFx SerialFlash driver.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_at25dfx.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common2.components.memory.serial_flash.at25dfx.quick_start_basic"/>
+		<require idref="board.samd20_xplained_pro"/>
+		<device-support value="atsamd20j18"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+	</project>
+</asf>

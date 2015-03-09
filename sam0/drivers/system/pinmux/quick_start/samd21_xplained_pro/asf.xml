@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="Quick Start for the SAM D21 SYSTEM Pin Multiplexer Driver" id="sam0.drivers.system.pinmux.quick_start.samd21_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<require idref="sam0.drivers.system.pinmux.quick_start"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

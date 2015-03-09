@@ -2,6 +2,7 @@
 	<module type="driver" caption="" id="sam0.utils.preprocessor">
 		<build type="include-path" value="." />
 		<build type="header-file" value="mrepeat.h" />
+		<build type="header-file" value="mrecursion.h" />
 		<build type="header-file" value="preprocessor.h" />
 		<build type="header-file" value="stringz.h" />
 		<build type="header-file" value="tpaste.h" />

@@ -3,7 +3,7 @@
  *
  * @brief Provides MAC API to access MAC Layer functionality.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -68,7 +68,7 @@
 #endif  /* ENABLE_RTB */
 
 /**
- * \defgroup group_mac  IEEE 802.15.4 MAC
+ * \defgroup group_mac  IEEE 802.15.4 MAC v3.1.0
  * The IEEE standard 802.15.4 MAC Layer defines the protocol and compatible
  * interconnection for data communication devices using low data rate, low
  * power and low complexity, short-range radio frequency (RF) transmissions in a

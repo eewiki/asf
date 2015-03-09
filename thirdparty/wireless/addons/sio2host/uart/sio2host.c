@@ -3,7 +3,7 @@
  *
  * \brief Handles Serial I/O  Functionalities For the Host Device
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -191,6 +191,11 @@ uint8_t sio2host_getchar(void)
 	while (0 == sio2host_rx(&c, 1)) {
 	}
 	return c;
+}
+
+void sio2host_putchar(uint8_t ch)
+{
+    sio2host_tx(&ch,1);
 }
 
 int sio2host_getchar_nowait(void)

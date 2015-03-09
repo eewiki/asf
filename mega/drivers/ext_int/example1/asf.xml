@@ -14,7 +14,6 @@
 		<require idref="common.services.ioport"/>
 		<require idref="common.services.basic.gpio"/>
 		<build type="doxygen-entry-point" value="megarf_interrupt_group "/>
-		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
 		<info type="gui-flag" value="move-to-root"/>
 	</module>
 </asf>

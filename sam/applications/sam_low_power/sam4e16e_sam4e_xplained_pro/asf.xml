@@ -1,0 +1,36 @@
+<asf xmlversion="1.0">
+	<project caption="Low Power demo for SAM4E-XPRO" id="sam.applications.low_power.sam4e_xplained_pro">
+		<!-- Summary Description -->
+		<info type="description" value="summary">
+			This demo shows all the different low power modes with several types of wake-up sources.
+		</info>
+
+		<!-- Source -->
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="low_power_board.h"/>
+		<build type="c-source" value="low_power_board.c"/>
+
+		<!-- Device support -->
+		<device-support value="atsam4e16e"/>
+
+		<!-- Required modules -->
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.rtt"/>
+		<require idref="sam.drivers.matrix"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.applications.low_power"/>
+		<require idref="board.sam4e_xplained_pro"/>
+
+		<!-- Generators -->
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+	</project>
+</asf>

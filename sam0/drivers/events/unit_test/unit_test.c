@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 Event System Unit test
+ * \brief SAM D20/D21 Event System Unit test
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,7 +42,7 @@
  */
 
 /**
- * \mainpage SAM D20 EVENTS Unit Test
+ * \mainpage SAM D20/D21 EVENTS Unit Test
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -56,36 +56,37 @@
  */
 
 /**
- * \page appdoc_main SAM D20 EVENTS Unit Test
+ * \page appdoc_main SAM D20/D21 EVENTS Unit Test
  *
  * Overview:
- * - \ref appdoc_samd20_events_unit_test_intro
- * - \ref appdoc_samd20_events_unit_test_setup
- * - \ref appdoc_samd20_events_unit_test_usage
- * - \ref appdoc_samd20_events_unit_test_compinfo
- * - \ref appdoc_samd20_events_unit_test_contactinfo
+ * - \ref appdoc_sam0_events_unit_test_intro
+ * - \ref appdoc_sam0_events_unit_test_setup
+ * - \ref appdoc_sam0_events_unit_test_usage
+ * - \ref appdoc_sam0_events_unit_test_compinfo
+ * - \ref appdoc_sam0_events_unit_test_contactinfo
  *
- * \section appdoc_samd20_events_unit_test_intro Introduction
+ * \section appdoc_sam0_events_unit_test_intro Introduction
  * \copydetails appdoc_preface
  *
  * This unit test carries out test for three modes of event propagation:
  * Synchronous, Resynchronized & Asynchronous.
  *  - A RTC module with internal 32kHz RC oscillator is configured as
- *    an event generator and a Timer Counter (TC0) module is configured as event
+ *    an event generator and a Timer Counter (TC3) module is configured as event
  *    user.
  *  - RTC overflow signal is sent as an event to the timer. The timer will
  *    start counting on receiving this event.
  *  - The timer's count register is read to detect successful event action.
  *
- * The following kit is required for carrying out the test:
+ * The following kits are supported for carrying out the test:
  *      - SAM D20 Xplained Pro board
+ *      - SAM D21 Xplained Pro board
  *
- * \section appdoc_samd20_events_unit_test_setup Setup
+ * \section appdoc_sam0_events_unit_test_setup Setup
  * The following connections has to be made using wires:
  *  - \b None
  *
  * To run the test:
- *  - Connect the SAM D20 Xplained Pro board to the computer using a
+ *  - Connect the Xplained Pro board to the computer using a
  *    micro USB cable.
  *  - Open the virtual COM port in a terminal application.
  *    \note The USB composite firmware running on the Embedded Debugger (EDBG)
@@ -94,20 +95,20 @@
  *  - Build the project, program the target and run the application.
  *    The terminal shows the results of the unit test.
  *
- * \section appdoc_samd20_events_unit_test_usage Usage
+ * \section appdoc_sam0_events_unit_test_usage Usage
  *  - The unit test carries out test for three modes of event propagation:
  *    Synchronous, Resynchronized & Asynchronous.
  *  - RTC module with internal 32kHz RC oscillator is configured as
- *    event generator and Timer (TC0) module is configured as event user.
+ *    event generator and Timer (TC3) module is configured as event user.
  *  - RTC overflow signal is sent as an event to the timer. The timer will
  *    start counting on receiving this event.
  *  - Timer's count register is read to detect successful event action.
  *
- * \section appdoc_samd20_events_unit_test_compinfo Compilation Info
+ * \section appdoc_sam0_events_unit_test_compinfo Compilation Info
  * This software was written for the GNU GCC and IAR for ARM.
  * Other compilers may or may not work.
  *
- * \section appdoc_samd20_events_unit_test_contactinfo Contact Information
+ * \section appdoc_sam0_events_unit_test_contactinfo Contact Information
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
  */
@@ -117,18 +118,25 @@
 #include <string.h>
 #include "conf_test.h"
 
-/* Event user being TC0 */
-#define TEST_EVENT_USER   EVSYS_ID_USER_TC0_EVU
+/* Event user being TC3 */
+#define TEST_EVENT_USER   EVSYS_ID_USER_TC3_EVU
 /* Event generator being RTC overflow */
 #define TEST_EVENT_GEN    EVSYS_ID_GEN_RTC_OVF
 
 /* Structure for UART module connected to EDBG (used for unit test output) */
 struct usart_module cdc_uart_module;
+
 /* Structure for TC module */
-struct tc_module tc_inst;
+struct tc_module  tc_inst;
+
+/* Structure for RTC module */
+struct rtc_module rtc_inst;
 
 /* Flag to check successful initialization */
 volatile bool init_success;
+
+/* The event channel handle */
+struct events_resource events;
 
 /**
  * \brief Initialize the USART for unit test
@@ -154,9 +162,9 @@ static void cdc_uart_init(void)
 }
 
 /**
- * \brief Initialize the TC0 & RTC for unit test
+ * \brief Initialize the TC3 & RTC for unit test
  *
- * Initializes the RTC module and TC0 module which are used as
+ * Initializes the RTC module and TC3 module which are used as
  * event generator and event user respectively.
  */
 static void test_event_gen_user_init(void)
@@ -166,22 +174,25 @@ static void test_event_gen_user_init(void)
 
 	/* Timer configuration (Event User) */
 	struct tc_config config_tc;
+
 	tc_get_config_defaults(&config_tc);
-	config_tc.event_action = TC_EVENT_ACTION_START;
-	config_tc.size_specific.size_16_bit.compare_capture_channel[0]
+	config_tc.counter_16_bit.compare_capture_channel[0]
 		= (0xFFFF / 4);
 
-	/* Initialize the TC0 */
-	status = tc_init(&tc_inst, TC0, &config_tc);
+	/* Initialize the TC3 */
+	status = tc_init(&tc_inst, TC3, &config_tc);
 	if (status != STATUS_OK) {
 		init_success = false;
 	}
 
 	struct tc_events events_tc;
+
 	events_tc.on_event_perform_action = true;
+	events_tc.event_action = TC_EVENT_ACTION_START;
+
 	tc_enable_events(&tc_inst, &events_tc);
 
-	/* Enable the TC0 */
+	/* Enable the TC3 */
 	tc_enable(&tc_inst);
 
 	/* RTC configuration (Event Generator) */
@@ -195,14 +206,15 @@ static void test_event_gen_user_init(void)
 	config_rtc_count.mode                = RTC_COUNT_MODE_16BIT;
 	config_rtc_count.continuously_update = true;
 	config_rtc_count.compare_values[0]   = 50;
-	status = rtc_count_init(&config_rtc_count);
+	status = rtc_count_init(&rtc_inst, RTC, &config_rtc_count);
+
 	if (status != STATUS_OK) {
 		init_success = false;
 	}
 
 	/* Enable RTC events */
 	config_rtc_event.generate_event_on_overflow = true;
-	rtc_count_enable_events(&config_rtc_event);
+	rtc_count_enable_events(&rtc_inst, &config_rtc_event);
 }
 
 /**
@@ -217,23 +229,18 @@ static void test_event_gen_user_init(void)
  */
 static void setup_synchronous_event_test(const struct test_case *test)
 {
-	struct events_user_config test_user_conf;
-	struct events_chan_config test_chan_conf;
+	struct events_config   events_conf;
 
-	/* Initialize the event system */
-	events_init();
+	/* Get default event channel configuration */
+	events_get_config_defaults(&events_conf);
 
-	/* Setup the event user */
-	events_user_get_config_defaults(&test_user_conf);
-	events_user_set_config(TEST_EVENT_USER, &test_user_conf);
+	events_conf.clock_source   = GCLK_GENERATOR_2;
+	events_conf.edge_detect    = EVENTS_EDGE_DETECT_RISING;
+	events_conf.path           = EVENTS_PATH_SYNCHRONOUS;
+	events_conf.generator      = TEST_EVENT_GEN;
 
-	/* Setup the event channel */
-	events_chan_get_config_defaults(&test_chan_conf);
-	test_chan_conf.clock_source   = GCLK_GENERATOR_2;
-	test_chan_conf.edge_detection = EVENT_EDGE_RISING;
-	test_chan_conf.path           = EVENT_PATH_SYNCHRONOUS;
-	test_chan_conf.generator_id   = TEST_EVENT_GEN;
-	events_chan_set_config(EVENT_CHANNEL_0, &test_chan_conf);
+	events_allocate(&events, &events_conf);
+	events_attach_user(&events, TEST_EVENT_USER);
 }
 
 /**
@@ -257,35 +264,45 @@ static void run_synchronous_event_test(const struct test_case *test)
 
 	/* Check whether event user is ready */
 	do {
+
 		timeout_cycles--;
-		if (events_user_is_ready(EVENT_CHANNEL_0)) {
+		if (events_is_users_ready(&events)) {
 			break;
 		}
+
 	} while (timeout_cycles > 0);
+
 	test_assert_true(test, timeout_cycles > 0,
 			"Timeout error: Event user not ready");
 
 	/* Check whether event channel is ready */
 	timeout_cycles = 1000;
 	do {
+
 		timeout_cycles--;
-		if (events_chan_is_ready(EVENT_CHANNEL_0)) {
+		if (!events_is_busy(&events)) {
 			break;
 		}
+
 	} while (timeout_cycles > 0);
+
 	test_assert_true(test, timeout_cycles > 0,
 			"Timeout error: Event channel not ready");
 
 	/* Event action test */
-	rtc_count_enable();
-	rtc_count_set_period(100);
+	rtc_count_enable(&rtc_inst);
+	rtc_count_set_period(&rtc_inst, 100);
 	timeout_cycles = 10000;
+
 	do {
+
 		timeout_cycles--;
 		if (tc_get_count_value(&tc_inst)) {
 			break;
 		}
+
 	} while (timeout_cycles > 0);
+
 	test_assert_true(test, timeout_cycles > 0,
 			"Error: Timeout in event reception/action");
 }
@@ -295,15 +312,16 @@ static void run_synchronous_event_test(const struct test_case *test)
  * \brief Cleanup Function: Synchronous event propagation.
  *
  * This function disables the RTC, clears the RTC COUNT register and
- * stops the timer (TC0).
+ * stops the timer (TC3).
  *
  * \param test Current test case.
  */
 static void cleanup_synchronous_event_test(const struct test_case *test)
 {
-	rtc_count_disable();
-	rtc_count_set_count(0);
+	rtc_count_disable(&rtc_inst);
+	rtc_count_set_count(&rtc_inst, 0);
 	tc_stop_counter(&tc_inst);
+	events_release(&events);
 }
 
 /**
@@ -318,23 +336,20 @@ static void cleanup_synchronous_event_test(const struct test_case *test)
  */
 static void setup_resynchronous_event_test(const struct test_case *test)
 {
-	struct events_user_config test_user_conf;
-	struct events_chan_config test_chan_conf;
 
-	/* Initialize the event system */
-	events_init();
+	struct events_config   events_conf;
 
-	/* Setup the event user */
-	events_user_get_config_defaults(&test_user_conf);
-	events_user_set_config(TEST_EVENT_USER, &test_user_conf);
+	/* Get default event channel configuration */
+	events_get_config_defaults(&events_conf);
 
-	/* Setup the event channel */
-	events_chan_get_config_defaults(&test_chan_conf);
-	test_chan_conf.clock_source   = GCLK_GENERATOR_0;
-	test_chan_conf.edge_detection = EVENT_EDGE_RISING;
-	test_chan_conf.path           = EVENT_PATH_RESYNCHRONOUS;
-	test_chan_conf.generator_id   = TEST_EVENT_GEN;
-	events_chan_set_config(EVENT_CHANNEL_0, &test_chan_conf);
+	events_conf.clock_source   = GCLK_GENERATOR_0;
+	events_conf.edge_detect    = EVENTS_EDGE_DETECT_RISING;
+	events_conf.path           = EVENTS_PATH_RESYNCHRONIZED;
+	events_conf.generator      = TEST_EVENT_GEN;
+
+	events_allocate(&events, &events_conf);
+	events_attach_user(&events, TEST_EVENT_USER);
+
 }
 
 /**
@@ -359,10 +374,11 @@ static void run_resynchronous_event_test(const struct test_case *test)
 	/* Check whether event user is ready */
 	do {
 		timeout_cycles--;
-		if (events_user_is_ready(EVENT_CHANNEL_0)) {
+		if (events_is_users_ready(&events)) {
 			break;
 		}
 	} while (timeout_cycles > 0);
+
 	test_assert_true(test, timeout_cycles > 0,
 			"Timeout error: Event user not ready");
 
@@ -370,23 +386,26 @@ static void run_resynchronous_event_test(const struct test_case *test)
 	timeout_cycles = 1000;
 	do {
 		timeout_cycles--;
-		if (events_chan_is_ready(EVENT_CHANNEL_0)) {
+		if (!events_is_busy(&events)) {
 			break;
 		}
 	} while (timeout_cycles > 0);
+
 	test_assert_true(test, timeout_cycles > 0,
 			"Timeout error: Event channel not ready");
 
 	/* Event action test */
-	rtc_count_enable();
-	rtc_count_set_period(100);
+	rtc_count_enable(&rtc_inst);
+	rtc_count_set_period(&rtc_inst, 100);
 	timeout_cycles = 10000;
+
 	do {
 		timeout_cycles--;
 		if (tc_get_count_value(&tc_inst)) {
 			break;
 		}
 	} while (timeout_cycles > 0);
+
 	test_assert_true(test, timeout_cycles > 0,
 			"Error: Timeout in event reception/action");
 }
@@ -396,15 +415,16 @@ static void run_resynchronous_event_test(const struct test_case *test)
  * \brief Cleanup Function: Resynchronized event propagation.
  *
  * This function disables the RTC, clears the RTC COUNT register and
- * stops the timer (TC0).
+ * stops the timer (TC3).
  *
  * \param test Current test case.
  */
 static void cleanup_resynchronous_event_test(const struct test_case *test)
 {
-	rtc_count_disable();
-	rtc_count_set_count(0);
+	rtc_count_disable(&rtc_inst);
+	rtc_count_set_count(&rtc_inst, 0);
 	tc_stop_counter(&tc_inst);
+	events_release(&events);
 }
 
 /**
@@ -419,21 +439,18 @@ static void cleanup_resynchronous_event_test(const struct test_case *test)
  */
 static void setup_asynchronous_event_test(const struct test_case *test)
 {
-	struct events_user_config test_user_conf;
-	struct events_chan_config test_chan_conf;
 
-	/* Initialize the event system */
-	events_init();
+	struct events_config   events_conf;
 
-	/* Setup the event user */
-	events_user_get_config_defaults(&test_user_conf);
-	events_user_set_config(TEST_EVENT_USER, &test_user_conf);
+	/* Get default event channel configuration */
+	events_get_config_defaults(&events_conf);
 
-	/* Setup the event channel */
-	events_chan_get_config_defaults(&test_chan_conf);
-	test_chan_conf.path           = EVENT_PATH_ASYNCHRONOUS;
-	test_chan_conf.generator_id   = TEST_EVENT_GEN;
-	events_chan_set_config(EVENT_CHANNEL_0, &test_chan_conf);
+	events_conf.path           = EVENTS_PATH_ASYNCHRONOUS;
+	events_conf.generator      = TEST_EVENT_GEN;
+
+	events_allocate(&events, &events_conf);
+	events_attach_user(&events, TEST_EVENT_USER);
+
 }
 
 /**
@@ -457,35 +474,45 @@ static void run_asynchronous_event_test(const struct test_case *test)
 
 	/* Check whether event user is ready */
 	do {
+
 		timeout_cycles--;
-		if (events_user_is_ready(EVENT_CHANNEL_0)) {
+		if (events_is_users_ready(&events)) {
 			break;
 		}
+
 	} while (timeout_cycles > 0);
+
 	test_assert_true(test, timeout_cycles > 0,
 			"Timeout error: Event user not ready");
 
 	/* Check whether event channel is ready */
 	timeout_cycles = 1000;
 	do {
+
 		timeout_cycles--;
-		if (events_chan_is_ready(EVENT_CHANNEL_0)) {
+		if (!events_is_busy(&events)) {
 			break;
 		}
+
 	} while (timeout_cycles > 0);
+
 	test_assert_true(test, timeout_cycles > 0,
 			"Timeout error: Event channel not ready");
 
 	/* Event action test */
-	rtc_count_enable();
-	rtc_count_set_period(100);
+	rtc_count_enable(&rtc_inst);
+	rtc_count_set_period(&rtc_inst, 100);
 	timeout_cycles = 10000;
+
 	do {
+
 		timeout_cycles--;
 		if (tc_get_count_value(&tc_inst)) {
 			break;
 		}
+
 	} while (timeout_cycles > 0);
+
 	test_assert_true(test, timeout_cycles > 0,
 			"Error: Timeout in event reception/action");
 }
@@ -495,15 +522,16 @@ static void run_asynchronous_event_test(const struct test_case *test)
  * \brief Cleanup Function: Asynchronous event propagation.
  *
  * This function disables the RTC, clears the RTC COUNT register and
- * stops the timer (TC0).
+ * stops the timer (TC3).
  *
  * \param test Current test case.
  */
 static void cleanup_asynchronous_event_test(const struct test_case *test)
 {
-	rtc_count_disable();
-	rtc_count_set_count(0);
+	rtc_count_disable(&rtc_inst);
+	rtc_count_set_count(&rtc_inst, 0);
 	tc_stop_counter(&tc_inst);
+	events_release(&events);
 }
 
 /**
@@ -546,7 +574,7 @@ int main(void)
 
 	/* Define the test suite */
 	DEFINE_TEST_SUITE(events_test_suite, events_tests,
-			"SAM D20 Event System driver test suite");
+			"SAM D20/D21 Event System driver test suite");
 
 	/* Run all tests in the suite*/
 	test_suite_run(&events_test_suite);

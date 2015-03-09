@@ -3,6 +3,7 @@
 		<build type="header-file" value="conf_ssd1306.h"/>
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_spi.h"/>
 		<build type="include-path" value="."/>
 		<config name="config.spi_master_type" value="usart_spi"/>
 		<require idref="common2.components.display.ssd1306.example"/>

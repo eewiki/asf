@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.freertos.dbg_print" caption="Debug Print (FreeRTOS)">
+		<info type="description" value="summary">
+			Thread-safe, buffered debug print service for use with FreeRTOS,
+			with output via SERCOM UART.
+
+			May also be used without FreeRTOS, but will then not be thread-safe
+			nor have efficient waiting when buffer is full.
+
+			Tested with FreeRTOS v7.4.2.
+		</info>
+		<build type="doxygen-entry-point" value="asfdoc_common_freertos_dbg_print_group"/>
+		<build type="doxygen-example-path" value="quick_start_basic"/>
+		<build type="c-source" value="dbg_print.c"/>
+		<build type="header-file" subtype="api" value="dbg_print.h"/>
+		<build type="header-file" subtype="api" value="quick_start_basic/qs_dbg_print_basic.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="path" value="module-config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_dbg_print.h"/>
+		<require idref="sam0.drivers.sercom"/>
+		<require idref="sam0.drivers.sercom.usart"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.utils"/>
+		<device-support value="samd20"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

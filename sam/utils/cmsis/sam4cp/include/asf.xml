@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4cp.include" caption="SAM4CP part definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4CP
+		</info>
+		<build type="header-file" value="sam4cp.h"/>
+		<build type="header-file" value="sam4cp_0.h"/>
+		<build type="header-file" value="sam4cp_1.h"/>
+		<build type="header-file" value="sam4cp16b_0.h"/>
+		<build type="header-file" value="sam4cp16b_1.h"/>
+		<build type="header-file" value="system_sam4cp.h"/>
+		<build type="include-path" value="."/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam4cp"/>
+	</module>
+</asf>

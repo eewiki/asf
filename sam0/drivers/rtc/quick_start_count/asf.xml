@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.rtc.quick_start_count_polled" caption="Quick Start for the SAM D20 RTC Count Driver (Polled)">
+	<module type="application" id="sam0.drivers.rtc.quick_start_count_polled" caption="Quick Start for the SAM D20/D21 RTC Count Driver (Polled)">
 		<info type="description" value="summary">
 		Quick start guide for the RTC Counter (Polled Mode) driver demonstrating configuration and initialization.
 		</info>
@@ -9,5 +9,6 @@
 		<require idref="sam0.drivers.rtc"/>
 		<require idref="sam0.drivers.port"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 	</module>
 </asf>

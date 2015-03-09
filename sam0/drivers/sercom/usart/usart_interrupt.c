@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 SERCOM USART Asynchronous Driver
+ * \brief SAM D20/D21 SERCOM USART Asynchronous Driver
  *
- * Copyright (C) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -102,6 +102,20 @@ void _usart_read_buffer(
 
 	/* Enable the RX Complete Interrupt */
 	usart_hw->INTENSET.reg = SERCOM_USART_INTFLAG_RXC;
+
+#ifdef FEATURE_USART_LIN_SLAVE
+	/* Enable the break character is received Interrupt */
+	if(module->lin_slave_enabled) {
+		usart_hw->INTENSET.reg = SERCOM_USART_INTFLAG_RXBRK;
+	}
+#endif
+
+#ifdef FEATURE_USART_START_FRAME_DECTION
+	/* Enable a start condition is detected Interrupt */
+	if(module->start_frame_detection_enabled) {
+		usart_hw->INTENSET.reg = SERCOM_USART_INTFLAG_RXS;
+	}
+#endif
 }
 
 /**
@@ -261,7 +275,7 @@ enum status_code usart_write_buffer_job(
 	if (module->remaining_tx_buffer_length > 0) {
 		return STATUS_BUSY;
 	}
-	
+
 	/* Check that the receiver is enabled */
 	if (!(module->transmitter_enabled)) {
 		return STATUS_ERR_DENIED;
@@ -303,7 +317,7 @@ enum status_code usart_read_buffer_job(
 	if (length == 0) {
 		return STATUS_ERR_INVALID_ARG;
 	}
-	
+
 	/* Check that the receiver is enabled */
 	if (!(module->receiver_enabled)) {
 		return STATUS_ERR_DENIED;
@@ -440,9 +454,10 @@ void _usart_interrupt_handler(
 	_usart_wait_for_sync(module);
 
 	/* Read and mask interrupt flag register */
-	interrupt_status = usart_hw->INTFLAG.reg & usart_hw->INTENSET.reg;
-	callback_status = module->callback_reg_mask
-			&module->callback_enable_mask;
+	interrupt_status = usart_hw->INTFLAG.reg;
+	interrupt_status &= usart_hw->INTENSET.reg;
+	callback_status = module->callback_reg_mask &
+			module->callback_enable_mask;
 
 	/* Check if a DATA READY interrupt has occurred,
 	 * and if there is more to transfer */
@@ -513,6 +528,20 @@ void _usart_interrupt_handler(
 					module->rx_status = STATUS_ERR_BAD_DATA;
 					usart_hw->STATUS.reg |= SERCOM_USART_STATUS_PERR;
 				}
+#ifdef FEATURE_USART_LIN_SLAVE
+				else if (error_code & SERCOM_USART_STATUS_ISF) {
+					/* Store the error code and clear flag by writing 1 to it */
+					module->rx_status = STATUS_ERR_PROTOCOL;
+					usart_hw->STATUS.reg |= SERCOM_USART_STATUS_ISF;
+				}
+#endif
+#ifdef FEATURE_USART_COLLISION_DECTION
+				else if (error_code & SERCOM_USART_STATUS_COLL) {
+					/* Store the error code and clear flag by writing 1 to it */
+					module->rx_status = STATUS_ERR_PACKET_COLLISION;
+					usart_hw->STATUS.reg |= SERCOM_USART_STATUS_COLL;
+				}
+#endif
 
 				/* Run callback if registered and enabled */
 				if (callback_status
@@ -557,4 +586,46 @@ void _usart_interrupt_handler(
 			usart_hw->INTENCLR.reg = SERCOM_USART_INTFLAG_RXC;
 		}
 	}
+
+#ifdef FEATURE_USART_HARDWARE_FLOW_CONTROL
+	if (interrupt_status & SERCOM_USART_INTFLAG_CTSIC) {
+		/* Disable interrupts */
+		usart_hw->INTENCLR.reg = SERCOM_USART_INTENCLR_CTSIC;
+		/* Clear interrupt flag */
+		usart_hw->INTFLAG.reg = SERCOM_USART_INTFLAG_CTSIC;
+
+		/* Run callback if registered and enabled */
+		if (callback_status & (1 << USART_CALLBACK_CTS_INPUT_CHANGE)) {
+			(*(module->callback[USART_CALLBACK_CTS_INPUT_CHANGE]))(module);
+		}
+	}
+#endif
+
+#ifdef FEATURE_USART_LIN_SLAVE
+	if (interrupt_status & SERCOM_USART_INTFLAG_RXBRK) {
+		/* Disable interrupts */
+		usart_hw->INTENCLR.reg = SERCOM_USART_INTENCLR_RXBRK;
+		/* Clear interrupt flag */
+		usart_hw->INTFLAG.reg = SERCOM_USART_INTFLAG_RXBRK;
+
+		/* Run callback if registered and enabled */
+		if (callback_status & (1 << USART_CALLBACK_BREAK_RECEIVED)) {
+			(*(module->callback[USART_CALLBACK_BREAK_RECEIVED]))(module);
+		}
+	}
+#endif
+
+#ifdef FEATURE_USART_START_FRAME_DECTION
+	if (interrupt_status & SERCOM_USART_INTFLAG_RXS) {
+		/* Disable interrupts */
+		usart_hw->INTENCLR.reg = SERCOM_USART_INTENCLR_RXS;
+		/* Clear interrupt flag */
+		usart_hw->INTFLAG.reg = SERCOM_USART_INTFLAG_RXS;
+
+		/* Run callback if registered and enabled */
+		if (callback_status & (1 << USART_CALLBACK_START_RECEIVED)) {
+			(*(module->callback[USART_CALLBACK_START_RECEIVED]))(module);
+		}
+	}
+#endif
 }

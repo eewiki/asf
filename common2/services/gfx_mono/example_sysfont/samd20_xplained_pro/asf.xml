@@ -5,6 +5,7 @@
 		<build type="header-file" value="conf_clocks.h"/>
 		<build type="header-file" value="conf_ssd1306.h"/>
 		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_spi.h"/>
 		<config name="common2.services.gfx_mono.display" value="ug_2832hsweg04"/>
 		<require idref="common2.services.gfx_mono.example.sysfont"/>
 		<require idref="board.samd20_xplained_pro"/>

@@ -8,6 +8,7 @@
 		<require idref="board.sam4l_ek"/>
 		<generator value="as5_arm_template"/>
 		<generator value="doxygen"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
 		<device-support value="atsam4lc4c"/>
 	</project>
 </asf>

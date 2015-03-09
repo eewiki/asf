@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.sercom.i2c.quick_start_slave_basic_use" caption="Quick Start for the SAM D20 SERCOM I2C Slave Driver (Polled)">
+	<module type="application" id="sam0.drivers.sercom.i2c.quick_start_slave_basic_use" caption="Quick Start for the SAM D20/D21 SERCOM I2C Slave Driver (Polled)">
 		<info type="description" value="summary">
 		Quick start guide for the SERCOM I2C interface module in slave mode demonstrating module configuration.
 		</info>
@@ -7,6 +7,6 @@
 		<build type="c-source" value="qs_i2c_slave_basic_use.c"/>
 		<build type="include-path" value="."/>
 		<require idref="sam0.drivers.sercom.i2c.slave"/>
-		<device-support value="samd20"/>
+		<device-support value="sam0"/>
 	</module>
 </asf>

@@ -8,7 +8,7 @@
 		<build type="c-source" value="main.c"/>
 		<build type="c-source" value="vendor_data.c"/>		
 		<build type="header-file" value="conf_common_sw_timer.h"/>
-		<build type="header-file" value="conf_pal.h"/>
+		<build type="header-file" value="conf_trx_access.h"/>
 		<build type="header-file" value="app_config.h"/>
 		<build type="define" name="HIGHEST_STACK_LAYER" value ="RF4CE"/>
 		<build type="define" name="PRIVATE_NIB" value =""/>
@@ -31,8 +31,6 @@
 		
 		<require idref="thirdparty.wireless.avr2102_rf4control.include"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.pal"/>
-		<require idref="thirdparty.wireless.avr2025_mac.source.sal"/>
-		<require idref="thirdparty.wireless.avr2025_mac.source.stb"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.mac"/>
 		<require idref="thirdparty.wireless.addons.sio2host"/>
         <require idref="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr"/>

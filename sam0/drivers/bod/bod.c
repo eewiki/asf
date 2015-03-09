@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 Brown Out Detector Driver
+ * \brief SAM D20/D21 Brown Out Detector Driver
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -90,16 +90,6 @@ enum status_code bod_set_config(
 			SYSCTRL->BOD33.reg = SYSCTRL_BOD33_LEVEL(conf->level) |
 					temp | SYSCTRL_BOD33_ENABLE;
 			break;
-
-		case BOD_BOD12:
-			if (conf->level > 0x1F) {
-				return STATUS_ERR_INVALID_ARG;
-			}
-
-			SYSCTRL->BOD12.reg = SYSCTRL_BOD12_LEVEL(conf->level) |
-					temp | SYSCTRL_BOD12_ENABLE;
-			break;
-
 		default:
 			return STATUS_ERR_INVALID_ARG;
 	}

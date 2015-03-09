@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<select-by-config id="thirdparty.common.services.usb.class.hid.device.keyboard.composite" name="thirdparty.config.common.services.usb.class.hid.device.keyboard.composite" default="disable" caption="USB Device HID Keyboard (Composite Device)">
+		<module type="service" id="thirdparty.common.services.usb.class.hid.device.keyboard.composite#enable" caption="USB Device HID Keyboard (Composite Device)">
+			<info type="description" value="summary">
+			USB Human Interface Device (HID) keyboard for composite device.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication" />
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="udi_hid_kbd.h"/>
+			<build type="c-source" value="udi_hid_kbd.c"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="udi_hid_keyboard_group"/>
+			<build type="doxygen-quick-start" value="udi_hid_keyboard_use_case_composite"/>
+			<require idref="common.services.usb.class.hid.device"/>
+			<require idref="common.services.usb.class.composite.device"/>
+			<device-support value="xmegaa3u"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="thirdparty.common.services.usb.class.hid.device.keyboard.composite#disable" caption="USB Device HID Keyboard disabled">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="avr"/>
+			<device-support value="sam"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	
+</asf>

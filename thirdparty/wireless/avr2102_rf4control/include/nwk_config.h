@@ -4,7 +4,7 @@
  * @brief This module includes the Buffer and timer configuration for RF4Control
  *stack.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -82,10 +82,13 @@
 
 #define NUMBER_OF_NWK_TIMERS            1 + NUMBER_OF_CH_AG_TIMERS + \
 	NUMBER_OF_PROFILE_TIMERS + PBP_TIMER
+
 #if (HIGHEST_STACK_LAYER == RF4CE)
 #define NUMBER_OF_LARGE_STACK_BUFS              (5)
 
 #define NUMBER_OF_SMALL_STACK_BUFS              (0)
+#define TOTAL_STACK_TIMERS (NUMBER_OF_TAL_TIMERS + NUMBER_OF_MAC_TIMERS + \
+NUMBER_OF_NWK_TIMERS)
 #endif
 #if (HIGHEST_STACK_LAYER == RF4CE)
 

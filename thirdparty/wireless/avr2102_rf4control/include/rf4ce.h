@@ -3,7 +3,7 @@
  *
  * @brief This header file declares the interface for the RF4Control stack.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -55,7 +55,7 @@
 #include "nwk_build_config.h"
 
 /**
- * \defgroup group_rf4control RF4CE Stack Modules
+ * \defgroup group_rf4control RF4Control v2.0.0
  * The RF4Control stack is a ZigBee® RF4CE Certified Platform implementing the
  *ZigBee
  * RF4CE standard.
@@ -479,7 +479,7 @@ typedef enum nib_attribute_tag {
 	 * frame
 	 *  waits before terminating a repeated operation. */
 	aplKeyRepeatWaitTime                = 0x81
-#endif
+
 #if (defined PBP_ORG) || (defined PBP_REC)
 	,
 
@@ -487,6 +487,7 @@ typedef enum nib_attribute_tag {
 	 * pair
 	 *  request primitive during the push button pairing procedure. */
 	aplKeyExchangeTransferCount         = 0x82
+#endif
 #endif
 } SHORTENUM nib_attribute_t;
 
@@ -580,7 +581,9 @@ typedef enum profile_id_tag {
 	PROFILE_ID_RESERVED_00      = 0x00,
 	/** Consumer Electronics Remote control */
 	PROFILE_ID_ZRC              = 0x01,
-	/* 0x02 - 0xbf Reserved for future standard ZigBee RF4CE profiles */
+	/** ZigBee Input Device */
+	PROFILE_ID_ZID              = 0x02,
+	/* 0x03 - 0xbf Reserved for future standard ZigBee RF4CE profiles */
 	/* 0xc0 - 0xfe Manufacturer specific profiles */
 	PROFILE_ID_VENDOR_DATA      = 0xFE,
 	/** Wildcard profile id */
@@ -975,6 +978,18 @@ typedef void (*zrc_data_indication_cb_t)(uint8_t PairingRef, uint16_t VendorId,
 		uint8_t *nsdu, uint8_t RxLinkQuality, uint8_t RxFlags);
 #endif
 
+#if (defined ZID_PROFILE)
+typedef void (*zid_data_indication_cb_t)(uint8_t PairingRef, uint16_t VendorId,
+		uint8_t nsduLength, uint8_t *nsdu,
+		uint8_t RxLinkQuality, uint8_t RxFlags);
+#endif
+
+#if (defined GDP_PROFILE)
+typedef void (*gdp_data_indication_cb_t)(uint8_t PairingRef, uint8_t nsduLength,
+		uint8_t *nsdu,
+		uint8_t RxLinkQuality, uint8_t RxFlags);
+#endif
+
 /**
  * struct for network indication callback.
  * App should use this struct to register indication callback functions
@@ -1000,6 +1015,12 @@ typedef struct nwk_indication_callback_tag {
 #endif
 #ifdef ZRC_PROFILE
 	zrc_data_indication_cb_t zrc_data_indication_cb;
+#endif
+#ifdef ZID_PROFILE
+	zid_data_indication_cb_t zid_data_indication_cb;
+#endif
+#ifdef GDP_PROFILE
+	gdp_data_indication_cb_t gdp_data_indication_cb;
 #endif
 	nlde_data_indication_cb_t nlde_data_indication_cb;
 } nwk_indication_callback_t;

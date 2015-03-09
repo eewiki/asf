@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="Quick Start for the SAM D20 SERCOM SPI Master Driver with Vectored I/O" id="sam0.drivers.sercom.spi_master_vec.quick_start.samd20_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_clocks.h"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<build type="header-file" value="config/conf_spi_master_vec.h"/>
+		<build type="header-file" value="config/conf_spi.h"/>
+		<require idref="board.samd20_xplained_pro"/>
+		<require idref="sam0.drivers.sercom.spi_master_vec.quick_start"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsamd20j18"/>
+	</project>
+</asf>

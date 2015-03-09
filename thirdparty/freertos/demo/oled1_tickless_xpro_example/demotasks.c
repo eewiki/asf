@@ -3,7 +3,7 @@
  *
  * \brief FreeRTOS demo task implementations.
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -128,13 +128,13 @@ static const char menu_items_text[MENU_NUM_ITEMS][6] = {
 
 //! Text to display on about screen when tickless operation is disabled
 static const char about_text[] =
-	"FreeRTOS v7.4.2 demo."
+	"FreeRTOS v7.5.2 demo."
 	"                     "
 	"Use CDC at 9.6 kBaud.";
 
 //! Text to display on about screen when tickless operation is enabled
 static const char about_text_tickless[] =
-	"FreeRTOS v7.4.2 demo."
+	"FreeRTOS v7.5.2 demo."
 	"      TickLess       "
 	"Use CDC at 9.6 kBaud.";
 
@@ -652,8 +652,13 @@ static void cdc_rx_handler(uint8_t instance)
 	uint8_t error_code;
 
 	// Wait for synch to complete
+#ifdef FEATURE_USART_SYNC_SCHEME_V2
+	while (usart_hw->SYNCBUSY.reg) {
+	}
+#else
 	while (usart_hw->STATUS.reg & SERCOM_USART_STATUS_SYNCBUSY) {
 	}
+#endif
 
 	// Read and mask interrupt flag register
 	interrupt_status = usart_hw->INTFLAG.reg;

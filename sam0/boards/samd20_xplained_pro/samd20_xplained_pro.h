@@ -3,7 +3,7 @@
  *
  * \brief SAM D20 Xplained Pro board definition
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -46,6 +46,10 @@
 
 #include <conf_board.h>
 #include <compiler.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * \ingroup group_common_boards
@@ -542,8 +546,7 @@ void system_board_init(void);
         config.pinmux_pad3 = EXT1_SPI_SERCOM_PINMUX_PAD3;
 
 #define AT86RFX_IRQ_CHAN             EXT1_IRQ_INPUT
-#define AT86RFX_INTC_INIT()          extint_enable(); \
-                                                struct extint_chan_conf eint_chan_conf; \
+#define AT86RFX_INTC_INIT()    struct extint_chan_conf eint_chan_conf; \
                                                 extint_chan_get_config_defaults(&eint_chan_conf); \
                                                 eint_chan_conf.gpio_pin = AT86RFX_IRQ_PIN; \
                                                 eint_chan_conf.gpio_pin_mux = EXT1_IRQ_PINMUX; \
@@ -552,7 +555,7 @@ void system_board_init(void);
                                                 eint_chan_conf.filter_input_signal = false; \
                                                 eint_chan_conf.detection_criteria  = EXTINT_DETECT_RISING; \
                                                 extint_chan_set_config(AT86RFX_IRQ_CHAN, &eint_chan_conf); \
-                                                extint_register_callback(AT86RFX_ISR, EXTINT_CALLBACK_TYPE_DETECT);
+                                                extint_register_callback(AT86RFX_ISR, AT86RFX_IRQ_CHAN, EXTINT_CALLBACK_TYPE_DETECT);
                                                 
 
 /** Enables the transceiver main interrupt. */
@@ -600,5 +603,9 @@ void system_board_init(void);
  * \note The pins of the specified LEDs are set to GPIO output mode.
  */
 #define LED_Toggle(led_gpio)  port_pin_toggle_output_level(led_gpio)
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif  /* SAMD20_XPLAINED_PRO_H_INCLUDED */

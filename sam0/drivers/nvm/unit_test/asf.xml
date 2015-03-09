@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.nvm.unit_test" caption="Unit Tests for the SAM D20 NVM Driver">
+	<module type="application" id="sam0.drivers.nvm.unit_test" caption="Unit Tests for the SAM D20/D21 NVM Driver">
 		<info type="description" value="summary">
 		Unit test for the NVM module.
 		</info>
@@ -11,5 +11,6 @@
 		<require idref="common.utils.unit_test"/>
 		<require idref="sam0.utils.stdio.stdio_serial"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 	</module>
 </asf>

@@ -8,6 +8,7 @@
 		<build type="header-file" value="conf_clocks.h"/>
 		<build type="header-file" value="conf_ssd1306.h"/>
 		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_spi.h"/>
 		<generator value="iarewarm"/>
 		<generator value="armgcc"/>
 		<generator value="as5_arm"/>

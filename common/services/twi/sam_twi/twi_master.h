@@ -3,7 +3,7 @@
  *
  * \brief TWI Master driver for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -61,7 +61,7 @@ static inline uint32_t twi_master_setup(twi_master_t p_twi,
 		sysclk_enable_peripheral_clock(ID_TWI0);
 	} else if (p_twi == TWI1) {
 		sysclk_enable_peripheral_clock(ID_TWI1);
-#if SAM4N
+#if SAM4N | SAMG
 	} else if (p_twi == TWI2) {
 		sysclk_enable_peripheral_clock(ID_TWI2);
 #endif

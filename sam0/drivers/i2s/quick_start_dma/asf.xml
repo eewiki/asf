@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.i2s.quick_start_dma" caption="Quick Start for the SAM D21 I2S Driver (DMA)">
+		<info type="description" value="summary">
+		Quick start guide for the I2S interface module demonstrating module configuration.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_i2s_dma.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_i2s_quick_start_dma.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.i2s"/>
+		<require idref="sam0.drivers.dma"/>
+		<require idref="sam0.drivers.events"/>
+		<device-support value="samd21"/>
+	</module>
+</asf>

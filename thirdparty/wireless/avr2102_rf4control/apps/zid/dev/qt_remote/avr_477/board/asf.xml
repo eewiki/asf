@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+
+<module type="meta" caption="ZID - HID Class Device QTouch Remote application" id="board.user.atmega256rfr2_avr477">
+	<info type="description" value="summary">
+	HID Class Device QTouch Remote application for RF4CE-ZID class-device setup
+	</info>
+	<build type="define" name="BOARD" value="DUMMY_BOARD"/>
+	<build type="header-file" value="avr477.h"/>
+	<build type="header-file" value="led.h"/>
+	<build type="include-path" value="."/>
+	<build type="include-path" value=".."/>
+	<build type="c-source" value="init.c"/>
+	<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+	<build type="module-config" subtype="path" value="board_config"/>
+	<require idref="common.services.basic.gpio"/>
+	<require idref="common.boards"/>
+	<device-support value="atmega256rfr2"/>
+</module>
+</asf>

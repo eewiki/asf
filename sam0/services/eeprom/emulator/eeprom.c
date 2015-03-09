@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 EEPROM Emulator
+ * \brief SAM D20/D21 EEPROM Emulator
  *
- * Copyright (C) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -583,7 +583,6 @@ enum status_code eeprom_emulator_init(void)
 	/* Ensure the device fuses are configured for at least one master page row,
 	 * one user EEPROM data row and one spare row */
 	if (parameters.eeprom_number_of_pages < (3 * NVMCTRL_ROW_PAGES)) {
-		Assert(false);
 		return STATUS_ERR_NO_MEMORY;
 	}
 
@@ -829,7 +828,7 @@ enum status_code eeprom_emulator_write_buffer(
 	}
 
 	/* Write the specified data to the emulated EEPROM memory space */
-	for (c; c < (length + offset); c++) {
+	for (; c < (length + offset); c++) {
 		/* Check if we have written up to a new EEPROM page boundary */
 		if ((c % EEPROM_PAGE_SIZE) == 0) {
 			/* Write the current page to non-volatile memory from the temporary
@@ -908,7 +907,7 @@ enum status_code eeprom_emulator_read_buffer(
 	}
 
 	/* Read in the specified data from the emulated EEPROM memory space */
-	for (c; c < (length + offset); c++) {
+	for (; c < (length + offset); c++) {
 		/* Check if we have read up to a new EEPROM page boundary */
 		if ((c % EEPROM_PAGE_SIZE) == 0) {
 			/* Increment the page number we are looking at */

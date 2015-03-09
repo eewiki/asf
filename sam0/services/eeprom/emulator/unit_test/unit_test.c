@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 EEPROM Emulator Service Unit test
+ * \brief SAM D20/D21 EEPROM Emulator Service Unit test
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,7 +42,7 @@
  */
 
 /**
- * \mainpage SAM D20 EEPROM Emulator Unit Test
+ * \mainpage SAM D20/D21 EEPROM Emulator Unit Test
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -56,22 +56,23 @@
  */
 
 /**
- * \page appdoc_main SAM D20 EEPROM Emulator Unit Test
+ * \page appdoc_main SAM D20/D21 EEPROM Emulator Unit Test
  *
  * Overview:
- * - \ref appdoc_samd20_eeprom_emulator_unit_test_intro
- * - \ref appdoc_samd20_eeprom_emulator_unit_test_setup
- * - \ref appdoc_samd20_eeprom_emulator_unit_test_usage
- * - \ref appdoc_samd20_eeprom_emulator_unit_test_compinfo
- * - \ref appdoc_samd20_eeprom_emulator_unit_test_contactinfo
+ * - \ref appdoc_sam0_eeprom_emulator_unit_test_intro
+ * - \ref appdoc_sam0_eeprom_emulator_unit_test_setup
+ * - \ref appdoc_sam0_eeprom_emulator_unit_test_usage
+ * - \ref appdoc_sam0_eeprom_emulator_unit_test_compinfo
+ * - \ref appdoc_sam0_eeprom_emulator_unit_test_contactinfo
  *
- * \section appdoc_samd20_eeprom_emulator_unit_test_intro Introduction
+ * \section appdoc_sam0_eeprom_emulator_unit_test_intro Introduction
  * \copydetails appdoc_preface
  *
  * The following kit is required for carrying out the test:
  *      - SAM D20 Xplained Pro board
+ *      - SAM D21 Xplained Pro board
  *
- * \section appdoc_samd20_eeprom_emulator_unit_test_setup Setup
+ * \section appdoc_sam0_eeprom_emulator_unit_test_setup Setup
  * The following connections has to be made using wires:
  *  - \b None
  *
@@ -79,7 +80,7 @@
  * of the device to run this test.
  *
  * To run the test:
- *  - Connect the SAM D20 Xplained Pro board to the computer using a
+ *  - Connect the SAM D20/D21 Xplained Pro board to the computer using a
  *    micro USB cable.
  *  - Open the virtual COM port in a terminal application.
  *    \note The USB composite firmware running on the Embedded Debugger (EDBG)
@@ -88,7 +89,7 @@
  *  - Build the project, program the target and run the application.
  *    The terminal shows the results of the unit test.
  *
- * \section appdoc_samd20_eeprom_emulator_unit_test_usage Usage
+ * \section appdoc_sam0_eeprom_emulator_unit_test_usage Usage
  *  - The unit test first initializes the EEPROM emulator and formats the
  *    memory if not previously done.
  *  - The test writes a buffer of data to arbitrary offset and reads back
@@ -96,11 +97,11 @@
  *  - The test then writes a page of data to a page and reads back and
  *    compares
  *
- * \section appdoc_samd20_eeprom_emulator_unit_test_compinfo Compilation Info
+ * \section appdoc_sam0_eeprom_emulator_unit_test_compinfo Compilation Info
  * This software was written for the GNU GCC and IAR for ARM.
  * Other compilers may or may not work.
  *
- * \section appdoc_samd20_eeprom_emulator_unit_test_contactinfo Contact Information
+ * \section appdoc_sam0_eeprom_emulator_unit_test_contactinfo Contact Information
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
  */
@@ -356,7 +357,7 @@ int main(void)
 
 	/* Define the test suite */
 	DEFINE_TEST_SUITE(eeprom_test_suite, eeprom_tests,
-			"SAM D20 EEPROM emulator service test suite");
+			"SAM D20/D21 EEPROM emulator service test suite");
 
 	/* Run all tests in the suite*/
 	test_suite_run(&eeprom_test_suite);

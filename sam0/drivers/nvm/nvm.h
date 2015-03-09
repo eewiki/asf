@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 Non-Volatile Memory driver
+ * \brief SAM D20/D21 Non-Volatile Memory driver
  *
- * Copyright (C) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -44,9 +44,9 @@
 #define NVM_H_INCLUDED
 
 /**
- * \defgroup asfdoc_samd20_nvm_group SAM D20 Non-Volatile Memory Driver (NVM)
+ * \defgroup asfdoc_sam0_nvm_group SAM D20/D21 Non-Volatile Memory Driver (NVM)
  *
- * This driver for SAM D20 devices provides an interface for the configuration
+ * This driver for SAM D20/D21 devices provides an interface for the configuration
  * and management of non-volatile memories within the device, for partitioning,
  * erasing, reading and writing of data.
  *
@@ -55,33 +55,33 @@
  *  - NVM (Non-Volatile Memory)
  *
  * The outline of this documentation is as follows:
- *  - \ref asfdoc_samd20_nvm_prerequisites
- *  - \ref asfdoc_samd20_nvm_module_overview
- *  - \ref asfdoc_samd20_nvm_special_considerations
- *  - \ref asfdoc_samd20_nvm_extra_info
- *  - \ref asfdoc_samd20_nvm_examples
- *  - \ref asfdoc_samd20_nvm_api_overview
+ *  - \ref asfdoc_sam0_nvm_prerequisites
+ *  - \ref asfdoc_sam0_nvm_module_overview
+ *  - \ref asfdoc_sam0_nvm_special_considerations
+ *  - \ref asfdoc_sam0_nvm_extra_info
+ *  - \ref asfdoc_sam0_nvm_examples
+ *  - \ref asfdoc_sam0_nvm_api_overview
  *
  *
- * \section asfdoc_samd20_nvm_prerequisites Prerequisites
+ * \section asfdoc_sam0_nvm_prerequisites Prerequisites
  *
  * There are no prerequisites for this module.
  *
  *
- * \section asfdoc_samd20_nvm_module_overview Module Overview
+ * \section asfdoc_sam0_nvm_module_overview Module Overview
  *
  * The Non-Volatile Memory (NVM) module provides an interface to the device's
  * Non-Volatile Memory controller, so that memory pages can be written, read,
  * erased and reconfigured in a standardized manner.
  *
- * \subsection asfdoc_samd20_nvm_module_overview_regions Memory Regions
- * The NVM memory space of the SAM D20 devices is divided into two sections:
+ * \subsection asfdoc_sam0_nvm_module_overview_regions Memory Regions
+ * The NVM memory space of the SAM D20/D21 devices is divided into two sections:
  * a Main Array section, and an Auxiliary space section. The Main Array space
  * can be configured to have an (emulated) EEPROM and/or boot loader section.
  * The memory layout with the EEPROM and bootloader partitions is shown in
- * \ref asfdoc_samd20_nvm_module_mem_layout "the figure below".
+ * \ref asfdoc_sam0_nvm_module_mem_layout "the figure below".
  *
- * \anchor asfdoc_samd20_nvm_module_mem_layout
+ * \anchor asfdoc_sam0_nvm_module_mem_layout
  * \dot
  * digraph memory_layout {
  *  size="5,5"
@@ -134,11 +134,11 @@
  * \f[ PageNum = (RowNum \times 4) + PagePosInRow \f]
  * \f[ PageAddr = PageNum \times PageSize \f]
  *
- * \ref asfdoc_samd20_nvm_module_row_layout "The figure below" shows an example
+ * \ref asfdoc_sam0_nvm_module_row_layout "The figure below" shows an example
  * of the memory page and address values associated with logical row 7 of the
  * NVM memory space.
  *
- * \anchor asfdoc_samd20_nvm_module_row_layout
+ * \anchor asfdoc_sam0_nvm_module_row_layout
  * \dot
  * digraph row_layout {
  *  size="4,4"
@@ -164,8 +164,8 @@
  * }
  * \enddot
  *
- * \subsection asfdoc_samd20_nvm_module_overview_locking_regions Region Lock Bits
- * As mentioned in \ref asfdoc_samd20_nvm_module_overview_regions, the main
+ * \subsection asfdoc_sam0_nvm_module_overview_locking_regions Region Lock Bits
+ * As mentioned in \ref asfdoc_sam0_nvm_module_overview_regions, the main
  * block of the NVM memory is divided into a number of individually addressable
  * pages. These pages are grouped into 16 equal sized regions, where each region
  * can be locked separately issuing an \ref NVM_COMMAND_LOCK_REGION command or
@@ -179,11 +179,11 @@
  *       however the adjusted configuration will not take effect until the next
  *       device reset.
  *
- * \note If the \ref asfdoc_samd20_nvm_special_consideration_security_bit is
+ * \note If the \ref asfdoc_sam0_nvm_special_consideration_security_bit is
  *       set, the auxiliary space cannot be written to. Clearing of the security
  *       bit can only be performed by a full chip erase.
  *
- * \subsection asfdoc_samd20_nvm_module_overview_sub_rw Read/Write
+ * \subsection asfdoc_sam0_nvm_module_overview_sub_rw Read/Write
  * Reading from the NVM memory can be performed using direct addressing into the
  * NVM memory space, or by calling the \ref nvm_read_buffer() function.
  *
@@ -196,44 +196,44 @@
  * first via the \ref nvm_erase_row() function. Writing to a non-erased page
  * will result in corrupt data being stored in the NVM memory space.
  *
- * \section asfdoc_samd20_nvm_special_considerations Special Considerations
+ * \section asfdoc_sam0_nvm_special_considerations Special Considerations
  *
- * \subsection asfdoc_samd20_nvm_special_consideration_pageerase Page Erasure
+ * \subsection asfdoc_sam0_nvm_special_consideration_pageerase Page Erasure
  * The granularity of an erase is per row, while the granularity of a write is
  * per page. Thus, if the user application is modifying only one page of a row,
  * the remaining pages in the row must be buffered and the row erased, as an
  * erase is mandatory before writing to a page.
  *
- * \subsection asfdoc_samd20_nvm_special_consideration_clocks Clocks
+ * \subsection asfdoc_sam0_nvm_special_consideration_clocks Clocks
  * The user must ensure that the driver is configured with a proper number of
  * wait states when the CPU is running at high frequencies.
  *
- * \subsection asfdoc_samd20_nvm_special_consideration_security_bit Security Bit
+ * \subsection asfdoc_sam0_nvm_special_consideration_security_bit Security Bit
  * The User Row in the Auxiliary Space Cannot be read or written when
  * the Security Bit is set. The Security Bit can be set by using passing
  * \ref NVM_COMMAND_SET_SECURITY_BIT to the \ref nvm_execute_command() function,
  * or it will be set if one tries to access a locked region. See
- * \ref asfdoc_samd20_nvm_module_overview_locking_regions.
+ * \ref asfdoc_sam0_nvm_module_overview_locking_regions.
  *
  * The Security Bit can only be cleared by performing a chip erase.
  *
  *
- * \section asfdoc_samd20_nvm_extra_info Extra Information
+ * \section asfdoc_sam0_nvm_extra_info Extra Information
  *
- * For extra information see \ref asfdoc_samd20_nvm_extra. This includes:
- *  - \ref asfdoc_samd20_nvm_extra_acronyms
- *  - \ref asfdoc_samd20_nvm_extra_dependencies
- *  - \ref asfdoc_samd20_nvm_extra_errata
- *  - \ref asfdoc_samd20_nvm_extra_history
+ * For extra information see \ref asfdoc_sam0_nvm_extra. This includes:
+ *  - \ref asfdoc_sam0_nvm_extra_acronyms
+ *  - \ref asfdoc_sam0_nvm_extra_dependencies
+ *  - \ref asfdoc_sam0_nvm_extra_errata
+ *  - \ref asfdoc_sam0_nvm_extra_history
  *
  *
- * \section asfdoc_samd20_nvm_examples Examples
+ * \section asfdoc_sam0_nvm_examples Examples
  *
  * For a list of examples related to this driver, see
- * \ref asfdoc_samd20_nvm_exqsg.
+ * \ref asfdoc_sam0_nvm_exqsg.
  *
  *
- * \section asfdoc_samd20_nvm_api_overview API Overview
+ * \section asfdoc_sam0_nvm_api_overview API Overview
  * @{
  */
 
@@ -460,18 +460,6 @@ enum nvm_bod33_action {
 };
 
 /**
- * \brief BOD12 Action
- *
- * What action should be triggered when BOD12 is detected.
- *
- */
-enum nvm_bod12_action {
-	NVM_BOD12_ACTION_NONE,
-	NVM_BOD12_ACTION_RESET,
-	NVM_BOD12_ACTION_INTERRUPT,
-};
-
-/**
  * \brief WDT Window time-out period
  *
  * Windows mode time-out period in clock cycles.
@@ -531,12 +519,6 @@ struct nvm_fusebits {
 	bool                              bod33_enable;
 	/** BOD33 Action at power on */
 	enum nvm_bod33_action             bod33_action;
-	/** BOD12 Threshold level at power on */
-	uint8_t                           bod12_level;
-	/** BOD12 Enable at power on */
-	bool                              bod12_enable;
-	/** BOD12 Action at power on */
-	enum nvm_bod12_action             bod12_action;
 	/** WDT Enable at power on */
 	bool                              wdt_enable;
 	/** WDT Always-on at power on */
@@ -647,9 +629,6 @@ enum status_code nvm_execute_command(
 
 enum status_code nvm_get_fuses(struct nvm_fusebits *fusebits);
 
-enum status_code nvm_set_fuses(struct nvm_fusebits *fusebits);
-
-
 bool nvm_is_page_locked(uint16_t page_number);
 
 /**
@@ -696,9 +675,9 @@ static inline enum nvm_error nvm_get_error(void)
 /** @} */
 
 /**
- * \page asfdoc_samd20_nvm_extra Extra Information for NVM Driver
+ * \page asfdoc_sam0_nvm_extra Extra Information for NVM Driver
  *
- * \section asfdoc_samd20_nvm_extra_acronyms Acronyms
+ * \section asfdoc_sam0_nvm_extra_acronyms Acronyms
  * The table below presents the acronyms used in this module:
  *
  * <table>
@@ -717,17 +696,17 @@ static inline enum nvm_error nvm_get_error(void)
  * </table>
  *
  *
- * \section asfdoc_samd20_nvm_extra_dependencies Dependencies
+ * \section asfdoc_sam0_nvm_extra_dependencies Dependencies
  * This driver has the following dependencies:
  *
  *  - None
  *
  *
- * \section asfdoc_samd20_nvm_extra_errata Errata
+ * \section asfdoc_sam0_nvm_extra_errata Errata
  * There are no errata related to this driver.
  *
  *
- * \section asfdoc_samd20_nvm_extra_history Module History
+ * \section asfdoc_sam0_nvm_extra_history Module History
  * An overview of the module history is presented in the table below, with
  * details on the enhancements and fixes made to the module since its first
  * release. The current version of this corresponds to the newest version in
@@ -736,6 +715,10 @@ static inline enum nvm_error nvm_get_error(void)
  * <table>
  *	<tr>
  *		<th>Changelog</th>
+ *	</tr>
+ *	<tr>
+ *		<td>Added support for SAMD21, removed BOD12 reference, removed
+ *          nvm_set_fuses() API.</td>
  *	</tr>
  *	<tr>
  *		<td>Added functions to read/write fuse settings</td>
@@ -754,23 +737,28 @@ static inline enum nvm_error nvm_get_error(void)
  */
 
 /**
- * \page asfdoc_samd20_nvm_exqsg Examples for NVM Driver
+ * \page asfdoc_sam0_nvm_exqsg Examples for NVM Driver
  *
  * This is a list of the available Quick Start guides (QSGs) and example
- * applications for \ref asfdoc_samd20_nvm_group. QSGs are simple examples with
+ * applications for \ref asfdoc_sam0_nvm_group. QSGs are simple examples with
  * step-by-step instructions to configure and use this driver in a selection of
  * use cases. Note that QSGs can be compiled as a standalone application or be
  * added to the user application.
  *
- *  - \subpage asfdoc_samd20_nvm_basic_use_case
+ *  - \subpage asfdoc_sam0_nvm_basic_use_case
  *
- * \page asfdoc_samd20_nvm_document_revision_history Document Revision History
+ * \page asfdoc_sam0_nvm_document_revision_history Document Revision History
  *
  * <table>
  *	<tr>
  *		<th>Doc. Rev.</td>
  *		<th>Date</td>
  *		<th>Comments</td>
+ *	</tr>
+ *	<tr>
+ *		<td>C</td>
+ *		<td>01/2014</td>
+ *		<td>Added support for SAMD21.</td>
  *	</tr>
  *	<tr>
  *		<td>B</td>

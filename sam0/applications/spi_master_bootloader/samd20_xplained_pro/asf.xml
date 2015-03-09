@@ -6,6 +6,7 @@
 		<build type="header-file" value="conf_clocks.h"/>
 		<build type="header-file" value="conf_at45dbx.h"/>
 		<build type="header-file" value="conf_bootloader.h"/>
+		<build type="header-file" value="conf_spi.h"/>
 		<require idref="board.samd20_xplained_pro"/>
 		<require idref="sam0.applications.spi_master_bootloader"/>
 		<generator value="iarewarm"/>

@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 External Interrupt Driver
+ * \brief SAM D20/D21 External Interrupt Driver
  *
- * Copyright (C) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -62,16 +62,18 @@ extern struct _extint_module _extint_dev;
  *       \ref extint_nmi_clear_detected().
  *
  * \param[in] callback  Pointer to the callback function to register
+ * \param[in] channel   Logical channel to register callback for
  * \param[in] type      Type of callback function to register
  *
  * \return Status of the registration operation.
  * \retval STATUS_OK               The callback was registered successfully.
  * \retval STATUS_ERR_INVALID_ARG  If an invalid callback type was supplied.
- * \retval STATUS_ERR_NO_MEMORY    No free entries were found in the registration
- *                                 table.
+ * \retval STATUS_ERR_ALREADY_INITIALIZED    Callback function has been
+ *                                  registered, need unregister first.
  */
 enum status_code extint_register_callback(
 	const extint_callback_t callback,
+	const uint8_t channel,
 	const enum extint_callback_type type)
 {
 	/* Sanity check arguments */
@@ -82,15 +84,14 @@ enum status_code extint_register_callback(
 		return STATUS_ERR_INVALID_ARG;
 	}
 
-	for (uint8_t i = 0; i < EXTINT_CALLBACKS_MAX; i++) {
-		if (_extint_dev.callbacks[i] == NULL) {
-			_extint_dev.callbacks[i] = callback;
-			return STATUS_OK;
-		}
+	if (_extint_dev.callbacks[channel] == NULL) {
+		_extint_dev.callbacks[channel] = callback;
+		return STATUS_OK;
+	} else if (_extint_dev.callbacks[channel] == callback) {
+		return STATUS_OK;
 	}
 
-	Assert(false);
-	return STATUS_ERR_NO_MEMORY;
+	return STATUS_ERR_ALREADY_INITIALIZED;
 }
 
 /**
@@ -100,6 +101,7 @@ enum status_code extint_register_callback(
  * from the internal callback registration table.
  *
  * \param[in] callback  Pointer to the callback function to unregister
+ * \param[in] channel   Logical channel to unregister callback for
  * \param[in] type      Type of callback function to unregister
  *
  * \return Status of the de-registration operation.
@@ -110,6 +112,7 @@ enum status_code extint_register_callback(
  */
 enum status_code extint_unregister_callback(
 	const extint_callback_t callback,
+	const uint8_t channel,
 	const enum extint_callback_type type)
 {
 	/* Sanity check arguments */
@@ -120,11 +123,9 @@ enum status_code extint_unregister_callback(
 		return STATUS_ERR_INVALID_ARG;
 	}
 
-	for (uint8_t i = 0; i < EXTINT_CALLBACKS_MAX; i++) {
-		if (_extint_dev.callbacks[i] == callback) {
-			_extint_dev.callbacks[i] = NULL;
-			return STATUS_OK;
-		}
+	if (_extint_dev.callbacks[channel] == callback) {
+		_extint_dev.callbacks[channel] = NULL;
+		return STATUS_OK;
 	}
 
 	return STATUS_ERR_BAD_ADDRESS;
@@ -145,7 +146,7 @@ enum status_code extint_unregister_callback(
  * \retval STATUS_ERR_INVALID_ARG  If an invalid callback type was supplied.
  */
 enum status_code extint_chan_enable_callback(
-	const uint32_t channel,
+	const uint8_t channel,
 	const enum extint_callback_type type)
 {
 	if (type == EXTINT_CALLBACK_TYPE_DETECT) {
@@ -175,7 +176,7 @@ enum status_code extint_chan_enable_callback(
  * \retval STATUS_ERR_INVALID_ARG  If an invalid callback type was supplied.
  */
 enum status_code extint_chan_disable_callback(
-	const uint32_t channel,
+	const uint8_t channel,
 	const enum extint_callback_type type)
 {
 	if (type == EXTINT_CALLBACK_TYPE_DETECT) {
@@ -195,16 +196,14 @@ enum status_code extint_chan_disable_callback(
 void EIC_Handler(void)
 {
 	/* Find any triggered channels, run associated callback handlers */
-	for (uint32_t i = 0; i < (32 * EIC_INST_NUM); i++) {
+	for (uint8_t i = 0; i < EIC_NUMBER_OF_INTERRUPTS ; i++) {
 		if (extint_chan_is_detected(i)) {
 			/* Clear flag */
 			extint_chan_clear_detected(i);
 			/* Find any associated callback entries in the callback table */
-			for (uint8_t j = 0; j < EXTINT_CALLBACKS_MAX; j++) {
-				if (_extint_dev.callbacks[j] != NULL) {
-					/* Run the registered callback */
-					_extint_dev.callbacks[j](i);
-				}
+			if (_extint_dev.callbacks[i] != NULL) {
+				/* Run the registered callback */
+				_extint_dev.callbacks[i]();
 			}
 		}
 	}

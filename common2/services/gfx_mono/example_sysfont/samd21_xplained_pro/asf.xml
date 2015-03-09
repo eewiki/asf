@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project id="common2.services.gfx_mono.example.sysfont.samd21_xplained_pro" caption="Example for GFX Monochrome System Font driver on SAM D21 Xplained Pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+		<config name="common2.services.gfx_mono.display" value="ug_2832hsweg04"/>
+		<require idref="common2.services.gfx_mono.example.sysfont"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<config name="config.compiler.iarewarm.create_aux" value="yes"/>
+		<build type="define" name="GFX_MONO_LCD_HEIGHT" value="64"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

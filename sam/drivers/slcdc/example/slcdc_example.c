@@ -92,10 +92,15 @@
 /** LCD power mode */
 #define LCD_POWER_MODE         SLCDC_POWER_MODE_LCDON_INVR
 
+#if SAM4C
 /* The LCD segment map number */
 #define LCD_SEGMAP_NUM_0     0xff720000
 #define LCD_SEGMAP_NUM_1     0x3ffff
-
+#elif SAM4CP
+/* The LCD segment map number */
+#define LCD_SEGMAP_NUM_0     0x9F73FFF8
+#define LCD_SEGMAP_NUM_1     0x0FDFC
+#endif
 /**
  *  Configure serial console.
  */
@@ -140,9 +145,10 @@ int main(void)
 	printf("-- %s\n\r", BOARD_NAME);
 	printf("-- Compiled: %s %s --\n\r", __DATE__, __TIME__);
 
-	/* Turn on LCD back light */
-	ioport_set_pin_level(LCD_BL_GPIO, IOPORT_PIN_LEVEL_LOW);
-
+#if !SAM4CP
+	/* Turn on the backlight. */
+	ioport_set_pin_level(LCD_BL_GPIO, LCD_BL_ACTIVE_LEVEL);
+#endif
 	/* Set LCD power mode: Internal supply */
 	supc_set_slcd_power_mode(SUPC, LCD_POWER_MODE);
 	

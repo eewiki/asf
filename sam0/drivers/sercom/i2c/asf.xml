@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.sercom.i2c.master" name="config.sam0.drivers.sercom.i2c.master" caption="SERCOM I2C - Master Mode I2C" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20 SERCOM I2C module in Master Mode. Provides a
+			Driver for the SAM D20/D21 SERCOM I2C module in Master Mode. Provides a
 			unified interface for the configuration and management of the
 			SERCOM module in I2C mode.
 		</info>
@@ -11,28 +11,18 @@
 				<keyword value="Communication"/>
 			</info>
 
-			<build type="include-path" value="." />
-			<build type="header-file" subtype="api" value="i2c_master.h"/>
-			<build type="header-file" subtype="api" value="i2c_common.h"/>
-			<build type="c-source" value="i2c_master.c"/>
-
-			<build type="doxygen-enable-section" value="I2C_MASTER_MODE"/>
+			<require idref="sam0.drivers.sercom.i2c.master.polled.src_code"/>
 
 			<build type="define" name="I2C_MASTER_CALLBACK_MODE" value="false"/>
 
 			<build type="header-file" value="quick_start_master/qs_i2c_master_basic_use.h"/>
-			<build type="doxygen-entry-point" value="asfdoc_samd20_sercom_i2c_group"/>
-			<build type="doxygen-example-path" value="quick_start_master"/>
-			<build type="doxygen-image-path" value="docimg"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_i2c_exqsg"/>
+			<build type="header-file" value="quick_start_master_dma/qs_i2c_master_dma.h"/>
 
-			<device-support value="samd20"/>
+			<device-support value="sam0"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.sercom"/>
 			<require idref="sam0.drivers.system"/>
-
-			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>
 
 		<module type="driver" id="sam0.drivers.sercom.i2c.master#callback" caption="SERCOM I2C - Master Mode I2C (Callback APIs)">
@@ -40,57 +30,25 @@
 				<keyword value="Communication"/>
 			</info>
 
-			<info type="appnote" value="AT03250"/>
-			<info type="keyword" value="pdf">
-				<keyword value="I2C"/>
-				<keyword value="I/O"/>
-				<keyword value="SERCOM"/>
-				<keyword value="Serial Communication"/>
-				<keyword value="Master"/>
-				<keyword value="I-squared-C"/>
-				<keyword value="inter-IC"/>
-				<keyword value="I-two-C"/>
-				<keyword value="TWI"/>
-			</info>
-
-			<info type="description" value="pdf">
-				This document describes how to use the I2C in master mode on
-				the SAM D20, both the ASF driver and the peripheral itself.
-			</info>
-
-			<build type="include-path" value="." />
-			<build type="header-file" subtype="api" value="i2c_master.h"/>
-			<build type="header-file" subtype="api" value="i2c_master_interrupt.h"/>
-			<build type="header-file" subtype="api" value="i2c_common.h"/>
-			<build type="c-source" value="i2c_master.c"/>
-			<build type="c-source" value="i2c_master_interrupt.c"/>
-
-			<build type="doxygen-enable-section" value="I2C_MASTER_MODE"/>
-			<build type="doxygen-enable-section" value="I2C_MASTER_CALLBACK_MODE"/>
+			<require idref="sam0.drivers.sercom.i2c.master.callback.src_code"/>
 
 			<build type="define" name="I2C_MASTER_CALLBACK_MODE" value="true"/>
 
 			<build type="header-file" value="quick_start_master/qs_i2c_master_basic_use.h"/>
 			<build type="header-file" value="quick_start_master_callback/qs_i2c_master_callback.h"/>
-			<build type="doxygen-entry-point" value="asfdoc_samd20_sercom_i2c_group"/>
-			<build type="doxygen-example-path" value="quick_start_master"/>
-			<build type="doxygen-example-path" value="quick_start_master_callback"/>
-			<build type="doxygen-image-path" value="docimg"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_i2c_exqsg"/>
+			<build type="header-file" value="quick_start_master_dma/qs_i2c_master_dma.h"/>
 
-			<device-support value="samd20"/>
+			<device-support value="sam0"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.sercom"/>
 			<require idref="sam0.drivers.system"/>
-
-			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>
 	</select-by-config>
 
 	<select-by-config id="sam0.drivers.sercom.i2c.slave" name="config.sam0.drivers.sercom.i2c.slave" caption="SERCOM I2C - Slave Mode I2C" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20 SERCOM I2C module in Slave Mode. Provides a
+			Driver for the SAM D20/D21 SERCOM I2C module in Slave Mode. Provides a
 			unified interface for the configuration and management of the
 			SERCOM module in I2C mode.
 		</info>
@@ -100,28 +58,18 @@
 				<keyword value="Communication"/>
 			</info>
 
-			<build type="include-path" value="." />
-			<build type="header-file" subtype="api" value="i2c_slave.h"/>
-			<build type="header-file" subtype="api" value="i2c_common.h"/>
-			<build type="c-source" value="i2c_slave.c"/>
-
-			<build type="doxygen-enable-section" value="I2C_SLAVE_MODE"/>
+			<require idref="sam0.drivers.sercom.i2c.slave.polled.src_code"/>
 
 			<build type="define" name="I2C_SLAVE_CALLBACK_MODE" value="false"/>
 
+			<build type="header-file" value="quick_start_slave_dma/qs_i2c_slave_dma.h"/>
 			<build type="header-file" value="quick_start_slave/qs_i2c_slave_basic_use.h"/>
-			<build type="doxygen-entry-point" value="asfdoc_samd20_sercom_i2c_group"/>
-			<build type="doxygen-example-path" value="quick_start_slave"/>
-			<build type="doxygen-image-path" value="docimg"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_i2c_exqsg"/>
 
-			<device-support value="samd20"/>
+			<device-support value="sam0"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.sercom"/>
 			<require idref="sam0.drivers.system"/>
-
-			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>
 
 		<module type="driver" id="sam0.drivers.sercom.i2c.slave#callback" caption="SERCOM I2C - Slave Mode I2C (Callback APIs)">
@@ -129,51 +77,221 @@
 				<keyword value="Communication"/>
 			</info>
 
-			<info type="appnote" value="AT03254"/>
-			<info type="keyword" value="pdf">
-				<keyword value="I2C"/>
-				<keyword value="I/O"/>
-				<keyword value="SERCOM"/>
-				<keyword value="Serial Communication"/>
-				<keyword value="Slave"/>
-				<keyword value="I-squared-C"/>
-				<keyword value="inter-IC"/>
-				<keyword value="I-two-C"/>
-				<keyword value="TWI"/>
-			</info>
-
-			<info type="description" value="pdf">
-				This document describes how to use the I2C in slave mode on the
-				SAM D20, both the ASF driver and the peripheral itself.
-			</info>
-
-			<build type="include-path" value="." />
-			<build type="header-file" subtype="api" value="i2c_slave_interrupt.h"/>
-			<build type="header-file" subtype="api" value="i2c_slave.h"/>
-			<build type="header-file" subtype="api" value="i2c_common.h"/>
-			<build type="c-source" value="i2c_slave_interrupt.c"/>
-			<build type="c-source" value="i2c_slave.c"/>
-
-			<build type="doxygen-enable-section" value="I2C_SLAVE_MODE"/>
-			<build type="doxygen-enable-section" value="I2C_SLAVE_CALLBACK_MODE"/>
+			<require idref="sam0.drivers.sercom.i2c.slave.callback.src_code"/>
 
 			<build type="define" name="I2C_SLAVE_CALLBACK_MODE" value="true"/>
 
 			<build type="header-file" value="quick_start_slave/qs_i2c_slave_basic_use.h"/>
 			<build type="header-file" value="quick_start_slave_callback/qs_i2c_slave_callback.h"/>
-			<build type="doxygen-entry-point" value="asfdoc_samd20_sercom_i2c_group"/>
-			<build type="doxygen-example-path" value="quick_start_slave"/>
-			<build type="doxygen-example-path" value="quick_start_slave_callback"/>
-			<build type="doxygen-image-path" value="docimg"/>
-			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_i2c_exqsg"/>
+			<build type="header-file" value="quick_start_slave_dma/qs_i2c_slave_dma.h"/>
 
-			<device-support value="samd20"/>
+			<device-support value="sam0"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.sercom"/>
 			<require idref="sam0.drivers.system"/>
-
-			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>
 	</select-by-config>
+
+	<select-by-device id="sam0.drivers.sercom.i2c.master.polled.src_code" caption="Meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.master.polled.src_code#samd20" caption="meta">
+			<build type="include-path" value="." />
+			<build type="include-path" value="i2c_samd20/" />
+			<build type="header-file" subtype="api" value="i2c_master.h"/>
+			<build type="header-file" subtype="api" value="i2c_common.h"/>
+			<build type="c-source" value="i2c_samd20/i2c_master.c"/>
+			<device-support value="samd20"/>
+		</module>
+		<module type="meta" id="sam0.drivers.sercom.i2c.master.polled.src_code#samd21" caption="meta">
+			<build type="include-path" value="." />
+			<build type="include-path" value="i2c_samd21/" />
+			<build type="header-file" subtype="api" value="i2c_master.h"/>
+			<build type="header-file" subtype="api" value="i2c_common.h"/>
+			<build type="c-source" value="i2c_samd21/i2c_master.c"/>
+			<device-support value="samd21"/>
+		</module>
+	</select-by-device>
+
+	<select-by-device id="sam0.drivers.sercom.i2c.master.callback.src_code" caption="Meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.master.callback.src_code#samd20" caption="meta">
+			<build type="include-path" value="." />
+			<build type="include-path" value="i2c_samd20/" />
+			<build type="header-file" subtype="api" value="i2c_master.h"/>
+			<build type="header-file" subtype="api" value="i2c_master_interrupt.h"/>
+			<build type="header-file" subtype="api" value="i2c_common.h"/>
+			<build type="c-source" value="i2c_samd20/i2c_master.c"/>
+			<build type="c-source" value="i2c_samd20/i2c_master_interrupt.c"/>
+			<device-support value="samd20"/>
+		</module>
+		<module type="meta" id="sam0.drivers.sercom.i2c.master.callback.src_code#samd21" caption="meta">
+			<build type="include-path" value="." />
+			<build type="include-path" value="i2c_samd21/" />
+			<build type="header-file" subtype="api" value="i2c_master.h"/>
+			<build type="header-file" subtype="api" value="i2c_master_interrupt.h"/>
+			<build type="header-file" subtype="api" value="i2c_common.h"/>
+			<build type="c-source" value="i2c_samd21/i2c_master.c"/>
+			<build type="c-source" value="i2c_samd21/i2c_master_interrupt.c"/>
+			<device-support value="samd21"/>
+		</module>
+	</select-by-device>
+
+	<select-by-device id="sam0.drivers.sercom.i2c.slave.polled.src_code" caption="Meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.slave.polled.src_code#samd20" caption="meta">
+			<build type="include-path" value="." />
+			<build type="include-path" value="i2c_samd20/" />
+			<build type="header-file" subtype="api" value="i2c_slave.h"/>
+			<build type="header-file" subtype="api" value="i2c_common.h"/>
+			<build type="c-source" value="i2c_samd20/i2c_slave.c"/>
+			<device-support value="samd20"/>
+		</module>
+		<module type="meta" id="sam0.drivers.sercom.i2c.slave.polled.src_code#samd21" caption="meta">
+			<build type="include-path" value="." />
+			<build type="include-path" value="i2c_samd21/" />
+			<build type="header-file" subtype="api" value="i2c_slave.h"/>
+			<build type="header-file" subtype="api" value="i2c_common.h"/>
+			<build type="c-source" value="i2c_samd21/i2c_slave.c"/>
+			<device-support value="samd21"/>
+		</module>
+	</select-by-device>
+
+	<select-by-device id="sam0.drivers.sercom.i2c.slave.callback.src_code" caption="Meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.slave.callback.src_code#samd20" caption="meta">
+			<build type="include-path" value="." />
+			<build type="include-path" value="i2c_samd20/" />
+			<build type="header-file" subtype="api" value="i2c_slave.h"/>
+			<build type="header-file" subtype="api" value="i2c_slave_interrupt.h"/>
+			<build type="header-file" subtype="api" value="i2c_common.h"/>
+			<build type="c-source" value="i2c_samd20/i2c_slave.c"/>
+			<build type="c-source" value="i2c_samd20/i2c_slave_interrupt.c"/>
+			<device-support value="samd20"/>
+		</module>
+		<module type="meta" id="sam0.drivers.sercom.i2c.slave.callback.src_code#samd21" caption="meta">
+			<build type="include-path" value="." />
+			<build type="include-path" value="i2c_samd21/" />
+			<build type="header-file" subtype="api" value="i2c_slave.h"/>
+			<build type="header-file" subtype="api" value="i2c_slave_interrupt.h"/>
+			<build type="header-file" subtype="api" value="i2c_common.h"/>
+			<build type="c-source" value="i2c_samd21/i2c_slave.c"/>
+			<build type="c-source" value="i2c_samd21/i2c_slave_interrupt.c"/>
+			<device-support value="samd21"/>
+		</module>
+	</select-by-device>
+
+	<module type="meta" id="sam0.drivers.sercom.i2c.master.appnote" caption="SERCOM I2C - Application Note for Master Mode I2C">
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+
+		<info type="appnote" value="AT03250"/>
+		<info type="keyword" value="pdf">
+			<keyword value="I2C"/>
+			<keyword value="I/O"/>
+			<keyword value="SERCOM"/>
+			<keyword value="Serial Communication"/>
+			<keyword value="Master"/>
+			<keyword value="I-squared-C"/>
+			<keyword value="inter-IC"/>
+			<keyword value="I-two-C"/>
+			<keyword value="TWI"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the I2C in master mode on the
+			SAM D20/D21, both the ASF driver and the peripheral itself.
+		</info>
+
+		<build type="include-path" value="." />
+		<build type="include-path" value="i2c_samd20/" />
+		<build type="include-path" value="i2c_samd21/" />
+		<build type="header-file" subtype="api" value="i2c_master.h"/>
+		<build type="header-file" subtype="api" value="i2c_master_interrupt.h"/>
+		<build type="header-file" subtype="api" value="i2c_common.h"/>
+		<build type="c-source" value="i2c_samd20/i2c_master.c"/>
+		<build type="c-source" value="i2c_samd20/i2c_master_interrupt.c"/>
+		<build type="c-source" value="i2c_samd21/i2c_master.c"/>
+		<build type="c-source" value="i2c_samd21/i2c_master_interrupt.c"/>
+
+		<build type="doxygen-enable-section" value="I2C_MASTER_MODE"/>
+		<build type="doxygen-enable-section" value="I2C_MASTER_CALLBACK_MODE"/>
+
+		<build type="define" name="I2C_MASTER_CALLBACK_MODE" value="true"/>
+
+		<build type="header-file" value="quick_start_master/qs_i2c_master_basic_use.h"/>
+		<build type="header-file" value="quick_start_master_callback/qs_i2c_master_callback.h"/>
+		<build type="header-file" value="quick_start_master_dma/qs_i2c_master_dma.h"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_sam0_sercom_i2c_group"/>
+		<build type="doxygen-example-path" value="quick_start_master"/>
+		<build type="doxygen-example-path" value="quick_start_master_callback"/>
+		<build type="doxygen-example-path" value="quick_start_master_dma"/>
+		<build type="doxygen-image-path" value="docimg"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_sercom_i2c_exqsg"/>
+
+		<device-support value="sam0"/>
+
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.sercom"/>
+		<require idref="sam0.drivers.system"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd21"/>
+	</module>
+
+	<module type="meta" id="sam0.drivers.sercom.i2c.slave.appnote" caption="SERCOM I2C - Application Note for Slave Mode I2C">
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+
+		<info type="appnote" value="AT03254"/>
+		<info type="keyword" value="pdf">
+			<keyword value="I2C"/>
+			<keyword value="I/O"/>
+			<keyword value="SERCOM"/>
+			<keyword value="Serial Communication"/>
+			<keyword value="Slave"/>
+			<keyword value="I-squared-C"/>
+			<keyword value="inter-IC"/>
+			<keyword value="I-two-C"/>
+			<keyword value="TWI"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the I2C in slave mode on the
+			SAM D20/D21, both the ASF driver and the peripheral itself.
+		</info>
+
+		<build type="include-path" value="." />
+		<build type="include-path" value="i2c_samd20/" />
+		<build type="include-path" value="i2c_samd21/" />
+		<build type="header-file" subtype="api" value="i2c_slave.h"/>
+		<build type="header-file" subtype="api" value="i2c_slave_interrupt.h"/>
+		<build type="header-file" subtype="api" value="i2c_common.h"/>
+		<build type="c-source" value="i2c_samd20/i2c_slave.c"/>
+		<build type="c-source" value="i2c_samd20/i2c_slave_interrupt.c"/>
+		<build type="c-source" value="i2c_samd21/i2c_slave.c"/>
+		<build type="c-source" value="i2c_samd21/i2c_slave_interrupt.c"/>
+
+		<build type="doxygen-enable-section" value="I2C_SLAVE_MODE"/>
+		<build type="doxygen-enable-section" value="I2C_SLAVE_CALLBACK_MODE"/>
+
+		<build type="define" name="I2C_SLAVE_CALLBACK_MODE" value="true"/>
+
+		<build type="header-file" value="quick_start_slave/qs_i2c_slave_basic_use.h"/>
+		<build type="header-file" value="quick_start_slave_callback/qs_i2c_slave_callback.h"/>
+		<build type="header-file" value="quick_start_slave_dma/qs_i2c_slave_dma.h"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_sam0_sercom_i2c_group"/>
+		<build type="doxygen-example-path" value="quick_start_slave"/>
+		<build type="doxygen-example-path" value="quick_start_slave_callback"/>
+		<build type="doxygen-example-path" value="quick_start_slave_dma"/>
+		<build type="doxygen-image-path" value="docimg"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_sercom_i2c_exqsg"/>
+
+		<device-support value="sam0"/>
+
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.sercom"/>
+		<require idref="sam0.drivers.system"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd21"/>
+	</module>
 </asf>

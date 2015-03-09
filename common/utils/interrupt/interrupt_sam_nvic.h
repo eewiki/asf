@@ -3,7 +3,7 @@
  *
  * \brief Global interrupt management for SAM D20, SAM3 and SAM4 (NVIC based)
  *
- * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -46,6 +46,10 @@
 
 #include <compiler.h>
 #include <parts.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * \weakgroup interrupt_group
@@ -174,5 +178,9 @@ void cpu_irq_leave_critical(void);
 //@}
 
 //@}
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* UTILS_INTERRUPT_INTERRUPT_H */

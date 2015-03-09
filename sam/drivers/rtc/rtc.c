@@ -465,7 +465,7 @@ void rtc_clear_status(Rtc *p_rtc, uint32_t ul_clear)
 	p_rtc->RTC_SCCR = ul_clear;
 }
 
-#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4N) || (SAM4C) || (SAMG))
+#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4N) || (SAM4C) || (SAMG) || (SAM4CP))
 /**
  * \brief Set the RTC calendar mode.
  *
@@ -514,7 +514,7 @@ void rtc_set_calibration(Rtc *p_rtc, uint32_t ul_direction_ppm,
 }
 #endif
 
-#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4C) || (SAMG))
+#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4C) || (SAMG) || (SAM4CP))
 /**
  * \brief Set the RTC output waveform.
  *
@@ -574,7 +574,7 @@ void rtc_set_waveform(Rtc *p_rtc, uint32_t ul_channel, uint32_t ul_value)
 			break;
 		}
 	} else {
-	#if !SAM4C
+	#if (!SAM4C && !SAM4CP)
 		switch (ul_value) {
 		case 0:
 			p_rtc->RTC_MR &= ~RTC_MR_OUT1_Msk;
@@ -668,7 +668,7 @@ void rtc_set_writeprotect(Rtc *p_rtc, uint32_t ul_enable)
 }
 #endif /* ((SAM3N) || (SAM3U) || (SAM3XA)) */
 
-#if SAM4C
+#if SAM4C || SAM4CP
 /**
  * \brief Get the RTC tamper time value.
  *

@@ -65,8 +65,9 @@
  *
  * \section device_info Device Info
  * SAM4C devices can be used.
- * This example has been tested with the following setup:
+ * This unit test has been tested with the following setup:
  * - sam4c16c_sam4c_ek
+ * - sam4cp16b_sam4cp16bmb
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers

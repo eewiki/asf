@@ -7,6 +7,6 @@
 		<build type="c-source" value="qs_at30tse75x.c"/>
 		<build type="include-path" value="."/>
 		<require idref="sam0.components.sensor.at30tse75x"/>
-		<device-support value="samd20"/>
+		<device-support value="sam0"/>
 	</module>
 </asf>

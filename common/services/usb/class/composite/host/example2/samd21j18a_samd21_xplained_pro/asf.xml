@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<project caption="USB Host MSC FatFS and HID Mouse for SAMD21 Xplained Pro" id="common.services.usb.class.composite.host.example2.samd21_xplained_pro">
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.host" value="multiple_classes"/>
+		<config name="config.common.services.usb.class.hid.host.composite.mouse" value="enable"/>
+		<config name="config.common.services.usb.class.msc.host.composite.ctrl_access" value="enable"/>
+		<require idref="common.services.usb.class.composite.host.example2"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<require idref="sam0.drivers.extint"/>
+		<config name="config.sam0.drivers.rtc" value="calendar_polled"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x1000"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

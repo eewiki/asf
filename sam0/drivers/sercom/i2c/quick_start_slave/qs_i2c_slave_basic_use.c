@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 I2C Slave Quick Start Guide with Callbacks
+ * \brief SAM D20/D21 I2C Slave Quick Start Guide with Callbacks
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -80,7 +80,7 @@ void configure_i2c_slave(void)
 
 	/* Initialize and enable device with config_i2c_slave */
 	//! [init_module]
-	i2c_slave_init(&i2c_slave_instance, SERCOM1, &config_i2c_slave);
+	i2c_slave_init(&i2c_slave_instance, SERCOM2, &config_i2c_slave);
 	//! [init_module]
 
 	//! [enable_module]

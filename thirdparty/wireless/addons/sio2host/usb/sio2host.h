@@ -3,7 +3,7 @@
  *
  * \brief Event handling Serial I/O  Functionalities
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -54,7 +54,7 @@
 #include "status_codes.h"
 #include "stdio_usb.h"
 
-#define SERIAL_RX_BUF_SIZE_HOST    156
+
 
 /* === PROTOTYPES ============================================================
  **/
@@ -100,6 +100,7 @@ void dtr_cb(bool);
 
 int sio2host_getchar_nowait(void);
 
+void sio2host_putchar(uint8_t );
 /**
  * \brief This function performs a blocking character receive functionality
  * \return returns the data which is received

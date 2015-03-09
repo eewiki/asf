@@ -7,6 +7,6 @@
 		<build type="c-source" value="qs_i2c_slave_callback.c"/>
 		<build type="include-path" value="."/>
 		<require idref="sam0.drivers.sercom.i2c.slave"/>
-		<device-support value="samd20"/>
+		<device-support value="sam0"/>
 	</module>
 </asf>

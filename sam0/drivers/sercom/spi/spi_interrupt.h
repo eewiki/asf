@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief SAM D20 Serial Peripheral Interface Driver (Callback Mode)
+ * \brief SAM D20/D21 Serial Peripheral Interface Driver (Callback Mode)
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -44,8 +44,12 @@
 #ifndef SPI_INTERRUPT_H_INCLUDED
 #define SPI_INTERRUPT_H_INCLUDED
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
- * \addtogroup asfdoc_samd20_sercom_spi_group
+ * \addtogroup asfdoc_sam0_sercom_spi_group
  *
  * @{
  */
@@ -124,7 +128,7 @@ enum status_code spi_read_buffer_job(
 		uint8_t *rx_data,
 		uint16_t length,
 		uint16_t dummy);
-		
+
 enum status_code spi_transceive_buffer_job(
 		struct spi_module *const module,
 		uint8_t *tx_data,
@@ -175,5 +179,9 @@ static inline enum status_code spi_get_job_status_wait(
 /**
  * @}
  */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* SPI_INTERRUPT_H_INCLUDED */

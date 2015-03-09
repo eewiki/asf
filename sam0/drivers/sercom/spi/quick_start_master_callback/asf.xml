@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.sercom.spi.quick_start_master_callback" caption="Quick Start for the SAM D20 SERCOM SPI Driver (Master Callback)">
+	<module type="application" id="sam0.drivers.sercom.spi.quick_start_master_callback" caption="Quick Start for the SAM D20/D21 SERCOM SPI Driver (Master Callback)">
 		<info type="description" value="summary">
 		Quick start guide for the SERCOM SPI interface module demonstrating module configuration for master in callback mode.
 		</info>
@@ -8,5 +8,6 @@
 		<build type="include-path" value="."/>
 		<require idref="sam0.drivers.sercom.spi"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 	</module>
 </asf>

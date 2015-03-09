@@ -2,7 +2,7 @@
 	<module type="service" id="common2.services.delay" caption="Delay routines">
 		<info type="description" value="summary">
 		Loop based delay routines. Provides cycle, milliseconds
-		and second delays. Common API for SAMD20.
+		and second delays. Common API for SAMD20/D21.
 		</info>
 		<build type="doxygen-entry-point" value="group_common_services_delay"/>
 		<build type="include-path" value="."/>
@@ -12,6 +12,7 @@
 		<build type="c-source" value="sam0/cycle_counter.c"/>
 		<require idref="sam0.drivers.system"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 	</module>
 </asf>

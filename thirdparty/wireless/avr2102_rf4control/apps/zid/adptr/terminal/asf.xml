@@ -1,0 +1,53 @@
+<asf xmlversion="1.0">
+	<module type="application" caption="ZID - Terminal Adaptor application" id="thirdparty.wireless.avr2102_rf4control.apps.zid.adptr.terminal">
+		<info type="description" value="summary">
+        Terminal Adaptor application for RF4CE-ZID adaptor-device setup
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="vendor_data.c"/>
+		<build type="header-file" value="conf_common_sw_timer.h"/>
+		<build type="header-file" value="conf_trx_access.h"/>
+		<build type="header-file" value="app_config.h"/>
+
+		<build type="define" name="HIGHEST_STACK_LAYER" value ="RF4CE"/>
+		<build type="define" name="DEBUG" value ="0"/>
+		<build type="define" name="RF4CE_SECURITY" value =""/>
+		<build type="define" name="PRIVATE_NIB" value =""/>
+		<build type="define" name="ZID_PROFILE" value =""/>
+		<build type="define" name="GDP_PROFILE" value =""/>
+		<build type="define" name="ZID_ADAPTOR" value =""/>
+		<build type="define" name="RF4CE_TARGET" value =""/>
+		<build type="define" name="VENDOR_DATA" value =""/>
+		<build type="define" name="PBP_REC" value =""/>
+		<build type="define" name="FLASH_SUPPORT" value =""/>
+		<build type="define" name="SIO_HUB" value =""/>
+		<build type="define" name="RF4CE_CALLBACK_PARAM" value =""/>
+		<build type="define" name="STB_ON_SAL" value =""/>
+		<build type="define" name="NLDE_HANDLE" value =""/>
+		<build type="define" name="MAC_USER_BUILD_CONFIG" value =""/>
+		<build type="define" name="TAL_USER_BUILD_CONFIG" value =""/>
+		<build type="define" name="EXTERN_EEPROM_AVAILABLE" value ="0"/>
+		<build type="define" name="RSSI_TO_LQI_MAPPING" value =""/>
+		<build type="define" name="REDUCED_PARAM_CHECK" value =""/>
+		<build type="define" name="CHANNEL_AGILITY" value =""/>	
+		<build type="define" name="ENABLE_STACK_NVM" value =""/>
+		
+		<require idref="thirdparty.wireless.avr2102_rf4control.include"/>
+        <require idref="thirdparty.wireless.avr2102_rf4control.lib.zid.aptr"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.pal"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.mac"/>
+		<require idref="thirdparty.wireless.addons.sio2host"/>
+		<require idref="common.drivers.nvm"/>
+
+		<device-support-alias value="avr2102_rf4control_zid_aptr_support"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="megarf"/>
+		<device-support value="sam4l"/>
+	</module>
+</asf>
+
+
+	
+

@@ -9,5 +9,6 @@
 		<build type="header-file" value="config/conf_clock.h"/>
 		<generator value="as5_arm_template"/>
 		<generator value="doxygen"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
 	</project>
 </asf>

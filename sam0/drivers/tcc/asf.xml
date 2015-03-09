@@ -1,0 +1,97 @@
+<asf xmlversion="1.0">
+	<select-by-config id="sam0.drivers.tcc" name="config.sam0.drivers.tcc" caption="TCC - Timer Counter for Control Applications" default="callback">
+		<info type="description" value="summary">
+		  Driver for the SAM D2x Timer/Counter for Control Applications module.
+		  Provides a unified interface for the configuration and management of
+		  the device's hardware timers.
+		</info>
+
+		<module caption="TCC - Timer Counter for Control Applications (Polled APIs)" id="sam0.drivers.tcc#polled" type="driver">
+			<info type="keyword" value="technology">
+				<keyword value="Timers" />
+			</info>
+
+			<build type="include-path" value="." />
+
+			<build name="TCC_ASYNC" type="define" value="false" />
+
+			<build subtype="api" type="header-file" value="tcc.h" />
+			<build type="c-source" value="tcc.c" />
+
+			<build type="header-file" value="quick_start/qs_tcc_basic.h" />
+			<build type="header-file" value="quick_start_dma/qs_tcc_dma.h" />
+
+			<build type="doxygen-example-path" value="quick_start_dma"/>
+			<build type="doxygen-example-path" value="quick_start_dma/samd21_xplained_pro"/>
+			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-example-path" value="quick_start/samd20_xplained_pro"/>
+
+			<build type="doxygen-image-path" value="docimg" />
+
+			<build type="doxygen-entry-point" value="asfdoc_sam0_tcc_group" />
+			<build type="doxygen-quick-start" value="asfdoc_sam0_tcc_exqsg"/>
+
+			<device-support value="samd21" />
+
+			<require idref="sam0.utils" />
+			<require idref="sam0.drivers.system" />
+			<require idref="sam0.drivers.port" />
+
+			<generator default-mcu="unspecified-samd21" value="doxygen-module-v2" />
+		</module>
+
+		<module caption="TCC - Timer Counter for Control Applications (Callback APIs)" id="sam0.drivers.tcc#callback" type="driver">
+			<info type="keyword" value="technology">
+				<keyword value="Timers" />
+			</info>
+
+			<info type="appnote" value="AT07058"/>
+			<info type="keyword" value="pdf">
+				<keyword value="I/O"/>
+				<keyword value="TCC"/>
+				<keyword value="Timers" />
+				<keyword value="Counters" />
+				<keyword value="Clocks" />
+			</info>
+
+			<info type="description" value="pdf">
+				This document describes how to use the Timer Counter for Control Applications on the SAM D2x, 
+				both the ASF driver and the peripheral itself.
+			</info>
+
+			<build type="include-path" value="." />
+
+			<build name="TCC_ASYNC" type="define" value="true" />
+			<build type="doxygen-enable-section" value="TCC_CALLBACK_MODE"/>
+
+			<build subtype="api" type="header-file" value="tcc.h" />
+			<build subtype="api" type="header-file" value="tcc_callback.h" />
+			<build type="c-source" value="tcc_callback.c" />
+			<build type="c-source" value="tcc.c" />
+
+			<build type="header-file" value="quick_start_callback/qs_tcc_callback.h" />
+			<build type="header-file" value="quick_start/qs_tcc_basic.h" />
+			<build type="header-file" value="quick_start_dma/qs_tcc_dma.h" />
+
+			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-example-path" value="quick_start/samd21_xplained_pro"/>
+			<build type="doxygen-example-path" value="quick_start_callback"/>
+			<build type="doxygen-example-path" value="quick_start_callback/samd21_xplained_pro"/>
+			<build type="doxygen-example-path" value="quick_start_dma"/>
+			<build type="doxygen-example-path" value="quick_start_dma/samd21_xplained_pro"/>
+
+			<build type="doxygen-image-path" value="docimg" />
+
+			<build type="doxygen-entry-point" value="asfdoc_sam0_tcc_group" />
+			<build type="doxygen-quick-start" value="asfdoc_sam0_tcc_exqsg"/>
+
+			<device-support value="samd21" />
+
+			<require idref="sam0.utils" />
+			<require idref="sam0.drivers.system" />
+			<require idref="sam0.drivers.port" />
+
+			<generator default-mcu="unspecified-samd21" value="doxygen-module-v2" />
+		</module>
+	</select-by-config>
+</asf>

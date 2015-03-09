@@ -158,7 +158,7 @@ static void configure_rtt(void)
 	uint32_t ul_previous_time;
 
 	/* Configure RTT for a 1 second tick interrupt */
-#if SAM4N || SAM4S || SAM4E || SAM4C
+#if SAM4N || SAM4S || SAM4E || SAM4C || SAM4CP
 	rtt_sel_source(RTT, false);
 #endif
 	rtt_init(RTT, 32768);

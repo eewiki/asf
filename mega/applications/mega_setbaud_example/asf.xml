@@ -9,7 +9,6 @@
 		<build type="include-path" value="."/>
 		<require idref="mega.utils"/>
 		<device-support value="mega"/>
-		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
 		<info type="gui-flag" value="move-to-root"/>
 	</module>
 </asf>

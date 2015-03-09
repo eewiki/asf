@@ -63,6 +63,7 @@
 			<device-support value="sam4e"/>
 			<device-support value="sam4n"/>
 			<device-support value="sam4c"/>
+			<device-support value="sam4cp"/>
 			<device-support value="samg"/>
 			<require idref="sam.drivers.pmc"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
@@ -102,6 +103,25 @@
 			<device-support value="megarf"/>
 			<require idref="mega.drivers.sleep"/>
 			<generator value="doxygen-module" default-mcu="unspecified-mega"/>
-		</module>	
+		</module>
+		<module type="service" id="common.services.basic.sleepmgr#5" caption="Sleep manager - SAMD implementation">
+			<info type="description" value="summary">
+			The sleep manager provides functions for centralized management of sleep modes. Common API for SAM, UC3 and XMEGA.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management" />
+			</info>
+			<build type="header-file" subtype="api" value="sleepmgr.h"/>
+			<build type="header-file" subtype="api" value="samd/sleepmgr.h"/>
+			<build type="c-source" value="samd/sleepmgr.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_sleepmgr.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="path" value="samd/module_config"/>
+			<build type="doxygen-entry-point" value="sleepmgr_group"/>
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<require idref="sam0.drivers.system"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
+		</module>
 	</select-by-device>
 </asf>

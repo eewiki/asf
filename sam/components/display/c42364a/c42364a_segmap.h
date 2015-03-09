@@ -139,9 +139,85 @@
 #define C42364A_B3_SEG_NUM            30
 #define C42364A_A2A_SEG_NUM           29
 #define C42364A_A2G_SEG_NUM           28
+#define C42364A_A1H_SEG_NUM           27
+#define C42364A_B2_SEG_NUM            26
+#define C42364A_A1A_SEG_NUM           25
+#define C42364A_A1G_SEG_NUM           24
+#define C42364A_A0H_SEG_NUM           22
+#define C42364A_B0_SEG_NUM            21
+#define C42364A_A0A_SEG_NUM           20
+
 /* The LCD segment map number */
 #define C42364A_SEGMAP_NUM_0     0xff720000
 #define C42364A_SEGMAP_NUM_1     0x3ffff
+/* @} */
+/**
+ * \name LCD component C42364A segment map definitions in SAM4CP16BMB
+ * @{
+ */
+#elif BOARD == SAM4CP16BMB
+/* SEG and COM Num of ICON */
+#define C42364A_ICON_USB            1, 3
+#define C42364A_ICON_COLON          0, 3
+#define C42364A_ICON_WLESS          2, 3
+#define C42364A_ICON_AUDIO          3, 3
+#define C42364A_ICON_BAT            0, 4
+#define C42364A_ICON_ERROR          1, 4
+#define C42364A_ICON_CHINESE        2, 4
+#define C42364A_ICON_ARM            3, 4
+#define C42364A_ICON_BAT_LEVEL_1    0, 37
+#define C42364A_ICON_BAT_LEVEL_2    0, 27
+#define C42364A_ICON_BAT_LEVEL_3    0, 42
+#define C42364A_ICON_AM             3, 7
+#define C42364A_ICON_PM             3, 43
+#define C42364A_ICON_DEGREE_C       3, 38
+#define C42364A_ICON_DEGREE_F       3, 28
+#define C42364A_ICON_VOLT           3, 24
+#define C42364A_ICON_MILLI_VOLT     0, 22
+#define C42364A_ICON_ATMEL          3, 4
+#define C42364A_ICON_PAUSE          3, 35
+#define C42364A_ICON_PLAY           3, 12
+ /* Seg Num of Pixel */
+#define C42364A_G1_SEG_NUM            3
+#define C42364A_G4_SEG_NUM            4
+#define C42364A_D3A_SEG_NUM           7
+#define C42364A_D3F_SEG_NUM           8
+#define C42364A_D2A_SEG_NUM           9
+#define C42364A_D2F_SEG_NUM           10
+#define C42364A_D1A_SEG_NUM           15
+#define C42364A_D1F_SEG_NUM           16
+#define C42364A_D0A_SEG_NUM           17
+#define C42364A_D0F_SEG_NUM           20
+#define C42364A_A6H_SEG_NUM           21
+#define C42364A_B14_SEG_NUM           22
+#define C42364A_A6A_SEG_NUM           24
+#define C42364A_A6G_SEG_NUM           25
+#define C42364A_A5H_SEG_NUM           26
+#define C42364A_B5_SEG_NUM            27
+#define C42364A_A5A_SEG_NUM           28
+#define C42364A_A5G_SEG_NUM           31
+#define C42364A_A4H_SEG_NUM           36
+#define C42364A_B6_SEG_NUM            37
+#define C42364A_A4A_SEG_NUM           38
+#define C42364A_A4G_SEG_NUM           39
+#define C42364A_A3H_SEG_NUM           40
+#define C42364A_B4_SEG_NUM            42
+#define C42364A_A3A_SEG_NUM           43
+#define C42364A_A3G_SEG_NUM           44
+#define C42364A_A2H_SEG_NUM           45
+#define C42364A_B3_SEG_NUM            46
+#define C42364A_A2A_SEG_NUM           47
+#define C42364A_A2G_SEG_NUM           5
+#define C42364A_A1H_SEG_NUM           6
+#define C42364A_B2_SEG_NUM            11
+#define C42364A_A1A_SEG_NUM           12
+#define C42364A_A1G_SEG_NUM           13
+#define C42364A_A0H_SEG_NUM           14
+#define C42364A_B0_SEG_NUM            34
+#define C42364A_A0A_SEG_NUM           35
+/* The LCD segment map number */
+#define C42364A_SEGMAP_NUM_0     0x9F73FFF8
+#define C42364A_SEGMAP_NUM_1     0x0FDFC
 /* @} */
 
 /**
@@ -208,6 +284,14 @@
 #define C42364A_B3_SEG_NUM            30
 #define C42364A_A2A_SEG_NUM           29
 #define C42364A_A2G_SEG_NUM           28
+#define C42364A_A1H_SEG_NUM           27
+#define C42364A_B2_SEG_NUM            26
+#define C42364A_A1A_SEG_NUM           25
+#define C42364A_A1G_SEG_NUM           24
+#define C42364A_A0H_SEG_NUM           22
+#define C42364A_B0_SEG_NUM            21
+#define C42364A_A0A_SEG_NUM           20
+
 /* The LCD segment map number */
 #define C42364A_SEGMAP_NUM_0     0xff720000
 #define C42364A_SEGMAP_NUM_1     0x3ffff

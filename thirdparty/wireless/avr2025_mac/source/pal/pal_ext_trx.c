@@ -1,8 +1,8 @@
- /*
+ /**
  * @file pal.c
  *
  * @brief Performs interface functionalities between the TAL layer and ASF drivers
- *  Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ *  Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -49,304 +49,60 @@
 #include "spi_master.h"
 #endif
 #include "pal_ext_trx.h"
+#include "trx_access.h"
 #include "pal.h"
 #include "delay.h"
 #include "interrupt.h"
-#include "conf_pal.h"
+#include "conf_trx_access.h"
 #include "conf_board.h"
 
-static irq_handler_t irq_hdl_trx = NULL;
 
-#if SAMD20
-struct spi_slave_inst_config slave_dev_config;
-struct spi_config config;
-struct spi_module master;
-struct spi_slave_inst slave;
-uint16_t dummy_read;
-#else
-struct spi_device SPI_AT86RFX_DEVICE = {
-	//! Board specific select id
-	.id = AT86RFX_SPI_CS
-};
-#endif
-
-#if SAMD20
-void AT86RFX_ISR(uint32_t i);
-void AT86RFX_ISR(uint32_t i)
-#else
-AT86RFX_ISR()
-#endif
- 
-{
-    /*Clearing the RF interrupt*/
-    pal_trx_irq_flag_clr();
-
-    /*Calling the interrupt routines*/
-    if(irq_hdl_trx)
-    {
-      irq_hdl_trx();
-    }
-}
 
 void pal_spi_init(void)
 {
 	/* Initialize SPI in master mode to access the transceiver */
-#if SAMD20
-	spi_slave_inst_get_config_defaults(&slave_dev_config);
-	slave_dev_config.ss_pin = AT86RFX_SPI_CS;
-	spi_attach_slave(&slave, &slave_dev_config);
-	spi_get_config_defaults(&config);
-	AT86RFX_SPI_CONFIG(config);
-	spi_init(&master, AT86RFX_SPI, &config);
-	spi_enable(&master);
-	AT86RFX_INTC_INIT();
-#else
-	spi_master_init(AT86RFX_SPI);
-	spi_master_setup_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE, SPI_MODE_0,
-			AT86RFX_SPI_BAUDRATE, 0);
-	spi_enable(AT86RFX_SPI);
-	AT86RFX_INTC_INIT();
-#endif
+	trx_spi_init();
 }
 
 uint8_t pal_trx_reg_read(uint8_t addr)
 {
-#if SAMD20	
-  uint16_t register_value = 0;
-#else
-  uint8_t register_value = 0;  
-#endif  
-
-	/*Saving the current interrupt status & disabling the global interrupt */
-	ENTER_CRITICAL_REGION();
-
-	/* Prepare the command byte */
-	addr |= READ_ACCESS_COMMAND;
-    
-#if SAMD20
-    /* Start SPI transaction by pulling SEL low */
-	spi_select_slave(&master, &slave, true);
-
-	/* Send the Read command byte */
-	while(!spi_is_ready_to_write(&master));
-	spi_write(&master,addr);
-	while(!spi_is_write_complete(&master));
-	/* Dummy read since SPI RX is double buffered */
-	while(!spi_is_ready_to_read(&master));
-	spi_read(&master, &dummy_read);
-
-	while(!spi_is_ready_to_write(&master));
-	spi_write(&master,0);
-	while(!spi_is_write_complete(&master));
-	while(!spi_is_ready_to_read(&master));
-	spi_read(&master, &register_value);
-
-	/* Stop the SPI transaction by setting SEL high */
-	spi_select_slave(&master, &slave, false);
-    
-   
-#else
-
-	/* Start SPI transaction by pulling SEL low */
-	spi_select_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-
-	/* Send the Read command byte */
-	spi_write_packet(AT86RFX_SPI, &addr, 1);
-
-	/* Do dummy read for initiating SPI read */
-	spi_read_packet(AT86RFX_SPI, &register_value, 1);
-
-	/* Stop the SPI transaction by setting SEL high */
-	spi_deselect_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
- 
-#endif
-    	/*Restoring the interrupt status which was stored & enabling the global interrupt */
-	LEAVE_CRITICAL_REGION();
-
-	return register_value; 
-
+    /* call TRX register read */
+	trx_reg_read(addr);
 }
 
 void pal_trx_reg_write(uint8_t addr, uint8_t data)
 {
-	/*Saving the current interrupt status & disabling the global interrupt */
-	ENTER_CRITICAL_REGION();
 
-	/* Prepare the command byte */
-	addr |= WRITE_ACCESS_COMMAND;
-
-#if SAMD20
-    /* Start SPI transaction by pulling SEL low */
-	spi_select_slave(&master, &slave, true);
-
-	/* Send the Read command byte */
-	while(!spi_is_ready_to_write(&master));
-	spi_write(&master,addr);
-	while(!spi_is_write_complete(&master));
-	/* Dummy read since SPI RX is double buffered */
-	while(!spi_is_ready_to_read(&master));
-	spi_read(&master, &dummy_read);
-
-	/* Write the byte in the transceiver data register */
-	while(!spi_is_ready_to_write(&master));
-	spi_write(&master,data);
-	while(!spi_is_write_complete(&master));
-	/* Dummy read since SPI RX is double buffered */
-	while(!spi_is_ready_to_read(&master));
-	spi_read(&master, &dummy_read);
-
-	/* Stop the SPI transaction by setting SEL high */
-	spi_select_slave(&master, &slave, false);
-#else
-	/* Start SPI transaction by pulling SEL low */
-	spi_select_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-
-	/* Send the Read command byte */
-	spi_write_packet(AT86RFX_SPI, &addr, 1);
-
-	/* Write the byte in the transceiver data register */
-	spi_write_packet(AT86RFX_SPI, &data, 1);
-
-	/* Stop the SPI transaction by setting SEL high */
-	spi_deselect_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-#endif
-	/*Restoring the interrupt status which was stored & enabling the global interrupt */
-	LEAVE_CRITICAL_REGION();
+    trx_reg_write(addr,data);
 }
 
 
 void pal_trx_irq_init(FUNC_PTR trx_irq_cb)
 {
-    /*
-     * Set the handler function.
-     * The handler is set before enabling the interrupt to prepare for spurious
-     * interrupts, that can pop up the moment they are enabled
-     */
-    irq_hdl_trx = (irq_handler_t)trx_irq_cb;
+    trx_irq_init(trx_irq_cb);
+
 }
 
 uint8_t pal_trx_bit_read(uint8_t addr, uint8_t mask, uint8_t pos)
 {
-	uint8_t ret;
-	ret = pal_trx_reg_read(addr);
-	ret &= mask;
-	ret >>= pos;
-	return ret;
+    trx_bit_read(addr,mask,pos);
 }
 
 void pal_trx_bit_write(uint8_t reg_addr, uint8_t mask, uint8_t pos, uint8_t new_value)
 {
-	uint8_t current_reg_value;
-	current_reg_value = pal_trx_reg_read(reg_addr);
-	current_reg_value &= ~mask;
-	new_value <<= pos;
-	new_value &= mask;
-	new_value |= current_reg_value;
-	pal_trx_reg_write(reg_addr, new_value);
+    trx_bit_write(reg_addr,mask,pos,new_value);
 }
 
 void pal_trx_frame_read(uint8_t *data, uint8_t length)
 {
 	
+    trx_frame_read(data, length);
 
-	/*Saving the current interrupt status & disabling the global interrupt */
-	ENTER_CRITICAL_REGION();
-
-#if SAMD20
-    
-    uint16_t temp;
-        /* Start SPI transaction by pulling SEL low */
-	spi_select_slave(&master, &slave, true);
-
-	temp = TRX_CMD_FR;
-
-	/* Send the command byte */
-	while(!spi_is_ready_to_write(&master));
-	spi_write(&master,temp);
-	while(!spi_is_write_complete(&master));
-	/* Dummy read since SPI RX is double buffered */
-	while(!spi_is_ready_to_read(&master));
-	spi_read(&master, &dummy_read);
-
-	while(length--){
-		while(!spi_is_ready_to_write(&master));
-		spi_write(&master,0);
-		while(!spi_is_write_complete(&master));
-		/* Dummy read since SPI RX is double buffered */
-		while(!spi_is_ready_to_read(&master));
-		spi_read(&master, &temp);
-		*data = temp;
-		data++;
-	}
-
-	/* Stop the SPI transaction by setting SEL high */
-	spi_select_slave(&master, &slave, false);
-#else 
-    uint8_t temp;
-	/* Start SPI transaction by pulling SEL low */
-	spi_select_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-
-	temp = TRX_CMD_FR;
-
-	/* Send the command byte */
-	spi_write_packet(AT86RFX_SPI, &temp, 1);
-
-	spi_read_packet(AT86RFX_SPI, data, length);
-
-	/* Stop the SPI transaction by setting SEL high */
-	spi_deselect_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-#endif
-	/*Restoring the interrupt status which was stored & enabling the global interrupt */
-	LEAVE_CRITICAL_REGION();
 }
 
 void pal_trx_frame_write(uint8_t *data, uint8_t length)
 {
-	uint8_t temp;
-	/*Saving the current interrupt status & disabling the global interrupt */
-	ENTER_CRITICAL_REGION();
-
-#if SAMD20
-        /* Start SPI transaction by pulling SEL low */
-	spi_select_slave(&master, &slave, true);
-
-	temp = TRX_CMD_FW;
-
-	/* Send the command byte */
-	while(!spi_is_ready_to_write(&master));
-	spi_write(&master,temp);
-	while(!spi_is_write_complete(&master));
-	/* Dummy read since SPI RX is double buffered */
-	while(!spi_is_ready_to_read(&master));
-	spi_read(&master, &dummy_read);
-
-	while(length--){
-		while(!spi_is_ready_to_write(&master));
-		spi_write(&master,*data++);
-		while(!spi_is_write_complete(&master));
-		/* Dummy read since SPI RX is double buffered */
-		while(!spi_is_ready_to_read(&master));
-		spi_read(&master, &dummy_read);
-	}
-
-	/* Stop the SPI transaction by setting SEL high */
-	spi_select_slave(&master, &slave, false);
-#else
-	/* Start SPI transaction by pulling SEL low */
-	spi_select_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-
-	temp = TRX_CMD_FW;
-
-	/* Send the command byte */
-	spi_write_packet(AT86RFX_SPI, &temp, 1);
-
-	spi_write_packet(AT86RFX_SPI, data, length);
-
-	/* Stop the SPI transaction by setting SEL high */
-	spi_deselect_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-#endif
-	/*Restoring the interrupt status which was stored & enabling the global interrupt */
-	LEAVE_CRITICAL_REGION();
+     trx_frame_write(data,length);
 }
 
 /**
@@ -360,67 +116,7 @@ void pal_trx_frame_write(uint8_t *data, uint8_t length)
  */
 void pal_trx_sram_write(uint8_t addr, uint8_t *data, uint8_t length)
 {
-    uint8_t temp;
-    /*Saving the current interrupt status & disabling the global interrupt */
-    ENTER_CRITICAL_REGION();
-
-#if SAMD20
-    /* Start SPI transaction by pulling SEL low */
-    spi_select_slave(&master, &slave, true);
-
-    /* Send the command byte */
-    temp = TRX_CMD_SW;
-
-    /* Send the command byte */
-	while(!spi_is_ready_to_write(&master));
-	spi_write(&master,temp);
-	while(!spi_is_write_complete(&master));
-	/* Dummy read since SPI RX is double buffered */
-	while(!spi_is_ready_to_read(&master));
-	spi_read(&master, &dummy_read);
-
-    /* Send the address from which the write operation should start */
-    while(!spi_is_ready_to_write(&master));
-    spi_write(&master,addr);
-    while(!spi_is_write_complete(&master));
-    /* Dummy read since SPI RX is double buffered */
-    while(!spi_is_ready_to_read(&master));
-    spi_read(&master, &dummy_read);
-
-	while(length--){
-		while(!spi_is_ready_to_write(&master));
-		spi_write(&master,*data++);
-		while(!spi_is_write_complete(&master));
-		/* Dummy read since SPI RX is double buffered */
-		while(!spi_is_ready_to_read(&master));
-		spi_read(&master, &dummy_read);
-	}
-
-    /* Stop the SPI transaction by setting SEL high */
-    spi_select_slave(&master, &slave, false);
-#else
-    /* Start SPI transaction by pulling SEL low */
-    spi_select_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-
-    /* Send the command byte */
-    temp = TRX_CMD_SW;
-
-    /* Send the command byte */
-    spi_write_packet(AT86RFX_SPI, &temp, 1);
-    while(!spi_is_tx_empty(AT86RFX_SPI));
-
-    /* Send the address from which the write operation should start */
-    spi_write_packet(AT86RFX_SPI, &addr, 1);
-    while(!spi_is_tx_empty(AT86RFX_SPI));
-
-
-    spi_write_packet(AT86RFX_SPI, data, length);
-
-    /* Stop the SPI transaction by setting SEL high */
-    spi_deselect_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-#endif
-    /*Restoring the interrupt status which was stored & enabling the global interrupt */
-    LEAVE_CRITICAL_REGION();
+     trx_sram_write(addr,data,length);
 }
 
 /**
@@ -434,76 +130,7 @@ void pal_trx_sram_write(uint8_t addr, uint8_t *data, uint8_t length)
  */
 void pal_trx_sram_read(uint8_t addr, uint8_t *data, uint8_t length)
 {
-    
-
-    PAL_WAIT_1_US();  // wap_rf4ce
-
-    /*Saving the current interrupt status & disabling the global interrupt */
-    ENTER_CRITICAL_REGION();
-#if SAMD20
-    
-    uint16_t temp;
-    /* Start SPI transaction by pulling SEL low */
-    spi_select_slave(&master, &slave, true);
-
-    temp = TRX_CMD_SR;
-
-    /* Send the command byte */
-    while(!spi_is_ready_to_write(&master));
-    spi_write(&master,temp);
-    while(!spi_is_write_complete(&master));
-    /* Dummy read since SPI RX is double buffered */
-    while(!spi_is_ready_to_read(&master));
-    spi_read(&master, &dummy_read);
-
-    /* Send the address from which the read operation should start */
-    while(!spi_is_ready_to_write(&master));
-    spi_write(&master,addr);
-    while(!spi_is_write_complete(&master));
-    /* Dummy read since SPI RX is double buffered */
-    while(!spi_is_ready_to_read(&master));
-    spi_read(&master, &dummy_read);
-
-    /* Upload the received byte in the user provided location */
-	while(length--){
-		while(!spi_is_ready_to_write(&master));
-		spi_write(&master,0);
-		while(!spi_is_write_complete(&master));
-		/* Dummy read since SPI RX is double buffered */
-		while(!spi_is_ready_to_read(&master));
-		spi_read(&master, &temp);
-		*data = temp;
-		data++;
-	}
-
-    /* Stop the SPI transaction by setting SEL high */
-    spi_select_slave(&master, &slave, false);
-#else
-    
-    uint8_t temp;
-    /* Start SPI transaction by pulling SEL low */
-    spi_select_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-
-    temp = TRX_CMD_SR;
-
-    /* Send the command byte */
-    spi_write_packet(AT86RFX_SPI, &temp, 1);
-    while(!spi_is_tx_empty(AT86RFX_SPI));
-
-
-    /* Send the command byte */
-    spi_write_packet(AT86RFX_SPI, &addr, 1);
-    while(!spi_is_tx_empty(AT86RFX_SPI));
-
-    /* Send the address from which the read operation should start */
-    /* Upload the received byte in the user provided location */
-    spi_read_packet(AT86RFX_SPI, data, length);
-
-    /* Stop the SPI transaction by setting SEL high */
-    spi_deselect_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-#endif
-    /*Restoring the interrupt status which was stored & enabling the global interrupt */
-    LEAVE_CRITICAL_REGION();
+     trx_sram_read(addr,data,length);
 }
 
 /**
@@ -518,123 +145,6 @@ void pal_trx_sram_read(uint8_t addr, uint8_t *data, uint8_t length)
  */
 void pal_trx_aes_wrrd(uint8_t addr, uint8_t *idata, uint8_t length)
 {
-    uint8_t *odata;
-#if SAMD20	
-	uint16_t odata_var = 0;
-#endif	
-    uint8_t temp;
-
-
-    PAL_WAIT_1_US();  // wap_rf4ce
-
-    ENTER_TRX_REGION();
-
-#ifdef NON_BLOCKING_SPI
-    while (spi_state != SPI_IDLE)
-    {
-        /* wait until SPI gets available */
-    }
-#endif
-#if SAMD20
-    /* Start SPI transaction by pulling SEL low */
-    spi_select_slave(&master, &slave, true);
-
-    /* Send the command byte */
-    temp = TRX_CMD_SW;
-
-    while(!spi_is_ready_to_write(&master));
-    spi_write(&master,temp);
-    while(!spi_is_write_complete(&master));
-    /* Dummy read since SPI RX is double buffered */
-    while(!spi_is_ready_to_read(&master));
-    spi_read(&master, &dummy_read);
-
-    /* write SRAM start address */
-    while(!spi_is_ready_to_write(&master));
-    spi_write(&master,addr);
-    while(!spi_is_write_complete(&master));
-    /* Dummy read since SPI RX is double buffered */
-    while(!spi_is_ready_to_read(&master));
-    spi_read(&master, &dummy_read);
-
-    /* now transfer data */
-    odata = idata;
-
-    /* write data byte 0 - the obtained value in SPDR is meaningless */
-	while(!spi_is_ready_to_write(&master));
-	spi_write(&master,*idata++);
-	while(!spi_is_write_complete(&master));
-	/* Dummy read since SPI RX is double buffered */
-	while(!spi_is_ready_to_read(&master));
-	spi_read(&master, &dummy_read);
-
-    /* Reading Spi Data for the length specified */
-    while (length > 0)
-    {
-        while(!spi_is_ready_to_write(&master));
-        spi_write(&master,*idata++);
-        while(!spi_is_write_complete(&master));
-        while(!spi_is_ready_to_read(&master));
-		
-#if SAMD20
-       spi_read(&master, &odata_var);
-	   *odata++ = (uint8_t)odata_var;	       
-#else		
-        spi_read(&master, (uint16_t*)odata++);
-#endif		
-        length--;
-    }
-
-    /* To get the last data byte, write some dummy byte */
-	while(!spi_is_ready_to_write(&master));
-	spi_write(&master,0);
-	while(!spi_is_write_complete(&master));
-	while(!spi_is_ready_to_read(&master));
-#if SAMD20
-    spi_read(&master, &odata_var);
-    *odata = (uint8_t)odata_var;	    
-#else
-    spi_read(&master, (uint16_t*)odata);
-#endif
-
-    /* Stop the SPI transaction by setting SEL high */
-    spi_select_slave(&master, &slave, false);
-#else
-    /* Start SPI transaction by pulling SEL low */
-    spi_select_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-
-
-    /* Send the command byte */
-    temp = TRX_CMD_SW;
-    spi_write_packet(AT86RFX_SPI, &temp, 1);
-    while(!spi_is_tx_empty(AT86RFX_SPI));
-
-
-    /* write SRAM start address */
-    spi_write_packet(AT86RFX_SPI, &addr, 1);
-    while(!spi_is_tx_empty(AT86RFX_SPI));
-
-    /* now transfer data */
-    odata = idata;
-
-    /* write data byte 0 - the obtained value in SPDR is meaningless */
-    spi_write_packet(AT86RFX_SPI, idata++, 1);
-
-    /* Reading Spi Data for the length specified */
-    while (length > 0)
-    {
-        spi_write_packet(AT86RFX_SPI, idata++, 1);
-        while(!spi_is_tx_empty(AT86RFX_SPI));
-        spi_read_single(AT86RFX_SPI,odata++);
-        length--;
-    }
-
-    /* To get the last data byte, write some dummy byte */
-    spi_read_packet(AT86RFX_SPI, odata, 1);
-
-    /* Stop the SPI transaction by setting SEL high */
-    spi_deselect_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE);
-#endif
-    LEAVE_TRX_REGION();
+    trx_aes_wrrd(addr,idata,length);
 }
 

@@ -181,7 +181,7 @@ int main(void)
 		ul_page_buffer[ul_idx] = 1 << (ul_idx % 32);
 	}
 
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP || SAMG)
 	/* The EWP command is not supported for non-8KByte sectors in all devices
 	 *  SAM4 series, so an erase command is requried before the write operation.
 	 */
@@ -213,7 +213,7 @@ int main(void)
 	}
 	printf("OK\n\r");
 
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP || SAMG)
 	/* The EWP command is not supported for non-8KByte sectors in some SAM4
 	 * series, so an erase command is requried before the write operation.
 	 */
@@ -237,7 +237,7 @@ int main(void)
 	printf("-I- Try to program the locked page ...\n\r");
 	ul_rc = flash_write(ul_last_page_addr, ul_page_buffer,
 			IFLASH_PAGE_SIZE,
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP)
 			0);
 #else
 			1);

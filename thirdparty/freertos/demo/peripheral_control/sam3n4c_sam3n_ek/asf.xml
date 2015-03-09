@@ -14,6 +14,7 @@
 		<generator value="as5_arm"/>
 		<config name="config.thirdparty.os.freertos.version" value="7.3.0"/>
 		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
 		<config name="config.compiler.iarewarm.heap_size" value="0x1000"/>
 		<config name="config.common.services.freertos.peripheral_control.usb" value="no"/>
 		<config name="config.common.services.freertos.peripheral_control.twi" value="no"/>

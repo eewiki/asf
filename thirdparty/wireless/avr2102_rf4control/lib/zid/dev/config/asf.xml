@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2102_rf4control.lib.zid.dev.config" caption="AVR2102 -ZID LIB Config For HID Class Device">
+		<info type="description" value="summary">
+		</info>
+	    <build type="include-path" value="."/>
+		<build type="header-file"   value="node_config.h"/>
+		<build type="doxygen-entry-point" value="zid_lib"/>
+		<require idref="thirdparty.wireless.avr2102_rf4control.include" />
+		<device-support-alias value="avr2102_rf4control_zid_dev_support"/>
+	</module>
+    <device-alias-map name="avr2102_rf4control_zid_dev_support">
+        <device-support value="atmega256rfr2"/>		
+    </device-alias-map>
+</asf>

@@ -8,7 +8,7 @@
  *
  * To use this board, define BOARD= ATMEGA256RFR2_XPLAINED_PRO.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -48,10 +48,204 @@
 
 #include "compiler.h"
 #include "conf_board.h"
-# include "helper.h"
+#include "helper.h"
+#include <asf.h>
 
 
+#if (!defined KEY_RC_BOARD)
 static board_t board_type;
+#endif
+
+#ifdef KEY_RC_BOARD 
+static uint8_t latch_status = 0xDF;
+/**
+ * @brief Button pins setting for active/normal mode
+ */
+void set_button_pins_for_normal_mode(void)
+{
+    /* input */
+    BUTTON_PORT1_DIR &= 0x80;
+    BUTTON_PORT2_DIR &= ~((1 << PD5) | (1 << PD7));
+    /* pull-up */
+    BUTTON_PORT1 |= 0x7F;
+    BUTTON_PORT2 |= (1 << PD5) | (1 << PD7);
+}
+
+/**
+ * @brief Pulse latch for connected external hardware
+ */
+void pulse_latch(void)
+{
+    uint8_t data_port;
+    uint8_t data_dir;
+
+    /* Store previous values */
+    data_port = LATCH_DATA;
+    data_dir = LATCH_DATA_DIR;
+
+    /* Apply latch pulse to set LED status */
+
+    LATCH_DATA_DIR = 0xFF;
+
+    LATCH_DATA = latch_status;
+    LATCH_PULSE();
+
+    /* Re-store previous values */
+    LATCH_DATA = data_port;
+    LATCH_DATA_DIR = data_dir;
+}
+
+/**
+ * @brief Update the latch status
+ *
+ */
+void update_latch_status(void)
+{
+	/* Switch all LEDs off, low active */	
+	latch_status |= (1 << PB0) | (1 << PB1) | (1 << PB2) | \
+					(1 << PB3) | (1 << PB4);
+}
+
+/**
+ * @brief Control LED status
+ *
+ * @param[in]  led_no LED ID
+ * @param[in]  led_setting LED_ON, LED_OFF, LED_TOGGLE
+ */
+void led_ctrl(led_id_t led_no, led_action_t led_setting)
+{
+    led_no--;
+    switch (led_setting)
+    {
+            /* low active LEDs */
+        case LED_ON:
+            latch_status &= ~(1 << led_no);
+            break;
+        case LED_OFF:
+            latch_status |= (1 << led_no);
+            break;
+        case LED_TOGGLE:
+        default:
+            if (latch_status & (1 << led_no))
+            {
+                latch_status &= ~(1 << led_no);
+            }
+            else
+            {
+                latch_status |= (1 << led_no);
+            }
+            break;
+    }
+
+    pulse_latch();
+}
+
+/**
+ * @brief Button handling handles the button pressed events
+ *
+ * @param button_no
+ */
+button_id_t pal_button_scan(void)
+{
+    uint32_t ret_val = 0;
+    uint8_t i, k, r;
+    uint8_t pin_no;
+    uint32_t result[NUM_OF_IDENTICAL_KEYS];
+    for (r = 0; r < NUM_OF_IDENTICAL_KEYS; r++)
+    {
+        /* indicating unused entry */
+        result[r] = 0x80000000;  
+    }
+
+    for (k = 0; k < MAX_KEY_SCANS; k++)
+    {
+        ret_val = 0;
+
+        for (i = 1; i < 4; i++)
+        {
+            /* Set IRQ pin to output, low */
+            BUTTON_IRQ_PORT_DIR |= (1 << i);
+            BUTTON_IRQ_PORT &= ~(1 << i);
+            nop();
+            delay_ms(1);  /* wait until next rising edge changes input state */
+            if ((BUTTON_PORT1_IN & 0x7F) != 0x7F) /* Any of the pins are pressed. */
+            {
+
+                if (ioport_get_pin_level(BUTTON_PIN_0) == 0)
+                {
+                    pin_no = 0;
+                    ret_val |= (((uint32_t)1 << (((i - 1) * 9) + pin_no)));
+                }
+                if (ioport_get_pin_level(BUTTON_PIN_1) == 0)
+                {
+                    pin_no = 1;
+                    ret_val |= (((uint32_t)1 << (((i - 1) * 9) + pin_no)));
+                }
+                if (ioport_get_pin_level(BUTTON_PIN_2) == 0)
+                {
+                    pin_no = 2;
+                    ret_val |= (((uint32_t)1 << (((i - 1) * 9) + pin_no)));
+                }
+                if (ioport_get_pin_level(BUTTON_PIN_3) == 0)
+                {
+                    pin_no = 3;
+                    ret_val |= (((uint32_t)1 << (((i - 1) * 9) + pin_no)));
+                }
+                if (ioport_get_pin_level(BUTTON_PIN_4) == 0)
+                {
+                    pin_no = 4;
+                    ret_val |= (((uint32_t)1 << (((i - 1) * 9) + pin_no)));
+                }
+                if (ioport_get_pin_level(BUTTON_PIN_5) == 0)
+                {
+                    pin_no = 5;
+                    ret_val |= (((uint32_t)1 << (((i - 1) * 9) + pin_no)));
+                }
+                if (ioport_get_pin_level(BUTTON_PIN_6) == 0)
+                {
+                    pin_no = 6;
+                    ret_val |= (((uint32_t)1 << (((i - 1) * 9) + pin_no)));
+                }
+            }
+            if (ioport_get_pin_level(BUTTON_PIN_7) == 0)
+            {
+                pin_no = 7;
+                ret_val |= (((uint32_t)1 << (((i - 1) * 9) + pin_no)));
+            }
+            if (ioport_get_pin_level(BUTTON_PIN_8) == 0)
+            {
+                pin_no = 8;
+                ret_val |= (((uint32_t)1 << (((i - 1) * 9) + pin_no)));
+            }
+
+            /* Reset current pin */
+            BUTTON_IRQ_PORT_DIR &= ~(1 << i);
+            BUTTON_IRQ_PORT |= (1 << i);
+
+        }
+
+        /* Debouncing: Check if key value is reproducible */
+        for (r = 0; r < NUM_OF_IDENTICAL_KEYS; r++)
+        {
+            if (result[r] == ret_val)
+            {
+                if (r == (NUM_OF_IDENTICAL_KEYS - 1))
+                {
+                    return ret_val;
+                }
+            }
+            else
+            {
+                result[r] = ret_val;
+                break;
+            }
+        }
+    }
+    return ret_val;
+}
+
+#else /* KEY_RC_BOARD */
+
 
 /**
  * \brief Read XRAM
@@ -138,39 +332,6 @@ void xram_write(uint16_t addr, uint8_t data)
 }
 
 
-
-
- void board_identify(void)
-{
-    uint8_t i;
-    uint8_t count = 0;
-    mem_test_t mem_vals[NUM_CHECK];
-    for (i = 0; i < NUM_CHECK ; i++)
-    {
-        mem_vals[i].addr = 0x8000 + (i * 10);
-        mem_vals[i].val = 4;
-        xram_write(mem_vals[i].addr, mem_vals[i].val);
-    }
-    for (i = 0; i < NUM_CHECK ; i++)
-    {
-        if (mem_vals[i].val == xram_read(mem_vals[i].addr))
-        {
-            count++;
-        }
-    }
-    if (count)
-    {
-        board_type = SENSOR_TERM_BOARD;
-
-    }
-    else
-    {
-        board_type = PLAIN;    
-    }   
-
-
-}
-#ifdef  SENSOR_TERMINAL_BOARD
 bool stb_button_read(void)
 {
 
@@ -241,7 +402,38 @@ switch (board_type)
     return false;
 
 }
-#endif
+
+void board_identify(void)
+{
+    uint8_t i;
+    uint8_t count = 0;
+    mem_test_t mem_vals[NUM_CHECK];
+    for (i = 0; i < NUM_CHECK ; i++)
+    {
+        mem_vals[i].addr = 0x8000 + (i * 10);
+        mem_vals[i].val = 4;
+        xram_write(mem_vals[i].addr, mem_vals[i].val);
+    }
+    for (i = 0; i < NUM_CHECK ; i++)
+    {
+        if (mem_vals[i].val == xram_read(mem_vals[i].addr))
+        {
+            count++;
+        }
+    }
+    if (count)
+    {
+        board_type = SENSOR_TERM_BOARD;
+
+    }
+    else
+    {
+        board_type = PLAIN;    
+    }   
+
+
+}
+
 
 void led_ctrl(led_id_t led_no, led_action_t led_setting)
 {
@@ -352,7 +544,9 @@ case PLAIN:
         break;
         }
     }
+	
 }
+
 }
 
 
@@ -382,3 +576,4 @@ void led_helper_func(void)
     LED_ADDR_DEC_PORT &= ~_BV(7);
     LED_ADDR_DEC_DDR |= _BV(7);
 }
+#endif
