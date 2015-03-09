@@ -1,4 +1,7 @@
 #ifndef _LWIP_SETUP_H
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #define _LWIP_SETUP_H
 
 struct net_cfg {

@@ -4,7 +4,7 @@
  *
  * \brief Basic WEB Server for AVR32 UC3.
  *
- * Copyright (c) 2009-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -51,6 +51,9 @@
   This file was adapted from a FreeRTOS lwIP slip demo supplied by a third
   party.
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #if (HTTP_USED == 1)
 

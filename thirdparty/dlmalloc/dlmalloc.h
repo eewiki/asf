@@ -11,6 +11,9 @@
          Check before installing!
 
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef DLMALLOC_H
 #define DLMALLOC_H
 

@@ -51,6 +51,9 @@
  *  - SPCK(PA14)  -- SPCK(PA14)
  *  - GND -- GND
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_SPI_EXAMPLE_H_INCLUDED
 #define CONF_SPI_EXAMPLE_H_INCLUDED

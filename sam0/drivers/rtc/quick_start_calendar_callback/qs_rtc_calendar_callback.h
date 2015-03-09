@@ -132,4 +132,7 @@
  * -# Add one second to the current time and set new alarm.
  *    \snippet qs_rtc_calendar_callback.c set_alarm
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 

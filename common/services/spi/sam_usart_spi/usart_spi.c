@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "usart_spi.h"
 #include "sysclk.h"
@@ -63,6 +66,8 @@ extern "C" {
  */
 void usart_spi_init(Usart *p_usart)
 {
+#if (!SAMG55)
+
 	uint8_t uc_id;
 
 #ifdef USART0
@@ -89,30 +94,6 @@ void usart_spi_init(Usart *p_usart)
 	}
 #endif
 
-#if SAMG55
-#ifdef USART4
-	if (p_usart == USART4) {
-		uc_id = ID_USART4;
-	}
-#endif
-
-#ifdef USART5
-	else if(p_usart == USART5) {
-		uc_id = ID_USART5;
-	}
-#endif
-
-#ifdef USART6
-	else if(p_usart == USART6) {
-		uc_id = ID_USART6;
-	}
-#endif
-
-#ifdef USART7
-	else if(p_usart == USART7) {
-		uc_id = ID_USART7;
-	}
-#endif
 #endif
 
 #if SAM4L

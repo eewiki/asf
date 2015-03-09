@@ -5,7 +5,7 @@
  *
  * To use this board, define BOARD=AVR477_REMOTE.
  *
- * Copyright (c) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,12 +43,15 @@
  *
  */
 /*
- * Copyright (c) 2009, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * 
  */
 
 /* Prevent double inclusion */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef APP_CONFIG_H
 #define APP_CONFIG_H
 

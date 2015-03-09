@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include "conf_hx8347a.h"
 #include "hx8347a.h"
 #include "hx8347a_regs.h"

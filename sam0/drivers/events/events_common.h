@@ -40,11 +40,14 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef _EVENTS_COMMON_H_INCLUDED_
 #define _EVENTS_COMMON_H_INCLUDED_
 
 /**
- * \internal Internal module structure to manage necassery globals
+ * \internal Internal module structure to manage necessary globals
  *
  *
  */

@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef AST_EXAMPLE1_H_INCLUDED
 #define AST_EXAMPLE1_H_INCLUDED

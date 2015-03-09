@@ -33,6 +33,9 @@
  *
  * Author: Christiaan Simons <christiaan.simons@axon.tv>
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef __LWIP_SNMP_STRUCTS_H__
 #define __LWIP_SNMP_STRUCTS_H__

@@ -30,6 +30,9 @@
  * Author: Leon Woestenberg <leon.woestenberg@axon.tv>
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef __LWIP_SNMP_H__
 #define __LWIP_SNMP_H__
 

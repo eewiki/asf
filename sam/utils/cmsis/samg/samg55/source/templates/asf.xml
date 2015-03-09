@@ -1,0 +1,11 @@
+<asf xmlversion="1.0">
+	<module type="driver" caption="SAMG55 startup code" id="sam.utils.cmsis.samg55.source.template">
+		<build type="c-source" value="system_samg55.c"/>
+		<build type="c-source" value="gcc/startup_samg55.c" toolchain="armgcc"/>
+		<build type="c-source" value="iar/startup_samg55.c" toolchain="iarewarm"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../../include"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samg55"/>
+	</module>
+</asf>

@@ -15,6 +15,9 @@
  */
 
 /* Prevent double inclusion */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef RF4CE_H
 #define RF4CE_H
 

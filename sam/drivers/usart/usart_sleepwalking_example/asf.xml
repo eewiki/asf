@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.usart.usart_sleepwalking_example" caption="USART Sleepwalking Example">
+		<info type="description" value="summary">
+			This example shows the sleepwalking function of USART.
+		</info>
+		<build type="c-source" value="usart_sleepwalking_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="samg55"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

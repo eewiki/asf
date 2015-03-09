@@ -30,11 +30,7 @@
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.sercom.polled"/>
 
-			<device-support value="samd20"/>
-			<device-support value="samd21"/>
-			<device-support value="samr21"/>
-			<device-support value="samd10"/>
-			<device-support value="samd11"/>
+			<device-support value="sam0"/>
 
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>
@@ -84,11 +80,7 @@
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.sercom.callback"/>
 
-			<device-support value="samd20"/>
-			<device-support value="samd21"/>
-			<device-support value="samr21"/>
-			<device-support value="samd10"/>
-			<device-support value="samd11"/>
+			<device-support value="sam0"/>
 
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>

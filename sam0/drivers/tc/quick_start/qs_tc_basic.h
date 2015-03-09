@@ -71,7 +71,16 @@
  *
  * \subsection asfdoc_sam0_tc_basic_use_case_setup_code Code
  * Add to the main application source file, before any functions:
- * \snippet conf_quick_start.h definition_pwm
+ * - SAM D21 Xplained Pro.
+ *   \snippet quick_start/samd21_xplained_pro/conf_quick_start.h definition_pwm
+ * - SAM D20 Xplained Pro.
+ *   \snippet quick_start/samd20_xplained_pro/conf_quick_start.h definition_pwm
+ * - SAM R21 Xplained Pro.
+ *   \snippet quick_start/samr21_xplained_pro/conf_quick_start.h definition_pwm
+ * - SAM D11 Xplained Pro.
+ *   \snippet quick_start/samd11_xplained_pro/conf_quick_start.h definition_pwm
+ * - SAM L21 Xplained Pro.
+ *   \snippet quick_start/saml21_xplained_pro/conf_quick_start.h definition_pwm
  *
  * Add to the main application source file, outside of any functions:
  * \snippet qs_tc_basic.c module_inst
@@ -120,4 +129,7 @@
  * \subsection asfdoc_sam0_tc_basic_use_case_main_flow Workflow
  * -# Enter an infinite loop while the PWM wave is generated via the TC module.
  *    \snippet qs_tc_basic.c main_loop
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

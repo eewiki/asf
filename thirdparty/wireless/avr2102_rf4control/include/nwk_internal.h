@@ -48,6 +48,9 @@
  */
 
 /* Prevent double inclusion */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef NWK_INTERNAL_H
 #define NWK_INTERNAL_H
 

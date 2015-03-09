@@ -54,6 +54,9 @@
  * Randomize fsm id on link/init.
  * Deal with variable outgoing MTU.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "lwip/opt.h"
 

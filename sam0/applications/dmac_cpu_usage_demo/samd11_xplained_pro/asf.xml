@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<project caption="DMAC CPU Usage Demo Example for SAM D11 Xplained Pro" id="sam0.applications.dmac_cpu_usage_demo.samd11_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_dma.h"/>
+
+		<require idref="board.samd11_xplained_pro"/>
+		<require idref="sam0.applications.dmac_cpu_usage_demo"/>
+
+		<config name="config.sam0.drivers.sercom.usart" value="polled"/>
+		<config name="config.sam0.drivers.adc" value="polled"/>
+
+		<toolchain-config name="armgcc.compiler.optimization.level" value="None (-O0)" toolchain="armgcc"/>
+		<config name="config.compiler.armgcc.optimization" value="none" />
+
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+
+		<device-support value="atsamd11d14am"/>
+
+	</project>
+</asf>

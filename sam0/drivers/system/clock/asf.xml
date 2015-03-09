@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
-	<module type="meta" id="sam0.drivers.system.clock.appnote" caption="SYSTEM - Clock Management Application Note">
+	<module type="meta" id="sam0.drivers.system.clock.appnote_1" caption="SYSTEM - Clock Management Application Note For SAM D20/D21/R21/D10/D11">
 		<info type="description" value="summary">
-			Driver for the SAM Clock management units. Provides a unified
+			Driver for the SAM D20/D21/R21/D10/D11 Clock management units. Provides a unified
 			interface for the configuration and management of the various clocks
 			in the device, including the bus and generic peripheral clocks.
 		</info>
@@ -20,7 +20,7 @@
 
 		<info type="description" value="pdf">
 			This document describes how to use the Clock and Generic Clock on
-			the SAM, both the ASF driver and the peripheral itself.
+			the SAM D20/D21/R21/D10/D11, both the ASF driver and the peripheral itself.
 		</info>
 
 		<build type="doxygen-entry-point" value="asfdoc_sam0_system_clock_group"/>
@@ -33,6 +33,7 @@
 
 		<build type="header-file" subtype="api" value="clock.h"/>
 		<build type="header-file" subtype="api" value="gclk.h"/>
+		<build type="header-file" value="clock_samd21_r21/clock_feature.h"/>
 		<build type="header-file" value="clock_samd21_r21/clock_config_check.h" />
 		<build type="c-source" value="clock_samd21_r21/clock.c"/>
 		<build type="c-source" value="clock_samd21_r21/gclk.c"/>
@@ -48,6 +49,57 @@
 
 		<device-support value="sam0"/>
 		<generator value="doxygen-module-v2" default-mcu="unspecified-samd21"/>
+	</module>
+	<module type="meta" id="sam0.drivers.system.clock.appnote_2" caption="SYSTEM - Clock Management Application Note For SAML21">
+		<info type="description" value="summary">
+			Driver for the SAM L21 Clock management units. Provides a unified
+			interface for the configuration and management of the various clocks
+			in the device, including the bus and generic peripheral clocks.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks" />
+		</info>
+
+		<info type="appnote" value="AT11389"/>
+		<info type="keyword" value="pdf">
+			<keyword value="SYSTEM"/>
+			<keyword value="I/O"/>
+			<keyword value="Clock" />
+			<keyword value="GCLK" />
+			<keyword value="Generic Clock" />
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Clock and Generic Clock on
+			the SAM L21, both the ASF driver and the peripheral itself.
+		</info>
+
+		<build type="doxygen-entry-point" value="asfdoc_sam0_system_clock_group"/>
+		<build type="doxygen-example-path" value="quick_start_gclk"/>
+		<build type="doxygen-example-path" value="quick_start_clock"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_system_clock_exqsg"/>
+
+		<build type="include-path" value="."/>
+		<build type="include-path" value="clock_saml21/"/>
+
+		<build type="header-file" subtype="api" value="gclk.h"/>
+		<build type="header-file" subtype="api" value="clock.h"/>
+		<build type="header-file" value="clock_saml21/clock_feature.h"/>
+		<build type="header-file" value="clock_saml21/clock_config_check.h" />
+		<build type="c-source" value="clock_saml21/clock.c"/>
+		<build type="c-source" value="clock_saml21/gclk.c"/>
+
+		<build type="header-file" value="quick_start_gclk/qs_gclk_basic.h"/>
+		<build type="header-file" value="quick_start_clock/qs_clock_source.h"/>
+
+		<build type="module-config" subtype="path" value="clock_saml21/module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_clocks.h"/>
+
+		<require idref="sam0.drivers.system.interrupt"/>
+		<require idref="sam0.utils"/>
+
+		<device-support value="saml21"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-saml21"/>
 	</module>
 
 	<select-by-device id="sam0.drivers.system.clock" caption="SYSTEM - Clock Management">
@@ -66,20 +118,14 @@
 
 			<build type="header-file" subtype="api" value="clock.h"/>
 			<build type="header-file" subtype="api" value="gclk.h"/>
+			<build type="header-file" value="clock_samd20/clock_feature.h" />
 			<build type="header-file" value="clock_samd20/clock_config_check.h" />
 			<build type="c-source" value="clock_samd20/clock.c"/>
 			<build type="c-source" value="clock_samd20/gclk.c"/>
-
-			<build type="header-file" value="quick_start_gclk/qs_gclk_basic.h"/>
-			<build type="header-file" value="quick_start_clock/qs_clock_source.h"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_system_clock_group"/>
 
 			<build type="module-config" subtype="path" value="clock_samd20/module_config"/>
 			<build type="module-config" subtype="required-header-file" value="conf_clocks.h"/>
-
-			<build type="doxygen-entry-point" value="asfdoc_sam0_system_clock_group"/>
-			<build type="doxygen-example-path" value="quick_start_gclk"/>
-			<build type="doxygen-example-path" value="quick_start_clock"/>
-			<build type="doxygen-quick-start" value="asfdoc_sam0_system_clock_exqsg"/>
 
 			<require idref="sam0.drivers.system.interrupt"/>
 			<require idref="sam0.utils"/>
@@ -102,19 +148,14 @@
 
 			<build type="header-file" subtype="api" value="clock.h"/>
 			<build type="header-file" subtype="api" value="gclk.h"/>
+			<build type="header-file" value="clock_samd21_r21/clock_feature.h" />
 			<build type="header-file" value="clock_samd21_r21/clock_config_check.h" />
 			<build type="c-source" value="clock_samd21_r21/clock.c"/>
 			<build type="c-source" value="clock_samd21_r21/gclk.c"/>
 
-			<build type="header-file" value="quick_start_gclk/qs_gclk_basic.h"/>
-			<build type="header-file" value="quick_start_clock/qs_clock_source.h"/>
-
 			<build type="module-config" subtype="path" value="clock_samd21_r21/module_config"/>
 			<build type="module-config" subtype="required-header-file" value="conf_clocks.h"/>
 			<build type="doxygen-entry-point" value="asfdoc_sam0_system_clock_group"/>
-			<build type="doxygen-example-path" value="quick_start_gclk"/>
-			<build type="doxygen-example-path" value="quick_start_clock"/>
-			<build type="doxygen-quick-start" value="asfdoc_sam0_system_clock_exqsg"/>
 
 			<require idref="sam0.drivers.system.interrupt"/>
 			<require idref="sam0.utils"/>
@@ -137,19 +178,14 @@
 
 			<build type="header-file" subtype="api" value="clock.h"/>
 			<build type="header-file" subtype="api" value="gclk.h"/>
+			<build type="header-file" value="clock_samd21_r21/clock_feature.h" />
 			<build type="header-file" value="clock_samd21_r21/clock_config_check.h" />
 			<build type="c-source" value="clock_samd21_r21/clock.c"/>
 			<build type="c-source" value="clock_samd21_r21/gclk.c"/>
-
-			<build type="header-file" value="quick_start_gclk/qs_gclk_basic.h"/>
-			<build type="header-file" value="quick_start_clock/qs_clock_source.h"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_system_clock_group"/>
 
 			<build type="module-config" subtype="path" value="clock_samd21_r21/module_config"/>
 			<build type="module-config" subtype="required-header-file" value="conf_clocks.h"/>
-			<build type="doxygen-entry-point" value="asfdoc_sam0_system_clock_group"/>
-			<build type="doxygen-example-path" value="quick_start_gclk"/>
-			<build type="doxygen-example-path" value="quick_start_clock"/>
-			<build type="doxygen-quick-start" value="asfdoc_sam0_system_clock_exqsg"/>
 
 			<require idref="sam0.drivers.system.interrupt"/>
 			<require idref="sam0.utils"/>
@@ -172,9 +208,11 @@
 
 			<build type="header-file" subtype="api" value="clock.h"/>
 			<build type="header-file" subtype="api" value="gclk.h"/>
+			<build type="header-file" value="clock_samd10_d11/clock_feature.h" />
 			<build type="header-file" value="clock_samd10_d11/clock_config_check.h" />
 			<build type="c-source" value="clock_samd10_d11/clock.c"/>
 			<build type="c-source" value="clock_samd10_d11/gclk.c"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_system_clock_group"/>
 
 			<build type="module-config" subtype="path" value="clock_samd10_d11/module_config"/>
 			<build type="module-config" subtype="required-header-file" value="conf_clocks.h"/>
@@ -198,9 +236,11 @@
 
 			<build type="header-file" subtype="api" value="clock.h"/>
 			<build type="header-file" subtype="api" value="gclk.h"/>
+			<build type="header-file" value="clock_samd10_d11/clock_feature.h" />
 			<build type="header-file" value="clock_samd10_d11/clock_config_check.h" />
 			<build type="c-source" value="clock_samd10_d11/clock.c"/>
 			<build type="c-source" value="clock_samd10_d11/gclk.c"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_system_clock_group"/>
 
 			<build type="module-config" subtype="path" value="clock_samd10_d11/module_config"/>
 			<build type="module-config" subtype="required-header-file" value="conf_clocks.h"/>
@@ -208,6 +248,34 @@
 			<require idref="sam0.utils"/>
 
 			<device-support value="samd11"/>
+		</module>
+		<module type="driver" id="sam0.drivers.system.clock#saml21" caption="SYSTEM - Clock Management for SAML21">
+			<info type="description" value="summary">
+				Driver for the SAM L21 Clock management units. Provides a unified
+				interface for the configuration and management of the various clocks
+				in the device, including the bus and generic peripheral clocks.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks" />
+			</info>
+
+			<build type="include-path" value="."/>
+			<build type="include-path" value="clock_saml21/"/>
+
+			<build type="header-file" subtype="api" value="clock.h"/>
+			<build type="header-file" subtype="api" value="gclk.h"/>
+			<build type="header-file" value="clock_saml21/clock_feature.h" />
+			<build type="header-file" value="clock_saml21/clock_config_check.h" />
+			<build type="c-source" value="clock_saml21/clock.c"/>
+			<build type="c-source" value="clock_saml21/gclk.c"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_system_clock_group"/>
+
+			<build type="module-config" subtype="path" value="clock_saml21/module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_clocks.h"/>
+			<require idref="sam0.drivers.system.interrupt"/>
+			<require idref="sam0.utils"/>
+
+			<device-support value="saml21"/>
 		</module>
 	</select-by-device>
 </asf>

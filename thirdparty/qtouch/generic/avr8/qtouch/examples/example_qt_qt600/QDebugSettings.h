@@ -3,7 +3,7 @@
  *
  * \brief QTouch Debug Setting
  *
- * Copyright (c) 2010 - 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -51,6 +51,9 @@
  * Values from 0xF000->0xFFFF are reserved for Atmel Kits.
  * Values from 0x0000->0xEFFF are available for other projects.
  * @{
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #define QT8     0xF001
 #define QT16    0xF002

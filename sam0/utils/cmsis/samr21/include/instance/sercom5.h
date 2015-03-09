@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef _SAMR21_SERCOM5_INSTANCE_
 #define _SAMR21_SERCOM5_INSTANCE_
@@ -134,10 +137,10 @@
 #endif /* (defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 
 /* ========== Instance parameters for SERCOM5 peripheral ========== */
-#define SERCOM5_DMAC_ID_RX          11
-#define SERCOM5_DMAC_ID_TX          12
-#define SERCOM5_GCLK_ID_CORE        25
-#define SERCOM5_GCLK_ID_SLOW        19
-#define SERCOM5_INT_MSB             6
+#define SERCOM5_DMAC_ID_RX          11       // Index of DMA RX trigger
+#define SERCOM5_DMAC_ID_TX          12       // Index of DMA TX trigger
+#define SERCOM5_GCLK_ID_CORE        25       // Index of Generic Clock for Core
+#define SERCOM5_GCLK_ID_SLOW        19       // Index of Generic Clock for SMbus timeout
+#define SERCOM5_INT_MSB             6       
 
 #endif /* _SAMR21_SERCOM5_INSTANCE_ */

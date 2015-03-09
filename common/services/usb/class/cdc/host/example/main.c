@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "conf_usb_host.h"
 #include <asf.h>
@@ -48,7 +51,7 @@
  */
 int main(void)
 {
-#if SAMD21
+#if SAMD21 || SAML21
 	system_init();
 #else
 	/* Initialize the synchronous clock system to the default configuration

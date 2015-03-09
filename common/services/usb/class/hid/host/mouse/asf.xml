@@ -22,6 +22,7 @@
 			<device-support value="samd21"/>
 			<device-support value="samr21"/>
 			<device-support value="sam4c32e"/>
+			<device-support value="saml21"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>
 		<module type="service" id="common.services.usb.class.hid.host.composite.mouse#disable" caption="USB Host HID Mouse disabled">
@@ -55,6 +56,8 @@
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
 		<device-support value="sam4c32e"/>
+		<device-support value="saml21"/>
+		<device-support value="samg55"/>
 		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 	</module>
 

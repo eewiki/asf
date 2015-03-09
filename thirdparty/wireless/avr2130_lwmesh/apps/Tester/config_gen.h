@@ -1,4 +1,7 @@
 #define NWK_ENABLE_SECURITY
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #define NWK_ROUTE_DISCOVERY_TIMEOUT 1000
 #define NWK_BUFFERS_AMOUNT 10
 #define NWK_ROUTE_DISCOVERY_TABLE_SIZE 10

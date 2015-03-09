@@ -25,5 +25,21 @@
 			<device-support value="sam4cm"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
 		</module>
+		<module type="driver" id="sam.drivers.usart#1" caption="USART - Univ. Syn Async Rec/Trans">
+			<info type="description" value="summary">
+			The Universal Synchronous Asynchronous Receiver Transceiver provides one full duplex universal synchronous asynchronous serial link. 
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usart.c"/>
+			<build type="header-file" subtype="api" value="usart.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="sam_drivers_usart_group"/>
+			<build type="doxygen-quick-start" value="sam_usart_quickstart"/>
+			<device-support value="samg55"/>
+			<require idref="sam.drivers.flexcom"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samg55"/>
+		</module>
 	</select-by-device>
 </asf>

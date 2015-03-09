@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="Sound Player for the SAM L21 Xplained Pro" id="sam0.applications.dac_sound_player.saml21_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<require idref="board.saml21_xplained_pro"/>
+		<require idref="sam0.applications.dac_sound_player"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<device-support value="atsaml21j18a"/>
+	</project>
+</asf>

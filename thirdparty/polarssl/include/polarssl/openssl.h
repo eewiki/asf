@@ -25,6 +25,9 @@
 /*
  * OpenSSL wrapper contributed by David Barett
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef POLARSSL_OPENSSL_H
 #define POLARSSL_OPENSSL_H
 

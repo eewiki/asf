@@ -39,6 +39,9 @@
  */
 
 /* Prevent double inclusion */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef COMMON_HW_TIMER_H
 #define COMMON_HW_TIMER_H
 

@@ -42,6 +42,9 @@
  */
 
 /* Standard includes. */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include <string.h>
 
 /* ASF includes. */
@@ -111,15 +114,15 @@ static freertos_dma_event_control_t tx_dma_control[MAX_USARTS];
 USART. */
 static const freertos_pdc_peripheral_parameters_t all_usart_definitions[MAX_USARTS] = {
 #if SAMG55
-	{USART0, PDC_USART0, ID_USART0, USART0_SPI0_TWI0_IRQn},
-	{USART1, PDC_USART1, ID_USART1, USART1_SPI1_TWI1_IRQn},
-	{USART2, PDC_USART2, ID_USART2, USART2_SPI2_TWI2_IRQn},
-	{USART3, PDC_USART3, ID_USART3, USART3_SPI3_TWI3_IRQn},
-	{USART4, PDC_USART4, ID_USART4, USART4_SPI4_TWI4_IRQn},
-	{USART5, PDC_USART5, ID_USART5, USART5_SPI5_TWI5_IRQn},
-	{USART6, PDC_USART6, ID_USART6, USART6_SPI6_TWI6_IRQn},
+	{USART0, PDC_USART0, ID_FLEXCOM0, FLEXCOM0_IRQn},
+	{USART1, PDC_USART1, ID_FLEXCOM1, FLEXCOM1_IRQn},
+	{USART2, PDC_USART2, ID_FLEXCOM2, FLEXCOM2_IRQn},
+	{USART3, PDC_USART3, ID_FLEXCOM3, FLEXCOM3_IRQn},
+	{USART4, PDC_USART4, ID_FLEXCOM4, FLEXCOM4_IRQn},
+	{USART5, PDC_USART5, ID_FLEXCOM5, FLEXCOM5_IRQn},
+	{USART6, PDC_USART6, ID_FLEXCOM6, FLEXCOM6_IRQn},
 #if (MAX_USARTS > 7)
-	{USART7, PDC_USART7, ID_USART7, USART7_SPI7_TWI7_IRQn},
+	{USART7, PDC_USART7, ID_FLEXCOM7, FLEXCOM7_IRQn},
 #endif
 
 #else
@@ -800,49 +803,49 @@ static void local_usart_handler(const portBASE_TYPE usart_index)
  */
 #if SAMG55
 #ifdef CONF_FREERTOS_USE_USART0
-void USART0_SPI0_TWI0_Handler(void)
+void FLEXCOM0_Handler(void)
 {
 	local_usart_handler(0);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_USART1
-void USART1_SPI1_TWI1_Handler(void)
+void FLEXCOM1_Handler(void)
 {
 	local_usart_handler(1);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_USART2
-void USART2_SPI2_TWI2_Handler(void)
+void FLEXCOM2_Handler(void)
 {
 	local_usart_handler(2);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_USART3
-void USART3_SPI3_TWI3_Handler(void)
+void FLEXCOM3_Handler(void)
 {
 	local_usart_handler(3);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_USART4
-void USART4_SPI4_TWI4_Handler(void)
+void FLEXCOM4_Handler(void)
 {
 	local_usart_handler(4);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_USART5
-void USART5_SPI5_TWI5_Handler(void)
+void FLEXCOM5_Handler(void)
 {
 	local_usart_handler(5);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_USART6
-void USART6_SPI6_TWI6_Handler(void)
+void FLEXCOM6_Handler(void)
 {
 	local_usart_handler(6);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_USART7
-void USART7_SPI7_TWI7_Handler(void)
+void FLEXCOM7_Handler(void)
 {
 	local_usart_handler(7);
 }

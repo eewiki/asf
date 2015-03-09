@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "tcc_callback.h"
 
@@ -67,7 +70,7 @@ const uint32_t _tcc_intflag[TCC_CALLBACK_N] = {
 /**
  * \internal Get the interrupt vector for the given device instance
  *
- * \param[in] The TCC module instance number.
+ * \param[in] The TCC module instance number
  *
  * \return Interrupt vector for of the given TCC module instance.
  */

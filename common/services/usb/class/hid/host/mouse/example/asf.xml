@@ -16,6 +16,7 @@
 			<device-support value="sam3x"/>
 			<device-support value="sam3a"/>
 			<device-support value="sam4l"/>
+			<device-support value="samg55"/>
 			<require idref="common.services.basic.clock"/>
 			<require idref="common.services.basic.sleepmgr"/>
 			<require idref="common.services.usb.class.host"/>
@@ -35,6 +36,7 @@
 			<build type="c-source" value="main.c"/>
 			<build type="include-path" value="."/>
 			<device-support value="samd21"/>
+			<device-support value="saml21"/>		
 			<require idref="sam0.drivers.system"/>
 			<require idref="common.services.basic.sleepmgr"/>
 			<require idref="common.services.usb.class.host"/>

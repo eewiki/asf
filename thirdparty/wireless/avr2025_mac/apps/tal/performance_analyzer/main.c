@@ -42,9 +42,12 @@
 
 /**
  * \page license License
- * Copyright(c) 2012, Atmel Corporation All rights reserved.
+ * Copyright(c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
  #include "asf.h"
@@ -64,6 +67,15 @@ int main(void)
 	 */
 	board_init();
 #endif
-
-	performance_analyzer_main();
+	
+	performance_analyzer_init();
+	
+	cpu_irq_enable();
+	
+	/* Endless while loop */
+	while (1)
+	{		
+	performance_analyzer_task();
+	}
+	
 }

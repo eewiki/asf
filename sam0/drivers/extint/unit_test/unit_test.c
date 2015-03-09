@@ -70,7 +70,7 @@
  * Tests will be performed for rising and falling edges of the external signal.
  *
  * The following kit is required for carrying out the test:
- *  - SAM D20/D21/R21 Xplained Pro board
+ *  - SAM D20/D21/R21/L21 Xplained Pro board
  *
  * \section appdoc_sam0_extint_unit_test_setup Setup
  * The following connections has to be made using wires:
@@ -78,6 +78,8 @@
  *  - EXT1 \b Pin 9 (PB04) <-----> Pin 10 (PB05)
  * - SAM R21 Xplained Pro
  *  - EXT1 \b Pin 9 (PA22) <-----> Pin 10 (PA23)
+ * - SAM L21 Xplained Pro
+ *  - EXT1 \b Pin 9 (PB04) <-----> Pin 10 (PA02)
  *
  * To run the test:
  *  - Connect the SAM Xplained Pro board to the computer using a
@@ -103,6 +105,9 @@
  * \section appdoc_sam0_extint_unit_test_contactinfo Contact Information
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include <asf.h>

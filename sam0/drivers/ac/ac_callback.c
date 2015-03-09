@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "ac_callback.h"
 
@@ -48,7 +51,7 @@ struct ac_module *_ac_instance[AC_INST_NUM];
 void _ac_interrupt_handler(const uint32_t instance_index);
 
 /**
- * \brief Registers a callback
+ * \brief Registers a callback.
  *
  * Registers a callback function which is implemented by the user.
  *
@@ -81,7 +84,7 @@ enum status_code ac_register_callback(
 }
 
 /**
- * \brief Unregisters a callback
+ * \brief Unregisters a callback.
  *
  * Unregisters a callback function implemented by the user.
  *
@@ -124,7 +127,7 @@ MREPEAT(AC_INST_NUM, _AC_INTERRUPT_HANDLER, ~)
 #endif /* (AC_INST_NUM > 1) */
 
 /**
- * \brief Interrupt Handler for AC module
+ * \brief Interrupt Handler for AC module.
  *
  * Handles interrupts as they occur, it will run the callback functions
  * that are registered and enabled.

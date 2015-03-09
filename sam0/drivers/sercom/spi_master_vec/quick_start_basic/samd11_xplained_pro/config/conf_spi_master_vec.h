@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_SPI_MASTER_VEC_H
 #define CONF_SPI_MASTER_VEC_H

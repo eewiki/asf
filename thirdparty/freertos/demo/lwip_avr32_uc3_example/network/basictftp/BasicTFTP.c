@@ -4,7 +4,7 @@
  *
  * \brief Basic TFTP Server for Atmel MCUs.
  *
- * Copyright (c) 2009-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -54,6 +54,9 @@
   this will copy file from the RAM buffer of the application to your hard drive
   You can then check that src_filename and dst_filename are identical
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #if (TFTP_USED == 1)
 

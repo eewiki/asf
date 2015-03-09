@@ -70,11 +70,11 @@
  * Function for setting up the module:
  * \snippet qs_i2c_slave_basic_use.c initialize_i2c
  *
- * Add to user application main():
+ * Add to user application \c main():
  * \snippet qs_i2c_slave_basic_use.c run_initialize_i2c
  *
  * \subsection asfdoc_sam0_sercom_i2c_slave_basic_use_setup_workflow Workflow
- * -# Configure and enable module:
+ * -# Configure and enable module.
  *    \snippet qs_i2c_slave_basic_use.c config
  *   -# Create and initialize configuration structure.
  *      \snippet qs_i2c_slave_basic_use.c init_conf
@@ -91,7 +91,7 @@
  *
  * \section asfdoc_sam0_sercom_i2c_slave_basic_use_implementation Implementation
  * \subsection asfdoc_sam0_sercom_i2c_slave_basic_use_implementation_code Code
- * Add to user application main:
+ * Add to user application \c main():
  * \snippet qs_i2c_slave_basic_use.c while
  * \subsection i2c_slave_basic_use_implementation_workflow Workflow
  * -# Wait for start condition from master and get transfer direction.
@@ -99,6 +99,9 @@
  * -# Depending on transfer direction, set up buffer to read to or write from,
  *    and write or read from master.
  *    \snippet qs_i2c_slave_basic_use.c transfer
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include <asf.h>

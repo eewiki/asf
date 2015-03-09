@@ -160,3 +160,6 @@
  * -# Enter an infinite loop while the output is generated via the I2S module.
  *    \snippet qs_i2s_callback.c main_loop
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

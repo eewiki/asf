@@ -102,6 +102,9 @@
  * <A href="http://www.atmel.com/products/AVR32/">Atmel AVR UC3</A>.\n
  * Support and FAQ: http://www.atmel.com/design-support/
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "board.h"
 #include "gpio.h"

@@ -4,6 +4,9 @@
 /*------------------------------------------------------------------------*/
 
 #include <stdlib.h>		/* ANSI memory controls */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include <malloc.h>		/* ANSI memory controls */
 
 #include "../ff.h"

@@ -76,6 +76,9 @@
  * a context switch occurs (tasks of the same priority will time slice).
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 
 #include <stdlib.h>

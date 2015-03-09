@@ -22,6 +22,9 @@
 *
 *
 ****************************************************************************/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #if defined(__ICCAVR__)
 #include "ioavr.h"              
@@ -236,7 +239,7 @@ __interrupt void TWI_ISR(void)
     case TWI_MTX_ADR_NACK:      // SLA+W has been tramsmitted and NACK received
     case TWI_MRX_ADR_NACK:      // SLA+R has been tramsmitted and NACK received    
     case TWI_MTX_DATA_NACK:     // Data byte has been tramsmitted and NACK received
-//    case TWI_NO_STATE              // No relevant state information available; TWINT = “0”
+//    case TWI_NO_STATE              // No relevant state information available; TWINT = 
     case TWI_BUS_ERROR:         // Bus error due to an illegal START or STOP condition
     default:     
       TWI_state = TWSR;                                 // Store TWSR and automatically sets clears noErrors bit.

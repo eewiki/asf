@@ -47,6 +47,9 @@
  */
 
 /*- Includes ---------------------------------------------------------------*/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include <stdlib.h>
 #include "compiler.h"
 #include "common_hw_timer.h"
@@ -149,8 +152,11 @@ void SYS_TimerTaskHandler(void)
 		if (SYS_TIMER_PERIODIC_MODE == timer->mode) {
 			placeTimer(timer);
 		}
-
-		timer->handler(timer);
+		if(timer->handler)
+		{
+			timer->handler(timer);
+		}
+		
 	}
 
 	if (timers) {

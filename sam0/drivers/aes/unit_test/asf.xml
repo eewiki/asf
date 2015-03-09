@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.aes.unit_test" caption="Unit Tests for SAM L21 AES">
+		<info type="description" value="summary">
+			Unit test for the AES (Advanced Encryption Standard) module.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="unit_test.c"/>
+		<device-support value="saml21"/>
+		<require idref="sam0.drivers.aes"/>
+		<require idref="sam0.drivers.dma"/>
+		<require idref="common2.services.delay"/>
+		<require idref="common.utils.unit_test"/>
+	</module>
+</asf>

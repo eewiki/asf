@@ -83,6 +83,9 @@
  *  -# Press 't' key in the terminal window to confgure another board to
  *     send CAN message. The message will be displayed on the terminal window.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "asf.h"
 

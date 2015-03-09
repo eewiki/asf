@@ -467,4 +467,33 @@
 		<device-support value="atsamg54n19"/>
 	</board>
 
+	<board id="board.user_board.samg55g18" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsamg55g18"/>
+	</board>
+
+	<board id="board.user_board.samg55g19" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsamg55g19"/>
+	</board>
+
+	<board id="board.user_board.samg55j18" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsamg55j18"/>
+	</board>
+
+	<board id="board.user_board.samg55j19" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsamg55j19"/>
+	</board>
+
+	<board id="board.user_board.samg55n19" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsamg55n19"/>
+	</board>
 </asf>

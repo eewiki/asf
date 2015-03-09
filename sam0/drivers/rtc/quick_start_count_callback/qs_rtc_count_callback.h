@@ -126,3 +126,6 @@
  * -# Perform the desired user action for each RTC overflow:
  *    \snippet qs_rtc_count_callback.c overflow_act
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

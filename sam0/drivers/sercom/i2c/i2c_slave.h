@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef I2C_SLAVE_H_INCLUDED
 #define I2C_SLAVE_H_INCLUDED
@@ -357,10 +360,10 @@ struct i2c_slave_config {
  * that, e.g., transactions by different services will not interfere with each
  * other.
  *
- * \param[in,out] module Pointer to the driver instance to lock.
+ * \param[in,out] module Pointer to the driver instance to lock
  *
- * \retval STATUS_OK if the module was locked.
- * \retval STATUS_BUSY if the module was already locked.
+ * \retval STATUS_OK If the module was locked
+ * \retval STATUS_BUSY If the module was already locked
  */
 static inline enum status_code i2c_slave_lock(
 		struct i2c_slave_module *const module)
@@ -387,10 +390,10 @@ static inline enum status_code i2c_slave_lock(
  * This function clears the instance lock, indicating that it is available for
  * use.
  *
- * \param[in,out] module Pointer to the driver instance to lock.
+ * \param[in,out] module Pointer to the driver instance to lock
  *
- * \retval STATUS_OK if the module was locked.
- * \retval STATUS_BUSY if the module was already locked.
+ * \retval STATUS_OK If the module was locked
+ * \retval STATUS_BUSY If the module was already locked
  */
 static inline void i2c_slave_unlock(struct i2c_slave_module *const module)
 {
@@ -625,7 +628,7 @@ void i2c_slave_clear_status(
  *
  * Read I<SUP>2</SUP>C interrupt status for DMA transfer.
  *
- * \param[in,out] module Pointer to the driver instance to lock.
+ * \param[in,out] module Pointer to the driver instance to lock
  *
  */
 static inline uint8_t i2c_slave_dma_read_interrupt_status(struct i2c_slave_module *const module)
@@ -638,8 +641,8 @@ static inline uint8_t i2c_slave_dma_read_interrupt_status(struct i2c_slave_modul
  *
  * Write I<SUP>2</SUP>C interrupt status for DMA transfer.
  *
- * \param[in,out] module Pointer to the driver instance to lock.
- * \param[in] flag Interrupt flag status.
+ * \param[in,out] module Pointer to the driver instance to lock
+ * \param[in] flag Interrupt flag status
  *
  */
 static inline void i2c_slave_dma_write_interrupt_status(struct i2c_slave_module *const module,

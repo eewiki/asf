@@ -62,6 +62,9 @@
 
     1 tab == 4 spaces!
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef INC_FREERTOS_H
 #define INC_FREERTOS_H

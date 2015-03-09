@@ -622,5 +622,59 @@
 			<device-support value="atsamg54n19"/>
 		</module>
 
+		<module type="build-specific" caption="Linker script for SAMG55G18" id="sam.utils.linker_scripts#atsamg55g18">
+			<info type="description" value="summary">
+			Linker script for SAMG55G18 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="samg/samg55g18/gcc/flash.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="aux-script" value="samg/samg55g18/gcc/sram.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="script" value="samg/samg55g18/iar/flash.icf" toolchain="iarewarm"/>
+			<build type="linker-config" subtype="aux-script" value="samg/samg55g18/iar/sram.icf" toolchain="iarewarm"/>
+			<device-support value="atsamg55g18"/>
+		</module>
+
+		<module type="build-specific" caption="Linker script for SAMG55G19" id="sam.utils.linker_scripts#atsamg55g19">
+			<info type="description" value="summary">
+			Linker script for SAMG55G19 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="samg/samg55g19/gcc/flash.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="aux-script" value="samg/samg55g19/gcc/sram.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="script" value="samg/samg55g19/iar/flash.icf" toolchain="iarewarm"/>
+			<build type="linker-config" subtype="aux-script" value="samg/samg55g19/iar/sram.icf" toolchain="iarewarm"/>
+			<device-support value="atsamg55g19"/>
+		</module>
+
+		<module type="build-specific" caption="Linker script for SAMG55J18" id="sam.utils.linker_scripts#atsamg55j18">
+			<info type="description" value="summary">
+			Linker script for SAMG55J18 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="samg/samg55j18/gcc/flash.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="aux-script" value="samg/samg55j18/gcc/sram.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="script" value="samg/samg55j18/iar/flash.icf" toolchain="iarewarm"/>
+			<build type="linker-config" subtype="aux-script" value="samg/samg55j18/iar/sram.icf" toolchain="iarewarm"/>
+			<device-support value="atsamg55j18"/>
+		</module>
+
+		<module type="build-specific" caption="Linker script for SAMG55J19" id="sam.utils.linker_scripts#atsamg55j19">
+			<info type="description" value="summary">
+			Linker script for SAMG55J19 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="samg/samg55j19/gcc/flash.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="aux-script" value="samg/samg55j19/gcc/sram.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="script" value="samg/samg55j19/iar/flash.icf" toolchain="iarewarm"/>
+			<build type="linker-config" subtype="aux-script" value="samg/samg55j19/iar/sram.icf" toolchain="iarewarm"/>
+			<device-support value="atsamg55j19"/>
+		</module>
+
+		<module type="build-specific" caption="Linker script for SAMG55N19" id="sam.utils.linker_scripts#atsamg55n19">
+			<info type="description" value="summary">
+			Linker script for SAMG55N19 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="samg/samg55n19/gcc/flash.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="aux-script" value="samg/samg55n19/gcc/sram.ld" toolchain="armgcc"/>
+			<build type="linker-config" subtype="script" value="samg/samg55n19/iar/flash.icf" toolchain="iarewarm"/>
+			<build type="linker-config" subtype="aux-script" value="samg/samg55n19/iar/sram.icf" toolchain="iarewarm"/>
+			<device-support value="atsamg55n19"/>
+		</module>
 	</select-by-device>
 </asf>

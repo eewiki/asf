@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef CONF_BOARD_H_INCLUDED
 #define CONF_BOARD_H_INCLUDED
 
@@ -71,5 +74,6 @@
  */
 #define TAL_TRANSMIT_POWER_DEFAULT      (TX_PWR_TOLERANCE | 0x14)
 #endif
-#define AT86RFX_SPI_BAUDRATE             4000000UL
+#define MCU_SOC_NAME        "ATSAMD21J18A"
+
 #endif /* CONF_BOARD_H_INCLUDED */

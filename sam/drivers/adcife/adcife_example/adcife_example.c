@@ -95,6 +95,9 @@
  * -# The application will output converted value to HyperTerminal and display
  *    a menu for users to set different modes..
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "asf.h"
 

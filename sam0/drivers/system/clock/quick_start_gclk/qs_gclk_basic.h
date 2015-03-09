@@ -124,3 +124,6 @@
  * -# As the clock is generated asynchronously to the system core, no special
  *    extra application code is required.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

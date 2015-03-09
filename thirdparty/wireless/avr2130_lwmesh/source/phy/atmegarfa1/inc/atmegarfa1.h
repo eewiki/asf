@@ -39,6 +39,9 @@
  *
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef _ATMEGARFA1_H_
 #define _ATMEGARFA1_H_

@@ -48,6 +48,9 @@
  *
  ******************************************************************************/
 /*============================ INCLUDES ======================================*/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifdef _DEBUG_INTERFACE_
 #include <avr/io.h>
 #include "BitBangSPI_Master.h"

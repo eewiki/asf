@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="SAM L21 Xplained Pro Delay Service Example" id="common2.services.delay.example.saml21_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common2.services.delay.example"/>
+		<require idref="board.saml21_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsaml21j18a"/>
+	</project>
+</asf>

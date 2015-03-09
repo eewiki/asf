@@ -49,6 +49,9 @@
  * \asf_license_stop
  *
  ******************************************************************************/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef EEPROM_ACCESS_H
 #define EEPROM_ACCESS_H
 

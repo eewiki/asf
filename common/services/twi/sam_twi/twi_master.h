@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef _TWI_MASTER_H_
 #define _TWI_MASTER_H_
@@ -56,7 +59,27 @@ static inline uint32_t twi_master_setup(twi_master_t p_twi,
 {
 	p_opt->master_clk = sysclk_get_cpu_hz();
 	p_opt->smbus      = 0;
-
+#if SAMG55
+	if (p_twi == TWI0) {
+		sysclk_enable_peripheral_clock(ID_FLEXCOM0);
+	} else if (p_twi == TWI1) {
+		sysclk_enable_peripheral_clock(ID_FLEXCOM1);
+	} else if (p_twi == TWI2) {
+		sysclk_enable_peripheral_clock(ID_FLEXCOM2);
+	} else if (p_twi == TWI3) {
+		sysclk_enable_peripheral_clock(ID_FLEXCOM3);
+	} else if (p_twi == TWI4) {
+		sysclk_enable_peripheral_clock(ID_FLEXCOM4);
+	} else if (p_twi == TWI5) {
+		sysclk_enable_peripheral_clock(ID_FLEXCOM5);
+	} else if (p_twi == TWI6) {
+		sysclk_enable_peripheral_clock(ID_FLEXCOM6);
+	} else if (p_twi == TWI7) {
+		sysclk_enable_peripheral_clock(ID_FLEXCOM7);
+	} else {
+		// Do Nothing
+	}
+#else
 #if (!(SAMG51 || SAMG53 || SAMG54))
 	if (p_twi == TWI0) {
 		sysclk_enable_peripheral_clock(ID_TWI0);
@@ -68,21 +91,10 @@ static inline uint32_t twi_master_setup(twi_master_t p_twi,
 	} else if (p_twi == TWI2) {
 		sysclk_enable_peripheral_clock(ID_TWI2);
 #endif
-#if SAMG55
-	} else if (p_twi == TWI3) {
-		sysclk_enable_peripheral_clock(ID_TWI3);
-	} else if (p_twi == TWI4) {
-		sysclk_enable_peripheral_clock(ID_TWI4);
-	} else if (p_twi == TWI5) {
-		sysclk_enable_peripheral_clock(ID_TWI5);
-	} else if (p_twi == TWI6) {
-		sysclk_enable_peripheral_clock(ID_TWI6);
-	} else if (p_twi == TWI7) {
-		sysclk_enable_peripheral_clock(ID_TWI7);
-#endif
 	} else {
 		// Do Nothing
 	}
+#endif
 
 	return (twi_master_init(p_twi, p_opt));
 }

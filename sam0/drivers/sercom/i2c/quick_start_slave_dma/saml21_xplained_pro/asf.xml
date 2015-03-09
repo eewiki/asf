@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="Quick Start for the SAM L21 SERCOM I2C Slave with DMA" id="sam0.drivers.sercom.i2c.quick_start_i2c_slave_dma.saml21_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_dma.h"/>
+		<require idref="board.saml21_xplained_pro"/>
+		<require idref="sam0.drivers.sercom.i2c.quick_start_i2c_slave_dma"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsaml21j18a"/>
+		<config name="config.sam0.drivers.sercom.i2c.slave" value="polled"/>
+	</project>
+</asf>

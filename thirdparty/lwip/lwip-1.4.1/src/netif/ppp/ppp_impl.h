@@ -30,6 +30,9 @@
 * 97-11-05 Guy Lancaster <glanca@gesn.com>, Global Election Systems Inc.
 *   Original derived from BSD codes.
 *****************************************************************************/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef PPP_IMPL_H
 #define PPP_IMPL_H

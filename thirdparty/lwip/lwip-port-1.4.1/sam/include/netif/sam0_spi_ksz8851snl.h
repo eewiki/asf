@@ -41,6 +41,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef SAM0_SPI_KSZ8851SNL_H_INCLUDED
 #define SAM0_SPI_KSZ8851SNL_H_INCLUDED

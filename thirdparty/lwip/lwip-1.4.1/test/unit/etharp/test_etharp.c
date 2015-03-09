@@ -1,4 +1,7 @@
 #include "test_etharp.h"
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "lwip/udp.h"
 #include "netif/etharp.h"

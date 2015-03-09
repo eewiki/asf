@@ -44,6 +44,9 @@
  * \asf_license_stop
  *
  ******************************************************************************/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 
  //! Configuration of ctrl_access which is an abstraction layer for memory interfaces (common/services/storage/ctrl_access)

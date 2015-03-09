@@ -132,4 +132,6 @@
  * -# Wait for transfer to complete.
  *
  *    \snippet qs_spi_master_vec_basic.c wait_transception
+ */ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

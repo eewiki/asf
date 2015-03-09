@@ -6,6 +6,7 @@
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
 		<device-support value="samd11"/>
+		<device-support value="saml21" />		
 		<require idref="sam0.utils"/>
 		<require idref="sam0.drivers.system"/>
 		<require idref="sam0.drivers.extint"/>
@@ -23,6 +24,7 @@
 		<build type="c-source" value="usb_host_uhd.c"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="saml21" />
 		<require idref="sam0.drivers.usb"/>
 		<require idref="sam0.drivers.usb.dual"/>
 		<require idref="common.services.basic.sleepmgr"/>
@@ -40,6 +42,7 @@
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
 		<device-support value="samd11"/>
+		<device-support value="saml21"/>
 		<require idref="sam0.drivers.usb"/>
 		<require idref="sam0.drivers.usb.dual"/>
 		<require idref="common.services.basic.sleepmgr"/>

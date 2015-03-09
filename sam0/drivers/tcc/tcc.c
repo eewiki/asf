@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "tcc.h"
 
@@ -69,7 +72,11 @@
 #if !defined(__DOXYGEN__)
 
 #  define _TCC_GCLK_ID(n,unused)           TPASTE3(TCC,n,_GCLK_ID),
-#  define _TCC_PM_APBCMASK(n,unused)       TPASTE2(PM_APBCMASK_TCC,n),
+#  if (SAML21)
+#    define _TCC_APBCMASK(n,unused)        TPASTE2(MCLK_APBCMASK_TCC,n),
+#  else
+#    define _TCC_APBCMASK(n,unused)        TPASTE2(PM_APBCMASK_TCC,n),
+#  endif
 
 #  define _TCC_SIZE(n,unused)              TPASTE3(TCC,n,_SIZE),
 #  define _TCC_MAX(n,unused)               _SIZE_MAX(TPASTE3(TCC,n,_SIZE)),
@@ -78,7 +85,7 @@
 #  define _TCC_OW_NUM(n,unused)            min(TPASTE3(TCC,n,_OW_NUM),TCC_NUM_WAVE_OUTPUTS),
 
 #  define TCC_GCLK_IDS      { MREPEAT(TCC_INST_NUM, _TCC_GCLK_ID, 0) }
-#  define TCC_PM_APBCMASKS  { MREPEAT(TCC_INST_NUM, _TCC_PM_APBCMASK, 0) }
+#  define TCC_APBCMASKS     { MREPEAT(TCC_INST_NUM, _TCC_APBCMASK, 0) }
 
 #  define TCC_SIZES         { MREPEAT(TCC_INST_NUM, _TCC_SIZE, 0) }
 #  define TCC_MAXS          { MREPEAT(TCC_INST_NUM, _TCC_MAX, 0) }
@@ -94,8 +101,8 @@ const Tcc *const tcc_modules[TCC_INST_NUM] = TCC_INSTS;
 /* List of TCC GCLK IDs */
 const uint8_t _tcc_gclk_ids[TCC_INST_NUM] = TCC_GCLK_IDS;
 
-/* List of TCC PM APBC Masks */
-const uint32_t _tcc_pm_apbcmasks[TCC_INST_NUM] = TCC_PM_APBCMASKS;
+/* List of TCC APBC Masks */
+const uint32_t _tcc_apbcmasks[TCC_INST_NUM] = TCC_APBCMASKS;
 
 /* List of extension support of TCC modules. */
 const uint8_t _tcc_exts[TCC_INST_NUM] = TCC_EXTS;
@@ -115,7 +122,7 @@ const uint8_t _tcc_ow_nums[TCC_INST_NUM] = TCC_OW_NUMS;
 /**
  * \internal Find the index of the given TCC module instance.
  *
- * \param[in] The TCC module instance pointer.
+ * \param[in] The TCC module instance pointer
  *
  * \return Index of the given TCC module instance.
  */
@@ -255,7 +262,7 @@ void tcc_get_config_defaults(
 
 
 /**
- * \brief Build CTRLA register value from configuration
+ * \brief Build CTRLA register value from configuration.
  *
  * \param[in]  module_index The software module instance index
  * \param[in]  config       Pointer to the TCC configuration options struct
@@ -267,7 +274,7 @@ void tcc_get_config_defaults(
  *                                value built and save to buffer
  * \retval STATUS_ERR_INVALID_ARG Invalid parameter found:
  *                                assigned dither mode is invalid for module;
- *                                used capture channel is invalid for module.
+ *                                used capture channel is invalid for module
  */
 static inline enum status_code _tcc_build_ctrla(
 		const uint8_t module_index,
@@ -300,7 +307,7 @@ static inline enum status_code _tcc_build_ctrla(
 }
 
 /**
- * \brief Build CTRLB register value from configuration
+ * \brief Build CTRLB register value from configuration.
  *
  * \param[in]  module_index The software module instance index
  * \param[in]  config       Pointer to the TCC configuration options struct
@@ -324,7 +331,7 @@ static inline void _tcc_build_ctrlb(
 }
 
 /**
- * \brief Build FAULTs register values from configuration
+ * \brief Build FAULTs register values from configuration.
  *
  * \param[in]  module_index The software module instance index
  * \param[in]  config       Pointer to the TCC configuration options struct
@@ -334,7 +341,7 @@ static inline void _tcc_build_ctrlb(
  *                                value built and save to buffer
  * \retval STATUS_ERR_INVALID_ARG Invalid parameter found: assigned fault
  *                                capture channel is invalid; assigned filter
- *                                value is invalid.
+ *                                value is invalid
  */
 static inline enum status_code _tcc_build_faults(
 		const uint8_t module_index,
@@ -370,7 +377,7 @@ static inline enum status_code _tcc_build_faults(
 }
 
 /**
- * \brief Build DRVCTRL register values from configuration
+ * \brief Build DRVCTRL register values from configuration.
  *
  * \param[in]  module_index The software module instance index
  * \param[in]  config       Pointer to the TCC configuration options struct
@@ -379,7 +386,7 @@ static inline enum status_code _tcc_build_faults(
  * \retval STATUS_OK              Configuration values are good and register
  *                                value built and save to buffer
  * \retval STATUS_ERR_INVALID_ARG Invalid parameter found: assigned output line
- *                                is invalid; filter value is invalid.
+ *                                is invalid; filter value is invalid
  */
 static inline enum status_code _tcc_build_drvctrl(
 		const uint8_t module_index,
@@ -417,7 +424,7 @@ static inline enum status_code _tcc_build_drvctrl(
 }
 
 /**
- * \brief Build WAVE & WAVEB register values from configuration
+ * \brief Build WAVE & WAVEB register values from configuration.
  *
  * \param[in]  module_index The software module instance index
  * \param[in]  config       Pointer to the TCC configuration options struct
@@ -428,7 +435,7 @@ static inline enum status_code _tcc_build_drvctrl(
  * \retval STATUS_ERR_INVALID_ARG Invalid parameter found: assigned output line
  *                                is invalid; circular and double buffering
  *                                conflict; assigned function not supported by
- *                                module.
+ *                                module
  */
 static inline enum status_code _tcc_build_waves(
 		const uint8_t module_index,
@@ -493,9 +500,9 @@ enum status_code tcc_init(
 	/* TCC instance index */
 	uint8_t module_index = _tcc_get_inst_index(hw);
 
-	/* Enable the user interface clock in the PM */
+	/* Enable the user interface clock for TCC */
 	system_apb_clock_set_mask(SYSTEM_CLOCK_APB_APBC,
-			_tcc_pm_apbcmasks[module_index]);
+			_tcc_apbcmasks[module_index]);
 
 	/* Check if it's enabled. */
 	if (hw->CTRLA.reg & TCC_CTRLA_ENABLE) {
@@ -626,9 +633,11 @@ enum status_code tcc_init(
 
 	hw->DRVCTRL.reg = drvctrl;
 
+#if (!SAML21)
 	while (hw->SYNCBUSY.reg & (TCC_SYNCBUSY_WAVE | TCC_SYNCBUSY_WAVEB)) {
 		/* Wait for sync */
 	}
+#endif
 	hw->WAVE.reg = waves[0];
 
 	while (hw->SYNCBUSY.reg & TCC_SYNCBUSY_COUNT) {
@@ -636,16 +645,20 @@ enum status_code tcc_init(
 	}
 	hw->COUNT.reg = config->counter.count;
 
+#if (!SAML21)
 	while (hw->SYNCBUSY.reg & (TCC_SYNCBUSY_PER | TCC_SYNCBUSY_PERB)) {
 		/* Wait for sync */
 	}
+#endif
 	hw->PER.reg = (config->counter.period);
 
 	for (i = 0; i <  _tcc_cc_nums[module_index]; i ++) {
+#if (!SAML21)
 		while (hw->SYNCBUSY.reg & (
 			(TCC_SYNCBUSY_CC0 | TCC_SYNCBUSY_CCB0) << i)) {
 			/* Wait for sync */
 		}
+#endif
 		hw->CC[i].reg = (config->compare.match[i]);
 	}
 
@@ -1043,11 +1056,15 @@ static enum status_code _tcc_set_compare_value(
 	}
 
 	if (double_buffering_enabled) {
+#if (SAML21)
+		tcc_module->CCBUF[channel_index].reg = compare;
+#else
 		while(tcc_module->SYNCBUSY.reg  &
 				(TCC_SYNCBUSY_CCB0 << channel_index)) {
 			/* Sync wait */
 		}
 		tcc_module->CCB[channel_index].reg = compare;
+#endif
 	} else {
 		while(tcc_module->SYNCBUSY.reg  & (TCC_SYNCBUSY_CC0 << channel_index)) {
 			/* Sync wait */
@@ -1164,10 +1181,14 @@ static enum status_code _tcc_set_top_value(
 	}
 
 	if (double_buffering_enabled) {
+#if (SAML21)
+		tcc_module->PERBUF.reg = top_value;
+#else
 		while(tcc_module->SYNCBUSY.reg  & TCC_SYNCBUSY_PERB) {
 			/* Sync wait */
 		}
 		tcc_module->PERB.reg = top_value;
+#endif
 	} else {
 		while(tcc_module->SYNCBUSY.reg  & TCC_SYNCBUSY_PER) {
 			/* Sync wait */
@@ -1255,7 +1276,7 @@ enum status_code tcc_set_double_buffer_top_values(
 
 
 /**
- * \brief Sets the TCC module waveform output pattern
+ * \brief Sets the TCC module waveform output pattern.
  *
  * Force waveform output line to generate specific pattern (0, 1, or as is).
  *
@@ -1310,10 +1331,14 @@ enum status_code tcc_set_pattern(
 	}
 
 	if (module_inst->double_buffering_enabled) {
+#if (SAML21)
+		tcc_module->PATTBUF.reg = patt_value;
+#else
 		while(tcc_module->SYNCBUSY.reg  & TCC_SYNCBUSY_PATTB) {
 			/* Sync wait */
 		}
 		tcc_module->PATTB.reg = patt_value;
+#endif
 	} else {
 		tcc_module->PATT.reg = patt_value;
 	}
@@ -1491,7 +1516,7 @@ void tcc_clear_status(
 }
 
 /**
- * \brief Enable Circular option for double buffered Compare Values
+ * \brief Enable circular option for double buffered compare values.
  *
  * Enable circular option for the double buffered channel compare values.
  * On each UPDATE condition, the contents of CCBx and CCx are switched, meaning
@@ -1531,7 +1556,7 @@ enum status_code tcc_enable_circular_buffer_compare(
 }
 
 /**
- * \brief Disable Circular option for double buffered Compare Values
+ * \brief Disable circular option for double buffered compare values.
  *
  * Stop circularing the double buffered compare values.
  *

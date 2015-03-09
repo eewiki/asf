@@ -42,6 +42,9 @@
  */
 
 /* Standard includes. */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include <string.h>
 
 /* ASF includes. */
@@ -142,15 +145,15 @@ static const freertos_pdc_peripheral_parameters_t all_twi_definitions[MAX_TWIS] 
 	/* Chips with a single TWI port might define TWI only.  Chips with multiple
 	TWI	ports defined the first TWI peripheral as TWI0. */
 #if SAMG55
-	{TWI0, PDC_TWI0, ID_TWI0, USART0_SPI0_TWI0_IRQn},
-	{TWI1, PDC_TWI1, ID_TWI1, USART1_SPI1_TWI1_IRQn},
-	{TWI2, PDC_TWI2, ID_TWI2, USART2_SPI2_TWI2_IRQn},
-	{TWI3, PDC_TWI3, ID_TWI3, USART3_SPI3_TWI3_IRQn},
-	{TWI4, PDC_TWI4, ID_TWI4, USART4_SPI4_TWI4_IRQn},
-	{TWI5, PDC_TWI5, ID_TWI5, USART5_SPI5_TWI5_IRQn},
-	{TWI6, PDC_TWI6, ID_TWI6, USART6_SPI6_TWI6_IRQn},
+	{TWI0, PDC_TWI0, ID_FLEXCOM0, FLEXCOM0_IRQn},
+	{TWI1, PDC_TWI1, ID_FLEXCOM1, FLEXCOM1_IRQn},
+	{TWI2, PDC_TWI2, ID_FLEXCOM2, FLEXCOM2_IRQn},
+	{TWI3, PDC_TWI3, ID_FLEXCOM3, FLEXCOM3_IRQn},
+	{TWI4, PDC_TWI4, ID_FLEXCOM4, FLEXCOM4_IRQn},
+	{TWI5, PDC_TWI5, ID_FLEXCOM5, FLEXCOM5_IRQn},
+	{TWI6, PDC_TWI6, ID_FLEXCOM6, FLEXCOM6_IRQn},
 #if (MAX_TWIS > 7)
-	{TWI7, PDC_TWI7, ID_TWI7, USART7_SPI7_TWI7_IRQn},
+	{TWI7, PDC_TWI7, ID_FLEXCOM7, FLEXCOM7_IRQn},
 #endif
 
 #else
@@ -892,49 +895,49 @@ static void local_twi_handler(const portBASE_TYPE twi_index)
  */
 #if SAMG55
 #ifdef CONF_FREERTOS_USE_TWI0
-void USART0_SPI0_TWI0_Handler(void)
+void FLEXCOM0_Handler(void)
 {
 	local_twi_handler(0);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_TWI1
-void USART1_SPI1_TWI1_Handler(void)
+void FLEXCOM1_Handler(void)
 {
 	local_twi_handler(1);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_TWI2
-void USART2_SPI2_TWI2_Handler(void)
+void FLEXCOM2_Handler(void)
 {
 	local_twi_handler(2);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_TWI3
-void USART3_SPI3_TWI3_Handler(void)
+void FLEXCOM3_Handler(void)
 {
 	local_twi_handler(3);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_TWI4
-void USART4_SPI4_TWI4_Handler(void)
+void FLEXCOM4_Handler(void)
 {
 	local_twi_handler(4);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_TWI5
-void USART5_SPI5_TWI5_Handler(void)
+void FLEXCOM5_Handler(void)
 {
 	local_twi_handler(5);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_TWI6
-void USART6_SPI6_TWI6_Handler(void)
+void FLEXCOM6_Handler(void)
 {
 	local_twi_handler(6);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_TWI7
-void USART7_SPI7_TWI7_Handler(void)
+void FLEXCOM7_Handler(void)
 {
 	local_twi_handler(7);
 }

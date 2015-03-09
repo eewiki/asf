@@ -51,6 +51,9 @@
  * \asf_license_stop
  *
  ******************************************************************************/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef DEBUG_H_INCLUDED
 #define DEBUG_H_INCLUDED
 

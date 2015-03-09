@@ -114,14 +114,15 @@
 			<build type="c-source" value="i2c_samd20/i2c_master.c"/>
 			<device-support value="samd20"/>
 		</module>
-		<module type="meta" id="sam0.drivers.sercom.i2c.master.polled.src_code#samd21_r21_d10_d11" caption="meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.master.polled.src_code#samd21_r21_d10_d11_l21" caption="meta">
 			<build type="include-path" value="." />
-			<build type="include-path" value="i2c_samd21_r21_d10_d11/" />
-			<build type="c-source" value="i2c_samd21_r21_d10_d11/i2c_master.c"/>
+			<build type="include-path" value="i2c_samd21_r21_d10_d11_l21/" />
+			<build type="c-source" value="i2c_samd21_r21_d10_d11_l21/i2c_master.c"/>
 			<device-support value="samd21"/>
 			<device-support value="samr21"/>
 			<device-support value="samd10"/>
 			<device-support value="samd11"/>
+			<device-support value="saml21"/>
 		</module>
 	</select-by-device>
 
@@ -133,15 +134,16 @@
 			<build type="c-source" value="i2c_samd20/i2c_master_interrupt.c"/>
 			<device-support value="samd20"/>
 		</module>
-		<module type="meta" id="sam0.drivers.sercom.i2c.master.callback.src_code#samd21_r21_d10_d11" caption="meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.master.callback.src_code#samd21_r21_d10_d11_l21" caption="meta">
 			<build type="include-path" value="." />
-			<build type="include-path" value="i2c_samd21_r21_d10_d11/" />
-			<build type="c-source" value="i2c_samd21_r21_d10_d11/i2c_master.c"/>
-			<build type="c-source" value="i2c_samd21_r21_d10_d11/i2c_master_interrupt.c"/>
+			<build type="include-path" value="i2c_samd21_r21_d10_d11_l21/" />
+			<build type="c-source" value="i2c_samd21_r21_d10_d11_l21/i2c_master.c"/>
+			<build type="c-source" value="i2c_samd21_r21_d10_d11_l21/i2c_master_interrupt.c"/>
 			<device-support value="samd21"/>
 			<device-support value="samr21"/>
 			<device-support value="samd10"/>
 			<device-support value="samd11"/>
+			<device-support value="saml21"/>
 		</module>
 	</select-by-device>
 
@@ -152,14 +154,15 @@
 			<build type="c-source" value="i2c_samd20/i2c_slave.c"/>
 			<device-support value="samd20"/>
 		</module>
-		<module type="meta" id="sam0.drivers.sercom.i2c.slave.polled.src_code#samd21_r21_d10_d11" caption="meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.slave.polled.src_code#samd21_r21_d10_d11_l21" caption="meta">
 			<build type="include-path" value="." />
-			<build type="include-path" value="i2c_samd21_r21_d10_d11/" />
-			<build type="c-source" value="i2c_samd21_r21_d10_d11/i2c_slave.c"/>
+			<build type="include-path" value="i2c_samd21_r21_d10_d11_l21/" />
+			<build type="c-source" value="i2c_samd21_r21_d10_d11_l21/i2c_slave.c"/>
 			<device-support value="samd21"/>
 			<device-support value="samr21"/>
 			<device-support value="samd10"/>
 			<device-support value="samd11"/>
+			<device-support value="saml21"/>
 		</module>
 	</select-by-device>
 
@@ -171,15 +174,16 @@
 			<build type="c-source" value="i2c_samd20/i2c_slave_interrupt.c"/>
 			<device-support value="samd20"/>
 		</module>
-		<module type="meta" id="sam0.drivers.sercom.i2c.slave.callback.src_code#samd21_r21_d10_d11" caption="meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.slave.callback.src_code#samd21_r21_d10_d11_l21" caption="meta">
 			<build type="include-path" value="." />
-			<build type="include-path" value="i2c_samd21_r21_d10_d11/" />
-			<build type="c-source" value="i2c_samd21_r21_d10_d11/i2c_slave.c"/>
-			<build type="c-source" value="i2c_samd21_r21_d10_d11/i2c_slave_interrupt.c"/>
+			<build type="include-path" value="i2c_samd21_r21_d10_d11_l21/" />
+			<build type="c-source" value="i2c_samd21_r21_d10_d11_l21/i2c_slave.c"/>
+			<build type="c-source" value="i2c_samd21_r21_d10_d11_l21/i2c_slave_interrupt.c"/>
 			<device-support value="samd21"/>
 			<device-support value="samr21"/>
 			<device-support value="samd10"/>
 			<device-support value="samd11"/>
+			<device-support value="saml21"/>
 		</module>
 	</select-by-device>
 
@@ -208,14 +212,14 @@
 
 		<build type="include-path" value="." />
 		<build type="include-path" value="i2c_samd20/" />
-		<build type="include-path" value="i2c_samd21_r21_d10_d11/" />
+		<build type="include-path" value="i2c_samd21_r21_d10_d11_l21/" />
 		<build type="header-file" subtype="api" value="i2c_master.h"/>
 		<build type="header-file" subtype="api" value="i2c_master_interrupt.h"/>
 		<build type="header-file" subtype="api" value="i2c_common.h"/>
 		<build type="c-source" value="i2c_samd20/i2c_master.c"/>
 		<build type="c-source" value="i2c_samd20/i2c_master_interrupt.c"/>
-		<build type="c-source" value="i2c_samd21_r21_d10_d11/i2c_master.c"/>
-		<build type="c-source" value="i2c_samd21_r21_d10_d11/i2c_master_interrupt.c"/>
+		<build type="c-source" value="i2c_samd21_r21_d10_d11_l21/i2c_master.c"/>
+		<build type="c-source" value="i2c_samd21_r21_d10_d11_l21/i2c_master_interrupt.c"/>
 
 		<build type="doxygen-enable-section" value="I2C_MASTER_MODE"/>
 		<build type="doxygen-enable-section" value="I2C_MASTER_CALLBACK_MODE"/>
@@ -267,14 +271,14 @@
 
 		<build type="include-path" value="." />
 		<build type="include-path" value="i2c_samd20/" />
-		<build type="include-path" value="i2c_samd21_r21_d10_d11/" />
+		<build type="include-path" value="i2c_samd21_r21_d10_d11_l21/" />
 		<build type="header-file" subtype="api" value="i2c_slave.h"/>
 		<build type="header-file" subtype="api" value="i2c_slave_interrupt.h"/>
 		<build type="header-file" subtype="api" value="i2c_common.h"/>
 		<build type="c-source" value="i2c_samd20/i2c_slave.c"/>
 		<build type="c-source" value="i2c_samd20/i2c_slave_interrupt.c"/>
-		<build type="c-source" value="i2c_samd21_r21_d10_d11/i2c_slave.c"/>
-		<build type="c-source" value="i2c_samd21_r21_d10_d11/i2c_slave_interrupt.c"/>
+		<build type="c-source" value="i2c_samd21_r21_d10_d11_l21/i2c_slave.c"/>
+		<build type="c-source" value="i2c_samd21_r21_d10_d11_l21/i2c_slave_interrupt.c"/>
 
 		<build type="doxygen-enable-section" value="I2C_SLAVE_MODE"/>
 		<build type="doxygen-enable-section" value="I2C_SLAVE_CALLBACK_MODE"/>

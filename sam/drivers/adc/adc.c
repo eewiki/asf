@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "adc.h"
 #include <status_codes.h>
@@ -236,11 +239,8 @@ void adc_configure_sequence(Adc *p_adc, const enum adc_channel_num_t ch_list[],
 		uint8_t uc_num)
 {
 	uint8_t uc_counter;
-#if SAM4S
-	volatile uint32_t *adc_seqr = &p_adc->ADC_SEQR[0];
-#else
 	volatile uint32_t *adc_seqr = &p_adc->ADC_SEQR1;
-#endif
+
 	if (uc_num <= 8) {
 		for (uc_counter = 0; uc_counter < uc_num; uc_counter++) {
 			adc_seqr[0] |=
@@ -781,12 +781,19 @@ void adc_set_writeprotect(Adc *p_adc, const uint32_t ul_enable)
  *
  * \param p_adc Pointer to an ADC instance.
  *
- * \return 0 if the peripheral is not protected, or 16-bit write protect
- * violation Status.
+ * \return 0 if no write protect violation occurred, or 16-bit write protect
+ * violation source.
  */
 uint32_t adc_get_writeprotect_status(const Adc *p_adc)
 {
-	return p_adc->ADC_WPSR & ADC_WPSR_WPVS;
+	uint32_t reg_value;
+
+	reg_value = p_adc->ADC_WPSR;
+	if (reg_value & ADC_WPSR_WPVS) {
+		return (reg_value & ADC_WPSR_WPVSRC_Msk) >> ADC_WPSR_WPVSRC_Pos;
+	} else {
+		return 0;
+	}
 }
 
 /**

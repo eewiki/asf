@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef _TWI_MEGARF_H_
 #define _TWI_MEGARF_H_
@@ -148,7 +151,7 @@ enum {
 	TWS_ST_DATA_NACK               = 0xC0, /* ! Data byte in TWDR has been transmitted; 
 	                                        * NOT ACK has been received */                                      
 	TWS_ST_DATA_ACK_LAST_BYTE      = 0xC8, /* ! Last data byte in TWDR has been transmitted
-	                                        * (TWEA = “0”); ACK has been received */	                                       
+	                                        * (TWEA = ; ACK has been received */	                                       
 	TWS_SR_SLA_ACK                 = 0x60, /* ! Own SLA+W has been received 
 	                                        *ACK has been returned */
 	TWS_SR_SLA_ACK_M_ARB_LOST      = 0x68, /* ! Arbitration lost in  SLA+R/W as Master;

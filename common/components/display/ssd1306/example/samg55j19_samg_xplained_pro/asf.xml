@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="SSD1306 OLED Controller example for SAMG55-XPLAINED-PRO" id="common.components.display.ssd1306.example.samg55_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.flexcom"/>
+		<require idref="common.components.display.ssd1306.example"/>
+		<require idref="board.samg55_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamg55j19"/>
+	</project>
+</asf>

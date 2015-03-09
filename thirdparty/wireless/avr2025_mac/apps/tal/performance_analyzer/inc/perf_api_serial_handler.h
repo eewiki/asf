@@ -41,12 +41,15 @@
  */
 
 /*
- * Copyright (c) 2010, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 
 /* Prevent double inclusion */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef PERF_API_SERIAL_HANDLER_H
 #define PERF_API_SERIAL_HANDLER_H
 
@@ -76,6 +79,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 
 /**
  * \brief This function does the initialization of the Serial handler state

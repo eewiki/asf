@@ -167,3 +167,6 @@
  * -# Trigger the next conversion on the Analog Comparator channel.
  *    \snippet qs_ac_callback.c main_8
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

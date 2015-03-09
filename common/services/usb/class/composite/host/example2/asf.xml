@@ -14,6 +14,7 @@
 		<require idref="common.services.usb.class.host"/>
 		<device-support value="sam"/>
 		<device-support value="samd21"/>
+		<device-support value="saml21"/>
 		<info type="keyword" value="technology">
 			<keyword value="USB"/>
 			<keyword value="Communication"/>

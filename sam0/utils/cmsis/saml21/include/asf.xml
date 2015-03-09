@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.utils.cmsis.saml21.include" caption="SAML21 part definitions">
+		<info type="description" value="summary">
+		SAML21 device definitions.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="saml21.h"/>
+		<build type="header-file" value="saml21e15a.h"/>
+		<build type="header-file" value="saml21e16a.h"/>
+		<build type="header-file" value="saml21e17a.h"/>
+		<build type="header-file" value="saml21g16a.h"/>
+		<build type="header-file" value="saml21g17a.h"/>
+		<build type="header-file" value="saml21g18a.h"/>
+		<build type="header-file" value="saml21j16a.h"/>
+		<build type="header-file" value="saml21j17a.h"/>
+		<build type="header-file" value="saml21j18a.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="saml21"/>
+	</module>
+</asf>

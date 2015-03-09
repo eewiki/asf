@@ -8,6 +8,7 @@
 		<build type="include-path" value="."/>
 		<device-support value="samg53"/>
 		<device-support value="samg54"/>
+		<device-support value="samg55"/>
 		<require idref="sam.drivers.i2sc"/>
 		<require idref="sam.drivers.pdc"/>
 		<require idref="common.services.delay"/>

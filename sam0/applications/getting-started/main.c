@@ -52,7 +52,7 @@
  *
  * \section Requirements
  *
- * This package can be used with SAM D21/R21 xplained pro.
+ * This package can be used with SAM D21/R21/L21 xplained pro.
  *
  * \section Description
  *
@@ -79,6 +79,9 @@
  * -# Pressing and release button SW0 should make LED0 on and off
  *    blinking.
  *
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include "asf.h"

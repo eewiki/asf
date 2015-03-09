@@ -11,6 +11,41 @@
 			<keyword value="CPU"/>
 		</info>
 
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="pac.h"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_sam0_pac_group"/>
+		<device-support value="sam0"/>
+
+		<require idref="sam0.drivers.pac.common"/>
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.system"/>
+	</module>
+
+	<select-by-device id="sam0.drivers.pac.common" caption="Common files of PAC driver">
+		<module type="meta" id="sam0.drivers.pac.common#sam_d_r" caption="Common files of PAC driver">
+			<build type="include-path" value="." />
+			<build type="include-path" value="pac_sam_d_r"/>
+			<build type="c-source" value="pac_sam_d_r/pac.c"/>
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
+		</module>
+		<module type="meta" id="sam0.drivers.pac.common#sam_l" caption="Common files of PAC driver">
+			<build type="include-path" value="." />
+			<build type="include-path" value="pac_sam_l"/>
+			<build type="c-source" value="pac_sam_l/pac.c"/>
+			<device-support value="saml21"/>
+		</module>
+	</select-by-device>
+
+	<module type="meta" id="sam0.drivers.pac.appnote" caption="PAC - Peripheral Access Controller">
+		<info type="keyword" value="technology">
+			<keyword value="CPU"/>
+		</info>
+
 		<info type="appnote" value="AT03229"/>
 		<info type="keyword" value="pdf">
 			<keyword value="PAC"/>
@@ -25,9 +60,9 @@
 		</info>
 
 		<build type="include-path" value="."/>
-		<build type="c-source" value="pac.c"/>
-
+		<build type="include-path" value="pac_sam_l"/>
 		<build type="header-file" subtype="api" value="pac.h"/>
+		<build type="c-source" value="pac_sam_l/pac.c"/>
 
 		<build type="header-file" value="quick_start/qs_pac_basic.h"/>
 
@@ -36,10 +71,6 @@
 		<build type="doxygen-quick-start" value="asfdoc_sam0_pac_exqsg"/>
 
 		<device-support value="sam0"/>
-
-		<require idref="sam0.utils"/>
-		<require idref="sam0.drivers.system"/>
-
-		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-saml21"/>
 	</module>
 </asf>

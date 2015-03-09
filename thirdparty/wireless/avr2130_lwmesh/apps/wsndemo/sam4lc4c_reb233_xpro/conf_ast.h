@@ -42,6 +42,9 @@
  */
 
 /* ! Configuration of the AST driver */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_AST_H_INCLUDED
 #define CONF_AST_H_INCLUDED

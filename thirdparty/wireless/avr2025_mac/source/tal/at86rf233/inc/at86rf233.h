@@ -47,18 +47,24 @@
  */
 
 /* Prevent double inclusion */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef AT86RF233_H
 #define AT86RF233_H
 
 /* === INCLUDES ============================================================ */
 
 #include "tal_types.h"
+
 #if (TAL_TYPE == AT86RF233)
 #ifndef EXT_RF_FRONT_END_CTRL
 #define TRANSCEIVER_NAME    "AT86RF233"
 #else
 #define TRANSCEIVER_NAME    "AT86RF233+FEM"
 #endif
+
+
 /* === EXTERNALS =========================================================== */
 
 /* === TYPES =============================================================== */

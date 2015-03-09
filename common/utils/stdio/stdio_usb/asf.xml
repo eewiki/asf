@@ -151,6 +151,7 @@
 			<require idref="sam0.utils.syscalls"/>
 			<device-support value="samd21"/>
 			<device-support value="samr21"/>
+			<device-support value="saml21"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
 		</module>
 	</select-by-device>

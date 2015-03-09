@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21/R21 Sercom SPI driver with DMA quick start
+ * \brief SAM Sercom SPI driver with DMA quick start
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -39,6 +39,9 @@
  *
  * \asf_license_stop
  *
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <asf.h>
 #include "conf_quick_start.h"

@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4 DSP class marks Example for SAMG55-Xplained-Pro" id="sam.utils.cmsis.dsp_lib.examples.arm_class_marks_example.samg55_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="sam.utils.cmsis.dsp_lib.examples.arm_class_marks_example"/>
+		<require idref="board.samg55_xplained_pro"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsamg55j19"/>
+	</project>
+</asf>

@@ -18,6 +18,9 @@
  *
  * $Id: frame.c,v 1.29 2004/02/04 22:59:19 rob Exp $
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 # ifdef HAVE_CONFIG_H
 #  include "config.h"

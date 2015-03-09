@@ -40,14 +40,17 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef CONF_CLOCK_H_INCLUDED
 #define CONF_CLOCK_H_INCLUDED
 
-//! Configuration using On-Chip RC oscillator at 48MHZ
+//! Configuration using On-Chip RC oscillator at 48MHz
 //! The RC oscillator is calibrated via USB Start Of Frame
-//! Clk USB     = 48MHZ (used by USB)
-//! Clk sys     = 48MHZ
-//! Clk cpu/per = 24MHZ
+//! Clk USB     = 48MHz (used by USB)
+//! Clk sys     = 48MHz
+//! Clk cpu/per = 24MHz
 #define CONFIG_USBCLK_SOURCE     USBCLK_SRC_RCOSC
 #define CONFIG_OSC_RC32_CAL      48000000UL
 

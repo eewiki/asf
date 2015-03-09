@@ -50,9 +50,12 @@
  *    <th>Comments</td>
  *  </tr>
  *  <tr>
- *    <td>A</td>
- *    <td>07/2014</td>
+ *    <td>42336A</td>
+ *    <td>12/2014</td>
  *    <td>Initial release.</td>
  *  </tr>
  * </table>
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

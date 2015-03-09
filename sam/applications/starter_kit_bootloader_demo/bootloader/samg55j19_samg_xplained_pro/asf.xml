@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<project caption="Bootloader for Starter Kit Bootloader Demo for SAMG55-Xplained-Pro" id="sam.applications.starter_kit_bootloader_demo.bootloader.samg55_xplained_pro">
+		<info type="description" value="summary">
+			Boot application located at flash + 32KB.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_sd_mmc.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_bootloader.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.applications.starter_kit_bootloader_demo.bootloader"/>
+		<config name="config.common.components.memory.sd_mmc" value="spi"/>
+		<config name="config.common.components.memory.sd_mmc.ctrl_access" value="enable"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<require idref="board.samg55_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.stack_size" value="0x3000"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsamg55j19"/>
+	</project>
+</asf>

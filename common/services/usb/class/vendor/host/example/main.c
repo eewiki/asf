@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <asf.h>
 #include "conf_usb_host.h"
@@ -110,7 +113,7 @@ static bool (*loop_back_tests[])(void) = {
  */
 int main(void)
 {
-#if SAMD21
+#if SAMD21 || SAML21
 	system_init();
 #else
 	sysclk_init();

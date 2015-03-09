@@ -45,6 +45,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef _ATXMEGA128A1_QT600_H_
 #define _ATXMEGA128A1_QT600_H_

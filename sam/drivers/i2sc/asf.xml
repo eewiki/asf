@@ -10,6 +10,7 @@
 		<build type="doxygen-entry-point" value="group_sam_drivers_i2sc"/>
 		<device-support value="samg53"/>
 		<device-support value="samg54"/>
+		<device-support value="samg55"/>
 		<require idref="sam.utils"/>
 		<require idref="common.services.basic.clock"/>
 		<require idref="common.services.basic.sleepmgr"/>

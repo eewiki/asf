@@ -48,6 +48,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef TOUCH_CONFIG_SAMD_H
 #define TOUCH_CONFIG_SAMD_H
@@ -155,11 +158,11 @@
 /**
  * Mutual Cap auto oversample setting.
  * Auto oversample controls the automatic oversampling of sensor channels when
- * unstable signals are detected with the default setting of ‘Filter level’.
+ * unstable signals are detected with the default setting of æ…’ilter level
  * Enabling Auto oversample results in 'Filter level' x 'Auto Oversample' number
  * of samples taken on the corresponding sensor channel when an unstable signal
- * is observed.  In a case where ‘Filter level’ is set to FILTER_LEVEL_4 and
- * ‘Auto Oversample’ is set to AUTO_OS_4, 4 oversamples are taken with stable
+ * is observed.  In a case where æ…’ilter levelis set to FILTER_LEVEL_4 and
+ * æ…‰uto Oversampleis set to AUTO_OS_4, 4 oversamples are taken with stable
  * signal values and 16 oversamples are taken when unstable signal is detected.
  * Refer auto_os_t in touch_api_SAMD.h
  * Range: AUTO_OS_DISABLE (oversample disabled) to AUTO_OS_128 (128

@@ -33,6 +33,9 @@
  * scaled quantization values.  However, that problem does not arise if
  * we use floating point arithmetic.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

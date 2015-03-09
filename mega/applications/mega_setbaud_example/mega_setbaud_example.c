@@ -97,6 +97,9 @@
  * For further information, visit
  * <A href="http://www.atmel.com/">Atmel</A>.\n
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #define _ASSERT_ENABLE_
 #include "compiler.h"
 

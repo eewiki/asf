@@ -39,6 +39,9 @@
  *
  * \asf_license_stop
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_COMMON_SW_TIMER_H_INCLUDED
 #define CONF_COMMON_SW_TIMER_H_INCLUDED

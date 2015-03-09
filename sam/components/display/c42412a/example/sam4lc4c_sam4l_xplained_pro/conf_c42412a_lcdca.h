@@ -42,6 +42,9 @@
  */
 
 /** Configuration of the C42412A LCD glass driver */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_C42412A_LCDCA_H_INCLUDED
 #define CONF_C42412A_LCDCA_H_INCLUDED

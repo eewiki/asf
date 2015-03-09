@@ -18,6 +18,9 @@
  *
  * $Id: synth.h,v 1.15 2004/01/23 09:41:33 rob Exp $
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 # ifndef LIBMAD_SYNTH_H
 # define LIBMAD_SYNTH_H

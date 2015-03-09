@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef USART_INTERRUPT_H_INCLUDED
 #define USART_INTERRUPT_H_INCLUDED
 
@@ -135,7 +138,7 @@ static inline void usart_disable_callback(
  */
 enum status_code usart_write_job(
 		struct usart_module *const module,
-		const uint16_t tx_data);
+		const uint16_t *tx_data);
 
 enum status_code usart_read_job(
 		struct usart_module *const module,

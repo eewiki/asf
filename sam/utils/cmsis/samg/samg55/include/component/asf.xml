@@ -1,0 +1,37 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.samg55.include.component" caption="SAMG55 component definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAMG55 peripherals
+		</info>
+		<!--
+		<build type="include-path" value="."/>
+		-->
+		<build type="header-file" value="adc.h"/>
+		<build type="header-file" value="chipid.h"/>
+		<build type="header-file" value="cmcc.h"/>
+		<build type="header-file" value="crccu.h"/>
+		<build type="header-file" value="efc.h"/>
+		<build type="header-file" value="flexcom.h"/>
+		<build type="header-file" value="gpbr.h"/>
+		<build type="header-file" value="i2sc.h"/>
+		<build type="header-file" value="matrix.h"/>
+		<build type="header-file" value="mem2mem.h"/>
+		<build type="header-file" value="pdc.h"/>
+		<build type="header-file" value="pdmic.h"/>
+		<build type="header-file" value="pio.h"/>
+		<build type="header-file" value="pmc.h"/>
+		<build type="header-file" value="rstc.h"/>
+		<build type="header-file" value="rtc.h"/>
+		<build type="header-file" value="rtt.h"/>
+		<build type="header-file" value="spi.h"/>
+		<build type="header-file" value="supc.h"/>
+		<build type="header-file" value="tc.h"/>
+		<build type="header-file" value="twi.h"/>
+		<build type="header-file" value="udp.h"/>
+		<build type="header-file" value="uhp.h"/>
+		<build type="header-file" value="usart.h"/>
+		<build type="header-file" value="wdt.h"/>
+		<device-support value="samg55"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

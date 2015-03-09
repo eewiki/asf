@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="TWI EEPROM Example for SAMG55 Xplained Pro" id="sam.drivers.twi.twi_eeprom_example.samg55_xplained_pro">
+		<info type="description" value="summary">
+		The application demonstrates how to use the SAM TWI driver to access an external serial EEPROM chip.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="sam.drivers.flexcom"/>
+		<require idref="sam.drivers.twi.twi_eeprom_example"/>
+		<require idref="board.samg55_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamg55j19"/>
+	</project>
+</asf>

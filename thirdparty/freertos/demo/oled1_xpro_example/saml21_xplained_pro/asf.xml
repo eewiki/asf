@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<project id="common.services.freertos.oled1_xpro_example.saml21_xplained_pro" caption="FreeRTOS demo using OLED1 Xplained Pro, for SAM L21 Xplained Pro">
+		<board-addon vendor="Atmel" caption="OLED1 Xplained Pro" position="EXT3"/>
+		<!-- Display can do double-buffering, so double the LCD height -->
+		<build type="define" name="GFX_MONO_LCD_HEIGHT" value="64"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_demo.h"/>
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<build type="include-path" value="."/>
+		<config name="common2.services.gfx_mono.display" value="ug_2832hsweg04"/>
+		<config name="config.sam0.drivers.sercom.usart" value="callback"/>
+		<config name="config.thirdparty.os.freertos.version" value="8.0.1"/>
+		<config name="config.thirdparty.os.freertos-8_0_1.memory_manager" value="1_static_allocation"/>
+		<device-support value="atsaml21j18a"/>
+		<require idref="board.saml21_xplained_pro"/>
+		<require idref="common.services.freertos.oled1_xpro_example"/>
+		<generator value="as5_arm"/>
+		<generator value="armgcc"/>
+		<generator value="iarewarm"/>
+		<generator value="doxygen-v2"/>
+	</project>
+</asf>

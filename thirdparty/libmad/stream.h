@@ -18,6 +18,9 @@
  *
  * $Id: stream.h,v 1.20 2004/02/05 09:02:39 rob Exp $
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 # ifndef LIBMAD_STREAM_H
 # define LIBMAD_STREAM_H

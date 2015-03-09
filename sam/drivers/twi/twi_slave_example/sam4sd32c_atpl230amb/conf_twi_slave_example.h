@@ -42,6 +42,9 @@
  */
 
 /* Configuration of TWI Slave Example */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_TWI_SLAVE_EXAMPLE_H_INCLUDED
 #define CONF_TWI_SLAVE_EXAMPLE_H_INCLUDED

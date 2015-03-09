@@ -109,4 +109,7 @@
  * -# Read back the written page of page from the NVM into the buffer.
  *    \snippet qs_nvm_basic.c main_6
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 

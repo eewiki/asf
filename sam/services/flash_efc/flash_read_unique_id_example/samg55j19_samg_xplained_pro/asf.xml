@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="Flash Read Unique Id Example for SAMG55 Xplained Pro" id="sam.services.flash.read.unique.id_example.samg55_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="sam.services.flash.read.unique.id_example"/>
+		<require idref="board.samg55_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamg55j19"/>
+	</project>
+</asf>

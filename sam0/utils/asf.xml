@@ -93,5 +93,20 @@
 			<info type="gui-flag" value="hidden"/>
 			<device-support value="samd11"/>
 		</module>
+
+		<!-- SAML21 //-->
+		<module type="driver" id="sam0.utils#5" caption="SAM L21 compiler driver">
+			<info type="description" value="summary">
+			Compiler abstraction layer and code utilities for SAML21 devices. This module provides various abstraction layers and utilities to make code compatible between different compilers. It also contains utilities typically used while pre-processing code.
+			</info>
+			<require idref="sam0.utils.common"/>
+			<require idref="sam0.utils.cmsis.saml21.include"/>
+			<require idref="sam0.utils.cmsis.saml21.include.component"/>
+			<require idref="sam0.utils.cmsis.saml21.include.instance"/>
+			<require idref="sam0.utils.cmsis.saml21.include.pio"/>
+			<require idref="sam0.utils.cmsis.saml21.source.template"/>
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="saml21"/>
+		</module>
 	</select-by-device>
 </asf>

@@ -1,6 +1,9 @@
 /*-------------------------------------------*/
 /* Integer type definitions for FatFs module */
 /*-------------------------------------------*/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef _INTEGER
 #define _INTEGER

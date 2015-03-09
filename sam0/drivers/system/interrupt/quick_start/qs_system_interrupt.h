@@ -100,3 +100,6 @@
  *    can trigger their respective handler functions.
  *    \snippet qs_system_interrupt.c global_int_enable
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

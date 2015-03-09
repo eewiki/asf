@@ -66,6 +66,9 @@
  *
  *   You should also use DOMAIN\\USERNAME as described in README.MSCHAP80
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define USE_CRYPT
 

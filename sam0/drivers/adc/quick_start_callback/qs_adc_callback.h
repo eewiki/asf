@@ -55,7 +55,7 @@
  * - Window monitor disabled
  * - 1/2 gain
  * - Positive input on ADC PIN 0
- * - Negative input to GND (Single ended)
+ * - Negative input to GND (single ended)
  * - Averaging disabled
  * - Oversampling disabled
  * - Right adjust data
@@ -142,4 +142,7 @@
  *     \snippet qs_adc_callback.c job_complete_poll
  *  -# Enter an infinite loop once the conversion is complete.
  *     \snippet qs_adc_callback.c inf_loop
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

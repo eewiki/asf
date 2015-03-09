@@ -58,6 +58,9 @@
  *
  * See the comments at the top of GenQTest.c for a description.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 
 #include <stdlib.h>

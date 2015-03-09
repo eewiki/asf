@@ -20,6 +20,7 @@
 		<build type="header-file" value="pm.h"/>
 		<build type="header-file" value="port.h"/>
 		<build type="header-file" value="rtc.h"/>
+		<build type="header-file" value="sbmatrix.h"/>
 		<build type="header-file" value="sercom0.h"/>
 		<build type="header-file" value="sercom1.h"/>
 		<build type="header-file" value="sercom2.h"/>

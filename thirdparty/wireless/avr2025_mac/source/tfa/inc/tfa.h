@@ -48,6 +48,9 @@
  */
 
 /* Prevent double inclusion */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef TFA_H
 #define TFA_H
 
@@ -66,6 +69,7 @@
 
 #include "return_val.h"
 #include "ieee_const.h"
+#include "tal_types.h"
 
 /* === TYPES =============================================================== */
 

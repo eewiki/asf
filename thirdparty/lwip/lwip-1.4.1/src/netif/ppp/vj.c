@@ -27,6 +27,9 @@
  * Modified March 1998 by Guy Lancaster, glanca@gesn.com,
  * for a 16 bit processor.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "lwip/opt.h"
 

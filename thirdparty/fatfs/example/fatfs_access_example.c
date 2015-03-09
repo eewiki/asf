@@ -65,7 +65,7 @@
  * SAM3S-EK/SAM3U-EK/SAM4E-EK/SAM4S-EK/SAM4S-Xplained/ATxmega128A1-Xplained/
  * ATxmegaA3BU-Xplained/SAM4N-Xplained-Pro/SAM4CMP16C-SAM4CMP-DB/
  * SAM4CMS16C-SAM4CMS-DB. The file system is created in the
- * Micro SD/MMC on IO1 extension board connected to SAM D/R Xplained Pro.
+ * Micro SD/MMC on IO1 extension board connected to SAM D/R/L Xplained Pro.
  *
  *  \section Description
  *
@@ -86,7 +86,7 @@
  *  -# Build the program and download it into the evaluation board.
  *  -# On the computer, open and configure a terminal application
  *     (e.g., HyperTerminal on Microsoft Windows) with these settings:
- *    - 115200 bauds (or 38400 bauds on SAM D/R Xplained Pro)
+ *    - 115200 bauds (or 38400 bauds on SAM D/R/L Xplained Pro)
  *    - 8 bits of data
  *    - No parity
  *    - 1 stop bit
@@ -104,6 +104,9 @@
  *  -# The application will output the converted value to hyperterminal and
  * display a menu for users to set different modes.
  *
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include <asf.h>
@@ -126,7 +129,7 @@
 #define MENU_HEADER "\n\r" \
 	"---------------------------------------------------------\n\r"
 
-#if SAMD20 || SAMD21 || SAMR21
+#if SAM0
 /* Structure for UART module connected to EDBG (used for unit test output) */
 struct usart_module cdc_uart_module;
 #endif
@@ -363,7 +366,7 @@ static uint8_t run_fatfs_test(uint32_t disk_dev_num)
 int main(void)
 {
 	uint32_t disk_dev_num;
-#if SAMD20 || SAMD21 || SAMR21
+#if SAM0
 	system_init();
 	struct usart_config usart_conf;
 	usart_get_config_defaults(&usart_conf);

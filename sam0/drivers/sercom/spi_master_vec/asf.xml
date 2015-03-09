@@ -24,11 +24,7 @@
 		<build type="module-config" subtype="required-header-file" value="conf_spi.h"/>
 
 		<build type="include-path" value="."/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
-		<device-support value="samr21"/>
-		<device-support value="samd10"/>
-		<device-support value="samd11"/>
+		<device-support value="sam0"/>
 		<require idref="sam0.utils"/>
 		<require idref="sam0.drivers.sercom.spi"/>
 		<require idref="sam0.drivers.port"/>

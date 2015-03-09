@@ -9,6 +9,7 @@
 			<device-support value="sam3s"/>
 			<device-support value="sam3sd8"/>
 			<device-support value="sam4s"/>
+			<device-support value="samg55"/>
 			<require idref="sam.drivers.crccu"/>
 			<require idref="sam.services.flash"/>
 			<require idref="common.services.basic.clock"/>

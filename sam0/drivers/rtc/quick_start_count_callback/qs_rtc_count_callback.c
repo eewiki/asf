@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include <asf.h>
 
 void rtc_overflow_callback(void);
@@ -71,7 +74,9 @@ void configure_rtc_count(void)
 //! [set_config]
 	config_rtc_count.prescaler           = RTC_COUNT_PRESCALER_DIV_1;
 	config_rtc_count.mode                = RTC_COUNT_MODE_16BIT;
+#ifdef FEATURE_RTC_CONTINUOUSLY_UPDATED
 	config_rtc_count.continuously_update = true;
+#endif
 //! [set_config]
 //! [init_rtc]
 	rtc_count_init(&rtc_instance, RTC, &config_rtc_count);

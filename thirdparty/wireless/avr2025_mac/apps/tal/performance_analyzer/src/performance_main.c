@@ -42,12 +42,15 @@
 
 /**
  * \page license License
- * Copyright(c) 2012, Atmel Corporation All rights reserved.
+ * Copyright(c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 
 /* === INCLUDES ============================================================ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include <stdlib.h>
 #include "tal.h"
 #include "tal_helper.h"
@@ -160,7 +163,7 @@
  * - \b Packet \b Error \b Rate \b Measurement \b(PER) is to evaluate
  * the packet transmission and reception capabilities of the wireless nodes.
  * The Transmitter node shall be connected to the Performance Analyzer.
- * If ‘Initiate Peer search’ command is received from the analyzer after the
+ * If æ…–nitiate Peer searchcommand is received from the analyzer after the
  * board
  * is connected, then the node (Transmitter) tries to find its peer node (i.e.
  * Reflector).
@@ -429,34 +432,35 @@ volatile node_ib_t node_info;
 /* === IMPLEMENTATION ====================================================== */
 
 /**
- * \brief Main function of the Performance Analyzer application
+ * \brief Init function of the Performance Analyzer application
  * \ingroup group_app_init
  */
-void performance_analyzer_main(void)
+void performance_analyzer_init(void)
 {
 	sio2host_init();
-
 	/*
 	 * Power ON - so set the board to INIT state. All hardware, PAL, TAL and
 	 * stack level initialization must be done using this function
 	 */
 	set_main_state(INIT, NULL);
 
-	cpu_irq_enable();
-
 	/* INIT was a success - so change to WAIT_FOR_EVENT state */
 	set_main_state(WAIT_FOR_EVENT, NULL);
 
-	/* Endless while loop */
-	while (1) {
-		pal_task(); /* Handle platform specific tasks, like serial
-		             * interface */
-		tal_task(); /* Handle transceiver specific tasks */
-		app_task(); /* Application task */
-		serial_data_handler();
-	}
 }
 
+/**
+ * \brief This task needs to be called in a while(1) for performing 
+ *  Performance Analyzer tasks
+ */
+void performance_analyzer_task(void)
+{
+	pal_task(); /* Handle platform specific tasks, like serial
+		            * interface */
+	tal_task(); /* Handle transceiver specific tasks */
+	app_task(); /* Application task */
+	serial_data_handler();
+}
 /**
  * \brief Application task
  */
@@ -613,20 +617,21 @@ void set_main_state(main_state_t state, void *arg)
  * \param ack_req           specifies ack requested for frame if set to 1
  *
  * \return MAC_SUCCESS      if the TAL has accepted the data for frame
- * transmission
- *         TAL_BUSY         if the TAL is busy servicing the previous tx request
+ *                          transmission
+ *         TAL_BUSY         if the TAL is busy servicing the previous tx 
+ *                          request
  */
 retval_t transmit_frame(uint8_t dst_addr_mode,
 		uint8_t *dst_addr,
 		uint8_t src_addr_mode,
 		uint8_t msdu_handle,
 		uint8_t *payload,
-		uint8_t payload_length,
+		uint16_t payload_length,
 		uint8_t ack_req)
 {
 	uint8_t i;
 	uint16_t temp_value;
-	uint8_t frame_length;
+	uint16_t frame_length;
 	uint8_t *frame_ptr;
 	uint8_t *temp_frame_ptr;
 	uint16_t fcf = 0;
@@ -717,7 +722,9 @@ retval_t transmit_frame(uint8_t dst_addr_mode,
 
 	/* First element shall be length of PHY frame. */
 	frame_ptr--;
-	*frame_ptr = frame_length;
+	*frame_ptr = (uint8_t) frame_length;
+	
+	
 
 	/* Finished building of frame. */
 	node_info.tx_frame_info->mpdu = frame_ptr;

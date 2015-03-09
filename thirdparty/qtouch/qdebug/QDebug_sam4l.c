@@ -51,6 +51,9 @@
 
 
 /*============================ INCLUDES ======================================*/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include "QDebug_sam4l.h"
 
 //! compile file only when QDebug is enabled.

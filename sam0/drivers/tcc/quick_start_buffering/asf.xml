@@ -11,5 +11,6 @@
 		<require idref="sam0.drivers.tcc"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="saml21"/>
 	</module>
 </asf>

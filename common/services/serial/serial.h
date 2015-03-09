@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef SERIAL_H_INCLUDED
 #define SERIAL_H_INCLUDED
 
@@ -60,7 +63,7 @@
 # include "megarf_usart/usart_serial.h"
 #elif UC3
 # include "uc3_usart/usart_serial.h"
-#elif (SAMD20) || (SAMD21) || (SAMR21) || (SAMD10) || (SAMD11)
+#elif (SAM0)
 #include "sam0_usart/usart_serial.h"
 #elif SAM
 # include "sam_uart/uart_serial.h"

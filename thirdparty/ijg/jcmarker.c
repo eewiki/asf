@@ -7,6 +7,9 @@
  *
  * This file contains routines to write JPEG datastream markers.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

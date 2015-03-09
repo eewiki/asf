@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<project caption="USB Host MSC with FatFS for SAM L21 Xplained Pro" id="common.services.usb.class.msc.host.example2.saml21_xplained_pro">
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_rtc.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.host" value="mass_storage"/>
+		<require idref="common.services.usb.class.msc.host.example2"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<require idref="board.saml21_xplained_pro"/>
+		<require idref="sam0.drivers.extint"/>
+		<config name="config.sam0.drivers.rtc" value="calendar_polled"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x1000"/>
+		<device-support value="atsaml21j18a"/>
+	</project>
+</asf>

@@ -9,6 +9,9 @@
  * These routines provide mapping to a fixed color map using equally spaced
  * color values.  Optional Floyd-Steinberg or ordered dithering is available.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

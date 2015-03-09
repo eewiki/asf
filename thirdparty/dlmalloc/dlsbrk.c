@@ -1,4 +1,7 @@
 #include "conf_dlmalloc.h"
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 /* If a custom place for the standard heap is needed
  * (like moving it to SDRAM) following defines are needed.

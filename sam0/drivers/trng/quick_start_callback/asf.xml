@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.trng.quick_start_callback" caption="Quick Start for the SAM TRNG Driver (Callback)">
+		<info type="description" value="summary">
+		Quick start guide for the True Random Number Generator module demonstrating module configuration and basic use.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_trng_callback.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.trng"/>
+		<device-support value="saml21"/>
+	</module>
+</asf>

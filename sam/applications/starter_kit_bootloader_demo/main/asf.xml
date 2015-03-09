@@ -6,6 +6,7 @@
 			</info>
 			<build type="include-path" value="."/>
 			<device-support value="sam4n"/>
+			<device-support value="samg55"/>
 			<require idref="sam.drivers.rstc"/>
 			<require idref="sam.drivers.pio"/>
 			<require idref="sam.drivers.gpbr"/>

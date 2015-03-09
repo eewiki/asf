@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.aes.quick_start_dma" caption="Quick Start for the SAM AES Driver (DMA)">
+		<info type="description" value="summary">
+			Use the AES module, encrypt and decrypt blocks of data.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="quick_start_dma.c"/>
+		<device-support value="saml21"/>
+		<require idref="sam0.drivers.aes"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.drivers.dma"/>
+		<require idref="sam0.drivers.sercom.usart"/>
+		<require idref="sam0.utils"/>
+		<require idref="sam0.utils.stdio"/>
+		<require idref="sam0.utils.stdio.stdio_serial"/>
+	</module>
+</asf>

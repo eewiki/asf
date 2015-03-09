@@ -14,7 +14,8 @@
 			</info>
 
 			<build type="include-path" value="."/>
-			<build type="c-source" value="usb.c"/>
+			<build type="include-path" value="usb_sam_d_r"/>
+			<build type="c-source" value="usb_sam_d_r/usb.c"/>
 
 			<build type="header-file" subtype="api" value="usb.h"/>
 
@@ -48,7 +49,8 @@
 			</info>
 
 			<build type="include-path" value="."/>
-			<build type="c-source" value="usb.c"/>
+			<build type="include-path" value="usb_sam_d_r"/>
+			<build type="c-source" value="usb_sam_d_r/usb.c"/>
 
 			<build type="header-file" subtype="api" value="usb.h"/>
 
@@ -64,6 +66,40 @@
 			<build type="doxygen-entry-point" value="asfdoc_sam0_usb_group" />
 
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd11"/>
+
+		</module>
+		<module type="driver" id="sam0.drivers.usb#2" caption="USB - Universal Serial Bus">
+			<info type="description" value="summary">
+				Driver for the SAM L21 Universal Serial Bus module. Provides a
+				low level interface for the configuration and management of the
+				module.
+			</info>
+
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication" />
+			</info>
+
+			<build type="include-path" value="."/>
+			<build type="include-path" value="usb_sam_l"/>
+			<build type="c-source" value="usb_sam_l/usb.c"/>
+
+			<build type="header-file" subtype="api" value="usb.h"/>
+
+			<device-support value="saml21" />
+
+			<require idref="sam0.utils"/>
+			<require idref="sam0.drivers.system"/>
+
+			<build type="doxygen-enable-section" value="USB_DEVICE_MODE"/>
+			<build type="doxygen-enable-section" value="USB_HOST_MODE"/>
+			<build type="doxygen-enable-section" value="USB_LS_MODE"/>
+			<build type="doxygen-enable-section" value="USB_LPM_MODE"/>
+
+			<build type="doxygen-entry-point" value="asfdoc_sam0_usb_group" />
+
+			<generator value="doxygen-module-v2" default-mcu="unspecified-saml21"/>
 
 		</module>
 	</select-by-device>

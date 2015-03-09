@@ -45,6 +45,9 @@
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef _SYS_ENCRYPT_H_
 #define _SYS_ENCRYPT_H_

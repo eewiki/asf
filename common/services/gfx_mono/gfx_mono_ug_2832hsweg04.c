@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include "gfx_mono_ug_2832hsweg04.h"
 
 /* If we are using a serial interface without readback, use framebuffer */

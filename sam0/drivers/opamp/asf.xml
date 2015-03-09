@@ -1,0 +1,40 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.drivers.opamp" caption="OPAMP - Operational Amplifier Controller">
+		<info type="description" value="summary">
+			Driver for the SAM0 OPAMP module. Provides a unified interface for
+			the configuration and management of the physical device OPAMP.
+		</info>
+
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+
+		<info type="appnote" value="AT10799"/>
+		<info type="keyword" value="pdf">
+			<keyword value="OPAMP"/>
+			<keyword value="Operational Amplifier Control"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Operational Amplifier Control on the
+			SAM0, both the ASF driver and the peripheral itself.
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="opamp.h"/>
+		<build type="c-source" value="opamp.c"/>
+
+		<build type="header-file" value="quick_start/qs_opamp_basic.h"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_sam0_opamp_group"/>
+		<build type="doxygen-example-path" value="quick_start"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_opamp_exqsg"/>
+
+		<device-support value="saml21"/>
+
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.system.pinmux"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-saml21"/>
+	</module>
+</asf>

@@ -1,4 +1,7 @@
 #include "lwip/opt.h"
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include "lwip/def.h"
 #include "lwip/mem.h"
 #include "lwip/pbuf.h"

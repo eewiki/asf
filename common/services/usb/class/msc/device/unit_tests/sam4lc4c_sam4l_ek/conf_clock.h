@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef CONF_CLOCK_H_INCLUDED
 #define CONF_CLOCK_H_INCLUDED
 
@@ -58,7 +61,7 @@
 //#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_RCFAST
 //#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_RC1M
 
-/* RCFAST frequency selection: 0 for 4MHZ, 1 for 8MHZ and 2 for 12MHZ */
+/* RCFAST frequency selection: 0 for 4MHz, 1 for 8MHz and 2 for 12MHz */
 //#define CONFIG_RCFAST_FRANGE    0
 //#define CONFIG_RCFAST_FRANGE    1
 //#define CONFIG_RCFAST_FRANGE    2

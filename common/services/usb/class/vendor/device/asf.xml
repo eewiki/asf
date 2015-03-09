@@ -33,6 +33,7 @@
 			<device-support value="sam4s"/>
 			<device-support value="sam4l"/>
 			<device-support value="sam4e"/>
+			<device-support value="samg55"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>
 		<module type="service" id="common.services.usb.class.vendor.device.composite#disable" caption="USB Device Vendor Class disabled">
@@ -81,6 +82,8 @@
 		<device-support value="sam4e"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="saml21"/>
+		<device-support value="samg55"/>
 		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 	</module>
 	<module type="meta" id="common.services.usb.class.vendor.device.appnote" caption="USB Device Vendor (Application Note)">

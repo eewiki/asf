@@ -1,0 +1,68 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.samg55.include.instance" caption="SAMG55 instance definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAMG55 peripherals 
+		</info>
+		<!--
+		<build type="include-path" value="."/>
+		-->
+		<build type="header-file" value="adc.h"/>
+		<build type="header-file" value="chipid.h"/>
+		<build type="header-file" value="cmcc.h"/>
+		<build type="header-file" value="crccu.h"/>
+		<build type="header-file" value="efc.h"/>
+		<build type="header-file" value="flexcom0.h"/>
+		<build type="header-file" value="flexcom1.h"/>
+		<build type="header-file" value="flexcom2.h"/>
+		<build type="header-file" value="flexcom3.h"/>
+		<build type="header-file" value="flexcom4.h"/>
+		<build type="header-file" value="flexcom5.h"/>
+		<build type="header-file" value="flexcom6.h"/>
+		<build type="header-file" value="flexcom7.h"/>
+		<build type="header-file" value="gpbr.h"/>
+		<build type="header-file" value="i2sc0.h"/>
+		<build type="header-file" value="i2sc1.h"/>
+		<build type="header-file" value="matrix.h"/>
+		<build type="header-file" value="mem2mem.h"/>
+		<build type="header-file" value="pdmic0.h"/>
+		<build type="header-file" value="pdmic1.h"/>
+		<build type="header-file" value="pioa.h"/>
+		<build type="header-file" value="piob.h"/>
+		<build type="header-file" value="pmc.h"/>
+		<build type="header-file" value="rstc.h"/>
+		<build type="header-file" value="rtc.h"/>
+		<build type="header-file" value="rtt.h"/>
+		<build type="header-file" value="spi0.h"/>
+		<build type="header-file" value="spi1.h"/>
+		<build type="header-file" value="spi2.h"/>
+		<build type="header-file" value="spi3.h"/>
+		<build type="header-file" value="spi4.h"/>
+		<build type="header-file" value="spi5.h"/>
+		<build type="header-file" value="spi6.h"/>
+		<build type="header-file" value="spi7.h"/>
+		<build type="header-file" value="supc.h"/>
+		<build type="header-file" value="tc0.h"/>
+		<build type="header-file" value="tc1.h"/>
+		<build type="header-file" value="twi0.h"/>
+		<build type="header-file" value="twi1.h"/>
+		<build type="header-file" value="twi2.h"/>
+		<build type="header-file" value="twi3.h"/>
+		<build type="header-file" value="twi4.h"/>
+		<build type="header-file" value="twi5.h"/>
+		<build type="header-file" value="twi6.h"/>
+		<build type="header-file" value="twi7.h"/>
+		<build type="header-file" value="udp.h"/>
+		<build type="header-file" value="uhp.h"/>
+		<build type="header-file" value="usart0.h"/>
+		<build type="header-file" value="usart1.h"/>
+		<build type="header-file" value="usart2.h"/>
+		<build type="header-file" value="usart3.h"/>
+		<build type="header-file" value="usart4.h"/>
+		<build type="header-file" value="usart5.h"/>
+		<build type="header-file" value="usart6.h"/>
+		<build type="header-file" value="usart7.h"/>
+		<build type="header-file" value="wdt.h"/>
+		<device-support value="samg55"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

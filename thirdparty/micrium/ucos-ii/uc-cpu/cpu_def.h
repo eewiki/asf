@@ -61,6 +61,9 @@
 
                                                         /* ----------------------- CPU WORD SIZE ---------------------- */
 #define  CPU_WORD_SIZE_08                          1    /*  8-bit word size = sizeof(CPU_INT08x).                       */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #define  CPU_WORD_SIZE_16                          2    /* 16-bit word size = sizeof(CPU_INT16x).                       */
 #define  CPU_WORD_SIZE_32                          4    /* 32-bit word size = sizeof(CPU_INT32x).                       */
 #define  CPU_WORD_SIZE_64                          8    /* 64-bit word size = sizeof(CPU_INT64x) [see Note #1a].        */

@@ -31,6 +31,9 @@
  * are specifically granted permission to redistribute this
  * source code.
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef __LWIP_IGMP_H__
 #define __LWIP_IGMP_H__

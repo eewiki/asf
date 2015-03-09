@@ -42,6 +42,9 @@
  */
 /// @cond 0
 /**INDENT-OFF**/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -60,7 +63,7 @@ extern "C" {
 # include <rtc.h>
 #endif
 
-#if (SAMD20 || SAMD21 || SAMR21)
+#if (SAM0)
 # include <rtc_calendar.h>
 struct rtc_module rtc_instance;
 

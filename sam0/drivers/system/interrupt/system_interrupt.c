@@ -40,16 +40,19 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include "system_interrupt.h"
 
 /**
- * \brief Check if a interrupt line is pending
+ * \brief Check if a interrupt line is pending.
  *
  * Checks if the requested interrupt vector is pending.
  *
  * \param[in] vector  Interrupt vector number to check
  *
- * \returns A Boolean identifying if the requested interrupt vector is pending.
+ * \returns A boolean identifying if the requested interrupt vector is pending.
  *
  * \retval true   Specified interrupt vector is pending
  * \retval false  Specified interrupt vector is not pending
@@ -73,7 +76,7 @@ bool system_interrupt_is_pending(
 }
 
 /**
- * \brief Set a interrupt vector as pending
+ * \brief Set a interrupt vector as pending.
  *
  * Set the requested interrupt vector as pending (i.e issues a software
  * interrupt request for the specified vector). The software handler will be
@@ -111,7 +114,7 @@ enum status_code system_interrupt_set_pending(
 }
 
 /**
- * \brief Clear pending interrupt vector
+ * \brief Clear pending interrupt vector.
  *
  * Clear a pending interrupt vector, so the software handler is not executed.
  *
@@ -146,7 +149,7 @@ enum status_code system_interrupt_clear_pending(
 }
 
 /**
- * \brief Set interrupt vector priority level
+ * \brief Set interrupt vector priority level.
  *
  * Set the priority level of an external interrupt or exception.
  *
@@ -184,7 +187,7 @@ enum status_code system_interrupt_set_priority(
 }
 
 /**
- * \brief Get interrupt vector priority level
+ * \brief Get interrupt vector priority level.
  *
  * Retrieves the priority level of the requested external interrupt or exception.
  *

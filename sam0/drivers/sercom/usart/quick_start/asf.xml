@@ -8,10 +8,6 @@
 		<build type="header-file" value="qs_usart_basic_use.h"/>
 		<build type="include-path" value="."/>
 		<require idref="sam0.drivers.sercom.usart"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
-		<device-support value="samr21"/>
-		<device-support value="samd10"/>
-		<device-support value="samd11"/>
+		<device-support value="sam0"/>
 	</module>
 </asf>

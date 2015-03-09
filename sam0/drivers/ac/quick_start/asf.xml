@@ -9,10 +9,6 @@
 		<require idref="sam0.drivers.ac"/>
 		<require idref="sam0.drivers.port"/>
 		<require idref="sam0.drivers.system"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
-		<device-support value="samr21"/>
-		<device-support value="samd10"/>
-		<device-support value="samd11"/>
+		<device-support value="sam0"/>
 	</module>
 </asf>

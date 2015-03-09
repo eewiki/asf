@@ -48,6 +48,9 @@
  * \asf_license_stop
  *
  ******************************************************************************/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef BITBANGSPI_MASTER_H_INCLUDED
 #define BITBANGSPI_MASTER_H_INCLUDED

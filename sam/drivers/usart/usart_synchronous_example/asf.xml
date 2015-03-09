@@ -26,5 +26,24 @@
 			<require idref="common.utils.stdio.stdio_serial"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
+		<module type="application" id="sam.drivers.usart.usart_synchronous_example#2" caption="USART Synchronous Example">
+			<info type="description" value="summary">
+			This example uses USART driver to demonstrates the synchronous mode.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usart_synchronous_example.c"/>
+			<build type="include-path" value="."/>
+			<device-support value="samg55"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.usart"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.drivers.pdc"/>
+			<require idref="sam.drivers.flexcom"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
 	</select-by-device>
 </asf>

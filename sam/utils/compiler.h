@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef UTILS_COMPILER_H
 #define UTILS_COMPILER_H
@@ -201,7 +204,7 @@
 #endif
 
 /* Define WEAK attribute */
-#if defined   ( __CC_ARM   ) /* Keil µVision 4 */
+#if defined   ( __CC_ARM   ) /* Keil ç¤¦ision 4 */
 #   define WEAK __attribute__ ((weak))
 #elif defined ( __ICCARM__ ) /* IAR Ewarm 5.41+ */
 #   define WEAK __weak
@@ -219,7 +222,7 @@
 #endif
 
 /* Define RAMFUNC attribute */
-#if defined   ( __CC_ARM   ) /* Keil µVision 4 */
+#if defined   ( __CC_ARM   ) /* Keil ç¤¦ision 4 */
 #   define RAMFUNC __attribute__ ((section(".ramfunc")))
 #elif defined ( __ICCARM__ ) /* IAR Ewarm 5.41+ */
 #   define RAMFUNC __ramfunc
@@ -228,7 +231,7 @@
 #endif
 
 /* Define OPTIMIZE_HIGH attribute */
-#if defined   ( __CC_ARM   ) /* Keil µVision 4 */
+#if defined   ( __CC_ARM   ) /* Keil ç¤¦ision 4 */
 #   define OPTIMIZE_HIGH _Pragma("O3") 
 #elif defined ( __ICCARM__ ) /* IAR Ewarm 5.41+ */
 #   define OPTIMIZE_HIGH _Pragma("optimize=high")

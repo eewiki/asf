@@ -4,7 +4,7 @@
  *
  * \brief sprintf functions to replace newlib for AVR32 UC3.
  *
- * Copyright (c) 2006-2008 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2006-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -69,6 +69,9 @@
 	replace outbyte(c) by your own function call.
 
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 
 #include <stdarg.h>

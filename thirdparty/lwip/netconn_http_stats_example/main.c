@@ -85,6 +85,9 @@
  * The web page is periodically refreshed to keep the board status up-to-date.
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "task_defs.h"
 #include "ethernet.h"

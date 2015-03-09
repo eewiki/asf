@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include <clock.h>
 
 #ifndef CONF_CLOCKS_H_INCLUDED
@@ -52,7 +55,7 @@
 #  define CONF_CLOCK_APBA_DIVIDER                 SYSTEM_MAIN_CLOCK_DIV_1
 #  define CONF_CLOCK_APBB_DIVIDER                 SYSTEM_MAIN_CLOCK_DIV_1
 
-/* SYSTEM_CLOCK_SOURCE_OSC8M configuration - Internal 8MHZ oscillator */
+/* SYSTEM_CLOCK_SOURCE_OSC8M configuration - Internal 8MHz oscillator */
 #  define CONF_CLOCK_OSC8M_PRESCALER              SYSTEM_OSC8M_DIV_1
 #  define CONF_CLOCK_OSC8M_ON_DEMAND              true
 #  define CONF_CLOCK_OSC8M_RUN_IN_STANDBY         true
@@ -66,7 +69,7 @@
 #  define CONF_CLOCK_XOSC_ON_DEMAND               true
 #  define CONF_CLOCK_XOSC_RUN_IN_STANDBY          false
 
-/* SYSTEM_CLOCK_SOURCE_XOSC32K configuration - External 32KHZ crystal/clock oscillator */
+/* SYSTEM_CLOCK_SOURCE_XOSC32K configuration - External 32KHz crystal/clock oscillator */
 #  define CONF_CLOCK_XOSC32K_ENABLE               true
 #  define CONF_CLOCK_XOSC32K_EXTERNAL_CRYSTAL     SYSTEM_CLOCK_EXTERNAL_CRYSTAL
 #  define CONF_CLOCK_XOSC32K_STARTUP_TIME         SYSTEM_XOSC32K_STARTUP_65536
@@ -76,7 +79,7 @@
 #  define CONF_CLOCK_XOSC32K_ON_DEMAND            false
 #  define CONF_CLOCK_XOSC32K_RUN_IN_STANDBY       true
 
-/* SYSTEM_CLOCK_SOURCE_OSC32K configuration - Internal 32KHZ oscillator */
+/* SYSTEM_CLOCK_SOURCE_OSC32K configuration - Internal 32KHz oscillator */
 #  define CONF_CLOCK_OSC32K_ENABLE                false
 #  define CONF_CLOCK_OSC32K_STARTUP_TIME          SYSTEM_OSC32K_STARTUP_130
 #  define CONF_CLOCK_OSC32K_ENABLE_1KHZ_OUTPUT    false

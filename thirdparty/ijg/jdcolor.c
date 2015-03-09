@@ -7,6 +7,9 @@
  *
  * This file contains output colorspace conversion routines.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

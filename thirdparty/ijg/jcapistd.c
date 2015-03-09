@@ -13,6 +13,9 @@
  * We thus must separate this file from jcapimin.c to avoid linking the
  * whole compression library into a transcoder.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

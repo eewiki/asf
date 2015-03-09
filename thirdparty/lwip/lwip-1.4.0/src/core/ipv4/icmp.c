@@ -38,6 +38,9 @@
 
 /* Some ICMP messages should be passed to the transport protocols. This
    is not implemented. */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "lwip/opt.h"
 

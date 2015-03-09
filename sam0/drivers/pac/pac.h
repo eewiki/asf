@@ -40,13 +40,16 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef PAC_H_INCLUDED
 #define PAC_H_INCLUDED
 
 /**
  * \defgroup asfdoc_sam0_pac_group  SAM Peripheral Access Controller Driver (PAC)
  *
- * This driver for Atmel® | SMART™ SAM devices provides an interface for the locking and
+ * This driver for Atmel庐 | SMART SAM devices provides an interface for the locking and
  * unlocking of peripheral registers within the device. When a peripheral is
  * locked, accidental writes to the peripheral will be blocked and a CPU
  * exception will be raised.
@@ -55,9 +58,10 @@
  *  - PAC (Peripheral Access Controller)
  *
  * The following devices can use this module:
- *  - Atmel® | SMART™ SAM D20/D21
- *  - Atmel® | SMART™ SAM R21
- *  - Atmel® | SMART™ SAM D10/D11
+ *  - Atmel | SMART SAM D20/D21
+ *  - Atmel | SMART SAM R21
+ *  - Atmel | SMART SAM D10/D11
+ *  - Atmel | SMART SAM L21
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_pac_prerequisites
@@ -96,7 +100,7 @@
  * peripheral is not relocked, and that already unlocked peripherals are not
  * unlocked again. Attempting to unlock and already unlocked peripheral, or
  * attempting to lock a peripheral that is currently locked will generate a
- * non-maskable interrupt (NMI). This implies that the implementer must keep
+ * CPU exception. This implies that the implementer must keep
  * strict control over the peripheral's lock-state before modifying them. With
  * this added safety, the probability of stopping run-away code increases as
  * the program pointer can be caught inside the exception handler, and necessary
@@ -180,7 +184,7 @@
  *			int_unlock -> int_modify [style=dotted];
  *			int_modify -> int_lock [style=dotted];
  *		}
- *		exception [label="NMI", shape=box, style=filled, fillcolor=red];
+ *		exception [label="Exception", shape=box, style=filled, fillcolor=red];
  *		main_modify -> int_unlock [label=" Interrupt"];
  *		int_unlock -> exception;
  *		exception -> exception;
@@ -259,7 +263,7 @@
  *			</table>
  *			>]
  *			runaway1 -> program1:f0;
- *			label="1. Run-away code is caught in sanity check.\nAn NMI is executed."
+ *			label="1. Run-away code is caught in sanity check.\nA CPU exception is executed."
  *		}
  *	   subgraph cluster_away2{
  *		rankdir=TB;
@@ -319,7 +323,7 @@
  *			</table>
  *			>]
  *			runaway2 -> program2:f0;
- *			label="2. Run-away code is caught when modifying\nlocked peripheral. An NMI is executed."
+ *			label="2. Run-away code is caught when modifying\nlocked peripheral. A CPU exception is executed."
  *		}
  *	}
  * \enddot
@@ -385,7 +389,7 @@
  *			</table>
  *			>]
  *			runaway3 -> program3:f0;
- *			label="3. Run-away code is caught when locking\nlocked peripheral. An NMI is executed."
+ *			label="3. Run-away code is caught when locking\nlocked peripheral. A CPU exception is executed."
  *		}
  *	subgraph cluster_away4 {
  *		rankdir=TB;
@@ -478,9 +482,9 @@
  * locked. It is therefore recommended that any unused peripheral is locked
  * during application initialization.
  *
- * \subsection asfdoc_sam0_pac_no_inline Use of __no_inline 
+ * \subsection asfdoc_sam0_pac_no_inline Use of __no_inline
  * Using the function attribute \c __no_inline will ensure that there will only be
- * one copy of each functions in the PAC driver API in the application. This will 
+ * one copy of each functions in the PAC driver API in the application. This will
  * lower the likelihood that run-away code will hit any of these functions.
  *
  * \subsection asfdoc_sam0_pac_module_overview_physical Physical Connection
@@ -679,6 +683,62 @@ __no_inline enum status_code system_peripheral_unlock(
 		const uint32_t peripheral_id,
 		const uint32_t key);
 /** @}  */
+
+#if (SAML21) || defined(__DOXYGEN__)
+/** \name APIs available for SAM L21.
+ * @{
+ */
+__no_inline enum status_code system_peripheral_lock_always(
+		const uint32_t peripheral_id,
+		const uint32_t key);
+
+/**
+ * \brief Enable PAC interrupt.
+ *
+ * Enable PAC interrupt so can trigger execution on peripheral access error,
+ * see \ref SYSTEM_Handler().
+ *
+ */
+static inline void system_pac_enable_interrupt(void)
+{
+	PAC->INTENSET.reg = PAC_INTENSET_ERR;
+}
+
+/**
+ * \brief Disable PAC interrupt.
+ *
+ * Disable PAC interrupt on peripheral access error.
+ *
+ */
+static inline void system_pac_disable_interrupt(void)
+{
+	PAC->INTENCLR.reg = PAC_INTENCLR_ERR;
+}
+
+/**
+ * \brief Enable PAC event output.
+ *
+ * Enable PAC event output on peripheral access error.
+ *
+ */
+static inline void system_pac_enable_event(void)
+{
+	PAC->EVCTRL.reg = PAC_EVCTRL_ERREO;
+}
+
+/**
+ * \brief Disable PAC event output.
+ *
+ * Disable PAC event output on peripheral access error.
+ *
+ */
+static inline void system_pac_disable_event(void)
+{
+	PAC->EVCTRL.reg &= (~PAC_EVCTRL_ERREO);
+}
+
+/** @}  */
+#endif
 
 #ifdef __cplusplus
 }
@@ -921,8 +981,13 @@ __no_inline enum status_code system_peripheral_unlock(
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
+ *		<td>F</td>
+ *		<td>08/2014</td>
+ *		<td>Added support for SAML21.</td>
+ *	</tr>
+ *	<tr>
  *		<td>E</td>
- *		<td>04/2014</td>
+ *		<td>12/2014</td>
  *		<td>Added support for SAMR21 and SAMD10/D11.</td>
  *	</tr>
  *	<tr>

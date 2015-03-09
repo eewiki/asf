@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<board id="board.saml21_xplained_pro" vendor="Atmel" caption="SAM L21 Xplained Pro">
+		<build type="define" name="BOARD" value="SAML21_XPLAINED_PRO"/>
+		<build type="define" name="__SAML21J18A__" value=""/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<require idref="sam0.utils.cmsis.saml21.source.template"/>
+		<require idref="common.utils"/>
+		<require idref="common.boards"/>
+		<require idref="sam0.drivers.port"/>
+		<device-support value="atsaml21j18a"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/gcc/saml21_xplained_pro_flash.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/gcc/saml21_xplained_pro_sram.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/iar/saml21_xplained_pro_flash.mac" toolchain="iarewarm"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/iar/saml21_xplained_pro_sram.mac" toolchain="iarewarm"/>
+		<build type="header-file" value="saml21_xplained_pro.h"/>
+		<build type="c-source" value="board_init.c"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+	</board>
+</asf>

@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "twi.h"
 
@@ -80,11 +83,7 @@ extern "C" {
 #define TWI_CLK_DIV_MAX      0xFF
 #define TWI_CLK_DIV_MIN      7
 
-#if SAM4E
-#define TWI_WP_KEY_VALUE TWI_WPROT_MODE_SECURITY_CODE((uint32_t)0x545749)
-#elif (SAM4C || SAM4CP || SAMG || SAM4CM)
 #define TWI_WP_KEY_VALUE TWI_WPMR_WPKEY_PASSWD
-#endif
 
 /**
  * \brief Enable TWI master mode.
@@ -631,12 +630,8 @@ Pdc *twi_get_pdc_base(Twi *p_twi)
  */
 void twi_set_write_protection(Twi *p_twi, bool flag)
 {
-#if (SAM4E)
-	p_twi->TWI_WPROT_MODE = TWI_WP_KEY_VALUE |
-		(flag ? TWI_WPROT_MODE_WPROT : 0);
-#else
+
 	p_twi->TWI_WPMR = (flag ? TWI_WPMR_WPEN : 0) | TWI_WP_KEY_VALUE;
-#endif
 }
 
 /**
@@ -647,11 +642,8 @@ void twi_set_write_protection(Twi *p_twi, bool flag)
  */
 void twi_read_write_protection_status(Twi *p_twi, uint32_t *p_status)
 {
-#if (SAM4E)
-	*p_status = p_twi->TWI_WPROT_STATUS;
-#else
+
 	*p_status = p_twi->TWI_WPSR;
-#endif
 }
 #endif
 

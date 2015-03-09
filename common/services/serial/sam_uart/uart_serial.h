@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef _UART_SERIAL_H_
 #define _UART_SERIAL_H_
 
@@ -172,10 +175,11 @@ static inline void usart_serial_init(usart_if p_usart,
 # ifdef USART0
 	if (USART0 == p_usart) {
 #if (!SAM4L)
-		sysclk_enable_peripheral_clock(ID_USART0);
 #if (SAMG55)
 		flexcom_enable(FLEXCOM0);
 		flexcom_set_opmode(FLEXCOM0, FLEXCOM_USART);
+#else
+		sysclk_enable_peripheral_clock(ID_USART0);
 #endif
 		/* Configure USART */
 		usart_init_rs232(p_usart, &usart_settings,
@@ -195,10 +199,11 @@ static inline void usart_serial_init(usart_if p_usart,
 # ifdef USART1
 	if (USART1 == p_usart) {
 #if (!SAM4L)
-		sysclk_enable_peripheral_clock(ID_USART1);
 #if (SAMG55)
 		flexcom_enable(FLEXCOM1);
 		flexcom_set_opmode(FLEXCOM1, FLEXCOM_USART);
+#else
+		sysclk_enable_peripheral_clock(ID_USART1);
 #endif
 		/* Configure USART */
 		usart_init_rs232(p_usart, &usart_settings,
@@ -218,10 +223,11 @@ static inline void usart_serial_init(usart_if p_usart,
 # ifdef USART2
 	if (USART2 == p_usart) {
 #if (!SAM4L)
-		sysclk_enable_peripheral_clock(ID_USART2);
 #if (SAMG55)
 		flexcom_enable(FLEXCOM2);
 		flexcom_set_opmode(FLEXCOM2, FLEXCOM_USART);
+#else
+		sysclk_enable_peripheral_clock(ID_USART2);
 #endif
 		/* Configure USART */
 		usart_init_rs232(p_usart, &usart_settings,
@@ -241,10 +247,11 @@ static inline void usart_serial_init(usart_if p_usart,
 # ifdef USART3
 	if (USART3 == p_usart) {
 #if (!SAM4L)
-		sysclk_enable_peripheral_clock(ID_USART3);
 #if (SAMG55)
 		flexcom_enable(FLEXCOM3);
 		flexcom_set_opmode(FLEXCOM3, FLEXCOM_USART);
+#else
+		sysclk_enable_peripheral_clock(ID_USART3);
 #endif
 		/* Configure USART */
 		usart_init_rs232(p_usart, &usart_settings,
@@ -264,10 +271,11 @@ static inline void usart_serial_init(usart_if p_usart,
 # ifdef USART4
 	if (USART4 == p_usart) {
 #if (!SAM4L)
-		sysclk_enable_peripheral_clock(ID_USART4);
 #if (SAMG55)
 		flexcom_enable(FLEXCOM4);
 		flexcom_set_opmode(FLEXCOM4, FLEXCOM_USART);
+#else
+		sysclk_enable_peripheral_clock(ID_USART4);
 #endif
 		/* Configure USART */
 		usart_init_rs232(p_usart, &usart_settings,
@@ -287,10 +295,11 @@ static inline void usart_serial_init(usart_if p_usart,
 # ifdef USART5
 	if (USART5 == p_usart) {
 #if (!SAM4L)
-		sysclk_enable_peripheral_clock(ID_USART5);
 #if (SAMG55)
 		flexcom_enable(FLEXCOM5);
 		flexcom_set_opmode(FLEXCOM5, FLEXCOM_USART);
+#else
+		sysclk_enable_peripheral_clock(ID_USART5);
 #endif
 		/* Configure USART */
 		usart_init_rs232(p_usart, &usart_settings,
@@ -310,10 +319,11 @@ static inline void usart_serial_init(usart_if p_usart,
 # ifdef USART6
 	if (USART6 == p_usart) {
 #if (!SAM4L)
-		sysclk_enable_peripheral_clock(ID_USART6);
 #if (SAMG55)
 		flexcom_enable(FLEXCOM6);
 		flexcom_set_opmode(FLEXCOM6, FLEXCOM_USART);
+#else
+		sysclk_enable_peripheral_clock(ID_USART6);
 #endif
 		/* Configure USART */
 		usart_init_rs232(p_usart, &usart_settings,
@@ -333,10 +343,11 @@ static inline void usart_serial_init(usart_if p_usart,
 # ifdef USART7
 	if (USART7 == p_usart) {
 #if (!SAM4L)
-		sysclk_enable_peripheral_clock(ID_USART7);
 #if (SAMG55)
 		flexcom_enable(FLEXCOM7);
 		flexcom_set_opmode(FLEXCOM7, FLEXCOM_USART);
+#else
+		sysclk_enable_peripheral_clock(ID_USART7);
 #endif
 		/* Configure USART */
 		usart_init_rs232(p_usart, &usart_settings,

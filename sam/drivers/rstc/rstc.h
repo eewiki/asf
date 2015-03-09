@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef RSTC_H_INCLUDED
 #define RSTC_H_INCLUDED
@@ -100,7 +103,7 @@
  * a reset.
  *
  * \subsubsection asfdoc_sam_drivers_rstc_module_overview_nrst_external NRST External Reset Control
- * The NRST Manager can assert NRST for a programmable time period of between 60μs and 2s
+ * The NRST Manager can assert NRST for a programmable time period of between 60渭s and 2s
  * (approximately). This allows the Reset Controller to shape the NRST pin level and thus to
  * guarantee that the NRST line is low for a time that is compliant with any external devices
  * also connected to the system reset.

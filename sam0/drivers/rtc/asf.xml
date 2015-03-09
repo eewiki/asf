@@ -12,23 +12,13 @@
 
 			<build type="include-path" value="." />
 			<build type="header-file" subtype="api" value="rtc_count.h"/>
-			<build type="c-source" value="rtc_count.c"/>
-
-			<build type="header-file" value="quick_start_count/qs_rtc_count_basic.h"/>
-
 			<build type="define" name="RTC_COUNT_ASYNC" value="false"/>
-
 			<build type="doxygen-entry-point" value="asfdoc_sam0_rtc_count_group"/>
-			<build type="doxygen-example-path" value="quick_start_count"/>
-			<build type="doxygen-example-path" value="quick_start_count/samd20_xplained_pro"/> 
-			<build type="doxygen-quick-start" value="asfdoc_sam0_rtc_count_exqsg"/>
-
 			<device-support value="sam0"/>
-			
+
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
-
-			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+			<require idref="sam0.drivers.rtc.count"/>
 		</module>
 
 		<module type="driver" id="sam0.drivers.rtc#count_callback" caption="RTC - Real Time Counter in Count Mode (Callback APIs)">
@@ -36,134 +26,220 @@
 				<keyword value="Timers"/>
 			</info>
 
-			<info type="appnote" value="AT03249"/>
-			<info type="keyword" value="pdf">
-				<keyword value="RTC"/>
-				<keyword value="I/O"/>
-				<keyword value="Real Time Counter"/>
-				<keyword value="Count"/>
-			</info>
-
-			<info type="description" value="pdf">
-				This document describes how to use the Real Time Counter in
-				Count mode on the SAM, both the ASF driver and the
-				peripheral itself.
-			</info>
-
 			<build type="include-path" value="." />
 			<build type="header-file" subtype="api" value="rtc_count.h"/>
 			<build type="header-file" subtype="api" value="rtc_count_interrupt.h"/>
-			<build type="c-source" value="rtc_count.c"/>
-			<build type="c-source" value="rtc_count_interrupt.c"/>
-
-			<build type="header-file" value="quick_start_count/qs_rtc_count_basic.h"/>
-			<build type="header-file" value="quick_start_count_callback/qs_rtc_count_callback.h"/>
-
 			<build type="define" name="RTC_COUNT_ASYNC" value="true"/>
-			<build type="doxygen-enable-section" value="RTC_COUNT_CALLBACK_MODE"/>
-
 			<build type="doxygen-entry-point" value="asfdoc_sam0_rtc_count_group"/>
-			<build type="doxygen-example-path" value="quick_start_count"/>
-			<build type="doxygen-example-path" value="quick_start_count_callback"/>
-			<build type="doxygen-example-path" value="quick_start_count_callback/samd20_xplained_pro"/>
-			<build type="doxygen-quick-start" value="asfdoc_sam0_rtc_count_exqsg"/>
-
 			<device-support value="sam0"/>
-			
+
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
-
-			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+			<require idref="sam0.drivers.rtc.count_interrupt"/>
 		</module>
 
 		<module type="driver" id="sam0.drivers.rtc#calendar_polled" caption="RTC - Real Time Counter in Calendar Mode (Polled APIs)">
 			<build type="include-path" value="." />
 			<build type="header-file" subtype="api" value="rtc_calendar.h"/>
-			<build type="c-source" value="rtc_calendar.c"/>
-
-			<build type="header-file" value="quick_start_calendar/qs_rtc_calendar_basic.h"/>
-
 			<build type="define" name="RTC_CALENDAR_ASYNC" value="false"/>
-
 			<build type="doxygen-entry-point" value="asfdoc_sam0_rtc_calendar_group"/>
-			<build type="doxygen-example-path" value="quick_start_calendar"/>
-			<build type="doxygen-example-path" value="quick_start_calendar/samd20_xplained_pro"/>
-			<build type="doxygen-quick-start" value="asfdoc_sam0_rtc_calendar_exqsg"/>
-
 			<device-support value="sam0"/>
-			
+
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
-
-			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+			<require idref="sam0.drivers.rtc.calendar"/>
 		</module>
 
 		<module type="driver" id="sam0.drivers.rtc#calendar_callback" caption="RTC - Real Time Counter in Calendar Mode (Callback APIs)">
-			<info type="appnote" value="AT03266"/>
-			<info type="keyword" value="pdf">
-				<keyword value="RTC"/>
-				<keyword value="I/O"/>
-				<keyword value="Real Time Counter"/>
-				<keyword value="Calendar"/>
-			</info>
-
-			<info type="description" value="pdf">
-				This document describes how to use the Real Time Counter in
-				Calendar mode on the SAM, both the ASF driver and the
-				peripheral itself.
-			</info>
-
 			<build type="include-path" value="." />
 			<build type="header-file" subtype="api" value="rtc_calendar.h"/>
 			<build type="header-file" subtype="api" value="rtc_calendar_interrupt.h"/>
-			<build type="c-source" value="rtc_calendar.c"/>
-			<build type="c-source" value="rtc_calendar_interrupt.c"/>
-
-			<build type="header-file" value="quick_start_calendar/qs_rtc_calendar_basic.h"/>
-			<build type="header-file" value="quick_start_calendar_callback/qs_rtc_calendar_callback.h"/>
-
 			<build type="define" name="RTC_CALENDAR_ASYNC" value="true"/>
 			<build type="doxygen-enable-section" value="RTC_CALENDAR_CALLBACK_MODE"/>
-
 			<build type="doxygen-entry-point" value="asfdoc_sam0_rtc_calendar_group"/>
-			<build type="doxygen-example-path" value="quick_start_calendar"/>
-			<build type="doxygen-example-path" value="quick_start_calendar_callback"/>
-			<build type="doxygen-example-path" value="quick_start_calendar_callback/samd20_xplained_pro"/>
-			<build type="doxygen-quick-start" value="asfdoc_sam0_rtc_calendar_exqsg"/>
-
 			<device-support value="sam0"/>
-			
+
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
-
-			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+			<require idref="sam0.drivers.rtc.calendar_interrupt"/>
 		</module>
 	</select-by-config>
-	<module type="driver" id="sam0.drivers.rtc.calendar_appnote" caption="RTC - Real Time Counter in Calendar Mode (Callback APIs)">
-			<info type="description" value="pdf">
-				Here is for ASF manual due to rtc calendar is missing
-			</info>
+	<select-by-device id="sam0.drivers.rtc.count" caption="RTC - Real Time Counter">
+		<module type="meta" id="sam0.drivers.rtc.count#sam_d_r" caption="RTC - Real Time Counter">
 			<build type="include-path" value="." />
-			<build type="header-file" subtype="api" value="rtc_calendar.h"/>
-			<build type="header-file" subtype="api" value="rtc_calendar_interrupt.h"/>
-			<build type="c-source" value="rtc_calendar.c"/>
-			<build type="c-source" value="rtc_calendar_interrupt.c"/>
+			<build type="include-path" value="rtc_sam_d_r"/>
+			<build type="c-source" value="rtc_sam_d_r/rtc_count.c"/>
 
-			<build type="header-file" value="quick_start_calendar/qs_rtc_calendar_basic.h"/>
-			<build type="header-file" value="quick_start_calendar_callback/qs_rtc_calendar_callback.h"/>
-
-			<build type="define" name="RTC_CALENDAR_ASYNC" value="true"/>
-			<build type="doxygen-enable-section" value="RTC_CALENDAR_CALLBACK_MODE"/>
-
-			<build type="doxygen-entry-point" value="asfdoc_sam0_rtc_calendar_group"/>
-			<build type="doxygen-example-path" value="quick_start_calendar"/>
-			<build type="doxygen-example-path" value="quick_start_calendar_callback"/>
-			<build type="doxygen-example-path" value="quick_start_calendar_callback/samd20_xplained_pro"/>
-			<build type="doxygen-quick-start" value="asfdoc_sam0_rtc_calendar_exqsg"/>
-
-			<device-support value="sam0"/>
-
-			<require idref="sam0.utils"/>
-			<require idref="sam0.drivers.system"/>
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
 		</module>
+		<module type="meta" id="sam0.drivers.rtc.count#sam_l" caption="RTC - Real Time Counter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="rtc_sam_l"/>
+			<build type="module-config" subtype="path" value="rtc_sam_l/module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_rtc.h"/>
+			<build type="c-source" value="rtc_sam_l/rtc_count.c"/>
+
+			<device-support value="saml21"/>
+		</module>
+	</select-by-device>
+	<select-by-device id="sam0.drivers.rtc.calendar" caption="RTC - Real Time Counter">
+		<module type="meta" id="sam0.drivers.rtc.calendar#sam_d_r" caption="RTC - Real Time Counter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="rtc_sam_d_r"/>
+			<build type="c-source" value="rtc_sam_d_r/rtc_calendar.c"/>
+
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
+		</module>
+		<module type="meta" id="sam0.drivers.rtc.calendar#sam_l" caption="RTC - Real Time Counter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="rtc_sam_l"/>
+			<build type="module-config" subtype="path" value="rtc_sam_l/module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_rtc.h"/>
+			<build type="c-source" value="rtc_sam_l/rtc_calendar.c"/>
+
+			<device-support value="saml21"/>
+		</module>
+	</select-by-device>
+	<select-by-device id="sam0.drivers.rtc.count_interrupt" caption="RTC - Real Time Counter">
+		<module type="meta" id="sam0.drivers.rtc.count_interrupt#sam_d_r" caption="RTC - Real Time Counter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="rtc_sam_d_r"/>
+			<build type="c-source" value="rtc_sam_d_r/rtc_count.c"/>
+			<build type="c-source" value="rtc_sam_d_r/rtc_count_interrupt.c"/>
+
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
+		</module>
+		<module type="meta" id="sam0.drivers.rtc.count_interrupt#sam_l" caption="RTC - Real Time Counter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="rtc_sam_l"/>
+			<build type="module-config" subtype="path" value="rtc_sam_l/module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_rtc.h"/>
+			<build type="c-source" value="rtc_sam_l/rtc_count.c"/>
+			<build type="c-source" value="rtc_sam_l/rtc_count_interrupt.c"/>
+
+			<device-support value="saml21"/>
+		</module>
+	</select-by-device>
+	<select-by-device id="sam0.drivers.rtc.calendar_interrupt" caption="RTC - Real Time Counter">
+		<module type="meta" id="sam0.drivers.rtc.calendar_interrupt#sam_d_r" caption="RTC - Real Time Counter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="rtc_sam_d_r"/>
+			<build type="c-source" value="rtc_sam_d_r/rtc_calendar.c"/>
+			<build type="c-source" value="rtc_sam_d_r/rtc_calendar_interrupt.c"/>
+
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
+		</module>
+		<module type="meta" id="sam0.drivers.rtc.calendar_interrupt#sam_l" caption="RTC - Real Time Counter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="rtc_sam_l"/>
+			<build type="module-config" subtype="path" value="rtc_sam_l/module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_rtc.h"/>
+			<build type="c-source" value="rtc_sam_l/rtc_calendar.c"/>
+			<build type="c-source" value="rtc_sam_l/rtc_calendar_interrupt.c"/>
+
+			<device-support value="saml21"/>
+		</module>
+	</select-by-device>
+	<module type="meta" id="sam0.drivers.rtc.count_appnote" caption="RTC - Real Time Counter in Count Mode (Callback APIs)">
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+
+		<info type="appnote" value="AT03249"/>
+		<info type="keyword" value="pdf">
+			<keyword value="RTC"/>
+			<keyword value="I/O"/>
+			<keyword value="Real Time Counter"/>
+			<keyword value="Count"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Real Time Counter in
+			Count mode on the SAM, both the ASF driver and the
+			peripheral itself.
+		</info>
+
+		<build type="include-path" value="." />
+		<build type="include-path" value="rtc_sam_d_r" />
+		<build type="header-file" subtype="api" value="rtc_count.h"/>
+		<build type="header-file" subtype="api" value="rtc_count_interrupt.h"/>
+		<build type="c-source" value="rtc_sam_d_r/rtc_count.c"/>
+		<build type="c-source" value="rtc_sam_d_r/rtc_count_interrupt.c"/>
+
+		<build type="header-file" value="quick_start_count/qs_rtc_count_basic.h"/>
+		<build type="header-file" value="quick_start_count_callback/qs_rtc_count_callback.h"/>
+
+		<build type="define" name="RTC_COUNT_ASYNC" value="true"/>
+		<build type="doxygen-enable-section" value="RTC_COUNT_CALLBACK_MODE"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_sam0_rtc_count_group"/>
+		<build type="doxygen-example-path" value="quick_start_count"/>
+		<build type="doxygen-example-path" value="quick_start_count_callback"/>
+		<build type="doxygen-example-path" value="quick_start_count_callback/samd20_xplained_pro"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_rtc_count_exqsg"/>
+
+		<device-support value="sam0"/>
+
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.system"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+	<module type="meta" id="sam0.drivers.rtc.calendar_appnote" caption="RTC - Real Time Counter in Calendar Mode (Callback APIs)">
+		<info type="appnote" value="AT03266"/>
+		<info type="keyword" value="pdf">
+			<keyword value="RTC"/>
+			<keyword value="I/O"/>
+			<keyword value="Real Time Counter"/>
+			<keyword value="Calendar"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Real Time Counter in
+			Calendar mode on the SAM, both the ASF driver and the
+			peripheral itself.
+		</info>
+
+		<build type="include-path" value="." />
+		<build type="include-path" value="rtc_sam_d_r" />
+		<build type="header-file" value="rtc_calendar.h"/>
+		<build type="header-file" value="rtc_calendar_interrupt.h"/>
+		<build type="c-source" value="rtc_sam_d_r/rtc_calendar.c"/>
+		<build type="c-source" value="rtc_sam_d_r/rtc_calendar_interrupt.c"/>
+
+		<build type="header-file" value="quick_start_calendar/qs_rtc_calendar_basic.h"/>
+		<build type="header-file" value="quick_start_calendar_callback/qs_rtc_calendar_callback.h"/>
+
+		<build type="define" name="RTC_CALENDAR_ASYNC" value="true"/>
+		<build type="doxygen-enable-section" value="RTC_CALENDAR_CALLBACK_MODE"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_sam0_rtc_calendar_group"/>
+		<build type="doxygen-example-path" value="quick_start_calendar"/>
+		<build type="doxygen-example-path" value="quick_start_calendar_callback"/>
+		<build type="doxygen-example-path" value="quick_start_calendar_callback/samd20_xplained_pro"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_rtc_calendar_exqsg"/>
+
+		<device-support value="sam0"/>
+
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.system"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
 </asf>

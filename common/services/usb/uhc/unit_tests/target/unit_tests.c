@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <stdio.h>
 #include <asf.h>
@@ -96,10 +99,10 @@
  */
 //@}
 
-#if (UC3C || SAM4L || SAM3XA || SAMD21)
+#if (UC3C || SAM4L || SAM3XA || SAMD21 || SAML21)
 // USBC(UC3C and SAM4L) have no hardware limit about endpoint size
 // UOTGHS(SAM3XA) has no hardware limit about ep0
-// USB(SAMD21) have no hardware limit about endpoint size
+// USB(SAMD21 and SAML21) have no hardware limit about endpoint size
 #  define TST_15_DIS
 #endif
 
@@ -125,7 +128,7 @@
 
 volatile uint32_t main_events = 0;
 
-#if SAMD21
+#if SAMD21 || SAML21
 /* Structure for UART module connected to EDBG (used for unit test output) */
 struct usart_module cdc_uart_module;
 #endif
@@ -354,7 +357,7 @@ static void run_test_disconnection_in_suspend(const struct test_case *test)
 	CHECK_EVENT_DISCONNECTION();
 }
 
-#if SAMD21
+#if SAMD21 || SAML21
 /**
  * \brief Initialize the USART for unit test
  *
@@ -387,7 +390,7 @@ static void cdc_uart_init(void)
  */
 int main(void)
 {
-#if SAMD21
+#if SAMD21 || SAML21
 	system_init();
 	delay_init();
 	cdc_uart_init();

@@ -143,3 +143,6 @@
  * -# Trigger the next conversion on the Analog Comparator channel.
  *    \snippet qs_ac_basic.c main_7
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

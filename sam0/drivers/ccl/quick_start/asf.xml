@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.ccl.quick_start" caption="Quick Start for the SAM CCL Driver">
+		<info type="description" value="summary">
+		Quick start guide for the CCL driver demonstrating configuration and initialization.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_ccl_basic.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.ccl"/>
+		<require idref="sam0.drivers.system"/>
+		<device-support value="saml21"/>
+	</module>
+</asf>

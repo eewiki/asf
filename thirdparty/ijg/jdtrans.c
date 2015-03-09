@@ -9,6 +9,9 @@
  * that is, reading raw DCT coefficient arrays from an input JPEG file.
  * The routines in jdapimin.c will also be needed by a transcoder.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

@@ -111,3 +111,6 @@
  * -# Echo the received variable back to the USART via a blocking write.
  *    \snippet qs_usart_basic_use.c main_write
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

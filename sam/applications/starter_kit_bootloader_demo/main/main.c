@@ -96,6 +96,9 @@
  * OLED1 extension must be connected on EXT3.
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <asf.h>
 #include <string.h>

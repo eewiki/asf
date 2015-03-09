@@ -107,3 +107,6 @@
  * -# Clear the alarm match, so that future alarms may occur.
  *    \snippet qs_rtc_calendar_basic.c clear_alarm_match
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

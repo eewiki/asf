@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.system.power.quick_start" caption="SAM System Power Driver example">
+		<info type="description" value="summary">
+			System Power driver example.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_power.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.drivers.extint"/>
+		<require idref="common2.services.delay"/>
+		<device-support value="saml21"/>
+	</module>
+</asf>

@@ -80,3 +80,6 @@
  *  \snippet qs_at30tse75x.c read_temp
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project id="common.applications.user_application.xplained_pro.samg55_xplained_pro" caption="SAMG55 Xplained Pro template project" type="template">
+		<device-support value="atsamg55j19"/>
+		<require idref="common.applications.user_application.xplained_pro"/>
+		<require idref="board.samg55_xplained_pro"/>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<build type="header-file" value="config/conf_clock.h"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+	</project>
+</asf>

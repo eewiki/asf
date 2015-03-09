@@ -93,6 +93,9 @@
 /---------------------------------------------------------------------------*/
 
 #include "ff.h"			/* FatFs configurations and declarations */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include "diskio.h"		/* Declarations of low level disk I/O functions */
 
 /**

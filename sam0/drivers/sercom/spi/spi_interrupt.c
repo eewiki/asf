@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include "spi_interrupt.h"
 
 /**
@@ -298,7 +301,7 @@ enum status_code spi_write_buffer_job(
  * \param[in]  module   Pointer to SPI software instance struct
  * \param[out] rx_data  Pointer to data buffer to receive
  * \param[in]  length   Data buffer length
- * \param[in]  dummy    Dummy character to send when reading in master mode.
+ * \param[in]  dummy    Dummy character to send when reading in master mode
  *
  * \returns Status of the operation.
  * \retval  STATUS_OK               If the operation completed successfully

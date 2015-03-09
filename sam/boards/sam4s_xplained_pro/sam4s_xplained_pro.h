@@ -39,6 +39,9 @@
  *
  * \asf_license_stop
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef SAM4S_XPLAINED_PRO_H
 #define SAM4S_XPLAINED_PRO_H

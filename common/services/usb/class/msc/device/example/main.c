@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <asf.h>
 #include "conf_usb.h"
@@ -56,7 +59,7 @@ int main(void)
 
 	// Initialize the sleep manager
 	sleepmgr_init();
-#if !SAMD21 && !SAMR21
+#if !SAMD21 && !SAMR21 && !SAML21
 	sysclk_init();
 	board_init();
 #else

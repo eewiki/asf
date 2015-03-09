@@ -47,6 +47,9 @@
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "board.h"
 #if SAMD || SAMR21
@@ -101,10 +104,26 @@ void trx_spi_init(void)
 	slave_dev_config.ss_pin = AT86RFX_SPI_CS;
 	spi_attach_slave(&slave, &slave_dev_config);
 	spi_get_config_defaults(&config);
-	AT86RFX_SPI_CONFIG(config);
+	config.mux_setting = AT86RFX_SPI_SERCOM_MUX_SETTING;
+	config.mode_specific.master.baudrate = AT86RFX_SPI_BAUDRATE;
+	config.pinmux_pad0 = AT86RFX_SPI_SERCOM_PINMUX_PAD0;
+	config.pinmux_pad1 = AT86RFX_SPI_SERCOM_PINMUX_PAD1;
+	config.pinmux_pad2 = AT86RFX_SPI_SERCOM_PINMUX_PAD2;
+	config.pinmux_pad3 = AT86RFX_SPI_SERCOM_PINMUX_PAD3;
 	spi_init(&master, AT86RFX_SPI, &config);
 	spi_enable(&master);
-	AT86RFX_INTC_INIT();
+	   
+	struct extint_chan_conf eint_chan_conf; 
+	extint_chan_get_config_defaults(&eint_chan_conf); 
+	eint_chan_conf.gpio_pin = AT86RFX_IRQ_PIN; 
+	eint_chan_conf.gpio_pin_mux = AT86RFX_IRQ_PINMUX; 
+	eint_chan_conf.gpio_pin_pull      = EXTINT_PULL_DOWN; 
+	eint_chan_conf.wake_if_sleeping    = true; 
+	eint_chan_conf.filter_input_signal = false; 
+	eint_chan_conf.detection_criteria  = EXTINT_DETECT_RISING; 
+	extint_chan_set_config(AT86RFX_IRQ_CHAN, &eint_chan_conf); 
+	extint_register_callback(AT86RFX_ISR, AT86RFX_IRQ_CHAN, EXTINT_CALLBACK_TYPE_DETECT);
+	
 #else
 	spi_master_init(AT86RFX_SPI);
 	spi_master_setup_device(AT86RFX_SPI, &SPI_AT86RFX_DEVICE, SPI_MODE_0,

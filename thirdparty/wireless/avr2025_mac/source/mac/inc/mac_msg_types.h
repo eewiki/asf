@@ -43,12 +43,15 @@
  */
 
 /*
- * Copyright (c) 2013, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 
 /* Prevent double inclusion */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef MAC_MSG_TYPES_H
 #define MAC_MSG_TYPES_H
 
@@ -798,7 +801,7 @@ typedef struct mlme_start_req_tag {
 	/**
 	 * The security level to be used for coordinator realignment command
 	 * frames (see Table95 in 7.6.2.2.1).
-	 * Valid values are 0x00–0x07
+	 * Valid values are 0x007
 	 */
 	uint8_t CoordRealignSecurityLevel;
 

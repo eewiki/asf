@@ -9,6 +9,9 @@
  * The main buffer lies between the pre-processor and the JPEG
  * compressor proper; it holds downsampled data in the JPEG colorspace.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

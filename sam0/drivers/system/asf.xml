@@ -1,11 +1,10 @@
 ﻿<asf xmlversion="1.0">
-	<module type="driver" id="sam0.drivers.system" caption="SYSTEM - Core System Driver">
+	<module type="meta" id="sam0.drivers.system.appnote_1" caption="SYSTEM - Core System Driver For SAM D20/D21/R21/D10/D11">
 		<info type="description" value="summary">
-			Driver for the SAM core system modules. Provides a unified
+			Driver for the SAM D20/D21/R21/D10/D11 core system modules. Provides a unified
 			interface for the configuration and management of the core device
 			functionality required for a functional system.
 		</info>
-
 		<info type="keyword" value="technology">
 			<keyword value="I/O" />
 			<keyword value="CPU" />
@@ -24,21 +23,84 @@
 			This document describes how to use the core system modules on the
 			SAM, both the ASF driver and the peripheral itself.
 		</info>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="power/power_sam_d_r"/>
+		<build type="include-path" value="reset/reset_sam_d_r"/>
+		<build type="header-file" subtype="api" value="system.h"/>
+		<build type="header-file" value="power/power_sam_d_r/power.h"/>
+		<build type="header-file" value="reset/reset_sam_d_r/reset.h"/>
+		<build type="c-source" value="system.c"/>
+		<build type="doxygen-entry-point" value="asfdoc_sam0_system_group"/>
+
+		<device-support value="sam0"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+	<module type="meta" id="sam0.drivers.system.appnote_2" caption="SYSTEM - Core System Driver For SAM L21">
+		<info type="description" value="summary">
+			Driver for the SAM L21 core system modules. Provides a unified
+			interface for the configuration and management of the core device
+			functionality required for a functional system.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="I/O" />
+			<keyword value="CPU" />
+			<keyword value="Clocks" />
+		</info>
+
+		<info type="appnote" value="AT11378"/>
+		<info type="keyword" value="pdf">
+			<keyword value="SYSTEM"/>
+			<keyword value="I/O"/>
+			<keyword value="CPU"/>
+			<keyword value="Clocks"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the core system modules on the
+			SAM L21, both the ASF driver and the peripheral itself.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="power/power_sam_l"/>
+		<build type="include-path" value="reset/reset_sam_l"/>
+		<build type="header-file" subtype="api" value="system.h"/>
+		<build type="header-file" value="power/power_sam_l/power.h"/>
+		<build type="header-file" value="reset/reset_sam_l/reset.h"/>
+		<build type="c-source" value="system.c"/>
+		<build type="doxygen-enable-section" value="DEVICE_SAML21_SUPPORT"/>
+		<build type="doxygen-entry-point" value="asfdoc_sam0_system_group"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_drivers_power_exqsg"/>
+		<build type="doxygen-example-path" value="power"/>
+		<build type="header-file" value="power/quick_start/qs_power.h" />
+		<build type="doxygen-image-path" value="docimg"/>
+
+		<device-support value="saml21"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-saml21"/>
+	</module>
+	<module type="driver" id="sam0.drivers.system" caption="SYSTEM - Core System Driver">
+		<info type="description" value="summary">
+			Driver for the SAM core system modules. Provides a unified
+			interface for the configuration and management of the core device
+			functionality required for a functional system.
+		</info>
+
+		<info type="keyword" value="technology">
+			<keyword value="I/O" />
+			<keyword value="CPU" />
+			<keyword value="Clocks" />
+		</info>
 
 		<build type="include-path" value="."/>
 		<build type="header-file" subtype="api" value="system.h"/>
 		<build type="c-source" value="system.c"/>
 
-		<build type="doxygen-entry-point" value="asfdoc_sam0_system_group"/>
-
 		<require idref="sam0.drivers.system.clock"/>
 		<require idref="sam0.drivers.system.pinmux"/>
 		<require idref="sam0.drivers.system.interrupt"/>
+		<require idref="sam0.drivers.system.power"/>
+		<require idref="sam0.drivers.system.reset"/>
 		<require idref="thirdparty.cmsis"/>
 		<require idref="sam0.utils"/>
 
 		<device-support value="sam0"/>
-
-		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 	</module>
 </asf>

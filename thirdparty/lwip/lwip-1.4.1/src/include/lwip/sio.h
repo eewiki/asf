@@ -31,6 +31,9 @@
  * This is the interface to the platform specific serial IO module
  * It needs to be implemented by those platforms which need SLIP or PPP
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef __SIO_H__
 #define __SIO_H__

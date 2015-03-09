@@ -38,6 +38,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef _SAM4CM32_
 #define _SAM4CM32_
 

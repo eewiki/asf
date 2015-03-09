@@ -40,14 +40,17 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_EXAMPLE_H_INCLUDED
 #define CONF_EXAMPLE_H_INCLUDED
 
 /* Configuration for console uart IRQ */
-#define CONSOLE_UART_IRQn           USART7_SPI7_TWI7_IRQn
+#define CONSOLE_UART_IRQn           FLEXCOM7_IRQn
 
 /* Configuration for console uart IRQ handler */
-#define console_uart_irq_handler    USART7_SPI7_TWI7_Handler
+#define console_uart_irq_handler    FLEXCOM7_Handler
 
 #endif /* CONF_EXAMPLE_H_INCLUDED */

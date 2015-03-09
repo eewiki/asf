@@ -1,0 +1,43 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam0.drivers.system.power" caption="SYSTEM - Power Management">
+		<module type="driver" id="sam0.drivers.system.power#sam_d_r" caption="SYSTEM - Power Management for SAM D20/D21/R21/D10/D11">
+			<info type="description" value="summary">
+				Driver for the SAM D20/D21/R21/D10/D11 power management units. Provides a unified
+				interface for power configuration and management in the device.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="CPU" />
+			</info>
+
+			<build type="include-path" value="."/>
+			<build type="include-path" value="power_sam_d_r"/>
+			<build type="header-file" subtype="api" value="power_sam_d_r/power.h"/>
+			<require idref="thirdparty.cmsis"/>
+			<require idref="sam0.utils"/>
+
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
+		</module>
+		<module type="driver" id="sam0.drivers.system.power#sam_l" caption="SYSTEM - Power Management for SAM L21">
+			<info type="description" value="summary">
+				Driver for the SAM L21 power management units. Provides a unified
+				interface for power configuration and management in the device.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="CPU" />
+			</info>
+
+			<build type="include-path" value="."/>
+			<build type="include-path" value="power_sam_l"/>
+			<build type="header-file" subtype="api" value="power_sam_l/power.h"/>
+			<require idref="sam0.drivers.system.clock"/>
+			<require idref="thirdparty.cmsis"/>
+			<require idref="sam0.utils"/>
+
+			<device-support value="saml21"/>
+		</module>
+	</select-by-device>
+</asf>

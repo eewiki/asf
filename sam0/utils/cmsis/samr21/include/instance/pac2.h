@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef _SAMR21_PAC2_INSTANCE_
 #define _SAMR21_PAC2_INSTANCE_
@@ -54,6 +57,6 @@
 #endif /* (defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 
 /* ========== Instance parameters for PAC2 peripheral ========== */
-#define PAC2_WPROT_DEFAULT_VAL      0x00800000
+#define PAC2_WPROT_DEFAULT_VAL      0x00800000 // PAC protection mask at reset
 
 #endif /* _SAMR21_PAC2_INSTANCE_ */

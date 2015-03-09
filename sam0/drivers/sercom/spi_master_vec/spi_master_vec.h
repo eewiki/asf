@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef SPI_MASTER_VEC_H
 #define SPI_MASTER_VEC_H
@@ -54,7 +57,7 @@
 /**
  * \defgroup asfdoc_sam0_sercom_spi_master_vec_group SAM Serial Peripheral Interface Master Driver w/ Vectored I/O (SERCOM SPI)
  *
- * This driver for SAM devices provides an interface for the configuration
+ * This driver for Atmel庐 | SMART SAM devices provides an interface for the configuration
  * and operation of the SERCOM module in SPI master mode and uses vectored I/O
  * for data transfers.
  *
@@ -62,9 +65,10 @@
  * - SERCOM (Serial Communication Interface)
  *
  * The following devices can use this driver:
- *  - SAM D20/D21
- *  - SAM R21
- *  - SAM D10/D11
+ *  - Atmel | SMART SAM D20/D21
+ *  - Atmel | SMART SAM R21
+ *  - Atmel | SMART SAM D10/D11
+ *  - Atmel | SMART SAM L21
  *
  * The reader is assumed to be familiar with the regular SERCOM SPI driver, and
  * how it is configured and operated. Configuration of this driver is done a
@@ -662,9 +666,9 @@ static inline enum status_code spi_master_vec_transceive_buffer_wait(
   *	    </tr>
   *	     <tr>
   *		      <td>C</td>
-  *		      <td>04/2014</td>
+  *		      <td>12/2014</td>
   *		      <td>Add SAM D10/D11 support.</td>
-  *	    </tr>  
+  *	    </tr>
   *	    <tr>
   *		      <td>B</td>
   *		      <td>03/2014</td>

@@ -12,24 +12,16 @@
 			</info>
 
 			<build type="include-path" value="." />
-
 			<build name="AC_CALLBACK_MODE" type="define" value="false" />
-
 			<build subtype="api" type="header-file" value="ac.h" />
-			<build type="c-source" value="ac.c" />
 
-			<build type="header-file" value="quick_start/qs_ac_basic.h" />
+			<build type="doxygen-entry-point" value="asfdoc_sam0_ac_group"/>
 
-			<build type="doxygen-example-path" value="quick_start"/>
-			<build type="doxygen-entry-point" value="asfdoc_sam0_ac_group" />
-			<build type="doxygen-quick-start" value="asfdoc_sam0_ac_exqsg"/>
-
-			<device-support value="sam0" />
-
+			<require idref="sam0.drivers.ac.common" />
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />
 
-			<generator default-mcu="unspecified-samd20" value="doxygen-module-v2" />
+			<device-support value="sam0" />
 		</module>
 
 		<module caption="AC - Analog Comparator (Callback APIs)" id="sam0.drivers.ac#callback" type="driver">
@@ -37,40 +29,78 @@
 				<keyword value="Analog Conversion"/>
 			</info>
 
-			<info type="appnote" value="AT03242"/>
-			<info type="keyword" value="pdf">
-				<keyword value="AC"/>
-				<keyword value="Analog Comparator"/>
-			</info>
-
-			<info type="description" value="pdf">
-				This document describes how to use the Analog Comparator on the
-				SAM, both the ASF driver and the peripheral itself.
-			</info>
-
 			<build type="include-path" value="." />
-
 			<build name="AC_CALLBACK_MODE" type="define" value="true" />
+
 			<build type="doxygen-enable-section" value="AC_CALLBACK_MODE"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_ac_group"/>
 
 			<build subtype="api" type="header-file" value="ac.h" />
 			<build subtype="api" type="header-file" value="ac_callback.h" />
 			<build type="c-source" value="ac_callback.c" />
-			<build type="c-source" value="ac.c" />
-			<build type="header-file" value="quick_start_callback/qs_ac_callback.h" />
-			<build type="header-file" value="quick_start/qs_ac_basic.h" />
 
-			<build type="doxygen-example-path" value="quick_start"/>
-			<build type="doxygen-example-path" value="quick_start_callback"/>
-			<build type="doxygen-entry-point" value="asfdoc_sam0_ac_group" />
-			<build type="doxygen-quick-start" value="asfdoc_sam0_ac_exqsg"/>
-
-			<device-support value="sam0" />
-
+			<require idref="sam0.drivers.ac.common" />
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />
 
-			<generator default-mcu="unspecified-samd20" value="doxygen-module-v2" />
+			<device-support value="sam0" />
 		</module>
 	</select-by-config>
+
+	<select-by-device id="sam0.drivers.ac.common" caption="Common files of AC driver">
+		<module type="meta" id="sam0.drivers.ac.common#sam_d_r" caption="Common files of AC driver">
+			<build type="include-path" value="." />
+			<build type="include-path" value="ac_sam_d_r"/>
+			<build type="c-source" value="ac_sam_d_r/ac.c"/>
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
+		</module>
+		<module type="meta" id="sam0.drivers.ac.common#sam_l" caption="Common files of AC driver">
+			<build type="include-path" value="." />
+			<build type="include-path" value="ac_sam_l"/>
+			<build type="c-source" value="ac_sam_l/ac.c"/>
+			<device-support value="saml21"/>
+		</module>
+	</select-by-device>
+
+	<module type="meta" id="sam0.drivers.ac.appnote" caption="AC - Analog Comparator Appnote">
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+
+		<info type="appnote" value="AT03242"/>
+		<info type="keyword" value="pdf">
+			<keyword value="AC"/>
+			<keyword value="Analog Comparator"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Analog Comparator on the
+			SAM, both the ASF driver and the peripheral itself.
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="include-path" value="ac_sam_l"/>
+		<build type="header-file" subtype="api" value="ac.h"/>
+		<build type="header-file" subtype="api" value="ac_callback.h"/>
+		<build type="c-source" value="ac_sam_l/ac.c"/>
+		<build type="c-source" value="ac_callback.c"/>
+
+		<build type="define" name="AC_CALLBACK_MODE" value="true"/>
+		<build type="doxygen-enable-section" value="AC_CALLBACK_MODE"/>
+
+		<build type="header-file" value="quick_start/qs_ac_basic.h"/>
+		<build type="header-file" value="quick_start_callback/qs_ac_callback.h"/>
+
+		<build type="doxygen-example-path" value="quick_start"/>
+		<build type="doxygen-example-path" value="quick_start_callback"/>
+		<build type="doxygen-entry-point" value="asfdoc_sam0_ac_group"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_ac_exqsg"/>
+
+		<device-support value="sam0"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-saml21"/>
+	</module>
 </asf>

@@ -43,6 +43,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef _BOARD_H_
 #define _BOARD_H_
@@ -137,6 +140,8 @@ extern "C" {
 #define SAM4CMS_DB                 72  //!< SAM4CMS demo board.
 #define ATPL230AMB                 73  //!< ATPL230AMB board.
 #define SAMD11_XPLAINED_PRO        74  //!< SAM D11 Xplained Pro board.
+#define SAMG55_XPLAINED_PRO        75  //!< SAMG55 Xplained Pro board.
+#define SAML21_XPLAINED_PRO        76  //!< SAM L21 Xplained Pro board.
 #define SIMULATOR_XMEGA_A1         97  //!< Simulator for XMEGA A1 devices
 #define AVR_SIMULATOR_UC3          98  //!< Simulator for the AVR UC3 device family.
 #define USER_BOARD                 99  //!< User-reserved board (if any).
@@ -207,6 +212,8 @@ extern "C" {
 #  include "stk600/rcuc3c0/stk600_rcuc3c0.h"
 #elif BOARD == SAMG53_XPLAINED_PRO
 #  include "samg53_xplained_pro/samg53_xplained_pro.h"
+#elif BOARD == SAMG55_XPLAINED_PRO
+#  include "samg55_xplained_pro/samg55_xplained_pro.h"
 #elif BOARD == XMEGA_B1_XPLAINED
 #  include "xmega_b1_xplained/xmega_b1_xplained.h"
 #elif BOARD == STK600_RC064X_LCDX
@@ -263,6 +270,8 @@ extern "C" {
 #  include "samr21_xplained_pro/samr21_xplained_pro.h"
 #elif BOARD == SAMD11_XPLAINED_PRO
 #  include "samd11_xplained_pro/samd11_xplained_pro.h"
+#elif BOARD == SAML21_XPLAINED_PRO
+#  include "saml21_xplained_pro/saml21_xplained_pro.h"
 #elif BOARD == SAM4N_XPLAINED_PRO
 #  include "sam4n_xplained_pro/sam4n_xplained_pro.h"
 #elif BOARD == MEGA1284P_XPLAINED_BC

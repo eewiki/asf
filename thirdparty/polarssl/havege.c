@@ -29,6 +29,9 @@
  *
  *  Contact: seznec(at)irisa_dot_fr - orocheco(at)irisa_dot_fr
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <string.h>
 #include <time.h>

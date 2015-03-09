@@ -106,3 +106,6 @@
  * -# Enter an infinite loop to hold the main program logic.
  *    \snippet qs_wdt_callback.c main_3
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

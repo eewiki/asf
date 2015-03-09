@@ -18,6 +18,9 @@
  *
  * $Id: minimad.c,v 1.4 2004/01/23 09:41:32 rob Exp $
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 # include <stdio.h>
 # include <unistd.h>

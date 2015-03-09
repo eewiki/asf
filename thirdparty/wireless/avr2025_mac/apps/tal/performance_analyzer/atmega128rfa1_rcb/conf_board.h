@@ -40,11 +40,14 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef CONF_BOARD_H
 #define CONF_BOARD_H
 
 #define SENSOR_TERMINAL_BOARD
-/* #define CONF_BOARD_ENABLE_USARTA1 */
-/* #define BREAKOUT_BOARD */
+ //#define CONF_BOARD_ENABLE_USARTA1 
+ //#define BREAKOUT_BOARD 
 
 #endif /* CONF_BOARD_H */

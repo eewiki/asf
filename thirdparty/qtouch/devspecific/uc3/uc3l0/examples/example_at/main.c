@@ -43,6 +43,9 @@
  ******************************************************************************/
 
 /*! Compiler information */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #if !((defined(__GNUC__) && defined(__AVR32__)) || (defined(__ICCAVR32__)\
 	|| defined(__AAVR32__)))
 #error 'This compiler is not supported at the moment.'

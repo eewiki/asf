@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.flexcom" caption="FLEXCOM - Flexible Serial Communication Controller">
+		<info type="description" value="summary">
+			The Flexible Serial Communication Controller (FLEXCOM) offers several serial communication protocols that are managed by the three submodules USART, SPI, and TWI.
+		</info>
+		<build type="c-source" value="flexcom.c"/>
+		<build type="header-file" subtype="api" value="flexcom.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="samg55"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samg55"/>
+		<build type="doxygen-entry-point" value="sam_drivers_flexcom_group"/>
+		<build type="doxygen-quick-start" value="sam_flexcom_quickstart"/>
+	</module>
+</asf>

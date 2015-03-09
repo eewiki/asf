@@ -115,3 +115,6 @@
  * -# Clear the compare match, so that future matches may occur.
  *    \snippet qs_rtc_count_basic.c clear_compare_match
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

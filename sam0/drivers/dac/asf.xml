@@ -13,14 +13,18 @@
 
 			<build type="include-path" value="."/>
 			<build type="header-file" subtype="api" value="dac.h"/>
-			<build type="c-source" value="dac.c"/>
 			<build type="define" name="DAC_CALLBACK_MODE" value="false"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_dac_group"/>
+
 			<device-support value="samd20"/>
 			<device-support value="samd21"/>
 			<device-support value="samd10"/>
 			<device-support value="samd11"/>
+			<device-support value="saml21"/>
+
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
+			<require idref="sam0.drivers.dac.polled"/>
 		</module>
 
 		<module type="driver" id="sam0.drivers.dac#callback" caption="DAC - Digital-to-Analog Converter (Callback APIs)">
@@ -28,74 +32,149 @@
 				<keyword value="Analog Conversion"/>
 			</info>
 
-			<info type="appnote" value="AT03244"/>
-			<info type="keyword" value="pdf">
-				<keyword value="DAC"/>
-				<keyword value="Digital to Analog Converter"/>
-				<keyword value="Digital Conversion"/>
-			</info>
-
-			<info type="description" value="pdf">
-				This document describes how to use the Digital-to-Analog
-				Converter on the SAM, both the ASF driver and the
-				peripheral itself.
-			</info>
 
 			<build type="include-path" value="."/>
 			<build type="header-file" subtype="api" value="dac.h"/>
-			<build type="c-source" value="dac.c"/>
 			<build type="header-file" subtype="api" value="dac_callback.h"/>
-			<build type="c-source" value="dac_callback.c"/>
 			<build type="define" name="DAC_CALLBACK_MODE" value="true"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_dac_group"/>
+
 			<device-support value="samd20"/>
 			<device-support value="samd21"/>
 			<device-support value="samd10"/>
 			<device-support value="samd11"/>
+			<device-support value="saml21"/>
+
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
+			<require idref="sam0.drivers.dac.callback"/>
 		</module>
 	</select-by-config>
-	<module type="driver" id="sam0.drivers.dac.appnote" caption="Application note for Digital-to-Analog(DAC)">
-			<info type="keyword" value="technology">
-				<keyword value="Analog Conversion"/>
-			</info>
+	<select-by-device id="sam0.drivers.dac.polled" caption="DAC - Digital-to-Analog Converter">
+		<module type="meta" id="sam0.drivers.dac.polled#sam_d" caption="DAC - Digital-to-Analog Converter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="dac_sam_d"/>
+			<build type="c-source" value="dac_sam_d/dac.c"/>
+			<build type="header-file" value="dac_sam_d/dac_feature.h"/>
 
-			<info type="appnote" value="AT03244"/>
-			<info type="keyword" value="pdf">
-				<keyword value="DAC"/>
-				<keyword value="Digital to Analog Converter"/>
-				<keyword value="Digital Conversion"/>
-			</info>
-
-			<info type="description" value="pdf">
-				This document describes how to use the Digital-to-Analog
-				Converter on the SAM, both the ASF driver and the
-				peripheral itself.
-			</info>
-
-			<build type="include-path" value="."/>
-			<build type="header-file" subtype="api" value="dac.h"/>
-			<build type="c-source" value="dac.c"/>
-			<build type="header-file" subtype="api" value="dac_callback.h"/>
-			<build type="c-source" value="dac_callback.c"/>
-
-			<build type="header-file" value="quick_start/qs_dac_basic.h"/>
-			<build type="header-file" value="quick_start_callback/qs_dac_callback.h"/>
-			<build type="header-file" value="../adc/quick_start_dma/qs_adc_dma_use.h"/>
-
-			<build type="define" name="DAC_CALLBACK_MODE" value="true"/>
-			<build type="doxygen-enable-section" value="DAC_CALLBACK_MODE"/>
-
-			<build type="doxygen-entry-point" value="asfdoc_sam0_dac_group"/>
-			<build type="doxygen-example-path" value="quick_start"/>
-			<build type="doxygen-example-path" value="quick_start_callback"/>
-			<build type="doxygen-example-path" value="../adc/quick_start_dma"/>
-			<build type="doxygen-image-path" value="docimg"/>
-			<build type="doxygen-quick-start" value="asfdoc_sam0_dac_exqsg"/>
 			<device-support value="samd20"/>
 			<device-support value="samd21"/>
 			<device-support value="samd10"/>
 			<device-support value="samd11"/>
-			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+		</module>
+		<module type="meta" id="sam0.drivers.dac.polled#sam_l" caption="DAC - Digital-to-Analog Converter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="dac_sam_l"/>
+			<build type="c-source" value="dac_sam_l/dac.c"/>
+			<build type="header-file" value="dac_sam_l/dac_feature.h"/>
+
+			<device-support value="saml21"/>
+		</module>
+	</select-by-device>
+	<select-by-device id="sam0.drivers.dac.callback" caption="DAC - Digital-to-Analog Converter">
+		<module type="meta" id="sam0.drivers.dac.callback#sam_d" caption="DAC - Digital-to-Analog Converter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="dac_sam_d"/>
+			<build type="c-source" value="dac_sam_d/dac.c"/>
+			<build type="c-source" value="dac_sam_d/dac_callback.c"/>
+			<build type="header-file" value="dac_sam_d/dac_feature.h"/>
+
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
+		</module>
+		<module type="meta" id="sam0.drivers.dac.callback#sam_l" caption="DAC - Digital-to-Analog Converter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="dac_sam_l"/>
+			<build type="c-source" value="dac_sam_l/dac.c"/>
+			<build type="c-source" value="dac_sam_l/dac_callback.c"/>
+			<build type="header-file" value="dac_sam_l/dac_feature.h"/>
+
+			<device-support value="saml21"/>
+		</module>
+	</select-by-device>
+	<module type="meta" id="sam0.drivers.dac.appnote_sam_d" caption="Application note for Digital-to-Analog(DAC)">
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+
+		<info type="appnote" value="AT03244"/>
+		<info type="keyword" value="pdf">
+			<keyword value="DAC"/>
+			<keyword value="Digital to Analog Converter"/>
+			<keyword value="Digital Conversion"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Digital-to-Analog
+			Converter on the SAM D, both the ASF driver and the
+			peripheral itself.
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="include-path" value="dac_sam_d"/>
+		<build type="header-file" subtype="api" value="dac.h"/>
+		<build type="header-file" subtype="api" value="dac_sam_d/dac_feature.h"/>
+		<build type="c-source" value="dac_sam_d/dac.c"/>
+		<build type="header-file" subtype="api" value="dac_callback.h"/>
+		<build type="c-source" value="dac_sam_d/dac_callback.c"/>
+
+		<build type="header-file" value="quick_start/qs_dac_basic.h"/>
+		<build type="header-file" value="quick_start_callback/qs_dac_callback.h"/>
+
+		<build type="define" name="DAC_CALLBACK_MODE" value="true"/>
+		<build type="doxygen-enable-section" value="DAC_CALLBACK_MODE"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_sam0_dac_group"/>
+		<build type="doxygen-example-path" value="quick_start"/>
+		<build type="doxygen-example-path" value="quick_start_callback"/>
+		<build type="doxygen-image-path" value="docimg"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_dac_exqsg"/>
+		<device-support value="samd20"/>
+		<device-support value="samd21"/>
+		<device-support value="samd10"/>
+		<device-support value="samd11"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+	<module type="meta" id="sam0.drivers.dac.appnote_sam_l" caption="Application note for Digital-to-Analog(DAC)">
+	<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+
+		<info type="appnote" value="AT11379"/>
+		<info type="keyword" value="pdf">
+			<keyword value="DAC"/>
+			<keyword value="Digital to Analog Converter"/>
+			<keyword value="Digital Conversion"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Digital-to-Analog
+			Converter on the SAM L, both the ASF driver and the
+			peripheral itself.
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="include-path" value="dac_sam_l"/>
+		<build type="header-file" subtype="api" value="dac.h"/>
+		<build type="header-file" subtype="api" value="dac_sam_l/dac_feature.h"/>
+		<build type="c-source" value="dac_sam_l/dac.c"/>
+		<build type="header-file" subtype="api" value="dac_callback.h"/>
+		<build type="c-source" value="dac_sam_l/dac_callback.c"/>
+
+		<build type="header-file" value="quick_start/qs_dac_basic.h"/>
+		<build type="header-file" value="quick_start_callback/qs_dac_callback.h"/>
+
+		<build type="define" name="DAC_CALLBACK_MODE" value="true"/>
+		<build type="doxygen-enable-section" value="DAC_CALLBACK_MODE"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_sam0_dac_group"/>
+		<build type="doxygen-example-path" value="quick_start"/>
+		<build type="doxygen-example-path" value="quick_start_callback"/>
+		<build type="doxygen-image-path" value="docimg"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_dac_exqsg"/>
+		<device-support value="saml21"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-saml21"/>
 	</module>
 </asf>

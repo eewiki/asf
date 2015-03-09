@@ -52,6 +52,9 @@
  * - \ref Reading
  * - \ref Peripheral
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef __DSP_DEBUG_H__
 #define __DSP_DEBUG_H__

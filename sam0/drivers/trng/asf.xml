@@ -1,0 +1,73 @@
+<asf xmlversion="1.0">
+	<select-by-config id="sam0.drivers.trng" name="config.sam0.drivers.trng" caption="TRNG - True Random Number Generator" default="callback">
+		<info type="description" value="summary">
+			Driver for the SAM True Random Number Generator module. Provides a
+			unified interface for the configuration and management of the
+			device's hardware random generator.
+		</info>
+
+		<module caption="TRNG - True Random Number Generator (Polled APIs)" id="sam0.drivers.trng#polled" type="driver">
+			<build type="include-path" value="." />
+
+			<build name="TRNG_CALLBACK_MODE" type="define" value="false" />
+
+			<build subtype="api" type="header-file" value="trng.h" />
+			<build type="c-source" value="trng.c" />
+
+			<build type="doxygen-entry-point" value="asfdoc_sam0_trng_group" />
+
+			<require idref="sam0.utils" />
+			<require idref="sam0.drivers.system" />
+
+			<device-support value="saml21" />
+		</module>
+
+		<module caption="TRNG - True Random Number Generator (Callback APIs)" id="sam0.drivers.trng#callback" type="driver">
+			<build type="include-path" value="." />
+
+			<build name="TRNG_CALLBACK_MODE" type="define" value="true" />
+			<build type="doxygen-enable-section" value="TRNG_CALLBACK_MODE"/>
+
+			<build subtype="api" type="header-file" value="trng.h" />
+			<build subtype="api" type="header-file" value="trng_callback.h" />
+			<build type="c-source" value="trng.c" />
+			<build type="c-source" value="trng_callback.c" />
+
+			<build type="doxygen-entry-point" value="asfdoc_sam0_trng_group" />
+
+			<require idref="sam0.utils" />
+			<require idref="sam0.drivers.system" />
+
+			<device-support value="saml21" />
+		</module>
+	</select-by-config>
+
+	<module type="meta" id="sam0.drivers.trng.appnote" caption="TRNG - True Random Number Generator">
+		<info type="appnote" value="AT10732"/>
+
+		<info type="description" value="pdf">
+			This document describes how to use the True Random Number Generator
+			on the SAM, both the ASF driver and the peripheral itself.
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="trng.h"/>
+		<build type="header-file" subtype="api" value="trng_callback.h"/>
+		<build type="c-source" value="trng.c"/>
+		<build type="c-source" value="trng_callback.c"/>
+
+		<build type="define" name="TRNG_CALLBACK_MODE" value="true"/>
+		<build type="doxygen-enable-section" value="TRNG_CALLBACK_MODE"/>
+
+		<build type="header-file" value="quick_start/qs_trng_basic.h"/>
+		<build type="header-file" value="quick_start_callback/qs_trng_callback.h"/>
+
+		<build type="doxygen-example-path" value="quick_start"/>
+		<build type="doxygen-example-path" value="quick_start_callback"/>
+		<build type="doxygen-entry-point" value="asfdoc_sam0_trng_group"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam0_trng_exqsg"/>
+
+		<device-support value="saml21"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-saml21"/>
+	</module>
+</asf>

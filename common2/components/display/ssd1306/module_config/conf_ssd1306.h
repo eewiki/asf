@@ -40,12 +40,15 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef CONF_SSD1306_H_INCLUDED
 #define CONF_SSD1306_H_INCLUDED
 
 #include <board.h>
 
-// Interface configuration for SAM D20/D21 Xplained Pro
+// Interface configuration for SAM Xplained Pro
 #  define SSD1306_SPI                 EXT3_SPI_MODULE
 #  define CONFIG_SSD1306_FRAMEBUFFER
 

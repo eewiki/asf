@@ -39,6 +39,9 @@
  *
  * \asf_license_stop
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_TRX_ACCESS_H_INCLUDED
 #define CONF_TRX_ACCESS_H_INCLUDED
@@ -247,6 +250,10 @@
 #endif
 
 #if (SAMD || SAMR21)
+#if SAMR21
+#warning \
+	"For SAMR21 Antenna Diversity Related Pin configurations refer to system_board_init function of SAMR21 Xplained Pro board_init.c file "
+#endif
 #ifndef AT86RFX_SPI
 #define AT86RFX_SPI                  SERCOM0
 #define AT86RFX_RST_PIN              PIN_PA23
@@ -257,30 +264,18 @@
 #define AT86RFX_SPI_MOSI             PIN_PA16
 #define AT86RFX_SPI_MISO             PIN_PA18
 #define AT86RFX_SPI_SCK              PIN_PA17
-#define AT86RFX_CSD                          PIN_PA23
+#define AT86RFX_CSD                  PIN_PA23
 #define AT86RFX_CPS                  PIN_PA23
 #define LED0 LED0_PIN
 
-#define AT86RFX_SPI_CONFIG(config) \
-	config.mux_setting = SPI_SIGNAL_MUX_SETTING_A; \
-	config.mode_specific.master.baudrate = AT86RFX_SPI_BAUDRATE; \
-	config.pinmux_pad0 = PINMUX_UNUSED; \
-	config.pinmux_pad1 = PINMUX_UNUSED; \
-	config.pinmux_pad2 = PINMUX_UNUSED; \
-	config.pinmux_pad3 = PINMUX_UNUSED;
+#define AT86RFX_SPI_MUX_SETTING          SPI_SIGNAL_MUX_SETTING_A
+#define AT86RFX_SPI_SERCOM_PINMUX_PAD0   PINMUX_UNUSED
+#define AT86RFX_SPI_SERCOM_PINMUX_PAD1   PINMUX_UNUSED
+#define AT86RFX_SPI_SERCOM_PINMUX_PAD2   PINMUX_UNUSED
+#define AT86RFX_SPI_SERCOM_PINMUX_PAD3   PINMUX_UNUSED
 
 #define AT86RFX_IRQ_CHAN             6
-#define AT86RFX_INTC_INIT()           struct extint_chan_conf eint_chan_conf; \
-	extint_chan_get_config_defaults(&eint_chan_conf); \
-	eint_chan_conf.gpio_pin = AT86RFX_IRQ_PIN; \
-	eint_chan_conf.gpio_pin_mux = PINMUX_PA22A_EIC_EXTINT6;	\
-	eint_chan_conf.gpio_pin_pull      = EXTINT_PULL_NONE; \
-	eint_chan_conf.wake_if_sleeping    = true; \
-	eint_chan_conf.filter_input_signal = false; \
-	eint_chan_conf.detection_criteria  = EXTINT_DETECT_RISING; \
-	extint_chan_set_config(AT86RFX_IRQ_CHAN, &eint_chan_conf); \
-	extint_register_callback(AT86RFX_ISR, AT86RFX_IRQ_CHAN,	\
-		EXTINT_CALLBACK_TYPE_DETECT);
+#define AT86RFX_IRQ_PINMUX           PINMUX_PA22A_EIC_EXTINT6
 
 /** Enables the transceiver main interrupt. */
 #define ENABLE_TRX_IRQ()                extint_chan_enable_callback( \

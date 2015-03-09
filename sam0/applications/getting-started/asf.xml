@@ -1,10 +1,11 @@
 <asf xmlversion="1.0">
 	<module type="application" id="sam0.applications.getting-started" caption="Getting-Started Application">
 		<info type="description" value="summary">
-			The Getting Started example will help new users get familiar with SAM D21/R21 Xplained Pro.
+			The Getting Started example will help new users get familiar with SAM D21/R21/L21 Xplained Pro.
 		</info>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="saml21"/>
 		<build type="c-source" value="main.c"/>
 		<build type="include-path" value="."/>
 		<require idref="sam0.drivers.port"/>

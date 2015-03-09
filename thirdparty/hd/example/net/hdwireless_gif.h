@@ -1,4 +1,7 @@
 #ifndef HD_WIRELESS_GIF
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #define HD_WIRELESS_GIF
 
 static const char hdwireless_gif[] = {

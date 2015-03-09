@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Unit Tests for the SAM L21 NVM Driver" id="sam0.drivers.nvm.unit_test.saml21_xplained_pro" type="unit-test">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type ="include-path" value="."/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<require idref="board.saml21_xplained_pro"/>
+		<require idref="sam0.drivers.nvm.unit_test"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen-v2"/>
+		<device-support value="atsaml21j18a"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+	</project>
+</asf>

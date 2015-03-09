@@ -46,12 +46,17 @@
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef WSNDEMO_H
 #define WSNDEMO_H
 
 # include "board.h"
-int wsndemo_main(void);
+
+void wsndemo_init(void);
+void wsndemo_task(void);
 
 #ifndef LED_COUNT
 #define LED_COUNT 0

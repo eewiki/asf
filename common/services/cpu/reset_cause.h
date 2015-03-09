@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef COMMON_DRIVERS_CPU_RESET_CAUSE_H
 #define COMMON_DRIVERS_CPU_RESET_CAUSE_H
 

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.samg55.include" caption="SAMG55 part definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAMG55
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="samg55.h"/>
+		<build type="header-file" value="samg55g18.h"/>
+		<build type="header-file" value="samg55g19.h"/>
+		<build type="header-file" value="samg55j18.h"/>
+		<build type="header-file" value="samg55j19.h"/>
+		<build type="header-file" value="samg55n19.h"/>
+		<build type="header-file" value="system_samg55.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samg55"/>
+	</module>
+</asf>

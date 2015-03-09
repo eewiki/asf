@@ -42,6 +42,9 @@
  */
 
 /* Prevent double inclusion */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef RF4CE_H
 #define RF4CE_H
 
@@ -56,7 +59,7 @@
 
 /**
  * \defgroup group_rf4control RF4Control v2.0.1
- * The RF4Control stack is a ZigBee® RF4CE Certified Platform implementing the
+ * The RF4Control stack is a ZigBeeRF4CE Certified Platform implementing the
  * ZigBee
  * RF4CE standard.
  *

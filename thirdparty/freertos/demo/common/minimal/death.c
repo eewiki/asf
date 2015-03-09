@@ -83,6 +83,9 @@ Changes from V3.1.0
 	  floating point.
 
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <stdlib.h>
 

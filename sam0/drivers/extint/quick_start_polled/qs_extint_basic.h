@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21/R21 External Interrupt Driver Quick Start
+ * \brief SAM External Interrupt Driver Quick Start
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -48,6 +48,7 @@
  *    - SAMD20 Xplained Pro
  *    - SAMD21 Xplained Pro
  *    - SAMR21 Xplained Pro
+ *    - SAML21 Xplained Pro
  *
  * In this use case, the EXTINT module is configured for:
  *  - External interrupt channel connected to the board LED is used
@@ -107,4 +108,7 @@
  * -# Clear the detection state of the external interrupt channel so that it
  *    is ready to detect a future falling edge.
  *    \snippet qs_extint_basic.c main_3
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef FREERTOS_PERIPHERAL_CONTROL_INCLUDED
 #define FREERTOS_PERIPHERAL_CONTROL_INCLUDED
@@ -267,7 +270,7 @@ typedef struct freertos_peripheral_options {
 	
 	/**
 	 * Individual bits in the options_flags value configure an aspect of the 
-	 * driver’s behavior, where valid bits (which are documented as part of the
+	 * driveræŠ¯ behavior, where valid bits (which are documented as part of the
 	 * \ref freertos_service_group documentation) are USE_TX_ACCESS_MUTEX, 
 	 * USE_RX_ACCESS_MUTEX, WAIT_TX_COMPLETE, WAIT_RX_COMPLETE.
 	 */

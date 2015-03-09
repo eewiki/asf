@@ -40,10 +40,13 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_SPI_H_INCLUDED
 #  define CONF_SPI_H_INCLUDED
-
+#  define AT86RFX_SPI_BAUDRATE             4000000UL
 #  define CONF_SPI_MASTER_ENABLE     true
 #  define CONF_SPI_SLAVE_ENABLE      false
 #  define CONF_SPI_TIMEOUT           10000

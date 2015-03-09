@@ -7,10 +7,6 @@
 		<build type="c-source" value="qs_spi_master_basic.c"/>
 		<build type="include-path" value="."/>
 		<require idref="sam0.drivers.sercom.spi"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
-		<device-support value="samr21"/>
-		<device-support value="samd10"/>
-		<device-support value="samd11"/>
+		<device-support value="sam0"/>
 	</module>
 </asf>

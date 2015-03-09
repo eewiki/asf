@@ -38,6 +38,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "samd21.h"
 
@@ -210,5 +213,13 @@ int __low_level_init(void)
  *------------------------------------------------------------------------------*/
 void Reset_Handler(void)
 {
+        /* Change default QOS values to have the best performance and correct USB behavior */
+        SBMATRIX->SFR[SBMATRIX_SLAVE_HMCRAMC0].reg = 2;
+        USB->DEVICE.QOSCTRL.bit.CQOS = 2;
+        USB->DEVICE.QOSCTRL.bit.DQOS = 2;
+        DMAC->QOSCTRL.bit.DQOS = 2;
+        DMAC->QOSCTRL.bit.FQOS = 2;
+        DMAC->QOSCTRL.bit.WRBQOS = 2;
+
         __iar_program_start();
 }

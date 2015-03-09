@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <asf.h>
 #include "conf_example.h"
@@ -206,15 +209,7 @@ void uart_open(uint8_t port)
 {
 	UNUSED(port);
 
-	usart_disable(&usart_module_edbg);
-	usart_init(&usart_module_edbg, CONF_USART_BASE, &usart_conf);
 	usart_enable(&usart_module_edbg);
-
-	/* Enable interrupts */
-	usart_register_callback(&usart_module_edbg, usart_tx_callback,
-			USART_CALLBACK_BUFFER_TRANSMITTED);
-	usart_register_callback(&usart_module_edbg, usart_rx_callback,
-			USART_CALLBACK_BUFFER_RECEIVED);
 }
 
 void uart_close(uint8_t port)

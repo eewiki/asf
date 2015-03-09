@@ -58,6 +58,9 @@
  * it started, users can turn on and off the LED by touching the button and slider,
  * change the color of RGB LED by touching wheel on QT1 Xplained Pro board.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <asf.h>
 

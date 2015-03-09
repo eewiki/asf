@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef RTC_COUNT_H_INCLUDED
 #define RTC_COUNT_H_INCLUDED
@@ -47,7 +50,7 @@
 /**
  * \defgroup asfdoc_sam0_rtc_count_group SAM RTC Count Driver (RTC COUNT)
  *
- * This driver for Atmel® | SMART™ SAM devices provides an interface for the configuration
+ * This driver for Atmel庐 | SMART SAM devices provides an interface for the configuration
  * and management of the device's Real Time Clock functionality in Count
  * operating mode, for the configuration and retrieval of the current RTC
  * counter value. The following driver API modes are covered by this
@@ -62,9 +65,10 @@
  *  - RTC (Real Time Clock)
  *
  * The following devices can use this module:
- *  - Atmel® | SMART™ SAM D20/D21
- *  - Atmel® | SMART™ SAM R21
- *  - Atmel® | SMART™ SAM D10/D11
+ *  - Atmel | SMART SAM D20/D21
+ *  - Atmel | SMART SAM R21
+ *  - Atmel | SMART SAM D10/D11
+ *  - Atmel | SMART SAM L21
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_rtc_count_prerequisites
@@ -100,6 +104,35 @@
  *   - Clear counter value on match
  *   - Up to four configurable compare values
  *
+ * \subsection asfdoc_sam0_rtc_count_features Driver Feature Macro Definition
+ * <table>
+ *  <tr>
+ *    <th>Driver Feature Macro</th>
+ *    <th>Supported devices</th>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_RTC_PERIODIC_INT</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_RTC_PRESCALER_OFF</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_RTC_CLOCK_SELECTION</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_RTC_GENERAL_PURPOSE_REG</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_RTC_CONTINUOUSLY_UPDATED</td>
+ *    <td>SAMD20,SAMD21,SAMR21,SAMD10,SAMD11</td>
+ *  </tr>
+ * </table>
+ * \note The specific features are only available in the driver when the
+ * selected device supports those features.
  *
  * \section asfdoc_sam0_rtc_count_module_overview_compares Compare and Overflow
  * The RTC can be used with up to 4/6 compare values (depending on selected
@@ -194,6 +227,7 @@
  * \section asfdoc_sam0_rtc_count_special_considerations Special Considerations
  *
  * \subsection asfdoc_sam0_rtc_count_special_considerations_clock Clock Setup
+ * \subsubsection asfdoc_sam0_rtc_count_clock_samd_r SAM D20/D21/R21/D10/D11 Clock Setup
  * The RTC is typically clocked by a specialized GCLK generator that has a
  * smaller prescaler than the others. By default the RTC clock is on, selected
  * to use the internal 32KHz RC-oscillator with a prescaler of 32, giving a
@@ -247,6 +281,52 @@
  * }
  * \enddot
  *
+ * \subsubsection asfdoc_sam0_rtc_count_clock_saml SAM L21 Clock Setup
+ * The RTC clock can be selected from OSC32K,XOSC32K or OSCULP32K , and a 32KHz
+ * or 1KHz oscillator clock frequency is required. This clock must be
+ * configured and enabled in the 32KHz oscillator controller before using the RTC.
+ *
+ * The table below lists the available RTC clock \ref asfdoc_sam0_rtc_count_rtc_clk
+ *
+ * \anchor asfdoc_sam0_rtc_count_rtc_clk
+ * <table>
+ *   <caption>RTC clocks source</caption>
+ *   <tr>
+ *     <th>RTC clock frequency</th>
+ *     <th>Clock source</th>
+ *     <th>Description</th>
+ *   </tr>
+ *   <tr>
+ *     <td>1.024KHz</td>
+ *     <td>ULP1K</td>
+ *     <td>1.024KHz from 32KHz internal ULP oscillator</td>
+ *   </tr>
+ *   <tr>
+ *     <td>32.768KHz</td>
+ *     <td>ULP32K</td>
+ *     <td>32.768KHz from 32KHz internal ULP oscillator</td>
+ *   </tr>
+ *   <tr>
+ *     <td>1.024KHz</td>
+ *     <td>OSC1K</td>
+ *     <td>1.024KHz from 32KHz internal oscillator</td>
+ *   </tr>
+ *   <tr>
+ *     <td>32.768KHz</td>
+ *     <td>OSC32K</td>
+ *     <td>32.768KHz from 32KHz internal oscillator</td>
+ *   </tr>
+ *   <tr>
+ *     <td>1.024KHz</td>
+ *     <td>XOSC1K</td>
+ *     <td>1.024KHz from 32KHz internal oscillator</td>
+ *   </tr>
+ *   <tr>
+ *     <td>32.768KHz</td>
+ *     <td>XOSC32K</td>
+ *     <td>32.768KHz from 32KHz external crystal oscillator</td>
+ *   </tr>
+ * </table>
  *
  * \section asfdoc_sam0_rtc_count_extra_info Extra Information
  *
@@ -279,6 +359,46 @@ extern "C" {
 #endif
 
 /**
+ * Define port features set according to different device family
+ * @{
+*/
+#if (SAML21) || defined(__DOXYGEN__)
+/** RTC periodic interval interrupt. */
+#  define FEATURE_RTC_PERIODIC_INT
+/** RTC prescaler is off. */
+#  define FEATURE_RTC_PRESCALER_OFF
+/** RTC clock selection. */
+#  define FEATURE_RTC_CLOCK_SELECTION
+/** General purpose registers. */
+#  define FEATURE_RTC_GENERAL_PURPOSE_REG
+#else
+/** RTC continuously updated. */
+#  define FEATURE_RTC_CONTINUOUSLY_UPDATED
+#endif
+/*@}*/
+
+#ifdef FEATURE_RTC_CLOCK_SELECTION
+/**
+ * \brief Available clock source for RTC.
+ * RTC clock source.
+ */
+enum rtc_clock_sel {
+	/** 1.024KHz from 32KHz internal ULP oscillator. */
+	RTC_CLOCK_SELECTION_ULP1K = OSC32KCTRL_RTCCTRL_RTCSEL_ULP1K_Val,
+	/** 32.768KHz from 32KHz internal ULP oscillator. */
+	RTC_CLOCK_SELECTION_ULP32K = OSC32KCTRL_RTCCTRL_RTCSEL_ULP32K_Val,
+	/** 1.024KHz from 32KHz internal oscillator. */
+	RTC_CLOCK_SELECTION_OSC1K = OSC32KCTRL_RTCCTRL_RTCSEL_OSC1K_Val,
+	/** 32.768KHz from 32KHz internal oscillator. */
+	RTC_CLOCK_SELECTION_OSC32K = OSC32KCTRL_RTCCTRL_RTCSEL_OSC32K_Val,
+	/** 1.024KHz from 32KHz internal oscillator. */
+	RTC_CLOCK_SELECTION_XOSC1K = OSC32KCTRL_RTCCTRL_RTCSEL_XOSC1K_Val,
+	/** 32.768KHz from 32.768KHz external crystal oscillator. */
+	RTC_CLOCK_SELECTION_XOSC32K = OSC32KCTRL_RTCCTRL_RTCSEL_XOSC32K_Val,
+};
+#endif
+
+/**
  * \brief Available operation modes for the RTC.
  *
  * RTC Count operating modes, to select the counting width and associated module
@@ -290,6 +410,10 @@ enum rtc_count_mode {
 	/** RTC Count module operates in 32-bit mode. */
 	RTC_COUNT_MODE_32BIT = 1,
 };
+
+#if !defined (RTC_NUM_OF_COMP16) && defined(RTC_COMP16_NUM)
+#define RTC_NUM_OF_COMP16 RTC_COMP16_NUM
+#endif
 
 /**
  * \brief Available compare channels.
@@ -321,9 +445,87 @@ enum rtc_count_compare {
 #endif
 };
 
-#if RTC_COUNT_ASYNC == true
+#ifdef FEATURE_RTC_PERIODIC_INT
 /**
- * \brief Callback types
+ * \brief Available periodic interval source.
+ */
+enum rtc_count_periodic_interval{
+	/** Periodic interval 0 */
+	RTC_COUNT_PERIODIC_INTERVAL_0 = 0,
+	/** Periodic interval 1 */
+	RTC_COUNT_PERIODIC_INTERVAL_1 = 1,
+	/** Periodic interval 2 */
+	RTC_COUNT_PERIODIC_INTERVAL_2 = 2,
+	/** Periodic interval 3 */
+	RTC_COUNT_PERIODIC_INTERVAL_3 = 3,
+	/** Periodic interval 4 */
+	RTC_COUNT_PERIODIC_INTERVAL_4 = 4,
+	/** Periodic interval 5 */
+	RTC_COUNT_PERIODIC_INTERVAL_5 = 5,
+	/** Periodic interval 6 */
+	RTC_COUNT_PERIODIC_INTERVAL_6 = 6,
+	/** Periodic interval 7 */
+	RTC_COUNT_PERIODIC_INTERVAL_7 = 7,
+};
+#endif
+
+#if RTC_COUNT_ASYNC == true
+#ifdef FEATURE_RTC_PERIODIC_INT
+/**
+ * \brief Callback types.
+ *
+ * The available callback types for the RTC count module.
+ */
+enum rtc_count_callback {
+	/** Callback for Periodic Interval 0 Interrupt. */
+	RTC_COUNT_CALLBACK_PERIODIC_INTERVAL_0 = 0,
+	/** Callback for Periodic Interval 1 Interrupt. */
+	RTC_COUNT_CALLBACK_PERIODIC_INTERVAL_1,
+	/** Callback for Periodic Interval 2 Interrupt. */
+	RTC_COUNT_CALLBACK_PERIODIC_INTERVAL_2,
+	/** Callback for Periodic Interval 3 Interrupt. */
+	RTC_COUNT_CALLBACK_PERIODIC_INTERVAL_3,
+	/** Callback for Periodic Interval 4 Interrupt. */
+	RTC_COUNT_CALLBACK_PERIODIC_INTERVAL_4,
+	/** Callback for Periodic Interval 5 Interrupt. */
+	RTC_COUNT_CALLBACK_PERIODIC_INTERVAL_5,
+	/** Callback for Periodic Interval 6 Interrupt. */
+	RTC_COUNT_CALLBACK_PERIODIC_INTERVAL_6,
+	/** Callback for Periodic Interval 7 Interrupt. */
+	RTC_COUNT_CALLBACK_PERIODIC_INTERVAL_7,
+	/** Callback for compare channel 0. */
+	RTC_COUNT_CALLBACK_COMPARE_0,
+#  if (RTC_NUM_OF_COMP16 > 1) || defined(__DOXYGEN__)
+	/** Callback for compare channel 1. */
+	RTC_COUNT_CALLBACK_COMPARE_1,
+#  endif
+#  if (RTC_NUM_OF_COMP16 > 2) || defined(__DOXYGEN__)
+	/** Callback for compare channel 2. */
+	RTC_COUNT_CALLBACK_COMPARE_2,
+#  endif
+#  if (RTC_NUM_OF_COMP16 > 3)	|| defined(__DOXYGEN__)
+	/** Callback for compare channel 3. */
+	RTC_COUNT_CALLBACK_COMPARE_3,
+#  endif
+#  if (RTC_NUM_OF_COMP16 > 4) || defined(__DOXYGEN__)
+	/** Callback for compare channel 4. */
+	RTC_COUNT_CALLBACK_COMPARE_4,
+#  endif
+#  if (RTC_NUM_OF_COMP16 > 5) || defined(__DOXYGEN__)
+	/** Callback for compare channel 5. */
+	RTC_COUNT_CALLBACK_COMPARE_5,
+#  endif
+
+	/** Callback for  overflow. */
+	RTC_COUNT_CALLBACK_OVERFLOW,
+#  if !defined(__DOXYGEN__)
+	/** Total number of callbacks. */
+	_RTC_COUNT_CALLBACK_N
+#  endif
+};
+#else
+/**
+ * \brief Callback types.
  *
  * The available callback types for the RTC count module.
  */
@@ -350,21 +552,56 @@ enum rtc_count_callback {
 	/** Callback for compare channel 5. */
 	RTC_COUNT_CALLBACK_COMPARE_5,
 #  endif
-	/** Callback for  overflow. */
+	/** Callback for overflow. */
 	RTC_COUNT_CALLBACK_OVERFLOW,
 #  if !defined(__DOXYGEN__)
 	/** Total number of callbacks. */
 	_RTC_COUNT_CALLBACK_N
 #  endif
 };
+#endif
 
 #  if !defined(__DOXYGEN__)
 typedef void (*rtc_count_callback_t)(void);
 #  endif
 #endif
 
+#ifdef FEATURE_RTC_PRESCALER_OFF
 /**
- * \brief RTC input clock prescaler settings
+ * \brief RTC input clock prescaler settings.
+ *
+ * The available input clock prescaler values for the RTC count module.
+ */
+enum rtc_count_prescaler {
+	/** RTC prescaler is off, and the input clock frequency is
+	prescaled by a factor of 1. */
+	RTC_COUNT_PRESCALER_OFF      = RTC_MODE0_CTRLA_PRESCALER_OFF,
+	/** RTC input clock frequency is prescaled by a factor of 1. */
+	RTC_COUNT_PRESCALER_DIV_1    = RTC_MODE0_CTRLA_PRESCALER_DIV1,
+	/** RTC input clock frequency is prescaled by a factor of 2. */
+	RTC_COUNT_PRESCALER_DIV_2    = RTC_MODE0_CTRLA_PRESCALER_DIV2,
+	/** RTC input clock frequency is prescaled by a factor of 4. */
+	RTC_COUNT_PRESCALER_DIV_4    = RTC_MODE0_CTRLA_PRESCALER_DIV4,
+	/** RTC input clock frequency is prescaled by a factor of 8. */
+	RTC_COUNT_PRESCALER_DIV_8    = RTC_MODE0_CTRLA_PRESCALER_DIV8,
+	/** RTC input clock frequency is prescaled by a factor of 16. */
+	RTC_COUNT_PRESCALER_DIV_16   = RTC_MODE0_CTRLA_PRESCALER_DIV16,
+	/** RTC input clock frequency is prescaled by a factor of 32. */
+	RTC_COUNT_PRESCALER_DIV_32   = RTC_MODE0_CTRLA_PRESCALER_DIV32,
+	/** RTC input clock frequency is prescaled by a factor of 64. */
+	RTC_COUNT_PRESCALER_DIV_64   = RTC_MODE0_CTRLA_PRESCALER_DIV64,
+	/** RTC input clock frequency is prescaled by a factor of 128. */
+	RTC_COUNT_PRESCALER_DIV_128  = RTC_MODE0_CTRLA_PRESCALER_DIV128,
+	/** RTC input clock frequency is prescaled by a factor of 256. */
+	RTC_COUNT_PRESCALER_DIV_256  = RTC_MODE0_CTRLA_PRESCALER_DIV256,
+	/** RTC input clock frequency is prescaled by a factor of 512. */
+	RTC_COUNT_PRESCALER_DIV_512  = RTC_MODE0_CTRLA_PRESCALER_DIV512,
+	/** RTC input clock frequency is prescaled by a factor of 1024. */
+	RTC_COUNT_PRESCALER_DIV_1024 = RTC_MODE0_CTRLA_PRESCALER_DIV1024,
+};
+#else
+/**
+ * \brief RTC input clock prescaler settings.
  *
  * The available input clock prescaler values for the RTC count module.
  */
@@ -392,6 +629,7 @@ enum rtc_count_prescaler {
 	/** RTC input clock frequency is prescaled by a factor of 1024. */
 	RTC_COUNT_PRESCALER_DIV_1024 = RTC_MODE0_CTRL_PRESCALER_DIV1024,
 };
+#endif
 
 /**
  * \brief RTC Count event enable/disable structure.
@@ -419,21 +657,23 @@ struct rtc_module {
 	Rtc *hw;
 	/** Operation mode of count. */
 	enum rtc_count_mode mode;
+#ifdef FEATURE_RTC_CONTINUOUSLY_UPDATED
 	/** Set if counter value should be continuously updated. */
 	bool continuously_update;
+#endif
 #  if RTC_COUNT_ASYNC == true
 	/** Pointers to callback functions. */
 	volatile rtc_count_callback_t callbacks[_RTC_COUNT_CALLBACK_N];
 	/** Mask for registered callbacks. */
-	volatile uint8_t registered_callback;
+	volatile uint16_t registered_callback;
 	/** Mask for enabled callbacks. */
-	volatile uint8_t enabled_callback;
+	volatile uint16_t enabled_callback;
 #  endif
 };
 #endif
 
 /**
- * \brief RTC Count configuration structure
+ * \brief RTC Count configuration structure.
  *
  * Configuration structure for the RTC instance. This structure should
  * be initialized using the \ref rtc_count_get_config_defaults() before any
@@ -447,9 +687,11 @@ struct rtc_count_config {
 	/** If true, clears the counter value on compare match. Only available
 	 *  whilst running in 32-bit mode. */
 	bool clear_on_match;
+#ifdef FEATURE_RTC_CONTINUOUSLY_UPDATED
 	/** Continuously update the counter value so no synchronization is
 	 *  needed for reading. */
 	bool continuously_update;
+#endif
 	/** Array of Compare values. Not all Compare values are available in 32-bit
 	 *  mode. */
 	uint32_t compare_values[RTC_NUM_OF_COMP16];
@@ -460,37 +702,6 @@ struct rtc_count_config {
  * \name Configuration and Initialization
  * @{
  */
-
-/**
- * \brief Determines if the hardware module(s) are currently synchronizing to the bus.
- *
- * Checks to see if the underlying hardware peripheral module(s) are currently
- * synchronizing across multiple clock domains to the hardware bus. This
- * function can be used to delay further operations on a module until such time
- * that it is ready, to prevent blocking delays for synchronization in the
- * user application.
- *
- * \param[in]  module  RTC hardware module
- *
- * \return Synchronization status of the underlying hardware module(s).
- *
- * \retval true  if the module has completed synchronization
- * \retval false if the module synchronization is ongoing
- */
-static inline bool rtc_count_is_syncing(struct rtc_module *const module)
-{
- 	/* Sanity check arguments */
-	Assert(module);
-	Assert(module->hw);
-
-	Rtc *const rtc_module = module->hw;
-
-        if (rtc_module->MODE0.STATUS.reg & RTC_STATUS_SYNCBUSY) {
-                return true;
-        }
-
-        return false;
-}
 
 /**
  *  \brief Gets the RTC default configurations.
@@ -519,74 +730,25 @@ static inline void rtc_count_get_config_defaults(
 	config->prescaler           = RTC_COUNT_PRESCALER_DIV_1024;
 	config->mode                = RTC_COUNT_MODE_32BIT;
 	config->clear_on_match      = false;
+
+#ifdef FEATURE_RTC_CONTINUOUSLY_UPDATED
 	config->continuously_update = false;
+#endif
+
 	for (uint8_t i = 0; i < RTC_NUM_OF_COMP16; i++) {
 		config->compare_values[i] = 0;
 	}
 }
 
 void rtc_count_reset(struct rtc_module *const module);
-
-/**
- * \brief Enables the RTC module.
- *
- * Enables the RTC module once it has been configured, ready for use. Most
- * module configuration parameters cannot be altered while the module is enabled.
- *
- * \param[in,out]  module  RTC hardware module
- */
-static inline void rtc_count_enable(struct rtc_module *const module)
-{
-	/* Sanity check arguments */
-	Assert(module);
-	Assert(module->hw);
-
-	Rtc *const rtc_module = module->hw;
-
-#if RTC_COUNT_ASYNC == true
-	system_interrupt_enable(SYSTEM_INTERRUPT_MODULE_RTC);
-#endif
-
-	while (rtc_count_is_syncing(module)) {
-		/* Wait for synchronization */
-	}
-
-	/* Enable RTC module. */
-	rtc_module->MODE0.CTRL.reg |= RTC_MODE0_CTRL_ENABLE;
-}
-
-/**
- * \brief Disables the RTC module.
- *
- * Disables the RTC module.
- *
- * \param[in,out]  module  RTC hardware module
- */
-static inline void rtc_count_disable(struct rtc_module *const module)
-{
-	/* Sanity check arguments */
-	Assert(module);
-	Assert(module->hw);
-
-	Rtc *const rtc_module = module->hw;
-
-#if RTC_COUNT_ASYNC == true
-	system_interrupt_disable(SYSTEM_INTERRUPT_MODULE_RTC);
-#endif
-
-	while (rtc_count_is_syncing(module)) {
-		/* Wait for synchronization */
-	}
-
-	/* Disable RTC module. */
-	rtc_module->MODE0.CTRL.reg &= ~RTC_MODE0_CTRL_ENABLE;
-}
+void rtc_count_enable(struct rtc_module *const module);
+void rtc_count_disable(struct rtc_module *const module);
 
 #if (RTC_INST_NUM > 1) && !defined(__DOXYGEN__)
 /**
  * \internal Find the index of given RTC module instance.
  *
- * \param[in] RTC module instance pointer.
+ * \param[in] RTC module instance pointer
  *
  * \return Index of the given AC module instance.
  */
@@ -700,6 +862,55 @@ static inline void rtc_count_clear_overflow(struct rtc_module *const module)
 	rtc_module->MODE0.INTFLAG.reg = RTC_MODE0_INTFLAG_OVF;
 }
 
+#ifdef FEATURE_RTC_PERIODIC_INT
+/**
+ * \brief Check if an RTC periodic interval interrupt has occurred.
+ *
+ * Checks the periodic interval flag in the RTC.
+ *
+ * \param[in,out]  module  RTC hardware module
+ * \param[in]  n  RTC periodic interval interrupt
+ *
+ * \return periodic interval interrupt state of the RTC module.
+ *
+ * \retval true   RTC periodic interval interrupt occurs
+ * \retval false  RTC periodic interval interrupt dosen't occurs
+ */
+static inline bool rtc_count_is_periodic_interval(struct rtc_module *const module,
+										enum rtc_count_periodic_interval n)
+{
+	/* Sanity check arguments */
+	Assert(module);
+	Assert(module->hw);
+
+	Rtc *const rtc_module = module->hw;
+
+	/* Return status of flag */
+	return (rtc_module->MODE0.INTFLAG.reg & RTC_MODE0_INTFLAG_PER(1 << n));
+}
+
+/**
+ * \brief Clears the RTC periodic interval flag.
+ *
+ * Clears the RTC module counter periodic interval flag, so that new periodic
+ *  interval conditions can be detected.
+ *
+ * \param[in,out]  module  RTC hardware module
+ * \param[in]  n  RTC periodic interval interrupt
+ */
+static inline void rtc_count_clear_periodic_interval(struct rtc_module *const module,
+												enum rtc_count_periodic_interval n)
+{
+	/* Sanity check arguments */
+	Assert(module);
+	Assert(module->hw);
+
+	Rtc *const rtc_module = module->hw;
+
+	/* Clear periodic interval flag */
+	rtc_module->MODE0.INTFLAG.reg = RTC_MODE0_INTFLAG_PER(1 << n);
+}
+#endif
 bool rtc_count_is_compare_match(
 		struct rtc_module *const module,
 		const enum rtc_count_compare comp_index);
@@ -810,6 +1021,60 @@ static inline void rtc_count_disable_events(
 
 /** @} */
 
+#ifdef FEATURE_RTC_GENERAL_PURPOSE_REG
+/**
+ * \name RTC General Purpose Registers
+ * @{
+ */
+
+/**
+ * \brief Write a value into general purpose register.
+ *
+ * \param[in] module  Pointer to the software instance struct
+ * \param[in] n  General purpose type
+ * \param[in] index General purpose register index (0..3)
+ *
+ */
+static inline void rtc_write_general_purpose_reg(
+	struct rtc_module *const module,
+	const  uint8_t index,
+	uint32_t value)
+{
+	/* Sanity check arguments */
+	Assert(module);
+	Assert(module->hw);
+	Assert(index <= 3);
+
+	Rtc *const rtc_module = module->hw;
+
+	rtc_module->MODE0.GP[index].reg = value;
+}
+
+/**
+ * \brief Read the value from general purpose register.
+ *
+ * \param[in] module  Pointer to the software instance struct
+ * \param[in] index General purpose register index (0..3)
+ *
+ * \retval Value of general purpose register
+ */
+static inline uint32_t rtc_read_general_purpose_reg(
+	struct rtc_module *const module,
+	const  uint8_t index)
+{
+	/* Sanity check arguments */
+	Assert(module);
+	Assert(module->hw);
+	Assert(index <= 3);
+
+	Rtc *const rtc_module = module->hw;
+
+	return rtc_module->MODE0.GP[index].reg;
+}
+
+/** @} */
+#endif
+
 /** @} */
 
 #ifdef __cplusplus
@@ -864,10 +1129,13 @@ static inline void rtc_count_disable_events(
  *		<th>Changelog</th>
  *	</tr>
  *	<tr>
+ *		<td>Added support for SAML21</td>
+ *	</tr>
+ *	<tr>
  *		<td>
- *                     Added support for SAMD21 and added driver instance parameter to all 
- *                     API function calls, except get_config_defaults
- *             </td>
+ *          Added support for SAMD21 and added driver instance parameter to all
+ *          API function calls, except get_config_defaults
+ *      </td>
  *	</tr>
  *	<tr>
  *		<td>Updated initialization function to also enable the digital interface
@@ -902,8 +1170,13 @@ static inline void rtc_count_disable_events(
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
+ *		<td>E</td>
+ *		<td>11/2014</td>
+ *		<td>Added support for SAML21.</td>
+ *	</tr>
+ *	<tr>
  *		<td>D</td>
- *		<td>05/2014</td>
+ *		<td>12/2014</td>
  *		<td>Added support for SAMR21 and SAMD10/D11.</td>
  *	</tr>
  *	<tr>

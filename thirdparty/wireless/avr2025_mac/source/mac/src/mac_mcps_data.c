@@ -42,12 +42,15 @@
  */
 
 /*
- * Copyright (c) 2013, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 
 /* === Includes ============================================================ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include <compiler.h>
 #include <string.h>
 #include <stdint.h>
@@ -513,7 +516,7 @@ void mac_process_data_frame(buffer_t *buf_ptr)
 			/*
 			 * Even if the Source address mode is zero, and the
 			 * source address
-			 * informationis ís not present, the values are cleared
+			 * informationis éŸ˜ not present, the values are cleared
 			 * to prevent
 			 * the providing of trash information.
 			 */
@@ -576,7 +579,7 @@ void mac_process_data_frame(buffer_t *buf_ptr)
 				/*
 				 * Even if the Destination address mode is zero,
 				 * and the destination
-				 * address information is ís not present, the
+				 * address information is éŸ˜ not present, the
 				 * values are cleared to
 				 * prevent the providing of trash information.
 				 * The Desintation address was already cleared

@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef TC_H_INCLUDED
 #define TC_H_INCLUDED
@@ -47,7 +50,7 @@
 /**
  * \defgroup asfdoc_sam0_tc_group SAM Timer/Counter Driver (TC)
  *
- * This driver for Atmel® | SMART™ SAM devices provides an interface for the configuration
+ * This driver for Atmel庐 | SMART SAM devices provides an interface for the configuration
  * and management of the timer modules within the device, for waveform
  * generation and timing operations. The following driver API modes are covered
  * by this manual:
@@ -62,9 +65,10 @@
  *  - TC (Timer/Counter)
  *
  * The following devices can use this module:
- *  - Atmel® | SMART™ SAM D20/D21
- *  - Atmel® | SMART™ SAM R21
- *  - Atmel® | SMART™ SAM D10/D11
+ *  - Atmel | SMART SAM D20/D21
+ *  - Atmel | SMART SAM R21
+ *  - Atmel | SMART SAM D10/D11
+ *  - Atmel | SMART SAM L21
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_tc_prerequisites
@@ -103,6 +107,36 @@
  * \image html overview.svg "Basic Overview of the TC Module"
  *
  *
+ * \subsection asfdoc_sam0_tc_features Driver Feature Macro Definition
+ * <table>
+ *  <tr>
+ *    <th>Driver Feature Macro</th>
+ *    <th>Supported devices</th>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_TC_DOUBLE_BUFFERED</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_TC_SYNCBUSY_SCHEME_VERSION_2</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_TC_STAMP_PW_CAPTURE</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_TC_READ_SYNC</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_TC_IO_CAPTURE</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ * </table>
+ * \note The specific features are only available in the driver when the
+ * selected device supports those features.
+ *
  * \subsection asfdoc_sam0_tc_module_overview_func_desc Functional Description
  * Independent of the configured counter size, each TC module can be set up
  * in one of two different modes; capture and compare.
@@ -126,7 +160,7 @@
  *
  * \subsection asfdoc_sam0_tc_module_overview_tc_size Timer/Counter Size
  * Each timer module can be configured in one of three different counter
- * sizes; 8-, 16-, and 32-bits. The size of the counter determines the maximum
+ * sizes; 8-, 16-, and 32-bit. The size of the counter determines the maximum
  * value it can count to before an overflow occurs and the count is reset back
  * to zero. \ref asfdoc_sam0_tc_count_size_vs_top "The table below" shows the
  * maximum values for each of the possible counter sizes.
@@ -420,8 +454,26 @@
 #include <gclk.h>
 #include <pinmux.h>
 
+/**
+ * Define port features set according to different device family
+ * @{
+*/
+#if (SAML21) || defined(__DOXYGEN__)
+/** TC double buffered */
+#  define FEATURE_TC_DOUBLE_BUFFERED
+/** SYNCBUSY scheme version 2 */
+#  define FEATURE_TC_SYNCBUSY_SCHEME_VERSION_2
+/** TC time stamp capture and pulse width capture */
+#  define FEATURE_TC_STAMP_PW_CAPTURE
+/** Read synchronization of COUNT*/
+#  define FEATURE_TC_READ_SYNC
+/** IO pin edge capture*/
+#  define FEATURE_TC_IO_CAPTURE
+#endif
+/*@}*/
+
 #if !defined(__DOXYGEN__)
-#if SAMD20
+#if SAMD20 || SAML21
 #  define TC_INSTANCE_OFFSET 0
 #endif
 #if SAMD21 || SAMR21
@@ -433,6 +485,8 @@
 
 #if SAMD20
 #  define NUMBER_OF_COMPARE_CAPTURE_CHANNELS TC0_CC8_NUM
+#elif SAML21
+#  define NUMBER_OF_COMPARE_CAPTURE_CHANNELS TC0_CC_NUM
 #elif SAMD10 || SAMD11
 #  define NUMBER_OF_COMPARE_CAPTURE_CHANNELS TC1_CC8_NUM
 #else
@@ -443,6 +497,8 @@
 /** TC Instance MAX ID Number. */
 #if SAMD20E || SAMD21G || SAMD21E || SAMR21
 #define TC_INST_MAX_ID  5
+#elif SAML21
+#define TC_INST_MAX_ID  4
 #elif SAMD10 || SAMD11
 #define TC_INST_MAX_ID  2
 #else
@@ -512,10 +568,18 @@ enum tc_callback {
  */
 #define TC_STATUS_COUNT_OVERFLOW     (1UL << 4)
 
+#ifdef FEATURE_TC_DOUBLE_BUFFERED
+/** Channel 0 compare or capture buffer valid. */
+#define TC_STATUS_CHN0_BUFFER_VALID     (1UL << 5)
+/** Channel 1 compare or capture buffer valid. */
+#define TC_STATUS_CHN1_BUFFER_VALID     (1UL << 6)
+/** Period buffer valid. */
+#define TC_STATUS_PERIOD_BUFFER_VALID     (1UL << 7)
+#endif
 /** @} */
 
 /**
- * \brief Index of the compare capture channels
+ * \brief Index of the compare capture channels.
  *
  * This enum is used to specify which capture/compare channel to do
  * operations on.
@@ -527,8 +591,21 @@ enum tc_compare_capture_channel {
 	TC_COMPARE_CAPTURE_CHANNEL_1,
 };
 
+/** TC wave generation mode. */
+#if SAML21
+#define TC_WAVE_GENERATION_NORMAL_FREQ_MODE TC_WAVE_WAVEGEN_NFRQ
+#define TC_WAVE_GENERATION_MATCH_FREQ_MODE  TC_WAVE_WAVEGEN_MFRQ
+#define TC_WAVE_GENERATION_NORMAL_PWM_MODE  TC_WAVE_WAVEGEN_NPWM
+#define TC_WAVE_GENERATION_MATCH_PWM_MODE   TC_WAVE_WAVEGEN_MPWM
+#else
+#define TC_WAVE_GENERATION_NORMAL_FREQ_MODE TC_CTRLA_WAVEGEN_NFRQ
+#define TC_WAVE_GENERATION_MATCH_FREQ_MODE  TC_CTRLA_WAVEGEN_MFRQ
+#define TC_WAVE_GENERATION_NORMAL_PWM_MODE  TC_CTRLA_WAVEGEN_NPWM
+#define TC_WAVE_GENERATION_MATCH_PWM_MODE   TC_CTRLA_WAVEGEN_MPWM
+#endif
+
 /**
- * \brief TC wave generation mode enum
+ * \brief TC wave generation mode enum.
  *
  * This enum is used to select which mode to run the wave
  * generation in.
@@ -538,26 +615,26 @@ enum tc_wave_generation {
 	/** Top is maximum, except in 8-bit counter size where it is the PER
 	 * register.
 	 */
-	TC_WAVE_GENERATION_NORMAL_FREQ      = TC_CTRLA_WAVEGEN_NFRQ,
+	TC_WAVE_GENERATION_NORMAL_FREQ      = TC_WAVE_GENERATION_NORMAL_FREQ_MODE,
 
 	/** Top is CC0, except in 8-bit counter size where it is the PER
 	 * register.
 	 */
-	TC_WAVE_GENERATION_MATCH_FREQ       = TC_CTRLA_WAVEGEN_MFRQ,
+	TC_WAVE_GENERATION_MATCH_FREQ       = TC_WAVE_GENERATION_MATCH_FREQ_MODE,
 
 	/** Top is maximum, except in 8-bit counter size where it is the PER
 	 * register.
 	 */
-	TC_WAVE_GENERATION_NORMAL_PWM       = TC_CTRLA_WAVEGEN_NPWM,
+	TC_WAVE_GENERATION_NORMAL_PWM       = TC_WAVE_GENERATION_NORMAL_PWM_MODE,
 
 	/** Top is CC0, except in 8-bit counter size where it is the PER
 	 * register.
 	 */
-	TC_WAVE_GENERATION_MATCH_PWM        = TC_CTRLA_WAVEGEN_MPWM,
+	TC_WAVE_GENERATION_MATCH_PWM        = TC_WAVE_GENERATION_MATCH_PWM_MODE,
 };
 
 /**
- * \brief Specifies if the counter is 8-, 16-, or 32-bits.
+ * \brief Specifies if the counter is 8-, 16-, or 32-bit.
  *
  * This enum specifies the maximum value it is possible to count to.
  */
@@ -583,7 +660,7 @@ enum tc_counter_size {
 };
 
 /**
- * \brief TC Counter reload action enum
+ * \brief TC Counter reload action enum.
  *
  * This enum specify how the counter and prescaler should reload.
  */
@@ -604,7 +681,7 @@ enum tc_reload_action {
 };
 
 /**
- * \brief TC clock prescaler values
+ * \brief TC clock prescaler values.
  *
  * This enum is used to choose the clock prescaler
  * configuration. The prescaler divides the clock frequency of the TC
@@ -642,6 +719,15 @@ enum tc_count_direction {
 	TC_COUNT_DIRECTION_DOWN,
 };
 
+/** Waveform inversion mode. */
+#if SAML21
+#define TC_WAVEFORM_INVERT_CC0_MODE  TC_DRVCTRL_INVEN(1)
+#define TC_WAVEFORM_INVERT_CC1_MODE  TC_DRVCTRL_INVEN(2)
+#else
+#define TC_WAVEFORM_INVERT_CC0_MODE  TC_CTRLC_INVEN(1)
+#define TC_WAVEFORM_INVERT_CC1_MODE  TC_CTRLC_INVEN(2)
+#endif
+
 /**
  * \brief Waveform inversion mode.
  *
@@ -651,9 +737,9 @@ enum tc_waveform_invert_output {
 	/** No inversion of the waveform output. */
 	TC_WAVEFORM_INVERT_OUTPUT_NONE      = 0,
 	/** Invert output from compare channel 0. */
-	TC_WAVEFORM_INVERT_OUTPUT_CHANNEL_0 = TC_CTRLC_INVEN(1),
+	TC_WAVEFORM_INVERT_OUTPUT_CHANNEL_0 = TC_WAVEFORM_INVERT_CC0_MODE,
 	/** Invert output from compare channel 1. */
-	TC_WAVEFORM_INVERT_OUTPUT_CHANNEL_1 = TC_CTRLC_INVEN(2),
+	TC_WAVEFORM_INVERT_OUTPUT_CHANNEL_1 = TC_WAVEFORM_INVERT_CC1_MODE,
 };
 
 /**
@@ -680,6 +766,12 @@ enum tc_event_action {
 	 *  register 1.
 	 */
 	TC_EVENT_ACTION_PWP                 = TC_EVCTRL_EVACT_PWP,
+#ifdef FEATURE_TC_STAMP_PW_CAPTURE
+	/** Time stamp capture. */
+	TC_EVENT_ACTION_STAMP               = TC_EVCTRL_EVACT_STAMP,
+	/** Pulse width capture. */
+	TC_EVENT_ACTION_PW                  = TC_EVCTRL_EVACT_PW,
+#endif
 };
 
 /**
@@ -760,6 +852,10 @@ struct tc_config {
 
 	/** When \c true the module is enabled during standby. */
 	bool run_in_standby;
+#if (SAML21)
+	/** Run on demand. */
+	bool on_demand;
+#endif
 	/** Specifies either 8-, 16-, or 32-bit counter size. */
 	enum tc_counter_size counter_size;
 	/** Specifies the prescaler value for GCLK_TC. */
@@ -772,13 +868,20 @@ struct tc_config {
 	 */
 	enum tc_reload_action reload_action;
 
-	/** Specifies which channel(s) to invert the waveform on. */
+	/** Specifies which channel(s) to invert the waveform on.
+		For SAML21, it's also used to invert IO input pin. */
 	uint8_t waveform_invert_output;
 
 	/** Specifies which channel(s) to enable channel capture
 	 *  operation on.
 	 */
 	bool enable_capture_on_channel[NUMBER_OF_COMPARE_CAPTURE_CHANNELS];
+#ifdef 	FEATURE_TC_IO_CAPTURE
+	/** Specifies which channel(s) to enable I/O capture
+	 *  operation on.
+	 */
+	bool enable_capture_on_IO[NUMBER_OF_COMPARE_CAPTURE_CHANNELS];
+#endif
 
 	/** When \c true, one-shot will stop the TC on next hardware or software
 	 *  re-trigger event or overflow/underflow.
@@ -800,13 +903,23 @@ struct tc_config {
 		/** Struct for 32-bit specific timer configuration. */
 		struct tc_32bit_config counter_32_bit;
 	};
+
+#ifdef FEATURE_TC_DOUBLE_BUFFERED
+	/** Set to \c true to enable double buffering write. When enabled any write
+	 *  through \ref tc_set_top_value(), \ref tc_set_compare_value() and
+	 *  will direct to the buffer register as buffered
+	 *  value, and the buffered value will be committed to effective register
+	 *  on UPDATE condition, if update is not locked.
+	 */
+	bool double_buffering_enabled;
+#endif
 };
 
 #if TC_ASYNC == true
-/* Forward Declaration for the device instance */
+/* Forward Declaration for the device instance. */
 struct tc_module;
 
-/* Type of the callback functions */
+/* Type of the callback functions. */
 typedef void (*tc_callback_t)(struct tc_module *const module);
 #endif
 
@@ -834,6 +947,10 @@ struct tc_module {
 	/** Bit mask for callbacks enabled. */
 	uint8_t enable_callback_mask;
 #  endif
+#ifdef FEATURE_TC_DOUBLE_BUFFERED
+	/** Set to \c true to enable double buffering write. */
+	bool double_buffering_enabled;
+#endif
 #endif
 };
 
@@ -861,8 +978,8 @@ uint8_t _tc_get_inst_index(
  *
  * \return Synchronization status of the underlying hardware module(s).
  *
- * \retval true if the module has completed synchronization
- * \retval false if the module synchronization is ongoing
+ * \retval false If the module has completed synchronization
+ * \retval true  If the module synchronization is ongoing
  */
 static inline bool tc_is_syncing(
 		const struct tc_module *const module_inst)
@@ -874,7 +991,11 @@ static inline bool tc_is_syncing(
 	/* Get a pointer to the module's hardware instance */
 	TcCount8 *const tc_module = &(module_inst->hw->COUNT8);
 
+#if (SAML21)
+	return (tc_module->SYNCBUSY.reg);
+#else
 	return (tc_module->STATUS.reg & TC_STATUS_SYNCBUSY);
+#endif
 }
 
 /**
@@ -892,8 +1013,10 @@ static inline bool tc_is_syncing(
  *  \li Normal frequency wave generation
  *  \li GCLK reload action
  *  \li Don't run in standby
+ *  \li Don't run on demand for SAML21
  *  \li No inversion of waveform output
  *  \li No capture enabled
+ *  \li No I/O capture enabled for SAML21
  *  \li No event input enabled
  *  \li Count upward
  *  \li Don't perform one-shot operations
@@ -905,6 +1028,7 @@ static inline bool tc_is_syncing(
  *  \li Capture compare channel 1 set to 0
  *  \li No PWM pin output enabled
  *  \li Pin and MUX configuration not set
+ *  \li Double buffer disabled (if have this feature)
  *
  * \param[out]  config  Pointer to a TC module configuration structure to set
  */
@@ -921,10 +1045,16 @@ static inline void tc_get_config_defaults(
 	config->wave_generation            = TC_WAVE_GENERATION_NORMAL_FREQ;
 	config->reload_action              = TC_RELOAD_ACTION_GCLK;
 	config->run_in_standby             = false;
-
+#if (SAML21)
+	config->on_demand                  = false;
+#endif
 	config->waveform_invert_output     = TC_WAVEFORM_INVERT_OUTPUT_NONE;
 	config->enable_capture_on_channel[TC_COMPARE_CAPTURE_CHANNEL_0] = false;
 	config->enable_capture_on_channel[TC_COMPARE_CAPTURE_CHANNEL_1] = false;
+#ifdef 	FEATURE_TC_IO_CAPTURE
+	config->enable_capture_on_IO[TC_COMPARE_CAPTURE_CHANNEL_0] = false;
+	config->enable_capture_on_IO[TC_COMPARE_CAPTURE_CHANNEL_1] = false;
+#endif
 
 	config->count_direction            = TC_COUNT_DIRECTION_UP;
 	config->oneshot                    = false;
@@ -942,6 +1072,10 @@ static inline void tc_get_config_defaults(
 		[TC_COMPARE_CAPTURE_CHANNEL_0]                        = 0x0000;
 	config->counter_16_bit.compare_capture_channel\
 		[TC_COMPARE_CAPTURE_CHANNEL_1]                        = 0x0000;
+#ifdef FEATURE_TC_DOUBLE_BUFFERED
+	config->double_buffering_enabled = false;
+#endif
+
 }
 
 enum status_code tc_init(
@@ -1193,6 +1327,86 @@ static inline void tc_start_counter(
 
 /** @} */
 
+#ifdef FEATURE_TC_DOUBLE_BUFFERED
+/**
+ * \name Double Buffering
+ * @{
+ */
+
+/**
+ * \brief Update double buffer.
+ *
+ * Update double buffer.
+ *
+ * \param[in]  module_inst   Pointer to the software module instance struct
+ */
+static inline void tc_update_double_buffer(
+		const struct tc_module *const module_inst)
+{
+	/* Sanity check arguments */
+	Assert(module_inst);
+	Assert(module_inst->hw);
+
+	/* Get a pointer to the module's hardware instance */
+	TcCount8 *const tc_module = &(module_inst->hw->COUNT8);
+
+	while (tc_is_syncing(module_inst)) {
+		/* Wait for sync */
+	}
+
+	/* Make certain that there are no conflicting commands in the register */
+	tc_module->CTRLBCLR.reg = TC_CTRLBCLR_CMD_NONE;
+
+	while (tc_is_syncing(module_inst)) {
+		/* Wait for sync */
+	}
+
+	/* Write command to execute */
+	tc_module->CTRLBSET.reg = TC_CTRLBSET_CMD(3);
+}
+/** @} */
+#endif
+
+#ifdef FEATURE_TC_READ_SYNC
+/**
+ * \name Count Read Synchronization
+ * @{
+ */
+
+/**
+ * \brief Read synchronization of COUNT.
+ *
+ * Read synchronization of COUNT.
+ *
+ * \param[in]  module_inst   Pointer to the software module instance struct
+ */
+static inline void tc_sync_read_count(
+		const struct tc_module *const module_inst)
+{
+	/* Sanity check arguments */
+	Assert(module_inst);
+	Assert(module_inst->hw);
+
+	/* Get a pointer to the module's hardware instance */
+	TcCount8 *const tc_module = &(module_inst->hw->COUNT8);
+
+	while (tc_is_syncing(module_inst)) {
+		/* Wait for sync */
+	}
+
+	/* Make certain that there are no conflicting commands in the register */
+	tc_module->CTRLBCLR.reg = TC_CTRLBCLR_CMD_NONE;
+
+	while (tc_is_syncing(module_inst)) {
+		/* Wait for sync */
+	}
+
+	/* Write command to execute */
+	tc_module->CTRLBSET.reg = TC_CTRLBSET_CMD(4);
+}
+/** @} */
+#endif
+
 /**
  * \name Get Capture Set Compare
  * @{
@@ -1239,6 +1453,9 @@ enum status_code tc_set_top_value(
  * \retval TC_STATUS_SYNC_READY        Timer read synchronization has completed
  * \retval TC_STATUS_CAPTURE_OVERFLOW  Timer capture data has overflowed
  * \retval TC_STATUS_COUNT_OVERFLOW    Timer count value has overflowed
+ * \retval TC_STATUS_CHN0_BUFFER_VALID Timer count channel 0 compare/capture buffer valid
+ * \retval TC_STATUS_CHN1_BUFFER_VALID Timer count channel 1 compare/capture buffer valid
+ * \retval TC_STATUS_PERIOD_BUFFER_VALID Timer count period buffer valid
  */
 static inline uint32_t tc_get_status(
 		struct tc_module *const module_inst)
@@ -1264,10 +1481,12 @@ static inline uint32_t tc_get_status(
 		status_flags |= TC_STATUS_CHANNEL_1_MATCH;
 	}
 
+#if !defined(FEATURE_TC_SYNCBUSY_SCHEME_VERSION_2)
 	/* Check for TC read synchronization ready */
 	if (int_flags & TC_INTFLAG_SYNCRDY) {
 		status_flags |= TC_STATUS_SYNC_READY;
 	}
+#endif
 
 	/* Check for TC capture overflow */
 	if (int_flags & TC_INTFLAG_ERR) {
@@ -1278,6 +1497,22 @@ static inline uint32_t tc_get_status(
 	if (int_flags & TC_INTFLAG_OVF) {
 		status_flags |= TC_STATUS_COUNT_OVERFLOW;
 	}
+#ifdef FEATURE_TC_DOUBLE_BUFFERED
+	uint8_t double_buffer_valid_status = tc_module->STATUS.reg;
+
+	/* Check channel 0 compare or capture buffer valid */
+	if (double_buffer_valid_status & TC_STATUS_CCBUFV0) {
+		status_flags |= TC_STATUS_CHN0_BUFFER_VALID;
+	}
+	/* Check channel 0 compare or capture buffer valid */
+	if (double_buffer_valid_status & TC_STATUS_CCBUFV1) {
+		status_flags |= TC_STATUS_CHN1_BUFFER_VALID;
+	}
+	/* Check period buffer valid */
+	if (double_buffer_valid_status & TC_STATUS_PERBUFV) {
+		status_flags |= TC_STATUS_PERIOD_BUFFER_VALID;
+	}
+#endif
 
 	return status_flags;
 }
@@ -1313,10 +1548,12 @@ static inline void tc_clear_status(
 		int_flags |= TC_INTFLAG_MC(2);
 	}
 
+#if !defined(FEATURE_TC_SYNCBUSY_SCHEME_VERSION_2)
 	/* Check for TC read synchronization ready */
 	if (status_flags & TC_STATUS_SYNC_READY) {
 		int_flags |= TC_INTFLAG_SYNCRDY;
 	}
+#endif
 
 	/* Check for TC capture overflow */
 	if (status_flags & TC_STATUS_CAPTURE_OVERFLOW) {
@@ -1395,6 +1632,9 @@ static inline void tc_clear_status(
  *		<th>Changelog</th>
  *	</tr>
  *  <tr>
+ *    <td>Added support for SAML21</td>
+ *  </tr>
+ *  <tr>
  *    <td>Added support for SAMD10/D11</td>
  *  </tr>
  *  <tr>
@@ -1442,8 +1682,13 @@ static inline void tc_clear_status(
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
+ *		<td>E</td>
+ *		<td>11/2014</td>
+ *		<td>Added support for SAML21.</td>
+ *	</tr>
+ *	<tr>
  *		<td>D</td>
- *		<td>05/2014</td>
+ *		<td>12/2014</td>
  *		<td>Added timer use case.
  *		    Added support for SAMR21 and SAMD10/D11.</td>
  *	</tr>

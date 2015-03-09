@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.uhp.ohci" caption="OHCI - Open Host Controller Interface Specification for USB">
+		<info type="description" value="summary">
+		OHCI driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" value="ohci.h"/>
+		<build type="header-file" value="ohci_hcd.h"/>
+		<build type="c-source" value="ohci_hcd.c"/>
+		<require idref="common.services.delay"/>
+		<device-support value="samg55"/>
+	</module>
+</asf>

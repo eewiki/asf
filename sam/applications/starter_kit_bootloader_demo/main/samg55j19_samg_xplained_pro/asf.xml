@@ -1,0 +1,33 @@
+<asf xmlversion="1.0">
+	<project caption="Main Application for Starter Kit Bootloader Demo for SAMG55-Xplained-Pro" id="sam.applications.starter_kit_bootloader_demo.main.samg55_xplained_pro">
+		<info type="description" value="summary">
+			This demo for the SAMG55 Xplained Pro features the following extensions: IO1, OLED1.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_sd_mmc.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<config name="config.common.components.memory.sd_mmc" value="spi"/>
+		<config name="config.common.components.memory.sd_mmc.ctrl_access" value="enable"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<require idref="sam.applications.starter_kit_bootloader_demo.main"/>
+		<require idref="board.samg55_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<build type="linker-config" subtype="script" value="linker_scripts/gcc/flash.ld" toolchain="armgcc"/>
+		<build type="linker-config" subtype="script" value="linker_scripts/iar/flash.icf" toolchain="iarewarm"/>
+		<device-support value="atsamg55j19"/>
+	</project>
+</asf>

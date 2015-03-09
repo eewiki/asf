@@ -11,6 +11,7 @@
 		<build type="header-file" value="eic.h"/>
 		<build type="header-file" value="evsys.h"/>
 		<build type="header-file" value="gclk.h"/>
+		<build type="header-file" value="hmatrixb.h"/>
 		<build type="header-file" value="i2s.h"/>
 		<build type="header-file" value="mtb.h"/>
 		<build type="header-file" value="nvmctrl.h"/>

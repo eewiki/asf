@@ -30,6 +30,7 @@
 			<device-support value="sam4s"/>
 			<device-support value="sam4l"/>
 			<device-support value="sam4e"/>
+			<device-support value="samg55"/>
 			<require idref="common.services.basic.clock"/>
 			<require idref="common.services.basic.sleepmgr"/>
 			<require idref="common.services.usb.class.device"/>
@@ -51,6 +52,7 @@
 			<device-support value="samd21"/>
 			<device-support value="samr21"/>
 			<device-support value="samd11"/>
+			<device-support value="saml21"/>
 			<require idref="common.services.usb.class.device"/>
 			<require idref="common.services.basic.sleepmgr"/>
 			<info type="keyword" value="technology">

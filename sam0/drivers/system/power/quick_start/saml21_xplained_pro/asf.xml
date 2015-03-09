@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Quick Start for the SAM L21 SYSTEM Power Driver" id="sam0.drivers.system.power.quick_start.saml21_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<require idref="board.saml21_xplained_pro"/>
+		<require idref="sam0.drivers.system.power.quick_start"/>
+		<config name="config.common2.services.delay" value="cycle"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsaml21j18a"/>
+	</project>
+</asf>

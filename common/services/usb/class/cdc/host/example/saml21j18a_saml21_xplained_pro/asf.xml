@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="USB Host CDC for SAM L21 Xplained Pro" id="common.services.usb.class.cdc.host.example.saml21_xplained_pro">
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.usb.class.cdc.host.example"/>
+		<config name="config.common.services.usb.class.host" value="cdc"/>
+		<require idref="board.saml21_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x800"/>
+		<device-support value="atsaml21j18a"/>
+	</project>
+</asf>

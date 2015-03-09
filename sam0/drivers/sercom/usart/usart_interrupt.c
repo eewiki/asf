@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "usart_interrupt.h"
 
@@ -188,11 +191,12 @@ void usart_unregister_callback(
  */
 enum status_code usart_write_job(
 		struct usart_module *const module,
-		const uint16_t tx_data)
+		const uint16_t *tx_data)
 {
 	/* Sanity check arguments */
 	Assert(module);
-	Assert(module->hw);
+	Assert(tx_data);
+
 	/* Check if the USART transmitter is busy */
 	if (module->remaining_tx_buffer_length > 0) {
 		return STATUS_BUSY;
@@ -204,7 +208,7 @@ enum status_code usart_write_job(
 	}
 
 	/* Call internal write buffer function with length 1 */
-	_usart_write_buffer(module, (uint8_t *)&tx_data, 1);
+	_usart_write_buffer(module, (uint8_t *)tx_data, 1);
 
 	return STATUS_OK;
 }
@@ -229,6 +233,7 @@ enum status_code usart_read_job(
 {
 	/* Sanity check arguments */
 	Assert(module);
+	Assert(rx_data);
 
 	/* Check if the USART receiver is busy */
 	if (module->remaining_rx_buffer_length > 0) {
@@ -251,6 +256,15 @@ enum status_code usart_read_job(
  * \param[in]  tx_data  Pointer do data buffer to transmit
  * \param[in]  length   Length of the data to transmit
  *
+ * \note if using 9-bit data, the array that *tx_data point to should be defined 
+ *       as uint16_t array and should be casted to uint8_t* pointer. Because it 
+ *       is an address pointer, the highest byte is not discarded. For example:
+ *   \code
+          #define TX_LEN 3
+          uint16_t tx_buf[TX_LEN] = {0x0111, 0x0022, 0x0133};
+          usart_write_buffer_job(&module, (uint8_t*)tx_buf, TX_LEN);
+    \endcode
+ *
  * \returns Status of the operation.
  * \retval STATUS_OK              If operation was completed successfully.
  * \retval STATUS_BUSY            If operation was not completed, due to the
@@ -266,6 +280,7 @@ enum status_code usart_write_buffer_job(
 {
 	/* Sanity check arguments */
 	Assert(module);
+	Assert(tx_data);
 
 	if (length == 0) {
 		return STATUS_ERR_INVALID_ARG;
@@ -296,6 +311,15 @@ enum status_code usart_write_buffer_job(
  * \param[in]  module   Pointer to USART software instance struct
  * \param[out] rx_data  Pointer to data buffer to receive
  * \param[in]  length   Data buffer length
+ *
+ * \note if using 9-bit data, the array that *rx_data point to should be defined
+ *       as uint16_t array and should be casted to uint8_t* pointer. Because it 
+ *       is an address pointer, the highest byte is not discarded. For example:
+ *   \code
+           #define RX_LEN 3
+           uint16_t rx_buf[RX_LEN] = {0x0,};
+           usart_read_buffer_job(&module, (uint8_t*)rx_buf, RX_LEN);
+    \endcode
  *
  * \returns Status of the operation.
  * \retval STATUS_OK              If operation was completed
@@ -391,12 +415,12 @@ void usart_abort_job(
  * \retval STATUS_BUSY             A transfer is ongoing
  * \retval STATUS_ERR_BAD_DATA     The last operation was aborted due to a
  *                                 parity error. The transfer could be affected
- *                                 by external noise.
+ *                                 by external noise
  * \retval STATUS_ERR_BAD_FORMAT   The last operation was aborted due to a
- *                                 frame error.
+ *                                 frame error
  * \retval STATUS_ERR_OVERFLOW     The last operation was aborted due to a
- *                                 buffer overflow.
- * \retval STATUS_ERR_INVALID_ARG  An invalid transceiver enum given.
+ *                                 buffer overflow
+ * \retval STATUS_ERR_INVALID_ARG  An invalid transceiver enum given
  */
 enum status_code usart_get_job_status(
 		struct usart_module *const module,

@@ -93,6 +93,9 @@
  */
 
 /* === INCLUDES ============================================================ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <ctype.h>
 #include "conf_board.h"

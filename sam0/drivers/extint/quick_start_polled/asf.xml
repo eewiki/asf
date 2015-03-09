@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.extint.quick_start_polled" caption="Quick Start for the SAM D20/D21/R21 EXTINT Driver (Polled)">
+	<module type="application" id="sam0.drivers.extint.quick_start_polled" caption="Quick Start for the SAM D20/D21/R21/L21 EXTINT Driver (Polled)">
 		<info type="description" value="summary">
 		Quick start guide for the EXTINT driver demonstrating configuration and initialization in polled mode.
 		</info>
@@ -10,5 +10,6 @@
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="saml21"/>
 	</module>
 </asf>

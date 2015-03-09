@@ -50,6 +50,9 @@
  *
  * $Id: magic.h,v 1.3 2010/01/18 20:49:43 goldsimon Exp $
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef MAGIC_H
 #define MAGIC_H

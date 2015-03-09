@@ -28,6 +28,9 @@
  *
  *  http://csrc.nist.gov/publications/fips/fips46-3/fips46-3.pdf
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "polarssl/config.h"
 

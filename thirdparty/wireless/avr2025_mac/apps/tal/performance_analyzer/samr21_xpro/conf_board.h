@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_BOARD_H_INCLUDED
 #define CONF_BOARD_H_INCLUDED
@@ -48,6 +51,6 @@
 
 #define MCU_SOC_NAME        "ATSAMR21G18A"
 
-#define AT86RFX_SPI_BAUDRATE             5000000UL
+
 
 #endif /* CONF_BOARD_H_INCLUDED */

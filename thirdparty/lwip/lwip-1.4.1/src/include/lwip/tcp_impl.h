@@ -29,6 +29,9 @@
  * Author: Adam Dunkels <adam@sics.se>
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef __LWIP_TCP_IMPL_H__
 #define __LWIP_TCP_IMPL_H__
 

@@ -42,7 +42,7 @@
  */
 
 /*
- * Copyright (c) 2013, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
@@ -56,11 +56,11 @@
  * The Two Processor approach basically consists of two devices Host and
  * NCP(Network Co-Processor).The MAC Stack runs on the NCP
  * and the MAC application runs on the Host.The api-parser module is used by the
- * host which will convert the mac api’s to necessary command bytes stream (\ref
+ * host which will convert the mac api鈥檚 to necessary command bytes stream (\ref
  * group_mac_api_encoder)
  * and    send it  to the NCP. The NCP board will contain the image of serial-if
  * application (MAC Core Stack) and this will receive  necessary command bytes
- * encode it  to api’s  and
+ * encode it  to api鈥檚  and
  * process it and send back command bytes as response which will be decoded  in
  * the host by the api-parser  module(\ref group_mac_api_decoder).
  */
@@ -73,6 +73,9 @@
  * running in same processor or on NCP.This
  * module is used for \ref twopapp .
  * @{
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include "return_val.h"

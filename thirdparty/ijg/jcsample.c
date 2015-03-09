@@ -44,6 +44,9 @@
  * where SF = (smoothing_factor / 1024).
  * Currently, smoothing is only supported for 2h2v sampling factors.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef WDT_CALLBACK_H_INCLUDED
 #define WDT_CALLBACK_H_INCLUDED
 
@@ -56,7 +59,7 @@ extern "C" {
  * @{
  */
 
-/** \name Callback configuration and initialization
+/** \name Callback Configuration and Initialization
  * @{
  */
 

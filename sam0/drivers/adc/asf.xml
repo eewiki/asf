@@ -3,7 +3,7 @@
 		<info type="description" value="summary">
 			Driver for the SAM Analog to Digital Converter. Provides a unified
 			interface for the configuration and management of the ADC module,
-			including the channel input selections, windowd detections, channel
+			including the channel input selections, window monitor, channel
 			conversions and event generation.
 		</info>
 
@@ -12,30 +12,82 @@
 				<keyword value="Analog Conversion"/>
 			</info>
 
-			<build type="c-source" value="adc.c"/>
 			<build type="header-file" subtype="api" value="adc.h"/>
 			<build type="include-path" value="."/>
-
-			<build type="header-file" value="quick_start/qs_adc_basic.h"/>
-			<build type="header-file" value="quick_start_dma/qs_adc_dma_use.h"/>
-
-			<build type="doxygen-example-path" value ="quick_start"/>
-			<build type="doxygen-example-path" value="quick_start_dma"/>
-			<build type="doxygen-entry-point" value="asfdoc_sam0_adc_group"/>
-			<build type="doxygen-quick-start" value="asfdoc_sam0_adc_exqsg"/>
-
 			<build type="define" name="ADC_CALLBACK_MODE" value="false"/>
-
+			<build type="doxygen-entry-point" value="asfdoc_sam0_adc_group"/>
 			<device-support value="sam0"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
-
-			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+			<require idref="sam0.drivers.adc.polled"/>
 		</module>
 
 		<module type="driver" id="sam0.drivers.adc#callback" caption="ADC - Analog-to-Digital Converter (Callback APIs)">
 			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>
+			<build type="header-file" subtype="api" value="adc.h"/>
+			<build type="header-file" subtype="api" value="adc_callback.h"/>
+
+			<build type="include-path" value="."/>
+			<build type="define" name="ADC_CALLBACK_MODE" value="true"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_adc_group"/>
+			<device-support value="sam0"/>
+
+			<require idref="sam0.utils"/>
+			<require idref="sam0.drivers.system"/>
+			<require idref="sam0.drivers.adc.callback"/>
+		</module>
+	</select-by-config>
+	<select-by-device id="sam0.drivers.adc.polled" caption="ADC - Analog-to-Digital Converter">
+		<module type="meta" id="sam0.drivers.adc.polled#sam_d_r" caption="ADC - Analog-to-Digital Converter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="adc_sam_d_r"/>
+			<build type="c-source" value="adc_sam_d_r/adc.c"/>
+			<build type="header-file" value="adc_sam_d_r/adc_feature.h"/>
+
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
+		</module>
+		<module type="meta" id="sam0.drivers.adc.polled#sam_l" caption="ADC - Analog-to-Digital Converter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="adc_sam_l"/>
+			<build type="c-source" value="adc_sam_l/adc.c"/>
+			<build type="header-file" value="adc_sam_l/adc_feature.h"/>
+
+			<device-support value="saml21"/>
+		</module>
+	</select-by-device>
+	<select-by-device id="sam0.drivers.adc.callback" caption="ADC - Analog-to-Digital Converter">
+		<module type="meta" id="sam0.drivers.adc.callback#sam_d_r" caption="ADC - Analog-to-Digital Converter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="adc_sam_d_r"/>
+			<build type="c-source" value="adc_sam_d_r/adc.c"/>
+			<build type="c-source" value="adc_sam_d_r/adc_callback.c"/>
+			<build type="header-file" value="adc_sam_d_r/adc_feature.h"/>
+
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
+		</module>
+		<module type="meta" id="sam0.drivers.adc.callback#sam_l" caption="ADC - Analog-to-Digital Converter">
+			<build type="include-path" value="." />
+			<build type="include-path" value="adc_sam_l"/>
+			<build type="c-source" value="adc_sam_l/adc.c"/>
+			<build type="c-source" value="adc_sam_l/adc_callback.c"/>
+			<build type="header-file" value="adc_sam_l/adc_feature.h"/>
+
+			<device-support value="saml21"/>
+		</module>
+	</select-by-device>
+	<module type="meta" id="sam0.drivers.adc.appnote_sam_d_r" caption="ADC - Analog-to-Digital Converter">
+		<info type="keyword" value="technology">
 				<keyword value="Analog Conversion"/>
 			</info>
 
@@ -53,12 +105,13 @@
 				peripheral itself.
 			</info>
 
-			<build type="c-source" value="adc_callback.c"/>
-			<build type="c-source" value="adc.c"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="adc_sam_d_r"/>
+			<build type="c-source" value="adc_sam_d_r/adc_callback.c"/>
+			<build type="c-source" value="adc_sam_d_r/adc.c"/>
 			<build type="header-file" subtype="api" value="adc.h"/>
 			<build type="header-file" subtype="api" value="adc_callback.h"/>
-
-			<build type="include-path" value="."/>
+			<build type="header-file" value="adc_sam_d_r/adc_feature.h"/>
 
 			<build type="header-file" value="quick_start/qs_adc_basic.h"/>
 			<build type="header-file" value="quick_start_callback/qs_adc_callback.h"/>
@@ -73,12 +126,63 @@
 			<build type="define" name="ADC_CALLBACK_MODE" value="true"/>
 			<build type="doxygen-enable-section" value="ADC_CALLBACK_MODE"/>
 
-			<device-support value="sam0"/>
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
 
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
 
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
-		</module>
-	</select-by-config>
+	</module>
+	<module type="meta" id="sam0.drivers.adc.appnote_sam_l" caption="ADC - Analog-to-Digital Converter">
+		<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>
+
+			<info type="appnote" value="AT11380"/>
+			<info type="keyword" value="pdf">
+				<keyword value="ADC"/>
+				<keyword value="I/O"/>
+				<keyword value="Analog to Digital Converter"/>
+				<keyword value="Analog Conversion"/>
+			</info>
+
+			<info type="description" value="pdf">
+				This document describes how to use the Analog-to-Digital
+				Converter on the SAM, both the ASF driver and the
+				peripheral itself.
+			</info>
+
+			<build type="include-path" value="."/>
+			<build type="include-path" value="adc_sam_l"/>
+			<build type="c-source" value="adc_sam_l/adc_callback.c"/>
+			<build type="c-source" value="adc_sam_l/adc.c"/>
+			<build type="header-file" subtype="api" value="adc.h"/>
+			<build type="header-file" subtype="api" value="adc_callback.h"/>
+			<build type="header-file" value="adc_sam_l/adc_feature.h"/>
+
+			<build type="header-file" value="quick_start/qs_adc_basic.h"/>
+			<build type="header-file" value="quick_start_callback/qs_adc_callback.h"/>
+			<build type="header-file" value="quick_start_dma/qs_adc_dma_use.h"/>
+
+			<build type="doxygen-example-path" value="quick_start_callback"/>
+			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-example-path" value="quick_start_dma"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_adc_group"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_adc_exqsg"/>
+
+			<build type="define" name="ADC_CALLBACK_MODE" value="true"/>
+			<build type="doxygen-enable-section" value="ADC_CALLBACK_MODE"/>
+			<build type="doxygen-enable-section" value="DEVICE_SAML21_SUPPORT"/>
+
+			<device-support value="saml21"/>
+
+			<require idref="sam0.utils"/>
+			<require idref="sam0.drivers.system"/>
+
+			<generator value="doxygen-module-v2" default-mcu="unspecified-saml21"/>
+	</module>
 </asf>

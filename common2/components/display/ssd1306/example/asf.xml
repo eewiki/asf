@@ -4,11 +4,7 @@
 		A simple example for verifying that the SSD1306 low level driver works.
 		</info>
 		<build type="c-source" value="ssd1306_example.c"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
-		<device-support value="samr21"/>
-		<device-support value="samd10"/>
-		<device-support value="samd11"/>		
+		<device-support value="sam0"/>
 		<require idref="common2.components.display.ssd1306"/>
 		<require idref="sam0.drivers.system"/>
 	</module>

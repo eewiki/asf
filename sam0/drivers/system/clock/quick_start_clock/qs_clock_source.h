@@ -127,3 +127,6 @@
  *    clock generator.
  *    \snippet qs_clock_source.c set_sys_clk_src
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

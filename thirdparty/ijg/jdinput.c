@@ -10,6 +10,9 @@
  * processing (marker reading and coefficient decoding).  The actual input
  * reading is done in jdmarker.c, jdhuff.c, and jdphuff.c.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

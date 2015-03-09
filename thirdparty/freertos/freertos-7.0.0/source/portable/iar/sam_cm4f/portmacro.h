@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -106,6 +106,9 @@
     provide a safety engineered and independently SIL3 certified version under 
     the SafeRTOS brand: http://www.SafeRTOS.com.
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef PORTMACRO_H
 #define PORTMACRO_H

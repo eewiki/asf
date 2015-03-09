@@ -82,6 +82,29 @@
 			<device-support value="samg54"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
 		</module>
+		<module type="service" id="common.services.basic.serial#3" caption="USART - Serial interface - SAM implementation for devices with only USART">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<info type="description" value="summary">
+			Common API which abstracts the user from directly accessing the register and provides a generic serial interface using USART.
+			</info>
+			<build type="c-source" value="usart_serial.c"/>
+			<build type="header-file" subtype="api" value="serial.h"/>
+			<build type="header-file" value="sam_uart/uart_serial.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="sam_uart"/>
+			<build type="module-config" subtype="path" value="sam_uart/module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_uart_serial.h"/>
+			<build type="doxygen-entry-point" value="serial_group"/>
+			<build type="doxygen-quick-start" value="serial_quickstart"/>
+			<require idref="sam.utils"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.drivers.flexcom"/>
+			<require idref="sam.drivers.usart"/>
+			<device-support value="samg55"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samg55"/>
+		</module>
 		<module type="service" id="common.services.basic.serial#4" caption="USART - Serial interface- SAM implementation for devices with only USART">
 			<info type="keyword" value="technology">
 				<keyword value="Communication"/>

@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef FREERTOS_UART_SERIAL_INCLUDED
 #define FREERTOS_UART_SERIAL_INCLUDED
 
@@ -410,7 +413,7 @@ uint32_t freertos_uart_serial_read_packet(freertos_uart_if p_uart,
 	     // freertos_uart_write_packet() does not return until transmission of
 	     // the string has completed (other FreeRTOS task will execute while the
 	     // transmission is in progress), meaning the function can exit even
-	     // though the buffer being transmitted is declared on the function’s
+	     // though the buffer being transmitted is declared on the function鈥檚
 	     // stack because it is guaranteed that nothing is still using the data
 	     // the buffer contains.
 	     return result;

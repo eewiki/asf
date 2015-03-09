@@ -28,6 +28,7 @@
 		<build type="include-path" value="system_interrupt_samd21"/>
 		<build type="include-path" value="system_interrupt_samr21"/>
 		<build type="include-path" value="system_interrupt_samd10_d11"/>
+		<build type="include-path" value="system_interrupt_saml21"/>
 
 		<build type="c-source" value="system_interrupt.c"/>
 
@@ -36,7 +37,8 @@
 		<build type="header-file" value="system_interrupt_samd21/system_interrupt_features.h"/>
 		<build type="header-file" value="system_interrupt_samr21/system_interrupt_features.h"/>
 		<build type="header-file" value="system_interrupt_samd10_d11/system_interrupt_features.h"/>
-
+		<build type="header-file" value="system_interrupt_saml21/system_interrupt_features.h"/>
+		
 		<build type="header-file" value="quick_start/qs_system_interrupt.h"/>
 
 		<build type="doxygen-entry-point" value="asfdoc_sam0_system_interrupt_group"/>
@@ -45,6 +47,7 @@
 		<build type="doxygen-example-path" value="system_interrupt_samd21"/>
 		<build type="doxygen-example-path" value="system_interrupt_samr21"/>
 		<build type="doxygen-example-path" value="system_interrupt_samd10_d11"/>
+		<build type="doxygen-example-path" value="system_interrupt_saml21"/>
 		<build type="doxygen-quick-start" value="asfdoc_sam0_system_interrupt_exqsg"/>
 
 		<device-support value="sam0"/>
@@ -89,12 +92,6 @@
 				<build type="header-file" subtype="api" value="system_interrupt.h"/>
 				<build type="header-file" value="system_interrupt_samd20/system_interrupt_features.h"/>
 
-				<build type="header-file" value="quick_start/qs_system_interrupt.h"/>
-
-				<build type="doxygen-entry-point" value="asfdoc_sam0_system_interrupt_group"/>
-				<build type="doxygen-example-path" value="quick_start"/>
-				<build type="doxygen-quick-start" value="asfdoc_sam0_system_interrupt_exqsg"/>
-
 				<device-support value="samd20"/>
 
 				<require idref="sam0.utils"/>
@@ -133,12 +130,6 @@
 				<build type="header-file" subtype="api" value="system_interrupt.h"/>
 				<build type="header-file" value="system_interrupt_samd21/system_interrupt_features.h"/>
 
-				<build type="header-file" value="quick_start/qs_system_interrupt.h"/>
-
-				<build type="doxygen-entry-point" value="asfdoc_sam0_system_interrupt_group"/>
-				<build type="doxygen-example-path" value="quick_start"/>
-				<build type="doxygen-quick-start" value="asfdoc_sam0_system_interrupt_exqsg"/>
-
 				<device-support value="samd21"/>
 
 				<require idref="sam0.utils"/>
@@ -175,12 +166,6 @@
 
 				<build type="header-file" subtype="api" value="system_interrupt.h"/>
 				<build type="header-file" value="system_interrupt_samr21/system_interrupt_features.h"/>
-
-				<build type="header-file" value="quick_start/qs_system_interrupt.h"/>
-
-				<build type="doxygen-entry-point" value="asfdoc_sam0_system_interrupt_group"/>
-				<build type="doxygen-example-path" value="quick_start"/>
-				<build type="doxygen-quick-start" value="asfdoc_sam0_system_interrupt_exqsg"/>
 
 				<device-support value="samr21"/>
 
@@ -233,6 +218,30 @@
 				<build type="header-file" value="system_interrupt_samd10_d11/system_interrupt_features.h"/>
 
 				<device-support value="samd11"/>
+
+				<require idref="sam0.utils"/>
+				<require idref="thirdparty.cmsis"/>
+			</module>
+			<module type="driver" id="sam0.drivers.system.interrupt#saml21" caption="SYSTEM - Interrupt Driver For SAML21">
+				<info type="description" value="summary">
+					Driver for the SAM L21 Interrupt System. Provides a unified
+					interface for the configuration and management interrupts within
+					the device, including the enabling, disabling and entering, leaving
+					of critical sections.
+				</info>
+
+				<info type="keyword" value="technology">
+					<keyword value="Interrupt" />
+				</info>
+				<build type="include-path" value="." />
+				<build type="include-path" value="system_interrupt_saml21"/>
+
+				<build type="c-source" value="system_interrupt.c"/>
+
+				<build type="header-file" subtype="api" value="system_interrupt.h"/>
+				<build type="header-file" value="system_interrupt_saml21/system_interrupt_features.h"/>
+
+				<device-support value="saml21"/>
 
 				<require idref="sam0.utils"/>
 				<require idref="thirdparty.cmsis"/>

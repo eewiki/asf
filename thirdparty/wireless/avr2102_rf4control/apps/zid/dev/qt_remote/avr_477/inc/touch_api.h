@@ -53,6 +53,9 @@
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef TOUCH_API_H
 #define TOUCH_API_H

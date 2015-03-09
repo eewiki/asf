@@ -50,8 +50,8 @@
  * - 12-bit resolution
  * - Window monitor disabled
  * - No gain
- * - Positive input on ADC PIN 0
- * - Negative input on ADC PIN 1
+ * - Positive input on ADC PIN x (depend on default configuration)
+ * - Negative input to GND (single ended)
  * - Averaging disabled
  * - Oversampling disabled
  * - Right adjust data
@@ -114,4 +114,7 @@
  *  \snippet qs_adc_basic.c get_res
  *  -# Enter an infinite loop once the conversion is complete.
  *  \snippet qs_adc_basic.c inf_loop
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

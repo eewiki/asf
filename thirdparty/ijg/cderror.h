@@ -17,6 +17,9 @@
  * defining macro JMESSAGE.  To create a message string table, include it
  * again with a suitable JMESSAGE definition (see jerror.c for an example).
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef JMESSAGE
 #ifndef CDERROR_H
 #define CDERROR_H

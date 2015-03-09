@@ -96,6 +96,9 @@
  * \def CONF_TEST_PARITY
  * \brief Parity mode of UART
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 //! @}
 
 #include <asf.h>

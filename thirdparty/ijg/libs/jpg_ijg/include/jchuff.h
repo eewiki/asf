@@ -15,6 +15,9 @@
  * -16384 .. +16383 for 12-bit data.
  * Hence the magnitude should always fit in 10 or 14 bits respectively.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #if BITS_IN_JSAMPLE == 8
 #define MAX_COEF_BITS 10

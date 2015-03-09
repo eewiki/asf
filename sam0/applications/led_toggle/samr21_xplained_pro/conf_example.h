@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_TEST_H_INCLUDED
 #define CONF_TEST_H_INCLUDED
@@ -47,6 +50,6 @@
 /** If \true, the non-maskable pin is used to check when the
  *   button state changes, when \false the external pins is used.
  */
-#define   EXTINT_NMI               false
+#define   USE_EIC_NMI               false
 
 #endif /* CONF_TEST_H_INCLUDED */

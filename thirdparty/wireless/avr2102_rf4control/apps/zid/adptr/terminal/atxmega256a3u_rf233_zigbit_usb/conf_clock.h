@@ -39,6 +39,9 @@
  *
  * \asf_license_stop
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef CONF_CLOCK_H_INCLUDED
 #define CONF_CLOCK_H_INCLUDED
 /* //! Use the 32 MHz RC oscilaltor as PLL reference */

@@ -3,7 +3,7 @@
  *
  * \brief Digital-to-Analog Converter Controller (DACC) driver for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -39,6 +39,9 @@
  *
  * \asf_license_stop
  *
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include "dacc.h"
@@ -103,6 +106,10 @@ extern "C" {
 
 //! DACC Write Protect Key "DAC" in ASCII
 #define DACC_WP_KEY     (0x444143)
+
+#ifndef DACC_WPMR_WPKEY_PASSWD
+#  define DACC_WPMR_WPKEY_PASSWD DACC_WPMR_WPKEY(DACC_WP_KEY)
+#endif
 
 /**
  * \brief Reset DACC.
@@ -248,10 +255,10 @@ void dacc_write_conversion_data(Dacc *p_dacc, uint32_t ul_data)
 void dacc_set_writeprotect(Dacc *p_dacc, uint32_t ul_enable)
 {
 	if (ul_enable) {
-		p_dacc->DACC_WPMR = DACC_WPMR_WPKEY(DACC_WP_KEY)
+		p_dacc->DACC_WPMR = DACC_WPMR_WPKEY_PASSWD
 			          | DACC_WPMR_WPEN;
 	} else {
-		p_dacc->DACC_WPMR = DACC_WPMR_WPKEY(DACC_WP_KEY);
+		p_dacc->DACC_WPMR = DACC_WPMR_WPKEY_PASSWD;
 	}
 }
 

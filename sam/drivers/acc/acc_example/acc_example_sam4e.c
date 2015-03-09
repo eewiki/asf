@@ -93,6 +93,9 @@
  * -# Change voltage on AD5 by adjusting VR1 to see what comparison event happen.
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "asf.h"
 #include "stdio_serial.h"

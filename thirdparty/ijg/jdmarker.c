@@ -11,6 +11,9 @@
  * we must exit back to the application.  On resumption, we reprocess
  * the marker.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

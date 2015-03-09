@@ -40,12 +40,15 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef CONF_CLOCK_H_INCLUDED
 #define CONF_CLOCK_H_INCLUDED
 
 #define CONFIG_SYSCLK_SOURCE    SYSCLK_SRC_PLL0
 
-// USB Generic clock use a PLL0 at 48MHZ
+// USB Generic clock use a PLL0 at 48MHz
 #define CONFIG_PLL0_SOURCE      PLL_SRC_OSC0
 #define CONFIG_PLL0_DIV         1
 #define CONFIG_PLL0_MUL         3

@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef CONF_CLOCK_H_INCLUDED
 #define CONF_CLOCK_H_INCLUDED
@@ -77,16 +80,16 @@
 #define CONFIG_USBCLK_DIV           4
 
 // ===== Target frequency (System clock)
-// - XTAL frequency: 12MHZ
+// - XTAL frequency: 12MHz
 // - System clock source: PLLA
 // - System clock prescaler: 2 (divided by 2)
 // - PLLA source: XTAL
 // - PLLA output: XTAL * 16 / 1
-// - System clock: 12 * 16 / 1 / 2 = 96MHZ
+// - System clock: 12 * 16 / 1 / 2 = 96MHz
 // ===== Target frequency (USB Clock)
 // - USB clock source: PLLA
 // - USB clock divider: 4 (divided by 4)
 // - PLLA output: XTAL * 16 / 1
-// - USB clock: 12 * 16 / 1 / 4 = 48MHZ
+// - USB clock: 12 * 16 / 1 / 4 = 48MHz
 
 #endif /* CONF_CLOCK_H_INCLUDED */

@@ -37,6 +37,7 @@
 			<device-support value="samr21" />
 			<device-support value="samd10" />
 			<device-support value="samd11" />
+			<device-support value="saml21" />
 
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />
@@ -100,6 +101,7 @@
 			<device-support value="samr21" />
 			<device-support value="samd10" />
 			<device-support value="samd11" />
+			<device-support value="saml21" />
 
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />

@@ -42,6 +42,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 
 #ifndef FREERTOS_CONFIG_H
@@ -72,7 +75,7 @@ void assert_triggered( const char * file, uint32_t line );
 #define configCPU_CLOCK_HZ						( sysclk_get_cpu_hz() )
 #define configTICK_RATE_HZ						( ( portTickType ) 1000 )
 #define configMAX_PRIORITIES					( 5UL )
-#define configMINIMAL_STACK_SIZE				( ( unsigned short ) 130 )
+#define configMINIMAL_STACK_SIZE				( ( unsigned short ) 160 )
 #define configTOTAL_HEAP_SIZE					( ( size_t ) ( 16384 ) )
 #define configMAX_TASK_NAME_LEN					( 10 )
 #define configUSE_TRACE_FACILITY				1

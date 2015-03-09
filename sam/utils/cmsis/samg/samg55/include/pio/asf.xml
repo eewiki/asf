@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.samg55.include.pio" caption="SAMG55 PIO definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAMG55 PIO
+		</info>
+		<build type="header-file" value="samg55g18.h"/>
+		<build type="header-file" value="samg55g19.h"/>
+		<build type="header-file" value="samg55j18.h"/>
+		<build type="header-file" value="samg55j19.h"/>
+		<build type="header-file" value="samg55n19.h"/>
+		<device-support value="samg55"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

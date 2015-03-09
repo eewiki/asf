@@ -42,11 +42,14 @@
  */
 
 /*
- * Copyright (c) 2012, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 /* === INCLUDES ============================================================ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <stdlib.h>
 #include "tal.h"
@@ -425,7 +428,7 @@ static retval_t send_peer_req(void)
 {
 	app_payload_t msg;
 	peer_req_t *data;
-	uint8_t payload_length;
+	uint16_t payload_length;
 	uint16_t dst_addr = BROADCAST;
 
 	/* Fill the payload */
@@ -511,7 +514,7 @@ static void peer_rsp_rcvd_init(void *arg)
 					NULL,
 					NULL,
 					NULL,
-					NUL_VAL);
+					NUL_VAL,NUL_VAL,NUL_VAL);
 		}
 
 		/* PEER CONF send failed - so change to WAIT_FOR_EVENT state*/
@@ -582,7 +585,7 @@ static void peer_rsp_rcvd_tx_cb(retval_t status, frame_info_t *frame)
 					NULL,
 					NULL,
 					NULL,
-					NUL_VAL);
+					NUL_VAL,NUL_VAL,NUL_VAL);
 		}
 
 		/* PEER CONF send failed so change to WAIT_FOR_EVENT state*/
@@ -620,7 +623,7 @@ static void peer_rsp_rcvd_exit()
  */
 static retval_t send_peer_conf(void)
 {
-	uint8_t payload_length;
+	uint16_t payload_length;
 	app_payload_t msg;
 	peer_conf_t *data;
 

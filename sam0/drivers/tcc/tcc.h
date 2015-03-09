@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef TCC_H_INCLUDED
 #define TCC_H_INCLUDED
@@ -47,7 +50,7 @@
 /**
  * \defgroup asfdoc_sam0_tcc_group SAM Timer Counter for Control Applications Driver (TCC)
  *
- * This driver for Atmel® | SMART™ SAM devices provides an interface for the configuration
+ * This driver for Atmel庐 | SMART SAM devices provides an interface for the configuration
  * and management of the TCC module within the device, for waveform
  * generation and timing operations. It also provides extended options for
  * control applications.
@@ -64,9 +67,10 @@
  *  - TCC (Timer/Counter for Control Applications)
  *
  * The following devices can use this module:
- *  - Atmel® | SMART™ SAM D21
- *  - Atmel® | SMART™ SAM R21
- *  - Atmel® | SMART™ SAM D10/D11
+ *  - Atmel | SMART SAM D21
+ *  - Atmel | SMART SAM R21
+ *  - Atmel | SMART SAM D10/D11
+ *  - Atmel | SMART SAM L21
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_tcc_prerequisites
@@ -157,7 +161,7 @@
  *
  * \anchor asfdoc_sam0_tcc_count_size_vs_top
  * <table>
- *  <caption>Timer Counter Sizes And Their Maximum Count Values</caption>
+ *  <caption>Timer Counter Sizes and Their Maximum Count Values</caption>
  *  <tr>
  *    <th>Counter size</th>
  *    <th>Max. (hexadecimal)</th>
@@ -419,7 +423,7 @@
  * set to normal (i.e. non-inverted) output mode.
  *
  * \anchor asfdoc_sam0_tcc_module_pwm_single_diag
- * \image html pwm_single_ex.svg "Example Of PWM In Single-Slope Mode, And Different Counter Operations"
+ * \image html pwm_single_ex.svg "Example Of PWM In Single-Slope Mode, and Different Counter Operations"
  *
  * Several PWM modes are supported by the TCC module, refer to
  * datasheet for the details on PWM waveform generation.
@@ -606,10 +610,10 @@
  * used.
  *
  * \subsubsection asfdoc_sam0_tcc_special_considerations_tcc_d21 SAM TCC Feature List
- * For SAM D21/R21, the TCC features are:
+ * For SAM D21/R21/L21, the TCC features are:
  * \anchor asfdoc_sam0_tcc_features_d21
  * <table>
- *   <caption>TCC Module Features For SAM D21/R21</caption>
+ *   <caption>TCC module features for SAM D21/R21/L21</caption>
  *   <tr>
  *     <th>TCC#</th>
  *     <th>Match/Capture channels</th>
@@ -773,9 +777,9 @@ enum tcc_callback {
 	TCC_CALLBACK_FAULTA,
 	/** Callback for Recoverable Fault B. */
 	TCC_CALLBACK_FAULTB,
-	/** Callback for Non-Recoverable Fault. 0. */
+	/** Callback for Non-Recoverable Fault 0. */
 	TCC_CALLBACK_FAULT0,
-	/** Callback for Non-Recoverable Fault. 1. */
+	/** Callback for Non-Recoverable Fault 1. */
 	TCC_CALLBACK_FAULT1,
 
 #  if defined(__DOXYGEN__)
@@ -936,9 +940,9 @@ enum tcc_wave_generation {
  * Specifies whether the wave output needs to be inverted or not.
  */
 enum tcc_wave_polarity {
-	/** Wave output is not inverted */
+	/** Wave output is not inverted. */
 	TCC_WAVE_POLARITY_0,
-	/** Wave output is inverted */
+	/** Wave output is inverted. */
 	TCC_WAVE_POLARITY_1
 };
 
@@ -948,18 +952,18 @@ enum tcc_wave_polarity {
  * Used when disabling output pattern or when selecting a specific pattern.
  */
 enum tcc_output_pattern {
-	/** SWAP Output pattern is not used */
+	/** SWAP output pattern is not used. */
 	TCC_OUTPUT_PATTERN_DISABLE,
-	/** Pattern 0 is applied to SWAP output */
+	/** Pattern 0 is applied to SWAP output. */
 	TCC_OUTPUT_PATTERN_0,
-	/** Pattern 1 is applied to SWAP output */
+	/** Pattern 1 is applied to SWAP output. */
 	TCC_OUTPUT_PATTERN_1
 };
 
 /**
  * \brief Ramp Operations which are supported in single-slope PWM generation
  *
- * Ramp Operations which are supported in single-slope PWM generation.
+ * Ramp operations which are supported in single-slope PWM generation.
  */
 enum tcc_ramp {
 	/** Default timer/counter PWM operation. */
@@ -1629,8 +1633,8 @@ uint8_t _tcc_get_inst_index(
  *
  * \return Synchronization status of the underlying hardware module.
  *
- * \retval true If the module has completed synchronization
- * \retval false If the module synchronization is ongoing
+ * \retval false If the module has completed synchronization
+ * \retval true  If the module synchronization is ongoing
  */
 static inline bool tcc_is_syncing(
 		const struct tcc_module *const module_inst)
@@ -2044,8 +2048,8 @@ static inline void tcc_set_ramp_index(
  *
  * \return Status which indicates whether the module is running.
  *
- * \retval true The timer/counter is running.
- * \retval false The timer/counter is stopped.
+ * \retval true The timer/counter is running
+ * \retval false The timer/counter is stopped
  */
 static inline bool tcc_is_running(
 		struct tcc_module *const module_inst)
@@ -2357,8 +2361,13 @@ enum status_code tcc_set_double_buffer_compare_values(
  *      <th>Comments</td>
  *  </tr>
  *  <tr>
+ *      <td>C</td>
+ *      <td>11/2014</td>
+ *      <td>Added support for SAML21</td>
+ *  </tr>
+ *  <tr>
  *      <td>B</td>
- *      <td>05/2014</td>
+ *      <td>12/2014</td>
  *      <td>Added fault handling functionality;
  *          Added double buffering functionality with use case;
  *          Added timer use case;

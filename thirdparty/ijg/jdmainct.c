@@ -12,6 +12,9 @@
  * Note that this code is bypassed in raw-data mode, since the application
  * supplies the equivalent of the main buffer in that case.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

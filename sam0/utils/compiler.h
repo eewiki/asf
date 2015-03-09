@@ -38,6 +38,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef UTILS_COMPILER_H_INCLUDED
 #define UTILS_COMPILER_H_INCLUDED

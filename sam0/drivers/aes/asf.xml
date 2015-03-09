@@ -1,0 +1,70 @@
+<asf xmlversion="1.0">
+	<select-by-config id="sam0.drivers.aes" name="config.sam0.drivers.aes" caption="AES - Advanced Encryption Standard Module" default="callback">
+		<info type="description" value="summary">
+			Driver for the AES (Advanced Encryption Standard) module.
+			Provides functions for configuring and initiating encryption/decryption with AES algorithms.
+		</info>
+		<module type="driver" id="sam0.drivers.aes#polled" caption="AES - Advanced Encryption Standard Module">
+			<info type="keyword" value="technology">
+				<keyword value="Cryptography"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="aes.c"/>
+			<build type="header-file" subtype="api" value="aes.h"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_drivers_aes_group"/>
+			<require idref="sam0.utils" />
+			<require idref="sam0.drivers.system" />
+			<device-support value="saml21"/>
+		</module>
+		<module type="driver" id="sam0.drivers.aes#callback" caption="AES - Advanced Encryption Standard Module">
+			<info type="keyword" value="technology">
+				<keyword value="Cryptography"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="aes.c"/>
+			<build type="c-source" value="aes_callback.c"/>
+			<build type="header-file" subtype="api" value="aes.h"/>
+			<build type="header-file" subtype="api" value="aes_callback.h"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_drivers_aes_group"/>
+			<require idref="sam0.utils" />
+			<require idref="sam0.drivers.system" />
+			<device-support value="saml21"/>
+		</module>
+	</select-by-config>
+	<module type="meta" id="sam0.drivers.aes.appnote" caption="AES - Advanced Encryption Standard Module">
+			<info type="keyword" value="technology">
+				<keyword value="Cryptography"/>
+			</info>
+
+			<info type="appnote" value="AT10747"/>
+			<info type="keyword" value="pdf">
+				<keyword value="Encryption" />
+				<keyword value="Decryption"/>
+			</info>
+			<info type="description" value="pdf">
+				This application note describes how to use the ASF driver for
+				interfacing to the AES module on SAM L21.
+			</info>
+
+			<build type="c-source" value="aes.c"/>
+			<build type="c-source" value="aes_callback.c"/>
+			<build type="header-file" subtype="api" value="aes.h"/>
+			<build type="header-file" subtype="api" value="aes_callback.h"/>
+			<build type="include-path" value="."/>
+
+			<build type="doxygen-entry-point" value="asfdoc_sam0_drivers_aes_group"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_drivers_aes_exqsg"/>
+
+			<build type="doxygen-example-path" value="quick_start_polled"/>
+			<build type="doxygen-example-path" value="quick_start_dma"/>
+			<build type="doxygen-example-path" value="quick_start_callback"/>
+			<build type="header-file" value="quick_start_callback/quick_start_callback.h" />
+			<build type="header-file" value="quick_start_polled/quick_start_basic.h" />
+			<build type="header-file" value="quick_start_dma/quick_start_dma.h" />
+
+			<device-support value="saml21"/>
+			<require idref="sam0.utils" />
+			<require idref="sam0.drivers.system" />
+			<generator value="doxygen-module-v2" default-mcu="unspecified-saml21"/>
+		</module>
+</asf>

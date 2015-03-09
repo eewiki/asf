@@ -27,6 +27,9 @@
  *
  *  http://www.itl.nist.gov/fipspubs/fip180-1.htm
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "polarssl/config.h"
 

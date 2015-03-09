@@ -42,6 +42,9 @@
  */
 
 /* Standard includes. */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include <string.h>
 
 /* ASF includes. */
@@ -103,15 +106,15 @@ static const freertos_pdc_peripheral_parameters_t all_spi_definitions[MAX_SPIS] 
 	/* Chips with a single SPI port define SPI only.  Chips with multiple SPI
 	ports defined the first SPI peripheral as SPI0. */
 #if SAMG55
-	{SPI0, PDC_SPI0, ID_SPI0, USART0_SPI0_TWI0_IRQn},
-	{SPI1, PDC_SPI1, ID_SPI1, USART1_SPI1_TWI1_IRQn},
-	{SPI2, PDC_SPI2, ID_SPI2, USART2_SPI2_TWI2_IRQn},
-	{SPI3, PDC_SPI3, ID_SPI3, USART3_SPI3_TWI3_IRQn},
-	{SPI4, PDC_SPI4, ID_SPI4, USART4_SPI4_TWI4_IRQn},
-	{SPI5, PDC_SPI5, ID_SPI5, USART5_SPI5_TWI5_IRQn},
-	{SPI6, PDC_SPI6, ID_SPI6, USART6_SPI6_TWI6_IRQn},
+	{SPI0, PDC_SPI0, ID_FLEXCOM0, FLEXCOM0_IRQn},
+	{SPI1, PDC_SPI1, ID_FLEXCOM1, FLEXCOM1_IRQn},
+	{SPI2, PDC_SPI2, ID_FLEXCOM2, FLEXCOM2_IRQn},
+	{SPI3, PDC_SPI3, ID_FLEXCOM3, FLEXCOM3_IRQn},
+	{SPI4, PDC_SPI4, ID_FLEXCOM4, FLEXCOM4_IRQn},
+	{SPI5, PDC_SPI5, ID_FLEXCOM5, FLEXCOM5_IRQn},
+	{SPI6, PDC_SPI6, ID_FLEXCOM6, FLEXCOM6_IRQn},
 #if MAX_SPIS > 7
-	{SPI7, PDC_SPI7, ID_SPI7, USART7_SPI7_TWI7_IRQn},
+	{SPI7, PDC_SPI7, ID_FLEXCOM7, FLEXCOM7_IRQn},
 #endif
 
 #else
@@ -734,49 +737,49 @@ static void local_spi_handler(const portBASE_TYPE spi_index)
  */
 #if SAMG55
 #ifdef CONF_FREERTOS_USE_SPI0
-void USART0_SPI0_TWI0_Handler(void)
+void FLEXCOM0_Handler(void)
 {
 	local_spi_handler(0);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_SPI1
-void USART1_SPI1_TWI1_Handler(void)
+void FLEXCOM1_Handler(void)
 {
 	local_spi_handler(1);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_SPI2
-void USART2_SPI2_TWI2_Handler(void)
+void FLEXCOM2_Handler(void)
 {
 	local_spi_handler(2);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_SPI3
-void USART3_SPI3_TWI3_Handler(void)
+void FLEXCOM3_Handler(void)
 {
 	local_spi_handler(3);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_SPI4
-void USART4_SPI4_TWI4_Handler(void)
+void FLEXCOM4_Handler(void)
 {
 	local_spi_handler(4);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_SPI5
-void USART5_SPI5_TWI5_Handler(void)
+void FLEXCOM5_Handler(void)
 {
 	local_spi_handler(5);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_SPI6
-void USART6_SPI6_TWI6_Handler(void)
+void FLEXCOM6_Handler(void)
 {
 	local_spi_handler(6);
 }
 #endif
 #ifdef CONF_FREERTOS_USE_SPI7
-void USART7_SPI7_TWI7_Handler(void)
+void FLEXCOM7_Handler(void)
 {
 	local_spi_handler(7);
 }

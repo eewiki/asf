@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Unit Tests for the SAM L21 TCC Driver" id="sam0.drivers.tcc.unit_test.saml21_xplained_pro" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<require idref="board.saml21_xplained_pro"/>
+		<require idref="sam0.drivers.tcc.unit_test"/>
+		<config name="config.sam0.drivers.tcc" value="callback"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen-v2"/>
+		<device-support value="atsaml21j18a"/>
+	</project>
+</asf>

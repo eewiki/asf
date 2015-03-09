@@ -765,4 +765,54 @@
 		<generator value="doxygen"/>
 		<device-support value="atsamg54n19"/>
 	</project>
+	<project id="common.applications.user_application.user_board.samg55g18" caption="User board project template for SAMG55G18" type="template">
+		<info type="description" value="summary">
+		User board project template for SAMG55G18 devices.
+		</info>
+		<require idref="common.applications.user_application.user_board.common"/>
+		<require idref="board.user_board.samg55g18"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamg55g18"/>
+	</project>
+	<project id="common.applications.user_application.user_board.samg55g19" caption="User board project template for SAMG55G19" type="template">
+		<info type="description" value="summary">
+		User board project template for SAMG55G19 devices.
+		</info>
+		<require idref="common.applications.user_application.user_board.common"/>
+		<require idref="board.user_board.samg55g19"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamg55g19"/>
+	</project>
+	<project id="common.applications.user_application.user_board.samg55j18" caption="User board project template for SAMG55J18" type="template">
+		<info type="description" value="summary">
+		User board project template for SAMG55J18 devices.
+		</info>
+		<require idref="common.applications.user_application.user_board.common"/>
+		<require idref="board.user_board.samg55j18"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamg55j18"/>
+	</project>
+	<project id="common.applications.user_application.user_board.samg55j19" caption="User board project template for SAMG55J19" type="template">
+		<info type="description" value="summary">
+		User board project template for SAMG55J19 devices.
+		</info>
+		<require idref="common.applications.user_application.user_board.common"/>
+		<require idref="board.user_board.samg55j19"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamg55j19"/>
+	</project>
+	<project id="common.applications.user_application.user_board.samg55n19" caption="User board project template for SAMG55N19" type="template">
+		<info type="description" value="summary">
+		User board project template for SAMG55N19 devices.
+		</info>
+		<require idref="common.applications.user_application.user_board.common"/>
+		<require idref="board.user_board.samg55n19"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamg55n19"/>
+	</project>
 </asf>

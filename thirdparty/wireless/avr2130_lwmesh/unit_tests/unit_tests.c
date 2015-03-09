@@ -45,6 +45,9 @@
  * \section intro Introduction
  * This is the unit test application for the \ref group_lwmesh "LWMesh Stack".
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <stdint.h>
 #include <stdbool.h>

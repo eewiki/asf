@@ -72,7 +72,7 @@
  * timer output events to the DAC module to trigger new sample conversions.
  *
  * This application has been tested on following boards:
- * - SAM D20/D21 Xplained Pro
+ * - SAM D20/D21/L21 Xplained Pro
  *
  * \section appdoc_sam0_dac_sound_player_setup Hardware Setup
  * The device's DAC channel 0 output should be connected to an audio amplifier,
@@ -91,6 +91,9 @@
  * \section appdoc_sam0_dac_sound_player_contactinfo Contact Information
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include <asf.h>
@@ -137,7 +140,11 @@ static void configure_dac(struct dac_module *dac_module)
 	dac_chan_enable(dac_module, DAC_CHANNEL_0);
 
 	/* Enable event triggered conversions */
+#if (SAML21)
+	struct dac_events events = { .on_event_chan0_start_conversion = true };
+#else
 	struct dac_events events = { .on_event_start_conversion = true };
+#endif
 	dac_enable_events(dac_module, &events);
 
 	dac_enable(dac_module);
@@ -190,7 +197,11 @@ static void configure_events(struct events_resource *event)
 	config.path         = EVENTS_PATH_ASYNCHRONOUS;
 
 	events_allocate(event, &config);
+#if (SAML21)
+	events_attach_user(event, EVSYS_ID_USER_DAC_START_0);
+#else
 	events_attach_user(event, EVSYS_ID_USER_DAC_START);
+#endif
 }
 
 /**
@@ -206,7 +217,11 @@ int main(void)
 	system_init();
 
 	/* Enable the internal bandgap to use as reference to the DAC */
+#if (SAML21)
+	system_voltage_reference_enable(SYSTEM_VOLTAGE_REFERENCE_OUTPUT);
+#else
 	system_voltage_reference_enable(SYSTEM_VOLTAGE_REFERENCE_BANDGAP);
+#endif
 
 	/* Module configuration */
 	configure_tc(&tc_module);
@@ -226,7 +241,11 @@ int main(void)
 		for (uint32_t i = 0; i < number_of_samples; i++) {
 			dac_chan_write(&dac_module, DAC_CHANNEL_0, wav_samples[i]);
 
+#if (SAML21)
+			while (!(DAC->INTFLAG.reg & DAC_INTFLAG_EMPTY0)) {
+#else
 			while (!(DAC->INTFLAG.reg & DAC_INTFLAG_EMPTY)) {
+#endif
 				/* Wait for data buffer to be empty */
 			}
 

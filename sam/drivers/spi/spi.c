@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "spi.h"
 #include "sysclk.h"
@@ -69,7 +72,7 @@ void spi_enable_clock(Spi *p_spi)
 #if (SAM4S || SAM3S || SAM3N || SAM3U || SAM4E || SAM4N || SAMG51|| SAMG53|| SAMG54)
 	UNUSED(p_spi);
 	sysclk_enable_peripheral_clock(ID_SPI);
-#elif (SAM3XA || SAM4C || SAM4CP || SAM4CM|| SAMG55)
+#elif (SAM3XA || SAM4C || SAM4CP || SAM4CM)
 	if (p_spi == SPI0) {
 		sysclk_enable_peripheral_clock(ID_SPI0);
 	}
@@ -78,34 +81,43 @@ void spi_enable_clock(Spi *p_spi)
 		sysclk_enable_peripheral_clock(ID_SPI1);
 	}
 	#endif
+#elif (SAMG55)
+	if (p_spi == SPI0) {
+		sysclk_enable_peripheral_clock(ID_FLEXCOM0);
+	}
+	#ifdef SPI1
+	else if (p_spi == SPI1) {
+		sysclk_enable_peripheral_clock(ID_FLEXCOM1);
+	}
+	#endif
 	#ifdef SPI2
 	else if (p_spi == SPI2) {
-		sysclk_enable_peripheral_clock(ID_SPI2);
+		sysclk_enable_peripheral_clock(ID_FLEXCOM2);
 	}
 	#endif
 	#ifdef SPI3
 	else if (p_spi == SPI3) {
-		sysclk_enable_peripheral_clock(ID_SPI3);
+		sysclk_enable_peripheral_clock(ID_FLEXCOM3);
 	}
 	#endif
 	#ifdef SPI4
 	else if (p_spi == SPI4) {
-		sysclk_enable_peripheral_clock(ID_SPI4);
+		sysclk_enable_peripheral_clock(ID_FLEXCOM4);
 	}
 	#endif
 	#ifdef SPI5
 	else if (p_spi == SPI5) {
-		sysclk_enable_peripheral_clock(ID_SPI5);
+		sysclk_enable_peripheral_clock(ID_FLEXCOM5);
 	}
 	#endif
 	#ifdef SPI6
 	else if (p_spi == SPI6) {
-		sysclk_enable_peripheral_clock(ID_SPI6);
+		sysclk_enable_peripheral_clock(ID_FLEXCOM6);
 	}
 	#endif
 	#ifdef SPI7
 	else if (p_spi == SPI7) {
-		sysclk_enable_peripheral_clock(ID_SPI7);
+		sysclk_enable_peripheral_clock(ID_FLEXCOM7);
 	}
 	#endif
 #elif SAM4L
@@ -123,7 +135,7 @@ void spi_disable_clock(Spi *p_spi)
 #if (SAM4S || SAM3S || SAM3N || SAM3U || SAM4E || SAM4N || SAMG51|| SAMG53|| SAMG54)
 	UNUSED(p_spi);
 	sysclk_disable_peripheral_clock(ID_SPI);
-#elif (SAM3XA || SAM4C || SAM4CP || SAM4CM || SAMG55)
+#elif (SAM3XA || SAM4C || SAM4CP || SAM4CM)
 	if (p_spi == SPI0) {
 		sysclk_disable_peripheral_clock(ID_SPI0);
 	}
@@ -132,34 +144,43 @@ void spi_disable_clock(Spi *p_spi)
 		sysclk_disable_peripheral_clock(ID_SPI1);
 	}
 	#endif
+#elif (SAMG55)
+	if (p_spi == SPI0) {
+		sysclk_disable_peripheral_clock(ID_FLEXCOM0);
+	}
+	#ifdef SPI1
+	else if (p_spi == SPI1) {
+		sysclk_disable_peripheral_clock(ID_FLEXCOM1);
+	}
+	#endif
 	#ifdef SPI2
 		else if (p_spi == SPI2) {
-			sysclk_disable_peripheral_clock(ID_SPI2);
+			sysclk_disable_peripheral_clock(ID_FLEXCOM2);
 		}
 	#endif
 	#ifdef SPI3
 		else if (p_spi == SPI3) {
-			sysclk_disable_peripheral_clock(ID_SPI3);
+			sysclk_disable_peripheral_clock(ID_FLEXCOM3);
 		}
 	#endif
 	#ifdef SPI4
 		else if (p_spi == SPI4) {
-			sysclk_disable_peripheral_clock(ID_SPI4);
+			sysclk_disable_peripheral_clock(ID_FLEXCOM4);
 		}
 	#endif
 	#ifdef SPI5
 		else if (p_spi == SPI5) {
-			sysclk_disable_peripheral_clock(ID_SPI5);
+			sysclk_disable_peripheral_clock(ID_FLEXCOM5);
 		}
 	#endif
 	#ifdef SPI6
 		else if (p_spi == SPI6) {
-			sysclk_disable_peripheral_clock(ID_SPI6);
+			sysclk_disable_peripheral_clock(ID_FLEXCOM6);
 		}
 	#endif
 	#ifdef SPI7
 		else if (p_spi == SPI7) {
-			sysclk_disable_peripheral_clock(ID_SPI7);
+			sysclk_disable_peripheral_clock(ID_FLEXCOM7);
 		}
 	#endif
 #elif SAM4L

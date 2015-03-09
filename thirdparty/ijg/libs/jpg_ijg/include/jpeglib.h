@@ -9,6 +9,9 @@
  * Most applications using the library need only include this file,
  * and perhaps jerror.h if they want to know the exact error codes.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef JPEGLIB_H
 #define JPEGLIB_H

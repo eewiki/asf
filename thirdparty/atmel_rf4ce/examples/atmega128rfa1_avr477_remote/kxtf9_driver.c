@@ -1,4 +1,7 @@
 #if defined(__ICCAVR__)
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include "ioavr.h"              
 #include "inavr.h"
 #elif defined(__GNUC__)

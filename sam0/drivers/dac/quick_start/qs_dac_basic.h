@@ -83,8 +83,6 @@
  *           struct to ensure that all values are initialized to known default
  *           settings.
  *
- *  -# Enable the DAC module so that channels can be configured.
- *     \snippet qs_dac_basic.c setup_enable
  * -# Configure the DAC channel.
  *  -# Create a DAC channel configuration struct, which can be filled out to
  *     adjust the configuration of a physical DAC output channel.
@@ -100,6 +98,9 @@
  *     \snippet qs_dac_basic.c setup_ch_set_config
  *  -# Enable the DAC channel so that it can output a voltage.
  *     \snippet qs_dac_basic.c setup_ch_enable
+ *
+ * -# Enable the DAC module.
+ *    \snippet qs_dac_basic.c setup_enable
  *
  * \section asfdoc_sam0_dac_basic_use_case_main Use Case
  *
@@ -119,4 +120,7 @@
  * -# Increment and wrap the DAC output conversion value, so that a ramp pattern
  *    will be generated.
  *    \snippet qs_dac_basic.c main_inc_val
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

@@ -67,7 +67,7 @@
 			<build type="header-file" value="quick_start_dma/qs_spi_dma_use.h"/>
 			<build type="include-path" value="."/>
 			<build type="module-config" subtype="path" value="module_config"/>
-			<build type="module-config" subtype="required-header-file" value="conf_spi.h"/>	
+			<build type="module-config" subtype="required-header-file" value="conf_spi.h"/>
 			<build type="doxygen-entry-point" value="asfdoc_sam0_sercom_spi_group"/>
 			<build type="doxygen-example-path" value="quick_start_master_callback"/>
 			<build type="doxygen-example-path" value="quick_start_slave_callback"/>

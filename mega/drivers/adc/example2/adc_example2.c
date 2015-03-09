@@ -69,6 +69,9 @@
  * <A href="http://www.atmel.com/">Atmel</A>.\n
  * Support and FAQ: http://www.atmel.com/design-support/
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 
 #include "adc.h"

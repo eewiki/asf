@@ -3,7 +3,7 @@
  *
  * \brief FLIP protocol definitions.
  *
- * Copyright (c) 2011-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef _FLIP_PROTOCOL_H_
 #define _FLIP_PROTOCOL_H_
@@ -51,7 +54,7 @@ extern "C" {
 /**
  * \defgroup flip_protocol Atmel FLIP Protocol definitions
  *
- * To perform firmware upgrade, Atmel has developed an application called ìFLIPî.
+ * To perform firmware upgrade, Atmel has developed an application called ÊèäLIP
  * This software is a flexible application which lets you program and
  * configure Atmel's microcontroller devices in their final environment
  * without needing any dedicated hardware.

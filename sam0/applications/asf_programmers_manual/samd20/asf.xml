@@ -29,7 +29,7 @@
 		<require idref="sam0.drivers.ac"/>
 		<require idref="sam0.drivers.adc"/>
 		<require idref="sam0.drivers.bod"/>
-		<require idref="sam0.drivers.dac.appnote"/>
+		<require idref="sam0.drivers.dac.appnote_sam_d"/>
 		<require idref="sam0.drivers.events"/>
 		<require idref="sam0.drivers.extint.appnote"/>
 		<require idref="sam0.drivers.nvm"/>

@@ -119,8 +119,6 @@
  *     \snippet qs_dac_callback.c setup_dac_on_event_start_conversion
  *  -# Enable DAC event.
  *     \snippet qs_dac_callback.c enable_dac_event
- *  -# Enable DAC module.
- *     \snippet qs_dac_callback.c enable_dac
  *
  * -# Configure the DAC channel.
  *  -# Create a DAC channel configuration struct, which can be filled out to
@@ -137,6 +135,9 @@
  *     \snippet qs_dac_callback.c set_dac_chan_config
  *  -# Enable the DAC channel so that it can output a voltage.
  *     \snippet qs_dac_callback.c enable_dac_channel
+ *
+ * -# Enable DAC module.
+ *    \snippet qs_dac_callback.c enable_dac
  *
  * -# Configure the RTC module.
  *  -# Create a RTC module event struct, which can be filled out to
@@ -202,5 +203,8 @@
  *  \snippet qs_dac_callback.c main_check_transfer_done
  *  -# Enter an infinite loop once the conversion is complete.
  *  \snippet qs_dac_callback.c main_loop
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

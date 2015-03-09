@@ -8,10 +8,6 @@
 		<build type="header-file" value="qs_spi_master_vec_basic.h"/>
 		<build type="include-path" value="."/>
 		<require idref="sam0.drivers.sercom.spi_master_vec"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
-		<device-support value="samr21"/>
-		<device-support value="samd10"/>
-		<device-support value="samd11"/>
+		<device-support value="sam0"/>
 	</module>
 </asf>

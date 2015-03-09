@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.applications.dmac_cpu_usage_demo" caption="DMAC CPU Usage Demo ">
+		<info type="description" value="summary">
+		This application shows how DMAC on D11 devices helps in reducing the CPU load for various type of DMA transfers. 
+		</info>
+
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+			<keyword value="Event System"/>
+			<keyword value="Memory"/>
+			<keyword value="Communication"/>
+		</info>
+
+		<info type="gui-flag" value="move-to-root"/>
+
+		<build type="c-source" value="adc_dmac_mem_mem_usart.c"/>
+		<build type="c-source" value="adc_dmac_usart.c"/>
+		<build type="c-source" value="adc_no_dmac_mem_mem_usart.c"/>
+		<build type="c-source" value="adc_no_dmac_usart.c"/>
+		<build type="include-path" value="."/>
+
+		<require idref="sam0.drivers.adc"/>
+		<require idref="sam0.drivers.port"/>
+		<require idref="sam0.drivers.events"/>
+		<require idref="sam0.drivers.dma"/>
+		<require idref="sam0.drivers.sercom.usart"/>
+
+		<device-support value="samd11"/>
+	</module>
+</asf>

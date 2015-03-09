@@ -4,7 +4,7 @@
 *
 * \brief FreeRTOS Led Driver example for SAM.
 *
-* Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+* Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
 *
 * \asf_license_start
 *
@@ -41,6 +41,9 @@
 * \asf_license_stop
 *
 *****************************************************************************/
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include "FreeRTOS.h"
 #include "task.h"
 #include "partest.h"

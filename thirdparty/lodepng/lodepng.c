@@ -36,6 +36,9 @@ freely, subject to the following restrictions:
 The manual and changelog can be found in the header file "lodepng.h"
 You are free to name this file lodepng.cpp or lodepng.c depending on your usage.
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "lodepng.h"
 

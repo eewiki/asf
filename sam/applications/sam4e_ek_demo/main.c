@@ -105,6 +105,9 @@
  * the performance of floating-point arithmetic in the DSP task.
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include "task_demo.h"
 #include "ethernet_sam.h"
 #include "status_codes.h"

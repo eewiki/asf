@@ -5,13 +5,11 @@
 		</info>
 		<build type="header-file" value="ac.h"/>
 		<build type="header-file" value="adc.h"/>
-		<build type="header-file" value="dac.h"/>
 		<build type="header-file" value="dmac.h"/>
 		<build type="header-file" value="dsu.h"/>
 		<build type="header-file" value="eic.h"/>
 		<build type="header-file" value="evsys.h"/>
 		<build type="header-file" value="gclk.h"/>
-		<build type="header-file" value="i2s.h"/>
 		<build type="header-file" value="mtb.h"/>
 		<build type="header-file" value="nvmctrl.h"/>
 		<build type="header-file" value="pac0.h"/>
@@ -21,6 +19,7 @@
 		<build type="header-file" value="port.h"/>
 		<build type="header-file" value="rfctrl.h"/>
 		<build type="header-file" value="rtc.h"/>
+		<build type="header-file" value="sbmatrix.h"/>
 		<build type="header-file" value="sercom0.h"/>
 		<build type="header-file" value="sercom1.h"/>
 		<build type="header-file" value="sercom2.h"/>
@@ -31,8 +30,6 @@
 		<build type="header-file" value="tc3.h"/>
 		<build type="header-file" value="tc4.h"/>
 		<build type="header-file" value="tc5.h"/>
-		<build type="header-file" value="tc6.h"/>
-		<build type="header-file" value="tc7.h"/>
 		<build type="header-file" value="tcc0.h"/>
 		<build type="header-file" value="tcc1.h"/>
 		<build type="header-file" value="tcc2.h"/>

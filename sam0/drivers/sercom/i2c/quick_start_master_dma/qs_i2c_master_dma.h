@@ -47,6 +47,7 @@
  * The supported board list:
  *    - SAMD21 Xplained Pro
  *    - SAMR21 Xplained Pro
+ *    - SAML21 Xplained Pro
  *
  * In this use case, the I<SUP>2</SUP>C will used and set up as follows:
  *  - Master mode
@@ -163,4 +164,7 @@
  *
  * -# Enter an infinite loop once transfer complete.
  *    \snippet qs_i2c_master_dma.c inf_loop
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

@@ -50,6 +50,9 @@
  *
  * $Id: lcp.h,v 1.4 2010/01/18 20:49:43 goldsimon Exp $
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef LCP_H
 #define LCP_H

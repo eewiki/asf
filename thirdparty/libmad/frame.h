@@ -18,6 +18,9 @@
  *
  * $Id: frame.h,v 1.20 2004/01/23 09:41:32 rob Exp $
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 # ifndef LIBMAD_FRAME_H
 # define LIBMAD_FRAME_H

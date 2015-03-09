@@ -25,6 +25,9 @@
  * Include header files for all drivers that have been imported from
  * Atmel Software Framework (ASF).
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include <asf.h>
 
 int main (void)

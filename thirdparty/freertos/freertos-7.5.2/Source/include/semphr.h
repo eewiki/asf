@@ -61,6 +61,9 @@
 
     1 tab == 4 spaces!
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef SEMAPHORE_H
 #define SEMAPHORE_H

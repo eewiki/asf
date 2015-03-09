@@ -94,6 +94,9 @@
  * <A href="http://www.asf.atmel.com">Atmel ASF</A>.\n
  * Support and FAQ: http://www.atmel.com/design-support/
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <stdint.h>
 #include <stdbool.h>

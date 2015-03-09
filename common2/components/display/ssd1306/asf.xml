@@ -3,7 +3,7 @@
 		<info type="description" value="summary">
 		Low-level driver for the SSD1306 OLED controller through 4-wire SPI.
 		Note: Controller inside display UG-2832HSWEG04 OLED (128 x 32, Monochrome).
-		This display is available on SAM D20/D21/R21/D10/D11 Xplained Pro
+		This display is available on SAM Xplained Pro extension board.
 		</info>
 		<info type="keyword" value="technology">
 			<keyword value="Graphics" />

@@ -18,6 +18,9 @@
  *
  * $Id: decoder.h,v 1.17 2004/01/23 09:41:32 rob Exp $
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 # ifndef LIBMAD_DECODER_H
 # define LIBMAD_DECODER_H

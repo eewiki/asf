@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef DRIVERS_RTC32_RTC32_H
 #define DRIVERS_RTC32_RTC32_H
 

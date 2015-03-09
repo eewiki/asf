@@ -80,6 +80,9 @@ Changes from V1.2.3
 	  again.
 	+ A division has been included in the calculation.
 */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <stdlib.h>
 

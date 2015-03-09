@@ -50,11 +50,6 @@
  * - Preloading of shift register enabled
  * - MSB of the data is transmitted first
  * - Transfer mode 0
- * - SPI MUX Setting E (see \ref asfdoc_sam0_sercom_spi_mux_settings_slave)
- *   - MISO on pad 2, extension header 1, pin 16
- *   - MOSI on pad 0, extension header 1, pin 17
- *   - SCK on pad 3, extension header 1, pin 18
- *   - SS on pad 1, extension header 1, pin 15
  * - 8-bit character size
  * - Not enabled in sleep mode
  * - GLCK generator 0
@@ -67,32 +62,32 @@
  *
  * \subsection asfdoc_sam0_sercom_spi_slave_callback_use_setup_code Code
  * The following must be added to the user application source file, outside
- * any functions:
+ * any functions.
  *
- * A sample buffer to send via SPI:
+ * A sample buffer to send via SPI.
  * \snippet qs_spi_slave_callback.c buffer
- * Number of entries in the sample buffer:
+ * Number of entries in the sample buffer.
  * \snippet qs_spi_slave_callback.c buf_length
  * A globally available software device instance struct to store the SPI driver
  * state while it is in use.
  * \snippet qs_spi_slave_callback.c dev_inst
- * A function for configuring the SPI:
+ * A function for configuring the SPI.
  * \snippet qs_spi_slave_callback.c configure_spi
- * A function for configuring the callback functionality of the SPI:
+ * A function for configuring the callback functionality of the SPI.
  * \snippet qs_spi_slave_callback.c conf_callback
  * A global variable that can flag to the application that the buffer has been
- * transferred:
+ * transferred.
  * \snippet qs_spi_slave_callback.c var
- * Callback function:
+ * Callback function.
  * \snippet qs_spi_slave_callback.c callback
  *
- * Add to user application %main():
+ * Add to user application \c main().
  * \snippet qs_spi_slave_callback.c main_start
  *
  * \subsection asfdoc_sam0_sercom_spi_slave_callback_use_workflow Workflow
  * -# Initialize system.
  *    \snippet qs_spi_slave_callback.c system_init
- * -# Setup the SPI:
+ * -# Setup the SPI.
  *    \snippet qs_spi_slave_callback.c run_config
  *   -# Create configuration struct.
  *      \snippet qs_spi_slave_callback.c config
@@ -106,19 +101,19 @@
  *      \snippet qs_spi_slave_callback.c conf_format
  *   -# Set MUX setting E.
  *      \snippet qs_spi_slave_callback.c mux_setting
- *   -# Set pinmux for pad 0 (data in (MOSI) on extension header 1, pin 17).
+ *   -# Set pinmux for pad 0 (data in (MOSI)).
  *      \snippet qs_spi_slave_callback.c di
- *   -# Set pinmux for pad 1 (slave select on on extension header 1, pin 15).
+ *   -# Set pinmux for pad 1 (slave select).
  *      \snippet qs_spi_slave_callback.c ss
- *   -# Set pinmux for pad 2 (data out (MISO) on extension header 1, pin 16).
+ *   -# Set pinmux for pad 2 (data out (MISO)).
  *      \snippet qs_spi_slave_callback.c do
- *   -# Set pinmux for pad 3 (SCK on extension header 1, pin 18).
+ *   -# Set pinmux for pad 3 (SCK).
  *      \snippet qs_spi_slave_callback.c sck
  *   -# Initialize SPI module with configuration.
  *      \snippet qs_spi_slave_callback.c init
  *   -# Enable SPI module.
  *      \snippet qs_spi_slave_callback.c enable
- * -# Setup the callback functionality:
+ * -# Setup the callback functionality.
  *    \snippet qs_spi_slave_callback.c run_callback_config
  *   -# Register callback function for buffer transmitted.
  *      \snippet qs_spi_slave_callback.c reg_callback
@@ -127,7 +122,7 @@
  *
  * \section asfdoc_sam0_sercom_spi_slave_callback_usecase Use Case
  * \subsection asfdoc_sam0_sercom_spi_slave_callback_usecase_code Code
- * Add the following to your user application \c main():
+ * Add the following to your user application \c main().
  * \snippet qs_spi_slave_callback.c main_use_case
  * \subsection asfdoc_sam0_sercom_spi_slave_callback_usecase_workflow Workflow
  * -# Initiate a write buffer job.
@@ -144,4 +139,7 @@
  * -# Let the application know that the buffer is transmitted by setting the
  *    global variable to true.
  *    \snippet qs_spi_slave_callback.c callback_var
+ */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

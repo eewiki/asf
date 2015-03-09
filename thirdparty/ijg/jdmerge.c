@@ -31,6 +31,9 @@
  * the only common cases.  (For uncommon cases we fall back on the more
  * general code in jdsample.c and jdcolor.c.)
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

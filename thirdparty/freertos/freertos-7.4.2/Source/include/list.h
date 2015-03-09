@@ -99,6 +99,9 @@
  * \page ListIntroduction List Implementation
  * \ingroup FreeRTOSIntro
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 
 #ifndef LIST_H

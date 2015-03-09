@@ -18,6 +18,9 @@
  *
  * $Id: fixed.h,v 1.38 2004/02/17 02:02:03 rob Exp $
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 # ifndef LIBMAD_FIXED_H
 # define LIBMAD_FIXED_H

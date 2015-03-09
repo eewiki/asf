@@ -296,6 +296,21 @@
 			<device-support value="samg54"/>
 		</module>
 
+		<!-- SAMG55 //-->
+		<module type="driver" id="sam.utils#14" caption="SAMG55 compiler driver">
+			<info type="description" value="summary">
+			Compiler abstraction layer and code utilities for SAMG55 devices. This module provides various abstraction layers and utilities to make code compatible between different compilers. It also contains utilities typically used while pre-processing code.
+			</info>
+			<require idref="sam.utils.common"/>
+			<require idref="sam.utils.cmsis.samg55.include"/>
+			<require idref="sam.utils.cmsis.samg55.include.component"/>
+			<require idref="sam.utils.cmsis.samg55.include.instance"/>
+			<require idref="sam.utils.cmsis.samg55.include.pio"/>
+			<require idref="sam.utils.cmsis.samg55.source.template"/>
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="samg55"/>
+		</module>
+
 		<!-- SAM4CM //-->
 		<module type="driver" id="sam.utils#15" caption="SAM4CM compiler driver">
 			<info type="description" value="summary">

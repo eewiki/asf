@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef TIMER_MGT_SAM_H_INCLUDED
 #define TIMER_MGT_SAM_H_INCLUDED

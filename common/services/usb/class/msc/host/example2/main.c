@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <asf.h>
 #include "conf_usb_host.h"
@@ -76,7 +79,7 @@ static int main_count_states(test_state_t state);
  */
 int main(void)
 {
-#if SAMD21
+#if SAMD21 || SAML21
 	system_init();
 #else
 	sysclk_init();
@@ -98,7 +101,7 @@ int main(void)
 	// - to play with the power modes
 	// - to create a file on each new LUN connected
 	while (true) {
-		sleepmgr_enter_sleep();
+		//sleepmgr_enter_sleep();
 		if (main_usb_sof_counter > 2000) {
 			main_usb_sof_counter = 0;
 			volatile uint8_t lun;

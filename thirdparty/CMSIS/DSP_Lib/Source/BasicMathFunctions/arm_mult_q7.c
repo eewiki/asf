@@ -35,6 +35,9 @@
 * Version 0.0.3  2010/03/10 DP   
 *    Initial version   
 * -------------------------------------------------------------------- */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "arm_math.h"
 

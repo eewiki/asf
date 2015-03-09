@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="Basic FreeRTOS Example for SAMG55-Xplained-Pro" id="common.services.freertos.sam_example.samg55_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="common.services.freertos.sam_example"/>
+		<require idref="board.samg55_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.thirdparty.os.freertos.version" value="8.0.1" /> 
+		<config name="config.thirdparty.os.freertos-8_0_1.memory_manager" value="3_use_libc_malloc_free" />
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x1000"/>
+		<config name="config.compiler.armgcc.optimization" value="high"/>
+		<device-support value="atsamg55j19"/>
+	</project>
+</asf>

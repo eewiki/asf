@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef ACC_H_INCLUDED
 #define ACC_H_INCLUDED
@@ -126,7 +129,7 @@
  * \subsection asfdoc_sam_drivers_acc_special_considerations_fault Fault Output
  *
  * The ACC module has a FAULT output that is connected to the FAULT input of the
- * PWM module. Refer to "fault mode”, and the implementation of the pwm in
+ * PWM module. Refer to "fault mode鈥 and the implementation of the pwm in
  * the device-specific datasheet.
  *
  *

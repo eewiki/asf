@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef PARC_H_INCLUDED
 #define PARC_H_INCLUDED
@@ -617,7 +620,7 @@ static inline uint32_t parc_get_version(
  * </tr>
  *  <tr>
  *      <td>CMOS</td>
- *      <td>Complementary Metal–Oxide–Semiconductor</td>
+ *      <td>Complementary Metal鈥揙xide鈥揝emiconductor</td>
  * </tr>
  *  <tr>
  *      <td>DMA</td>

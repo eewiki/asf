@@ -107,6 +107,9 @@
  * of the scheduler not exercised by the first test.
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include <stdlib.h>
 

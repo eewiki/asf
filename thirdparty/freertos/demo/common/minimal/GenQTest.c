@@ -60,6 +60,9 @@
  * See the comments above the prvSendFrontAndBackTest() and
  * prvLowPriorityMutexTask() prototypes below for more information.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 
 #include <stdlib.h>

@@ -40,13 +40,16 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef RTC_CALENDAR_H_INCLUDED
 #define RTC_CALENDAR_H_INCLUDED
 
 /**
  * \defgroup asfdoc_sam0_rtc_calendar_group SAM RTC Calendar Driver (RTC CAL)
  *
- * This driver for Atmel® | SMART™ SAM devices provides an interface for the configuration
+ * This driver for Atmel庐 | SMART SAM devices provides an interface for the configuration
  * and management of the device's Real Time Clock functionality in Calendar
  * operating mode, for the configuration and retrieval of the current time and
  * date as maintained by the RTC module. The following driver API modes are
@@ -61,9 +64,10 @@
  *  - RTC (Real Time Clock)
  *
  * The following devices can use this module:
- *  - Atmel® | SMART™ SAM D20/D21
- *  - Atmel® | SMART™ SAM R21
- *  - Atmel® | SMART™ SAM D10/D11
+ *  - Atmel | SMART SAM D20/D21
+ *  - Atmel | SMART SAM R21
+ *  - Atmel | SMART SAM D10/D11
+ *  - Atmel | SMART SAM L21
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_rtc_calendar_prerequisites
@@ -93,9 +97,39 @@
  *
  * Whilst operating in Calendar mode, the RTC features:
  *  - Time tracking in seconds, minutes, and hours
- *   - 12 or 24 hour mode
+ *  - 12 or 24 hour mode
  *  - Date tracking in day, month, and year
- *   - Automatic leap year correction
+ *  - Automatic leap year correction
+ *
+ * \subsection asfdoc_sam0_rtc_calendar_features Driver Feature Macro Definition
+ * <table>
+ *  <tr>
+ *    <th>Driver Feature Macro</th>
+ *    <th>Supported devices</th>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_RTC_PERIODIC_INT</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_RTC_PRESCALER_OFF</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_RTC_CLOCK_SELECTION</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_RTC_GENERAL_PURPOSE_REG</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_RTC_CONTINUOUSLY_UPDATED</td>
+ *    <td>SAMD20, SAMD21, SAMR21, SAMD10, SAMD11</td>
+ *  </tr>
+ * </table>
+ * \note The specific features are only available in the driver when the
+ * selected device supports those features.
  *
  * \subsection asfdoc_sam0_rtc_calendar_module_overview_alarms Alarms and Overflow
  * The RTC has four independent hardware alarms that can be configured by the user
@@ -197,6 +231,7 @@
  * \f[ [YEAR_{START}, YEAR_{START}+64) \f]
  *
  * \subsection asfdoc_sam0_rtc_calendar_special_considerations_clock Clock Setup
+ * \subsubsection asfdoc_sam0_rtc_calendar_clock_samd_r SAM D20/D21/R21/D10/D11 Clock Setup
  * The RTC is typically clocked by a specialized GCLK generator that has a
  * smaller prescaler than the others. By default the RTC clock is on, selected
  * to use the internal 32KHz RC-oscillator with a prescaler of 32, giving a
@@ -254,6 +289,55 @@
  * \note For the calendar to operate correctly, an asynchronous clock of 1Hz
  *       should be used.
  *
+ * \subsubsection asfdoc_sam0_rtc_calendar_clock_saml SAM L21 Clock Setup
+ * The RTC clock can be selected from OSC32K,XOSC32K or OSCULP32K , and a 32KHz
+ * or 1KHz oscillator clock frequency is required. This clock must be
+ * configured and enabled in the 32KHz oscillator controller before using the RTC.
+ *
+ * The table below lists the available RTC clock \ref asfdoc_sam0_rtc_calendar_rtc_clk
+ *
+ * \anchor asfdoc_sam0_rtc_calendar_rtc_clk
+ * <table>
+ *   <caption>RTC clocks source</caption>
+ *   <tr>
+ *     <th>RTC clock frequency</th>
+ *     <th>Clock source</th>
+ *     <th>Description</th>
+ *   </tr>
+ *   <tr>
+ *     <td>1.024KHz</td>
+ *     <td>ULP1K</td>
+ *     <td>1.024KHz from 32KHz internal ULP oscillator</td>
+ *   </tr>
+ *   <tr>
+ *     <td>32.768KHz</td>
+ *     <td>ULP32K</td>
+ *     <td>32.768KHz from 32KHz internal ULP oscillator</td>
+ *   </tr>
+ *   <tr>
+ *     <td>1.024KHz</td>
+ *     <td>OSC1K</td>
+ *     <td>1.024KHz from 32KHz internal oscillator</td>
+ *   </tr>
+ *   <tr>
+ *     <td>32.768KHz</td>
+ *     <td>OSC32K</td>
+ *     <td>32.768KHz from 32KHz internal oscillator</td>
+ *   </tr>
+ *   <tr>
+ *     <td>1.024KHz</td>
+ *     <td>XOSC1K</td>
+ *     <td>1.024KHz from 32KHz internal oscillator</td>
+ *   </tr>
+ *   <tr>
+ *     <td>32.768KHz</td>
+ *     <td>XOSC32K</td>
+ *     <td>32.768KHz from 32KHz external crystal oscillator</td>
+ *   </tr>
+ * </table>
+ *
+ * \note For the calendar to operate correctly, an asynchronous clock of 1Hz
+ *       should be used.
  *
  * \section asfdoc_sam0_rtc_calendar_extra_info Extra Information
  *
@@ -285,6 +369,50 @@ extern "C" {
 #endif
 
 /**
+ * Define port features set according to different device family
+ * @{
+*/
+#if (SAML21) || defined(__DOXYGEN__)
+/** RTC periodic interval interrupt. */
+#  define FEATURE_RTC_PERIODIC_INT
+/** RTC prescaler is off. */
+#  define FEATURE_RTC_PRESCALER_OFF
+/** RTC clock selection. */
+#  define FEATURE_RTC_CLOCK_SELECTION
+/** General purpose registers. */
+#  define FEATURE_RTC_GENERAL_PURPOSE_REG
+#else
+/** RTC continuously updated. */
+#  define FEATURE_RTC_CONTINUOUSLY_UPDATED
+#endif
+/*@}*/
+
+#ifdef FEATURE_RTC_CLOCK_SELECTION
+/**
+ * \brief Available clock source for RTC.
+ * RTC clock source.
+ */
+enum rtc_clock_sel {
+	/** 1.024KHz from 32KHz internal ULP oscillator. */
+	RTC_CLOCK_SELECTION_ULP1K = OSC32KCTRL_RTCCTRL_RTCSEL_ULP1K_Val,
+	/** 32.768KHz from 32KHz internal ULP oscillator. */
+	RTC_CLOCK_SELECTION_ULP32K = OSC32KCTRL_RTCCTRL_RTCSEL_ULP32K_Val,
+	/** 1.024KHz from 32KHz internal oscillator. */
+	RTC_CLOCK_SELECTION_OSC1K = OSC32KCTRL_RTCCTRL_RTCSEL_OSC1K_Val,
+	/** 32.768KHz from 32KHz internal oscillator. */
+	RTC_CLOCK_SELECTION_OSC32K = OSC32KCTRL_RTCCTRL_RTCSEL_OSC32K_Val,
+	/** 1.024KHz from 32KHz internal oscillator. */
+	RTC_CLOCK_SELECTION_XOSC1K = OSC32KCTRL_RTCCTRL_RTCSEL_XOSC1K_Val,
+	/** 32.768KHz from 32.768KHz external crystal oscillator. */
+	RTC_CLOCK_SELECTION_XOSC32K = OSC32KCTRL_RTCCTRL_RTCSEL_XOSC32K_Val,
+};
+#endif
+
+#if !defined (RTC_NUM_OF_ALARMS) && defined(RTC_ALARM_NUM)
+#define RTC_NUM_OF_ALARMS RTC_ALARM_NUM
+#endif
+
+/**
  * \brief Available alarm channels.
  *
  * Available alarm channels.
@@ -309,8 +437,53 @@ enum rtc_calendar_alarm {
 };
 
 #if RTC_CALENDAR_ASYNC == true
+#ifdef FEATURE_RTC_PERIODIC_INT
 /**
- * \brief Callback types
+ * \brief Callback types.
+ *
+ * The available callback types for the RTC calendar module.
+ */
+enum rtc_calendar_callback {
+	/** Callback for Periodic Interval 0 Interrupt. */
+	RTC_CALENDAR_CALLBACK_PERIODIC_INTERVAL_0 = 0,
+	/** Callback for Periodic Interval 1 Interrupt. */
+	RTC_CALENDAR_CALLBACK_PERIODIC_INTERVAL_1,
+	/** Callback for Periodic Interval 2 Interrupt. */
+	RTC_CALENDAR_CALLBACK_PERIODIC_INTERVAL_2,
+	/** Callback for Periodic Interval 3 Interrupt. */
+	RTC_CALENDAR_CALLBACK_PERIODIC_INTERVAL_3,
+	/** Callback for Periodic Interval 4 Interrupt. */
+	RTC_CALENDAR_CALLBACK_PERIODIC_INTERVAL_4,
+	/** Callback for Periodic Interval 5 Interrupt. */
+	RTC_CALENDAR_CALLBACK_PERIODIC_INTERVAL_5,
+	/** Callback for Periodic Interval 6 Interrupt. */
+	RTC_CALENDAR_CALLBACK_PERIODIC_INTERVAL_6,
+	/** Callback for Periodic Interval 7 Interrupt. */
+	RTC_CALENDAR_CALLBACK_PERIODIC_INTERVAL_7,
+	/** Callback for alarm 0. */
+	RTC_CALENDAR_CALLBACK_ALARM_0,
+#  if (RTC_NUM_OF_ALARMS > 1) || defined(__DOXYGEN__)
+	/** Callback for alarm 1. */
+	RTC_CALENDAR_CALLBACK_ALARM_1,
+#  endif
+#  if (RTC_NUM_OF_ALARMS > 2) || defined(__DOXYGEN__)
+	/** Callback for alarm 2. */
+	RTC_CALENDAR_CALLBACK_ALARM_2,
+#  endif
+#  if (RTC_NUM_OF_ALARMS > 3)	|| defined(__DOXYGEN__)
+	/** Callback for alarm 3. */
+	RTC_CALENDAR_CALLBACK_ALARM_3,
+#  endif
+	/** Callback for  overflow. */
+	RTC_CALENDAR_CALLBACK_OVERFLOW,
+#  if !defined(__DOXYGEN__)
+	/** Total number of callbacks. */
+	_RTC_CALENDAR_CALLBACK_N
+#  endif
+};
+#else
+/**
+ * \brief Callback types.
  *
  * The available callback types for the RTC calendar module.
  */
@@ -336,14 +509,50 @@ enum rtc_calendar_callback {
 	_RTC_CALENDAR_CALLBACK_N
 #  endif
 };
+#endif
 
 #  if !defined(__DOXYGEN__)
 typedef void (*rtc_calendar_callback_t)(void);
 #  endif
 #endif
 
+#ifdef FEATURE_RTC_PRESCALER_OFF
 /**
- * \brief RTC input clock prescaler settings
+ * \brief RTC input clock prescaler settings.
+ *
+ * The available input clock prescaler values for the RTC calendar module.
+ */
+enum rtc_calendar_prescaler {
+	/** RTC prescaler is off, and the input clock frequency is
+	prescaled by a factor of 1. */
+	RTC_CALENDAR_PRESCALER_OFF      = RTC_MODE2_CTRLA_PRESCALER_OFF,
+	/** RTC input clock frequency is prescaled by a factor of 1. */
+	RTC_CALENDAR_PRESCALER_DIV_1    = RTC_MODE2_CTRLA_PRESCALER_DIV1,
+	/** RTC input clock frequency is prescaled by a factor of 2. */
+	RTC_CALENDAR_PRESCALER_DIV_2    = RTC_MODE2_CTRLA_PRESCALER_DIV2,
+	/** RTC input clock frequency is prescaled by a factor of 4. */
+	RTC_CALENDAR_PRESCALER_DIV_4    = RTC_MODE2_CTRLA_PRESCALER_DIV4,
+	/** RTC input clock frequency is prescaled by a factor of 8. */
+	RTC_CALENDAR_PRESCALER_DIV_8    = RTC_MODE2_CTRLA_PRESCALER_DIV8,
+	/** RTC input clock frequency is prescaled by a factor of 16. */
+	RTC_CALENDAR_PRESCALER_DIV_16   = RTC_MODE2_CTRLA_PRESCALER_DIV16,
+	/** RTC input clock frequency is prescaled by a factor of 32. */
+	RTC_CALENDAR_PRESCALER_DIV_32   = RTC_MODE2_CTRLA_PRESCALER_DIV32,
+	/** RTC input clock frequency is prescaled by a factor of 64. */
+	RTC_CALENDAR_PRESCALER_DIV_64   = RTC_MODE2_CTRLA_PRESCALER_DIV64,
+	/** RTC input clock frequency is prescaled by a factor of 128. */
+	RTC_CALENDAR_PRESCALER_DIV_128  = RTC_MODE2_CTRLA_PRESCALER_DIV128,
+	/** RTC input clock frequency is prescaled by a factor of 256. */
+	RTC_CALENDAR_PRESCALER_DIV_256  = RTC_MODE2_CTRLA_PRESCALER_DIV256,
+	/** RTC input clock frequency is prescaled by a factor of 512. */
+	RTC_CALENDAR_PRESCALER_DIV_512  = RTC_MODE2_CTRLA_PRESCALER_DIV512,
+	/** RTC input clock frequency is prescaled by a factor of 1024. */
+	RTC_CALENDAR_PRESCALER_DIV_1024 = RTC_MODE2_CTRLA_PRESCALER_DIV1024,
+};
+
+#else
+/**
+ * \brief RTC input clock prescaler settings.
  *
  * The available input clock prescaler values for the RTC calendar module.
  */
@@ -371,27 +580,30 @@ enum rtc_calendar_prescaler {
 	/** RTC input clock frequency is prescaled by a factor of 1024. */
 	RTC_CALENDAR_PRESCALER_DIV_1024 = RTC_MODE2_CTRL_PRESCALER_DIV1024,
 };
+#endif
 
 #if !defined(__DOXYGEN__)
 /**
- * \brief Device structure
+ * \brief Device structure.
  */
 struct rtc_module {
 	/** RTC hardware module. */
 	Rtc *hw;
 	/** If clock mode 24h. */
 	bool clock_24h;
+#ifdef FEATURE_RTC_CONTINUOUSLY_UPDATED
 	/** If continuously update clock register. */
 	bool continuously_update;
+#endif
 	/** Initial year for counter value 0. */
 	uint16_t year_init_value;
 #  if RTC_CALENDAR_ASYNC == true
 	/** Pointers to callback functions. */
 	volatile rtc_calendar_callback_t callbacks[_RTC_CALENDAR_CALLBACK_N];
 	/** Mask for registered callbacks. */
-	volatile uint8_t registered_callback;
+	volatile uint16_t registered_callback;
 	/** Mask for enabled callbacks. */
-	volatile uint8_t enabled_callback;
+	volatile uint16_t enabled_callback;
 #  endif
 };
 #endif
@@ -475,7 +687,7 @@ struct rtc_calendar_alarm_time {
 };
 
 /**
- * \brief RTC configuration structure
+ * \brief RTC configuration structure.
  *
  * Configuration structure for the RTC instance. This structure should
  * be initialized using the \ref rtc_calendar_get_config_defaults() before any
@@ -486,10 +698,12 @@ struct rtc_calendar_config {
 	enum rtc_calendar_prescaler prescaler;
 	/** If \c true, clears the clock on alarm match. */
 	bool clear_on_match;
+#ifdef FEATURE_RTC_CONTINUOUSLY_UPDATED
 	/** If \c true, the digital counter registers will be continuously updated
 	 *  so that internal synchronization is not needed when reading the current
 	 *  count. */
 	bool continuously_update;
+#endif
 	/** If \c true, time is represented in 24 hour mode. */
 	bool clock_24h;
 	/** Initial year for counter value 0. */
@@ -505,43 +719,12 @@ struct rtc_calendar_config {
  */
 
 /**
- * \brief Determines if the hardware module(s) are currently synchronizing to the bus.
- *
- * Checks to see if the underlying hardware peripheral module(s) are currently
- * synchronizing across multiple clock domains to the hardware bus. This
- * function can be used to delay further operations on a module until such time
- * that it is ready, to prevent blocking delays for synchronization in the
- * user application.
- *
- * \param[in]  module  RTC hardware module
- *
- * \return Synchronization status of the underlying hardware module(s).
- *
- * \retval true  if the module has completed synchronization
- * \retval false if the module synchronization is ongoing
- */
-static inline bool rtc_calendar_is_syncing(struct rtc_module *const module)
-{
-	/* Sanity check arguments */
-	Assert(module);
-	Assert(module->hw);
-
-	Rtc *const rtc_module = module->hw;
-
-        if (rtc_module->MODE2.STATUS.reg & RTC_STATUS_SYNCBUSY) {
-                return true;
-        }
-
-        return false;
-}
-
-/**
  * \brief Initialize a \c time structure.
  *
  * This will initialize a given time structure to the time 00:00:00 (hh:mm:ss)
  * and date 2000-01-01 (YYYY-MM-DD).
  *
- * \param[out] time  Time structure to initialize.
+ * \param[out] time  Time structure to initialize
  */
 static inline void rtc_calendar_get_time_defaults(
 		struct rtc_calendar_time *const time)
@@ -567,7 +750,7 @@ static inline void rtc_calendar_get_time_defaults(
  *  - Continuously sync clock off
  *  - 12 hour calendar
  *  - Start year 2000 (Year 0 in the counter will be year 2000)
- *  - Events off.
+ *  - Events off
  *  - Alarms set to January 1. 2000, 00:00:00
  *  - Alarm will match on second, minute, hour, day, month, and year
  *
@@ -587,7 +770,9 @@ static inline void rtc_calendar_get_config_defaults(
 	/* Set defaults into configuration structure */
 	config->prescaler           = RTC_CALENDAR_PRESCALER_DIV_1024;
 	config->clear_on_match      = false;
+#ifdef FEATURE_RTC_CONTINUOUSLY_UPDATED
 	config->continuously_update = false;
+#endif
 	config->clock_24h           = false;
 	config->year_init_value     = 2000;
 	for (uint8_t i = 0; i < RTC_NUM_OF_ALARMS; i++) {
@@ -597,67 +782,14 @@ static inline void rtc_calendar_get_config_defaults(
 }
 
 void rtc_calendar_reset(struct rtc_module *const module);
-
-/**
- * \brief Enables the RTC module.
- *
- * Enables the RTC module once it has been configured, ready for use. Most
- * module configuration parameters cannot be altered while the module is enabled.
- *
- * \param[in,out] module  Pointer to the software instance struct
- */
-static inline void rtc_calendar_enable(struct rtc_module *const module)
-{
-	/* Sanity check arguments */
-	Assert(module);
-	Assert(module->hw);
-
-	Rtc *const rtc_module = module->hw;
-
-#if RTC_CALENDAR_ASYNC == true
-	system_interrupt_enable(SYSTEM_INTERRUPT_MODULE_RTC);
-#endif
-
-	while (rtc_calendar_is_syncing(module)) {
-		/* Wait for synchronization */
-	}
-
-	/* Enable RTC module. */
-	rtc_module->MODE2.CTRL.reg |= RTC_MODE2_CTRL_ENABLE;
-}
-
-/**
- * \brief Disables the RTC module.
- *
- * Disables the RTC module.
- *
- * \param[in,out] module  Pointer to the software instance struct
- */
-static inline void rtc_calendar_disable(struct rtc_module *const module)
-{
-	/* Sanity check arguments */
-	Assert(module);
-	Assert(module->hw);
-
-	Rtc *const rtc_module = module->hw;
-
-#if RTC_CALENDAR_ASYNC == true
-	system_interrupt_disable(SYSTEM_INTERRUPT_MODULE_RTC);
-#endif
-
-	while (rtc_calendar_is_syncing(module)) {
-		/* Wait for synchronization */
-	}
-
-	/* Disable RTC module. */
-	rtc_module->MODE2.CTRL.reg &= ~RTC_MODE2_CTRL_ENABLE;
-}
+void rtc_calendar_enable(struct rtc_module *const module);
+void rtc_calendar_disable(struct rtc_module *const module);
 
 #if (RTC_INST_NUM > 1) && !defined(__DOXYGEN__)
 /**
  * \internal Find the index of given RTC module instance.
  *
- * \param[in] hw  RTC module instance pointer.
+ * \param[in] hw  RTC module instance pointer
  *
  * \return Index of the given RTC module instance.
  */
@@ -775,7 +907,7 @@ static inline void rtc_calendar_clear_overflow(struct rtc_module *const module)
  * is an compare match between the alarm value and the clock.
  *
  * \param[in,out] module  Pointer to the software instance struct
- * \param[in] alarm_index  Index of the alarm to check.
+ * \param[in] alarm_index  Index of the alarm to check
  *
  * \returns Match status of the specified alarm.
  *
@@ -809,12 +941,12 @@ static inline bool rtc_calendar_is_alarm_match(
  * determined.
  *
  * \param[in,out] module  Pointer to the software instance struct
- * \param[in] alarm_index  The index of the alarm match to clear.
+ * \param[in] alarm_index  The index of the alarm match to clear
  *
  * \return Status of the alarm match clear operation.
  *
- * \retval STATUS_OK               If flag was cleared correctly.
- * \retval STATUS_ERR_INVALID_ARG  If invalid argument(s) were provided.
+ * \retval STATUS_OK               If flag was cleared correctly
+ * \retval STATUS_ERR_INVALID_ARG  If invalid argument(s) were provided
  */
 static inline enum status_code rtc_calendar_clear_alarm_match(
 		struct rtc_module *const module,
@@ -940,6 +1072,60 @@ static inline void rtc_calendar_disable_events(
 
 /** @} */
 
+#ifdef FEATURE_RTC_GENERAL_PURPOSE_REG
+/**
+ * \name RTC General Purpose Registers
+ * @{
+ */
+
+/**
+ * \brief Write a value into general purpose register.
+ *
+ * \param[in] module  Pointer to the software instance struct
+ * \param[in] n  General purpose type
+ * \param[in] index General purpose register index (0..3)
+ *
+ */
+static inline void rtc_write_general_purpose_reg(
+	struct rtc_module *const module,
+	const  uint8_t index,
+	uint32_t value)
+{
+	/* Sanity check arguments */
+	Assert(module);
+	Assert(module->hw);
+	Assert(index <= 3);
+
+	Rtc *const rtc_module = module->hw;
+
+	rtc_module->MODE0.GP[index].reg = value;
+}
+
+/**
+ * \brief Read the value from general purpose register.
+ *
+ * \param[in] module  Pointer to the software instance struct
+ * \param[in] index General purpose register index (0..3)
+ *
+ * \retval Value of general purpose register
+ */
+static inline uint32_t rtc_read_general_purpose_reg(
+	struct rtc_module *const module,
+	const  uint8_t index)
+{
+	/* Sanity check arguments */
+	Assert(module);
+	Assert(module->hw);
+	Assert(index <= 3);
+
+	Rtc *const rtc_module = module->hw;
+
+	return rtc_module->MODE0.GP[index].reg;
+}
+
+/** @} */
+#endif
+
 /** @} */
 
 #ifdef __cplusplus
@@ -995,6 +1181,9 @@ static inline void rtc_calendar_disable_events(
  *		<th>Changelog</th>
  *	</tr>
  *	<tr>
+ *		<td>Added support for SAML21.</td>
+ *	</tr>
+ *	<tr>
  *		<td>
  *             Added support for SAMD21 and added driver instance parameter to all
  *             API function calls, except get_config_defaults
@@ -1033,8 +1222,13 @@ static inline void rtc_calendar_disable_events(
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
+ *		<td>E</td>
+ *		<td>11/2014</td>
+ *		<td>Added support for SAML21.</td>
+ *	</tr>
+ *	<tr>
  *		<td>D</td>
- *		<td>05/2014</td>
+ *		<td>12/2014</td>
  *		<td>Added support for SAMR21 and SAMD10/D11.</td>
  *	</tr>
  *	<tr>

@@ -40,6 +40,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #include "pmc.h"
 
@@ -278,8 +281,6 @@ uint32_t pmc_switch_mck_to_upllck(uint32_t ul_pres)
 
 /**
  * \brief Switch slow clock source selection to external 32k (Xtal or Bypass).
- *
- * \note This function disables the PLLs.
  *
  * \note Switching SCLK back to 32krc is only possible by shutting down the
  *       VDDIO power supply.
@@ -1145,6 +1146,36 @@ void pmc_disable_udpck(void)
 }
 #endif
 
+#if SAMG55
+/**
+ * \brief Switch UHP (USB) clock source selection to PLLA clock.
+ *
+ * \param ul_usbdiv Clock divisor.
+ */
+void pmc_switch_uhpck_to_pllack(uint32_t ul_usbdiv)
+{
+	PMC->PMC_USB = PMC_USB_USBDIV(ul_usbdiv);
+}
+
+/**
+ * \brief Switch UHP (USB) clock source selection to PLLB clock.
+ *
+ * \param ul_usbdiv Clock divisor.
+ */
+void pmc_switch_uhpck_to_pllbck(uint32_t ul_usbdiv)
+{
+	PMC->PMC_USB = PMC_USB_USBDIV(ul_usbdiv) | PMC_USB_USBS;
+}
+
+/**
+ * \brief Enable UHP (USB) clock.
+ */
+void pmc_enable_uhpck(void)
+{
+	PMC->PMC_SCER = PMC_SCER_UHP;
+}
+#endif
+
 /**
  * \brief Enable PMC interrupts.
  *
@@ -1278,13 +1309,11 @@ void pmc_set_flash_in_wait_mode(uint32_t ul_flash_state)
 }
 
 /**
- * \brief Enable Wait Mode. Enter condition: (WAITMODE bit = 1) +
- * (SLEEPDEEP bit = 0) + FLPM
+ * \brief Enable Wait Mode. Enter condition: (WAITMODE bit = 1) + FLPM
  *
- * \note In this function the FWS is reset to 0 to get best flash access
- * performance while running on fast wake up RC clock. Make sure the
- * non-zero FWS value is saved before invoking this function, and restored
- * after system woken up, to avoid flash access error.
+ * \note In this function, FLPM will retain, WAITMODE bit will be set, 
+ * Generally, this function will be called by pmc_sleep() in order to 
+ * complete all sequence entering wait mode.
  * See \ref pmc_sleep() for entering different sleep modes.
  */
 void pmc_enable_waitmode(void)
@@ -1296,9 +1325,6 @@ void pmc_enable_waitmode(void)
 	i &= ~PMC_FSMR_FLPM_Msk;
 	i |= ul_flash_in_wait_mode;
 	PMC->PMC_FSMR = i;
-
-	/* Clear SLEEPDEEP bit */
-	SCB->SCR &= (uint32_t) ~ SCB_SCR_SLEEPDEEP_Msk;
 
 	/* Set the WAITMODE bit = 1 */
 	PMC->CKGR_MOR |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_WAITMODE;
@@ -1429,12 +1455,11 @@ void pmc_set_writeprotect(uint32_t ul_enable)
 /**
  * \brief Return write protect status.
  *
- * \retval 0 Protection disabled.
- * \retval 1 Protection enabled.
+ * \return Return write protect status.
  */
 uint32_t pmc_get_writeprotect_status(void)
 {
-	return PMC->PMC_WPMR & PMC_WPMR_WPEN;
+	return PMC->PMC_WPSR;
 }
 
 #if (SAMG53 || SAMG54 || SAMG55)

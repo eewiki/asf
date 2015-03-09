@@ -87,3 +87,6 @@
  *    voltage level.
  *    \snippet qs_bod_basic_use.c main_loop
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */

@@ -42,6 +42,9 @@
  * \asf_license_stop
  *
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 
 #ifndef _SAM_IO_
 #define _SAM_IO_
@@ -69,6 +72,10 @@
 
 #if (SAMD11)
 #  include "samd11.h"
+#endif
+
+#if (SAML21)
+#  include "saml21.h"
 #endif
 
 #endif /* _SAM_IO_ */

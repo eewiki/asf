@@ -51,6 +51,9 @@
 /**
  * Includes for Touch Library.
  */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #include <asf.h>
 #include "touch_api_SAMD.h"
 #if DEF_TOUCH_QDEBUG_ENABLE == 1

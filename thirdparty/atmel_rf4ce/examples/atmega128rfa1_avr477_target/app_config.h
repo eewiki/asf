@@ -17,6 +17,9 @@
  */
 
 /* Prevent double inclusion */
+ /**
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef APP_CONFIG_H
 #define APP_CONFIG_H
 
