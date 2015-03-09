@@ -59,7 +59,7 @@
 #include "app_frame_format.h"
 #include "app_per_mode.h"
 #include "conf_board.h"
-#include "asf.h"
+#include "led.h"
 
 /**
  * \addtogroup group_per_mode_receptor
@@ -126,11 +126,23 @@ static uint8_t marker_seq_num = 0;
  */
 void per_mode_receptor_init(void *parameter)
 {
+  
+#ifdef EXT_RF_FRONT_END_CTRL
+    uint8_t config_tx_pwr;
+#endif  
 	/* PER TEST Receptor sequence number */
 	seq_num_receptor = rand();
 
 	printf("\r\n Starting PER Measurement mode as Reflector");
 
+#ifdef EXT_RF_FRONT_END_CTRL
+    /* Enable RF front end control in PER Measurement mode*/
+    pal_trx_bit_write(SR_PA_EXT_EN, PA_EXT_ENABLE);
+    /* set the TX power to default level */
+    config_tx_pwr = TAL_TRANSMIT_POWER_DEFAULT;
+    tal_pib_set(phyTransmitPower, (pib_value_t *)&config_tx_pwr);
+#endif
+    
 	/* keep the compiler happy */
 	parameter = parameter;
 }
@@ -227,7 +239,6 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 {
 	app_payload_t *msg;
 	static uint8_t rx_count;
-	static uint8_t per_test_count;
 	uint8_t expected_frame_size;
 
 	/* Point to the message : 1 =>size is first byte and 2=>FCS*/
@@ -257,7 +268,6 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 				 * test packet */
 				return;
 			}
-
 			frames_with_wrong_crc++;
 		}
 	}
@@ -282,22 +292,7 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 
 	case PER_TEST_PKT:
 	{
-		/*Frames with length 12 doesnot accomodate seq num*/
-		if ((per_test_count != msg->seq_num) &&
-				(frame_info->mpdu[0]) != 12) {
-			/*New per test was started which was not observed due to
-			 *noise during previous per test end and start of this
-			 *per test*/
-	#ifdef CRC_SETTING_ON_REMOTE_NODE
-			frames_with_wrong_crc = 0;
-#endif /* #ifdef CRC_SETTING_ON_REMOTE_NODE */
-			number_rx_frames = 0;
-			aver_lqi = 0;
-			aver_rssi = 0;
-			rx_count = 0;
-		}
 
-		per_test_count = msg->seq_num;
 		static uint8_t cur_seq_no, prev_seq_no;
 
 		/* if PER test frames received then increment number_rx_frames
@@ -634,6 +629,10 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
 	switch (msg->payload.set_parm_req_data.param_type) {
 	case CHANNEL: /* Parameter = channel */
 	{
+#ifdef EXT_RF_FRONT_END_CTRL
+                uint8_t chn_before_set;
+                tal_pib_get(phyCurrentChannel, &chn_before_set);
+#endif      
 		param_val = msg->payload.set_parm_req_data.param_value;
 
 #if (TAL_TYPE == AT86RF233)
@@ -643,6 +642,11 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
 		tal_pib_set(phyCurrentChannel, (pib_value_t *)&param_val);
 
 		printf("\r\n Channel changed to %d", param_val);
+#ifdef EXT_RF_FRONT_END_CTRL
+                /* Limit the tx power below the default power for ch26 to meet
+                   FCC Compliance */
+                limit_tx_power_in_ch26(param_val, chn_before_set);
+#endif        
 	}
 	break;
 

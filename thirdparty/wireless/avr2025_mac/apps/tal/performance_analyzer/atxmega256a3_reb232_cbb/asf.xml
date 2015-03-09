@@ -1,0 +1,36 @@
+<asf xmlversion="1.0">
+	<project caption="Performance Analyzer Application AT86RF232-REB232ED-EK" id="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer.atxmega256a3_reb232_cbb" force-caption="true" force-description="true">
+		<info type="description" value="summary">
+			A Serial interface based application,which communicates with Wireless Analyzer to demonstrate
+			various features and capabilities of the of Atmel Transceivers.
+		</info>
+		<require idref="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+
+		<config name="config.spi_master_type" value="standard_spi"/>
+		<require idref="board.xmega_a3_reb_cbb"/>
+		<config name="config.thirdparty.wireless.addons.sio2host" value="uart"/>
+				<config name="config.thirdparty.wireless.avr2025_mac.source.tfa" value="at86rf232"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf232"/>
+
+		<build type="define"   name="HIGHEST_STACK_LAYER"                 value="TAL"/>
+
+        <build type="define"   name="FFD"                                 value=""/>
+        <build type="define"   name="ENABLE_TFA"                          value=""/>
+        <build type="define"   name="TRX_REG_RAW_VALUE"                   value=""/>
+		<build type="define"   name="ANTENNA_DIVERSITY"                   value="1"/>		
+		
+		<generator value="iarew"/>
+		<generator value="avrgcc" />
+		<generator value="as5_8" />
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3"/>
+	</project>
+</asf>

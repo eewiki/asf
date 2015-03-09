@@ -17,4 +17,22 @@
 		<require idref="sam.utils"/>
 		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
 	</module>
+	<module type="driver" id="sam.drivers.adc.sam4n" caption="ADC - Analog-to-digital Converter for SAM4N">
+		<info type="description" value="summary">
+			The Analog to Digital Converter is able to capture analog signals and transform them into digital format.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc_sam4n.c"/>
+		<build type="header-file" subtype="api" value="adc_sam4n.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam4n_drivers_adc_group"/>
+		<build type="doxygen-quick-start" value="sam4n_adc_quickstart"/>
+		<device-support value="sam4n"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4n"/>
+	</module>
 </asf>

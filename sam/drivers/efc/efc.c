@@ -3,7 +3,7 @@
  *
  * \brief Enhanced Embedded Flash Controller (EEFC) driver for SAM.
  *
- * Copyright (c) 2011-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -64,7 +64,7 @@ extern "C" {
 #if (SAM3XA || SAM3U4 || SAM4SD16 || SAM4SD32)
 # define READ_BUFF_ADDR0    IFLASH0_ADDR
 # define READ_BUFF_ADDR1    IFLASH1_ADDR
-#elif (SAM3S || SAM3N || SAM4E)
+#elif (SAM3S || SAM3N || SAM4E || SAM4N)
 # define READ_BUFF_ADDR     IFLASH_ADDR
 #elif (SAM3U || SAM4S)
 # define READ_BUFF_ADDR     IFLASH0_ADDR
@@ -75,7 +75,7 @@ extern "C" {
 /* Flash Writing Protection Key */
 #define FWP_KEY    0x5Au
 
-#if (SAM4S || SAM4E)
+#if (SAM4S || SAM4E || SAM4N)
 #define EEFC_FCR_FCMD(value) \
 	((EEFC_FCR_FCMD_Msk & ((value) << EEFC_FCR_FCMD_Pos)))
 #define EEFC_ERROR_FLAGS  (EEFC_FSR_FLOCKE | EEFC_FSR_FCMDE | EEFC_FSR_FLERR)
@@ -214,7 +214,7 @@ uint32_t efc_perform_command(Efc *p_efc, uint32_t ul_command,
 			EEFC_FCR_FCMD(ul_command));
 	return (p_efc->EEFC_FSR & EEFC_ERROR_FLAGS);
 
-#elif (SAM3N || SAM3S || SAM4S || SAM3U || SAM4E)
+#elif (SAM3N || SAM3S || SAM4S || SAM3U || SAM4E || SAM4N)
 	/* Use IAP function with 2 parameter in ROM. */
 	static uint32_t(*iap_perform_command) (uint32_t, uint32_t);
 
@@ -226,7 +226,7 @@ uint32_t efc_perform_command(Efc *p_efc, uint32_t ul_command,
 	iap_perform_command(ul_efc_nb,
 			EEFC_FCR_FKEY_PASSWD | EEFC_FCR_FARG(ul_argument) |
 			EEFC_FCR_FCMD(ul_command));
-#elif SAM4E
+#elif SAM4E || SAM4N
 	iap_perform_command(0,
 			EEFC_FCR_FKEY_PASSWD | EEFC_FCR_FARG(ul_argument) |
 			EEFC_FCR_FCMD(ul_command));
@@ -295,7 +295,7 @@ uint32_t efc_perform_read_sequence(Efc *p_efc,
 	uint32_t *p_ul_data =
 			(uint32_t *) ((p_efc == EFC0) ?
 			READ_BUFF_ADDR0 : READ_BUFF_ADDR1);
-#elif (SAM3S || SAM4S || SAM3N || SAM3U || SAM4E)
+#elif (SAM3S || SAM4S || SAM3N || SAM3U || SAM4E || SAM4N)
 	uint32_t *p_ul_data = (uint32_t *) READ_BUFF_ADDR;
 #else
 	return EFC_RC_NOT_SUPPORT;
@@ -308,7 +308,7 @@ uint32_t efc_perform_read_sequence(Efc *p_efc,
 	p_efc->EEFC_FMR |= (0x1u << 16);
 
 	/* Send the Start Read command */
-#if (SAM4S || SAM4E)
+#if (SAM4S || SAM4E || SAM4N)
 	p_efc->EEFC_FCR = EEFC_FCR_FKEY_PASSWD | EEFC_FCR_FARG(0)
 			| EEFC_FCR_FCMD(ul_cmd_st);
 #else
@@ -331,7 +331,7 @@ uint32_t efc_perform_read_sequence(Efc *p_efc,
 
 	/* To stop the read mode */
 	p_efc->EEFC_FCR =
-#if (SAM4S || SAM4E)
+#if (SAM4S || SAM4E || SAM4N)
 			EEFC_FCR_FKEY_PASSWD | EEFC_FCR_FARG(0) |
 			EEFC_FCR_FCMD(ul_cmd_sp);
 #else

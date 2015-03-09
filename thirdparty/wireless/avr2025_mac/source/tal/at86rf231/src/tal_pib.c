@@ -70,13 +70,34 @@
 
 /* === MACROS ============================================================== */
 
-#ifdef CUSTOM_PWR_TABLE
-
+#ifdef CUSTOM_PWR_TABLE /*Power Table For External PA for 231FEM-EK*/
+#ifdef EXT_PA_SE2431L
 /*
- * If a customized powr table is used, the power table gets defined within the
- * pal_board.c file.
+ * Mapping table for FEM TX Pout (dBm).
+ *     based on board characterization
  */
-FLASH_EXTERN(int8_t tx_pwr_table[16]);
+FLASH_DECLARE(int8_t tx_pwr_table[16]) =
+{
+    /*PA*/ /* RF231 */  /* TX_PWR */ /* EVDD 3V0 */
+    21,  /*  3.0  */  /*  0x00  */
+    22,  /*  2.8  */  /*  0x01  */
+    22,  /*  2.3  */  /*  0x02  */
+    21,  /*  1.8  */  /*  0x03  */
+    21,  /*  1.3  */  /*  0x04  */
+    21,  /*  0.7  */  /*  0x05  */
+    21,  /*  0.0  */  /*  0x06  */
+    21,  /*  -1   */  /*  0x07  */
+    20,  /*  -2   */  /*  0x08  */
+    20,  /*  -3   */  /*  0x09  */
+    19,  /*  -4   */  /*  0x0A  */
+    17,  /*  -5   */  /*  0x0B  */
+    16,  /*  -7   */  /*  0x0C  */
+    13,  /*  -9   */  /*  0x0D  */
+    9,  /*  -12  */  /*  0x0E  */
+    4,  /*  -17  */  /*  0x0F  */
+};
+
+#endif
 #else
 
 /*

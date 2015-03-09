@@ -45,6 +45,7 @@
 #include <system_interrupt.h>
 #include <string.h>
 
+
 /**
  * \internal Internal device instance struct
  *
@@ -631,3 +632,284 @@ bool nvm_is_page_locked(uint16_t page_number)
 
 	return !(nvm_module->LOCK.reg & (1 << region_number));
 }
+
+///@cond INTERNAL
+
+/**
+ * \internal
+ *
+ * \brief Translate fusebit words into struct content. 
+ *
+ */
+static void _nvm_translate_raw_fusebits_to_struct (
+		uint32_t *raw_user_row,
+		struct nvm_fusebits *fusebits)
+{
+
+	fusebits->bootloader_size = (enum nvm_bootloader_size)
+			((raw_user_row[0] & NVMCTRL_FUSES_BOOTPROT_Msk)
+			>> NVMCTRL_FUSES_BOOTPROT_Pos);
+
+	fusebits->eeprom_size = (enum nvm_eeprom_emulator_size)
+			((raw_user_row[0] & NVMCTRL_FUSES_EEPROM_SIZE_Msk)
+			>> NVMCTRL_FUSES_EEPROM_SIZE_Pos);
+
+	fusebits->bod33_level = (uint8_t)
+			((raw_user_row[0] & SYSCTRL_FUSES_BOD33USERLEVEL_Msk)
+			>> SYSCTRL_FUSES_BOD33USERLEVEL_Pos);
+
+	fusebits->bod33_enable = (bool)
+			((raw_user_row[0] & SYSCTRL_FUSES_BOD33_EN_Msk)
+			>> SYSCTRL_FUSES_BOD33_EN_Pos);
+
+	fusebits->bod33_action = (enum nvm_bod33_action)
+			((raw_user_row[0] & SYSCTRL_FUSES_BOD33_ACTION_Msk)
+			>> SYSCTRL_FUSES_BOD33_ACTION_Pos);
+
+	fusebits->bod12_level = (uint8_t)
+			((raw_user_row[0] & SYSCTRL_FUSES_BOD12USERLEVEL_Msk)
+			>> SYSCTRL_FUSES_BOD12USERLEVEL_Pos);
+
+	fusebits->bod12_enable = (bool)
+			((raw_user_row[0] & SYSCTRL_FUSES_BOD12_EN_Msk) >> SYSCTRL_FUSES_BOD12_EN_Pos);
+
+	fusebits->bod12_action = (enum nvm_bod12_action)
+			((raw_user_row[0] & SYSCTRL_FUSES_BOD12_ACTION_Msk)
+			>> SYSCTRL_FUSES_BOD12_ACTION_Pos);
+
+	fusebits->wdt_enable = (bool)
+			((raw_user_row[0] & WDT_FUSES_ENABLE_Msk) >> WDT_FUSES_ENABLE_Pos);
+
+	fusebits->wdt_always_on = (bool)
+			((raw_user_row[0] & WDT_FUSES_ALWAYSON_Msk) >> WDT_FUSES_ALWAYSON_Pos);
+
+	fusebits->wdt_timeout_period = (uint8_t)
+			((raw_user_row[0] & WDT_FUSES_PER_Msk) >> WDT_FUSES_PER_Pos);
+
+	/* WDT Windows timout lay between two 32-bit words in the user row. Because only one bit lays in word[0],
+	   bits in word[1] must be left sifted by one to make the correct number */
+	fusebits->wdt_window_timeout = (enum nvm_wdt_window_timeout)
+			((raw_user_row[0] & WDT_FUSES_WINDOW_0_Msk) >> WDT_FUSES_WINDOW_0_Pos) |
+			((raw_user_row[1] & WDT_FUSES_WINDOW_1_Msk) << 1);
+
+	fusebits->wdt_early_warning_offset = (enum nvm_wdt_early_warning_offset)
+			((raw_user_row[1] & WDT_FUSES_EWOFFSET_Msk) >> WDT_FUSES_EWOFFSET_Pos);
+
+	fusebits->wdt_window_mode_enable_at_poweron = (bool)
+			((raw_user_row[1] & WDT_FUSES_WEN_Msk) >> WDT_FUSES_WEN_Pos);
+
+	fusebits->lockbits = (uint16_t)
+			((raw_user_row[1] & NVMCTRL_FUSES_REGION_LOCKS_Msk)
+			>> NVMCTRL_FUSES_REGION_LOCKS_Pos);
+
+}
+
+/**
+ * \internal
+ * \name Fusebit mask for reserved bits
+ *
+ * These macros create a fuse bit mask for reserved bits. These bits should always read 1.
+ *
+ * @{
+ */
+#define _NVM_FUSEBITS_0_RESERVED_BITS ~(NVMCTRL_FUSES_BOOTPROT_Msk | NVMCTRL_FUSES_EEPROM_SIZE_Msk | \
+	SYSCTRL_FUSES_BOD33USERLEVEL_Msk | SYSCTRL_FUSES_BOD33_EN_Msk | SYSCTRL_FUSES_BOD33_ACTION_Msk | \
+	SYSCTRL_FUSES_BOD12USERLEVEL_Msk | SYSCTRL_FUSES_BOD12_EN_Msk | SYSCTRL_FUSES_BOD12_ACTION_Msk | \
+	WDT_FUSES_ENABLE_Msk | WDT_FUSES_ALWAYSON_Msk | WDT_FUSES_PER_Msk | WDT_FUSES_WINDOW_0_Msk)
+
+#define _NVM_FUSEBITS_1_RESERVED_BITS ~(WDT_FUSES_WINDOW_1_Msk | WDT_FUSES_EWOFFSET_Msk | \
+	WDT_FUSES_WEN_Msk | NVMCTRL_FUSES_REGION_LOCKS_Msk)
+
+/** @} */
+
+/**
+ * \internal
+ *
+ * \brief Translate struct content into a 2*32bit word bit pattern.
+ *
+ */
+static void _nvm_translate_struct_to_raw_fusebits (
+		struct nvm_fusebits *fusebits,
+		uint32_t *raw_fusebits)
+{
+
+	/* Generating 32-bit word 1 */
+			/* Setting EEPROM emulator area size and bootloader size */
+	raw_fusebits[0] = (NVMCTRL_FUSES_BOOTPROT((uint8_t)(fusebits->bootloader_size))         |
+			    NVMCTRL_FUSES_EEPROM_SIZE((uint8_t)(fusebits->eeprom_size))         |
+
+			/* Reserved bits should be 1 */
+			    _NVM_FUSEBITS_0_RESERVED_BITS                                       |
+
+			/* Setting BOD33 fuses */
+			    SYSCTRL_FUSES_BOD33USERLEVEL(fusebits->bod33_level)                 |
+			    ((uint32_t)(fusebits->bod33_enable)) << SYSCTRL_FUSES_BOD33_EN_Pos  |
+			    SYSCTRL_FUSES_BOD33_ACTION((uint8_t)(fusebits->bod33_action))       |
+
+			/* Setting BOD12 fuses */
+			    SYSCTRL_FUSES_BOD12USERLEVEL(fusebits->bod12_level)                 |
+			    ((uint32_t)(fusebits->bod33_enable)) << SYSCTRL_FUSES_BOD12_EN_Pos  |
+			    SYSCTRL_FUSES_BOD12_ACTION((uint8_t)(fusebits->bod12_action))       |
+
+			/* Setting WDT fuses */
+			    ((uint32_t)(fusebits->wdt_enable)) << WDT_FUSES_ENABLE_Pos          |
+			    ((uint32_t)(fusebits->wdt_always_on)) << WDT_FUSES_ALWAYSON_Pos     |
+			    WDT_FUSES_PER(fusebits->wdt_timeout_period)                         |
+			    (((uint32_t)(fusebits->wdt_window_timeout)) & 0x01) << WDT_FUSES_WINDOW_0_Pos);
+
+	/* Generating 32-bit word 2 */
+			/* WDT fuse settings continued */
+	raw_fusebits[1] = ((((uint32_t)(fusebits->wdt_window_timeout)) & 0x0E) >> 1                      |
+			  WDT_FUSES_EWOFFSET((uint32_t)(fusebits->wdt_early_warning_offset))             |
+			  ((uint32_t)(fusebits->wdt_window_mode_enable_at_poweron)) << WDT_FUSES_WEN_Pos |
+
+			/* Reserved bits should be 1 */
+			  _NVM_FUSEBITS_1_RESERVED_BITS                                                   |
+
+			/* Setting flash region lock bits */
+			  NVMCTRL_FUSES_REGION_LOCKS(fusebits->lockbits));
+
+}
+
+///@endcond
+
+/**
+ * \brief Get fuses from user row
+ *
+ * Read out the fuse settings from the user row
+ *
+ * \param[in] fusebits Pointer to a 64bit wide memory buffer of type struct nvm_fusebits
+ *
+ * \return             Status of read fuses attempt
+ *
+ * \retval STATUS_OK   This function will always return STATUS_OK
+ */
+enum status_code nvm_get_fuses (
+		struct nvm_fusebits *fusebits)
+{
+	enum status_code error_code = STATUS_OK;
+	uint32_t raw_fusebits[2];
+
+	/* Make sure the module is ready */
+	while (!nvm_is_ready()) {
+	};
+
+	/* Read the fuse settings in the user row, 64 bit */
+	((uint16_t*)&raw_fusebits)[0] = (uint16_t)NVM_MEMORY[NVMCTRL_USER / 2];
+	((uint16_t*)&raw_fusebits)[1] = (uint16_t)NVM_MEMORY[(NVMCTRL_USER / 2) + 1];
+	((uint16_t*)&raw_fusebits)[2] = (uint16_t)NVM_MEMORY[(NVMCTRL_USER / 2) + 2];
+	((uint16_t*)&raw_fusebits)[3] = (uint16_t)NVM_MEMORY[(NVMCTRL_USER / 2) + 3];
+
+	_nvm_translate_raw_fusebits_to_struct(raw_fusebits, fusebits);
+
+	return error_code;
+}
+
+
+///@cond INTERNAL
+
+/**
+ * \internal
+ * \name Fuse write function states
+ *
+ * This defines internal states for the fuse write function
+ *
+ * @{
+ */
+#define _NVM_SET_FUSES_STATE_ERASE_ROW         0
+#define _NVM_SET_FUSES_STATE_ERASE_PAGE_BUFFER 1
+#define _NVM_SET_FUSES_STATE_WRITE_FUSES       2
+#define _NVM_SET_FUSES_STATE_END               3
+/** @} */
+
+///@endcond
+
+/**
+ * \brief Set fuses in user row
+ *
+ * Write new fuse setting to user row
+ *
+ * \param[in] fusebits Pointer to a 64bit wide memory buffer with new fuse settings
+ *
+ * \return Status of write attempt
+ *
+ * \retval STATUS_OK          New fuse settings where written sucessfully to user row
+ *
+ * \retval STATUS_ERR_IO      Secitity bit is set, user row can not be written
+ *
+ * \retval STATUS_ERR_IO      Writing of fuses to user row failed
+ */
+enum status_code nvm_set_fuses(
+		struct nvm_fusebits *fusebits)
+{
+	Nvmctrl *const nvm_module = NVMCTRL;
+	uint8_t state = _NVM_SET_FUSES_STATE_ERASE_ROW;
+	uint32_t raw_fusebits[2];
+	enum status_code err = STATUS_OK;
+
+	/* If the security bit is set, the auxiliary space cannot be written */
+	if (nvm_module->STATUS.reg & NVMCTRL_STATUS_SB) {
+		return STATUS_ERR_IO;
+	}
+
+	/* Enter critcal section to avoid context switching */
+	system_interrupt_enter_critical_section();
+
+	do {
+
+		/* Wait for the nvm controller to become ready */
+		while (!nvm_is_ready()) {
+		}
+
+		/* Has something gone wrong? */
+		if (nvm_module->INTFLAG.reg & NVMCTRL_INTFLAG_ERROR) {
+			/* Don't bother about what, just clear status flags and return error status*/
+			nvm_module->STATUS.reg  |= ~NVMCTRL_STATUS_MASK;
+			nvm_module->INTFLAG.reg |= NVMCTRL_INTFLAG_ERROR;
+
+			err = STATUS_ERR_IO;
+			break;
+		}
+
+		switch (state) {
+
+		case _NVM_SET_FUSES_STATE_ERASE_ROW:
+			/* Erase AUX row */
+			nvm_module->PARAM.reg = 0;
+			nvm_module->ADDR.reg = NVMCTRL_USER / 2;
+			nvm_module->CTRLA.reg = NVM_COMMAND_ERASE_AUX_ROW | NVMCTRL_CTRLA_CMDEX_KEY;
+			break;
+
+		case _NVM_SET_FUSES_STATE_ERASE_PAGE_BUFFER:
+			/* Erase the page buffer before buffering new data */
+			nvm_module->CTRLA.reg = NVM_COMMAND_PAGE_BUFFER_CLEAR | NVMCTRL_CTRLA_CMDEX_KEY;
+			break;
+
+		case _NVM_SET_FUSES_STATE_WRITE_FUSES:
+			_nvm_translate_struct_to_raw_fusebits(fusebits, raw_fusebits);
+
+			/* Write new user row content (address must be converted from 8-bit to 16-bit aligned) */
+			NVM_MEMORY[NVMCTRL_USER / 2]       = ((uint16_t*)raw_fusebits)[0];
+			NVM_MEMORY[(NVMCTRL_USER / 2) + 1] = ((uint16_t*)raw_fusebits)[1];
+			NVM_MEMORY[(NVMCTRL_USER / 2) + 2] = ((uint16_t*)raw_fusebits)[2];
+			NVM_MEMORY[(NVMCTRL_USER / 2) + 3] = ((uint16_t*)raw_fusebits)[3];
+
+			nvm_module->CTRLA.reg = NVM_COMMAND_WRITE_AUX_ROW | NVMCTRL_CTRLA_CMDEX_KEY;
+			break;
+
+		default:
+			/* Should never be executed */
+			Assert(false);
+			break;
+		}
+
+		/* Goto next state */
+		state++;
+
+	} while (state != _NVM_SET_FUSES_STATE_END);
+
+	system_interrupt_leave_critical_section();
+
+	return err;
+}
+

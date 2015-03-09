@@ -79,8 +79,8 @@ extern "C" {
  * \param ul_frequency Desired frequency in Hz.
  * \param ul_mck Master clock frequency in Hz.
  *
- * \retval Return the value to be set in the PWM Clock Register (PWM Mode Register for SAM3N)
- * or PWM_INVALID_ARGUMENT if the configuration cannot be met.
+ * \retval Return the value to be set in the PWM Clock Register (PWM Mode Register for
+ * SAM3N/SAM4N) or PWM_INVALID_ARGUMENT if the configuration cannot be met.
  */
 static uint32_t pwm_clocks_generate(uint32_t ul_frequency, uint32_t ul_mck)
 {
@@ -137,7 +137,7 @@ uint32_t pwm_init(Pwm *p_pwm, pwm_clock_t *clock_config)
 
 		clock |= (result << 16);
 	}
-#if SAM3N
+#if (SAM3N || SAM4N)
 	p_pwm->PWM_MR = clock;
 #else
 	p_pwm->PWM_CLK = clock;
@@ -300,7 +300,7 @@ uint32_t pwm_channel_update_period(Pwm *p_pwm, pwm_channel_t *p_channel,
 		/* Save new period value */
 		p_channel->ul_period = ul_period;
 
-#if (SAM3N)
+#if (SAM3N || SAM4N)
 		/* Set CPD bit to change period value */
 		p_pwm->PWM_CH_NUM[ch_num].PWM_CMR |= PWM_CMR_CPD;
 
@@ -334,7 +334,7 @@ uint32_t pwm_channel_update_duty(Pwm *p_pwm, pwm_channel_t *p_channel,
 		/* Save new duty cycle value */
 		p_channel->ul_duty = ul_duty;
 
-#if (SAM3N)
+#if (SAM3N || SAM4N)
 		/* Clear CPD bit to change duty cycle value */
 		uint32_t mode = p_pwm->PWM_CH_NUM[ch_num].PWM_CMR;
 		mode &= ~PWM_CMR_CPD;
@@ -412,7 +412,7 @@ uint32_t pwm_channel_get_status(Pwm *p_pwm)
  */
 uint32_t pwm_channel_get_interrupt_status(Pwm *p_pwm)
 {
-#if (SAM3N)
+#if (SAM3N || SAM4N)
 	return p_pwm->PWM_ISR;
 #else
 	return p_pwm->PWM_ISR1;
@@ -428,7 +428,7 @@ uint32_t pwm_channel_get_interrupt_status(Pwm *p_pwm)
  */
 uint32_t pwm_channel_get_interrupt_mask(Pwm *p_pwm)
 {
-#if (SAM3N)
+#if (SAM3N || SAM4N)
 	return p_pwm->PWM_IMR;
 #else
 	return p_pwm->PWM_IMR1;
@@ -440,12 +440,13 @@ uint32_t pwm_channel_get_interrupt_mask(Pwm *p_pwm)
  *
  * \param p_pwm Pointer to a PWM instance.
  * \param ul_event Channel number to enable counter event interrupt.
- * \param ul_fault Channel number to enable fault protection interrupt (ignored by SAM3N).
+ * \param ul_fault Channel number to enable fault protection interrupt(ignored
+ * by SAM3N/SAM4N).
  */
 void pwm_channel_enable_interrupt(Pwm *p_pwm, uint32_t ul_event,
 		uint32_t ul_fault)
 {
-#if (SAM3N)
+#if (SAM3N || SAM4N)
 	p_pwm->PWM_IER = (1 << ul_event);
 	/* avoid Cppcheck Warning */
 	UNUSED(ul_fault);
@@ -460,12 +461,13 @@ void pwm_channel_enable_interrupt(Pwm *p_pwm, uint32_t ul_event,
  *
  * \param p_pwm Pointer to a PWM instance.
  * \param ul_event Bitmask of channel number to disable counter event interrupt.
- * \param ul_fault Bitmask of channel number to disable fault protection interrupt (ignored by SAM3N).
+ * \param ul_fault Bitmask of channel number to disable fault protection
+ * interrupt(ignored by SAM3N/SAM4N).
  */
 void pwm_channel_disable_interrupt(Pwm *p_pwm, uint32_t ul_event,
 		uint32_t ul_fault)
 {
-#if (SAM3N)
+#if (SAM3N || SAM4N)
 	p_pwm->PWM_IDR = (1 << ul_event);
 	/* avoid Cppcheck Warning */
 	UNUSED(ul_fault);

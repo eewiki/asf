@@ -3,7 +3,7 @@
  *
  * \brief Unit tests for flash efc driver.
  *
- * Copyright (c) 2011-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -82,6 +82,7 @@
  * - sam4s16c_sam4s_ek
  * - sam4sd32c_sam4s_ek2
  * - sam4e16e_sam4e_ek
+ * - sam4n16c_sam4n_xplained_pro 
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers
@@ -184,7 +185,7 @@ static void run_flash_configure_test(const struct test_case *test)
 		test_assert_true(test, ul_tmp_ws == 4,
 				"Test flash configure:adaptively set wait state error!");
 	}
-#elif (SAM4S || SAM4E)
+#elif (SAM4S || SAM4E || SAM4N)
 	} else if (SystemCoreClock < CHIP_FREQ_FWS_3) {
 		ul_tmp_ws =  flash_get_wait_state(IFLASH_ADDR);
 		test_assert_true(test, ul_tmp_ws == 3,
@@ -310,7 +311,7 @@ static void run_flash_write_test(const struct test_case *test)
 		ul_page_buffer[ul_idx] = 1 << (ul_idx % 32);
 	}
 
-#if (SAM4S || SAM4E)
+#if (SAM4S || SAM4E || SAM4N)
 	/* Write the last page */
 	flash_erase_sector(ul_last_page_addr);
 
@@ -373,7 +374,7 @@ static void run_flash_lock_test(const struct test_case *test)
 	flash_lock(ul_last_page_addr,
 			ul_last_page_addr + IFLASH_PAGE_SIZE - 1, 0, 0);
 
-#if (SAM3SD8 || SAM4S || SAM4E)
+#if (SAM3SD8 || SAM4S || SAM4E || SAM4N)
 	/* SAM3SD8, SAM4S and SAM4E have a bigger page region which requires special
 	 * attention.
 	 */

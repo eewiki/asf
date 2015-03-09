@@ -80,6 +80,7 @@
  * - sam3x8h_sam3x_ek
  * - sam4s16c_sam4s_ek
  * - sam4sd32c_sam4s_ek2
+ * - sam4n16c_sam4n_xplained_pro
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers
@@ -179,11 +180,11 @@ static void run_pwm_test(const struct test_case *test)
 	pwm_channel_disable(PWM, PWM_UNIT_TEST_CH);
 
 	/* Set PWM clock A as PWM_FREQUENCY*PERIOD_VALUE (clock B is not used) */
-    pwm_clock_t test_clock = {
-        .ul_clka = PWM_FREQUENCY * PERIOD_VALUE,
-        .ul_clkb = 0,
-        .ul_mck = sysclk_get_cpu_hz()
-    };
+	pwm_clock_t test_clock = {
+		.ul_clka = PWM_FREQUENCY * PERIOD_VALUE,
+		.ul_clkb = 0,
+		.ul_mck = sysclk_get_cpu_hz()
+	};
 	pwm_init(PWM, &test_clock);
 
 	/* Test1 */
@@ -234,7 +235,7 @@ static void run_pwm_test(const struct test_case *test)
 	test_channel.channel = PWM_UNIT_TEST_CH;
 	pwm_channel_init(PWM, &test_channel);
 
-    pwm_cmp_enable_interrupt(PWM, PWM_UNIT_TEST_CMP, PWM_CMP_MATCH);
+	pwm_cmp_enable_interrupt(PWM, PWM_UNIT_TEST_CMP, PWM_CMP_MATCH);
 
 	/* Enable PWM channel */
 	pwm_channel_enable(PWM, PWM_UNIT_TEST_CH);
@@ -276,7 +277,7 @@ static void run_pwm_test(const struct test_case *test)
 	g_pdc_tx_packet.ul_addr = (uint32_t)(&gs_ul_ms_ticks);
 	g_pdc_tx_packet.ul_size = 1;
 	pdc_tx_init(PDC_PWM, &g_pdc_tx_packet, 0);
-    pwm_pdc_enable_interrupt(PWM, PWM_IER2_ENDTX);
+	pwm_pdc_enable_interrupt(PWM, PWM_IER2_ENDTX);
 	pdc_enable_transfer(PDC_PWM, PERIPH_PTCR_TXTEN);
 
 	/* Enable PWM channel */

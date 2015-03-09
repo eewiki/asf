@@ -96,7 +96,11 @@
 #define  FREQ_BAND_08     (4)
 #define  FREQ_BAND_09     (5)
 #endif
-
+#ifdef EXT_RF_FRONT_END_CTRL
+#define CHANNEL_26                          (0x1A)
+#define MAX_TX_PWR_REG_VAL                  (0x09)
+#define MAX_TX_PWR_REG_VAL_CH26             (0x0d)
+#endif
 #define LED_TOGGLE_COUNT_FOR_PER            (50)
 #define MIN_TX_PWR_REG_VAL                  (0x0f)
 
@@ -327,6 +331,18 @@ void marker_tx_timer_handler_cb(void *parameter);
  * \param parameter pass parameters to timer handler
  */
 void marker_rsp_timer_handler_cb(void *parameter);
+
+#ifdef EXT_RF_FRONT_END_CTRL
+
+/**
+ * \brief handle the tx power settings in case of External PA enabled,
+ * and the channel changes from or to 26.This is to meet the FCC compliance
+ *
+ * \param Curr_chnl Current Channel
+ * \param prev_chnl Previous Channel
+ */
+void limit_tx_power_in_ch26(uint8_t curr_chnl, uint8_t prev_chnl);
+#endif
 
 /* ! \} */
 #ifdef __cplusplus

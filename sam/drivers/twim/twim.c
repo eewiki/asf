@@ -746,3 +746,26 @@ void TWIM3_Handler(void)
 	twim_callback_pointer[3](TWIM3);
 }
 #endif
+
+/**
+ * \brief Set TWIM for PDCA transfer
+ *
+ * \param twim      Base address of the TWIM
+ * \param package   Package information and data (see \ref twim_package_t)
+ * \param read      True if it's a read trasnfer
+ */
+void twim_pdca_transfer_prepare(Twim *twim, twi_package_t *package,
+		bool read)
+{
+	twim->TWIM_CR = TWIM_CR_MDIS;
+	twim->TWIM_CMDR = (package->high_speed ? (TWIM_CMDR_HS |
+			TWIM_CMDR_HSMCODE(package->high_speed_code)) : 0)
+			| TWIM_CMDR_SADR(package->chip)
+			| TWIM_CMDR_NBYTES((read ? 0 : package->addr_length)
+					+ package->length)
+			| TWIM_CMDR_VALID
+			| TWIM_CMDR_START
+			| TWIM_CMDR_STOP
+			| (read ? TWIM_CMDR_READ : 0);
+	twim->TWIM_CR = TWIM_CR_MEN;
+}

@@ -72,6 +72,9 @@
  * While using SAM4L Xplained Pro or SAM4L8 Xplained Pro, please attach IO1
  * Xplained Pro extension board to EXT1.
  *
+ * While using Xplained Pro evaluation kits, please attach I/O1 Xplained Pro
+ * extension board to EXT1.
+ *
  * \section Usage
  *
  * -# Build the program and download it into the  board.

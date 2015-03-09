@@ -71,13 +71,7 @@
  * -# Connect the UART port of the evaluation board to the computer and open
  * it in a terminal.
  *    - Settings: 115200 bauds, 8 bits, 1 stop bit, no parity, no flow control.
- * -# Download the program into the evaluation board and run it. Please refer to
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6224.pdf">
- *    SAM-BA User Guide</a>, the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6310.pdf">
- *    GNU-Based Software Development</a> application note or the
- *    <a href="ftp://ftp.iar.se/WWWfiles/arm/Guides/EWARM_UserGuide.ENU.pdf">
- *    IAR EWARM User Guide</a>, depending on the solutions that users choose.
+ * -# Download the program into the evaluation board and run it.
  * -# Upon startup, the application will output the following lines on the UART:
  *    \code
  *     -- Watchdog with IRQ Interrupt Example --
@@ -271,7 +265,7 @@ int main(void)
 
 			/* Toggle LED at the given period. */
 			if ((g_ul_ms_ticks % BLINK_PERIOD) == 0) {
-#if SAM4E
+#if SAM4E || SAM4N
 				LED_Toggle(LED0);
 #else
 				LED_Toggle(LED0_GPIO);

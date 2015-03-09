@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<board id="board.atmegarfx_rcb" vendor="Atmel" caption="ATmegaRF Radio Controller Board">
+		<build type="define" name="BOARD" value="ATMEGARFX_RCB"/>
+		<build type="header-file" value="atmegarfx_rcb.h"/>
+		<build type="header-file" value="led.h"/>
+		<build type="header-file" value="helper.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="c-source" value="init.c"/>
+		<build type="c-source" value="helper.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.boards"/>
+		<device-support value="atmega256rfr2"/>
+		<device-support value="atmega128rfa1"/>
+	</board>
+</asf>

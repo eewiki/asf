@@ -14,8 +14,16 @@
             ATMegaRFR2 Transceiver Abstraction Layer
             </info>
             <require idref="config.thirdparty.wireless.avr2025_mac.source.tal.atmegarfr2"/>
-            <device-support-alias value="avr2025_mac_pal_soc_support"/>
+            <device-support value="atmega256rfr2"/>
             <build type="doxygen-entry-point" value="group_tal_rfr2"/>
+		</module>
+		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tal#3"     caption="atmegarfa1 tal support enabled">
+            <info type="description" value="summary">
+            ATMegaRFA1 Transceiver Abstraction Layer
+            </info>
+            <require idref="config.thirdparty.wireless.avr2025_mac.source.tal.atmegarfa1"/>
+            <device-support value="atmega128rfa1"/>
+            <build type="doxygen-entry-point" value="group_tal_rfa1"/>
 		</module>
 	</select-by-device>
 
@@ -55,7 +63,15 @@
             <require idref="config.thirdparty.wireless.avr2025_mac.source.tal.at86rf231"/>
             <device-support-alias value="avr2025_mac_pal_spi_support"/>
         </module>
-
+		
+        <module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tal.ext#at86rf232"     caption="at86rf232 tal support enabled">
+            <info type="description" value="summary">
+            AT86RF232 Transceiver Abstraction Layer
+            </info>
+            <info type="gui-flag" value="hidden"/>
+            <require idref="config.thirdparty.wireless.avr2025_mac.source.tal.at86rf232"/>
+            <device-support-alias value="avr2025_mac_pal_spi_support"/>
+        </module>
         <module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tal.ext#at86rf233"     caption="at86rf233 tal support enabled">
             <info type="description" value="summary">
             AT86RF233 Transceiver Abstraction Layer
@@ -109,7 +125,17 @@
         <require idref="thirdparty.wireless.avr2025_mac.source.resources"/>
         <device-support-alias value="avr2025_mac_pal_spi_support"/>
     </module>
-
+	
+    <module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tal.at86rf232"     caption="at86rf232 tal support enabled">
+        <info type="description" value="summary">
+        AT86RF232 Transceiver Abstraction Layer
+        </info>
+        <info type="gui-flag" value="hidden"/>
+        <require idref="thirdparty.wireless.avr2025_mac.source.tal.at86rf232"/>
+        <require idref="thirdparty.wireless.avr2025_mac.source.pal"/>
+        <require idref="thirdparty.wireless.avr2025_mac.source.resources"/>
+        <device-support-alias value="avr2025_mac_pal_spi_support"/>
+    </module>
     <module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tal.at86rf233"     caption="at86rf233 tal support enabled">
         <info type="description" value="summary">
         AT86RF233 Transceiver Abstraction Layer
@@ -130,6 +156,17 @@
         <require idref="thirdparty.wireless.avr2025_mac.source.resources"/>
         <build type="doxygen-entry-point" value="group_tal_rfr2"/>
         <device-support value="atmega256rfr2"/>
+    </module>
+	
+	 <module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tal.atmegarfa1"     caption="atmegarfa1 tal support enabled">
+        <info type="description" value="summary">
+        ATMegaRFR2 Transceiver Abstraction Layer
+        </info>
+        <require idref="thirdparty.wireless.avr2025_mac.source.tal.atmegarfa1"/>
+        <require idref="thirdparty.wireless.avr2025_mac.source.pal"/>
+        <require idref="thirdparty.wireless.avr2025_mac.source.resources"/>
+        <build type="doxygen-entry-point" value="group_tal_rfr2"/>
+        <device-support value="atmega128rfa1"/>
     </module>
 
 <!-- 	This module will not be required if TFA is used since TFA module will directly include the above TAL modules based on the TAL_TYPE -->

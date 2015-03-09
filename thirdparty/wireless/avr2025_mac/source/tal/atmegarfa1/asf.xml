@@ -1,0 +1,33 @@
+<asf xmlversion="1.0">
+	<module type="component" id="thirdparty.wireless.avr2025_mac.source.tal.atmegarfa1" caption="COMPONENT - TAL_ATMEGARFA1">
+		<info type="description" value="summary">
+		The ATmega128RFA1 is a low-power CMOS 8-bit microcontroller based on the AVR
+		enhanced RISC architecture combined with a high data rate transceiver for the 2.4 GHz
+		ISM band
+		</info>
+        <info type="gui-flag" value="hidden"/>		
+		<build type="c-source"      value="src/tal.c"/>
+		<build type="c-source"      value="src/tal_ed.c"/>
+		<build type="c-source"      value="src/tal_init.c"/>
+		<build type="c-source"      value="src/tal_irq_handler.c"/>
+		<build type="c-source"      value="src/tal_pib.c"/>
+		<build type="c-source"      value="src/tal_pwr_mgmt.c"/>
+		<build type="c-source"      value="src/tal_rx.c"/>
+		<build type="c-source"      value="src/tal_rx_enable.c"/>
+		<build type="c-source"      value="src/tal_slotted_csma.c"/>
+		<build type="c-source"      value="src/tal_tx.c"/>
+		<build type="header-file"   value="inc/atmega128rfa1.h"/>
+		<build type="header-file"   value="inc/tal_config.h"/>
+		<build type="header-file"   value="inc/tal_constants.h"/>
+		<build type="header-file"   value="inc/tal_internal.h"/>
+		<build type="header-file"   value="inc/tal_irq_handler.h"/>
+		<build type="header-file"   value="inc/tal_pib.h"/>
+		<build type="header-file"   value="inc/tal_rx.h"/>
+		<build type="header-file"   value="inc/tal_slotted_csma.h"/>
+		<build type="header-file"   value="inc/tal_tx.h"/>
+		<build type="include-path"  value="inc/"/>
+		<build type="doxygen-entry-point" value="tal.atmegarfa1_group"/>
+		<build type="define" name="TAL_TYPE" value ="ATMEGARFA1"/>
+		<device-support value="atmega128rfa1"/>
+	</module>
+</asf>

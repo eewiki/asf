@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4N Xplained Pro Serial Standard I/O Example" id="common.utils.stdio.stdio_serial.sam4n_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="common.utils.stdio.stdio_serial.stdio_serial_example"/>
+		<require idref="board.sam4n_xplained_pro"/>
+		<config name="config.board.sam4n_xplained_pro.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4n16c"/>
+	</project>
+</asf>

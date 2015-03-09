@@ -54,8 +54,11 @@
 
 #include "tal_types.h"
 #if (TAL_TYPE == AT86RF233)
-
+#ifndef EXT_RF_FRONT_END_CTRL
 #define TRANSCEIVER_NAME    "AT86RF233"
+#else
+#define TRANSCEIVER_NAME    "AT86RF233+FEM"
+#endif
 /* === EXTERNALS =========================================================== */
 
 /* === TYPES =============================================================== */
@@ -715,6 +718,12 @@
 #define SR_XTAL_TRIM   0x12, 0x0F, 0
 
 /** Constants */
+
+/** Constant PA_EXT_disable for sub-register SR_PA_EXT_EN */
+#define PA_EXT_DISABLE   (0)
+
+/** Constant PA_EXT_enable for sub-register SR_PA_EXT_EN */
+#define PA_EXT_ENABLE   (1)
 
 /** Constant AACK_SPC_DISABLE for sub-register @ref SR_AACK_SPC_EN in register
  *XAH_CTRL_1 */

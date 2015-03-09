@@ -24,6 +24,10 @@
         <build type="define"   name="FFD"                                 value=""/>
         <build type="define"   name="ENABLE_TFA"                          value=""/>
         <build type="define"   name="TRX_REG_RAW_VALUE"                   value=""/>
+		<build type="define"   name="CUSTOM_PWR_TABLE"              	  value=""/>
+		<build type="define"   name="CUSTOM_DEFAULT_TX_PWR"               value=""/>
+		<build type="define"   name="EXT_RF_FRONT_END_CTRL"               value=""/>
+		<build type="define"   name="ANTENNA_DIVERSITY"                   value="0"/>
 		
 		<require idref="board.sam4l_xplained_pro"/>
 		

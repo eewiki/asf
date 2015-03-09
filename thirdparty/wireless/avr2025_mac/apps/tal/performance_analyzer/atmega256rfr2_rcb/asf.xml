@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<project caption="Performance Analyzer Application ATmegarfr2-ATmega256RFR2-EK" id="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer.atmega256rfr2_rcb" force-caption="true" force-description="true">
+		<info type="description" value="summary">
+			A Serial interface based application,which communicates with Wireless Analyzer to demonstrate
+			various features and capabilities of the of Atmel Transceivers.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+
+		<config name="config.thirdparty.wireless.addons.sio2host" value="usb-ftdi"/>
+		
+		<require idref="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer"/>
+		<require idref="board.atmegarfx_rcb"/>
+		<build type="define"   name="HIGHEST_STACK_LAYER"                 value="TAL"/>
+		<build type="define"   name="HIGH_DATA_RATE_SUPPORT"              value=""/>
+        <build type="define"   name="FFD"                                 value=""/>
+        <build type="define"   name="ENABLE_TFA"                          value=""/>
+        <build type="define"   name="TRX_REG_RAW_VALUE"                   value=""/>
+		<generator value="avrgcc" />
+		<generator value="iarew"/>
+		<generator value="as5_8" />
+		<generator value="doxygen"/>  
+		<device-support value="atmega256rfr2"/>
+	</project>
+</asf>

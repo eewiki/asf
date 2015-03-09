@@ -386,6 +386,12 @@ enum status_code usart_init(
 	system_pinmux_get_config_defaults(&pin_conf);
 	pin_conf.direction = SYSTEM_PINMUX_PIN_DIR_INPUT;
 
+	/* Set configuration according to the config struct */
+	status_code = _usart_set_config(module, config);
+	if(status_code != STATUS_OK) {
+		return status_code;
+	}
+
 	uint32_t pad0 = config->pinmux_pad0;
 	uint32_t pad1 = config->pinmux_pad1;
 	uint32_t pad2 = config->pinmux_pad2;
@@ -447,10 +453,6 @@ enum status_code usart_init(
 	_sercom_set_handler(instance_index, _usart_interrupt_handler);
 	_sercom_instances[instance_index] = module;
 #endif
-
-	/* Set configuration according to the config struct */
-	status_code = _usart_set_config(module, config);
-
 	return status_code;
 }
 

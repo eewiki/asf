@@ -53,8 +53,8 @@
  * To know the output used on the board, look in the conf_example.h file
  * and connect a terminal to the correct port.
  *
- * While using SAM4L Xplained Pro or SAM4L8 Xplained Pro, please attach IO1
- * Xplained Pro extension board to EXT1.
+ * While using Xplained Pro evaluation kits, please attach I/O1 Xplained Pro
+ * extension board to EXT1.
  *
  * \section Usage
  *
@@ -148,7 +148,7 @@ int main(void)
 		}
 		printf("[OK]\r\n");
 		f_close(&file_object);
-		printf("Test successfull.\n\r");
+		printf("Test is successful.\n\r");
 
 main_end_of_test:
 		printf("Please unplug the card.\n\r");

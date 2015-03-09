@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.tal.at86rf232" caption="COMPONENT - TAL_AT86RF232">
+		<info type="description" value="summary">
+		AT86RF231 Transceiver Abstraction Layer
+		</info>
+		<build type="c-source"      value="src/tal.c"/>
+		<build type="c-source"      value="src/tal_ed.c"/>
+		<build type="c-source"      value="src/tal_init.c"/>
+		<build type="c-source"      value="src/tal_irq_handler.c"/>
+		<build type="c-source"      value="src/tal_pib.c"/>
+		<build type="c-source"      value="src/tal_pwr_mgmt.c"/>
+		<build type="c-source"      value="src/tal_rx.c"/>
+		<build type="c-source"      value="src/tal_rx_enable.c"/>
+		<build type="c-source"      value="src/tal_slotted_csma.c"/>
+		<build type="c-source"      value="src/tal_tx.c"/>
+		<build type="header-file"   value="inc/at86rf232.h"/>
+		<build type="header-file"   value="inc/tal_config.h"/>
+		<build type="header-file"   value="inc/tal_constants.h"/>
+		<build type="header-file"   value="inc/tal_internal.h"/>
+		<build type="header-file"   value="inc/tal_irq_handler.h"/>
+		<build type="header-file"   value="inc/tal_pib.h"/>
+		<build type="header-file"   value="inc/tal_rx.h"/>
+		<build type="header-file"   value="inc/tal_slotted_csma.h"/>
+		<build type="header-file"   value="inc/tal_tx.h"/>
+		<build type="include-path"  value="inc/"/>
+		<build type="define" name="TAL_TYPE" value ="AT86RF232"/>
+		<build type="define" name="PAL_USE_SPI_TRX" value ="1"/>
+		<build type="define" name="DISABLE_TSTAMP_IRQ" value ="1"/>
+	</module>
+</asf>

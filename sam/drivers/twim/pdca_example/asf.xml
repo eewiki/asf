@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.twim.pdca_example" caption="Two-wire Interface PDCA Example">
+		<info type="description" value="summary">
+		The application demonstrates how to use the TWIM driver to access an external serial EEPROM chip via PDCA.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="twim_pdca_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.twim"/>
+		<require idref="sam.drivers.pdca"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

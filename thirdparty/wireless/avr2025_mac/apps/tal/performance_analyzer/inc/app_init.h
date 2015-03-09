@@ -73,7 +73,7 @@
 
 /* === Macros =============================================================== */
 /* Version of the software */
-#define FIRMWARE_VERSION    2.1f
+#define FIRMWARE_VERSION    2.2f
 
 #if ((TAL_TYPE == AT86RF212) || (TAL_TYPE == AT86RF212B))
 #define DEFAULT_CHANNEL         (1)

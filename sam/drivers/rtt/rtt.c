@@ -3,7 +3,7 @@
  *
  * \brief Real-time Timer (RTT) driver for SAM.
  *
- * Copyright (c) 2011-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -62,23 +62,70 @@ extern "C" {
  * @{
  */
 
+
 /**
  * \brief Initialize the given RTT.
  *
- * \note This function restarts the real-time timer. If w_prescaler is equal 
- *  to zero, the prescaler period is equal to 2^16 * SCLK period. If not, 
- *  the prescaler period is equal to w_prescaler * SCLK period.
+ * \note This function restarts the real-time timer. If w_prescaler is equal to zero,
+ *  the prescaler period is equal to 2^16 * SCLK period. If not, the prescaler period
+ *  is equal to us_prescaler * SCLK period.
  *
  * \param p_rtt Pointer to an RTT instance.
- * \param w_prescaler Prescaler value for the RTT.
+ * \param us_prescaler Prescaler value for the RTT.
  *
  * \return 0 if successful.
  */
 uint32_t rtt_init(Rtt *p_rtt, uint16_t us_prescaler)
 {
+#if SAM4N || SAM4S || SAM4E
+	uint32_t sel_src;
+	sel_src = p_rtt->RTT_MR & RTT_MR_RTC1HZ;
+	if(sel_src) {
+		p_rtt->RTT_MR = RTT_MR_RTTRST | sel_src;
+	} else {
+		p_rtt->RTT_MR = (us_prescaler | RTT_MR_RTTRST);
+	}
+#else
 	p_rtt->RTT_MR = (us_prescaler | RTT_MR_RTTRST);
+#endif
 	return 0;
 }
+
+#if SAM4N || SAM4S || SAM4E
+/**
+ * \brief Select RTT counter source.
+ *
+ * \param p_rtt Pointer to an RTT instance.
+ * \param is_rtc_sel RTC 1Hz Clock Selection.
+ */
+void rtt_sel_source(Rtt *p_rtt, bool is_rtc_sel)
+{
+	if(is_rtc_sel) {
+		p_rtt->RTT_MR |= RTT_MR_RTC1HZ;
+	} else {
+		p_rtt->RTT_MR &= ~RTT_MR_RTC1HZ;
+	}
+}
+
+/**
+ * \brief Enable RTT.
+ *
+ * \param p_rtt Pointer to an RTT instance.
+ */
+void rtt_enable(Rtt *p_rtt)
+{
+	p_rtt->RTT_MR &= ~RTT_MR_RTTDIS;
+}
+/**
+ * \brief Disable RTT.
+ *
+ * \param p_rtt Pointer to an RTT instance.
+ */
+void rtt_disable(Rtt *p_rtt)
+{
+	p_rtt->RTT_MR |= RTT_MR_RTTDIS;
+}
+#endif
 
 /**
  * \brief Enable RTT interrupts.

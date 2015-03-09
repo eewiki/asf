@@ -72,7 +72,7 @@ extern "C" {
  */
 #endif
 /* SAM3 and SAM4 series */
-#if (SAM3S || SAM3N || SAM3XA || SAM3U || SAM4S || SAM4E)
+#if (SAM3S || SAM3N || SAM3XA || SAM3U || SAM4S || SAM4E || SAM4N)
 
 # define  SAM_PM_SMODE_ACTIVE     0 /**< Active */
 # define  SAM_PM_SMODE_SLEEP_WFE  1 /**< Wait for Events */

@@ -18,6 +18,16 @@
             <device-support value="atmega256rfr2"/>
 			<build type="doxygen-entry-point" value="group_tfa"/>
 		</module>	
+		
+		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tfa#3"     caption="atmegarfa1 tfa  support enabled">
+			<info type="description" value="summary">
+			ATMEGARFR2 Transceiver Feature Access
+			</info>
+			<require idref="thirdparty.wireless.avr2025_mac.source.tfa.atmegarfa1"/>
+			<require idref="config.thirdparty.wireless.avr2025_mac.source.tal.atmegarfa1"/>
+            <device-support value="atmega128rfa1"/>
+			<build type="doxygen-entry-point" value="group_tfa"/>
+		</module>			
     </select-by-device>
 
 	<select-by-config id="config.thirdparty.wireless.avr2025_mac.source.tfa.ext" name="config.thirdparty.wireless.avr2025_mac.source.tfa" caption="TFA Configuration" default="at86rf212">
@@ -31,6 +41,18 @@
             <device-support-alias value="avr2025_mac_pal_spi_support"/>
 			<build type="doxygen-entry-point" value="group_tfa"/>
 		</module>
+
+		
+		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tfa.ext#at86rf232"     caption="at86rf232 tfa  support enabled">
+			<info type="description" value="summary">
+			AT86Rf232 Transceiver Feature Access
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<require idref="thirdparty.wireless.avr2025_mac.source.tfa.at86rf232"/>
+			<require idref="config.thirdparty.wireless.avr2025_mac.source.tal.at86rf232"/>
+            <device-support-alias value="avr2025_mac_pal_spi_support"/>
+			<build type="doxygen-entry-point" value="group_tfa"/>
+		</module>		
 
 		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tfa.ext#at86rf212"     caption="at86rf212  tfa  support enabled">
 			<info type="description" value="summary">
@@ -64,7 +86,7 @@
 		</module>
 		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tfa.ext#at86rf233"     caption="at86rf233 tfa  support enabled">
 			<info type="description" value="summary">
-			AT86Rf231 Transceiver Feature Access
+			AT86Rf233 Transceiver Feature Access
 			</info>
 			<info type="gui-flag" value="hidden"/>
 			<require idref="thirdparty.wireless.avr2025_mac.source.tfa.at86rf233"/>
@@ -72,6 +94,7 @@
             <device-support-alias value="avr2025_mac_pal_spi_support"/>
 			<build type="doxygen-entry-point" value="group_tfa"/>
 		</module>
+	
 	</select-by-config>
 	
 	<module type="component" id="thirdparty.wireless.avr2025_mac.source.tfa" caption="AVR2025 - TFA">

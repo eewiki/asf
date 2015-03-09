@@ -3,7 +3,7 @@
  *
  * \brief Real-Time Clock (RTC) driver for SAM.
  *
- * Copyright (c) 2011 - 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -473,7 +473,7 @@ void rtc_clear_status(Rtc *p_rtc, uint32_t ul_clear)
 	p_rtc->RTC_SCCR = ul_clear;
 }
 
-#if ((SAM3S8) || (SAM3SD8) || (SAM4S))
+#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || SAM4N)
 /**
  * \brief Set the RTC calendar mode.
  *
@@ -520,7 +520,9 @@ void rtc_set_calibration(Rtc *p_rtc, uint32_t ul_direction_ppm,
 
 	p_rtc->RTC_MR = ul_temp;
 }
+#endif
 
+#if ((SAM3S8) || (SAM3SD8) || (SAM4S))
 /**
  * \brief Set the RTC output waveform.
  *

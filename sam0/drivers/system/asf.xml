@@ -32,6 +32,7 @@
 		<require idref="sam0.drivers.system.clock"/>
 		<require idref="sam0.drivers.system.pinmux"/>
 		<require idref="sam0.drivers.system.interrupt"/>
+		<require idref="thirdparty.cmsis"/>
 		<require idref="sam0.utils"/>
 
 		<device-support value="samd20"/>

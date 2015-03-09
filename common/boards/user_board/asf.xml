@@ -200,4 +200,34 @@
 		<require idref="sam.utils.linker_scripts"/>
 		<device-support value="atsam4e16e"/>
 	</board>
+
+	<board id="board.user_board.sam4n8a" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4n8a"/>
+	</board>
+
+	<board id="board.user_board.sam4n8b" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4n8b"/>
+	</board>
+
+	<board id="board.user_board.sam4n8c" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4n8c"/>
+	</board>
+
+	<board id="board.user_board.sam4n16b" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4n16b"/>
+	</board>
+
+	<board id="board.user_board.sam4n16c" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4n16c"/>
+	</board>
 </asf>

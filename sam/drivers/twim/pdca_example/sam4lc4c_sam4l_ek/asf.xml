@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="Two-wire Interface PDCA Example on SAM4L-EK" id="sam.drivers.twim.pdca_example.sam4l_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_example.h" />
+		<build type="header-file" value="conf_sleepmgr.h" />
+		<build type="include-path" value="." />
+		<require idref="sam.drivers.twim.pdca_example"/>
+		<require idref="board.sam4l_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

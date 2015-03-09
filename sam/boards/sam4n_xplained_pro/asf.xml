@@ -1,0 +1,54 @@
+<asf xmlversion="1.0">
+		<select-by-config id="config.board.sam4n_xplained_pro.led" name="config.board.sam4n_xplained_pro.led" caption="SAM4N Xplained Pro LED support" default="yes">
+		<module type="meta" id="config.board.sam4n_xplained_pro.led#no" caption="SAM4N Xplained Pro LED support disabled">
+		</module>
+		<module type="meta" id="config.board.sam4n_xplained_pro.led#yes" caption="SSAM4N Xplained Pro LED support enabled">
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.ioport"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.sam4n_xplained_pro.init" name="config.board.sam4n_xplained_pro.init" caption="SAM4N Xplained Pro initialization support" default="yes">
+		<module type="meta" id="config.board.sam4n_xplained_pro.init#no" caption="SAM4N Xplained Pro initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.sam4n_xplained_pro.init#yes" caption="SAM4N Xplained Pro initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.ioport"/>
+		</module>
+	</select-by-config>
+	
+	<board id="board.sam4n_xplained_pro" vendor="Atmel" caption="SAM4N Xplained Pro">
+		<!-- Board name -->
+		<build type="define" name="BOARD" value="SAM4N_XPLAINED_PRO"/>
+
+		<!-- Device support -->
+		<device-support value="atsam4n16c"/>
+		<build type="define" name="__SAM4N16C__" value=""/>
+
+		<!-- Source code -->
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="header-file" value="sam4n_xplained_pro.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+
+		<!-- Debug scripts -->
+		<build type="macro-config" subtype="script" value="debug_scripts/gcc/sam4n_xplained_pro_flash.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/gcc/sam4n_xplained_pro_sram.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/iar/sam4n_xplained_pro_flash.mac" toolchain="iarewarm"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/iar/sam4n_xplained_pro_sram.mac" toolchain="iarewarm"/>
+
+		<!-- Required modules -->
+		<require idref="sam.utils.cmsis.sam4n.source.template"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.sam4n_xplained_pro.init"/>
+		<require idref="config.board.sam4n_xplained_pro.led"/>
+		
+		<!-- Debug drivers -->
+		<config name="config.compiler.iarewarm.debugger.driver" value="cmsisdap"/>
+		<config name="config.compiler.iarewarm.debugger.use_macro_file" value="no"/>
+		<!-- Compile option -->
+		<config name="config.compiler.iarewarm.low_level_lib" value="semihosted"/>
+	</board>
+</asf>

@@ -12,11 +12,10 @@
 			<device-support value="sam3"/>
 			<device-support value="sam4s"/>
 			<device-support value="sam4e"/>
+			<device-support value="sam4n"/>
 			<require idref="sam.drivers.wdt"/>
 			<require idref="sam.drivers.pio"/>
 			<require idref="sam.drivers.pmc"/>
-			<require idref="sam.drivers.uart"/>
-			<require idref="common.services.basic.gpio"/>
 			<require idref="common.utils.stdio.stdio_serial"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>

@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.xmega_a3_reb_cbb.led" name="config.board.xmega_a3_reb_cbb.led" caption="XMEGA-A3 REB_CBB LED support" default="yes">
+		<module type="meta" id="config.board.xmega_a3_reb_cbb.led#no" caption="XMEGA-A3 REB_CBB LED support disabled">
+		</module>
+		<module type="meta" id="config.board.xmega_a3_reb_cbb.led#yes" caption="XMEGA-A3 REB_CBB LED support enabled">
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.xmega_a3_reb_cbb.init" name="config.board.xmega_a3_reb_cbb.init" caption="XMEGA-A3 REB_CBB initialization support" default="yes">
+		<module type="meta" id="config.board.xmega_a3_reb_cbb.init#no" caption="XMEGA-A3 REB_CBB initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.xmega_a3_reb_cbb.init#yes" caption="XMEGA-A3 REB_CBB initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.xmega_a3_reb_cbb" vendor="Atmel" caption="XMEGA-A3-REB-CBB">
+		<build type="define" name="BOARD" value="XMEGA_A3_REB_CBB"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="xmega_a3_reb_cbb.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="define" name="CONFIG_NVM_IGNORE_XMEGA_A3_D3_REVB_ERRATA" value=""/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x40000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.xmega_a3_reb_cbb.led"/>
+		<require idref="config.board.xmega_a3_reb_cbb.init"/>
+		<config name="config.spi_master_type" value="usart_and_standard_spi"/>
+		<config name="config.gfx_mono.display" value="c12832_a1z"/>
+		<device-support value="atxmega256a3"/>
+	</board>
+</asf>

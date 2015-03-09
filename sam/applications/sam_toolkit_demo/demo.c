@@ -62,16 +62,7 @@
  *
  * \section Usage
  *
- * -# Build the program and download it inside the evaluation board. Please
- *    refer to the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6224.pdf">
- *    SAM-BA User Guide</a>, the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6310.pdf">
- *    GNU-Based Software Development</a>
- *    application note or to the
- *    <a href="ftp://ftp.iar.se/WWWfiles/arm/Guides/EWARM_UserGuide.ENU.pdf">
- *    IAR EWARM User Guide</a>,
- *    depending on your chosen solution.
+ * -# Build the program and download it inside the evaluation board.
  * -# Unzip the resource files in the resource directory, which is located at
  * ./sam/applications/sam_toolkit_demo/resources/disk.
  * -# Erase the nand flash through SAM-BA.
@@ -134,6 +125,26 @@
 	#warning The potentiometer channel does not exist in the board definition file. Using default settings.
 
 	#define ADC_CHANNEL_POTENTIOMETER  ADC_CHANNEL_5
+#endif
+
+#if SAM3S || SAM4S || SAM3XA || SAM3N
+/* Tracking Time*/
+#define  TRACKING_TIME            1
+/* Transfer Period */
+#define  TRANSFER_PERIOD       1 
+#endif
+
+#if SAM3U
+#ifdef ADC_12B
+/* Start Up Time */
+#define   STARTUP_TIME                           7
+/* Off Mode Startup Time */
+#define   OFF_MODE_STARTUP_TIME      7
+#else
+#define   STARTUP_TIME                           3
+#endif
+/* Sample & Hold Time */
+#define   SAMPLE_HOLD_TIME   6
 #endif
 
 /* A message is posted each time the values goes outside the [-5,+5] interval
@@ -487,16 +498,26 @@ static void demo_config_adc( void )
 	/* Enable peripheral clock. */
 	pmc_enable_periph_clk(ID_ADC);
 	/* Initialize ADC. */
-
-	/* startup = 10:    640 periods of ADCClock
-	 * for prescale = 4
-	 *     prescale: ADCClock = MCK / ( (PRESCAL+1) * 2 ) => 64MHz /
-	 * ((4+1)*2) = 6.4MHz
-	 *     ADC clock = 6.4 MHz
+	/*
+	 * Formula: ADCClock = MCK / ( (PRESCAL+1) * 2 )
+	 * For example, MCK = 64MHZ, PRESCAL = 4, then:
+	 * ADCClock = 64 / ((4+1) * 2) = 6.4MHz;
 	 */
-	adc_init(ADC, sysclk_get_cpu_hz(), 6400000, 10);
-
-	adc_configure_timing(ADC, 0, ADC_SETTLING_TIME_3, 1);
+	/* Formula:
+	 *     Startup  Time = startup value / ADCClock
+	 *     Startup time = 64 / 6.4MHz = 10 us
+	 */
+	adc_init(ADC, sysclk_get_cpu_hz(), 6400000, ADC_STARTUP_TIME_4);
+	/* Formula:
+	 *     Transfer Time = (TRANSFER * 2 + 3) / ADCClock
+	 *     Tracking Time = (TRACKTIM + 1) / ADCClock
+	 *     Settling Time = settling value / ADCClock
+	 *
+	 *     Transfer Time = (1 * 2 + 3) / 6.4MHz = 781 ns
+	 *     Tracking Time = (1 + 1) / 6.4MHz = 312 ns
+	 *     Settling Time = 3 / 6.4MHz = 469 ns
+	 */
+	adc_configure_timing(ADC, TRACKING_TIME, ADC_SETTLING_TIME_3, TRANSFER_PERIOD);
 	adc_check(ADC, sysclk_get_cpu_hz());
 
 	/* Hardware trigger TIOA0. */

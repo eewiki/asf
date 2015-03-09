@@ -6,6 +6,7 @@
 		<device-support value="sam3"/>
 		<device-support value="sam4s"/>
 		<device-support value="sam4e"/>
+		<device-support value="sam4n"/>
 		<build type="include-path" value="."/>
 		<build type="doxygen-entry-point" value="sam_drivers_chipid_group"/>
 		<build type="c-source" value="chipid.c"/>

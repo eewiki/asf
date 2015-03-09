@@ -62,16 +62,7 @@
  *
  * \par Usage
  *
- * -# Build the program and download it inside the evaluation board. Please
- *    refer to the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6224.pdf">
- *    SAM-BA User Guide</a>, the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6310.pdf">
- *    GNU-Based Software Development</a>
- *    application note or to the
- *    <a href="ftp://ftp.iar.se/WWWfiles/arm/Guides/EWARM_UserGuide.ENU.pdf">
- *    IAR EWARM User Guide</a>,
- *    depending on your chosen solution.
+ * -# Build the program and download it inside the evaluation board.
  * -# On the computer, open and configure a terminal application
  *    (e.g. HyperTerminal on Microsoft Windows) with these settings:
  *   - 115200 bauds
@@ -247,9 +238,9 @@ const chipidtype_t chipid_archsize[CHIPID_ARCH_SIZE] = {
 	{0x89,              "ATSAM3S/SAM4S xB Series"},
 	{0x8A,              "ATSAM3S/SAM4S xC Series"},
 	{0x92,              "AT91x92 Series"},
-	{0x93,              "ATSAM3NxA Series"},
-	{0x94,              "ATSAM3NxB Series"},
-	{0x95,              "ATSAM3NxC Series"},
+	{0x93,              "ATSAM3NxA/SAM4NxA Series"},
+	{0x94,              "ATSAM3NxB/SAM4NxB Series"},
+	{0x95,              "ATSAM3NxC/SAM4NxC Series"},
 	{0x98,              "ATSAM3SDxA Series"},
 	{0x99,              "ATSAM3SDxB Series"},
 	{0x9A,              "ATSAM3SDxC Series"},

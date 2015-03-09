@@ -63,14 +63,7 @@
  *
  * \section Usage
  *
- * -# Build the program and download it into the evaluation board. Please
- *    refer to the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6224.pdf">
- *    SAM-BA User Guide</a>, the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6310.pdf">
- *    GNU-Based Software Development</a> application note or the
- *    <a href="ftp://ftp.iar.se/WWWfiles/arm/Guides/EWARM_UserGuide.ENU.pdf">
- *    IAR EWARM User Guide</a>, depending on the solutions that users choose.
+ * -# Build the program and download it into the evaluation board.
  * -# On the computer, open and configure a terminal application
  *    (e.g., HyperTerminal on Microsoft Windows) with these settings:
  *   - 115200 bauds
@@ -108,6 +101,8 @@
 #define MATRIX_SLAVE_NUM    10
 #elif (SAM4E)
 #define MATRIX_SLAVE_NUM    6
+#elif (SAM4N)
+#define MATRIX_SLAVE_NUM    4
 #else
 #warning "Not define matrix slave number, set 1 for default."
 #define MATRIX_SLAVE_NUM    1

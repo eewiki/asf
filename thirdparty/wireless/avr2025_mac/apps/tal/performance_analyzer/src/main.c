@@ -57,7 +57,7 @@
 #include "app_per_mode.h"
 #include "app_range_mode.h"
 #include "perf_api_serial_handler.h"
-#include "asf.h"
+#include "led.h"
 #include "sio2host.h"
 #include "conf_board.h"
 
@@ -433,18 +433,19 @@ int main(void)
 	 * The board-specific conf_board.h file contains the configuration of
 	 * the board initialization.
 	 */
-	board_init();
+	board_init();    
 
 	/*
 	 * Power ON - so set the board to INIT state. All hardware, PAL, TAL and
 	 * stack level initialization must be done using this function
 	 */
+
 	set_main_state(INIT, NULL);
 
 	cpu_irq_enable();
 
 	sio2host_init();
-
+    
 	/* INIT was a success - so change to WAIT_FOR_EVENT state */
 	set_main_state(WAIT_FOR_EVENT, NULL);
 
@@ -455,6 +456,7 @@ int main(void)
 		tal_task(); /* Handle transceiver specific tasks */
 		app_task(); /* Application task */
 		serial_data_handler();
+        
 	}
 }
 

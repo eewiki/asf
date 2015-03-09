@@ -37,6 +37,7 @@
 			<build type="doxygen-entry-point" value="sam_services_smart_card_group"/>
 			<build type="define" name="SMART_CARD_USING_IOPORT" value=""/>
 			<device-support value="sam4e"/>
+			<device-support value="sam4n"/>
 			<require idref="sam.drivers.usart"/>
 			<require idref="common.services.ioport"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>

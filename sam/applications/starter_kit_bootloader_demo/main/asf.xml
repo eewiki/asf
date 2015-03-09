@@ -1,0 +1,32 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.applications.starter_kit_bootloader_demo.main" caption="Main Application for Starter Kit Bootloader Demo">
+		<module type="application" id="sam.applications.starter_kit_bootloader_demo.main#0" caption="Main Application for Starter Kit Bootloader Demo">
+			<info type="description" value="summary">
+				This demo for the SAM Xplained Pro features the following extensions: IO1, OLED1.
+			</info>
+			<build type="include-path" value="."/>
+			<device-support value="sam4n"/>
+			<require idref="sam.drivers.rstc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.drivers.gpbr"/>
+			<require idref="sam.drivers.supc"/>
+			<require idref="sam.drivers.adc.sam4n"/>
+			<require idref="sam.drivers.wdt"/>
+			<require idref="sam.services.flash"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="common.components.display.ssd1306"/>
+			<require idref="common.components.memory.eeprom.at30tse75x"/>
+			<require idref="common.components.memory.sd_mmc.ctrl_access"/>
+			<require idref="common.services.fs.fatfs"/>
+			<build type="header-file" value="unicode_font_table.h"/>
+			<build type="header-file" value="unicode_string.h"/>
+			<build type="header-file" value="multi_language_display.h"/>
+			<build type="c-source" value="multi_language_display.c"/>
+			<build type="c-source" value="main.c"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

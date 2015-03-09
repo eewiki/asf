@@ -279,7 +279,7 @@ phy_enum_t tfa_cca_perform(void)
 
 	/* Enable frame reception again. */
 	pal_trx_bit_write(SR_RX_PDT_DIS, RX_ENABLE);
-
+	
 	return (phy_enum_t)cca_status;
 }
 

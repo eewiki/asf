@@ -89,6 +89,7 @@
 			<device-support value="sam3"/>
 			<device-support value="sam4s"/>
 			<device-support value="sam4l"/>
+			<device-support value="sam4n"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3n"/>
 		</module>
 		<module type="service" id="common.services.os.freertos#sam_cm4f" caption="FreeRTOS mini Real-Time Kernel">

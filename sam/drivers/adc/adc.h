@@ -173,12 +173,32 @@ enum adc_settling_time_t{
 #endif
 
 #if SAM3S || SAM4S ||  SAM3N || SAM3XA
+/** Definitions for ADC Start Up Time */
+enum adc_startup_time {
+	ADC_STARTUP_TIME_0 = ADC_MR_STARTUP_SUT0,
+	ADC_STARTUP_TIME_1 = ADC_MR_STARTUP_SUT8,
+	ADC_STARTUP_TIME_2 = ADC_MR_STARTUP_SUT16,
+	ADC_STARTUP_TIME_3 = ADC_MR_STARTUP_SUT24,
+	ADC_STARTUP_TIME_4 = ADC_MR_STARTUP_SUT64,
+	ADC_STARTUP_TIME_5 = ADC_MR_STARTUP_SUT80,
+	ADC_STARTUP_TIME_6 = ADC_MR_STARTUP_SUT96,
+	ADC_STARTUP_TIME_7 = ADC_MR_STARTUP_SUT112,
+	ADC_STARTUP_TIME_8 = ADC_MR_STARTUP_SUT512,
+	ADC_STARTUP_TIME_9 = ADC_MR_STARTUP_SUT576,
+	ADC_STARTUP_TIME_10 = ADC_MR_STARTUP_SUT640,
+	ADC_STARTUP_TIME_11 = ADC_MR_STARTUP_SUT704,
+	ADC_STARTUP_TIME_12 = ADC_MR_STARTUP_SUT768,
+	ADC_STARTUP_TIME_13 = ADC_MR_STARTUP_SUT832,
+	ADC_STARTUP_TIME_14 = ADC_MR_STARTUP_SUT896,
+	ADC_STARTUP_TIME_15 = ADC_MR_STARTUP_SUT960
+};
+#endif
+
+#if SAM3S || SAM4S ||  SAM3N || SAM3XA
 uint32_t adc_init(Adc *p_adc, const uint32_t ul_mck,
-		const uint32_t ul_adc_clock, const uint8_t uc_startup);
+		const uint32_t ul_adc_clock, const enum adc_startup_time startup);
 void adc_configure_trigger(Adc *p_adc, const enum adc_trigger_t trigger,
 		const uint8_t uc_freerun);
-void adc_configure_power_save(Adc *p_adc, const uint8_t uc_sleep,
-		const uint8_t uc_fwup);
 void adc_configure_sequence(Adc *p_adc, const enum adc_channel_num_t ch_list[],
 		const uint8_t uc_num);
 void adc_enable_tag(Adc *p_adc);
@@ -202,6 +222,12 @@ void adc_configure_trigger(Adc *p_adc, const enum adc_trigger_t trigger);
 void adc_configure_power_save(Adc *p_adc, const uint8_t uc_sleep);
 #endif
 
+#if SAM3S8 || SAM4S || SAM3N || SAM3SD8
+void adc_configure_power_save(Adc *p_adc, const uint8_t uc_sleep,
+		const uint8_t uc_fwup);
+#elif SAM3U
+void adc_configure_power_save(Adc *p_adc, const uint8_t uc_sleep);
+#endif
 void adc_set_resolution(Adc *p_adc, const enum adc_resolution_t resolution);
 void adc_start(Adc *p_adc);
 void adc_stop(Adc *p_adc);

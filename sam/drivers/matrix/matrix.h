@@ -102,11 +102,11 @@ uint32_t matrix_get_master_remap(void);
 
 #endif /* (SAM3XA || SAM3U || SAM4E) */
 
-#if (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E)
+#if (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E || SAM4N)
 void matrix_set_system_io(uint32_t ul_io);
 uint32_t matrix_get_system_io(void);
 
-#endif /* (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E) */
+#endif /* (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E || SAM4N) */
 
 #if (SAM3S || SAM4S || SAM4E)
 void matrix_set_nandflash_cs(uint32_t ul_cs);

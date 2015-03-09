@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="ADC unit Test for SAM4N-Xplained-Pro" id="sam.drivers.adc.sam4n.unit_tests.sam4n_xplained_pro" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.adc.sam4n.unit_tests"/>
+		<require idref="board.sam4n_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<device-support value="atsam4n16c"/>
+	</project>
+</asf>

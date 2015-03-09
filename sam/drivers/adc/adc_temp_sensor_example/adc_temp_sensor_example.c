@@ -3,7 +3,7 @@
  *
  * \brief ADC temperature sensor example for SAM.
  *
- * Copyright (c) 2011 - 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -72,16 +72,7 @@
  *
  * \section Usage
  *
- * -# Build the program and download it into the evaluation board. Please
- *    refer to the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/6421B.pdf">
- *    SAM-BA User Guide</a>, the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6310.pdf">
- *    GNU-Based Software Development</a>
- *    application note or the
- *    <a href="http://www.iar.com/website1/1.0.1.0/78/1/">
- *    IAR EWARM User and reference guides</a>,
- *    depending on the solutions that users choose.
+ * -# Build the program and download it into the evaluation board.
  * -# On the computer, open and configure a terminal application
  *    (e.g., HyperTerminal on Microsoft Windows) with these settings:
  *   - 115200 bauds
@@ -112,6 +103,26 @@
 
 /** Reference voltage for ADC,in mv. */
 #define VOLT_REF        (3300)
+
+#if SAM3S || SAM4S || SAM3XA || SAM3N
+/* Tracking Time*/
+#define  TRACKING_TIME            1
+/* Transfer Period */
+#define  TRANSFER_PERIOD       1 
+#endif
+
+#if SAM3U
+#ifdef ADC_12B
+/* Start Up Time */
+#define   STARTUP_TIME                           7
+/* Off Mode Startup Time */
+#define   OFF_MODE_STARTUP_TIME      7
+#else
+#define   STARTUP_TIME                           3
+#endif
+/* Sample & Hold Time */
+#define   SAMPLE_HOLD_TIME   6
+#endif
 
 /** The maximal digital value */
 #if SAM3S || SAM3XA || SAM4S
@@ -302,14 +313,26 @@ int main(void)
 	/* Enable peripheral clock. */
 	pmc_enable_periph_clk(ID_ADC);
 	/* Initialize ADC. */
-	/*  startup = 8:    512 periods of ADCClock
-	 * for prescale = 4
-	 *     prescale: ADCClock = MCK / ( (PRESCAL+1) * 2 ) => 64MHz / ((4+1)*2) = 6.4MHz
-	 *     ADC clock = 6.4 MHz
+	/*
+	 * Formula: ADCClock = MCK / ( (PRESCAL+1) * 2 )
+	 * For example, MCK = 64MHZ, PRESCAL = 4, then:
+	 * ADCClock = 64 / ((4+1) * 2) = 6.4MHz;
 	 */
-	adc_init(ADC, sysclk_get_cpu_hz(), 6400000, 8);
-
-	adc_configure_timing(ADC, 0, ADC_SETTLING_TIME_3, 1);
+	/* Formula:
+	 *     Startup  Time = startup value / ADCClock
+	 *     Startup time = 64 / 6.4MHz = 10 us
+	 */
+	adc_init(ADC, sysclk_get_cpu_hz(), 6400000, ADC_STARTUP_TIME_4);
+	/* Formula:
+	 *     Transfer Time = (TRANSFER * 2 + 3) / ADCClock
+	 *     Tracking Time = (TRACKTIM + 1) / ADCClock
+	 *     Settling Time = settling value / ADCClock
+	 *
+	 *     Transfer Time = (1 * 2 + 3) / 6.4MHz = 781 ns
+	 *     Tracking Time = (1 + 1) / 6.4MHz = 312 ns
+	 *     Settling Time = 3 / 6.4MHz = 469 ns
+	 */
+	adc_configure_timing(ADC, TRACKING_TIME, ADC_SETTLING_TIME_3, TRANSFER_PERIOD);
 
 	adc_configure_trigger(ADC, ADC_TRIG_SW, 0);
 

@@ -83,9 +83,9 @@
 #define EE_IEEE_ADDR                (0)
 
 /* Macro to enable the feature of counting wrong CRC packets */
-#if ((TAL_TYPE == ATMEGARFR2) || \
-	(TAL_TYPE == AT86RF212) || (TAL_TYPE == AT86RF212B) || \
-	(TAL_TYPE == AT86RF231) || (TAL_TYPE == AT86RF233))
+#if ( (TAL_TYPE == ATMEGARFA1) || (TAL_TYPE == ATMEGARFR2) ||\
+      (TAL_TYPE == AT86RF212) || (TAL_TYPE == AT86RF212B) ||\
+      (TAL_TYPE == AT86RF231)|| (TAL_TYPE == AT86RF232) || (TAL_TYPE == AT86RF233))
 #define CRC_SETTING_ON_REMOTE_NODE
 #endif
 

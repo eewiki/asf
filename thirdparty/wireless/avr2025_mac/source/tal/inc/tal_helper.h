@@ -51,7 +51,6 @@
 #define TAL_HELPER_H
 
 /* === INCLUDES ============================================================ */
-
 /* === EXTERNALS =========================================================== */
 
 /* === TYPES =============================================================== */
@@ -148,6 +147,22 @@ typedef enum param_tag {
 #endif
 	TX_PWR            = 0x06
 } SHORTENUM param_type;
+
+
+#ifdef EXT_RF_FRONT_END_CTRL /*For External PA for 231FEM-EK*/
+
+/**
+  * RSSI BASE VAL based on External LNA Gain.
+  */
+#define RSSI_BASE_VAL_EXT      (RSSI_BASE_VAL_DBM - EXT_LNA_HIGH_GAIN)
+
+
+/*
+ * Default tx power for Ch26 to meet FCC compliance
+  */
+#define DEFAULT_TX_POWER_CH26             (0x80 | 0x0d)
+
+#endif
 /* === PROTOTYPES ========================================================== */
 
 #ifdef __cplusplus

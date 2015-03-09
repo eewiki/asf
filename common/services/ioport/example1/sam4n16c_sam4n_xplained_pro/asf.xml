@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Common IOPORT service example 1 for SAM4N" id="common.services.ioport.example1.sam4n_xplained_pro">
+		<info type="description" value="summary">
+			Toggles output port pin controlling LED0
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<require idref="common.services.ioport.example1"/>
+		<require idref="board.sam4n_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4n16c"/>
+	</project>
+</asf>

@@ -142,6 +142,14 @@ void board_init(void)
 	ioport_set_pin_level(AT86RFX_RST_PIN, IOPORT_PIN_LEVEL_HIGH);
 	ioport_set_pin_dir(AT86RFX_SLP_PIN, IOPORT_DIR_OUTPUT);
 	ioport_set_pin_level(AT86RFX_SLP_PIN, IOPORT_PIN_LEVEL_HIGH);
+	
+#ifdef EXT_RF_FRONT_END_CTRL
+	ioport_set_pin_dir(AT86RFX_CPS, IOPORT_DIR_OUTPUT);
+	ioport_set_pin_level(AT86RFX_CPS, IOPORT_PIN_LEVEL_HIGH);
+	ioport_set_pin_dir(AT86RFX_CSD, IOPORT_DIR_OUTPUT);
+	ioport_set_pin_level(AT86RFX_CSD, IOPORT_PIN_LEVEL_HIGH);	
+#endif	
+
 #endif
 
 #if defined(CONF_BOARD_SPI) || defined(CONF_BOARD_SD_MMC_SPI)

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Shared SAM API for USART_SPI Master Mode / Example for SAM4N Xplained Pro" id="common.services.basic.usart_spi_master_example.sam4n_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="header-file" value="conf_usart_spi_master_example.h"/>
+		<require idref="common.services.basic.usart_spi_master_example"/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<require idref="board.sam4n_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4n16c"/>
+	</project>
+</asf>

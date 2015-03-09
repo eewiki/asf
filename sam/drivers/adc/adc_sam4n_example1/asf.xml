@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.adc.sam4n.example1" caption="ADC Temperature Sensor Example for SAM4N">
+		<info type="description" value="summary">
+		This example demonstrates how to configure the temperature sensor feature inside the microcontroller.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc_sam4n_example1.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4n"/>
+		<require idref="sam.drivers.adc.sam4n"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

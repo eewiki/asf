@@ -58,7 +58,7 @@
  * -# Connect TWD0 (SDA) for the 2 boards.
  * -# Connect TWCK0 (SCL) for the 2 boards.
  * -# Connect GND for the 2 boards.
- * -# Add a pull up of 2,2KOhms on TWD and TWCK
+ * -# Make sure there is a pull up resistor on TWD and TWCK.
  *
  * \section files Main files:
  *  - twi.c SAM Two-Wire Interface driver implementation.

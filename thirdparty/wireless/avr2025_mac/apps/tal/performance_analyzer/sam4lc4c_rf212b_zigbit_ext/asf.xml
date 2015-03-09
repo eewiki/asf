@@ -23,6 +23,7 @@
         <build type="define"   name="FFD"                                 value=""/>
         <build type="define"   name="ENABLE_TFA"                          value=""/>
         <build type="define"   name="TRX_REG_RAW_VALUE"                   value=""/>
+		<build type="define"   name="ANTENNA_DIVERSITY"                   value="0"/>
 		
 		<require idref="board.sam4l_xplained_pro"/>
 		

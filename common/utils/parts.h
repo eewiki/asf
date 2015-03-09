@@ -495,6 +495,7 @@
 		AVR8_PART_IS_DEFINED(ATmega256RFR2) \
 		)
 
+
 /** ATmegaxxRFxx group */
 #define MEGA_RF (MEGA_RFA1 || MEGA_RFR2)
 
@@ -887,6 +888,22 @@
 /** @} */
 
 /**
+ * \name SAM4N series
+ * @{
+ */
+#define SAM4N8 ( \
+		SAM_PART_IS_DEFINED(SAM4N8A) || \
+		SAM_PART_IS_DEFINED(SAM4N8B) || \
+		SAM_PART_IS_DEFINED(SAM4N8C) \
+		)
+
+#define SAM4N16 ( \
+		SAM_PART_IS_DEFINED(SAM4N16B) || \
+		SAM_PART_IS_DEFINED(SAM4N16C) \
+		)
+/** @} */
+
+/**
  * \name SAM families
  * @{
  */
@@ -914,10 +931,14 @@
 
 /** SAM4E Family */
 #define SAM4E (SAM4E8 || SAM4E16)
+
+/** SAM4N Family */
+#define SAM4N (SAM4N8 || SAM4N16)
+
 /** @} */
 
 /** SAM product line */
-#define SAM (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S || SAM4L || SAM4E || SAMD20)
+#define SAM (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S || SAM4L || SAM4E || SAMD20 || SAM4N)
 
 /** @} */
 

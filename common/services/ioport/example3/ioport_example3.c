@@ -68,6 +68,7 @@
  *  - SAM4L Xplained Pro kit
  *  - SAM4L8 Xplained Pro kit
  *  - SAM3X evaluation kit
+ *  - SAM4N Xplained Pro kit
  *  - STK600 evaluation Kit (Tested with STK600-ATMEGA128RFA1)
  *  - ATmega256RFR2 Xplained Pro kit
  *

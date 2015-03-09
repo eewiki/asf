@@ -13,6 +13,7 @@
 		<build type="header-file" value="nwk_config.h"/>
 		<build type="header-file" value="mac_user_build_config.h"/>
 		<build type="doxygen-entry-point" value="group_rf4control"/>
+		<build type="distribute" subtype="user-file" value="../doc/AVR2102_User_Guide.pdf"/>
 		<require idref="thirdparty.wireless.avr2025_mac.includes"/>
 	</module>
 </asf>

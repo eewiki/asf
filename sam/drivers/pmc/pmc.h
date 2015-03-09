@@ -85,7 +85,7 @@ extern "C" {
 #define PMC_PCK_1               1 /* PCK1 ID */
 #define PMC_PCK_2               2 /* PCK2 ID */
 
-#if SAM4S || SAM4E
+#if SAM4S || SAM4E || SAM4N
 /** Flash state in Wait Mode */
 #define PMC_WAIT_MODE_FLASH_STANDBY         PMC_FSMR_FLPM_FLASH_STANDBY
 #define PMC_WAIT_MODE_FLASH_DEEP_POWERDOWN  PMC_FSMR_FLPM_FLASH_DEEP_POWERDOWN
@@ -116,7 +116,7 @@ uint32_t pmc_switch_mck_to_pllbck(uint32_t ul_pres);
 #if (SAM3XA || SAM3U)
 uint32_t pmc_switch_mck_to_upllck(uint32_t ul_pres);
 #endif
-#if (SAM4S || SAM4E)
+#if (SAM4S || SAM4E || SAM4N)
 void pmc_set_flash_in_wait_mode(uint32_t ul_flash_state);
 #endif
 
@@ -283,6 +283,19 @@ void pmc_enable_clock_failure_detector(void);
 void pmc_disable_clock_failure_detector(void);
 
 //@}
+
+#if SAM4N
+/**
+ * \name Slow Crystal Oscillator Frequency Monitoring
+ *
+ */
+//@{
+
+void pmc_enable_sclk_osc_freq_monitor(void);
+void pmc_disable_sclk_osc_freq_monitor(void);
+
+//@}
+#endif
 
 /**
  * \name Write protection

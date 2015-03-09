@@ -343,7 +343,7 @@ uint32_t twi_master_write(Twi *p_twi, twi_packet_t *p_packet)
 		p_twi->TWI_THR = *buffer++;
 
 		cnt--;
-	};
+	}
 
 	while (1) {
 		status = p_twi->TWI_SR;
@@ -590,6 +590,11 @@ Pdc *twi_get_pdc_base(Twi *p_twi)
 	else if (p_twi == TWI1) {
 		p_pdc_base = PDC_TWI1;
 	}
+#endif
+#ifdef PDC_TWI2
+		else if (p_twi == TWI2) {
+			p_pdc_base = PDC_TWI2;
+		}
 #endif
 	else
 	{

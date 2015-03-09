@@ -75,6 +75,18 @@
  * - sam4s16c_sam4s_xplained
  * - XMEGA-A1 Xplained
  * - sam4e16e_sam4e_ek
+ * - sam4n16c_sam4n_xplained_pro
+ *
+ * \section connection_note Connection
+ * Because for SAM4N Xplained Pro the file system is created in the external
+ * AT45DBX, extra connection is required.
+ * - <b> SAM4N Xplained Pro -- AT45DBX component </b>
+ * - 3V3 -- VCC
+ * - PC4(EXT2/PIN15) -- NCS
+ * - PA14(EXT2/PIN18) -- CLK
+ * - PA12(EXT2/PIN17) -- MISO
+ * - PA13(EXT2/PIN16) -- MOSI
+ * - GND -- GND
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers

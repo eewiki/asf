@@ -1,0 +1,43 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.applications.starter_kit_bootloader_demo.bootloader" caption="Bootloader for Starter Kit Bootloader Demo">
+		<info type="description" value="summary">
+			This demonstration program boot application located at specified address.
+		</info>
+
+		<build type="module-config" subtype="required-header-file" value="conf_bootloader.h"/>
+
+		<build type="c-source" value="bootloader.c"/>
+
+		<build type="header-file" value="bootloader.h"/>
+		<build type="header-file" value="debug.h"/>
+		<build type="header-file" value="memories.h"/>
+		<build type="header-file" value="regions.h"/>
+		<build type="header-file" value="trigger.h"/>
+		<build type="header-file" value="media.h"/>
+
+		<build type="c-source" value="debug_usart.c"/>
+		<build type="c-source" value="memory_flash.c"/>
+		<build type="c-source" value="regions.c"/>
+		<build type="c-source" value="trigger.c"/>
+		<build type="c-source" value="media.c"/>
+		<build type="c-source" value="media_sd.c"/>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="header-file" value="conf_access.h"/>
+
+		<require idref="sam.drivers.wdt"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.services.flash"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.components.memory.sd_mmc.ctrl_access"/>
+		<require idref="common.services.fs.fatfs"/>
+
+		<device-support value="sam"/>
+
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

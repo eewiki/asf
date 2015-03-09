@@ -25,6 +25,7 @@
 			<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
 			<build type="include-path" value="."/>
 			<device-support value="sam4e"/>
+			<device-support value="sam4n"/>
 			<require idref="sam.services.flash"/>
 			<require idref="common.services.ioport"/>
 			<require idref="common.utils.unit_test"/>

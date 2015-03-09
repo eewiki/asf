@@ -74,16 +74,7 @@
  *
  * \section Usage
  *
- * -# Build the program and download it into the evaluation board. Please
- *    refer to the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/6421B.pdf">
- *    SAM-BA User Guide</a>, the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6310.pdf">
- *    GNU-Based Software Development</a>
- *    application note or the
- *    <a href="http://www.iar.com/website1/1.0.1.0/78/1/">
- *    IAR EWARM User and reference guides</a>,
- *    depending on the solutions that users choose.
+ * -# Build the program and download it into the evaluation board.
  * -# On the computer, open and configure a terminal application
  *    (e.g., HyperTerminal on Microsoft Windows) with these settings:
  *   - 115200 bauds
@@ -131,6 +122,26 @@
 /** There are two peripherals ADC and ADC12B in SAM3U, you can select one of them. */
 #if SAM3U
 //#define ADC_12B
+#endif
+
+#if SAM3S || SAM4S || SAM3XA || SAM3N
+/* Tracking Time*/
+#define  TRACKING_TIME            1
+/* Transfer Period */
+#define  TRANSFER_PERIOD       1 
+#endif
+
+#if SAM3U
+#ifdef ADC_12B
+/* Start Up Time */
+#define   STARTUP_TIME                           7
+/* Off Mode Startup Time */
+#define   OFF_MODE_STARTUP_TIME      7
+#else
+#define   STARTUP_TIME                           3
+#endif
+/* Sample & Hold Time */
+#define   SAMPLE_HOLD_TIME   6
 #endif
 
 /** Total number of ADC channels in use */
@@ -186,7 +197,9 @@ struct {
 	uint8_t uc_sequence_en;
 	uint8_t uc_gain_en;
 	uint8_t uc_offset_en;
+#if  SAM3S8 || SAM3SD8 || SAM4S || SAM3N || SAM3U	
 	uint8_t uc_power_save_en;
+#endif
 #if  SAM3S8 || SAM3SD8 || SAM4S
 	uint8_t uc_auto_calib_en;
 #endif
@@ -252,8 +265,10 @@ static void display_menu(void)
 	uc_char = (g_adc_test_mode.uc_sequence_en) ? 'E' : 'D';
 	printf("[%c] S: Enable/Disable to use user sequence mode.\n\r", uc_char);
 #endif
+#if  SAM3S8 || SAM3SD8 || SAM4S || SAM3N || SAM3U
 	uc_char = (g_adc_test_mode.uc_power_save_en) ? 'E' : 'D';
 	printf("[%c] P: Enable/Disable ADC power save mode.\n\r", uc_char);
+#endif	
 #if SAM3S || SAM3U || SAM3XA || SAM4S
 	uc_char = (g_adc_test_mode.uc_gain_en) ? 'E' : 'D';
 	printf("[%c] G: Enable/Disable to set gain=2 for potentiometer channel.\n\r",
@@ -321,7 +336,7 @@ static void set_adc_test_mode(void)
 			}
 			break;
 #endif
-
+#if  SAM3S8 || SAM3SD8 || SAM4S || SAM3N || SAM3U
 		case 'p':
 		case 'P':
 			if (g_adc_test_mode.uc_power_save_en) {
@@ -330,7 +345,7 @@ static void set_adc_test_mode(void)
 				g_adc_test_mode.uc_power_save_en = 1;
 			}
 			break;
-
+#endif
 #if SAM3S || SAM3U || SAM3XA || SAM4S
 		case 'g':
 		case 'G':
@@ -544,6 +559,7 @@ static uint32_t adc_read_buffer(Adc * p_adc, uint16_t * p_s_buffer, uint32_t ul_
 }
 #endif
 #endif
+
 /**
  * \brief Start ADC sample.
  * Initialize ADC, set clock and timing, and set ADC to given mode.
@@ -563,45 +579,59 @@ static void start_adc(void)
 #endif
 
 	/* Initialize ADC. */
+	/*
+	 * Formula: ADCClock = MCK / ( (PRESCAL+1) * 2 )
+	 * For example, MCK = 64MHZ, PRESCAL = 4, then:
+	 * ADCClock = 64 / ((4+1) * 2) = 6.4MHz;
+	 */
 #if SAM3S || SAM3N || SAM3XA || SAM4S
-	adc_init(ADC, sysclk_get_cpu_hz(), 6400000, 8);
+	/* Formula:
+	 *     Startup  Time = startup value / ADCClock
+	 *     Startup time = 64 / 6.4MHz = 10 us
+	 */
+	adc_init(ADC, sysclk_get_cpu_hz(), 6400000, ADC_STARTUP_TIME_4);
 #elif SAM3U
 #ifdef ADC_12B
-	adc12b_init(ADC12B, sysclk_get_cpu_hz(), 6400000, 10, 10);
+	/* Formula:
+	 *     Startup  Time = (startup value + 1) * 8 / ADCClock
+	 *     Startup time = (7 + 1) * 8 / 6.4MHz = 10 us
+	 */
+	adc12b_init(ADC12B, sysclk_get_cpu_hz(), 6400000, STARTUP_TIME, OFF_MODE_STARTUP_TIME);
 #else
-	adc_init(ADC, sysclk_get_cpu_hz(), 6400000, 10);
+	/* Formula:
+	 *     Startup  Time = (startup value + 1) * 8 / ADCClock
+	 *     Startup time = (3 + 1) * 8 / 3.2MHz = 10 us
+	 */ 
+	adc_init(ADC, sysclk_get_cpu_hz(), 3200000, STARTUP_TIME);
 #endif
 #endif
 
 	memset((void *)&g_adc_sample_data, 0, sizeof(g_adc_sample_data));
 
-	/*
-	 * Formula: ADCClock = MCK / ( (PRESCAL+1) * 2 )
-	 * For example, MCK = 64MHZ, PRESCAL = 4, then:
-	 *     ADCClock = 64 / ((4+1) * 2) = 6.4MHz;
-	 */
-	/* Set ADC clock. */
+	/* Set ADC timing. */
+#if SAM3S ||  SAM3XA || SAM4S
 	/* Formula:
-	 *     Startup  Time = startup value / ADCClock
 	 *     Transfer Time = (TRANSFER * 2 + 3) / ADCClock
 	 *     Tracking Time = (TRACKTIM + 1) / ADCClock
 	 *     Settling Time = settling value / ADCClock
-	 * For example, ADC clock = 6MHz (166.7 ns)
-	 *     Startup time = 512 / 6MHz = 85.3 us
-	 *     Transfer Time = (1 * 2 + 3) / 6MHz = 833.3 ns
-	 *     Tracking Time = (0 + 1) / 6MHz = 166.7 ns
-	 *     Settling Time = 3 / 6MHz = 500 ns
+	 *
+	 *     Transfer Time = (1 * 2 + 3) / 6.4MHz = 781 ns
+	 *     Tracking Time = (1 + 1) / 6.4MHz = 312 ns
+	 *     Settling Time = 3 / 6.4MHz = 469 ns
 	 */
-	/* Set ADC timing. */
-#if SAM3S ||  SAM3XA || SAM4S
-	adc_configure_timing(ADC, 0, ADC_SETTLING_TIME_3, 1);
+	adc_configure_timing(ADC, TRACKING_TIME, ADC_SETTLING_TIME_3, TRANSFER_PERIOD);
 #elif  SAM3N
-	adc_configure_timing(ADC, 0);
+	adc_configure_timing(ADC, TRACKING_TIME);
 #elif SAM3U
+	/* Formula:
+	 *     Sample & Hold Time = SHTIM/ADCClock
+	 *
+	 *     Sample & Hold Time = 6 / 6.4 = 938 ns 
+	 */
 #ifdef ADC_12B
-	adc12b_configure_timing(ADC12B, 1200);
+	adc12b_configure_timing(ADC12B, SAMPLE_HOLD_TIME);
 #else
-	adc_configure_timing(ADC, 1200);
+	adc_configure_timing(ADC, SAMPLE_HOLD_TIME);
 #endif
 #endif
 
@@ -709,14 +739,33 @@ static void start_adc(void)
 	}
 #endif
 
-#if SAM3S || SAM3N || SAM3XA || SAM4S
+#if SAM3S8 || SAM4S || SAM3N || SAM3SD8
 	/* Set power save. */
 	if (g_adc_test_mode.uc_power_save_en) {
 		adc_configure_power_save(ADC, 1, 0);
 	} else {
 		adc_configure_power_save(ADC, 0, 0);;
 	}
+#elif SAM3U
+#ifdef ADC_12B
+	/* Set power save. */
+	if (g_adc_test_mode.uc_power_save_en) {
+		adc12b_configure_power_save(ADC12B, 1, 0);
+	} else {
+		adc12b_configure_power_save(ADC12B, 0, 0);;
+	}
 
+#else
+	/* Set power save. */
+	if (g_adc_test_mode.uc_power_save_en) {
+		adc_configure_power_save(ADC, 1);
+	} else {
+		adc_configure_power_save(ADC, 0);;
+	}
+#endif
+#endif
+
+#if SAM3S || SAM3N || SAM3XA || SAM4S
 	/* Transfer with/without PDC. */
 	if (g_adc_test_mode.uc_pdc_en) {
 		adc_read_buffer(ADC, g_adc_sample_data.us_value, BUFFER_SIZE);
@@ -730,13 +779,6 @@ static void start_adc(void)
 	NVIC_EnableIRQ(ADC_IRQn);
 #elif SAM3U
 #ifdef ADC_12B
-	/* Set power save. */
-	if (g_adc_test_mode.uc_power_save_en) {
-		adc12b_configure_power_save(ADC12B, 1, 0);
-	} else {
-		adc12b_configure_power_save(ADC12B, 0, 0);;
-	}
-
 	/* Transfer with/without PDC. */
 	if (g_adc_test_mode.uc_pdc_en) {
 		adc12_read_buffer(ADC12B, g_adc_sample_data.us_value, BUFFER_SIZE);
@@ -750,13 +792,6 @@ static void start_adc(void)
 	/* Enable ADC interrupt. */
 	NVIC_EnableIRQ(ADC12B_IRQn);
 #else
-	/* Set power save. */
-	if (g_adc_test_mode.uc_power_save_en) {
-		adc_configure_power_save(ADC, 1);
-	} else {
-		adc_configure_power_save(ADC, 0);;
-	}
-
 	/* Transfer with/without PDC. */
 	if (g_adc_test_mode.uc_pdc_en) {
 		adc_read_buffer(ADC, g_adc_sample_data.us_value, BUFFER_SIZE);

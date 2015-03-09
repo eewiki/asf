@@ -1,0 +1,29 @@
+<asf xmlversion="1.0">
+	<project caption="FatFS example for SAM4N Xplained Pro" id="common.services.fs.fatfs.access_example.sam4n_xplained_pro">
+		<info type="description" value="summary">
+		FatFS example for SAM4N Xplained Pro, the file system will be created on the external DataFlash AT45DBX.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<require idref="common.services.fs.fatfs.access_example"/>
+		<require idref="common.components.memory.data_flash.at45dbx"/>
+		<require idref="common.components.memory.data_flash.at45dbx.ctrl_access"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="board.sam4n_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4n16c"/>
+	</project>
+</asf>

@@ -107,6 +107,7 @@ int main(void)
 				page_buffer, NVMCTRL_PAGE_SIZE);
 	} while (error_code == STATUS_BUSY);
 	//! [main_6]
+
 //! [main]
 
 	while (true) {

@@ -83,6 +83,7 @@
  * - sam4s16c_sam4s_ek
  * - sam4sd32c_sam4s_ek2
  * - sam4e16e_sam4e_ek
+ * - sam4n16c_sam4n_xplained_pro
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers
@@ -126,7 +127,7 @@ volatile uint32_t g_ul_sleep_wake_up = 0;
 static void run_periph_clk_cfg_test(const struct test_case *test)
 {
 /* Define start and end peripheral ID for test  */
-#if (SAM3N)
+#if (SAM3N || SAM4N)
 #  define PERIPH_ID_START     ID_UART0
 #  define PERIPH_ID_END       ID_PWM
 #elif (SAM3XA)

@@ -5,7 +5,7 @@
  *
  * This file defines a useful set of functions for the TWIM on SAM4L devices.
  *
- * Copyright (c) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -212,6 +212,8 @@ uint32_t twim_get_status(Twim *twim);
 void twim_clear_status(Twim *twim, uint32_t clear_status);
 void twim_set_callback(Twim *twim, uint32_t interrupt_source,
 	twim_callback_t callback, uint8_t irq_level);
+void twim_pdca_transfer_prepare(Twim *twim, twi_package_t *package,
+		bool read);
 
 /**
  * \}

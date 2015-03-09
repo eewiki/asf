@@ -5,6 +5,7 @@
 		</info>
 		<build type="c-source" value="ssd1306_example.c"/>
 		<device-support value="xmega"/>
+		<device-support value="sam"/>
 		<require idref="common.boards"/>
 		<require idref="common.components.display.ssd1306"/>
 		<require idref="common.services.basic.clock"/>

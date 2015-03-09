@@ -39,6 +39,7 @@ and reduces time-to-market for new embedded applications.
 			<build type="header-file" value="Include/core_cmInstr.h" toolchain="armgcc"/>
 			<device-support value="sam4s"/>
 			<device-support value="sam4l"/>
+			<device-support value="sam4n"/>
 			<require idref="thirdparty.cmsis.license"/>
 			<info type="gui-flag" value="hidden"/>
 		</module>

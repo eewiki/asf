@@ -61,8 +61,9 @@
  * \ref group_common_services_storage_ctrl_access support. The conf_access.h
  * used in the ctrl access module will determine the actually used memory
  * device, e.g., the file system can be created in the internal RAM, NAND Flash 
- * and DataFlash (an AT45DBX needs to be connected) on SAM3X-EK/SAM3N-EK/SAM3S-EK
- * SAM3U-EK/SAM4E-EK/SAM4S-EK/SAM4S-Xplained/ATxmega128A1-Xplained/ATxmegaA3BU-Xplained.
+ * and DataFlash (an AT45DBX needs to be connected) on SAM3X-EK/SAM3N-EK/
+ * SAM3S-EK/SAM3U-EK/SAM4E-EK/SAM4S-EK/SAM4S-Xplained/ATxmega128A1-Xplained/
+ * ATxmegaA3BU-Xplained/SAM4N-Xplained-Pro.
  *
  *  \section Description
  *
@@ -215,7 +216,7 @@ static uint8_t run_fatfs_test(uint32_t disk_dev_num)
 	file_name[0] = '0' + disk_dev_num;
 
 	/* Mount disk*/
-	printf("-I- Mount disk %d\n\r", disk_dev_num);
+	printf("-I- Mount disk %d\n\r", (int)disk_dev_num);
 	/* Clear file system object */
 	memset(&fs, 0, sizeof(FATFS));
 	res = f_mount(disk_dev_num, &fs);
@@ -245,7 +246,7 @@ static uint8_t run_fatfs_test(uint32_t disk_dev_num)
 	if (res == FR_NO_FILESYSTEM) {
 #if _FS_TINY == 0
 		/* Format disk */
-		printf("-I- Format disk %d\n\r", disk_dev_num);
+		printf("-I- Format disk %d\n\r", (int)disk_dev_num);
 		puts("-I- Please wait a moment during formatting...\r");
 		res = f_mkfs(disk_dev_num, /* Drv */
 				0, /* FDISK partition */
@@ -385,9 +386,9 @@ int main(void)
 
 	for (disk_dev_num = 0; disk_dev_num < get_nb_lun(); disk_dev_num++) {
 		if (run_fatfs_test(disk_dev_num)) {
-			printf("-I- DISK %d Test passed !\n\r\n\r", disk_dev_num);
+			printf("-I- DISK %d Test passed !\n\r\n\r", (int)disk_dev_num);
 		} else {
-			printf("-F- DISK %d Test Failed !\n\r\n\r", disk_dev_num);
+			printf("-F- DISK %d Test Failed !\n\r\n\r", (int)disk_dev_num);
 		}
 	}
 

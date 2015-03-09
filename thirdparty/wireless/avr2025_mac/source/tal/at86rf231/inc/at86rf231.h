@@ -55,7 +55,11 @@
 #include "tal_types.h"
 #if (TAL_TYPE == AT86RF231)
 
+#ifndef EXT_RF_FRONT_END_CTRL
 #define TRANSCEIVER_NAME    "AT86RF231"
+#else
+#define TRANSCEIVER_NAME    "AT86RF231+FEM"
+#endif
 /* === EXTERNALS =========================================================== */
 
 /* === TYPES =============================================================== */

@@ -67,6 +67,7 @@
  * - sam3sd8c_sam3s_ek2
  * - sam4s16c_sam4s_ek
  * - sam4sd32c_sam4s_ek2
+ * - sam4n16c_sam4n_xplained_pro
  *
  * The code can be roughly broken down as follows:
  * <ul>
@@ -84,13 +85,7 @@
  * -# Connect the UART port of the evaluation board to the computer and open
  * it in a terminal.
  *    - Settings: 115200 bauds, 8 bits, 1 stop bit, no parity, no flow control.
- * -# Download the program into the evaluation board and run it. Please refer to
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6224.pdf">
- *    SAM-BA User Guide</a>, the
- *    <a href="http://www.atmel.com/dyn/resources/prod_documents/doc6310.pdf">
- *    GNU-Based Software Development</a> application note or the
- *    <a href="ftp://ftp.iar.se/WWWfiles/arm/Guides/EWARM_UserGuide.ENU.pdf">
- *    IAR EWARM User Guide</a>, depending on the solutions that users choose.
+ * -# Download the program into the evaluation board and run it.
  * -# Upon startup, the application will output the following line on the terminal:
  *    \code
  *     -- Spi Pdc Example  --
@@ -140,7 +135,7 @@ extern "C" {
 #define NUM_SPCK_CONFIGURATIONS 4
 
 #define STRING_EOL    "\r"
-#define STRING_HEADER "--Spi Example --\r\n" \
+#define STRING_HEADER "-- Spi Pdc Example  --\r\n" \
 		"-- "BOARD_NAME" --\r\n" \
 		"-- Compiled: "__DATE__" "__TIME__" --"STRING_EOL
 

@@ -51,7 +51,7 @@
  *
  * \section Requirements
  *
- * This package can be used with SAM3X evaluation kits.
+ * This package can be used with SAM3X evaluation kits and SAM4N Xplained Pro.
  *
  * \section files Main files:
  *  - twi.c SAM Two-Wire Interface driver implementation.
@@ -67,6 +67,14 @@
  * content in the reception buffer. Then the program compares the content
  * received with the test pattern sent before and prints the comparison result.
  * The corresponding LED is turned on.
+ *
+ * On SAM4N Xplained Pro, the EEPROM is simulated though the twi_slave_example,
+ * which means 2 SAM4N Xplained Pro boards are required to run this example.
+ * One board executes this example as the twi master and another runs
+ * twi_salve_example as the simulated EEPROM.
+ * The TWI PINs and GND PIN should be connected between these 2 boards.
+ * More information of the simulated EEPROM implementation can be referred in
+ * the description of twi_slave_example.
  *
  * \section compinfo Compilation Info
  * This software was written for the GNU GCC and IAR EWARM.
@@ -111,6 +119,16 @@ extern "C" {
 #define STRING_HEADER "--TWI EEPROM Example --\r\n" \
 		"-- "BOARD_NAME" --\r\n" \
 		"-- Compiled: "__DATE__" "__TIME__" --"STRING_EOL
+
+#if SAM4N
+/** TWI ID for simulated EEPROM application to use */
+#define BOARD_ID_TWI_EEPROM         ID_TWI0
+/** TWI Base for simulated TWI EEPROM application to use */
+#define BOARD_BASE_TWI_EEPROM       TWI0
+/** The address for simulated TWI EEPROM application */
+#undef  AT24C_ADDRESS
+#define AT24C_ADDRESS        0x40
+#endif
 
 static const uint8_t test_data_tx[] = {
 	/** SAM TWI EEPROM EXAMPLE */
@@ -182,9 +200,12 @@ int main(void)
 	board_init();
 
 	/* Turn off LEDs */
+#if SAM3XA
 	LED_Off(LED0_GPIO);
 	LED_Off(LED1_GPIO);
-
+#elif SAM4N
+	LED_Off(LED0);
+#endif
 	/* Initialize the console UART */
 	configure_console();
 
@@ -225,8 +246,10 @@ int main(void)
 
 	if (twi_master_init(BOARD_BASE_TWI_EEPROM, &opt) != TWI_SUCCESS) {
 		puts("-E-\tTWI master initialization failed.\r");
+#if SAM3XA
 		LED_On(LED0_GPIO);
 		LED_On(LED1_GPIO);
+#endif
 		while (1) {
 			/* Capture error */
 		}
@@ -235,8 +258,10 @@ int main(void)
 	/* Send test pattern to EEPROM */
 	if (twi_master_write(BOARD_BASE_TWI_EEPROM, &packet_tx) != TWI_SUCCESS) {
 		puts("-E-\tTWI master write packet failed.\r");
+#if SAM3XA
 		LED_On(LED0_GPIO);
 		LED_On(LED1_GPIO);
+#endif
 		while (1) {
 			/* Capture error */
 		}
@@ -249,8 +274,10 @@ int main(void)
 	/* Get memory from EEPROM */
 	if (twi_master_read(BOARD_BASE_TWI_EEPROM, &packet_rx) != TWI_SUCCESS) {
 		puts("-E-\tTWI master read packet failed.\r");
+#if SAM3XA
 		LED_On(LED0_GPIO);
 		LED_On(LED1_GPIO);
+#endif
 		while (1) {
 			/* Capture error */
 		}
@@ -262,7 +289,9 @@ int main(void)
 		if (test_data_tx[i] != gs_uc_test_data_rx[i]) {
 			/* No match */
 			puts("Data comparison:\tUnmatched!\r");
+#if SAM3XA
 			LED_On(LED0_GPIO);
+#endif
 			while (1) {
 				/* Capture error */
 			}
@@ -270,8 +299,11 @@ int main(void)
 	}
 	/* Match */
 	puts("Data comparison:\tMatched!\r");
+#if SAM3XA
 	LED_On(LED1_GPIO);
-
+#elif SAM4N
+	LED_On(LED0);
+#endif
 	while (1) {
 	}
 }

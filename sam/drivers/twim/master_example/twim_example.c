@@ -62,7 +62,7 @@
  *
  * \par Usage
  *
- *  -# Build the program and download it into the two evaluation boards.
+ *  -# Build the program and download it into the evaluation board.
  *  -# Connect a serial cable to the UART port for each evaluation kit.
  *  -# On the computer, open and configure a terminal application (e.g.,
  *     HyperTerminal on Microsoft Windows) with these settings:

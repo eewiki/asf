@@ -9,15 +9,10 @@
 			<build type="header-file" value="memories_initialization.h"/>
 			<build type="include-path" value="."/>
 			<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
-			<device-support value="sam3"/>
-			<device-support value="sam4s"/>
-			<device-support value="sam4e"/>
+			<device-support value="sam"/>
 			<require idref="common.services.fs.fatfs"/>
 			<require idref="common.utils.stdio.stdio_serial"/>
 			<require idref="common.utils.unit_test"/>
-			<require idref="sam.drivers.pio"/>
-			<require idref="sam.drivers.pmc"/>
-			<require idref="sam.drivers.uart"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
 		<module type="application" id="common.services.fs.fatfs.unit_tests#1" caption="Unit Tests for the Common FatFS Service">

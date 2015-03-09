@@ -403,9 +403,21 @@ static inline void system_sleep(void)
  */
 
 /**
- * \name Reset cause
+ * \name Reset control
  * @{
  */
+
+/**
+ * \brief Reset the MCU
+ *
+ * Resets the MCU and all associated peripherals and registers, except RTC, all 32kHz sources,
+ * WDT (if ALWAYSON is set) and GCLK (if WRTLOCK is set).
+ *
+ */
+static inline void system_reset(void)
+{
+	NVIC_SystemReset();
+}
 
 /**
  * \brief Return the reset cause
@@ -482,6 +494,9 @@ void system_init(void);
  * <table>
  *	<tr>
  *		<th>Changelog</th>
+ *	</tr>
+ *	<tr>
+ *		<td>Added new \c system_reset() to reset the complete MCU with some exceptions</td>
  *	</tr>
  *	<tr>
  *		<td>Added new \c system_get_device_id() function to retrieved the device

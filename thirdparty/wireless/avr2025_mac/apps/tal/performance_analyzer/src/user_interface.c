@@ -48,7 +48,7 @@
  */
 /* === INCLUDES ============================================================ */
 #include "tal.h"
-# include "asf.h"
+# include "led.h"
 #include <stdio.h>
 #include <stdlib.h>
 # include "app_init.h"
@@ -200,7 +200,16 @@ bool app_debounce_button(void)
  */
 bool button_pressed(void)
 {
-#if defined GPIO_PUSH_BUTTON_0
+  
+#ifdef SENSOR_TERMINAL_BOARD
+
+  	if (stb_button_read()) {
+		return true;
+	} else {
+		return false;
+	}
+
+#elif defined GPIO_PUSH_BUTTON_0
 	/*Read the current state of the button*/
 	if (ioport_get_pin_level(GPIO_PUSH_BUTTON_0)) {
 		return false;

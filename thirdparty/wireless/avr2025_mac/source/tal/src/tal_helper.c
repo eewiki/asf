@@ -79,7 +79,7 @@ extern uint8_t convert_phyTransmitPower_to_reg_value(
  * \return MAC_SUCCESS  if PA_EXT_EN bit is configured correctly
  *         FAILURE      otherwise
  */
-#if (TAL_TYPE != AT86RF230B)
+#if ((TAL_TYPE != AT86RF230B) && (TAL_TYPE != AT86RF232))
 
 retval_t  tal_ext_pa_ctrl(bool pa_ext_sw_ctrl)
 {
@@ -857,10 +857,10 @@ int8_t tal_get_rssi_base_val(void)
 	default:    /* High data rate modes */
 		return(RSSI_BASE_VAL_OQPSK_RC_250_DBM);
 	}
-#elif ((TAL_TYPE == AT86RF230B) || (TAL_TYPE == AT86RF231) || \
-	(TAL_TYPE == ATMEGARFA1) || (TAL_TYPE == ATMEGARFR2) ||	\
-	(TAL_TYPE == AT86RF233))
-	return (RSSI_BASE_VAL_DBM);
+#elif ((TAL_TYPE == AT86RF230B) || (TAL_TYPE == AT86RF231) ||\
+      (TAL_TYPE == ATMEGARFA1) || (TAL_TYPE == AT86RF232) || (TAL_TYPE == AT86RF233)||\
+      (TAL_TYPE == ATMEGARFR2))
+    return (RSSI_BASE_VAL_DBM);
 
 #else
 #error "Missing RSSI_BASE_VAL define"

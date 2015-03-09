@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.components.memory.eeprom.at30tse75x.unit_tests" caption="Unit tests for AT30TSE75x Component">
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<info type="description" value="summary">
+		Unit test application for the at30tse75x driver.
+		</info>
+		<build type="c-source" value="unit_tests.c"/>
+		<device-support value="sam"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.components.memory.eeprom.at30tse75x"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.utils.unit_test"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

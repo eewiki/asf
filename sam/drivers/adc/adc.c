@@ -3,7 +3,7 @@
  *
  * \brief Analog-to-Digital Converter (ADC/ADC12B) driver for SAM.
  *
- * Copyright (c) 2011 - 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -75,7 +75,7 @@ extern "C" {
  * \return 0 on success.
  */
 uint32_t adc_init(Adc *p_adc, const uint32_t ul_mck,
-		const uint32_t ul_adc_clock, const uint8_t uc_startup)
+		const uint32_t ul_adc_clock, const enum adc_startup_time startup)
 {
 	uint32_t ul_prescal;
 
@@ -91,9 +91,7 @@ uint32_t adc_init(Adc *p_adc, const uint32_t ul_mck,
 	p_adc->ADC_RNCR = 0;
 
 	ul_prescal = ul_mck / (2 * ul_adc_clock) - 1;
-	p_adc->ADC_MR |= ADC_MR_PRESCAL(ul_prescal) |
-			((uc_startup << ADC_MR_STARTUP_Pos) &
-			ADC_MR_STARTUP_Msk);
+	p_adc->ADC_MR |= ADC_MR_PRESCAL(ul_prescal) | startup;
 	return 0;
 }
 #elif SAM3U
@@ -174,7 +172,7 @@ void adc_configure_trigger(Adc *p_adc, const enum adc_trigger_t trigger)
 }
 #endif
 
-#if SAM3S || SAM4S || SAM3N || SAM3XA
+#if SAM3S8 || SAM4S || SAM3N || SAM3SD8
 /**
  * \brief Configures ADC power saving mode.
  *

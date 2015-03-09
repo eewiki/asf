@@ -35,6 +35,7 @@
 			<device-support value="sam3"/>
 			<device-support value="sam4s"/>
 			<device-support value="sam4l"/>
+			<device-support value="sam4n"/>
 		</module>
 		<!-- VFPv4 -->
 		<module type="driver" id="sam.utils.fpu#vfpv4" caption="SAM FPU driver">
@@ -168,6 +169,21 @@
 			<require idref="sam.utils.cmsis.sam4e.source.template"/>
 			<info type="gui-flag" value="hidden"/>
 			<device-support value="sam4e"/>
+		</module>
+		
+		<!-- SAM4N //-->
+		<module type="driver" id="sam.utils#8" caption="SAM4N compiler driver">
+			<info type="description" value="summary">
+			Compiler abstraction layer and code utilities for SAM4N devices. This module provides various abstraction layers and utilities to make code compatible between different compilers. It also contains utilities typically used while pre-processing code.
+			</info>
+			<require idref="sam.utils.common"/>
+			<require idref="sam.utils.cmsis.sam4n.include"/>
+			<require idref="sam.utils.cmsis.sam4n.include.component"/>
+			<require idref="sam.utils.cmsis.sam4n.include.instance"/>
+			<require idref="sam.utils.cmsis.sam4n.include.pio"/>
+			<require idref="sam.utils.cmsis.sam4n.source.template"/>
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="sam4n"/>
 		</module>
 	</select-by-device>
 </asf>

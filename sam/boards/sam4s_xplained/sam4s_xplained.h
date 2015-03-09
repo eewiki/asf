@@ -49,10 +49,9 @@
 #include "exceptions.h"
 
 
-#define BOARD_REV_A
-/*
+//#define BOARD_REV_A
 #define BOARD_REV_B
-*/
+
 /*----------------------------------------------------------------------------*/
 /**
  *  \page sam4s_xplained_opfreq "SAM4S-XPLAINED - Operating frequencies"
@@ -159,7 +158,12 @@
 #define PIN_EBI_NCS0_ATTR  PIO_PULLUP
 
 /** EBI NLB pin */
+#ifdef BOARD_REV_A
 #define PIN_EBI_NLB           PIO_PC16_IDX
+#endif
+#ifdef BOARD_REV_B
+#define PIN_EBI_NLB           PIO_PC15_IDX
+#endif
 #define PIN_EBI_NLB_FLAGS     PIO_OUTPUT_0
 
 /** EBI address bus pins  */
@@ -399,22 +403,6 @@
 #define PIN_USART1_SCK_IDX   (PIO_PA23_IDX)
 #define PIN_USART1_SCK_FLAGS (PIO_PERIPH_A | PIO_DEFAULT)
 
-/** Definition of MMA7341L x,y,z axis channel number */
-#define MMA7341L_ADC_CHANNEL_X  2
-#define MMA7341L_ADC_CHANNEL_Y  6
-#define MMA7341L_ADC_CHANNEL_Z  7
-
-/** MMA7341L mode set pin definition. */
-#define PIN_MMA7341L_MODE      PIO_PC13_IDX
-#define PIN_MMA7341L_MODE_FLAG PIO_OUTPUT_1 | PIO_DEFAULT
-
-/** MMA7341L X,Y,Z axis pin definition. */
-#define PIN_MMA7341L_X_AXIS      PIO_PB3_IDX
-#define PIN_MMA7341L_X_AXIS_FLAG PIO_INPUT | PIO_DEFAULT
-#define PIN_MMA7341L_Y_AXIS      PIO_PC17_IDX
-#define PIN_MMA7341L_Y_AXIS_FLAG PIO_INPUT | PIO_DEFAULT
-#define PIN_MMA7341L_Z_AXIS      PIO_PC18_IDX
-#define PIN_MMA7341L_Z_AXIS_FLAG PIO_INPUT | PIO_DEFAULT
 /*----------------------------------------------------------------------------*/
 #define CONSOLE_UART               UART0
 #define CONSOLE_UART_ID            ID_UART0

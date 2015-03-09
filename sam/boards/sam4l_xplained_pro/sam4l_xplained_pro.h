@@ -614,6 +614,8 @@
 #define AT86RFX_SPI_MOSI             EXT1_PIN_16
 #define AT86RFX_SPI_MISO             EXT1_PIN_17
 #define AT86RFX_SPI_SCK              EXT1_PIN_18
+#define AT86RFX_CSD     		     EXT1_PIN_5
+#define AT86RFX_CPS 	             EXT1_PIN_8
 
 #define AT86RFX_INTC_INIT()         ioport_set_pin_dir(AT86RFX_IRQ_PIN, IOPORT_DIR_INPUT);\
                                     ioport_set_pin_sense_mode(AT86RFX_IRQ_PIN, IOPORT_SENSE_RISING);\

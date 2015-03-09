@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4n.include.pio" caption="SAM4N PIO definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4N PIO
+		</info>
+		<!--
+		<build type="include-path" value="cmsis/sam4n/include/pio"/>
+		-->
+		<build type="header-file" value="pio_sam4n8a.h"/>
+		<build type="header-file" value="pio_sam4n8b.h"/>
+		<build type="header-file" value="pio_sam4n8c.h"/>
+		<build type="header-file" value="pio_sam4n16b.h"/>
+		<build type="header-file" value="pio_sam4n16c.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam4n"/>
+	</module>
+</asf>

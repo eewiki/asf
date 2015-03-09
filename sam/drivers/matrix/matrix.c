@@ -296,7 +296,7 @@ uint32_t matrix_get_master_remap(void)
 
 #endif /* (SAM3XA || SAM3U || SAM4E) */
 
-#if (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E)
+#if (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E || SAM4N)
 
 /**
  * \brief Set system IO.
