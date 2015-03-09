@@ -3,7 +3,7 @@
  *
  * \brief Watchdog Timer (WDT) example for SAM4L.
  *
- * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -87,10 +87,10 @@
  * -# In the terminal window, the following text should appear (values depend
  *    on the board and chip used):
  *    \code
- *     -- Watchdog example --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *    \endcode
+	-- Watchdog example --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+\endcode
  * -# A LED keeps blinking and watchdog timer is cleared before
  *  watchdog timeout.
  * -# The example will enter a deadlock status if user presses the push button

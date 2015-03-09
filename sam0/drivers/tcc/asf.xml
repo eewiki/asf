@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.tcc" name="config.sam0.drivers.tcc" caption="TCC - Timer Counter for Control Applications" default="callback">
 		<info type="description" value="summary">
-		  Driver for the SAM D2x Timer/Counter for Control Applications module.
+		  Driver for the SAM D21 Timer/Counter for Control Applications module.
 		  Provides a unified interface for the configuration and management of
 		  the device's hardware timers.
 		</info>
@@ -19,12 +19,14 @@
 			<build type="c-source" value="tcc.c" />
 
 			<build type="header-file" value="quick_start/qs_tcc_basic.h" />
+			<build type="header-file" value="quick_start_buffering/qs_tcc_buffering.h" />
 			<build type="header-file" value="quick_start_dma/qs_tcc_dma.h" />
+
+			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-example-path" value="quick_start_buffering"/>
 
 			<build type="doxygen-example-path" value="quick_start_dma"/>
 			<build type="doxygen-example-path" value="quick_start_dma/samd21_xplained_pro"/>
-			<build type="doxygen-example-path" value="quick_start"/>
-			<build type="doxygen-example-path" value="quick_start/samd20_xplained_pro"/>
 
 			<build type="doxygen-image-path" value="docimg" />
 
@@ -55,7 +57,7 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the Timer Counter for Control Applications on the SAM D2x, 
+				This document describes how to use the Timer Counter for Control Applications on the SAM D21,
 				both the ASF driver and the peripheral itself.
 			</info>
 
@@ -69,14 +71,23 @@
 			<build type="c-source" value="tcc_callback.c" />
 			<build type="c-source" value="tcc.c" />
 
-			<build type="header-file" value="quick_start_callback/qs_tcc_callback.h" />
 			<build type="header-file" value="quick_start/qs_tcc_basic.h" />
+			<build type="header-file" value="quick_start_buffering/qs_tcc_buffering.h" />
+			<build type="header-file" value="quick_start_timer/qs_tcc_timer.h" />
+			<build type="header-file" value="quick_start_callback/qs_tcc_callback.h" />
+			<build type="header-file" value="quick_start_faultx/qs_tcc_faultx.h" />
+			<build type="header-file" value="quick_start_faultn/qs_tcc_faultn.h" />
 			<build type="header-file" value="quick_start_dma/qs_tcc_dma.h" />
 
 			<build type="doxygen-example-path" value="quick_start"/>
-			<build type="doxygen-example-path" value="quick_start/samd21_xplained_pro"/>
+			<build type="doxygen-example-path" value="quick_start_buffering"/>
+			<build type="doxygen-example-path" value="quick_start_timer"/>
 			<build type="doxygen-example-path" value="quick_start_callback"/>
-			<build type="doxygen-example-path" value="quick_start_callback/samd21_xplained_pro"/>
+
+			<build type="doxygen-example-path" value="quick_start_faultx"/>
+			<build type="doxygen-example-path" value="quick_start_faultx/samd21_xplained_pro"/>
+			<build type="doxygen-example-path" value="quick_start_faultn"/>
+			<build type="doxygen-example-path" value="quick_start_faultn/samd21_xplained_pro"/>
 			<build type="doxygen-example-path" value="quick_start_dma"/>
 			<build type="doxygen-example-path" value="quick_start_dma/samd21_xplained_pro"/>
 

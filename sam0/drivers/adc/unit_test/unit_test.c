@@ -117,7 +117,7 @@
 /* Theoretical ADC result for DAC full-swing output */
 #define ADC_VAL_DAC_FULL_OUTPUT 4095
 /* Offset due to ADC & DAC errors */
-#define ADC_OFFSET              50
+#define ADC_OFFSET              100
 /* Theoretical DAC value for 0.5V output*/
 #define DAC_VAL_HALF_VOLT       512
 /* Theoretical DAC value for 1.0V output*/
@@ -271,7 +271,7 @@ static void run_adc_polled_mode_test(const struct test_case *test)
 	/* Test result */
 	test_assert_true(test,
 			(adc_result > (ADC_VAL_DAC_HALF_OUTPUT - ADC_OFFSET)) &&
-			(adc_result < (ADC_VAL_DAC_FULL_OUTPUT - ADC_OFFSET)),
+			(adc_result < (ADC_VAL_DAC_HALF_OUTPUT + ADC_OFFSET)),
 			"Error in ADC conversion at 0.5V input (Expected: ~%d, Result: %d)", ADC_VAL_DAC_HALF_OUTPUT, adc_result);
 
 	adc_flush(&adc_inst);
@@ -377,8 +377,8 @@ static void run_adc_callback_mode_test(const struct test_case *test)
 	for (uint8_t i = 0; i < ADC_SAMPLES; i++) {
 		test_assert_true(test,
 				(adc_buf[i] > (ADC_VAL_DAC_HALF_OUTPUT - ADC_OFFSET)) &&
-				(adc_buf[i] < (ADC_VAL_DAC_FULL_OUTPUT - ADC_OFFSET)),
-				"Error in ADC conversion for 0.5V at index %d", i);
+				(adc_buf[i] < (ADC_VAL_DAC_HALF_OUTPUT + ADC_OFFSET)),
+				"Error in ADC conversion for 0.5V at index %d, Result: %d", i, adc_buf[i]);
 	}
 }
 
@@ -473,7 +473,7 @@ static void run_adc_average_mode_test(const struct test_case *test)
 	/* Test result */
 	test_assert_true(test,
 			(adc_result > (ADC_VAL_DAC_HALF_OUTPUT - ADC_OFFSET)) &&
-			(adc_result < (ADC_VAL_DAC_FULL_OUTPUT - ADC_OFFSET)),
+			(adc_result < (ADC_VAL_DAC_HALF_OUTPUT + ADC_OFFSET)),
 			"Error in ADC average mode conversion at 0.5V input");
 }
 

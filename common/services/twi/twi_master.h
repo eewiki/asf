@@ -3,7 +3,7 @@
  *
  * \brief TWI Master Mode management
  *
- * Copyright (c) 2010-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -130,16 +130,16 @@
  * \subsection twi_basic_use_case_setup_code Example code
  * Add to your application C-file:
  * \code
- *  void twi_init(void)
- *  {
- *    twi_master_options_t opt = {
- *        .speed = 50000,
- *        .chip  = 0x50
- *    };
- *
- *    twi_master_setup(&TWIM0, &opt);
- *  }
- * \endcode
+	  void twi_init(void)
+	  {
+	    twi_master_options_t opt = {
+	        .speed = 50000,
+	        .chip  = 0x50
+	    };
+
+	    twi_master_setup(&TWIM0, &opt);
+	  }
+\endcode
  *
  * \subsection twi_basic_use_case_setup_flow Workflow
  * -# Ensure that board_init() has configured selected I/Os for TWI function.
@@ -149,10 +149,10 @@
  * -# Define and initialize config structs for TWI module in your TWI initialization
  * function:
  *   - \code
- * twi_master_options_t opt = {
- *   .speed = 50000,
- *   .chip  = 0x50
- * }; \endcode
+	twi_master_options_t opt = {
+	  .speed = 50000,
+	  .chip  = 0x50
+	}; \endcode
  *   - field \ref speed sets the baudrate of the TWI bus
  *   - field \ref chip sets the address of the slave device you want to communicate with
  * -# Call twi_master_setup and optionally check its return code
@@ -163,18 +163,18 @@
  * \subsection twi_basic_use_case_usage_code_writing Example code : Writing to a slave device
  * Use in application C-file:
  * \code
- *  const uint8_t test_pattern[] = {0x55,0xA5,0x5A,0x77,0x99};
- *
- *  twi_package_t packet_write = {
- *    .addr         = EEPROM_MEM_ADDR,      // TWI slave memory address data
- *    .addr_length  = sizeof (uint16_t),    // TWI slave memory address data size
- *    .chip         = EEPROM_BUS_ADDR,      // TWI slave bus address
- *    .buffer       = (void *)test_pattern, // transfer data source buffer
- *    .length       = sizeof(test_pattern)  // transfer data size (bytes)
- *  };
- *
- *  while (twi_master_write(&TWIM0, &packet_write) != TWI_SUCCESS);
- * \endcode
+	  const uint8_t test_pattern[] = {0x55,0xA5,0x5A,0x77,0x99};
+
+	  twi_package_t packet_write = {
+	    .addr         = EEPROM_MEM_ADDR,      // TWI slave memory address data
+	    .addr_length  = sizeof (uint16_t),    // TWI slave memory address data size
+	    .chip         = EEPROM_BUS_ADDR,      // TWI slave bus address
+	    .buffer       = (void *)test_pattern, // transfer data source buffer
+	    .length       = sizeof(test_pattern)  // transfer data size (bytes)
+	  };
+
+	  while (twi_master_write(&TWIM0, &packet_write) != TWI_SUCCESS);
+\endcode
  *
  * \subsection twi_basic_use_case_usage_flow Workflow
  * -# Prepare the data you want to send to the slave device:
@@ -193,22 +193,22 @@
  * \subsection twi_basic_use_case_usage_code_reading Example code : Reading from a slave device
  * Use in application C-file:
  * \code
- *   uint8_t data_received[10];
- *
- *   twi_package_t packet_read = {
- *     .addr         = EEPROM_MEM_ADDR,      // TWI slave memory address data
- *     .addr_length  = sizeof (uint16_t),    // TWI slave memory address data size
- *     .chip         = EEPROM_BUS_ADDR,      // TWI slave bus address
- *     .buffer       = data_received,        // transfer data destination buffer
- *     .length       = 10                    // transfer data size (bytes)
- *   };
- *   // Perform a multi-byte read access then check the result.
- *   if(twi_master_read(&TWIM0, &packet_read) == TWI_SUCCESS){
- *     //Check read content
- *     if(data_received[0]==0x55)
- *       do_something();
- *   }
- * \endcode
+	   uint8_t data_received[10];
+
+	   twi_package_t packet_read = {
+	     .addr         = EEPROM_MEM_ADDR,      // TWI slave memory address data
+	     .addr_length  = sizeof (uint16_t),    // TWI slave memory address data size
+	     .chip         = EEPROM_BUS_ADDR,      // TWI slave bus address
+	     .buffer       = data_received,        // transfer data destination buffer
+	     .length       = 10                    // transfer data size (bytes)
+	   };
+	   // Perform a multi-byte read access then check the result.
+	   if(twi_master_read(&TWIM0, &packet_read) == TWI_SUCCESS){
+	     //Check read content
+	     if(data_received[0]==0x55)
+	       do_something();
+	   }
+\endcode
  *
  * \subsection twi_basic_use_case_usage_flow Workflow
  * -# Prepare a data buffer that will receive the data from the slave device:

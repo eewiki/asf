@@ -3,7 +3,7 @@
  *
  * \brief USART ISO7816 example for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -83,10 +83,10 @@
  *  -# Connect the card reader to SAM EK board as described before:
  *  -# Start the application. The following traces shall appear on the terminal:
  *     \code
- *      -- USART ISO7816 Example --
- *      -- xxxxxx-xx
- *      -- Compiled: xxx xx xxxx xx:xx:xx --
- *     \endcode
+	-- USART ISO7816 Example --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+\endcode
  *
  */
 

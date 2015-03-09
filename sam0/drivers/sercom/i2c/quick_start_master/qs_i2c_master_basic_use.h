@@ -60,10 +60,13 @@
  * \subsection asfdoc_sam0_sercom_i2c_master_basic_use_setup_code Code
  * The following must be added to the user application:
  *
- * - A sample buffer to send, number of entries to send and address of slave:
+ * - A sample buffer to send, a sample buffer to read:
  * \snippet qs_i2c_master_basic_use.c packet_data
  *
- * Number of times to try to send packet if it fails:
+ * - Slave address to access:
+ * \snippet qs_i2c_master_basic_use.c address
+ *
+ * - Number of times to try to send packet if it fails:
  * \snippet qs_i2c_master_basic_use.c timeout
  *
  * - Globally accessible module structure:
@@ -101,7 +104,10 @@
  *    \snippet qs_i2c_master_basic_use.c write_packet
  * The module will try to send the packet TIMEOUT number of times or until it is
  * successfully sent.
- *
+ * -# Read packet from slave.
+ *    \snippet qs_i2c_master_basic_use.c read_packet
+ * The module will try to read the packet TIMEOUT number of times or until it is
+ * successfully read.
  */
 
 #include <asf.h>

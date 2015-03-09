@@ -608,7 +608,7 @@ static bool uhi_cdc_rx_update(uhi_cdc_line_t *line)
 		true,
 		buf_nosel->ptr,
 		line->buffer_size,
-		0,
+		10,
 		uhi_cdc_rx_received);
 }
 
@@ -709,7 +709,7 @@ static bool uhi_cdc_tx_update(uhi_cdc_line_t *line)
 		true,
 		buf->ptr,
 		buf->nb,
-		100,
+		1000,
 		uhi_cdc_tx_send);
 }
 

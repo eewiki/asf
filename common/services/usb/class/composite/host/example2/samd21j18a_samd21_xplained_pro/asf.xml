@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="USB Host MSC FatFS and HID Mouse for SAMD21 Xplained Pro" id="common.services.usb.class.composite.host.example2.samd21_xplained_pro">
+	<project caption="USB Host MSC FatFS and HID Mouse for SAM D21 Xplained Pro" id="common.services.usb.class.composite.host.example2.samd21_xplained_pro">
 		<build type="header-file" value="conf_extint.h"/>
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_clocks.h"/>

@@ -6,7 +6,7 @@
  *
  * This file defines a useful set of functions for the I2S on SAM devices.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -351,8 +351,8 @@ Pdc *i2s_get_pdc_base(struct i2s_dev_inst *const dev_inst);
  *
  * Add the following code in the application C-file:
  * \code
- *  sysclk_init();
- * \endcode
+	sysclk_init();
+\endcode
  *
  * \subsection i2sc_basic_use_case_setup_flow Workflow
  * -# Initialize the system clock.
@@ -362,37 +362,37 @@ Pdc *i2s_get_pdc_base(struct i2s_dev_inst *const dev_inst);
  * \subsection i2sc_basic_use_case_usage_code Example code
  * Add to, e.g., main loop in application C-file:
  * \code
- *  struct i2s_config config;
- *  struct i2s_dev_inst dev_inst;
- *  config.data_format = I2S_DATE_16BIT;
- *  config.fs_ratio = I2S_FS_RATE_256;
- *  config.loopback = true;
- *  i2s_init(&dev_inst, I2SC, &config);
- *  i2s_enable(&dev_inst);
- * \endcode
+	struct i2s_config config;
+	struct i2s_dev_inst dev_inst;
+	config.data_format = I2S_DATE_16BIT;
+	config.fs_ratio = I2S_FS_RATE_256;
+	config.loopback = true;
+	i2s_init(&dev_inst, I2SC, &config);
+	i2s_enable(&dev_inst);
+\endcode
  *
  * \subsection i2sc_basic_use_case_usage_flow Workflow
  * -# Initialize the module with given configuration
  * \code
- *  struct i2s_config config;
- *  struct i2s_dev_inst dev_inst;
- *  config.data_format = I2S_DATE_16BIT;
- *  config.fs_ratio = I2S_FS_RATE_256;
- *  config.loopback = true;
- *  i2s_init(&dev_inst, I2SC, &config);
- * \endcode
+	struct i2s_config config;
+	struct i2s_dev_inst dev_inst;
+	config.data_format = I2S_DATE_16BIT;
+	config.fs_ratio = I2S_FS_RATE_256;
+	config.loopback = true;
+	i2s_init(&dev_inst, I2SC, &config);
+\endcode
  * -# Enable the module
  * \code  i2s_enable(&dev_inst); \endcode
  * -# Enable transmission, reception and clocks
  * \code
- *  i2s_enable_transmission(&dev_inst);
- *  i2s_enable_clocks(&dev_inst);
- *  i2s_enable_reception(&dev_inst);
- * \endcode
+	i2s_enable_transmission(&dev_inst);
+	i2s_enable_clocks(&dev_inst);
+	i2s_enable_reception(&dev_inst);
+\endcode
  * -# Use write/read function to access the data
  * \code
- *  i2s_write(&dev_inst, data);
- *  i2s_read(&dev_inst, &data);
- * \endcode
+	i2s_write(&dev_inst, data);
+	i2s_read(&dev_inst, &data);
+\endcode
  */
 #endif  /* I2S_H_INCLUDED */

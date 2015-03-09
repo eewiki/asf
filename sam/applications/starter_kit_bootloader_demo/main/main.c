@@ -3,7 +3,7 @@
  *
  * \brief Main application of Starter Kit Bootloader Demo.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -276,15 +276,15 @@ static void check_valid_firmware(void)
  */
 static void jump_to_bootloader(void)
 {
-	uint32_t ul_last_page_addr = LAST_PAGE_ADDRESS;
-	uint32_t *pul_last_page = (uint32_t *)ul_last_page_addr;
+	uint32_t ul_test_page_addr = TEST_PAGE_ADDRESS;
+	uint32_t *pul_test_page = (uint32_t *)ul_test_page_addr;
 	uint32_t ul_rc;
 	uint32_t ul_idx;
 	uint32_t temp_data;
 	uint32_t i;
 
 	for (ul_idx = 0; ul_idx < (IFLASH_PAGE_SIZE / 4); ul_idx++) {
-		temp_data = pul_last_page[ul_idx];
+		temp_data = pul_test_page[ul_idx];
 		trigger_page[ul_idx * 4] = (uint8_t)(temp_data & 0xFF);
 		trigger_page[ul_idx * 4 + 1] = (uint8_t)((temp_data >> 8) & 0xFF);
 		trigger_page[ul_idx * 4 + 2] = (uint8_t)((temp_data >> 16) & 0xFF);
@@ -318,15 +318,15 @@ static void jump_to_bootloader(void)
 		}
 	}
 
-	ul_rc = flash_unlock(ul_last_page_addr,
-			ul_last_page_addr + IFLASH_PAGE_SIZE, NULL, NULL);
+	ul_rc = flash_unlock(ul_test_page_addr,
+			ul_test_page_addr + IFLASH_PAGE_SIZE, NULL, NULL);
 
-	ul_rc = flash_erase_page(ul_last_page_addr, IFLASH_ERASE_PAGES_8);
+	ul_rc = flash_erase_page(ul_test_page_addr, IFLASH_ERASE_PAGES_8);
 	if (ul_rc != FLASH_RC_OK) {
 		return;
 	}
 
-	ul_rc = flash_write(ul_last_page_addr, trigger_page,
+	ul_rc = flash_write(ul_test_page_addr, trigger_page,
 			IFLASH_PAGE_SIZE, 0);
 	if (ul_rc != FLASH_RC_OK) {
 		return;

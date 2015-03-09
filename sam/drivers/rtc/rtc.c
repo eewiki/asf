@@ -3,7 +3,7 @@
  *
  * \brief Real-Time Clock (RTC) driver for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -432,11 +432,11 @@ void rtc_clear_time_alarm(Rtc *p_rtc)
 }
 
 /**
- * \brief Clear the RTC data alarm setting.
+ * \brief Clear the RTC date alarm setting.
  *
  * \param p_rtc Pointer to an RTC instance.
  */
-void rtc_clear_data_alarm(Rtc *p_rtc)
+void rtc_clear_date_alarm(Rtc *p_rtc)
 {
 	/* Need a valid value without enabling */
 	p_rtc->RTC_CALALR = RTC_CALALR_MONTH(0x01) | RTC_CALALR_DATE(0x01);

@@ -48,6 +48,9 @@
 /* Structure for USART module connected to EDBG */
 struct usart_module usart_module_edbg;
 
+/* Structure for USART parameter configuration */
+struct usart_config usart_conf;
+
 /* Data for EDBG communication */
 static uint8_t tx_data;
 static uint8_t rx_data;
@@ -114,8 +117,6 @@ void uart_rx_notify(void)
 
 void uart_config(usb_cdc_line_coding_t *cfg)
 {
-	struct usart_config usart_conf;
-
 	/* Configure USART for unit test output */
 	usart_get_config_defaults(&usart_conf);
 
@@ -181,6 +182,7 @@ void uart_config(usb_cdc_line_coding_t *cfg)
 	usart_conf.pinmux_pad1 = CONF_USART_PINMUX_PAD1;
 	usart_conf.pinmux_pad2 = CONF_USART_PINMUX_PAD2;
 	usart_conf.pinmux_pad3 = CONF_USART_PINMUX_PAD3;
+	usart_disable(&usart_module_edbg);
 	usart_init(&usart_module_edbg, CONF_USART_BASE, &usart_conf);
 	usart_enable(&usart_module_edbg);
 
@@ -196,17 +198,7 @@ void uart_config(usb_cdc_line_coding_t *cfg)
 
 void uart_open(void)
 {
-	struct usart_config usart_conf;
-
-	/* Configure USART for unit test output */
-	usart_get_config_defaults(&usart_conf);
-	usart_conf.mux_setting = CONF_USART_MUX_SETTING;
-	usart_conf.pinmux_pad0 = CONF_USART_PINMUX_PAD0;
-	usart_conf.pinmux_pad1 = CONF_USART_PINMUX_PAD1;
-	usart_conf.pinmux_pad2 = CONF_USART_PINMUX_PAD2;
-	usart_conf.pinmux_pad3 = CONF_USART_PINMUX_PAD3;
-	usart_conf.baudrate    = 115200;
-
+	usart_disable(&usart_module_edbg);
 	usart_init(&usart_module_edbg, CONF_USART_BASE, &usart_conf);
 	usart_enable(&usart_module_edbg);
 

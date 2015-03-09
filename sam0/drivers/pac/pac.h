@@ -461,9 +461,9 @@
  * the bitwise inverse of the module flag, i.e.
  *
  * \code
- * system_peripheral_<lock_state>(SYSTEM_PERIPHERAL_<module>,
- * 		~SYSTEM_PERIPHERAL_<module>);
- * \endcode
+	system_peripheral_<lock_state>(SYSTEM_PERIPHERAL_<module>,
+			~SYSTEM_PERIPHERAL_<module>);
+\endcode
  *
  * Where the lock state can be either lock or unlock, and module refer to the
  * peripheral that is to be locked/unlocked.

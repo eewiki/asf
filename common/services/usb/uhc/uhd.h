@@ -214,7 +214,7 @@ bool uhd_is_suspend(void);
 /**
  * \brief Enables the IDLE state on the USB line.
  * The IDLE state is enable when SOF are present on USB line.
- * A “Downstream Resume” signal can be sent.
+ * A Downstream Resume signal can be sent.
  */
 void uhd_resume(void);
 
@@ -314,9 +314,17 @@ void uhd_ep_free(usb_add_t add, usb_ep_t endp);
  *
  * \warning About \a b_shortpacket, for OUT endpoint it means that
  * a short packet or a Zero Length Packet must be sent to the USB line
- * to properly close the usb transfer at the end of the data transfer.
+ * to properly close the USB transfer at the end of the data transfer.
  * For Bulk and Interrupt IN endpoint, it will automatically stop the transfer
  * at the end of the data transfer (received short packet).
+ *
+ * \warning About \a timeout, for BULK endpoint with \a timeout set to zero,
+ * it means that the transfer will never be stopped before transfer done. Since
+ * most of USB embedded peripherals do not manage the transfer bandwidth by
+ * peripheral hardware, such a BULK transfer will occupy all USB non-periodic
+ * transfer bandwidth. In this case, other BULK transfers started later will be
+ * pending until this transfer is done and bandwidth released. So it is better
+ * to use BULK transfers with none zero \a timeout.
  *
  * \return \c 1 if function was successfully done, otherwise \c 0.
  */

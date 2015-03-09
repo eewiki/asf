@@ -1406,6 +1406,7 @@ static inline void tc_clear_status(
  *
  *  - \subpage asfdoc_sam0_tc_basic_use_case
  * \if TC_CALLBACK_MODE
+ *  - \subpage asfdoc_sam0_tc_timer_use_case
  *  - \subpage asfdoc_sam0_tc_callback_use_case
  * \endif
  *  - \subpage asfdoc_sam0_tc_dma_use_case
@@ -1417,6 +1418,11 @@ static inline void tc_clear_status(
  *		<th>Doc. Rev.</td>
  *		<th>Date</td>
  *		<th>Comments</td>
+ *	</tr>
+ *	<tr>
+ *		<td>D</td>
+ *		<td>03/2014</td>
+ *		<td>Added timer use case.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

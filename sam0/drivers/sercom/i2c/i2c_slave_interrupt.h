@@ -148,11 +148,11 @@ static inline void i2c_slave_disable_callback(
 
 enum status_code i2c_slave_read_packet_job(
 		struct i2c_slave_module *const module,
-		struct i2c_packet *const packet);
+		struct i2c_slave_packet *const packet);
 
 enum status_code i2c_slave_write_packet_job(
 		struct i2c_slave_module *const module,
-		struct i2c_packet *const packet);
+		struct i2c_slave_packet *const packet);
 
 /**
  * \brief Cancels any currently ongoing operation

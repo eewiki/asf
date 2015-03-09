@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.i2s.unit_test" caption="Unit Tests for the SAM D21 I2S Driver">
+		<info type="description" value="summary">
+		Unit test for the I2S module testing all functionality against hardware.
+		</info>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<build type="include-path" value="."/>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="unit_test.c"/>
+		<require idref="sam0.drivers.i2s"/>
+		<require idref="sam0.drivers.port"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.utils.stdio.stdio_serial"/>
+		<require idref="common.utils.unit_test"/>
+		<device-support value="samd21"/>
+	</module>
+</asf>

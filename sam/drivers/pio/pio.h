@@ -3,7 +3,7 @@
  *
  * \brief Parallel Input/Output (PIO) Controller driver for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -242,11 +242,11 @@ void pio_set_io_drive(Pio *p_pio, uint32_t ul_line,
  * \subsection sam_pio_quickstart_use_case_1_setup_steps Initialization code
  * Add to the application initialization code:
  * \code
- *    pmc_enable_periph_clk(ID_PIOA);
- *
- *    pio_set_output(PIOA, PIO_PA23, LOW, DISABLE, ENABLE);
- *    pio_set_input(PIOA, PIO_PA16, PIO_PULLUP);
- * \endcode
+	    pmc_enable_periph_clk(ID_PIOA);
+
+	    pio_set_output(PIOA, PIO_PA23, LOW, DISABLE, ENABLE);
+	    pio_set_input(PIOA, PIO_PA16, PIO_PULLUP);
+\endcode
  *
  * \subsection sam_pio_quickstart_use_case_1_setup_steps_workflow Workflow
  * -# Enable the module clock to the PIOA peripheral:
@@ -259,23 +259,23 @@ void pio_set_io_drive(Pio *p_pio, uint32_t ul_line,
  * \subsection sam_pio_quickstart_use_case_1_example_code Example code
  *   Set the state of output pin 23 to match input pin 16:
  *   \code
- *   if (pio_get(PIOA, PIO_TYPE_PIO_INPUT, PIO_PA16))
- *       pio_clear(PIOA, PIO_PA23);
- *   else
- *       pio_set(PIOA, PIO_PA23);
- *   \endcode
+	if (pio_get(PIOA, PIO_TYPE_PIO_INPUT, PIO_PA16))
+	    pio_clear(PIOA, PIO_PA23);
+	else
+	    pio_set(PIOA, PIO_PA23);
+\endcode
  *
  * \subsection sam_pio_quickstart_use_case_1_example_workflow Workflow
  * -# We check the value of the pin:
  *     \code
- *     if (pio_get(PIOA, PIO_TYPE_PIO_INPUT, PIO_PA16))
- *     \endcode
+	if (pio_get(PIOA, PIO_TYPE_PIO_INPUT, PIO_PA16))
+\endcode
  * -# Then we set the new output value based on the read pin value:
  *     \code
- *         pio_clear(PIOA, PIO_PA23);
- *     else
- *         pio_set(PIOA, PIO_PA23);
- *     \endcode
+	    pio_clear(PIOA, PIO_PA23);
+	else
+	    pio_set(PIOA, PIO_PA23);
+\endcode
  */
 
 /**
@@ -293,16 +293,16 @@ void pio_set_io_drive(Pio *p_pio, uint32_t ul_line,
  * \subsection sam_pio_quickstart_use_case_2_setup_steps Initialization code
  * Add to the application initialization code:
  * \code
- * pmc_enable_periph_clk(ID_PIOA);
- *
- * pio_set_output(PIOA, PIO_PA23, LOW, DISABLE, ENABLE);
- * pio_set_input(PIOA, PIO_PA16, PIO_PULLUP);
- *
- * pio_handler_set(PIOA, ID_PIOA, PIO_PA16, PIO_IT_EDGE, pin_edge_handler);
- * pio_enable_interrupt(PIOA, PIO_PA16);
- *
- * NVIC_EnableIRQ(PIOA_IRQn);
- * \endcode
+	 pmc_enable_periph_clk(ID_PIOA);
+
+	 pio_set_output(PIOA, PIO_PA23, LOW, DISABLE, ENABLE);
+	 pio_set_input(PIOA, PIO_PA16, PIO_PULLUP);
+
+	 pio_handler_set(PIOA, ID_PIOA, PIO_PA16, PIO_IT_EDGE, pin_edge_handler);
+	 pio_enable_interrupt(PIOA, PIO_PA16);
+
+	 NVIC_EnableIRQ(PIOA_IRQn);
+\endcode
  *
  * \subsection sam_pio_quickstart_use_case_2_setup_steps_workflow Workflow
  * -# Enable the module clock to the PIOA peripheral:
@@ -321,26 +321,26 @@ void pio_set_io_drive(Pio *p_pio, uint32_t ul_line,
  * \subsection sam_pio_quickstart_use_case_2_example_code Example code
  * Add the following function to your application:
  * \code
- *    void pin_edge_handler(void)
- *    {
- *        if (pio_get(PIOA, PIO_TYPE_PIO_INPUT, PIO_PA16))
- *            pio_clear(PIOA, PIO_PA23);
- *        else
- *            pio_set(PIOA, PIO_PA23);
- *    }
- * \endcode
+	void pin_edge_handler(void)
+	{
+	    if (pio_get(PIOA, PIO_TYPE_PIO_INPUT, PIO_PA16))
+	        pio_clear(PIOA, PIO_PA23);
+	    else
+	        pio_set(PIOA, PIO_PA23);
+	}
+\endcode
  *
  * \subsection sam_pio_quickstart_use_case_2_example_workflow Workflow
  * -# We check the value of the pin:
  *     \code
- *     if (pio_get(PIOA, PIO_TYPE_PIO_INPUT, PIO_PA16))
- *     \endcode
+	if (pio_get(PIOA, PIO_TYPE_PIO_INPUT, PIO_PA16))
+\endcode
  * -# Then we set the new output value based on the read pin value:
  *     \code
- *         pio_clear(PIOA, PIO_PA23);
- *     else
- *         pio_set(PIOA, PIO_PA23);
- *     \endcode
+	    pio_clear(PIOA, PIO_PA23);
+	else
+	    pio_set(PIOA, PIO_PA23);
+\endcode
  */
 
 #ifdef __cplusplus

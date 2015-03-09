@@ -180,9 +180,8 @@
  *          struct to ensure that all values are initialized to known default
  *          settings.
  *
- * -# Set extra configurations for the DMA resource. It is using peripheral
- *    trigger, SERCOM Tx empty trigger and trigger causes a beat transfer in
- *    this example.
+ * -# Set extra configurations for the DMA resource. ADC_DMAC_ID_RESRDY trigger
+ *    and trigger causes a beat transfer in this example.
  *    \snippet qs_adc_dma_use.c setup_dma_set_config_extra
  *
  * -# Allocate a DMA resource with the configurations.

@@ -3,7 +3,7 @@
  *
  * \brief Universal Asynchronous Receiver Transceiver (UART) driver for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -62,11 +62,6 @@ typedef struct sam_uart_opt {
 	uint32_t ul_baudrate;
 	/** Initialize value for UART mode register */
 	uint32_t ul_mode;
-	/**
-	 * Configure channel mode (Normal, Automatic, Local_loopback or
-	 * Remote_loopback)
-	 */
-	uint32_t ul_chmode;
 } sam_uart_opt_t;
 
 uint32_t uart_init(Uart *p_uart, const sam_uart_opt_t *p_uart_opt);

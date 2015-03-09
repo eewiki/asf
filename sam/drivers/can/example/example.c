@@ -74,10 +74,10 @@
  *  -# Upon startup, the application will output the following lines
  *     on the terminal window.
  *      \code
- *      -- CAN Example --
- *      -- SAM4E -XPRO --
- *      -- Compiled: xxx xx xxxx xx:xx:xx --
- *      \endcode
+	-- CAN Example --
+	-- SAM4E -XPRO --
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+\endcode
  *  -# Press 'r' key in the terminal window to configure one board to
  *     receive CAN message.
  *  -# Press 't' key in the terminal window to confgure another board to

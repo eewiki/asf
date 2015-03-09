@@ -12,7 +12,6 @@
 		<build type="define" name="SD_MMC_ENABLE" value=""/>
 		<device-support value="avr"/>
 		<device-support value="sam"/>
-		<info type="gui-flag" value="move-to-root"/>
 	</module>
 	<select-by-config id="common.components.memory.sd_mmc" name="config.common.components.memory.sd_mmc" caption="SD/MMC stack" default="spi">
 		<module type="component" id="common.components.memory.sd_mmc#spi" caption="SD/MMC stack on SPI interface">

@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="XOSC32K Failure Detector for the SAM D21 Xplained PRO" id="sam0.applications.xosc32k_fail_detector.samd21_xplained_pro">
+	<project caption="XOSC32K Failure Detector for the SAM D21 Xplained Pro" id="sam0.applications.xosc32k_fail_detector.samd21_xplained_pro">
 		<info type="gui-flag" value="move-to-root"/>
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_clocks.h"/>

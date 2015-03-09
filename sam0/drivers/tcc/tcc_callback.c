@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D2x  TCC - Timer Counter for Control Applications Callback Driver
+ * \brief SAM D21 TCC - Timer Counter for Control Applications Callback Driver
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -67,7 +67,7 @@ const uint32_t _tcc_intflag[TCC_CALLBACK_N] = {
 /**
  * \internal Get the interrupt vector for the given device instance
  *
- * \param[in] TCC module instance number.
+ * \param[in] The TCC module instance number.
  *
  * \return Interrupt vector for of the given TCC module instance.
  */
@@ -115,8 +115,8 @@ enum status_code tcc_register_callback(
 /**
  * \brief Unregisters a callback
  *
- * Unregisters a callback function implemented by the user. The callback should be
- * disabled before it is unregistered.
+ * Unregisters a callback function implemented by the user. The callback should
+ * be disabled before it is unregistered.
  *
  * \param[in]     module Pointer to TCC software instance struct
  * \param[in]     callback_type Callback type given by an enum
@@ -208,7 +208,7 @@ void tcc_disable_callback(
 MREPEAT(TCC_INST_NUM, _TCC_INTERRUPT_HANDLER, 0)
 
 /**
- * \internal Interrupt Handler for TCC module
+ * \internal Interrupt Handler for the TCC module
  *
  * Handles interrupts as they occur, it will run the callback functions
  * that are registered and enabled.

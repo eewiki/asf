@@ -3,7 +3,7 @@
  *
  * \brief HMATRIX example for SAM.
  *
- * Copyright (c) 2012 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -74,15 +74,15 @@
  * -# Start the application.
  * -# In the terminal window, the following text should appear:
  *    \code
- *     -- HMATRIX Example --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     Configure system tick to get 1ms tick period.
- *     -- Test1: configure Round-Robin arbitration without default master. --
- *         Led toggled xxx times in one second
- *     -- Test2: configure Round-Robin arbitration with last access master. --
- *         Led toggled xxx times in one second
- *    \endcode
+	-- HMATRIX Example --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	Configure system tick to get 1ms tick period.
+	-- Test1: configure Round-Robin arbitration without default master. --
+	    Led toggled xxx times in one second
+	-- Test2: configure Round-Robin arbitration with last access master. --
+	    Led toggled xxx times in one second
+\endcode
  */
 
 #include "asf.h"

@@ -3,7 +3,7 @@
  *
  * \brief True Random Number Generator (TRNG) example for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -71,11 +71,11 @@
  * -# Start the application.
  * -# In the terminal window, the following text should appear:
  *    \code
- *     -- TRNG Example --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     Random Value: xxxx
- *    \endcode
+	-- TRNG Example --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	Random Value: xxxx
+\endcode
  */
 
 #include "asf.h"

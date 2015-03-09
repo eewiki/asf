@@ -93,10 +93,13 @@ void at30tse_eeprom_write(uint8_t *data, uint8_t length, uint8_t word_addr, uint
 	}
 
 	/* Set up TWI transfer */
-    struct i2c_packet packet = {
+    struct i2c_master_packet packet = {
 		.address     = AT30TSE758_EEPROM_TWI_ADDR | ((0x30 & page)>>4),
 		.data_length = length+1,
 		.data        = buffer,
+		.ten_bit_address = false,
+		.high_speed      = false,
+		.hs_master_code  = 0x0,
 	};
 	/* Do the transfer */
     i2c_master_write_packet_wait(&dev_inst_at30tse75x, &packet);
@@ -120,16 +123,22 @@ void at30tse_eeprom_read(uint8_t *data, uint8_t length, uint8_t word_addr, uint8
 	buffer[0] |= (0x0F & page) << 4;
 
 	/* Set up internal EEPROM addr write */
-    struct i2c_packet addr_transfer = {
+    struct i2c_master_packet addr_transfer = {
 		.address     = AT30TSE758_EEPROM_TWI_ADDR | ( (0x30 & page) >> 4 ),
 		.data_length = 1,
 		.data        = buffer,
+		.ten_bit_address = false,
+		.high_speed      = false,
+		.hs_master_code  = 0x0,
 	};
 	/* Reading sequence */
-    struct i2c_packet read_transfer = {
+    struct i2c_master_packet read_transfer = {
 		.address     = AT30TSE758_EEPROM_TWI_ADDR | ( (0x30 & page) >> 4 ),
 		.data_length = length,
 		.data        = data,
+		.ten_bit_address = false,
+		.high_speed      = false,
+		.hs_master_code  = 0x0,
 	};
 
 	/* Do the transfer */
@@ -146,10 +155,13 @@ void at30tse_eeprom_read(uint8_t *data, uint8_t length, uint8_t word_addr, uint8
 void at30tse_set_register_pointer(uint8_t reg, uint8_t reg_type)
 {
 	uint8_t buffer[] = {reg | reg_type};
-    struct i2c_packet transfer = {
+    struct i2c_master_packet transfer = {
 		.address     = AT30TSE_TEMPERATURE_TWI_ADDR,
 		.data_length = 1,
 		.data        = buffer,
+		.ten_bit_address = false,
+		.high_speed      = false,
+		.hs_master_code  = 0x0,
 	};
 	/* Do the transfer */
     i2c_master_write_packet_wait(&dev_inst_at30tse75x, &transfer);
@@ -171,16 +183,22 @@ uint16_t at30tse_read_register(uint8_t reg, uint8_t reg_type, uint8_t reg_size)
 	buffer[1] = 0;
 
 	/* Internal register pointer in AT30TSE */
-    struct i2c_packet write_transfer = {
+    struct i2c_master_packet write_transfer = {
 		.address     = AT30TSE_TEMPERATURE_TWI_ADDR,
 		.data_length = 1,
 		.data        = buffer,
+		.ten_bit_address = false,
+		.high_speed      = false,
+		.hs_master_code  = 0x0,
 	};
 	/* Read data */
-    struct i2c_packet read_transfer = {
+    struct i2c_master_packet read_transfer = {
 		.address     = AT30TSE_TEMPERATURE_TWI_ADDR,
 		.data_length = reg_size,
 		.data        = buffer,
+		.ten_bit_address = false,
+		.high_speed      = false,
+		.hs_master_code  = 0x0,
 	};
 	/* Do the transfer */
 	i2c_master_write_packet_wait_no_stop(&dev_inst_at30tse75x, &write_transfer);
@@ -205,10 +223,13 @@ void at30tse_write_register(uint8_t reg, uint8_t reg_type, uint8_t reg_size, uin
 	data[2] = 0x00FF & reg_value;
 
 	/* Internal register pointer in AT30TSE */
-    struct i2c_packet transfer = {
+    struct i2c_master_packet transfer = {
 		.address     = AT30TSE_TEMPERATURE_TWI_ADDR,
 		.data_length = 1 + reg_size,
 		.data        = data,
+		.ten_bit_address = false,
+		.high_speed      = false,
+		.hs_master_code  = 0x0,
 	};
 	/* Do the transfer */
 	i2c_master_write_packet_wait(&dev_inst_at30tse75x, &transfer);

@@ -1137,7 +1137,7 @@ static void _uhd_vbus_handler(void)
 	}
 # endif
 # ifdef UDC_VBUS_EVENT
-	UDC_VBUS_EVENT(Is_pad_vbus_high());
+	UDC_VBUS_EVENT(is_usb_vbus_high());
 # endif
 	extint_chan_enable_callback(USB_VBUS_EIC_LINE,
 			EXTINT_CALLBACK_TYPE_DETECT);
@@ -1171,6 +1171,15 @@ static void _usb_vbus_config(void)
 }
 /** @} */
 #endif
+
+bool udd_include_vbus_monitoring(void)
+{
+#if USB_VBUS_EIC
+	return true;
+#else
+	return false;
+#endif
+}
 
 void udd_enable(void)
 {

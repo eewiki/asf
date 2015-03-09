@@ -3,7 +3,7 @@
  *
  * \brief ADCIFE Window Monitor example for SAM4L.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -59,14 +59,14 @@
  * This example shows a menu as below upon running:
  *
  * \code
- * -- Menu Choices for this example--
- *  -- 0: Modify DAC output voltage.--
- *  -- 1: Modify low threshold.--
- *  -- 2: Modify high threshold.--
- *  -- 3: Choose comparison mode.--
- *  -- i: Display ADCIFE information.--
- *  -- m: Display this main menu.--
- * \endcode
+	-- Menu Choices for this example--
+	 -- 0: Modify DAC output voltage.--
+	 -- 1: Modify low threshold.--
+	 -- 2: Modify high threshold.--
+	 -- 3: Choose comparison mode.--
+	 -- i: Display ADCIFE information.--
+	 -- m: Display this main menu.--
+\endcode
  *
  * With the user interface, DAC output voltage, window threshold and mode could be set.
  * After setting, it will start a conversion and enable window monitor interrupt.
@@ -85,17 +85,17 @@
  * -# In the terminal window, the
  *    following text should appear (values depend on the board and the chip used):
  *    \code
- *     -- ADCIFE Window Monitor Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     -- Menu Choices for this example--
- *     -- 0: Modify DAC output voltage.--
- *     -- 1: Modify low threshold.--
- *     -- 2: Modify high threshold.--
- *     -- 3: Choose comparison mode.--
- *     -- i: Display ADCIFE information.--
- *     -- m: Display this main menu.--
- *    \endcode
+	-- ADCIFE Window Monitor Example xxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	-- Menu Choices for this example--
+	-- 0: Modify DAC output voltage.--
+	-- 1: Modify low threshold.--
+	-- 2: Modify high threshold.--
+	-- 3: Choose comparison mode.--
+	-- i: Display ADCIFE information.--
+	-- m: Display this main menu.--
+\endcode
  * -# Input the command according to the menu.
  *
  */

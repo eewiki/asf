@@ -110,10 +110,6 @@ extern "C" {
  *		<th>Supported devices</th>
  *	</tr>
  *	<tr>
- *		<td>FEATURE_I2C_SYNC_SCHEME_VERSION_2</td>
- *		<td>SAMD21</td>
- *	</tr>
- *	<tr>
  *		<td>FEATURE_I2C_FAST_MODE_PLUS_AND_HIGH_SPEED</td>
  *		<td>SAMD21</td>
  *	</tr>
@@ -395,8 +391,6 @@ extern "C" {
  * @{
  */
 #if (SAMD21) || defined(__DOXYGEN__)
-/** Sync scheme version 2 support */
-#  define FEATURE_I2C_SYNC_SCHEME_VERSION_2
 /** Fast mode plus and high speed support */
 #  define FEATURE_I2C_FAST_MODE_PLUS_AND_HIGH_SPEED
 /** 10 bit address support */
@@ -417,21 +411,6 @@ extern "C" {
 enum i2c_transfer_direction {
 	I2C_TRANSFER_WRITE = 0,
 	I2C_TRANSFER_READ  = 1,
-};
-
-/**
- * \brief I<SUP>2</SUP>C packet for read/write
- *
- * Structure to be used when transferring I<SUP>2</SUP>C packets. Used both for
- * master and slave driver modes.
- */
-struct i2c_packet {
-	/** Address to slave device  */
-	uint8_t address;
-	/** Length of data array */
-	uint16_t data_length;
-	/** Data array containing all data to be transferred */
-	uint8_t *data;
 };
 
 /** @} */
@@ -495,6 +474,12 @@ struct i2c_packet {
  *	</tr>
  *	<tr>
  *		<td>
+ *		\li Added 10-bit addressing and high speed support in SAM D21.
+ *		\li Seperate structure i2c_packet into i2c_master_packet and i2c_slave packet.
+ *		</td>
+ *	</tr>
+ *	<tr>
+ *		<td>
  *		\li Added support for SCL stretch and extended timeout hardware features in SAM D21.
  *		\li Added fast mode plus support in SAM D21.
  *		</td>
@@ -541,6 +526,11 @@ struct i2c_packet {
  *		<th>Doc. Rev.</td>
  *		<th>Date</td>
  *		<th>Comments</td>
+ *	</tr>
+ *	<tr>
+ *		<td>D</td>
+ *		<td>03/2014</td>
+ *		<td>Added 10-bit addressing and high speed support in SAM D21.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

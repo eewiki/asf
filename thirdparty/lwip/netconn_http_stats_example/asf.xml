@@ -1,0 +1,109 @@
+<asf xmlversion="1.0">
+	<select-by-device id="thirdparty.lwip.netconn_http_stats_example" caption="lwIP TCP/IP Stack HTTP stats example using Netconn API">
+		<module type="application" id="thirdparty.lwip.netconn_http_stats_example#sam4e" caption="lwIP TCP/IP Stack HTTP stats example using Netconn API">
+			<info type="description" value="summary">
+				HTTP web server using the lwIP TCP/IP stack Netconn API (i.e. with RTOS support). The home page provides RTOS and lwIP stats information.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="header-file" value="logo_atmel.h"/>
+			<build type="header-file" value="task_defs.h"/>
+			<build type="header-file" value="FreeRTOSConfig.h"/>
+			<build type="c-source"    value="main.c"/>
+			<build type="c-source"    value="task_gfx.c"/>
+			<build type="c-source"    value="task_http.c"/>
+			<build type="c-source"    value="network/ethernet.c"/>
+			<build type="header-file" value="network/ethernet.h"/>
+			<build type="c-source"    value="network/httpserver/fs.c"/>
+			<build type="header-file" value="network/httpserver/fs.h"/>
+			<build type="c-source"    value="network/httpserver/fsdata.c"/>
+			<build type="header-file" value="network/httpserver/fsdata.h"/>
+			<build type="c-source"    value="network/httpserver/httpd.c"/>
+			<build type="header-file" value="network/httpserver/httpd.h"/>
+			<build type="c-source"    value="network/httpserver/cgi.c"/>
+			<build type="header-file" value="network/httpserver/cgi.h"/>
+			<build type="header-file" value="network/httpserver/atmel.h"/>
+			<build type="header-file" value="network/httpserver/excan.h"/>
+			<build type="header-file" value="network/httpserver/favicon.h"/>
+			<build type="header-file" value="network/httpserver/index.h"/>
+			<build type="header-file" value="network/httpserver/jqflot.h"/>
+			<build type="header-file" value="network/httpserver/jquery.h"/>
+			<build type="header-file" value="network/httpserver/style.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="./network"/>
+			<build type="include-path" value="./network/httpserver"/>
+			<device-support value="sam4e"/>
+			<require idref="sam.drivers.smc"/>
+			<require idref="sam.drivers.pdc"/>
+			<require idref="sam.drivers.rstc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.utils.syscalls"/>
+			<require idref="sam.components.display.aat31xx"/>
+			<require idref="sam.components.display.ili93xx"/>
+			<require idref="sam.components.ethernet_phy.ksz8051mnl"/>
+			<require idref="sam.services.resistive_touch"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="thirdparty.os.freertos.version"/>
+			<require idref="thirdparty.lwip.version"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.lwip.netconn_http_stats_example#sam4s" caption="lwIP TCP/IP Stack HTTP stats example using Netconn API">
+			<info type="description" value="summary">
+				HTTP web server using the lwIP TCP/IP stack Netconn API (i.e. with RTOS support). The home page provides RTOS and lwIP stats information.
+				This example uses the Micrel KSZ8851SNL controller via SPI to perform Ethernet communications.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="header-file" value="logo_atmel.h"/>
+			<build type="header-file" value="task_defs.h"/>
+			<build type="header-file" value="FreeRTOSConfig.h"/>
+			<build type="c-source"    value="main.c"/>
+			<build type="c-source"    value="task_gfx_no_touch.c"/>
+			<build type="c-source"    value="task_http.c"/>
+			<build type="c-source"    value="network/ethernet.c"/>
+			<build type="header-file" value="network/ethernet.h"/>
+			<build type="c-source"    value="network/httpserver/fs.c"/>
+			<build type="header-file" value="network/httpserver/fs.h"/>
+			<build type="c-source"    value="network/httpserver/fsdata.c"/>
+			<build type="header-file" value="network/httpserver/fsdata.h"/>
+			<build type="c-source"    value="network/httpserver/httpd.c"/>
+			<build type="header-file" value="network/httpserver/httpd.h"/>
+			<build type="c-source"    value="network/httpserver/cgi.c"/>
+			<build type="header-file" value="network/httpserver/cgi.h"/>
+			<build type="header-file" value="network/httpserver/atmel.h"/>
+			<build type="header-file" value="network/httpserver/excan.h"/>
+			<build type="header-file" value="network/httpserver/favicon.h"/>
+			<build type="header-file" value="network/httpserver/index.h"/>
+			<build type="header-file" value="network/httpserver/jqflot.h"/>
+			<build type="header-file" value="network/httpserver/jquery.h"/>
+			<build type="header-file" value="network/httpserver/style.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="./network"/>
+			<build type="include-path" value="./network/httpserver"/>
+			<device-support value="sam4s"/>
+			<require idref="sam.drivers.smc"/>
+			<require idref="sam.drivers.pdc"/>
+			<require idref="sam.drivers.rstc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.utils.syscalls"/>
+			<require idref="sam.components.display.aat31xx"/>
+			<require idref="sam.components.display.ili93xx"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="thirdparty.os.freertos.version"/>
+			<require idref="thirdparty.lwip.version"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

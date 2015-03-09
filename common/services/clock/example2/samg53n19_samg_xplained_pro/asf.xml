@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="Common API for Clocks Control / Example 2 for SAMG53 Xplained PRO" id="common.services.basic.clock.example2.samg53_xplained_pro">
+	<project caption="Common API for Clocks Control / Example 2 for SAMG53 Xplained Pro" id="common.services.basic.clock.example2.samg53_xplained_pro">
 		<info type="description" value="summary">
 		Initialize the clock system and output the CPU clock on a dedicated pin.
 		</info>

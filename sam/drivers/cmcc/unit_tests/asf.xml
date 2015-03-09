@@ -10,6 +10,7 @@
 		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
 		<build type="include-path" value="."/>
 		<device-support value="sam4e"/>
+		<device-support value="sam4c"/>
 		<require idref="sam.drivers.cmcc"/>
 		<require idref="common.services.delay"/>
 		<require idref="common.services.basic.clock"/>

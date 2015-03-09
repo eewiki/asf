@@ -3,7 +3,7 @@
  *
  * \brief AFEC feature test example for SAM.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -70,18 +70,18 @@
  * -# In the terminal window, the
  *    following text should appear (values depend on the board and the chip used):
  *    \code
- *     -- AFEC Feature Test Examplexxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     =========================================================
- *     Menu: press a key to test feature.
- *     ---------------------------------------------------------
- *     -- 0: Gain Test --
- *     -- 1: Dual AFEC Conversion Test --
- *     -- 2: Differential Input Test --
- *     -- 3: User Sequence Test --
- *     -- 4: Typical Application Test--
- *    \endcode
+	-- AFEC Feature Test Examplexxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	=========================================================
+	Menu: press a key to test feature.
+	---------------------------------------------------------
+	-- 0: Gain Test --
+	-- 1: Dual AFEC Conversion Test --
+	-- 2: Differential Input Test --
+	-- 3: User Sequence Test --
+	-- 4: Typical Application Test--
+\endcode
  */
 
 #include <stdio.h>

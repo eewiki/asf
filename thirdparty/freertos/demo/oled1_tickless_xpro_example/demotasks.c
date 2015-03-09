@@ -652,11 +652,11 @@ static void cdc_rx_handler(uint8_t instance)
 	uint8_t error_code;
 
 	// Wait for synch to complete
-#ifdef FEATURE_USART_SYNC_SCHEME_V2
-	while (usart_hw->SYNCBUSY.reg) {
-	}
-#else
+#if defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_1)
 	while (usart_hw->STATUS.reg & SERCOM_USART_STATUS_SYNCBUSY) {
+	}
+#elif defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_2)
+	while (usart_hw->SYNCBUSY.reg) {
 	}
 #endif
 

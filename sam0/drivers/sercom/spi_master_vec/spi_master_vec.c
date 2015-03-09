@@ -43,6 +43,7 @@
 
 #include "spi_master_vec.h"
 #include <sercom_interrupt.h>
+#include <system.h>
 #include <system_interrupt.h>
 
 /**
@@ -59,6 +60,28 @@
 /** \cond INTERNAL */
 
 static void _spi_master_vec_int_handler(uint8_t sercom_index);
+
+/**
+ * \brief Wait for SERCOM SPI to synchronize
+ *
+ * \param[in] sercom_spi SERCOM SPI to check for synchronization.
+ *
+ * \note The implementation of this function depends on the SERCOM revision.
+ */
+static inline void _spi_master_vec_wait_for_sync(SercomSpi *const sercom_spi)
+{
+#if defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_1)
+	while (sercom_spi->STATUS.reg & SERCOM_SPI_STATUS_SYNCBUSY) {
+		/* Intentionally left empty */
+	}
+#elif defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_2)
+	while (sercom_spi->SYNCBUSY.reg) {
+		/* Intentionally left empty */
+	}
+#else
+#  error Unknown SERCOM SYNCBUSY scheme!
+#endif
+}
 
 /**
  * \brief Pin MUX configuration helper
@@ -139,24 +162,15 @@ enum status_code spi_master_vec_init(struct spi_master_vec_module *const module,
 	system_gclk_chan_enable(gclk_index);
 	sercom_set_gclk_generator(config->gclk_generator, false);
 
-#  ifdef FEATURE_SPI_SYNC_SCHEME_VERSION_2
-	/* In case the SERCOM was reset, ensure that it is synched */
-	while (spi_hw->STATUS.reg) {
-		/* Intentionally left empty */
-	}
-#  else
-	/* In case the SERCOM was reset, ensure that it is synched */
-	while (spi_hw->STATUS.reg & SERCOM_SPI_STATUS_SYNCBUSY) {
-		/* Intentionally left empty */
-	}
-#  endif
+	_spi_master_vec_wait_for_sync(spi_hw);
 
 	/* Set up the SERCOM SPI module as master */
 	spi_hw->CTRLA.reg = SERCOM_SPI_CTRLA_MODE_SPI_MASTER;
 	spi_hw->CTRLA.reg |= (uint32_t)config->mux_setting
 			| config->transfer_mode
 			| config->data_order
-			| (config->run_in_standby ? SERCOM_SPI_CTRLA_RUNSTDBY : 0);
+			| ((config->run_in_standby || system_is_debugger_present()) ?
+					SERCOM_SPI_CTRLA_RUNSTDBY : 0);
 
 	/* Get baud value from configured baudrate and internal clock rate */
 	gclk_hz = system_gclk_chan_get_hz(gclk_index);
@@ -219,15 +233,8 @@ void spi_master_vec_enable(const struct spi_master_vec_module *const module)
 	spi_hw->INTENCLR.reg = SERCOM_SPI_INTFLAG_DRE | SERCOM_SPI_INTFLAG_RXC
 			| SERCOM_SPI_INTFLAG_TXC;
 
-#  ifdef FEATURE_SPI_SYNC_SCHEME_VERSION_2
-	while (spi_hw->STATUS.reg) {
-		/* Intentionally left empty */
-	}
-#  else
-	while (spi_hw->STATUS.reg & SERCOM_SPI_STATUS_SYNCBUSY) {
-		/* Intentionally left empty */
-	}
-#  endif
+	_spi_master_vec_wait_for_sync(spi_hw);
+
 	spi_hw->CTRLA.reg |= SERCOM_SPI_CTRLA_ENABLE;
 
 	system_interrupt_enable(_sercom_get_interrupt_vector(module->sercom));
@@ -247,15 +254,8 @@ void spi_master_vec_disable(struct spi_master_vec_module *const module)
 
 	system_interrupt_disable(_sercom_get_interrupt_vector(module->sercom));
 
-#  ifdef FEATURE_SPI_SYNC_SCHEME_VERSION_2
-	while (spi_hw->STATUS.reg) {
-		/* Intentionally left empty */
-	}
-#  else
-	while (spi_hw->STATUS.reg & SERCOM_SPI_STATUS_SYNCBUSY) {
-		/* Intentionally left empty */
-	}
-#  endif
+	_spi_master_vec_wait_for_sync(spi_hw);
+
 	spi_hw->CTRLB.reg = 0;
 	spi_hw->CTRLA.reg &= ~SERCOM_SPI_CTRLA_ENABLE;
 	module->rx_bufdesc_ptr = NULL;
@@ -283,15 +283,8 @@ void spi_master_vec_reset(struct spi_master_vec_module *const module)
 	/* Disable the module */
 	spi_master_vec_disable(module);
 
-#  ifdef FEATURE_SPI_SYNC_SCHEME_VERSION_2
-	while (spi_hw->STATUS.reg) {
-		/* Intentionally left empty */
-	}
-#  else
-	while (spi_hw->STATUS.reg & SERCOM_SPI_STATUS_SYNCBUSY) {
-		/* Intentionally left empty */
-	}
-#  endif
+	_spi_master_vec_wait_for_sync(spi_hw);
+
 	/* Software reset the module */
 	spi_hw->CTRLA.reg |= SERCOM_SPI_CTRLA_SWRST;
 
@@ -312,6 +305,22 @@ void spi_master_vec_reset(struct spi_master_vec_module *const module)
  * zero buffer length. The first descriptor in an array can \e not specify zero
  * length. The number of bytes to transmit and to receive do not have to be
  * equal.
+ *
+ * If the address for a receive buffer is set to \c NULL, the received bytes
+ * corresponding to that buffer descriptor will be discarded. This is useful if
+ * slave is already set up to transfer a number of bytes, but the master has no
+ * available buffer to receive them into. As an example, to receive the two
+ * first bytes and discard the 128 following, the buffer descriptors could be:
+\code
+	struct spi_master_vec_bufdesc rx_buffers[3] = {
+		// Read two status bytes
+		{.data = status_buffer, .length = 2},
+		// Discard 128 data bytes
+		{.data = NULL, .length = 128},
+		// End of reception
+		{.length = 0},
+	};
+\endcode
  *
  * To initiate a unidirectional transfer, pass \c NULL as the address of either
  * buffer descriptor array, like this:
@@ -401,15 +410,8 @@ enum status_code spi_master_vec_transceive_buffer_job(
 	}
 
 	/* Ensure the SERCOM is sync'ed before writing these registers */
-#  ifdef FEATURE_SPI_SYNC_SCHEME_VERSION_2
-	while (spi_hw->STATUS.reg) {
-		/* Intentionally left empty */
-	}
-#  else
-	while (spi_hw->STATUS.reg & SERCOM_SPI_STATUS_SYNCBUSY) {
-		/* Intentionally left empty */
-	}
-#  endif
+	_spi_master_vec_wait_for_sync(spi_hw);
+
 	spi_hw->CTRLB.reg = tmp_ctrlb;
 	spi_hw->INTENSET.reg = tmp_intenset;
 
@@ -514,7 +516,13 @@ check_for_read_end:
 		uint8_t *rx_head_ptr;
 
 		rx_head_ptr = module->rx_head_ptr;
-		*(rx_head_ptr++) = spi_hw->DATA.reg;
+		if (rx_head_ptr != NULL) {
+			*(rx_head_ptr++) = spi_hw->DATA.reg;
+		} else {
+			uint8_t dummy;
+			UNUSED(dummy);
+			dummy = spi_hw->DATA.reg;
+		}
 		module->tx_lead_on_rx--;
 
 		/* Check if this was the last byte to receive */

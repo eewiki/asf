@@ -11,6 +11,7 @@
 		</info>
 		<build type="doxygen-entry-point" value="asfdoc_common_freertos_dbg_print_group"/>
 		<build type="doxygen-example-path" value="quick_start_basic"/>
+		<build type="doxygen-quick-start" value="asfdoc_common_freertos_dbg_print_exqsg"/>
 		<build type="c-source" value="dbg_print.c"/>
 		<build type="header-file" subtype="api" value="dbg_print.h"/>
 		<build type="header-file" subtype="api" value="quick_start_basic/qs_dbg_print_basic.h"/>
@@ -22,6 +23,7 @@
 		<require idref="sam0.drivers.system"/>
 		<require idref="sam0.utils"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 	</module>
 </asf>

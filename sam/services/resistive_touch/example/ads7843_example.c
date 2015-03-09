@@ -3,7 +3,7 @@
  *
  * \brief ads7843 touchscreen controller Example.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -74,10 +74,10 @@
  * -# Start the application
  * -# In HyperTerminal, it will show something like
  *     \code
- *     -- SPI_Touchscreen Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     \endcode
+	-- SPI_Touchscreen Example xxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+\endcode
  * -# Touch the dots on the LCD to calibrate the touchscreen, the calibration
  *    results will output on the terminal and LCD.
  * -# Touch the LCD, the pen position will output on the terminal

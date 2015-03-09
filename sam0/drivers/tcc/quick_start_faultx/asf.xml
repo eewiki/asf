@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.tcc.quick_start_faultx" caption="Quick Start for the SAM D21 TCC Driver (Non-Recoverable Fault)">
+		<info type="description" value="summary">
+		Quick start guide for the Timer/Counter for Control Applications module demonstrating module configuration and Non-Recoverable Fault use.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_tcc_faultx.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_quick_start_faultx.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.tcc"/>
+		<require idref="sam0.drivers.events"/>
+		<require idref="sam0.drivers.extint"/>
+		<device-support value="samd21"/>
+	</module>
+</asf>

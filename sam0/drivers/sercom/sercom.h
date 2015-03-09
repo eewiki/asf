@@ -62,6 +62,14 @@ extern "C" {
 #  error "SERCOM modules must share the same slow GCLK channel ID."
 #endif
 
+#if (0x1ff >= REV_SERCOM)
+#  define FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_1
+#elif (0x2ff >= REV_SERCOM)
+#  define FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_2
+#else
+#  error "Unknown SYNCBUSY scheme for this SERCOM revision"
+#endif
+
 /**
  * \brief sercom asynchronous operation mode
  *

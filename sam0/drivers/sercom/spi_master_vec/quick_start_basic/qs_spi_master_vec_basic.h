@@ -82,9 +82,10 @@
  * -# Create data buffers to transfer to/from.
  *    \snippet qs_spi_master_vec_basic.c transceive_buffers
  *    \note These example buffers are in total 6 bytes long for transmit (TX)
- *        and 5 bytes long for receive (RX).
+ *        and 3 bytes long for receive (RX).
  *
- * -# Create descriptors for the data buffers.
+ * -# Create descriptors for the data buffers. For reception, we will discard
+ *        two bytes after the first one.
  *    \snippet qs_spi_master_vec_basic.c buffer_descriptors
  *    \attention The last descriptor in the array \e must specify zero length
  *        for the driver to know when it has reached the last buffer.
@@ -116,15 +117,16 @@
  * -# Enable the SERCOM module before using it.
  *
  *    \snippet qs_spi_master_vec_basic.c enable_instance
- * -# Start and wait for first transfer: receive 5 bytes into the RX buffers.
+ * -# Start and wait for first transfer: receive 5 bytes, 3 of which will be
+ *        written into the RX buffers.
  *
  *    \snippet qs_spi_master_vec_basic.c start_reception_wait
  * -# Start transmission of the 6 bytes from TX buffers.
  *
  *    \snippet qs_spi_master_vec_basic.c start_transmission
  * -# Keep trying to start next transfer until it succeeds: transmit the 6 bytes
- *        from the TX buffers and receive 5 bytes into the RX buffers
- *        simultaneously.
+ *        from the TX buffers and receive 5 bytes, writing 3 of them into the RX
+ *        buffers simultaneously.
  *
  *    \snippet qs_spi_master_vec_basic.c start_transception
  * -# Wait for transfer to complete.

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D2x TCC Driver Quick Start
+ * \brief SAM D21 TCC Driver Quick Start
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -44,22 +44,23 @@
 /**
  * \page asfdoc_sam0_tcc_basic_use_case Quick Start Guide for TCC - Basic
  *
- * The supported device list:
- *    - SAMD21
+ * The supported board list:
+ *    - SAM D21 Xplained Pro
  *
  * In this use case, the TCC will be used to generate a PWM signal. Here
  * the pulse width is set to one quarter of the period.
  * When connect PWM output to LED it makes the LED light. To see the waveform,
- * you may need an ossiliscope.
+ * you may need an oscilloscope.
  *
  * The PWM output is set up as follows:
  * <table>
- *  <tr><th> board        </td><th> pin  </td><th> connect to </td></tr>
+ *  <tr><th> Board        </td><th> Pin  </td><th> Connect to </td></tr>
  *  <tr><td> SAMD21 Xpro  </td><td> PB30 </td><td> LED0       </td></tr>
  * </table>
  *
  * The TCC module will be set up as follows:
  * - GCLK generator 0 (GCLK main) clock source
+ * - Use double buffering write when set top, compare or pattern through API
  * - No dithering on the counter or compare
  * - No prescaler
  * - Single Slope PWM wave generation

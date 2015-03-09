@@ -3,7 +3,7 @@
  *
  * \brief ADC threshold wakeup example for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -64,16 +64,16 @@
  * channel which is connected to the potentiometer. This example shows a menu as
  * below upon running:
  * \code
- * -- Menu Choices for this example--
- * -- 0: Display voltage on potentiometer.--
- *  -- 1: Modify low threshold.--
- *  -- 2: Modify high threshold.--
- *  -- 3: Choose comparison mode.--
- * -- i: Display ADC information.--
- * -- m: Display this main menu.--
- * -- c: Set Auto Calibration Mode. --
- * -- s: Enter sleep mode.--
- * \endcode
+	-- Menu Choices for this example--
+	-- 0: Display voltage on potentiometer.--
+	 -- 1: Modify low threshold.--
+	 -- 2: Modify high threshold.--
+	 -- 3: Choose comparison mode.--
+	-- i: Display ADC information.--
+	-- m: Display this main menu.--
+	-- c: Set Auto Calibration Mode. --
+	-- s: Enter sleep mode.--
+\endcode
  * With the user interface, comparison window and mode could be set. The ADC
  * supports 4 kinds of comparison events as follows:
  *
@@ -100,19 +100,19 @@
  * -# In the terminal window, the
  *    following text should appear (values depend on the board and the chip used):
  *    \code
- *     -- ADC Threshold Wakeup Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     -- Menu Choices for this example--
- *     -- 0: Display voltage on potentiometer.--
- *      -- 1: Modify low threshold.--
- *      -- 2: Modify high threshold.--
- *      -- 3: Choose comparison mode.--
- *     -- i: Display ADC information.--
- *     -- m: Display this main menu.--
- *     -- c: Set Auto Calibration Mode. --
- *     -- s: Enter sleep mode.--
- *    \endcode
+	-- ADC Threshold Wakeup Example xxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	-- Menu Choices for this example--
+	-- 0: Display voltage on potentiometer.--
+	 -- 1: Modify low threshold.--
+	 -- 2: Modify high threshold.--
+	 -- 3: Choose comparison mode.--
+	-- i: Display ADC information.--
+	-- m: Display this main menu.--
+	-- c: Set Auto Calibration Mode. --
+	-- s: Enter sleep mode.--
+\endcode
  * -# Input the command according to the menu.
  *
  */

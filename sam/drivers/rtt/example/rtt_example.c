@@ -3,7 +3,7 @@
  *
  * \brief Real-time Timer (RTT) example for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -72,15 +72,15 @@
  * -# Start the application.
  * -# In the terminal window, the following text should appear:
  *    \code
- *     -- RTT Example --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     Time: 1
- *     Menu:
- *     r - Reset timer
- *     s - Set alarm
- *     Choice?
- *    \endcode
+	-- RTT Example --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	Time: 1
+	Menu:
+	r - Reset timer
+	s - Set alarm
+	Choice?
+\endcode
  */
 
 #include "asf.h"

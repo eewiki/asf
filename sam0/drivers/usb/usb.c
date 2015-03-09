@@ -1956,9 +1956,6 @@ enum status_code usb_init(struct usb_module *module_inst, Usb *const hw,
 	gclk_chan_config.source_generator = module_config->source_generator;
 	system_gclk_chan_set_config(USB_GCLK_ID, &gclk_chan_config);
 	system_gclk_chan_enable(USB_GCLK_ID);
-	pin_config.mux_position = MUX_PB14H_GCLK_IO0;
-	pin_config.direction    = SYSTEM_PINMUX_PIN_DIR_OUTPUT;
-	system_pinmux_pin_set_config(PIN_PB14H_GCLK_IO0, &pin_config);
 
 	/* Reset */
 	hw->HOST.CTRLA.bit.SWRST = 1;

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20 I2C Slave Bootloader
+ * \brief SAM D20/D21 I2C Slave Bootloader
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -42,7 +42,7 @@
  */
 
 /**
- * \mainpage SAM D20 I2C Slave Bootloader
+ * \mainpage SAM D20/D21 I2C Slave Bootloader
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -55,58 +55,58 @@
  */
 
 /**
- * \page appdoc_main SAM D20 I2C Slave Bootloader
+ * \page appdoc_main SAM D20/D21 I2C Slave Bootloader
  *
  * Overview:
- * - \ref appdoc_samd20_i2c_slave_bootloader_features
- * - \ref appdoc_samd20_i2c_slave_bootloader_intro
- * - \ref appdoc_samd20_i2c_slave_bootloader_mem_org
- * - \ref appdoc_samd20_i2c_slave_bootloader_prereq
- * - \ref appdoc_samd20_i2c_slave_bootloader_hw
- * - \ref appdoc_samd20_i2c_slave_bootloader_process
- *    - \ref appdoc_samd20_i2c_slave_bootloader_process_boot_check
- *    - \ref appdoc_samd20_i2c_slave_bootloader_process_init
- *    - \ref appdoc_samd20_i2c_slave_bootloader_boot_protocol
- *    - \ref appdoc_samd20_i2c_slave_bootloader_start_app
- * - \ref appdoc_samd20_i2c_slave_bootloader_compinfo
- * - \ref appdoc_samd20_i2c_slave_bootloader_contactinfo
+ * - \ref appdoc_sam0_i2c_slave_bootloader_features
+ * - \ref appdoc_sam0_i2c_slave_bootloader_intro
+ * - \ref appdoc_sam0_i2c_slave_bootloader_mem_org
+ * - \ref appdoc_sam0_i2c_slave_bootloader_prereq
+ * - \ref appdoc_sam0_i2c_slave_bootloader_hw
+ * - \ref appdoc_sam0_i2c_slave_bootloader_process
+ *    - \ref appdoc_sam0_i2c_slave_bootloader_process_boot_check
+ *    - \ref appdoc_sam0_i2c_slave_bootloader_process_init
+ *    - \ref appdoc_sam0_i2c_slave_bootloader_boot_protocol
+ *    - \ref appdoc_sam0_i2c_slave_bootloader_start_app
+ * - \ref appdoc_sam0_i2c_slave_bootloader_compinfo
+ * - \ref appdoc_sam0_i2c_slave_bootloader_contactinfo
  *
- * \section appdoc_samd20_i2c_slave_bootloader_features Features
+ * \section appdoc_sam0_i2c_slave_bootloader_features Features
  * \li Application for self programming
  * \li Uses I2C Slave interface
  * \li I2C Master sends the data to be programmed over I2C bus
  * \li Resets the device after programming and starts executing application
  *
- * \section appdoc_samd20_i2c_slave_bootloader_intro Introduction
+ * \section appdoc_sam0_i2c_slave_bootloader_intro Introduction
  * As many electronic designs evolve rapidly there is a growing need for being
  * able to update products, which have already been shipped or sold.
  * Microcontrollers that support boot loader facilitates updating the
  * application flash section without the need of an external programmer, are of
  * great use in situations where the application has to be updated on the field.
  * The boot loader may use various interfaces like SPI, UART, TWI, Ethernet etc.
- * This application implements a I2C Slave bootloader for SAM D20.
+ * This application implements a I2C Slave bootloader for SAM D20/D21.
  *
- * \section appdoc_samd20_i2c_slave_bootloader_mem_org Program Memory Organization
+ * \section appdoc_sam0_i2c_slave_bootloader_mem_org Program Memory Organization
  * This bootloader implementation consumes around 8000 bytes (approximately),
  * which is 32 rows of Program Memory space starting from 0x00000000. BOOTPROT
  * fuses on the device can be set to protect first 32 rows of the program
  * memory which are allocated for the BOOT section. So, the end user application
  * should be generated with starting address as 0x00002000.
  *
- * \section appdoc_samd20_i2c_slave_bootloader_prereq Prerequisites
+ * \section appdoc_sam0_i2c_slave_bootloader_prereq Prerequisites
  * There are no prerequisites for this implementation
  *
- * \section appdoc_samd20_i2c_slave_bootloader_hw Hardware Setup
- * SAM D20 in SAM D20 Xplained Pro kit is used as the I2C Slave.
+ * \section appdoc_sam0_i2c_slave_bootloader_hw Hardware Setup
+ * SAM D20/D21 in SAM D20/D21 Xplained Pro kit is used as the I2C Slave.
  * I2C master should be connected to PIN17 (PA14 - SDA) and PIN15 (PA15 - SCL)
- * on External header 1 (EXT1) of SAM D20 Xplained Pro.
+ * on External header 1 (EXT1) of SAM D20/D21 Xplained Pro.
  * SW0 will be configured as BOOT_LOAD_PIN and LED0 will be used to
  * display the bootloader status. LED0 will be ON when the device is in
  * bootloader mode.
  *
- * \section appdoc_samd20_i2c_slave_bootloader_process Bootloader Process
+ * \section appdoc_sam0_i2c_slave_bootloader_process Bootloader Process
  *
- * \subsection appdoc_samd20_i2c_slave_bootloader_process_boot_check Boot Check
+ * \subsection appdoc_sam0_i2c_slave_bootloader_process_boot_check Boot Check
  * The bootloader is located at the start of the program memory and is
  * executed at each reset/power-on sequence. Initially check the
  * status of a user configurable BOOT_LOAD_PIN.
@@ -119,14 +119,14 @@
  * check routine are made with direct peripheral register access to enable quick
  * decision on application or bootloader mode.
  *
- * \subsection appdoc_samd20_i2c_slave_bootloader_process_init Initialization
+ * \subsection appdoc_sam0_i2c_slave_bootloader_process_init Initialization
  * Initialize the following
  *   - Board
  *   - System clock
  *   - I2C Slave module
  *   - NVM module
  *
- * \subsection appdoc_samd20_i2c_slave_bootloader_boot_protocol Boot Protocol
+ * \subsection appdoc_sam0_i2c_slave_bootloader_boot_protocol Boot Protocol
  *   - I2C Master first sends 4 bytes of data which contains the length of
  *     the data to be programmed
  *   - Read a block from I2C Master of size NVMCTRL_PAGE_SIZE
@@ -135,16 +135,16 @@
  *     received the data and finished programming
  *   - Repeat till entire length of data has been programmed to the device
  *
- * \subsection appdoc_samd20_i2c_slave_bootloader_start_app Start Application
+ * \subsection appdoc_sam0_i2c_slave_bootloader_start_app Start Application
  * Once the programming is completed, enable Watchdog Timer with a timeout
  * period of 256 clock cycles and wait in a loop for Watchdog to reset
  * the device.
  *
- * \section appdoc_samd20_i2c_slave_bootloader_compinfo Compilation Info
+ * \section appdoc_sam0_i2c_slave_bootloader_compinfo Compilation Info
  * This software was written for the GNU GCC and IAR for ARM.
  * Other compilers may or may not work.
  *
- * \section appdoc_samd20_i2c_slave_bootloader_contactinfo Contact Information
+ * \section appdoc_sam0_i2c_slave_bootloader_contactinfo Contact Information
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
  */
@@ -154,10 +154,7 @@
 
 struct i2c_slave_module slave;
 
-struct i2c_packet packet = {
-	.address     = SLAVE_ADDRESS,
-	.data_length = NVMCTRL_PAGE_SIZE,
-};
+struct i2c_slave_packet packet;
 
 /* Function prototypes */
 static uint32_t get_length(void);
@@ -434,7 +431,7 @@ int main(void)
 	remaining_len = len;
 
 	do {
-		/* Read data of AT45DBX_SECTOR_SIZE */
+		/* Read data of NVMCTRL_PAGE_SIZE from I2C master */
 		fetch_data(buff, min(NVMCTRL_PAGE_SIZE, len));
 
 		/* Program the read data into Flash */

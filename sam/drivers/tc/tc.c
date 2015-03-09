@@ -3,7 +3,7 @@
  *
  * \brief Timer Counter (TC) driver for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -380,8 +380,8 @@ uint32_t tc_get_status(Tc *p_tc, uint32_t ul_channel)
  * Finds the best MCK divisor given the timer frequency and MCK. The result
  * is guaranteed to satisfy the following equation:
  * \code
- *   (MCK / (DIV * 65536)) <= freq <= (MCK / DIV)
- * \endcode
+	(MCK / (DIV * 65536)) <= freq <= (MCK / DIV)
+\endcode
  * with DIV being the lowest possible value,
  * to maximize timing adjust resolution.
  *
@@ -438,8 +438,8 @@ uint32_t tc_find_mck_divisor(uint32_t ul_freq, uint32_t ul_mck,
  * Finds the best divisor given the timer frequency and PBA clock. The result
  * is guaranteed to satisfy the following equation:
  * \code
- *   (ul_pbaclk / (2* DIV * 65536)) <= freq <= (ul_pbaclk / (2* DIV))
- * \endcode
+	(ul_pbaclk / (2* DIV * 65536)) <= freq <= (ul_pbaclk / (2* DIV))
+\endcode
  * with DIV being the lowest possible value,
  * to maximize timing adjust resolution.
  *

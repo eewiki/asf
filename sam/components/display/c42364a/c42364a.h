@@ -3,7 +3,7 @@
  *
  * \brief Management of C42364A LCD Glass component.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -335,8 +335,8 @@ void c42364a_show_battery(enum c42364a_battery_value val);
  *
  * Add this to the main loop or a setup function:
  * \code
- * c42364a_init();
- * \endcode
+	c42364a_init();
+\endcode
  *
  * \subsection c42364a_basic_setup_workflow
  *
@@ -349,43 +349,43 @@ void c42364a_show_battery(enum c42364a_battery_value val);
  *
  * We can set all the contents by
  * \code
- * c42364a_set_all();;
- * \endcode
+	c42364a_set_all();;
+\endcode
  * Or we can clear all the contents by
  * \code
- * c42364a_clear_all();;
- * \endcode
+	c42364a_clear_all();;
+\endcode
  *
  * We can use the basic show feature by
  * \code
- * int32_t value = -12345;
- * c42364a_show_icon(C42364A_ICON_ARM);
- * c42364a_show_numeric_dec(value);
- * c42364a_show_text("Welcome");
- * c42364a_show_battery(c42364a_battery_two);
- * \endcode
+	int32_t value = -12345;
+	c42364a_show_icon(C42364A_ICON_ARM);
+	c42364a_show_numeric_dec(value);
+	c42364a_show_text("Welcome");
+	c42364a_show_battery(c42364a_battery_two);
+\endcode
  *
  * We can use the blink feature by
  * \code
- * c42364a_blink_icon_start(C42364A_ICON_COLON);;
- * \endcode
+	c42364a_blink_icon_start(C42364A_ICON_COLON);;
+\endcode
  *
  * We can start/stop the circular animation feature by
  * \code
- * c42364a_circular_animation_start(C42364A_CSR_RIGHT, 7, 0x03);
- *
- * c42364a_circular_animation_stop();
- * \endcode
+	 c42364a_circular_animation_start(C42364A_CSR_RIGHT, 7, 0x03);
+
+	 c42364a_circular_animation_stop();
+\endcode
  *
  * We can start/stop the text scrolling feature by
  * \code
- * uint8_t const scrolling_str[] = "C42364A Example  ";
- *
- * c42364a_text_scrolling_start(scrolling_str,
- *         strlen((char const *)scrolling_str));
- *
- * c42364a_text_scrolling_stop();
- * \endcode
+	 uint8_t const scrolling_str[] = "C42364A Example  ";
+
+	 c42364a_text_scrolling_start(scrolling_str,
+	         strlen((char const *)scrolling_str));
+
+	 c42364a_text_scrolling_stop();
+\endcode
  */
 
 #endif  /* C42364A_H_INCLUDED */

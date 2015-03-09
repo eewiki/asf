@@ -1,0 +1,47 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="common2.components.memory.sd_mmc.ctrl_access" caption="SD/MMC stack + Memory Control Access (aka ctrl_access, required for file system or USB)">
+		<info type="description" value="summary">
+			SD/MMC stack for ctrl_access module.
+			This module is required to use the SD/MMC card stack with the ASF File System or the ASF USB Device Mass Storage.
+		</info>
+		<build type="c-source" value="sd_mmc_mem.c"/>
+		<build type="header-file" subtype="api" value="sd_mmc_mem.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<require idref="common2.components.memory.sd_mmc"/>
+		<build type="define" name="SD_MMC_ENABLE" value=""/>
+		<device-support value="sam0"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<select-by-config id="common2.components.memory.sd_mmc" name="config.common2.components.memory.sd_mmc" caption="SD/MMC stack" default="spi">
+		<module type="component" id="common2.components.memory.sd_mmc#spi" caption="SD/MMC stack on SPI interface">
+			<info type="description" value="summary">
+				SD/MMC stack for SD / MMC / SDIO cards. SPI interface is supported.
+				This includes the basic functions to install, read and write a SD/SDIO/MMC card.
+				This module in standalone is used mainly for SDIO application.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Memory"/>
+			</info>
+			<build type="c-source" value="sd_mmc.c"/>
+			<build type="header-file" subtype="api" value="sd_mmc.h"/>
+			<build type="c-source" value="sd_mmc_spi.c"/>
+			<build type="header-file" value="sd_mmc_spi.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="path" value="module_config_spi"/>
+			<build type="module-config" subtype="required-header-file" value="conf_sd_mmc.h"/>
+			<build type="doxygen-entry-point" value="sd_mmc_stack_group"/>
+			<require idref="common2.components.memory.sd_mmc.protocol"/>
+			<require idref="sam0.drivers.sercom.spi"/>
+			<require idref="sam0.drivers.port"/>
+			<require idref="common2.services.delay"/>
+			<device-support value="sam0"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
+		</module>
+	</select-by-config>
+	<module type="meta" id="common2.components.memory.sd_mmc.protocol" caption="SD/MMC/SDIO protocol definitions">
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" value="sd_mmc_protocol.h"/>
+		<build type="include-path" value="."/>
+	</module>
+</asf>

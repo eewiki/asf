@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="Common API for Clocks Control / Example 3 for SAMG53 Xplained PRO" id="common.services.basic.clock.example3.samg53_xplained_pro">
+	<project caption="Common API for Clocks Control / Example 3 for SAMG53 Xplained Pro" id="common.services.basic.clock.example3.samg53_xplained_pro">
 		<info type="description" value="summary">
 			Switch between various system clock sources and prescalers at run time.
 		</info>

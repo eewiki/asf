@@ -184,7 +184,7 @@ void i2c_slave_unregister_callback(
  */
 enum status_code i2c_slave_read_packet_job(
 		struct i2c_slave_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_slave_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);
@@ -229,7 +229,7 @@ enum status_code i2c_slave_read_packet_job(
  */
 enum status_code i2c_slave_write_packet_job(
 		struct i2c_slave_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_slave_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);
@@ -356,7 +356,7 @@ void _i2c_slave_interrupt_handler(
 		/* Stop condition on bus - current transfer done */
 
 		/* Clear Stop interrupt */
-		i2c_hw->INTFLAG.reg |= SERCOM_I2CS_INTFLAG_PREC;
+		i2c_hw->INTFLAG.reg = SERCOM_I2CS_INTFLAG_PREC;
 
 		/* Disable interrupts */
 		i2c_hw->INTENCLR.reg = SERCOM_I2CS_INTFLAG_PREC | SERCOM_I2CS_INTFLAG_DRDY;

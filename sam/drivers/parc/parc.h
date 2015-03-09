@@ -3,7 +3,7 @@
  *
  * \brief PARC driver for SAM.
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -603,35 +603,35 @@ static inline uint32_t parc_get_version(struct parc_module *const module_inst)
  *
  * Add this to the main loop or a setup function:
  * \code
- *   struct parc_module   module_inst;
- *   struct parc_config   config;
- *
- *   // Get default configuration
- *   parc_get_config_defaults(&config);
- *   // Initialize PARC
- *   parc_init(&module_inst, PARC, &config);
- *
- *   // Enable the PARC
- *   parc_enable(&module_inst);
- *   // Start capture
- *   parc_start_capture(&module_inst);
- *
- * \endcode
+	   struct parc_module   module_inst;
+	   struct parc_config   config;
+
+	   // Get default configuration
+	   parc_get_config_defaults(&config);
+	   // Initialize PARC
+	   parc_init(&module_inst, PARC, &config);
+
+	   // Enable the PARC
+	   parc_enable(&module_inst);
+	   // Start capture
+	   parc_start_capture(&module_inst);
+
+\endcode
  *
  * \subsection parc_basic_setup_workflow Basic Setup Workflow
  *
  * -# Initialize and configure PARC,
  *  see sam/drivers/parc/example for detail.
  *  \code
- *   parc_get_config_defaults(&config);
- *   - \note the config can be modified here from the default parameters.
- *   parc_init(&module_inst, PARC, &config);
- *  \endcode
+	parc_get_config_defaults(&config);
+	- \note the config can be modified here from the default parameters.
+	parc_init(&module_inst, PARC, &config);
+\endcode
  * -# Enable PARC and start capture
  *  \code
- *   parc_enable(&module_inst);
- *   parc_start_capture(&module_inst);
- *  \endcode
+	parc_enable(&module_inst);
+	parc_start_capture(&module_inst);
+\endcode
  *
  * \section parc_basic_usage PARC Basic Usage
  *
@@ -639,26 +639,26 @@ static inline uint32_t parc_get_version(struct parc_module *const module_inst)
  *
  * We can poll the data status then read it once data capture finishes.
  * \code
- *  uint32_t captured_data;
- *  while(parc_is_data_ready(&module_inst) == false);
- *  parc_read(&module_inst, &captured_data);
- * \endcode
+	uint32_t captured_data;
+	while(parc_is_data_ready(&module_inst) == false);
+	parc_read(&module_inst, &captured_data);
+\endcode
  *
  * We can enable interrupt of data ready and link callback function to perform
  * customer function.
  * \code
- *  parc_register_callback(&module_inst,
- *  (parc_callback_t)parc_complete_callback, PARC_CALLBACK_DATA_READY);
- *  parc_enable_interrupts(&module_inst, PARC_INTERRUPT_DRDY);
- *  parc_enable_callback(&module_inst,PARC_CALLBACK_DATA_READY);
- *  parc_start_capture(&module_inst);
- *  //the callback function example.
- *  static void parc_complete_callback(struct parc_module *const module)
- *  {
- *    callback_data_ready = true;
- *    parc_read(module, &captured_data);
- *  }
- * \endcode
+	parc_register_callback(&module_inst,
+	(parc_callback_t)parc_complete_callback, PARC_CALLBACK_DATA_READY);
+	parc_enable_interrupts(&module_inst, PARC_INTERRUPT_DRDY);
+	parc_enable_callback(&module_inst,PARC_CALLBACK_DATA_READY);
+	parc_start_capture(&module_inst);
+	//the callback function example.
+	static void parc_complete_callback(struct parc_module *const module)
+	{
+	  callback_data_ready = true;
+	  parc_read(module, &captured_data);
+	}
+\endcode
  */
 #endif  /* PARC_H_INCLUDED */
 

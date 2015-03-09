@@ -64,7 +64,7 @@ static uint8_t buffer_reversed[DATA_LENGTH] = {
 //! [address]
 
 //! [packet_glob]
-struct i2c_packet packet;
+struct i2c_master_packet packet;
 //! [packet_glob]
 
 /* Init software module instance. */

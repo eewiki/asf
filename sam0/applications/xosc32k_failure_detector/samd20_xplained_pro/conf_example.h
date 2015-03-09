@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20 Xplained PRO example configuration.
+ * \brief SAM D20 Xplained Pro example configuration.
  *
  * Copyright (c) 2014 Atmel Corporation. All rights reserved.
  *

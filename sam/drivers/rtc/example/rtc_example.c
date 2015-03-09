@@ -3,7 +3,7 @@
  *
  * \brief Real-Time Clock (RTC) example for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -60,14 +60,14 @@
  * Upon startup, the program displays the currently set time and date
  * and a menu to perform the following:
  *     \code
- *     Menu:
- *        t - Set time
- *        d - Set date
- *        i - Set time alarm
- *        m - Set date alarm
- *        c - Clear the alarm notification (only if it has been triggered)
- *        w - Generate Waveform
- *     \endcode
+	Menu:
+	   t - Set time
+	   d - Set date
+	   i - Set time alarm
+	   m - Set date alarm
+	   c - Clear the alarm notification (only if it has been triggered)
+	   w - Generate Waveform
+\endcode
  *
  * "w" is an additional option for SAM3S8, SAM3SD8, SAM4S, SAM4C and SAM4CP.
  * An RTC output can be programmed to generate several waveforms, including a
@@ -83,17 +83,17 @@
  * Generating waveform is done by using Menu option "w" and a menu to perform
  * the following:
  *     \code
- *     Menu:
- *     0 - No Waveform
- *     1 - 1 Hz square wave
- *     2 - 32 Hz square wave
- *     3 - 64 Hz square wave
- *     4 - 512 Hz square wave
- *     5 - Toggles when alarm flag rise
- *     6 - Copy of the alarm flag
- *     7 - Duty cycle programmable pulse
- *     8 - Quit
- *     \endcode
+	Menu:
+	0 - No Waveform
+	1 - 1 Hz square wave
+	2 - 32 Hz square wave
+	3 - 64 Hz square wave
+	4 - 512 Hz square wave
+	5 - Toggles when alarm flag rise
+	6 - Copy of the alarm flag
+	7 - Duty cycle programmable pulse
+	8 - Quit
+\endcode
  *
  * \note The example is using RC oscillator by default. This would generate an
  * accuracy problem for the RTC if not calibrated. It is recommended to use an
@@ -116,16 +116,16 @@
  * -# Start the application.
  * -# In the terminal window, the following text should appear:
  *    \code
- *     -- RTC Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *
- *     Menu:
- *     t - Set time
- *     d - Set date
- *     i - Set time alarm
- *     m - Set date alarm
- *    \endcode
+	     -- RTC Example xxx --
+	     -- xxxxxx-xx
+	     -- Compiled: xxx xx xxxx xx:xx:xx --
+
+	     Menu:
+	     t - Set time
+	     d - Set date
+	     i - Set time alarm
+	     m - Set date alarm
+\endcode
  * -# Press one of the keys listed in the menu to perform the corresponding
  * action.
  * 
@@ -584,7 +584,7 @@ int main(void)
 		if (uc_key == 'i') {
 			gs_ul_state = STATE_SET_TIME_ALARM;
 
-			rtc_clear_data_alarm(RTC);
+			rtc_clear_date_alarm(RTC);
 
 			do {
 				puts("\n\r\n\r Set time alarm(hh:mm:ss): ");

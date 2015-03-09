@@ -50,6 +50,12 @@
 extern struct _extint_module _extint_dev;
 
 /**
+ * \internal
+ * This is the number of the channel whose callback is currently running
+ */
+uint8_t _current_channel;
+
+/**
  * \brief Registers an asynchronous callback function with the driver.
  *
  * Registers an asynchronous callback with the EXTINT driver, fired when a
@@ -192,18 +198,31 @@ enum status_code extint_chan_disable_callback(
 	return STATUS_OK;
 }
 
+/**
+ * \brief Find what channel caused the callback
+ *
+ * Can be used in an EXTINT callback function to find what channel caused
+ * the callback in case same callback is used by multiple channels.
+ *
+ * \return Channel number.
+ */
+uint8_t extint_get_current_channel(void)
+{
+	return _current_channel;
+}
+
 /** Handler for the EXTINT hardware module interrupt. */
 void EIC_Handler(void)
 {
 	/* Find any triggered channels, run associated callback handlers */
-	for (uint8_t i = 0; i < EIC_NUMBER_OF_INTERRUPTS ; i++) {
-		if (extint_chan_is_detected(i)) {
+	for (_current_channel = 0; _current_channel < EIC_NUMBER_OF_INTERRUPTS ; _current_channel++) {
+		if (extint_chan_is_detected(_current_channel)) {
 			/* Clear flag */
-			extint_chan_clear_detected(i);
+			extint_chan_clear_detected(_current_channel);
 			/* Find any associated callback entries in the callback table */
-			if (_extint_dev.callbacks[i] != NULL) {
+			if (_extint_dev.callbacks[_current_channel] != NULL) {
 				/* Run the registered callback */
-				_extint_dev.callbacks[i]();
+				_extint_dev.callbacks[_current_channel]();
 			}
 		}
 	}

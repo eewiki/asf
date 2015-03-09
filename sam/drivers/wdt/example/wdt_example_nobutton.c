@@ -3,7 +3,7 @@
  *
  * \brief Watchdog Timer (WDT) example for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -74,14 +74,14 @@
  * -# Download the program into the evaluation board and run it.
  * -# Upon startup, the application will output the following lines on the UART:
  *    \code
- *     -- Watchdog with IRQ Interrupt Example --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *    \endcode
+	-- Watchdog with IRQ Interrupt Example --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+\endcode
  * -# Press the push button on board.
  *    \code
- *     Press xxx to simulate a deadlock loop.
- *    \endcode
+	Press xxx to simulate a deadlock loop.
+\endcode
  */
 
 #include "asf.h"

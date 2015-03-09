@@ -39,23 +39,26 @@
 		<build type="include-path" value="./network"/>
 		<build type="include-path" value="./network/httpserver_raw"/>
 		<device-support value="sam4e"/>
-		<require idref="thirdparty.lwip.version"/>
-		<require idref="common.services.os.freertos"/>
-		<require idref="common.components.touch.qt.qt_i2c"/>
-		<require idref="sam.components.display.aat31xx"/>
-		<require idref="sam.services.resistive_touch"/>
-		<require idref="sam.components.display.ili93xx"/>
 		<require idref="sam.drivers.smc"/>
 		<require idref="sam.drivers.afec"/>
 		<require idref="sam.drivers.dacc"/>
 		<require idref="sam.drivers.pdc"/>
 		<require idref="sam.drivers.rstc"/>
-		<require idref="common.services.ioport"/>
 		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.tc"/>
+		<require idref="sam.utils.syscalls"/>
+		<require idref="sam.components.display.aat31xx"/>
+		<require idref="sam.components.display.ili93xx"/>
+		<require idref="sam.components.ethernet_phy.ksz8051mnl"/>
+		<require idref="sam.services.resistive_touch"/>
+		<require idref="common.components.touch.qt.qt_i2c"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.gpio"/>
 		<require idref="common.services.basic.clock"/>
 		<require idref="common.utils.stdio.stdio_serial"/>
-		<require idref="sam.drivers.pmc"/>
-		<require idref="sam.utils.syscalls"/>
+		<require idref="thirdparty.os.freertos.version"/>
+		<require idref="thirdparty.lwip.version"/>
 		<info type="gui-flag" value="move-to-root"/>
 	</module>
 </asf>

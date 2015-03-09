@@ -43,6 +43,7 @@
 			<info type="gui-flag" value="hidden"/>
 			<device-support value="avr"/>
 			<device-support value="sam"/>
+			<device-support value="sam0"/>
 		</module>
 	</select-by-config>
 	<module type="service" id="common.services.usb.class.hid.device.generic.single" caption="USB Device HID Generic (Single Interface Device)">

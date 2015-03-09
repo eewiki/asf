@@ -267,19 +267,19 @@ static void run_flash_information_test(const struct test_case *test)
 static void run_flash_erase_test(const struct test_case *test)
 {
 	uint32_t ul_idx;
-	volatile uint32_t ul_last_page_addr = IFLASH1_ADDR;
-        uint32_t *pul_last_page = (uint32_t *) ul_last_page_addr;
+	volatile uint32_t ul_test_page_addr = IFLASH1_ADDR;
+	uint32_t *pul_test_page = (uint32_t *) ul_test_page_addr;
 	uint32_t ul_rc=0;
 
 	/* Unlock the whole flash */
-	flash_unlock(IFLASH1_ADDR, LAST_PAGE_ADDRESS + IFLASH_PAGE_SIZE - 1, 0, 0);
+	flash_unlock(IFLASH1_ADDR, TEST_PAGE_ADDRESS + IFLASH_PAGE_SIZE - 1, 0, 0);
 
 	/* Erase the second plane */
 	flash_erase_plane(IFLASH1_ADDR);
 
 	/* The data will all be 0xff after erasing all operation */
 	for (ul_idx=0;ul_idx<(IFLASH1_SIZE/4);ul_idx++) {
-		if ((uint32_t)pul_last_page[ul_idx] != 0xffffffff){
+		if ((uint32_t)pul_test_page[ul_idx] != 0xffffffff){
 			ul_rc=1;
 			break;
 		}
@@ -294,7 +294,7 @@ static void run_flash_erase_test(const struct test_case *test)
 /**
  * \brief Test flash writing.
  *
- * This test tests the flash writing function in the last page of the flash.
+ * This test tests the flash writing function in the test page of the flash.
  *
  * \param test Current test case.
  */
@@ -303,33 +303,33 @@ static void run_flash_write_test(const struct test_case *test)
 	uint32_t ul_page_buffer[IFLASH_PAGE_SIZE / sizeof(uint32_t)];
 	uint32_t ul_rc=0;
 	uint32_t ul_idx;
-	uint32_t ul_last_page_addr = LAST_PAGE_ADDRESS;
-	uint32_t *pul_last_page = (uint32_t *) ul_last_page_addr;
+	uint32_t ul_test_page_addr = TEST_PAGE_ADDRESS;
+	uint32_t *pul_test_page = (uint32_t *) ul_test_page_addr;
 
 	/* Unlock the whole flash */
-	flash_unlock(IFLASH_ADDR,  ul_last_page_addr + IFLASH_PAGE_SIZE - 1, 0, 0);
+	flash_unlock(IFLASH_ADDR,  ul_test_page_addr + IFLASH_PAGE_SIZE - 1, 0, 0);
 
-	/* Write the last page with walking bit pattern */
+	/* Write the test page with walking bit pattern */
 	for (ul_idx = 0; ul_idx < (IFLASH_PAGE_SIZE / 4); ul_idx++) {
 		ul_page_buffer[ul_idx] = 1 << (ul_idx % 32);
 	}
 
 #if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
-	/* Write the last page */
-	flash_erase_sector(ul_last_page_addr);
+	/* Write the test page */
+	flash_erase_sector(ul_test_page_addr);
 
-	flash_write(ul_last_page_addr,
+	flash_write(ul_test_page_addr,
 			(void *)ul_page_buffer,
 			IFLASH_PAGE_SIZE, 0);
 #else
-	flash_write(ul_last_page_addr,
+	flash_write(ul_test_page_addr,
 			(void *)ul_page_buffer,
 			IFLASH_PAGE_SIZE, 1);
 #endif
 
 	/* Validate page contents */
 	for (ul_idx = 0; ul_idx < (IFLASH_PAGE_SIZE / 4); ul_idx++) {
-		if (pul_last_page[ul_idx] != ul_page_buffer[ul_idx]) {
+		if (pul_test_page[ul_idx] != ul_page_buffer[ul_idx]) {
 			ul_rc =1;
 		}
 	}
@@ -342,7 +342,7 @@ static void run_flash_write_test(const struct test_case *test)
  * \brief Test flash lock setting.
  *
  * \note This test gets the lock status of the whole flash space and
- * unlocks/locks the last page for validation.
+ * unlocks/locks the test page for validation.
  *
  * \param test Current test case.
  */
@@ -350,9 +350,9 @@ static void run_flash_lock_test(const struct test_case *test)
 {
 	volatile uint32_t ul_locked_region_num;
 	volatile uint32_t lockerror = 0;
-	uint32_t ul_last_page_addr = LAST_PAGE_ADDRESS;
+	uint32_t ul_test_page_addr = TEST_PAGE_ADDRESS;
 #if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
-	flash_erase_sector(ul_last_page_addr);
+	flash_erase_sector(ul_test_page_addr);
 #endif
 	uint32_t ul_page_buffer[IFLASH_PAGE_SIZE / sizeof(uint32_t)];
 	memset((void *)ul_page_buffer, 0xFF, IFLASH_PAGE_SIZE);
@@ -360,31 +360,31 @@ static void run_flash_lock_test(const struct test_case *test)
 
 	/* Check if there is any region blocked */
 	ul_locked_region_num = flash_is_locked(IFLASH_ADDR,
-			ul_last_page_addr + IFLASH_PAGE_SIZE - 1);
+			ul_test_page_addr + IFLASH_PAGE_SIZE - 1);
 
-	/* If all the regions are unlocked, set the last page locked */
+	/* If all the regions are unlocked, set the test page locked */
 	if (ul_locked_region_num == 0) {
-		/* Lock the last page */
-		flash_lock(ul_last_page_addr,
-				ul_last_page_addr + IFLASH_PAGE_SIZE - 1, 0, 0);
+		/* Lock the test page */
+		flash_lock(ul_test_page_addr,
+				ul_test_page_addr + IFLASH_PAGE_SIZE - 1, 0, 0);
 	}
 
-	/* Unlock the last page region */
-	flash_unlock(IFLASH_ADDR, ul_last_page_addr + IFLASH_PAGE_SIZE - 1, 0, 0);
+	/* Unlock the test page region */
+	flash_unlock(IFLASH_ADDR, ul_test_page_addr + IFLASH_PAGE_SIZE - 1, 0, 0);
 
 	/* Check if there is any region blocked */
 	ul_locked_region_num = flash_is_locked(IFLASH_ADDR,
-			ul_last_page_addr + IFLASH_PAGE_SIZE - 1);
+			ul_test_page_addr + IFLASH_PAGE_SIZE - 1);
 
 	/* Validate the the unlock function */
 	test_assert_true(test, ul_locked_region_num == 0,
 			"Test flash lock: flash unlock error!");
 
-	/* Lock the last page region */
-	flash_lock(ul_last_page_addr,
-			ul_last_page_addr + IFLASH_PAGE_SIZE - 1, 0, 0);
+	/* Lock the test page region */
+	flash_lock(ul_test_page_addr,
+			ul_test_page_addr + IFLASH_PAGE_SIZE - 1, 0, 0);
 
-	lockerror = flash_write(ul_last_page_addr, (void *)ul_page_buffer,
+	lockerror = flash_write(ul_test_page_addr, (void *)ul_page_buffer,
 			IFLASH_PAGE_SIZE, 0);
 
 #if (SAM3SD8 || SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
@@ -392,14 +392,14 @@ static void run_flash_lock_test(const struct test_case *test)
 	 * requires special attention.
 	 */
 	ul_locked_region_num = flash_is_locked(IFLASH_ADDR,
-			ul_last_page_addr + IFLASH_PAGE_SIZE - 1);
+			ul_test_page_addr + IFLASH_PAGE_SIZE - 1);
 #else
-	ul_locked_region_num = flash_is_locked(ul_last_page_addr,
-			ul_last_page_addr + IFLASH_PAGE_SIZE - 1);
+	ul_locked_region_num = flash_is_locked(ul_test_page_addr,
+			ul_test_page_addr + IFLASH_PAGE_SIZE - 1);
 #endif
 
-	/* Unlock the last page region */
-	flash_unlock(IFLASH_ADDR, ul_last_page_addr + IFLASH_PAGE_SIZE - 1, 0, 0);
+	/* Unlock the test page region */
+	flash_unlock(IFLASH_ADDR, ul_test_page_addr + IFLASH_PAGE_SIZE - 1, 0, 0);
 
 	/* Validate the lock function */
 	test_assert_true(test, ul_locked_region_num == 1,

@@ -72,12 +72,12 @@ extern "C" {
  *
  * Usage:
  * \code
- * ISR(foo_irq_handler)
- * {
- *      // Function definition
- *      ...
- * }
- * \endcode
+	ISR(foo_irq_handler)
+	{
+	     // Function definition
+	     ...
+	}
+\endcode
  *
  * \param func Name for the function.
  */
@@ -106,9 +106,9 @@ extern "C" {
  *
  * Usage:
  * \code
- * irq_initialize_vectors();
- * irq_register_handler(foo_irq_handler);
- * \endcode
+	irq_initialize_vectors();
+	irq_register_handler(foo_irq_handler);
+\endcode
  *
  * \note The function \a func must be defined with the \ref ISR macro.
  * \note The functions prototypes can be found in the device exception header

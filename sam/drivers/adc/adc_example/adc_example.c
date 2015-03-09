@@ -3,7 +3,7 @@
  *
  * \brief Analog-to-Digital Converter (ADC/ADC12B) example for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -85,25 +85,25 @@
  * -# In the terminal window, the
  *    following text should appear (values depend on the board and the chip used):
  *    \code
- *     -- ADC Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     =========================================================
- *     Menu: press a key to change the configuration.
- *     ---------------------------------------------------------
- *     [X] 0: Set ADC trigger mode: Software.
- *     [ ] 1: Set ADC trigger mode: ADTRG.
- *     [ ] 2: Set ADC trigger mode: Timer TIOA.
- *     [ ] 3: Set ADC trigger mode: PWM Event Line.
- *     [ ] 4: Set ADC trigger mode: Free run mode.
- *     [E] T: Enable/Disable to transfer with PDC.
- *     [D] S: Enable/Disable to use user sequence mode.
- *     [D] P: Enable/Disable ADC power save mode.
- *     [D] G: Enable/Disable to set gain=2 for potentiometer channel.
- *     [D] O: Enable/Disable offset for potentiometer channel.
- *         Q: Quit configuration and start ADC.
- *     =========================================================
- *    \endcode
+	-- ADC Example xxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	=========================================================
+	Menu: press a key to change the configuration.
+	---------------------------------------------------------
+	[X] 0: Set ADC trigger mode: Software.
+	[ ] 1: Set ADC trigger mode: ADTRG.
+	[ ] 2: Set ADC trigger mode: Timer TIOA.
+	[ ] 3: Set ADC trigger mode: PWM Event Line.
+	[ ] 4: Set ADC trigger mode: Free run mode.
+	[E] T: Enable/Disable to transfer with PDC.
+	[D] S: Enable/Disable to use user sequence mode.
+	[D] P: Enable/Disable ADC power save mode.
+	[D] G: Enable/Disable to set gain=2 for potentiometer channel.
+	[D] O: Enable/Disable offset for potentiometer channel.
+	    Q: Quit configuration and start ADC.
+	=========================================================
+\endcode
  * -# The application will output converted value to HyperTerminal and display
  *    a menu for users to set different modes.
  *

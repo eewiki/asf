@@ -3,7 +3,7 @@
  *
  * \brief ADC Controller driver.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -715,12 +715,12 @@ static inline void adc_ref_vol_sel(Adc *const adc,
  * \subsection adc_basic_use_case_setup_code Example code
  * Add to application C-file:
  * \code
- *  adc_enable();
- *  adc_get_config_defaults(&adc_cfg);
- *  adc_init(ADC, &adc_cfg);
- *  adc_set_trigger(ADC, ADC_TRIG_SW);
- *  adc_channel_enable(ADC, ADC_CHANNEL_1);
- * \endcode
+	adc_enable();
+	adc_get_config_defaults(&adc_cfg);
+	adc_init(ADC, &adc_cfg);
+	adc_set_trigger(ADC, ADC_TRIG_SW);
+	adc_channel_enable(ADC, ADC_CHANNEL_1);
+\endcode
  *
  * \subsection adc_basic_use_case_setup_flow Workflow
  * -# Enable ADC Module:
@@ -738,19 +738,19 @@ static inline void adc_ref_vol_sel(Adc *const adc,
  * \subsection adc_basic_use_case_usage_code Example code
  * Add to, e.g., main loop in application C-file:
  * \code
- *  adc_start_software_conversion(ADC);
- *  while (adc_get_interrupt_status(ADC) & (1 << ADC_CHANNEL_1));
- *  uint32_t result = adc_channel_get_value(ADC, ADC_CHANNEL_1);
- * \endcode
+	adc_start_software_conversion(ADC);
+	while (adc_get_interrupt_status(ADC) & (1 << ADC_CHANNEL_1));
+	uint32_t result = adc_channel_get_value(ADC, ADC_CHANNEL_1);
+\endcode
  *
  * \subsection adc_basic_use_case_usage_flow Workflow
  * -# Start ADC conversion on channel:
  *   - \code adc_start_software_conversion(ADC); \endcode
  * -# Wait for the conversion over:
  *   - \code while (adc_get_interrupt_status(ADC) & (1 << ADC_CHANNEL_1));
- *     \endcode
+\endcode
  * -# Get the conversion result:
  *   - \code uint32_t result = adc_channel_get_value(ADC, ADC_CHANNEL_1);
- *     \endcode
+\endcode
  */
 #endif /* ADC2_H_INCLUDED */

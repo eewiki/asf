@@ -53,7 +53,12 @@ extern "C" {
  * This driver for SAM D20/D21 devices provides an interface for the configuration
  * and management of the device's peripheral event resources and users within
  * the device, including enabling and disabling of peripheral source selection
- * and synchronization of clock domains between various modules.
+ * and synchronization of clock domains between various modules. The following API
+ * modes is covered by this manual:
+ *  - Polled API
+ * \if EVENTS_INTERRUPT_HOOK_MODE
+ *  - Interrupt hook API
+ * \endif
  *
  * The following peripherals are used by this module:
  *
@@ -298,6 +303,8 @@ extern "C" {
  */
 
 #include <compiler.h>
+#include "events_common.h"
+
 
 /**
  * \brief Edge detect enum
@@ -355,8 +362,25 @@ struct events_config {
  * if you only want to use a channel for software generated events.
  *
  */
-#define EVSYS_ID_GEN_NONE 0
 
+///@cond INTERNAL
+/**
+ * \internal
+ * Status bit offsets in the status register/interrupt register
+ *
+ * @{
+ */
+#define _EVENTS_START_OFFSET_BUSY_BITS           8
+#define _EVENTS_START_OFFSET_USER_READY_BIT      0
+#define _EVENTS_START_OFFSET_DETECTION_BIT       8
+#define _EVENTS_START_OFFSET_OVERRUN_BIT         0
+/** @} */
+///@endcond
+
+/** Definition for no generator selection */
+#define EVSYS_ID_GEN_NONE   0
+/** Definition for no user selection */
+#define EVSYS_ID_USER_NONE  0
 /**
  * \brief Event channel resource
  *
@@ -371,6 +395,18 @@ struct events_resource {
 	uint8_t channel;
 #endif
 };
+
+#if EVENTS_INTERRUPT_HOOKS_MODE == true
+typedef void (*events_interrupt_hook)(struct events_resource *resource);
+
+//struct events_hook;
+
+struct events_hook {
+	struct events_resource *resource;
+	events_interrupt_hook hook_func;
+	struct events_hook *next;
+};
+#endif
 
 /**
  * \brief Initializes an event configurations struct to defaults
@@ -519,6 +555,19 @@ enum status_code events_release(struct events_resource *resource);
  */
 uint8_t events_get_free_channels(void);
 
+
+///@cond INTERNAL
+/**
+ * \internal
+ * Function to find bit positons in the CHSTATUS and INTFLAG register
+ *
+ * @{
+ */
+uint32_t _events_find_bit_position(uint8_t channel, uint8_t start_ofset);
+/** @} */
+///@endcond
+
+
 /** @} */
 
 /**
@@ -583,6 +632,9 @@ uint8_t events_get_free_channels(void);
  * added to the user application.
  *
  * - \subpage asfdoc_sam0_events_basic_use_case
+ * \if EVENTS_INTERRUPT_HOOK_MODE
+ * - \subpage asfdoc_sam0_events_interrupt_hook_use_case
+ * \endif
  *
  * \page asfdoc_sam0_events_document_revision_history Document Revision History
  *
@@ -592,6 +644,11 @@ uint8_t events_get_free_channels(void);
  *		<th>Date</td>
  *		<th>Comments</td>
  *	</tr>
+ *      <tr>
+ *		<td>E</td>
+ *		<td>02/2014</td>
+ *		<td>Added support for interrupt hook mode</td>
+ *      </tr>
  *	<tr>
  *		<td>D</td>
  *		<td>01/2014</td>

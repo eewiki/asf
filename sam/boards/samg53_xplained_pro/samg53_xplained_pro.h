@@ -3,7 +3,7 @@
  *
  * \brief SAMG53 Xplained Pro board definition
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -539,6 +539,17 @@ void system_board_init(void);
 #define I2S1_WS_GPIO         (PIO_PA20_IDX)
 #define I2S1_WS_FLAGS        (IOPORT_MODE_MUX_B)
 //@}
+
+//! \name PDM
+//@{
+/** PDM CLK pin definition. */
+#define PDM_CLK_GPIO        (PIO_PA10_IDX)
+#define PDM_CLK_FLAGS       (IOPORT_MODE_MUX_B)
+/** PDM DAT pin definition. */
+#define PDM_DAT_GPIO        (PIO_PA9_IDX)
+#define PDM_DAT_FLAGS       (IOPORT_MODE_MUX_B)
+//@}
+
 /** @} */
 
 /** @} */

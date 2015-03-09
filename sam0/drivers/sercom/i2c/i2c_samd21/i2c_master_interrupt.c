@@ -43,6 +43,16 @@
 
 #include "i2c_master_interrupt.h"
 
+extern enum status_code _i2c_master_wait_for_bus(
+		struct i2c_master_module *const module);
+
+extern enum status_code _i2c_master_address_response(
+		struct i2c_master_module *const module);
+
+extern enum status_code _i2c_master_send_hs_master_code(
+		struct i2c_master_module *const module,
+		uint8_t hs_master_code);;
+
 /**
  * \internal
  * Read next data. Used by interrupt handler to get next data byte from slave.
@@ -57,27 +67,36 @@ static void _i2c_master_read(
 	Assert(module->hw);
 
 	SercomI2cm *const i2c_module = &(module->hw->I2CM);
+	bool sclsm_flag = i2c_module->CTRLA.bit.SCLSM;
 
 	/* Find index to save next value in buffer */
 	uint16_t buffer_index = module->buffer_length - module->buffer_remaining;
 
 	module->buffer_remaining--;
 
-	if (!module->buffer_remaining) {
-		/* Send nack */
-		i2c_module->CTRLB.reg |= SERCOM_I2CM_CTRLB_ACKACT;
-		if (module->send_stop) {
-			/* Send stop condition */
-			_i2c_master_wait_for_sync(module);
-			i2c_module->CTRLB.reg |= SERCOM_I2CM_CTRLB_CMD(3);
+	if (sclsm_flag) {
+		if (module->buffer_remaining == 1) {
+			/* Set action to NACK. */
+			i2c_module->CTRLB.reg |= SERCOM_I2CM_CTRLB_ACKACT;
 		}
 	} else {
-		i2c_module->CTRLB.reg &= ~SERCOM_I2CM_CTRLB_ACKACT;
+		if (module->buffer_remaining == 0) {
+			/* Set action to NACK. */
+			i2c_module->CTRLB.reg |= SERCOM_I2CM_CTRLB_ACKACT;
+		}
 	}
 
 	/* Read byte from slave and put in buffer */
 	_i2c_master_wait_for_sync(module);
 	module->buffer[buffer_index] = i2c_module->DATA.reg;
+
+	if (module->buffer_remaining == 0) {
+		if (module->send_stop) {
+			/* Send stop condition */
+			_i2c_master_wait_for_sync(module);
+			i2c_module->CTRLB.reg |= SERCOM_I2CM_CTRLB_CMD(3);
+		}
+	}
 }
 
 /**
@@ -236,13 +255,14 @@ void i2c_master_unregister_callback(
  */
 static enum status_code _i2c_master_read_packet(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);
 	Assert(module->hw);
 
 	SercomI2cm *const i2c_module = &(module->hw->I2CM);
+	enum status_code tmp_status;
 
 	/* Save packet to software module */
 	module->buffer             = packet->data;
@@ -250,12 +270,59 @@ static enum status_code _i2c_master_read_packet(
 	module->transfer_direction = I2C_TRANSFER_READ;
 	module->status             = STATUS_BUSY;
 
-	/* Enable interrupts */
-	i2c_module->INTENSET.reg =
+	/* Switch to high speed mode */
+	if (packet->high_speed) {
+		_i2c_master_send_hs_master_code(module, packet->hs_master_code);
+	}
+
+	/* Set action to ACK. */
+	i2c_module->CTRLB.reg &= ~SERCOM_I2CM_CTRLB_ACKACT;
+
+	if (packet->ten_bit_address) {
+		/*
+		 * Write ADDR.ADDR[10:1] with the 10-bit address. ADDR.TENBITEN must
+		 * be set and read/write bit (ADDR.ADDR[0]) equal to 0.
+		 */
+		i2c_module->ADDR.reg = (packet->address << 1) |
+			(packet->high_speed << SERCOM_I2CM_ADDR_HS_Pos) |
+			SERCOM_I2CM_ADDR_TENBITEN;
+
+		/* Wait for response on bus. */
+		tmp_status = _i2c_master_wait_for_bus(module);
+
+		/* Set action to ack. */
+		i2c_module->CTRLB.reg &= ~SERCOM_I2CM_CTRLB_ACKACT;
+
+		/* Check for address response error unless previous error is
+		 * detected. */
+		if (tmp_status == STATUS_OK) {
+			tmp_status = _i2c_master_address_response(module);
+		}
+
+		if (tmp_status == STATUS_OK) {
+			/* Enable interrupts */
+			i2c_module->INTENSET.reg =
+				SERCOM_I2CM_INTENSET_MB | SERCOM_I2CM_INTENSET_SB;
+
+			/*
+			 * Write ADDR[7:0] register to “11110 address[9:8] 1”.
+			 * ADDR.TENBITEN must be cleared
+			 */
+			i2c_module->ADDR.reg = (((packet->address >> 8) | 0x78) << 1) |
+				(packet->high_speed << SERCOM_I2CM_ADDR_HS_Pos) |
+				I2C_TRANSFER_READ;
+		} else {
+			return tmp_status;
+		}
+	} else {
+		/* Enable interrupts */
+		i2c_module->INTENSET.reg =
 			SERCOM_I2CM_INTENSET_MB | SERCOM_I2CM_INTENSET_SB;
 
-	/* Set address and direction bit. Will send start command on bus */
-	i2c_module->ADDR.reg = (packet->address << 1) | I2C_TRANSFER_READ;
+		/* Set address and direction bit. Will send start command on bus */
+		i2c_module->ADDR.reg = (packet->address << 1) | I2C_TRANSFER_READ |
+			(packet->high_speed << SERCOM_I2CM_ADDR_HS_Pos);
+	}
 
 	return STATUS_OK;
 }
@@ -275,7 +342,7 @@ static enum status_code _i2c_master_read_packet(
  */
 enum status_code i2c_master_read_packet_job(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);
@@ -314,7 +381,7 @@ enum status_code i2c_master_read_packet_job(
  */
 enum status_code i2c_master_read_packet_job_no_stop(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);
@@ -345,13 +412,21 @@ enum status_code i2c_master_read_packet_job_no_stop(
  */
 static enum status_code _i2c_master_write_packet(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);
 	Assert(module->hw);
 
 	SercomI2cm *const i2c_module = &(module->hw->I2CM);
+
+	/* Switch to high speed mode */
+	if (packet->high_speed) {
+		_i2c_master_send_hs_master_code(module, packet->hs_master_code);
+	}
+
+	/* Set action to ACK. */
+	i2c_module->CTRLB.reg &= ~SERCOM_I2CM_CTRLB_ACKACT;
 
 	/* Save packet to software module */
 	module->buffer             = packet->data;
@@ -364,7 +439,14 @@ static enum status_code _i2c_master_write_packet(
 			SERCOM_I2CM_INTENSET_MB | SERCOM_I2CM_INTENSET_SB;
 
 	/* Set address and direction bit, will send start command on bus */
-	i2c_module->ADDR.reg = (packet->address << 1) | I2C_TRANSFER_WRITE;
+	if (packet->ten_bit_address) {
+		i2c_module->ADDR.reg = (packet->address << 1) | I2C_TRANSFER_WRITE |
+			(packet->high_speed << SERCOM_I2CM_ADDR_HS_Pos) |
+			SERCOM_I2CM_ADDR_TENBITEN;
+	} else {
+		i2c_module->ADDR.reg = (packet->address << 1) | I2C_TRANSFER_WRITE |
+			(packet->high_speed << SERCOM_I2CM_ADDR_HS_Pos);
+	}
 
 	return STATUS_OK;
 }
@@ -384,7 +466,7 @@ static enum status_code _i2c_master_write_packet(
  */
 enum status_code i2c_master_write_packet_job(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);
@@ -423,7 +505,7 @@ enum status_code i2c_master_write_packet_job(
  */
 enum status_code i2c_master_write_packet_job_no_stop(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);
@@ -458,6 +540,7 @@ void _i2c_master_interrupt_handler(
 	Assert(module);
 
 	SercomI2cm *const i2c_module = &(module->hw->I2CM);
+	bool sclsm_flag = i2c_module->CTRLA.bit.SCLSM;
 
 	/* Combine callback registered and enabled masks */
 	uint8_t callback_mask = module->enabled_callback &
@@ -491,7 +574,8 @@ void _i2c_master_interrupt_handler(
 	/* Continue buffer write/read */
 	} else if ((module->buffer_length > 0) && (module->buffer_remaining > 0)){
 		/* Check that bus ownership is not lost */
-		if (!(i2c_module->STATUS.reg & SERCOM_I2CM_STATUS_BUSSTATE(2))) {
+		if ((!(i2c_module->STATUS.reg & SERCOM_I2CM_STATUS_BUSSTATE(2))) &&
+				(!(sclsm_flag && (module->buffer_remaining == 1))))	{
 			module->status = STATUS_ERR_PACKET_COLLISION;
 		} else if (module->transfer_direction == I2C_TRANSFER_WRITE) {
 			_i2c_master_write(module);

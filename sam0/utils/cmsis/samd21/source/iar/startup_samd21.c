@@ -140,6 +140,7 @@ void I2S_Handler              ( void );
 
 #pragma section = ".intvec"
 #pragma location = ".intvec"
+//! [startup_vector_table]
 const DeviceVectors __vector_table[] = {
         __sfe("CSTACK"),
         (void*) Reset_Handler,
@@ -188,6 +189,7 @@ const DeviceVectors __vector_table[] = {
         (void*) PTC_Handler,            /* 26 Peripheral Touch Controller */
         (void*) I2S_Handler             /* 27 Inter-IC Sound Interface */
 };
+//! [startup_vector_table]
 
 /**------------------------------------------------------------------------------
  * This is the code that gets called on processor reset. To initialize the

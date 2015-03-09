@@ -3,7 +3,7 @@
  *
  * \brief Qtouch example for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -79,13 +79,13 @@
  *  -# In the terminal window, the
  *     following text should appear (values depend on the board and the chip used):
  *     \code
- *      -- QTouch Project--
- *      -- xxxxxx-xx
- *      -- Compiled: xxx xx xxxx xx:xx:xx --
- *      supports xxxxxxx
- *      Maximum number of Rotors/Sliders xxxxx
- *      Version xxxx
- *     \endcode
+	-- QTouch Project--
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	supports xxxxxxx
+	Maximum number of Rotors/Sliders xxxxx
+	Version xxxx
+\endcode
  *  -# The application will output the Qtouch value when touching the slider or the key
  * on the EK boards.
  *

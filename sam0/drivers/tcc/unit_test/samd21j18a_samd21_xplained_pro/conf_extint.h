@@ -45,6 +45,4 @@
 
 #  define EXTINT_CLOCK_SOURCE      GCLK_GENERATOR_0
 
-#  define EXTINT_CALLBACKS_MAX     10
-
 #endif

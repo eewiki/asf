@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="SAMD20 Xplained Pro Delay Service Example" id="common2.services.delay.example.samd20_xplained_pro">
+	<project caption="SAM D20 Xplained Pro Delay Service Example" id="common2.services.delay.example.samd20_xplained_pro">
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_clocks.h"/>

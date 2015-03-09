@@ -6,7 +6,7 @@
  *
  * This file defines a useful set of functions for the AES on SAM devices.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -433,11 +433,11 @@ static inline void aes_write_gcmh(Aes *const p_aes, uint32_t id, uint32_t hword)
  *
  * Add this to the main loop or a setup function:
  * \code
- * struct aes_config   g_aes_cfg;
- * aes_get_config_defaults(&g_aes_cfg);
- * aes_init(AES, &g_aes_cfg);
- * aes_enable();
- * \endcode
+	struct aes_config   g_aes_cfg;
+	aes_get_config_defaults(&g_aes_cfg);
+	aes_init(AES, &g_aes_cfg);
+	aes_enable();
+\endcode
  *
  * \subsection aes_basic_setup_workflow
  *
@@ -446,20 +446,20 @@ static inline void aes_write_gcmh(Aes *const p_aes, uint32_t id, uint32_t hword)
  *
  * -# Set the AES interrupt and callback
  * \code
- * aes_set_callback(AES, AES_INTERRUPT_DATA_READY,
- *		aes_callback, 1);
- * \endcode
+	 aes_set_callback(AES, AES_INTERRUPT_DATA_READY,
+			aes_callback, 1);
+\endcode
  *
  * -# Initialize the AES to ECB cipher mode
  * \code
- * g_aes_cfg.encrypt_mode = AES_ENCRYPTION;
- * g_aes_cfg.key_size = AES_KEY_SIZE_128;
- * g_aes_cfg.start_mode = AES_AUTO_MODE;
- * g_aes_cfg.opmode = AES_ECB_MODE;
- * g_aes_cfg.cfb_size = AES_CFB_SIZE_128;
- * g_aes_cfg.lod = false;
- * aes_set_config(AES, &g_aes_cfg);
- * \endcode
+	g_aes_cfg.encrypt_mode = AES_ENCRYPTION;
+	g_aes_cfg.key_size = AES_KEY_SIZE_128;
+	g_aes_cfg.start_mode = AES_AUTO_MODE;
+	g_aes_cfg.opmode = AES_ECB_MODE;
+	g_aes_cfg.cfb_size = AES_CFB_SIZE_128;
+	g_aes_cfg.lod = false;
+	aes_set_config(AES, &g_aes_cfg);
+\endcode
  *
  * \section aes_basic_usage Usage steps
  *
@@ -467,14 +467,14 @@ static inline void aes_write_gcmh(Aes *const p_aes, uint32_t id, uint32_t hword)
  *
  * We can then encrypte the plain text by
  * \code
- * aes_write_key(AES, key128);
- * aes_write_input_data(AES, ref_plain_text);
- * \endcode
+	aes_write_key(AES, key128);
+	aes_write_input_data(AES, ref_plain_text);
+\endcode
  *
  * We can get the cipher text after it's ready by
  * \code
- * aes_read_output_data(AES, output_data);
- * \endcode
+	aes_read_output_data(AES, output_data);
+\endcode
  */
 
 #endif  /* AES_H_INCLUDED */

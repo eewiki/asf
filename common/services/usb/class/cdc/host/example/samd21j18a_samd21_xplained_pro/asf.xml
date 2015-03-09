@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="USB Host CDC for SAMD21 Xplained Pro" id="common.services.usb.class.cdc.host.example.samd21_xplained_pro">
+	<project caption="USB Host CDC for SAM D21 Xplained Pro" id="common.services.usb.class.cdc.host.example.samd21_xplained_pro">
 		<build type="header-file" value="conf_example.h"/>
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_clocks.h"/>

@@ -1,0 +1,29 @@
+<asf xmlversion="1.0">
+	<project caption="USB Composite Device HID mouse and MSC for SAM D21 Xplained Pro" id="common.services.usb.class.composite.device.example.hidms_msc.samd21_xplained_pro">
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_virtual_mem.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.virtual_mem"/>
+		<require idref="common.services.usb.class.composite.device.example.hidms_msc"/>
+		<config name="config.common.services.usb.class.device" value="composite"/>
+		<config name="config.common.services.usb.class.hid.device.mouse.composite" value="enable"/>
+		<config name="config.common.services.usb.class.msc.device.composite" value="enable"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.sys_stack_size" value="0x1000"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.stack_size" value="0x1000"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<toolchain-config name="armgcc.linker.miscellaneous.LinkerFlags" value="-Wl,--defsym,STACK_SIZE=0x1000" toolchain="armgcc"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

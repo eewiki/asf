@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="USB Device Mass Storage for SAMD21 Xplained Pro" id="common.services.usb.class.msc.device.example.samd21_xplained_pro">
+	<project caption="USB Device Mass Storage for SAM D21 Xplained Pro" id="common.services.usb.class.msc.device.example.samd21_xplained_pro">
 		<build type="header-file" value="conf_access.h"/>
 		<build type="header-file" value="conf_virtual_mem.h"/>
 		<build type="header-file" value="conf_board.h"/>

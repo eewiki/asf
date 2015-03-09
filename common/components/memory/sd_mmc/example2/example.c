@@ -3,7 +3,7 @@
  *
  * \brief SD/MMC card example with FatFs
  *
- * Copyright (c) 2012 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -64,10 +64,10 @@
  * -# Start the application.
  * -# In the terminal window, the following text should appear:
  *    \code
- *     -- SD/MMC/SDIO Card Example on FatFs --
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     Please plug an SD, MMC or SDIO card in slot.
- *    \endcode
+	-- SD/MMC/SDIO Card Example on FatFs --
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	Please plug an SD, MMC or SDIO card in slot.
+\endcode
  */
 
 #include <asf.h>

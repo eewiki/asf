@@ -3,7 +3,7 @@
  *
  * \brief Analog Comparator Controller (ACC) example for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -84,14 +84,14 @@
  * -# In the terminal window, the
  *    following text should appear (values depend on the board and chip used):
  *    \code
- *     -- ACC IRQ Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     -- Menu Choices for this example--
- *     -- s: Set new DAC0 output voltage.--
- *     -- v: Get voltage on potentiometer.--
- *     -- m: Display this menu again.--
- *     \endcode
+	-- ACC IRQ Example xxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	-- Menu Choices for this example--
+	-- s: Set new DAC0 output voltage.--
+	-- v: Get voltage on potentiometer.--
+	-- m: Display this menu again.--
+\endcode
  * -# Input command according to the menu.
  * -# Change voltage on AD5 by adjusting VR1 to see what comparison event happen.
  *

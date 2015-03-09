@@ -61,6 +61,8 @@ static enum status_code _i2c_slave_set_config(
 		struct i2c_slave_module *const module,
 		const struct i2c_slave_config *const config)
 {
+	uint32_t tmp_ctrla;
+
 	/* Sanity check arguments. */
 	Assert(module);
 	Assert(module->hw);
@@ -70,6 +72,7 @@ static enum status_code _i2c_slave_set_config(
 	Sercom *const sercom_hw = module->hw;
 
 	module->buffer_timeout = config->buffer_timeout;
+	module->ten_bit_address = config->ten_bit_address;
 
 	struct system_pinmux_config pin_conf;
 	system_pinmux_get_config_defaults(&pin_conf);
@@ -93,19 +96,27 @@ static enum status_code _i2c_slave_set_config(
 	pin_conf.direction    = SYSTEM_PINMUX_PIN_DIR_OUTPUT_WITH_READBACK;
 	system_pinmux_pin_set_config(pad1 >> 16, &pin_conf);
 
-	/* Write config to register CTRLA */
-	i2c_hw->CTRLA.reg |= (uint32_t)(config->sda_hold_time |
+	/* Prepare config to write to register CTRLA */
+	if (config->run_in_standby || system_is_debugger_present()) {
+		tmp_ctrla = SERCOM_I2CS_CTRLA_RUNSTDBY;
+	} else {
+		tmp_ctrla = 0;
+	}
+
+	tmp_ctrla |= (uint32_t)(config->sda_hold_time |
 			config->transfer_speed |
 			(config->scl_low_timeout << SERCOM_I2CS_CTRLA_LOWTOUTEN_Pos) |
 			(config->scl_stretch_only_after_ack_bit << SERCOM_I2CS_CTRLA_SCLSM_Pos) |
-			(config->slave_scl_low_extend_timeout << SERCOM_I2CS_CTRLA_SEXTTOEN_Pos) |
-			(config->run_in_standby << SERCOM_I2CS_CTRLA_RUNSTDBY_Pos));
+			(config->slave_scl_low_extend_timeout << SERCOM_I2CS_CTRLA_SEXTTOEN_Pos));
+
+	i2c_hw->CTRLA.reg |= tmp_ctrla;
 
 	/* Set CTRLB configuration */
 	i2c_hw->CTRLB.reg = SERCOM_I2CS_CTRLB_SMEN | config->address_mode;
 
 	i2c_hw->ADDR.reg = config->address << SERCOM_I2CS_ADDR_ADDR_Pos |
 			config->address_mask << SERCOM_I2CS_ADDR_ADDRMASK_Pos |
+			config->ten_bit_address << SERCOM_I2CS_ADDR_TENBITEN_Pos |
 			config->enable_general_call_address << SERCOM_I2CS_ADDR_GENCEN_Pos;
 
 	return STATUS_OK;
@@ -292,7 +303,7 @@ static enum status_code _i2c_slave_wait_for_bus(
  */
 enum status_code i2c_slave_write_packet_wait(
 		struct i2c_slave_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_slave_packet *const packet)
 {
 	/* Sanity check arguments. */
 	Assert(module);
@@ -326,6 +337,25 @@ enum status_code i2c_slave_write_packet_wait(
 	if (!(i2c_hw->INTFLAG.reg & SERCOM_I2CS_INTFLAG_AMATCH)) {
 		/* Not address interrupt, something is wrong */
 		return STATUS_ERR_DENIED;
+	}
+
+	if (module->ten_bit_address) {
+		/* ACK the first address */
+		i2c_hw->CTRLB.reg &= ~SERCOM_I2CS_CTRLB_ACKACT;
+		i2c_hw->CTRLB.reg |= SERCOM_I2CS_CTRLB_CMD(0x3);
+
+		/* Wait for address interrupt */
+		status = _i2c_slave_wait_for_bus(module);
+
+		if (status != STATUS_OK) {
+			/* Timeout, return */
+			return I2C_SLAVE_DIRECTION_NONE;
+		}
+
+		if (!(i2c_hw->INTFLAG.reg & SERCOM_I2CS_INTFLAG_AMATCH)) {
+			/* Not address interrupt, something is wrong */
+			return I2C_SLAVE_DIRECTION_NONE;
+		}
 	}
 
 	/* Check if there was an error in last transfer */
@@ -375,7 +405,6 @@ enum status_code i2c_slave_write_packet_wait(
 			i2c_hw->CTRLB.reg |= SERCOM_I2CS_CTRLB_CMD(0x02);
 
 			return STATUS_ERR_OVERFLOW;
-			/* Workaround: PIF will probably not be set, ignore */
 		}
 		/* ACK from master, continue writing */
 	}
@@ -410,7 +439,7 @@ enum status_code i2c_slave_write_packet_wait(
  */
 enum status_code i2c_slave_read_packet_wait(
 		struct i2c_slave_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_slave_packet *const packet)
 {
 	/* Sanity check arguments. */
 	Assert(module);
@@ -506,6 +535,8 @@ enum status_code i2c_slave_read_packet_wait(
 /**
  * \brief Waits for a start condition on the bus
  *
+ * \note This function is only available for 7-bit slave addressing.
+ *
  * Waits for the master to issue a start condition on the bus.
  * Note that this function does not check for errors in the last transfer,
  * this will be discovered when reading or writing.
@@ -584,7 +615,7 @@ enum i2c_slave_direction i2c_slave_get_direction_wait(
 uint32_t i2c_slave_get_status(
 		struct i2c_slave_module *const module)
 {
-	 /* Sanity check arguments */
+	/* Sanity check arguments */
 	Assert(module);
 	Assert(module->hw);
 

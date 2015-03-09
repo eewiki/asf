@@ -3,7 +3,7 @@
  *
  * \brief TWIM PDCA Example for SAM.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -73,11 +73,11 @@
  *       - No flow control
  * -# Start the application. The following traces shall appear on the terminal:
  *    \code
- *    -- TWIM PDCA Example --
- *    -- xxxxxx-xx
- *    -- Compiled: xxx xx xxxx xx:xx:xx --
- *
- *    \endcode
+	    -- TWIM PDCA Example --
+	    -- xxxxxx-xx
+	    -- Compiled: xxx xx xxxx xx:xx:xx --
+
+\endcode
  */
 
 #include <asf.h>

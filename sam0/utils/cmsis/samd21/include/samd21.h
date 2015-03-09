@@ -55,6 +55,8 @@
   #include "samd21e16a.h"
 #elif defined(__SAMD21E17A__) || defined(__ATSAMD21E17A__)
   #include "samd21e17a.h"
+#elif defined(__SAMD21E18A__) || defined(__ATSAMD21E18A__)
+#include "samd21e18a.h"  
 #elif defined(__SAMD21G16A__) || defined(__ATSAMD21G16A__)
   #include "samd21g16a.h"
 #elif defined(__SAMD21G17A__) || defined(__ATSAMD21G17A__)

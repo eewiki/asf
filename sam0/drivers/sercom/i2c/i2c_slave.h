@@ -106,6 +106,18 @@ extern "C" {
 
 /** @} */
 
+/**
+ * \brief I<SUP>2</SUP>C slave packet for read/write
+ *
+ * Structure to be used when transferring I<SUP>2</SUP>C slave packets.
+ */
+struct i2c_slave_packet {
+	/** Length of data array */
+	uint16_t data_length;
+	/** Data array containing all data to be transferred */
+	uint8_t *data;
+};
+
 #if I2C_SLAVE_CALLBACK_MODE == true
  /**
  * \brief Callback types
@@ -235,6 +247,10 @@ struct i2c_slave_module {
 	volatile bool locked;
 	/** Timeout value for polled functions */
 	uint16_t buffer_timeout;
+#  ifdef FEATURE_I2C_10_BIT_ADDRESS
+	/** Using 10 bit addressing for the slave */
+	bool ten_bit_address;
+#  endif
 #  if I2C_SLAVE_CALLBACK_MODE == true
 	/** Nack on address match */
 	bool nack_on_address;
@@ -279,9 +295,13 @@ struct i2c_slave_config {
 	/** Addressing mode */
 	enum i2c_slave_address_mode address_mode;
 	/** Address or upper limit of address range */
-	uint8_t address;
+	uint16_t address;
 	/** Address mask, second address or lower limit of address range */
-	uint8_t address_mask;
+	uint16_t address_mask;
+#ifdef FEATURE_I2C_10_BIT_ADDRESS
+	/** Enable 10 bit addressing */
+	bool ten_bit_address;
+#endif
 	/**
 	 * Enable general call address recognition (general call address
 	 * is defined as 0000000 with direction bit 0)
@@ -312,7 +332,7 @@ struct i2c_slave_config {
 	/** Set to enable SCL low time-out */
 	bool scl_low_timeout;
 #ifdef FEATURE_I2C_SCL_STRETCH_MODE
-	/** Set to enable SCL stretch only after ACK bit */
+	/** Set to enable SCL stretch only after ACK bit (required for high speed) */
 	bool scl_stretch_only_after_ack_bit;
 #endif
 #ifdef FEATURE_I2C_SCL_EXTEND_TIMEOUT
@@ -405,10 +425,12 @@ static inline bool i2c_slave_is_syncing(
 	SercomI2cs *const i2c_hw = &(module->hw->I2CS);
 
 	/* Return sync status */
-#ifdef FEATURE_I2C_SYNC_SCHEME_VERSION_2
+#if defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_1)
+	return (i2c_hw->STATUS.reg & SERCOM_I2CS_STATUS_SYNCBUSY);
+#elif defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_2)
 	return (i2c_hw->SYNCBUSY.reg & SERCOM_I2CS_SYNCBUSY_MASK);
 #else
-	return (i2c_hw->STATUS.reg & SERCOM_I2CS_STATUS_SYNCBUSY);
+#  error Unknown SERCOM SYNCBUSY scheme!
 #endif
 }
 
@@ -448,6 +470,12 @@ static void _i2c_slave_wait_for_sync(
  * - Do not run in standby
  * - PINMUX_DEFAULT for SERCOM pads
  *
+ * Those default configuration only availale if the device supports it:
+ * - Not using 10 bit addressing
+ * - Standard-mode and Fast-mode transfer speed
+ * - SCL stretch disabled
+ * - slave SCL low extend time-out disabled
+ *
  * \param[out] config  Pointer to configuration structure to be initialized
  */
 static inline void i2c_slave_get_config_defaults(
@@ -461,6 +489,9 @@ static inline void i2c_slave_get_config_defaults(
 	config->address_mode = I2C_SLAVE_ADDRESS_MODE_MASK;
 	config->address = 0;
 	config->address_mask = 0;
+#ifdef FEATURE_I2C_10_BIT_ADDRESS
+	config->ten_bit_address = false;
+#endif
 	config->enable_general_call_address = false;
 #ifdef FEATURE_I2C_FAST_MODE_PLUS_AND_HIGH_SPEED
 	config->transfer_speed = I2C_SLAVE_SPEED_STANDARD_AND_FAST;
@@ -563,13 +594,11 @@ void i2c_slave_reset(
 
 enum status_code i2c_slave_write_packet_wait(
 		struct i2c_slave_module *const module,
-		struct i2c_packet *const packet);
+		struct i2c_slave_packet *const packet);
 enum status_code i2c_slave_read_packet_wait(
 		struct i2c_slave_module *const module,
-		struct i2c_packet *const packet);
+		struct i2c_slave_packet *const packet);
 enum i2c_slave_direction i2c_slave_get_direction_wait(
-		struct i2c_slave_module *const module);
-enum i2c_slave_direction i2c_slave_get_direction(
 		struct i2c_slave_module *const module);
 
 /** @} */
@@ -590,7 +619,7 @@ void i2c_slave_clear_status(
  * \name SERCOM I2C slave with DMA interfaces
  * @{
  */
- 
+
 /**
  * \brief Read SERCOM I2C interrupt status.
  *

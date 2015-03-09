@@ -3,7 +3,7 @@
  *
  * \brief SAM Segment LCD Controller (SLCDC).
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -473,24 +473,24 @@ void slcdc_set_display_memory(Slcdc *p_slcdc);
  *
  * Add this to the main loop or a setup function:
  * \code
- *   // Set LCD power mode: Internal supply
- *   supc_set_slcd_power_mode(SUPC, SLCDC_POWER_MODE_LCDON_INVR);
- *
- *   struct slcdc_config slcdc_cfg;
- *
- *   // SLCDC Controller initialization
- *   // - Clock,
- *   // - Display mode: Normal
- *   // - Frame Rate:  64Hz
- *   slcdc_cfg.buf_time = SLCDC_BUFTIME_X64_SCLK;
- *   slcdc_cfg.frame_rate= 64;
- *   slcdc_cfg.disp_mode = SLCDC_DISPMODE_NORMAL;
- *   slcdc_init(&slcdc_cfg);
- *   slcdc_enable();
- *
- *   // Turn on LCD back light
- *   ioport_set_pin_level(LCD_BL_GPIO, IOPORT_PIN_LEVEL_HIGH);
- * \endcode
+	   // Set LCD power mode: Internal supply
+	   supc_set_slcd_power_mode(SUPC, SLCDC_POWER_MODE_LCDON_INVR);
+
+	   struct slcdc_config slcdc_cfg;
+
+	   // SLCDC Controller initialization
+	   // - Clock,
+	   // - Display mode: Normal
+	   // - Frame Rate:  64Hz
+	   slcdc_cfg.buf_time = SLCDC_BUFTIME_X64_SCLK;
+	   slcdc_cfg.frame_rate= 64;
+	   slcdc_cfg.disp_mode = SLCDC_DISPMODE_NORMAL;
+	   slcdc_init(&slcdc_cfg);
+	   slcdc_enable();
+
+	   // Turn on LCD back light
+	   ioport_set_pin_level(LCD_BL_GPIO, IOPORT_PIN_LEVEL_HIGH);
+\endcode
  *
  * \subsection slcdc_basic_setup_workflow Basic Setup Workflow
  *

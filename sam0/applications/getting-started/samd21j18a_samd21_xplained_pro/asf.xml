@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Getting Started for SAMd21 xplained pro" id="sam0.applications.getting-started.samd21_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		
+		<build type="include-path" value="."/>
+		<require idref="sam0.applications.getting-started"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

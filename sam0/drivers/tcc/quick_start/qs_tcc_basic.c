@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D2x Timer/Counter Driver for Control Applications Basic Quickstart
+ * \brief SAM D21 Timer/Counter Driver for Control Applications Basic Quickstart
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -42,14 +42,14 @@
 #include <asf.h>
 #include <conf_quick_start.h>
 
-static void _configure_tcc(void);
+static void configure_tcc(void);
 
 //! [module_inst]
 struct tcc_module tcc_instance;
 //! [module_inst]
 
 //! [setup]
-static void _configure_tcc(void)
+static void configure_tcc(void)
 {
 	//! [setup_config]
 	struct tcc_config config_tcc;
@@ -85,7 +85,7 @@ int main(void)
 	system_init();
 
 	//! [setup_init]
-	_configure_tcc();
+	configure_tcc();
 	//! [setup_init]
 
 //! [main]

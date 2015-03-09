@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="Sound Player for the SAM D21 Xplained PRO" id="sam0.applications.dac_sound_player.samd21_xplained_pro">
+	<project caption="Sound Player for the SAM D21 Xplained Pro" id="sam0.applications.dac_sound_player.samd21_xplained_pro">
 		<info type="gui-flag" value="move-to-root"/>
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_clocks.h"/>

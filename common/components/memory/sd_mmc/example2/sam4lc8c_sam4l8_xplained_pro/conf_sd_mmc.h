@@ -3,7 +3,7 @@
  *
  * \brief SD/MMC stack configuration file.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -52,6 +52,9 @@
 
 /* Define it to enable the debug trace to the current standard output (stdio) */
 //#define SD_MMC_DEBUG
+
+/* Define the SPI max clock */
+#define SD_MMC_SPI_MAX_CLOCK       10000000
 
 #endif /* CONF_SD_MMC_H_INCLUDED */
 

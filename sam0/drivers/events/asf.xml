@@ -1,5 +1,14 @@
 <asf xmlversion="1.0">
-	<module type="driver" id="sam0.drivers.events" caption="EVSYS - Event System">
+
+	<module type="meta" id="sam0.drivers.events.common" caption="EVSYS - Event System Common">
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="events.h"/>
+		<build type="c-source" value="events.c"/>
+
+	</module>
+
+	<select-by-config id="sam0.drivers.events" name="config.sam0.drivers.events" caption="EVSYS - Event System"  default="hook">
+
 		<info type="description" value="summary">
 			Driver for the SAM D20/D21 Event System. Provides a unified interface
 			for the configuration and management of the Event channels within
@@ -7,36 +16,76 @@
 			from various modules within the device.
 		</info>
 
-		<info type="keyword" value="technology">
-			<keyword value="Peripheral Event System"/>
-		</info>
+		<module type="driver" id="sam0.drivers.events#polled" caption="EVSYS - Event System">
 
-		<info type="appnote" value="AT03245"/>
-		<info type="keyword" value="pdf">
-			<keyword value="EVSYS"/>
-			<keyword value="Peripheral Event System"/>
-		</info>
+			<info type="keyword" value="technology">
+				<keyword value="Peripheral Event System"/>
+			</info>
 
-		<info type="description" value="pdf">
-			This document describes how to use the Peripheral Event System on
-			the SAM D20/D21, both the ASF driver and the peripheral itself.
-		</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="events.h"/>
+			<build type="c-source" value="events.c"/>
 
-		<build type="include-path" value="."/>
-		<build type="header-file" subtype="api" value="events.h"/>
-		<build type="c-source" value="events.c"/>
+			<build type="header-file" value="quick_start/qs_events_basic.h"/>
+			<build type="header-file" value="quick_start_interrupt_hook/qs_events_interrupt_hook.h"/>
 
-		<build type="header-file" value="quick_start/qs_events_basic.h"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam0_events_group"/>
+			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam0_events_exqsg"/>
 
-		<build type="doxygen-entry-point" value="asfdoc_sam0_events_group"/>
-		<build type="doxygen-example-path" value="quick_start"/>
-		<build type="doxygen-quick-start" value="asfdoc_sam0_events_exqsg"/>
+			<require idref="sam0.drivers.events.common"/>
+			<require idref="sam0.utils"/>
+			<require idref="sam0.drivers.system"/>
 
-		<device-support value="sam0"/>
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
 
-		<require idref="sam0.utils"/>
-		<require idref="sam0.drivers.system"/>
+			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+		</module>
 
-		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
-	</module>
+		<module type="driver" id="sam0.drivers.events#hook" caption="EVSYS - Event System with interupt hooks support">
+
+			<info type="keyword" value="technology">
+				<keyword value="Peripheral Event System"/>
+			</info>
+
+			<info type="appnote" value="AT03245"/>
+			<info type="keyword" value="pdf">
+				<keyword value="EVSYS"/>
+				<keyword value="Peripheral Event System"/>
+			</info>
+
+			<info type="description" value="pdf">
+				This document describes how to use the Peripheral Event System on
+				the SAM D20/D21, both the ASF driver and the peripheral itself.
+			</info>
+
+			<build type="define" name="EVENTS_INTERRUPT_HOOKS_MODE" value="true"/>
+			<build type="doxygen-enable-section" value="EVENTS_INTERRUPT_HOOK_MODE"/>
+
+			<build type="include-path" value="."/>
+			<build type="header-file" value="quick_start/qs_events_basic.h"/>
+			<build type="header-file" value="quick_start_interrupt_hook/qs_events_interrupt_hook.h"/>
+
+			<build type="header-file" subtype="api" value="events_hooks.h"/>
+			<build type="header-file" value="events_common.h"/>
+
+			<build type="c-source" value="events_hooks.c"/>
+
+			<build type="doxygen-entry-point" value="asfdoc_sam0_events_group"/>
+			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-example-path" value="quick_start_interrupt_hook"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_events_exqsg"/>
+
+			<require idref="sam0.drivers.events.common"/>
+			<require idref="sam0.utils"/>
+			<require idref="sam0.drivers.system"/>
+
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+
+			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+		</module>
+
+	</select-by-config>
 </asf>

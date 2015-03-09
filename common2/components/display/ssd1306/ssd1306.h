@@ -77,15 +77,15 @@ extern "C" {
  *
  * An example \ref conf_ssd1306.h file could look like
  * \code
- * // interface selection
- * #define SSD1306_SPI           SERCOM2
- *
- * #define SSD1306_CLOCK_SPEED          1000000
- *
- * #define SSD1306_DC_PIN               PIN_PB24
- * #define SSD1306_CS_PIN               PIN_PB27
- * #define SSD1306_RES_PIN              PIN_PA17
- * \endcode
+	 // interface selection
+	 #define SSD1306_SPI           SERCOM2
+
+	 #define SSD1306_CLOCK_SPEED          1000000
+
+	 #define SSD1306_DC_PIN               PIN_PB24
+	 #define SSD1306_CS_PIN               PIN_PB27
+	 #define SSD1306_RES_PIN              PIN_PA17
+\endcode
  *
  * \section dependencies Dependencies
  * This driver depends on the following modules:

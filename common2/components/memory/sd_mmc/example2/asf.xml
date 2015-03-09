@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common2.components.memory.sd_mmc.example2" caption="SD/MMC Card FatFs Example">
+		<info type="description" value="summary">
+		Use FatFs file system module to mount the SD/MMC card and to write a file.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="c-source" value="example.c"/>
+		<require idref="common2.components.memory.sd_mmc.ctrl_access"/>
+		<require idref="common.services.fs.fatfs"/>
+		<require idref="sam0.utils.stdio.stdio_serial"/>
+		<device-support value="sam0"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

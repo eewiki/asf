@@ -3,7 +3,7 @@
  *
  * \brief ADC Enhanced Mode example for SAM.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -73,16 +73,16 @@
  * -# In the terminal window, the
  *    following text should appear (values depend on the board and the chip used):
  *    \code
- *     -- ADC Enhanced Resolution Examplexxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     =========================================================
- *     Menu: press a key to change the resolution mode.
- *     ---------------------------------------------------------
- *     -- n: Normal Resolution Mode--
- *     -- e: Enhanced Resolution Mode--
- *     -- q: Quit Configuration--
- *    \endcode
+	-- ADC Enhanced Resolution Examplexxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	=========================================================
+	Menu: press a key to change the resolution mode.
+	---------------------------------------------------------
+	-- n: Normal Resolution Mode--
+	-- e: Enhanced Resolution Mode--
+	-- q: Quit Configuration--
+\endcode
  * -# The application will output the raw ADC result and the current voltage of
  * potentiometer on the terminal.
  */

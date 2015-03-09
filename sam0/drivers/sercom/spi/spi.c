@@ -70,6 +70,69 @@ void spi_reset(
 	spi_module->CTRLA.reg |= SERCOM_SPI_CTRLA_SWRST;
 }
 
+/**
+ * \brief Set the baudrate of the SPI module
+ *
+ * This function will set the baudrate of the SPI module.
+ *
+ * \param[in]  module  Pointer to the software instance struct
+ * \param[in]  baudrate  The baudrate wanted
+ *
+ * \return The status of the configuration
+ * \retval STATUS_ERR_INVALID_ARG  If invalid argument(s) were provided.
+ * \retval STATUS_OK               If the configuration was written
+ */
+enum status_code spi_set_baudrate(
+		struct spi_module *const module,
+		uint32_t baudrate)
+{
+	/* Sanity check arguments */
+	Assert(module);
+	Assert(baudrate);
+	Assert(module->hw);
+
+	/* Value to write to BAUD register */
+	uint16_t baud = 0;
+
+	SercomSpi *const spi_module = &(module->hw->SPI);
+
+	/* Disable the module */
+	spi_disable(module);
+
+	while (spi_is_syncing(module)) {
+		/* Wait until the synchronization is complete */
+	}
+
+	/* Find frequency of the internal SERCOMi_GCLK_ID_CORE */
+	uint32_t sercom_index = _sercom_get_sercom_inst_index(module->hw);
+	uint32_t gclk_index   = sercom_index + SERCOM0_GCLK_ID_CORE;
+	uint32_t internal_clock = system_gclk_chan_get_hz(gclk_index);
+
+	/* Get baud value, based on baudrate and the internal clock frequency */
+	enum status_code error_code = _sercom_get_sync_baud_val(
+			baudrate, internal_clock, &baud);
+
+	if (error_code != STATUS_OK) {
+		/* Baud rate calculation error, return status code */
+		return STATUS_ERR_INVALID_ARG;
+	}
+
+	spi_module->BAUD.reg = (uint8_t)baud;
+
+	while (spi_is_syncing(module)) {
+		/* Wait until the synchronization is complete */
+	}
+
+	/* Enable the module */
+	spi_enable(module);
+
+	while (spi_is_syncing(module)) {
+		/* Wait until the synchronization is complete */
+	}
+
+	return STATUS_OK;
+}
+
 #  if CONF_SPI_SLAVE_ENABLE == true
 /**
  * \internal Clears the Transmit Complete interrupt flag.
@@ -206,8 +269,8 @@ static enum status_code _spi_set_config(
 	/* Set SPI character size */
 	ctrlb |= config->character_size;
 
-	if (config->run_in_standby) {
-		/* Enable in sleep mode */
+	/* Set whether module should run in standby. */
+	if (config->run_in_standby || system_is_debugger_present()) {
 		ctrla |= SERCOM_SPI_CTRLA_RUNSTDBY;
 	}
 

@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="MAC Serial Interface Beacon RFD  AT86RF233 REB-SAMD20 Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_rfd.ncp.samd20_reb233_xpro" force-caption="true" force-description="true">
+	<project caption="MAC Serial Interface Beacon RFD  AT86RF233 REB-SAM D20 Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_rfd.ncp.samd20_reb233_xpro" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 		MAC Serial Interface Application - Beacon RFD
 		</info>	

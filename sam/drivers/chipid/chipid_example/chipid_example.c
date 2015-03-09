@@ -3,7 +3,7 @@
  *
  * \brief Chip Identifier (CHIPID) example for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -74,18 +74,18 @@
  * -# In the terminal window, the following text should appear
  *    (values depend on the board and chip used):
  *    \code
- *     -- CHIPID Example --
- *     -- xxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     Version                                   0x0.
- *     Embedded Processor                        Cortex-xx.
- *     Nonvolatile program memory size           xxx bytes.
- *     Second nonvolatile program memory size    None.
- *     Internal SRAM size                        xxx bytes.
- *     Architecture identifier                   xxxxxxxx Series.
- *     Nonvolatile program memory type           Embedded Flash Memory.
- *     ...
- *    \endcode
+	-- CHIPID Example --
+	-- xxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	Version                                   0x0.
+	Embedded Processor                        Cortex-xx.
+	Nonvolatile program memory size           xxx bytes.
+	Second nonvolatile program memory size    None.
+	Internal SRAM size                        xxx bytes.
+	Architecture identifier                   xxxxxxxx Series.
+	Nonvolatile program memory type           Embedded Flash Memory.
+	...
+\endcode
  *
  */
 

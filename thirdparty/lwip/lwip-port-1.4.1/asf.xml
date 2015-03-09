@@ -1,0 +1,220 @@
+<asf xmlversion="1.0">
+	<select-by-config id="thirdparty.lwip-port.141" name="config.thirdparty.lwip-port.141" caption="Supported port of the lwIP TCP/IP Stack v141" default="empty">
+		<info type="description" value="summary">
+		One of the following lwIP ports can be selected:
+		- Standalone using AVR UC3 MACB hardware module
+		- FreeRTOS using AVR UC3 MACB hardware module
+		- Standalone using SAM4E hardware module
+		- FreeRTOS using SAM4E hardware module
+		- Standalone using Micrel KSZ8851SNL hardware module
+		- FreeRTOS using Micrel KSZ8851SNL hardware module
+		- Any OS using the H&amp;D wireless hardware modules
+		- Empty port for creating a new port
+		</info>
+		<module type="service" id="thirdparty.lwip-port.141#freertos" caption="lwIP v141 port to FreeRTOS on AVR UC3 MACB hardware module.">
+			<info type="description" value="summary">
+			This lwIP port uses FreeRTOS and is dedicated to the AVR UC3 MACB hardware module.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="at32uc3/include/arch/cc.h"/>
+			<build type="header-file" subtype="api" value="at32uc3/include/arch/perf.h"/>
+			<build type="header-file" subtype="api" value="at32uc3/include/netif/ethernetif.h"/>
+			<build type="header-file" subtype="api" value="at32uc3/include/arch/sys_arch.h"/>
+			<build type="include-path" value="at32uc3/include"/>
+			<build type="c-source" value="at32uc3/netif/ethernetif.c"/>
+			<build type="c-source" value="at32uc3/sys_arch.c"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.drivers.macb"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="thirdparty.lwip-port.141#standalone" caption="Stand-alone port(no OS) of the lwIP v141 stack on AVR U3 MACB hardware module.">
+			<info type="description" value="summary">
+			This lwIP port does not use any OS and is dedicated to the AVR UC3 MACB hardware module.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="at32uc3/include/arch/cc.h"/>
+			<build type="header-file" subtype="api" value="at32uc3/include/arch/perf.h"/>
+			<build type="header-file" subtype="api" value="at32uc3/include/netif/ethernetif.h"/>
+			<build type="header-file" subtype="api" value="at32uc3/include/arch/sys_arch.h"/>
+			<build type="include-path" value="at32uc3/include"/>
+			<build type="c-source" value="at32uc3/netif/ethernetif.c"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.drivers.macb"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="thirdparty.lwip-port.141#hd" caption="lwIP v141 port for H&amp;D wireless.">
+			<info type="description" value="summary">
+			This lwIP port does not use any OS and is dedicated to the H&amp;D wireless hardware modules.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="hd/if/netif/wlif.c"/>
+			<build type="header-file" value="hd/if/include/lwipopts_example.h"/>
+			<build type="header-file" subtype="api" value="hd/if/include/arch/cc.h"/>
+			<build type="header-file" subtype="api" value="hd/if/include/arch/perf.h"/>
+			<build type="header-file" subtype="api" value="hd/if/include/netif/wlif.h"/>
+			<build type="include-path" value="hd/if/include"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+		</module>
+		<module type="service" id="thirdparty.lwip-port.141#empty" caption="Empty port for lwIP v141 Stack.">
+			<info type="description" value="summary">
+			This is the default lwIP port configuration which is empty: this should be used when creating a new lwIP port.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+		</module>
+		<module type="service" id="thirdparty.lwip-port.141#freertos_sam3x" caption="lwIP v141 port to FreeRTOS on SAM hardware module.">
+			<info type="description" value="summary">
+			This lwIP port uses FreeRTOS and is dedicated to the SAM hardware module.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="path" value="sam/module_config"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/cc.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/perf.h"/>
+			<build type="header-file" subtype="api" value="sam/include/netif/ethernetif.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/sys_arch.h"/>
+			<build type="include-path" value="sam/include"/>
+			<build type="c-source" value="sam/netif/ethernetif.c"/>
+			<build type="c-source" value="sam/sys_arch.c"/>
+			<device-support value="sam3x"/>
+			<require idref="sam.drivers.emac"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.rstc"/>
+			<require idref="sam.components.ethernet_phy.dm9161a"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		</module>
+		<module type="service" id="thirdparty.lwip-port.141#standalone_sam3x" caption="Stand-alone port(no OS) of the lwIP v141 stack on SAM hardware module.">
+			<info type="description" value="summary">
+			This lwIP port does not use any OS and is dedicated to the SAM hardware module.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/cc.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/perf.h"/>
+			<build type="header-file" subtype="api" value="sam/include/netif/ethernetif.h"/>
+			<build type="include-path" value="sam/include"/>
+			<build type="include-path" value="sam/include/netif"/>
+			<build type="c-source" value="sam/netif/ethernetif.c"/>
+			<device-support value="sam3x"/>
+			<require idref="sam.drivers.emac"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.rstc"/>
+			<require idref="sam.components.ethernet_phy.dm9161a"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		</module>
+		<module type="service" id="thirdparty.lwip-port.141#freertos_sam4e" caption="lwIP v141 port to FreeRTOS on SAM hardware module.">
+			<info type="description" value="summary">
+			This lwIP port uses FreeRTOS and is dedicated to the SAM hardware module.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="path" value="sam/module_config"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/cc.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/perf.h"/>
+			<build type="header-file" subtype="api" value="sam/include/netif/sam4e_gmac.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/sys_arch.h"/>
+			<build type="include-path" value="sam/include"/>
+			<build type="c-source" value="sam/netif/sam4e_gmac.c"/>
+			<build type="c-source" value="sam/sys_arch.c"/>
+			<device-support value="sam4e"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.components.ethernet_phy.ksz8051mnl"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+		</module>
+		<module type="service" id="thirdparty.lwip-port.141#standalone_sam4e" caption="Stand-alone port(no OS) of the lwIP v141 stack on SAM hardware module.">
+			<info type="description" value="summary">
+			This lwIP port does not use any OS and is dedicated to the SAM hardware module.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/cc.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/perf.h"/>
+			<build type="header-file" subtype="api" value="sam/include/netif/sam4e_gmac.h"/>
+			<build type="include-path" value="sam/include"/>
+			<build type="include-path" value="sam/include/netif"/>
+			<build type="c-source" value="sam/netif/sam4e_gmac.c"/>
+			<device-support value="sam4e"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.components.ethernet_phy.ksz8051mnl"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+		</module>
+		<module type="service" id="thirdparty.lwip-port.141#freertos_sam_ksz8851snl" caption="lwIP v141 port to FreeRTOS on SAM with Micrel KSZ8851SNL hardware module.">
+			<info type="description" value="summary">
+			This lwIP port uses FreeRTOS and is dedicated to the SAM hardware module.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="path" value="sam/module_config"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/cc.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/perf.h"/>
+			<build type="header-file" subtype="api" value="sam/include/netif/sam_spi_ksz8851snl.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/sys_arch.h"/>
+			<build type="include-path" value="sam/include"/>
+			<build type="c-source" value="sam/netif/sam_spi_ksz8851snl.c"/>
+			<build type="c-source" value="sam/sys_arch.c"/>
+			<device-support value="sam4"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.services.basic.spi_master"/>
+			<require idref="sam.components.ethernet_phy.ksz8851snl"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4s"/>
+		</module>
+		<module type="service" id="thirdparty.lwip-port.141#standalone_sam_ksz8851snl" caption="Stand-alone port(no OS) of the lwIP v141 stack on SAM with Micrel KSZ8851SNL hardware module.">
+			<info type="description" value="summary">
+			This lwIP port does not use any OS and is dedicated to the SAM hardware module.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/cc.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/perf.h"/>
+			<build type="header-file" subtype="api" value="sam/include/netif/sam_spi_ksz8851snl.h"/>
+			<build type="include-path" value="sam/include"/>
+			<build type="include-path" value="sam/include/netif"/>
+			<build type="c-source" value="sam/netif/sam_spi_ksz8851snl.c"/>
+			<device-support value="sam4"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.services.basic.spi_master"/>
+			<require idref="sam.components.ethernet_phy.ksz8851snl"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4s"/>
+		</module>
+		<module type="service" id="thirdparty.lwip-port.141#freertos_samd20_ksz8851snl" caption="lwIP v141 port to FreeRTOS on SAMD20 with Micrel KSZ8851SNL hardware module.">
+			<info type="description" value="summary">
+			This lwIP port uses FreeRTOS and is dedicated to the Ethernet Xplained Pro hardware module.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="path" value="sam/module_config"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/cc.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/perf.h"/>
+			<build type="header-file" subtype="api" value="sam/include/netif/samd20_spi_ksz8851snl.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/sys_arch.h"/>
+			<build type="include-path" value="sam/include"/>
+			<build type="c-source" value="sam/netif/samd20_spi_ksz8851snl.c"/>
+			<build type="c-source" value="sam/sys_arch.c"/>
+			<device-support value="samd20"/>
+			<require idref="sam0.drivers.tc"/>
+			<require idref="sam0.components.ethernet_phy.ksz8851snl"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+		</module>
+		<module type="service" id="thirdparty.lwip-port.141#standalone_samd20_ksz8851snl" caption="Stand-alone port(no OS) of the lwIP v141 stack on SAMD20 with Micrel KSZ8851SNL hardware module.">
+			<info type="description" value="summary">
+			This lwIP port does not use any OS and is dedicated to the Ethernet Xplained Pro hardware module.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/cc.h"/>
+			<build type="header-file" subtype="api" value="sam/include/arch/perf.h"/>
+			<build type="header-file" subtype="api" value="sam/include/netif/samd20_spi_ksz8851snl.h"/>
+			<build type="include-path" value="sam/include"/>
+			<build type="include-path" value="sam/include/netif"/>
+			<build type="c-source" value="sam/netif/samd20_spi_ksz8851snl.c"/>
+			<device-support value="samd20"/>
+			<require idref="sam0.drivers.tc"/>
+			<require idref="sam0.components.ethernet_phy.ksz8851snl"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+		</module>
+	</select-by-config>
+</asf>

@@ -93,7 +93,7 @@ void ui_process(uint16_t framenumber)
 /**
  * \defgroup UI User Interface
  *
- * Human interface on SAMD21 Xplained Pro
+ * Human interface on SAM D21 Xplained Pro
  * - LED0 blinks when USB host has checked and enabled MSC interface
  *
  */

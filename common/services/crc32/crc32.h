@@ -3,7 +3,7 @@
  *
  * \brief 32-bit CRC header.
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -121,13 +121,13 @@ static inline enum status_code crc32_calculate(const void *data, size_t length,
  * \section common_services_crc32_quickstart_code Example Code
  *
 \code
-uint8_t block1[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-uint8_t block2[6] = {0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
+	uint8_t block1[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	uint8_t block2[6] = {0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f};
 
-crc32_t my_crc;
+	crc32_t my_crc;
 
-crc32_calculate(block1, sizeof(block1), &my_crc);
-crc32_recalculate(block2, sizeof(block2), &my_crc);
+	crc32_calculate(block1, sizeof(block1), &my_crc);
+	crc32_recalculate(block2, sizeof(block2), &my_crc);
 \endcode
  *
  */

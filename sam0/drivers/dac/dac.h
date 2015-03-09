@@ -842,10 +842,12 @@ void dac_clear_status(
  *	\else  
  *  - \subpage asfdoc_sam0_adc_dma_use_case  
  * \endif  
- *	
+ *
+ * \if DAC_DMA_USE_MODE_SELECTION 
  * \page asfdoc_sam0_adc_dma_use_case_dac_in_dma Quick Start Guide for Using DMA with ADC/DAC  
  * For	this examples, see	
  * \ref asfdoc_sam0_adc_dma_use_case  
+ * \endif
  *
  * \page asfdoc_sam0_dac_document_revision_history Document Revision History
  *

@@ -1,43 +1,65 @@
 <asf xmlversion="1.0">
-	<module type="application" id="common.services.usb.class.phdc.device.example" caption="USB Device PHDC Example">
-		<info type="description" value="summary">
-		Provide an application example of USB Device PHDC implementation. Relies on the PHDC driver and uses buttons available on the board as a sensor interfaces.
-		</info>
-		<build type="header-file" value="conf_usb.h"/>
-		<build type="header-file" value="ui.h"/>
-		<build type="header-file" value="main.h"/>
-		<build type="c-source" value="main.c"/>
-		<build type="header-file" value="ieee11073_skeleton.h"/>
-		<build type="c-source" value="ieee11073_skeleton.c"/>
-		<build type="include-path" value="."/>
-		<device-support value="uc3a"/>
-		<device-support value="uc3a3_a4"/>
-		<device-support value="uc3b"/>
-		<device-support value="uc3c"/>
-		<device-support value="uc3d"/>
-		<device-support value="uc3l3"/>
-		<device-support value="uc3l4"/>
-		<device-support value="xmegaa1u"/>
-		<device-support value="xmegaa3u"/>
-		<device-support value="xmegaa3bu"/>
-		<device-support value="xmegaa4u"/>
-		<device-support value="xmegab"/>
-		<device-support value="xmegac"/>
-		<device-support value="sam3s"/>
-		<device-support value="sam3sd"/>
-		<device-support value="sam3u"/>
-		<device-support value="sam3x"/>
-		<device-support value="sam3a"/>
-		<device-support value="sam4s"/>
-		<device-support value="sam4l"/>
-		<device-support value="sam4e"/>
-		<require idref="common.services.basic.clock"/>
-		<require idref="common.services.basic.sleepmgr"/>
-		<require idref="common.services.usb.class.device"/>
-		<info type="keyword" value="technology">
-			<keyword value="USB"/>
-			<keyword value="Communication"/>
-		</info>
-		<info type="gui-flag" value="move-to-root"/>
-	</module>
+	<select-by-device id="common.services.usb.class.phdc.device.example" caption="USB Device PHDC Example">
+		<module type="application" id="common.services.usb.class.phdc.device.example#0" caption="USB Device PHDC Example">
+			<info type="description" value="summary">
+			Provide an application example of USB Device PHDC implementation. Relies on the PHDC driver and uses buttons available on the board as a sensor interfaces.
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="header-file" value="ieee11073_skeleton.h"/>
+			<build type="c-source" value="ieee11073_skeleton.c"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3d"/>
+			<device-support value="uc3l3"/>
+			<device-support value="uc3l4"/>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa3bu"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd"/>
+			<device-support value="sam3u"/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4l"/>
+			<device-support value="sam4e"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.usb.class.phdc.device.example#1" caption="USB Device PHDC Example">
+			<info type="description" value="summary">
+			Provide an application example of USB Device PHDC implementation. Relies on the PHDC driver and uses buttons available on the board as a sensor interfaces.
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="header-file" value="ieee11073_skeleton.h"/>
+			<build type="c-source" value="ieee11073_skeleton.c"/>
+			<build type="include-path" value="."/>
+			<device-support value="samd21"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
 </asf>

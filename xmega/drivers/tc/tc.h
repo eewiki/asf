@@ -3,7 +3,7 @@
  *
  * \brief AVR XMEGA Timer Counter (TC) driver
  *
- * Copyright (c) 2010-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -1404,23 +1404,23 @@ static inline void tc_hires_set_mode(HIRES_t * hires, HIRES_HREN_t hi_res_mode)
  * Add a callback function that will be executed when the overflow interrupt
  * trigger.
  * \code
- * static void my_callback(void)
- * {
- *     // User code to execute when the overflow occurs here
- * }
- * \endcode
+	static void my_callback(void)
+	{
+	    // User code to execute when the overflow occurs here
+	}
+\endcode
  * Add to, e.g., the main loop in the application C-file:
  * \code
- * pmic_init();
- * sysclk_init();
- * tc_enable(&TCC0);
- * tc_set_overflow_interrupt_callback(&TCC0, my_callback);
- * tc_set_wgm(&TCC0, TC_WG_NORMAL);
- * tc_write_period(&TCC0, 1000);
- * tc_set_overflow_interrupt_level(&TCC0, TC_INT_LVL_LO);
- * cpu_irq_enable();
- * tc_write_clock_source(&TCC0, TC_CLKSEL_DIV1_gc);
- * \endcode
+	pmic_init();
+	sysclk_init();
+	tc_enable(&TCC0);
+	tc_set_overflow_interrupt_callback(&TCC0, my_callback);
+	tc_set_wgm(&TCC0, TC_WG_NORMAL);
+	tc_write_period(&TCC0, 1000);
+	tc_set_overflow_interrupt_level(&TCC0, TC_INT_LVL_LO);
+	cpu_irq_enable();
+	tc_write_clock_source(&TCC0, TC_CLKSEL_DIV1_gc);
+\endcode
  *
  * \subsection xmega_tc_qs_ovf_setup_code_workflow Workflow
  *
@@ -1488,32 +1488,32 @@ static inline void tc_hires_set_mode(HIRES_t * hires, HIRES_HREN_t hi_res_mode)
  * Add two callback functions that will be executed when compare match A and
  * compare match B occurs
  * \code
- * static void my_cca_callback(void)
- * {
- *    // User code here to execute when a channel A compare match occurs
- * }
- * static void my_ccb_callback(void)
- * {
- *    // User code here to execute when a channel B compare match occurs
- * }
- * \endcode
+	static void my_cca_callback(void)
+	{
+	   // User code here to execute when a channel A compare match occurs
+	}
+	static void my_ccb_callback(void)
+	{
+	   // User code here to execute when a channel B compare match occurs
+	}
+\endcode
  * Add to, e.g., the main loop in the application C-file:
  * \code
- * pmic_init();
- * sysclk_init();
- * cpu_irq_enable();
- * tc_enable(&TCC0);
- * tc_set_cca_interrupt_callback(&TCC0, my_cca_callback);
- * tc_set_ccb_interrupt_callback(&TCC0, my_ccb_callback);
- * tc_set_wgm(&TCC0, TC_WG_NORMAL);
- * tc_write_period(&TCC0, 10000);
- * tc_write_cc(&TCC0, TC_CCA, 100);
- * tc_write_cc(&TCC0, TC_CCB, 1000);
- * tc_enable_cc_channels(&TCC0,(TC_CCAEN | TC_CCBEN));
- * tc_set_cca_interrupt_level(&TCC0, TC_INT_LVL_LO);
- * tc_set_ccb_interrupt_level(&TCC0, TC_INT_LVL_MED);
- * tc_write_clock_source(&TCC0, TC_CLKSEL_DIV1_gc);
- * \endcode
+	pmic_init();
+	sysclk_init();
+	cpu_irq_enable();
+	tc_enable(&TCC0);
+	tc_set_cca_interrupt_callback(&TCC0, my_cca_callback);
+	tc_set_ccb_interrupt_callback(&TCC0, my_ccb_callback);
+	tc_set_wgm(&TCC0, TC_WG_NORMAL);
+	tc_write_period(&TCC0, 10000);
+	tc_write_cc(&TCC0, TC_CCA, 100);
+	tc_write_cc(&TCC0, TC_CCB, 1000);
+	tc_enable_cc_channels(&TCC0,(TC_CCAEN | TC_CCBEN));
+	tc_set_cca_interrupt_level(&TCC0, TC_INT_LVL_LO);
+	tc_set_ccb_interrupt_level(&TCC0, TC_INT_LVL_MED);
+	tc_write_clock_source(&TCC0, TC_CLKSEL_DIV1_gc);
+\endcode
  *
  * \subsection xmega_tc_qs_cc_setup_code_workflow Workflow
  *
@@ -1584,15 +1584,15 @@ static inline void tc_hires_set_mode(HIRES_t * hires, HIRES_HREN_t hi_res_mode)
  *
  * Add to, e.g., the main loop in the application C-file:
  * \code
- * board_init();
- * sysclk_init();
- * tc_enable(&TCE0);
- * tc_set_wgm(&TCE0, TC_WG_SS);
- * tc_write_period(&TCE0, 1950);
- * tc_write_cc(&TCE0, TC_CCA, 195);
- * tc_enable_cc_channels(&TCE0,TC_CCAEN);
- * tc_write_clock_source(&TCE0, TC_CLKSEL_DIV1024_gc);
- * \endcode
+	board_init();
+	sysclk_init();
+	tc_enable(&TCE0);
+	tc_set_wgm(&TCE0, TC_WG_SS);
+	tc_write_period(&TCE0, 1950);
+	tc_write_cc(&TCE0, TC_CCA, 195);
+	tc_enable_cc_channels(&TCE0,TC_CCAEN);
+	tc_write_clock_source(&TCE0, TC_CLKSEL_DIV1024_gc);
+\endcode
  *
  * \subsection xmega_tc_qs_pwm_setup_code_workflow Workflow
  *

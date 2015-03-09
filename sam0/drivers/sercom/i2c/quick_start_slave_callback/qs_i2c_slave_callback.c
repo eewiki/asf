@@ -51,7 +51,7 @@ void configure_i2c_slave(void);
 void configure_i2c_slave_callbacks(void);
 
 //! [packet]
-static struct i2c_packet packet;
+static struct i2c_slave_packet packet;
 //! [packet]
 
 //! [packet_data]

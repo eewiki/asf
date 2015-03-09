@@ -3,7 +3,7 @@
  *
  * \brief SSD1306 OLED display controller driver.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -78,16 +78,16 @@ extern "C" {
  *
  * An example \ref conf_ssd1306.h file could look like
  * \code
- * // interface selection
- * #define SSD1306_USART_SPI_INTERFACE
- * #define SSD1306_USART_SPI            &USARTD0
- *
- * #define SSD1306_CLOCK_SPEED          1000000
- *
- * #define SSD1306_DC_PIN               UG_2832HSWEG04_DATA_CMD
- * #define SSD1306_CS_PIN               UG_2832HSWEG04_RESET
- * #define SSD1306_RES_PIN              UG_2832HSWEG04_SS
- * \endcode
+	 // interface selection
+	 #define SSD1306_USART_SPI_INTERFACE
+	 #define SSD1306_USART_SPI            &USARTD0
+
+	 #define SSD1306_CLOCK_SPEED          1000000
+
+	 #define SSD1306_DC_PIN               UG_2832HSWEG04_DATA_CMD
+	 #define SSD1306_CS_PIN               UG_2832HSWEG04_RESET
+	 #define SSD1306_RES_PIN              UG_2832HSWEG04_SS
+\endcode
  *
  * \section dependencies Dependencies
  * This driver depends on the following modules:

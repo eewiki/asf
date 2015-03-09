@@ -3,7 +3,7 @@
  *
  * \brief Pulse Width Modulation (PWM) driver for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -166,11 +166,11 @@ uint32_t pwm_init(Pwm *p_pwm, pwm_clock_t *clock_config)
  */
 uint32_t pwm_channel_init(Pwm *p_pwm, pwm_channel_t *p_channel)
 {
-	uint32_t ch_mode_reg = 0;
+	uint32_t tmp_reg = 0;
 	uint32_t ch_num = p_channel->channel;
 
 	/* Channel Mode/Clock Register */
-	ch_mode_reg = (p_channel->ul_prescaler & 0xF) |
+	tmp_reg = (p_channel->ul_prescaler & 0xF) |
 			(p_channel->polarity << 9) |
 #if (SAM3U || SAM3S || SAM3XA || SAM4S || SAM4E)
 			(p_channel->counter_event) |
@@ -179,7 +179,7 @@ uint32_t pwm_channel_init(Pwm *p_pwm, pwm_channel_t *p_channel)
 			(p_channel->b_pwml_output_inverted << 18) |
 #endif
 			(p_channel->alignment);
-	p_pwm->PWM_CH_NUM[ch_num].PWM_CMR = ch_mode_reg;
+	p_pwm->PWM_CH_NUM[ch_num].PWM_CMR = tmp_reg;
 
 	/* Channel Duty Cycle Register */
 	p_pwm->PWM_CH_NUM[ch_num].PWM_CDTY = p_channel->ul_duty;
@@ -197,16 +197,18 @@ uint32_t pwm_channel_init(Pwm *p_pwm, pwm_channel_t *p_channel)
 	}
 
 	/* Output Selection Register */
-	p_pwm->PWM_OS = ((p_channel->output_selection.
-					b_override_pwmh) << ch_num) |
-			(((p_channel->output_selection.b_override_pwml) <<
-					ch_num) << 16);
+	tmp_reg  = p_pwm->PWM_OS & (~((PWM_OS_OSH0 | PWM_OS_OSL0) << ch_num));
+	tmp_reg |= ((p_channel->output_selection.b_override_pwmh) << ch_num) |
+			(((p_channel->output_selection.b_override_pwml) << ch_num)
+					<< 16);
+	p_pwm->PWM_OS = tmp_reg;
 
 	/* Output Override Value Register */
-	p_pwm->PWM_OOV = ((p_channel->output_selection.
-					override_level_pwmh) << ch_num) |
-			(((p_channel->output_selection.override_level_pwml) <<
-					ch_num) << 16);
+	tmp_reg  = p_pwm->PWM_OOV & (~((PWM_OOV_OOVH0 | PWM_OOV_OOVL0) << ch_num));
+	tmp_reg |= ((p_channel->output_selection.override_level_pwmh) << ch_num) |
+			(((p_channel->output_selection.override_level_pwml) << ch_num)
+					<< 16);
+	p_pwm->PWM_OOV = tmp_reg;
 
 	/* Sync Channels Mode Register */
 	uint32_t channel = (1 << ch_num);
@@ -220,28 +222,34 @@ uint32_t pwm_channel_init(Pwm *p_pwm, pwm_channel_t *p_channel)
 #if (SAM4E)
 	if (p_channel->ul_fault_output_pwmh == PWM_HIGHZ) {
 		p_pwm->PWM_FPV2 |= (0x01 << ch_num);
-	} else if (p_channel->ul_fault_output_pwmh == PWM_HIGH) {
-		p_pwm->PWM_FPV1 |= (0x01 << ch_num);
 	} else {
-		p_pwm->PWM_FPV1 &= (!(0x01 << ch_num));
+		p_pwm->PWM_FPV2 &= ~(0x01 << ch_num);
+		if (p_channel->ul_fault_output_pwmh == PWM_HIGH) {
+			p_pwm->PWM_FPV1 |= (0x01 << ch_num);
+		} else {
+			p_pwm->PWM_FPV1 &= (~(0x01 << ch_num));
+		}
 	}
 	if (p_channel->ul_fault_output_pwml == PWM_HIGHZ) {
 		p_pwm->PWM_FPV2 |= ((0x01 << ch_num) << 16);
-	} else if (p_channel->ul_fault_output_pwml == PWM_HIGH) {
-		p_pwm->PWM_FPV1 |= ((0x01 << ch_num) << 16);
 	} else {
-		p_pwm->PWM_FPV1 &= (!((0x01 << ch_num) << 16));
+		p_pwm->PWM_FPV2 &= ~((0x01 << ch_num) << 16);
+		if (p_channel->ul_fault_output_pwml == PWM_HIGH) {
+			p_pwm->PWM_FPV1 |= ((0x01 << ch_num) << 16);
+		} else {
+			p_pwm->PWM_FPV1 &= (~((0x01 << ch_num) << 16));
+		}
 	}
 #else
 	if (p_channel->ul_fault_output_pwmh == PWM_HIGH) {
 		p_pwm->PWM_FPV |= (0x01 << ch_num);
 	} else {
-		p_pwm->PWM_FPV &= (!(0x01 << ch_num));
+		p_pwm->PWM_FPV &= (~(0x01 << ch_num));
 	}
 	if (p_channel->ul_fault_output_pwml == PWM_HIGH) {
 		p_pwm->PWM_FPV |= ((0x01 << ch_num) << 16);
 	} else {
-		p_pwm->PWM_FPV &= (!((0x01 << ch_num) << 16));
+		p_pwm->PWM_FPV &= (~((0x01 << ch_num) << 16));
 	}
 #endif
 	/* Fault Protection Enable Register */
@@ -1013,7 +1021,7 @@ void pwm_stepper_motor_init(Pwm *p_pwm, pwm_stepper_motor_pair_t pair,
 {
 	uint32_t motor = p_pwm->PWM_SMMR;
 
-	motor &= ((PWM_SMMR_GCEN0 | PWM_SMMR_DOWN0) << pair);
+	motor &= ~((PWM_SMMR_GCEN0 | PWM_SMMR_DOWN0) << pair);
 	motor |= ((b_enable_gray | (b_down << 16)) << pair);
 
 	p_pwm->PWM_SMMR = motor;

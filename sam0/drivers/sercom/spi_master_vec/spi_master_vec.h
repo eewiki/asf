@@ -134,13 +134,13 @@ digraph bufptr_to_spiord {
 	bufptrs:bf1 -> bufs:b1 -> spiord:s1;
 	bufptrs:bf2 -> bufs:b2 -> spiord:s2;
 	bufptrs:bf3 -> bufs:b3 -> spiord:s3;
-	bufptrs:bf4 -> "NULL";
+	bufptrs:bf4 -> "none";
 }
  * \enddot
  *
- * Note that the last descriptor \e must have a NULL-pointer in order for the
- * driver to detect that the end of the buffer list has been reached. This means
- * that for \c N buffers, \c N+1 buffer descriptors are needed.
+ * Note that the last descriptor \e must indicate no next buffer in order for
+ * the driver to detect that the end of the buffer list has been reached. This
+ * means that for \c N buffers, \c N+1 buffer descriptors are needed.
  *
  * Bidirectional transfers are supported without any restrictions on the buffer
  * descriptors, so the number of bytes and buffers to receive and transmit do

@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="application" id="sam0.applications.i2c_slave_bootloader" caption="I2C Slave Bootloader">
 		<info type="description" value="summary">
-		I2C Slave Bootloader for SAM D20.
+		I2C Slave Bootloader for SAM D20/D21.
 		</info>
 
 		<info type="keyword" value="technology">
@@ -16,5 +16,6 @@
 		<require idref="sam0.drivers.nvm"/>
 		<require idref="sam0.drivers.wdt"/>
 		<device-support value="samd20"/>
+		<device-support value="samd21"/>
 	</module>
 </asf>

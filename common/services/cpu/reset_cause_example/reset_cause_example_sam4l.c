@@ -3,7 +3,7 @@
  *
  * \brief CPU reset cause example for SAM4L
  *
- * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -73,19 +73,19 @@
  * -# Start the application.
  * -# In the terminal window, the following text should appear:
  *    \code
- *     -- Reset_Cause Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *    \endcode
+	-- Reset_Cause Example xxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+\endcode
  * -# Choose the item in the following menu to test.
  *    \code
- *     Menu :
- *     ------Please select reset cause way--------
- *       c: Generate core BOD reset
- *       i: Generate I/O BOD reset
- *       w: Generate watchdog reset
- *       s: Generate system reset
- *    \endcode
+	Menu :
+	------Please select reset cause way--------
+	  c: Generate core BOD reset
+	  i: Generate I/O BOD reset
+	  w: Generate watchdog reset
+	  s: Generate system reset
+\endcode
  */
 
 #include "asf.h"

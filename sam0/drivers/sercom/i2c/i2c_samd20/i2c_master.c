@@ -72,7 +72,7 @@ static enum status_code _i2c_master_set_config(
 	Assert(config);
 
 	/* Temporary variables. */
-	uint32_t tmp_ctrla = 0;
+	uint32_t tmp_ctrla;
 	int32_t tmp_baud;
 	enum status_code tmp_status_code = STATUS_OK;
 
@@ -110,9 +110,11 @@ static enum status_code _i2c_master_set_config(
 	/* Save timeout on buffer write. */
 	module->buffer_timeout = config->buffer_timeout;
 
-	/* Check and set if module should run in standby. */
-	if (config->run_in_standby) {
+	/* Set whether module should run in standby. */
+	if (config->run_in_standby || system_is_debugger_present()) {
 		tmp_ctrla = SERCOM_I2CM_CTRLA_RUNSTDBY;
+	} else {
+		tmp_ctrla = 0;
 	}
 
 	/* Check and set start data hold timeout. */
@@ -137,8 +139,9 @@ static enum status_code _i2c_master_set_config(
 	i2c_module->CTRLB.reg = SERCOM_I2CM_CTRLB_SMEN;
 
 	/* Find and set baudrate. */
-	tmp_baud = (int32_t)((system_gclk_chan_get_hz(SERCOM0_GCLK_ID_CORE +
-			sercom_index) / (2000*(config->baud_rate))) - 5);
+	tmp_baud = (int32_t)(div_ceil(
+				system_gclk_chan_get_hz(SERCOM0_GCLK_ID_CORE + sercom_index),
+				(2000*(config->baud_rate))) - 5);
 
 	/* Check that baud rate is supported at current speed. */
 	if (tmp_baud > 255 || tmp_baud < 0) {
@@ -370,9 +373,9 @@ static enum status_code _i2c_master_wait_for_bus(
  *                                      acknowledged the address
  *
  */
-static enum status_code _i2c_master_read(
+static enum status_code _i2c_master_read_packet(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	/* Sanity check arguments */
 	Assert(module);
@@ -466,7 +469,7 @@ static enum status_code _i2c_master_read(
  */
 enum status_code i2c_master_read_packet_wait(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);
@@ -482,7 +485,7 @@ enum status_code i2c_master_read_packet_wait(
 
 	module->send_stop = true;
 
-	return _i2c_master_read(module, packet);
+	return _i2c_master_read_packet(module, packet);
 }
 
 /**
@@ -512,7 +515,7 @@ enum status_code i2c_master_read_packet_wait(
  */
 enum status_code i2c_master_read_packet_wait_no_stop(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);
@@ -528,7 +531,7 @@ enum status_code i2c_master_read_packet_wait_no_stop(
 
 	module->send_stop = false;
 
-	return _i2c_master_read(module, packet);
+	return _i2c_master_read_packet(module, packet);
 }
 
 /**
@@ -549,7 +552,7 @@ enum status_code i2c_master_read_packet_wait_no_stop(
  */
 static enum status_code _i2c_master_write_packet(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	SercomI2cm *const i2c_module = &(module->hw->I2CM);
 
@@ -640,7 +643,7 @@ static enum status_code _i2c_master_write_packet(
  */
 enum status_code i2c_master_write_packet_wait(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);
@@ -688,7 +691,7 @@ enum status_code i2c_master_write_packet_wait(
  */
 enum status_code i2c_master_write_packet_wait_no_stop(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet)
+		struct i2c_master_packet *const packet)
 {
 	/* Sanity check */
 	Assert(module);

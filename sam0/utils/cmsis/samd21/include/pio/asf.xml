@@ -7,6 +7,7 @@
 		<build type="header-file" value="pio_samd21e15a.h"/>
 		<build type="header-file" value="pio_samd21e16a.h"/>
 		<build type="header-file" value="pio_samd21e17a.h"/>
+		<build type="header-file" value="pio_samd21e18a.h"/>
 		<build type="header-file" value="pio_samd21g16a.h"/>
 		<build type="header-file" value="pio_samd21g17a.h"/>
 		<build type="header-file" value="pio_samd21g18a.h"/>

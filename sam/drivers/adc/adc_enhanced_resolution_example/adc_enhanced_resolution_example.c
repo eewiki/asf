@@ -3,7 +3,7 @@
  *
  * \brief ADC Enhanced Resolution example.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -79,10 +79,10 @@
  *    following text should appear (values depend on the board and the chip
  *used):
  *    \code
- *     -- ADC Enhanced Resolution Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *    \endcode
+	-- ADC Enhanced Resolution Example xxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+\endcode
  *
  */
 

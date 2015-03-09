@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D2x TCC Unit test
+ * \brief SAM D21 TCC Unit test
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -42,7 +42,7 @@
  */
 
 /**
- * \mainpage SAM D2x TCC Unit Test
+ * \mainpage SAM D21 TCC Unit Test
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -58,7 +58,7 @@
  */
 
 /**
- * \page appdoc_main SAM D2x TCC Unit Test
+ * \page appdoc_main SAM D21 TCC Unit Test
  *
  * Overview:
  * - \ref appdoc_sam0_tcc_unit_test_intro
@@ -71,14 +71,14 @@
  * \copydetails appdoc_preface
  *
  * The following kit is required for carrying out the test:
- *      - SAM D2x Xplained Pro board
+ *      - SAM D21 Xplained Pro board
  *
  * \section appdoc_sam0_tcc_unit_test_setup Setup
- * The following connections has to be made using wires on SAMD21 Xplained Pro:
+ * The following connections has to be made using wires on SAM D21 Xplained Pro:
  *  - \b EXTINT 4 (PB04, EXT1 pin 9) <-----> TCC0 WO0 (PA08, EXT2 pin 11)
  *
  * To run the test:
- *  - Connect the SAM D2x Xplained Pro board to the computer using a
+ *  - Connect the SAM D21 Xplained Pro board to the computer using a
  *    micro USB cable.
  *  - Open the virtual COM port in a terminal application.
  *    \note The USB composite firmware running on the Embedded Debugger (EDBG)
@@ -334,8 +334,8 @@ static void run_callback_test(const struct test_case *test)
  * \internal
  * \brief Test capture and compare
  *
- * This test uses TC0 as a PWM generator (compare function). TC1 will be set to
- * capture the signal from TC0 to test the capture functionality.
+ * This test uses TCC0 as a PWM generator (compare function). TCC1 will be set
+ * to capture the signal from TCC0 to test the capture functionality.
  *
  * \param test Current test case.
  */
@@ -456,6 +456,191 @@ static void run_capture_and_compare_test(const struct test_case *test)
 }
 
 /**
+ * \internal
+ * \brief Test Recoverable Fault (FAULTn)
+ *
+ * This test uses TCC0 as a PWM generator (compare function).
+ * EXTINT will be used to route fault input to TCC0.
+ *
+ * \param test Current test case.
+ */
+static void run_faultn_test(const struct test_case *test)
+{
+	test_assert_true(test,
+			tcc_init_success == true,
+			"TCC initialization failed, skipping test");
+
+	/* Configure TCC module for PWM generation with fault */
+	tcc_reset(&tcc_test0_module);
+	tcc_get_config_defaults(&tcc_test0_config, CONF_TEST_TCC0);
+	tcc_test0_config.counter.period = 0x03FF;
+	tcc_test0_config.compare.wave_generation  =
+			TCC_WAVE_GENERATION_SINGLE_SLOPE_PWM;
+	tcc_test0_config.compare.match[TCC_MATCH_CAPTURE_CHANNEL_0]  = 0x01FF;
+	tcc_test0_config.wave_ext.recoverable_fault[TCC_MATCH_CAPTURE_CHANNEL_0].source = TCC_FAULT_SOURCE_ENABLE;
+	tcc_test0_config.wave_ext.recoverable_fault[TCC_MATCH_CAPTURE_CHANNEL_0].halt_action = TCC_FAULT_HALT_ACTION_SW_HALT;
+	tcc_init(&tcc_test0_module, CONF_TEST_TCC0, &tcc_test0_config);
+	/* Configure TCC events for recoverable fault input */
+	struct tcc_events tcc_test_events;
+	memset(&tcc_test_events, 0, sizeof(struct tcc_events));
+	tcc_test_events.on_event_perform_channel_action[TCC_MATCH_CAPTURE_CHANNEL_0] = true;
+	tcc_enable_events(&tcc_test0_module, &tcc_test_events);
+	tcc_enable(&tcc_test0_module);
+
+	/* Configure IO pin to generate fault */
+	struct port_config config_pin;
+	port_get_config_defaults(&config_pin);
+	config_pin.direction = PORT_PIN_DIR_OUTPUT;
+	port_pin_set_config(CONF_TEST_PIN_OUT, &config_pin);
+	port_pin_set_output_level(CONF_TEST_PIN_OUT, true);
+
+	/* Configure EIC to capture fault input */
+	struct extint_chan_conf config;
+	extint_chan_get_config_defaults(&config);
+	config.filter_input_signal = true;
+	config.detection_criteria  = EXTINT_DETECT_BOTH;
+	config.gpio_pin     = CONF_EIC_PIN;
+	config.gpio_pin_mux = CONF_EIC_MUX;
+	extint_chan_set_config(CONF_EIC_CHAN, &config);
+
+	struct extint_events extint_test_events;
+	memset(&extint_test_events, 0, sizeof(struct extint_events));
+	extint_test_events.generate_event_on_detect[CONF_EIC_CHAN] = true;
+	extint_enable_events(&extint_test_events);
+
+	/* Configure EVENTs to route fault input */
+	struct events_resource event_resource;
+	struct events_config event_config;
+	events_get_config_defaults(&event_config);
+	event_config.generator = CONF_EVENT_GENERATOR_ID;
+	event_config.path      = EVENTS_PATH_ASYNCHRONOUS;
+	events_allocate(&event_resource, &event_config);
+	events_attach_user(&event_resource, CONF_EVENT_USER_ID_FAULTn);
+
+	/* Clear halt status */
+	tcc_clear_status(&tcc_test0_module,
+			TCC_STATUS_RECOVERABLE_FAULT_PRESENT(0) |
+			TCC_STATUS_RECOVERABLE_FAULT_OCCUR(0));
+
+	uint32_t test_val1 = tcc_get_count_value(&tcc_test0_module);
+	uint32_t test_val2 = tcc_get_count_value(&tcc_test0_module);
+
+	/* Check TCC is running */
+	test_assert_true(test,
+			test_val1 != test_val2,
+			"The counter failed to stop on recoverable fault");
+
+	/* Set fault */
+	port_pin_set_output_level(CONF_TEST_PIN_OUT, false);
+
+	/* Check fault state */
+	test_assert_true(test,
+			TCC_STATUS_RECOVERABLE_FAULT_OCCUR(0) &
+					tcc_get_status(&tcc_test0_module),
+			"The counter failed to detect recoverable fault");
+
+	/* Check TCC is running */
+	test_val1 = tcc_get_count_value(&tcc_test0_module);
+	test_val2 = tcc_get_count_value(&tcc_test0_module);
+	test_assert_true(test,
+			test_val1 == test_val2,
+			"The counter failed to stop on recoverable fault");
+}
+
+/**
+ * \internal
+ * \brief Test Non-Recoverable Fault (FAULTx)
+ *
+ * This test uses TCC0 as a PWM generator (compare function).
+ * EXTINT will be used to route fault input to TCC0.
+ *
+ * \param test Current test case.
+ */
+static void run_faultx_test(const struct test_case *test)
+{
+	test_assert_true(test,
+	tcc_init_success == true,
+	"TCC initialization failed, skipping test");
+
+	/* Configure TCC module for PWM generation with fault */
+	tcc_reset(&tcc_test0_module);
+	tcc_get_config_defaults(&tcc_test0_config, CONF_TEST_TCC0);
+	tcc_test0_config.counter.period = 0x03FF;
+	tcc_test0_config.compare.wave_generation  =
+	TCC_WAVE_GENERATION_SINGLE_SLOPE_PWM;
+	tcc_test0_config.compare.match[TCC_MATCH_CAPTURE_CHANNEL_0]  = 0x01FF;
+	tcc_test0_config.wave_ext.non_recoverable_fault[TCC_WAVE_OUTPUT_0].output = TCC_FAULT_STATE_OUTPUT_1;
+	tcc_init(&tcc_test0_module, CONF_TEST_TCC0, &tcc_test0_config);
+	/* Configure TCC events for non-recoverable fault input */
+	struct tcc_events tcc_test_events;
+	memset(&tcc_test_events, 0, sizeof(struct tcc_events));
+	tcc_test_events.on_input_event_perform_action[0] = true;
+	tcc_test_events.input_config[0].modify_action = true;
+	tcc_test_events.input_config[0].action = TCC_EVENT_ACTION_NON_RECOVERABLE_FAULT;
+	tcc_enable_events(&tcc_test0_module, &tcc_test_events);
+	tcc_enable(&tcc_test0_module);
+
+	/* Configure IO pin to generate fault */
+	struct port_config config_pin;
+	port_get_config_defaults(&config_pin);
+	config_pin.direction = PORT_PIN_DIR_OUTPUT;
+	port_pin_set_config(CONF_TEST_PIN_OUT, &config_pin);
+	port_pin_set_output_level(CONF_TEST_PIN_OUT, true);
+
+	/* Configure EIC to capture fault input */
+	struct extint_chan_conf config;
+	extint_chan_get_config_defaults(&config);
+	config.filter_input_signal = true;
+	config.detection_criteria  = EXTINT_DETECT_BOTH;
+	config.gpio_pin     = CONF_EIC_PIN;
+	config.gpio_pin_mux = CONF_EIC_MUX;
+	extint_chan_set_config(CONF_EIC_CHAN, &config);
+
+	struct extint_events extint_test_events;
+	memset(&extint_test_events, 0, sizeof(struct extint_events));
+	extint_test_events.generate_event_on_detect[CONF_EIC_CHAN] = true;
+	extint_enable_events(&extint_test_events);
+
+	/* Configure EVENTs to route fault input */
+	struct events_resource event_resource;
+	struct events_config event_config;
+	events_get_config_defaults(&event_config);
+	event_config.generator = CONF_EVENT_GENERATOR_ID;
+	event_config.path      = EVENTS_PATH_ASYNCHRONOUS;
+	events_allocate(&event_resource, &event_config);
+	events_attach_user(&event_resource, CONF_EVENT_USER_ID_FAULTx);
+
+	/* Clear halt status */
+	tcc_clear_status(&tcc_test0_module,
+			TCC_STATUS_NON_RECOVERABLE_FAULT_PRESENT(0) |
+			TCC_STATUS_NON_RECOVERABLE_FAULT_OCCUR(0));
+
+	uint32_t test_val1 = tcc_get_count_value(&tcc_test0_module);
+	uint32_t test_val2 = tcc_get_count_value(&tcc_test0_module);
+
+	/* Check TCC is running */
+	test_assert_true(test,
+			test_val1 != test_val2,
+			"The counter failed to stop on non-recoverable fault");
+
+	/* Set fault */
+	port_pin_set_output_level(CONF_TEST_PIN_OUT, false);
+
+	/* Check fault state */
+	test_assert_true(test,
+				TCC_STATUS_NON_RECOVERABLE_FAULT_OCCUR(0) &
+						tcc_get_status(&tcc_test0_module),
+				"The counter failed to detect non-recoverable fault");
+
+	/* Check TCC is running */
+	test_val1 = tcc_get_count_value(&tcc_test0_module);
+	test_val2 = tcc_get_count_value(&tcc_test0_module);
+	test_assert_true(test,
+			test_val1 == test_val2,
+			"The counter failed to stop on non-recoverable fault");
+}
+
+/**
  * \brief Initialize the USART for unit test
  *
  * Initializes the SERCOM USART used for sending the unit test status to the
@@ -510,6 +695,14 @@ int main(void)
 			run_capture_and_compare_test, NULL,
 			"Test capture and compare");
 
+	DEFINE_TEST_CASE(faultx_test, NULL,
+			run_faultx_test, NULL,
+			"Test Non-Recoverable Fault");
+
+	DEFINE_TEST_CASE(faultn_test, NULL,
+			run_faultn_test, NULL,
+			"Test Recoverable Fault");
+
 	/* Put test case addresses in an array */
 	DEFINE_TEST_ARRAY(tcc_tests) = {
 		&init_test,
@@ -517,11 +710,13 @@ int main(void)
 		&callback_test,
 		&reset_test,
 		&capture_and_compare_test,
+		&faultx_test,
+		&faultn_test,
 	};
 
 	/* Define the test suite */
 	DEFINE_TEST_SUITE(tcc_suite, tcc_tests,
-			"SAM D2x TCC driver test suite");
+			"SAM D21 TCC driver test suite");
 
 	/* Run all tests in the suite*/
 	test_suite_run(&tcc_suite);

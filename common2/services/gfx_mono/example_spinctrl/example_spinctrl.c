@@ -63,8 +63,8 @@
  * \section asfdoc_common2_spinctrl_example_deviceinfo Device Info
  * All AVR devices can be used.
  * This example has been tested with the following setup:
- * - SAMD20 Xplained Pro
- * - SAMD21 Xplained Pro
+ * - SAM D20 Xplained Pro
+ * - SAM D21 Xplained Pro
  *
  * \section asfdoc_common2_spinctrl_example_description Description of the example application
  * This example application will initialize string spinner and two integer

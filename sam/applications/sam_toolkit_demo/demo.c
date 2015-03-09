@@ -3,7 +3,7 @@
  *
  * \brief SAM toolkit demo application.
  *
- * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -83,10 +83,10 @@
  * -# In the terminal window, the following text should appear (values depend
  * on the board and chip used):
  *    \code
- *     -- SAM Toolkit Demo Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *    \endcode
+	-- SAM Toolkit Demo Example xxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+\endcode
  * -# Pressing and release the icon buttons on the LCD. The corresponding window
  * will show and display the result.
  *

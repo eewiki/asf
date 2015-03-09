@@ -89,6 +89,10 @@ enum status_code bod_set_config(
 
 			SYSCTRL->BOD33.reg = SYSCTRL_BOD33_LEVEL(conf->level) |
 					temp | SYSCTRL_BOD33_ENABLE;
+
+			while (!(SYSCTRL->PCLKSR.reg & SYSCTRL_PCLKSR_B33SRDY)) {
+				/* Wait for BOD33 register sync ready */
+			}
 			break;
 		default:
 			return STATUS_ERR_INVALID_ARG;

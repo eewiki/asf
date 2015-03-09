@@ -88,10 +88,6 @@
  *    <th>Supported devices</th>
  *  </tr>
  *  <tr>
- *    <td>FEATURE_USART_SYNC_SCHEME_V2</td>
- *    <td>SAMD21</td>
- *  </tr>
- *  <tr>
  *    <td>FEATURE_USART_OVER_SAMPLE</td>
  *    <td>SAMD21</td>
  *  </tr>
@@ -262,8 +258,6 @@ extern "C" {
  * @{
  */
 #if (SAMD21) || defined(__DOXYGEN__)
-/** Usart sync scheme version 2. */
-#  define FEATURE_USART_SYNC_SCHEME_V2
 /** Usart over sampling. */
 #  define FEATURE_USART_OVER_SAMPLE
 /** Usart hardware control flow. */
@@ -739,10 +733,12 @@ static inline bool usart_is_syncing(
 
 	SercomUsart *const usart_hw = &(module->hw->USART);
 
-#ifdef FEATURE_USART_SYNC_SCHEME_V2
+#if defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_1)
+	return (usart_hw->STATUS.reg & SERCOM_USART_STATUS_SYNCBUSY);
+#elif defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_2)
 	return (usart_hw->SYNCBUSY.reg);
 #else
-	return (usart_hw->STATUS.reg & SERCOM_USART_STATUS_SYNCBUSY);
+#  error Unknown SERCOM SYNCBUSY scheme!
 #endif
 }
 

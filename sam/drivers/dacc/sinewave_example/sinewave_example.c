@@ -3,7 +3,7 @@
  *
  * \brief DAC Sinewave Example.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -81,15 +81,15 @@
  * -# In the terminal window, the following text should appear (values depend
  *    on the board and chip used):
  *    \code
- *     -- DAC Sinewave Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     -- Menu Choices for this example--
- *     -- 0: Set frequency(200Hz-3kHz).--
- *     -- 1: Set amplitude(100-4095).--
- *     -- i: Display present frequency and amplitude.--
- *     -- m: Display this menu.--
- *    \endcode
+	-- DAC Sinewave Example xxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	-- Menu Choices for this example--
+	-- 0: Set frequency(200Hz-3kHz).--
+	-- 1: Set amplitude(100-4095).--
+	-- i: Display present frequency and amplitude.--
+	-- m: Display this menu.--
+\endcode
  * -# Input command according to the menu.
  *
  */

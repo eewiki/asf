@@ -3,7 +3,7 @@
  *
  * \brief Serial Peripheral Interface (SPI) PDC example for SAM.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -93,10 +93,10 @@
  * -# Download the program into the evaluation board and run it.
  * -# Upon startup, the application will output the following line on the terminal:
  *    \code
- *     -- Spi Pdc Example  --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *    \endcode
+	-- Spi Pdc Example  --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+\endcode
  * -# The following traces detail operations on the SPI PDC example,
  *  displaying success or error messages depending on the results of the
  *  commands.

@@ -3,7 +3,7 @@
  *
  * \brief Unit tests for GPBR driver.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -167,8 +167,8 @@ static void gpbr_test_configure_rtt(void)
 static void run_gpbr_test(const struct test_case *test)
 {
 	uint32_t ul_read_value = 0;
-	uint32_t ul_last_page_addr = LAST_PAGE_ADDRESS;
-	uint32_t *ul_back_mode_flag_addr = (uint32_t *) ul_last_page_addr;
+	uint32_t ul_test_page_addr = TEST_PAGE_ADDRESS;
+	uint32_t *ul_back_mode_flag_addr = (uint32_t *) ul_test_page_addr;
 	uint32_t ul_normal_mode_flag = NORMAL_MODE_FLAG;
 	uint32_t ul_backup_mode_flag = BACKUP_MODE_FLAG;
 	uint8_t uc_write_success_flag = 1;
@@ -177,8 +177,8 @@ static void run_gpbr_test(const struct test_case *test)
 	flash_init(FLASH_ACCESS_MODE_128, FLASH_WAIT_STATE_NBR);
 
 	/* Unlock flash page. */
-	flash_unlock(ul_last_page_addr,
-			ul_last_page_addr + IFLASH_PAGE_SIZE - 1, NULL, NULL);
+	flash_unlock(ul_test_page_addr,
+			ul_test_page_addr + IFLASH_PAGE_SIZE - 1, NULL, NULL);
 
 	if ((*ul_back_mode_flag_addr) == BACKUP_MODE_FLAG) {
 		/* Read the data from GPBR0 */
@@ -186,16 +186,16 @@ static void run_gpbr_test(const struct test_case *test)
 
 #if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
 		/* Erase flag page */
-		flash_erase_page(ul_last_page_addr, IFLASH_ERASE_PAGES_8);
+		flash_erase_page(ul_test_page_addr, IFLASH_ERASE_PAGES_8);
 
 		/* Clear backup mode flag */
-		if (flash_write(ul_last_page_addr, (uint8_t *)&ul_normal_mode_flag,
+		if (flash_write(ul_test_page_addr, (uint8_t *)&ul_normal_mode_flag,
 				sizeof(uint32_t), 0) != FLASH_RC_OK) {
 			uc_write_success_flag = 0;
 		}
 #else
 		/* Clear backup mode flag */
-		if (flash_write(ul_last_page_addr, (uint8_t *)&ul_normal_mode_flag,
+		if (flash_write(ul_test_page_addr, (uint8_t *)&ul_normal_mode_flag,
 				sizeof(uint32_t), 1) != FLASH_RC_OK) {
 			uc_write_success_flag = 0;
 		}
@@ -225,18 +225,18 @@ static void run_gpbr_test(const struct test_case *test)
 
 #if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
 	/* Erase flag page */
-	if(flash_erase_page(ul_last_page_addr, IFLASH_ERASE_PAGES_8) != FLASH_RC_OK)
+	if(flash_erase_page(ul_test_page_addr, IFLASH_ERASE_PAGES_8) != FLASH_RC_OK)
 		printf("erase page failed!\r\n");
 
 	/* Write backup mode flag */
-	if (flash_write(ul_last_page_addr, (uint8_t *) & ul_backup_mode_flag,
+	if (flash_write(ul_test_page_addr, (uint8_t *) & ul_backup_mode_flag,
 					sizeof(uint32_t), 0) != FLASH_RC_OK) {
 		/* Flag write failed, return error */
 		test_assert_true(test, 0, "Test GPBR: GPBR write error!");
 	}
 #else
 	/* Write backup mode flag */
-	if (flash_write(ul_last_page_addr, (uint8_t *) & ul_backup_mode_flag,
+	if (flash_write(ul_test_page_addr, (uint8_t *) & ul_backup_mode_flag,
 					sizeof(uint32_t), 1) != FLASH_RC_OK) {
 		/* Flag write failed, return error */
 		test_assert_true(test, 0, "Test GPBR: GPBR write error!");

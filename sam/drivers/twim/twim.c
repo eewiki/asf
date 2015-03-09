@@ -5,7 +5,7 @@
  *
  * This file defines a useful set of functions for the TWIM on SAM4L devices.
  *
- * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -452,10 +452,10 @@ status_code_t twi_master_read(Twim *twim, struct twim_package *package)
 					| TWIM_NCMDR_STOP
 					| TWIM_NCMDR_TENBIT
 					| TWIM_NCMDR_REPSAME;
-			/* Update IMR through IER */
-			twim->TWIM_IER = twim_it_mask[twim_ch];
 			/* Enable master transfer */
 			twim->TWIM_CR = TWIM_CR_MEN;
+			/* Update IMR through IER */
+			twim->TWIM_IER = twim_it_mask[twim_ch];
 			/* Get data */
 #if TWIM_LOW_POWER_ENABLE
 			sleepmgr_lock_mode(SLEEPMGR_SLEEP_1);
@@ -548,10 +548,10 @@ status_code_t twi_master_read(Twim *twim, struct twim_package *package)
 		}
 	}
 
-	/* Update IMR through IER */
-	twim->TWIM_IER = twim_it_mask[twim_ch];
 	/* Enable master transfer */
 	twim->TWIM_CR = TWIM_CR_MEN;
+	/* Update IMR through IER */
+	twim->TWIM_IER = twim_it_mask[twim_ch];
 	/* Get data */
 #if TWIM_LOW_POWER_ENABLE
 	sleepmgr_lock_mode(SLEEPMGR_SLEEP_1);
@@ -629,10 +629,10 @@ status_code_t twi_master_write(Twim *twim, struct twim_package *package)
 			| TWIM_CMDR_STOP
 			| (package->ten_bit ? TWIM_CMDR_TENBIT : 0);
 
-	/* Update IMR through IER */
-	twim->TWIM_IER = twim_it_mask[twim_ch];
 	/* Enable master transfer */
 	twim->TWIM_CR = TWIM_CR_MEN;
+	/* Update IMR through IER */
+	twim->TWIM_IER = twim_it_mask[twim_ch];
 	/* Send data */
 #if TWIM_LOW_POWER_ENABLE
 	sleepmgr_lock_mode(SLEEPMGR_SLEEP_1);

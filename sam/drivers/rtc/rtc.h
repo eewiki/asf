@@ -3,7 +3,7 @@
  *
  * \brief Real-Time Clock (RTC) driver for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -75,7 +75,7 @@ uint32_t rtc_set_date_alarm(Rtc *p_rtc,
 		uint32_t ul_month_flag, uint32_t ul_month,
 		uint32_t ul_day_flag, uint32_t ul_day);
 void rtc_clear_time_alarm(Rtc *p_rtc);
-void rtc_clear_data_alarm(Rtc *p_rtc);
+void rtc_clear_date_alarm(Rtc *p_rtc);
 uint32_t rtc_get_status(Rtc *p_rtc);
 void rtc_clear_status(Rtc *p_rtc, uint32_t ul_clear);
 
@@ -129,15 +129,15 @@ bool rtc_is_tamper_occur_in_backup_mode(Rtc *p_rtc, uint8_t reg_num);
  * \subsection rtc_basic_use_case_setup_code Example code
  * Add to application C-file:
  * \code
- *   void rtc_setup(void)
- *   {
- *       pmc_switch_sclk_to_32kxtal(PMC_OSC_XTAL);
- *
- *       while (!pmc_osc_is_ready_32kxtal());
- *
- *       rtc_set_hour_mode(RTC, 0);
- *   }
- * \endcode
+	   void rtc_setup(void)
+	   {
+	       pmc_switch_sclk_to_32kxtal(PMC_OSC_XTAL);
+
+	       while (!pmc_osc_is_ready_32kxtal());
+
+	       rtc_set_hour_mode(RTC, 0);
+	   }
+\endcode
  *
  * \subsection rtc_basic_use_case_setup_flow Workflow
  *   - \note Please make sure the external 32kHz crystal is available.
@@ -152,12 +152,12 @@ bool rtc_is_tamper_occur_in_backup_mode(Rtc *p_rtc, uint8_t reg_num);
  * \subsection rtc_basic_use_case_usage_code Example code
  * Add to, e.g., main loop in application C-file:
  * \code
- *    uint32_t hour, minute, second;
- *    uint32_t year, month, day, week;
- *
- *    rtc_get_time(RTC, &hour, &minute, &second);
- *    rtc_get_date(RTC, &year, &month, &day, &week);
- * \endcode
+	    uint32_t hour, minute, second;
+	    uint32_t year, month, day, week;
+
+	    rtc_get_time(RTC, &hour, &minute, &second);
+	    rtc_get_date(RTC, &year, &month, &day, &week);
+\endcode
  *
  * \subsection rtc_basic_use_case_usage_flow Workflow
  * -# Start Define the variables for the date and time:

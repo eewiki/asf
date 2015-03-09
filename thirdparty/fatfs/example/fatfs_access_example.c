@@ -3,7 +3,7 @@
  *
  * \brief FatFS example.
  *
- * Copyright (c) 2012 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -93,12 +93,12 @@
  *     following text should appear (values depend on the board and the chip
  * used):
  *     \code
- *      -- FatFS Example --
- *      -- xxxxxx-xx
- *      -- Compiled: xxx xx xxxx xx:xx:xx --
- *      -I- Mount disk 0
- *      -I- xxxxxx
- *     \endcode
+	-- FatFS Example --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	-I- Mount disk 0
+	-I- xxxxxx
+\endcode
  *  -# The application will output the converted value to hyperterminal and
  * display a menu for users to set different modes.
  *

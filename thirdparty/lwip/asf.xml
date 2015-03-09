@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<select-by-config id="thirdparty.lwip.version" name="config.thirdparty.lwip.version" caption="Supported lwIP versions" default="1.4.0">
+	<select-by-config id="thirdparty.lwip.version" name="config.thirdparty.lwip.version" caption="Supported lwIP versions" default="1.4.1">
 		<module type="service" id="thirdparty.lwip.version#1.3.2" caption="lwIP v132">
 			<info type="description" value="summary">
 			lwIP version 1.3.2 support
@@ -24,6 +24,20 @@
 			<device-support value="sam3x"/>
 			<device-support value="sam4e"/>
 			<require idref="thirdparty.lwip.140"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="thirdparty.lwip.version#1.4.1" caption="lwIP v141">
+			<info type="description" value="summary">
+			lwIP version 1.4.1 support
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+			<device-support value="uc3c"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<device-support value="samd20"/>
+			<require idref="thirdparty.lwip.141"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>
 	</select-by-config>

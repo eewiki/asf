@@ -106,10 +106,6 @@
  *    <td>FEATURE_SPI_ERROR_INTERRUPT</td>
  *    <td>SAMD21</td>
  *  </tr>
- *  <tr>
- *    <td>FEATURE_SPI_SYNC_SCHEME_VERSION_2</td>
- *    <td>SAMD21</td>
- *  </tr>
  * </table>
  * \note The specific features are only available in the driver when the
  * selected device supports those features.
@@ -384,7 +380,6 @@ Make sure that either/both CONF_SPI_MASTER_ENABLE/CONF_SPI_SLAVE_ENABLE is set t
 /** SPI with error detect feature */
 #  define FEATURE_SPI_ERROR_INTERRUPT
 /** SPI sync scheme version 2 */
-#  define FEATURE_SPI_SYNC_SCHEME_VERSION_2
 #  endif
 /*@}*/
 
@@ -846,13 +841,15 @@ static inline bool spi_is_syncing(
 
 	SercomSpi *const spi_module = &(module->hw->SPI);
 
-#  ifdef FEATURE_SPI_SYNC_SCHEME_VERSION_2
-	/* Return synchronization status */
-	return (spi_module->SYNCBUSY.reg);
-#  else
+#if defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_1)
 	/* Return synchronization status */
 	return (spi_module->STATUS.reg & SERCOM_SPI_STATUS_SYNCBUSY);
-#  endif
+#elif defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_2)
+	/* Return synchronization status */
+	return (spi_module->SYNCBUSY.reg);
+#else
+#  error Unknown SERCOM SYNCBUSY scheme!
+#endif
 }
 
 /**
@@ -1048,6 +1045,10 @@ void spi_reset(
 		struct spi_module *const module);
 
 /** @} */
+
+enum status_code spi_set_baudrate(
+		struct spi_module *const module,
+		uint32_t baudrate);
 
 /**
  * \name Lock/Unlock

@@ -266,7 +266,7 @@ void ui_com_overflow(void)
 /**
  * \defgroup UI User Interface
  *
- * Human interface on SAMD21 Xplained Pro:
+ * Human interface on SAM D21 Xplained Pro:
  * - Led 0 is on when it's host and there is no device connected
  * - Led 0 blinks when a device is enumerated and USB in idle mode
  *   - The blink is slow (1s) with low speed device

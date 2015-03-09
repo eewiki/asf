@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.tcc.quick_start_buffering" caption="Quick Start for the SAM D21 TCC Driver (Double Buffering)">
+		<info type="description" value="summary">
+		Quick start guide for the TCC interface module demonstrating module configuration.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_tcc_buffering.c"/>
+		<build type="header-file" value="conf_quick_start_buffering.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_quick_start_buffering.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.tcc"/>
+		<device-support value="samd21"/>
+	</module>
+</asf>

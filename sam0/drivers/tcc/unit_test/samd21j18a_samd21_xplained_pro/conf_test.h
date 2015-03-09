@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 Xplained PRO test configuration.
+ * \brief SAM D21 Xplained Pro test configuration.
  *
  * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -69,5 +69,8 @@
 #define CONF_CAPTURE_CHAN_1       1
 
 #define CONF_TEST_TOLERANCE       10
+
+#define CONF_EVENT_USER_ID_FAULTn EVSYS_ID_USER_TCC0_MC_0
+#define CONF_EVENT_USER_ID_FAULTx EVSYS_ID_USER_TCC0_EV_0
 
 #endif /* CONF_TEST_H_INCLUDED */

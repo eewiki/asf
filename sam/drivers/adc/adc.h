@@ -3,7 +3,7 @@
  *
  * \brief Analog-to-Digital Converter (ADC/ADC12B) driver for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -412,44 +412,44 @@ Pdc *adc12b_get_pdc_base(const Adc12b *p_adc);
  * \subsection adc_basic_use_case_setup_code Example code
  * Add to application C-file:
  * \code
- *   void ADC_IrqHandler(void)
- *   {
- *       // Check the ADC conversion status
- *       if ((adc_get_status(ADC) & ADC_ISR_DRDY) == ADC_ISR_DRDY)
- *       {
- *       // Get latest digital data value from ADC and can be used by application
- *           uint32_t result = adc_get_latest_value(ADC);
- *       }
- *   }
- *   void adc_setup(void)
- *   {
- *       adc_init(ADC, sysclk_get_main_hz(), ADC_CLOCK, 8);
- *
- *       adc_configure_timing(ADC, 0, ADC_SETTLING_TIME_3, 1);
- *
- *       adc_set_resolution(ADC, ADC_MR_LOWRES_BITS_12);
- *
- *       adc_enable_channel(ADC, ADC_CHANNEL_5);
- *
- *       adc_enable_interrupt(ADC, ADC_IER_DRDY);
- *
- *       adc_configure_trigger(ADC, ADC_TRIG_SW, 0);
- *   }
- * \endcode
+	   void ADC_IrqHandler(void)
+	   {
+	       // Check the ADC conversion status
+	       if ((adc_get_status(ADC) & ADC_ISR_DRDY) == ADC_ISR_DRDY)
+	       {
+	       // Get latest digital data value from ADC and can be used by application
+	           uint32_t result = adc_get_latest_value(ADC);
+	       }
+	   }
+	   void adc_setup(void)
+	   {
+	       adc_init(ADC, sysclk_get_main_hz(), ADC_CLOCK, 8);
+
+	       adc_configure_timing(ADC, 0, ADC_SETTLING_TIME_3, 1);
+
+	       adc_set_resolution(ADC, ADC_MR_LOWRES_BITS_12);
+
+	       adc_enable_channel(ADC, ADC_CHANNEL_5);
+
+	       adc_enable_interrupt(ADC, ADC_IER_DRDY);
+
+	       adc_configure_trigger(ADC, ADC_TRIG_SW, 0);
+	   }
+\endcode
  *
  * \subsection adc_basic_use_case_setup_flow Workflow
  * -# Define the interrupt service handler in the application:
  *   - \code
- *   void ADC_IrqHandler(void)
- *   {
- *       //Check the ADC conversion status
- *       if ((adc_get_status(ADC) & ADC_ISR_DRDY) == ADC_ISR_DRDY)
- *       {
- *       //Get latest digital data value from ADC and can be used by application
- *           uint32_t result = adc_get_latest_value(ADC);
- *       }
- *   }
- * \endcode
+	void ADC_IrqHandler(void)
+	{
+	    //Check the ADC conversion status
+	    if ((adc_get_status(ADC) & ADC_ISR_DRDY) == ADC_ISR_DRDY)
+	    {
+	    //Get latest digital data value from ADC and can be used by application
+	        uint32_t result = adc_get_latest_value(ADC);
+	    }
+	}
+\endcode
  *   - \note Get ADC status and check if the conversion is finished. If done, read the last ADC result data.
  * -# Initialize the given ADC with the specified ADC clock and startup time:
  *   - \code adc_init(ADC, sysclk_get_main_hz(), ADC_CLOCK, 8); \endcode
@@ -474,8 +474,8 @@ Pdc *adc12b_get_pdc_base(const Adc12b *p_adc);
  * \subsection adc_basic_use_case_usage_code Example code
  * Add to, e.g., main loop in application C-file:
  * \code
- *    adc_start(ADC);
- * \endcode
+	adc_start(ADC);
+\endcode
  *
  * \subsection adc_basic_use_case_usage_flow Workflow
  * -# Start ADC conversion on channel:
@@ -501,55 +501,55 @@ Pdc *adc12b_get_pdc_base(const Adc12b *p_adc);
  * \subsection adc_use_case_1_setup_code Example code
  * Add to application C-file:
  * \code
- *   void ADC_IrqHandler(void)
- *   {
- *       // Check the ADC conversion status
- *       if ((adc_get_status(ADC) & ADC_ISR_COMPE) == ADC_ISR_COMPE)
- *       {
- *           // Get comparison mode of ADC
- *           uint32_t ul_mode = adc_get_comparison_mode(ADC);
- *           // Get latest digital data value from ADC and can be used by application
- *           uint16_t us_adc = adc_get_channel_value(ADC, ADC_CHANNEL_5);
- *       }
- *   }
- * \endcode
+	void ADC_IrqHandler(void)
+	{
+	    // Check the ADC conversion status
+	    if ((adc_get_status(ADC) & ADC_ISR_COMPE) == ADC_ISR_COMPE)
+	    {
+	        // Get comparison mode of ADC
+	        uint32_t ul_mode = adc_get_comparison_mode(ADC);
+	        // Get latest digital data value from ADC and can be used by application
+	        uint16_t us_adc = adc_get_channel_value(ADC, ADC_CHANNEL_5);
+	    }
+	}
+\endcode
  *
  * \code
- *   void adc_setup(void)
- *   {
- *       adc_init(ADC, sysclk_get_main_hz(), ADC_CLOCK, 8);
- *
- *       adc_configure_timing(ADC, 0, ADC_SETTLING_TIME_3, 1);
- *
- *       adc_set_resolution(ADC, ADC_MR_LOWRES_BITS_12);
- *
- *       adc_enable_channel(ADC, ADC_CHANNEL_5);
- *
- *       adc_set_comparison_channel(ADC, ADC_CHANNEL_5);
- *       adc_set_comparison_mode(ADC, ADC_EMR_CMPMODE_IN);
- *       adc_set_comparison_window(ADC, MAX_DIGITAL, 0);
- *
- *       adc_enable_interrupt(ADC, ADC_IER_COMPE);
- *
- *       adc_configure_trigger(ADC, ADC_TRIG_TIO_CH_0, 0);
- *   }
- * \endcode
+	   void adc_setup(void)
+	   {
+	       adc_init(ADC, sysclk_get_main_hz(), ADC_CLOCK, 8);
+
+	       adc_configure_timing(ADC, 0, ADC_SETTLING_TIME_3, 1);
+
+	       adc_set_resolution(ADC, ADC_MR_LOWRES_BITS_12);
+
+	       adc_enable_channel(ADC, ADC_CHANNEL_5);
+
+	       adc_set_comparison_channel(ADC, ADC_CHANNEL_5);
+	       adc_set_comparison_mode(ADC, ADC_EMR_CMPMODE_IN);
+	       adc_set_comparison_window(ADC, MAX_DIGITAL, 0);
+
+	       adc_enable_interrupt(ADC, ADC_IER_COMPE);
+
+	       adc_configure_trigger(ADC, ADC_TRIG_TIO_CH_0, 0);
+	   }
+\endcode
  *
  * \subsection adc_basic_use_case_setup_flow Workflow
  * -# Define the interrupt service handler in the application:
  *   - \code
- *   void ADC_IrqHandler(void)
- *   {
- *       // Check the ADC conversion status
- *       if ((adc_get_status(ADC) & ADC_ISR_COMPE) == ADC_ISR_COMPE)
- *       {
- *           // Get comparison mode of ADC
- *           uint32_t ul_mode = adc_get_comparison_mode(ADC);
- *           // Get latest digital data value from ADC and can be used by application
- *           uint16_t us_adc = adc_get_channel_value(ADC, ADC_CHANNEL_5);
- *       }
- *   }
- * \endcode
+	void ADC_IrqHandler(void)
+	{
+	    // Check the ADC conversion status
+	    if ((adc_get_status(ADC) & ADC_ISR_COMPE) == ADC_ISR_COMPE)
+	    {
+	        // Get comparison mode of ADC
+	        uint32_t ul_mode = adc_get_comparison_mode(ADC);
+	        // Get latest digital data value from ADC and can be used by application
+	        uint16_t us_adc = adc_get_channel_value(ADC, ADC_CHANNEL_5);
+	    }
+	}
+\endcode
  *   - \note Get ADC status and check if comparison event occurred. If occurred, read the ADC channel value and comparison mode.
  * -# Initialize the given ADC with the specified ADC clock and startup time:
  *   - \code adc_init(ADC, sysclk_get_main_hz(), ADC_CLOCK, 10); \endcode
@@ -567,8 +567,8 @@ Pdc *adc12b_get_pdc_base(const Adc12b *p_adc);
  *   - \code adc_enable_channel(ADC, ADC_CHANNEL_5); \endcode
  * -# Set the comparison ADC channel, mode and window:
  *   - \code adc_set_comparison_channel(ADC, ADC_CHANNEL_5);
- * adc_set_comparison_mode(ADC, ADC_EMR_CMPMODE_IN);
- * adc_set_comparison_window(ADC, us_high_threshold, us_low_threshold); \endcode
+	adc_set_comparison_mode(ADC, ADC_EMR_CMPMODE_IN);
+	adc_set_comparison_window(ADC, us_high_threshold, us_low_threshold); \endcode
  *   - \note The high and low threshold of comparison window can be set by the user.
  * An event will be generated whenever the converted data is in the comparison window.
  * -# Enable ADC interrupts:
@@ -580,8 +580,8 @@ Pdc *adc12b_get_pdc_base(const Adc12b *p_adc);
  * \subsection adc_use_case_1_usage_code Example code
  * Add to, e.g., main loop in application C-file:
  * \code
- *    adc_start(ADC);
- * \endcode
+	adc_start(ADC);
+\endcode
  *
  * \subsection adc_use_case_1_usage_flow Workflow
  * -# Start ADC conversion on the configured channels:

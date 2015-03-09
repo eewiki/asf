@@ -1,8 +1,8 @@
 <asf xmlversion="1.0">
-	<module type="driver" id="sam0.drivers.dma" caption="DMA - Direct Memory Access">
+	<module type="driver" id="sam0.drivers.dma" caption="DMAC - Direct Memory Access Controller">
 		<info type="description" value="summary">
-			Driver for the SAM D21 Direct Memory Access. Provides a unified
-			interface for the configuration and management of the DMA modules.
+			Driver for the SAM D21 Direct Memory Access Controller. Provides a unified
+			interface for the configuration and management of the DMAC module.
 		</info>
 		<info type="keyword" value="technology">
 			<keyword value="Memory" />
@@ -10,11 +10,12 @@
 		<info type="appnote" value="AT07683"/>
 		<info type="keyword" value="pdf">
 			<keyword value="DMA"/>
+			<keyword value="DMAC"/>
 			<keyword value="Direct Memory Access"/>
 		</info>
 
 		<info type="description" value="pdf">
-			This application note describes how to use the ASF driver for interfacing the DMA on the SAM D21.
+			This application note describes how to use the ASF driver for interfacing the DMAC on the SAM D21.
 		</info>
 
 		<build type="include-path" value="."/>

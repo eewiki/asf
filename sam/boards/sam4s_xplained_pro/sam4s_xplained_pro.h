@@ -3,7 +3,7 @@
  *
  * \brief SAM4S Xplained Pro board definition and driver
  *
- * Copyright (C) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -395,6 +395,7 @@
 //@}
 
 #define CONSOLE_UART              UART1
+#define CONSOLE_UART_ID           ID_UART1
 
 /** UART1 pins (UTXD1 and URXD1) definitions, PB2,PB3. */
 #define PINS_UART1                (PIO_PB2A_URXD1 | PIO_PB3A_UTXD1)

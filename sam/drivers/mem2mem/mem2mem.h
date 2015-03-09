@@ -3,7 +3,7 @@
  *
  * \brief MEM2MEM driver for SAM.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -567,8 +567,8 @@ void m2m_abort_job(struct m2m_module *const m2m, enum m2m_job_type type);
  *   driver, the interrupt support has been implemented and enabled by default)
  *   - Following function should be implemented for MEM2MEM interrupt service
  *     \code
- *     void MEM2MEM_Handler(void);
- *     \endcode
+	void MEM2MEM_Handler(void);
+\endcode
  *   - MEM2MEM interrupt should be enabled on initialization
  *     \snippet mem2mem.c m2m_init_irq
  *

@@ -48,24 +48,24 @@
 * \page asfdoc_common2_at25dfx_basic_use Quick Start Guide for AT25DFx SerialFlash Driver
 *
 * This quick start will read, unprotect, erase and write bytes to an AT25DF081A
-* that is connected to the SPI interface on EXT1 header of SAMD20 Xplained Pro or EXT3 of SAMD21 Xplained Pro.
+* that is connected to the SPI interface on EXT1 header of SAM D20 Xplained Pro or EXT3 of SAM D21 Xplained Pro.
 *
 * The SERCOM SPI will be configured with the following settings:
 *
-* For SAMD20 Xplained Pro
+* For SAM D20 Xplained Pro
 * - 500 kHz baud rate
 * - SCK, MISO and MOSI on EXT1 header's SPI pins
 *
-* For SAMD21 Xplained Pro 
+* For SAM D21 Xplained Pro 
 * - 120 kHz baud rate
 * - SCK, MISO and MOSI on EXT3
 *
 * The AT25DFx driver instance will be configured with the following settings:
 *
-* For SAMD20 Xplained Pro 
+* For SAM D20 Xplained Pro 
 * - CS on EXT1 header's SS0 pin
 *
-* For SAMD21 Xplained Pro 
+* For SAM D21 Xplained Pro 
 * - CS on EXT3 PA13
 *
 *

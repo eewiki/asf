@@ -104,7 +104,7 @@ enum status_code i2s_init(
 
 	_i2s_instances[0] = module_inst;
 
-	system_interrupt_enable(I2S_IRQn);
+	system_interrupt_enable(SYSTEM_INTERRUPT_MODULE_I2S);
 #endif
 
 	return STATUS_OK;
@@ -254,7 +254,7 @@ enum status_code i2s_serializer_set_config(
 {
 	Assert(module_inst);
 	Assert(module_inst->hw);
-	Assert(serializer < I2S_CLOCK_UNIT_N);
+	Assert(serializer < I2S_SERIALIZER_N);
 	Assert(config);
 
 	/* Status check */

@@ -358,7 +358,7 @@ void usart_abort_job(
 		case USART_TRANSCEIVER_RX:
 			/* Clear the interrupt flag in order to prevent the receive
 			 * complete callback to fire */
-			usart_hw->INTFLAG.reg |= SERCOM_USART_INTFLAG_RXC;
+			usart_hw->INTFLAG.reg = SERCOM_USART_INTFLAG_RXC;
 
 			/* Clear the software reception buffer */
 			module->remaining_rx_buffer_length = 0;
@@ -368,7 +368,7 @@ void usart_abort_job(
 		case USART_TRANSCEIVER_TX:
 			/* Clear the interrupt flag in order to prevent the receive
 			 * complete callback to fire */
-			usart_hw->INTFLAG.reg |= SERCOM_USART_INTFLAG_TXC;
+			usart_hw->INTFLAG.reg = SERCOM_USART_INTFLAG_TXC;
 
 			/* Clear the software reception buffer */
 			module->remaining_tx_buffer_length = 0;
@@ -469,7 +469,7 @@ void _usart_interrupt_handler(
 			(module->tx_buffer_ptr)++;
 
 			if (module->character_size == USART_CHARACTER_SIZE_9BIT) {
-				data_to_send = (*(module->tx_buffer_ptr) << 8);
+				data_to_send |= (*(module->tx_buffer_ptr) << 8);
 				/* Increment 8-bit pointer */
 				(module->tx_buffer_ptr)++;
 			}

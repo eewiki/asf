@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 DMA System Driver Quick Start
+ * \brief SAM D21 Direct Memory Access Controller(DMAC) Driver Quick Start
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -101,8 +101,10 @@ static void setup_transfer_descriptor(DmacDescriptor *descriptor )
 
 	//! [setup_6]
 	descriptor_config.block_transfer_count = sizeof(source_memory);
-	descriptor_config.source_address = (uint32_t)source_memory + sizeof(source_memory);
-	descriptor_config.destination_address = (uint32_t)destination_memory + sizeof(source_memory);
+	descriptor_config.source_address = (uint32_t)source_memory +
+		sizeof(source_memory);
+	descriptor_config.destination_address = (uint32_t)destination_memory +
+		sizeof(source_memory);
 	//! [setup_6]
 
 	//! [setup_7]
@@ -115,7 +117,10 @@ static void setup_transfer_descriptor(DmacDescriptor *descriptor )
 
 int main(void)
 {
+	//! [sample_resource]
 	struct dma_resource example_resource;
+	//! [sample_resource]
+
 	system_init();
 
 	//! [setup_init]
@@ -152,7 +157,11 @@ int main(void)
 	//! [main_1]
 	dma_start_transfer_job(&example_resource);
 	//! [main_1]
-	
+
+	//! [main_1_1]
+	dma_trigger_transfer(&example_resource);
+	//! [main_1_1]
+
 	//! [main_2]
 	while (!transfer_is_done) {
 		/* Wait for transfer done */

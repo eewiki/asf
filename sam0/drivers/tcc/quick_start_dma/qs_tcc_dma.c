@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D2x Timer/Counter Driver for Control Applications DMA Quickstart
+ * \brief SAM D21 Timer/Counter Driver for Control Applications DMA Quickstart
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -42,7 +42,7 @@
 #include <asf.h>
 #include <conf_quick_start_dma.h>
 
-static void _configure_tcc(void);
+static void configure_tcc(void);
 
 //! [module_inst]
 struct tcc_module tcc_instance;
@@ -63,7 +63,7 @@ COMPILER_ALIGNED(16) DmacDescriptor compare_dma_descriptor;
 //! [capture_variables]
 uint16_t capture_values[3] = {0, 0, 0};
 //! [capture_dma_resource]
-struct dma_resource captrure_dma_resource;
+struct dma_resource capture_dma_resource;
 //! [capture_dma_resource]
 //! [capture_dma_descriptor]
 COMPILER_ALIGNED(16) DmacDescriptor capture_dma_descriptor;
@@ -74,7 +74,7 @@ struct events_resource capture_event_resource;
 //! [capture_variables]
 
 //! [config_event_for_capture]
-static void _config_event_for_capture(void)
+static void config_event_for_capture(void)
 {
 	//! [event_setup_1]
 	struct events_config config;
@@ -102,7 +102,7 @@ static void _config_event_for_capture(void)
 //! [config_event_for_capture]
 
 //! [config_dma_for_capture]
-static void _config_dma_for_capture(void)
+static void config_dma_for_capture(void)
 {
 	//! [config_dma_resource_for_capture]
 	//! [dma_setup_1]
@@ -114,13 +114,12 @@ static void _config_dma_for_capture(void)
 	//! [dma_setup_2]
 
 	//! [dma_setup_3]
-	config.transfer_trigger = DMA_TRIGGER_PERIPHERAL;
 	config.trigger_action = DMA_TRIGGER_ACTON_BEAT;
 	config.peripheral_trigger = CONF_CAPTURE_TRIGGER;
 	//! [dma_setup_3]
 
 	//! [dma_setup_4]
-	dma_allocate(&captrure_dma_resource, &config);
+	dma_allocate(&capture_dma_resource, &config);
 	//! [dma_setup_4]
 	//! [config_dma_resource_for_capture]
 
@@ -147,30 +146,26 @@ static void _config_dma_for_capture(void)
 	//! [dma_setup_8]
 	dma_descriptor_create(&capture_dma_descriptor, &descriptor_config);
 	//! [dma_setup_8]
-
-	//! [dma_setup_9]
-	capture_dma_descriptor.DESCADDR.reg = (uint32_t)&capture_dma_descriptor;
-	//! [dma_setup_9]
 	//! [config_dma_descriptor_for_capture]
 
 	//! [config_dma_job_for_capture]
 	//! [dma_setup_10]
-	dma_add_descriptor(&captrure_dma_resource, &capture_dma_descriptor);
+	dma_add_descriptor(&capture_dma_resource, &capture_dma_descriptor);
+	dma_add_descriptor(&capture_dma_resource, &capture_dma_descriptor);
 	//! [dma_setup_10]
 	//! [dma_setup_11]
-	dma_start_transfer_job(&captrure_dma_resource);
+	dma_start_transfer_job(&capture_dma_resource);
 	//! [dma_setup_11]
 	//! [config_dma_job_for_capture]
 }
 //! [config_dma_for_capture]
 
 //! [config_dma_for_wave]
-static void _config_dma_for_wave(void)
+static void config_dma_for_wave(void)
 {
 	//! [config_dma_resource_for_wave]
 	struct dma_resource_config config;
 	dma_get_config_defaults(&config);
-	config.transfer_trigger = DMA_TRIGGER_PERIPHERAL;
 	config.trigger_action = DMA_TRIGGER_ACTON_BEAT;
 	config.peripheral_trigger = CONF_COMPARE_TRIGGER;
 	dma_allocate(&compare_dma_resource, &config);
@@ -190,11 +185,10 @@ static void _config_dma_for_wave(void)
 			(uint32_t)&CONF_PWM_MODULE->CC[CONF_PWM_CHANNEL];
 
 	dma_descriptor_create(&compare_dma_descriptor, &descriptor_config);
-
-	compare_dma_descriptor.DESCADDR.reg = (uint32_t)&compare_dma_descriptor;
 	//! [config_dma_descriptor_for_wave]
 
 	//! [config_dma_job_for_wave]
+	dma_add_descriptor(&compare_dma_resource, &compare_dma_descriptor);
 	dma_add_descriptor(&compare_dma_resource, &compare_dma_descriptor);
 	dma_start_transfer_job(&compare_dma_resource);
 	//! [config_dma_job_for_wave]
@@ -202,7 +196,7 @@ static void _config_dma_for_wave(void)
 //! [config_dma_for_wave]
 
 //! [setup]
-static void _configure_tcc(void)
+static void configure_tcc(void)
 {
 	//! [setup_config]
 	struct tcc_config config_tcc;
@@ -242,12 +236,12 @@ static void _configure_tcc(void)
 	//! [setup_events]
 
 	//! [setup_event_sys]
-	_config_event_for_capture();
+	config_event_for_capture();
 	//! [setup_event_sys]
 
 	//! [setup_dma]
-	_config_dma_for_capture();
-	_config_dma_for_wave();
+	config_dma_for_capture();
+	config_dma_for_wave();
 	//! [setup_dma]
 
 	//! [setup_enable]
@@ -261,7 +255,7 @@ int main(void)
 	system_init();
 
 	//! [setup_init]
-	_configure_tcc();
+	configure_tcc();
 	//! [setup_init]
 
 //! [main]

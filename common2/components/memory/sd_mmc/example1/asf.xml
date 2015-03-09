@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common2.components.memory.sd_mmc.example1" caption="SD/MMC Card Raw Access Example">
+		<module type="application" id="common2.components.memory.sd_mmc.example1#0" caption="SD/MMC Card Raw Access Example">
+			<info type="description" value="summary">
+			Install and execute a basic read and write block access to an external SD/MMC card.
+			This example is interesting to start a specific development
+			on SD/MMC card without a file system.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Memory"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="example.c"/>
+			<build type="c-source" value="time_tick_sam.c"/>
+			<build type="header-file" value="time_tick.h"/>
+			<require idref="sam0.utils.stdio.stdio_serial"/>
+			<require idref="common2.components.memory.sd_mmc"/>
+			<device-support value="sam0"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

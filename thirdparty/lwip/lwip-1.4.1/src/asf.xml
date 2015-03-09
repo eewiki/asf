@@ -1,0 +1,272 @@
+<asf xmlversion="1.0">
+	<module type="service" id="thirdparty.lwip.141" caption="lwIP TCP/IP Stack v141">
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<info type="description" value="summary">
+		lwIP is a light-weight implementation of the TCP/IP protocol suite.
+		lwIP has been ported to AVR UC3 and SAM device family. The network stack can be run either with or without FreeRTOS.
+		For more information on lwIP, check lwip.wikia.com/wiki/LwIP_Wiki.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="module-config" subtype="required-header-file" value="lwipopts.h"/>
+		<build type="module-config" subtype="path" value="module_config/"/>
+		<build type="c-source" value="api/api_lib.c"/>
+		<build type="c-source" value="api/api_msg.c"/>
+		<build type="c-source" value="api/err.c"/>
+		<build type="c-source" value="api/netbuf.c"/>
+		<build type="c-source" value="api/netdb.c"/>
+		<build type="c-source" value="api/netifapi.c"/>
+		<build type="c-source" value="api/sockets.c"/>
+		<build type="c-source" value="api/tcpip.c"/>
+		<build type="c-source" value="core/def.c"/>
+		<build type="c-source" value="core/dhcp.c"/>
+		<build type="c-source" value="core/dns.c"/>
+		<build type="c-source" value="core/lwip_init.c"/>
+		<build type="c-source" value="core/mem.c"/>
+		<build type="c-source" value="core/memp.c"/>
+		<build type="c-source" value="core/netif.c"/>
+		<build type="c-source" value="core/pbuf.c"/>
+		<build type="c-source" value="core/raw.c"/>
+		<build type="c-source" value="core/stats.c"/>
+		<build type="c-source" value="core/sys.c"/>
+		<build type="c-source" value="core/tcp.c"/>
+		<build type="c-source" value="core/tcp_in.c"/>
+		<build type="c-source" value="core/tcp_out.c"/>
+		<build type="c-source" value="core/lwip_timers_141.c"/>
+		<build type="c-source" value="core/udp.c"/>
+		<build type="header-file" value="include/lwip/api.h"/>
+		<build type="header-file" value="include/lwip/api_msg.h"/>
+		<build type="header-file" value="include/lwip/arch.h"/>
+		<build type="header-file" value="include/lwip/debug.h"/>
+		<build type="header-file" value="include/lwip/def.h"/>
+		<build type="header-file" value="include/lwip/dhcp.h"/>
+		<build type="header-file" value="include/lwip/dns.h"/>
+		<build type="header-file" value="include/lwip/err.h"/>
+		<build type="header-file" value="include/lwip/init.h"/>
+		<build type="header-file" value="include/lwip/mem.h"/>
+		<build type="header-file" value="include/lwip/memp.h"/>
+		<build type="header-file" value="include/lwip/memp_std.h"/>
+		<build type="header-file" value="include/lwip/netbuf.h"/>
+		<build type="header-file" value="include/lwip/netdb.h"/>
+		<build type="header-file" value="include/lwip/netif.h"/>
+		<build type="header-file" value="include/lwip/netifapi.h"/>
+		<build type="header-file" value="include/lwip/opt.h"/>
+		<build type="header-file" value="include/lwip/pbuf.h"/>
+		<build type="header-file" value="include/lwip/raw.h"/>
+		<build type="header-file" subtype="api" value="include/lwip/sio.h"/>
+		<build type="header-file" value="include/lwip/snmp.h"/>
+		<build type="header-file" value="include/lwip/snmp_asn1.h"/>
+		<build type="header-file" value="include/lwip/snmp_msg.h"/>
+		<build type="header-file" value="include/lwip/snmp_structs.h"/>
+		<build type="header-file" value="include/lwip/sockets.h"/>
+		<build type="header-file" value="include/lwip/stats.h"/>
+		<build type="header-file" value="include/lwip/sys.h"/>
+		<build type="header-file" value="include/lwip/tcp.h"/>
+		<build type="header-file" subtype="api" value="include/lwip/tcpip.h"/>
+		<build type="header-file" value="include/lwip/tcp_impl.h"/>
+		<build type="header-file" value="include/lwip/timers.h"/>
+		<build type="header-file" value="include/lwip/udp.h"/>
+		<build type="include-path" value="include"/>
+		<build type="include-path" value="include/lwip"/>
+		<build type="header-file" value="include/netif/ppp_oe.h"/>
+		<build type="header-file" value="include/netif/etharp.h"/>
+		<build type="distribute" subtype="file" value="../CHANGELOG"/>
+		<build type="distribute" subtype="file" value="../FILES"/>
+		<build type="distribute" subtype="file" value="../README"/>
+		<build type="distribute" subtype="file" value="../FILES"/>
+		<build type="distribute" subtype="file" value="FILES"/>
+		<build type="distribute" subtype="file" value="./netif/FILES"/>
+		<build type="distribute" subtype="file" value="../doc/contrib.txt"/>
+		<build type="distribute" subtype="file" value="../doc/FILES"/>
+		<build type="distribute" subtype="file" value="../doc/rawapi.txt"/>
+		<build type="distribute" subtype="file" value="../doc/savannah.txt"/>
+		<build type="distribute" subtype="file" value="../doc/snmp_agent.txt"/>
+		<build type="distribute" subtype="file" value="../doc/sys_arch.txt"/>
+		<build type="distribute" subtype="file" value="../test/unit/lwip_check.h"/>
+		<build type="distribute" subtype="file" value="../test/unit/lwip_unittests.c"/>
+		<build type="distribute" subtype="file" value="../test/unit/tcp/tcp_helper.c"/>
+		<build type="distribute" subtype="file" value="../test/unit/tcp/tcp_helper.h"/>
+		<build type="distribute" subtype="file" value="../test/unit/tcp/test_tcp.c"/>
+		<build type="distribute" subtype="file" value="../test/unit/tcp/test_tcp.h"/>
+		<build type="distribute" subtype="file" value="../test/unit/tcp/test_tcp_oos.c"/>
+		<build type="distribute" subtype="file" value="../test/unit/tcp/test_tcp_oos.h"/>
+		<build type="distribute" subtype="file" value="../test/unit/udp/test_udp.c"/>
+		<build type="distribute" subtype="file" value="../test/unit/udp/test_udp.h"/>
+		<build type="distribute" subtype="license" value="../COPYING" />
+		<require idref="config.thirdparty.lwip.141.ipv"/>
+		<require idref="config.thirdparty.lwip.141.snmp"/>
+		<require idref="config.thirdparty.lwip.141.netif.ppp"/>
+		<require idref="config.thirdparty.lwip.141.netif.etharp"/>
+		<require idref="config.thirdparty.lwip.141.netif.slipif"/>
+		<require idref="thirdparty.lwip-port.141"/>
+		<device-support value="uc3"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4"/>
+		<device-support value="samd20"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+	</module>
+	<select-by-config id="config.thirdparty.lwip.141.ipv" name="config.thirdparty.lwip.141.ipv" caption="IPv4 versus IPv6 configuration of lwIP v141" default="4">
+		<module type="meta" id="config.thirdparty.lwip.141.ipv#4" caption="IPv4 support in lwIP v141">
+			<info type="description" value="summary">
+			Default lwIP configuration to use IPv4.
+			</info>
+			<build type="c-source" value="core/ipv4/autoip.c"/>
+			<build type="c-source" value="core/ipv4/icmp.c"/>
+			<build type="c-source" value="core/ipv4/igmp.c"/>
+			<build type="c-source" value="core/ipv4/inet.c"/>
+			<build type="c-source" value="core/ipv4/inet_chksum.c"/>
+			<build type="c-source" value="core/ipv4/ip.c"/>
+			<build type="c-source" value="core/ipv4/ip_addr.c"/>
+			<build type="c-source" value="core/ipv4/ip_frag.c"/>
+			<build type="header-file" subtype="api" value="include/ipv4/lwip/autoip.h"/>
+			<build type="header-file" subtype="api" value="include/ipv4/lwip/icmp.h"/>
+			<build type="header-file" subtype="api" value="include/ipv4/lwip/igmp.h"/>
+			<build type="header-file" subtype="api" value="include/ipv4/lwip/inet.h"/>
+			<build type="header-file" subtype="api" value="include/ipv4/lwip/inet_chksum.h"/>
+			<build type="header-file" subtype="api" value="include/ipv4/lwip/ip.h"/>
+			<build type="header-file" subtype="api" value="include/ipv4/lwip/ip_addr.h"/>
+			<build type="header-file" subtype="api" value="include/ipv4/lwip/ip_frag.h"/>
+			<build type="include-path" value="include/ipv4"/>
+			<device-support value="uc3"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<device-support value="samd20"/>
+		</module>
+		<module type="meta" id="config.thirdparty.lwip.141.ipv#6" caption="IPv6 support in lwIP v141">
+			<info type="description" value="summary">
+			lwIP configuration to use IPv6. Note that IPv6 is still in a very experimental state, and that no real support is actually done.
+			</info>
+			<build type="c-source" value="core/ipv6/icmp6.c"/>
+			<build type="c-source" value="core/ipv6/inet6.c"/>
+			<build type="c-source" value="core/ipv6/ip6.c"/>
+			<build type="c-source" value="core/ipv6/ip6_addr.c"/>
+			<build type="header-file" subtype="api" value="include/ipv6/lwip/icmp.h"/>
+			<build type="header-file" subtype="api" value="include/ipv6/lwip/inet.h"/>
+			<build type="header-file" subtype="api" value="include/ipv6/lwip/ip.h"/>
+			<build type="header-file" subtype="api" value="include/ipv6/lwip/ip_addr.h"/>
+			<build type="include-path" value="include/ipv6"/>
+			<device-support value="uc3"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<device-support value="samd20"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="config.thirdparty.lwip.141.snmp" name="config.thirdparty.lwip.141.snmp" caption="lwIP v141 configuration to use SNMP or not" default="no">
+		<module type="meta" id="config.thirdparty.lwip.141.snmp#no" caption="lwIP v141 configuration with SNMP disabled">
+			<info type="description" value="summary">
+			Default lwIP configuration without SNMP support.
+			</info>
+			<device-support value="uc3"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<device-support value="samd20"/>
+		</module>
+		<module type="meta" id="config.thirdparty.lwip.141.snmp#yes" caption="lwIP v141 configuration with SNMP enabled">
+			<info type="description" value="summary">
+			lwIP configuration with SNMP support.
+			</info>
+			<build type="c-source" value="core/snmp/asn1_dec.c"/>
+			<build type="c-source" value="core/snmp/asn1_enc.c"/>
+			<build type="c-source" value="core/snmp/mib2.c"/>
+			<build type="c-source" value="core/snmp/mib_structs.c"/>
+			<build type="c-source" value="core/snmp/msg_in.c"/>
+			<build type="c-source" value="core/snmp/msg_out.c"/>
+			<build type="include-path" value="include"/>
+			<device-support value="uc3"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<device-support value="samd20"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="config.thirdparty.lwip.141.netif.ppp" name="config.thirdparty.lwip.141.netif.ppp" caption="lwIP v141 configuration to use PPP or not" default="no">
+		<module type="meta" id="config.thirdparty.lwip.141.netif.ppp#no" caption="lwIP v141 configuration with PPP disabled">
+			<info type="description" value="summary">
+			Default lwIP configuration without PPP support.
+			</info>
+			<device-support value="uc3"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<device-support value="samd20"/>
+		</module>
+		<module type="meta" id="config.thirdparty.lwip.141.netif.ppp#yes" caption="lwIP v141 configuration with PPP enabled">
+			<info type="description" value="summary">
+			lwIP configuration with PPP support.
+			</info>
+			<build type="c-source" value="netif/ppp/auth.c"/>
+			<build type="header-file" value="netif/ppp/auth.h"/>
+			<build type="c-source" value="netif/ppp/chap.c"/>
+			<build type="header-file" value="netif/ppp/chap.h"/>
+			<build type="c-source" value="netif/ppp/chpms.c"/>
+			<build type="header-file" value="netif/ppp/chpms.h"/>
+			<build type="c-source" value="netif/ppp/fsm.c"/>
+			<build type="header-file" value="netif/ppp/fsm.h"/>
+			<build type="c-source" value="netif/ppp/ipcp.c"/>
+			<build type="header-file" value="netif/ppp/ipcp.h"/>
+			<build type="c-source" value="netif/ppp/lcp.c"/>
+			<build type="header-file" value="netif/ppp/lcp.h"/>
+			<build type="c-source" value="netif/ppp/magic.c"/>
+			<build type="header-file" value="netif/ppp/magic.h"/>
+			<build type="c-source" value="netif/ppp/md5.c"/>
+			<build type="header-file" value="netif/ppp/md5.h"/>
+			<build type="c-source" value="netif/ppp/pap.c"/>
+			<build type="header-file" value="netif/ppp/pap.h"/>
+			<build type="c-source" value="netif/ppp/ppp.c"/>
+			<build type="header-file" subtype="api" value="netif/ppp/ppp.h"/>
+			<build type="header-file" value="netif/ppp/pppdebug.h"/>
+			<build type="c-source" value="netif/ppp/ppp_oe.c"/>
+			<build type="c-source" value="netif/ppp/randm.c"/>
+			<build type="header-file" value="netif/ppp/randm.h"/>
+			<build type="c-source" value="netif/ppp/vj.c"/>
+			<build type="header-file" value="netif/ppp/vj.h"/>
+			<device-support value="uc3"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<device-support value="samd20"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="config.thirdparty.lwip.141.netif.etharp" name="config.thirdparty.lwip.141.netif.etharp" caption="lwIP v141 configuration to use ARP over Ethernet or not" default="yes">
+		<module type="meta" id="config.thirdparty.lwip.141.netif.etharp#no" caption="lwIP v141 configuration with ARP disabled">
+			<info type="description" value="summary">
+			lwIP configuration without ARP-over-ethernet support.
+			</info>
+			<device-support value="uc3"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<device-support value="samd20"/>
+		</module>
+		<module type="meta" id="config.thirdparty.lwip.141.netif.etharp#yes" caption="lwIP v141 configuration with ARP enabled">
+			<info type="description" value="summary">
+			Default lwIP configuration with ARP-over-ethernet support.
+			</info>
+			<build type="c-source" value="netif/etharp.c"/>
+			<device-support value="uc3"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<device-support value="samd20"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="config.thirdparty.lwip.141.netif.slipif" name="config.thirdparty.lwip.141.netif.slipif" caption="lwIP v141 configuration to include support for the SLIP (Serial Line IP) protocol or not" default="no">
+		<module type="meta" id="config.thirdparty.lwip.141.netif.slipif#no" caption="lwIP v141 configuration with SLIP disabled">
+			<info type="description" value="summary">
+			Default lwIP configuration without support for the SLIP protocol.
+			</info>
+			<device-support value="uc3"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<device-support value="samd20"/>
+		</module>
+		<module type="meta" id="config.thirdparty.lwip.141.netif.slipif#yes" caption="lwIP v141 configuration with SLIP enabled">
+			<info type="description" value="summary">
+			lwIP configuration with support for the SLIP protocol.
+			</info>
+			<build type="c-source" value="netif/slipif.c"/>
+			<build type="header-file" subtype="api" value="include/netif/slipif.h"/>
+			<build type="include-path" value="include"/>
+			<device-support value="uc3"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<device-support value="samd20"/>
+		</module>
+	</select-by-config>
+</asf>

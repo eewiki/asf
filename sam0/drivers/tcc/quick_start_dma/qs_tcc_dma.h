@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D2x TCC Driver Quick Start with DMA
+ * \brief SAM D21 TCC Driver Quick Start with DMA
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -44,25 +44,27 @@
 /**
  * \page asfdoc_sam0_tcc_dma_use_case Quick Start Guide for Using DMA with TCC
  *
- * The supported device list:
- *    - SAMD21
+ * The supported board list:
+ *    - SAM D21 Xplained Pro
  *
  * In this use case, the TCC will be used to generate a PWM signal. Here
- * the pulse width varies in following values through DMA transfer: one quater
- * of the period, half of the period and three quaters of the period.
- * When connect PWM output to LED it makes the LED light. To see the waveform,
- * you may need an ossiliscope.
+ * the pulse width varies through following values with the help of DMA
+ * transfer: one quarter of the period, half of the period and three quarters
+ * of the period.
+ * The PWM output can be used to drive an LED. The waveform can also be
+ * viewed using an oscilloscope.
  * The output signal is also fed back to another TCC channel by event system,
- * the event stamps are captured and transfer to values buffer by DMA.
+ * the event stamps are captured and transferred to a buffer by DMA.
  *
  * The PWM output is set up as follows:
  * <table>
- *  <tr><th> board        </td><th> pin  </td><th> connect to </td></tr>
+ *  <tr><th> Board        </td><th> Pin  </td><th> Connect to </td></tr>
  *  <tr><td> SAMD21 Xpro  </td><td> PB30 </td><td> LED0       </td></tr>
  * </table>
  *
  * The TCC module will be setup as follows:
  * - GCLK generator 0 (GCLK main) clock source
+ * - Use double buffering write when set top, compare or pattern through API
  * - No dithering on the counter or compare
  * - No prescaler
  * - Single Slope PWM wave generation
@@ -73,37 +75,33 @@
  * - No capture enabled
  * - Count upward
  * - Don't perform one-shot operations
- * - No event input enabled
- * - No event action
- * - No event generation enabled
  * - Counter starts on 0
  * - Counter top set to 0x1000
- * - Channel 0 is set to compare and match value 0x1000*3/4
- * - Channel 1 is set to capture input event
- * - Channel 0 compare generates event
- * - Channel 1 perform capture when there is channel event
+ * - Channel 0 is set to compare and match value 0x1000*3/4 and generate event
+ * - Channel 1 is set to capture on input event
  *
  * The event resource of EVSYS module will be setup as follows:
  * - TCC match capture channel 0 is selected as event generator
  * - Event generation is synchronous, with rising edge detected
- * - TCC match capture channel 1 is the event resource user
+ * - TCC match capture channel 1 is the event user
  *
  * The DMA resource of DMAC module will be setup as follows:
- * - Two DMA resources is used for compare and capture
+ * - Two DMA resources are used
  * - Both DMA resources use peripheral trigger
  * - Both DMA resources perform beat transfer on trigger
- * - Both DMA resources transfer 16-bit in a beat
- * - Both DMA will transfer 3 beats and then repeat again in same buffer
- * - On DMA resource for compare
- *   - TCC overflow will trigger DMA beat
- *   - The source address is increment
- *   - The destination address is fixed to TCC channel 0 match capture register
- *   - The increment step size is defined by destination - TCC
- * - On DMA resource for capture
- *   - TCC capture on channel 1 will trigger DMA beat
- *   - The source address is fixed to TCC channel 1 match capture register
- *   - The destination address is increment
- *   - The increment step size is defined by source - TCC
+ * - Both DMA resources use beat size of 16-bits
+ * - Both DMA resources are configured to transfer 3 beats and
+ *   then repeat again in same buffer
+ * - On DMA resource which controls the compare value
+ *   - TCC0 overflow triggers DMA transfer
+ *   - The source address increment is enabled
+ *   - The destination address is fixed to TCC channel 0 Compare/Capture
+ *register
+ * - On DMA resource which reads the captured value
+ *   - TCC0 capture on channel 1 triggers DMA transfer
+ *   - The source address is fixed to TCC channel 1 Compare/Capture register
+ *   - The destination address increment is enabled
+ *   - The captured value is transferred to an array in SRAM
  *
  * \section asfdoc_sam0_tcc_dma_use_case_setup Quick Start
  *
@@ -155,7 +153,7 @@
  *     \snippet qs_tcc_dma.c setup_change_config_pwm
  * -# Configure the TCC module with the desired settings.
  *     \snippet qs_tcc_dma.c setup_set_config
- * -# Configure and enable the desired events for TCC module.
+ * -# Configure and enable the desired events for the TCC module.
  *     \snippet qs_tcc_dma.c setup_events
  * \subsubsection asfdoc_sam0_tcc_dma_use_case_setup_flow_event Configure the Event System
  * Configure the EVSYS module to wire channel 0 event to channel 1.
@@ -175,7 +173,7 @@
  *      \snippet qs_tcc_dma.c event_setup_3
  * -# Allocate and configure the resource using the configuration structure.
  *      \snippet qs_tcc_dma.c event_setup_4
- * -# Attach an user to the resource
+ * -# Attach a user to the resource
  *      \snippet qs_tcc_dma.c event_setup_5
  * \subsubsection asfdoc_sam0_tcc_dma_use_case_setup_flow_dma_capture Configure the DMA for Capture TCC Channel 1
  * Configure the DMAC module to obtain captured value from TCC channel 1.
@@ -213,19 +211,20 @@
  *             settings.
  *  -# Adjust the DMA transfer descriptor configurations.
  *       \snippet qs_tcc_dma.c dma_setup_7
- *  -# Create the DMA transfer descriptor with configuration.
+ *  -# Create the DMA transfer descriptor with the given configuration.
  *       \snippet qs_tcc_dma.c dma_setup_8
- *  -# Adjust the DMA transfer descriptor if multiple DMA transfer will be
- *        performed.
- *       \snippet qs_tcc_dma.c dma_setup_9
  * -# Start DMA transfer job with prepared descriptor
  *  -# Add the DMA transfer descriptor to the allocated DMA resource.
  *       \snippet qs_tcc_dma.c dma_setup_10
+ *       \note When adding multiple descriptors, the last added one is linked
+ *             at the end of descriptor queue. If ringed list is needed, just
+ *             add the first descriptor again to build the circle.
  *  -# Start the DMA transfer job with the allocated DMA resource and
  *       transfer descriptor.
  *       \snippet qs_tcc_dma.c dma_setup_11
  * \subsubsection asfdoc_sam0_tcc_dma_use_case_setup_flow_dma_compare Configure the DMA for Compare TCC Channel 0
- * Configure the DMAC module to update TCC channel 0 compare value. The flow is similar to last DMA configure step for capture.
+ * Configure the DMAC module to update TCC channel 0 compare value.
+ * The flow is similar to last DMA configure step for capture.
  * -# Allocate and configure the DMA resource
  *     \snippet qs_tcc_dma.c compare_dma_resource
  *     \snippet qs_tcc_dma.c config_dma_resource_for_wave

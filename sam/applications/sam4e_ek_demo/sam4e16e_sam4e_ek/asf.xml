@@ -7,29 +7,26 @@
 		<build type="header-file" value="conf_sleepmgr.h"/>
 		<build type="header-file" value="conf_eth.h"/>
 		<build type="header-file" value="conf_uart_serial.h"/>
-		<build type="header-file" value="conf_lwip_threads.h"/>
 		<build type="header-file" value="conf_aat31xx.h"/>
 		<build type="header-file" value="conf_ads7843.h"/>
 		<build type="header-file" value="conf_spi_master.h"/>
 		<build type="header-file" value="conf_ili93xx.h"/>
 		<build type="header-file" value="conf_qt_i2c.h"/>
 		<require idref="sam.applications.sam4e_ek_demo"/>
-		<config name="config.board.sam4e_ek.init" value="no"/>
 		<require idref="board.sam4e_ek"/>
-		<config name="config.thirdparty.lwip.version" value="1.4.0"/>
-		<config name="config.thirdparty.lwip-port.140" value="freertos_sam4e"/>
+		<config name="config.thirdparty.os.freertos.version" value="7.3.0"/>
+		<config name="config.thirdparty.lwip.version" value="1.4.1"/>
+		<config name="config.thirdparty.lwip-port.141" value="standalone_sam4e"/>
 		<build type="define" name="FREERTOS_USED" value=""/>
 		<build type="define" name="HTTP_USED" value="1"/>
-		<build type="define" name="TFTP_USED" value="1"/>
 		<generator value="iarewarm"/>
-		<generator value="armgcc"/>
 		<generator value="as5_arm"/>
 		<config name="config.compiler.armgcc.create_aux" value="no"/>
 		<config name="config.compiler.iarewarm.create_aux" value="no"/>
 		<config name="config.compiler.as5_arm.create_aux" value="no"/>
-		<config name="config.compiler.iarewarm.heap_size" value="0x8000"/>
-		<config name="config.compiler.iarewarm.stack_size" value="0x4000"/>
+		<config name="config.compiler.iarewarm.stack_size" value="0x1800"/>
 		<config name="config.compiler.armgcc.optimization" value="high"/>
+		<toolchain-config name="armgcc.linker.miscellaneous.LinkerFlags" value="-Xlinker --defsym=STACK_SIZE=0x1800" toolchain="armgcc"/>
 		<generator value="doxygen"/>
 		<device-support value="atsam4e16e"/>
 	</project>

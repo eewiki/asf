@@ -3,7 +3,7 @@
  *
  * \brief TC Capture Waveform Example for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -91,26 +91,26 @@
  * -# Download the program into the evaluation board and run it.
  * -# Upon startup, the application will output the following line on the UART:
  *    \code
- *     -- TC capture waveform example  xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *    \endcode
+	-- TC capture waveform example  xxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+\endcode
  * -# Choose the item in the following menu to test.
  *    \code
- *     Menu :
- *     ------
- *       Output waveform property:
- *       0: Set Frequency =  178 Hz, Duty Cycle = 30%
- *       1: Set Frequency =  375 Hz, Duty Cycle = 50%
- *       2: Set Frequency =  800 Hz, Duty Cycle = 75%
- *       3: Set Frequency = 1000 Hz, Duty Cycle = 80%
- *       4: Set Frequency = 4000 Hz, Duty Cycle = 55%
- *       -------------------------------------------
- *       c: Capture waveform from TC(TC_PERIPHERAL) channel(TC_CHANNEL_CAPTURE)
- *       s: Stop capture and display captured informations
- *       h: Display menu
- *     ------
- *    \endcode
+	Menu :
+	------
+	  Output waveform property:
+	  0: Set Frequency =  178 Hz, Duty Cycle = 30%
+	  1: Set Frequency =  375 Hz, Duty Cycle = 50%
+	  2: Set Frequency =  800 Hz, Duty Cycle = 75%
+	  3: Set Frequency = 1000 Hz, Duty Cycle = 80%
+	  4: Set Frequency = 4000 Hz, Duty Cycle = 55%
+	  -------------------------------------------
+	  c: Capture waveform from TC(TC_PERIPHERAL) channel(TC_CHANNEL_CAPTURE)
+	  s: Stop capture and display captured informations
+	  h: Display menu
+	------
+\endcode
  *
  */
 

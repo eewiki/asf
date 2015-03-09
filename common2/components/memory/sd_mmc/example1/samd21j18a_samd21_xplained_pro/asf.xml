@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<project caption="Basic SD/MMC card example for SAMD21 Xplained Pro" id="common2.components.memory.sd_mmc.example1.samd21_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_spi.h"/>
+		<build type="header-file" value="conf_sd_mmc.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="common2.components.memory.sd_mmc.example1"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<config name="config.common2.components.memory.sd_mmc" value="spi"/>
+		<config name="config.common2.services.delay" value="cycle"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<toolchain-config name="armgcc.linker.miscellaneous.LinkerFlags" value="-Wl,--defsym,__stack_size__=0x2000" toolchain="armgcc"/>
+		<config name="config.compiler.armgcc.stack_size" value="0x2000"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

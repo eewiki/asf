@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="USB Device HID Generic for SAMD21 Xplained Pro" id="common.services.usb.class.hid.device.generic.example.samd21_xpro">
+	<project caption="USB Device HID Generic for SAM D21 Xplained Pro" id="common.services.usb.class.hid.device.generic.example.samd21_xpro">
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_clocks.h"/>
 		<build type="header-file" value="conf_extint.h"/>

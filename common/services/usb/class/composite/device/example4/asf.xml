@@ -79,5 +79,30 @@
 			<device-support value="sam4e"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
+		<module type="application" id="common.services.usb.composite.device.example.cdc_msc#3" caption="USB Composite Device Example CDC and MSC">
+			<info type="description" value="summary">
+			Provide an application example of USB Composite Device with CDC and Mass Storage interfaces. It relies on native MSC driver and uses memory, uart and buttons or sensors available on the board as a user interface. CDC interface requires to install a specific driver provided within the source code folder where main.c is located.
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="uart.h"/>
+			<build type="c-source" value="uart_samd.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<build type="module-config" subtype="path" value="example_config"/>
+			<build type="header-file" value="main.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="memories_initialization_samd.c"/>
+			<build type="include-path" value="."/>
+			<require idref="sam0.drivers.sercom.usart"/>
+			<require idref="sam0.drivers.system"/> 
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="samd21"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
 	</select-by-device>
 </asf>

@@ -3,7 +3,7 @@
  *
  * \brief NVIC Example.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -88,45 +88,45 @@
  *   - No flow control
  * -# In the terminal window, the following text should appear:
  *    \code
- *     -- Cortex-M3 NVIC Example --
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     Set INT1's priority higher than INT2.
- *
- *     Menu:
- *     ===================================================
- *     1: Set INT2's priority higher than INT1.
- *     2: Set INT1's priority higher than INT2.
- *     h: Show this menu.
- *
- *     ===================================================
- *     Press button USR-LEFT to trigger the interrupts.
- *    \endcode
+	     -- Cortex-M3 NVIC Example --
+	     -- Compiled: xxx xx xxxx xx:xx:xx --
+	     Set INT1's priority higher than INT2.
+
+	     Menu:
+	     ===================================================
+	     1: Set INT2's priority higher than INT1.
+	     2: Set INT1's priority higher than INT2.
+	     h: Show this menu.
+
+	     ===================================================
+	     Press button USR-LEFT to trigger the interrupts.
+\endcode
  * -# Choose options in the above menu to set interrupt priority.
  * -# Press buttons to trigger the interrupts. \n
  *    If INT2's priority is higher than INT1's, the following text should appear
  *    in the terminal window:
  *    \code
- *    ===================================================
- *    Enter _Int1Handler.
- *    ***************************************************
- *    Enter _Int2Handler.
- *    Exit _Int2Handler.
- *    ***************************************************
- *    Exit _Int1Handler.
- *    ===================================================
- *    \endcode
+	===================================================
+	Enter _Int1Handler.
+	***************************************************
+	Enter _Int2Handler.
+	Exit _Int2Handler.
+	***************************************************
+	Exit _Int1Handler.
+	===================================================
+\endcode
  *    If INT1's priority is higher than INT2's, the following text should appear
  *    in the terminal window:
  *    \code
- *    ===================================================
- *    Enter _Int1Handler.
- *    Exit _Int1Handler.
- *    ===================================================
- *    ***************************************************
- *    Enter _Int2Handler.
- *    Exit _Int2Handler.
- *    ***************************************************
- *    \endcode
+	===================================================
+	Enter _Int1Handler.
+	Exit _Int1Handler.
+	===================================================
+	***************************************************
+	Enter _Int2Handler.
+	Exit _Int2Handler.
+	***************************************************
+\endcode
  *    The result is also shown by LEDs.
  *
  * \section References

@@ -39,6 +39,7 @@
 			<info type="gui-flag" value="hidden"/>
 			<device-support value="avr"/>
 			<device-support value="sam"/>
+			<device-support value="sam0"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>
 	</select-by-config>

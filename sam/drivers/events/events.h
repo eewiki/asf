@@ -3,7 +3,7 @@
  *
  * \brief Peripheral Event Controller Driver for SAM.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -339,67 +339,67 @@ static inline void events_ch_clear_overrun_status(uint32_t channel_id)
  *
  * Add this to the main loop or a setup function:
  * \code
- *   struct events_conf    events_config;
- *   struct events_ch_conf ch_config;
- *
- *   // Initialize AST as event generator
- *   init_ast();
- *
- *   // Initialize the PDCA as event user
- *   init_pdca();
- *
- *   // Initialize event module
- *   events_get_config_defaults(&events_config);
- *   events_init(&events_config);
- *   events_enable();
- *
- *   // Configure an event channel
- *   // - AST periodic event 0 --- Generator
- *   // - PDCA channel 0       --- User
- *   events_ch_get_config_defaults(&ch_config);
- *   ch_config.channel_id = PEVC_ID_USER_PDCA_0;
- *   ch_config.generator_id = PEVC_ID_GEN_AST_2;
- *   ch_config.shaper_enable = true;
- *   ch_config.igf_edge = EVENT_IGF_EDGE_NONE;
- *   events_ch_configure(&ch_config);
- *
- *   // Enable the channel
- *   events_ch_enable(PEVC_ID_USER_PDCA_0);
- * \endcode
+	   struct events_conf    events_config;
+	   struct events_ch_conf ch_config;
+
+	   // Initialize AST as event generator
+	   init_ast();
+
+	   // Initialize the PDCA as event user
+	   init_pdca();
+
+	   // Initialize event module
+	   events_get_config_defaults(&events_config);
+	   events_init(&events_config);
+	   events_enable();
+
+	   // Configure an event channel
+	   // - AST periodic event 0 --- Generator
+	   // - PDCA channel 0       --- User
+	   events_ch_get_config_defaults(&ch_config);
+	   ch_config.channel_id = PEVC_ID_USER_PDCA_0;
+	   ch_config.generator_id = PEVC_ID_GEN_AST_2;
+	   ch_config.shaper_enable = true;
+	   ch_config.igf_edge = EVENT_IGF_EDGE_NONE;
+	   events_ch_configure(&ch_config);
+
+	   // Enable the channel
+	   events_ch_enable(PEVC_ID_USER_PDCA_0);
+\endcode
  *
  * \subsection event_basic_setup_workflow Basic Setup Workflow
  *
  * -# Initialize AST to generate periodic event 0,
  *  see sam/drivers/events/example1 for detail.
  *  \code
- *   init_ast();
- *  \endcode
+	init_ast();
+\endcode
  * -# Initialize PDCA channel 0 to tranfer data to USART,
  *  see sam/drivers/events/example1 for detail.
  *  \code
- *   init_pdca();
- *  \endcode
+	init_pdca();
+\endcode
  * -# Initialize the event module and enable it.
  *  \code
- *   struct events_conf    events_config;
- *
- *   // Initialize event module
- *   events_get_config_defaults(&events_config);
- *   events_init(&events_config);
- *   events_enable();
- *  \endcode
+	   struct events_conf    events_config;
+
+	   // Initialize event module
+	   events_get_config_defaults(&events_config);
+	   events_init(&events_config);
+	   events_enable();
+\endcode
  * -# Initialize the event channel and enable it.
  *  \code
- *   struct events_ch_conf ch_config;
- *
- *   events_ch_get_config_defaults(&ch_config);
- *   ch_config.channel_id = PEVC_ID_USER_PDCA_0;
- *   ch_config.generator_id = PEVC_ID_GEN_AST_2;
- *   ch_config.shaper_enable = true;
- *   ch_config.igf_edge = EVENT_IGF_EDGE_NONE;
- *   events_ch_configure(&ch_config);
- *   events_ch_enable(PEVC_ID_USER_PDCA_0);
- *  \endcode
+	   struct events_ch_conf ch_config;
+
+	   events_ch_get_config_defaults(&ch_config);
+	   ch_config.channel_id = PEVC_ID_USER_PDCA_0;
+	   ch_config.generator_id = PEVC_ID_GEN_AST_2;
+	   ch_config.shaper_enable = true;
+	   ch_config.igf_edge = EVENT_IGF_EDGE_NONE;
+	   events_ch_configure(&ch_config);
+	   events_ch_enable(PEVC_ID_USER_PDCA_0);
+\endcode
  *
  * \section event_basic_usage Event Basic Usage
  *

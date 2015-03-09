@@ -3,7 +3,7 @@
  *
  * \brief SD/MMC card example
  *
- * Copyright (c) 2012 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -83,46 +83,48 @@
  * -# Start the application.
  * -# In the terminal window, the following text should appear:
  *    \code
- *     -- SD/MMC/SDIO Card Example --
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     Please plug an SD, MMC or SDIO card in slot 1.
- *     !!Warning, the data contained will be lost!!
- *    \endcode
+	-- SD/MMC/SDIO Card Example --
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	Please plug an SD, MMC or SDIO card in slot 1.
+	!!Warning, the data contained will be lost!!
+\endcode
  * -# If the inserted card is a SD or MMC card, the following text should appear:
- *     A card has been connected.
- *     Card information:
- *         xxxx
- *         xxxx MB
- *         Write pattern... XXXXKBps [OK]
- *         Read... XXXXKBps [OK]
- *         Read and check pattern... [OK]
- *     Test finished, please unplugged card.
- *    \endcode
+ *    \code
+ 	A card has been connected.
+ 	Card information:
+ 	    xxxx
+ 	    xxxx MB
+ 	    Write pattern... XXXXKBps [OK]
+ 	    Read... XXXXKBps [OK]
+ 	    Read and check pattern... [OK]
+ 	Test finished, please unplugged card.
+\endcode
  * -# If inserted card is a SDIO card, similar following text should appear:
- *     A card has been connected.
- *     Card information:
- *         SDIO
- *         0MB
- *     --- Test with direct read and write command of CIA:
- *     Dump buffer (length=22):
- *       0: 11 00 00 00 00 00 00 00 17 00 10 00 00 00 00 00
- *      10: 00 00 01 00 00 00
- *     Write 0x02 to IEN(CIA.4).
- *     Check IEN after write:0x02
- *     Test OK
- *
- *     --- Test with extended read and write command of CIA:
- *     Dump buffer (length=22):
- *       0: 11 00 00 00 00 00 00 00 17 00 10 00 00 00 00 00
- *      10: 00 00 01 00 00 00
- *     Modify Some R/W bytes (2,4) for FN0 and write:
- *     Check CIA after write:
- *     Dump buffer (length=22):
- *       0: 11 00 00 00 03 00 00 00 17 00 10 00 00 00 00 00
- *      10: 00 00 01 00 00 00
- *     test OK
- *     All test done.
- *    \endcode
+ *    \code
+	A card has been connected.
+	Card information:
+	    SDIO
+	    0MB
+	--- Test with direct read and write command of CIA:
+	Dump buffer (length=22):
+	  0: 11 00 00 00 00 00 00 00 17 00 10 00 00 00 00 00
+	 10: 00 00 01 00 00 00
+	Write 0x02 to IEN(CIA.4).
+	Check IEN after write:0x02
+	Test OK
+
+	--- Test with extended read and write command of CIA:
+	Dump buffer (length=22):
+	  0: 11 00 00 00 00 00 00 00 17 00 10 00 00 00 00 00
+	 10: 00 00 01 00 00 00
+	Modify Some R/W bytes (2,4) for FN0 and write:
+	Check CIA after write:
+	Dump buffer (length=22):
+	  0: 11 00 00 00 03 00 00 00 17 00 10 00 00 00 00 00
+	 10: 00 00 01 00 00 00
+	test OK
+	All test done.
+\endcode
  */
 
 #include <asf.h>

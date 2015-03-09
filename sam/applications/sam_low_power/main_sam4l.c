@@ -3,7 +3,7 @@
  *
  * \brief Low Power Application.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -81,25 +81,25 @@
  * -# Start the application.
  * -# In the terminal window, the following text should appear:
  *    \code
- *     -- Low Power Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *
- *     ===============================================
- *     Menu: press a key to continue.
- *     ===============================================
- *     Configure:
- *       0 : Power Saving Mode 0
- *       1 : Power Saving Mode 1
- *     Mode:
- *       A : Active Mode
- *       R : Retention Mode
- *       W : Wait Mode
- *       B : Backup Mode
- *     Quit:
- *       Q : Quit test.
- *
- *    \endcode
+	     -- Low Power Example xxx --
+	     -- xxxxxx-xx
+	     -- Compiled: xxx xx xxxx xx:xx:xx --
+
+	     ===============================================
+	     Menu: press a key to continue.
+	     ===============================================
+	     Configure:
+	       0 : Power Saving Mode 0
+	       1 : Power Saving Mode 1
+	     Mode:
+	       A : Active Mode
+	       R : Retention Mode
+	       W : Wait Mode
+	       B : Backup Mode
+	     Quit:
+	       Q : Quit test.
+
+\endcode
  * -# Press one of the keys listed in the menu to perform the corresponding
  *    action.
  */

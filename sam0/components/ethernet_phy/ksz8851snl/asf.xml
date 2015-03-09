@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam0.components.ethernet_phy.ksz8851snl" caption="Ethernet Physical Transceiver (ksz8851snl)">
+		<info type="description" value="summary">
+			Provides the interface to configure and use the KSZ8851SNL MAC.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="ksz8851snl.c"/>
+		<build type="header-file" subtype="api" value="ksz8851snl.h"/>
+		<build type="header-file" subtype="api" value="ksz8851snl_reg.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_eth.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="ksz8851snl_phy_controller_group"/>
+		<require idref="sam0.drivers.port"/>
+		<require idref="sam0.drivers.extint"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.drivers.sercom.spi"/>
+		<require idref="common2.services.delay"/>
+		<device-support value="samd20"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

@@ -3,7 +3,7 @@
  *
  * \brief AVR XMEGA Timer Counter type 4 or 5 (TC4/5) driver
  *
- * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -2494,23 +2494,23 @@ static inline void tc45_hires_set_mode(HIRES_t *hires, HIRES_HREN_t hi_res_mode)
  * Add a callback function that will be executed when the overflow interrupt
  * trigger.
  * \code
- * static void my_callback(void)
- * {
- *     // User code to execute when the overflow occurs here
- * }
- * \endcode
+	static void my_callback(void)
+	{
+	    // User code to execute when the overflow occurs here
+	}
+\endcode
  * Add to, e.g., the main loop in the application C-file:
  * \code
- * sysclk_init();
- * tc45_enable(&TCC4);
- * tc45_set_overflow_interrupt_callback(&TCC4, my_callback);
- * tc45_set_wgm(&TCC4, TC45_WG_NORMAL);
- * tc45_write_period(&TCC4, 1000);
- * tc45_set_overflow_interrupt_level(&TCC4, TC45_INT_LVL_LO);
- * irq_initialize_vectors();
- * cpu_irq_enable();
- * tc45_write_clock_source(&TCC4, TC45_CLKSEL_DIV1_gc);
- * \endcode
+	sysclk_init();
+	tc45_enable(&TCC4);
+	tc45_set_overflow_interrupt_callback(&TCC4, my_callback);
+	tc45_set_wgm(&TCC4, TC45_WG_NORMAL);
+	tc45_write_period(&TCC4, 1000);
+	tc45_set_overflow_interrupt_level(&TCC4, TC45_INT_LVL_LO);
+	irq_initialize_vectors();
+	cpu_irq_enable();
+	tc45_write_clock_source(&TCC4, TC45_CLKSEL_DIV1_gc);
+\endcode
  *
  * \subsection xmega_tc45_qs_ovf_setup_code_workflow Workflow
  *
@@ -2578,32 +2578,32 @@ static inline void tc45_hires_set_mode(HIRES_t *hires, HIRES_HREN_t hi_res_mode)
  * Add two callback functions that will be executed when compare match A and 
  * compare match B occurs
  * \code
- * static void my_cca_callback(void)
- * {
- *    // User code here to execute when a channel A compare match occurs
- * }
- * static void my_ccb_callback(void)
- * {
- *    // User code here to execute when a channel B compare match occurs
- * }
- * \endcode
+	static void my_cca_callback(void)
+	{
+	   // User code here to execute when a channel A compare match occurs
+	}
+	static void my_ccb_callback(void)
+	{
+	   // User code here to execute when a channel B compare match occurs
+	}
+\endcode
  * Add to, e.g., the main loop in the application C-file:
  * \code
- * sysclk_init();
- * irq_initialize_vectors();
- * cpu_irq_enable();
- * tc45_enable(&TCC4);
- * tc45_set_cca_interrupt_callback(&TCC4, my_cca_callback);
- * tc45_set_ccb_interrupt_callback(&TCC4, my_ccb_callback);
- * tc45_set_wgm(&TCC4, TC45_WG_NORMAL);
- * tc45_write_period(&TCC4, 10000);
- * tc45_write_cc(&TCC4, TC45_CCA, 100);
- * tc45_write_cc(&TCC4, TC45_CCB, 1000);
- * tc45_enable_cc_channels(&TCC4,(TC45_CCAEN | TC45_CCBEN));
- * tc45_set_cca_interrupt_level(&TCC4, TC45_INT_LVL_LO);
- * tc45_set_ccb_interrupt_level(&TCC4, TC45_INT_LVL_MED);
- * tc45_write_clock_source(&TCC4, TC45_CLKSEL_DIV1_gc);
- * \endcode
+	sysclk_init();
+	irq_initialize_vectors();
+	cpu_irq_enable();
+	tc45_enable(&TCC4);
+	tc45_set_cca_interrupt_callback(&TCC4, my_cca_callback);
+	tc45_set_ccb_interrupt_callback(&TCC4, my_ccb_callback);
+	tc45_set_wgm(&TCC4, TC45_WG_NORMAL);
+	tc45_write_period(&TCC4, 10000);
+	tc45_write_cc(&TCC4, TC45_CCA, 100);
+	tc45_write_cc(&TCC4, TC45_CCB, 1000);
+	tc45_enable_cc_channels(&TCC4,(TC45_CCAEN | TC45_CCBEN));
+	tc45_set_cca_interrupt_level(&TCC4, TC45_INT_LVL_LO);
+	tc45_set_ccb_interrupt_level(&TCC4, TC45_INT_LVL_MED);
+	tc45_write_clock_source(&TCC4, TC45_CLKSEL_DIV1_gc);
+\endcode
  *
  * \subsection xmega_tc45_qs_cc_setup_code_workflow Workflow
  *
@@ -2674,15 +2674,15 @@ static inline void tc45_hires_set_mode(HIRES_t *hires, HIRES_HREN_t hi_res_mode)
  *
  * Add to, e.g., the main loop in the application C-file:
  * \code
- * board_init();
- * sysclk_init();
- * tc45_enable(&TCC4);
- * tc45_set_wgm(&TCC4, TC45_WG_SS);
- * tc45_write_period(&TCC4, 1950);
- * tc45_write_cc(&TCC4, TC45_CCA, 195);
- * tc45_enable_cc_channels(&TCC4,TC45_CCAEN);
- * tc45_write_clock_source(&TCC4, TC45_CLKSEL_DIV1024_gc);
- * \endcode
+	board_init();
+	sysclk_init();
+	tc45_enable(&TCC4);
+	tc45_set_wgm(&TCC4, TC45_WG_SS);
+	tc45_write_period(&TCC4, 1950);
+	tc45_write_cc(&TCC4, TC45_CCA, 195);
+	tc45_enable_cc_channels(&TCC4,TC45_CCAEN);
+	tc45_write_clock_source(&TCC4, TC45_CLKSEL_DIV1024_gc);
+\endcode
  *
  * \subsection xmega_tc45_qs_pwm_setup_code_workflow Workflow
  *

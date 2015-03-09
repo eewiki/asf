@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<project caption="SD/MMC card example with FatFs for SAMD20 Xplained Pro" id="common2.components.memory.sd_mmc.example2.samd20_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_spi.h"/>
+		<build type="header-file" value="conf_sd_mmc.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="common2.components.memory.sd_mmc.example2"/>
+		<require idref="board.samd20_xplained_pro"/>
+		<config name="config.common2.components.memory.sd_mmc" value="spi"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<config name="config.common2.services.delay" value="cycle"/>
+		<config name="config.sam0.drivers.rtc" value="calendar_polled"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<toolchain-config name="armgcc.linker.miscellaneous.LinkerFlags" value="-Wl,--defsym,__stack_size__=0x2000" toolchain="armgcc"/>
+		<config name="config.compiler.armgcc.stack_size" value="0x2000"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<device-support value="atsamd20j18"/>
+	</project>
+</asf>

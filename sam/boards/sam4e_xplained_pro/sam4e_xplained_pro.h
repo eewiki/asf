@@ -487,7 +487,10 @@
 #define PIN_NF_CE_IDX    (PIO_PC14_IDX)
 
 /** Nandflash ready/busy pin definition. */
-#define PIN_NF_RB_IDX    (PIO_PC18_IDX)
+/* The new board use this definition */
+#define PIN_NF_RB_IDX    (PIO_PB12_IDX)
+/* The old board use this definition */
+//#define PIN_NF_RB_IDX    (PIO_PD10_IDX)
 
 /* Chip select number for nand */
 #define BOARD_NAND_CS    0

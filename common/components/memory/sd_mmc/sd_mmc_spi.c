@@ -3,7 +3,7 @@
  *
  * \brief Common SPI interface for SD/MMC stack
  *
- * Copyright (c) 2012 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -363,6 +363,13 @@ void sd_mmc_spi_select_device(uint8_t slot, uint32_t clock, uint8_t bus_width,
 	UNUSED(bus_width);
 	UNUSED(high_speed);
 	sd_mmc_spi_err = SD_MMC_SPI_NO_ERR;
+
+#ifdef SD_MMC_SPI_MAX_CLOCK
+	if (clock > SD_MMC_SPI_MAX_CLOCK) {
+		clock = SD_MMC_SPI_MAX_CLOCK;
+	}
+#endif
+
 	sd_mmc_spi_drv_setup_device(SD_MMC_SPI, &sd_mmc_spi_devices[slot],
 			SPI_MODE_0, clock, 0);
 	sd_mmc_spi_drv_select_device(SD_MMC_SPI, &sd_mmc_spi_devices[slot]);

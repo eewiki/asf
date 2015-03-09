@@ -71,5 +71,24 @@
 			<device-support value="sam4e"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
+		<module type="application" id="common.services.usb.class.composite.device.example.hidms_msc#3" caption="USB Composite Device Example HID mouse and MSC">
+			<info type="description" value="summary">
+			Provide an application example of USB Composite Device with HID mouse and Mass Storage interfaces. It relies on native MSC and HID drivers and uses memory and buttons or sensors available on the board as a user interface. 
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="memories_initialization_samd.c"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="samd21"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
 	</select-by-device>
 </asf>

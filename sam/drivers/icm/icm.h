@@ -3,7 +3,7 @@
  *
  * \brief SAM Integrity Check Monitor (ICM).
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -441,81 +441,81 @@ void icm_set_hash_value(Icm *p_icm, uint32_t *p_value);
  *
  * Add this to the main loop or a setup function:
  * \code
- *   uint32_t message_sha[] = {
- *   0x80636261,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x00000000,
- *   0x18000000
- *};
- *
- *   COMPILER_ALIGNED(128)
- *   uint32_t output_sha[0x20];
- *
- *   // Set region descriptor value
- *   COMPILER_ALIGNED(64)
- *   struct icm_region_descriptor reg_descriptor;
- *
- *   reg_descriptor.start_addr = (uint32_t)message_sha;
- *   reg_descriptor.cfg.is_compare_mode = false;
- *   reg_descriptor.cfg.is_wrap = false;
- *   reg_descriptor.cfg.is_end_mon = true;
- *   reg_descriptor.cfg.reg_hash_int_en = false;
- *   reg_descriptor.cfg.dig_mis_int_en = false;
- *   reg_descriptor.cfg.bus_err_int_en = false;
- *   reg_descriptor.cfg.wrap_con_int_en = false;
- *   reg_descriptor.cfg.ebit_con_int_en = false;
- *   reg_descriptor.cfg.status_upt_con_int_en = false;
- *   reg_descriptor.cfg.is_pro_dly = false;
- *   reg_descriptor.cfg.mem_reg_val = 0;
- *   reg_descriptor.cfg.algo = ICM_SHA_1;
- *   reg_descriptor.tran_size = 0;
- *   reg_descriptor.next_addr = 0;
- *
- *   // Initialize ICM with specified value
- *   struct icm_config icm_cfg;
- *   icm_cfg.is_write_back= false;
- *   icm_cfg.is_dis_end_mon = false;
- *   icm_cfg.is_sec_list_branch = true;
- *   icm_cfg.bbc = 0;
- *   icm_cfg.is_auto_mode = false;
- *   icm_cfg.is_dual_buf = false;
- *   icm_cfg.is_user_hash = false;
- *   icm_cfg.ualgo = ICM_SHA_1;
- *   icm_cfg.hash_area_val = 0;
- *   icm_cfg.des_area_val = 0;
- *   icm_init(ICM, &icm_cfg);
- *
- *   // Set region descriptor start addres
- *   icm_set_reg_des_addr(ICM, &reg_descriptor);
- *
- *   // Set hash area start addres
- *   icm_set_hash_area_addr(ICM, output_sha);
- *
- *   // Enable ICM
- *   icm_enable(ICM);
- *
- *   // Check region hash is completed
- *   while(!(icm_get_interrupt_status(ICM) & 1));
- *
- *   if((output_sha[0] == 0x363E99A9) && \
- *           (output_sha[1] == 0x6A810647) && \
- *           (output_sha[2] == 0x71253EBA) && \
- *           (output_sha[3] == 0x6CC25078) && \
- *           (output_sha[4] == 0x9DD8D09C))
- *       printf( " ICM SHA1 TEST PASS \n\r");
- *
- * \endcode
+	   uint32_t message_sha[] = {
+	   0x80636261,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x00000000,
+	   0x18000000
+	};
+
+	   COMPILER_ALIGNED(128)
+	   uint32_t output_sha[0x20];
+
+	   // Set region descriptor value
+	   COMPILER_ALIGNED(64)
+	   struct icm_region_descriptor reg_descriptor;
+
+	   reg_descriptor.start_addr = (uint32_t)message_sha;
+	   reg_descriptor.cfg.is_compare_mode = false;
+	   reg_descriptor.cfg.is_wrap = false;
+	   reg_descriptor.cfg.is_end_mon = true;
+	   reg_descriptor.cfg.reg_hash_int_en = false;
+	   reg_descriptor.cfg.dig_mis_int_en = false;
+	   reg_descriptor.cfg.bus_err_int_en = false;
+	   reg_descriptor.cfg.wrap_con_int_en = false;
+	   reg_descriptor.cfg.ebit_con_int_en = false;
+	   reg_descriptor.cfg.status_upt_con_int_en = false;
+	   reg_descriptor.cfg.is_pro_dly = false;
+	   reg_descriptor.cfg.mem_reg_val = 0;
+	   reg_descriptor.cfg.algo = ICM_SHA_1;
+	   reg_descriptor.tran_size = 0;
+	   reg_descriptor.next_addr = 0;
+
+	   // Initialize ICM with specified value
+	   struct icm_config icm_cfg;
+	   icm_cfg.is_write_back= false;
+	   icm_cfg.is_dis_end_mon = false;
+	   icm_cfg.is_sec_list_branch = true;
+	   icm_cfg.bbc = 0;
+	   icm_cfg.is_auto_mode = false;
+	   icm_cfg.is_dual_buf = false;
+	   icm_cfg.is_user_hash = false;
+	   icm_cfg.ualgo = ICM_SHA_1;
+	   icm_cfg.hash_area_val = 0;
+	   icm_cfg.des_area_val = 0;
+	   icm_init(ICM, &icm_cfg);
+
+	   // Set region descriptor start addres
+	   icm_set_reg_des_addr(ICM, &reg_descriptor);
+
+	   // Set hash area start addres
+	   icm_set_hash_area_addr(ICM, output_sha);
+
+	   // Enable ICM
+	   icm_enable(ICM);
+
+	   // Check region hash is completed
+	   while(!(icm_get_interrupt_status(ICM) & 1));
+
+	   if((output_sha[0] == 0x363E99A9) && \
+	           (output_sha[1] == 0x6A810647) && \
+	           (output_sha[2] == 0x71253EBA) && \
+	           (output_sha[3] == 0x6CC25078) && \
+	           (output_sha[4] == 0x9DD8D09C))
+	       printf( " ICM SHA1 TEST PASS \n\r");
+
+\endcode
  */
 #endif /* ICM_H_INCLUDED */

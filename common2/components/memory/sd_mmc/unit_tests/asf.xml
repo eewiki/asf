@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common2.components.memory.sd_mmc.unit_tests" caption="Unit Tests for the Common2 SD/MMC Card Component">
+		<info type="description" value="summary">
+		Test the installation, the read and write access on an external SD/MMC card.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="unit_tests.c"/>
+		<require idref="sam0.utils.stdio.stdio_serial"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common2.components.memory.sd_mmc"/>
+		<device-support value="sam0"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

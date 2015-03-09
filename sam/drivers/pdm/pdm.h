@@ -3,7 +3,7 @@
  *
  * \brief PDM driver for SAM.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -397,7 +397,7 @@ enum status_code pdm_init(struct pdm_instance *const dev_inst, Pdmic *hw,
  * - Oversampling ratio is 128
  * - No data scale
  * - No data shift
- * - Gain is set to 0
+ * - Gain is set to 1
  * - Offset is set to 0
  *
  * \param[out] cfg Pointer to configuration struct to initialize to defaults
@@ -412,7 +412,7 @@ __always_inline static void pdm_get_config_default(struct pdm_config *const cfg)
 	cfg->oversampling_ratio = PDMIC_OVERSAMPLING_RATIO_128;
 	cfg->data_scale = 0;
 	cfg->data_shift = 0;
-	cfg->gain = 0;
+	cfg->gain = 1;
 	cfg->offset = 0;
 }
 
@@ -607,10 +607,8 @@ __always_inline static void pdm_disable_callback(
  *   Oversampling ratio is 128
  *   No data scale
  *   No data shift
- *   Gain is set to 0
+ *   Gain is set to 1
  *   Offset is set to 0
- * \note If the application expected receving converted again after a blocking
- * conversion, the pdm module requires re-initialized.
  *
  * \subsection sam_pdm_quickstart_prereq Prerequisites
  * -# \ref sysclk_group "System Clock Management (Sysclock)"
@@ -619,28 +617,27 @@ __always_inline static void pdm_disable_callback(
  * \subsection pdm_basic_use_case_setup_code Example code
  * Add to application C-file:
  * \code
- * struct pdm_module pdm;
- * struct pdm_config pdm_cfg;
- * uint32_t data;
- *
- * pdm_get_config_default(&pdm_cfg);
- * pdm_init(&pdm, PDMIC0, &pdm_cfg);
- *
- * \endcode
+	 struct pdm_instance pdm;
+	 struct pdm_config pdm_cfg;
+	 uint32_t data;
+
+	 pdm_get_config_default(&pdm_cfg);
+	 pdm_init(&pdm, PDMIC0, &pdm_cfg);
+\endcode
  *
  * \subsection pdm_basic_use_case_setup_flow Workflow
  * -# Get default configurations:
  *   - \code
- *   pdm_get_config_default(&pdm_cfg);
- * \endcode
- * -# Initialize the pdm module with configuration and buffer address and size:
+	pdm_get_config_default(&pdm_cfg);
+\endcode
+ * -# Initialize the pdm module with configuration:
  *   - \code
- *   pdm_init(&pdm, PDMIC0, &pdm_cfg);
- * \endcode
- * -# Enable pdm module blocking conversion:
+	pdm_init(&pdm, PDMIC0, &pdm_cfg);
+\endcode
+ * -# Enable pdm module conversion:
  *   - \code pdm_enable(&pdm); \endcode
  * -# Get converted data:
- *   - \code pdm_read_convert_data(&data); \endcode
+ *   - \code pdm_read_convert_data(&pdm, &data); \endcode
  */
 
 #endif /* PDM_H_INCLUDED */

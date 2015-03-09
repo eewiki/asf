@@ -83,16 +83,16 @@
  * -# Start the application.
  * -# In the terminal window, the following text should appear:
  *    \code
- *     -- WM8731 example xxx --
- *     -- SAMxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *     Menu :
- *     ------
- *     W: Play the WAV file loaded
- *     I: Display the information of the WAV file
- *     R: Receive WAV file with XMODEM Protocol
- *     S: Stop playback
- *    \endcode
+	-- WM8731 example xxx --
+	-- SAMxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+	Menu :
+	------
+	W: Play the WAV file loaded
+	I: Display the information of the WAV file
+	R: Receive WAV file with XMODEM Protocol
+	S: Stop playback
+\endcode
  */
 
 #include <asf.h>

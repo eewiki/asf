@@ -55,7 +55,7 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the Timer Counter on the SAM D20/D21, 
+				This document describes how to use the Timer Counter on the SAM D20/D21,
 				both the ASF driver and the peripheral itself.
 			</info>
 
@@ -70,8 +70,10 @@
 			<build type="c-source" value="tc.c" />
 			<build type="header-file" value="quick_start_callback/qs_tc_callback.h" />
 			<build type="header-file" value="quick_start/qs_tc_basic.h" />
+			<build type="header-file" value="quick_start_timer/qs_tc_timer.h" />
 			<build type="header-file" value="quick_start_dma/qs_tc_dma.h" />
 
+			<build type="doxygen-example-path" value="quick_start_timer"/>
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-example-path" value="quick_start/samd20_xplained_pro"/>
 			<build type="doxygen-example-path" value="quick_start_dma"/>

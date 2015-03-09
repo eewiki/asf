@@ -260,7 +260,7 @@ void ui_uhi_hid_mouse_move(int8_t x, int8_t y, int8_t scroll)
 /**
  * \defgroup UI User Interface
  *
- * Human interface on SAMD21 Xplained Pro:
+ * Human interface on SAM D21 Xplained Pro:
  * - Led 0 is on when it's host and there is no device connected
  * - Led 0 blinks when a HID mouse is enumerated and USB in idle mode
  *   - The blink is slow (1s) with low speed device

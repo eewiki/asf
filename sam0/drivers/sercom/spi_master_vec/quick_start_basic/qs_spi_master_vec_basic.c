@@ -50,7 +50,6 @@ uint8_t tx_buffer_3[1] = {6};
 
 uint8_t rx_buffer_1[1];
 uint8_t rx_buffer_2[2];
-uint8_t rx_buffer_3[2];
 //! [transceive_buffers]
 
 //! [buffer_descriptors]
@@ -79,11 +78,11 @@ struct spi_master_vec_bufdesc rx_buffers[4] = {
 				.length = 1,
 			},
 			{
-				.data = rx_buffer_2,
+				.data = NULL,
 				.length = 2,
 			},
 			{
-				.data = rx_buffer_3,
+				.data = rx_buffer_2,
 				.length = 2,
 			},
 			{

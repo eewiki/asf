@@ -3,7 +3,7 @@
  *
  * \brief example configuration.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -51,7 +51,7 @@
 //#define CONF_FRENCH_LANGUAGE
 //#define CONF_SPANISH_LANGUAGE
 
-/* Last page start address. */
-#define LAST_PAGE_ADDRESS (IFLASH_ADDR + IFLASH_SIZE - IFLASH_PAGE_SIZE * 8)
+/* Test page start address. */
+#define TEST_PAGE_ADDRESS (IFLASH_ADDR + IFLASH_SIZE - IFLASH_PAGE_SIZE * 8)
 
 #endif /* CONF_EXAMPLE_H_INCLUDED */

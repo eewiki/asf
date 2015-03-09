@@ -136,5 +136,21 @@
 			<device-support value="sam"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam4s"/>
 		</module>
+		<module type="service" id="common.services.gfx.display#ili93xx" caption="GFX - ILI93XX LCD panel">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			Graphic library configured for the LCD panel using the ILI93xx display controller. Used on the SAM4S-EK and SAM4S-EK2.
+			</info>
+			<build type="define" name="CONF_GFX_ILI93XX" value="1"/>
+			<build type="header-file" value="gfx_ili93xx.h"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="gfx_ili93xx.c"/>
+			<build type="doxygen-entry-point" value="gfx_ili93xx"/>
+			<require idref="sam.components.display.ili93xx"/>
+			<require idref="sam.components.display.aat31xx"/>
+			<require idref="common.services.gfx.generic"/>
+			<device-support value="sam"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4s"/>
+		</module>		
 	</select-by-config>
 </asf>

@@ -66,6 +66,26 @@ extern "C" {
  * @{
  */
 
+/**
+ * \brief I<SUP>2</SUP>C master packet for read/write
+ *
+ * Structure to be used when transferring I<SUP>2</SUP>C master packets.
+ */
+struct i2c_master_packet {
+	/** Address to slave device  */
+	uint16_t address;
+	/** Length of data array */
+	uint16_t data_length;
+	/** Data array containing all data to be transferred */
+	uint8_t *data;
+	/** Use 10 bit addressing. Set to false if the feature is not supported by the device  */
+	bool ten_bit_address;
+	/** Use high speed transfer. Set to false if the feature is not supported by the device */
+	bool high_speed;
+	/** High speed mode master code (0000 1XXX), valid when high_speed is true */
+	uint8_t hs_master_code;
+};
+
 /** \brief Interrupt flags
  *
  * Flags used when reading or setting interrupt flags.
@@ -114,15 +134,12 @@ enum i2c_master_inactive_timeout {
 /**
  * \brief I<SUP>2</SUP>C frequencies
  *
- * Values for standard I<SUP>2</SUP>C speeds supported by the module. The driver
- * will also support setting any value between 10 and 100kHz, in which case set
+ * Values for I<SUP>2</SUP>C speeds supported by the module. The driver
+ * will also support setting any other value, in which case set
  * the value in the \ref i2c_master_config at desired value divided by 1000.
  *
  * Example: If 10kHz operation is required, give baud_rate in the configuration
  * structure the value 10.
- *
- * \note Max speed is given by GCLK-frequency divided by 10, and lowest is
- *       given by GCLK-frequency divided by 510.
  */
 enum i2c_master_baud_rate {
 	/** Baud rate at 100kHz (Standard-mode) */
@@ -136,6 +153,22 @@ enum i2c_master_baud_rate {
 	I2C_MASTER_BAUD_RATE_3400KHZ = 3400,
 #endif
 };
+
+#ifdef FEATURE_I2C_FAST_MODE_PLUS_AND_HIGH_SPEED
+/**
+ * \brief Enum for the transfer speed
+ *
+ * Enum for the transfer speed.
+ */
+enum i2c_master_transfer_speed {
+	/** Standard-mode (Sm) up to 100 kHz and Fast-mode (Fm) up to 400 kHz */
+	I2C_MASTER_SPEED_STANDARD_AND_FAST = SERCOM_I2CM_CTRLA_SPEED(0),
+	/** Fast-mode Plus (Fm+) up to 1 MHz */
+	I2C_MASTER_SPEED_FAST_MODE_PLUS = SERCOM_I2CM_CTRLA_SPEED(1),
+	/** High-speed mode (Hs-mode) up to 3.4 MHz */
+	I2C_MASTER_SPEED_HIGH_SPEED = SERCOM_I2CM_CTRLA_SPEED(2),
+};
+#endif
 
 #if I2C_MASTER_CALLBACK_MODE == true
 /**
@@ -219,8 +252,17 @@ struct i2c_master_module {
  * \ref i2c_master_get_config_defaults .
  */
 struct i2c_master_config {
-	/** Baud rate for I<SUP>2</SUP>C operations */
-	enum i2c_master_baud_rate baud_rate;
+	/** Baud rate (in KHZ) for I<SUP>2</SUP>C operations in
+	 * standard-mode, Fast-mode and Fast-mode Plus Transfers,
+	 * \ref i2c_master_baud_rate */
+	uint32_t baud_rate;
+#ifdef FEATURE_I2C_FAST_MODE_PLUS_AND_HIGH_SPEED
+	/** Baud rate (in KHz) for I<SUP>2</SUP>C operations in
+	 * High-speed mode, \ref i2c_master_baud_rate */
+	uint32_t baud_rate_high_speed;
+	/** Transfer speed mode */
+	enum i2c_master_transfer_speed transfer_speed;
+#endif
 	/** GCLK generator to use as clock source */
 	enum gclk_generator generator_source;
 	/** Bus hold time after start signal on data line */
@@ -240,7 +282,7 @@ struct i2c_master_config {
 	/** Inactive bus time out */
 	enum i2c_master_inactive_timeout inactive_timeout;
 #ifdef FEATURE_I2C_SCL_STRETCH_MODE
-	/** Set to enable SCL stretch only after ACK bit */
+	/** Set to enable SCL stretch only after ACK bit (required for high speed) */
 	bool scl_stretch_only_after_ack_bit;
 #endif
 #ifdef FEATURE_I2C_SCL_EXTEND_TIMEOUT
@@ -333,10 +375,12 @@ static inline bool i2c_master_is_syncing (
 
 	SercomI2cm *const i2c_hw = &(module->hw->I2CM);
 
-#ifdef FEATURE_I2C_SYNC_SCHEME_VERSION_2
+#if defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_1)
+	return (i2c_hw->STATUS.reg & SERCOM_I2CM_STATUS_SYNCBUSY);
+#elif defined(FEATURE_SERCOM_SYNCBUSY_SCHEME_VERSION_2)
 	return (i2c_hw->SYNCBUSY.reg & SERCOM_I2CM_SYNCBUSY_MASK);
 #else
-	return (i2c_hw->STATUS.reg & SERCOM_I2CM_STATUS_SYNCBUSY);
+#  error Unknown SERCOM SYNCBUSY scheme!
 #endif
 }
 
@@ -374,6 +418,13 @@ static void _i2c_master_wait_for_sync(
  * - Do not run in standby
  * - PINMUX_DEFAULT for SERCOM pads
  *
+ * Those default configuration only availale if the device supports it:
+ * - High speed baudrate 3.4MHz
+ * - Standard-mode and Fast-mode transfer speed
+ * - SCL stretch disabled
+ * - slave SCL low extend time-out disabled
+ * - maser SCL low extend time-out disabled
+ *
  * \param[out] config  Pointer to configuration structure to be initiated
  */
 static inline void i2c_master_get_config_defaults(
@@ -382,6 +433,10 @@ static inline void i2c_master_get_config_defaults(
 	/*Sanity check argument. */
 	Assert(config);
 	config->baud_rate        = I2C_MASTER_BAUD_RATE_100KHZ;
+#ifdef FEATURE_I2C_FAST_MODE_PLUS_AND_HIGH_SPEED
+	config->baud_rate_high_speed = I2C_MASTER_BAUD_RATE_3400KHZ;
+	config->transfer_speed       = I2C_MASTER_SPEED_STANDARD_AND_FAST;
+#endif
 	config->generator_source = GCLK_GENERATOR_0;
 	config->run_in_standby   = false;
 	config->start_hold_time  = I2C_MASTER_START_HOLD_TIME_300NS_600NS;
@@ -487,19 +542,19 @@ void i2c_master_reset(struct i2c_master_module *const module);
 
 enum status_code i2c_master_read_packet_wait(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet);
+		struct i2c_master_packet *const packet);
 
 enum status_code i2c_master_read_packet_wait_no_stop(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet);
+		struct i2c_master_packet *const packet);
 
 enum status_code i2c_master_write_packet_wait(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet);
+		struct i2c_master_packet *const packet);
 
 enum status_code i2c_master_write_packet_wait_no_stop(
 		struct i2c_master_module *const module,
-		struct i2c_packet *const packet);
+		struct i2c_master_packet *const packet);
 
 void i2c_master_send_stop(struct i2c_master_module *const module);
 

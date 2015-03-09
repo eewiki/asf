@@ -50,7 +50,7 @@
  * - Asynchronous mode
  * - 9600 Baudrate
  * - 8-bits, No Parity and 1 Stop Bit
- * - TX and RX enabled and connected to the Xplained PRO Embedded Debugger virtual COM port
+ * - TX and RX enabled and connected to the Xplained Pro Embedded Debugger virtual COM port
  *
  * \section asfdoc_sam0_sercom_usart_callback_use_case_setup Setup
  *

@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="SSD1306 OLED Controller example for SAMD20 Xplained Pro" id="common2.components.display.ssd1306.example.samd20_xplained_pro">
+	<project caption="SSD1306 OLED Controller example for SAM D20 Xplained Pro" id="common2.components.display.ssd1306.example.samd20_xplained_pro">
 		<build type="header-file" value="conf_ssd1306.h"/>
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_clocks.h"/>

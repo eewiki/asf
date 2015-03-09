@@ -86,6 +86,8 @@ enum status_code extint_unregister_callback(
 	const uint8_t channel,
 	const enum extint_callback_type type);
 
+uint8_t extint_get_current_channel(void);
+
 /** @} */
 
 /** \name Callback enabling and disabling (channel)

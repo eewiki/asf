@@ -3,7 +3,7 @@
  *
  * \brief Analog Comparator Interfacer (ACIFC) example for SAM4L.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -73,10 +73,10 @@
  * -# In the terminal window, the following text should appear (values depend
  *    on the board and chip used):
  *    \code
- *     -- ACIFC IRQ Example xxx --
- *     -- xxxxxx-xx
- *     -- Compiled: xxx xx xxxx xx:xx:xx --
- *    \endcode
+	-- ACIFC IRQ Example xxx --
+	-- xxxxxx-xx
+	-- Compiled: xxx xx xxxx xx:xx:xx --
+\endcode
  * -# The application will then output a different message if PA06 lower or
  * higher than PA07.
  *   - -ISR- Voltage Comparison Result: ACAP0 > ACAN0

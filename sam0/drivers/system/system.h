@@ -412,6 +412,22 @@ static inline void system_sleep(void)
  */
 
 /**
+ * \brief Check if bugger is present
+ *
+ * Check if debugger is connected to the onboard debug system (DAP)
+ *
+ * \return A bool identifying if a debugger is present
+ *
+ * \retval true  Debugger is connected to the system
+ * \retval false Debugger is not connected to the system
+ *
+ */
+static inline bool system_is_debugger_present(void)
+{
+	return DSU->STATUSB.reg & DSU_STATUSB_DBGPRES;
+}
+
+/**
  * \brief Reset the MCU
  *
  * Resets the MCU and all associated peripherals and registers, except RTC, all 32kHz sources,

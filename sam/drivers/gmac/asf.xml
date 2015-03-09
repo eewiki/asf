@@ -1,19 +1,37 @@
 <asf xmlversion="1.0">
-	<module type="driver" id="sam.drivers.gmac" caption="Ethernet MAC (GMAC)">
+	<module type="driver" id="sam.drivers.gmac_phy" caption="PHY Ethernet MAC (GMAC)">
 		<info type="description" value="summary">
-		Provides the interface to configure and use the GMAC peripheral.
+		Provides the interface to configure and use the GMAC PHY.
 		</info>
 		<info type="keyword" value="technology">
 			<keyword value="Communication"/>
 		</info>
-		<build type="c-source" value="gmac.c"/>
+		<build type="c-source" value="gmac_phy.c"/>
 		<build type="header-file" subtype="api" value="gmac.h"/>
 		<build type="include-path" value="."/>
 		<build type="module-config" subtype="required-header-file" value="conf_eth.h"/>
 		<build type="module-config" subtype="path" value="module_config"/>
 		<build type="doxygen-entry-point" value="gmac_group"/>
+		<device-support value="sam4e"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+	</module>
+	<module type="driver" id="sam.drivers.gmac" caption="Raw Ethernet MAC (GMAC)">
+		<info type="description" value="summary">
+		Provides the interface to configure and use the GMAC peripheral (raw mode).
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="gmac_raw.c"/>
+		<build type="header-file" subtype="api" value="gmac_raw.h"/>
+		<build type="header-file" subtype="api" value="gmac.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="gmac_group"/>
 		<build type="doxygen-quick-start" value="gmac_quickstart"/>
 		<device-support value="sam4e"/>
+		<require idref="sam.drivers.gmac_phy"/>
 		<require idref="sam.utils"/>
 		<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
 	</module>

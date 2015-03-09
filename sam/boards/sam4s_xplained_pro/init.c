@@ -3,7 +3,7 @@
  *
  * \brief SAM4S Xplained Pro board initialization
  *
- * Copyright (C) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -78,6 +78,11 @@ void board_init(void)
 	ioport_set_pin_dir(IO1_LED2_PIN, IOPORT_DIR_OUTPUT);
 	ioport_set_pin_level(IO1_LED3_PIN, !IO1_LED3_ACTIVE);
 	ioport_set_pin_dir(IO1_LED3_PIN, IOPORT_DIR_OUTPUT);
+
+#ifdef CONF_BOARD_UART_CONSOLE
+	/* Configure UART pins */
+	gpio_configure_group(PINS_UART1_PIO, PINS_UART1, PINS_UART1_FLAGS);
+#endif
 
 #ifdef CONF_BOARD_TWI0
 	gpio_configure_pin(TWI0_DATA_GPIO, TWI0_DATA_FLAGS);
