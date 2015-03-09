@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
-	<project caption="MAC Serial Interface Beacon FFD  AMR21 Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd.ncp.samr21_xpro" force-caption="true" force-description="true">
+	<project caption="MAC Serial Interface Beacon FFD - SAM R21 Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd.ncp.samr21_xpro" force-caption="true" force-description="true">
 		<info type="description" value="summary">
-		MAC Serial Interface Application - Beacon RFD
+		MAC Serial Interface Application - Beacon FFD
 		</info>	
 		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd.ncp"/>
 		<build type="include-path" value="."/>
@@ -17,7 +17,7 @@
 
 
 		<config name="config.sam0.drivers.sercom.spi" value="polled"/>
-		<config name="config.sam0.drivers.sercom.usart" value="polled"/>
+		<config name="config.sam0.drivers.sercom.usart" value="callback"/>
 		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
 		<require idref="board.samr21_xplained_pro"/>
 		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf233"/>

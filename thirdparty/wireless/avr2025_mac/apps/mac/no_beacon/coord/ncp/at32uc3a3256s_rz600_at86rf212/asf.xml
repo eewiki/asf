@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="MAC No Beacon Application Coordinator AT86RF212-RZ600" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.coord.ncp.at32uc3a3256s_rz600_at86rf212" force-caption="true" force-description="true">
+	<project caption="MAC No Beacon Application Coordinator AT86RF212 - RZ600" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.coord.ncp.at32uc3a3256s_rz600_at86rf212" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 		The basic MAC Example No Beacon Application deploys a No beacon-enabled network with star topology.
 		</info>

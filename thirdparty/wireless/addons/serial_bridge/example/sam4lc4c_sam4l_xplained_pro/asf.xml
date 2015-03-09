@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="Serial Bridge Application-SAM4L Xplained Pro" id="thirdparty.wireless.addons.serial_bridge.sam4l_xplained_pro" force-caption ="true" force-description="true">
+	<project caption="Serial Bridge Application - SAM4L Xplained Pro" id="thirdparty.wireless.addons.serial_bridge.sam4l_xplained_pro" force-caption ="true" force-description="true">
 		<info type="description" value="summary">
 			Serial Bridge acts as a bridge for performing serial communication between host and ncp
 		</info>	

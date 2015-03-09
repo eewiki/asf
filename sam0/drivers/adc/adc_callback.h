@@ -61,7 +61,7 @@ extern "C" {
  * the driver.
  */
 enum adc_job_type {
-	/** Asynchronous ADC read into a user provided buffer */
+	/** Asynchronous ADC read into a user provided buffer. */
 	ADC_JOB_READ_BUFFER,
 };
 
@@ -88,7 +88,7 @@ void adc_unregister_callback(
  * \param[in]     module Pointer to ADC software instance struct
  * \param[in]     callback_type Callback type given by an enum
  *
- * \returns    Status of the operation
+ * \returns    Status of the operation.
  * \retval     STATUS_OK              If operation was completed
  * \retval     STATUS_ERR_INVALID     If operation was not completed,
  *                                    due to invalid callback_type
@@ -123,7 +123,7 @@ static inline void adc_enable_callback(
  * \param[in]     module Pointer to ADC software instance struct
  * \param[in]     callback_type Callback type given by an enum
  *
- * \returns    Status of the operation
+ * \returns    Status of the operation.
  * \retval     STATUS_OK              If operation was completed
  * \retval     STATUS_ERR_INVALID     If operation was not completed,
  *                                    due to invalid callback_type

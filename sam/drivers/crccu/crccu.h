@@ -3,7 +3,7 @@
  *
  * \brief Cyclic Redundancy Check Calculation Unit (CRCCU) driver for SAM.
  *
- * Copyright (c) 2011-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -74,7 +74,7 @@ extern "C" {
 typedef struct crccu_dscr_type {
 	uint32_t ul_tr_addr;	/* TR_ADDR */
 	uint32_t ul_tr_ctrl;	/* TR_CTRL */
-#if (SAM3SD8 || SAM4S || SAM4L)
+#if (SAM3SD8 || SAM4S || SAM4L || SAMG55)
 	uint32_t ul_reserved[2];	/* Reserved register */
 #elif SAM3S
 	uint32_t ul_reserved[52];	/* TR_CRC begins at offset 0xE0 */

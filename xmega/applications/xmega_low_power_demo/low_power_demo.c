@@ -3,7 +3,7 @@
  *
  * \brief Low Power Demo for AVR XMEGA
  *
- * Copyright (C) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -82,7 +82,7 @@
  *
  * \section contactinfo Contact Information
  * For further information, visit <a href="http://www.atmel.com/">Atmel</a>.\n
- * Support and FAQ: http://support.atmel.no/
+ * Support and FAQ: http://www.atmel.com/design-support/
  */
 
 static void lowpower_init(void);

@@ -45,7 +45,7 @@
  * \page asfdoc_sam0_rtc_calendar_callback_use_case Quick Start Guide for RTC (CAL) - Callback
  * In this use case, the RTC is set up in calendar mode. The time is set and an
  * alarm is enabled, as well as a callback for when the alarm time is hit. Each
- * time the callback fires, the alarm time is reset to 5 seconds in the future
+ * time the callback fires, the alarm time is reset to five seconds in the future
  * and the board LED toggled.
  *
  * \section asfdoc_sam0_rtc_calendar_callback_use_case_prereq Prerequisites
@@ -64,7 +64,7 @@
  * \section asfdoc_sam0_rtc_calendar_callback_use_case_setup Setup
  *
  * \subsection asfdoc_sam0_rtc_calendar_callback_use_case_setup_code Code
- * Create a rtc_module struct and add to the main application source file,
+ * Create an rtc_module struct and add to the main application source file,
  * outside of any functions:
  * \snippet qs_rtc_calendar_callback.c rtc_module_instance
  *

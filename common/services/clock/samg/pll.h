@@ -63,15 +63,18 @@ extern "C" {
 #if (SAMG51 || SAMG53)
 #define PLL_OUTPUT_MAX_HZ   48000000
 #endif
-
 #if (SAMG54)
 #define PLL_OUTPUT_MAX_HZ   96000000
 #endif
+#if (SAMG55)
+#define PLL_OUTPUT_MAX_HZ   120000000
+#endif
 
-#define PLL_INPUT_HZ    32000
+#define PLL_INPUT_HZ    32768
 
-#define NR_PLLS             1
+#define NR_PLLS             2
 #define PLLA_ID             0
+#define PLLB_ID             1
 
 #define PLL_COUNT           0x3fU
 
@@ -91,7 +94,7 @@ struct pll_config {
 			/ CONFIG_PLL##pll_id##_DIV)
 
 /**
- * \note The SAMG51 PLL hardware interprets mul as mul+1. For readability the hardware mul+1
+ * \note The SAMG PLL hardware interprets mul as mul+1. For readability the hardware mul+1
  * is hidden in this implementation. Use mul as mul effective value.
  */
 static inline void pll_config_init(struct pll_config *p_cfg,
@@ -125,6 +128,10 @@ static inline void pll_config_read(struct pll_config *p_cfg, uint32_t ul_pll_id)
 
 	if (ul_pll_id == PLLA_ID) {
 		p_cfg->ctrl = PMC->CKGR_PLLAR;
+#if SAMG55
+	} else {
+		p_cfg->ctrl = PMC->CKGR_PLLBR;
+#endif
 	}
 }
 
@@ -135,6 +142,11 @@ static inline void pll_config_write(const struct pll_config *p_cfg, uint32_t ul_
 	if (ul_pll_id == PLLA_ID) {
 		pmc_disable_pllack(); // Always stop PLL first!
 		PMC->CKGR_PLLAR = p_cfg->ctrl;
+#if SAMG55
+	} else {
+		pmc_disable_pllbck(); // Always stop PLL first!
+		PMC->CKGR_PLLBR = p_cfg->ctrl;
+#endif
 	}
 }
 
@@ -145,6 +157,11 @@ static inline void pll_enable(const struct pll_config *p_cfg, uint32_t ul_pll_id
 	if (ul_pll_id == PLLA_ID) {
 		pmc_disable_pllack(); // Always stop PLL first!
 		PMC->CKGR_PLLAR = p_cfg->ctrl;
+#if SAMG55
+	} else {
+		pmc_disable_pllbck(); // Always stop PLL first!
+		PMC->CKGR_PLLBR = p_cfg->ctrl;
+#endif
 	}
 }
 
@@ -157,6 +174,10 @@ static inline void pll_disable(uint32_t ul_pll_id)
 
 	if (ul_pll_id == PLLA_ID) {
 		pmc_disable_pllack();
+#if SAMG55
+	} else {
+		pmc_disable_pllbck();
+#endif
 	}
 }
 
@@ -166,8 +187,11 @@ static inline uint32_t pll_is_locked(uint32_t ul_pll_id)
 
 	if (ul_pll_id == PLLA_ID) {
 		return pmc_is_locked_pllack();
-	}
-	else {
+#if SAMG55
+	} else if (ul_pll_id == PLLB_ID) {
+		return pmc_is_locked_pllbck();
+#endif
+	} else {
 		return 0;
 	}
 }
@@ -176,14 +200,11 @@ static inline void pll_enable_source(enum pll_source e_src)
 {
 	switch (e_src) {
 	case PLL_SRC_SLCK_RC:
+	case PLL_SRC_SLCK_XTAL:
 		osc_enable(e_src);
 		osc_wait_ready(e_src);
 		break;
 
-	case PLL_SRC_SLCK_XTAL:
-		SUPC->SUPC_CR |= SUPC_CR_KEY_PASSWD | SUPC_CR_XTALSEL;
-		break;
-                
 	default:
 		Assert(false);
 		break;
@@ -208,6 +229,19 @@ static inline void pll_enable_config_defaults(unsigned int ul_pll_id)
 				CONFIG_PLL0_MUL);
 		break;
 #endif
+
+#if SAMG55
+#ifdef CONFIG_PLL1_SOURCE
+	case 1:
+		pll_enable_source(CONFIG_PLL1_SOURCE);
+		pll_config_init(&pllcfg,
+				CONFIG_PLL1_SOURCE,
+				CONFIG_PLL1_DIV,
+				CONFIG_PLL1_MUL);
+		break;
+#endif
+#endif
+
 	default:
 		Assert(false);
 		break;

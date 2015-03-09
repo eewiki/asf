@@ -52,8 +52,8 @@
  * - \ref asfdoc_udi_vendor_exqsg
  * - \ref asfdoc_udi_vendor_config_examples
  *
- * For more details for Atmel Software Framework (ASF) USB Device Stack,and
- * USB Device Vendor, please refer to following Application Notes:
+ * For more details for Atmel® Software Framework (ASF) USB Device Stack,and
+ * USB Device Vendor, refer to following application notes:
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8360.pdf">
  *   AVR4900: ASF - USB Device Stack</a>
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8481.pdf">
@@ -75,19 +75,19 @@
  * @{
  */
 
-/** Global structure which contains standard UDI interface for UDC */
+/** Global structure which contains standard UDI interface for UDC. */
 extern UDC_DESC_STORAGE udi_api_t udi_api_vendor;
 /**@}*/
 
 /**
- * \name USB interface descriptors
+ * \name USB Interface Descriptors
  *
  * The following structures provide predefined USB interface descriptors.
  * It must be used to define the final USB descriptors.
  * @{
  */
 
- /** Endpoint descriptors */
+ /** Endpoint descriptors. */
 #if UDI_VENDOR_EPS_SIZE_INT_FS
 # define UDI_VENDOR_EPS_INT_DESC \
 	.ep_interrupt_in.bLength           = sizeof(usb_ep_desc_t),\
@@ -169,7 +169,7 @@ extern UDC_DESC_STORAGE udi_api_t udi_api_vendor;
 # define UDI_VENDOR_EPS_ISO_DESC_HS
 #endif
 
- /** Interface descriptor structure for vendor Class interface */
+ /** Interface descriptor structure for vendor Class interface. */
 typedef struct {
 	/** Standard USB interface descriptor structure */
 	usb_iface_desc_t iface0;
@@ -195,19 +195,19 @@ typedef struct {
 #endif
 } udi_vendor_desc_t;
 
- /** By default no string associated to this interface */
+ /** By default no string is associated to this interface. */
 #ifndef UDI_VENDOR_STRING_ID
 #define UDI_VENDOR_STRING_ID     0
 #endif
 
- /** Maximum 6 endpoints used by vendor interface */
+ /** Maximum 6 endpoints used by vendor interface. */
 #define UDI_VENDOR_EP_NB_INT  ((UDI_VENDOR_EPS_SIZE_INT_FS)?2:0)
 #define UDI_VENDOR_EP_NB_BULK ((UDI_VENDOR_EPS_SIZE_BULK_FS)?2:0)
 #define UDI_VENDOR_EP_NB_ISO  ((UDI_VENDOR_EPS_SIZE_ISO_FS)?2:0)
 #define UDI_VENDOR_EP_NB      (UDI_VENDOR_EP_NB_INT+UDI_VENDOR_EP_NB_BULK+UDI_VENDOR_EP_NB_ISO)
 
 
- /** Content of vendor interface descriptor for all speeds */
+ /** Content of vendor interface descriptor for all speeds. */
 #define UDI_VENDOR_DESC      \
 	.iface0.bLength            = sizeof(usb_iface_desc_t),\
 	.iface0.bDescriptorType    = USB_DT_INTERFACE,\
@@ -231,7 +231,7 @@ typedef struct {
 	UDI_VENDOR_EPS_BULK_DESC \
 	UDI_VENDOR_EPS_ISO_DESC \
 
- /** Content of vendor interface descriptor for full speed only */
+ /** Content of vendor interface descriptor for full speed only. */
 #define UDI_VENDOR_DESC_FS {\
 	UDI_VENDOR_DESC \
 	UDI_VENDOR_EPS_INT_DESC_FS \
@@ -239,7 +239,7 @@ typedef struct {
 	UDI_VENDOR_EPS_ISO_DESC_FS \
    }
 
- /** Content of vendor interface descriptor for high speed only */
+ /** Content of vendor interface descriptor for high speed only. */
 #define UDI_VENDOR_DESC_HS   {\
 	UDI_VENDOR_DESC \
 	UDI_VENDOR_EPS_INT_DESC_HS \
@@ -255,7 +255,7 @@ typedef struct {
  *
  * These routines are used to transfer data to/from USB VENDOR endpoints.
  *
- * See Quick start guide for USB Device vendor module
+ * See Quick start guide for USB Device vendor module.
  * @{
  */
 
@@ -264,7 +264,7 @@ typedef struct {
  * \brief Start a transfer on interrupt IN
  *
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback is called.
- * The \a callback returns the transfer status and eventually the number of byte transfered.
+ * The \a callback returns the transfer status and eventually the number of byte transferred.
  *
  * \param[in] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -280,7 +280,7 @@ bool udi_vendor_interrupt_in_run(uint8_t * buf, iram_size_t buf_size,
  * \brief Start a transfer on interrupt OUT
  *
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback is called.
- * The \a callback returns the transfer status and eventually the number of byte transfered.
+ * The \a callback returns the transfer status and eventually the number of byte transferred.
  *
  * \param[in] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -298,7 +298,7 @@ bool udi_vendor_interrupt_out_run(uint8_t * buf, iram_size_t buf_size,
  * \brief Start a transfer on bulk IN
  *
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback is called.
- * The \a callback returns the transfer status and eventually the number of byte transfered.
+ * The \a callback returns the transfer status and eventually the number of byte transferred.
  *
  * \param[in] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -314,7 +314,7 @@ bool udi_vendor_bulk_in_run(uint8_t * buf, iram_size_t buf_size,
  * \brief Start a transfer on bulk OUT
  *
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback is called.
- * The \a callback returns the transfer status and eventually the number of byte transfered.
+ * The \a callback returns the transfer status and eventually the number of byte transferred.
  *
  * \param[in] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -333,7 +333,7 @@ bool udi_vendor_bulk_out_run(uint8_t * buf, iram_size_t buf_size,
  * \brief Start a transfer on isochronous IN
  *
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback is called.
- * The \a callback returns the transfer status and eventually the number of byte transfered.
+ * The \a callback returns the transfer status and eventually the number of byte transferred.
  *
  * \param[in] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -349,7 +349,7 @@ bool udi_vendor_iso_in_run(uint8_t * buf, iram_size_t buf_size,
  * \brief Start a transfer on isochronous OUT
  *
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback is called.
- * The \a callback returns the transfer status and eventually the number of byte transfered.
+ * The \a callback returns the transfer status and eventually the number of byte transferred.
  *
  * \param[in] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -366,26 +366,26 @@ bool udi_vendor_iso_out_run(uint8_t * buf, iram_size_t buf_size,
 /**@}*/
 
 /**
- * \page asfdoc_udi_vendor_exqsg Quick start guide for USB Device vendor module (udi vendor)
+ * \page asfdoc_udi_vendor_exqsg Quick Start Guide for USB Device Vendor Module (UDI Vendor)
  *
  * This is the quick start guide for the \ref asfdoc_udi_vendor_group
- * "USB Device vendor module (udi vendor)" with step-by-step instructions on
+ * "USB Device Vendor Module (UDI Vendor)" with step-by-step instructions on
  * how to configure and use the modules in a selection of use cases.
  *
  * The use cases highlights several code fragments. The code fragments in the
  * steps for setup can be copied into a custom initialization function, while
  * the steps for usage can be copied into, e.g., the main application function.
  *
- * \section udi_vendor_basic_use_case Basic use case
+ * \section udi_vendor_basic_use_case Basic Use Case
  * In this basic use case, the "USB Vendor (Single Class support)" module is
  * used. The "USB Vendor (Composite Device)" module usage is described in \ref udi_vendor_use_cases
- * "Advanced use cases".
+ * "Advanced Use Cases".
  *
- * \subsection udi_vendor_basic_use_case_setup Setup steps
- * As a USB Device, it follows common USB Device setup steps. Please refer to
- * \ref asfdoc_uhc_basic_use_case_setup "USB Device Basic Setup".
+ * \subsection udi_vendor_basic_use_case_setup Setup Steps
+ * As a USB device, it follows common USB device setup steps. Refer to
+ * \ref asfdoc_udc_basic_use_case_setup "USB Device Basic Setup".
  *
- * \subsection udi_vendor_basic_use_case_usage Usage steps
+ * \subsection udi_vendor_basic_use_case_usage Usage Steps
  *
  * \subsubsection udi_vendor_basic_use_case_usage_code Example code
  * Content of conf_usb.h:
@@ -443,7 +443,7 @@ bool udi_vendor_iso_out_run(uint8_t * buf, iram_size_t buf_size,
  \endcode
  *
  * \subsection udi_vendor_basic_use_case_setup_flow Workflow
- * -# Ensure that conf_usb.h is available and contains the following configuration
+ * -# Ensure that conf_usb.h is available and contains the following configuration,
  * which is the USB device Vendor configuration:
  * \code
  #define UDI_VENDOR_ENABLE_EXT() my_callback_vendor_enable()
@@ -500,7 +500,7 @@ bool udi_vendor_iso_out_run(uint8_t * buf, iram_size_t buf_size,
  udi_vendor_iso_out_run();
  \endcode
  *
- * \section udi_vendor_use_cases Advanced use cases
+ * \section udi_vendor_use_cases Advanced Use Cases
  * \ifnot ASF_MANUAL
  * For more advanced use of the udi vendor module, see the following use cases:
  * - \subpage udi_vendor_use_case_composite
@@ -518,9 +518,9 @@ bool udi_vendor_iso_out_run(uint8_t * buf, iram_size_t buf_size,
  * \endif
  */
 /**
- * \page udi_vendor_use_case_composite Vendor in a composite device
+ * \page udi_vendor_use_case_composite Vendor in a Composite Device
  *
- * A USB Composite Device is a USB Device which uses more than one USB class.
+ * A USB Composite Device is a USB Device, which uses more than one USB class.
  * In this use case, the "USB Vendor (Composite Device)" module is used to
  * create a USB composite device. Thus, this USB module can be associated with
  * another "Composite Device" module, like "USB HID Mouse (Composite Device)".
@@ -529,13 +529,13 @@ bool udi_vendor_iso_out_run(uint8_t * buf, iram_size_t buf_size,
  * <A href="http://www.atmel.com/dyn/resources/prod_documents/doc8445.pdf">
  * AVR4902 ASF - USB Composite Device</A>.
  *
- * \section udi_vendor_use_case_composite_setup Setup steps
+ * \section udi_vendor_use_case_composite_setup Setup Steps
  * For the setup code of this use case to work, the
- * \ref udi_vendor_basic_use_case "basic use case" must be followed.
+ * \ref udi_vendor_basic_use_case "Basic Use Case" must be followed.
  *
- * \section udi_vendor_use_case_composite_usage Usage steps
+ * \section udi_vendor_use_case_composite_usage Usage Steps
  *
- * \subsection udi_vendor_use_case_composite_usage_code Example code
+ * \subsection udi_vendor_use_case_composite_usage_code Example Code
  * Content of conf_usb.h:
  * \code
  #define USB_DEVICE_EP_CTRL_SIZE  64
@@ -630,32 +630,32 @@ bool udi_vendor_iso_out_run(uint8_t * buf, iram_size_t buf_size,
  *
  * \section asfdoc_udi_vendor_config_examples_1 conf_usb.h
  * \subsection asfdoc_udi_vendor_config_examples_1_1  UDI Vendor Single
- * \include module_config\conf_usb.h
- * \subsection asfdoc_udi_vendor_config_examples_1_2  UDI Vendor Multiple (composite)
- * \include composite\device\module_config\conf_usb.h
+ * \include module_config/conf_usb.h
+ * \subsection asfdoc_udi_vendor_config_examples_1_2  UDI Vendor Multiple (Composite)
+ * \include composite/device/module_config/conf_usb.h
  *
  * \section asfdoc_udi_vendor_config_examples_2 conf_clock.h
  *
- * \subsection asfdoc_udi_vendor_config_examples_2_1 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_clock.h
+ * \subsection asfdoc_udi_vendor_config_examples_2_1 SAM3X and SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_clock.h
  *
- * \subsection asfdoc_udi_vendor_config_examples_2_2 SAM4L device(USBC)
- * \include example\sam4lc4c_sam4l_ek\conf_clock.h
+ * \subsection asfdoc_udi_vendor_config_examples_2_2 SAM4L Device(USBC)
+ * \include example/sam4lc4c_sam4l_ek/conf_clock.h
   *
  * \section asfdoc_udi_vendor_config_examples_3 conf_clocks.h
  *
- * \subsection asfdoc_udi_vendor_config_examples_3_1 SAMD21 device (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_clocks.h
+ * \subsection asfdoc_udi_vendor_config_examples_3_1 SAMD21 Device (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_clocks.h
  *
  * \section asfdoc_udi_vendor_config_examples_4 conf_board.h
  *
- * \subsection asfdoc_udi_vendor_config_examples_4_1 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_board.h
+ * \subsection asfdoc_udi_vendor_config_examples_4_1 SAM3X and SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_board.h
  *
- * \subsection asfdoc_udi_vendor_config_examples_4_2 SAM4L device(USBC)
- * \include example\sam4lc4c_sam4l_ek\conf_board.h
+ * \subsection asfdoc_udi_vendor_config_examples_4_2 SAM4L Device(USBC)
+ * \include example/sam4lc4c_sam4l_ek/conf_board.h
  *
- * \subsection asfdoc_udi_vendor_config_examples_4_3 SAMD21 device (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_board.h
+ * \subsection asfdoc_udi_vendor_config_examples_4_3 SAMD21 Device (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_board.h
  */
 

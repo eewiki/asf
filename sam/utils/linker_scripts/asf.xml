@@ -621,5 +621,6 @@
 			<build type="linker-config" subtype="aux-script" value="samg/samg54n19/iar/sram.icf" toolchain="iarewarm"/>
 			<device-support value="atsamg54n19"/>
 		</module>
+
 	</select-by-device>
 </asf>

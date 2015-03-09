@@ -46,17 +46,17 @@
 /**
  * \defgroup asfdoc_sam0_nvm_group SAM Non-Volatile Memory Driver (NVM)
  *
- * This driver for SAM devices provides an interface for the configuration
+ * This driver for Atmel® | SMART™ SAM devices provides an interface for the configuration
  * and management of non-volatile memories within the device, for partitioning,
- * erasing, reading and writing of data.
+ * erasing, reading, and writing of data.
  *
  * The following peripherals are used by this module:
  *  - NVM (Non-Volatile Memory)
  *
  * The following devices can use this module:
- *  - SAM D20/D21
- *  - SAM R21
- *  - SAM D10/D11
+ *  - Atmel® | SMART™ SAM D20/D21
+ *  - Atmel® | SMART™ SAM R21
+ *  - Atmel® | SMART™ SAM D10/D11
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_nvm_prerequisites
@@ -224,7 +224,7 @@
  *
  * \section asfdoc_sam0_nvm_extra_info Extra Information
  *
- * For extra information see \ref asfdoc_sam0_nvm_extra. This includes:
+ * For extra information, see \ref asfdoc_sam0_nvm_extra. This includes:
  *  - \ref asfdoc_sam0_nvm_extra_acronyms
  *  - \ref asfdoc_sam0_nvm_extra_dependencies
  *  - \ref asfdoc_sam0_nvm_extra_errata
@@ -265,7 +265,7 @@ extern "C" {
  * controller after a command is issued.
  */
 enum nvm_error {
-	/** No errors */
+	/** No errors. */
 	NVM_ERROR_NONE = 0,
 	/** Lock error, a locked region was attempted accessed. */
 	NVM_ERROR_LOCK = NVMCTRL_STATUS_NVME | NVMCTRL_STATUS_LOCKE,
@@ -346,7 +346,7 @@ enum nvm_sleep_power_mode {
 /**
  * \brief NVM controller cache readmode configuration
  *
- * Control how the NVM cache prefetch data from flash
+ * Control how the NVM cache prefetch data from flash.
  *
  */
 enum nvm_cache_readmode {
@@ -355,7 +355,7 @@ enum nvm_cache_readmode {
 	 */
 	NVM_CACHE_READMODE_NO_MISS_PENALTY,
 	/** Reduces power consumption of the cache system, but inserts a
-	 *  wait state each time there is a cache miss
+	 *  wait state each time there is a cache miss.
 	 */
 	NVM_CACHE_READMODE_LOW_POWER,
 	/** The cache system ensures that a cache hit or miss takes the same
@@ -424,13 +424,21 @@ struct nvm_parameters {
  *
  */
 enum nvm_bootloader_size {
+	/** Boot Loader Size is 32768 Bytes. */
 	NVM_BOOTLOADER_SIZE_128,
+	/** Boot Loader Size is 16384 Bytes. */
 	NVM_BOOTLOADER_SIZE_64,
+	/** Boot Loader Size is 8192 Bytes. */
 	NVM_BOOTLOADER_SIZE_32,
+	/** Boot Loader Size is 4096 Bytes. */
 	NVM_BOOTLOADER_SIZE_16,
+	/** Boot Loader Size is 2048 Bytes. */
 	NVM_BOOTLOADER_SIZE_8,
+	/** Boot Loader Size is 1024 Bytes. */
 	NVM_BOOTLOADER_SIZE_4,
+	/** Boot Loader Size is 512 Bytes. */
 	NVM_BOOTLOADER_SIZE_2,
+	/** Boot Loader Size is 0 Bytes. */
 	NVM_BOOTLOADER_SIZE_0,
 };
 
@@ -441,13 +449,21 @@ enum nvm_bootloader_size {
  *
  */
 enum nvm_eeprom_emulator_size {
+	/** EEPROM Size for EEPROM emulation is 16384 bytes. */
 	NVM_EEPROM_EMULATOR_SIZE_16384,
+	/** EEPROM Size for EEPROM emulation is 8192 bytes. */
 	NVM_EEPROM_EMULATOR_SIZE_8192,
+	/** EEPROM Size for EEPROM emulation is 4096 bytes. */
 	NVM_EEPROM_EMULATOR_SIZE_4096,
+	/** EEPROM Size for EEPROM emulation is 2048 bytes. */
 	NVM_EEPROM_EMULATOR_SIZE_2048,
+	/** EEPROM Size for EEPROM emulation is 1024 bytes. */
 	NVM_EEPROM_EMULATOR_SIZE_1024,
+	/** EEPROM Size for EEPROM emulation is 512 bytes. */
 	NVM_EEPROM_EMULATOR_SIZE_512,
+	/** EEPROM Size for EEPROM emulation is 256 bytes. */
 	NVM_EEPROM_EMULATOR_SIZE_256,
+	/** EEPROM Size for EEPROM emulation is 0 bytes. */
 	NVM_EEPROM_EMULATOR_SIZE_0,
 };
 
@@ -458,29 +474,44 @@ enum nvm_eeprom_emulator_size {
  *
  */
 enum nvm_bod33_action {
+	/** No action. */
 	NVM_BOD33_ACTION_NONE,
+	/** The BOD33 generates a reset. */
 	NVM_BOD33_ACTION_RESET,
+	/** The BOD33 generates an interrupt. */
 	NVM_BOD33_ACTION_INTERRUPT,
 };
 
 /**
  * \brief WDT Window time-out period
  *
- * Windows mode time-out period in clock cycles.
+ * Window mode time-out period in clock cycles.
  *
  */
 enum nvm_wdt_window_timeout {
+	/** 8 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_8,
+	/** 16 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_16,
+	/** 32 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_32,
+	/** 64 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_64,
+	/** 128 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_128,
+	/** 256 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_256,
+	/** 512 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_512,
+	/** 1024 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_1024,
+	/** 2048 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_2048,
+	/** 4096 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_4096,
+	/** 8192 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_8192,
+	/** 16384 clock cycles. */
 	NVM_WDT_WINDOW_TIMEOUT_PERIOD_16384,
 };
 
@@ -492,17 +523,29 @@ enum nvm_wdt_window_timeout {
  *
  */
 enum nvm_wdt_early_warning_offset {
+	/** 8 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_8,
+	/** 16 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_16,
+	/** 32 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_32,
+	/** 64 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_64,
+	/** 128 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_128,
+	/** 256 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_256,
+	/** 512 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_512,
+	/** 1024 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_1024,
+	/** 2048 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_2048,
+	/** 4096 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_4096,
+	/** 8192 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_8192,
+	/** 16384 clock cycles. */
 	NVM_WDT_EARLY_WARNING_OFFSET_16384,
 };
 
@@ -515,27 +558,27 @@ enum nvm_wdt_early_warning_offset {
 struct nvm_fusebits {
 	/** Bootloader size. */
 	enum nvm_bootloader_size          bootloader_size;
-	/** EEPROM emulation area size */
+	/** EEPROM emulation area size. */
 	enum nvm_eeprom_emulator_size     eeprom_size;
-	/** BOD33 Threshold level at power on */
+	/** BOD33 Threshold level at power on. */
 	uint8_t                           bod33_level;
-	/** BOD33 Enable at power on */
+	/** BOD33 Enable at power on. */
 	bool                              bod33_enable;
-	/** BOD33 Action at power on */
+	/** BOD33 Action at power on. */
 	enum nvm_bod33_action             bod33_action;
-	/** WDT Enable at power on */
+	/** WDT Enable at power on. */
 	bool                              wdt_enable;
-	/** WDT Always-on at power on */
+	/** WDT Always-on at power on. */
 	bool                              wdt_always_on;
-	/** WDT Period at power on */
+	/** WDT Period at power on. */
 	uint8_t                           wdt_timeout_period;
-	/** WDT Window mode time-out at power on */
+	/** WDT Window mode time-out at power on. */
 	enum nvm_wdt_window_timeout       wdt_window_timeout;
-	/** WDT Early warning interrupt time offset at power on */
+	/** WDT Early warning interrupt time offset at power on. */
 	enum nvm_wdt_early_warning_offset wdt_early_warning_offset;
-	/** WDT Window mode enabled at power on */
+	/** WDT Window mode enabled at power on. */
 	bool                              wdt_window_mode_enable_at_poweron;
-	/** NVM Lock bits */
+	/** NVM Lock bits. */
 	uint16_t                          lockbits;
 };
 
@@ -722,7 +765,7 @@ static inline enum nvm_error nvm_get_error(void)
  *	</tr>
  *	<tr>
  *		<td>Added support for SAMD21, removed BOD12 reference, removed
- *          nvm_set_fuses() API.</td>
+ *          nvm_set_fuses() API</td>
  *	</tr>
  *	<tr>
  *		<td>Added functions to read/write fuse settings</td>
@@ -732,7 +775,7 @@ static inline enum nvm_error nvm_get_error(void)
  *	</tr>
  *	<tr>
  *		<td>Updated initialization function to also enable the digital interface
- *          clock to the module if it is disabled.</td>
+ *          clock to the module if it is disabled</td>
  *	</tr>
  *	<tr>
  *		<td>Initial Release</td>
@@ -760,14 +803,9 @@ static inline enum nvm_error nvm_get_error(void)
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
- *		<td>E</td>
- *		<td>05/2014</td>
- *		<td>Added support for SAMD10/D11.</td>
- *	</tr>
- *	<tr>
  *		<td>D</td>
- *		<td>03/2014</td>
- *		<td>Added support for SAMR21.</td>
+ *		<td>05/2014</td>
+ *		<td>Added support for SAMR21 and SAMD10/D11.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

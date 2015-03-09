@@ -42,7 +42,7 @@
  */
 
 /**
- * \defgroup asfdoc_udi_hid_mouse_group USB Device Interface (UDI) for Human Interface Device Mouse (HID mouse)
+ * \defgroup asfdoc_udi_hid_mouse_group USB Device Interface (UDI) for Human Interface Device Mouse (HID Mouse)
  *
  * USB Device Interface (UDI) for Human Interface Device Mouse (HID mouse) provides an
  * interface for the configuration and management of USB HID mouse device.
@@ -52,8 +52,8 @@
  * - \ref asfdoc_udi_hid_mouse_exqsg
  * - \ref asfdoc_udi_hid_mouse_config_examples
  *
- * For more details for Atmel Software Framework (ASF) USB Device Stack and
- * USB Device HID Mouse, please refer to following Application Notes:
+ * For more details for Atmel® Software Framework (ASF) USB Device Stack and
+ * USB Device HID Mouse, refer to following application notes:
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8360.pdf">
  *   AVR4900: ASF - USB Device Stack</a>
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8409.pdf">
@@ -75,12 +75,12 @@
  * @{
  */
 
-/** Global structure which contains standard UDI API for UDC */
+/** Global structure which contains standard UDI API for UDC. */
 extern UDC_DESC_STORAGE udi_api_t udi_api_hid_mouse;
 /**@}*/
 
 /**
- * \name USB interface descriptors
+ * \name USB Interface Descriptors
  *
  * The following structures provide predefined USB interface descriptors.
  * It must be used to define the final USB descriptors.
@@ -88,7 +88,7 @@ extern UDC_DESC_STORAGE udi_api_t udi_api_hid_mouse;
  * @{
  */
 
- /** Interface descriptor structure for HID mouse */
+ /** Interface descriptor structure for HID mouse. */
 typedef struct {
 	/** Standard USB interface descriptor structure */
 	usb_iface_desc_t iface;
@@ -98,22 +98,22 @@ typedef struct {
 	usb_ep_desc_t ep;
 } udi_hid_mouse_desc_t;
 
-/** Report descriptor for HID mouse */
+/** Report descriptor for HID mouse. */
 typedef struct {
 	/** Array to put detailed report data */
 	uint8_t array[25 * 2 + 2 * 1];
 } udi_hid_mouse_report_desc_t;
 
 
-/** By default no string associated to this interface */
+/** By default no string associated to this interface. */
 #ifndef UDI_HID_MOUSE_STRING_ID
 #define UDI_HID_MOUSE_STRING_ID 0
 #endif
 
-/** HID mouse endpoints size */
+/** HID mouse endpoints size. */
 #define UDI_HID_MOUSE_EP_SIZE  8
 
-/** Content of HID mouse interface descriptor for all speed */
+/** Content of HID mouse interface descriptor for all speed. */
 #define UDI_HID_MOUSE_DESC    {\
 	.iface.bLength             = sizeof(usb_iface_desc_t),\
 	.iface.bDescriptorType     = USB_DT_INTERFACE,\
@@ -141,7 +141,7 @@ typedef struct {
 /**@}*/
 
 /**
- * \name Interfaces for mouse events
+ * \name Interfaces for Mouse Events
  *
  * @{
  */
@@ -175,15 +175,15 @@ bool udi_hid_mouse_moveX(int8_t pos_x);
 /**@}*/
 
 /**
- * \name Interfaces for buttons events
+ * \name Interfaces for Buttons Events
  *
  * @{
  */
 
-/** Value to signal a button down (pressed) */
+/** Value to signal a button down (pressed). */
 #define  HID_MOUSE_BTN_DOWN      true
 
-/** Value to signal a button up (released) */
+/** Value to signal a button up (released). */
 #define  HID_MOUSE_BTN_UP        false
 
 /**
@@ -216,28 +216,28 @@ bool udi_hid_mouse_btnleft(bool b_state);
 /**@}*/
 
 /**
- * \page asfdoc_udi_hid_mouse_exqsg Quick start guide for USB device mouse module (UDI mouse)
+ * \page asfdoc_udi_hid_mouse_exqsg Quick Start Guide for USB Device Mouse Module (UDI Mouse)
  *
  * This is the quick start guide for the \ref asfdoc_udi_hid_mouse_group
- * "USB device mouse module (UDI mouse)" with step-by-step instructions on
+ * "USB Device Mouse Module (UDI Mouse)" with step-by-step instructions on
  * how to configure and use the modules in a selection of use cases.
  *
  * The use cases contain several code fragments. The code fragments in the
  * steps for setup can be copied into a custom initialization function, while
  * the steps for usage can be copied into, e.g., the main application function.
  *
- * \section udi_hid_mouse_basic_use_case Basic use case
+ * \section udi_hid_mouse_basic_use_case Basic Use Case
  * In this basic use case, the "USB HID Mouse (Single Interface Device)" module is used.
  * The "USB HID Mouse (Composite Device)" module usage is described in \ref udi_hid_mouse_use_cases
- * "Advanced use cases".
+ * "Advanced Use Cases".
  *
- * \section udi_hid_mouse_basic_use_case_setup Setup steps
- * As a USB device, it follows common USB device setup steps. Please refer to
+ * \section udi_hid_mouse_basic_use_case_setup Setup Steps
+ * As a USB device, it follows common USB device setup steps. Refer to
  * \ref asfdoc_udc_basic_use_case_setup "USB Device Basic Setup".
  *
- * \section udi_hid_mouse_basic_use_case_usage Usage steps
+ * \section udi_hid_mouse_basic_use_case_usage Usage Steps
  *
- * \subsection udi_hid_mouse_basic_use_case_usage_code Example code
+ * \subsection udi_hid_mouse_basic_use_case_usage_code Example Code
  * Content of conf_usb.h:
  * \code
 	#define UDI_HID_MOUSE_ENABLE_EXT() my_callback_mouse_enable()
@@ -291,7 +291,7 @@ bool udi_hid_mouse_btnleft(bool b_state);
  *       is called. Thus, it is recommended to disable sensors used by the mouse
  *       in this function.
  *
- * -# send mouse events:
+ * -# Send mouse events:
  * \code
  // Sends a value at scroll wheel
  udi_hid_mouse_moveScroll(int8_t pos);
@@ -307,7 +307,7 @@ bool udi_hid_mouse_btnleft(bool b_state);
  udi_hid_mouse_btnleft(bool b_state);
  \endcode
  *
- * \section udi_hid_mouse_use_cases Advanced use cases
+ * \section udi_hid_mouse_use_cases Advanced Use Cases
  * \ifnot ASF_MANUAL
  * For more advanced use of the UHI HID mouse module, see the following use cases:
  * - \subpage udi_hid_mouse_use_case_composite
@@ -326,7 +326,7 @@ bool udi_hid_mouse_btnleft(bool b_state);
  */
 
 /**
- * \page udi_hid_mouse_use_case_composite HID mouse in a composite device
+ * \page udi_hid_mouse_use_case_composite HID Mouse in a Composite Device
  *
  * A USB Composite Device is a USB Device which uses more than one USB class.
  * In this use case, the "USB HID Mouse (Composite Device)" module is used to
@@ -337,13 +337,13 @@ bool udi_hid_mouse_btnleft(bool b_state);
  * <A href="http://www.atmel.com/dyn/resources/prod_documents/doc8445.pdf">
  * AVR4902 ASF - USB Composite Device</A>.
  *
- * \section udi_hid_mouse_use_case_composite_setup Setup steps
+ * \section udi_hid_mouse_use_case_composite_setup Setup Steps
  * For the setup code of this use case to work, the
- * \ref udi_hid_mouse_basic_use_case "basic use case" must be followed.
+ * \ref udi_hid_mouse_basic_use_case "Basic Use Case" must be followed.
  *
- * \section udi_hid_mouse_use_case_composite_usage Usage steps
+ * \section udi_hid_mouse_use_case_composite_usage Usage Steps
  *
- * \subsection udi_hid_mouse_use_case_composite_usage_code Example code
+ * \subsection udi_hid_mouse_use_case_composite_usage_code Example Code
  * Content of conf_usb.h:
  * \code
  #define USB_DEVICE_EP_CTRL_SIZE  64
@@ -430,43 +430,43 @@ bool udi_hid_mouse_btnleft(bool b_state);
  *
  * \section asfdoc_udi_hid_mouse_config_examples_1 conf_usb.h
  * \subsection asfdoc_udi_hid_mouse_config_examples_1_1  UDI HID MOUSE Single
- * \include module_config\conf_usb.h
- * \subsection asfdoc_udi_hid_mouse_config_examples_1_2  UDI HID MOUSE Multiple (composite)
- * \include composite\device\module_config\conf_usb.h
+ * \include module_config/conf_usb.h
+ * \subsection asfdoc_udi_hid_mouse_config_examples_1_2  UDI HID MOUSE Multiple (Composite)
+ * \include composite/device/module_config/conf_usb.h
  *
  * \section asfdoc_udi_hid_mouse_config_examples_2 conf_clock.h
  *
- * \subsection asfdoc_udi_hid_mouse_config_examples_2_1 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_clock.h
+ * \subsection asfdoc_udi_hid_mouse_config_examples_2_1 AT32UC3A0, AT32UC3A1, AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_clock.h
  *
- * \subsection asfdoc_udi_hid_mouse_config_examples_2_2 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_clock.h
+ * \subsection asfdoc_udi_hid_mouse_config_examples_2_2 AT32UC3A3, AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_clock.h
  *
- * \subsection asfdoc_udi_hid_mouse_config_examples_2_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_clock.h
+ * \subsection asfdoc_udi_hid_mouse_config_examples_2_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_clock.h
  *
- * \subsection asfdoc_udi_hid_mouse_config_examples_2_4 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_clock.h
+ * \subsection asfdoc_udi_hid_mouse_config_examples_2_4 SAM3X, SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_clock.h
  *
  * \section asfdoc_udi_hid_mouse_config_examples_3 conf_clocks.h
  *
- * \subsection asfdoc_udi_hid_mouse_config_examples_3_1 SAMD21 device (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_clocks.h
+ * \subsection asfdoc_udi_hid_mouse_config_examples_3_1 SAMD21 Device (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_clocks.h
  *
  * \section asfdoc_udi_hid_mouse_config_examples_4 conf_board.h
  *
- * \subsection asfdoc_udi_hid_mouse_config_examples_4_1 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_board.h
+ * \subsection asfdoc_udi_hid_mouse_config_examples_4_1 AT32UC3A0, AT32UC3A1, AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_board.h
  *
- * \subsection asfdoc_udi_hid_mouse_config_examples_4_2 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_board.h
+ * \subsection asfdoc_udi_hid_mouse_config_examples_4_2 AT32UC3A3, AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_board.h
  *
- * \subsection asfdoc_udi_hid_mouse_config_examples_4_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_board.h
+ * \subsection asfdoc_udi_hid_mouse_config_examples_4_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_board.h
  *
- * \subsection asfdoc_udi_hid_mouse_config_examples_4_4 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_board.h
+ * \subsection asfdoc_udi_hid_mouse_config_examples_4_4 SAM3X, SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_board.h
  *
- * \subsection asfdoc_udi_hid_mouse_config_examples_4_5 SAMD21 device (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_board.h
+ * \subsection asfdoc_udi_hid_mouse_config_examples_4_5 SAMD21 Device (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_board.h
  */

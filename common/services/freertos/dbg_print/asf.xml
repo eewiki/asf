@@ -18,7 +18,7 @@
 		<build type="include-path" value="."/>
 		<build type="module-config" subtype="path" value="module-config"/>
 		<build type="module-config" subtype="required-header-file" value="conf_dbg_print.h"/>
-		<require idref="sam0.drivers.sercom"/>
+		<require idref="sam0.drivers.sercom.callback"/>
 		<require idref="sam0.drivers.sercom.usart"/>
 		<require idref="sam0.drivers.system"/>
 		<require idref="sam0.utils"/>

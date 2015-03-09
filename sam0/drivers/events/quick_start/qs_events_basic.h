@@ -61,13 +61,13 @@
  * \subsection asfdoc_sam0_events_basic_use_casesetup_code Code
  * Add to the main application source file, before any functions, according to
  * the kit used:
- * - SAM D20 Xplained Pro
+ * - SAM D20 Xplained Pro.
  *   \snippet samd20_xplained_pro/conf_qs_events.h definition_event
- * - SAM D21 Xplained Pro
+ * - SAM D21 Xplained Pro.
  *   \snippet samd21_xplained_pro/conf_qs_events.h definition_event
- * - SAM R21 Xplained Pro
+ * - SAM R21 Xplained Pro.
  *   \snippet samr21_xplained_pro/conf_qs_events.h definition_event
- * - SAM D11 Xplained Pro
+ * - SAM D11 Xplained Pro.
  *   \snippet samd11_xplained_pro/conf_qs_events.h definition_event
  *
  * Copy-paste the following setup code to your user application:
@@ -104,7 +104,7 @@
  *          values that have been altered from the default settings are taken
  *          into account by the user application.
  *
- * -# Attach an user to the channel
+ * -# Attach an user to the channel.
  *    \snippet qs_events_basic.c setup_5
  *    \br
  *
@@ -115,7 +115,7 @@
  * \snippet qs_events_basic.c main
  *
  * \subsection events_basic_use_case_code_flow Workflow
- * -# Wait for the even channel to become ready to accept a new event trigger.
+ * -# Wait for the event channel to become ready to accept a new event trigger.
  *    \snippet qs_events_basic.c main_1
  * -# Perform a software event trigger on the configured event channel.
  *    \snippet qs_events_basic.c main_2

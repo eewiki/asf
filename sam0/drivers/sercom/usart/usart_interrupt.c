@@ -180,7 +180,7 @@ void usart_unregister_callback(
  * \param[in]  module   Pointer to USART software instance struct
  * \param[in]  tx_data  Data to transfer
  *
- * \returns Status of the operation
+ * \returns Status of the operation.
  * \retval STATUS_OK         If operation was completed
  * \retval STATUS_BUSY       If operation was not completed, due to the
  *                           USART module being busy
@@ -219,9 +219,9 @@ enum status_code usart_write_job(
  * \param[in]   module   Pointer to USART software instance struct
  * \param[out]  rx_data  Pointer to where received data should be put
  *
- * \returns Status of the operation
+ * \returns Status of the operation.
  * \retval  STATUS_OK    If operation was completed
- * \retval  STATUS_BUSY  If operation was not completed,
+ * \retval  STATUS_BUSY  If operation was not completed
  */
 enum status_code usart_read_job(
 		struct usart_module *const module,
@@ -251,7 +251,7 @@ enum status_code usart_read_job(
  * \param[in]  tx_data  Pointer do data buffer to transmit
  * \param[in]  length   Length of the data to transmit
  *
- * \returns Status of the operation
+ * \returns Status of the operation.
  * \retval STATUS_OK              If operation was completed successfully.
  * \retval STATUS_BUSY            If operation was not completed, due to the
  *                                USART module being busy
@@ -297,7 +297,7 @@ enum status_code usart_write_buffer_job(
  * \param[out] rx_data  Pointer to data buffer to receive
  * \param[in]  length   Data buffer length
  *
- * \returns Status of the operation
+ * \returns Status of the operation.
  * \retval STATUS_OK              If operation was completed
  * \retval STATUS_BUSY            If operation was not completed, due to the
  *                                USART module being busy

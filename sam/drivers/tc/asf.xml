@@ -1,6 +1,20 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam.drivers.tc" caption="TC - Timer Counter">
 		<info type="description" value="summary">
+			The Timer Counter includes three identical 16-bit Timer Counter channels. Each channel can be independently programmed to perform a wide range of functions including frequency measurement, event counting, interval measurement, pulse generation, delay timing and pulse width modulation.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc.c"/>
+		<build type="header-file" subtype="api" value="tc.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		<build type="doxygen-entry-point" value="sam_drivers_tc_group"/>
+	</module>
+	<module type="driver" id="sam.drivers.tc.appnote" caption="TC - Timer Counter">
+		<info type="description" value="summary">
 			Driver for the TC (Timer Counter).
 			The Timer Counter includes three identical 16-bit Timer Counter channels.
 			Each channel can be independently programmed to perform a wide range of

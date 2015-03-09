@@ -118,9 +118,9 @@ static enum status_code _i2c_slave_set_config(
 }
 
 /**
- * \brief Initializes the requested I2C hardware module
+ * \brief Initializes the requested I<SUP>2</SUP>C hardware module
  *
- * Initializes the SERCOM I2C Slave device requested and sets the provided
+ * Initializes the SERCOM I<SUP>2</SUP>C Slave device requested and sets the provided
  * software module struct.  Run this function before any further use of
  * the driver.
  *
@@ -562,14 +562,14 @@ enum i2c_slave_direction i2c_slave_get_direction_wait(
  * \brief Retrieves the current module status
  *
  * Checks the status of the module and returns it as a bitmask of status
- * flags
+ * flags.
  *
- * \param[in] module      Pointer to the I2C slave software device struct
+ * \param[in] module      Pointer to the I<SUP>2</SUP>C slave software device struct
  *
- * \return Bitmask of status flags
+ * \return Bitmask of status flags.
  *
  * \retval I2C_SLAVE_STATUS_ADDRESS_MATCH   A valid address has been received
- * \retval I2C_SLAVE_STATUS_DATA_READY      A I2C slave byte transmission is
+ * \retval I2C_SLAVE_STATUS_DATA_READY      A I<SUP>2</SUP>C slave byte transmission is
  *                                          successfully completed
  * \retval I2C_SLAVE_STATUS_STOP_RECEIVED   A stop condition is detected for a
  *                                          transaction being processed
@@ -582,7 +582,7 @@ enum i2c_slave_direction i2c_slave_get_direction_wait(
  *                                          set
  * \retval I2C_SLAVE_STATUS_RECEIVED_NACK   The last data packet sent was not
  *                                          acknowledged
- * \retval I2C_SLAVE_STATUS_COLLISION       The I2C slave was not able to
+ * \retval I2C_SLAVE_STATUS_COLLISION       The I<SUP>2</SUP>C slave was not able to
  *                                          transmit a high data or NACK bit
  * \retval I2C_SLAVE_STATUS_BUS_ERROR       An illegal bus condition has
  *                                          occurred on the bus
@@ -647,7 +647,7 @@ uint32_t i2c_slave_get_status(
  *
  * \note Not all status flags can be cleared.
  *
- * \param[in] module         Pointer to the I2C software device struct
+ * \param[in] module         Pointer to the I<SUP>2</SUP>C software device struct
  * \param[in] status_flags   Bit mask of status flags to clear
  *
  */

@@ -46,7 +46,7 @@
 /**
  * \defgroup asfdoc_sam0_system_pinmux_group SAM System Pin Multiplexer Driver (SYSTEM PINMUX)
  *
- * This driver for SAM devices provides an interface for the configuration
+ * This driver for Atmel® | SMART™ SAM devices provides an interface for the configuration
  * and management of the device's physical I/O Pins, to alter the direction and
  * input/drive characteristics as well as to configure the pin peripheral
  * multiplexer selection.
@@ -55,9 +55,9 @@
  *  - PORT (Port I/O Management)
  *
  * The following devices can use this module:
- *  - SAM D20/D21
- *  - SAM R21
- *  - SAM D10/D11
+ *  - Atmel® | SMART™ SAM D20/D21
+ *  - Atmel® | SMART™ SAM R21
+ *  - Atmel® | SMART™ SAM D10/D11
  *
  * Physically, the modules are interconnected within the device as shown in the
  * following diagram:
@@ -86,7 +86,7 @@
  *
  * \subsection asfdoc_sam0_system_pinmux_physical_logical_pins Physical and Logical GPIO Pins
  * SAM devices use two naming conventions for the I/O pins in the device; one
- * physical, and one logical. Each physical pin on a device package is assigned
+ * physical and one logical. Each physical pin on a device package is assigned
  * both a physical port and pin identifier (e.g. "PORTA.0") as well as a
  * monotonically incrementing logical GPIO number (e.g. "GPIO0"). While the
  * former is used to map physical pins to their physical internal device module
@@ -104,7 +104,7 @@
  *
  * \subsection asfdoc_sam0_system_pinmux_pad_characteristics Special Pad Characteristics
  * There are several special modes that can be selected on one or more I/O pins
- * of the device, which alter the input and output characteristics of the pad:
+ * of the device, which alter the input and output characteristics of the pad.
  *
  * \subsubsection asfdoc_sam0_system_pinmux_drive_strength Drive Strength
  * The Drive Strength configures the strength of the output driver on the
@@ -136,7 +136,7 @@
  *   node [label="Port Pad" shape=square] pad;
  *
  *   subgraph driver {
- *     node [label="Peripheral Mux" shape=trapezium] pinmux;
+ *     node [label="Peripheral MUX" shape=trapezium] pinmux;
  *     node [label="GPIO Module" shape=ellipse shape=ellipse style=filled fillcolor=lightgray] gpio;
  *     node [label="Other Peripheral Modules" shape=ellipse style=filled fillcolor=lightgray] peripherals;
  *   }
@@ -159,7 +159,7 @@
  *
  * \section asfdoc_sam0_system_pinmux_extra_info Extra Information
  *
- * For extra information see \ref asfdoc_sam0_system_pinmux_extra. This includes:
+ * For extra information, see \ref asfdoc_sam0_system_pinmux_extra. This includes:
  *  - \ref asfdoc_sam0_system_pinmux_extra_acronyms
  *  - \ref asfdoc_sam0_system_pinmux_extra_dependencies
  *  - \ref asfdoc_sam0_system_pinmux_extra_errata
@@ -251,14 +251,14 @@ struct system_pinmux_config {
 	/** Logic level pull of the input buffer. */
 	enum system_pinmux_pin_pull input_pull;
 
-	/** Enable lowest possible powerstate on the pin
+	/** Enable lowest possible powerstate on the pin.
 	 *
-	 *  \note All other configurations will be ignored, the pin will be disabled
+	 *  \note All other configurations will be ignored, the pin will be disabled.
 	 */
 	bool powersave;
 };
 
-/** \name Configuration and initialization
+/** \name Configuration and Initialization
  * @{
  */
 
@@ -300,7 +300,7 @@ void system_pinmux_group_set_config(
 
 /** @} */
 
-/** \name Special mode configuration (physical group orientated)
+/** \name Special Mode Configuration (Physical Group Orientated)
  *  @{
  */
 
@@ -338,7 +338,7 @@ void system_pinmux_group_set_input_sample_mode(
 
 /** @} */
 
-/** \name Special mode configuration (logical pin orientated)
+/** \name Special Mode Configuration (Logical Pin Orientated)
  *  @{
  */
 
@@ -447,14 +447,14 @@ static inline void system_pinmux_pin_set_input_sample_mode(
  *	</tr>
  *	<tr>
  *		<td>Removed code of open drain, slew limit and drive strength
- *		features.</td>
+ *		features</td>
  *	</tr>
  *	<tr>
  *		<td>Fixed broken sampling mode function implementations, which wrote
- *		    corrupt configuration values to the device registers.</td>
+ *		    corrupt configuration values to the device registers</td>
  *	</tr>
  *	<tr>
- *		<td>Added missing NULL pointer asserts to the PORT driver functions.</td>
+ *		<td>Added missing NULL pointer asserts to the PORT driver functions</td>
  *	</tr>
  *	<tr>
  *		<td>Initial Release</td>
@@ -482,14 +482,9 @@ static inline void system_pinmux_pin_set_input_sample_mode(
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
- *		<td>F</td>
- *		<td>04/2014</td>
- *		<td>Add support for SAMD10/D11</td>
- *	</tr>
- *	<tr>
  *		<td>E</td>
- *		<td>02/2014</td>
- *		<td>Add support for SAMR21</td>
+ *		<td>04/2014</td>
+ *		<td>Add support for SAMR21 and SAMD10/D11</td>
  *	</tr>
  *	<tr>
  *		<td>D</td>

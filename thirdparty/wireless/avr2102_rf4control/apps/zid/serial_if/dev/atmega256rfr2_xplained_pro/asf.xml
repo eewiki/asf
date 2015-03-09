@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="RF4CE ZID Serial Interface application for HID Class Device ATMEGA256RFR2_XPLAINED_PRO" id="thirdparty.wireless.avr2102_rf4control.apps.zid.serial_if.dev.atmega256rfr2_xplained_pro">
+	<project force-caption="true" force-description="true" caption="RF4CE ZID Serial Interface application for HID Class Device - ATmega256RFR2 Xplained Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zid.serial_if.dev.atmega256rfr2_xplained_pro">
 		<info type="description" value="summary">
 		ZID Serial Interface HID Class Device application for RF4CE-ZID adaptor-device setup
 		</info>

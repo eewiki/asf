@@ -49,7 +49,7 @@
 #define PWM_MODULE      EXT1_PWM_MODULE
 /** PWM output pin */
 #define PWM_OUT_PIN     EXT1_PWM_0_PIN
-/** PWM output pin mux */
+/** PWM output pinmux */
 #define PWM_OUT_MUX     EXT1_PWM_0_MUX
 //[definition_pwm]
 

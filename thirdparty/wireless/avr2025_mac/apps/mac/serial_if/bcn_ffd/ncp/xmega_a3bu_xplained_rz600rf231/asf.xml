@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC Serial Interface Beacon FFD AT86RF231-XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd.ncp.xmega_a3bu_xplained_rz600rf231">
+	<project force-caption="true" force-description="true" caption="MAC Serial Interface Beacon FFD AT86RF231 - XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd.ncp.xmega_a3bu_xplained_rz600rf231">
 		<info type="description" value="summary">
 		MAC Serial Interface Application - Beacon FFD
 		</info>

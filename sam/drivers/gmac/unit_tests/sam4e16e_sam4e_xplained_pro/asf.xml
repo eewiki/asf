@@ -14,5 +14,6 @@
 		<generator value="doxygen"/>
 		<config name="config.compiler.iarewarm.dlib" value="full"/>
 		<device-support value="atsam4e16e"/>
+		<config name="config.sam.drivers.gmac.unit_tests" value="ksz8081mnx"/>
 	</project>
 </asf>

@@ -3,7 +3,7 @@
  *
  * \brief Common Sensor Service Light/Proximity Sensor Wake Event Example
  *
- * Copyright (C) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -56,7 +56,7 @@
  * \section contactinfo Contact Information
  * For further information, visit
  * <A href="http://www.atmel.com/avr">Atmel AVR</A>.\n
- * Support and FAQ: http://support.atmel.no/
+ * Support and FAQ: http://www.atmel.com/design-support/
  */
 
 #include <stdio.h>

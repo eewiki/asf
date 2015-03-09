@@ -23,6 +23,23 @@
 			<require idref="common.services.layer.freertos.spi"/>
 		</module>
 	</select-by-config>
+	<select-by-config id="config.common.services.freertos.peripheral_control.usart" name="config.common.services.freertos.peripheral_control.usart" caption="FreeRTOS Peripheral Control Example with USART support" default="yes">
+		<module type="meta" id="config.common.services.freertos.peripheral_control.usart#no" caption="FreeRTOS Peripheral Control Example with USART support disabled">
+		</module>
+		<module type="meta" id="config.common.services.freertos.peripheral_control.usart#yes" caption="FreeRTOS Peripheral Control Example with USART support enabled">
+			<build type="c-source" value="./demo-tasks/USART-CLI-task.c"/>
+			<build type="c-source" value="./demo-tasks/USART-echo-tasks.c"/>
+			<require idref="common.services.layer.freertos.usart"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="config.common.services.freertos.peripheral_control.uart" name="config.common.services.freertos.peripheral_control.uart" caption="FreeRTOS Peripheral Control Example with UART support" default="yes">
+		<module type="meta" id="config.common.services.freertos.peripheral_control.uart#no" caption="FreeRTOS Peripheral Control Example with UART support disabled">
+		</module>
+		<module type="meta" id="config.common.services.freertos.peripheral_control.uart#yes" caption="FreeRTOS Peripheral Control Example with UART support enabled">
+			<build type="c-source" value="./demo-tasks/UART-CLI-task.c"/>
+			<require idref="common.services.layer.freertos.uart"/>
+		</module>
+	</select-by-config>
 	<module type="application" id="common.services.freertos.peripheral_control" caption="FreeRTOS Peripheral Control Example">
 		<info type="description" value="summary">
 			Default FreeRTOS.org demo application creating several tasks to showcase the use of the FreeRTOS API.
@@ -36,9 +53,6 @@
 		<build type="include-path" value="."/>
 		<build type="include-path" value="./demo-tasks/"/>
 		<build type="c-source" value="./demo-tasks/CLI-commands.c"/>
-		<build type="c-source" value="./demo-tasks/UART-CLI-task.c"/>
-		<build type="c-source" value="./demo-tasks/USART-CLI-task.c"/>
-		<build type="c-source" value="./demo-tasks/USART-echo-tasks.c"/>
 		<device-support value="sam"/>
 		<require idref="sam.drivers.pmc"/>
 		<require idref="common.utils.stdio.stdio_serial"/>
@@ -47,11 +61,11 @@
 		<require idref="common.services.basic.sleepmgr"/>
 		<require idref="thirdparty.os.freertos.version"/>
 		<require idref="common.services.layer.freertos.pdc"/>
-		<require idref="common.services.layer.freertos.uart"/>
-		<require idref="common.services.layer.freertos.usart"/>
 		<require idref="config.common.services.freertos.peripheral_control.usb"/>
 		<require idref="config.common.services.freertos.peripheral_control.twi"/>
 		<require idref="config.common.services.freertos.peripheral_control.spi"/>
+		<require idref="config.common.services.freertos.peripheral_control.usart"/>
+		<require idref="config.common.services.freertos.peripheral_control.uart"/>
 		<info type="gui-flag" value="move-to-root"/>
 	</module>
 </asf>

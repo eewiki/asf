@@ -16,5 +16,6 @@
 		<generator value="as5_arm"/>
 		<generator value="doxygen"/>
 		<device-support value="atsam4e16e"/>
+		<config name="config.sam.drivers.gmac.gmac_example" value="ksz8051mnl"/>
 	</project>
 </asf>

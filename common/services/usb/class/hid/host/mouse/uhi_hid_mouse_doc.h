@@ -42,9 +42,9 @@
  */
 
 /**
- * \defgroup asfdoc_uhi_hid_mouse_group USB Host Interface (UHI) for Human Interface Device Mouse (HID mouse)
+ * \defgroup asfdoc_uhi_hid_mouse_group USB Host Interface (UHI) for Human Interface Device Mouse (HID Mouse)
  *
- * USB Host Interface (UHI) for Human Interface Device Mouse (HID mouse) provides an
+ * USB Host Interface (UHI) for Human Interface Device Mouse (HID Mouse) provides an
  * interface for the configuration and management of USB HID mouse host.
  *
  * The outline of this documentation is as follows:
@@ -52,8 +52,8 @@
  * - \ref asfdoc_uhi_hid_mouse_exqsg
  * - \ref asfdoc_uhi_hid_mouse_config_examples
  *
- * For more details for Atmel Software Framework (ASF) USB Host Stack, please
- * refer to following Application Notes:
+ * For more details for Atmel® Software Framework (ASF) USB Host Stack,
+ * refer to following application notes:
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8486.pdf">
  *   AVR4950: ASF - USB Host Stack</a>
  *
@@ -69,7 +69,7 @@
  * @{
  */
 
-/** Global define which contains standard UHI API for UHC
+/** Global define which contains standard UHI API for UHC.
  *
  *  It must be added in USB_HOST_UHI define from conf_usb_host.h file. */
 #define UHI_HID_MOUSE { \
@@ -81,7 +81,7 @@
 /**@}*/
 
 /**
- * \name Functions required by UHC
+ * \name Functions Required by UHC.
  * @{
  */
 
@@ -91,7 +91,7 @@
  *
  * \param[in] uhc_device_t	  Device to request
  *
- * \return status of the install
+ * \return Status of the install.
  */
 extern uhc_enum_status_t uhi_hid_mouse_install(uhc_device_t* dev);
 
@@ -105,7 +105,7 @@ extern uhc_enum_status_t uhi_hid_mouse_install(uhc_device_t* dev);
 extern void uhi_hid_mouse_enable(uhc_device_t* dev);
 
 /**
- * \brief Uninstall the interface (if installed)
+ * \brief Uninstall the interface (if installed).
  *
  * \param[in] uhc_device_t	  Device to request
  */
@@ -133,10 +133,10 @@ extern void uhi_hid_mouse_uninstall(uhc_device_t* dev);
 /**@}*/
 
 /**
- * \page asfdoc_uhi_hid_mouse_exqsg Quick start guide for USB host mouse module (UHI mouse)
+ * \page asfdoc_uhi_hid_mouse_exqsg Quick Start Guide for USB Host Mouse Module (UHI Mouse)
  *
  * This is the quick start guide for the \ref asfdoc_uhi_hid_mouse_group
- * "USB host mouse module (UHI mouse)" with step-by-step instructions on
+ * "USB Host Mouse Module (UHI Mouse)" with step-by-step instructions on
  * how to configure and use the modules in a selection of use cases.
  *
  * The use cases highlights several code fragments. The code fragments in the
@@ -146,16 +146,16 @@ extern void uhi_hid_mouse_uninstall(uhc_device_t* dev);
  * \section uhi_hid_mouse_basic_use_case Basic use case
  * In this basic use case, the "USB Host HID Mouse (Single Class support)" module is used.
  * The "USB Host HID Mouse (Multiple Classes support)" module usage is described
- * in \ref uhi_hid_mouse_use_cases "Advanced use cases".
+ * in \ref uhi_hid_mouse_use_cases "Advanced Use Cases".
  *
- * \subsection uhi_hid_mouse_basic_use_case_setup Setup steps
- * As a USB host, it follows common USB host setup steps. Please refer to
+ * \subsection uhi_hid_mouse_basic_use_case_setup Setup Steps
+ * As a USB host, it follows common USB host setup steps. Refer to
  * \ref asfdoc_uhc_basic_use_case_setup "USB Host Basic Setup".
 
  *
- * \subsection uhi_hid_mouse_basic_use_case_usage Usage steps
+ * \subsection uhi_hid_mouse_basic_use_case_usage Usage Steps
  *
- * \subsubsection uhi_hid_mouse_basic_use_case_usage_code Example code
+ * \subsubsection uhi_hid_mouse_basic_use_case_usage_code Example Code
  * Content of conf_usb_host.h:
 
  * \code
@@ -239,7 +239,7 @@ extern void uhi_hid_mouse_uninstall(uhc_device_t* dev);
  \endcode
  * \note These callbacks are called when a USB device mouse event is received.
  *
- * \section uhi_hid_mouse_use_cases Advanced use cases
+ * \section uhi_hid_mouse_use_cases Advanced Use Cases
  * \ifnot ASF_MANUAL
  * For more advanced use of the UHI HID mouse module, see the following use cases:
  * - \subpage uhc_use_case_1
@@ -257,44 +257,44 @@ extern void uhi_hid_mouse_uninstall(uhc_device_t* dev);
  *
  * \section asfdoc_uhi_hid_mouse_config_examples_1 conf_usb_host.h
  * \subsection asfdoc_uhi_hid_mouse_config_examples_1_1  UHI HID MOUSE Single
- * \include module_config\conf_usb_host.h
- * \subsection asfdoc_uhi_hid_mouse_config_examples_1_2  UHI HID MOUSE Multiple (composite)
- * \include composite\host\module_config\conf_usb_host.h
+ * \include module_config/conf_usb_host.h
+ * \subsection asfdoc_uhi_hid_mouse_config_examples_1_2  UHI HID MOUSE Multiple (Composite)
+ * \include composite/host/module_config/conf_usb_host.h
  *
  * \section asfdoc_uhi_hid_mouse_config_examples_2 conf_clock.h
  *
- * \subsection asfdoc_uhi_hid_mouse_config_examples_2_1 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_clock.h
+ * \subsection asfdoc_uhi_hid_mouse_config_examples_2_1 AT32UC3A0, AT32UC3A1, AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_clock.h
  *
- * \subsection asfdoc_uhi_hid_mouse_config_examples_2_2 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_clock.h
+ * \subsection asfdoc_uhi_hid_mouse_config_examples_2_2 AT32UC3A3, AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_clock.h
  *
- * \subsection asfdoc_uhi_hid_mouse_config_examples_2_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_clock.h
+ * \subsection asfdoc_uhi_hid_mouse_config_examples_2_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_clock.h
  *
- * \subsection asfdoc_uhi_hid_mouse_config_examples_2_4 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_clock.h
+ * \subsection asfdoc_uhi_hid_mouse_config_examples_2_4 SAM3X, SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_clock.h
  *
  * \section asfdoc_uhi_hid_mouse_config_examples_3 conf_clocks.h
  *
- * \subsection asfdoc_uhi_hid_mouse_config_examples_3_1 SAMD21 devices (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_clocks.h
+ * \subsection asfdoc_uhi_hid_mouse_config_examples_3_1 SAMD21 Devices (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_clocks.h
  *
  * \section asfdoc_uhi_hid_mouse_config_examples_4 conf_board.h
  *
- * \subsection asfdoc_uhi_hid_mouse_config_examples_4_1 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_board.h
+ * \subsection asfdoc_uhi_hid_mouse_config_examples_4_1 AT32UC3A0, AT32UC3A1, AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_board.h
  *
- * \subsection asfdoc_uhi_hid_mouse_config_examples_4_2 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_board.h
+ * \subsection asfdoc_uhi_hid_mouse_config_examples_4_2 AT32UC3A3, AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_board.h
  *
- * \subsection asfdoc_uhi_hid_mouse_config_examples_4_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_board.h
+ * \subsection asfdoc_uhi_hid_mouse_config_examples_4_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_board.h
  *
- * \subsection asfdoc_uhi_hid_mouse_config_examples_4_4 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_board.h
+ * \subsection asfdoc_uhi_hid_mouse_config_examples_4_4 SAM3X, SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_board.h
  *
- * \subsection asfdoc_uhi_hid_mouse_config_examples_4_5 SAMD21 devices (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_board.h
+ * \subsection asfdoc_uhi_hid_mouse_config_examples_4_5 SAMD21 Devices (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_board.h
  */
 

@@ -47,7 +47,7 @@
 /**
  * \defgroup asfdoc_sam0_rtc_count_group SAM RTC Count Driver (RTC COUNT)
  *
- * This driver for SAM devices provides an interface for the configuration
+ * This driver for Atmel® | SMART™ SAM devices provides an interface for the configuration
  * and management of the device's Real Time Clock functionality in Count
  * operating mode, for the configuration and retrieval of the current RTC
  * counter value. The following driver API modes are covered by this
@@ -62,9 +62,9 @@
  *  - RTC (Real Time Clock)
  *
  * The following devices can use this module:
- *  - SAM D20/D21
- *  - SAM R21
- *  - SAM D10/D11
+ *  - Atmel® | SMART™ SAM D20/D21
+ *  - Atmel® | SMART™ SAM R21
+ *  - Atmel® | SMART™ SAM D10/D11
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_rtc_count_prerequisites
@@ -95,10 +95,10 @@
  * Whilst operating in Count mode, the RTC features:
  *  - 16-bit counter mode
  *   - Selectable counter period
- *   - Up to 6 configurable compare values
+ *   - Up to six configurable compare values
  *  - 32-bit counter mode
  *   - Clear counter value on match
- *   - Up to 4 configurable compare values
+ *   - Up to four configurable compare values
  *
  *
  * \section asfdoc_sam0_rtc_count_module_overview_compares Compare and Overflow
@@ -122,7 +122,7 @@
  * \subsection asfdoc_sam0_rtc_count_module_overview_periodic Periodic Events
  * The RTC can generate events at periodic intervals, allowing for direct
  * peripheral actions without CPU intervention. The periodic events can be
- * generated on the upper 8 bits of the RTC prescaler, and will be generated on
+ * generated on the upper eight bits of the RTC prescaler, and will be generated on
  * the rising edge transition of the specified bit. The resulting periodic
  * frequency can be calculated by the following formula:
  *
@@ -131,38 +131,38 @@
  * Where \f$f_{ASY}\f$ refers to the \e asynchronous clock set up in the RTC
  * module configuration. The \b n parameter is the event source generator index
  * of the RTC module. If the asynchronous clock is operated at the recommended
- * frequency of 1 KHz, the formula results in the values shown in
+ * frequency of 1KHz, the formula results in the values shown in
  * \ref asfdoc_sam0_rtc_count_module_rtc_hz "the table below".
  *
  * \anchor asfdoc_sam0_rtc_count_module_rtc_hz
  * <table>
- *   <caption>RTC event frequencies for each prescaler bit using a 1KHz clock</caption>
+ *   <caption>RTC Event Frequencies for Each Prescaler Bit Using a 1KHz Clock</caption>
  *   <tr>
  *      <th>n</th> <th>Periodic event</th>
  *   </tr>
  *   <tr>
- *      <td>7</td> <td>1 Hz</td>
+ *      <td>7</td> <td>1Hz</td>
  *   </tr>
  *   <tr>
- *      <td>6</td> <td>2 Hz</td>
+ *      <td>6</td> <td>2Hz</td>
  *   </tr>
  *   <tr>
- *      <td>5</td> <td>4 Hz</td>
+ *      <td>5</td> <td>4Hz</td>
  *   </tr>
  *   <tr>
- *      <td>4</td> <td>8 Hz</td>
+ *      <td>4</td> <td>8Hz</td>
  *   </tr>
  *   <tr>
- *      <td>3</td> <td>16 Hz</td>
+ *      <td>3</td> <td>16Hz</td>
  *   </tr>
  *   <tr>
- *      <td>2</td> <td>32 Hz</td>
+ *      <td>2</td> <td>32Hz</td>
  *   </tr>
  *   <tr>
- *      <td>1</td> <td>64 Hz</td>
+ *      <td>1</td> <td>64Hz</td>
  *   </tr>
  *   <tr>
- *      <td>0</td> <td>128 Hz</td>
+ *      <td>0</td> <td>128Hz</td>
  *   </tr>
  * </table>
  *
@@ -178,11 +178,11 @@
  * time measurements. The correction scheme requires that at least two bits
  * in the RTC module prescaler are reserved by the correction logic. As a
  * result of this implementation, frequency correction is only available when
- * the RTC is running from a 1 Hz reference clock.
+ * the RTC is running from a 1Hz reference clock.
  *
  * The correction procedure is implemented by subtracting or adding a single
  * cycle from the RTC prescaler every 1024 RTC GCLK cycles. The adjustment is
- * applied the specified number of time (max 127) over 976 of these periods. The
+ * applied the specified number of time (maximum 127) over 976 of these periods. The
  * corresponding correction in PPM will be given by:
  *
  * \f[ Correction(PPM) = \frac{VALUE}{999424}10^6 \f]
@@ -196,9 +196,9 @@
  * \subsection asfdoc_sam0_rtc_count_special_considerations_clock Clock Setup
  * The RTC is typically clocked by a specialized GCLK generator that has a
  * smaller prescaler than the others. By default the RTC clock is on, selected
- * to use the internal 32 KHz RC-oscillator with a prescaler of 32, giving a
- * resulting clock frequency of 1 KHz to the RTC.  When the internal RTC
- * prescaler is set to 1024, this yields an end-frequency of 1 Hz.
+ * to use the internal 32KHz RC-oscillator with a prescaler of 32, giving a
+ * resulting clock frequency of 1KHz to the RTC.  When the internal RTC
+ * prescaler is set to 1024, this yields an end-frequency of 1Hz.
  *
  * The implementer also has the option to set other end-frequencies.
  * \ref asfdoc_sam0_rtc_count_rtc_out_freq "The table below" lists the
@@ -207,24 +207,24 @@
  *
  * \anchor asfdoc_sam0_rtc_count_rtc_out_freq
  * <table>
- *   <caption>RTC output frequencies from allowable input clocks</caption>
+ *   <caption>RTC Output Frequencies from Allowable Input Clocks</caption>
  *   <tr>
  *     <th>End-frequency</th>
  *     <th>GCLK prescaler</th>
- *     <th>RTC Prescaler</th>
+ *     <th>RTC prescaler</th>
  *   </tr>
  *   <tr>
- *     <td>32 KHz</td>
+ *     <td>32KHz</td>
  *     <td>1</td>
  *     <td>1</td>
  *   </tr>
  *   <tr>
- *     <td>1 KHz</td>
+ *     <td>1KHz</td>
  *     <td>32</td>
  *     <td>1</td>
  *   </tr>
  *   <tr>
- *     <td>1 Hz</td>
+ *     <td>1Hz</td>
  *     <td>32</td>
  *     <td>1024</td>
  *   </tr>
@@ -250,7 +250,7 @@
  *
  * \section asfdoc_sam0_rtc_count_extra_info Extra Information
  *
- * For extra information see \ref asfdoc_sam0_rtc_count_extra. This includes:
+ * For extra information, see \ref asfdoc_sam0_rtc_count_extra. This includes:
  *  - \ref asfdoc_sam0_rtc_count_extra_acronyms
  *  - \ref asfdoc_sam0_rtc_count_extra_dependencies
  *  - \ref asfdoc_sam0_rtc_count_extra_errata
@@ -328,32 +328,32 @@ enum rtc_count_compare {
  * The available callback types for the RTC count module.
  */
 enum rtc_count_callback {
-	/** Callback for compare channel 0 */
+	/** Callback for compare channel 0. */
 	RTC_COUNT_CALLBACK_COMPARE_0 = 0,
 #  if (RTC_NUM_OF_COMP16 > 1) || defined(__DOXYGEN__)
-	/** Callback for compare channel 1 */
+	/** Callback for compare channel 1. */
 	RTC_COUNT_CALLBACK_COMPARE_1,
 #  endif
 #  if (RTC_NUM_OF_COMP16 > 2) || defined(__DOXYGEN__)
-	/** Callback for compare channel 2 */
+	/** Callback for compare channel 2. */
 	RTC_COUNT_CALLBACK_COMPARE_2,
 #  endif
 #  if (RTC_NUM_OF_COMP16 > 3)	|| defined(__DOXYGEN__)
-	/** Callback for compare channel 3 */
+	/** Callback for compare channel 3. */
 	RTC_COUNT_CALLBACK_COMPARE_3,
 #  endif
 #  if (RTC_NUM_OF_COMP16 > 4) || defined(__DOXYGEN__)
-	/** Callback for compare channel 4 */
+	/** Callback for compare channel 4. */
 	RTC_COUNT_CALLBACK_COMPARE_4,
 #  endif
 #  if (RTC_NUM_OF_COMP16 > 5) || defined(__DOXYGEN__)
-	/** Callback for compare channel 5 */
+	/** Callback for compare channel 5. */
 	RTC_COUNT_CALLBACK_COMPARE_5,
 #  endif
-	/** Callback for  overflow */
+	/** Callback for  overflow. */
 	RTC_COUNT_CALLBACK_OVERFLOW,
 #  if !defined(__DOXYGEN__)
-	/** Total number of callbacks */
+	/** Total number of callbacks. */
 	_RTC_COUNT_CALLBACK_N
 #  endif
 };
@@ -406,9 +406,7 @@ struct rtc_count_events {
 	 *  count. */
 	bool generate_event_on_compare[RTC_NUM_OF_COMP16];
 	/** Generate an output event periodically at a binary division of the RTC
-	 *  counter frequency (see
-	 *  \ref asfdoc_sam0_rtc_count_module_overview_periodic).
-	 */
+	 *  counter frequency. */
 	bool generate_event_on_periodic[8];
 };
 
@@ -417,18 +415,18 @@ struct rtc_count_events {
  * \brief Device structure.
  */
 struct rtc_module {
-	/** RTC hardware module */
+	/** RTC hardware module. */
 	Rtc *hw;
 	/** Operation mode of count. */
 	enum rtc_count_mode mode;
 	/** Set if counter value should be continuously updated. */
 	bool continuously_update;
 #  if RTC_COUNT_ASYNC == true
-	/** Pointers to callback functions */
+	/** Pointers to callback functions. */
 	volatile rtc_count_callback_t callbacks[_RTC_COUNT_CALLBACK_N];
-	/** Mask for registered callbacks */
+	/** Mask for registered callbacks. */
 	volatile uint8_t registered_callback;
-	/** Mask for enabled callbacks */
+	/** Mask for enabled callbacks. */
 	volatile uint8_t enabled_callback;
 #  endif
 };
@@ -459,7 +457,7 @@ struct rtc_count_config {
 
 
 /**
- * \name Configuration and initialization
+ * \name Configuration and Initialization
  * @{
  */
 
@@ -467,7 +465,7 @@ struct rtc_count_config {
  * \brief Determines if the hardware module(s) are currently synchronizing to the bus.
  *
  * Checks to see if the underlying hardware peripheral module(s) are currently
- * synchronizing across multiple clock domains to the hardware bus, This
+ * synchronizing across multiple clock domains to the hardware bus. This
  * function can be used to delay further operations on a module until such time
  * that it is ready, to prevent blocking delays for synchronization in the
  * user application.
@@ -501,12 +499,12 @@ static inline bool rtc_count_is_syncing(struct rtc_module *const module)
  *  function should be called at the start of any RTC initialization.
  *
  *  The default configuration is as follows:
- *  - Input clock divided by a factor of 1024.
- *  - RTC in 32 bit mode.
- *  - Clear on compare match off.
- *  - Continuously sync count register off.
- *  - No event source on.
- *  - All compare values equal 0.
+ *  - Input clock divided by a factor of 1024
+ *  - RTC in 32-bit mode
+ *  - Clear on compare match off
+ *  - Continuously sync count register off
+ *  - No event source on
+ *  - All compare values equal 0
  *
  *  \param[out] config  Configuration structure to be initialized to default
  *                      values.
@@ -622,7 +620,7 @@ enum status_code rtc_count_frequency_correction(
 
 /** @} */
 
-/** \name Count and compare value management
+/** \name Count and Compare Value Management
  * @{
  */
 enum status_code rtc_count_set_count(
@@ -652,7 +650,7 @@ enum status_code rtc_count_get_period(
 /** @} */
 
 
-/** \name Status management
+/** \name Status Management
  * @{
  */
 
@@ -714,7 +712,7 @@ enum status_code rtc_count_clear_compare_match(
 
 
 /**
- * \name Event management
+ * \name Event Management
  * @{
  */
 
@@ -868,12 +866,12 @@ static inline void rtc_count_disable_events(
  *	<tr>
  *		<td>
  *                     Added support for SAMD21 and added driver instance parameter to all 
- *                     API function calls, except get_config_defaults.
+ *                     API function calls, except get_config_defaults
  *             </td>
  *	</tr>
  *	<tr>
  *		<td>Updated initialization function to also enable the digital interface
- *          clock to the module if it is disabled.</td>
+ *          clock to the module if it is disabled</td>
  *	</tr>
  *	<tr>
  *		<td>Initial Release</td>
@@ -904,14 +902,9 @@ static inline void rtc_count_disable_events(
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
- *		<td>E</td>
- *		<td>05/2014</td>
- *		<td>Added support for SAMD10/D11.</td>
- *	</tr>
- *	<tr>
  *		<td>D</td>
- *		<td>03/2014</td>
- *		<td>Added support for SAMR21.</td>
+ *		<td>05/2014</td>
+ *		<td>Added support for SAMR21 and SAMD10/D11.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

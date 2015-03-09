@@ -45,7 +45,7 @@
 #include "conf_usb.h"
 #include "ui.h"
 
-static bool main_b_vendor_enable = false;
+static volatile bool main_b_vendor_enable = false;
 
 /**
  * \name Buffer for loopback

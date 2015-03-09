@@ -93,8 +93,17 @@ static uint8_t serial_rx_count;
 void sio2ncp_init(void)
 {
 #if SAMD || SAMR21
-	SIO2NCP_USART_INIT();
-	stdio_serial_init(&uart_module, USART_NCP, &uart_config);
+	struct usart_config ncp_uart_config;
+	/* Configure USART for unit test output */
+	usart_get_config_defaults(&ncp_uart_config);
+	ncp_uart_config.mux_setting = NCP_SERCOM_MUX_SETTING;
+
+	ncp_uart_config.pinmux_pad0 = NCP_SERCOM_PINMUX_PAD0;
+	ncp_uart_config.pinmux_pad1 = NCP_SERCOM_PINMUX_PAD1;
+	ncp_uart_config.pinmux_pad2 = NCP_SERCOM_PINMUX_PAD2;
+	ncp_uart_config.pinmux_pad3 = NCP_SERCOM_PINMUX_PAD3;
+	ncp_uart_config.baudrate    = USART_NCP_BAUDRATE;
+	stdio_serial_init(&uart_module, USART_NCP, &ncp_uart_config);
 	usart_enable(&uart_module);
 	/* Enable transceivers */
 	usart_enable_transceiver(&uart_module, USART_TRANSCEIVER_TX);

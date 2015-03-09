@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="RF4CE-ZRC controller serial interface AT86RF233-XMEGA-A3U AT86RF233 Zigbit(USB)" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.serial_if.ctr.ncp.atxmega256a3u_usb_zigbit_rf233">
+	<project force-caption="true" force-description="true" caption="RF4CE-ZRC controller serial interface - XMEGA-A3U AT86RF233 Zigbit (ATZB-X-233-USB)" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.serial_if.ctr.ncp.atxmega256a3u_usb_zigbit_rf233">
 		<info type="description" value="summary">
 		The RF4CE-ZRC controller stack running on the network co-processor and driven by the host application
 		</info>

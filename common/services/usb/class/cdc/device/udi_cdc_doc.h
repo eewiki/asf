@@ -52,8 +52,8 @@
  * - \ref asfdoc_udi_cdc_exqsg
  * - \ref asfdoc_udi_cdc_config_examples
  *
- * For more details for Atmel Software Framework (ASF) USB Device Stack and
- * USB Device CDC, please refer to following Application Notes:
+ * For more details for Atmel® Software Framework (ASF) USB Device Stack and
+ * USB Device CDC, refer to following application notes:
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8360.pdf">
  *   AVR4900: ASF - USB Device Stack</a>
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8447.pdf">
@@ -103,48 +103,48 @@ typedef struct {
 	usb_ep_desc_t ep_out;
 } udi_cdc_data_desc_t;
 
-/** CDC communication endpoints size for all speeds */
+/** CDC communication endpoints size for all speeds. */
 #define UDI_CDC_COMM_EP_SIZE        64
-/** CDC data endpoints size for FS speed (8B, 16B, 32B, 64B) */
+/** CDC data endpoints size for FS speed (8B, 16B, 32B, 64B). */
 #define UDI_CDC_DATA_EPS_FS_SIZE    64
-/** CDC data endpoints size for HS speed (512B only) */
+/** CDC data endpoints size for HS speed (512B only). */
 #define UDI_CDC_DATA_EPS_HS_SIZE    512
 
 /**
- * \name Content of interface descriptors
- * Up to 7 CDC interfaces can be implemented on a USB device.
+ * \name Content of Interface Descriptors
+ * Up to seven CDC interfaces can be implemented on a USB device.
  * @{
  */
 
 //! By default no string associated to these interfaces
 #ifndef UDI_CDC_IAD_STRING_ID_0
-/** No string associated to IAD interface */
+/** No string associated to IAD interface. */
 #define UDI_CDC_IAD_STRING_ID_0   0
 #endif
 #ifndef UDI_CDC_COMM_STRING_ID_0
-/** No string associated to COMM interface */
+/** No string associated to COMM interface. */
 #define UDI_CDC_COMM_STRING_ID_0   0
 #endif
 #ifndef UDI_CDC_DATA_STRING_ID_0
-/** No string associated to DATA interface */
+/** No string associated to DATA interface. */
 #define UDI_CDC_DATA_STRING_ID_0   0
 #endif
-/** IAD descriptor for port 0 */
+/** IAD descriptor for port 0. */
 #define UDI_CDC_IAD_DESC_0      UDI_CDC_IAD_DESC(0)
-/** COMM descriptors for port 0 */
+/** COMM descriptors for port 0. */
 #define UDI_CDC_COMM_DESC_0     UDI_CDC_COMM_DESC(0)
-/** DATA descriptor for port 0 of a full speed device */
+/** DATA descriptor for port 0 of a full speed device. */
 #define UDI_CDC_DATA_DESC_0_FS  UDI_CDC_DATA_DESC_FS(0)
-/** DATA descriptor for port 0 of a high speed device */
+/** DATA descriptor for port 0 of a high speed device. */
 #define UDI_CDC_DATA_DESC_0_HS  UDI_CDC_DATA_DESC_HS(0)
 
 //! By default no string associated to these interfaces
 #ifndef UDI_CDC_IAD_STRING_ID_1
-/** No string associated to IAD interface */
+/** No string associated to IAD interface. */
 #define UDI_CDC_IAD_STRING_ID_1  0
 #endif
 #ifndef UDI_CDC_COMM_STRING_ID_1
-/** No string associated to COMM interface */
+/** No string associated to COMM interface. */
 #define UDI_CDC_COMM_STRING_ID_1 0
 #endif
 #ifndef UDI_CDC_DATA_STRING_ID_1
@@ -157,11 +157,11 @@ typedef struct {
 
 //! By default no string associated to these interfaces
 #ifndef UDI_CDC_IAD_STRING_ID_2
-/** No string associated to IAD interface */
+/** No string associated to IAD interface. */
 #define UDI_CDC_IAD_STRING_ID_2   0
 #endif
 #ifndef UDI_CDC_COMM_STRING_ID_2
-/** No string associated to COMM interface */
+/** No string associated to COMM interface. */
 #define UDI_CDC_COMM_STRING_ID_2   0
 #endif
 #ifndef UDI_CDC_DATA_STRING_ID_2
@@ -174,11 +174,11 @@ typedef struct {
 
 //! By default no string associated to these interfaces
 #ifndef UDI_CDC_IAD_STRING_ID_3
-/** No string associated to IAD interface */
+/** No string associated to IAD interface. */
 #define UDI_CDC_IAD_STRING_ID_3   0
 #endif
 #ifndef UDI_CDC_COMM_STRING_ID_3
-/** No string associated to COMM interface */
+/** No string associated to COMM interface. */
 #define UDI_CDC_COMM_STRING_ID_3   0
 #endif
 #ifndef UDI_CDC_DATA_STRING_ID_3
@@ -191,11 +191,11 @@ typedef struct {
 
 //! By default no string associated to these interfaces
 #ifndef UDI_CDC_IAD_STRING_ID_4
-/** No string associated to IAD interface */
+/** No string associated to IAD interface. */
 #define UDI_CDC_IAD_STRING_ID_4   0
 #endif
 #ifndef UDI_CDC_COMM_STRING_ID_4
-/** No string associated to COMM interface */
+/** No string associated to COMM interface. */
 #define UDI_CDC_COMM_STRING_ID_4   0
 #endif
 #ifndef UDI_CDC_DATA_STRING_ID_4
@@ -208,11 +208,11 @@ typedef struct {
 
 //! By default no string associated to these interfaces
 #ifndef UDI_CDC_IAD_STRING_ID_5
-/** No string associated to IAD interface */
+/** No string associated to IAD interface. */
 #define UDI_CDC_IAD_STRING_ID_5   0
 #endif
 #ifndef UDI_CDC_COMM_STRING_ID_5
-/** No string associated to COMM interface */
+/** No string associated to COMM interface. */
 #define UDI_CDC_COMM_STRING_ID_5   0
 #endif
 #ifndef UDI_CDC_DATA_STRING_ID_5
@@ -225,7 +225,7 @@ typedef struct {
 
 //! By default no string associated to these interfaces
 #ifndef UDI_CDC_IAD_STRING_ID_6
-/** No string associated to IAD interface */
+/** No string associated to IAD interface. */
 #define UDI_CDC_IAD_STRING_ID_6   0
 #endif
 #ifndef UDI_CDC_COMM_STRING_ID_6
@@ -240,7 +240,7 @@ typedef struct {
 #define UDI_CDC_DATA_DESC_6_HS  UDI_CDC_DATA_DESC_HS(6)
 //@}
 
-/** Content of CDC IAD interface descriptor for all speeds */
+/** Content of CDC IAD interface descriptor for all speeds. */
 #define UDI_CDC_IAD_DESC(port) { \
    .bLength                      = sizeof(usb_iad_desc_t),\
    .bDescriptorType              = USB_DT_IAD,\
@@ -252,7 +252,7 @@ typedef struct {
    .iFunction                    = UDI_CDC_IAD_STRING_ID_##port,\
    }
 
-/** Content of CDC COMM interface descriptor for all speeds */
+/** Content of CDC COMM interface descriptor for all speeds. */
 #define UDI_CDC_COMM_DESC(port) { \
    .iface.bLength                = sizeof(usb_iface_desc_t),\
    .iface.bDescriptorType        = USB_DT_INTERFACE,\
@@ -290,7 +290,7 @@ typedef struct {
    .iface.iInterface             = UDI_CDC_COMM_STRING_ID_##port,\
    }
 
-/** Content of CDC DATA interface descriptors */
+/** Content of CDC DATA interface descriptors. */
 #define UDI_CDC_DATA_DESC_COMMON \
    .iface.bLength                = sizeof(usb_iface_desc_t),\
    .iface.bDescriptorType        = USB_DT_INTERFACE,\
@@ -308,7 +308,7 @@ typedef struct {
    .ep_out.bmAttributes          = USB_EP_TYPE_BULK,\
    .ep_out.bInterval             = 0,
 
-/** Content of CDC DATA interface descriptors for FS */
+/** Content of CDC DATA interface descriptors for FS. */
 #define UDI_CDC_DATA_DESC_FS(port) { \
    UDI_CDC_DATA_DESC_COMMON \
    .ep_in.wMaxPacketSize         = LE16(UDI_CDC_DATA_EPS_FS_SIZE),\
@@ -319,7 +319,7 @@ typedef struct {
    .iface.iInterface             = UDI_CDC_DATA_STRING_ID_##port,\
    }
 
-/** Content of CDC DATA interface descriptors for HS */
+/** Content of CDC DATA interface descriptors for HS. */
 #define UDI_CDC_DATA_DESC_HS(port) { \
    UDI_CDC_DATA_DESC_COMMON \
    .ep_in.wMaxPacketSize         = LE16(UDI_CDC_DATA_EPS_HS_SIZE),\
@@ -331,7 +331,7 @@ typedef struct {
    }
 
 /**
- * \name Interface for application with single CDC interface support
+ * \name Interface for Application with Single CDC Interface Support
  */
 //!@{
 
@@ -367,7 +367,7 @@ void udi_cdc_signal_overrun(void);
 /**
  * \brief Gets the number of byte received
  *
- * \return the number of data available
+ * \return The number of data available.
  */
 iram_size_t udi_cdc_get_nb_received_data(void);
 
@@ -381,7 +381,7 @@ bool udi_cdc_is_rx_ready(void);
 /**
  * \brief Waits and gets a value on CDC line
  *
- * \return value read on CDC line
+ * \return Value read on CDC line.
  */
 int udi_cdc_getc(void);
 
@@ -391,22 +391,22 @@ int udi_cdc_getc(void);
  * \param[out] buf       Values read
  * \param[in]  size      Number of value read
  *
- * \return the number of data remaining
+ * \return The number of data remaining.
  */
 iram_size_t udi_cdc_read_buf(void* buf, iram_size_t size);
 
 /**
  * \brief Gets the number of free byte in TX buffer
  *
- * \return the number of free byte in TX buffer
+ * \return The number of free byte in TX buffer.
  */
 iram_size_t udi_cdc_get_free_tx_buffer(void);
 
 /**
- * \brief This function checks if a new character sent is possible
+ * \brief This function checks if a new character sent is possible.
  * The type int is used to support scanf redirection from compiler LIB.
  *
- * \return \c 1 if a new character can be sent
+ * \return \c 1 if a new character can be sent.
  */
 bool udi_cdc_is_tx_ready(void);
 
@@ -427,13 +427,13 @@ int udi_cdc_putc(int value);
  * \param[in] buf       Values to write
  * \param[in] size      Number of value to write
  *
- * \return the number of data remaining
+ * \return The number of data remaining.
  */
 iram_size_t udi_cdc_write_buf(const void* buf, iram_size_t size);
 //@}
 
 /**
- * \name Interface for application with multi CDC interfaces support
+ * \name Interface for Application with Multi CDC Interfaces Support
  */
 //@{
 
@@ -479,7 +479,7 @@ void udi_cdc_multi_signal_overrun(uint8_t port);
  *
  * \param[in] port       Communication port number to manage
  *
- * \return the number of data available
+ * \return The number of data available.
  */
 iram_size_t udi_cdc_multi_get_nb_received_data(uint8_t port);
 
@@ -497,7 +497,7 @@ bool udi_cdc_multi_is_rx_ready(uint8_t port);
  *
  * \param[in] port       Communication port number to manage
  *
- * \return value read on CDC line
+ * \return Value read on CDC line.
  */
 int udi_cdc_multi_getc(uint8_t port);
 
@@ -508,7 +508,7 @@ int udi_cdc_multi_getc(uint8_t port);
  * \param[out] buf       Values read
  * \param[in]  size      Number of values read
  *
- * \return the number of data remaining
+ * \return The number of data remaining.
  */
 iram_size_t udi_cdc_multi_read_buf(uint8_t port, void* buf, iram_size_t size);
 
@@ -517,7 +517,7 @@ iram_size_t udi_cdc_multi_read_buf(uint8_t port, void* buf, iram_size_t size);
  *
  * \param[in] port       Communication port number to manage
  *
- * \return the number of free byte in TX buffer
+ * \return The number of free byte in TX buffer.
  */
 iram_size_t udi_cdc_multi_get_free_tx_buffer(uint8_t port);
 
@@ -528,7 +528,7 @@ iram_size_t udi_cdc_multi_get_free_tx_buffer(uint8_t port);
  *
  * \param[in] port       Communication port number to manage
  *
- * \return \c 1 if a new character can be sent
+ * \return \c 1 if a new character can be sent.
  */
 bool udi_cdc_multi_is_tx_ready(uint8_t port);
 
@@ -550,7 +550,7 @@ int udi_cdc_multi_putc(uint8_t port, int value);
  * \param[in] buf       Values to write
  * \param[in] size      Number of value to write
  *
- * \return the number of data remaining
+ * \return The number of data remaining.
  */
 iram_size_t udi_cdc_multi_write_buf(uint8_t port, const void* buf, iram_size_t size);
 //@}
@@ -558,10 +558,10 @@ iram_size_t udi_cdc_multi_write_buf(uint8_t port, const void* buf, iram_size_t s
 //@}
 
 /**
- * \page asfdoc_udi_cdc_exqsg Quick start guide for USB device Communication Class Device module (UDI CDC)
+ * \page asfdoc_udi_cdc_exqsg Quick Start Guide for USB device Communication Class Device Module (UDI CDC)
  *
  * This is the quick start guide for the \ref asfdoc_udi_cdc_group
- * "USB device interface CDC module (UDI CDC)" with step-by-step instructions on
+ * "USB Device Interface CDC Module (UDI CDC)" with step-by-step instructions on
  * how to configure and use the modules in a selection of use cases.
  *
  * The use cases contain or highlights several code fragments.
@@ -569,19 +569,19 @@ iram_size_t udi_cdc_multi_write_buf(uint8_t port, const void* buf, iram_size_t s
  * steps for setup can be copied into a custom initialization function, while
  * the steps for usage can be copied into, e.g., the main application function.
  *
- * \section udi_cdc_basic_use_case Basic use case
+ * \section udi_cdc_basic_use_case Basic Use Case
  * In this basic use case, the "USB CDC (Single Interface Device)" module is used
  * with only one communication port.
  * The "USB CDC (Composite Device)" module usage is described in \ref udi_cdc_use_cases
- * "Advanced use cases".
+ * "Advanced Use Cases".
  *
- * \subsection udi_cdc_basic_use_case_setup Setup steps
- * As a USB device, it follows common USB device setup steps. Please refer to
+ * \subsection udi_cdc_basic_use_case_setup Setup Steps
+ * As a USB device, it follows common USB device setup steps. Refer to
  * \ref asfdoc_udc_basic_use_case_setup "USB Device Basic Setup".
  *
- * \subsection udi_cdc_basic_use_case_usage Usage steps
+ * \subsection udi_cdc_basic_use_case_usage Usage Steps
  *
- * \subsubsection udi_cdc_basic_use_case_usage_code Example code
+ * \subsubsection udi_cdc_basic_use_case_usage_code Example Code
  * Content of conf_usb.h:
  * \code
  #define UDI_CDC_ENABLE_EXT(port) my_callback_cdc_enable()
@@ -673,7 +673,7 @@ iram_size_t udi_cdc_multi_write_buf(uint8_t port, const void* buf, iram_size_t s
  iram_size_t udi_cdc_write_buf(const int* buf, iram_size_t size);
  \endcode
  *
- * \section udi_cdc_use_cases Advanced use cases
+ * \section udi_cdc_use_cases Advanced Use Cases
  * \ifnot ASF_MANUAL
  * For more advanced use of the UDI CDC module, see the following use cases:
  * - \subpage udi_cdc_use_case_composite
@@ -694,7 +694,7 @@ iram_size_t udi_cdc_multi_write_buf(uint8_t port, const void* buf, iram_size_t s
  */
 
 /**
- * \page udi_cdc_use_case_composite CDC in a composite device
+ * \page udi_cdc_use_case_composite CDC in a Composite Device
  *
  * A USB Composite Device is a USB Device which uses more than one USB class.
  * In this use case, the "USB CDC (Composite Device)" module is used to
@@ -705,13 +705,13 @@ iram_size_t udi_cdc_multi_write_buf(uint8_t port, const void* buf, iram_size_t s
  * <A href="http://www.atmel.com/dyn/resources/prod_documents/doc8445.pdf">
  * AVR4902 ASF - USB Composite Device</A>.
  *
- * \section udi_cdc_use_case_composite_setup Setup steps
+ * \section udi_cdc_use_case_composite_setup Setup Steps
  * For the setup code of this use case to work, the
- * \ref udi_cdc_basic_use_case "basic use case" must be followed.
+ * \ref udi_cdc_basic_use_case "Basic Use Case" must be followed.
  *
- * \section udi_cdc_use_case_composite_usage Usage steps
+ * \section udi_cdc_use_case_composite_usage Usage Steps
  *
- * \subsection udi_cdc_use_case_composite_usage_code Example code
+ * \subsection udi_cdc_use_case_composite_usage_code Example Code
  * Content of conf_usb.h:
  * \code
  #define USB_DEVICE_EP_CTRL_SIZE  64
@@ -817,53 +817,70 @@ iram_size_t udi_cdc_multi_write_buf(uint8_t port, const void* buf, iram_size_t s
  *
  * \section asfdoc_udi_cdc_config_examples_1 conf_usb.h
  * \subsection asfdoc_udi_cdc_config_examples_1_1  UDI CDC Single
- * \include module_config\conf_usb.h
- * \subsection asfdoc_udi_cdc_config_examples_1_2  UDI CDC Multiple (composite)
- * \include composite\device\module_config\conf_usb.h
+ * \include module_config/conf_usb.h
+ * \subsection asfdoc_udi_cdc_config_examples_1_2  UDI CDC Multiple (Composite)
+ * \include composite/device/module_config/conf_usb.h
  *
  * \section asfdoc_udi_cdc_config_examples_2 conf_clock.h
  *
  * \subsection asfdoc_udi_cdc_config_examples_2_1 XMEGA (USB)
- * \include example\atxmega128b1_xmega_b1_xplained\conf_clock.h
+ * \include example/atxmega128b1_xmega_b1_xplained/conf_clock.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_2_2 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_clock.h
+ * \subsection asfdoc_udi_cdc_config_examples_2_2 AT32UC3A0, AT32UC3A1, AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_clock.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_2_3 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_clock.h
+ * \subsection asfdoc_udi_cdc_config_examples_2_3 AT32UC3A3, AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_clock.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_2_4 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_clock.h
+ * \subsection asfdoc_udi_cdc_config_examples_2_4 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_clock.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_2_5 SAM3S, SAM3SD, SAM4S devices (UPD: USB Peripheral Device)
- * \include example\sam3s4c_sam3s_ek\conf_clock.h
+ * \subsection asfdoc_udi_cdc_config_examples_2_5 SAM3S, SAM3SD, SAM4S Devices (UPD: USB Peripheral Device)
+ * \include example/sam3s4c_sam3s_ek/conf_clock.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_2_6 SAM3U device (UPDHS: USB Peripheral Device High Speed)
- * \include example\sam3u4e_sam3u_ek\conf_clock.h
+ * \subsection asfdoc_udi_cdc_config_examples_2_6 SAM3U Device (UPDHS: USB Peripheral Device High Speed)
+ * \include example/sam3u4e_sam3u_ek/conf_clock.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_2_7 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_clock.h
+ * \subsection asfdoc_udi_cdc_config_examples_2_7 SAM3X, SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_clock.h
  *
  * \section asfdoc_udi_cdc_config_examples_3 conf_clocks.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_3_1 SAMD21 device (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_clocks.h
+ * \subsection asfdoc_udi_cdc_config_examples_3_1 SAMD21 Device (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_clocks.h
  *
  * \section asfdoc_udi_cdc_config_examples_4 conf_board.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_4_1 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_board.h
+ * \subsection asfdoc_udi_cdc_config_examples_4_1 AT32UC3A0, AT32UC3A1, AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_board.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_4_2 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_board.h
+ * \subsection asfdoc_udi_cdc_config_examples_4_2 AT32UC3A3, AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_board.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_4_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_board.h
+ * \subsection asfdoc_udi_cdc_config_examples_4_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_board.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_4_4 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_board.h
+ * \subsection asfdoc_udi_cdc_config_examples_4_4 SAM3X, SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_board.h
  *
- * \subsection asfdoc_udi_cdc_config_examples_4_5 SAMD21 device (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_board.h
+ * \subsection asfdoc_udi_cdc_config_examples_4_5 SAMD21 Device (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_board.h
+ */
+
+/**
+ * \page asfdoc_udi_cdc_document_revision_history Document Revision History
+ *
+ * <table>
+ * <tr>
+ *    <th>Doc. Rev.</td>
+ *    <th>Date</td>
+ *    <th>Comments</td>
+ * </tr>
+ * <tr>
+ *    <td>A</td>
+ *    <td>08/2014</td>
+ *    <td>Initial release</td>
+ * </tr>
+ * </table>
  */
 

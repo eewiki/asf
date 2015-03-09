@@ -28,7 +28,7 @@
 			<build type="define" name="SPI_CALLBACK_MODE" value="false"/>
 			<device-support value="sam0"/>
 			<require idref="sam0.utils"/>
-			<require idref="sam0.drivers.sercom"/>
+			<require idref="sam0.drivers.sercom.polled"/>
 			<require idref="sam0.drivers.port"/>
 			<require idref="sam0.drivers.system.pinmux"/>
 			<require idref="sam0.drivers.system"/>
@@ -81,7 +81,7 @@
 
 			<device-support value="sam0"/>
 			<require idref="sam0.utils"/>
-			<require idref="sam0.drivers.sercom"/>
+			<require idref="sam0.drivers.sercom.callback"/>
 			<require idref="sam0.drivers.port"/>
 			<require idref="sam0.drivers.system"/>
 			<require idref="sam0.drivers.system.pinmux"/>

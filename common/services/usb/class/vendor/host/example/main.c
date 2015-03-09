@@ -75,9 +75,9 @@ static volatile bool main_b_out_busy;
 static volatile uhd_trans_status_t main_transfer_status;
 
 //! Index for ISO IN data transfer
-static uint32_t main_vendor_iso_in_index;
+static volatile uint32_t main_vendor_iso_in_index;
 //! Index for ISO OUT data transfer
-static uint32_t main_vendor_iso_out_index;
+static volatile uint32_t main_vendor_iso_out_index;
 
 static void main_init_buffers(void);
 static int  main_cmp_buffers(void);

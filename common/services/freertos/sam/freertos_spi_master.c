@@ -48,6 +48,9 @@
 #include "spi_master.h"
 #include "freertos_spi_master.h"
 #include "freertos_peripheral_control_private.h"
+#if SAMG55
+#include "flexcom.h"
+#endif
 
 /* Every bit in the interrupt mask. */
 #define MASK_ALL_INTERRUPTS                         (0xffffffffUL)
@@ -58,7 +61,13 @@
 #define IER_ERROR_INTERRUPTS                        (SPI_IER_MODF)
 
 /* Work out how many SPI ports are present. */
-#if defined(SPI4)
+#if defined(SPI7)
+	#define MAX_SPIS                                (8)
+#elif defined(SPI6)
+	#define MAX_SPIS                                (7)
+#elif defined(SPI5)
+	#define MAX_SPIS                                (6)
+#elif defined(SPI4)
 	#define MAX_SPIS                                (5)
 #elif defined(SPI3)
 	#define MAX_SPIS                                (4)
@@ -93,6 +102,19 @@ SPI peripheral. */
 static const freertos_pdc_peripheral_parameters_t all_spi_definitions[MAX_SPIS] = {
 	/* Chips with a single SPI port define SPI only.  Chips with multiple SPI
 	ports defined the first SPI peripheral as SPI0. */
+#if SAMG55
+	{SPI0, PDC_SPI0, ID_SPI0, USART0_SPI0_TWI0_IRQn},
+	{SPI1, PDC_SPI1, ID_SPI1, USART1_SPI1_TWI1_IRQn},
+	{SPI2, PDC_SPI2, ID_SPI2, USART2_SPI2_TWI2_IRQn},
+	{SPI3, PDC_SPI3, ID_SPI3, USART3_SPI3_TWI3_IRQn},
+	{SPI4, PDC_SPI4, ID_SPI4, USART4_SPI4_TWI4_IRQn},
+	{SPI5, PDC_SPI5, ID_SPI5, USART5_SPI5_TWI5_IRQn},
+	{SPI6, PDC_SPI6, ID_SPI6, USART6_SPI6_TWI6_IRQn},
+#if MAX_SPIS > 7
+	{SPI7, PDC_SPI7, ID_SPI7, USART7_SPI7_TWI7_IRQn},
+#endif
+
+#else
 #if defined(SPI)
 	{SPI, PDC_SPI, ID_SPI, SPI_IRQn},
 #else
@@ -110,6 +132,17 @@ static const freertos_pdc_peripheral_parameters_t all_spi_definitions[MAX_SPIS] 
 #endif
 #if MAX_SPIS > 4
 	{SPI4, PDC_SPI4, ID_SPI4, SPI4_IRQn},
+#endif
+#if MAX_SPIS > 5
+	{SPI5, PDC_SPI5, ID_SPI5, SPI5_IRQn},
+#endif
+#if MAX_SPIS > 6
+	{SPI6, PDC_SPI6, ID_SPI6, SPI6_IRQn},
+#endif
+#if MAX_SPIS > 7
+	{SPI7, PDC_SPI7, ID_SPI7, SPI7_IRQn},
+#endif
+
 #endif
 };
 
@@ -154,6 +187,9 @@ freertos_spi_if freertos_spi_master_init(Spi *p_spi,
 	bool is_valid_operating_mode;
 	freertos_spi_if return_value;
 	const enum peripheral_operation_mode valid_operating_modes[] = {SPI_MASTER};
+#if (SAMG55)
+	uint32_t temp;
+#endif
 
 	/* Find the index into the all_spi_definitions array that holds details of
 	the p_spi peripheral. */
@@ -191,6 +227,13 @@ freertos_spi_if freertos_spi_master_init(Spi *p_spi,
 		switch (freertos_driver_parameters->operation_mode) {
 		case SPI_MASTER:
 			/* Call the standard ASF init function. */
+#if (SAMG55)
+			/* Enable the peripheral and set SPI mode. */
+			temp = (uint32_t)(all_spi_definitions[spi_index].peripheral_base_address - 0x400);
+			Flexcom *p_flexcom = (Flexcom *)temp;
+			flexcom_enable(p_flexcom);
+			flexcom_set_opmode(p_flexcom, FLEXCOM_SPI);
+#endif
 			spi_master_init(
 					all_spi_definitions[spi_index].peripheral_base_address);
 			break;
@@ -689,6 +732,57 @@ static void local_spi_handler(const portBASE_TYPE spi_index)
  * Individual interrupt handlers follow from here.  Each individual interrupt
  * handler calls the common interrupt handler.
  */
+#if SAMG55
+#ifdef CONF_FREERTOS_USE_SPI0
+void USART0_SPI0_TWI0_Handler(void)
+{
+	local_spi_handler(0);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_SPI1
+void USART1_SPI1_TWI1_Handler(void)
+{
+	local_spi_handler(1);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_SPI2
+void USART2_SPI2_TWI2_Handler(void)
+{
+	local_spi_handler(2);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_SPI3
+void USART3_SPI3_TWI3_Handler(void)
+{
+	local_spi_handler(3);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_SPI4
+void USART4_SPI4_TWI4_Handler(void)
+{
+	local_spi_handler(4);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_SPI5
+void USART5_SPI5_TWI5_Handler(void)
+{
+	local_spi_handler(5);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_SPI6
+void USART6_SPI6_TWI6_Handler(void)
+{
+	local_spi_handler(6);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_SPI7
+void USART7_SPI7_TWI7_Handler(void)
+{
+	local_spi_handler(7);
+}
+#endif
+
+#else
 #ifdef SPI
 
 void SPI_Handler(void)
@@ -742,3 +836,5 @@ void SPI4_Handler(void)
 }
 
 #endif /* SPI4 */
+
+#endif

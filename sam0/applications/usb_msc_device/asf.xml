@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.applications.usb_msc_device" caption="SAM D11 USB Mass Storage Device Example">
+		<info type="description" value="summary">
+		USB Mass Storage Device Example for SAMD 11. SD card is used to store data.
+		</info>
+
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+		</info>
+
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="usb_msc.c"/>
+		<build type="header-file" value="usb_msc.h"/>
+		<build type="header-file" value="usb_descriptor.h"/>
+		<build type="header-file" value="scsi_commands.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.sercom.spi"/>
+		<require idref="common2.components.memory.sd_mmc"/>
+		<device-support value="samd11"/>
+	</module>
+</asf>

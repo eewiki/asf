@@ -42,7 +42,7 @@
  */
 
 /**
- * \page asfdoc_sam0_eeprom_basic_use_case Quick Start Guide for the Emulated EEPROM module - Basic Use Case
+ * \page asfdoc_sam0_eeprom_basic_use_case Quick Start Guide for the Emulated EEPROM Module - Basic Use Case
  *
  * In this use case, the EEPROM emulator module is configured and a sample page
  * of data read and written. The first byte of the first EEPROM page is toggled,

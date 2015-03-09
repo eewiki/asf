@@ -655,6 +655,92 @@ void twi_read_write_protection_status(Twi *p_twi, uint32_t *p_status)
 }
 #endif
 
+#if SAMG55
+/**
+ * \brief Set the prescaler, TLOW:SEXT, TLOW:MEXT and clock high max cycles for SMBUS mode.
+ *
+ * \param p_twi   Base address of the TWI instance.
+ * \param ul_timing Parameter for prescaler, TLOW:SEXT, TLOW:MEXT and clock high max cycles.
+ */
+void twi_smbus_set_timing(Twi *p_twi, uint32_t ul_timing)
+{
+	p_twi->TWI_SMBTR = ul_timing;;
+}
+
+/**
+ * \brief Set length/direction/PEC for alternative command mode.
+ *
+ * \param p_twi   Base address of the TWI instance.
+ * \param ul_alt_cmd Alternative command parameters.
+ */
+void twi_set_alternative_command(Twi *p_twi, uint32_t ul_alt_cmd)
+{
+	p_twi->TWI_ACR = ul_alt_cmd;;
+}
+
+/**
+ * \brief Set the filter for TWI.
+ *
+ * \param p_twi   Base address of the TWI instance.
+ * \param ul_filter   Filter value.
+ */
+void twi_set_filter(Twi *p_twi, uint32_t ul_filter)
+{
+	p_twi->TWI_FILTR = ul_filter;;
+}
+
+/**
+ * \brief A mask can be applied on the slave device address in slave mode in order to allow multiple
+ * address answer. For each bit of the MASK field set to one the corresponding SADR bit will be masked.
+ *
+ * \param p_twi   Base address of the TWI instance.
+ * \param ul_mask  Mask value.
+ */
+void twi_mask_slave_addr(Twi *p_twi, uint32_t ul_mask)
+{
+	p_twi->TWI_SMR |= TWI_SMR_MASK(ul_mask);
+}
+
+/**
+ * \brief Set sleepwalking match mode.
+ *
+ * \param p_twi Pointer to a TWI instance.
+ * \param ul_matching_addr1   Address 1 value.
+ * \param ul_matching_addr2   Address 2 value.
+ * \param ul_matching_addr3   Address 3 value.
+ * \param ul_matching_data   Data value.
+ * \param flag1 ture for set, false for no.
+ * \param flag2 ture for set, false for no.
+ * \param flag3 ture for set, false for no.
+ * \param flag ture for set, false for no.
+ */
+void twi_set_sleepwalking(Twi *p_twi,
+		uint32_t ul_matching_addr1, bool flag1,
+		uint32_t ul_matching_addr2, bool flag2,
+		uint32_t ul_matching_addr3, bool flag3,
+		uint32_t ul_matching_data, bool flag)
+{
+	uint32_t temp = 0;
+
+	if (flag1) {
+		temp |= TWI_SWMR_SADR1(ul_matching_addr1);
+	}
+
+	if (flag2) {
+		temp |= TWI_SWMR_SADR2(ul_matching_addr2);
+	}
+
+	if (flag3) {
+		temp |= TWI_SWMR_SADR3(ul_matching_addr3);
+	}
+
+	if (flag) {
+		temp |= TWI_SWMR_DATAM(ul_matching_data);
+	}
+
+	p_twi->TWI_SWMR = temp;
+}
+#endif
 //@}
 
 /// @cond 0

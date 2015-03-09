@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="LWMesh-Tester Application:AT86RF233-XMEGA-A3U AT86RF233 Zigbit(USB)" id="thirdparty.wireless.avr2130_lwmesh.apps.tester.atxmega256a3u_rf233_zigbit_usb" force-caption="true" force-description="true">
+	<project caption="LWMesh-Tester Application - XMEGA-A3U AT86RF233 Zigbit (ATZB-X-233-USB)" id="thirdparty.wireless.avr2130_lwmesh.apps.tester.atxmega256a3u_rf233_zigbit_usb" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 		The LWMesh Tester app is designed to be used as a generic network processor and also performs automated testing for the stack.
 		</info>		

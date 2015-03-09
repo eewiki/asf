@@ -1,6 +1,6 @@
 <asf xmlversion="1.0">
-	<select-by-device id="sam.drivers.gmac.gmac_example" caption="GMAC Example">
-		<module type="application" id="sam.drivers.gmac.gmac_example#0" caption="GMAC Example">
+	<select-by-config id="sam.drivers.gmac.gmac_example" name="config.sam.drivers.gmac.gmac_example" caption="GMAC Example" default="ksz8051mnl">
+		<module type="application" id="sam.drivers.gmac.gmac_example#ksz8051mnl" caption="GMAC Example">
 			<info type="description" value="summary">
 			This example will demonstrates how to configure and use the GMAC peripheral.
 			</info>
@@ -18,5 +18,23 @@
 			<require idref="common.utils.stdio.stdio_serial"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
-	</select-by-device>
+		<module type="application" id="sam.drivers.gmac.gmac_example#ksz8081mnx" caption="GMAC Example">
+			<info type="description" value="summary">
+			This example will demonstrates how to configure and use the GMAC peripheral.
+			</info>
+			<build type="c-source" value="gmac_example.c"/>
+			<build type="include-path" value="."/>
+			<build type="header-file" value="mini_ip.h"/>
+			<device-support value="sam4e"/>
+			<require idref="sam.utils.cmsis.sam4e.source.template"/>
+			<require idref="sam.components.ethernet_phy.ksz8081mnx"/>
+			<require idref="sam.drivers.gmac"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.utils.syscalls"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-config>
 </asf>

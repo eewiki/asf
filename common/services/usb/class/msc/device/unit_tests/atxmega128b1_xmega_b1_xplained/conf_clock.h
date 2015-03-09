@@ -3,7 +3,7 @@
  *
  * \brief Chip-specific system clock manager configuration
  *
- * Copyright (c) 2011-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,11 +43,11 @@
 #ifndef CONF_CLOCK_H_INCLUDED
 #define CONF_CLOCK_H_INCLUDED
 
-//! Configuration using On-Chip RC oscillator at 48MHz
+//! Configuration using On-Chip RC oscillator at 48MHZ
 //! The RC oscillator is calibrated via USB Start Of Frame
-//! Clk USB     = 48MHz (used by USB)
-//! Clk sys     = 48MHz
-//! Clk cpu/per = 24MHz
+//! Clk USB     = 48MHZ (used by USB)
+//! Clk sys     = 48MHZ
+//! Clk cpu/per = 24MHZ
 #define CONFIG_USBCLK_SOURCE     USBCLK_SRC_RCOSC
 #define CONFIG_OSC_RC32_CAL      48000000UL
 
@@ -58,10 +58,10 @@
 #define CONFIG_SYSCLK_PSBCDIV    SYSCLK_PSBCDIV_1_1
 
 /*
-//! Use external board OSC (8MHz)
-//! Clk pll     = 48MHz (used by USB)
-//! Clk sys     = 48MHz
-//! Clk cpu/per = 24MHz
+//! Use external board OSC (8MHZ)
+//! Clk pll     = 48MHZ (used by USB)
+//! Clk sys     = 48MHZ
+//! Clk cpu/per = 24MHZ
 
 #define CONFIG_PLL0_SOURCE       PLL_SRC_XOSC
 #define CONFIG_PLL0_MUL          6

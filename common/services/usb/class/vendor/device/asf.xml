@@ -105,7 +105,8 @@
 		<build type="header-file" value="udi_vendor_doc.h"/>
 
 		<build type="doxygen-example-path" value="."/>
-		<build type="doxygen-example-path" value="..\..\"/>
+		<build type="doxygen-example-path" value="../../"/>
+		<build type="doxygen-example-path" value="../../../"/>
 		<build type="doxygen-entry-point" value="asfdoc_udi_vendor_group"/>
 
 		<require idref="common.services.usb.udc.appnote"/>

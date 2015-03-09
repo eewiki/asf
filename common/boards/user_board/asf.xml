@@ -466,4 +466,5 @@
 		<require idref="sam.utils.linker_scripts"/>
 		<device-support value="atsamg54n19"/>
 	</board>
+
 </asf>

@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC Serial Interface NoBeacon RFD ATmegarfr2-ATmega256RFR2 Zigbit(Carrier)" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_rfd.ncp.atmega256rfr2_zigbit">
+	<project force-caption="true" force-description="true" caption="MAC Serial Interface NoBeacon RFD - ATmega256RFR2 Zigbit (ATZB-256RFR2-XPRO)" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_rfd.ncp.atmega256rfr2_zigbit">
 		<info type="description" value="summary">
 		MAC Serial Interface  Application - NoBeacon RFD
 		</info>		

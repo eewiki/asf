@@ -3,7 +3,7 @@
  *
  * \brief USB configuration file
  *
- * Copyright (c) 2011-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -58,7 +58,7 @@
 #define  USB_DEVICE_PRODUCT_ID            USB_PID_ATMEL_ASF_VENDOR_CLASS
 #define  USB_DEVICE_MAJOR_VERSION         1
 #define  USB_DEVICE_MINOR_VERSION         0
-#define  USB_DEVICE_POWER                 100 // Consumption on Vbus line (mA)
+#define  USB_DEVICE_POWER                 100 // Consumption on VBUS line (mA)
 #define  USB_DEVICE_ATTR                  \
 	(USB_CONFIG_ATTR_SELF_POWERED)
 // (USB_CONFIG_ATTR_BUS_POWERED)
@@ -137,7 +137,11 @@
 //! Note: Disable the endpoints of a type, if size equal 0
 #define UDI_VENDOR_EPS_SIZE_INT_FS    64
 #define UDI_VENDOR_EPS_SIZE_BULK_FS   64
+#if SAMG55
+#define UDI_VENDOR_EPS_SIZE_ISO_FS   0
+#else
 #define UDI_VENDOR_EPS_SIZE_ISO_FS   256
+#endif
 
 //! endpoints size for high speed
 #define UDI_VENDOR_EPS_SIZE_INT_HS    64

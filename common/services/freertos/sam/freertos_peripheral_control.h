@@ -120,6 +120,9 @@
  * See \ref freertos_spi_peripheral_control_quick_start
  *
  */
+#if SAMG55
+#include <conf_board.h>
+#endif
 
 #include "status_codes.h"
 #include "pdc.h"

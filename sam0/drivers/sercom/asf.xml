@@ -1,5 +1,22 @@
 <asf xmlversion="1.0">
-	<module type="driver" id="sam0.drivers.sercom" caption="SERCOM">
+	<module type="driver" id="sam0.drivers.sercom.polled" caption="SERCOM Polled API">
+		<info type="description" value="summary">
+		Core common driver for the SAM SERCOM module.
+		</info>
+
+		<info type="gui-flag" value="hidden"/>
+
+		<build type="include-path" value="." />
+		<build type="c-source" value="sercom.c"/>
+		<build type="header-file" subtype="api" value="sercom.h"/>
+		<build type="header-file" value="sercom_pinout.h"/>
+
+		<device-support value="sam0"/>
+
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.system"/>
+	</module>
+	<module type="driver" id="sam0.drivers.sercom.callback" caption="SERCOM Callback API">
 		<info type="description" value="summary">
 		Core common driver for the SAM SERCOM module.
 		</info>

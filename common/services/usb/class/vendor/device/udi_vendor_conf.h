@@ -4,7 +4,7 @@
  * \brief Default Vendor class configuration for a USB Device
  * with a single interface
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -79,6 +79,11 @@
 #  define  UDI_VENDOR_EP_BULK_OUT      (6 | USB_EP_DIR_OUT)
 #  define  UDI_VENDOR_EP_ISO_IN        (1 | USB_EP_DIR_IN)
 #  define  UDI_VENDOR_EP_ISO_OUT       (2 | USB_EP_DIR_OUT)
+#elif SAMG55
+#define  UDI_VENDOR_EP_INTERRUPT_IN  (1 | USB_EP_DIR_IN)
+#define  UDI_VENDOR_EP_INTERRUPT_OUT (2 | USB_EP_DIR_OUT)
+#define  UDI_VENDOR_EP_BULK_IN       (3 | USB_EP_DIR_IN)
+#define  UDI_VENDOR_EP_BULK_OUT      (4 | USB_EP_DIR_OUT)
 #else
 #define  UDI_VENDOR_EP_INTERRUPT_IN  (1 | USB_EP_DIR_IN)
 #define  UDI_VENDOR_EP_INTERRUPT_OUT (2 | USB_EP_DIR_OUT)

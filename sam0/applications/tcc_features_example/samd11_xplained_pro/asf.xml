@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="SAM D11 TCC Features Example" id="sam0.applications.tcc_features.samd11_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<require idref="board.samd11_xplained_pro"/>
+		<require idref="sam0.applications.tcc_features"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsamd11d14am"/>
+	</project>
+</asf>

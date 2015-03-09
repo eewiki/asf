@@ -55,7 +55,7 @@
  * The ADC will be configured with the following settings:
  * - 1/2 VDDANA
  * - Div 16 clock prescaler
- * - 10 bit resolution
+ * - 10-bit resolution
  * - Window monitor disabled
  * - No gain
  * - Positive input on ADC AIN4
@@ -72,7 +72,7 @@
  * - Pin scan mode disabled
  *
  * The DAC will be configured with the following settings:
- * - Analog VCC as reference
+ * - Analog V<SUB>CC</SUB> as reference
  * - Internal output disabled
  * - Drive the DAC output to PA2
  * - Right adjust data
@@ -122,9 +122,9 @@
  *           struct to ensure that all values are initialized to known default
  *           settings.
  *
- *  -# Set extra configurations
+ *  -# Set extra configurations.
  *     \snippet qs_adc_dma_use.c setup_adc_config_extra
- *  -# Set ADC configurations
+ *  -# Set ADC configurations.
  *     \snippet qs_adc_dma_use.c setup_adc_set_config
 
  *  -# Enable the ADC module so that conversions can be made.
@@ -174,7 +174,7 @@
  *    adjust the configuration of a single DMA transfer.
  *  \snippet qs_adc_dma_use.c setup_dma_config
  *
- * -# Initialize the DMA resource configuration struct with the module's
+ * -# Initialize the DMA resource configuration struct with the module's.
  *    default values.
  *    \snippet qs_adc_dma_use.c setup_dma_set_config_default
  *    \note This should always be performed before using the configuration
@@ -182,7 +182,7 @@
  *          settings.
  *
  * -# Set extra configurations for the DMA resource. ADC_DMAC_ID_RESRDY trigger
- *    and trigger causes a beat transfer in this example.
+ *      causes a beat transfer in this example.
  *    \snippet qs_adc_dma_use.c setup_dma_set_config_extra
  *
  * -# Allocate a DMA resource with the configurations.
@@ -200,7 +200,7 @@
  *          settings.
  *
  * -# Set the specific parameters for a DMA transfer with transfer size, source
- *    address, destination address.
+ *    address, and destination address.
  *    \snippet qs_adc_dma_use.c setup_dma_desc_config_set_extra
  *
  * -# Create the DMA transfer descriptor.
@@ -222,6 +222,6 @@
  * -# Start the transfer job.
  *  \snippet qs_adc_dma_use.c start_transfer
  *
- * -# Enter endless loop
+ * -# Enter endless loop.
  *  \snippet qs_adc_dma_use.c endless_loop
  */

@@ -3,7 +3,7 @@
  *
  * \brief Clock system configuration for clock example 2
  *
- * Copyright (c) 2011 - 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -45,7 +45,7 @@
 
 #define CONFIG_SYSCLK_SOURCE    SYSCLK_SRC_PLL0
 
-// USB Generic clock use a PLL0 at 48MHz
+// USB Generic clock use a PLL0 at 48MHZ
 #define CONFIG_PLL0_SOURCE      PLL_SRC_OSC0
 #define CONFIG_PLL0_DIV         1
 #define CONFIG_PLL0_MUL         3

@@ -44,7 +44,7 @@
  *
  * In this use case, the I<SUP>2</SUP>C will used and set up as follows:
  *  - Master mode
- *  - 100kHz operation speed
+ *  - 100KHz operation speed
  *  - Not operational in standby
  *  - 65535 unknown bus state timeout value
  *
@@ -99,7 +99,7 @@
  *  -# Enable write complete callback.
  *     \snippet qs_i2c_master_callback.c callback_en
  * -# Create a packet to send to slave.
- *    \snippet qs_i2c_master_callback.c packet
+ *    \snippet qs_i2c_master_callback.c write_packet
  *
  * \section asfdoc_sam0_sercom_i2c_master_callback_use_case_implementation Implementation
  * \subsection asfdoc_sam0_sercom_i2c_master_callback_use_case_code Code
@@ -119,7 +119,7 @@
  *  -# Send every other packet in reversed order.
  *     \snippet qs_i2c_master_callback.c revert_order
  *  -# Write new packet to slave.
- *     \snippet qs_i2c_master_callback.c write_next
+ *     \snippet qs_i2c_master_callback.c write_packet
  *
  */
 

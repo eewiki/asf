@@ -1,0 +1,33 @@
+<asf xmlversion="1.0">
+	<project caption="MAC Serial Interface Beacon RFD AT86RF233 (ATREB233-XPRO) - SAM D21 Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_rfd.ncp.samd21_xplained_pro_reb233" force-caption="true" force-description="true">
+		<info type="description" value="summary">
+		MAC Serial Interface Application - Beacon RFD
+		</info>	
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_rfd.ncp"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+		
+		<build type="define" name="_DEBUG_" value="0"/>
+		<build type="define" name="ANTENNA_DIVERSITY" value="0"/>
+        <build type="define" name="ENABLE_DEEP_SLEEP" value=""/>
+				
+
+		<config name="config.sam0.drivers.sercom.spi" value="polled"/>
+		<config name="config.sam0.drivers.sercom.usart" value="callback"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf233"/>
+		
+		<generator value="iarewarm"/>
+		<generator value="armgcc" />
+		<generator value="as5_arm" />
+		<generator value="doxygen"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

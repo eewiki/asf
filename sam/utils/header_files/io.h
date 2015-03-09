@@ -126,4 +126,9 @@
 #  include "samg54.h"
 #endif
 
+/* SAMG55 series */
+#if (SAMG55)
+#  include "samg55.h"
+#endif
+
 #endif /* _SAM_IO_ */

@@ -42,7 +42,7 @@
  */
 
 /**
- * \page asfdoc_sam0_tcc_buffering_use_case Quick Start Guide for TCC - Double Buffering & Circular
+ * \page asfdoc_sam0_tcc_buffering_use_case Quick Start Guide for TCC - Double Buffering and Circular
  *
  * The supported board list:
  *    - SAM D21/R21 Xplained Pro
@@ -61,7 +61,7 @@
  *
  * The TCC module will be set up as follows:
  * - GCLK generator 0 (GCLK main) clock source
- * - Use double buffering write when set top, compare or pattern through API
+ * - Use double buffering write when set top, compare, or pattern through API
  * - No dithering on the counter or compare
  * - Prescaler is set to 1024
  * - Single Slope PWM wave generation

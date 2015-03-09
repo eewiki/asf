@@ -3,7 +3,7 @@
  *
  * \brief SAM3U clock configuration.
  *
- * Copyright (c) 2011 - 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -72,21 +72,21 @@
 #define CONFIG_PLL0_MUL             16
 #define CONFIG_PLL0_DIV             1
 
-// ===== UPLL (UTMI) Hardware fixed at 480 MHz.
+// ===== UPLL (UTMI) Hardware fixed at 480 MHZ.
 
 // ===== USB Clock Source fixed at UPLL.
 
 // ===== Target frequency (System clock)
-// - XTAL frequency: 12MHz
+// - XTAL frequency: 12MHZ
 // - System clock source: PLLA
 // - System clock prescaler: 2 (divided by 2)
 // - PLLA source: XTAL
 // - PLLA output: XTAL * 16 / 1
-// - System clock is: 12 * 16 / 1 / 2 = 96MHz
+// - System clock is: 12 * 16 / 1 / 2 = 96MHZ
 // ===== Target frequency (USB Clock)
 // - USB clock source: UPLL
-// - UPLL frequency: 480MHz
-// - USB clock: 480MHz
+// - UPLL frequency: 480MHZ
+// - USB clock: 480MHZ
 
 
 #endif /* CONF_CLOCK_H_INCLUDED */

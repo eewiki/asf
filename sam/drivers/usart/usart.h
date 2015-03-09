@@ -198,6 +198,8 @@ typedef struct {
 } usart_spi_opt_t;
 
 void usart_reset(Usart *p_usart);
+uint32_t usart_set_async_baudrate(Usart *p_usart,
+		uint32_t baudrate, uint32_t ul_mck);
 uint32_t usart_init_rs232(Usart *p_usart,
 		const sam_usart_opt_t *p_usart_opt, uint32_t ul_mck);
 uint32_t usart_init_hw_handshaking(Usart *p_usart,
@@ -212,15 +214,17 @@ uint32_t usart_init_sync_slave(Usart *p_usart,
 		const sam_usart_opt_t *p_usart_opt);
 uint32_t usart_init_rs485(Usart *p_usart,
 		const sam_usart_opt_t *p_usart_opt, uint32_t ul_mck);
+#if (!SAMG55)
 uint32_t usart_init_irda(Usart *p_usart,
 		const sam_usart_opt_t *p_usart_opt, uint32_t ul_mck);
+#endif
 uint32_t usart_init_iso7816(Usart *p_usart,
 		const usart_iso7816_opt_t *p_usart_opt, uint32_t ul_mck);
 uint32_t usart_init_spi_master(Usart *p_usart,
 		const usart_spi_opt_t *p_usart_opt, uint32_t ul_mck);
 uint32_t usart_init_spi_slave(Usart *p_usart,
 		const usart_spi_opt_t *p_usart_opt);
-#if (SAM3XA || SAM4L)
+#if (SAM3XA || SAM4L || SAMG55)
 uint32_t usart_init_lin_master(Usart *p_usart, uint32_t ul_baudrate,
 		uint32_t ul_mck);
 uint32_t usart_init_lin_slave(Usart *p_usart, uint32_t ul_baudrate,
@@ -309,6 +313,11 @@ void usart_man_disable_drift_compensation(Usart *p_usart);
 #if SAM4L
 uint32_t usart_get_version(Usart *p_usart);
 #endif
+
+#if SAMG55
+void usart_set_sleepwalking(Usart *p_uart, uint8_t ul_low_value,
+		bool cmpmode, bool cmppar, uint8_t ul_high_value);
+#endif		
 
 /// @cond 0
 /**INDENT-OFF**/

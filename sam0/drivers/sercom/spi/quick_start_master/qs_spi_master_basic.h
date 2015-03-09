@@ -104,7 +104,7 @@
  *      \snippet qs_spi_master_basic.c slave_init
  *   -# Get default configuration to edit.
  *      \snippet qs_spi_master_basic.c conf_defaults
- *   -# Set mux setting E.
+ *   -# Set MUX setting E.
  *      \snippet qs_spi_master_basic.c mux_setting
  *   -# Set pinmux for pad 0 (data in (MISO) on extension header 1, pin 17).
  *      \snippet qs_spi_master_basic.c di

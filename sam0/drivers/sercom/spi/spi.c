@@ -78,7 +78,7 @@ void spi_reset(
  * \param[in]  module  Pointer to the software instance struct
  * \param[in]  baudrate  The baudrate wanted
  *
- * \return The status of the configuration
+ * \return The status of the configuration.
  * \retval STATUS_ERR_INVALID_ARG  If invalid argument(s) were provided.
  * \retval STATUS_OK               If the configuration was written
  */
@@ -162,7 +162,7 @@ static void _spi_clear_tx_complete_flag(
  * \param[in]  module  Pointer to the software instance struct
  * \param[in]  config  Pointer to the configuration struct
  *
- * \return The status of the configuration
+ * \return The status of the configuration.
  * \retval STATUS_ERR_INVALID_ARG  If invalid argument(s) were provided.
  * \retval STATUS_OK               If the configuration was written
  */
@@ -263,7 +263,7 @@ static enum status_code _spi_set_config(
 	/* Set clock polarity and clock phase */
 	ctrla |= config->transfer_mode;
 
-	/* Set mux setting */
+	/* Set MUX setting */
 	ctrla |= config->mux_setting;
 
 	/* Set SPI character size */
@@ -310,7 +310,7 @@ static enum status_code _spi_set_config(
  * \param[in]  module  Pointer to the software instance struct
  * \param[in]  config  Pointer to the configuration struct
  *
- * \return The status of the configuration
+ * \return The status of the configuration.
  * \retval STATUS_ERR_INVALID_ARG  If invalid argument(s) were provided.
  * \retval STATUS_ERR_DENIED       If configuration was different from previous
  * \retval STATUS_OK               If the configuration was written
@@ -412,7 +412,7 @@ static enum status_code _spi_check_config(
 	/* Set clock polarity and clock phase */
 	ctrla |= config->transfer_mode;
 
-	/* Set mux setting */
+	/* Set MUX setting */
 	ctrla |= config->mux_setting;
 
 	/* Set SPI character size */
@@ -468,7 +468,7 @@ static enum status_code _spi_check_config(
  * \param[in]   hw      Pointer to hardware instance
  * \param[in]   config  Pointer to the config struct
  *
- * \return Status of the initialization
+ * \return Status of the initialization.
  * \retval STATUS_OK               Module initiated correctly.
  * \retval STATUS_ERR_DENIED       If module is enabled.
  * \retval STATUS_BUSY             If module is busy resetting.
@@ -579,7 +579,7 @@ enum status_code spi_init(
  * \param[in]  length   Length of data to receive
  * \param[in]  dummy    8- or 9-bit dummy byte to shift out in master mode
  *
- * \return Status of the read operation
+ * \return Status of the read operation.
  * \retval STATUS_OK              If the read was completed
  * \retval STATUS_ABORTED          If transaction was ended by master before
  *                                 entire buffer was transferred
@@ -781,7 +781,7 @@ enum status_code spi_transceive_wait(
  * \brief Selects slave device
  *
  * This function will drive the slave select pin of the selected device low or
- * high depending on the select boolean.
+ * high depending on the select Boolean.
  * If slave address recognition is enabled, the address will be sent to the
  * slave when selecting it.
  *
@@ -790,7 +790,7 @@ enum status_code spi_transceive_wait(
  * \param[in] select  Boolean stating if the slave should be selected or
  *                    deselected
  *
- * \return Status of the operation
+ * \return Status of the operation.
  * \retval STATUS_OK                   If the slave device was selected
  * \retval STATUS_ERR_UNSUPPORTED_DEV  If the SPI module is operating in slave
  *                                     mode
@@ -864,7 +864,7 @@ enum status_code spi_select_slave(
  * \param[in] tx_data  Pointer to the buffer to transmit
  * \param[in] length   Number of SPI characters to transfer
  *
- * \return Status of the write operation
+ * \return Status of the write operation.
  * \retval STATUS_OK               If the write was completed
  * \retval STATUS_ABORTED          If transaction was ended by master before
  *                                 entire buffer was transferred
@@ -1034,7 +1034,7 @@ enum status_code spi_write_buffer_wait(
  * \param[out] rx_data  Pointer to the buffer where received data will be stored
  * \param[in]  length   Number of SPI characters to transfer
  *
- * \return Status of the operation
+ * \return Status of the operation.
  * \retval STATUS_OK               If the operation was completed
  * \retval STATUS_ERR_INVALID_ARG  If invalid argument(s) were provided.
  * \retval STATUS_ERR_TIMEOUT      If the operation was not completed within the

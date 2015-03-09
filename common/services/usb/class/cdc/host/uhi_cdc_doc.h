@@ -52,8 +52,8 @@
  * - \ref asfdoc_uhi_cdc_exqsg
  * - \ref asfdoc_uhi_cdc_config_examples
  *
- * For more details for Atmel Software Framework (ASF) USB Host Stack, please
- * refer to following Application Notes:
+ * For more details for Atmel® Software Framework (ASF) USB Host Stack,
+ * refer to following application notes:
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8486.pdf">
  *   AVR4950: ASF - USB Host Stack</a>
  *
@@ -70,7 +70,7 @@
  * @{
  */
 
-/** Global definition which contains standard UHI API for UHC
+/** Global definition which contains standard UHI API for UHC.
  *  It must be added in USB_HOST_UHI define from conf_usb_host.h file. */
 #define UHI_CDC { \
 	.install = uhi_cdc_install, \
@@ -81,7 +81,7 @@
 /**@}*/
 
 /**
- * \name Functions required by UHC
+ * \name Functions Required by UHC
  * @{
  */
 
@@ -91,7 +91,7 @@
  *
  * \param[in] uhc_device_t	  Device to request
  *
- * \return status of the install
+ * \return Status of the install.
  */
 uhc_enum_status_t uhi_cdc_install(uhc_device_t* dev);
 
@@ -105,7 +105,7 @@ uhc_enum_status_t uhi_cdc_install(uhc_device_t* dev);
 void uhi_cdc_enable(uhc_device_t* dev);
 
 /**
- * \brief Uninstall the interface (if installed)
+ * \brief Uninstall the interface (if installed).
  *
  * \param[in] uhc_device_t	  Device to request
  */
@@ -133,7 +133,7 @@ void uhi_cdc_sof(bool b_micro);
  * \param[in] port          Communication port number
  * \param[in] configuration Pointer on port configuration
  *
- * \return \c true if the port is available
+ * \return \c true if the port is available.
  */
 bool uhi_cdc_open(uint8_t port, usb_cdc_line_coding_t *configuration);
 
@@ -158,7 +158,7 @@ bool uhi_cdc_is_rx_ready(uint8_t port);
  *
  * \param[in] port       Communication port number
  *
- * \return the number of data received
+ * \return The number of data received.
  */
 iram_size_t uhi_cdc_get_nb_received(uint8_t port);
 
@@ -167,7 +167,7 @@ iram_size_t uhi_cdc_get_nb_received(uint8_t port);
  *
  * \param[in] port       Communication port number
  *
- * \return value read on CDC line
+ * \return Value read on CDC line.
  */
 int uhi_cdc_getc(uint8_t port);
 
@@ -178,7 +178,7 @@ int uhi_cdc_getc(uint8_t port);
  * \param[out] buf      Values read
  * \param[in] size      Number of value read
  *
- * \return the number of data remaining
+ * \return The number of data remaining.
  */
 iram_size_t uhi_cdc_read_buf(uint8_t port, void* buf, iram_size_t size);
 
@@ -189,7 +189,7 @@ iram_size_t uhi_cdc_read_buf(uint8_t port, void* buf, iram_size_t size);
  *
  * \param[in] port       Communication port number
  *
- * \return \c true if a new character can be sent
+ * \return \c true if a new character can be sent.
  */
 bool uhi_cdc_is_tx_ready(uint8_t port);
 
@@ -211,7 +211,7 @@ int uhi_cdc_putc(uint8_t port, int value);
  * \param[in] buf       Values to write
  * \param[in] size      Number of value to write
  *
- * \return the number of data remaining
+ * \return The number of data remaining.
  */
 iram_size_t uhi_cdc_write_buf(uint8_t port, const void* buf, iram_size_t size);
 /**@}*/
@@ -219,29 +219,29 @@ iram_size_t uhi_cdc_write_buf(uint8_t port, const void* buf, iram_size_t size);
 /**@}*/
 
 /**
- * \page asfdoc_uhi_cdc_exqsg Quick start guide for USB host Communication Device Class module (UHI CDC)
+ * \page asfdoc_uhi_cdc_exqsg Quick Start Guide for USB Host Communication Device Class Module (UHI CDC)
  *
  * This is the quick start guide for the \ref asfdoc_uhi_cdc_group
- * "USB host Communication Device Class module (UHI CDC)" with step-by-step instructions on
+ * "USB Host Communication Device Class Module (UHI CDC)" with step-by-step instructions on
  * how to configure and use the modules in a selection of use cases.
  *
  * The use cases highlights several code fragments. The code fragments in the
  * steps for setup can be copied into a custom initialization function, while
  * the steps for usage can be copied into, e.g., the main application function.
  *
- * \section uhi_cdc_basic_use_case Basic use case
+ * \section uhi_cdc_basic_use_case Basic Use Case
  * In this basic use case, the "USB Host CDC (Single Class support)" module is used.
  *
  * The "USB Host CDC (Multiple Classes support)" module usage is described
- * in \ref uhi_cdc_use_cases "Advanced use cases".
+ * in \ref uhi_cdc_use_cases "Advanced Use Cases".
  *
- * \subsection uhi_cdc_basic_use_case_setup Setup steps
- * As a USB host, it follows common USB host setup steps. Please refer to
+ * \subsection uhi_cdc_basic_use_case_setup Setup Steps
+ * As a USB host, it follows common USB host setup steps. Refer to
  * \ref asfdoc_uhc_basic_use_case_setup "USB Host Basic Setup".
  *
- * \subsection uhi_cdc_basic_use_case_usage Usage steps
+ * \subsection uhi_cdc_basic_use_case_usage Usage Steps
  *
- * \subsubsection uhi_cdc_basic_use_case_usage_code Example code
+ * \subsubsection uhi_cdc_basic_use_case_usage_code Example Code
  * Content of conf_usb_host.h:
  * \code
  #define USB_HOST_UHI        UHI_CDC
@@ -331,9 +331,9 @@ iram_size_t uhi_cdc_write_buf(uint8_t port, const void* buf, iram_size_t size);
  * \note This callback is called when a new data are received.
  *       This can be used to manage data reception through interrupt and avoid pooling.
  *
- * -# The CDC data access functions are described in \ref asfdoc_uhi_cdc_api_overview "UHI CDC API overview".
+ * -# The CDC data access functions are described in \ref asfdoc_uhi_cdc_api_overview "UHI CDC API Overview".
  *
- * \section uhi_cdc_use_cases Advanced use cases
+ * \section uhi_cdc_use_cases Advanced Use Cases
  * \ifnot ASF_MANUAL
  * For more advanced use of the UHI CDC module, see the following use cases:
  * - \subpage uhc_use_case_1
@@ -350,45 +350,45 @@ iram_size_t uhi_cdc_write_buf(uint8_t port, const void* buf, iram_size_t size);
  *
  * \section asfdoc_uhi_cdc_config_examples_1 conf_usb_host.h
  * \subsection asfdoc_uhi_cdc_config_examples_1_1  UHI CDC Single
- * \include module_config\conf_usb_host.h
- * \subsection asfdoc_uhi_cdc_config_examples_1_2  UHI CDC Multiple (composite)
- * \include composite\host\module_config\conf_usb_host.h
+ * \include module_config/conf_usb_host.h
+ * \subsection asfdoc_uhi_cdc_config_examples_1_2  UHI CDC Multiple (Composite)
+ * \include composite/host/module_config/conf_usb_host.h
  *
  * \section asfdoc_uhi_cdc_config_examples_2 conf_clock.h
  *
- * \subsection asfdoc_uhi_cdc_config_examples_2_1 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_clock.h
+ * \subsection asfdoc_uhi_cdc_config_examples_2_1 AT32UC3A0, AT32UC3A1, AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_clock.h
  *
- * \subsection asfdoc_uhi_cdc_config_examples_2_2 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_clock.h
+ * \subsection asfdoc_uhi_cdc_config_examples_2_2 AT32UC3A3, AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_clock.h
  *
- * \subsection asfdoc_uhi_cdc_config_examples_2_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_clock.h
+ * \subsection asfdoc_uhi_cdc_config_examples_2_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_clock.h
  *
- * \subsection asfdoc_uhi_cdc_config_examples_2_4 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_clock.h
+ * \subsection asfdoc_uhi_cdc_config_examples_2_4 SAM3X, SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_clock.h
  *
  * \section asfdoc_uhi_cdc_config_examples_3 conf_clocks.h
  *
- * \subsection asfdoc_uhi_cdc_config_examples_3_1 SAMD21 devices (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_clocks.h
+ * \subsection asfdoc_uhi_cdc_config_examples_3_1 SAMD21 Devices (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_clocks.h
  *
  * \section asfdoc_uhi_cdc_config_examples_4 conf_board.h
  *
- * \subsection asfdoc_uhi_cdc_config_examples_4_1 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_board.h
+ * \subsection asfdoc_uhi_cdc_config_examples_4_1 AT32UC3A0, AT32UC3A1, AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_board.h
  *
- * \subsection asfdoc_uhi_cdc_config_examples_4_2 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_board.h
+ * \subsection asfdoc_uhi_cdc_config_examples_4_2 AT32UC3A3, AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_board.h
  *
- * \subsection asfdoc_uhi_cdc_config_examples_4_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_board.h
+ * \subsection asfdoc_uhi_cdc_config_examples_4_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_board.h
  *
- * \subsection asfdoc_uhi_cdc_config_examples_4_4 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_board.h
+ * \subsection asfdoc_uhi_cdc_config_examples_4_4 SAM3X, SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_board.h
  *
- * \subsection asfdoc_uhi_cdc_config_examples_4_5 SAMD21 devices (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_board.h
+ * \subsection asfdoc_uhi_cdc_config_examples_4_5 SAMD21 Devices (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_board.h
  */
 
 

@@ -7,7 +7,9 @@
 			<keyword value="Communication"/>
 		</info>
 		<build type="c-source" value="twihs_slave_example.c"/>
-		<device-support value="samg"/>
+		<device-support value="samg51"/>
+		<device-support value="samg53"/>
+		<device-support value="samg54"/>
 		<require idref="sam.drivers.pmc"/>
 		<require idref="sam.drivers.twihs"/>
 		<require idref="common.services.basic.clock"/>

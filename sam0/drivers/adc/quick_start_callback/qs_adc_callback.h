@@ -49,9 +49,9 @@
  * application that conversion is compete.
  *
  * The ADC will be set up as follows:
- * - VCC / 2 as reference
+ * - V<SUB>CC</SUB> / 2 as reference
  * - Div 8 clock prescaler
- * - 12 bit resolution
+ * - 12-bit resolution
  * - Window monitor disabled
  * - 1/2 gain
  * - Positive input on ADC PIN 0
@@ -112,11 +112,11 @@
  *
  *  -# Change the ADC module configuration to suit the application.
  *     \snippet qs_adc_callback.c setup_modify_conf
- *  -# Set ADC configurations
+ *  -# Set ADC configurations.
  *     \snippet qs_adc_callback.c setup_set_config
  *  -# Enable the ADC module so that conversions can be made.
  *     \snippet qs_adc_callback.c setup_enable
- * -# Register and enable the ADC Read Buffer Complete callback handler
+ * -# Register and enable the ADC Read Buffer Complete callback handler.
  *  -# Register the user-provided Read Buffer Complete callback function with
  *     the driver, so that it will be run when an asynchronous buffer read job
  *     completes.

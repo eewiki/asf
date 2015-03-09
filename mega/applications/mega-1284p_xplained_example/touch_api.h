@@ -1,10 +1,10 @@
 /*******************************************************************************
 *   Atmel Corporation:  http://www.atmel.com
-*   Support email:  touch@atmel.com
+*   Support: http://www.atmel.com/design-support/
 ******************************************************************************/
 /**
  *
- * Copyright (c) 2010 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *

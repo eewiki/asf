@@ -297,7 +297,7 @@
 		</module>
 
 		<!-- SAM4CM //-->
-		<module type="driver" id="sam.utils#14" caption="SAM4CM compiler driver">
+		<module type="driver" id="sam.utils#15" caption="SAM4CM compiler driver">
 			<info type="description" value="summary">
 			Compiler abstraction layer and code utilities for SAM4CM devices. This module provides various abstraction layers and utilities to make code compatible between different compilers. It also contains utilities typically used while pre-processing code.
 			</info>
@@ -315,7 +315,7 @@
 			<device-support value="unspecified-sam4cm"/>   <!-- A workaround for Jenkin doxygen-module check -->
 		</module>
 		<!-- SAM4CM32 //-->
-		<module type="driver" id="sam.utils#15" caption="SAM4CM32 compiler driver">
+		<module type="driver" id="sam.utils#16" caption="SAM4CM32 compiler driver">
 			<info type="description" value="summary">
 			Compiler abstraction layer and code utilities for SAM4CM devices. This module provides various abstraction layers and utilities to make code compatible between different compilers. It also contains utilities typically used while pre-processing code.
 			</info>

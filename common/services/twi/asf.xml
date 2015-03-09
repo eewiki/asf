@@ -183,7 +183,9 @@
 			<require idref="common.services.basic.clock"/>
 			<require idref="sam.drivers.twihs"/>
 			<require idref="sam.utils"/>
-			<device-support value="samg"/>
+			<device-support value="samg51"/>
+			<device-support value="samg53"/>
+			<device-support value="samg54"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samg53"/>
 		</module>			
 	</select-by-device>

@@ -740,8 +740,12 @@ void sysclk_disable_peripheral_clock(const volatile void *module)
 	}
 
 	// Disable PBA divided clock if possible.
-#define PBADIV_CLKSRC_MASK (SYSCLK_TC0 | SYSCLK_TC1 \
-		| SYSCLK_USART0 | SYSCLK_USART1 | SYSCLK_USART2 | SYSCLK_USART3)
+#define PBADIV_CLKSRC_MASK ((1 << SYSCLK_TC0) | \
+							(1 << SYSCLK_TC1) | \
+							(1 << SYSCLK_USART0) | \
+							(1 << SYSCLK_USART1) | \
+							(1 << SYSCLK_USART2) | \
+							(1 << SYSCLK_USART3))
 	if ((PM->PM_PBAMASK & PBADIV_CLKSRC_MASK) == 0) {
 		sysclk_disable_pba_divmask(PBA_DIVMASK_Msk);
 	}

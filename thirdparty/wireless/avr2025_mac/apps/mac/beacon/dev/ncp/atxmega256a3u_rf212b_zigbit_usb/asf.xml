@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="MAC Beacon Application Device AT86RF212B-XMEGA-A3U AT86RF212B Zigbit(USB)" id="thirdparty.wireless.avr2025_mac.apps.mac.beacon.dev.ncp.atxmega256a3u_rf212b_zigbit_usb" force-caption="true" force-description="true">
+	<project caption="MAC Beacon Application Device - XMEGA-A3U AT86RF212B Zigbit (ATZB-X-212B-USB)" id="thirdparty.wireless.avr2025_mac.apps.mac.beacon.dev.ncp.atxmega256a3u_rf212b_zigbit_usb" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 		The basic MAC Example Beacon Application deploys a beacon-enabled network with star topology.
 		</info>

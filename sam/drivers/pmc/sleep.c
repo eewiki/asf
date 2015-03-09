@@ -279,10 +279,10 @@ static pmc_callback_wakeup_clocks_restored_t callback_clocks_restored = NULL;
 void pmc_sleep(int sleep_mode)
 {
 	switch (sleep_mode) {
-#if (!SAMG)
+#if (!(SAMG51 || SAMG53 || SAMG54))
 	case SAM_PM_SMODE_SLEEP_WFI:
 	case SAM_PM_SMODE_SLEEP_WFE:
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CM || SAM4CP)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CM || SAM4CP || SAMG55)
 		SCB->SCR &= (uint32_t)~SCR_SLEEPDEEP;
 		cpu_irq_enable();
 		__WFI();
@@ -306,7 +306,7 @@ void pmc_sleep(int sleep_mode)
 #if defined(EFC1)
 		uint32_t fmr1;
 #endif
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CM || SAM4CP)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CM || SAM4CP || SAMG55)
 		(sleep_mode == SAM_PM_SMODE_WAIT_FAST) ?
 				pmc_set_flash_in_wait_mode(PMC_FSMR_FLPM_FLASH_STANDBY) :
 				pmc_set_flash_in_wait_mode(PMC_FSMR_FLPM_FLASH_DEEP_POWERDOWN);
@@ -351,10 +351,10 @@ void pmc_sleep(int sleep_mode)
 
 		break;
 	}
-#if (!SAMG)
+#if (!(SAMG51 || SAMG53 || SAMG54))
 	case SAM_PM_SMODE_BACKUP:
 		SCB->SCR |= SCR_SLEEPDEEP;
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CM || SAM4CP)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CM || SAM4CP || SAMG55)
 		SUPC->SUPC_CR = SUPC_CR_KEY_PASSWD | SUPC_CR_VROFF_STOP_VREG;
 		cpu_irq_enable();
 		__WFI() ;

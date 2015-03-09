@@ -3,7 +3,7 @@
  *
  * \brief UART functions
  *
- * Copyright (c) 2012 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -46,9 +46,15 @@
 #include "uart.h"
 #include "main.h"
 #include "ui.h"
+#if (SAMG55)
+#include "flexcom.h"
+#endif
 
 #if SAM4L
 #   define USART_PERIPH_CLK_ENABLE() sysclk_enable_peripheral_clock(USART_BASE)
+#elif SAMG55
+#   define USART_PERIPH_CLK_ENABLE() flexcom_enable(BOARD_FLEXCOM);      \
+	                                                        flexcom_set_opmode(BOARD_FLEXCOM, FLEXCOM_USART);
 #else
 #   define USART_PERIPH_CLK_ENABLE() sysclk_enable_peripheral_clock(USART_ID)
 #endif

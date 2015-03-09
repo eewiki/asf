@@ -42,7 +42,7 @@
  */
 
 /**
- * \defgroup asfdoc_udi_hid_generic_group USB Device Interface (UDI) for Human Interface Device generic (HID generic)
+ * \defgroup asfdoc_udi_hid_generic_group USB Device Interface (UDI) for Human Interface Device Generic (HID Generic)
  *
  * USB Device Interface (UDI) for Human Interface Device generic (HID generic) provides an
  * interface for the configuration and management of USB HID generic device.
@@ -52,8 +52,8 @@
  * - \ref asfdoc_udi_hid_generic_exqsg
  * - \ref asfdoc_udi_hid_generic_config_examples
  *
- * For more details for Atmel Software Framework (ASF) USB Device Stack and
- * USB Device HID generic, please refer to following Application Notes:
+ * For more details for Atmel® Software Framework (ASF) USB Device Stack and
+ * USB Device HID generic, refer to following application notes:
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8360.pdf">
  *   AVR4900: ASF - USB Device Stack</a>
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8499.pdf">
@@ -75,12 +75,12 @@
  * @{
  */
 
-/** Global structure which contains standard UDI API for UDC */
+/** Global structure which contains standard UDI API for UDC. */
 extern UDC_DESC_STORAGE udi_api_t udi_api_hid_generic;
 /**@}*/
 
 /**
- * \name USB interface descriptors
+ * \name USB Interface Descriptors
  *
  * The following structures provide predefined USB interface descriptors.
  * It must be used to define the final USB descriptors.
@@ -88,7 +88,7 @@ extern UDC_DESC_STORAGE udi_api_t udi_api_hid_generic;
  * @{
  */
 
- /** Interface descriptor structure for HID generic */
+ /** Interface descriptor structure for HID generic. */
 typedef struct {
 	/** Standard USB interface descriptor structure */
 	usb_iface_desc_t iface;
@@ -100,19 +100,19 @@ typedef struct {
 	usb_ep_desc_t ep_out;
 } udi_hid_generic_desc_t;
 
-/** Report descriptor for HID generic */
+/** Report descriptor for HID generic. */
 typedef struct {
 	/** Array to put detailed report data */
 	uint8_t array[53];
 } udi_hid_generic_report_desc_t;
 
 
-/** By default no string associated to this interface */
+/** By default no string associated to this interface. */
 #ifndef UDI_HID_GENERIC_STRING_ID
 #define UDI_HID_GENERIC_STRING_ID 0
 #endif
 
-/** Content of HID generic interface descriptor for all speed */
+/** Content of HID generic interface descriptor for all speed. */
 #define UDI_HID_GENERIC_DESC    {\
    .iface.bLength             = sizeof(usb_iface_desc_t),\
    .iface.bDescriptorType     = USB_DT_INTERFACE,\
@@ -148,7 +148,7 @@ typedef struct {
 /**
  * \name USB Device Interface (UDI) for Human Interface Device (HID) Generic Class
  *
- * Common APIs used by high level application to use this USB class
+ * Common APIs used by high level application to use this USB class.
  * @{
  */
 
@@ -164,28 +164,28 @@ bool udi_hid_generic_send_report_in(uint8_t *data);
 /**@}*/
 
 /**
- * \page asfdoc_udi_hid_generic_exqsg Quick start guide for USB device generic module (UDI generic)
+ * \page asfdoc_udi_hid_generic_exqsg Quick Start Guide for USB Device Generic Module (UDI Generic)
  *
  * This is the quick start guide for the \ref asfdoc_udi_hid_generic_group
- * "USB device generic module (UDI generic)" with step-by-step instructions on
+ * "USB Device Generic Module (UDI Generic)" with step-by-step instructions on
  * how to configure and use the modules in a selection of use cases.
  *
  * The use cases contain several code fragments. The code fragments in the
  * steps for setup can be copied into a custom initialization function, while
  * the steps for usage can be copied into, e.g., the main application function.
  *
- * \section udi_hid_generic_basic_use_case Basic use case
+ * \section udi_hid_generic_basic_use_case Basic Use Case
  * In this basic use case, the "USB HID generic (Single Interface Device)" module is used.
  * The "USB HID generic (Composite Device)" module usage is described in \ref udi_hid_generic_use_cases
- * "Advanced use cases".
+ * "Advanced Use Cases".
  *
- * \section udi_hid_generic_basic_use_case_setup Setup steps
- * As a USB device, it follows common USB device setup steps. Please refer to
+ * \section udi_hid_generic_basic_use_case_setup Setup Steps
+ * As a USB device, it follows common USB device setup steps. Refer to
  * \ref asfdoc_udc_basic_use_case_setup "USB Device Basic Setup".
  *
- * \section udi_hid_generic_basic_use_case_usage Usage steps
+ * \section udi_hid_generic_basic_use_case_usage Usage Steps
  *
- * \subsection udi_hid_generic_basic_use_case_usage_code Example code
+ * \subsection udi_hid_generic_basic_use_case_usage_code Example Code
  * Content of conf_usb.h:
  * \code
  #define UDI_HID_generic_ENABLE_EXT() my_callback_generic_enable()
@@ -305,7 +305,7 @@ bool udi_hid_generic_send_report_in(uint8_t *data);
  udi_hid_generic_send_report_in(report);
  \endcode
  *
- * \section uhi_hid_generic_use_cases Advanced use cases
+ * \section udi_hid_generic_use_cases Advanced Use Cases
  * \ifnot ASF_MANUAL
  * For more advanced use of the UHI HID generic module, see the following use cases:
  * - \subpage udi_hid_generic_use_case_composite
@@ -324,7 +324,7 @@ bool udi_hid_generic_send_report_in(uint8_t *data);
  */
 
 /**
- * \page udi_hid_generic_use_case_composite HID generic in a composite device
+ * \page udi_hid_generic_use_case_composite HID Generic in a Composite Device
  *
  * A USB Composite Device is a USB Device which uses more than one USB class.
  * In this use case, the "USB HID Generic (Composite Device)" module is used to
@@ -335,13 +335,13 @@ bool udi_hid_generic_send_report_in(uint8_t *data);
  * <A href="http://www.atmel.com/dyn/resources/prod_documents/doc8445.pdf">
  * AVR4902 ASF - USB Composite Device</A>.
  *
- * \section udi_hid_generic_use_case_composite_setup Setup steps
+ * \section udi_hid_generic_use_case_composite_setup Setup Steps
  * For the setup code of this use case to work, the
- * \ref udi_hid_generic_basic_use_case "basic use case" must be followed.
+ * \ref udi_hid_generic_basic_use_case "Basic Use Case" must be followed.
  *
- * \section udi_hid_generic_use_case_composite_usage Usage steps
+ * \section udi_hid_generic_use_case_composite_usage Usage Steps
  *
- * \subsection udi_hid_generic_use_case_composite_usage_code Example code
+ * \subsection udi_hid_generic_use_case_composite_usage_code Example Code
  * Content of conf_usb.h:
  * \code
  #define USB_DEVICE_EP_CTRL_SIZE  64
@@ -427,31 +427,31 @@ bool udi_hid_generic_send_report_in(uint8_t *data);
  *
  * \section asfdoc_udi_hid_generic_config_examples_1 conf_usb.h
  * \subsection asfdoc_udi_hid_generic_config_examples_1_1  UDI HID GENERIC Single
- * \include module_config\conf_usb.h
- * \subsection asfdoc_udi_hid_generic_config_examples_1_2  UDI HID GENERIC Multiple (composite)
- * \include composite\device\module_config\conf_usb.h
+ * \include module_config/conf_usb.h
+ * \subsection asfdoc_udi_hid_generic_config_examples_1_2  UDI HID GENERIC Multiple (Composite)
+ * \include composite/device/module_config/conf_usb.h
  *
  * \section asfdoc_udi_hid_generic_config_examples_2 conf_clock.h
  *
- * \subsection asfdoc_udi_hid_generic_config_examples_2_1 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_clock.h
+ * \subsection asfdoc_udi_hid_generic_config_examples_2_1 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_clock.h
  *
- * \subsection asfdoc_udi_hid_generic_config_examples_2_2 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_clock.h
+ * \subsection asfdoc_udi_hid_generic_config_examples_2_2 SAM3X, SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_clock.h
  *
  * \section asfdoc_udi_hid_generic_config_examples_3 conf_clocks.h
  *
- * \subsection asfdoc_udi_hid_generic_config_examples_3_1 SAMD21 device (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_clocks.h
+ * \subsection asfdoc_udi_hid_generic_config_examples_3_1 SAMD21 Device (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_clocks.h
  *
  * \section asfdoc_udi_hid_generic_config_examples_4 conf_board.h
  *
- * \subsection asfdoc_udi_hid_generic_config_examples_4_1 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_board.h
+ * \subsection asfdoc_udi_hid_generic_config_examples_4_1 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_board.h
  *
- * \subsection asfdoc_udi_hid_generic_config_examples_4_2 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_board.h
+ * \subsection asfdoc_udi_hid_generic_config_examples_4_2 SAM3X, SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_board.h
  *
- * \subsection asfdoc_udi_hid_generic_config_examples_4_3 SAMD21 device (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_board.h
+ * \subsection asfdoc_udi_hid_generic_config_examples_4_3 SAMD21 Device (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_board.h
  */

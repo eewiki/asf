@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="Rf4CE-ZID Terminal Device application-XMEGA_A3BU_XPLAINED_RZ600RF231" id="thirdparty.wireless.avr2102_rf4control.apps.zid.dev.terminal.xmega_a3bu_xplained_rz600rf231">
+	<project force-caption="true" force-description="true" caption="Rf4CE-ZID Terminal Device application AT86RF231 - XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2102_rf4control.apps.zid.dev.terminal.xmega_a3bu_xplained_rz600rf231">
 		<info type="description" value="summary">
 		The RF4CE ZID Device Profile running on the atxmega256a3bu xplained
 		</info>

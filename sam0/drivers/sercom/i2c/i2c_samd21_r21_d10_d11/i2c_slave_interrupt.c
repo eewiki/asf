@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21/R21/D10/D11 I2C Slave Interrupt Driver
+ * \brief SAM D21/R21/D10/D11 I<SUP>2</SUP>C Slave Interrupt Driver
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *

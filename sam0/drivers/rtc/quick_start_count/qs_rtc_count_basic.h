@@ -44,7 +44,7 @@
 /**
  * \page asfdoc_sam0_rtc_count_basic_use_case Quick Start Guide for RTC (COUNT) - Basic
  * In this use case, the RTC is set up in count mode. The example configures the
- * RTC in 16 bit mode, with continuous updates to the COUNT register, together
+ * RTC in 16-bit mode, with continuous updates to the COUNT register, together
  * with a set compare register value. Every 2000ms a LED on the board is
  * toggled.
  *
@@ -64,7 +64,7 @@
  * \section asfdoc_sam0_rtc_count_basic_use_case_setup Setup
  *
  * \subsection asfdoc_sam0_rtc_count_basic_use_case_init_code Initialization Code
- * Create a rtc_module struct and add to the main application source file,
+ * Create an rtc_module struct and add to the main application source file,
  * outside of any functions:
  * \snippet qs_rtc_count_basic.c rtc_module_instance
  *
@@ -101,7 +101,7 @@
  * \snippet qs_rtc_count_basic.c implementation_code
  *
  * \subsection asfdoc_sam0_rtc_count_basic_use_case_imp_workflow Workflow
- * -# Set RTC period to 2000ms (2 seconds) so that it will overflow and reset
+ * -# Set RTC period to 2000ms (two seconds) so that it will overflow and reset
  *    back to zero every two seconds.
  *    \snippet qs_rtc_count_basic.c period
  * -# Enter an infinite loop to poll the RTC driver to check when a comparison

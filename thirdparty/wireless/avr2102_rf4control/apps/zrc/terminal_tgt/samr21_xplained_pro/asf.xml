@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="RF4CE-ZRC Terminal Target-target application SAMR21 Xplained Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.terminal_tgt.samr21_xplained_pro">
+	<project force-caption="true" force-description="true" caption="RF4CE-ZRC Terminal Target-target application - SAM R21 Xplained Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.terminal_tgt.samr21_xplained_pro">
 		<info type="description" value="summary">
 		Terminal target application for RF4CE-ZRC target-controller setup
 		</info>
@@ -17,7 +17,7 @@
 		<build type="define" name="ANTENNA_DIVERSITY" value="0"/>	
 		
 		<config name="config.sam0.drivers.sercom.spi" value="polled"/>
-		<config name="config.sam0.drivers.sercom.usart" value="polled"/>
+		<config name="config.sam0.drivers.sercom.usart" value="callback"/>
 		<require idref="board.samr21_xplained_pro"/>
 		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf233"/>
 		

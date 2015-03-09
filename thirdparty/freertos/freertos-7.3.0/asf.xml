@@ -91,5 +91,46 @@
 			<device-support value="atsam4cp16b_1"/>
 			<device-support value="samg"/>
 		</module>
+		<module type="service" id="common.services.os.freertos.v7_3_0#sam_cm0" caption="FreeRTOS mini Real-Time Kernel">
+			<info type="description" value="summary">
+			FreeRTOS is a popular, portable, open source, royalty free, mini Real Time Kernel.
+			For complete information on FreeRTOS, see www.freertos.org.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="FreeRTOSConfig.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="distribute" subtype="license" value="license/license.txt" />
+
+			<build type="distribute" subtype="file" value="readme.txt"/>
+			<build type="distribute" subtype="file" value="ATMEL-disclaimer.txt"/>
+			<build type="define" name="__FREERTOS__" value=""/>
+			<build type="c-source" value="source/FreeRTOS_CLI.c"/>
+			<build type="c-source" value="source/list.c"/>
+			<build type="c-source" value="source/queue.c"/>
+			<build type="c-source" value="source/tasks.c"/>
+			<build type="c-source" value="source/timers.c"/>
+			<build type="header-file" subtype="api" value="source/include/FreeRTOS.h"/>
+			<build type="header-file" subtype="api" value="source/include/FreeRTOS_CLI.h"/>
+			<build type="header-file" subtype="api" value="source/include/croutine.h"/>
+			<build type="header-file" subtype="api" value="source/include/list.h"/>
+			<build type="header-file" subtype="api" value="source/include/portable.h"/>
+			<build type="header-file" subtype="api" value="source/include/projdefs.h"/>
+			<build type="header-file" subtype="api" value="source/include/queue.h"/>
+			<build type="header-file" subtype="api" value="source/include/mpu_wrappers.h"/>
+			<build type="header-file" subtype="api" value="source/include/semphr.h"/>
+			<build type="header-file" subtype="api" value="source/include/StackMacros.h"/>
+			<build type="header-file" subtype="api" value="source/include/task.h"/>
+			<build type="header-file" subtype="api" value="source/include/timers.h"/>
+			<build type="c-source" value="source/portable/gcc/ARM_CM0/port.c" toolchain="armgcc"/>
+			<build type="header-file" value="source/portable/gcc/ARM_CM0/portmacro.h" toolchain="armgcc"/>
+			<build type="c-source" value="source/portable/iar/ARM_CM0/port.c" toolchain="iarewarm"/>
+			<build type="asm-source" value="source/portable/iar/ARM_CM0/portasm.s" toolchain="iarewarm"/>
+			<build type="header-file" value="source/portable/iar/ARM_CM0/portmacro.h" toolchain="iarewarm"/>
+			<build type="c-source" value="source/portable/memmang/heap_4.c"/>
+			<build type="include-path" value="./source/include"/>
+			<build type="include-path" value="./source/portable/gcc/ARM_CM0" toolchain="armgcc"/>
+			<build type="include-path" value="./source/portable/iar/ARM_CM0" toolchain="iarewarm"/>
+			<device-support value="sam0"/>
+		</module>
 	</select-by-device>
 </asf>

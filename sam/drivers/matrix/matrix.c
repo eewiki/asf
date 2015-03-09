@@ -444,6 +444,35 @@ uint32_t matrix_get_writeprotect_status(void)
 }
 #endif
 
+#if SAMG55
+/**
+ * \brief Set USB device mode.
+ *
+ */
+void matrix_set_usb_device(void)
+{
+	Matrix *p_matrix = MATRIX;
+
+	p_matrix->CCFG_SYSIO &= ~(CCFG_SYSIO_SYSIO10 | CCFG_SYSIO_SYSIO11);
+
+	p_matrix->CCFG_USBMR |= CCFG_USBMR_DEVICE;
+}
+
+/**
+ * \brief Set USB device mode.
+ *
+ */
+void matrix_set_usb_host(void)
+{
+	Matrix *p_matrix = MATRIX;
+
+	p_matrix->CCFG_SYSIO &= ~(CCFG_SYSIO_SYSIO10 | CCFG_SYSIO_SYSIO11);
+
+	p_matrix->CCFG_USBMR &= ~CCFG_USBMR_DEVICE;
+}
+#endif
+
+
 /* @} */
 
 /* / @cond 0 */

@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="Performance Analyzer Application AT86RF232-REB232ED-EK" id="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer.atxmega256a3_reb232_cbb" force-caption="true" force-description="true">
+	<project caption="Performance Analyzer Application AT86RF232 - REB232ED-EK" id="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer.atxmega256a3_reb232_cbb" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 			A Serial interface based application,which communicates with Wireless Analyzer to demonstrate
 			various features and capabilities of the of Atmel Transceivers.

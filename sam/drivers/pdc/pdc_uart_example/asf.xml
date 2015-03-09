@@ -5,7 +5,6 @@
 			</info>
 		<info type="keyword" value="technology">
 			<keyword value="DMA Controller"/>
-			<keyword value="Memory"/>
 		</info>
 		<build type="c-source" value="pdc_uart_example.c"/>
 		<build type="include-path" value="."/>

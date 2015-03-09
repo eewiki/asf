@@ -160,6 +160,9 @@ extern "C" {
 #define SYSCLK_SRC_MAINCK_XTAL          6       //!< External crystal oscillator as master source clock
 #define SYSCLK_SRC_MAINCK_BYPASS        7       //!< External bypass oscillator as master source clock
 #define SYSCLK_SRC_PLLACK               8       //!< Use PLLACK as master source clock
+#if SAMG55
+#define SYSCLK_SRC_PLLBCK               9       //!< Use PLLBCK as master source clock
+#endif
 //@}
 
 //! \name Master Clock Prescalers (MCK)
@@ -173,6 +176,40 @@ extern "C" {
 #define SYSCLK_PRES_64                  PMC_MCKR_PRES_CLK_64    //!< Set master clock prescaler to 64
 #define SYSCLK_PRES_3                   PMC_MCKR_PRES_CLK_3     //!< Set master clock prescaler to 3
 //@}
+
+#if SAMG55
+//! \name USB Clock Sources
+//@{
+#define USBCLK_SRC_PLL0       0     //!< Use PLLA
+#define USBCLK_SRC_PLL1       1     //!< Use PLLB
+//@}
+
+/**
+ * \def CONFIG_USBCLK_SOURCE
+ * \brief Configuration symbol for the USB generic clock source
+ *
+ * Sets the clock source to use for the USB. The source must also be properly
+ * configured.
+ *
+ * Define this to one of the \c USBCLK_SRC_xxx settings. Leave it undefined if
+ * USB is not required.
+ */
+#ifdef __DOXYGEN__
+# define CONFIG_USBCLK_SOURCE
+#endif
+
+/**
+ * \def CONFIG_USBCLK_DIV
+ * \brief Configuration symbol for the USB generic clock divider setting
+ *
+ * Sets the clock division for the USB generic clock. If a USB clock source is
+ * selected with CONFIG_USBCLK_SOURCE, this configuration symbol must also be
+ * defined.
+ */
+#ifdef __DOXYGEN__
+# define CONFIG_USBCLK_DIV
+#endif
+#endif
 
 /**
  * \name Querying the system clock
@@ -230,6 +267,15 @@ static inline uint32_t sysclk_get_main_hz(void)
 		return pll_get_default_rate(0);
 	}
 #endif
+
+#if SAMG55
+#ifdef CONFIG_PLL1_SOURCE
+	else if (CONFIG_SYSCLK_SOURCE == SYSCLK_SRC_PLLBCK) {
+		return pll_get_default_rate(1);
+	}
+#endif
+#endif
+
 	else {
 		/* unhandled_case(CONFIG_SYSCLK_SOURCE); */
 		return 0;
@@ -317,6 +363,9 @@ extern void sysclk_set_prescalers(uint32_t ul_pres);
 extern void sysclk_set_source(uint32_t ul_src);
 
 //@}
+
+extern void sysclk_enable_usb(void);
+extern void sysclk_disable_usb(void);
 
 extern void sysclk_init(void);
 

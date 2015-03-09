@@ -68,5 +68,5 @@
 #endif
 
 #define AT86RFX_SPI_BAUDRATE             4000000UL
-/* # include "conf_usb.h" */
+
 #endif /* CONF_BOARD_H_INCLUDED */

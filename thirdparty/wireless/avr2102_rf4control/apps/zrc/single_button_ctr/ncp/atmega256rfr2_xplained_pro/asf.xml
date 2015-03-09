@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="RF4CE Single button controller application ATmegarfr2-ATmega256RFR2 Xplained Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.ncp.atmega256rfr2_xplained_pro">
+	<project force-caption="true" force-description="true" caption="RF4CE Single button controller application - ATmega256RFR2 Xplained Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.ncp.atmega256rfr2_xplained_pro">
 		<info type="description" value="summary">
 		The RF4CE-ZRC single button controller application where the application and the stack running on the same node
 		</info>

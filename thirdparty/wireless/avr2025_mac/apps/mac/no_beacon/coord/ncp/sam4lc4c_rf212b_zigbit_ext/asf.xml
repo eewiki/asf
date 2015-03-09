@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC No Beacon Application Coordinator AT86RF212B Zigbit(Carrier)-SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.coord.ncp.sam4lc4c_rf212b_zigbit_ext">
+	<project force-caption="true" force-description="true" caption="MAC No Beacon Application Coordinator AT86RF212B (ATZB-212B-XPRO) - SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.coord.ncp.sam4lc4c_rf212b_zigbit_ext">
 		<info type="description" value="summary">
 		The basic MAC Example No Beacon Application deploys a No beacon-enabled network with star topology.
 		</info>	

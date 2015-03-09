@@ -107,7 +107,7 @@ uint8_t _tc_get_inst_index(
  * \retval STATUS_INVALID_ARG  An invalid configuration option or argument
  *                             was supplied
  * \retval STATUS_ERR_DENIED   Hardware module was already enabled, or the
- *                             hardware module is configured in 32 bit
+ *                             hardware module is configured in 32-bit
  *                             slave mode
  */
 enum status_code tc_init(
@@ -155,6 +155,17 @@ enum status_code tc_init(
 	/* Associate the given device instance with the hardware module */
 	module_inst->hw = hw;
 
+#if SAMD10 || SAMD11
+	/* Check if even numbered TC modules are being configured in 32-bit
+	 * counter size. Only odd numbered counters are allowed to be
+	 * configured in 32-bit counter size.
+	 */
+	if ((config->counter_size == TC_COUNTER_SIZE_32BIT) &&
+			!((instance + TC_INSTANCE_OFFSET) & 0x01)) {
+		Assert(false);
+		return STATUS_ERR_INVALID_ARG;
+	}
+#else
 	/* Check if odd numbered TC modules are being configured in 32-bit
 	 * counter size. Only even numbered counters are allowed to be
 	 * configured in 32-bit counter size.
@@ -164,6 +175,7 @@ enum status_code tc_init(
 		Assert(false);
 		return STATUS_ERR_INVALID_ARG;
 	}
+#endif
 
 	/* Make the counter size variable in the module_inst struct reflect
 	 * the counter size in the module
@@ -207,7 +219,7 @@ enum status_code tc_init(
 	system_apb_clock_set_mask(SYSTEM_CLOCK_APB_APBC,
 			inst_pm_apbmask[instance]);
 
-	/* Enable the slave counter if counter_size is 32 bit */
+	/* Enable the slave counter if counter_size is 32-bit */
 	if ((config->counter_size == TC_COUNTER_SIZE_32BIT))
 	{
 		/* Enable the user interface clock in the PM */
@@ -579,7 +591,7 @@ enum status_code tc_set_compare_value(
  *
  * \param[in]  module_inst    Pointer to the software module instance struct
  *
- * \return Status of the procedure
+ * \return Status of the procedure.
  * \retval STATUS_OK                   The module was reset successfully
  * \retval STATUS_ERR_UNSUPPORTED_DEV  A 32-bit slave TC module was passed to
  *                                     the function. Only use reset on master

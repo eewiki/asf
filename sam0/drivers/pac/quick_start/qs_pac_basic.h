@@ -47,8 +47,8 @@
  * In this use case, the peripheral-lock will be used to lock and unlock the
  * PORT peripheral access, and show how to implement the PAC module when the
  * PORT registers needs to be altered. The PORT will be set up as follows:
- * - One pin in input mode, with pull-up and falling edge-detect.
- * - One pin in output mode.
+ * - One pin in input mode, with pull-up and falling edge-detect
+ * - One pin in output mode
  *
  * \section asfdoc_sam0_pac_basic_use_case_setup Setup
  *

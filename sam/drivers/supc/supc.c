@@ -231,7 +231,7 @@ void supc_disable_monitor_interrupt(Supc *p_supc)
 	p_supc->SUPC_SMMR &= ~SUPC_SMMR_SMIEN;
 }
 
-#if (!SAMG)
+#if (!(SAMG51 || SAMG53 || SAMG54))
 /**
  * \brief Set system controller wake up mode.
  *

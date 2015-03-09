@@ -241,7 +241,7 @@ void adc_configure_sequence(Adc *p_adc, const enum adc_channel_num_t ch_list[],
 #else
 	volatile uint32_t *adc_seqr = &p_adc->ADC_SEQR1;
 #endif
-	if (uc_num < 8) {
+	if (uc_num <= 8) {
 		for (uc_counter = 0; uc_counter < uc_num; uc_counter++) {
 			adc_seqr[0] |=
 					ch_list[uc_counter] << (4 * uc_counter);
@@ -253,7 +253,7 @@ void adc_configure_sequence(Adc *p_adc, const enum adc_channel_num_t ch_list[],
 		}
 		for (uc_counter = 0; uc_counter < uc_num - 8; uc_counter++) {
 			adc_seqr[1] |=
-					ch_list[uc_counter] << (4 * uc_counter);
+					ch_list[8 + uc_counter] << (4 * uc_counter);
 		}
 	}
 }

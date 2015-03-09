@@ -86,7 +86,6 @@ void PHY_SetBand(uint8_t band);
 void PHY_SetModulation(uint8_t modulation);
 void PHY_SetPanId(uint16_t panId);
 void PHY_SetShortAddr(uint16_t addr);
-void PHY_SetTxPower(uint8_t txPower);
 void PHY_Sleep(void);
 void PHY_Wakeup(void);
 void PHY_DataReq(uint8_t *data);

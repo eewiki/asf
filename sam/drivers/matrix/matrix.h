@@ -61,10 +61,10 @@ typedef enum {
 	MATRIX_ULBT_4_BEAT_BURST          = MATRIX_MCFG_ULBT(2),
 	MATRIX_ULBT_8_BEAT_BURST          = MATRIX_MCFG_ULBT(3),
 	MATRIX_ULBT_16_BEAT_BURST         = MATRIX_MCFG_ULBT(4),
-#if SAM4C || SAM4CP || SAM4CM
-	MATRIX_ULBT_32_BEAT_BURST  = MATRIX_MCFG_ULBT(5),
-	MATRIX_ULBT_64_BEAT_BURST  = MATRIX_MCFG_ULBT(6),
-	MATRIX_ULBT_128_BEAT_BURST = MATRIX_MCFG_ULBT(7),
+#if SAM4C || SAM4CP || SAM4CM || SAM4E
+	MATRIX_ULBT_32_BEAT_BURST         = MATRIX_MCFG_ULBT(5),
+	MATRIX_ULBT_64_BEAT_BURST         = MATRIX_MCFG_ULBT(6),
+	MATRIX_ULBT_128_BEAT_BURST        = MATRIX_MCFG_ULBT(7),
 #endif
 } burst_type_t;
 
@@ -121,6 +121,11 @@ uint32_t matrix_get_nandflash_cs(void);
 #if (!SAMG)
 void matrix_set_writeprotect(uint32_t ul_enable);
 uint32_t matrix_get_writeprotect_status(void);
+#endif
+
+#if SAMG55
+void matrix_set_usb_device(void);
+void matrix_set_usb_host(void);
 #endif
 
 /* / @cond 0 */

@@ -47,7 +47,7 @@
  * In this use case, the ADC will be configured with the following settings:
  * - 1V from internal bandgap reference
  * - Div 4 clock prescaler
- * - 12 bit resolution
+ * - 12-bit resolution
  * - Window monitor disabled
  * - No gain
  * - Positive input on ADC PIN 0
@@ -96,7 +96,7 @@
  *           struct to ensure that all values are initialized to known default
  *           settings.
  *
- *  -# Set ADC configurations
+ *  -# Set ADC configurations.
  *     \snippet qs_adc_basic.c setup_set_config
  *  -# Enable the ADC module so that conversions can be made.
  *     \snippet qs_adc_basic.c setup_enable

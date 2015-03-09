@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="Performance Analyzer Application AT86RF233 REB-SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer.sam4lc4c_reb233_xpro" force-caption="true" force-description="true">
+	<project caption="Performance Analyzer Application AT86RF233 (ATREB233-XPRO) - SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer.sam4lc4c_reb233_xpro" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 			A Serial interface based application,which communicates with Wireless Analyzer to demonstrate
 			various features and capabilities of the of Atmel Transceivers.

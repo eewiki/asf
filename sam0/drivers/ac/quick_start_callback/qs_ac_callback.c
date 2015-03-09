@@ -52,12 +52,12 @@ void configure_ac_callback(void);
 void callback_function_ac(struct ac_module *const module_inst);
 
 //! [setup]
-/* AC module software instance (must not go out of scope while in use) */
+/* AC module software instance (must not go out of scope while in use). */
 //! [setup_1]
 static struct ac_module ac_instance;
 //! [setup_1]
 
-/* Comparator channel that will be used */
+/* Comparator channel that will be used. */
 //! [setup_2]
 #define AC_COMPARATOR_CHANNEL   AC_CHAN_CHANNEL_0
 //! [setup_2]
@@ -75,9 +75,9 @@ void configure_ac(void)
 	ac_get_config_defaults(&config_ac);
 	//! [setup_5]
 
-	/* Alter any Analog Comparator configuration settings here if required */
+	/* Alter any Analog Comparator configuration settings here if required. */
 
-	/* Initialize and enable the Analog Comparator with the user settings */
+	/* Initialize and enable the Analog Comparator with the user settings. */
 	//! [setup_6]
 	ac_init(&ac_instance, AC, &config_ac);
 	//! [setup_6]
@@ -96,7 +96,7 @@ void configure_ac_channel(void)
 	ac_chan_get_config_defaults(&config_ac_chan);
 	//! [setup_9]
 
-	/* Set the Analog Comparator channel configuration settings */
+	/* Set the Analog Comparator channel configuration settings. */
 	//! [setup_10]
 	config_ac_chan.sample_mode         = AC_CHAN_MODE_SINGLE_SHOT;
 	config_ac_chan.positive_input      = AC_CHAN_POS_MUX_PIN0;
@@ -105,7 +105,7 @@ void configure_ac_channel(void)
 	config_ac_chan.interrupt_selection = AC_CHAN_INTERRUPT_SELECTION_END_OF_COMPARE;
 	//! [setup_10]
 
-	/* Set up a pin as an AC channel input */
+	/* Set up a pin as an AC channel input. */
 	//! [setup_11]
 	struct system_pinmux_config ac0_pin_conf;
 	system_pinmux_get_config_defaults(&ac0_pin_conf);
@@ -115,7 +115,7 @@ void configure_ac_channel(void)
 	//! [setup_11]
 
 	/* Initialize and enable the Analog Comparator channel with the user
-	 * settings */
+	 * settings. */
 	//! [setup_12]
 	ac_chan_set_config(&ac_instance, AC_COMPARATOR_CHANNEL, &config_ac_chan);
 	//! [setup_12]

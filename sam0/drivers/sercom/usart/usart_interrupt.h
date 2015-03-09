@@ -130,7 +130,7 @@ static inline void usart_disable_callback(
  */
 
 /**
- * \name Writing and reading
+ * \name Writing and Reading
  * @{
  */
 enum status_code usart_write_job(

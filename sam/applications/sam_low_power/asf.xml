@@ -18,7 +18,6 @@
 
 			<!-- Required modules -->
 			<require idref="sam.drivers.pmc"/>
-			<require idref="sam.drivers.uart"/>
 			<require idref="sam.drivers.gpbr"/>
 			<require idref="sam.drivers.supc"/>
 			<require idref="sam.drivers.efc"/>

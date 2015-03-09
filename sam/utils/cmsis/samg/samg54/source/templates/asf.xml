@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="driver" caption="SAMG53 startup code" id="sam.utils.cmsis.samg54.source.template">
+	<module type="driver" caption="SAMG54 startup code" id="sam.utils.cmsis.samg54.source.template">
 		<build type="c-source" value="system_samg54.c"/>
 		<build type="header-file" value="system_samg54.h"/>
 		<build type="c-source" value="exceptions.c"/>

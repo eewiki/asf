@@ -62,7 +62,7 @@
  *
  * The TCC module will be set up as follows:
  * - GCLK generator 0 (GCLK main) clock source
- * - Use double buffering write when set top, compare or pattern through API
+ * - Use double buffering write when set top, compare, or pattern through API
  * - No dithering on the counter or compare
  * - No prescaler
  * - Single Slope PWM wave generation

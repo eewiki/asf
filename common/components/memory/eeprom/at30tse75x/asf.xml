@@ -1,21 +1,23 @@
 <asf xmlversion="1.0">
-	<module type="component" id="common.components.memory.eeprom.at30tse75x" caption="EEPROM AT30TSE75X">
-		<info type="keyword" value="technology">
-			<keyword value="Memory" />
-		</info>
-		<info type="description" value="summary">
-		Driver for the AT30TSE75X EEPROM memory. It provides functions for initialization and read/write operations.
-		</info>
-		<build type="c-source" value="at30tse75x.c"/>
-		<build type="header-file" subtype="api" value="at30tse75x.h"/>
-		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="common_components_memory_eeprom_at30tse75x_group"/>
-		<require idref="common.services.basic.twi"/>
-		<device-support value="sam4sd32"/>
-		<device-support value="sam4n"/>
-		<device-support value="sam4c"/>
-		<device-support value="sam4cm"/>
-		<device-support value="samg"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
-	</module>
+	<select-by-device id="common.components.memory.eeprom.at30tse75x" caption="EEPROM AT30TSE75X">
+		<module type="component" id="common.components.memory.eeprom.at30tse75x#0" caption="EEPROM AT30TSE75X">
+			<info type="keyword" value="technology">
+				<keyword value="Memory" />
+			</info>
+			<info type="description" value="summary">
+			Driver for the AT30TSE75X EEPROM memory. It provides functions for initialization and read/write operations.
+			</info>
+			<build type="c-source" value="at30tse75x.c"/>
+			<build type="header-file" subtype="api" value="at30tse75x.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="common_components_memory_eeprom_at30tse75x_group"/>
+			<require idref="common.services.basic.twi"/>
+			<device-support value="sam4sd32"/>
+			<device-support value="sam4n"/>
+			<device-support value="sam4c"/>
+			<device-support value="sam4cm"/>
+			<device-support value="samg53"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		</module>
+	</select-by-device>
 </asf>

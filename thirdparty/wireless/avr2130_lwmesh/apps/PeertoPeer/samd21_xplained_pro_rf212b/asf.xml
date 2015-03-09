@@ -1,0 +1,31 @@
+<asf xmlversion="1.0">
+	<project caption="LWMesh-Peer2Peer Application AT86RF212B (ATZB-212B-XPRO) - SAM D21 Xplained Pro" id="thirdparty.wireless.avr2130_lwmesh.apps.peer2peer.samd21_xplained_pro_rf212b" force-caption="true" force-description="true">
+		<info type="description" value="summary">
+		The LWMesh Peer2Peer application performs a Wireless UART functionality using two nodes with preconfigured addresses.
+		</info>		
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+
+		<config name="config.sam0.drivers.sercom.spi" value="polled"/>
+		<config name="config.sam0.drivers.sercom.usart" value="callback"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<config name="config.thirdparty.wireless.avr2130_lwmesh.source.phy.ext" value="at86rf212b"/>		
+
+		<require idref="thirdparty.wireless.avr2130_lwmesh.apps.peer2peer"/>
+
+		<config name="config.compiler.armgcc.optimization" value="high" />
+
+		
+		<generator value="armgcc" />
+		<generator value="iarewarm" />
+		<generator value="as5_arm" />
+		<generator value="doxygen"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

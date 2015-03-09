@@ -62,7 +62,7 @@ struct dac_module *_dac_instances[DAC_INST_NUM];
  * \param[in] buffer             Pointer to the digital data write buffer to be converted
  * \param[in] length             Size of the write buffer
  *
- * \return Status of the operation
+ * \return Status of the operation.
  * \retval STATUS_OK           If the data was written
  * \retval STATUS_ERR_UNSUPPORTED_DEV  If a callback that requires event driven
  *                                     mode was specified with a DAC instance
@@ -129,7 +129,7 @@ enum status_code dac_chan_write_buffer_job(
  * \param[in] channel          DAC channel to write to
  * \param[in] data             Digital data to be converted
  *
- * \return Status of the operation
+ * \return Status of the operation.
  * \retval STATUS_OK           If the data was written
  * \retval STATUS_ERR_UNSUPPORTED_DEV  If a callback that requires event driven
  *                                     mode was specified with a DAC instance
@@ -171,7 +171,7 @@ enum status_code dac_chan_write_job(
  *
  * \param[in,out] module_inst  Pointer to the DAC software instance struct
  * \param[in]     callback    Pointer to the callback function to register
- * \param[in]     channel     Logical channel to regiseter callback function
+ * \param[in]     channel     Logical channel to register callback function
  * \param[in]     type        Type of callback function to register
  *
  * \return Status of the registration operation.
@@ -214,7 +214,7 @@ enum status_code dac_register_callback(
  * from the internal callback registration table.
  *
  * \param[in,out] module_inst  Pointer to the DAC software instance struct
- * \param[in]     channel     Logical channel to unregiseter callback function
+ * \param[in]     channel     Logical channel to unregister callback function
  * \param[in]     type        Type of callback function to unregister
  *
  * \return Status of the de-registration operation.
@@ -389,7 +389,7 @@ void DAC_Handler(void)
  *
  * \param [in]  module_inst Pointer to the DAC software instance struct
  *
- * \return Status of the job
+ * \return Status of the job.
  */
 enum status_code dac_get_job_status( struct dac_module *module_inst)
 {

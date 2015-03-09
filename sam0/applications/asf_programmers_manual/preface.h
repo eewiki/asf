@@ -62,6 +62,6 @@
  * \anchor sam0_asfdoc_preface_asf_structure
  * \image html asf_structure.jpg ""
  *
- * For more information on ASF please refer to the online documentation at
+ * For more information on ASF refer to the online documentation at
  * <a href="www.atmel.com/asf">www.atmel.com/asf</a>.
  */

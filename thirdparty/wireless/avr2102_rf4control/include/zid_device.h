@@ -5,7 +5,7 @@
  *
  *
  * @author    Atmel Corporation: http://www.atmel.com
- * @author    Support email: avr@atmel.com
+ * @author    Support: http://www.atmel.com/design-support/
  */
 
 /*

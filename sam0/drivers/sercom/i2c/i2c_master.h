@@ -72,17 +72,17 @@ extern "C" {
  * Structure to be used when transferring I<SUP>2</SUP>C master packets.
  */
 struct i2c_master_packet {
-	/** Address to slave device  */
+	/** Address to slave device.  */
 	uint16_t address;
-	/** Length of data array */
+	/** Length of data array. */
 	uint16_t data_length;
-	/** Data array containing all data to be transferred */
+	/** Data array containing all data to be transferred. */
 	uint8_t *data;
-	/** Use 10 bit addressing. Set to false if the feature is not supported by the device  */
+	/** Use 10-bit addressing. Set to false if the feature is not supported by the device.  */
 	bool ten_bit_address;
-	/** Use high speed transfer. Set to false if the feature is not supported by the device */
+	/** Use high speed transfer. Set to false if the feature is not supported by the device. */
 	bool high_speed;
-	/** High speed mode master code (0000 1XXX), valid when high_speed is true */
+	/** High speed mode master code (0000 1XXX), valid when high_speed is true. */
 	uint8_t hs_master_code;
 };
 
@@ -91,9 +91,9 @@ struct i2c_master_packet {
  * Flags used when reading or setting interrupt flags.
  */
 enum i2c_master_interrupt_flag {
-	/** Interrupt flag used for write */
+	/** Interrupt flag used for write. */
 	I2C_MASTER_INTERRUPT_WRITE = 0,
-	/** Interrupt flag used for read */
+	/** Interrupt flag used for read. */
 	I2C_MASTER_INTERRUPT_READ  = 1,
 };
 
@@ -104,13 +104,13 @@ enum i2c_master_interrupt_flag {
  * bit has been sent.
  */
 enum i2c_master_start_hold_time {
-	/** Internal SDA hold time disabled */
+	/** Internal SDA hold time disabled. */
 	I2C_MASTER_START_HOLD_TIME_DISABLED = SERCOM_I2CM_CTRLA_SDAHOLD(0),
-	/** Internal SDA hold time 50ns-100ns */
+	/** Internal SDA hold time 50ns - 100ns. */
 	I2C_MASTER_START_HOLD_TIME_50NS_100NS = SERCOM_I2CM_CTRLA_SDAHOLD(1),
-	/** Internal SDA hold time 300ns-600ns */
+	/** Internal SDA hold time 300ns - 600ns. */
 	I2C_MASTER_START_HOLD_TIME_300NS_600NS = SERCOM_I2CM_CTRLA_SDAHOLD(2),
-	/** Internal SDA hold time 400ns-800ns */
+	/** Internal SDA hold time 400ns - 800ns. */
 	I2C_MASTER_START_HOLD_TIME_400NS_800NS = SERCOM_I2CM_CTRLA_SDAHOLD(3),
 };
 
@@ -121,13 +121,13 @@ enum i2c_master_start_hold_time {
  * longer than the time-out setting, the bus state logic will be set to idle.
  */
 enum i2c_master_inactive_timeout {
-	/** Inactive bus time-out disabled */
+	/** Inactive bus time-out disabled. */
 	I2C_MASTER_INACTIVE_TIMEOUT_DISABLED = SERCOM_I2CM_CTRLA_INACTOUT(0),
-	/** Inactive bus time-out 5-6 SCL cycle time-out (50-60us) */
+	/** Inactive bus time-out 5-6 SCL cycle time-out. */
 	I2C_MASTER_INACTIVE_TIMEOUT_55US = SERCOM_I2CM_CTRLA_INACTOUT(1),
-	/** Inactive bus time-out 10-11 SCL cycle time-out (100-110us) */
+	/** Inactive bus time-out 10-11 SCL cycle time-out. */
 	I2C_MASTER_INACTIVE_TIMEOUT_105US = SERCOM_I2CM_CTRLA_INACTOUT(2),
-	/** Inactive bus time-out 20-21 SCL cycle time-out (200-210us) */
+	/** Inactive bus time-out 20-21 SCL cycle time-out. */
 	I2C_MASTER_INACTIVE_TIMEOUT_205US = SERCOM_I2CM_CTRLA_INACTOUT(3),
 };
 
@@ -138,18 +138,18 @@ enum i2c_master_inactive_timeout {
  * will also support setting any other value, in which case set
  * the value in the \ref i2c_master_config at desired value divided by 1000.
  *
- * Example: If 10kHz operation is required, give baud_rate in the configuration
+ * Example: If 10KHz operation is required, give baud_rate in the configuration
  * structure the value 10.
  */
 enum i2c_master_baud_rate {
-	/** Baud rate at 100kHz (Standard-mode) */
+	/** Baud rate at 100KHz (Standard-mode). */
 	I2C_MASTER_BAUD_RATE_100KHZ = 100,
-	/** Baud rate at 400kHz (Fast-mode) */
+	/** Baud rate at 400KHz (Fast-mode). */
 	I2C_MASTER_BAUD_RATE_400KHZ = 400,
 #ifdef FEATURE_I2C_FAST_MODE_PLUS_AND_HIGH_SPEED
-	/** Baud rate at 1MHz (Fast-mode Plus) */
+	/** Baud rate at 1MHz (Fast-mode Plus). */
 	I2C_MASTER_BAUD_RATE_1000KHZ = 1000,
-	/** Baud rate at 3.4MHz (High-speed mode) */
+	/** Baud rate at 3.4MHz (High-speed mode). */
 	I2C_MASTER_BAUD_RATE_3400KHZ = 3400,
 #endif
 };
@@ -161,11 +161,11 @@ enum i2c_master_baud_rate {
  * Enum for the transfer speed.
  */
 enum i2c_master_transfer_speed {
-	/** Standard-mode (Sm) up to 100 kHz and Fast-mode (Fm) up to 400 kHz */
+	/** Standard-mode (Sm) up to 100KHz and Fast-mode (Fm) up to 400KHz. */
 	I2C_MASTER_SPEED_STANDARD_AND_FAST = SERCOM_I2CM_CTRLA_SPEED(0),
-	/** Fast-mode Plus (Fm+) up to 1 MHz */
+	/** Fast-mode Plus (Fm+) up to 1MHz. */
 	I2C_MASTER_SPEED_FAST_MODE_PLUS = SERCOM_I2CM_CTRLA_SPEED(1),
-	/** High-speed mode (Hs-mode) up to 3.4 MHz */
+	/** High-speed mode (Hs-mode) up to 3.4MHz. */
 	I2C_MASTER_SPEED_HIGH_SPEED = SERCOM_I2CM_CTRLA_SPEED(2),
 };
 #endif
@@ -177,14 +177,14 @@ enum i2c_master_transfer_speed {
  * The available callback types for the I<SUP>2</SUP>C master module.
  */
 enum i2c_master_callback {
-	/** Callback for packet write complete */
+	/** Callback for packet write complete. */
 	I2C_MASTER_CALLBACK_WRITE_COMPLETE = 0,
-	/** Callback for packet read complete */
+	/** Callback for packet read complete. */
 	I2C_MASTER_CALLBACK_READ_COMPLETE  = 1,
-	/** Callback for error */
+	/** Callback for error. */
 	I2C_MASTER_CALLBACK_ERROR          = 2,
 #  if !defined(__DOXYGEN__)
-	/** Total number of callbacks */
+	/** Total number of callbacks. */
 	_I2C_MASTER_CALLBACK_N             = 3,
 #  endif
 };
@@ -209,35 +209,35 @@ typedef void (*i2c_master_callback_t)(
  */
 struct i2c_master_module {
 #if !defined(__DOXYGEN__)
-	/** Hardware instance initialized for the struct */
+	/** Hardware instance initialized for the struct. */
 	Sercom *hw;
-	/** Module lock */
+	/** Module lock. */
 	volatile bool locked;
-	/** Unknown bus state timeout */
+	/** Unknown bus state timeout. */
 	uint16_t unknown_bus_state_timeout;
-	/** Buffer write timeout value */
+	/** Buffer write timeout value. */
 	uint16_t buffer_timeout;
-	/** If true, stop condition will be sent after a read/write */
+	/** If true, stop condition will be sent after a read/write. */
 	bool send_stop;
 #  if I2C_MASTER_CALLBACK_MODE == true
-	/** Pointers to callback functions */
+	/** Pointers to callback functions. */
 	volatile i2c_master_callback_t callbacks[_I2C_MASTER_CALLBACK_N];
-	/** Mask for registered callbacks */
+	/** Mask for registered callbacks. */
 	volatile uint8_t registered_callback;
-	/** Mask for enabled callbacks */
+	/** Mask for enabled callbacks. */
 	volatile uint8_t enabled_callback;
-	/** The total number of bytes to transfer */
+	/** The total number of bytes to transfer. */
 	volatile uint16_t buffer_length;
 	/**
 	 * Counter used for bytes left to send in write and to count number of
 	 * obtained bytes in read
 	 */
 	volatile uint16_t buffer_remaining;
-	/** Data buffer for packet write and read */
+	/** Data buffer for packet write and read. */
 	volatile uint8_t *buffer;
-	/** Save direction of async request. 1 = read, 0 = write */
+	/** Save direction of async request. 1 = read, 0 = write. */
 	volatile enum i2c_transfer_direction transfer_direction;
-	/** Status for status read back in error callback */
+	/** Status for status read back in error callback. */
 	volatile enum status_code status;
 #  endif
 #endif
@@ -252,43 +252,43 @@ struct i2c_master_module {
  * \ref i2c_master_get_config_defaults .
  */
 struct i2c_master_config {
-	/** Baud rate (in KHZ) for I<SUP>2</SUP>C operations in
+	/** Baud rate (in KHz) for I<SUP>2</SUP>C operations in
 	 * standard-mode, Fast-mode and Fast-mode Plus Transfers,
-	 * \ref i2c_master_baud_rate */
+	 * \ref i2c_master_baud_rate. */
 	uint32_t baud_rate;
 #ifdef FEATURE_I2C_FAST_MODE_PLUS_AND_HIGH_SPEED
 	/** Baud rate (in KHz) for I<SUP>2</SUP>C operations in
-	 * High-speed mode, \ref i2c_master_baud_rate */
+	 * High-speed mode, \ref i2c_master_baud_rate. */
 	uint32_t baud_rate_high_speed;
-	/** Transfer speed mode */
+	/** Transfer speed mode. */
 	enum i2c_master_transfer_speed transfer_speed;
 #endif
-	/** GCLK generator to use as clock source */
+	/** GCLK generator to use as clock source. */
 	enum gclk_generator generator_source;
-	/** Bus hold time after start signal on data line */
+	/** Bus hold time after start signal on data line. */
 	enum i2c_master_start_hold_time start_hold_time;
-	/** Unknown bus state \ref asfdoc_sam0_sercom_i2c_unknown_bus_timeout "timeout" */
+	/** Unknown bus state \ref asfdoc_sam0_sercom_i2c_unknown_bus_timeout "timeout". */
 	uint16_t unknown_bus_state_timeout;
-	/** Timeout for packet write to wait for slave */
+	/** Timeout for packet write to wait for slave. */
 	uint16_t buffer_timeout;
-	/** Set to keep module active in sleep modes */
+	/** Set to keep module active in sleep modes. */
 	bool run_in_standby;
-	/** PAD0 (SDA) pinmux */
+	/** PAD0 (SDA) pinmux. */
 	uint32_t pinmux_pad0;
-	/** PAD1 (SCL) pinmux */
+	/** PAD1 (SCL) pinmux. */
 	uint32_t pinmux_pad1;
-	/** Set to enable SCL low time-out */
+	/** Set to enable SCL low time-out. */
 	bool scl_low_timeout;
-	/** Inactive bus time out */
+	/** Inactive bus time out. */
 	enum i2c_master_inactive_timeout inactive_timeout;
 #ifdef FEATURE_I2C_SCL_STRETCH_MODE
-	/** Set to enable SCL stretch only after ACK bit (required for high speed) */
+	/** Set to enable SCL stretch only after ACK bit (required for high speed). */
 	bool scl_stretch_only_after_ack_bit;
 #endif
 #ifdef FEATURE_I2C_SCL_EXTEND_TIMEOUT
-	/** Set to enable slave SCL low extend time-out */
+	/** Set to enable slave SCL low extend time-out. */
 	bool slave_scl_low_extend_timeout;
-	/** Set to enable maser SCL low extend time-out */
+	/** Set to enable maser SCL low extend time-out. */
 	bool master_scl_low_extend_timeout;
 #endif
 };
@@ -409,10 +409,10 @@ static void _i2c_master_wait_for_sync(
  * Use to initialize the configuration structure to known default values.
  *
  * The default configuration is as follows:
- * - Baudrate 100kHz
+ * - Baudrate 100KHz
  * - GCLK generator 0
  * - Do not run in standby
- * - Start bit hold time 300ns-600ns
+ * - Start bit hold time 300ns - 600ns
  * - Buffer timeout = 65535
  * - Unknown bus status timeout = 65535
  * - Do not run in standby
@@ -562,20 +562,20 @@ void i2c_master_send_stop(struct i2c_master_module *const module);
 
 #ifdef FEATURE_I2C_DMA_SUPPORT
 /**
-* \name SERCOM I2C master with DMA interfaces
+* \name SERCOM I2C Master with DMA Interfaces
 * @{
 */
 
 /**
- * \brief Set I2C for DMA transfer with slave address and transfer size.
+ * \brief Set I<SUP>2</SUP>C for DMA transfer with slave address and transfer size.
  *
  * This function will set the slave address, transfer size and enable the auto transfer
  * mode for DMA.
  *
- * \param[in,out] module Pointer to the driver instance to lock.
- * \param[in] addr I2C slave address
- * \param[in] length I2C transfer length with DMA.
- * \param[in] direction I2C transfer direction
+ * \param[in,out] module Pointer to the driver instance to lock
+ * \param[in] addr I<SUP>2</SUP>C slave address
+ * \param[in] length I<SUP>2</SUP>C transfer length with DMA
+ * \param[in] direction I<SUP>2</SUP>C transfer direction
  *
  */
 static inline void i2c_master_dma_set_transfer(struct i2c_master_module *const module,

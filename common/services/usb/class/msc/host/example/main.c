@@ -3,7 +3,7 @@
  *
  * \brief Main functions for USB host mass storage example
  *
- * Copyright (C) 2011-2012 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -46,8 +46,8 @@
 #include "ui.h"
 #include "main.h"
 
-static uint16_t main_usb_sof_counter = 0;
-static uint8_t lun_state = 0;
+static volatile uint16_t main_usb_sof_counter = 0;
+static volatile uint8_t lun_state = 0;
 
 #define MSG_TEST "Test UHI MSC\n"
 

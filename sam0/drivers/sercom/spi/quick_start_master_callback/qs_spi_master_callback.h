@@ -109,7 +109,7 @@
  *      \snippet qs_spi_master_callback.c slave_init
  *   -# Get default configuration to edit.
  *      \snippet qs_spi_master_callback.c conf_defaults
- *   -# Set mux setting E.
+ *   -# Set MUX setting E.
  *      \snippet qs_spi_master_callback.c mux_setting
  *   -# Set pinmux for pad 0 (data in (MISO) on extension header 1, pin 17).
  *      \snippet qs_spi_master_callback.c di
@@ -125,9 +125,9 @@
  *      \snippet qs_spi_master_callback.c enable
  * -# Setup the callback functionality:
  *    \snippet qs_spi_master_callback.c run_callback_config
- *   -# Register callback function for buffer transmitted
+ *   -# Register callback function for buffer transmitted.
  *      \snippet qs_spi_master_callback.c reg_callback
- *   -# Enable callback for buffer transmitted
+ *   -# Enable callback for buffer transmitted.
  *      \snippet qs_spi_master_callback.c en_callback
  *
  * \section asfdoc_sam0_sercom_spi_master_callback_use_case Use Case
@@ -138,7 +138,7 @@
  * -# Select slave.
  *    \snippet qs_spi_master_callback.c select_slave
  * -# Write buffer to SPI slave.
- *    \snippet qs_spi_master_callback.c write
+ *    \snippet qs_spi_master_callback.c write and read
  * -# Wait for the transfer to be complete.
  *    \snippet qs_spi_master_callback.c wait
  * -# Deselect slave.

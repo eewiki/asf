@@ -46,7 +46,7 @@
  *
  * In this use case, the I<SUP>2</SUP>C will used and set up as follows:
  *  - Slave mode
- *  - 100kHz operation speed
+ *  - 100KHz operation speed
  *  - Not operational in standby
  *  - 10000 packet timeout value
  *
@@ -67,7 +67,7 @@
  * Globally accessible module structure:
  * \snippet qs_i2c_slave_basic_use.c module
  *
- * Function for setting up the module.
+ * Function for setting up the module:
  * \snippet qs_i2c_slave_basic_use.c initialize_i2c
  *
  * Add to user application main():
@@ -84,9 +84,9 @@
  *      \snippet qs_i2c_slave_basic_use.c init_module
  *   -# Enable the module.
  *      \snippet qs_i2c_slave_basic_use.c enable_module
- * -# Create variable to hold transfer direction
+ * -# Create variable to hold transfer direction.
  *    \snippet qs_i2c_slave_basic_use.c dir
- * -# Create packet variable to transfer
+ * -# Create packet variable to transfer.
  *    \snippet qs_i2c_slave_basic_use.c pack
  *
  * \section asfdoc_sam0_sercom_i2c_slave_basic_use_implementation Implementation

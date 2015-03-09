@@ -46,7 +46,7 @@
 /**
  * \defgroup asfdoc_sam0_ac_group SAM Analog Comparator Driver (AC)
  *
- * This driver for SAM devices provides an interface for the configuration
+ * This driver for Atmel® | SMART™ SAM devices provides an interface for the configuration
  * and management of the device's Analog Comparator functionality, for the
  * comparison of analog voltages against a known reference voltage to determine
  * its relative level. The following driver API modes are covered by this
@@ -60,9 +60,9 @@
  *  - AC (Analog Comparator)
  *
  * The following devices can use this module:
- *  - SAM D20/D21
- *  - SAM R21
- *  - SAM D10/D11
+ *  - Atmel® | SMART™ SAM D20/D21
+ *  - Atmel® | SMART™ SAM R21
+ *  - Atmel® | SMART™ SAM D10/D11
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_ac_prerequisites
@@ -85,7 +85,7 @@
  * against a known reference voltage, to determine if the unknown voltage is
  * higher or lower than the reference. Additionally, window functions are
  * provided so that two comparators can be connected together to determine if
- * an input is below, inside, above or outside the two reference points of the
+ * an input is below, inside, above, or outside the two reference points of the
  * window.
  *
  * Each comparator requires two analog input voltages, a positive and negative
@@ -98,24 +98,24 @@
  * distinct comparators which can be used independently or linked together for
  * Window Comparator mode. In this latter mode, the two comparator units in a
  * comparator pair are linked together to allow the module to detect if an input
- * voltage is below, inside, above or outside a window set by the upper and
+ * voltage is below, inside, above, or outside a window set by the upper and
  * lower threshold voltages set by the two comparators. If not required, window
  * comparison mode can be turned off and the two comparator units can be
  * configured and used separately.
  *
  * \subsection asfdoc_sam0_ac_module_overview_pos_neg_mux Positive and Negative Input MUXs
- * Each comparator unit requires two input voltages, a positive and negative
+ * Each comparator unit requires two input voltages, a positive and a negative
  * channel (note that these names refer to the logical operation that the unit
- * performs, and both voltages should be above GND) which are then compared with
- * one another. Both the positive and negative channel inputs are connected to
+ * performs, and both voltages should be above GND), which are then compared with
+ * one another. Both the positive and the negative channel inputs are connected to
  * a pair of MUXs, which allows one of several possible inputs to be selected
  * for each comparator channel.
  *
  * The exact channels available for each comparator differ for the positive and
- * negative inputs, but the same MUX choices are available for all comparator
+ * the negative inputs, but the same MUX choices are available for all comparator
  * units (i.e. all positive MUXes are identical, all negative MUXes are
  * identical). This allows the user application to select which voltages are
- * compared to one-another.
+ * compared to one another.
  *
  * When used in window mode, both comparators in the window pair should have
  * their positive channel input MUXs configured to the same input channel, with
@@ -125,7 +125,7 @@
  * \subsection asfdoc_sam0_ac_module_overview_output_filtering Output Filtering
  * The output of each comparator unit can either be used directly with no
  * filtering (giving a lower latency signal, with potentially more noise around
- * the comparison threshold) or it can be passed through a multiple stage
+ * the comparison threshold) or be passed through a multiple stage
  * digital majority filter. Several filter lengths are available, with the
  * longer stages producing a more stable result, at the expense of a higher
  * latency.
@@ -139,7 +139,7 @@
  * positive and negative input channels are close in voltage to one another, an
  * optional hysteresis can be used to widen the point at which the output result
  * flips. This mode will prevent a change in the comparison output unless the
- * inputs cross one-another beyond the hysteresis gap introduces by this mode.
+ * inputs cross one another beyond the hysteresis gap introduces by this mode.
  *
  * \subsection asfdoc_sam0_ac_module_overview_sampling Single Shot and Continuous Sampling Modes
  * Comparators can be configured to run in either Single Shot or Continuous
@@ -245,7 +245,7 @@
  *
  * \section asfdoc_sam0_ac_extra_info Extra Information
  *
- * For extra information see \ref asfdoc_sam0_ac_extra. This includes:
+ * For extra information, see \ref asfdoc_sam0_ac_extra. This includes:
  *  - \ref asfdoc_sam0_ac_extra_acronyms
  *  - \ref asfdoc_sam0_ac_extra_dependencies
  *  - \ref asfdoc_sam0_ac_extra_errata
@@ -278,7 +278,7 @@ extern struct ac_module *_ac_instance[AC_INST_NUM];
 
 
 /**
- * \name AC window channel status flags
+ * \name AC Window Channel Status Flags
  *
  * AC window channel status flags, returned by \ref ac_win_get_status().
  *
@@ -287,11 +287,11 @@ extern struct ac_module *_ac_instance[AC_INST_NUM];
 
  /** Unknown output state; the comparator window channel was not ready. */
 #define AC_WIN_STATUS_UNKNOWN         (1UL << 0)
-/** Window Comparator's input voltage is above the window */
+/** Window Comparator's input voltage is above the window. */
 #define AC_WIN_STATUS_ABOVE           (1UL << 1)
-/** Window Comparator's input voltage is inside the window */
+/** Window Comparator's input voltage is inside the window. */
 #define AC_WIN_STATUS_INSIDE          (1UL << 2)
-/** Window Comparator's input voltage is below the window */
+/** Window Comparator's input voltage is below the window. */
 #define AC_WIN_STATUS_BELOW           (1UL << 3)
 /**
  * This state reflects the window interrupt flag. When the interrupt flag
@@ -302,7 +302,7 @@ extern struct ac_module *_ac_instance[AC_INST_NUM];
 /** @} */
 
 /**
- * \name AC channel status flags
+ * \name AC Channel Status Flags
  *
  * AC channel status flags, returned by \ref ac_chan_get_status().
  *
@@ -328,22 +328,22 @@ extern struct ac_module *_ac_instance[AC_INST_NUM];
 /** Type definition for a AC module callback function. */
 typedef void (*ac_callback_t)(struct ac_module *const module_inst);
 
-/** Enum for possible callback types for the AC module */
+/** Enum for possible callback types for the AC module. */
 enum ac_callback {
-	/** Callback for comparator 0 */
+	/** Callback for comparator 0. */
 	AC_CALLBACK_COMPARATOR_0 = 0,
-	/** Callback for comparator 1 */
+	/** Callback for comparator 1. */
 	AC_CALLBACK_COMPARATOR_1 = 1,
-	/** Callback for window 0 */
+	/** Callback for window 0. */
 	AC_CALLBACK_WINDOW_0     = 4,
 #if (AC_NUM_CMP > 2)
-	/** Callback for comparator 2 */
+	/** Callback for comparator 2. */
 	AC_CALLBACK_COMPARATOR_2 = 2,
-	/** Callback for comparator 3 */
+	/** Callback for comparator 3. */
 	AC_CALLBACK_COMPARATOR_3 = 3,
-	/** Callback for window 1 */
+	/** Callback for window 1. */
 	AC_CALLBACK_WINDOW_1     = 5,
-	/** Number of available callbacks */
+	/** Number of available callbacks. */
 #endif /* (AC_NUM_CMP == 2) */
 #if !defined(__DOXYGEN__)
 	AC_CALLBACK_N,
@@ -356,14 +356,14 @@ enum ac_callback {
  * Enum for the possible comparator channels.
  */
 enum ac_chan_channel {
-	/** Comparator channel 0 (Pair 0, Comparator 0) */
+	/** Comparator channel 0 (Pair 0, Comparator 0). */
 	AC_CHAN_CHANNEL_0 = 0,
-	/** Comparator channel 1 (Pair 0, Comparator 1) */
+	/** Comparator channel 1 (Pair 0, Comparator 1). */
 	AC_CHAN_CHANNEL_1 = 1,
 #if defined(__DOXYGEN__) || (AC_NUM_CMP > 2)
-	/** Comparator channel 2 (Pair 1, Comparator 0) */
+	/** Comparator channel 2 (Pair 1, Comparator 0). */
 	AC_CHAN_CHANNEL_2 = 2,
-	/** Comparator channel 3 (Pair 1, Comparator 1) */
+	/** Comparator channel 3 (Pair 1, Comparator 1). */
 	AC_CHAN_CHANNEL_3 = 3,
 #endif
 };
@@ -416,7 +416,7 @@ enum ac_chan_neg_mux {
 	AC_CHAN_NEG_MUX_PIN3       = AC_COMPCTRL_MUXNEG_PIN3,
 	/** Negative comparator input is connected to the internal ground plane. */
 	AC_CHAN_NEG_MUX_GND        = AC_COMPCTRL_MUXNEG_GND,
-	/** Negative comparator input is connected to the channel's internal VCC
+	/** Negative comparator input is connected to the channel's internal V<SUB>CC</SUB>
 	 *  plane voltage scalar. */
 	AC_CHAN_NEG_MUX_SCALED_VCC = AC_COMPCTRL_MUXNEG_VSCALE,
 	/** Negative comparator input is connected to the internal band gap voltage
@@ -468,10 +468,10 @@ enum ac_chan_output {
  * Enum for the possible window comparator channels.
  */
 enum ac_win_channel {
-	/** Window channel 0 (Pair 0, Comparators 0 and 1) */
+	/** Window channel 0 (Pair 0, Comparators 0 and 1). */
 	AC_WIN_CHANNEL_0 = 0,
 #if defined(__DOXYGEN__) || (AC_PAIRS > 1)
-	/** Window channel 1 (Pair 1, Comparators 2 and 3) */
+	/** Window channel 1 (Pair 1, Comparators 2 and 3). */
 	AC_WIN_CHANNEL_1 = 1,
 #endif
 };
@@ -482,14 +482,14 @@ enum ac_win_channel {
  * This enum is used to select when a channel interrupt should occur.
  */
 enum ac_chan_interrupt_selection {
-	/** An interrupt will be generated when the comparator level is passed */
+	/** An interrupt will be generated when the comparator level is passed. */
 	AC_CHAN_INTERRUPT_SELECTION_TOGGLE          = AC_COMPCTRL_INTSEL_TOGGLE,
 	/** An interrupt will be generated when the measurement goes above the
-	 *  compare level
+	 *  compare level.
 	 */
 	AC_CHAN_INTERRUPT_SELECTION_RISING          = AC_COMPCTRL_INTSEL_RISING,
 	/** An interrupt will be generated when the measurement goes below the
-	 *  compare level
+	 *  compare level.
 	 */
 	AC_CHAN_INTERRUPT_SELECTION_FALLING         = AC_COMPCTRL_INTSEL_FALLING,
 	/**
@@ -506,13 +506,13 @@ enum ac_chan_interrupt_selection {
  * This enum is used to select when a window interrupt should occur.
  */
 enum ac_win_interrupt_selection {
-	/** Interrupt is generated when the compare value goes above the window */
+	/** Interrupt is generated when the compare value goes above the window. */
 	AC_WIN_INTERRUPT_SELECTION_ABOVE    = AC_WINCTRL_WINTSEL0_ABOVE,
-	/** Interrupt is generated when the compare value goes inside the window */
+	/** Interrupt is generated when the compare value goes inside the window. */
 	AC_WIN_INTERRUPT_SELECTION_INSIDE   = AC_WINCTRL_WINTSEL0_INSIDE,
-	/** Interrupt is generated when the compare value goes below the window */
+	/** Interrupt is generated when the compare value goes below the window. */
 	AC_WIN_INTERRUPT_SELECTION_BELOW    = AC_WINCTRL_WINTSEL0_BELOW,
-	/** Interrupt is generated when the compare value goes outside the window */
+	/** Interrupt is generated when the compare value goes outside the window. */
 	AC_WIN_INTERRUPT_SELECTION_OUTSIDE  = AC_WINCTRL_WINTSEL0_OUTSIDE,
 };
 
@@ -530,11 +530,11 @@ struct ac_module {
 	/** Hardware module pointer of the associated Analog Comparator peripheral. */
 	Ac *hw;
 #  if AC_CALLBACK_MODE == true
-	/** Array of callbacks */
+	/** Array of callbacks. */
 	ac_callback_t callback[AC_CALLBACK_N];
-	/** Bit mask for callbacks registered */
+	/** Bit mask for callbacks registered. */
 	uint8_t register_callback_mask;
-	/** Bit mask for callbacks enabled */
+	/** Bit mask for callbacks enabled. */
 	uint8_t enable_callback_mask;
 #  endif
 #endif
@@ -596,9 +596,9 @@ struct ac_chan_config {
 	/** Input multiplexer selection for the comparator's negative input pin. */
 	enum ac_chan_neg_mux negative_input;
 	/** Scaled VCC voltage division factor for the channel, when a comparator
-	 *  pin is connected to the VCC voltage scalar input. The formular is:
+	 *  pin is connected to the V<SUB>CC</SUB> voltage scalar input. The formular is:
 	 *      Vscale = Vdd * vcc_scale_factor / 64.
-	 *  If the VCC voltage scalar is not selected as a comparator
+	 *  If the V<SUB>CC</SUB> voltage scalar is not selected as a comparator
 	 *  channel pin's input, this value will be ignored. */
 	uint8_t vcc_scale_factor;
 	/** Interrupt criteria for the comparator channel, to select the condition
@@ -659,7 +659,7 @@ uint8_t _ac_get_inst_index(
  * \brief Determines if the hardware module(s) are currently synchronizing to the bus.
  *
  * Checks to see if the underlying hardware peripheral module(s) are currently
- * synchronizing across multiple clock domains to the hardware bus, This
+ * synchronizing across multiple clock domains to the hardware bus. This
  * function can be used to delay further operations on a module until such time
  * that it is ready, to prevent blocking delays for synchronization in the
  * user application.
@@ -875,12 +875,12 @@ static inline void ac_disable_events(
  *
  *  The default configuration is as follows:
  *   \li Continuous sampling mode
- *   \li Majority of 5 sample output filter
+ *   \li Majority of five sample output filter
  *   \li Hysteresis enabled on the input pins
  *   \li Internal comparator output mode
  *   \li Comparator pin multiplexer 0 selected as the positive input
- *   \li Scaled VCC voltage selected as the negative input
- *   \li VCC voltage scaler set for a division factor of 2
+ *   \li Scaled V<SUB>CC</SUB> voltage selected as the negative input
+ *   \li V<SUB>CC</SUB> voltage scaler set for a division factor of two
  *   \li Channel interrupt set to occur when the compare threshold is passed
  *
  *   \param[out] config  Channel configuration structure to initialize to
@@ -1054,7 +1054,7 @@ static inline uint8_t ac_chan_get_status(
  * \brief Clears an interrupt status flag
  *
  * This function is used to clear the AC_CHAN_STATUS_INTERRUPT_SET flag
- * it will clear the flag for the channel indicated by the channel argument
+ * it will clear the flag for the channel indicated by the channel argument.
  *
  * \param[in]  module_inst  Software instance for the Analog Comparator peripheral
  * \param[in]  channel      Comparator channel to clear
@@ -1165,7 +1165,7 @@ uint8_t ac_win_get_status(
  * \brief Clears an interrupt status flag
  *
  * This function is used to clear the AC_WIN_STATUS_INTERRUPT_SET flag
- * it will clear the flag for the channel indicated by the win_channel argument
+ * it will clear the flag for the channel indicated by the win_channel argument.
  *
  * \param[in]  module_inst  Software instance for the Analog Comparator peripheral
  * \param[in]  win_channel      Window channel to clear
@@ -1267,14 +1267,9 @@ static inline void ac_win_clear_status(
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
- *		<td>E</td>
- *		<td>05/2014</td>
- *		<td>Added support for SAMD10/D11.</td>
- *	</tr>
- *	<tr>
  *		<td>D</td>
- *		<td>03/2014</td>
- *		<td>Added support for SAMR21.</td>
+ *		<td>05/2014</td>
+ *		<td>Added support for SAMR21 and SAMD10/D11.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

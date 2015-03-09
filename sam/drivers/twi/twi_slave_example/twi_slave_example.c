@@ -89,7 +89,7 @@
  * \section contactinfo Contact Information
  * For further information, visit
  * <A href="http://www.atmel.com/">Atmel</A>.\n
- * Support and FAQ: http://support.atmel.com/
+ * Support and FAQ: http://www.atmel.com/design-support/
  *
  */
 
@@ -207,7 +207,13 @@ static void configure_console(void)
 {
 	const usart_serial_options_t uart_serial_options = {
 		.baudrate = CONF_UART_BAUDRATE,
-		.paritytype = CONF_UART_PARITY
+#ifdef CONF_UART_CHAR_LENGTH
+		.charlength = CONF_UART_CHAR_LENGTH,
+#endif
+		.paritytype = CONF_UART_PARITY,
+#ifdef CONF_UART_STOP_BITS
+		.stopbits = CONF_UART_STOP_BITS,
+#endif
 	};
 
 	/* Configure console UART. */
@@ -242,8 +248,14 @@ int main(void)
 	/* Output example information */
 	puts(STRING_HEADER);
 
+#if (SAMG55)
+	/* Enable the peripheral and set TWI mode. */
+	flexcom_enable(BOARD_FLEXCOM_TWI);
+	flexcom_set_opmode(BOARD_FLEXCOM_TWI, FLEXCOM_TWI);
+#else
 	/* Enable the peripheral clock for TWI */
 	pmc_enable_periph_clk(BOARD_ID_TWI_SLAVE);
+#endif
 
 	for (i = 0; i < MEMORY_SIZE; i++) {
 		emulate_driver.uc_memory[i] = 0;

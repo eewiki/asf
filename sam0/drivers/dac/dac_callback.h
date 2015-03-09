@@ -56,7 +56,7 @@ extern "C" {
  * @{
  */
 
-/** \name Callback configuration and initialization
+/** \name Callback Configuration and Initialization
  * @{
  */
 enum status_code dac_chan_write_buffer_job(
@@ -83,7 +83,7 @@ enum status_code dac_unregister_callback(
 
 /** @} */
 
-/** \name Callback enabling and disabling (Channel)
+/** \name Callback Enabling and Disabling (Channel)
  * @{
  */
 

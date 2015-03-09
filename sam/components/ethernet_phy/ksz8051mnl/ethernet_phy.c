@@ -3,7 +3,7 @@
  *
  * \brief API driver for KSZ8051MNL PHY component.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -137,7 +137,7 @@ static uint8_t ethernet_phy_find_valid(Gmac *p_gmac, uint8_t uc_phy_addr,
  */
 uint8_t ethernet_phy_init(Gmac *p_gmac, uint8_t uc_phy_addr, uint32_t mck)
 {
-	uint8_t uc_rc = GMAC_TIMEOUT;
+	uint8_t uc_rc;
 	uint8_t uc_phy;
 
 	ethernet_phy_reset(GMAC,uc_phy_addr);
@@ -177,7 +177,7 @@ uint8_t ethernet_phy_set_link(Gmac *p_gmac, uint8_t uc_phy_addr,
 	uint32_t ul_stat1;
 	uint32_t ul_stat2;
 	uint8_t uc_phy_address, uc_speed, uc_fd;
-	uint8_t uc_rc = GMAC_TIMEOUT;
+	uint8_t uc_rc;
 
 	gmac_enable_management(p_gmac, true);
 
@@ -226,7 +226,7 @@ uint8_t ethernet_phy_set_link(Gmac *p_gmac, uint8_t uc_phy_addr,
 		uc_fd = true;
 	}
 
-	if ((ul_stat1 & GMII_100BASE_T4_HD) && (ul_stat2 & GMII_100TX_HDX)) {
+	if ((ul_stat1 & GMII_100BASE_TX_HD) && (ul_stat2 & GMII_100TX_HDX)) {
 		/* Set MII for 100BaseTX and Half Duplex */
 		uc_speed = true;
 		uc_fd = false;
@@ -264,7 +264,7 @@ uint8_t ethernet_phy_auto_negotiate(Gmac *p_gmac, uint8_t uc_phy_addr)
 	uint32_t ul_retry_count = 0;
 	uint8_t uc_speed = 0;
 	uint8_t uc_fd=0;
-	uint8_t uc_rc = GMAC_TIMEOUT;
+	uint8_t uc_rc;
 
 	gmac_enable_management(p_gmac, true);
 
@@ -391,7 +391,7 @@ uint8_t ethernet_phy_auto_negotiate(Gmac *p_gmac, uint8_t uc_phy_addr)
  */
 uint8_t ethernet_phy_reset(Gmac *p_gmac, uint8_t uc_phy_addr)
 {
-	uint32_t ul_bmcr = GMII_RESET;
+	uint32_t ul_bmcr;
 	uint8_t uc_phy_address = uc_phy_addr;
 	uint32_t ul_timeout = ETH_PHY_TIMEOUT;
 	uint8_t uc_rc = GMAC_TIMEOUT;

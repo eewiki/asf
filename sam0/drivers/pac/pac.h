@@ -46,7 +46,7 @@
 /**
  * \defgroup asfdoc_sam0_pac_group  SAM Peripheral Access Controller Driver (PAC)
  *
- * This driver for SAM devices provides an interface for the locking and
+ * This driver for Atmel® | SMART™ SAM devices provides an interface for the locking and
  * unlocking of peripheral registers within the device. When a peripheral is
  * locked, accidental writes to the peripheral will be blocked and a CPU
  * exception will be raised.
@@ -55,9 +55,9 @@
  *  - PAC (Peripheral Access Controller)
  *
  * The following devices can use this module:
- *  - SAM D20/D21
- *  - SAM R21
- *  - SAM D10/D11
+ *  - Atmel® | SMART™ SAM D20/D21
+ *  - Atmel® | SMART™ SAM R21
+ *  - Atmel® | SMART™ SAM D10/D11
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_pac_prerequisites
@@ -259,7 +259,7 @@
  *			</table>
  *			>]
  *			runaway1 -> program1:f0;
- *			label="1. Run-away code is caught in sanity check.\nA NMI is executed."
+ *			label="1. Run-away code is caught in sanity check.\nAn NMI is executed."
  *		}
  *	   subgraph cluster_away2{
  *		rankdir=TB;
@@ -319,7 +319,7 @@
  *			</table>
  *			>]
  *			runaway2 -> program2:f0;
- *			label="2. Run-away code is caught when modifying\nlocked peripheral. A NMI is executed."
+ *			label="2. Run-away code is caught when modifying\nlocked peripheral. An NMI is executed."
  *		}
  *	}
  * \enddot
@@ -385,7 +385,7 @@
  *			</table>
  *			>]
  *			runaway3 -> program3:f0;
- *			label="3. Run-away code is caught when locking\nlocked peripheral. A NMI is executed."
+ *			label="3. Run-away code is caught when locking\nlocked peripheral. An NMI is executed."
  *		}
  *	subgraph cluster_away4 {
  *		rankdir=TB;
@@ -634,7 +634,7 @@
  *
  * \section asfdoc_sam0_pac_extra_info Extra Information
  *
- * For extra information see \ref asfdoc_sam0_pac_extra. This includes:
+ * For extra information, see \ref asfdoc_sam0_pac_extra. This includes:
  *  - \ref asfdoc_sam0_pac_extra_acronyms
  *  - \ref asfdoc_sam0_pac_extra_dependencies
  *  - \ref asfdoc_sam0_pac_extra_errata
@@ -668,7 +668,7 @@ extern "C" {
  */
 #define SYSTEM_PERIPHERAL_ID(peripheral)    ID_##peripheral
 
-/** \name Peripheral lock and unlock
+/** \name Peripheral Lock and Unlock
  * @{
  */
 __no_inline enum status_code system_peripheral_lock(
@@ -921,14 +921,9 @@ __no_inline enum status_code system_peripheral_unlock(
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
- *		<td>F</td>
- *		<td>04/2014</td>
- *		<td>Added support for SAMD10/D11.</td>
- *	</tr>
- *	<tr>
  *		<td>E</td>
- *		<td>03/2014</td>
- *		<td>Added support for SAMR21.</td>
+ *		<td>04/2014</td>
+ *		<td>Added support for SAMR21 and SAMD10/D11.</td>
  *	</tr>
  *	<tr>
  *		<td>D</td>

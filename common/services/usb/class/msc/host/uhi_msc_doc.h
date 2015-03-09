@@ -52,8 +52,8 @@
  * - \ref asfdoc_uhi_msc_exqsg
  * - \ref asfdoc_uhi_msc_config_examples
  *
- * For more details for Atmel Software Framework (ASF) USB Host Stack, please
- * refer to following Application Notes:
+ * For more details for Atmel® Software Framework (ASF) USB Host Stack,
+ * refer to following application notes:
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8486.pdf">
  *   AVR4950: ASF - USB Host Stack</a>
  *
@@ -71,7 +71,7 @@
  */
 
 /** Global definition which contains standard UHI API for UHC.
- *  It must be added in USB_HOST_UHI define from conf_usb_host.h file. */
+ *  It must be added in USB_HOST_UHI definition from conf_usb_host.h file. */
 #define UHI_MSC { \
 	.install = uhi_msc_install, \
 	.enable = uhi_msc_enable, \
@@ -81,7 +81,7 @@
 /**@}*/
 
 /**
- * \name Functions required by UHC
+ * \name Functions Required by UHC
  * @{
  */
 
@@ -92,7 +92,7 @@
  *
  * \param[in] uhc_device_t	  Device to request
  *
- * \return status of the install
+ * \return Status of the install.
  */
 uhc_enum_status_t uhi_msc_install(uhc_device_t* dev);
 
@@ -106,14 +106,14 @@ uhc_enum_status_t uhi_msc_install(uhc_device_t* dev);
 void uhi_msc_enable(uhc_device_t* dev);
 
 /**
- * \brief Uninstall the interface (if installed)
+ * \brief Uninstall the interface (if installed).
  *
  * \param[in] uhc_device_t	  Device to request
  */
 void uhi_msc_uninstall(uhc_device_t* dev);
 /**@}*/
 
-/** Status of LUN */
+/** Status of LUN. */
 typedef enum
 {
 	/** Success, memory ready. */
@@ -126,7 +126,7 @@ typedef enum
 	LUN_BUSY       = 3,
 } lun_status_t;
 
-/** Callback type used by uhi_msc_scsi() functions */
+/** Callback type used by uhi_msc_scsi() functions. */
 typedef void (*uhi_msc_scsi_callback_t) (bool);
 
 /**
@@ -134,7 +134,7 @@ typedef void (*uhi_msc_scsi_callback_t) (bool);
  * @{
  */
 
-/** LUN structure information */
+/** LUN structure information. */
 typedef struct {
 	struct sbc_read_capacity10_data capacity;
 	bool b_write_protected;
@@ -156,7 +156,7 @@ typedef struct {
  *
  * The UHI Mass Storage can be busy during the enumeration of a USB Device MSC.
  *
- * \return true, if UHI Mass Storage is available
+ * \return True, if UHI Mass Storage is available.
  */
 bool uhi_msc_is_available(void);
 
@@ -165,7 +165,7 @@ bool uhi_msc_is_available(void);
  * Note: A LUN can be available, but with a status LUN_NOT_PRESENT.
  * It is the case for a card reader without card.
  *
- * \return Number of LUN available
+ * \return Number of LUN available.
  */
 uint8_t uhi_msc_get_lun(void);
 
@@ -184,7 +184,7 @@ uhi_msc_lun_t* uhi_msc_get_lun_desc(uint8_t lun);
  * \param[in] lun       LUN number
  * \param[in] callback  Callback to call at the end of scsi command
  *
- * \return true, if the scsi command has been accepted
+ * \return True, if the scsi command has been accepted.
  */
 bool uhi_msc_scsi_test_unit_ready(uint8_t lun, uhi_msc_scsi_callback_t callback);
 
@@ -199,7 +199,7 @@ bool uhi_msc_scsi_test_unit_ready(uint8_t lun, uhi_msc_scsi_callback_t callback)
  * \param[in] nb_sector Number of sector to read
  * \param[in] callback  Callback to call at the end of scsi command
  *
- * \return true, if the scsi command has been accepted
+ * \return True, if the scsi command has been accepted.
  */
 bool uhi_msc_scsi_read_10(uint8_t lun, uint32_t addr, uint8_t *ram,
 		uint8_t nb_sector, uhi_msc_scsi_callback_t callback);
@@ -215,14 +215,14 @@ bool uhi_msc_scsi_read_10(uint8_t lun, uint32_t addr, uint8_t *ram,
  * \param[in] nb_sector Number of sector to write
  * \param[in] callback  Callback to call at the end of scsi command
  *
- * \return true, if the scsi command has been accepted
+ * \return True, if the scsi command has been accepted.
  */
 bool uhi_msc_scsi_write_10(uint8_t lun, uint32_t addr, const uint8_t *ram,
 		uint8_t nb_sector, uhi_msc_scsi_callback_t callback);
 /**@}*/
 
 /**
- * \name USB host Mass Storage interface for control access module
+ * \name USB Host Mass Storage Interface for Control Access Module
  * Layer added on UHI MSC interface to allow the usage of control access module.
  * The control access module provides a common access at all memories and
  * it is used by the File Systems available in ASF.
@@ -236,7 +236,7 @@ bool uhi_msc_scsi_write_10(uint8_t lun, uint32_t addr, const uint8_t *ram,
  * Note: A LUN can be available, but with a status not present.
  * It is the case for a card reader without card.
  *
- * \return Number of available LUN
+ * \return Number of available LUN.
  */
 uint8_t uhi_msc_mem_get_lun(void);
 
@@ -245,7 +245,7 @@ uint8_t uhi_msc_mem_get_lun(void);
  *
  * \param[in] lun       LUN number
  *
- * \return Status of the LUN
+ * \return Status of the LUN.
  */
 Ctrl_status uhi_msc_mem_test_unit_ready(uint8_t lun);
 
@@ -255,7 +255,7 @@ Ctrl_status uhi_msc_mem_test_unit_ready(uint8_t lun);
  * \param[in] lun           LUN number
  * \param[in] u32_nb_sector Pointer to store the last sector address possible on this LUN
  *
- * \return Status of the LUN
+ * \return Status of the LUN.
  */
 Ctrl_status uhi_msc_mem_read_capacity(uint8_t lun, uint32_t *u32_nb_sector);
 
@@ -264,7 +264,7 @@ Ctrl_status uhi_msc_mem_read_capacity(uint8_t lun, uint32_t *u32_nb_sector);
  *
  * \param[in] lun           LUN number
  *
- * \return Sector size (unit 512B)
+ * \return Sector size (unit 512B).
  */
 uint8_t uhi_msc_mem_read_sector_size(uint8_t lun);
 
@@ -273,14 +273,14 @@ uint8_t uhi_msc_mem_read_sector_size(uint8_t lun);
  *
  * \param[in] lun           LUN number
  *
- * \return true, if write protected
+ * \return True, if write protected.
  */
 bool uhi_msc_mem_wr_protect(uint8_t lun);
 
 /**
  * \brief Checks if the device is removed
  *
- * \return Always true for USB Device
+ * \return Always true for USB Device.
  */
 bool uhi_msc_mem_removal(void);
 
@@ -293,7 +293,7 @@ bool uhi_msc_mem_removal(void);
  * \param[in] addr Disk address (unit 512B)
  * \param[out] ram   Pointer to store the data
  *
- * \return Status of the LUN
+ * \return Status of the LUN.
  */
 Ctrl_status uhi_msc_mem_read_10_ram(uint32_t addr, void *ram);
 
@@ -306,7 +306,7 @@ Ctrl_status uhi_msc_mem_read_10_ram(uint32_t addr, void *ram);
  * \param[in] addr  Disk address (unit 512B)
  * \param[in] ram   Pointer on the data
  *
- * \return Status of the LUN
+ * \return Status of the LUN.
  */
 Ctrl_status uhi_msc_mem_write_10_ram(uint32_t addr, const void *ram);
 /**@}*/
@@ -314,32 +314,32 @@ Ctrl_status uhi_msc_mem_write_10_ram(uint32_t addr, const void *ram);
 /**@}*/
 
 /**
- * \page asfdoc_uhi_msc_exqsg Quick start guide for USB host mass-storage module (UHI MSC)
+ * \page asfdoc_uhi_msc_exqsg Quick Start Guide for USB Host Mass-Storage Module (UHI MSC)
  *
  * This is the quick start guide for the \ref asfdoc_uhi_msc_group
- * "USB host mass-storage module (UHI MSC)" with step-by-step instructions on
+ * "USB Host Mass-Storage Module (UHI MSC)" with step-by-step instructions on
  * how to configure and use the modules in a selection of use cases.
  *
  * The use cases highlights several code fragments. The code fragments in the
  * steps for setup can be copied into a custom initialization function, while
  * the steps for usage can be copied into, e.g., the main application function.
  *
- * \section uhi_msc_mem_basic_use_case Basic use case
+ * \section uhi_msc_mem_basic_use_case Basic Use Case
  * In this basic use case, the "USB Host MSC (Single Class support)" module is used.
  *
  * The "USB Host MSC (Multiple Classes support)" module usage is described
- * in \ref uhi_msc_mem_use_cases "Advanced use cases".
+ * in \ref uhi_msc_mem_use_cases "Advanced Use Cases".
  *
- * This example do a simple physical memory access, but a File System module
+ * This example do a simple physical memory access, but a file system module
  * can be added to decode the USB memory file system, see FatFS examples.
  *
- * \subsection uhi_msc_mem_basic_use_case_setup Setup steps
- * As a USB host, it follows common USB host setup steps. Please refer to
+ * \subsection uhi_msc_mem_basic_use_case_setup Setup Steps
+ * As a USB host, it follows common USB host setup steps.Refer to
  * \ref asfdoc_uhc_basic_use_case_setup "USB Host Basic Setup".
  *
- * \subsection uhi_msc_mem_basic_use_case_usage Usage steps
+ * \subsection uhi_msc_mem_basic_use_case_usage Usage Steps
  *
- * \subsubsection uhi_msc_mem_basic_use_case_usage_code Example code
+ * \subsubsection uhi_msc_mem_basic_use_case_usage_code Example Code
  * Content of conf_usb_host.h:
  * \code
 	#define USB_HOST_UHI        UHI_MSC
@@ -383,8 +383,8 @@ Ctrl_status uhi_msc_mem_write_10_ram(uint32_t addr, const void *ram);
  \endcode
  *
  * \subsubsection uhi_msc_mem_basic_use_case_setup_flow Workflow
- * -# Ensure that conf_usb_host.h is available and contains the following configuration
- * which is the USB host MSC configuration:
+ * -# Ensure that conf_usb_host.h is available and contains the following configuration,
+ *  which is the USB host MSC configuration:
  * \code
  #define USB_HOST_UHI   UHI_MSC
  \endcode
@@ -398,7 +398,7 @@ Ctrl_status uhi_msc_mem_write_10_ram(uint32_t addr, const void *ram);
  *
  * -# The access of the USB memories is allowed through functions described in \ref asfdoc_uhi_msc_api_overview.
  *
- * \section uhi_msc_mem_use_cases Advanced use cases
+ * \section uhi_msc_mem_use_cases Advanced Use Cases
  * \ifnot ASF_MANUAL
  * For more advanced use of the UHI MSC module, see the following use cases:
  * - \subpage uhc_use_case_1
@@ -415,44 +415,44 @@ Ctrl_status uhi_msc_mem_write_10_ram(uint32_t addr, const void *ram);
  *
  * \section asfdoc_uhi_msc_config_examples_1 conf_usb_host.h
  * \subsection asfdoc_uhi_msc_config_examples_1_1  UHI MSC Single
- * \include module_config\conf_usb_host.h
- * \subsection asfdoc_uhi_msc_config_examples_1_2  UHI MSC Multiple (composite)
- * \include composite\host\module_config\conf_usb_host.h
+ * \include module_config/conf_usb_host.h
+ * \subsection asfdoc_uhi_msc_config_examples_1_2  UHI MSC Multiple (Composite)
+ * \include composite/host/module_config/conf_usb_host.h
  *
  * \section asfdoc_uhi_msc_config_examples_2 conf_clock.h
  *
- * \subsection asfdoc_uhi_msc_config_examples_2_1 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_clock.h
+ * \subsection asfdoc_uhi_msc_config_examples_2_1 AT32UC3A0, AT32UC3A1, and AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_clock.h
  *
- * \subsection asfdoc_uhi_msc_config_examples_2_2 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_clock.h
+ * \subsection asfdoc_uhi_msc_config_examples_2_2 AT32UC3A3 and AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_clock.h
  *
- * \subsection asfdoc_uhi_msc_config_examples_2_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_clock.h
+ * \subsection asfdoc_uhi_msc_config_examples_2_3 AT32UC3C, ATUCXXD, ATUCXXL3U, and ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_clock.h
  *
- * \subsection asfdoc_uhi_msc_config_examples_2_4 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example2\sam3x8h_sam3x_ek\conf_clock.h
+ * \subsection asfdoc_uhi_msc_config_examples_2_4 SAM3X and SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example2/sam3x8h_sam3x_ek/conf_clock.h
  *
  * \section asfdoc_uhi_msc_config_examples_3 conf_clocks.h
  *
- * \subsection asfdoc_uhi_msc_config_examples_3_1 SAMD21 devices (USB)
- * \include example2\samd21j18a_samd21_xplained_pro\conf_clocks.h
+ * \subsection asfdoc_uhi_msc_config_examples_3_1 SAMD21 Devices (USB)
+ * \include example2/samd21j18a_samd21_xplained_pro/conf_clocks.h
  *
  * \section asfdoc_uhi_msc_config_examples_4 conf_board.h
  *
- * \subsection asfdoc_uhi_msc_config_examples_4_1 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_board.h
+ * \subsection asfdoc_uhi_msc_config_examples_4_1 AT32UC3A0, AT32UC3A1, and AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_board.h
  *
- * \subsection asfdoc_uhi_msc_config_examples_4_2 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_board.h
+ * \subsection asfdoc_uhi_msc_config_examples_4_2 AT32UC3A3, and AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_board.h
  *
- * \subsection asfdoc_uhi_msc_config_examples_42_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_board.h
+ * \subsection asfdoc_uhi_msc_config_examples_42_3 AT32UC3C, ATUCXXD, ATUCXXL3U, and ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_board.h
  *
- * \subsection asfdoc_uhi_msc_config_examples_4_4 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example2\sam3x8h_sam3x_ek\conf_board.h
+ * \subsection asfdoc_uhi_msc_config_examples_4_4 SAM3X and SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example2/sam3x8h_sam3x_ek/conf_board.h
  *
- * \subsection asfdoc_uhi_msc_config_examples_4_5 SAMD21 devices (USB)
- * \include example2\samd21j18a_samd21_xplained_pro\conf_board.h
+ * \subsection asfdoc_uhi_msc_config_examples_4_5 SAMD21 Devices (USB)
+ * \include example2/samd21j18a_samd21_xplained_pro/conf_board.h
  */
 

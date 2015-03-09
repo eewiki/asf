@@ -49,32 +49,32 @@
 extern "C" {
 #endif
 
-/** DMA channel n offset*/
+/** DMA channel n offset. */
 #define DMA_CRC_CHANNEL_N_OFFSET 0x20
 
-/** CRC Polynomial Type */
+/** CRC Polynomial Type. */
 enum crc_polynomial_type {
-	/** CRC16 (CRC-CCITT) */
+	/** CRC16 (CRC-CCITT). */
 	CRC_TYPE_16,
-	/** CRC32 (IEEE 802.3) */
+	/** CRC32 (IEEE 802.3). */
 	CRC_TYPE_32,
 };
 
-/** CRC Beat Type */
+/** CRC Beat Type. */
 enum crc_beat_size {
-	/** Byte bus access */
+	/** Byte bus access. */
 	CRC_BEAT_SIZE_BYTE,
-	/** Half-word bus access */
+	/** Half-word bus access. */
 	CRC_BEAT_SIZE_HWORD,
-	/** Word bus access */
+	/** Word bus access. */
 	CRC_BEAT_SIZE_WORD,
 };
 
-/** Configurations for CRC calculation */
+/** Configurations for CRC calculation. */
 struct dma_crc_config {
-	/** CRC polynomial type */
+	/** CRC polynomial type. */
 	enum crc_polynomial_type type;
-	/** CRC beat size */
+	/** CRC beat size. */
 	enum crc_beat_size size;
 };
 

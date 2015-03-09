@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  * @author    Atmel Corporation: http://www.atmel.com
- * @author    Support email: avr@atmel.com
+ * @author    Support: http://www.atmel.com/design-support/
  */
 
 /**
@@ -85,7 +85,7 @@
  *     and Physical Layer (PHY) Specifications for Low-Rate Wireless Personal
  * Area
  *     Networks (WPANs).\n\n
- * 2)  AVR Wireless Support <A href="http://avr@atmel.com">avr@atmel.com</A>.\n
+ * 2)  <a href="http://www.atmel.com/design-support/">Atmel Design Support</a>.\n
  *
  * \section contactinfo Contact Information
  * For further information,visit

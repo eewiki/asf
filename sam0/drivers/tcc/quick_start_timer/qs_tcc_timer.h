@@ -53,7 +53,7 @@
  *
  * The TCC module will be set up as follows:
  * - GCLK generator 1 (GCLK 32K) clock source
- * - Use double buffering write when set top, compare or pattern through API
+ * - Use double buffering write when set top, compare, or pattern through API
  * - No dithering on the counter or compare
  * - Prescaler is divided by 64
  * - GCLK reload action

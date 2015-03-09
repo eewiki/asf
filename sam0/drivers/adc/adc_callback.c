@@ -166,7 +166,7 @@ void adc_unregister_callback(
  * \param[in]  samples      Number of samples to acquire
  * \param[out] buffer       Buffer to store the ADC samples
  *
- * \return Status of the job start
+ * \return Status of the job start.
  * \retval STATUS_OK        The conversion job was started successfully and is
  *                          in progress
  * \retval STATUS_BUSY      The ADC is already busy with another job
@@ -206,7 +206,7 @@ enum status_code adc_read_buffer_job(
  * \param [in]  module_inst Pointer to the ADC software instance struct
  * \param [in]  type        Type of job to abort
  *
- * \return Status of the job
+ * \return Status of the job.
  */
 enum status_code adc_get_job_status(
 		struct adc_module *module_inst,

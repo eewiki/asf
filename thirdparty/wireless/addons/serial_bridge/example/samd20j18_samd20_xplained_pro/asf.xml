@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="Serial Bridge Application-SAM D20 Xplained Pro" id="thirdparty.wireless.addons.serial_bridge.samd20_xplained_pro" force-caption ="true" force-description="true">
+	<project caption="Serial Bridge Application - SAM D20 Xplained Pro" id="thirdparty.wireless.addons.serial_bridge.samd20_xplained_pro" force-caption ="true" force-description="true">
 		<info type="description" value="summary">
 			Serial Bridge acts as a bridge for performing serial communication between host and ncp
 		</info>	
@@ -12,7 +12,7 @@
 		<require idref="thirdparty.wireless.addons.serial_bridge.example"/>
 		<require idref="board.samd20_xplained_pro"/>
 		
-		<config name="config.sam0.drivers.sercom.usart" value="polled"/>
+		<config name="config.sam0.drivers.sercom.usart" value="callback"/>
 		<config name="config.thirdparty.wireless.addons.sio2host" value="uart"/>
 		<config name="config.thirdparty.wireless.addons.sio2ncp" value="uart"/>
 

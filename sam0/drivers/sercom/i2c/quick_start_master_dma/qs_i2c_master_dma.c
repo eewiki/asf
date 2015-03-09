@@ -147,7 +147,8 @@ static void setup_dma_descriptor(DmacDescriptor *descriptor)
 	descriptor_config.dst_increment_enable = false;
 	descriptor_config.block_transfer_count = DATA_LENGTH;
 	descriptor_config.source_address = (uint32_t)buffer + DATA_LENGTH;
-	descriptor_config.destination_address = (uint32_t)(&i2c_master_instance.hw->I2CM.DATA.reg);
+	descriptor_config.destination_address =
+			(uint32_t)(&i2c_master_instance.hw->I2CM.DATA.reg);
 	//! [dma_setup_7]
 
 	//! [dma_setup_8]

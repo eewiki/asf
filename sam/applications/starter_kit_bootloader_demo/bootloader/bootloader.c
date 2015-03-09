@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -47,7 +47,7 @@
  * \section Introduction
  *
  * Bootloader of Starter Kit Bootloader Demo is a part of Starter Kit
- * Bootloader Demo for SAM4N Xplained Pro. It is to facilitate firmware
+ * Bootloader Demo for SAM Xplained Pro. It is to facilitate firmware
  * upgrade using microSD card. The bootloader checks the trigger flag in the
  * \ref regions_info first. The \ref region_info is normally at the end of
  * the Flash which size is defined by \ref MEM_ERASE_SIZE in the
@@ -474,8 +474,13 @@ static uint8_t _app_exec(void *addr)
 	osc_wait_ready(OSC_SLCK_32K_RC);
 	pmc_switch_mck_to_sclk(SYSCLK_PRES_1);
 	/* Switch clock to fast RC */
+#if SAMG55
+	osc_enable(OSC_MAINCK_24M_RC);
+	osc_wait_ready(OSC_MAINCK_24M_RC);
+#else
 	osc_enable(OSC_MAINCK_12M_RC);
 	osc_wait_ready(OSC_MAINCK_12M_RC);
+#endif	
 	pmc_switch_mck_to_mainck(SYSCLK_PRES_1);
 
 	/* Modify vector table location */

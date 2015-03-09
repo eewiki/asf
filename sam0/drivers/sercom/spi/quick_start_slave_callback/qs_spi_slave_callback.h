@@ -104,11 +104,11 @@
  *      \snippet qs_spi_slave_callback.c conf_preload
  *   -# Set frame format to SPI frame.
  *      \snippet qs_spi_slave_callback.c conf_format
- *   -# Set mux setting E.
+ *   -# Set MUX setting E.
  *      \snippet qs_spi_slave_callback.c mux_setting
  *   -# Set pinmux for pad 0 (data in (MOSI) on extension header 1, pin 17).
  *      \snippet qs_spi_slave_callback.c di
- *   -# Set pinmux for pad 1 (slave select on on extension header 1, pin 15)
+ *   -# Set pinmux for pad 1 (slave select on on extension header 1, pin 15).
  *      \snippet qs_spi_slave_callback.c ss
  *   -# Set pinmux for pad 2 (data out (MISO) on extension header 1, pin 16).
  *      \snippet qs_spi_slave_callback.c do
@@ -120,9 +120,9 @@
  *      \snippet qs_spi_slave_callback.c enable
  * -# Setup the callback functionality:
  *    \snippet qs_spi_slave_callback.c run_callback_config
- *   -# Register callback function for buffer transmitted
+ *   -# Register callback function for buffer transmitted.
  *      \snippet qs_spi_slave_callback.c reg_callback
- *   -# Enable callback for buffer transmitted
+ *   -# Enable callback for buffer transmitted.
  *      \snippet qs_spi_slave_callback.c en_callback
  *
  * \section asfdoc_sam0_sercom_spi_slave_callback_usecase Use Case

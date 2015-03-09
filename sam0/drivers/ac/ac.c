@@ -383,7 +383,7 @@ void ac_win_disable(
  *  \param[in] module_inst  Software instance for the Analog Comparator peripheral
  *  \param[in] win_channel  Comparator Window channel to test
  *
- *  \return Bit mask of Analog Comparator window channel status flags
+ *  \return Bit mask of Analog Comparator window channel status flags.
  */
 uint8_t ac_win_get_status(
 		struct ac_module *const module_inst,

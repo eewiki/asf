@@ -1,18 +1,30 @@
 <asf xmlversion="1.0">
-	<module type="driver" id="sam.drivers.spi" caption="SPI - Serial Peripheral Interface">
-		<info type="description" value="summary">
-		The Serial Peripheral Interface (SPI) circuit is a synchronous serial data link that provides communication with external devices in Master or Slave Mode.
-		</info>
-		<info type="keyword" value="technology">
-			<keyword value="Communication"/>
-		</info>
-		<build type="c-source" value="spi.c"/>
-		<build type="header-file" subtype="api" value="spi.h"/>
-		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="sam_drivers_spi_group"/>
-		<device-support value="sam"/>
-		<require idref="sam.utils"/>
-		<require idref="common.services.basic.clock"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
-	</module>
+	<select-by-device id="sam.drivers.spi" caption="SPI - Serial Peripheral Interface">
+		<module type="driver" id="sam.drivers.spi#0" caption="SPI - Serial Peripheral Interface">
+			<info type="description" value="summary">
+			The Serial Peripheral Interface (SPI) circuit is a synchronous serial data link that provides communication with external devices in Master or Slave Mode.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="spi.c"/>
+			<build type="header-file" subtype="api" value="spi.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="sam_drivers_spi_group"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<device-support value="sam4l"/>
+			<device-support value="sam4n"/>
+			<device-support value="sam4c"/>
+			<device-support value="samg51"/>
+			<device-support value="samg53"/>
+			<device-support value="samg54"/>
+			<device-support value="sam4cp"/>
+			<device-support value="sam4cm"/>
+			<require idref="sam.utils"/>
+			<require idref="common.services.basic.clock"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+	</select-by-device>
 </asf>

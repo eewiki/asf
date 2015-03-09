@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="MAC No Beacon Application Device AT86RF231-XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.dev.ncp.xmega_a3bu_xplained_rz600rf231" force-caption="true" force-description="true">
+	<project caption="MAC No Beacon Application Device AT86RF231 - XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.dev.ncp.xmega_a3bu_xplained_rz600rf231" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 		The basic MAC Example No Beacon Application deploys a no beacon-enabled network with star topology.
 		</info>

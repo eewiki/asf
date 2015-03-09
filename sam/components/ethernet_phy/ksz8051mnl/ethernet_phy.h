@@ -3,7 +3,7 @@
  *
  * \brief KSZ8051MNL (Ethernet PHY) driver for SAM.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -107,7 +107,7 @@
 // Bit definitions: GMII_BMSR 0x01 Basic Status
 #define GMII_100BASE_T4        (1 << 15) // 100BASE-T4 Capable
 #define GMII_100BASE_TX_FD     (1 << 14) // 100BASE-TX Full Duplex Capable
-#define GMII_100BASE_T4_HD     (1 << 13) // 100BASE-TX Half Duplex Capable
+#define GMII_100BASE_TX_HD     (1 << 13) // 100BASE-TX Half Duplex Capable
 #define GMII_10BASE_T_FD       (1 << 12) // 10BASE-T Full Duplex Capable
 #define GMII_10BASE_T_HD       (1 << 11) // 10BASE-T Half Duplex Capable
 //      Reserved                10 to79  // Read as 0, ignore on write
@@ -135,13 +135,13 @@
 //      Reserved               7
 #define GMII_RF               (1 << 13) // Remote Fault
 //      Reserved               12       // Write as 0, ignore on read
-#define GMII_PAUSE_MASK       (3 << 11) // 0,0 = No Pause 1,0 = Asymmetric Pause(link partner)
+#define GMII_PAUSE_MASK       (3 << 10) // 0,0 = No Pause 1,0 = Asymmetric Pause(link partner)
                                         // 0,1 = Symmetric Pause 1,1 = Symmetric&Asymmetric Pause(local device)   
 #define GMII_100T4               (1 << 9)  // 100BASE-T4 Support
 #define GMII_100TX_FDX           (1 << 8)  // 100BASE-TX Full Duplex Support
-#define GMII_100TX_HDX           (1 << 7)  // 100BASE-TX Support
+#define GMII_100TX_HDX           (1 << 7)  // 100BASE-TX Half Duplex Support
 #define GMII_10_FDX           (1 << 6)  // 10BASE-T Full Duplex Support
-#define GMII_10_HDX           (1 << 5)  // 10BASE-T Support
+#define GMII_10_HDX           (1 << 5)  // 10BASE-T Half Duplex Support
 //      Selector                 4 to 0   // Protocol Selection Bits
 #define GMII_AN_IEEE_802_3      0x0001    // [00001] = IEEE 802.3
 

@@ -132,7 +132,7 @@
  *
  * \section contactinfo Contact Information
  * For further information, visit <a href="http://www.atmel.com/">Atmel</a>.\n
- * Support and FAQ: http://support.atmel.com/
+ * Support and FAQ: http://www.atmel.com/design-support/
  */
 
 uint8_t serial_if_user_def_api_parser(uint8_t *puc_rx_msg, uint16_t us_len);

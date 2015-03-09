@@ -236,15 +236,21 @@ uint32_t efc_get_wait_state(Efc *p_efc)
 uint32_t efc_perform_command(Efc *p_efc, uint32_t ul_command,
 		uint32_t ul_argument)
 {
+	uint32_t result;
+	irqflags_t flags;
+
 	/* Unique ID commands are not supported. */
 	if (ul_command == EFC_FCMD_STUI || ul_command == EFC_FCMD_SPUI) {
 		return EFC_RC_NOT_SUPPORT;
 	}
 
+	flags = cpu_irq_save();
 	/* Use RAM Function. */
-	return efc_perform_fcr(p_efc,
+	result = efc_perform_fcr(p_efc,
 			EEFC_FCR_FKEY_PASSWD | EEFC_FCR_FARG(ul_argument) |
 			EEFC_FCR_FCMD(ul_command));
+	cpu_irq_restore(flags);
+	return result;
 }
 
 /**

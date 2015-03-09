@@ -204,7 +204,7 @@ const chipidtype_t chipid_sramsize[CHIPID_SRAMSIZE_SIZE] = {
 };
 
 //! Number of architectures Supported
-#define CHIPID_ARCH_SIZE    40
+#define CHIPID_ARCH_SIZE    43
 //! Architectures support list
 const chipidtype_t chipid_archsize[CHIPID_ARCH_SIZE] = {
 
@@ -219,6 +219,9 @@ const chipidtype_t chipid_archsize[CHIPID_ARCH_SIZE] = {
 	{0x40,              "AT91x40 Series"},
 	{0x42,              "AT91x42 Series"},
 	{0x43,              "AT91SAMG51 Series"},
+	{0x44,              "AT91SAMG55 Series(49-lead version)"},
+	{0x45,              "AT91SAMG55 Series(64-lead version)"},
+	{0x46,              "AT91SAMG55 Series(100-lead version)"},
 	{0x47,              "AT91SAMG53/SAMG54 Series"},
 	{0x55,              "AT91x55 Series"},
 	{0x60,              "AT91SAM7Axx Series"},
@@ -358,9 +361,15 @@ static void configure_console(void)
 {
 	const usart_serial_options_t uart_serial_options = {
 		.baudrate = CONF_UART_BAUDRATE,
-		.paritytype = CONF_UART_PARITY
+#ifdef CONF_UART_CHAR_LENGTH
+		.charlength = CONF_UART_CHAR_LENGTH,
+#endif
+		.paritytype = CONF_UART_PARITY,
+#ifdef CONF_UART_STOP_BITS
+		.stopbits = CONF_UART_STOP_BITS,
+#endif
 	};
-	
+
 	/* Configure console UART. */
 	sysclk_enable_peripheral_clock(CONSOLE_UART_ID);
 	stdio_serial_init(CONF_UART, &uart_serial_options);

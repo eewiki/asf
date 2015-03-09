@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC NoBeacon Sleep Application SAM4L Xplained Pro-AT86RF233 Zigbit(Carrier)" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon_sleep.sam4lc4c_rf233_zigbit_ext">
+	<project force-caption="true" force-description="true" caption="MAC NoBeacon Sleep Application AT86RF233 (ATZB-A-233-XPRO) - SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon_sleep.sam4lc4c_rf233_zigbit_ext">
 		<info type="description" value="summary">
 		MAC Serial Interface Application - Beacon FFD
 		</info>	

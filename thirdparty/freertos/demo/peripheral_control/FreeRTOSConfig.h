@@ -5,7 +5,7 @@
  * \brief Generic FreeRTOS peripheral control functions
  *
  *
- * Copyright (c) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -85,6 +85,7 @@ void assert_triggered( const char * file, uint32_t line );
 #define configUSE_MALLOC_FAILED_HOOK			1
 #define configUSE_APPLICATION_TASK_TAG			0
 #define configUSE_COUNTING_SEMAPHORES			1
+#define configENABLE_BACKWARD_COMPATIBILITY        1
 
 /* Run time stats gathering definitions. */
 #if defined (__GNUC__) || defined (__ICCARM__)

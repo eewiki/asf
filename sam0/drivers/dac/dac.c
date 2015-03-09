@@ -119,7 +119,7 @@ static void _dac_set_config(
  * \param[in]  config       Pointer to the config struct, created by the user
  *                          application
  *
- * \return Status of initialization
+ * \return Status of initialization.
  * \retval STATUS_OK          Module initiated correctly
  * \retval STATUS_ERR_DENIED  If module is enabled
  * \retval STATUS_BUSY        If module is busy resetting
@@ -271,7 +271,7 @@ void dac_disable(
 /**
  * \brief Writes a DAC channel configuration to the hardware module.
  *
- * Writes out a given channel configuration to the hardware module.
+ * Writes a given channel configuration to the hardware module.
  *
  * \note The DAC device instance structure must be initialized before calling
  *       this function.
@@ -396,7 +396,7 @@ void dac_chan_disable_output_buffer(
  * \param[in] channel          DAC channel to write to
  * \param[in] data             Conversion data
  *
- * \return Status of the operation
+ * \return Status of the operation.
  * \retval STATUS_OK           If the data was written
  */
 enum status_code dac_chan_write(
@@ -445,7 +445,7 @@ enum status_code dac_chan_write(
  * \param[in] buffer             Pointer to the digital data write buffer to be converted
  * \param[in] length             Length of the write buffer
  *
- * \return Status of the operation
+ * \return Status of the operation.
  * \retval STATUS_OK           If the data was written or no data conversion required
  * \retval STATUS_ERR_UNSUPPORTED_DEV  The DAC is not configured as using 
  *                                         event trigger.
@@ -510,11 +510,11 @@ enum status_code dac_chan_write_buffer_wait(
  * \brief Retrieves the current module status
  *
  * Checks the status of the module and returns it as a bitmask of status
- * flags
+ * flags.
  *
  * \param[in] module_inst      Pointer to the DAC software device struct
  *
- * \return Bitmask of status flags
+ * \return Bitmask of status flags.
  *
  * \retval DAC_STATUS_CHANNEL_0_EMPTY    Data has been transferred from DATABUF
  *                                       to DATA by a start conversion event

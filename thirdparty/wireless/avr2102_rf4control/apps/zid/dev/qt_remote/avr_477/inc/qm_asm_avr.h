@@ -7,7 +7,7 @@
  * - Compiler:           IAR EWAVR and GNU GCC for AVR.
  * - Supported devices:  Atmel AVR 8-bit.
  * - Userguide:          QTouch Library User Guide - doc8207.pdf.
- * - Support email:      touch@atmel.com
+ * - Support: http://www.atmel.com/design-support/
  *
  * Copyright (c) 2014 Atmel Corporation. All rights reserved.
  *

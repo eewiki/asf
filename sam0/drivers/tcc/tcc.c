@@ -103,7 +103,7 @@ const uint8_t _tcc_exts[TCC_INST_NUM] = TCC_EXTS;
 /* List of sizes support of TCC modules. */
 const uint8_t _tcc_sizes[TCC_INST_NUM] = TCC_SIZES;
 
-/* List of max values supported of TCC modules. */
+/* List of maximumvalues supported of TCC modules. */
 const uint32_t _tcc_maxs[TCC_INST_NUM] = TCC_MAXS;
 
 /* List of available channel number of TCC modules. */
@@ -166,7 +166,7 @@ uint8_t _tcc_get_inst_index(
  *     - No inversion of waveform output
  *  \li No channel output enabled
  *  \li No PWM pin output enabled
- *  \li Pin and Mux configuration not set
+ *  \li Pin and MUX configuration not set
  *
  * \param[out]  config  Pointer to a TCC module configuration structure to set
  * \param[in]   hw      Pointer to the TCC hardware module
@@ -261,7 +261,7 @@ void tcc_get_config_defaults(
  * \param[in]  config       Pointer to the TCC configuration options struct
  * \param[out] value_buffer Pointer to the buffer to fill with built value
  *
- * \return Configuration validation status
+ * \return Configuration validation status.
  *
  * \retval STATUS_OK              Configuration values are good and register
  *                                value built and save to buffer
@@ -463,7 +463,7 @@ static inline enum status_code _tcc_build_waves(
  * \brief Initializes a hardware TCC module instance.
  *
  * Enables the clock and initializes the given TCC module, based on the given
- * configuration values
+ * configuration values.
  *
  * \param[in,out] module_inst  Pointer to the software module instance struct
  * \param[in]     hw           Pointer to the TCC hardware module
@@ -1190,7 +1190,7 @@ static enum status_code _tcc_set_top_value(
  *
  * When using MFRQ, the top value is defined by the CC0 register value and the
  * PER value is ignored, so
- * \ref tcc_set_compare_value(module,channel_0,value) must be used instead of
+ * \ref tcc_set_compare_value (module,channel_0,value) must be used instead of
  * this function to change the actual top value in that case.
  * For all other waveforms operation the top value is defined by PER register
  * value.
@@ -1223,7 +1223,7 @@ enum status_code tcc_set_top_value(
  *
  * When using MFRQ, the top values are defined by the CC0 and CCB0, the PER and
  * PERB values are ignored, so
- * \ref tcc_set_double_buffer_compare_values(module,channel_0,value,buffer) must
+ * \ref tcc_set_double_buffer_compare_values (module,channel_0,value,buffer) must
  * be used instead of this function to change the actual top values in that
  * case. For all other waveforms operation the top values are defined by PER and
  * PERB registers values.
@@ -1257,7 +1257,7 @@ enum status_code tcc_set_double_buffer_top_values(
 /**
  * \brief Sets the TCC module waveform output pattern
  *
- * Force waveform output line to generate specific pattern (0, 1 or as is).
+ * Force waveform output line to generate specific pattern (0, 1, or as is).
  *
  * If double buffering is enabled it always write to the buffer
  * register. The value will then be updated immediately by calling
@@ -1327,7 +1327,7 @@ enum status_code tcc_set_pattern(
  *
  * \param[in] module_inst  Pointer to the TCC software instance struct
  *
- * \return Bitmask of \c TCC_STATUS_* flags
+ * \return Bitmask of \c TCC_STATUS_* flags.
  *
  * \retval TCC_STATUS_CHANNEL_MATCH_CAPTURE(n)         Channel n match/capture has occured
  * \retval TCC_STATUS_CHANNEL_OUTPUT(n)                Channel n match/capture output state

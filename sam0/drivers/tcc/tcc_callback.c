@@ -197,7 +197,7 @@ void tcc_disable_callback(
 /**
  * \internal ISR handler for TCC
  *
- * Auto-generate a set of interrupt handlers for each TCC in the device
+ * Auto-generate a set of interrupt handlers for each TCC in the device.
  */
 #define _TCC_INTERRUPT_HANDLER(n, m) \
 		void TCC##n##_Handler(void) \

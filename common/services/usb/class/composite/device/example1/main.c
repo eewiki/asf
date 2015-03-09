@@ -45,7 +45,7 @@
 #include "conf_usb.h"
 #include "ui.h"
 
-static bool main_b_mouse_enable = false;
+static volatile bool main_b_mouse_enable = false;
 static volatile bool main_b_msc_enable = false;
 
 /*! \brief Main function. Execution starts here.

@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="GMAC example for SAM4E_EK" id="sam.drivers.gmac.gmac_example.sam4e_xplained_pro">
+	<project caption="GMAC example for SAM4E Xplain Pro" id="sam.drivers.gmac.gmac_example.sam4e_xplained_pro">
 		<info type="description" value="summary">
 		Ethernet example with ethernet GMAC, process simple ethernet packets.
 		</info>
@@ -16,5 +16,6 @@
 		<generator value="as5_arm"/>
 		<generator value="doxygen"/>
 		<device-support value="atsam4e16e"/>
+		<config name="config.sam.drivers.gmac.gmac_example" value="ksz8081mnx"/>
 	</project>
 </asf>

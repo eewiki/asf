@@ -68,40 +68,40 @@ extern "C" {
  */
 
 /**
- * \name I2C slave status flags
+ * \name I2C Slave Status Flags
  *
- * I2C slave status flags, returned by \ref i2c_slave_get_status() and cleared
+ * I<SUP>2</SUP>C slave status flags, returned by \ref i2c_slave_get_status() and cleared
  * by \ref i2c_slave_clear_status().
  * @{
  */
 
-/** Address Match
+/** Address Match.
  * \note Should only be cleared internally by driver.
  */
 #define I2C_SLAVE_STATUS_ADDRESS_MATCH     (1UL << 0)
-/** Data Ready */
+/** Data Ready. */
 #define I2C_SLAVE_STATUS_DATA_READY        (1UL << 1)
-/** Stop Received */
+/** Stop Received. */
 #define I2C_SLAVE_STATUS_STOP_RECEIVED     (1UL << 2)
-/** Clock Hold
+/** Clock Hold.
  * \note Cannot be cleared, only valid when I2C_SLAVE_STATUS_ADDRESS_MATCH is
- * set
+ * set.
  */
 #define I2C_SLAVE_STATUS_CLOCK_HOLD        (1UL << 3)
-/** SCL Low Timeout */
+/** SCL Low Timeout. */
 #define I2C_SLAVE_STATUS_SCL_LOW_TIMEOUT   (1UL << 4)
-/** Repeated Start
+/** Repeated Start.
  * \note Cannot be cleared, only valid when I2C_SLAVE_STATUS_ADDRESS_MATCH is
- * set
+ * set.
  */
 #define I2C_SLAVE_STATUS_REPEATED_START    (1UL << 5)
-/** Received not acknowledge
- * \note Cannot be cleared
+/** Received not acknowledge.
+ * \note Cannot be cleared.
  */
 #define I2C_SLAVE_STATUS_RECEIVED_NACK     (1UL << 6)
-/** Transmit Collision */
+/** Transmit Collision. */
 #define I2C_SLAVE_STATUS_COLLISION         (1UL << 7)
-/** Bus error */
+/** Bus error. */
 #define I2C_SLAVE_STATUS_BUS_ERROR         (1UL << 8)
 
 /** @} */
@@ -112,9 +112,9 @@ extern "C" {
  * Structure to be used when transferring I<SUP>2</SUP>C slave packets.
  */
 struct i2c_slave_packet {
-	/** Length of data array */
+	/** Length of data array. */
 	uint16_t data_length;
-	/** Data array containing all data to be transferred */
+	/** Data array containing all data to be transferred. */
 	uint8_t *data;
 };
 
@@ -122,40 +122,40 @@ struct i2c_slave_packet {
  /**
  * \brief Callback types
  *
- * The available callback types for the I2C slave.
+ * The available callback types for the I<SUP>2</SUP>C slave.
  */
 enum i2c_slave_callback {
-	/** Callback for packet write complete */
+	/** Callback for packet write complete. */
 	I2C_SLAVE_CALLBACK_WRITE_COMPLETE,
-	/** Callback for packet read complete */
+	/** Callback for packet read complete. */
 	I2C_SLAVE_CALLBACK_READ_COMPLETE,
 	/**
 	 * Callback for read request from master - can be used to
-	 * issue a write
+	 * issue a write.
 	 */
 	I2C_SLAVE_CALLBACK_READ_REQUEST,
 	/**
-	 * Callback for write request from master - can be used to issue a read
+	 * Callback for write request from master - can be used to issue a read.
 	 */
 	I2C_SLAVE_CALLBACK_WRITE_REQUEST,
-	/** Callback for error */
+	/** Callback for error. */
 	I2C_SLAVE_CALLBACK_ERROR,
 	/**
 	 * Callback for error in last transfer. Discovered on a new address
-	 * interrupt
+	 * interrupt.
 	 */
 	I2C_SLAVE_CALLBACK_ERROR_LAST_TRANSFER,
 #  if !defined(__DOXYGEN__)
-	/** Total number of callbacks */
+	/** Total number of callbacks. */
 	_I2C_SLAVE_CALLBACK_N,
 #  endif
 };
 
 #  if !defined(__DOXYGEN__)
-/** Software module prototype */
+/** Software module prototype. */
 struct i2c_slave_module;
 
-/** Callback type */
+/** Callback type. */
 typedef void (*i2c_slave_callback_t)(
 		struct i2c_slave_module *const module);
 #  endif
@@ -169,16 +169,16 @@ typedef void (*i2c_slave_callback_t)(
  * of SCL.
  */
 enum i2c_slave_sda_hold_time {
-	/** SDA hold time disabled */
+	/** SDA hold time disabled. */
 	I2C_SLAVE_SDA_HOLD_TIME_DISABLED =
 			((SERCOM_I2CS_CTRLA_SDAHOLD_Msk & ((0) << SERCOM_I2CS_CTRLA_SDAHOLD_Pos))),
-	/** SDA hold time 50ns-100ns */
+	/** SDA hold time 50ns - 100ns. */
 	I2C_SLAVE_SDA_HOLD_TIME_50NS_100NS =
 			((SERCOM_I2CS_CTRLA_SDAHOLD_Msk & ((1) << SERCOM_I2CS_CTRLA_SDAHOLD_Pos))),
-	/** SDA hold time 300ns-600ns */
+	/** SDA hold time 300ns - 600ns. */
 	I2C_SLAVE_SDA_HOLD_TIME_300NS_600NS =
 			((SERCOM_I2CS_CTRLA_SDAHOLD_Msk & ((2) << SERCOM_I2CS_CTRLA_SDAHOLD_Pos))),
-	/** SDA hold time 400ns-800ns */
+	/** SDA hold time 400ns - 800ns. */
 	I2C_SLAVE_SDA_HOLD_TIME_400NS_800NS =
 			((SERCOM_I2CS_CTRLA_SDAHOLD_Msk & ((3) << SERCOM_I2CS_CTRLA_SDAHOLD_Pos))),
 };
@@ -189,13 +189,13 @@ enum i2c_slave_sda_hold_time {
  * Enum for the possible address modes.
  */
 enum i2c_slave_address_mode {
-	/** Address match on address_mask used as a mask to address */
+	/** Address match on address_mask used as a mask to address. */
 	I2C_SLAVE_ADDRESS_MODE_MASK = SERCOM_I2CS_CTRLB_AMODE(0),
-	/** Address math on both address and address_mask */
+	/** Address math on both address and address_mask. */
 	I2C_SLAVE_ADDRESS_MODE_TWO_ADDRESSES = SERCOM_I2CS_CTRLB_AMODE(1),
 	/**
 	 * Address match on range of addresses between and including address and
-	 * address_mask
+	 * address_mask.
 	 */
 	I2C_SLAVE_ADDRESS_MODE_RANGE = SERCOM_I2CS_CTRLB_AMODE(2),
 };
@@ -206,11 +206,11 @@ enum i2c_slave_address_mode {
  * Enum for the direction of a request.
  */
 enum i2c_slave_direction {
-	/** Read */
+	/** Read. */
 	I2C_SLAVE_DIRECTION_READ,
-	/** Write */
+	/** Write. */
 	I2C_SLAVE_DIRECTION_WRITE,
-	/** No direction */
+	/** No direction. */
 	I2C_SLAVE_DIRECTION_NONE,
 };
 
@@ -221,11 +221,11 @@ enum i2c_slave_direction {
  * Enum for the transfer speed.
  */
 enum i2c_slave_transfer_speed {
-	/** Standard-mode (Sm) up to 100 kHz and Fast-mode (Fm) up to 400 kHz */
+	/** Standard-mode (Sm) up to 100KHz and Fast-mode (Fm) up to 400KHz. */
 	I2C_SLAVE_SPEED_STANDARD_AND_FAST = SERCOM_I2CS_CTRLA_SPEED(0),
-	/** Fast-mode Plus (Fm+) up to 1 MHz */
+	/** Fast-mode Plus (Fm+) up to 1MHz. */
 	I2C_SLAVE_SPEED_FAST_MODE_PLUS = SERCOM_I2CS_CTRLA_SPEED(1),
-	/** High-speed mode (Hs-mode) up to 3.4 MHz */
+	/** High-speed mode (Hs-mode) up to 3.4MHz. */
 	I2C_SLAVE_SPEED_HIGH_SPEED = SERCOM_I2CS_CTRLA_SPEED(2),
 };
 #endif
@@ -241,75 +241,75 @@ enum i2c_slave_transfer_speed {
  */
 struct i2c_slave_module {
 #if !defined(__DOXYGEN__)
-	/** Hardware instance initialized for the struct */
+	/** Hardware instance initialized for the struct. */
 	Sercom *hw;
-	/** Module lock */
+	/** Module lock. */
 	volatile bool locked;
-	/** Timeout value for polled functions */
+	/** Timeout value for polled functions. */
 	uint16_t buffer_timeout;
 #  ifdef FEATURE_I2C_10_BIT_ADDRESS
-	/** Using 10 bit addressing for the slave */
+	/** Using 10-bit addressing for the slave. */
 	bool ten_bit_address;
 #  endif
 #  if I2C_SLAVE_CALLBACK_MODE == true
-	/** Nack on address match */
+	/** Nack on address match. */
 	bool nack_on_address;
-	/** Pointers to callback functions */
+	/** Pointers to callback functions. */
 	volatile i2c_slave_callback_t callbacks[_I2C_SLAVE_CALLBACK_N];
-	/** Mask for registered callbacks */
+	/** Mask for registered callbacks. */
 	volatile uint8_t registered_callback;
-	/** Mask for enabled callbacks */
+	/** Mask for enabled callbacks. */
 	volatile uint8_t enabled_callback;
-	/** The total number of bytes to transfer */
+	/** The total number of bytes to transfer. */
 	volatile uint16_t buffer_length;
 	/**
 	 * Counter used for bytes left to send in write and to count number of
-	 * obtained bytes in read
+	 * obtained bytes in read.
 	 */
 	uint16_t buffer_remaining;
-	/** Data buffer for packet write and read */
+	/** Data buffer for packet write and read. */
 	volatile uint8_t *buffer;
-	/** Save direction of request from master. 1 = read, 0 = write */
+	/** Save direction of request from master. 1 = read, 0 = write. */
 	volatile enum i2c_transfer_direction transfer_direction;
-	/** Status for status read back in error callback */
+	/** Status for status read back in error callback. */
 	volatile enum status_code status;
 #  endif
 #endif
 };
 
 /**
- * \brief Configuration structure for the I2C Slave device
+ * \brief Configuration structure for the I<SUP>2</SUP>C Slave device
  *
- * This is the configuration structure for the I2C Slave device. It is used
+ * This is the configuration structure for the I<SUP>2</SUP>C Slave device. It is used
  * as an argument for \ref i2c_slave_init to provide the desired
  * configurations for the module. The structure should be initialized using the
  * \ref i2c_slave_get_config_defaults.
  */
 struct i2c_slave_config {
-	/** Set to enable the SCL low timeout */
+	/** Set to enable the SCL low timeout. */
 	bool enable_scl_low_timeout;
-	/** SDA hold time with respect to the negative edge of SCL */
+	/** SDA hold time with respect to the negative edge of SCL. */
 	enum i2c_slave_sda_hold_time sda_hold_time;
-	/** Timeout to wait for master in polled functions */
+	/** Timeout to wait for master in polled functions. */
 	uint16_t buffer_timeout;
-	/** Addressing mode */
+	/** Addressing mode. */
 	enum i2c_slave_address_mode address_mode;
-	/** Address or upper limit of address range */
+	/** Address or upper limit of address range. */
 	uint16_t address;
-	/** Address mask, second address or lower limit of address range */
+	/** Address mask, second address or lower limit of address range. */
 	uint16_t address_mask;
 #ifdef FEATURE_I2C_10_BIT_ADDRESS
-	/** Enable 10 bit addressing */
+	/** Enable 10-bit addressing. */
 	bool ten_bit_address;
 #endif
 	/**
 	 * Enable general call address recognition (general call address
-	 * is defined as 0000000 with direction bit 0)
+	 * is defined as 0000000 with direction bit 0).
 	 */
 	bool enable_general_call_address;
 
 #ifdef FEATURE_I2C_FAST_MODE_PLUS_AND_HIGH_SPEED
-	/** Transfer speed mode */
+	/** Transfer speed mode. */
 	enum i2c_slave_transfer_speed transfer_speed;
 #endif
 
@@ -317,26 +317,26 @@ struct i2c_slave_config {
 	/**
 	 * Enable NACK on address match (this can be changed after initialization
 	 * via the \ref i2c_slave_enable_nack_on_address and
-	 * \ref i2c_slave_disable_nack_on_address functions)
+	 * \ref i2c_slave_disable_nack_on_address functions).
 	 */
 	bool enable_nack_on_address;
 #endif
-	/** GCLK generator to use as clock source */
+	/** GCLK generator to use as clock source. */
 	enum gclk_generator generator_source;
-	/** Set to keep module active in sleep modes */
+	/** Set to keep module active in sleep modes. */
 	bool run_in_standby;
-	/** PAD0 (SDA) pinmux */
+	/** PAD0 (SDA) pinmux. */
 	uint32_t pinmux_pad0;
-	/** PAD1 (SCL) pinmux */
+	/** PAD1 (SCL) pinmux. */
 	uint32_t pinmux_pad1;
-	/** Set to enable SCL low time-out */
+	/** Set to enable SCL low time-out. */
 	bool scl_low_timeout;
 #ifdef FEATURE_I2C_SCL_STRETCH_MODE
-	/** Set to enable SCL stretch only after ACK bit (required for high speed) */
+	/** Set to enable SCL stretch only after ACK bit (required for high speed). */
 	bool scl_stretch_only_after_ack_bit;
 #endif
 #ifdef FEATURE_I2C_SCL_EXTEND_TIMEOUT
-	/** Set to enable slave SCL low extend time-out */
+	/** Set to enable slave SCL low extend time-out. */
 	bool slave_scl_low_extend_timeout;
 #endif
 };
@@ -453,7 +453,7 @@ static void _i2c_slave_wait_for_sync(
 #endif
 
 /**
- * \brief Gets the I2C slave default configurations
+ * \brief Gets the I<SUP>2</SUP>C slave default configurations
  *
  * This will initialize the configuration structure to known default values.
  *
@@ -471,7 +471,7 @@ static void _i2c_slave_wait_for_sync(
  * - PINMUX_DEFAULT for SERCOM pads
  *
  * Those default configuration only availale if the device supports it:
- * - Not using 10 bit addressing
+ * - Not using 10-bit addressing
  * - Standard-mode and Fast-mode transfer speed
  * - SCL stretch disabled
  * - slave SCL low extend time-out disabled
@@ -517,9 +517,9 @@ enum status_code i2c_slave_init(struct i2c_slave_module *const module,
 		const struct i2c_slave_config *const config);
 
 /**
- * \brief Enables the I2C module
+ * \brief Enables the I<SUP>2</SUP>C module
  *
- * This will enable the requested I2C module.
+ * This will enable the requested I<SUP>2</SUP>C module.
  *
  * \param[in]  module Pointer to the software module struct
  */
@@ -546,9 +546,9 @@ static inline void i2c_slave_enable(
 
 
 /**
- * \brief Disables the I2C module
+ * \brief Disables the I<SUP>2</SUP>C module
  *
- * This will disable the I2C module specified in the provided software module
+ * This will disable the I<SUP>2</SUP>C module specified in the provided software module
  * structure.
  *
  * \param[in]  module  Pointer to the software module struct
@@ -616,14 +616,14 @@ void i2c_slave_clear_status(
 
 #ifdef FEATURE_I2C_DMA_SUPPORT
 /**
- * \name SERCOM I2C slave with DMA interfaces
+ * \name SERCOM I2C Slave with DMA Interfaces
  * @{
  */
 
 /**
- * \brief Read SERCOM I2C interrupt status.
+ * \brief Read SERCOM I<SUP>2</SUP>C interrupt status.
  *
- * Read I2C interrupt status for DMA transfer
+ * Read I<SUP>2</SUP>C interrupt status for DMA transfer.
  *
  * \param[in,out] module Pointer to the driver instance to lock.
  *
@@ -634,9 +634,9 @@ static inline uint8_t i2c_slave_dma_read_interrupt_status(struct i2c_slave_modul
 }
 
 /**
- * \brief Write SERCOM I2C interrupt status.
+ * \brief Write SERCOM I<SUP>2</SUP>C interrupt status.
  *
- * Write I2C interrupt status for DMA transfer.
+ * Write I<SUP>2</SUP>C interrupt status for DMA transfer.
  *
  * \param[in,out] module Pointer to the driver instance to lock.
  * \param[in] flag Interrupt flag status.

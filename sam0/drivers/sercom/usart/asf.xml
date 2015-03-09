@@ -28,7 +28,7 @@
 			<build type="doxygen-example-path" value="quick_start_dma"/>
 
 			<require idref="sam0.utils"/>
-			<require idref="sam0.drivers.sercom"/>
+			<require idref="sam0.drivers.sercom.polled"/>
 
 			<device-support value="samd20"/>
 			<device-support value="samd21"/>
@@ -82,7 +82,7 @@
 			<build type="doxygen-quick-start" value="asfdoc_sam0_sercom_usart_exqsg"/>
 
 			<require idref="sam0.utils"/>
-			<require idref="sam0.drivers.sercom"/>
+			<require idref="sam0.drivers.sercom.callback"/>
 
 			<device-support value="samd20"/>
 			<device-support value="samd21"/>

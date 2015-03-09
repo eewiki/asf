@@ -89,7 +89,7 @@
  * \section contactinfo Contact Information
  * For further information, visit
  * <A href="http://www.atmel.com/">Atmel</A>.\n
- * Support and FAQ: http://support.atmel.com/
+ * Support and FAQ: http://www.atmel.com/design-support/
  *
  */
 

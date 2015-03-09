@@ -81,7 +81,7 @@ enum status_code wdt_unregister_callback(
 
 /** @} */
 
-/** \name Callback enabling and disabling
+/** \name Callback Enabling and Disabling
  * @{
  */
 

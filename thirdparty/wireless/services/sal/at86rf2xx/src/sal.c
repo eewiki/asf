@@ -43,7 +43,7 @@
 /**
  * @author
  *      Atmel Corporation: http://www.atmel.com
- *      Support email: avr@atmel.com
+ *      Support: http://www.atmel.com/design-support/
  */
 
 /*

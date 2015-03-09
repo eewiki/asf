@@ -67,8 +67,8 @@ static void _system_pinmux_config(
 
 	/* Enabled powersave mode, don't create configuration */
 	if (!config->powersave) {
-		/* Enable the pin peripheral mux flag if non-GPIO selected (pin mux will
-		 * be written later) and store the new mux mask */
+		/* Enable the pin peripheral MUX flag if non-GPIO selected (pinmux will
+		 * be written later) and store the new MUX mask */
 		if (config->mux_position != SYSTEM_PINMUX_GPIO) {
 			pin_cfg |= PORT_WRCONFIG_PMUXEN;
 			pin_cfg |= (config->mux_position << PORT_WRCONFIG_PMUX_Pos);
@@ -97,6 +97,8 @@ static void _system_pinmux_config(
 			 * output state */
 			pin_cfg &= ~PORT_WRCONFIG_PULLEN;
 		}
+	} else {
+		port->DIRCLR.reg = pin_mask;
 	}
 
 	/* The Write Configuration register (WRCONFIG) requires the

@@ -71,6 +71,7 @@
  *  - ATmega256RFR2 Xplained Pro kit 
  *  - SAM4C evaluation kit
  *  - SAMG53 Xplained Pro kit
+ *  - SAMG55 Xplained Pro kit
  *
  * \section example_description Description of the example
  * This example flashes a single LEDs present with flash speed of 1Hz.
@@ -83,7 +84,7 @@
  *
  * \section contactinfo Contact Information
  * For further information, visit <a href="http://www.atmel.com/">Atmel</a>.\n
- * Support and FAQ: http://support.atmel.no/
+ * Support and FAQ: http://www.atmel.com/design-support/
  */
 #include <asf.h>
 #include "conf_example.h"

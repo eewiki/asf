@@ -46,10 +46,10 @@
 #include "ui.h"
 #include "uart.h"
 
-static bool main_b_keyboard_enable = false;
-static bool main_b_mouse_enable = false;
+static volatile bool main_b_keyboard_enable = false;
+static volatile bool main_b_mouse_enable = false;
 static volatile bool main_b_msc_enable = false;
-static bool main_b_cdc_enable = false;
+static volatile bool main_b_cdc_enable = false;
 
 /*! \brief Main function. Execution starts here.
  */

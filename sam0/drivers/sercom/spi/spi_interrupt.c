@@ -300,7 +300,7 @@ enum status_code spi_write_buffer_job(
  * \param[in]  length   Data buffer length
  * \param[in]  dummy    Dummy character to send when reading in master mode.
  *
- * \returns Status of the operation
+ * \returns Status of the operation.
  * \retval  STATUS_OK               If the operation completed successfully
  * \retval  STATUS_ERR_BUSY         If the SPI was already busy with a read
  *                                  operation
@@ -350,7 +350,7 @@ enum status_code spi_read_buffer_job(
  * \param[out] rx_data  Pointer to data buffer to receive
  * \param[in]  length   Data buffer length
  *
- * \returns Status of the operation
+ * \returns Status of the operation.
  * \retval  STATUS_OK               If the operation completed successfully
  * \retval  STATUS_ERR_BUSY         If the SPI was already busy with a read
  *                                  operation

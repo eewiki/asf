@@ -3,7 +3,7 @@
  *
  * \brief Unit tests for ADC2 driver.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -69,7 +69,7 @@
  *
  * \section contactinfo Contact Information
  * For further information, visit <a href="http://www.atmel.com/">Atmel</a>.\n
- * Support and FAQ: http://support.atmel.no/
+ * Support and FAQ: http://www.atmel.com/design-support/
  */
 
 /** Conversion data is ready flag */

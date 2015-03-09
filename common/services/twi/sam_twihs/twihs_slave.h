@@ -3,7 +3,7 @@
  *
  * \brief TWIHS Slave driver for SAM.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -53,6 +53,22 @@ static inline void twihs_slave_setup(twihs_slave_t p_twihs, uint32_t dw_device_a
 {
 	if (p_twihs == TWI0) {
 		sysclk_enable_peripheral_clock(ID_TWI0);
+#if SAMG55		
+	} else if (p_twihs == TWI1) {
+		sysclk_enable_peripheral_clock(ID_TWI1);
+	} else if (p_twihs == TWI2) {
+		sysclk_enable_peripheral_clock(ID_TWI2);
+	} else if (p_twihs == TWI3) {
+		sysclk_enable_peripheral_clock(ID_TWI3);
+	} else if (p_twihs == TWI4) {
+		sysclk_enable_peripheral_clock(ID_TWI4);
+	} else if (p_twihs == TWI5) {
+		sysclk_enable_peripheral_clock(ID_TWI5);
+	} else if (p_twihs == TWI6) {
+		sysclk_enable_peripheral_clock(ID_TWI6);
+	} else if (p_twihs == TWI7) {
+		sysclk_enable_peripheral_clock(ID_TWI7);
+#endif	
 	} else {
 		/* Do Nothing */
 	}

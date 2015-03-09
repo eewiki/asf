@@ -70,7 +70,7 @@ enum status_code _i2c_master_send_hs_master_code(
  * \retval STATUS_OK                        If module was configured correctly
  * \retval STATUS_ERR_ALREADY_INITIALIZED   If setting other GCLK generator than
  *                                          previously set
- * \retval STATUS_ERR_BAUDRATE_UNAVAILABLE  If given baud rate is not compatible
+ * \retval STATUS_ERR_BAUDRATE_UNAVAILABLE  If given baudrate is not compatible
  *                                          with set GCLK frequency
  */
 static enum status_code _i2c_master_set_config(
@@ -173,7 +173,7 @@ static enum status_code _i2c_master_set_config(
 				system_gclk_chan_get_hz(SERCOM0_GCLK_ID_CORE + sercom_index),
 				(2000*(config->baud_rate))) - 5);
 
-	/* Check that baud rate is supported at current speed. */
+	/* Check that baudrate is supported at current speed. */
 	if (tmp_baud > 255 || tmp_baud < 0) {
 		/* Baud rate not supported. */
 		tmp_status_code = STATUS_ERR_BAUDRATE_UNAVAILABLE;
@@ -183,7 +183,7 @@ static enum status_code _i2c_master_set_config(
 				system_gclk_chan_get_hz(SERCOM0_GCLK_ID_CORE + sercom_index),
 				(2000*(config->baud_rate_high_speed))) - 1);
 
-		/* Check that baud rate is supported at current speed. */
+		/* Check that baudrate is supported at current speed. */
 		if (tmp_baud_hs > 255 || tmp_baud_hs < 0) {
 			/* Baud rate not supported. */
 			tmp_status_code = STATUS_ERR_BAUDRATE_UNAVAILABLE;

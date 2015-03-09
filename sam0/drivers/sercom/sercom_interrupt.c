@@ -64,32 +64,6 @@ static void _sercom_default_handler(
 
 /**
  * \internal
- * Find index of given instance.
- *
- * \param[in] sercom_instance  Instance pointer.
- *
- * \return Index of given instance.
- */
-uint8_t _sercom_get_sercom_inst_index(
-		Sercom *const sercom_instance)
-{
-	/* Save all available SERCOM instances for compare. */
-	Sercom *sercom_instances[SERCOM_INST_NUM] = SERCOM_INSTS;
-
-	/* Find index for sercom instance. */
-	for (uint32_t i = 0; i < SERCOM_INST_NUM; i++) {
-		if ((uintptr_t)sercom_instance == (uintptr_t)sercom_instances[i]) {
-			return i;
-		}
-	}
-
-	/* Invalid data given. */
-	Assert(false);
-	return 0;
-}
-
-/**
- * \internal
  * Saves the given callback handler.
  *
  * \param[in]  instance           Instance index.

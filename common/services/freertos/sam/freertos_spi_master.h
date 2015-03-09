@@ -50,6 +50,7 @@
 #include "semphr.h"
 
 /* ASF includes. */
+#include "spi_master.h"
 #include "freertos_peripheral_control.h"
 
 #if XMEGA

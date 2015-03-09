@@ -125,5 +125,6 @@ and reduces time-to-market for new embedded applications.
 		<build type="distribute" subtype="file" value="CMSIS END USER LICENCE AGREEMENT.pdf"/>
 		<build type="distribute" subtype="file" value="README.txt"/>
 		<build type="distribute" subtype="license" value="license.txt"/>
+		<build type="distribute" subtype="file" value="ATMEL-disclaimer.txt"/>
 	</module>
 </asf>

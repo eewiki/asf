@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="LWMesh-Peer2Peer Application:AT86RF212-AtXmega256A3BU Xplained" id="thirdparty.wireless.avr2130_lwmesh.apps.peer2peer.atxmega256a3bu_xplained_rf212" force-caption="true" force-description="true">
+	<project caption="LWMesh-Peer2Peer Application AT86RF212 - AtXmega256A3BU Xplained" id="thirdparty.wireless.avr2130_lwmesh.apps.peer2peer.atxmega256a3bu_xplained_rf212" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 		The LWMesh Peer2Peer application performs a Wireless UART functionality using two nodes with preconfigured addresses.
 		</info>		

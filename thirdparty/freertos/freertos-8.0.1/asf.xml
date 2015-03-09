@@ -31,6 +31,7 @@
 		<build type="module-config" subtype="path" value="module_config"/>
 		<build type="module-config" subtype="required-header-file" value="FreeRTOSConfig.h"/>
 		<device-support value="sam0"/>
+		<device-support value="samg"/>
 		<require idref="thirdparty.os.freertos-8_0_1.memory_manager"/>
 		<require idref="thirdparty.os.freertos-8_0_1.portable"/>
 	</module>
@@ -57,6 +58,18 @@
 			<device-support value="sam0"/>
 			<require idref="thirdparty.os.freertos-8_0_1.portable.common"/>
 		</module>
+		<module type="driver" id="thirdparty.os.freertos-8_0_1.portable#cm4f" caption="Cortex M4f port of FreeRTOS core">
+			<info type="gui-flag" value="hidden"/>
+			<build type="asm-source" value="Source/portable/IAR/ARM_CM4F/portasm.s" toolchain="iarewarm"/>
+			<build type="c-source" value="Source/portable/GCC/ARM_CM4F/port.c" toolchain="armgcc"/>
+			<build type="c-source" value="Source/portable/IAR/ARM_CM4F/port_cm0_iar.c" toolchain="iarewarm"/>
+			<build type="header-file" value="Source/portable/GCC/ARM_CM4F/portmacro.h" toolchain="armgcc"/>
+			<build type="header-file" value="Source/portable/IAR/ARM_CM4F/portmacro.h" toolchain="iarewarm"/>
+			<build type="include-path" value="Source/portable/GCC/ARM_CM4F/" toolchain="armgcc"/>
+			<build type="include-path" value="Source/portable/IAR/ARM_CM4F/" toolchain="iarewarm"/>
+			<device-support value="samg"/>
+			<require idref="thirdparty.os.freertos-8_0_1.portable.common"/>
+		</module>
 	</select-by-device>
 
 	<select-by-config id="thirdparty.os.freertos-8_0_1.memory_manager" caption="FreeRTOS memory heap manager" name="config.thirdparty.os.freertos-8_0_1.memory_manager" default="1_static_allocation">
@@ -77,6 +90,7 @@
 			<info type="gui-flag" value="hidden"/>
 			<build type="c-source" value="Source/portable/MemMang/heap_1.c"/>
 			<device-support value="sam0"/>
+			<device-support value="samg"/>
 		</module>
 
 		<module type="service" id="thirdparty.os.freertos-8_0_1.memory_manager#2_best_fit_no_coallesce" caption="Memory heap manager variant #2">
@@ -90,6 +104,7 @@
 			<info type="gui-flag" value="hidden"/>
 			<build type="c-source" value="Source/portable/MemMang/heap_2.c"/>
 			<device-support value="sam0"/>
+			<device-support value="samg"/>
 		</module>
 
 		<module type="service" id="thirdparty.os.freertos-8_0_1.memory_manager#3_use_libc_malloc_free" caption="Memory heap manager variant #3">
@@ -101,6 +116,7 @@
 			<info type="gui-flag" value="hidden"/>
 			<build type="c-source" value="Source/portable/MemMang/heap_3.c"/>
 			<device-support value="sam0"/>
+			<device-support value="samg"/>
 		</module>
 
 		<module type="service" id="thirdparty.os.freertos-8_0_1.memory_manager#4_first_fit_coallesce" caption="Memory heap manager variant #4">
@@ -115,6 +131,7 @@
 			<info type="gui-flag" value="hidden"/>
 			<build type="c-source" value="Source/portable/MemMang/heap_4.c"/>
 			<device-support value="sam0"/>
+			<device-support value="samg"/>
 		</module>
 	</select-by-config>
 </asf>

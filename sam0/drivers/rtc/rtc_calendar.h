@@ -46,7 +46,7 @@
 /**
  * \defgroup asfdoc_sam0_rtc_calendar_group SAM RTC Calendar Driver (RTC CAL)
  *
- * This driver for SAM devices provides an interface for the configuration
+ * This driver for Atmel® | SMART™ SAM devices provides an interface for the configuration
  * and management of the device's Real Time Clock functionality in Calendar
  * operating mode, for the configuration and retrieval of the current time and
  * date as maintained by the RTC module. The following driver API modes are
@@ -61,9 +61,9 @@
  *  - RTC (Real Time Clock)
  *
  * The following devices can use this module:
- *  - SAM D20/D21
- *  - SAM R21
- *  - SAM D10/D11
+ *  - Atmel® | SMART™ SAM D20/D21
+ *  - Atmel® | SMART™ SAM R21
+ *  - Atmel® | SMART™ SAM D10/D11
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_rtc_calendar_prerequisites
@@ -92,13 +92,13 @@
  * to track the passing of time and/or perform scheduled tasks.
  *
  * Whilst operating in Calendar mode, the RTC features:
- *  - Time tracking in seconds, minutes and hours
- *   - 12 hour or 24 hour mode
- *  - Date tracking in day, month and year
+ *  - Time tracking in seconds, minutes, and hours
+ *   - 12 or 24 hour mode
+ *  - Date tracking in day, month, and year
  *   - Automatic leap year correction
  *
  * \subsection asfdoc_sam0_rtc_calendar_module_overview_alarms Alarms and Overflow
- * The RTC has 4 independent hardware alarms that can be configured by the user
+ * The RTC has four independent hardware alarms that can be configured by the user
  * application. These alarms will be will triggered on match with the current
  * clock value, and can be set up to trigger an interrupt, event, or both. The
  * RTC can also be configured to clear the clock value on alarm match, resetting
@@ -111,12 +111,12 @@
  * \f[ COUNT_{MAX} = 2^{32}-1 \f]
  *
  * When the RTC is operated with the calendar enabled and run using a nominal
- * 1 Hz input clock frequency, a register overflow will occur after 64 years.
+ * 1Hz input clock frequency, a register overflow will occur after 64 years.
  *
  * \subsection asfdoc_sam0_rtc_calendar_module_overview_periodic Periodic Events
  * The RTC can generate events at periodic intervals, allowing for direct
  * peripheral actions without CPU intervention. The periodic events can be
- * generated on the upper 8 bits of the RTC prescaler, and will be generated on
+ * generated on the upper eight bits of the RTC prescaler, and will be generated on
  * the rising edge transition of the specified bit. The resulting periodic
  * frequency can be calculated by the following formula:
  *
@@ -132,33 +132,33 @@
  *
  * \anchor asfdoc_sam0_rtc_calendar_module_rtc_hz
  * <table>
- *   <caption>RTC event frequencies for each prescaler bit using a 1KHz clock</caption>
+ *   <caption>RTC Event Frequencies for Each Prescaler Bit Using a 1KHz Clock</caption>
  *   <tr>
  *      <th>n</th> <th>Periodic event</th>
  *   </tr>
  *   <tr>
- *      <td>7</td> <td>1 Hz</td>
+ *      <td>7</td> <td>1Hz</td>
  *   </tr>
  *   <tr>
- *      <td>6</td> <td>2 Hz</td>
+ *      <td>6</td> <td>2Hz</td>
  *   </tr>
  *   <tr>
- *      <td>5</td> <td>4 Hz</td>
+ *      <td>5</td> <td>4Hz</td>
  *   </tr>
  *   <tr>
- *      <td>4</td> <td>8 Hz</td>
+ *      <td>4</td> <td>8Hz</td>
  *   </tr>
  *   <tr>
- *      <td>3</td> <td>16 Hz</td>
+ *      <td>3</td> <td>16Hz</td>
  *   </tr>
  *   <tr>
- *      <td>2</td> <td>32 Hz</td>
+ *      <td>2</td> <td>32Hz</td>
  *   </tr>
  *   <tr>
- *      <td>1</td> <td>64 Hz</td>
+ *      <td>1</td> <td>64Hz</td>
  *   </tr>
  *   <tr>
- *      <td>0</td> <td>128 Hz</td>
+ *      <td>0</td> <td>128Hz</td>
  *   </tr>
  * </table>
  *
@@ -174,11 +174,11 @@
  * time measurements. The correction scheme requires that at least two bits
  * in the RTC module prescaler are reserved by the correction logic. As a
  * result of this implementation, frequency correction is only available when
- * the RTC is running from a 1 Hz reference clock.
+ * the RTC is running from a 1Hz reference clock.
  *
  * The correction procedure is implemented by subtracting or adding a single
  * cycle from the RTC prescaler every 1024 RTC GCLK cycles. The adjustment is
- * applied the specified number of time (max 127) over 976 of these periods. The
+ * applied the specified number of time (maximum 127) over 976 of these periods. The
  * corresponding correction in PPM will be given by:
  *
  * \f[ Correction(PPM) = \frac{VALUE}{999424}10^6 \f]
@@ -189,7 +189,7 @@
  *
  * \section asfdoc_sam0_rtc_calendar_special_considerations Special Considerations
  *
- * \subsection asfdoc_sam0_rtc_calendar_special_considerations_year Year limit
+ * \subsection asfdoc_sam0_rtc_calendar_special_considerations_year Year Limit
  * The RTC module has a year range of 63 years from the starting year configured
  * when the module is initialized. Dates outside the start to end year range
  * described below will need software adjustment:
@@ -199,8 +199,8 @@
  * \subsection asfdoc_sam0_rtc_calendar_special_considerations_clock Clock Setup
  * The RTC is typically clocked by a specialized GCLK generator that has a
  * smaller prescaler than the others. By default the RTC clock is on, selected
- * to use the internal 32 kHz RC-oscillator with a prescaler of 32, giving a
- * resulting clock frequency of 1024 Hz to the RTC. When the internal RTC
+ * to use the internal 32KHz RC-oscillator with a prescaler of 32, giving a
+ * resulting clock frequency of 1024Hz to the RTC. When the internal RTC
  * prescaler is set to 1024, this yields an end-frequency of 1Hz for correct
  * time keeping operations.
  *
@@ -211,24 +211,24 @@
  *
  * \anchor asfdoc_sam0_rtc_calendar_rtc_out_freq
  * <table>
- *   <caption>RTC output frequencies from allowable input clocks</caption>
+ *   <caption>RTC Output Frequencies from Allowable Input Clocks</caption>
  *   <tr>
  *     <th>End-frequency</th>
  *     <th>GCLK prescaler</th>
- *     <th>RTC Prescaler</th>
+ *     <th>RTC prescaler</th>
  *   </tr>
  *   <tr>
- *     <td>32 KHz</td>
+ *     <td>32KHz</td>
  *     <td>1</td>
  *     <td>1</td>
  *   </tr>
  *   <tr>
- *     <td>1 KHz</td>
+ *     <td>1KHz</td>
  *     <td>32</td>
  *     <td>1</td>
  *   </tr>
  *   <tr>
- *     <td>1 Hz</td>
+ *     <td>1Hz</td>
  *     <td>32</td>
  *     <td>1024</td>
  *   </tr>
@@ -257,7 +257,7 @@
  *
  * \section asfdoc_sam0_rtc_calendar_extra_info Extra Information
  *
- * For extra information see \ref asfdoc_sam0_rtc_calendar_extra. This includes:
+ * For extra information, see \ref asfdoc_sam0_rtc_calendar_extra. This includes:
  *  - \ref asfdoc_sam0_rtc_calendar_extra_acronyms
  *  - \ref asfdoc_sam0_rtc_calendar_extra_dependencies
  *  - \ref asfdoc_sam0_rtc_calendar_extra_errata
@@ -315,24 +315,24 @@ enum rtc_calendar_alarm {
  * The available callback types for the RTC calendar module.
  */
 enum rtc_calendar_callback {
-	/** Callback for alarm 0 */
+	/** Callback for alarm 0. */
 	RTC_CALENDAR_CALLBACK_ALARM_0 = 0,
 #  if (RTC_NUM_OF_ALARMS > 1) || defined(__DOXYGEN__)
-	/** Callback for alarm 1 */
+	/** Callback for alarm 1. */
 	RTC_CALENDAR_CALLBACK_ALARM_1,
 #  endif
 #  if (RTC_NUM_OF_ALARMS > 2) || defined(__DOXYGEN__)
-	/** Callback for alarm 2 */
+	/** Callback for alarm 2. */
 	RTC_CALENDAR_CALLBACK_ALARM_2,
 #  endif
 #  if (RTC_NUM_OF_ALARMS > 3)	|| defined(__DOXYGEN__)
-	/** Callback for alarm 3 */
+	/** Callback for alarm 3. */
 	RTC_CALENDAR_CALLBACK_ALARM_3,
 #  endif
-	/** Callback for  overflow */
+	/** Callback for  overflow. */
 	RTC_CALENDAR_CALLBACK_OVERFLOW,
 #  if !defined(__DOXYGEN__)
-	/** Total number of callbacks */
+	/** Total number of callbacks. */
 	_RTC_CALENDAR_CALLBACK_N
 #  endif
 };
@@ -377,7 +377,7 @@ enum rtc_calendar_prescaler {
  * \brief Device structure
  */
 struct rtc_module {
-	/** RTC hardware module */
+	/** RTC hardware module. */
 	Rtc *hw;
 	/** If clock mode 24h. */
 	bool clock_24h;
@@ -386,11 +386,11 @@ struct rtc_module {
 	/** Initial year for counter value 0. */
 	uint16_t year_init_value;
 #  if RTC_CALENDAR_ASYNC == true
-	/** Pointers to callback functions */
+	/** Pointers to callback functions. */
 	volatile rtc_calendar_callback_t callbacks[_RTC_CALENDAR_CALLBACK_N];
-	/** Mask for registered callbacks */
+	/** Mask for registered callbacks. */
 	volatile uint8_t registered_callback;
-	/** Mask for enabled callbacks */
+	/** Mask for enabled callbacks. */
 	volatile uint8_t enabled_callback;
 #  endif
 };
@@ -402,19 +402,19 @@ struct rtc_module {
  * Available mask options for alarms.
  */
 enum rtc_calendar_alarm_mask {
-	/** Alarm disabled */
+	/** Alarm disabled. */
 	RTC_CALENDAR_ALARM_MASK_DISABLED = RTC_MODE2_MASK_SEL_OFF,
-	/** Alarm match on second */
+	/** Alarm match on second. */
 	RTC_CALENDAR_ALARM_MASK_SEC      = RTC_MODE2_MASK_SEL_SS,
-	/** Alarm match on second and minute */
+	/** Alarm match on second and minute. */
 	RTC_CALENDAR_ALARM_MASK_MIN      = RTC_MODE2_MASK_SEL_MMSS,
-	/** Alarm match on second, minute and hour */
+	/** Alarm match on second, minute, and hour. */
 	RTC_CALENDAR_ALARM_MASK_HOUR     = RTC_MODE2_MASK_SEL_HHMMSS,
-	/** Alarm match on second, minutes hour and day */
+	/** Alarm match on second, minute, hour, and day. */
 	RTC_CALENDAR_ALARM_MASK_DAY      = RTC_MODE2_MASK_SEL_DDHHMMSS,
-	/** Alarm match on second, minute, hour, day and month */
+	/** Alarm match on second, minute, hour, day, and month. */
 	RTC_CALENDAR_ALARM_MASK_MONTH    = RTC_MODE2_MASK_SEL_MMDDHHMMSS,
-	/** Alarm match on second, minute, hour, day, month and year */
+	/** Alarm match on second, minute, hour, day, month, and year. */
 	RTC_CALENDAR_ALARM_MASK_YEAR     = RTC_MODE2_MASK_SEL_YYMMDDHHMMSS,
 };
 
@@ -431,8 +431,7 @@ struct rtc_calendar_events {
 	 *  count. */
 	bool generate_event_on_alarm[RTC_NUM_OF_ALARMS];
 	/** Generate an output event periodically at a binary division of the RTC
-	 *  counter frequency (see
-	 *  \ref asfdoc_sam0_rtc_calendar_module_overview_periodic).
+	 *  counter frequency.
 	 */
 	bool generate_event_on_periodic[8];
 };
@@ -442,7 +441,7 @@ struct rtc_calendar_events {
  *
  * Time structure containing the time given by or set to the RTC calendar.
  * The structure uses seven values to give second, minute, hour, PM/AM, day,
- * month and year. It should be initialized via the
+ * month, and year. It should be initialized via the
  * \ref rtc_calendar_get_time_defaults() function before use.
  */
 struct rtc_calendar_time {
@@ -501,7 +500,7 @@ struct rtc_calendar_config {
 
 
 /**
- * \name Configuration and initialization
+ * \name Configuration and Initialization
  * @{
  */
 
@@ -509,7 +508,7 @@ struct rtc_calendar_config {
  * \brief Determines if the hardware module(s) are currently synchronizing to the bus.
  *
  * Checks to see if the underlying hardware peripheral module(s) are currently
- * synchronizing across multiple clock domains to the hardware bus, This
+ * synchronizing across multiple clock domains to the hardware bus. This
  * function can be used to delay further operations on a module until such time
  * that it is ready, to prevent blocking delays for synchronization in the
  * user application.
@@ -563,14 +562,14 @@ static inline void rtc_calendar_get_time_defaults(
  * function should be called at the start of any RTC initiation.
  *
  * The default configuration is as follows:
- *  - Input clock divided by a factor of 1024.
- *  - Clear on alarm match off.
- *  - Continuously sync clock off.
- *  - 12 hour calendar.
- *  - Start year 2000 (Year 0 in the counter will be year 2000).
+ *  - Input clock divided by a factor of 1024
+ *  - Clear on alarm match off
+ *  - Continuously sync clock off
+ *  - 12 hour calendar
+ *  - Start year 2000 (Year 0 in the counter will be year 2000)
  *  - Events off.
- *  - Alarms set to January 1. 2000, 00:00:00.
- *  - Alarm will match on second, minute, hour, day, month and year.
+ *  - Alarms set to January 1. 2000, 00:00:00
+ *  - Alarm will match on second, minute, hour, day, month, and year
  *
  *  \param[out] config  Configuration structure to be initialized to default
  *                      values.
@@ -695,7 +694,7 @@ enum status_code rtc_calendar_frequency_correction(
 /** @} */
 
 
-/** \name Time and alarm management
+/** \name Time and Alarm Management
  * @{
  */
 
@@ -720,7 +719,7 @@ enum status_code rtc_calendar_get_alarm(
 /** @} */
 
 
-/** \name Status flag management
+/** \name Status Flag Management
  * @{
  */
 
@@ -843,7 +842,7 @@ static inline enum status_code rtc_calendar_clear_alarm_match(
 
 
 /**
- * \name Event management
+ * \name Event Management
  * @{
  */
 
@@ -998,12 +997,12 @@ static inline void rtc_calendar_disable_events(
  *	<tr>
  *		<td>
  *             Added support for SAMD21 and added driver instance parameter to all
- *             API function calls, except get_config_defaults.
+ *             API function calls, except get_config_defaults
  *             </td>
  *	</tr>
  *	<tr>
  *		<td>Updated initialization function to also enable the digital interface
- *          clock to the module if it is disabled.</td>
+ *          clock to the module if it is disabled</td>
  *	</tr>
  *	<tr>
  *		<td>Initial Release</td>
@@ -1034,14 +1033,9 @@ static inline void rtc_calendar_disable_events(
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
- *		<td>E</td>
- *		<td>05/2014</td>
- *		<td>Added support for SAMD10/D11.</td>
- *	</tr>
- *	<tr>
  *		<td>D</td>
- *		<td>03/2014</td>
- *		<td>Added support for SAMR21.</td>
+ *		<td>05/2014</td>
+ *		<td>Added support for SAMR21 and SAMD10/D11.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

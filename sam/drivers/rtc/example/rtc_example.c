@@ -210,7 +210,13 @@ static void configure_console(void)
 {
 	const usart_serial_options_t uart_serial_options = {
 		.baudrate = CONF_UART_BAUDRATE,
-		.paritytype = CONF_UART_PARITY
+#ifdef CONF_UART_CHAR_LENGTH
+		.charlength = CONF_UART_CHAR_LENGTH,
+#endif
+		.paritytype = CONF_UART_PARITY,
+#ifdef CONF_UART_STOP_BITS
+		.stopbits = CONF_UART_STOP_BITS,
+#endif
 	};
 
 	/* Configure console UART. */
@@ -235,7 +241,7 @@ static uint32_t get_new_time(void)
 	/* Use gs_uc_rtc_time[] as a format template. */
 	while (1) {
 
-		while (uart_read(CONSOLE_UART, &uc_key));
+		scanf("%c", (char *)&uc_key);
 
 		/* End input */
 		if (uc_key == 0x0d || uc_key == 0x0a) {
@@ -271,7 +277,7 @@ static uint32_t get_new_time(void)
 			continue;
 		}
 
-		while (uart_write(CONSOLE_UART, uc_key));
+		printf("%c", uc_key);
 		gs_uc_rtc_time[i++] = uc_key;
 
 	}
@@ -335,7 +341,7 @@ static uint32_t get_new_date(void)
 	/* Use gs_uc_rtc_time[] as a format template */
 	while (1) {
 
-		while (uart_read(CONSOLE_UART, &uc_key));
+		scanf("%c", (char *)&uc_key);
 
 		/* End input */
 		if (uc_key == 0x0d || uc_key == 0x0a) {
@@ -371,7 +377,7 @@ static uint32_t get_new_date(void)
 			continue;
 		}
 
-		while (uart_write(CONSOLE_UART, uc_key));
+		printf("%c", uc_key);
 		gs_uc_date[i++] = uc_key;
 
 	}
@@ -520,7 +526,7 @@ int main(void)
 	/* Handle keypresses */
 	while (1) {
 
-		while (uart_read(CONSOLE_UART, &uc_key));
+		scanf("%c", (char *)&uc_key);
 
 		/* Set time */
 		if (uc_key == 't') {
@@ -658,7 +664,7 @@ int main(void)
 					"  8 - Quit\r");
 
 			while (1) {
-				while (uart_read(CONSOLE_UART, &uc_key));
+				scanf("%c", (char *)&uc_key);
 
 				if ((uc_key >= '0') && (uc_key <= '7')) {
 					rtc_set_waveform(RTC, 0, char_to_digit(uc_key));

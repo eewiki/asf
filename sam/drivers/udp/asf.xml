@@ -22,6 +22,7 @@
 			<require idref="common.services.basic.sleepmgr"/>
 			<require idref="common.services.ioport"/>
 			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.matrix"/>
 			<require idref="sam.drivers.pio"/>
 			<require idref="sam.utils"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
@@ -45,6 +46,7 @@
 			<require idref="common.services.basic.clock"/>
 			<require idref="common.services.ioport"/>
 			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.matrix"/>
 			<require idref="sam.drivers.pio"/>
 			<require idref="sam.utils"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>

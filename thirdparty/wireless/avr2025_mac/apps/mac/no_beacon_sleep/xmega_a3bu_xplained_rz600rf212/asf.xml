@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC NoBeacon Sleep Application AT86RF212-XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon_sleep.xmega_a3bu_xplained_rz600rf212">
+	<project force-caption="true" force-description="true" caption="MAC NoBeacon Sleep Application AT86RF212 - XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon_sleep.xmega_a3bu_xplained_rz600rf212">
 		<info type="description" value="summary">
 		The MAC NoBeacon Sleep application demonstrates transceiver sleep feature .The device wakes from sleep every 2 seconds and transmits data to the coordinator.
 		</info>

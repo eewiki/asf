@@ -47,7 +47,7 @@
 #include "uart.h"
 
 static volatile bool main_b_msc_enable = false;
-static bool main_b_cdc_enable = false;
+static volatile bool main_b_cdc_enable = false;
 
 /*! \brief Main function. Execution starts here.
  */

@@ -72,6 +72,7 @@
  * - sam4c16c_sam4c_ek
  * - samg53n19_samg_xplained_pro
  * - sam4cp16b_sam4cp16bmb
+ * - samg55j19_samg_xplained_pro
  *
  * The code can be roughly broken down as follows:
  * <ul>
@@ -107,6 +108,9 @@
 #include "conf_board.h"
 #include "conf_spi_pdc_example.h"
 #include "delay.h"
+#if (SAMG55)
+#include "flexcom.h"
+#endif
 
 /// @cond 0
 /**INDENT-OFF**/
@@ -239,8 +243,14 @@ static void spi_slave_initialize(void)
 	for (i = 0; i < COMM_BUFFER_SIZE; i++) {
 		gs_uc_spi_s_tbuffer[i] = i;
 	}
+#if (SAMG55)
+	/* Enable the peripheral and set SPI mode. */
+	flexcom_enable(BOARD_FLEXCOM_SPI);
+	flexcom_set_opmode(BOARD_FLEXCOM_SPI, FLEXCOM_SPI);
+#else
 	/* Configure an SPI peripheral. */
 	pmc_enable_periph_clk(SPI_ID);
+#endif
 	spi_disable(SPI_SLAVE_BASE);
 	spi_reset(SPI_SLAVE_BASE);
 	spi_set_slave_mode(SPI_SLAVE_BASE);
@@ -273,9 +283,15 @@ static void spi_master_initialize(void)
 	
 	/* Get pointer to SPI master PDC register base */
 	g_p_spim_pdc = spi_get_pdc_base(SPI_MASTER_BASE);
-	
+
+#if (SAMG55)
+	/* Enable the peripheral and set SPI mode. */
+	flexcom_enable(BOARD_FLEXCOM_SPI);
+	flexcom_set_opmode(BOARD_FLEXCOM_SPI, FLEXCOM_SPI);
+#else
 	/* Configure an SPI peripheral. */
 	pmc_enable_periph_clk(SPI_ID);
+#endif
 	spi_disable(SPI_MASTER_BASE);
 	spi_reset(SPI_MASTER_BASE);
 	spi_set_lastxfer(SPI_MASTER_BASE);
@@ -370,14 +386,19 @@ static void configure_console(void)
 {
 	const usart_serial_options_t uart_serial_options = {
 		.baudrate = CONF_UART_BAUDRATE,
-		.paritytype = CONF_UART_PARITY
+#ifdef CONF_UART_CHAR_LENGTH
+		.charlength = CONF_UART_CHAR_LENGTH,
+#endif
+		.paritytype = CONF_UART_PARITY,
+#ifdef CONF_UART_STOP_BITS
+		.stopbits = CONF_UART_STOP_BITS,
+#endif
 	};
-	
+
 	/* Configure console UART. */
 	sysclk_enable_peripheral_clock(CONSOLE_UART_ID);
 	stdio_serial_init(CONF_UART, &uart_serial_options);
 }
-
 
 /**
  * \brief Application entry point for SPI PDC example.
@@ -410,7 +431,7 @@ int main(void)
 	display_menu();
 
 	while (1) {
-		while (uart_read(CONSOLE_UART, &uc_key));
+		scanf("%c", (char *)&uc_key);
 
 		switch (uc_key) {
 		case 'h':

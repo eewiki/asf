@@ -3,7 +3,7 @@
  *
  * \brief SAM4S clock configuration.
  *
- * Copyright (c) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -85,17 +85,17 @@
 #define CONFIG_USBCLK_DIV           2
 
 // ===== Target frequency (System clock)
-// - XTAL frequency: 12MHz
+// - XTAL frequency: 12MHZ
 // - System clock source: PLLA
 // - System clock prescaler: 2 (divided by 2)
 // - PLLA source: XTAL
 // - PLLA output: XTAL * 20 / 1
-// - System clock: 12 * 20 / 1 / 2 = 120MHz
+// - System clock: 12 * 20 / 1 / 2 = 120MHZ
 // ===== Target frequency (USB Clock)
 // - USB clock source: PLLB
 // - USB clock devider: 2 (devided by 2)
 // - PLLB output: XTAL * 16 / 2
-// - USB clock: 12 * 16 / 2 / 2 = 48MHz
+// - USB clock: 12 * 16 / 2 / 2 = 48MHZ
 
 
 #endif /* CONF_CLOCK_H_INCLUDED */

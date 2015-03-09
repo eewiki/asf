@@ -3,7 +3,7 @@
  *
  * \brief Chip-specific system clock manager configuration
  *
- * Copyright (c) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -58,7 +58,7 @@
 //#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_RCFAST
 //#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_RC1M
 
-/* RCFAST frequency selection: 0 for 4MHz, 1 for 8MHz and 2 for 12MHz */
+/* RCFAST frequency selection: 0 for 4MHZ, 1 for 8MHZ and 2 for 12MHZ */
 //#define CONFIG_RCFAST_FRANGE    0
 //#define CONFIG_RCFAST_FRANGE    1
 //#define CONFIG_RCFAST_FRANGE    2

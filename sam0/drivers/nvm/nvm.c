@@ -53,9 +53,9 @@
  * into the struct in the nvm_init() function.
  */
 struct _nvm_module {
-	/** Number of bytes contained per page */
+	/** Number of bytes contained per page. */
 	uint16_t page_size;
-	/** Total number of pages in the NVM memory */
+	/** Total number of pages in the NVM memory. */
 	uint16_t number_of_pages;
 	/** If \c false, a page write command will be issued automatically when the
 	 *  page buffer is full. */
@@ -82,7 +82,7 @@ static struct _nvm_module _nvm_dev;
  * \brief Sets the up the NVM hardware module based on the configuration.
  *
  * Writes a given configuration of a NVM controller configuration to the
- * hardware module, and initializes the internal device struct
+ * hardware module, and initializes the internal device struct.
  *
  * \param[in] config    Configuration settings for the NVM controller
  *
@@ -632,7 +632,7 @@ void nvm_get_parameters(
  *
  * \param[in] page_number    Page number to be checked
  *
- * \return Page lock status
+ * \return Page lock status.
  *
  * \retval true              Page is locked
  * \retval false             Page is not locked
@@ -720,11 +720,11 @@ static void _nvm_translate_raw_fusebits_to_struct (
 /**
  * \brief Get fuses from user row
  *
- * Read out the fuse settings from the user row
+ * Read out the fuse settings from the user row.
  *
- * \param[in] fusebits Pointer to a 64bit wide memory buffer of type struct nvm_fusebits
+ * \param[in] fusebits Pointer to a 64-bit wide memory buffer of type struct nvm_fusebits
  *
- * \return             Status of read fuses attempt
+ * \return             Status of read fuses attempt.
  *
  * \retval STATUS_OK   This function will always return STATUS_OK
  */

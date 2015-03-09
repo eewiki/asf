@@ -3,7 +3,7 @@
 	    <info type="description" value="summary">
 		The pre-compiled QTouch Library, common and include files for AVR 8-bit devices.
 		For more information on the QTouch Library, goto www.atmel.com/qtouchlib.
-		For support queries, email touch@atmel.com.
+		For support, go to www.atmel.com/design-support/.
 		</info>		
 		<info type="keyword" value="technology">
 			<keyword value="Touch"/>

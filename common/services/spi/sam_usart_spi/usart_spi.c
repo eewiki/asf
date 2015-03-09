@@ -43,6 +43,10 @@
 
 #include "usart_spi.h"
 #include "sysclk.h"
+#if SAMG55
+#include "flexcom.h"
+#include "conf_board.h"
+#endif
 
 /// @cond 0
 /**INDENT-OFF**/
@@ -85,8 +89,37 @@ void usart_spi_init(Usart *p_usart)
 	}
 #endif
 
+#if SAMG55
+#ifdef USART4
+	if (p_usart == USART4) {
+		uc_id = ID_USART4;
+	}
+#endif
+
+#ifdef USART5
+	else if(p_usart == USART5) {
+		uc_id = ID_USART5;
+	}
+#endif
+
+#ifdef USART6
+	else if(p_usart == USART6) {
+		uc_id = ID_USART6;
+	}
+#endif
+
+#ifdef USART7
+	else if(p_usart == USART7) {
+		uc_id = ID_USART7;
+	}
+#endif
+#endif
+
 #if SAM4L
 	sysclk_enable_peripheral_clock(p_usart);
+#elif SAMG55
+	flexcom_enable(BOARD_FLEXCOM_USART);
+	flexcom_set_opmode(BOARD_FLEXCOM_USART, FLEXCOM_USART);
 #else
 	sysclk_enable_peripheral_clock(uc_id);
 #endif

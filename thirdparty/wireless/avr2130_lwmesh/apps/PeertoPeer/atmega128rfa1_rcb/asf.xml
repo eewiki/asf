@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="LWMesh-Peer2Peer Application:ATmega128RFA1 Radio Controller Board" id="thirdparty.wireless.avr2130_lwmesh.apps.peer2peer.atmega128rfa1_rcb" force-caption="true" force-description="true">
+	<project caption="LWMesh-Peer2Peer Application - ATmega128RFA1 Radio Controller Board" id="thirdparty.wireless.avr2130_lwmesh.apps.peer2peer.atmega128rfa1_rcb" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 		The LWMesh Peer2Peer application performs a Wireless UART functionality using two nodes with preconfigured addresses.
 		</info>		

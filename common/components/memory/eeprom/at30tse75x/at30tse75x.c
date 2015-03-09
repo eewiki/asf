@@ -43,6 +43,10 @@
 
 #include "asf.h"
 #include "at30tse75x.h"
+#if SAMG55
+#include "flexcom.h"
+#include "conf_board.h"
+#endif
 
 /* AT30TSE75x Device Type ID for Temperature Sensor: 0b1001xxx */
 #define AT30TSE75X_DEVICE_TYPE_ID_TEMP    0x48
@@ -110,8 +114,14 @@ void at30tse_init(void)
 		.smbus = 0
 	};
 
+#if SAMG55
+	flexcom_enable(BOARD_FLEXCOM_TWI);
+	flexcom_set_opmode(BOARD_FLEXCOM_TWI, FLEXCOM_TWI);
+#else
 	sysclk_enable_peripheral_clock(BOARD_AT30TSE_TWI_ID);
+#endif
 	twi_master_init(BOARD_AT30TSE_TWI, &opts);
+
 }
 
 #if BOARD_USING_AT30TSE != AT30TS75
@@ -146,6 +156,7 @@ uint8_t at30tse_eeprom_write(uint8_t *data, uint8_t length,
 	};
 
 	return twi_master_write(BOARD_AT30TSE_TWI, &packet);
+
 }
 
 /**

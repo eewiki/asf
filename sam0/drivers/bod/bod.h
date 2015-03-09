@@ -52,7 +52,7 @@ extern "C" {
 /**
  * \defgroup asfdoc_sam0_bod_group SAM Brown Out Detector Driver (BOD)
  *
- * This driver for SAM devices provides an interface for the configuration
+ * This driver for Atmel® | SMART™ SAM devices provides an interface for the configuration
  * and management of the device's Brown Out Detector (BOD) modules, to detect
  * and respond to under-voltage events and take an appropriate action.
  *
@@ -60,9 +60,9 @@ extern "C" {
  * - SYSCTRL (System Control)
  *
  * The following devices can use this module:
- *  - SAM D20/D21
- *  - SAM R21
- *  - SAM D10/D11
+ *  - Atmel® | SMART™ SAM D20/D21
+ *  - Atmel® | SMART™ SAM R21
+ *  - Atmel® | SMART™ SAM D10/D11
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_bod_prerequisites
@@ -96,7 +96,7 @@ extern "C" {
  *
  * \section asfdoc_sam0_bod_extra_info Extra Information
  *
- * For extra information see \ref asfdoc_sam0_bod_extra. This includes:
+ * For extra information, see \ref asfdoc_sam0_bod_extra. This includes:
  *  - \ref asfdoc_sam0_bod_extra_acronyms
  *  - \ref asfdoc_sam0_bod_extra_dependencies
  *  - \ref asfdoc_sam0_bod_extra_errata
@@ -119,7 +119,7 @@ extern "C" {
  * List of possible BOD controllers within the device.
  */
 enum bod {
-	/** BOD33 External I/O voltage, */
+	/** BOD33 External I/O voltage. */
 	BOD_BOD33,
 };
 
@@ -130,44 +130,44 @@ enum bod {
  * speed of a BOD to lower the power consumption.
  */
 enum bod_prescale {
-	/** Divide input prescaler clock by 2 */
+	/** Divide input prescaler clock by 2. */
 	BOD_PRESCALE_DIV_2       = SYSCTRL_BOD33_PSEL(0),
-	/** Divide input prescaler clock by 4 */
+	/** Divide input prescaler clock by 4. */
 	BOD_PRESCALE_DIV_4       = SYSCTRL_BOD33_PSEL(1),
-	/** Divide input prescaler clock by 8 */
+	/** Divide input prescaler clock by 8. */
 	BOD_PRESCALE_DIV_8       = SYSCTRL_BOD33_PSEL(2),
-	/** Divide input prescaler clock by 16 */
+	/** Divide input prescaler clock by 16. */
 	BOD_PRESCALE_DIV_16      = SYSCTRL_BOD33_PSEL(3),
-	/** Divide input prescaler clock by 32*/
+	/** Divide input prescaler clock by 32.*/
 	BOD_PRESCALE_DIV_32      = SYSCTRL_BOD33_PSEL(4),
-	/** Divide input prescaler clock by 64 */
+	/** Divide input prescaler clock by 64. */
 	BOD_PRESCALE_DIV_64      = SYSCTRL_BOD33_PSEL(5),
-	/** Divide input prescaler clock by 128 */
+	/** Divide input prescaler clock by 128. */
 	BOD_PRESCALE_DIV_128     = SYSCTRL_BOD33_PSEL(6),
-	/** Divide input prescaler clock by 256 */
+	/** Divide input prescaler clock by 256. */
 	BOD_PRESCALE_DIV_256     = SYSCTRL_BOD33_PSEL(7),
-	/** Divide input prescaler clock by 512 */
+	/** Divide input prescaler clock by 512. */
 	BOD_PRESCALE_DIV_512     = SYSCTRL_BOD33_PSEL(8),
-	/** Divide input prescaler clock by 1024 */
+	/** Divide input prescaler clock by 1024. */
 	BOD_PRESCALE_DIV_1024    = SYSCTRL_BOD33_PSEL(9),
-	/** Divide input prescaler clock by 2048 */
+	/** Divide input prescaler clock by 2048. */
 	BOD_PRESCALE_DIV_2048    = SYSCTRL_BOD33_PSEL(10),
-	/** Divide input prescaler clock by 4096 */
+	/** Divide input prescaler clock by 4096. */
 	BOD_PRESCALE_DIV_4096    = SYSCTRL_BOD33_PSEL(11),
-	/** Divide input prescaler clock by 8192 */
+	/** Divide input prescaler clock by 8192. */
 	BOD_PRESCALE_DIV_8192    = SYSCTRL_BOD33_PSEL(12),
-	/** Divide input prescaler clock by 16384 */
+	/** Divide input prescaler clock by 16384. */
 	BOD_PRESCALE_DIV_16384   = SYSCTRL_BOD33_PSEL(13),
 	/** Divide input prescaler clock by 32768 */
 	BOD_PRESCALE_DIV_32768   = SYSCTRL_BOD33_PSEL(14),
-	/** Divide input prescaler clock by 65536 */
+	/** Divide input prescaler clock by 65536. */
 	BOD_PRESCALE_DIV_65536   = SYSCTRL_BOD33_PSEL(15),
 };
 
 /**
  * \brief Brown Out Detector detection actions.
  *
- * List of possible BOD actions when a BOD module detects a brown-out condition.
+ * List of possible BOD actions when a BOD module detects a brown out condition.
  */
 enum bod_action {
 	/** A BOD detect will do nothing, and the BOD state must be polled. */
@@ -186,7 +186,7 @@ enum bod_action {
 enum bod_mode {
 	/** BOD will sample the supply line continuously. */
 	BOD_MODE_CONTINUOUS  = 0,
-	/** BOD will use the BOD sampling clock (1kHz) to sample the supply line. */
+	/** BOD will use the BOD sampling clock (1KHz) to sample the supply line. */
 	BOD_MODE_SAMPLED     = SYSCTRL_BOD33_MODE,
 };
 
@@ -216,7 +216,7 @@ struct bod_config {
  * \brief Get default BOD configuration.
  *
  * The default BOD configuration is:
- * - Clock prescaler set to divide the input clock by 2
+ * - Clock prescaler set to divide the input clock by two
  * - Continuous mode
  * - Reset on BOD detect
  * - Hysteresis enabled
@@ -364,7 +364,7 @@ static inline void bod_clear_detected(
  *  </tr>
  *  <tr>
  *      <td>BOD</td>
- *      <td>Brownout detector</td>
+ *      <td>Brown out detector</td>
  *  </tr>
  * </table>
  *
@@ -413,7 +413,7 @@ static inline void bod_clear_detected(
  *
  * \page asfdoc_sam0_bod_application_use_case Application Use Case for BOD - Application
  * The preferred method of setting BOD33 levels and settings is trough the fuses.
- * when it is desirable to set it in software, please see the below use case.
+ * When it is desirable to set it in software, see the below use case.
  *
  * In this use case, a new BOD33 level might be set in SW if the clock settings
  * are adjusted up after a battery has charged to a higher level. When the battery
@@ -430,14 +430,9 @@ static inline void bod_clear_detected(
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
- *		<td>E</td>
- *		<td>04/2014</td>
- *		<td>Added support for SAMD10/D11.</td>
- *	</tr>
- *	<tr>
  *		<td>D</td>
- *		<td>03/2014</td>
- *		<td>Added support for SAMR21.</td>
+ *		<td>04/2014</td>
+ *		<td>Added support for SAMR21 and SAMD10/D11.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

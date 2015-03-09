@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="RF4CE-ZRC target serial interface AT86RF212B-XMEGA-A3U AT86RF212B Zigbit(Carrier)" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.serial_if.tgt.ncp.atxmega256a3u_uart_zigbit_rf212b">
+	<project force-caption="true" force-description="true" caption="RF4CE-ZRC target serial interface - XMEGA-A3U AT86RF212B Zigbit (ATZB-X-212B-XPRO )" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.serial_if.tgt.ncp.atxmega256a3u_uart_zigbit_rf212b">
 		<info type="description" value="summary">
 		The RF4CE-ZRC target stack running on the network co-processor and driven by the host application
 		</info>

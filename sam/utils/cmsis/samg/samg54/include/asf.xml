@@ -3,6 +3,7 @@
 		<info type="description" value="summary">
 		This file defines all structures and symbols for SAMG54
 		</info>
+		<build type="include-path" value="."/>
 		<build type="header-file" value="samg54.h"/>
 		<build type="header-file" value="samg54g19.h"/>
 		<build type="header-file" value="samg54j19.h"/>

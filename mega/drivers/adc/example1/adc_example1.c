@@ -3,7 +3,7 @@
  *
  * \brief megaAVR ADC example 1
  *
- * Copyright (C) 2011 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -73,7 +73,7 @@
  * \section contactinfo Contact Information
  * For further information, visit
  * <A href="http://www.atmel.com/">Atmel</A>.\n
- * Support and FAQ: http://support.atmel.no/
+ * Support and FAQ: http://www.atmel.com/design-support/
  */
 
 #include "adc.h"

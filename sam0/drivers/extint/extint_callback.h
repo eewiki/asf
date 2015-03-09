@@ -55,7 +55,7 @@ extern "C" {
  * @{
  */
 
-/** \name Callback configuration and initialization
+/** \name Callback Configuration and Initialization
  * @{
  */
 
@@ -82,7 +82,7 @@ uint8_t extint_get_current_channel(void);
 
 /** @} */
 
-/** \name Callback enabling and disabling (channel)
+/** \name Callback Enabling and Disabling (Channel)
  * @{
  */
 

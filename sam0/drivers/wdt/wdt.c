@@ -47,7 +47,7 @@
  * \brief Sets up the WDT hardware module based on the configuration.
  *
  * Writes a given configuration of a WDT configuration to the
- * hardware module, and initializes the internal device struct
+ * hardware module, and initializes the internal device struct.
  *
  * \param[in]  config  Pointer to the configuration struct
  *

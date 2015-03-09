@@ -1,6 +1,6 @@
 <asf xmlversion="1.0">
 	<select-by-device id="sam.components.display.c42364a" caption="sam.components.display.c42364a">
-		<module type="component" id="sam.components.display.c42364a#lcdca" caption="sam.components.display.c42364a">
+		<module type="component" id="sam.components.display.c42364a#lcdca" caption="C42364A Display LCD Glass">
 			<info type="description" value="summary">
 				Low-level driver for the C42364 LCD Glass.
 			</info>
@@ -19,7 +19,7 @@
 			<build type="module-config" subtype="path" value="module_config"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
 		</module>
-		<module type="component" id="sam.components.display.c42364a#slcdc" caption="sam.components.display.c42364a">
+		<module type="component" id="sam.components.display.c42364a#slcdc" caption="C42364A Display LCD Glass">
 			<info type="description" value="summary">
 				Low-level driver for the C42364 LCD Glass.
 			</info>

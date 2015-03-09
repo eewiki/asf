@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC Beacon Application Device AT86RF233 Zigbit(Carrier)-SAM4S Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.beacon.dev.ncp.sam4sd32c_reb233_xpro">
+	<project force-caption="true" force-description="true" caption="MAC Beacon Application Device AT86RF233 (ATREB233-XPRO) - SAM4S Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.beacon.dev.ncp.sam4sd32c_reb233_xpro">
 		<info type="description" value="summary">
 		The basic MAC Example Beacon Application deploys a beacon-enabled network with star topology.
 		</info>	

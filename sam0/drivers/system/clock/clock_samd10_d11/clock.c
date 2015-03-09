@@ -151,9 +151,9 @@ static inline void _system_clock_source_dfll_set_config_errata_9905(void)
  *
  * Determines the current operating frequency of a given clock source.
  *
- * \param[in] clock_source  Clock source to get the frequency of
+ * \param[in] clock_source  Clock source to get the frequency
  *
- * \returns Frequency of the given clock source, in Hz
+ * \returns Frequency of the given clock source, in Hz.
  */
 uint32_t system_clock_source_get_hz(
 		const enum system_clock_source clock_source)
@@ -447,11 +447,11 @@ void system_clock_source_dpll_set_config(
  * registers. The acceptable ranges are:
  *
  * For OSC32K:
- *  - 7 bits (max value 128)
+ *  - 7 bits (maximum value 128)
  * For OSC8MHZ:
- *  - 8 bits (Max value 255)
+ *  - 8 bits (maximum value 255)
  * For OSCULP:
- *  - 5 bits (Max value 32)
+ *  - 5 bits (maximum value 32)
  *
  * \note The frequency range parameter applies only when configuring the 8MHz
  *       oscillator and will be ignored for the other oscillators.

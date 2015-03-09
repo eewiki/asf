@@ -9,7 +9,7 @@
  * USB Bridge.
  *
  * - Userguide:          QTouch Library Peripheral Touch Controller User Guide.
- * - Support email:      touch@atmel.com
+ * - Support: http://www.atmel.com/design-support/
  *
  *
  * Copyright (c) 2014 Atmel Corporation. All rights reserved.

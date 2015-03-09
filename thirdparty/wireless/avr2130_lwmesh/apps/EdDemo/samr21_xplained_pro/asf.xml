@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="LWMesh-EDDemo Application:SAMR21  Xplained Pro" id="thirdparty.wireless.avr2130_lwmesh.apps.eddemo.samr21_xplained_pro" force-caption="true" force-description="true">
+	<project caption="LWMesh-EDDemo Application - SAM R21  Xplained Pro" id="thirdparty.wireless.avr2130_lwmesh.apps.eddemo.samr21_xplained_pro" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 		The LWMesh EDDemo application performs periodic Energy measurement on all channels and prints them to the terminal.Only one device is required for this app and no data communication is performed.
 		</info>		
@@ -13,7 +13,7 @@
 		<build type="header-file" value="conf_spi.h"/>
 
 		<config name="config.sam0.drivers.sercom.spi" value="polled"/>
-		<config name="config.sam0.drivers.sercom.usart" value="polled"/>
+		<config name="config.sam0.drivers.sercom.usart" value="callback"/>
 		<require idref="board.samr21_xplained_pro"/>
 		<config name="config.thirdparty.wireless.avr2130_lwmesh.source.phy.ext" value="at86rf233"/>		
 
@@ -21,6 +21,7 @@
 
 		<config name="config.compiler.armgcc.optimization" value="high" />
 		
+		<generator value="iarewarm"/>
 		<generator value="armgcc" />
 		<generator value="as5_arm" />
 		<generator value="doxygen"/>

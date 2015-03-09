@@ -99,6 +99,9 @@
 #include "conf_board.h"
 #include "conf_clock.h"
 #include "conf_spi_example.h"
+#if (SAMG55)
+#include "flexcom.h"
+#endif
 
 /// @cond 0
 /**INDENT-OFF**/
@@ -388,8 +391,14 @@ static void spi_slave_initialize(void)
 	gs_ul_spi_cmd = RC_SYN;
 
 	puts("-I- Initialize SPI as slave \r");
+#if (SAMG55)
+	/* Enable the peripheral and set SPI mode. */
+	flexcom_enable(BOARD_FLEXCOM_SPI);
+	flexcom_set_opmode(BOARD_FLEXCOM_SPI, FLEXCOM_SPI);
+#else
 	/* Configure an SPI peripheral. */
 	spi_enable_clock(SPI_SLAVE_BASE);
+#endif
 	spi_disable(SPI_SLAVE_BASE);
 	spi_reset(SPI_SLAVE_BASE);
 	spi_set_slave_mode(SPI_SLAVE_BASE);
@@ -412,8 +421,14 @@ static void spi_master_initialize(void)
 {
 	puts("-I- Initialize SPI as master\r");
 
+#if (SAMG55)
+	/* Enable the peripheral and set SPI mode. */
+	flexcom_enable(BOARD_FLEXCOM_SPI);
+	flexcom_set_opmode(BOARD_FLEXCOM_SPI, FLEXCOM_SPI);
+#else
 	/* Configure an SPI peripheral. */
 	spi_enable_clock(SPI_MASTER_BASE);
+#endif
 	spi_disable(SPI_MASTER_BASE);
 	spi_reset(SPI_MASTER_BASE);
 	spi_set_lastxfer(SPI_MASTER_BASE);

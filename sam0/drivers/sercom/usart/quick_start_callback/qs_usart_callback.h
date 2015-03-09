@@ -49,7 +49,7 @@
  * the USART will be configured with the following settings:
  * - Asynchronous mode
  * - 9600 Baudrate
- * - 8-bits, No Parity and 1 Stop Bit
+ * - 8-bits, No Parity and one Stop Bit
  * - TX and RX enabled and connected to the Xplained Pro Embedded Debugger virtual COM port
  *
  * \section asfdoc_sam0_sercom_usart_callback_use_case_setup Setup
@@ -88,7 +88,7 @@
  *           struct to ensure that all values are initialized to known default
  *           settings.
  *
- *  -# Alter the USART settings to configure the physical pinout, baud rate and
+ *  -# Alter the USART settings to configure the physical pinout, baudrate, and
  *     other relevant parameters.
  *     \snippet qs_usart_callback.c setup_change_config
  *  -# Configure the USART module with the desired settings, retrying while the

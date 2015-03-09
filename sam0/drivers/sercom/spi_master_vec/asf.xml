@@ -30,7 +30,6 @@
 		<device-support value="samd10"/>
 		<device-support value="samd11"/>
 		<require idref="sam0.utils"/>
-		<require idref="sam0.drivers.sercom"/>
 		<require idref="sam0.drivers.sercom.spi"/>
 		<require idref="sam0.drivers.port"/>
 		<require idref="sam0.drivers.system"/>

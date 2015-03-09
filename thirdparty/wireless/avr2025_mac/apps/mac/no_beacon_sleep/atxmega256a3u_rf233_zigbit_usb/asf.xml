@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC NoBeacon Sleep Application AT86RF233-XMEGA-A3U AT86RF233 Zigbit(USB)" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon_sleep.atxmega256a3u_rf233_zigbit_usb">
+	<project force-caption="true" force-description="true" caption="MAC NoBeacon Sleep Application - XMEGA-A3U AT86RF233 Zigbit (ATZB-X-233-USB)" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon_sleep.atxmega256a3u_rf233_zigbit_usb">
 		<info type="description" value="summary">
 		The MAC NoBeacon Sleep application demonstrates transceiver sleep feature .The device wakes from sleep every 2 seconds and transmits data to the coordinator.
 		</info>

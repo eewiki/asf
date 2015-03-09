@@ -50,7 +50,7 @@
  *  \li Sampling mode of the pin changed to sample on demand
  *
  * This use case sets up the PINMUX to configure a physical I/O pin set as
- * an input with pull-up. and changes the sampling mode of the pin to reduce
+ * an input with pull-up and changes the sampling mode of the pin to reduce
  * power by only sampling the physical pin state when the user application
  * attempts to read it.
  *

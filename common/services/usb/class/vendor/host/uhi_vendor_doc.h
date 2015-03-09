@@ -52,8 +52,8 @@
  * - \ref asfdoc_uhi_vendor_exqsg
  * - \ref asfdoc_uhi_vendor_config_examples
  *
- * For more details for Atmel Software Framework (ASF) USB Host Stack, please
- * refer to following Application Notes:
+ * For more details for Atmel® Software Framework (ASF) USB Host Stack,
+ * refer to following application notes:
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8486.pdf">
  *   AVR4950: ASF - USB Host Stack</a>
  *
@@ -70,7 +70,7 @@
  */
 
 /** Global definition which contains standard UHI API for UHC
- *  It must be added in USB_HOST_UHI define from conf_usb_host.h file. */
+ *  It must be added in USB_HOST_UHI definition from conf_usb_host.h file. */
 #define UHI_VENDOR { \
 	.install = uhi_vendor_install, \
 	.enable = uhi_vendor_enable, \
@@ -80,7 +80,7 @@
 /**@}*/
 
 /**
- * \name Functions required by UHC
+ * \name Functions Required by UHC
  * @{
  */
 
@@ -91,7 +91,7 @@
  *
  * \param[in] uhc_device_t	  Device to request
  *
- * \return status of the install
+ * \return Status of the install.
  */
 extern uhc_enum_status_t uhi_vendor_install(uhc_device_t* dev);
 
@@ -105,7 +105,7 @@ extern uhc_enum_status_t uhi_vendor_install(uhc_device_t* dev);
 extern void uhi_vendor_enable(uhc_device_t* dev);
 
 /**
- * \brief Uninstall the interface (if installed)
+ * \brief Uninstall the interface (if installed).
  *
  * \param[in] uhc_device_t	  Device to request
  */
@@ -123,7 +123,7 @@ extern void uhi_vendor_uninstall(uhc_device_t* dev);
  * interrupt OUT, bulk IN, bulk OUT, isochronous IN, isochronous OUT.
  *
  * This implementation is an example and can be a base to create another Vendor Class
- * which support more endpoint as two bulk IN endpoints.
+ * which supports more endpoint as two bulk IN endpoints.
  *
  * @{
  */
@@ -134,7 +134,7 @@ extern void uhi_vendor_uninstall(uhc_device_t* dev);
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback
  * is called.
  * The \a callback returns the transfer status and eventually the number of byte
- * transfered.
+ * transferred.
  *
  * \param[out] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -152,7 +152,7 @@ bool uhi_vendor_control_in_run(uint8_t * buf, iram_size_t buf_size,
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback
  * is called.
  * The \a callback returns the transfer status and eventually the number of byte
- * transfered.
+ * transferred.
  *
  * \param[in] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -170,7 +170,7 @@ bool uhi_vendor_control_out_run(uint8_t * buf, iram_size_t buf_size,
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback
  * is called.
  * The \a callback returns the transfer status and eventually the number of byte
- * transfered.
+ * transferred.
  *
  * \param[out] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -188,7 +188,7 @@ bool uhi_vendor_bulk_in_run(uint8_t * buf, iram_size_t buf_size,
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback
  * is called.
  * The \a callback returns the transfer status and eventually the number of byte
- * transfered.
+ * transferred.
  *
  * \param[in] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -206,7 +206,7 @@ bool uhi_vendor_bulk_out_run(uint8_t * buf, iram_size_t buf_size,
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback
  * is called.
  * The \a callback returns the transfer status and eventually the number of byte
- * transfered.
+ * transferred.
  *
  * \param[out] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -224,7 +224,7 @@ bool uhi_vendor_int_in_run(uint8_t * buf, iram_size_t buf_size,
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback
  * is called.
  * The \a callback returns the transfer status and eventually the number of byte
- * transfered.
+ * transferred.
  *
  * \param[in] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -243,7 +243,7 @@ bool uhi_vendor_int_out_run(uint8_t * buf, iram_size_t buf_size,
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback
  * is called.
  * The \a callback returns the transfer status and eventually the number of byte
- * transfered.
+ * transferred.
  *
  * \param[out] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -261,7 +261,7 @@ bool uhi_vendor_iso_in_run(uint8_t * buf, iram_size_t buf_size,
  * When the transfer is finished or aborted (stall, reset, ...), the \a callback
  * is called.
  * The \a callback returns the transfer status and eventually the number of byte
- * transfered.
+ * transferred.
  *
  * \param[in] buf           Buffer on Internal RAM to send or fill.
  *                      It must be align, then use COMPILER_WORD_ALIGNED.
@@ -299,31 +299,31 @@ bool uhi_vendor_iso_is_available(void);
 /**@}*/
 
 /**
- * \page asfdoc_uhi_vendor_exqsg Quick start guide for USB host vendor module (UHI vendor)
+ * \page asfdoc_uhi_vendor_exqsg Quick Start Guide for USB Host Vendor Module (UHI Vendor)
  *
  * This is the quick start guide for the \ref asfdoc_uhi_vendor_group
- * "USB host vendor module (UHI vendor)" with step-by-step instructions on
+ * "USB Host Vendor Module (UHI Vendor)" with step-by-step instructions on
  * how to configure and use the modules in a selection of use cases.
  *
  * The use cases highlights several code fragments. The code fragments in the
  * steps for setup can be copied into a custom initialization function, while
  * the steps for usage can be copied into, e.g., the main application function.
  *
- * \section uhi_vendor_basic_use_case Basic use case
+ * \section uhi_vendor_basic_use_case Basic Use Case
  * In this basic use case, the "USB Vendor (Single Class support)" module is
  * used.
  *
  * The "USB Vendor (Composite)" module usage is described in
- * \ref uhi_vendor_use_cases "Advanced use cases".
+ * \ref uhi_vendor_use_cases "Advanced Use Cases".
  *
- * \subsection uhi_vendor_basic_use_case_setup Setup steps
- * As a USB host, it follows common USB host setup steps. Please refer to
+ * \subsection uhi_vendor_basic_use_case_setup Setup Steps
+ * As a USB host, it follows common USB host setup steps. Refer to
  * \ref asfdoc_uhc_basic_use_case_setup "USB Host Basic Setup".
 
  *
- * \subsection uhi_vendor_basic_use_case_usage Usage steps
+ * \subsection uhi_vendor_basic_use_case_usage Usage Steps
  *
- * \subsubsection uhi_vendor_basic_use_case_usage_code Example code
+ * \subsubsection uhi_vendor_basic_use_case_usage_code Example Code
  * Content of conf_usb_host.h:
  * \code
 	#define USB_HOST_UHI        UHI_VENDOR
@@ -380,7 +380,7 @@ bool uhi_vendor_iso_is_available(void);
  *
  * \subsubsection uhi_vendor_basic_use_case_setup_flow Workflow
  * -# Ensure that conf_usb_host.h is available and contains the following
- * configuration which is the USB host vendor configuration:
+ * configurations, which is the USB host vendor configuration:
  * \code
  #define USB_HOST_UHI   UHI_HID_VENDOR
  \endcode
@@ -402,7 +402,7 @@ bool uhi_vendor_iso_is_available(void);
  uhi_vendor_control_out_run(), uhi_vendor_bulk_out_run(),...
  \endcode
  *
- * \section uhi_vendor_use_cases Advanced use cases
+ * \section uhi_vendor_use_cases Advanced Use Cases
  * \ifnot ASF_MANUAL
  * For more advanced use of the UHI vendor module, see the following use cases:
  * - \subpage uhc_use_case_1
@@ -419,32 +419,32 @@ bool uhi_vendor_iso_is_available(void);
  *
  * \section asfdoc_uhi_vendor_config_examples_1 conf_usb_host.h
  * \subsection asfdoc_uhi_vendor_config_examples_1_1  UHI Vendor Single
- * \include module_config\conf_usb_host.h
- * \subsection asfdoc_uhi_vendor_config_examples_1_2  UHI Vendor Multiple (composite)
- * \include composite\host\module_config\conf_usb_host.h
+ * \include module_config/conf_usb_host.h
+ * \subsection asfdoc_uhi_vendor_config_examples_1_2  UHI Vendor Multiple (Composite)
+ * \include composite/host/module_config/conf_usb_host.h
  *
  * \section asfdoc_uhi_vendor_config_examples_2 conf_clock.h
  *
- * \subsection asfdoc_uhi_vendor_config_examples_2_1 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_clock.h
+ * \subsection asfdoc_uhi_vendor_config_examples_2_1 SAM3X, and SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_clock.h
  *
- * \subsection asfdoc_uhi_vendor_config_examples_2_2 SAM4L device(USBC)
- * \include example\sam4lc4c_sam4l_ek\conf_clock.h
+ * \subsection asfdoc_uhi_vendor_config_examples_2_2 SAM4L Device(USBC)
+ * \include example/sam4lc4c_sam4l_ek/conf_clock.h
   *
  * \section asfdoc_uhi_vendor_config_examples_3 conf_clocks.h
  *
- * \subsection asfdoc_uhi_vendor_config_examples_3_1 SAMD21 devices (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_clocks.h
+ * \subsection asfdoc_uhi_vendor_config_examples_3_1 SAMD21 Devices (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_clocks.h
  *
  * \section asfdoc_uhi_vendor_config_examples_4 conf_board.h
  *
- * \subsection asfdoc_uhi_vendor_config_examples_4_1 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_board.h
+ * \subsection asfdoc_uhi_vendor_config_examples_4_1 SAM3X, and SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_board.h
  *
- * \subsection asfdoc_uhi_vendor_config_examples_4_2 SAM4L device(USBC)
- * \include example\sam4lc4c_sam4l_ek\conf_board.h
+ * \subsection asfdoc_uhi_vendor_config_examples_4_2 SAM4L Device(USBC)
+ * \include example/sam4lc4c_sam4l_ek/conf_board.h
  *
- * \subsection asfdoc_uhi_vendor_config_examples_4_3 SAMD21 devices (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_board.h
+ * \subsection asfdoc_uhi_vendor_config_examples_4_3 SAMD21 Devices (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_board.h
  */
 

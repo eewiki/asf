@@ -8,7 +8,7 @@
 * Date              : $Date: 24. mai 2004 11:31:20 $
 * Updated by        : $Author: ltwa $
 *
-* Support mail      : avr@atmel.com
+* Support: http://www.atmel.com/design-support/
 *
 * Supported devices : All devices with a TWI module can be used.
 *                     The example is written for the ATmega16

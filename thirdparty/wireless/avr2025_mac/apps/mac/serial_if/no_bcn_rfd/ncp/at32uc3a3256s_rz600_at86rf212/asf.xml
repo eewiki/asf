@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC Serial Interface NoBeacon RFD AT86RF212-RZ600" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_rfd.ncp.at32uc3a3256s_rz600_at86rf212">
+	<project force-caption="true" force-description="true" caption="MAC Serial Interface NoBeacon RFD AT86RF212 - RZ600" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_rfd.ncp.at32uc3a3256s_rz600_at86rf212">
 		<info type="description" value="summary">
 		MAC Serial Interface  Application - NoBeacon RFD
 		</info>

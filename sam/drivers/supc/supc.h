@@ -91,7 +91,7 @@ void supc_enable_monitor_reset(Supc *p_supc);
 void supc_disable_monitor_reset(Supc *p_supc);
 void supc_enable_monitor_interrupt(Supc *p_supc);
 void supc_disable_monitor_interrupt(Supc *p_supc);
-#if (!SAMG)
+#if (!(SAMG51 || SAMG53 || SAMG54))
 void supc_set_wakeup_mode(Supc *p_supc, uint32_t ul_mode);
 void supc_set_wakeup_inputs(Supc *p_supc, uint32_t ul_inputs,
 		uint32_t ul_transition);

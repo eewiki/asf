@@ -137,7 +137,7 @@ static enum status_code _usart_set_config(
 			break;
 	}
 
-	/* Check if calculating the baud rate failed */
+	/* Check if calculating the baudrate failed */
 	if (status_code != STATUS_OK) {
 		/* Abort */
 		return status_code;
@@ -184,6 +184,8 @@ static enum status_code _usart_set_config(
 #ifdef FEATURE_USART_LIN_SLAVE
 		if(config->lin_slave_enable) {
 			ctrla |= SERCOM_USART_CTRLA_FORM(0x5);
+		} else {
+			ctrla |= SERCOM_USART_CTRLA_FORM(1);
 		}
 #else
 		ctrla |= SERCOM_USART_CTRLA_FORM(1);
@@ -193,6 +195,8 @@ static enum status_code _usart_set_config(
 #ifdef FEATURE_USART_LIN_SLAVE
 		if(config->lin_slave_enable) {
 			ctrla |= SERCOM_USART_CTRLA_FORM(0x4);
+		} else {
+			ctrla |= SERCOM_USART_CTRLA_FORM(0);
 		}
 #else
 		ctrla |= SERCOM_USART_CTRLA_FORM(0);
@@ -229,7 +233,7 @@ static enum status_code _usart_set_config(
  * \param[in]  hw      Pointer to USART hardware instance
  * \param[in]  config  Pointer to configuration struct
  *
- * \return Status of the initialization
+ * \return Status of the initialization.
  *
  * \retval STATUS_OK                       The initialization was successful
  * \retval STATUS_BUSY                     The USART module is busy
@@ -366,7 +370,7 @@ enum status_code usart_init(
  * \param[in]  module   Pointer to the software instance struct
  * \param[in]  tx_data  Data to transfer
  *
- * \return Status of the operation
+ * \return Status of the operation.
  * \retval STATUS_OK         If the operation was completed
  * \retval STATUS_BUSY       If the operation was not completed, due to the USART
  *                           module being busy.
@@ -423,7 +427,7 @@ enum status_code usart_write_wait(
  * \param[in]   module   Pointer to the software instance struct
  * \param[out]  rx_data  Pointer to received data
  *
- * \return Status of the operation
+ * \return Status of the operation.
  * \retval STATUS_OK                If the operation was completed
  * \retval STATUS_BUSY              If the operation was not completed,
  *                                  due to the USART module being busy
@@ -431,7 +435,7 @@ enum status_code usart_write_wait(
  *                                  due to configuration mismatch between USART
  *                                  and the sender
  * \retval STATUS_ERR_BAD_OVERFLOW  If the operation was not completed,
- *                                  due to the baud rate being too low or the
+ *                                  due to the baudrate being too low or the
  *                                  system frequency being too high
  * \retval STATUS_ERR_BAD_DATA      If the operation was not completed, due to
  *                                  data being corrupted
@@ -527,7 +531,7 @@ enum status_code usart_read_wait(
  * \brief Transmit a buffer of characters via the USART
  *
  * This blocking function will transmit a block of \c length characters
- * via the USART
+ * via the USART.
  *
  * \note Using this function in combination with the interrupt (\c _job) functions is
  *       not recommended as it has no functionality to check if there is an
@@ -537,7 +541,7 @@ enum status_code usart_read_wait(
  * \param[in]  tx_data  Pointer to data to transmit
  * \param[in]  length   Number of characters to transmit
  *
- * \return Status of the operation
+ * \return Status of the operation.
  * \retval STATUS_OK              If operation was completed
  * \retval STATUS_ERR_INVALID_ARG If operation was not completed, due to invalid
  *                                arguments
@@ -632,7 +636,7 @@ enum status_code usart_write_buffer_wait(
  *                                  due to a configuration mismatch
  *                                  between USART and the sender
  * \retval STATUS_ERR_BAD_OVERFLOW  If the operation was not completed,
- *                                  due to the baud rate being too low or the
+ *                                  due to the baudrate being too low or the
  *                                  system frequency being too high
  * \retval STATUS_ERR_BAD_DATA      If the operation was not completed, due
  *                                  to data being corrupted

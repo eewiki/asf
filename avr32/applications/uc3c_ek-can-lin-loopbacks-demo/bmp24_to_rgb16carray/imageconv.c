@@ -49,13 +49,13 @@ int main(void)
                 " * - AppNote:\r\n"
                 " *\r\n"
                 " * \author               Atmel Corporation: http://www.atmel.com \\n\r\n"
-                " *                       Support and FAQ: http://support.atmel.no/\r\n"
+                " *                       Support and FAQ: http://www.atmel.com/design-support/\r\n"
                 " *\r\n"
                 " ******************************************************************************/\r\n"
                 "\r\n"
 /**
  *
- * Copyright (c) 2009-2011 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *

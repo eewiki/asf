@@ -52,8 +52,8 @@
  * - \ref asfdoc_udi_msc_exqsg
  * - \ref asfdoc_udi_msc_config_examples
  *
- * For more details for Atmel Software Framework (ASF) USB Device Stack , please
- * refer to following Application Notes:
+ * For more details for Atmel® Software Framework (ASF) USB Device Stack,
+ * refer to following application notes:
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8360.pdf">
  *   AVR4900: ASF - USB Device Stack</a>
  * - <a href="http://www.atmel.com/dyn/resources/prod_documents/doc8410.pdf">
@@ -66,22 +66,22 @@
  */
 
 /**
- * \name UDI MSC interface for UDC
+ * \name UDI MSC Interface for UDC
  * @{
  */
-/** Global structure which contains standard UDI interface for UDC */
+/** Global structure which contains standard UDI interface for UDC. */
 extern UDC_DESC_STORAGE udi_api_t udi_api_msc;
 //@}
 
 /**
- * \name USB interface descriptors
+ * \name USB Interface Descriptors
  *
  * The following structures provide predefined USB interface descriptors.
  * It must be used to define the final USB descriptors.
  */
 //@{
 
-/** Interface descriptor structure for MSC */
+/** Interface descriptor structure for MSC. */
 typedef struct {
 	/** Standard USB interface descriptor structure */
 	usb_iface_desc_t iface;
@@ -91,17 +91,17 @@ typedef struct {
 	usb_ep_desc_t ep_out;
 } udi_msc_desc_t;
 
-/** By default no string associated to this interface */
+/** By default no string is associated to this interface. */
 #ifndef UDI_MSC_STRING_ID
 #define UDI_MSC_STRING_ID     0
 #endif
 
-/** MSC endpoints size for full speed */
+/** MSC endpoints size for full speed. */
 #define UDI_MSC_EPS_SIZE_FS   64
-/** MSC endpoints size for high speed */
+/** MSC endpoints size for high speed. */
 #define UDI_MSC_EPS_SIZE_HS   512
 
-/** Content of MSC interface descriptor for all speeds */
+/** Content of MSC interface descriptor for all speeds. */
 #define UDI_MSC_DESC      \
    .iface.bLength             = sizeof(usb_iface_desc_t),\
    .iface.bDescriptorType     = USB_DT_INTERFACE,\
@@ -123,14 +123,14 @@ typedef struct {
    .ep_out.bmAttributes       = USB_EP_TYPE_BULK,\
    .ep_out.bInterval          = 0,
 
-/** Content of MSC interface descriptor for full speed only */
+/** Content of MSC interface descriptor for full speed only. */
 #define UDI_MSC_DESC_FS   {\
    UDI_MSC_DESC \
    .ep_in.wMaxPacketSize      = LE16(UDI_MSC_EPS_SIZE_FS),\
    .ep_out.wMaxPacketSize     = LE16(UDI_MSC_EPS_SIZE_FS),\
    }
 
-/** Content of MSC interface descriptor for high speed only */
+/** Content of MSC interface descriptor for high speed only. */
 #define UDI_MSC_DESC_HS   {\
    UDI_MSC_DESC \
    .ep_in.wMaxPacketSize      = LE16(UDI_MSC_EPS_SIZE_HS),\
@@ -141,7 +141,7 @@ typedef struct {
 /**
  * \brief Process the background read/write commands
  *
- * Routine called by the main loop
+ * Routine called by the main loop.
  */
 bool udi_msc_process_trans(void);
 
@@ -163,29 +163,29 @@ bool udi_msc_trans_block(bool b_read, uint8_t * block, iram_size_t block_size,
 //@}
 
 /**
- * \page asfdoc_udi_msc_exqsg Quick start guide for USB device Mass Storage module (UDI MSC)
+ * \page asfdoc_udi_msc_exqsg Quick Start Guide for USB Device Mass Storage Module (UDI MSC)
  *
  * This is the quick start guide for the \ref asfdoc_udi_msc_group
- * "USB device interface MSC module (UDI MSC)" with step-by-step instructions on
+ * "USB Device Interface MSC Module (UDI MSC)" with step-by-step instructions on
  * how to configure and use the modules in a selection of use cases.
  *
  * The use cases contain several code fragments. The code fragments in the
  * steps for setup can be copied into a custom initialization function, while
  * the steps for usage can be copied into, e.g., the main application function.
  *
- * \section udi_msc_basic_use_case Basic use case
+ * \section udi_msc_basic_use_case Basic Use Case
  * In this basic use case, the "USB MSC (Single Interface Device)" module is used.
  * The "USB MSC (Composite Device)" module usage is described in \ref udi_msc_use_cases
- * "Advanced use cases".
+ * "Advanced Use Cases".
  *
- * \section udi_msc_basic_use_case_setup Setup steps
- * As a USB device, it follows common USB device setup steps. Please refer to
+ * \section udi_msc_basic_use_case_setup Setup Steps
+ * As a USB device, it follows common USB device setup steps. Refer to
  * \ref asfdoc_udc_basic_use_case_setup "USB Device Basic Setup".
  *
  * The USB MSC interface accesses Memory through Common Abstraction Layer
  * (ctrl_access) in ASF. See \ref udi_msc_basic_use_case_setup_ctrl_access.
  *
- * \subsection udi_msc_basic_use_case_setup_ctrl_access Common abstraction layer for memory interfaces
+ * \subsection udi_msc_basic_use_case_setup_ctrl_access Common Abstraction Layer for Memory Interfaces
  * Common abstraction layer (ctrl_access) can provide interfaces between Memory
  * and USB. In USB MSC UDI the read/write invokes following ctrl_access
  * functions:
@@ -234,18 +234,18 @@ bool udi_msc_trans_block(bool b_read, uint8_t * block, iram_size_t block_size,
 	#define VMEM_NB_SECTOR 48 //Internal RAM 24KB (should > 20KB or PC can not format it)
  \endcode
  *
- * For more examples of the control access or disk configuration, please refer
+ * For more examples of the control access or disk configuration, refer
  * to \ref asfdoc_udi_msc_config_examples_5 "conf_access.h" and
  * \ref asfdoc_udi_msc_config_examples_6 "conf_virtual_mem.h".
  *
- * For more Information about Memory Control Access, please refer to the online
+ * For more Information about Memory Control Access, refer to the online
  * document:
  * - <a href="http://asf.atmel.com/docs/latest/sam3a/html/group__group__common__services__storage__ctrl__access.html">
  *   Atmel Software Framework - Memory Control Access</a>
  *
- * \section udi_msc_basic_use_case_usage Usage steps
+ * \section udi_msc_basic_use_case_usage Usage Steps
  *
- * \subsection udi_msc_basic_use_case_usage_code Example code
+ * \subsection udi_msc_basic_use_case_usage_code Example Code
  * Content of conf_usb.h:
  * \code
 	#define  USB_DEVICE_SERIAL_NAME  "12...EF" // Disk SN for MSC
@@ -295,8 +295,8 @@ bool udi_msc_trans_block(bool b_read, uint8_t * block, iram_size_t block_size,
  #define UDI_MSC_GLOBAL_PRODUCT_VERSION \
     '1', '.', '0', '0'
  \endcode
- * \note The USB MSC interface requires a vendor ID (8 ASCII characters)
- *       and a product version (4 ASCII characters).
+ * \note The USB MSC interface requires a vendor ID (eight ASCII characters)
+ *       and a product version (four ASCII characters).
  *
  * \code
  #define UDI_MSC_ENABLE_EXT() my_callback_msc_enable()
@@ -337,7 +337,7 @@ bool udi_msc_trans_block(bool b_read, uint8_t * block, iram_size_t block_size,
  }
  \endcode
  *
- * \section udi_msc_use_cases Advanced use cases
+ * \section udi_msc_use_cases Advanced Use Cases
  * \ifnot ASF_MANUAL
  * For more advanced use of the UDI MSC module, see the following use cases:
  * - \subpage udi_msc_use_case_composite
@@ -358,7 +358,7 @@ bool udi_msc_trans_block(bool b_read, uint8_t * block, iram_size_t block_size,
  */
 
 /**
- * \page udi_msc_use_case_composite MSC in a composite device
+ * \page udi_msc_use_case_composite MSC in a Composite Device
  *
  * A USB Composite Device is a USB Device which uses more than one USB class.
  * In this use case, the "USB MSC (Composite Device)" module is used to
@@ -369,13 +369,13 @@ bool udi_msc_trans_block(bool b_read, uint8_t * block, iram_size_t block_size,
  * <A href="http://www.atmel.com/dyn/resources/prod_documents/doc8445.pdf">
  * AVR4902 ASF - USB Composite Device</A>.
  *
- * \section udi_msc_use_case_composite_setup Setup steps
+ * \section udi_msc_use_case_composite_setup Setup Steps
  * For the setup code of this use case to work, the
- * \ref udi_msc_basic_use_case "basic use case" must be followed.
+ * \ref udi_msc_basic_use_case "Basic Use Case" must be followed.
  *
- * \section udi_msc_use_case_composite_usage Usage steps
+ * \section udi_msc_use_case_composite_usage Usage Steps
  *
- * \subsection udi_msc_use_case_composite_usage_code Example code
+ * \subsection udi_msc_use_case_composite_usage_code Example Code
  * Content of conf_usb.h:
  * \code
  #define USB_DEVICE_EP_CTRL_SIZE  64
@@ -462,82 +462,82 @@ bool udi_msc_trans_block(bool b_read, uint8_t * block, iram_size_t block_size,
  *
  * \section asfdoc_udi_msc_config_examples_1 conf_usb.h
  * \subsection asfdoc_udi_msc_config_examples_1_1  UDI MSC Single
- * \include module_config\conf_usb.h
- * \subsection asfdoc_udi_msc_config_examples_1_2  UDI MSC Multiple (composite)
- * \include composite\device\module_config\conf_usb.h
+ * \include module_config/conf_usb.h
+ * \subsection asfdoc_udi_msc_config_examples_1_2  UDI MSC Multiple (Composite)
+ * \include composite/device/module_config/conf_usb.h
  *
  * \section asfdoc_udi_msc_config_examples_2 conf_clock.h
  *
  * \subsection asfdoc_udi_msc_config_examples_2_1 XMEGA (USB)
- * \include example\atxmega128b1_xmega_b1_xplained\conf_clock.h
+ * \include example/atxmega128b1_xmega_b1_xplained/conf_clock.h
  *
- * \subsection asfdoc_udi_msc_config_examples_2_2 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_clock.h
+ * \subsection asfdoc_udi_msc_config_examples_2_2 AT32UC3A0, AT32UC3A1, and AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_clock.h
  *
- * \subsection asfdoc_udi_msc_config_examples_2_3 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_clock.h
+ * \subsection asfdoc_udi_msc_config_examples_2_3 AT32UC3A3, and AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_clock.h
  *
- * \subsection asfdoc_udi_msc_config_examples_2_4 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_clock.h
+ * \subsection asfdoc_udi_msc_config_examples_2_4 AT32UC3C, ATUCXXD, ATUCXXL3U, and ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_clock.h
  *
- * \subsection asfdoc_udi_msc_config_examples_2_5 SAM3S, SAM3SD, SAM4S devices (UPD: USB Peripheral Device)
- * \include example\sam3s4c_sam3s_ek\conf_clock.h
+ * \subsection asfdoc_udi_msc_config_examples_2_5 SAM3S, SAM3SD, and SAM4S Devices (UPD: USB Peripheral Device)
+ * \include example/sam3s4c_sam3s_ek/conf_clock.h
  *
- * \subsection asfdoc_udi_msc_config_examples_2_6 SAM3U device (UPDHS: USB Peripheral Device High Speed)
- * \include example\sam3u4e_sam3u_ek\conf_clock.h
+ * \subsection asfdoc_udi_msc_config_examples_2_6 SAM3U Device (UPDHS: USB Peripheral Device High Speed)
+ * \include example/sam3u4e_sam3u_ek/conf_clock.h
  *
- * \subsection asfdoc_udi_msc_config_examples_2_7 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_clock.h
+ * \subsection asfdoc_udi_msc_config_examples_2_7 SAM3X, and SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_clock.h
  *
  * \section asfdoc_udi_msc_config_examples_3 conf_clocks.h
  *
- * \subsection asfdoc_udi_msc_config_examples_3_1 SAMD21 device (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_clocks.h
+ * \subsection asfdoc_udi_msc_config_examples_3_1 SAMD21 Device (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_clocks.h
  *
  * \section asfdoc_udi_msc_config_examples_4 conf_board.h
  *
- * \subsection asfdoc_udi_msc_config_examples_4_1 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
- * \include example\at32uc3a0512_evk1100\conf_board.h
+ * \subsection asfdoc_udi_msc_config_examples_4_1 AT32UC3A0, AT32UC3A1, and AT32UC3B Devices (USBB)
+ * \include example/at32uc3a0512_evk1100/conf_board.h
  *
- * \subsection asfdoc_udi_msc_config_examples_4_2 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
- * \include example\at32uc3a3256_evk1104\conf_board.h
+ * \subsection asfdoc_udi_msc_config_examples_4_2 AT32UC3A3, and AT32UC3A4 Devices (USBB with High Speed Support)
+ * \include example/at32uc3a3256_evk1104/conf_board.h
  *
- * \subsection asfdoc_udi_msc_config_examples_4_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
- * \include example\at32uc3c0512c_uc3c_ek\conf_board.h
+ * \subsection asfdoc_udi_msc_config_examples_4_3 AT32UC3C, ATUCXXD, ATUCXXL3U, and ATUCXXL4U Devices (USBC)
+ * \include example/at32uc3c0512c_uc3c_ek/conf_board.h
  *
- * \subsection asfdoc_udi_msc_config_examples_4_4 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
- * \include example\sam3x8h_sam3x_ek\conf_board.h
+ * \subsection asfdoc_udi_msc_config_examples_4_4 SAM3X, and SAM3A Devices (UOTGHS: USB OTG High Speed)
+ * \include example/sam3x8h_sam3x_ek/conf_board.h
  *
- * \subsection asfdoc_udi_msc_config_examples_4_5 SAMD21 device (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_board.h
+ * \subsection asfdoc_udi_msc_config_examples_4_5 SAMD21 Device (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_board.h
  *
  * \section asfdoc_udi_msc_config_examples_5 conf_access.h
  *
- * \subsection asfdoc_udi_msc_config_examples_5_1 AT32UC3A0, AT32UC3A1, AT32UC3B devices (USBB)
+ * \subsection asfdoc_udi_msc_config_examples_5_1 AT32UC3A0, AT32UC3A1, and AT32UC3B Devices (USBB)
  * On EVK1100, the AT45DBx and one SD/MMC are for MSC.
- * \include example\at32uc3a0512_evk1100\conf_access.h
+ * \include example/at32uc3a0512_evk1100/conf_access.h
  *
- * \subsection asfdoc_udi_msc_config_examples_5_2 AT32UC3A3, AT32UC3A4 devices (USBB with high speed support)
+ * \subsection asfdoc_udi_msc_config_examples_5_2 AT32UC3A3, and AT32UC3A4 Devices (USBB with High Speed Support)
  * On EVK1104, the AT45DBx and two SD/MMC slots are for MSC.
- * \include example\at32uc3a3256_evk1104\conf_access.h
+ * \include example/at32uc3a3256_evk1104/conf_access.h
  *
- * \subsection asfdoc_udi_msc_config_examples_5_3 AT32UC3C, ATUCXXD, ATUCXXL3U, ATUCXXL4U devices (USBC)
+ * \subsection asfdoc_udi_msc_config_examples_5_3 AT32UC3C, ATUCXXD, ATUCXXL3U, and ATUCXXL4U Devices (USBC)
  * On EVK1100, the AT45DBx and one SD/MMC are for MSC.
- * \include example\at32uc3c0512c_uc3c_ek\conf_access.h
+ * \include example/at32uc3c0512c_uc3c_ek/conf_access.h
  *
- * \subsection asfdoc_udi_msc_config_examples_5_4 SAM3X, SAM3A devices (UOTGHS: USB OTG High Speed)
+ * \subsection asfdoc_udi_msc_config_examples_5_4 SAM3X, and SAM3A Devices (UOTGHS: USB OTG High Speed)
  * On SAM3X-EK, the SD/MMC and on-board nand are for MSC.
- * \include example\sam3x8h_sam3x_ek\conf_access.h
+ * \include example/sam3x8h_sam3x_ek/conf_access.h
  *
- * \subsection asfdoc_udi_msc_config_examples_5_5 SAMD21 device (USB)
- * \include example\samd21j18a_samd21_xplained_pro\conf_access.h
+ * \subsection asfdoc_udi_msc_config_examples_5_5 SAMD21 Device (USB)
+ * \include example/samd21j18a_samd21_xplained_pro/conf_access.h
  *
  * \section asfdoc_udi_msc_config_examples_6 conf_virtual_mem.h
  *
- * \subsection asfdoc_udi_msc_config_examples_6_1 On-chip virtual memory disk
- * \include example\samd21j18a_samd21_xplained_pro\conf_virtual_mem.h
+ * \subsection asfdoc_udi_msc_config_examples_6_1 On-chip Virtual Memory Disk
+ * \include example/samd21j18a_samd21_xplained_pro/conf_virtual_mem.h
  *
- * \subsection asfdoc_udi_msc_config_examples_6_2 On-board virtual meory disk
- * \include example\sam3u4e_sam3u_ek\conf_virtual_mem.h
+ * \subsection asfdoc_udi_msc_config_examples_6_2 On-board Virtual Memory Disk
+ * \include example/sam3u4e_sam3u_ek/conf_virtual_mem.h
  */
 

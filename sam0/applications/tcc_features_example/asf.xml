@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.applications.tcc_features" caption="SAM D11 TCC Features Example">
+		<info type="description" value="summary">
+		Example application for SAM D11 TCC module demonstrating TCC features like circular buffer, DTI, SWAP, pattern generation.
+		</info>
+
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.tcc"/>
+		<require idref="sam0.drivers.port"/>
+		<device-support value="samd11"/>
+	</module>
+</asf>

@@ -48,6 +48,9 @@
 #include "twi_master.h"
 #include "freertos_twi_master.h"
 #include "freertos_peripheral_control_private.h"
+#if SAMG55
+#include "flexcom.h"
+#endif
 
 /* Every bit in the interrupt mask. */
 #define MASK_ALL_INTERRUPTS     (0xffffffffUL)
@@ -59,6 +62,28 @@
 #define IER_ERROR_INTERRUPTS    (TWI_IER_NACK | TWI_IER_ARBLST | TWI_IER_OVRE)
 
 /* Work out how many TWI ports with PDC supported are present. */
+#if (SAMG55)
+#if defined(PDC_TWI7)
+	#define MAX_TWIS                                (8)
+#elif defined(PDC_TWI6)
+	#define MAX_TWIS                                (7)
+#elif defined(PDC_TWI5)
+	#define MAX_TWIS                                (6)
+#elif defined(PDC_TWI4)
+	#define MAX_TWIS                                (5)
+#elif defined(PDC_TWI3)
+	#define MAX_TWIS                                (4)
+#elif defined(PDC_TWI2)
+	#define MAX_TWIS                                (3)
+#elif defined(PDC_TWI1)
+	#define MAX_TWIS                                (2)
+#elif defined(PDC_TWI0)
+	#define MAX_TWIS                                (1)
+#else
+	#error No TWI peripherals with PDC support defined
+#endif
+
+#else
 #if (SAMG)
 #if defined(PDC_TWI4)
 	#define MAX_TWIS                                (4)
@@ -88,6 +113,7 @@
 	#error No TWI peripherals with PDC support defined
 #endif
 #endif
+#endif
 
 /* A common interrupt handler definition used by all the TWI peripherals. */
 static void local_twi_handler(const portBASE_TYPE twi_index);
@@ -115,6 +141,19 @@ static const freertos_dma_event_control_t null_dma_control = {NULL, NULL};
 static const freertos_pdc_peripheral_parameters_t all_twi_definitions[MAX_TWIS] = {
 	/* Chips with a single TWI port might define TWI only.  Chips with multiple
 	TWI	ports defined the first TWI peripheral as TWI0. */
+#if SAMG55
+	{TWI0, PDC_TWI0, ID_TWI0, USART0_SPI0_TWI0_IRQn},
+	{TWI1, PDC_TWI1, ID_TWI1, USART1_SPI1_TWI1_IRQn},
+	{TWI2, PDC_TWI2, ID_TWI2, USART2_SPI2_TWI2_IRQn},
+	{TWI3, PDC_TWI3, ID_TWI3, USART3_SPI3_TWI3_IRQn},
+	{TWI4, PDC_TWI4, ID_TWI4, USART4_SPI4_TWI4_IRQn},
+	{TWI5, PDC_TWI5, ID_TWI5, USART5_SPI5_TWI5_IRQn},
+	{TWI6, PDC_TWI6, ID_TWI6, USART6_SPI6_TWI6_IRQn},
+#if (MAX_TWIS > 7)
+	{TWI7, PDC_TWI7, ID_TWI7, USART7_SPI7_TWI7_IRQn},
+#endif
+
+#else
 #if (SAMG)
 #if MAX_TWIS > 0
 	{TWI1, PDC_TWI1, ID_TWI1, TWI1_IRQn},
@@ -128,6 +167,7 @@ static const freertos_pdc_peripheral_parameters_t all_twi_definitions[MAX_TWIS] 
 #if MAX_TWIS > 3
 	{TWI4, PDC_TWI4, ID_TWI4, TWI4_IRQn},
 #endif
+
 #else
 #if defined(TWI)
 	{TWI, PDC_TWI, ID_TWI, TWI_IRQn},
@@ -146,6 +186,7 @@ static const freertos_pdc_peripheral_parameters_t all_twi_definitions[MAX_TWIS] 
 #endif
 #if MAX_TWIS > 4
 	{TWI4, PDC_TWI4, ID_TWI4, TWI4_IRQn},
+#endif
 #endif
 #endif
 };
@@ -217,9 +258,16 @@ freertos_twi_if freertos_twi_master_init(Twi *p_twi,
 				sizeof(null_dma_control)) == 0);
 
 		/* Enable the peripheral's clock. */
+#if (SAMG55)
+		/* Enable the peripheral and set TWI mode. */
+		uint32_t temp = (uint32_t)(all_twi_definitions[twi_index].peripheral_base_address - 0x600);
+		Flexcom *p_flexcom = (Flexcom *)temp;
+		flexcom_enable(p_flexcom);
+		flexcom_set_opmode(p_flexcom, FLEXCOM_TWI);
+#else
 		pmc_enable_periph_clk(
 				all_twi_definitions[twi_index].peripheral_id);
-
+#endif
 		/* Ensure everything is disabled before configuration. */
 		pdc_disable_transfer(
 				all_twi_definitions[twi_index].pdc_base_address,
@@ -842,6 +890,57 @@ static void local_twi_handler(const portBASE_TYPE twi_index)
  * Individual interrupt handlers follow from here.  Each individual interrupt
  * handler calls the common interrupt handler.
  */
+#if SAMG55
+#ifdef CONF_FREERTOS_USE_TWI0
+void USART0_SPI0_TWI0_Handler(void)
+{
+	local_twi_handler(0);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_TWI1
+void USART1_SPI1_TWI1_Handler(void)
+{
+	local_twi_handler(1);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_TWI2
+void USART2_SPI2_TWI2_Handler(void)
+{
+	local_twi_handler(2);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_TWI3
+void USART3_SPI3_TWI3_Handler(void)
+{
+	local_twi_handler(3);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_TWI4
+void USART4_SPI4_TWI4_Handler(void)
+{
+	local_twi_handler(4);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_TWI5
+void USART5_SPI5_TWI5_Handler(void)
+{
+	local_twi_handler(5);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_TWI6
+void USART6_SPI6_TWI6_Handler(void)
+{
+	local_twi_handler(6);
+}
+#endif
+#ifdef CONF_FREERTOS_USE_TWI7
+void USART7_SPI7_TWI7_Handler(void)
+{
+	local_twi_handler(7);
+}
+#endif
+
+#else
 #if (!SAMG)
 #ifdef TWI
 
@@ -897,3 +996,4 @@ void TWI4_Handler(void)
 }
 
 #endif /* TWI4 */
+#endif

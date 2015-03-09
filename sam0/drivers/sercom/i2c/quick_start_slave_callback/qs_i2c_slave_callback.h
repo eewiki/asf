@@ -46,7 +46,7 @@
  *
  * In this use case, the I<SUP>2</SUP>C will used and set up as follows:
  *  - Slave mode
- *  - 100kHz operation speed
+ *  - 100KHz operation speed
  *  - Not operational in standby
  *  - 10000 packet timeout value
  *
@@ -70,7 +70,7 @@
  * Globally accessible packet:
  * \snippet qs_i2c_slave_callback.c packet
  *
- * Function for setting up the module.
+ * Function for setting up the module:
  * \snippet qs_i2c_slave_callback.c initialize_i2c
  *
  * Callback function for read request from a master:

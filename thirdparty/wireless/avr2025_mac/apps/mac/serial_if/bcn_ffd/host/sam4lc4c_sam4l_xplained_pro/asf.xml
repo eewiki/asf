@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC Serial Interface Beacon FFD Host-SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd.host.sam4lc4c_sam4l_xplained_pro">
+	<project force-caption="true" force-description="true" caption="MAC Serial Interface Beacon FFD Host - SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd.host.sam4lc4c_sam4l_xplained_pro">
 		<info type="description" value="summary">
 		MAC Serial Interface Host Application - Beacon FFD
 		</info>	

@@ -53,7 +53,7 @@
 #define CONF_PWM_OUTPUT      LED_0_PWM4CTRL_OUTPUT
 /** PWM output pin */
 #define CONF_PWM_OUT_PIN     LED_0_PWM4CTRL_PIN
-/** PWM output pin mux */
+/** PWM output pinmux */
 #define CONF_PWM_OUT_MUX     LED_0_PWM4CTRL_MUX
 //[definition_pwm]
 

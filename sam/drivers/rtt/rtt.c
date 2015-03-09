@@ -130,7 +130,7 @@ void rtt_disable(Rtt *p_rtt)
 	g_wobits_in_rtt_mr |= RTT_MR_RTTDIS;
 	p_rtt->RTT_MR |= g_wobits_in_rtt_mr;
 }
-#elif (SAMG53 || SAMG54)
+#elif (SAMG53 || SAMG54 || SAMG55)
 void rtt_sel_source(Rtt *p_rtt, bool is_rtc_sel)
 {
 	if(is_rtc_sel) {

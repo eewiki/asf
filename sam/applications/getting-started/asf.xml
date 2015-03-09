@@ -15,7 +15,6 @@
 			<require idref="sam.drivers.tc"/>
 			<require idref="sam.drivers.pmc"/>
 			<require idref="sam.drivers.pio"/>
-			<require idref="sam.drivers.uart"/>
 			<require idref="common.services.ioport"/>
 			<require idref="common.services.basic.clock"/>
 			<require idref="common.utils.stdio.stdio_serial"/>

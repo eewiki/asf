@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="LWMesh-Peer2Peer Application:AT86RF212B-SAMD20 Xplained Pro" id="thirdparty.wireless.avr2130_lwmesh.apps.peer2peer.samd20_xplained_pro_rf212b" force-caption="true" force-description="true">
+	<project caption="LWMesh-Peer2Peer Application AT86RF212B (ATZB-212B-XPRO) - SAM D20 Xplained Pro" id="thirdparty.wireless.avr2130_lwmesh.apps.peer2peer.samd20_xplained_pro_rf212b" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 		The LWMesh Peer2Peer application performs a Wireless UART functionality using two nodes with preconfigured addresses.
 		</info>		
@@ -13,7 +13,7 @@
 		<build type="header-file" value="conf_spi.h"/>
 
 		<config name="config.sam0.drivers.sercom.spi" value="polled"/>
-		<config name="config.sam0.drivers.sercom.usart" value="polled"/>
+		<config name="config.sam0.drivers.sercom.usart" value="callback"/>
 		<require idref="board.samd20_xplained_pro"/>
 		<config name="config.thirdparty.wireless.avr2130_lwmesh.source.phy.ext" value="at86rf212b"/>		
 

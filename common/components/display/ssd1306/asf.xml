@@ -10,6 +10,7 @@
 		</info>
 		<device-support value="xmega"/>
 		<device-support value="sam4"/>
+		<device-support value="samg"/>
 		<build type="c-source" value="ssd1306.c"/>
 		<build type="header-file" subtype="api" value="ssd1306.h"/>
 		<build type="c-source" value="font.c"/>

@@ -58,20 +58,20 @@ struct _dma_module _dma_inst = {
 	.free_channels = CONF_MAX_USED_CHANNEL_NUM,
 };
 
-/** Maximum retry counter for resuming a job transfer */
+/** Maximum retry counter for resuming a job transfer. */
 #define MAX_JOB_RESUME_COUNT    10000
 
-/** DMA channel mask*/
+/** DMA channel mask. */
 #define DMA_CHANNEL_MASK   (0x1f)
 
 COMPILER_ALIGNED(16)
 DmacDescriptor descriptor_section[CONF_MAX_USED_CHANNEL_NUM];
 
-/** Initial write back memory section */
+/** Initial write back memory section. */
 COMPILER_ALIGNED(16)
 static DmacDescriptor _write_back_section[CONF_MAX_USED_CHANNEL_NUM];
 
-/** Internal DMA resource pool */
+/** Internal DMA resource pool. */
 static struct dma_resource* _dma_active_resource[CONF_MAX_USED_CHANNEL_NUM];
 
 /**
@@ -79,7 +79,7 @@ static struct dma_resource* _dma_active_resource[CONF_MAX_USED_CHANNEL_NUM];
  *
  * Find a channel for the requested DMA resource.
  *
- * \return Status of channel allocation
+ * \return Status of channel allocation.
  * \retval DMA_INVALID_CHANNEL  No channel available
  * \retval count          Allocated channel for the DMA resource
  */
@@ -208,7 +208,7 @@ void DMAC_Handler( void )
 		/* Clear transfer error flag */
 		DMAC->CHINTFLAG.reg = DMAC_CHINTENCLR_TERR;
 
-		/* Set IO ERROR status */
+		/* Set I/O ERROR status */
 		resource->job_status = STATUS_ERR_IO;
 
 		/* Execute the callback function */
@@ -401,7 +401,7 @@ enum status_code dma_free(struct dma_resource *resource)
  *
  * \param[in,out] resource Pointer to the DMA resource
  *
- * \return Status of the transfer start procedure
+ * \return Status of the transfer start procedure.
  *
  * \retval STATUS_OK The transfer was started successfully
  * \retval STATUS_BUSY The DMA resource was busy and the transfer was not started

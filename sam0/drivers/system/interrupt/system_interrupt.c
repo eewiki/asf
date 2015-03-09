@@ -49,7 +49,7 @@
  *
  * \param[in] vector  Interrupt vector number to check
  *
- * \returns A boolean identifying if the requested interrupt vector is pending.
+ * \returns A Boolean identifying if the requested interrupt vector is pending.
  *
  * \retval true   Specified interrupt vector is pending
  * \retval false  Specified interrupt vector is not pending

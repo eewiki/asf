@@ -105,7 +105,11 @@ void adc_get_config_defaults(struct adc_config *const cfg)
 	/* Sanity check argument. */
 	Assert(cfg);
 
+#if SAMG55
+	cfg->resolution = ADC_12_BITS;
+#else
 	cfg->resolution = ADC_10_BITS;
+#endif
 	cfg->mck = sysclk_get_cpu_hz();
 	cfg->adc_clock = 6000000UL;
 	cfg->startup_time = ADC_STARTUP_TIME_4;
@@ -270,6 +274,9 @@ enum status_code adc_init(Adc *const adc, struct adc_config *config)
 void adc_set_resolution(Adc *const adc,
 		const enum adc_resolution res)
 {
+#if SAMG55
+	adc->ADC_EMR |= res;
+#else
 	if (res == ADC_11_BITS || res == ADC_12_BITS) {
 		adc->ADC_MR &= ~ADC_MR_LOWRES;
 		adc->ADC_EMR |= res;
@@ -277,6 +284,7 @@ void adc_set_resolution(Adc *const adc,
 		adc->ADC_MR |= res;
 		adc->ADC_EMR &= ~ADC_EMR_OSR_Msk;
 	}
+#endif
 }
 
 /**
@@ -480,7 +488,7 @@ void adc_configure_sequence(Adc *const adc,
 	adc->ADC_SEQR1 = 0;
 #endif
 
-	if (uc_num < ADC_SEQ1_CHANNEL_NUM) {
+	if (uc_num <= ADC_SEQ1_CHANNEL_NUM) {
 		for (uc_counter = 0; uc_counter < uc_num; uc_counter++) {
 #if (SAM4N || SAMG)
 			adc->ADC_SEQR1
@@ -488,7 +496,7 @@ void adc_configure_sequence(Adc *const adc,
 				|= ch_list[uc_counter] << (4 * uc_counter);
 		}
 	} else {
-		for (uc_counter = 0; uc_counter < ADC_SEQ1_CHANNEL_NUM;
+		for (uc_counter = 0; uc_counter <= ADC_SEQ1_CHANNEL_NUM;
 				uc_counter++) {
 #if (SAM4N || SAMG)
 			adc->ADC_SEQR1
@@ -498,7 +506,7 @@ void adc_configure_sequence(Adc *const adc,
 		for (uc_counter = 0; uc_counter < uc_num - ADC_SEQ1_CHANNEL_NUM;
 				uc_counter++) {
 #if (SAM4N)
-			adc->ADC_SEQR2 |= ch_list[uc_counter] << (4 * uc_counter);
+			adc->ADC_SEQR2 |= ch_list[8 + uc_counter] << (4 * uc_counter);
 #endif
 		}
 	}

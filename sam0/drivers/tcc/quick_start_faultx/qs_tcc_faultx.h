@@ -70,7 +70,7 @@
  *
  * The TCC module will be set up as follows:
  * - GCLK generator 0 (GCLK main) clock source
- * - Use double buffering write when set top, compare or pattern through API
+ * - Use double buffering write when set top, compare, or pattern through API
  * - No dithering on the counter or compare
  * - No prescaler
  * - Single Slope PWM wave generation
@@ -94,10 +94,10 @@
  * \subsection asfdoc_sam0_tcc_faultx_use_case_setup_code Code
  *
  * Add to the main application source file, before any functions:
- * - SAM D21 Xplained Pro:
+ * - SAM D21 Xplained Pro.
  *   \snippet samd21_xplained_pro/conf_quick_start_faultx.h definition_pwm
  *   \snippet samd21_xplained_pro/conf_quick_start_faultx.h definition_fault
- * - SAM R21 Xplained Pro:
+ * - SAM R21 Xplained Pro.
  *   \snippet samr21_xplained_pro/conf_quick_start_faultx.h definition_pwm
  *   \snippet samr21_xplained_pro/conf_quick_start_faultx.h definition_fault
  *
@@ -138,8 +138,8 @@
  *          settings.
  *
  * -# Alter the TCC settings to configure the counter width, wave generation
- *    mode and the compare channel 0 value and fault options. Here the Non-
- *    Recoverable Fault output is enabled and set to high level (1).
+ *    mode and the compare channel 0 value and fault options. Here the
+ *    Non-Recoverable Fault output is enabled and set to high level (1).
  *    \snippet qs_tcc_faultx.c setup_change_config
  *    \snippet qs_tcc_faultx.c setup_change_config_faults
  * -# Alter the TCC settings to configure the PWM output on a physical device
@@ -208,7 +208,7 @@
  *    \snippet qs_tcc_faultx.c eic_callback_setup_2
  *
  * \subsubsection asfdoc_sam0_tcc_faultx_use_case_setup_flow_evt Configure EVENTS for fault input
- * -# Create a event resource instance struct for the EVENTS module to store
+ * -# Create a event resource instance struct for the EVENTS module to store.
  *    \snippet qs_tcc_faultx.c events_resource
  *    \note This should never go out of scope as long as the resource is in use.
  *          In most cases, this should be global.
