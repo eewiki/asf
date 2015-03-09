@@ -83,10 +83,8 @@ extern "C" {
 /**INDENT-ON**/
 /// @endcond
 
-#define CONSOLE_BAUD_RATE  115200
-
 /** Memory Start Address of AT24CXX chips */
-#define AT24C_MEM_ADDR  0
+#define AT24C_MEM_ADDR  0x0
 /** TWI Bus Clock 400kHz */
 #define AT24C_TWI_CLK   400000
 
@@ -151,8 +149,8 @@ int main(void)
 	board_init();
 
 	/* Turn off LEDs */
-	LED_Off(LED0_GPIO);
-	LED_Off(LED1_GPIO);
+	ioport_set_pin_level(LED0_GPIO, LED0_INACTIVE_LEVEL);
+	ioport_set_pin_level(LED1_GPIO, LED1_INACTIVE_LEVEL);
 
 	/* Initialize the console UART */
 	configure_console();
@@ -166,8 +164,8 @@ int main(void)
 
 	if (twi_master_setup(BOARD_AT24C_TWI_INSTANCE, &opt) != TWI_SUCCESS) {
 		puts("AT24CXX initialization is failed.\r");
-		LED_On(LED0_GPIO);
-		LED_On(LED1_GPIO);
+		ioport_set_pin_level(LED0_GPIO, LED0_ACTIVE_LEVEL);
+		ioport_set_pin_level(LED1_GPIO, LED1_ACTIVE_LEVEL);
 		while (1) {
 			/* Capture error */
 		}
@@ -178,8 +176,8 @@ int main(void)
 			AT24C_MEM_ADDR + TEST_DATA_LENGTH - 1,
 			MEMORY_PATTERN) != AT24C_WRITE_SUCCESS) {
 		puts("AT24CXX pattern fill is failed.\r");
-		LED_On(LED0_GPIO);
-		LED_On(LED1_GPIO);
+		ioport_set_pin_level(LED0_GPIO, LED0_ACTIVE_LEVEL);
+		ioport_set_pin_level(LED1_GPIO, LED1_ACTIVE_LEVEL);
 		while (1) {
 			/* Capture error */
 		}
@@ -188,8 +186,8 @@ int main(void)
 	if (at24cxx_read_continuous(AT24C_MEM_ADDR, TEST_DATA_LENGTH,
 			test_data_rx) != AT24C_READ_SUCCESS) {
 		puts("AT24CXX read packet is failed.\r");
-		LED_On(LED0_GPIO);
-		LED_On(LED1_GPIO);
+		ioport_set_pin_level(LED0_GPIO, LED0_ACTIVE_LEVEL);
+		ioport_set_pin_level(LED1_GPIO, LED1_ACTIVE_LEVEL);
 		while (1) {
 			/* Capture error */
 		}
@@ -200,8 +198,8 @@ int main(void)
 		if (MEMORY_PATTERN != test_data_rx[i]) {
 			/* No match */
 			puts("Pattern comparison: Unmatched!\r");
-			LED_On(LED0_GPIO);
-			LED_On(LED1_GPIO);
+			ioport_set_pin_level(LED0_GPIO, LED0_ACTIVE_LEVEL);
+			ioport_set_pin_level(LED1_GPIO, LED1_ACTIVE_LEVEL);
 			while (1) {
 				/* Capture error */
 			}
@@ -213,8 +211,8 @@ int main(void)
 	if (at24cxx_write_continuous(AT24C_MEM_ADDR, TEST_DATA_LENGTH,
 			test_data_tx) != AT24C_WRITE_SUCCESS) {
 		puts("AT24CXX write packet is failed.\r");
-		LED_On(LED0_GPIO);
-		LED_On(LED1_GPIO);
+		ioport_set_pin_level(LED0_GPIO, LED0_ACTIVE_LEVEL);
+		ioport_set_pin_level(LED1_GPIO, LED1_ACTIVE_LEVEL);
 		while (1) {
 			/* Capture error */
 		}
@@ -224,8 +222,8 @@ int main(void)
 	if (at24cxx_read_continuous(AT24C_MEM_ADDR, TEST_DATA_LENGTH,
 			test_data_rx) != AT24C_READ_SUCCESS) {
 		puts("AT24CXX read packet is failed.\r");
-		LED_On(LED0_GPIO);
-		LED_On(LED1_GPIO);
+		ioport_set_pin_level(LED0_GPIO, LED0_ACTIVE_LEVEL);
+		ioport_set_pin_level(LED1_GPIO, LED1_ACTIVE_LEVEL);
 		while (1) {
 			/* Capture error */
 		}
@@ -236,8 +234,8 @@ int main(void)
 		if (test_data_tx[i] != test_data_rx[i]) {
 			/* No match */
 			puts("Data comparison: Unmatched!\r");
-			LED_On(LED0_GPIO);
-			LED_On(LED1_GPIO);
+			ioport_set_pin_level(LED0_GPIO, LED0_ACTIVE_LEVEL);
+			ioport_set_pin_level(LED1_GPIO, LED1_ACTIVE_LEVEL);
 			while (1) {
 				/* Capture error */
 			}
@@ -255,8 +253,8 @@ int main(void)
 	if (at24cxx_write_page(PAGE_ADDR, PAGE_SIZE, page_write_buf) !=
 			AT24C_WRITE_SUCCESS) {
 		puts("AT24CXX page write is failed.\r");
-		LED_On(LED0_GPIO);
-		LED_On(LED1_GPIO);
+		ioport_set_pin_level(LED0_GPIO, LED0_ACTIVE_LEVEL);
+		ioport_set_pin_level(LED1_GPIO, LED1_ACTIVE_LEVEL);
 		while (1) {
 			/* Capture error */
 		}
@@ -265,8 +263,8 @@ int main(void)
 	if (at24cxx_read_page(PAGE_ADDR, PAGE_SIZE, page_read_buf) !=
 			AT24C_READ_SUCCESS) {
 		puts("AT24CXX page read is failed.\r");
-		LED_On(LED0_GPIO);
-		LED_On(LED1_GPIO);
+		ioport_set_pin_level(LED0_GPIO, LED0_ACTIVE_LEVEL);
+		ioport_set_pin_level(LED1_GPIO, LED1_ACTIVE_LEVEL);
 		while (1) {
 			/* Capture error */
 		}
@@ -276,8 +274,8 @@ int main(void)
 		if (page_read_buf[i] != page_write_buf[i]) {
 			/* No match */
 			puts("Page comparison: Unmatched!\r");
-			LED_On(LED0_GPIO);
-			LED_On(LED1_GPIO);
+			ioport_set_pin_level(LED0_GPIO, LED0_ACTIVE_LEVEL);
+			ioport_set_pin_level(LED1_GPIO, LED1_ACTIVE_LEVEL);
 			while (1) {
 				/* Capture error */
 			}

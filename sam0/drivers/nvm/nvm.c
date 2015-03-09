@@ -120,9 +120,12 @@ enum status_code nvm_set_config(
 
 	/* Writing configuration to the CTRLB register */
 	nvm_module->CTRLB.reg =
-			(config->sleep_power_mode  << NVMCTRL_CTRLB_SLEEPPRM_Pos) |
-			(config->manual_page_write << NVMCTRL_CTRLB_MANW_Pos) |
-			(config->wait_states       << NVMCTRL_CTRLB_RWS_Pos);
+			((config->sleep_power_mode & NVMCTRL_CTRLB_SLEEPPRM_Msk) << NVMCTRL_CTRLB_SLEEPPRM_Pos) |
+			((config->manual_page_write & 0x01) << NVMCTRL_CTRLB_MANW_Pos)     |
+			((config->wait_states & NVMCTRL_CTRLB_RWS_Msk) << NVMCTRL_CTRLB_RWS_Pos)             |
+			((config->disable_cache & 0x01) << NVMCTRL_CTRLB_CACHEDIS_Pos) |
+			((config->cache_readmode & NVMCTRL_CTRLB_READMODE_Msk) << NVMCTRL_CTRLB_READMODE_Pos);
+
 
 	/* Initialize the internal device struct */
 	_nvm_dev.page_size         = (8 << nvm_module->PARAM.bit.PSZ);

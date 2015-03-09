@@ -3,7 +3,7 @@
  *
  * \brief Unit tests for TRNG driver.
  *
- * Copyright (c) 2011-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -73,6 +73,7 @@
  * SAM3X devices can be used.
  * This example has been tested with the following setup:
  * - sam3x8h_sam3x_ek
+ * - sam4c16c_sam4c_ek
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers
@@ -155,7 +156,7 @@ static void run_trng_test(const struct test_case *test)
 }
 
 /**
- * \brief Run ili9325 driver unit tests.
+ * \brief Run TRNG driver unit tests.
  */
 int main(void)
 {

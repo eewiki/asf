@@ -3,7 +3,7 @@
  *
  * \brief Supply Controller (SUPC) driver for SAM.
  *
- * Copyright (c) 2011 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -54,6 +54,27 @@ extern "C" {
 /**INDENT-ON**/
 /// @endcond
 
+/** Key used to write SUPC registers */
+#ifndef SUPC_CR_KEY_PASSWD
+#define SUPC_CR_KEY_PASSWD    SUPC_CR_KEY(0xA5U)
+#endif
+
+#ifndef SUPC_MR_KEY_PASSWD
+#define SUPC_MR_KEY_PASSWD    SUPC_MR_KEY(0xA5U)
+#endif
+
+#if SAM4C
+/** Power Mode */
+enum slcdc_power_mode {
+	/** The internal supply source and the external supply source are both deselected. */
+	SLCDC_POWER_MODE_LCDOFF = SUPC_MR_LCDMODE_LCDOFF,
+	/** The external supply source for LCD is selected */
+	SLCDC_POWER_MODE_LCDON_EXTVR = SUPC_MR_LCDMODE_LCDON_EXTVR,
+	/** The internal supply source for LCD is selected */
+	SLCDC_POWER_MODE_LCDON_INVR = SUPC_MR_LCDMODE_LCDON_INVR,
+};
+#endif
+
 void supc_enable_backup_mode(Supc *p_supc);
 void supc_switch_sclk_to_32kxtal(Supc *p_supc, uint32_t ul_bypass);
 void supc_enable_voltage_regulator(Supc *p_supc);
@@ -72,6 +93,13 @@ void supc_set_wakeup_mode(Supc *p_supc, uint32_t ul_mode);
 void supc_set_wakeup_inputs(Supc *p_supc, uint32_t ul_inputs,
 		uint32_t ul_transition);
 uint32_t supc_get_status(Supc *p_supc);
+#if SAM4C
+void supc_enable_backup_power_on_reset(Supc *p_supc);
+void supc_disable_backup_power_on_reset(Supc *p_supc);
+enum slcdc_power_mode supc_get_slcd_power_mode(Supc *p_supc);
+void supc_set_slcd_power_mode(Supc *p_supc, enum slcdc_power_mode mode);
+void supc_set_slcd_vol(Supc *p_supc, uint32_t vol);
+#endif
 
 /// @cond 0
 /**INDENT-OFF**/

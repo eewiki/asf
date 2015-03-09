@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.icm.example" caption="ICM Example">
+		<info type="description" value="summary">
+		This examples demonstrates how to use ICM driver to check integrity of internal SRAM or FLASH.
+		</info>
+		<build type="c-source" value="icm_example.c"/>
+		<device-support value="sam4c"/>
+		<require idref="sam.drivers.icm"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

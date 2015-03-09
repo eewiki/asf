@@ -8,7 +8,7 @@
 		<build type="module-config" subtype="required-header-file" value="conf_lin.h"/>
 		<build type="module-config" subtype="path" value="module_config"/>
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="group_sam_services_network_lin"/>
+		<build type="doxygen-entry-point" value="sam_service_network_lin_group"/>
 		<device-support value="sam3x"/>
 		<require idref="sam.drivers.pio"/>
 		<require idref="sam.drivers.usart"/>

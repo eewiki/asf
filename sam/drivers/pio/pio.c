@@ -51,6 +51,10 @@ extern "C" {
 /**INDENT-ON**/
 /// @endcond
 
+#ifndef PIO_WPMR_WPKEY_PASSWD
+#  define PIO_WPMR_WPKEY_PASSWD PIO_WPMR_WPKEY(0x50494Fu)
+#endif
+
 /**
  * \defgroup sam_drivers_pio_group Peripheral Parallel Input/Output (PIO) Controller
  *
@@ -98,7 +102,7 @@ void pio_pull_up(Pio *p_pio, const uint32_t ul_mask,
 void pio_set_debounce_filter(Pio *p_pio, const uint32_t ul_mask,
 		const uint32_t ul_cut_off)
 {
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
 	/* Set Debouncing, 0 bit field no effect */
 	p_pio->PIO_IFSCER = ul_mask;
 #elif (SAM3XA || SAM3U)
@@ -108,13 +112,13 @@ void pio_set_debounce_filter(Pio *p_pio, const uint32_t ul_mask,
 #error "Unsupported device"
 #endif
 
-	/* 
+	/*
 	 * The debouncing filter can filter a pulse of less than 1/2 Period of a
 	 * programmable Divided Slow Clock:
-	 * Tdiv_slclk = ((DIV+1)*2).Tslow_clock 
+	 * Tdiv_slclk = ((DIV+1)*2).Tslow_clock
 	 */
 	p_pio->PIO_SCDR = PIO_SCDR_DIV((FREQ_SLOW_CLOCK_EXT /
-					(2 * (ul_cut_off))) - 1);
+			(2 * (ul_cut_off))) - 1);
 }
 
 /**
@@ -190,7 +194,7 @@ void pio_set_peripheral(Pio *p_pio, const pio_type_t ul_type,
 	/* Disable interrupts on the pin(s) */
 	p_pio->PIO_IDR = ul_mask;
 
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
 	switch (ul_type) {
 	case PIO_PERIPH_A:
 		ul_sr = p_pio->PIO_ABCDSR[0];
@@ -280,7 +284,7 @@ void pio_set_input(Pio *p_pio, const uint32_t ul_mask,
 		p_pio->PIO_IFDR = ul_mask;
 	}
 
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
 	/* Enable de-glitch or de-bounce if necessary */
 	if (ul_attribute & PIO_DEGLITCH) {
 		p_pio->PIO_IFSCDR = ul_mask;
@@ -365,7 +369,7 @@ uint32_t pio_configure(Pio *p_pio, const pio_type_t ul_type,
 	switch (ul_type) {
 	case PIO_PERIPH_A:
 	case PIO_PERIPH_B:
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
 	case PIO_PERIPH_C:
 	case PIO_PERIPH_D:
 #endif
@@ -444,7 +448,7 @@ uint32_t pio_get_multi_driver_status(const Pio *p_pio)
 }
 
 
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
 /**
  * \brief Configure PIO pin internal pull-down.
  *
@@ -512,7 +516,7 @@ void pio_sync_output_write(Pio *p_pio, const uint32_t ul_mask)
 	p_pio->PIO_ODSR = ul_mask;
 }
 
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
 /**
  * \brief Configure PIO pin schmitt trigger. By default the Schmitt trigger is
  * active.
@@ -670,7 +674,9 @@ void pio_set_additional_interrupt_mode(Pio *p_pio,
 	}
 }
 
-#define PIO_WPMR_WPKEY_VALUE PIO_WPMR_WPKEY(0x50494Fu)
+#ifndef PIO_WPMR_WPKEY_PASSWD
+#define PIO_WPMR_WPKEY_PASSWD    PIO_WPMR_WPKEY(0x50494FU)
+#endif
 
 /**
  * \brief Enable or disable write protect of PIO registers.
@@ -680,7 +686,7 @@ void pio_set_additional_interrupt_mode(Pio *p_pio,
  */
 void pio_set_writeprotect(Pio *p_pio, const uint32_t ul_enable)
 {
-	p_pio->PIO_WPMR = PIO_WPMR_WPKEY_VALUE | ul_enable;
+	p_pio->PIO_WPMR = PIO_WPMR_WPKEY_PASSWD | ul_enable;
 }
 
 /**
@@ -710,7 +716,16 @@ uint32_t pio_get_writeprotect_status(const Pio *p_pio)
  */
 uint32_t pio_get_pin_value(uint32_t ul_pin)
 {
-	Pio *p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	Pio *p_pio;
+#if !SAM4C
+	p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+#else
+	if (ul_pin > PIO_PB31_IDX) {
+		p_pio = PIOC;
+	} else {
+		p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	}
+#endif
 	return (p_pio->PIO_PDSR >> (ul_pin & 0x1F)) & 1;
 }
 
@@ -723,7 +738,16 @@ uint32_t pio_get_pin_value(uint32_t ul_pin)
  */
 void pio_set_pin_high(uint32_t ul_pin)
 {
-	Pio *p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	Pio *p_pio;
+#if !SAM4C
+	p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+#else
+	if (ul_pin > PIO_PB31_IDX) {
+		p_pio = PIOC;
+	} else {
+		p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	}
+#endif
 	/* Value to be driven on the I/O line: 1. */
 	p_pio->PIO_SODR = 1 << (ul_pin & 0x1F);
 }
@@ -737,7 +761,16 @@ void pio_set_pin_high(uint32_t ul_pin)
  */
 void pio_set_pin_low(uint32_t ul_pin)
 {
-	Pio *p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	Pio *p_pio;
+#if !SAM4C
+	p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+#else
+	if (ul_pin > PIO_PB31_IDX) {
+		p_pio = PIOC;
+	} else {
+		p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	}
+#endif
 	/* Value to be driven on the I/O line: 0. */
 	p_pio->PIO_CODR = 1 << (ul_pin & 0x1F);
 }
@@ -751,7 +784,16 @@ void pio_set_pin_low(uint32_t ul_pin)
  */
 void pio_toggle_pin(uint32_t ul_pin)
 {
-	Pio *p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	Pio *p_pio;
+#if !SAM4C
+	p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+#else
+	if (ul_pin > PIO_PB31_IDX) {
+		p_pio = PIOC;
+	} else {
+		p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	}
+#endif
 	if (p_pio->PIO_ODSR & (1 << (ul_pin & 0x1F))) {
 		/* Value to be driven on the I/O line: 0. */
 		p_pio->PIO_CODR = 1 << (ul_pin & 0x1F);
@@ -772,7 +814,16 @@ void pio_toggle_pin(uint32_t ul_pin)
  */
 uint32_t pio_configure_pin(uint32_t ul_pin, const uint32_t ul_flags)
 {
-	Pio *p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	Pio *p_pio;
+#if !SAM4C
+	p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+#else
+	if (ul_pin > PIO_PB31_IDX) {
+		p_pio = PIOC;
+	} else {
+		p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	}
+#endif
 
 	/* Configure pins */
 	switch (ul_flags & PIO_TYPE_Msk) {
@@ -786,7 +837,7 @@ uint32_t pio_configure_pin(uint32_t ul_pin, const uint32_t ul_flags)
 		pio_pull_up(p_pio, (1 << (ul_pin & 0x1F)),
 				(ul_flags & PIO_PULLUP));
 		break;
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
 	case PIO_TYPE_PIO_PERIPH_C:
 		pio_set_peripheral(p_pio, PIO_PERIPH_C, (1 << (ul_pin & 0x1F)));
 		pio_pull_up(p_pio, (1 << (ul_pin & 0x1F)),
@@ -883,7 +934,7 @@ uint32_t pio_configure_pin_group(Pio *p_pio,
 		pio_set_peripheral(p_pio, PIO_PERIPH_B, ul_mask);
 		pio_pull_up(p_pio, ul_mask, (ul_flags & PIO_PULLUP));
 		break;
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
 	case PIO_TYPE_PIO_PERIPH_C:
 		pio_set_peripheral(p_pio, PIO_PERIPH_C, ul_mask);
 		pio_pull_up(p_pio, ul_mask, (ul_flags & PIO_PULLUP));
@@ -923,7 +974,16 @@ uint32_t pio_configure_pin_group(Pio *p_pio,
  */
 void pio_enable_pin_interrupt(uint32_t ul_pin)
 {
-	Pio *p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	Pio *p_pio;
+#if !SAM4C
+	p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+#else
+	if (ul_pin > PIO_PB31_IDX) {
+		p_pio = PIOC;
+	} else {
+		p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	}
+#endif
 	p_pio->PIO_IER = 1 << (ul_pin & 0x1F);
 }
 
@@ -937,7 +997,16 @@ void pio_enable_pin_interrupt(uint32_t ul_pin)
  */
 void pio_disable_pin_interrupt(uint32_t ul_pin)
 {
-	Pio *p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	Pio *p_pio;
+#if !SAM4C
+	p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+#else
+	if (ul_pin > PIO_PB31_IDX) {
+		p_pio = PIOC;
+	} else {
+		p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	}
+#endif
 	p_pio->PIO_IDR = 1 << (ul_pin & 0x1F);
 }
 
@@ -951,7 +1020,16 @@ void pio_disable_pin_interrupt(uint32_t ul_pin)
  */
 Pio *pio_get_pin_group(uint32_t ul_pin)
 {
-	Pio *p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	Pio *p_pio;
+#if !SAM4C
+	p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+#else
+	if (ul_pin > PIO_PB31_IDX) {
+		p_pio = PIOC;
+	} else {
+		p_pio = (Pio *)((uint32_t)PIOA + (PIO_DELTA * (ul_pin >> 5)));
+	}
+#endif
 	return p_pio;
 }
 
@@ -964,7 +1042,16 @@ Pio *pio_get_pin_group(uint32_t ul_pin)
  */
 uint32_t pio_get_pin_group_id(uint32_t ul_pin)
 {
-	uint32_t ul_id = ID_PIOA + (ul_pin >> 5);
+	uint32_t ul_id;
+#if !SAM4C
+	ul_id = ID_PIOA + (ul_pin >> 5);
+#else
+	if (ul_pin > PIO_PB31_IDX) {
+		ul_id = ID_PIOC;
+	} else {
+		ul_id = ID_PIOA + (ul_pin >> 5);
+	}
+#endif
 	return ul_id;
 }
 
@@ -1103,6 +1190,27 @@ Pdc *pio_capture_get_pdc_base(const Pio *p_pio)
 {
 	UNUSED(p_pio); /* Stop warning */
 	return PDC_PIOA;
+}
+#endif
+
+#if SAM4C
+/**
+ * \brief Set PIO IO drive.
+ *
+ * \param p_pio Pointer to an PIO peripheral.
+ * \param ul_line Line index (0..31).
+ * \param mode IO drive mode.
+ */
+void pio_set_io_drive(Pio *p_pio, uint32_t ul_line,
+		enum pio_io_drive_mode mode)
+{
+	if (ul_line > 15) {
+		p_pio->PIO_DRIVER2 &= ~(3 << ((ul_line - 15) * 2));
+		p_pio->PIO_DRIVER2 |= mode << ((ul_line - 15) * 2);
+	} else {
+		p_pio->PIO_DRIVER1 &= ~(3 << (ul_line * 2));
+		p_pio->PIO_DRIVER1 |= mode << (ul_line * 2);
+	}
 }
 #endif
 

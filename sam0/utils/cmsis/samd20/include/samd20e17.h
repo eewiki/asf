@@ -119,8 +119,9 @@ typedef enum IRQn
   ADC_IRQn                 = 21, /**< 21 SAMD20E17 Analog Digital Converter (ADC) */
   AC_IRQn                  = 22, /**< 22 SAMD20E17 Analog Comparators (AC) */
   DAC_IRQn                 = 23, /**< 23 SAMD20E17 Digital Analog Converter (DAC) */
+  PTC_IRQn                 = 24, /**< 24 SAMD20E17 Peripheral Touch Controller (PTC) */
 
-  PERIPH_COUNT_IRQn        = 24  /**< Number of peripheral IDs */
+  PERIPH_COUNT_IRQn        = 25  /**< Number of peripheral IDs */
 } IRQn_Type;
 
 typedef struct _DeviceVectors
@@ -170,6 +171,7 @@ typedef struct _DeviceVectors
   void* pfnADC_Handler;                   /* 21 Analog Digital Converter */
   void* pfnAC_Handler;                    /* 22 Analog Comparators */
   void* pfnDAC_Handler;                   /* 23 Digital Analog Converter */
+  void* pfnPTC_Handler;                   /* 24 Peripheral Touch Controller */
 } DeviceVectors;
 
 /* Cortex-M0+ processor handlers */
@@ -201,6 +203,7 @@ void TC5_Handler                 ( void );
 void ADC_Handler                 ( void );
 void AC_Handler                  ( void );
 void DAC_Handler                 ( void );
+void PTC_Handler                 ( void );
 
 /*
  * \brief Configuration of the Cortex-M0+ Processor and Core Peripherals

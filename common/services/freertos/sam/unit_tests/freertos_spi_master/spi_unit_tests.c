@@ -3,7 +3,7 @@
  *
  * \brief Unit tests for FreeRTOS SPI Interface Layer.
  *
- * Copyright (c) 2011 - 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -102,7 +102,7 @@
 #define BAUD_RATE               12000000
 
 /* Chip select. */
-#define CHIP_SELECT             3
+#define CHIP_SELECT             CONF_TEST_CS
 
 /* Clock polarity. */
 #define CLOCK_POLARITY          0
@@ -138,6 +138,7 @@
  * All SAM devices can be used.
  * This example has been tested with the following setup:
  * - sam3n4c_sam3n_ek
+ * - sam4c16c_sam4c_ek
  *
  * Note: an AT25 serial flash needs to be connected to the MCU.
  *
@@ -197,7 +198,7 @@ void vApplicationStackOverflowHook(xTaskHandle pxTask,
 void vApplicationTickHook(void);
 
 /**
- * \brief Run WDT driver unit tests
+ * \brief Run SPI unit tests
  */
 int main(void)
 {
@@ -217,7 +218,6 @@ int main(void)
 	for more details. */
 	for (;;) {
 	}
-	return 0;
 }
 
 static void create_spi_task(Spi *spi_base, uint16_t stack_depth_words,
@@ -260,6 +260,7 @@ static void create_spi_task(Spi *spi_base, uint16_t stack_depth_words,
 
 static void spi_flash_task(void *pvParameters)
 {
+	UNUSED(pvParameters);
 	/* Define all the test cases */
 	DEFINE_TEST_CASE(spi_test, NULL, run_spi_test, NULL,
 			"FreeRTOS SPI init-read-write on AT25");

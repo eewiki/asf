@@ -87,7 +87,7 @@ void i2c_write_complete_callback(
 
 	/* Initiate new packet write */
 	//! [write_next]
-	i2c_master_read_packet_job(module, &packet);
+	i2c_master_write_packet_job(module, &packet);
 	//! [write_next]
 }
 //! [callback_func]

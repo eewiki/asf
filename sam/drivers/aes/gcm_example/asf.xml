@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.aes.gcm.example" caption="AES GCM-Example">
+		<info type="description" value="summary">
+		Use the AES-GCM mode, encrypt and decrypt blocks of data in various mode.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<build type="c-source" value="gcm_example.c"/>
+		<device-support value="sam4c"/>
+		<require idref="sam.drivers.aes"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -162,15 +162,18 @@ int main(void)
   twi_master_setup(TWI_EXAMPLE, &opt);
 
   // Initialize the platform LED's.
-
+#if defined(sam4cek)
+  LED_Off(LED0);
+#else
   LED_Off(LED0_GPIO);
+#endif
 
   twi_package_t packet = {
 /**
- * The SAM3X_EK and SAM3X Arduino board use two bytes length internal
+ * The SAM3X_EK, SAM3X Arduino board and SAM4C_EK use two bytes length internal
  * address EEPROM.
  */
-#if SAM3XA
+#if defined(sam3xek) || defined(arduinoduex) || defined(sam4cek)
     .addr[0]      = EEPROM_MEM_ADDR >> 8, // TWI slave memory address data MSB
     .addr[1]      = EEPROM_MEM_ADDR,      // TWI slave memory address data LSB
     .addr_length  = sizeof (uint16_t),    // TWI slave memory address data size
@@ -189,7 +192,7 @@ int main(void)
   uint8_t data_received[PATTERN_TEST_LENGTH] = {0};
 
   twi_package_t packet_received = {
-#if SAM3XA
+#if defined(sam3xek) || defined(arduinoduex) || defined(sam4cek)
     .addr[0]      = EEPROM_MEM_ADDR >> 8, // TWI slave memory address data MSB
     .addr[1]      = EEPROM_MEM_ADDR,      // TWI slave memory address data LSB
     .addr_length  = sizeof (uint16_t),    // TWI slave memory address data size
@@ -215,7 +218,11 @@ int main(void)
   }
 
   //test PASS
+#if SAM4C
+  LED_On(LED0);
+#else
   LED_On(LED0_GPIO);
+#endif
 
   while(1);
 }

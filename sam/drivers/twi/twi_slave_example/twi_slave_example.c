@@ -104,8 +104,6 @@ extern "C" {
 /**INDENT-ON**/
 /// @endcond
 
-#define CONSOLE_BAUD_RATE   115200
-
 /** Device address of slave */
 #define SLAVE_ADDRESS       0x40
 /** Memory size in bytes */

@@ -106,7 +106,7 @@ uint32_t flash_erase_all(uint32_t ul_address);
 uint32_t flash_erase_plane(uint32_t ul_address);
 #endif
 
-#if (SAM4S || SAM4E || SAM4N)
+#if (SAM4S || SAM4E || SAM4N || SAM4C)
 uint32_t flash_erase_page(uint32_t ul_address, uint8_t uc_page_num);
 uint32_t flash_erase_sector(uint32_t ul_address);
 #endif
@@ -125,7 +125,7 @@ uint32_t flash_enable_security_bit(void);
 uint32_t flash_is_security_bit_enabled(void);
 uint32_t flash_read_unique_id(uint32_t *pul_data, uint32_t ul_size);
 
-#if (SAM4S || SAM4E || SAM4N)
+#if (SAM4S || SAM4E || SAM4N || SAM4C)
 uint32_t flash_read_user_signature(uint32_t *p_data, uint32_t ul_size);
 uint32_t flash_write_user_signature(uint32_t ul_address, const void *p_buffer,
 		uint32_t ul_size);

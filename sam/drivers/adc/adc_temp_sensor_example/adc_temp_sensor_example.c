@@ -53,8 +53,8 @@
  *
  * This example can be used on any SAM3/4 boards.
  *
- * Temperature sensor output range is from 0 to 3300 mv, hence ADVREF must be 
- * set to 3300 mv in order to provide reliable temperature information. Please 
+ * Temperature sensor output range is from 0 to 3300 mv, hence ADVREF must be
+ * set to 3300 mv in order to provide reliable temperature information. Please
  * refer to the board schematics for ADVREF jumper configuration.
  *
  * \section Description
@@ -104,31 +104,37 @@
 /** Reference voltage for ADC,in mv. */
 #define VOLT_REF        (3300)
 
-#if SAM3S || SAM4S || SAM3XA || SAM3N
+#if SAM3S || SAM4S || SAM3XA || SAM3N || SAM4C
 /* Tracking Time*/
-#define  TRACKING_TIME            1
+#define TRACKING_TIME    1
 /* Transfer Period */
-#define  TRANSFER_PERIOD       1 
+#define TRANSFER_PERIOD  1
+/* Startup Time*/
+#if SAM4C
+#define STARTUP_TIME ADC_STARTUP_TIME_10
+#else
+#define STARTUP_TIME ADC_STARTUP_TIME_4
+#endif
 #endif
 
 #if SAM3U
 #ifdef ADC_12B
 /* Start Up Time */
-#define   STARTUP_TIME                           7
+#define STARTUP_TIME               7
 /* Off Mode Startup Time */
-#define   OFF_MODE_STARTUP_TIME      7
+#define OFF_MODE_STARTUP_TIME      7
 #else
-#define   STARTUP_TIME                           3
+#define STARTUP_TIME               3
 #endif
 /* Sample & Hold Time */
-#define   SAMPLE_HOLD_TIME   6
+#define SAMPLE_HOLD_TIME           6
 #endif
 
 /** The maximal digital value */
 #if SAM3S || SAM3XA || SAM4S
 /** The maximal digital value */
 #define MAX_DIGITAL     (4095)
-#elif SAM3N
+#elif SAM3N || SAM4C
 #define MAX_DIGITAL     (1023)
 #elif SAM3U
 #ifdef ADC_12B
@@ -146,7 +152,7 @@
 /** adc buffer */
 static int16_t gs_s_adc_values[BUFFER_SIZE] = { 0 };
 
-/** 
+/**
  * \brief Simple function to replace printf with float formatting.
  * One decimal with rounding support.
  */
@@ -223,7 +229,7 @@ static void configure_console(void)
 		.baudrate = CONF_UART_BAUDRATE,
 		.paritytype = CONF_UART_PARITY
 	};
-	
+
 	/* Configure console UART. */
 	sysclk_enable_peripheral_clock(CONSOLE_UART_ID);
 	stdio_serial_init(CONF_UART, &uart_serial_options);
@@ -234,7 +240,7 @@ static void configure_console(void)
  */
 void SysTick_Handler(void)
 {
-	if ((adc_get_status(ADC) & ADC_ISR_EOC15) == ADC_ISR_EOC15) {
+	if (adc_get_status(ADC) & (1 << ADC_TEMPERATURE_SENSOR)) {
 		adc_start(ADC);
 	}
 }
@@ -266,13 +272,13 @@ void ADC_Handler(void)
 		}
 
 		l_vol = ul_value * VOLT_REF / MAX_DIGITAL;
-	#if SAM3S | SAM3XA	
+#if SAM3S || SAM3XA
 		/* Using multiplication (*0.37736) instead of division (/2.65). */
 		f_temp = (float)(l_vol - 800) * 0.37736 + 27.0;
-	#else
+#else
 		/* Using multiplication (*0.21186) instead of division (/4.72). */
 		f_temp = (float)(l_vol - 1440) * 0.21186 + 27.0;
-	#endif
+#endif
 		print_temp(f_temp);
 		/* Clear the buffer. */
 		memset(gs_s_adc_values, 0x0, sizeof(gs_s_adc_values));
@@ -297,10 +303,8 @@ int main(void)
 	sysclk_init();
 	board_init();
 
-	/* Disable watchdog. */
-	WDT->WDT_MR = WDT_MR_WDDIS;
-
 	configure_console();
+
 	/* Output example information. */
 	puts(STRING_HEADER);
 
@@ -322,7 +326,7 @@ int main(void)
 	 *     Startup  Time = startup value / ADCClock
 	 *     Startup time = 64 / 6.4MHz = 10 us
 	 */
-	adc_init(ADC, sysclk_get_cpu_hz(), 6400000, ADC_STARTUP_TIME_4);
+	adc_init(ADC, sysclk_get_cpu_hz(), 6400000, STARTUP_TIME);
 	/* Formula:
 	 *     Transfer Time = (TRANSFER * 2 + 3) / ADCClock
 	 *     Tracking Time = (TRACKTIM + 1) / ADCClock
@@ -332,7 +336,11 @@ int main(void)
 	 *     Tracking Time = (1 + 1) / 6.4MHz = 312 ns
 	 *     Settling Time = 3 / 6.4MHz = 469 ns
 	 */
-	adc_configure_timing(ADC, TRACKING_TIME, ADC_SETTLING_TIME_3, TRANSFER_PERIOD);
+	adc_configure_timing(ADC, TRACKING_TIME
+#if !SAM4C
+			, ADC_SETTLING_TIME_3, TRANSFER_PERIOD
+#endif
+	);
 
 	adc_configure_trigger(ADC, ADC_TRIG_SW, 0);
 
@@ -346,12 +354,12 @@ int main(void)
 
 	/* Enable ADC interrupt. */
 	NVIC_EnableIRQ(ADC_IRQn);
-	
+
 	/* Start conversion. */
 	adc_start(ADC);
 
 	adc_read_buffer(ADC, gs_s_adc_values, BUFFER_SIZE);
-	
+
 	/* Enable PDC channel interrupt. */
 	adc_enable_interrupt(ADC, ADC_ISR_RXBUFF);
 

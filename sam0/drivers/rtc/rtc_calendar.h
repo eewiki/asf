@@ -85,7 +85,7 @@
  *
  * In this driver, the RTC is operated in Calendar mode. This allows for an
  * easy integration of a real time clock and calendar into a user application
- * to track the passing or time and/or perform scheduled tasks.
+ * to track the passing of time and/or perform scheduled tasks.
  *
  * Whilst operating in Calendar mode, the RTC features:
  *  - Time tracking in seconds, minutes and hours
@@ -95,7 +95,7 @@
  *
  * \subsection asfdoc_samd20_rtc_calendar_module_overview_alarms Alarms and Overflow
  * The RTC has 4 independent hardware alarms that can be configured by the user
- * application. These alarms will be will trigger on match with the current
+ * application. These alarms will be will triggered on match with the current
  * clock value, and can be set up to trigger an interrupt, event, or both. The
  * RTC can also be configured to clear the clock value on alarm match, resetting
  * the clock to the original start time.

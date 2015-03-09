@@ -5,14 +5,14 @@
 		</info>
 		<info type="keyword" value="technology">
 			<keyword value="Communication"/>
-		</info>		
+		</info>
 		<build type="c-source" value="gmac.c"/>
 		<build type="header-file" subtype="api" value="gmac.h"/>
 		<build type="include-path" value="."/>
-		<build type="module-config" subtype="required-header-file" value="conf_eth.h"/>		
+		<build type="module-config" subtype="required-header-file" value="conf_eth.h"/>
 		<build type="module-config" subtype="path" value="module_config"/>
-		<build type="doxygen-entry-point" value="emac_group"/>
-		<build type="doxygen-quick-start" value="emac_quickstart"/>
+		<build type="doxygen-entry-point" value="gmac_group"/>
+		<build type="doxygen-quick-start" value="gmac_quickstart"/>
 		<device-support value="sam4e"/>
 		<require idref="sam.utils"/>
 		<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>

@@ -46,7 +46,6 @@
 
 #include "compiler.h"
 #include "system_sam4s.h"
-#include "exceptions.h"
 
 
 //#define BOARD_REV_A
@@ -190,7 +189,12 @@
 #define PIN_EBI_ADDR_BUS_FLAG2 PIO_PERIPH_C | PIO_PULLUP
 
 /** LED #0 pin definition. */
+#ifdef BOARD_REV_A
 #define LED_0_NAME     "LED D9"
+#endif
+#ifdef BOARD_REV_B
+#define LED_0_NAME     "LED1"
+#endif
 #define PIN_LED_0      {PIO_PC10, PIOC, ID_PIOC, PIO_OUTPUT_1, PIO_DEFAULT}
 #define PIN_LED_0_MASK PIO_PC10
 #define PIN_LED_0_PIO  PIOC
@@ -203,7 +207,12 @@
 #define LED0_ACTIVE_LEVEL 0
 
 /** LED #1 pin definition. */
+#ifdef BOARD_REV_A
 #define LED_1_NAME     "LED D10"
+#endif
+#ifdef BOARD_REV_B
+#define LED_1_NAME     "LED2"
+#endif
 #define PIN_LED_1      {PIO_PC17, PIOC, ID_PIOC, PIO_OUTPUT_1, PIO_DEFAULT}
 #define PIN_LED_1_MASK PIO_PC17
 #define PIN_LED_1_PIO  PIOC

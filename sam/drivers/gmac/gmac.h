@@ -1175,20 +1175,41 @@ void gmac_handler(gmac_device_t* p_gmac_dev);
  * \endcode
  *
  * \subsection gmac_basic_use_case_setup_flow Workflow
- * -# Ensure that conf_eth.h is present and contains the
+ * - Ensure that conf_eth.h is present and contains the
  * following configuration symbol. This configuration file is used
- * by the driver and should not be included by the user.
+ * by the driver and should not be included by the application.
+ * -# Define the receiving buffer size used in the internal GMAC driver.
+ * The buffer size used for RX is GMAC_RX_BUFFERS * 128.
+ * If it was supposed receiving a large number of frame, the
+ * GMAC_RX_BUFFERS should be set higher. E.g., the application wants to accept
+ * a ping echo test of 2048, the GMAC_RX_BUFFERS should be set at least 
+ * (2048/128)=16, and as there are additional frames coming, a preferred
+ * number is 24 depending on a normal Ethernet throughput.
  *   - \code
  *        #define GMAC_RX_BUFFERS                               16
+ *   \endcode
+ * -# Define the transmitting buffer size used in the internal GMAC driver.
+ * The buffer size used for TX is GMAC_TX_BUFFERS * 1518.
+ *   - \code
  *        #define GMAC_TX_BUFFERS                               8
+ *   \endcode
+ * -# Define maximum retry time for a PHY read/write operation.
+ *   - \code
  *        #define MAC_PHY_RETRY_MAX                             1000000
- *        #define ETHERNET_CONF_ETHADDR0                        0x00
+ *   \endcode
+ * -# Define the MAC address. 00:04:25:1C:A0:02 is the address reserved
+ * for ATMEL, application should always change this address to its' own.
+ *   - \code
  *        #define ETHERNET_CONF_ETHADDR0                        0x00
  *        #define ETHERNET_CONF_ETHADDR1                        0x04
  *        #define ETHERNET_CONF_ETHADDR2                        0x25
  *        #define ETHERNET_CONF_ETHADDR3                        0x1C
  *        #define ETHERNET_CONF_ETHADDR4                        0xA0
  *        #define ETHERNET_CONF_ETHADDR5                        0x02
+ *   \endcode
+ * -# Define the IP address configration used in the application. When DHCP
+ *  is enabled, this configuration is not effected.
+ *   - \code
  *        #define ETHERNET_CONF_IPADDR0                         192
  *        #define ETHERNET_CONF_IPADDR1                         168
  *        #define ETHERNET_CONF_IPADDR2                         0
@@ -1201,6 +1222,9 @@ void gmac_handler(gmac_device_t* p_gmac_dev);
  *        #define ETHERNET_CONF_NET_MASK1                       255
  *        #define ETHERNET_CONF_NET_MASK2                       255
  *        #define ETHERNET_CONF_NET_MASK3                       0
+ *   \endcode
+ * -# Configure the PHY maintainance interface.
+ *   - \code
  *        #define ETH_PHY_MODE                                  GMAC_PHY_MII
  *   \endcode
  * -# Enable the system clock:

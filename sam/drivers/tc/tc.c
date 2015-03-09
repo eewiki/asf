@@ -52,8 +52,10 @@ extern "C" {
 /**INDENT-ON**/
 /// @endcond
 
-#define TC_WPMR_WPKEY_VALUE TC_WPMR_WPKEY((uint32_t)0x54494D)
-
+#ifndef TC_WPMR_WPKEY_PASSWD
+#define TC_WPMR_WPKEY_PASSWD TC_WPMR_WPKEY((uint32_t)0x54494D)
+#endif
+  
 /**
  * \defgroup sam_drivers_tc_group Timer Counter (TC)
  *
@@ -549,9 +551,9 @@ uint32_t tc_get_qdec_interrupt_status(Tc *p_tc)
 void tc_set_writeprotect(Tc *p_tc, uint32_t ul_enable)
 {
 	if (ul_enable) {
-		p_tc->TC_WPMR = TC_WPMR_WPKEY_VALUE | TC_WPMR_WPEN;
+		p_tc->TC_WPMR = TC_WPMR_WPKEY_PASSWD | TC_WPMR_WPEN;
 	} else {
-		p_tc->TC_WPMR = TC_WPMR_WPKEY_VALUE;
+		p_tc->TC_WPMR = TC_WPMR_WPKEY_PASSWD;
 	}
 }
 

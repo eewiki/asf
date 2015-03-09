@@ -97,8 +97,6 @@ extern "C" {
 /**INDENT-ON**/
 /// @endcond
 
-/** Baud rate of console UART */
-#define CONSOLE_BAUD_RATE                 115200
 /** Watchdog period 3000ms */
 #define WDT_PERIOD                        3000
 /** LED blink time 300ms */
@@ -224,7 +222,7 @@ int main(void)
 
 	/* Systick configuration. */
 	puts("Configure systick to get 1ms tick period.\r");
-	if (SysTick_Config(SystemCoreClock / 1000)) {
+	if (SysTick_Config(sysclk_get_cpu_hz() / 1000)) {
 		puts("-F- Systick configuration error\r");
 	}
 
@@ -237,10 +235,10 @@ int main(void)
 		}
 	}
 	/* Configure WDT to trigger an interrupt (or reset). */
-	wdt_mode = WDT_MR_WDFIEN |	/* Enable WDT fault interrupt. */
-			WDT_MR_WDRPROC |	/* WDT fault resets processor only. */
-			WDT_MR_WDDBGHLT |	/* WDT stops in debug state. */
-			WDT_MR_WDIDLEHLT;	/* WDT stops in idle state. */
+	wdt_mode = WDT_MR_WDFIEN |  /* Enable WDT fault interrupt. */
+			WDT_MR_WDRPROC   |  /* WDT fault resets processor only. */
+			WDT_MR_WDDBGHLT  |  /* WDT stops in debug state. */
+			WDT_MR_WDIDLEHLT;   /* WDT stops in idle state. */
 	/* Initialize WDT with the given parameters. */
 	wdt_init(WDT, wdt_mode, timeout_value, timeout_value);
 	printf("Enable watchdog with %d microseconds period\n\r",
@@ -265,7 +263,7 @@ int main(void)
 
 			/* Toggle LED at the given period. */
 			if ((g_ul_ms_ticks % BLINK_PERIOD) == 0) {
-#if SAM4E || SAM4N
+#if SAM4E || SAM4N || SAM4C
 				LED_Toggle(LED0);
 #else
 				LED_Toggle(LED0_GPIO);

@@ -70,9 +70,10 @@
  * - \ref conf_usart_serial.h
  *
  * \section device_info Device Info
- * SAM3X devices can be used.
+ * SAM3X, SAM4C devices can be used.
  * This example has been tested with the following setup:
  * - sam3x8h_sam3x_ek
+ * - sam4c16c_sam4c_ek
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers

@@ -3,7 +3,7 @@
  *
  * \brief Watchdog Timer (WDT) driver for SAM.
  *
- * Copyright (c) 2011-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -107,7 +107,8 @@ uint32_t wdt_get_timeout_value(uint32_t ul_us, uint32_t ul_sclk)
 void wdt_init(Wdt *p_wdt, uint32_t ul_mode, uint16_t us_counter,
 		uint16_t us_delta)
 {
-	p_wdt->WDT_MR = ul_mode | WDT_MR_WDV(us_counter) | WDT_MR_WDD(us_delta);
+	p_wdt->WDT_MR = ul_mode | 
+			WDT_MR_WDV(us_counter) | WDT_MR_WDD(us_delta);
 }
 
 /**
@@ -116,6 +117,7 @@ void wdt_init(Wdt *p_wdt, uint32_t ul_mode, uint16_t us_counter,
 void wdt_disable(Wdt *p_wdt)
 {
 	p_wdt->WDT_MR = WDT_MR_WDDIS;
+
 }
 
 /**
@@ -123,7 +125,14 @@ void wdt_disable(Wdt *p_wdt)
  */
 void wdt_restart(Wdt *p_wdt)
 {
-	p_wdt->WDT_CR = WDT_KEY_PASSWORD | WDT_CR_WDRSTT;
+	if (p_wdt == WDT) {
+		p_wdt->WDT_CR = WDT_KEY_PASSWORD | WDT_CR_WDRSTT;
+	}
+#if SAM4C
+	else {
+		p_wdt->WDT_CR = RSWDT_CR_KEY(0xC4u) | RSWDT_CR_WDRSTT;
+	}
+#endif
 }
 
 /**

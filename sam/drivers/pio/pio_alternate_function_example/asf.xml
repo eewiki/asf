@@ -11,10 +11,10 @@
 		<device-support value="sam3"/>
 		<device-support value="sam4s"/>
 		<device-support value="sam4e"/>
+		<device-support value="sam4c"/>
 		<require idref="sam.drivers.pmc"/>
 		<require idref="sam.drivers.pio"/>
 		<require idref="sam.drivers.matrix"/>
-		<require idref="sam.drivers.uart"/>
 		<require idref="sam.services.flash"/>
 		<require idref="common.services.basic.clock"/>
 		<require idref="common.utils.stdio.stdio_serial"/>

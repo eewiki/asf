@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Sleep Management / Example for SAM4C-EK" id="common.services.basic.sleepmgr.example.sam4c_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="common.services.basic.sleepmgr.example"/>
+		<require idref="board.sam4c_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4c16c_0"/>
+	</project>
+</asf>

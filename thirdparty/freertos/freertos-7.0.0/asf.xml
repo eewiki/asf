@@ -90,6 +90,7 @@
 			<device-support value="sam4s"/>
 			<device-support value="sam4l"/>
 			<device-support value="sam4n"/>
+			<device-support value="sam4c"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3n"/>
 		</module>
 		<module type="service" id="common.services.os.freertos#sam_cm4f" caption="FreeRTOS mini Real-Time Kernel">
@@ -130,6 +131,7 @@
 			<build type="include-path" value="./source/portable/gcc/sam_cm4f" toolchain="armgcc"/>
 			<build type="include-path" value="./source/portable/iar/sam_cm4f" toolchain="iarewarm"/>
 			<device-support value="sam4e"/>
+			<device-support value="atsam4c16c_1"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
 		</module>
 	</select-by-device>

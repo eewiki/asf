@@ -45,7 +45,7 @@
 #include "sleep.h"
 
 /* SAM3 and SAM4 series */
-#if (SAM3S || SAM3N || SAM3XA || SAM3U || SAM4S || SAM4E || SAM4N)
+#if (SAM3S || SAM3N || SAM3XA || SAM3U || SAM4S || SAM4E || SAM4N || SAM4C)
 # include "pmc.h"
 # include "board.h"
 
@@ -55,6 +55,10 @@
 # define BOARD_OSC_STARTUP_US    (15625UL)
 #endif
 
+#if !defined(EFC0)
+# define EFC0 EFC
+#endif
+
 /**
  * Save clock settings and shutdown PLLs
  */
@@ -62,16 +66,28 @@ __always_inline static void pmc_save_clock_settings(
 		uint32_t *p_osc_setting,
 		uint32_t *p_pll0_setting,
 		uint32_t *p_pll1_setting,
-		uint32_t *p_mck_setting)
+		uint32_t *p_mck_setting,
+		uint32_t *p_fmr_setting,
+#if defined(EFC1)
+		uint32_t *p_fmr_setting1,
+#endif
+		const bool disable_xtal)
 {
+	uint32_t mor  = PMC->CKGR_MOR;
+	uint32_t mckr = PMC->PMC_MCKR;
+	uint32_t fmr  = EFC0->EEFC_FMR;
+# if defined(EFC1)
+	uint32_t fmr1 = EFC1->EEFC_FMR;
+# endif
+
 	if (p_osc_setting) {
-		*p_osc_setting = PMC->CKGR_MOR;
+		*p_osc_setting = mor;
 	}
 	if (p_pll0_setting) {
 		*p_pll0_setting = PMC->CKGR_PLLAR;
 	}
 	if (p_pll1_setting) {
-#if (SAM3S || SAM4S)
+#if (SAM3S || SAM4S || SAM4C)
 		*p_pll1_setting = PMC->CKGR_PLLBR;
 #elif (SAM3U || SAM3XA)
 		*p_pll1_setting = PMC->CKGR_UCKR;
@@ -80,57 +96,116 @@ __always_inline static void pmc_save_clock_settings(
 #endif
 	}
 	if (p_mck_setting) {
-		*p_mck_setting  = PMC->PMC_MCKR;
+		*p_mck_setting  = mckr;
 	}
+	if (p_fmr_setting) {
+		*p_fmr_setting  = fmr;
+	}
+#if defined(EFC1)
+	if (p_fmr_setting1) {
+		*p_fmr_setting1 = fmr1;
+	}
+#endif
 
-	/* Switch MCK to internal 4/8/12M RC for fast wakeup
-	   and disable unused clock for power saving. */
-	pmc_switch_mck_to_sclk(PMC_MCKR_PRES_CLK_1);
-	pmc_switch_mainck_to_fastrc(CKGR_MOR_MOSCRCF_4_MHz);
-	pmc_osc_disable_xtal(0);
+	/* Enable FAST RC */
+	PMC->CKGR_MOR = CKGR_MOR_KEY_PASSWD | mor | CKGR_MOR_MOSCRCEN;
+	/* if MCK source is PLL, switch to mainck */
+	if ((mckr & PMC_MCKR_CSS_Msk) > PMC_MCKR_CSS_MAIN_CLK) {
+		/* MCK -> MAINCK */
+		mckr = (mckr & (~PMC_MCKR_CSS_Msk)) | PMC_MCKR_CSS_MAIN_CLK;
+		PMC->PMC_MCKR = mckr;
+		while(!(PMC->PMC_SR & PMC_SR_MCKRDY));
+	}
+	/* MCK prescale -> 1 */
+	if (mckr & PMC_MCKR_PRES_Msk) {
+		mckr = (mckr & (~PMC_MCKR_PRES_Msk));
+		PMC->PMC_MCKR = mckr;
+		while(!(PMC->PMC_SR & PMC_SR_MCKRDY));
+	}
+	/* Disable PLLs */
 	pmc_disable_pllack();
-#if (SAM3S || SAM4S)
+#if (SAM3S || SAM4S || SAM4C)
 	pmc_disable_pllbck();
 #elif (SAM3U || SAM3XA)
 	pmc_disable_upll_clock();
 #endif
-	pmc_switch_mck_to_mainck(PMC_MCKR_PRES_CLK_1);
+
+	/* Prepare for entering WAIT mode */
+	/* Wait fast RC ready */
+	while (!(PMC->PMC_SR & PMC_SR_MOSCRCS));
+
+	/* Switch mainck to FAST RC */
+	PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCSEL) |
+			CKGR_MOR_KEY_PASSWD;
+	while (!(PMC->PMC_SR & PMC_SR_MOSCSELS));
+
+	/* FWS update */
+	EFC0->EEFC_FMR = fmr & (~EEFC_FMR_FWS_Msk);
+#if defined(EFC1)
+	EFC1->EEFC_FMR = fmr1 & (~EEFC_FMR_FWS_Msk);
+#endif
+
+	/* Disable XTALs */
+	if (disable_xtal) {
+		PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTEN) |
+				CKGR_MOR_KEY_PASSWD;
+	}
 }
 
 /**
  * Restore clock settings
  */
 __always_inline static void pmc_restore_clock_setting(
-		uint32_t osc_setting,
-		uint32_t pll0_setting,
-		uint32_t pll1_setting,
-		uint32_t mck_setting)
+		const uint32_t osc_setting,
+		const uint32_t pll0_setting,
+		const uint32_t pll1_setting,
+		const uint32_t mck_setting,
+		const uint32_t fmr_setting
+#if defined(EFC1)
+		, const uint32_t fmr_setting1
+#endif
+		)
 {
 	uint32_t mckr;
 	uint32_t pll_sr = 0;
 
-	/* Switch MCK to slow clock  */
-	pmc_switch_mck_to_sclk(PMC_MCKR_PRES_CLK_1);
 	/* Switch mainck to external xtal */
 	if (CKGR_MOR_MOSCXTBY == (osc_setting & CKGR_MOR_MOSCXTBY)) {
 		/* Bypass mode */
-		pmc_switch_mainck_to_xtal(PMC_OSC_BYPASS,
-			pmc_us_to_moscxtst(BOARD_OSC_STARTUP_US,
-				CHIP_FREQ_SLCK_RC));
-		pmc_osc_disable_fastrc();
+		PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTEN) |
+				CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTBY |
+				CKGR_MOR_MOSCSEL;
+		PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCRCEN &
+					~CKGR_MOR_MOSCRCF_Msk)
+				| CKGR_MOR_KEY_PASSWD;
 	} else if (CKGR_MOR_MOSCXTEN == (osc_setting & CKGR_MOR_MOSCXTEN)) {
-		/* External XTAL */
-		pmc_switch_mainck_to_xtal(PMC_OSC_XTAL,
-			pmc_us_to_moscxtst(BOARD_OSC_STARTUP_US,
-				CHIP_FREQ_SLCK_RC));
-		pmc_osc_disable_fastrc();
+		/* Enable External XTAL */
+		if (!(PMC->CKGR_MOR & CKGR_MOR_MOSCXTEN)) {
+			PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCXTBY) |
+					CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCXTEN;
+			/* Wait the Xtal to stabilize */
+			while (!(PMC->PMC_SR & PMC_SR_MOSCXTS));
+		}
+		/* Select External XTAL */
+		if (!(PMC->CKGR_MOR & CKGR_MOR_MOSCSEL)) {
+			PMC->CKGR_MOR |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_MOSCSEL;
+			while (!(PMC->PMC_SR & PMC_SR_MOSCSELS));
+		}
+		/* Disable Fast RC */
+		PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCRCEN &
+						~CKGR_MOR_MOSCRCF_Msk)
+					| CKGR_MOR_KEY_PASSWD;
 	}
 
 	if (pll0_setting & CKGR_PLLAR_MULA_Msk) {
+#if (SAM4C)
+		PMC->CKGR_PLLAR = pll0_setting;
+#else
 		PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | pll0_setting;
+#endif
 		pll_sr |= PMC_SR_LOCKA;
 	}
-#if (SAM3S || SAM4S)
+#if (SAM3S || SAM4S || SAM4C)
 	if (pll1_setting & CKGR_PLLBR_MULB_Msk) {
 		PMC->CKGR_PLLBR = pll1_setting;
 		pll_sr |= PMC_SR_LOCKB;
@@ -148,7 +223,7 @@ __always_inline static void pmc_restore_clock_setting(
 	case PMC_MCKR_CSS_PLLA_CLK:
 		while (!(PMC->PMC_SR & PMC_SR_LOCKA));
 		break;
-#if (SAM3S || SAM4S)
+#if (SAM3S || SAM4S || SAM4C)
 	case PMC_MCKR_CSS_PLLB_CLK:
 		while (!(PMC->PMC_SR & PMC_SR_LOCKB));
 		break;
@@ -161,19 +236,28 @@ __always_inline static void pmc_restore_clock_setting(
 
 	/* Switch to faster clock */
 	mckr = PMC->PMC_MCKR;
+
 	/* Set PRES */
 	PMC->PMC_MCKR = (mckr & ~PMC_MCKR_PRES_Msk)
 		| (mck_setting & PMC_MCKR_PRES_Msk);
 	while (!(PMC->PMC_SR & PMC_SR_MCKRDY));
+
+	/* Restore flash wait states */
+	EFC0->EEFC_FMR = fmr_setting;
+#if defined(EFC1)
+	EFC1->EEFC_FMR = fmr_setting1;
+#endif
+
 	/* Set CSS and others */
 	PMC->PMC_MCKR = mck_setting;
 	while (!(PMC->PMC_SR & PMC_SR_MCKRDY));
+
 	/* Waiting all restored PLLs ready */
 	while (!(PMC->PMC_SR & pll_sr));
 }
 
-/** If clocks are switched to FASTRC for WAIT mode */
-static volatile bool b_is_fastrc_used = false;
+/** If clocks are switched for some sleep mode */
+static volatile bool b_is_sleep_clock_used = false;
 /** Callback invoked once when clocks are restored */
 static pmc_callback_wakeup_clocks_restored_t callback_clocks_restored = NULL;
 
@@ -182,7 +266,7 @@ void pmc_sleep(int sleep_mode)
 	switch (sleep_mode) {
 	case SAM_PM_SMODE_SLEEP_WFI:
 	case SAM_PM_SMODE_SLEEP_WFE:
-#if (SAM4S || SAM4E || SAM4N)
+#if (SAM4S || SAM4E || SAM4N || SAM4C)
 		SCB->SCR &= (uint32_t)~SCR_SLEEPDEEP;
 		cpu_irq_enable();
 		__WFI();
@@ -197,31 +281,63 @@ void pmc_sleep(int sleep_mode)
 			__WFE();
 		break;
 #endif
+	case SAM_PM_SMODE_WAIT_FAST:
 	case SAM_PM_SMODE_WAIT: {
 		uint32_t mor, pllr0, pllr1, mckr;
+		uint32_t fmr;
+#if defined(EFC1)
+		uint32_t fmr1;
+#endif
+#if (SAM4S || SAM4E || SAM4N || SAM4C)
+		(sleep_mode == SAM_PM_SMODE_WAIT_FAST) ?
+				pmc_set_flash_in_wait_mode(PMC_FSMR_FLPM_FLASH_STANDBY) :
+				pmc_set_flash_in_wait_mode(PMC_FSMR_FLPM_FLASH_DEEP_POWERDOWN);
+#endif
 		cpu_irq_disable();
-		b_is_fastrc_used = true;
-		pmc_save_clock_settings(&mor, &pllr0, &pllr1, &mckr);
+		b_is_sleep_clock_used = true;
+
+#if SAM4C
+		/* Backup the sub-system 1 status and stop sub-system 1 */
+		uint32_t cpclk_backup = PMC->PMC_SCSR &
+				(PMC_SCSR_CPCK | PMC_SCSR_CPBMCK);
+		PMC->PMC_SCDR = cpclk_backup | PMC_SCDR_CPKEY_PASSWD;
+#endif
+		pmc_save_clock_settings(&mor, &pllr0, &pllr1, &mckr, &fmr,
+#if defined(EFC1)
+				&fmr1,
+#endif
+				(sleep_mode == SAM_PM_SMODE_WAIT));
 
 		/* Enter wait mode */
 		cpu_irq_enable();
+
 		pmc_enable_waitmode();
 
 		cpu_irq_disable();
-		pmc_restore_clock_setting(mor, pllr0, pllr1, mckr);
-		b_is_fastrc_used = false;
+		pmc_restore_clock_setting(mor, pllr0, pllr1, mckr, fmr
+#if defined(EFC1)
+				, fmr1
+#endif
+				);
+
+#if SAM4C
+		/* Restore the sub-system 1 */
+		PMC->PMC_SCER = cpclk_backup | PMC_SCER_CPKEY_PASSWD;
+#endif
+		b_is_sleep_clock_used = false;
 		if (callback_clocks_restored) {
 			callback_clocks_restored();
 			callback_clocks_restored = NULL;
 		}
 		cpu_irq_enable();
+
 		break;
 	}
 
 	case SAM_PM_SMODE_BACKUP:
 		SCB->SCR |= SCR_SLEEPDEEP;
-#if (SAM4S || SAM4E || SAM4N)
-		SUPC->SUPC_CR = SUPC_CR_KEY(0xA5u) | SUPC_CR_VROFF_STOP_VREG;
+#if (SAM4S || SAM4E || SAM4N || SAM4C)
+		SUPC->SUPC_CR = SUPC_CR_KEY_PASSWD | SUPC_CR_VROFF_STOP_VREG;
 		cpu_irq_enable();
 		__WFI() ;
 #else
@@ -234,13 +350,13 @@ void pmc_sleep(int sleep_mode)
 
 bool pmc_is_wakeup_clocks_restored(void)
 {
-	return !b_is_fastrc_used;
+	return !b_is_sleep_clock_used;
 }
 
 void pmc_wait_wakeup_clocks_restore(
 		pmc_callback_wakeup_clocks_restored_t callback)
 {
-	if (b_is_fastrc_used) {
+	if (b_is_sleep_clock_used) {
 		cpu_irq_disable();
 		callback_clocks_restored = callback;
 	} else if (callback) {
@@ -248,4 +364,4 @@ void pmc_wait_wakeup_clocks_restore(
 	}
 }
 
-#endif /* #if (SAM3S || SAM3N || SAM3XA || SAM3U || SAM4S || SAM4E || SAM4N) */
+#endif

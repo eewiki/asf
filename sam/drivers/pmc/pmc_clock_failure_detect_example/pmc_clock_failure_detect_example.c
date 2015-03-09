@@ -87,7 +87,7 @@ void PMC_Handler(void)
 {
 	if (pmc_get_status() & PMC_SR_CFDEV) {
 		/* A clock failure has been detected. */
-#if SAM4E || SAM4N
+#if SAM4E || SAM4N || SAM4C
 		LED_On(LED0);
 #else
 		LED_On(EXAMPLE_LED);
@@ -134,7 +134,7 @@ int main(void)
 	puts(STRING_HEADER);
 
 	/* Turn off the LED. */
-#if SAM4E || SAM4N
+#if SAM4E || SAM4N || SAM4C
 		LED_Off(LED0);
 #else
 		LED_Off(EXAMPLE_LED);

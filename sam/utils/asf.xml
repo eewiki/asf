@@ -36,6 +36,9 @@
 			<device-support value="sam4s"/>
 			<device-support value="sam4l"/>
 			<device-support value="sam4n"/>
+			<device-support value="atsam4c8c_0"/>
+			<device-support value="atsam4c16c_0"/>
+			<device-support value="unspecified-sam4c"/>    <!-- A workaround for Jenkin doxygen-module check -->
 		</module>
 		<!-- VFPv4 -->
 		<module type="driver" id="sam.utils.fpu#vfpv4" caption="SAM FPU driver">
@@ -47,6 +50,8 @@
 			<build type="build-config" subtype="c++-compiler-flags" value="-mfpu=vfpv4" toolchain="armgcc"/>
 			<require idref="sam.utils.fpu_used"/>
 			<device-support value="sam4e"/>
+			<device-support value="atsam4c8c_1"/>
+			<device-support value="atsam4c16c_1"/>
 		</module>
 	</select-by-device>
 
@@ -170,7 +175,7 @@
 			<info type="gui-flag" value="hidden"/>
 			<device-support value="sam4e"/>
 		</module>
-		
+
 		<!-- SAM4N //-->
 		<module type="driver" id="sam.utils#8" caption="SAM4N compiler driver">
 			<info type="description" value="summary">
@@ -184,6 +189,21 @@
 			<require idref="sam.utils.cmsis.sam4n.source.template"/>
 			<info type="gui-flag" value="hidden"/>
 			<device-support value="sam4n"/>
+		</module>
+
+		<!-- SAM4C //-->
+		<module type="driver" id="sam.utils#9" caption="SAM4C compiler driver">
+			<info type="description" value="summary">
+			Compiler abstraction layer and code utilities for SAM4C devices. This module provides various abstraction layers and utilities to make code compatible between different compilers. It also contains utilities typically used while pre-processing code.
+			</info>
+			<require idref="sam.utils.common"/>
+			<require idref="sam.utils.cmsis.sam4c.include"/>
+			<require idref="sam.utils.cmsis.sam4c.include.component"/>
+			<require idref="sam.utils.cmsis.sam4c.include.instance"/>
+			<require idref="sam.utils.cmsis.sam4c.include.pio"/>
+			<require idref="sam.utils.cmsis.sam4c.source.template"/>
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="sam4c"/>
 		</module>
 	</select-by-device>
 </asf>

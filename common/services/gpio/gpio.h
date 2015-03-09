@@ -45,7 +45,7 @@
 
 #include <parts.h>
 
-#if (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S || SAM4E || SAM4N)
+#if (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S || SAM4E || SAM4N || SAM4C)
 # include "sam_gpio/sam_gpio.h"
 #elif XMEGA
 # include "xmega_gpio/xmega_gpio.h"

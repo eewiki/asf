@@ -50,6 +50,7 @@
  *  - Open loop mode
  *  - 48MHz frequency
  * - CPU clock
+ *  - Use two wait states when reading from flash memory
  *  - Use the DFLL, configured to 48MHz
  *
  * \section asfdoc_samd20_system_clock_basic_use_case_setup Setup
@@ -95,8 +96,8 @@
  *
  * -# Write the new configuration to the DFLL module.
  *  \snippet qs_clock_source.c config_extosc32k_set_config
-
-
+ *
+ *
  * \section asfdoc_samd20_system_clock_basic_use_case_use_main Use Case
  *
  * \subsection asfdoc_samd20_system_clock_basic_use_case_code Code
@@ -118,6 +119,11 @@
  *
  * -# Enable the configured DFLL oscillator source.
  * \snippet qs_clock_source.c enable_dfll_main
+ *
+ * -# Configure the flash wait states to have two wait states per read, as the
+ *    high speed DFLL will be used as the system clock. If insufficient wait
+ *    states are used, the device may crash randomly due to misread instructions.
+ * \snippet qs_clock_source.c set_sys_wait_states
  *
  * -# Switch the system clock source to the DFLL, by reconfiguring the main
  *    clock generator.

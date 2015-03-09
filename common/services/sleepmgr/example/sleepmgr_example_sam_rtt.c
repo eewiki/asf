@@ -56,7 +56,7 @@
  *
  * \section deviceinfo Device Info
  * All SAM series devices can be used.
- * The example has been tested on the SAM4N-XPLAINED-PRO boards.
+ * The example has been tested on the SAM4N-XPLAINED-PRO and SAM4C-EK boards.
  *
  * \section exampledescription Description of the example
  * The device is put to sleep in sleep modes with increasing "depth", and is
@@ -81,7 +81,7 @@
 #include <asf.h>
 #include <conf_example.h>
 
-#define SLEEP_TIME     5
+#define SLEEP_TIME    5
 #define ACTIVE_TIME   3
 
 void RTT_Handler(void)

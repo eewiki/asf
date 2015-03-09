@@ -11,6 +11,7 @@
 		<device-support value="sam3"/>
 		<device-support value="sam4s"/>
 		<device-support value="sam4e"/>
+		<device-support value="sam4c"/>
 		<require idref="sam.drivers.pmc"/>
 		<require idref="sam.drivers.usart"/>
 		<require idref="sam.drivers.tc"/>

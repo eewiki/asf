@@ -117,6 +117,7 @@
 			<device-support value="sam4s"/>
 			<device-support value="sam4e"/>
 			<device-support value="sam4n"/>
+			<device-support value="sam4c"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
 		</module>
 		<module type="service" id="common.services.basic.twi#4" caption="TWI - Two-Wire Interface - SAM4L implementation">

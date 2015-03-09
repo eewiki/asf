@@ -40,16 +40,6 @@
 			<build type="linker-config" subtype="aux-script" value="samd20/iar/samd20e17_sram.icf" toolchain="iarewarm"/>
 			<device-support value="atsamd20e17"/>
 		</module>
-		<module type="build-specific" caption="Linker script for SAMD20E18" id="sam0.utils.linker_scripts#atsamd20e18">
-			<info type="description" value="summary">
-			Linker script for the SAMD20E18 device.
-			</info>
-			<build type="linker-config" subtype="script" value="samd20/gcc/samd20e18_flash.ld" toolchain="armgcc"/>
-			<build type="linker-config" subtype="aux-script" value="samd20/gcc/samd20e18_sram.ld" toolchain="armgcc"/>
-			<build type="linker-config" subtype="script" value="samd20/iar/samd20e18_flash.icf" toolchain="iarewarm"/>
-			<build type="linker-config" subtype="aux-script" value="samd20/iar/samd20e18_sram.icf" toolchain="iarewarm"/>
-			<device-support value="atsamd20e18"/>
-		</module>
 		<module type="build-specific" caption="Linker script for SAMD20G14" id="sam0.utils.linker_scripts#atsamd20g14">
 			<info type="description" value="summary">
 			Linker script for the SAMD20G14 device.

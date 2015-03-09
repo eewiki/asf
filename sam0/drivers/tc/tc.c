@@ -567,7 +567,7 @@ enum status_code tc_set_compare_value(
 		case TC_COUNTER_SIZE_32BIT:
 			if (channel_index <
 					NUMBER_OF_COMPARE_CAPTURE_CHANNELS) {
-				tc_module->COUNT16.CC[channel_index].reg =
+				tc_module->COUNT32.CC[channel_index].reg =
 						(uint32_t)compare;
 				return STATUS_OK;
 			}

@@ -64,16 +64,26 @@ extern "C" {
 #define PMC_TIMEOUT             (2048)
 
 /** Key to unlock CKGR_MOR register */
-#define PMC_CKGR_MOR_KEY_VALUE  CKGR_MOR_KEY(0x37)
+#ifndef CKGR_MOR_KEY_PASSWD
+#define CKGR_MOR_KEY_PASSWD    CKGR_MOR_KEY(0x37U)
+#endif
 
 /** Key used to write SUPC registers */
-#define SUPC_KEY_VALUE          ((uint32_t) 0xA5)
+#ifndef SUPC_CR_KEY_PASSWD
+#define SUPC_CR_KEY_PASSWD    SUPC_CR_KEY(0xA5U)
+#endif
+
+#ifndef SUPC_MR_KEY_PASSWD
+#define SUPC_MR_KEY_PASSWD    SUPC_MR_KEY(0xA5U)
+#endif
 
 /** Mask to access fast startup input */
 #define PMC_FAST_STARTUP_Msk    (0x7FFFFu)
 
 /** PMC_WPMR Write Protect KEY, unlock it */
-#define PMC_WPMR_WPKEY_VALUE    PMC_WPMR_WPKEY((uint32_t) 0x504D43)
+#ifndef PMC_WPMR_WPKEY_PASSWD
+#define PMC_WPMR_WPKEY_PASSWD    PMC_WPMR_WPKEY((uint32_t) 0x504D43)
+#endif
 
 /** Using external oscillator */
 #define PMC_OSC_XTAL            0
@@ -85,7 +95,7 @@ extern "C" {
 #define PMC_PCK_1               1 /* PCK1 ID */
 #define PMC_PCK_2               2 /* PCK2 ID */
 
-#if SAM4S || SAM4E || SAM4N
+#if SAM4S || SAM4E || SAM4N || SAM4C
 /** Flash state in Wait Mode */
 #define PMC_WAIT_MODE_FLASH_STANDBY         PMC_FSMR_FLPM_FLASH_STANDBY
 #define PMC_WAIT_MODE_FLASH_DEEP_POWERDOWN  PMC_FSMR_FLPM_FLASH_DEEP_POWERDOWN
@@ -110,13 +120,13 @@ void pmc_mck_set_source(uint32_t ul_source);
 uint32_t pmc_switch_mck_to_sclk(uint32_t ul_pres);
 uint32_t pmc_switch_mck_to_mainck(uint32_t ul_pres);
 uint32_t pmc_switch_mck_to_pllack(uint32_t ul_pres);
-#if (SAM3S || SAM4S)
+#if (SAM3S || SAM4S || SAM4C)
 uint32_t pmc_switch_mck_to_pllbck(uint32_t ul_pres);
 #endif
 #if (SAM3XA || SAM3U)
 uint32_t pmc_switch_mck_to_upllck(uint32_t ul_pres);
 #endif
-#if (SAM4S || SAM4E || SAM4N)
+#if (SAM4S || SAM4E || SAM4N || SAM4C)
 void pmc_set_flash_in_wait_mode(uint32_t ul_flash_state);
 #endif
 
@@ -167,7 +177,7 @@ void pmc_enable_pllack(uint32_t mula, uint32_t pllacount, uint32_t diva);
 void pmc_disable_pllack(void);
 uint32_t pmc_is_locked_pllack(void);
 
-#if (SAM3S || SAM4S)
+#if (SAM3S || SAM4S || SAM4C)
 void pmc_enable_pllbck(uint32_t mulb, uint32_t pllbcount, uint32_t divb);
 void pmc_disable_pllbck(void);
 uint32_t pmc_is_locked_pllbck(void);
@@ -208,7 +218,17 @@ void pmc_pck_set_source(uint32_t ul_id, uint32_t ul_source);
 uint32_t pmc_switch_pck_to_sclk(uint32_t ul_id, uint32_t ul_pres);
 uint32_t pmc_switch_pck_to_mainck(uint32_t ul_id, uint32_t ul_pres);
 uint32_t pmc_switch_pck_to_pllack(uint32_t ul_id, uint32_t ul_pres);
-#if (SAM3S || SAM4S)
+#if SAM4C
+void pmc_enable_cpck(void);
+void pmc_disable_cpck(void);
+bool pmc_is_cpck_enabled(void);
+void pmc_enable_cpbmck(void);
+void pmc_disable_cpbmck(void);
+bool pmc_is_cpbmck_enabled(void);
+void pmc_cpck_set_prescaler(uint32_t ul_pres);
+void pmc_cpck_set_source(uint32_t ul_source);
+#endif
+#if (SAM3S || SAM4S || SAM4C)
 uint32_t pmc_switch_pck_to_pllbck(uint32_t ul_id, uint32_t ul_pres);
 #endif
 #if (SAM3XA || SAM3U)
@@ -267,6 +287,10 @@ uint32_t pmc_get_status(void);
 
 void pmc_set_fast_startup_input(uint32_t ul_inputs);
 void pmc_clr_fast_startup_input(uint32_t ul_inputs);
+#if SAM4C
+void pmc_cp_set_fast_startup_input(uint32_t ul_inputs);
+void pmc_cp_clr_fast_startup_input(uint32_t ul_inputs);
+#endif
 void pmc_enable_sleepmode(uint8_t uc_type);
 void pmc_enable_waitmode(void);
 void pmc_enable_backupmode(void);
@@ -284,7 +308,7 @@ void pmc_disable_clock_failure_detector(void);
 
 //@}
 
-#if SAM4N
+#if SAM4N || SAM4C
 /**
  * \name Slow Crystal Oscillator Frequency Monitoring
  *
@@ -321,8 +345,8 @@ uint32_t pmc_get_writeprotect_status(void);
 /**
  * \page sam_pmc_quickstart Quick start guide for the SAM PMC module
  *
- * This is the quick start guide for the \ref pmc_group "PMC module", with
- * step-by-step instructions on how to configure and use the driver in a
+ * This is the quick start guide for the \ref sam_drivers_pmc_group "PMC module",
+ * with step-by-step instructions on how to configure and use the driver in a
  * selection of use cases.
  *
  * The use cases contain several code fragments. The code fragments in the
@@ -412,10 +436,8 @@ uint32_t pmc_get_writeprotect_status(void);
  *   pmc_switch_mainck_to_xtal(0, BOARD_OSC_STARTUP_US);
  *   flash_led(FLASH_TICK_COUNT, 5);
  *   \endcode
- */
-
-/**
- * \page pmc_use_case_2 Use case #2 - Configure Programmable Clocks
+ *
+ * \section pmc_use_case_2 Use case #2 - Configure Programmable Clocks
  * In this use case, the PMC module is configured to start the Slow Clock from
  * an attached 32KHz crystal, and start one of the Programmable Clock modules
  * sourced from the Slow Clock divided down with a prescale factor of 64.

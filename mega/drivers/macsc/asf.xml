@@ -11,8 +11,8 @@
 		<build type="c-source" value="macsc_megarf.c"/>
 		<build type="header-file" subtype="api" value="macsc_megarf.h"/>
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="macsc_megarf_group"/>
-		<build type="doxygen-quick-start" value="macsc_megarf_quickstart"/>
+		<build type="doxygen-entry-point" value="macsc_group"/>
+		<build type="doxygen-quick-start" value="megarf_macsc_quickstart"/>
 		<require idref="mega.utils"/>
 		<device-support value="megarf"/>
 		<require idref="common.services.basic.clock"/>

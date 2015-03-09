@@ -80,6 +80,9 @@
 #include "conf_clock.h"
 #include "conf_test.h"
 
+#ifndef PIO_PCMR_DSIZE_WORD
+#  define PIO_PCMR_DSIZE_WORD PIO_PCMR_DSIZE(2)
+#endif
 
 /* TWI clock frequency in Hz (400KHz). */
 #define TWI_CLK     (400000UL)
@@ -209,7 +212,7 @@ static void pio_capture_init(Pio* const p_pio, uint32_t ul_id)
 
 	/* 32bit width */
 	p_pio->PIO_PCMR &= ~((uint32_t)PIO_PCMR_DSIZE_Msk);
-	p_pio->PIO_PCMR |= PIO_PCMR_DSIZE(2);
+	p_pio->PIO_PCMR |= PIO_PCMR_DSIZE_WORD;
 
 	/* Only HSYNC and VSYNC are enabled */
 	p_pio->PIO_PCMR &= ~((uint32_t)PIO_PCMR_ALWYS);

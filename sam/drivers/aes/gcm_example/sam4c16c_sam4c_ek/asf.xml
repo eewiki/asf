@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="AES-GCM Example for SAM4C_EK" id="sam.drivers.aes.gcm.example.sam4c_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.pdc"/>
+		<require idref="sam.drivers.aes.gcm.example"/>
+		<require idref="board.sam4c_ek" />
+		<generator value="iarewarm" />
+		<generator value="armgcc" />
+		<generator value="doxygen" />
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4c16c_0"/>
+	</project>
+</asf>
+

@@ -81,6 +81,7 @@
  * - sam4s16c_sam4s_ek
  * - sam4sd32c_sam4s_ek2
  * - sam4n16c_sam4n_xplained_pro
+ * - sam4c16c_sam4c_ek
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers
@@ -211,12 +212,12 @@ static void run_pwm_test(const struct test_case *test)
 	delay_ms(50);
 	test_assert_true(test, gs_l_pwm_period_int_flag != 0,
 			"Test1: No period interrupt triggered!");
-
-#if (SAM3U || SAM3S || SAM3XA || SAM4S)
-	/* Test2 */
 	/* Disable event interrupt and PWM channel */
 	pwm_channel_disable_interrupt(PWM, PWM_UNIT_TEST_CH, 0);
 	pwm_channel_disable(PWM, PWM_UNIT_TEST_CH);
+
+#if (SAM3U || SAM3S || SAM3XA || SAM4S)
+	/* Test2 */
 
 	/* Configure comparison unit */
 	pwm_cmp_t comparison_unit = {

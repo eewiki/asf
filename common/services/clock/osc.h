@@ -58,6 +58,8 @@
 # include "sam4s/osc.h"
 #elif SAM4E
 # include "sam4e/osc.h"
+#elif SAM4C
+# include "sam4c/osc.h"
 #elif SAM4L
 # include "sam4l/osc.h"
 #elif SAM4N

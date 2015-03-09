@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.icm" caption="Integrity Check Monitor driver">
+		<info type="description" value="summary">
+		Driver for the Integrity Check Monitor.
+		Provides functions for using the on-chip Integrity Check Monitor.
+		</info>
+		<build type="c-source" value="icm.c"/>
+		<build type="header-file" subtype="api" value="icm.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_sam_drivers_icm"/>
+		<build type="doxygen-quick-start" value="sam_drivers_icm_quick_start"/>
+		<device-support value="sam4c"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4c"/>
+	</module>
+</asf>

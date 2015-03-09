@@ -62,11 +62,20 @@ extern "C" {
  * @{
  */
 
-#if (SAM3U || SAM3S || SAM3XA || SAM4S || SAM4E)
-#define PWM_WRITE_PROTECT_KEY         0x50574D00
-#define PWM_WRITE_PROTECT_SW_DISABLE  0
-#define PWM_WRITE_PROTECT_SW_ENABLE   1
-#define PWM_WRITE_PROTECT_HW_ENABLE   2
+#ifndef PWM_WPCR_WPKEY_PASSWD
+#  define PWM_WPCR_WPKEY_PASSWD 0x50574D00
+#endif
+
+#ifndef PWM_WPCR_WPCMD_DISABLE_SW_PROT
+#  define PWM_WPCR_WPCMD_DISABLE_SW_PROT (PWM_WPCR_WPCMD(0))
+#endif
+
+#ifndef PWM_WPCR_WPCMD_ENABLE_SW_PROT
+#  define PWM_WPCR_WPCMD_ENABLE_SW_PROT (PWM_WPCR_WPCMD(1))
+#endif
+
+#ifndef PWM_WPCR_WPCMD_ENABLE_HW_PROT
+#  define PWM_WPCR_WPCMD_ENABLE_HW_PROT (PWM_WPCR_WPCMD(2))
 #endif
 
 #define PWM_CLOCK_DIV_MAX  256
@@ -80,7 +89,7 @@ extern "C" {
  * \param ul_mck Master clock frequency in Hz.
  *
  * \retval Return the value to be set in the PWM Clock Register (PWM Mode Register for
- * SAM3N/SAM4N) or PWM_INVALID_ARGUMENT if the configuration cannot be met.
+ * SAM3N/SAM4N/SAM4C) or PWM_INVALID_ARGUMENT if the configuration cannot be met.
  */
 static uint32_t pwm_clocks_generate(uint32_t ul_frequency, uint32_t ul_mck)
 {
@@ -137,7 +146,7 @@ uint32_t pwm_init(Pwm *p_pwm, pwm_clock_t *clock_config)
 
 		clock |= (result << 16);
 	}
-#if (SAM3N || SAM4N)
+#if (SAM3N || SAM4N || SAM4C)
 	p_pwm->PWM_MR = clock;
 #else
 	p_pwm->PWM_CLK = clock;
@@ -157,7 +166,6 @@ uint32_t pwm_channel_init(Pwm *p_pwm, pwm_channel_t *p_channel)
 {
 	uint32_t ch_mode_reg = 0;
 	uint32_t ch_num = p_channel->channel;
-	uint32_t channel = (1 << ch_num);
 
 	/* Channel Mode/Clock Register */
 	ch_mode_reg = (p_channel->ul_prescaler & 0xF) |
@@ -176,7 +184,7 @@ uint32_t pwm_channel_init(Pwm *p_pwm, pwm_channel_t *p_channel)
 
 	/* Channel Period Register */
 	p_pwm->PWM_CH_NUM[ch_num].PWM_CPRD = p_channel->ul_period;
-
+	
 #if (SAM3U || SAM3S || SAM3XA || SAM4S || SAM4E)
 	/* Channel Dead Time Register */
 	if (p_channel->b_deadtime_generator) {
@@ -199,6 +207,7 @@ uint32_t pwm_channel_init(Pwm *p_pwm, pwm_channel_t *p_channel)
 					ch_num) << 16);
 
 	/* Sync Channels Mode Register */
+	uint32_t channel = (1 << ch_num);
 	if (p_channel->b_sync_ch) {
 		p_pwm->PWM_SCM |= channel;
 	} else {
@@ -300,7 +309,7 @@ uint32_t pwm_channel_update_period(Pwm *p_pwm, pwm_channel_t *p_channel,
 		/* Save new period value */
 		p_channel->ul_period = ul_period;
 
-#if (SAM3N || SAM4N)
+#if (SAM3N || SAM4N || SAM4C)
 		/* Set CPD bit to change period value */
 		p_pwm->PWM_CH_NUM[ch_num].PWM_CMR |= PWM_CMR_CPD;
 
@@ -334,7 +343,7 @@ uint32_t pwm_channel_update_duty(Pwm *p_pwm, pwm_channel_t *p_channel,
 		/* Save new duty cycle value */
 		p_channel->ul_duty = ul_duty;
 
-#if (SAM3N || SAM4N)
+#if (SAM3N || SAM4N || SAM4C)
 		/* Clear CPD bit to change duty cycle value */
 		uint32_t mode = p_pwm->PWM_CH_NUM[ch_num].PWM_CMR;
 		mode &= ~PWM_CMR_CPD;
@@ -412,7 +421,7 @@ uint32_t pwm_channel_get_status(Pwm *p_pwm)
  */
 uint32_t pwm_channel_get_interrupt_status(Pwm *p_pwm)
 {
-#if (SAM3N || SAM4N)
+#if (SAM3N || SAM4N || SAM4C)
 	return p_pwm->PWM_ISR;
 #else
 	return p_pwm->PWM_ISR1;
@@ -428,7 +437,7 @@ uint32_t pwm_channel_get_interrupt_status(Pwm *p_pwm)
  */
 uint32_t pwm_channel_get_interrupt_mask(Pwm *p_pwm)
 {
-#if (SAM3N || SAM4N)
+#if (SAM3N || SAM4N || SAM4C)
 	return p_pwm->PWM_IMR;
 #else
 	return p_pwm->PWM_IMR1;
@@ -441,12 +450,12 @@ uint32_t pwm_channel_get_interrupt_mask(Pwm *p_pwm)
  * \param p_pwm Pointer to a PWM instance.
  * \param ul_event Channel number to enable counter event interrupt.
  * \param ul_fault Channel number to enable fault protection interrupt(ignored
- * by SAM3N/SAM4N).
+ * by SAM3N/SAM4N/SAM4C).
  */
 void pwm_channel_enable_interrupt(Pwm *p_pwm, uint32_t ul_event,
 		uint32_t ul_fault)
 {
-#if (SAM3N || SAM4N)
+#if (SAM3N || SAM4N || SAM4C)
 	p_pwm->PWM_IER = (1 << ul_event);
 	/* avoid Cppcheck Warning */
 	UNUSED(ul_fault);
@@ -462,12 +471,12 @@ void pwm_channel_enable_interrupt(Pwm *p_pwm, uint32_t ul_event,
  * \param p_pwm Pointer to a PWM instance.
  * \param ul_event Bitmask of channel number to disable counter event interrupt.
  * \param ul_fault Bitmask of channel number to disable fault protection
- * interrupt(ignored by SAM3N/SAM4N).
+ * interrupt(ignored by SAM3N/SAM4N/SAM4C).
  */
 void pwm_channel_disable_interrupt(Pwm *p_pwm, uint32_t ul_event,
 		uint32_t ul_fault)
 {
-#if (SAM3N || SAM4N)
+#if (SAM3N || SAM4N || SAM4C)
 	p_pwm->PWM_IDR = (1 << ul_event);
 	/* avoid Cppcheck Warning */
 	UNUSED(ul_fault);
@@ -912,11 +921,11 @@ void pwm_enable_protect(Pwm *p_pwm, uint32_t ul_group, bool b_sw)
 	uint32_t wp = 0;
 
 	if (b_sw) {
-		wp = PWM_WRITE_PROTECT_KEY | (ul_group << 2) |
-				PWM_WPCR_WPCMD(PWM_WRITE_PROTECT_SW_ENABLE);
+		wp = PWM_WPCR_WPKEY_PASSWD | (ul_group << 2) |
+				PWM_WPCR_WPCMD_ENABLE_SW_PROT;
 	} else {
-		wp = PWM_WRITE_PROTECT_KEY | (ul_group << 2) |
-				PWM_WPCR_WPCMD(PWM_WRITE_PROTECT_HW_ENABLE);
+		wp = PWM_WPCR_WPKEY_PASSWD | (ul_group << 2) |
+				PWM_WPCR_WPCMD_ENABLE_HW_PROT;
 	}
 
 	p_pwm->PWM_WPCR = wp;
@@ -932,9 +941,8 @@ void pwm_enable_protect(Pwm *p_pwm, uint32_t ul_group, bool b_sw)
  */
 void pwm_disable_protect(Pwm *p_pwm, uint32_t ul_group)
 {
-	p_pwm->PWM_WPCR =
-			PWM_WRITE_PROTECT_KEY | (ul_group << 2) |
-			PWM_WPCR_WPCMD(PWM_WRITE_PROTECT_SW_DISABLE);
+	p_pwm->PWM_WPCR = PWM_WPCR_WPKEY_PASSWD
+			 | (ul_group << 2) | PWM_WPCR_WPCMD_DISABLE_SW_PROT;
 }
 
 /**

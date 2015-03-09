@@ -79,21 +79,31 @@ void rtc_clear_data_alarm(Rtc *p_rtc);
 uint32_t rtc_get_status(Rtc *p_rtc);
 void rtc_clear_status(Rtc *p_rtc, uint32_t ul_clear);
 
-#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || SAM4N)
+#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4N) || (SAM4C))
 void rtc_set_calendar_mode(Rtc *p_rtc, uint32_t ul_mode);
 void rtc_set_calibration(Rtc *p_rtc, uint32_t ul_direction_ppm,
 		uint32_t ul_correction, uint32_t ul_range_ppm);
 #endif
 
-#if ((SAM3S8) || (SAM3SD8) || (SAM4S))
+#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4C))
 void rtc_set_waveform(Rtc *p_rtc, uint32_t ul_channel, uint32_t ul_value);
 void rtc_set_pulse_parameter(Rtc *p_rtc, uint32_t ul_time_high,
 		uint32_t ul_period);
-#endif /* ((SAM3S8) || (SAM3SD8) || (SAM4S)) */
+#endif /* ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4C)) */
 
 #if ((SAM3N) || (SAM3U) || (SAM3XA))
 void rtc_set_writeprotect(Rtc *p_rtc, uint32_t ul_enable);
 #endif /* ((SAM3N) || (SAM3U) || (SAM3XA)) */
+
+#if SAM4C
+void rtc_get_tamper_time(Rtc *p_rtc, uint32_t *pul_hour, uint32_t *pul_minute,
+		uint32_t *pul_second, uint8_t reg_num);
+void rtc_get_tamper_date(Rtc *p_rtc, uint32_t *pul_year, uint32_t *pul_month,
+		uint32_t *pul_day, uint32_t *pul_week, uint8_t reg_num);
+uint32_t rtc_get_tamper_source(Rtc *p_rtc, uint8_t reg_num);
+uint32_t rtc_get_tamper_event_counter(Rtc *p_rtc);
+bool rtc_is_tamper_occur_in_backup_mode(Rtc *p_rtc, uint8_t reg_num);
+#endif
 
 /**
  * \page sam_rtc_quickstart Quickstart guide for SAM RTC driver
@@ -107,7 +117,7 @@ void rtc_set_writeprotect(Rtc *p_rtc, uint32_t ul_enable);
  * the steps for usage can be copied into, e.g., the main application function.
  *
  * \section rtc_basic_use_case Basic use case
- * In this basic use case, the RTC module is using 32kHz external crystal and 
+ * In this basic use case, the RTC module is using 32kHz external crystal and
  * configured for 24-hour mode. It will read the current date and time.
  *
  * \subsection sam_rtc_quickstart_prereq Prerequisites

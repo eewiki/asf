@@ -69,7 +69,7 @@
  *
  *  \par Usage
  *
- *  -# Build the program and download it into the evaluation board. 
+ *  -# Build the program and download it into the evaluation board.
  *  -# On the computer, open and configure a terminal application
  *     (e.g., HyperTerminal on Microsoft Windows) with these settings:
  *    - 115200 bauds
@@ -157,7 +157,7 @@ static void configure_console(void)
 		.baudrate = CONF_UART_BAUDRATE,
 		.paritytype = CONF_UART_PARITY
 	};
-	
+
 	/* Configure console UART. */
 	sysclk_enable_peripheral_clock(CONSOLE_UART_ID);
 	stdio_serial_init(CONF_UART, &uart_serial_options);
@@ -216,7 +216,7 @@ int main(void)
 	for (i = 0; i < BUFFER_SIZE; i++) {
 		p_buffer[i] = 1 << (i % MAX_SHIFTING_NUMBER);
 	}
-#if (SAM4E)
+#if (SAM4E || SAM4C)
 	/**
 	 * The EWP command can only be used in 8 KBytes sector for SAM4E,
 	 * so an erase command is requried before write operation.
@@ -289,7 +289,7 @@ int main(void)
 	 */
 	printf("-I- Please close the erase jumper and then open it ");
 	printf("at least 200ms later.\r\n");
-	
+
 	/**
 	 * Remind the users that after closing the erase jumper and then opening
 	 * it, codes are gone.

@@ -61,7 +61,8 @@
  * for more information.
  *
  * Operating mode of the example:
- *   -# After reset, the example will run without PicoCache.
+ *   -# After reset, the example will run without PicoCache at 48MHz with 1 wait
+ * state.
  *   -# A Fibonacci calculation will be done.
  *   -# The power consumption of the calculation without PicoCache will be
  * displayed on the board monitor.
@@ -70,6 +71,18 @@
  *   -# The Fibonacci calculation will be done again.
  *   -# The power consumption of the calculation with PicoCache will be
  * displayed on the board monitor.
+ *   -# The time spent on the Fibonacci will be displayed on the debug monitor.
+ *   -# The cache hit number will be displayed on the debug monitor, which is
+ * the cause of the performance improvement and power consumption decrease.
+ *   -# Then the example will run without PicoCache at 12MHz with 0 wait state.
+ *   -# A Fibonacci calculation will be done.
+ *   -# The power consumption of the calculation without PicoCache will be
+ * displayed on the board monitor.
+ *   -# The time spent on the Fibonacci will be displayed on the debug monitor.
+ *   -# PicoCache will be enabled.
+ *   -# The Fibonacci calculation will be done again.
+ *   -# The power consumption of the calculation with PicoCache will be
+ * displayed on the board monitor. The power consumption will be lower.
  *   -# The time spent on the Fibonacci will be displayed on the debug monitor.
  *   -# The cache hit number will be displayed on the debug monitor, which is
  * the cause of the performance improvement and power consumption decrease.
@@ -116,6 +129,8 @@
 /** Fibonacci number */
 #define FIBONACCI_NUM    32
 
+#define LOWER_SYS_CLK 12000000
+
 /**
  *  \brief Configure serial console.
  */
@@ -134,6 +149,23 @@ static void configure_console(void)
 
 	/* Configure console UART. */
 	stdio_serial_init(CONF_UART, &uart_serial_options);
+}
+
+/**
+ *  \brief Reconfigure serial console.
+ */
+static void reconfigure_com_port(void)
+{
+	const sam_usart_opt_t opt = {
+		.baudrate = CONF_UART_BAUDRATE,
+		.char_length = CONF_UART_CHAR_LENGTH,
+		.parity_type = CONF_UART_PARITY,
+		.stop_bits = CONF_UART_STOP_BITS,
+		.channel_mode = US_MR_CHMODE_NORMAL,
+		.irda_filter = 0,
+	};
+	usart_init_rs232(CONF_UART, &opt, LOWER_SYS_CLK);
+	usart_enable_tx(CONF_UART);
 }
 
 /**
@@ -196,6 +228,14 @@ static void flash_picocache_example(const char *caption, bool pico_enable)
 	}
 }
 
+static void wait_for_pushbutton(void)
+{
+	while (ioport_get_pin_level(GPIO_PUSH_BUTTON_0));
+	delay_ms(1);
+	while (!ioport_get_pin_level(GPIO_PUSH_BUTTON_0));
+	delay_ms(1);
+}
+
 /**
  * \brief main function. Do the Fibonacci calculation with and without
  * PicoCache and print the calculation time to the UART console.
@@ -219,13 +259,37 @@ int main(void)
 
 	/* Calculate the Fibonacci without PicoCache */
 	flash_picocache_example(
-		"Fibonacci calculation without PicoCache",
+		"Fibonacci calculation without PicoCache at 48MHz",
 		false);
 
 	/* Calculate the Fibonacci with PicoCache */
 	flash_picocache_example(
-		"Fibonacci calculation with PicoCache",
+		"Fibonacci calculation with PicoCache at 48MHz",
 		true);
+
+	puts("From now on, System is running at 12MHz\r");
+	puts("Please check the power consumption\r");
+	printf("Push %s to continue\r\n", BUTTON_0_NAME);
+	wait_for_pushbutton();
+	sysclk_set_prescalers(2, 0, 0, 0, 0);
+	reconfigure_com_port();
+
+	flashcalw_set_wait_state(0);
+	/* Calculate the Fibonacci without PicoCache */
+	flash_picocache_example(
+		"Fibonacci calculation without PicoCache at 12MHz",
+		false);
+
+	puts("Please check the power consumption\r");
+	printf("Push %s to continue\r\n", BUTTON_0_NAME);
+	wait_for_pushbutton();
+
+	/* Calculate the Fibonacci with PicoCache */
+	flash_picocache_example(
+		"Fibonacci calculation with PicoCache at 12MHz",
+		true);
+
+	puts("End");
 
 	while (true) {
 	}

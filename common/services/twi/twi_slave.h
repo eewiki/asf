@@ -46,12 +46,12 @@
 #include <parts.h>
 #include <compiler.h>
 
-#if (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S || SAM4E || SAM4N)
+#if (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S || SAM4E || SAM4N || SAM4C)
 # include "sam_twi/twi_slave.h"
 #elif XMEGA
 # include "xmega_twi/twi_slave.h"
 #elif MEGA_RF
-# include "megarf_twi/twi_slave.h" 
+# include "megarf_twi/twi_slave.h"
 #elif (defined(__GNUC__) && defined(__AVR32__)) || (defined(__ICCAVR32__) || defined(__AAVR32__))
 #if (defined AVR32_TWI)
 #error Not supported.

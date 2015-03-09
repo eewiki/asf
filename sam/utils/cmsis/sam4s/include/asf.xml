@@ -3,7 +3,15 @@
 		<info type="description" value="summary">
 		This file defines all structures and symbols for SAM4S
 		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="system_sam4s.h"/>
 		<build type="header-file" value="sam4s.h"/>
+		<build type="header-file" value="sam4s2a.h"/>
+		<build type="header-file" value="sam4s2b.h"/>
+		<build type="header-file" value="sam4s2c.h"/>
+		<build type="header-file" value="sam4s4a.h"/>
+		<build type="header-file" value="sam4s4b.h"/>
+		<build type="header-file" value="sam4s4c.h"/>
 		<build type="header-file" value="sam4s8b.h"/>
 		<build type="header-file" value="sam4s8c.h"/>
 		<build type="header-file" value="sam4s16b.h"/>

@@ -7,7 +7,7 @@
 		</module>
 	</select-by-config>
 
-	<board id="board.user_board.at32uc3b1256" caption="User Board">
+	<board id="board.user_board.at32uc3b1256" caption="User Board template">
 		<build type="define" name="BOARD" value="USER_BOARD"/>
 		<require idref="config.user_board.at32uc3b1256.init"/>
 		<require idref="common.boards"/>

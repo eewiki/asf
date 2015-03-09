@@ -81,7 +81,8 @@
  * - sam4e16e_sam4e_ek
  * - sam4s16c_sam4s_ek
  * - sam4sd32c_sam4s_ek2
- * - sam4n16c_sam4n_xplained_pro 
+ * - sam4n16c_sam4n_xplained_pro
+ * - sam4c16c_sam4c_ek
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers
@@ -155,12 +156,12 @@ static void run_rstc_test(const struct test_case *test)
 			"Test: unexpected reset type, expected SOFTWARE_RESET!");
 		/* Step 2: Watchdog reset test. */
 		gpbr_write(RSTC_GPBR_STEP, RSTC_UT_STEP3);
-		wdt_init(WDT, WDT_MR_WDRSTEN, 0, 0);
+		wdt_init(WDT, WDT_MR_WDRSTEN | WDT_MR_WDRPROC, 0, 0);
 		while (1) {
 		}
 
 	case RSTC_UT_STEP3:
-	  	/* Save reset type in RES2 */
+		/* Save reset type in RES2 */
 		gpbr_write(RSTC_GPBR_RES2, dw_reset_type);
 		test_assert_true(test, gpbr_read(RSTC_GPBR_RES2) == WDT_RESET,
 			"Test: unexpected reset type, expected WDT_RESET!");

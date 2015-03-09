@@ -62,7 +62,7 @@ extern "C" {
  * @{
  */
 
-#if SAM4E || SAM4N
+#if SAM4E || SAM4N || SAM4S || SAM4C
 /* User signature size */
 # define FLASH_USER_SIG_SIZE   (512)
 #endif
@@ -70,17 +70,20 @@ extern "C" {
 #if SAM4S
 /* Internal Flash Controller 0. */
 # define EFC     EFC0
-/* User signature size */
-# define FLASH_USER_SIG_SIZE   (512)
+#if (SAM4SD16 || SAM4SD32)
+/* The max GPNVM number. */
+# define GPNVM_NUM_MAX        3
+#else
+/* The max GPNVM number. */
+# define GPNVM_NUM_MAX        2
+#endif
 /* Internal Flash 0 base address. */
 # define IFLASH_ADDR     IFLASH0_ADDR
 /* Internal flash page size. */
 # define IFLASH_PAGE_SIZE     IFLASH0_PAGE_SIZE
 /* Internal flash lock region size. */
 # define IFLASH_LOCK_REGION_SIZE     IFLASH0_LOCK_REGION_SIZE
-#endif
-
-#if (SAM3XA || SAM3U4 || SAM4SD16 || SAM4SD32)
+#elif (SAM3XA || SAM3U4)
 /* Internal Flash Controller 0. */
 # define EFC     EFC0
 /* The max GPNVM number. */
@@ -116,6 +119,9 @@ extern "C" {
 # define GPNVM_NUM_MAX        2
 #endif
 
+#if SAM4C
+#define IFLASH_ADDR  IFLASH_CNC_ADDR
+#endif
 
 /* Flash page buffer for alignment */
 static uint32_t gs_ul_page_buffer[IFLASH_PAGE_SIZE / sizeof(uint32_t)];
@@ -336,7 +342,7 @@ uint32_t flash_set_wait_state_adaptively(uint32_t ul_address)
 	} else {
 		efc_set_wait_state(p_efc, 4);
 	}
-#elif (SAM4S || SAM4E || SAM4N)
+#elif (SAM4S || SAM4E || SAM4N || SAM4C)
 	} else if (clock < CHIP_FREQ_FWS_3) {
 		efc_set_wait_state(p_efc, 3);
 	} else if (clock < CHIP_FREQ_FWS_4) {
@@ -499,7 +505,7 @@ uint32_t flash_erase_plane(uint32_t ul_address)
 }
 #endif
 
-#if (SAM4S || SAM4E || SAM4N)
+#if (SAM4S || SAM4E || SAM4N || SAM4C)
 /**
  * \brief Erase the specified pages of flash.
  *
@@ -947,7 +953,7 @@ uint32_t flash_read_unique_id(uint32_t *pul_data, uint32_t ul_size)
 	return FLASH_RC_OK;
 }
 
-#if (SAM4S || SAM4E || SAM4N)
+#if (SAM4S || SAM4E || SAM4N || SAM4C)
 /**
  * \brief Read the flash user signature.
  *

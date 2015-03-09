@@ -379,7 +379,7 @@ static inline void aes_write_drng_seed(struct aes_dev_inst *const dev_inst,
  */
 
 /**
- * \page sam_aes_quick_start Quick Start Guide for the AES driver
+ * \page sam_aesa_quick_start Quick Start Guide for the AES driver
  *
  * This is the quick start guide for the \ref group_sam_drivers_aes, with
  * step-by-step instructions on how to configure and use the driver for

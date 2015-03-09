@@ -70,7 +70,9 @@ extern "C" {
 #define ACC_ACR_HYST_50mv_max	0x01
 #define ACC_ACR_HYST_90mv_max	0x11
 
-#define ACC_WPMR_WPKEY_VALUE ACC_WPMR_WPKEY((uint32_t) 0x414343)
+#ifndef ACC_WPMR_WPKEY_PASSWD
+#  define ACC_WPMR_WPKEY_PASSWD ACC_WPMR_WPKEY((uint32_t) 0x414343)
+#endif
 
 /**
  * \brief Initialize the ACC controller.
@@ -230,9 +232,9 @@ uint32_t acc_get_interrupt_status(Acc *p_acc)
 void acc_set_writeprotect(Acc *p_acc, uint32_t ul_enable)
 {
 	if (ul_enable)
-		p_acc->ACC_WPMR = ACC_WPMR_WPKEY_VALUE | ACC_WPMR_WPEN;
+		p_acc->ACC_WPMR = ACC_WPMR_WPKEY_PASSWD | ACC_WPMR_WPEN;
 	else
-		p_acc->ACC_WPMR = ACC_WPMR_WPKEY_VALUE;
+		p_acc->ACC_WPMR = ACC_WPMR_WPKEY_PASSWD;
 }
 
 /** 

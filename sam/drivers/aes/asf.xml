@@ -13,6 +13,7 @@
 		<build type="doxygen-entry-point" value="group_sam_drivers_aes"/>
 		<build type="doxygen-quick-start" value="sam_aes_quick_start"/>
 		<device-support value="sam4e"/>
+		<device-support value="sam4c"/>
 		<require idref="sam.utils"/>
 		<require idref="common.services.basic.clock"/>
 		<require idref="common.services.basic.sleepmgr"/>

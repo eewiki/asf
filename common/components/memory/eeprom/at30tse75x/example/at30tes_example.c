@@ -115,7 +115,6 @@ static void configure_console(void)
  */
 int main(void)
 {
-	uint32_t i;
 	double temp = 0;
 
 	/* Initialize the SAM system */
@@ -135,6 +134,8 @@ int main(void)
 	/* Initialize AT30TSE75x */
 	at30tse_init();
 
+#if BOARD_USING_AT30TSE != AT30TS75
+	uint32_t i;
 	/* Write pages in EEPROM */
 	for (i = 0; i < NB_PAGE; i++) {
 		tx[NB_PAGE - 1] = i;
@@ -160,6 +161,7 @@ int main(void)
 		}
 	}
 	puts("Read EEPROM & Compare OK\r");
+#endif
 
 	/* Read temperature every second */
 	while (1) {

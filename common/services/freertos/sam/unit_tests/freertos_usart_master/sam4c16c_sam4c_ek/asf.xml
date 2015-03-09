@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="FreeRTOS USART Interface Layer for SAM4C-EK" id="common.services.freertos_sam_usart.unit_tests.sam4c_ek" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<require idref="common.services.freertos_sam_usart.unit_tests"/>
+		<require idref="board.sam4c_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.thirdparty.os.freertos.version" value="7.3.0"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x1000"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<device-support value="atsam4c16c_0"/>
+	</project>
+</asf>

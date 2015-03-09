@@ -71,7 +71,8 @@
 
 #if (BOARD_USING_AT30TSE != AT30TSE752) && \
 		(BOARD_USING_AT30TSE != AT30TSE754) && \
-		(BOARD_USING_AT30TSE != AT30TSE758)
+		(BOARD_USING_AT30TSE != AT30TSE758) && \
+		(BOARD_USING_AT30TSE != AT30TS75)
 /* Using AT30TSE758 in Default */
 #define BOARD_USING_AT30TSE  AT30TSE758
 #endif
@@ -89,7 +90,7 @@
 #elif BOARD_USING_AT30TSE == AT30TSE758
 #define AT30TSE_EEPROM_TWI_ADDR  (AT30TSE75X_DEVICE_TYPE_ID_EEPROM | \
 		(BOARD_AT30TSE_DEVICE_ADDR & 0x04))
-#else
+#elif BOARD_USING_AT30TSE != AT30TS75
 /* Using AT30TSE758 in Default */
 #define AT30TSE_EEPROM_TWI_ADDR  (AT30TSE75X_DEVICE_TYPE_ID_EEPROM | \
 		(BOARD_AT30TSE_DEVICE_ADDR & 0x04))
@@ -113,6 +114,7 @@ void at30tse_init(void)
 	twi_master_init(BOARD_AT30TSE_TWI, &opts);
 }
 
+#if BOARD_USING_AT30TSE != AT30TS75
 /**
  * \brief Write EEPROM in AT30TSE75x
  *
@@ -178,6 +180,7 @@ uint8_t at30tse_eeprom_read(uint8_t *data, uint8_t length,
 
 	return twi_master_read(BOARD_AT30TSE_TWI, &packet);
 }
+#endif
 
 /**
  * \brief Read register in AT30TSE75x

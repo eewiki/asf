@@ -69,18 +69,19 @@
  *        w - Generate Waveform
  *     \endcode
  *
- * "w" is an additional option for SAM3S8, SAM3SD8 or SAM4S. An RTC output can 
- * be programmed to generate several waveforms, including a prescaled clock 
- * derived from slow clock.
+ * "w" is an additional option for SAM3S8, SAM3SD8, SAM4S and SAM4C. An RTC
+ * output can be programmed to generate several waveforms, including a prescaled
+ * clock derived from slow clock.
  *
  * Setting the time, date and time alarm is done by using Menu option, and
  * the display is updated accordingly.
  *
- * The time alarm is triggered only when the second, minute and hour match the 
+ * The time alarm is triggered only when the second, minute and hour match the
  * preset values; the date alarm is triggered only when the month and date match
- * the preset values. 
+ * the preset values.
  *
- * Generating waveform is done by using Menu option "w" and a menu to perform the following:
+ * Generating waveform is done by using Menu option "w" and a menu to perform
+ * the following:
  *     \code
  *     Menu:
  *     0 - No Waveform
@@ -98,6 +99,9 @@
  * problem for the RTC if not calibrated. It is recommended to use an external 32KHz
  * crystal to get high accuracy. How to initialize RTC with external 32KHz crystal can be
  * referred at \ref sam_rtc_quickstart.
+ *
+ * \note In sam4c_ek board, please use SWD instead of JTAG because RTCOUT share pin with
+ * JTAG interface. Otherwise there is a debug issue when enable wave output.
  *
  * \section Usage
  *
@@ -120,10 +124,10 @@
  *     t - Set time
  *     d - Set date
  *     i - Set time alarm
- *     m - Set date alarm      
+ *     m - Set date alarm
  *    \endcode
  * -# Press one of the keys listed in the menu to perform the corresponding action.
- * 
+ *
  */
 
 #include "asf.h"
@@ -140,20 +144,20 @@ extern "C" {
 /// @endcond
 
 /* Main menu is being displayed. */
-#define STATE_MENU				0
+#define STATE_MENU             0
 /* Time is being edited. */
-#define STATE_SET_TIME			1
+#define STATE_SET_TIME         1
 /* Date is being edited. */
-#define STATE_SET_DATE			2
+#define STATE_SET_DATE         2
 /* Time alarm is being edited. */
-#define STATE_SET_TIME_ALARM	3
+#define STATE_SET_TIME_ALARM   3
 /* Date alarm is being edited. */
-#define STATE_SET_DATE_ALARM	4
+#define STATE_SET_DATE_ALARM   4
 /* Wave generating is being edited. */
-#define STATE_WAVEFORM			5
+#define STATE_WAVEFORM         5
 
 /* Maximum size of edited string. */
-#define MAX_EDIT_SIZE			10
+#define MAX_EDIT_SIZE          10
 
 /* Macro for converting char to digit. */
 #define char_to_digit(c) ((c) - '0')
@@ -207,14 +211,15 @@ static void configure_console(void)
 		.baudrate = CONF_UART_BAUDRATE,
 		.paritytype = CONF_UART_PARITY
 	};
-	
+
 	/* Configure console UART. */
 	sysclk_enable_peripheral_clock(CONSOLE_UART_ID);
 	stdio_serial_init(CONF_UART, &uart_serial_options);
 }
 
 /**
- * \brief Get new time. Successful value is put in gs_ul_new_hour, gs_ul_new_minute, gs_ul_new_second.
+ * \brief Get new time. Successful value is put in gs_ul_new_hour,
+ * gs_ul_new_minute, gs_ul_new_second.
  */
 static uint32_t get_new_time(void)
 {
@@ -308,7 +313,8 @@ static uint32_t calculate_week(uint32_t ul_year, uint32_t ul_month,
 }
 
 /**
- * \brief Get new time. Successful value is put in gs_ul_new_year, gs_ul_new_month, gs_ul_new_day, gs_ul_new_week.
+ * \brief Get new time. Successful value is put in gs_ul_new_year,
+ * gs_ul_new_month, gs_ul_new_day, gs_ul_new_week.
  */
 static uint32_t get_new_date(void)
 {
@@ -409,7 +415,7 @@ static void refresh_display(void)
 					"  d - Set date\n\r"
 					"  i - Set time alarm\n\r"
 					"  m - Set date alarm\r");
-#if ((SAM3S8) || (SAM3SD8) || (SAM4S))
+#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4C))
 			puts("  w - Generate Waveform\r");
 #endif
 			if (gs_ul_alarm_triggered) {
@@ -423,8 +429,9 @@ static void refresh_display(void)
 
 		/* Update current date and time */
 		puts("\r");
-		printf(" [Time/Date: %02u:%02u:%02u, %02u/%02u/%04u %s ][Alarm status:%s]", 
-			ul_hour, ul_minute, ul_second, ul_month, ul_day, ul_year,
+		printf(" [Time/Date: %02u:%02u:%02u, %02u/%02u/%04u %s ][Alarm status:%s]",
+			(unsigned int)ul_hour, (unsigned int)ul_minute, (unsigned int)ul_second,
+			(unsigned int)ul_month, (unsigned int)ul_day, (unsigned int)ul_year,
 			gs_uc_day_names[ul_week-1], gs_ul_alarm_triggered?"Triggered!":"");
 	}
 }
@@ -574,7 +581,8 @@ int main(void)
 					puts("\n\r Time alarm not set, invalid input!\r");
 				} else {
 					printf("\n\r Time alarm is set at %02u:%02u:%02u!",
-						gs_ul_new_hour, gs_ul_new_minute, gs_ul_new_second);
+						(unsigned int)gs_ul_new_hour, (unsigned int)gs_ul_new_minute,
+						(unsigned int)gs_ul_new_second);
 				}
 			} else {
 				gs_uc_rtc_time[2] = ':';
@@ -603,7 +611,8 @@ int main(void)
 					puts("\n\r Date alarm not set, invalid input!\r");
 				} else {
 					printf("\n\r Date alarm is set on %02u/%02u/%4u!",
-							gs_ul_new_month, gs_ul_new_day, gs_ul_new_year);
+							(unsigned int)gs_ul_new_month, (unsigned int)gs_ul_new_day,
+							(unsigned int)gs_ul_new_year);
 				}
 			} else {
 				gs_uc_date[2] = '/';
@@ -616,7 +625,7 @@ int main(void)
 			refresh_display();
 		}
 
-#if ((SAM3S8) || (SAM3SD8) || (SAM4S))
+#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4C))
 		/* Generate Waveform */
 		if (uc_key == 'w') {
 			gs_ul_state = STATE_WAVEFORM;

@@ -367,7 +367,7 @@ void gmac_dev_init(Gmac* p_gmac, gmac_device_t* p_gmac_dev,
 	/* Enable the copy of data into the buffers
 	   ignore broadcasts, and not copy FCS. */
 	gmac_set_configure(p_gmac,
-			gmac_get_configure(p_gmac) | GMAC_NCFGR_IRXFCS| GMAC_NCFGR_PEN);
+			gmac_get_configure(p_gmac) | GMAC_NCFGR_RFCS| GMAC_NCFGR_PEN);
 
 	gmac_enable_copy_all(p_gmac, p_opt->uc_copy_all_frame);
 	gmac_disable_broadcast(p_gmac, p_opt->uc_no_boardcast);

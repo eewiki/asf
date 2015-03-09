@@ -100,9 +100,6 @@ extern "C" {
 /**INDENT-ON**/
 /// @endcond
 
-/** */
-#define CONSOLE_BAUD_RATE  115200
-
 /** EEPROM Wait Time */
 #define WAIT_TIME   10
 /** TWI Bus Clock 400kHz */
@@ -113,7 +110,7 @@ extern "C" {
 #define EEPROM_MEM_ADDR_LENGTH  2
 
 /** Data to be sent */
-#define  TEST_DATA_LENGTH  (sizeof(test_data_tx)/sizeof(uint8_t))
+#define TEST_DATA_LENGTH  (sizeof(test_data_tx)/sizeof(uint8_t))
 
 #define STRING_EOL    "\r"
 #define STRING_HEADER "--TWI EEPROM Example --\r\n" \
@@ -122,12 +119,12 @@ extern "C" {
 
 #if SAM4N
 /** TWI ID for simulated EEPROM application to use */
-#define BOARD_ID_TWI_EEPROM         ID_TWI0
+#define BOARD_ID_TWI_EEPROM    ID_TWI0
 /** TWI Base for simulated TWI EEPROM application to use */
-#define BOARD_BASE_TWI_EEPROM       TWI0
+#define BOARD_BASE_TWI_EEPROM  TWI0
 /** The address for simulated TWI EEPROM application */
 #undef  AT24C_ADDRESS
-#define AT24C_ADDRESS        0x40
+#define AT24C_ADDRESS          0x40
 #endif
 
 static const uint8_t test_data_tx[] = {
@@ -203,7 +200,7 @@ int main(void)
 #if SAM3XA
 	LED_Off(LED0_GPIO);
 	LED_Off(LED1_GPIO);
-#elif SAM4N
+#else
 	LED_Off(LED0);
 #endif
 	/* Initialize the console UART */
@@ -301,7 +298,7 @@ int main(void)
 	puts("Data comparison:\tMatched!\r");
 #if SAM3XA
 	LED_On(LED1_GPIO);
-#elif SAM4N
+#else
 	LED_On(LED0);
 #endif
 	while (1) {

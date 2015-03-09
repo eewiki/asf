@@ -47,6 +47,7 @@
 #define AT30TSE752                      1
 #define AT30TSE754                      2
 #define AT30TSE758                      3
+#define AT30TS75                        4
 
 #define AT30TSE_TEMPERATURE_REG         0x00
 #define AT30TSE_TEMPERATURE_REG_SIZE    2
@@ -94,10 +95,12 @@
 #define AT30TSE_CONFIG_NVRBSY       (1 << 0)
 
 void at30tse_init(void);
+#if BOARD_USING_AT30TSE != AT30TS75
 uint8_t at30tse_eeprom_write(uint8_t *data, uint8_t length,
 		uint8_t word_addr, uint8_t page);
 uint8_t at30tse_eeprom_read(uint8_t *data, uint8_t length,
 		uint8_t word_addr, uint8_t page);
+#endif
 uint8_t at30tse_read_temperature(double* temperature);
 uint8_t at30tse_write_config_register(uint16_t value);
 uint8_t at30tse_read_register(uint8_t reg, uint8_t reg_type,

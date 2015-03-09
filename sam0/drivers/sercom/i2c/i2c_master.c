@@ -317,6 +317,10 @@ enum status_code i2c_master_init(
 	module->registered_callback = 0;
 	module->enabled_callback = 0;
 	module->buffer_length = 0;
+	module->buffer_remaining = 0;
+
+	module->status = STATUS_OK;
+	module->buffer = NULL;
 #endif
 
 	/* Set sercom module to operate in I2C master mode. */

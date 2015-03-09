@@ -1,20 +1,44 @@
 <asf xmlversion="1.0">
-	<module type="component" id="sam.components.display.c42364a" caption="Display - C42364A LCD Glass">
-		<info type="description" value="summary">
-			Low-level driver for the C42364 LCD Glass.
-		</info>
-		<info type="keyword" value="technology">
-			<keyword value="Graphics" />
-		</info>
-		<build type="c-source" value="c42364a.c"/>
-		<build type="header-file" subtype="api" value="c42364a.h"/>
-		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="c42364a_display_group"/>
-		<build type="doxygen-quick-start" value="sam_component_c42364a_quick_start"/>
-		<require idref="sam.drivers.lcdca"/>
-		<device-support value="sam4l"/>
-		<build type="module-config" subtype="required-header-file" value="conf_c42364a.h"/>
-		<build type="module-config" subtype="path" value="module_config"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
-	</module>
+	<select-by-device id="sam.components.display.c42364a" caption="sam.components.display.c42364a">
+		<module type="component" id="sam.components.display.c42364a#lcdca" caption="sam.components.display.c42364a">
+			<info type="description" value="summary">
+				Low-level driver for the C42364 LCD Glass.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Graphics" />
+			</info>
+			<build type="c-source" value="c42364a_lcdca.c"/>
+			<build type="header-file" subtype="api" value="c42364a.h"/>
+			<build type="header-file" subtype="api" value="c42364a_segmap.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="c42364a_display_group"/>
+			<build type="doxygen-quick-start" value="sam_component_c42364a_quick_start"/>
+			<require idref="sam.drivers.lcdca"/>
+			<device-support value="sam4l"/>
+			<build type="module-config" subtype="required-header-file" value="conf_c42364a_lcdca.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+		<module type="component" id="sam.components.display.c42364a#slcdc" caption="sam.components.display.c42364a">
+			<info type="description" value="summary">
+				Low-level driver for the C42364 LCD Glass.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Graphics" />
+			</info>
+			<build type="c-source" value="c42364a_slcdc.c"/>
+			<build type="header-file" subtype="api" value="c42364a.h"/>
+			<build type="header-file" subtype="api" value="c42364a_font.h"/>
+			<build type="header-file" subtype="api" value="c42364a_segmap.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="c42364a_display_group"/>
+			<build type="doxygen-quick-start" value="sam_component_c42364a_quick_start"/>
+			<require idref="sam.drivers.slcdc"/>
+			<require idref="sam.drivers.supc"/>
+			<device-support value="sam4c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_c42364a_slcdc.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4c"/>
+		</module>		
+	</select-by-device>
 </asf>

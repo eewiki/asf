@@ -19,6 +19,7 @@
 			<device-support value="sam3"/>
 			<device-support value="sam4s"/>
 			<device-support value="sam4n"/>
+			<device-support value="sam4c"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
 		</module>
 	</select-by-device>
@@ -45,6 +46,7 @@
 			<device-support value="sam3sd"/>
 			<device-support value="sam4s"/>
 			<device-support value="sam4n"/>
+			<device-support value="sam4c"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
 		</module>
 	</select-by-device>
@@ -69,6 +71,7 @@
 			<device-support value="sam3"/>
 			<device-support value="sam4s"/>
 			<device-support value="sam4n"/>
+			<device-support value="sam4c"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
 		</module>
 	</select-by-device>
@@ -93,6 +96,7 @@
 			<device-support value="sam3"/>
 			<device-support value="sam4s"/>
 			<device-support value="sam4n"/>
+			<device-support value="sam4c"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
 		</module>
 	</select-by-device>

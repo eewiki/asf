@@ -10,7 +10,7 @@
 		<require idref="common.services.ioport"/>
 		<require idref="mega.utils"/>
 		<device-support value="mega"/>
-		<build type="doxygen-entry-point" value="port_driver_group"/>
+		<build type="doxygen-entry-point" value="ioport_group"/>
 		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
 	</module>
 </asf>

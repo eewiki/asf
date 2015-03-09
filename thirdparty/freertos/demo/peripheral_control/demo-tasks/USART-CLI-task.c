@@ -4,8 +4,7 @@
  *
  * \brief FreeRTOS+CLI task implementation example
  *
- *
- * Copyright (c) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -249,7 +248,7 @@ static void usart_command_console_task(void *pvParameters)
 
 /*-----------------------------------------------------------*/
 
-void usart_cli_output(const uint8_t const *message_string)
+void usart_cli_output(const uint8_t *message_string)
 {
 	const portTickType max_block_time_ticks = 200UL / portTICK_RATE_MS;
 

@@ -311,6 +311,7 @@ int main(void)
 	printf("Configure TC%d channel %d as waveform operating mode \n\r",
 			TC_PERIPHERAL, TC_CHANNEL_WAVEFORM);
 	tc_waveform_initialize();
+        
 	/* Configure TC TC_CHANNEL_CAPTURE as capture operating mode */
 	printf("Configure TC%d channel %d as capture operating mode \n\r",
 			TC_PERIPHERAL, TC_CHANNEL_CAPTURE);

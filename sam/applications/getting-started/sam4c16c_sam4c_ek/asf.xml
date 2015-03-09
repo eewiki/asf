@@ -1,0 +1,40 @@
+<asf xmlversion="1.0">
+	<project caption="Getting Started for SAM4C_EK" id="sam.applications.getting-started.sam4c_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.applications.getting-started"/>
+		<require idref="board.sam4c_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4c16c_0"/>
+	</project>
+
+	<project id="sam.appnote.getting-started.sam4c" caption="Getting-started appnote for SAM4C">
+		<info type="description" value="summary">
+		This document describes how to getting started with SAM4C development.
+		</info>
+		<info type="appnote" value="AT04219"/>
+		<info type="description" value="pdf">
+		This document describes how to getting started with SAM4C development.
+		</info>
+		<info type="keyword" value="pdf">
+			<keyword value="ASF"/>
+			<keyword value="pdf"/>
+			<keyword value="SAM4C"/>
+		</info>
+		<build type="header-file" value="appnote.h"/>
+		<build type="header-file" value="appnote_patch.h"/>
+		<build type="doxygen-image-path" value="."/>
+		<build type="doxygen-example-path" value="."/>
+		<build type="doxygen-example-path" value="../"/>
+		<build type="doxygen-example-path" value="../../../utils/cmsis/sam4c/source/templates/iar"/>
+		<build type="include-path" value="."/>
+		<generator value="doxygen-v2"/>
+		<device-support value="unspecified-sam4c"/>
+	</project>
+</asf>

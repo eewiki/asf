@@ -46,7 +46,6 @@
 
 #include "compiler.h"
 #include "system_sam4s.h"
-#include "exceptions.h"
 
 /*
 #define BOARD_REV_A

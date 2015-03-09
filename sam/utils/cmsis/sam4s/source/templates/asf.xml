@@ -1,13 +1,9 @@
 <asf xmlversion="1.0">
 	<module type="driver" caption="SAM4S startup code" id="sam.utils.cmsis.sam4s.source.template">
 		<build type="c-source" value="system_sam4s.c"/>
-		<build type="header-file" value="system_sam4s.h"/>
-		<build type="c-source" value="exceptions.c"/>
-		<build type="header-file" subtype="api" value="exceptions.h"/>
 		<build type="c-source" value="gcc/startup_sam4s.c" toolchain="armgcc"/>
 		<build type="c-source" value="iar/startup_sam4s.c" toolchain="iarewarm"/>
 		<build type="include-path" value="."/>
-		<build type="include-path" value="../../include"/>
 		<info type="gui-flag" value="hidden"/>
 		<device-support value="sam4s"/>
 	</module>

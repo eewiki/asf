@@ -124,41 +124,47 @@
 /** ADC channel for potentiometer */
 #if SAM3S || SAM3N || SAM4S
 #define ADC_CHANNEL_POTENTIOMETER  ADC_CHANNEL_5
-#elif SAM3XA
-#define ADC_CHANNEL_POTENTIOMETER    ADC_CHANNEL_1
+#elif SAM3XA || SAM4C
+#define ADC_CHANNEL_POTENTIOMETER  ADC_CHANNEL_1
 #endif
 /** ADC clock */
 #define BOARD_ADC_FREQ (6000000)
 
-/** Reference voltage for ADC,in mv.*/
+/** Reference voltage for ADC, in mv.*/
 #define VOLT_REF   (3300)
 
 /** The maximal digital value*/
 #if SAM3S || SAM3XA || SAM4S
 /** The maximal digital value */
 #define MAX_DIGITAL     (4095)
-#elif SAM3N
+#elif SAM3N || SAM4C
 #define MAX_DIGITAL     (1023)
 #endif
 
-#if SAM3S || SAM4S || SAM3XA || SAM3N
+#if SAM3S || SAM4S || SAM3XA || SAM3N || SAM4C
 /* Tracking Time*/
-#define  TRACKING_TIME            1
+#define TRACKING_TIME    1
 /* Transfer Period */
-#define  TRANSFER_PERIOD       1 
+#define TRANSFER_PERIOD  1
+/* Startup Time*/
+#if SAM4C
+#define STARTUP_TIME ADC_STARTUP_TIME_10
+#else
+#define STARTUP_TIME ADC_STARTUP_TIME_4
+#endif
 #endif
 
 #if SAM3U
 #ifdef ADC_12B
 /* Start Up Time */
-#define   STARTUP_TIME                           7
+#define STARTUP_TIME               7
 /* Off Mode Startup Time */
-#define   OFF_MODE_STARTUP_TIME      7
+#define OFF_MODE_STARTUP_TIME      7
 #else
-#define   STARTUP_TIME                           3
+#define STARTUP_TIME               3
 #endif
 /* Sample & Hold Time */
-#define   SAMPLE_HOLD_TIME   6
+#define SAMPLE_HOLD_TIME   6
 #endif
 
 #define STRING_EOL    "\r"
@@ -207,13 +213,15 @@ void ADC_Handler(void)
 		case 2:
 			printf("-ISR-:Potentiometer voltage %d mv is in the comparison "
 				"window:%d-%d mv!\n\r", us_adc * VOLT_REF / MAX_DIGITAL,
-				gs_us_low_threshold * VOLT_REF / MAX_DIGITAL, gs_us_high_threshold * VOLT_REF / MAX_DIGITAL);
+				gs_us_low_threshold * VOLT_REF / MAX_DIGITAL,
+				gs_us_high_threshold * VOLT_REF / MAX_DIGITAL);
 			break;
 
 		case 3:
 			printf("-ISR-:Potentiometer voltage %d mv is out of the comparison"
 				" window:%d-%d mv!\n\r", us_adc * VOLT_REF / MAX_DIGITAL,
-				gs_us_low_threshold * VOLT_REF / MAX_DIGITAL, gs_us_high_threshold * VOLT_REF / MAX_DIGITAL);
+				gs_us_low_threshold * VOLT_REF / MAX_DIGITAL,
+				gs_us_high_threshold * VOLT_REF / MAX_DIGITAL);
 			break;
 		}
 	}
@@ -265,13 +273,17 @@ static uint32_t  f_to_int(float x)
  */
 static void display_info(void)
 {
-	uint32_t ul_adc_value = adc_get_channel_value(ADC, ADC_CHANNEL_POTENTIOMETER);
-	float f_low_threshold = (float)gs_us_low_threshold * VOLT_REF / MAX_DIGITAL;
-	float f_high_threshold = (float)gs_us_high_threshold * VOLT_REF / MAX_DIGITAL;
+	uint32_t ul_adc_value = adc_get_channel_value(ADC,
+			ADC_CHANNEL_POTENTIOMETER);
+	float f_low_threshold = (float)gs_us_low_threshold *
+			VOLT_REF / MAX_DIGITAL;
+	float f_high_threshold = (float)gs_us_high_threshold *
+			VOLT_REF / MAX_DIGITAL;
 	uint32_t ul_low_threshold = f_to_int(f_low_threshold);
 	uint32_t ul_high_threshold = f_to_int(f_high_threshold);
 
-	printf("-I- Thresholds: %u mv - %u mv.\n\r", ul_low_threshold, ul_high_threshold);
+	printf("-I- Thresholds: %u mv - %u mv.\n\r", (unsigned int)ul_low_threshold,
+			(unsigned int)ul_high_threshold);
 	printf("-I- Voltage on potentiometer: %u mv.\n\r",
 			(unsigned int)(ul_adc_value * VOLT_REF / MAX_DIGITAL));
 	printf("-I- Comparison mode is %u\n\r.",
@@ -417,9 +429,6 @@ static void configure_console(void)
 	stdio_serial_init(CONF_UART, &uart_serial_options);
 }
 
-#define  TRACKING_TIME            1
-#define  TRANSFER_PERIOD       1  
-
 /**
  * \brief Example entry point.
  *
@@ -437,7 +446,6 @@ int main(void)
 	/* Initialize the SAM system. */
 	sysclk_init();
 	board_init();
-
 
 	configure_console();
 
@@ -461,7 +469,7 @@ int main(void)
 	 *     Startup  Time = startup value / ADCClock
 	 *     Startup time = 64 / 6.4MHz = 10 us
 	 */
-	adc_init(ADC, sysclk_get_cpu_hz(), 6400000, ADC_STARTUP_TIME_4);
+	adc_init(ADC, sysclk_get_cpu_hz(), 6400000, STARTUP_TIME);
 
 	/* Formula:
 	 *     Transfer Time = (TRANSFER * 2 + 3) / ADCClock
@@ -473,8 +481,9 @@ int main(void)
 	 *     Settling Time = 3 / 6.4MHz = 469 ns
 	 */
 #if SAM3S ||  SAM3XA || SAM4S
-	adc_configure_timing(ADC, TRACKING_TIME, ADC_SETTLING_TIME_3, TRANSFER_PERIOD);
-#elif SAM3N
+	adc_configure_timing(ADC, TRACKING_TIME, ADC_SETTLING_TIME_3,
+			TRANSFER_PERIOD);
+#elif SAM3N || SAM4C
 	adc_configure_timing(ADC, TRACKING_TIME);
 #endif
 	adc_check(ADC, sysclk_get_cpu_hz());
@@ -493,7 +502,7 @@ int main(void)
 	adc_set_comparison_mode(ADC, ADC_EMR_CMPMODE_IN);
 
 	/* Set up Threshold. */
-	adc_set_comparison_window(ADC, gs_us_high_threshold, gs_us_low_threshold);
+	adc_set_comparison_window(ADC, gs_us_low_threshold, gs_us_high_threshold);
 
 	/* Enable ADC interrupt. */
 	NVIC_EnableIRQ(ADC_IRQn);
@@ -514,7 +523,8 @@ int main(void)
 			s_adc_value = adc_get_channel_value(ADC,
 					ADC_CHANNEL_POTENTIOMETER);
 			printf("-I- Current voltage is %d mv, %d%% of ADVREF\n\r",
-			(s_adc_value * VOLT_REF / MAX_DIGITAL), (s_adc_value * 100 / MAX_DIGITAL));
+					(s_adc_value * VOLT_REF / MAX_DIGITAL),
+					(s_adc_value * 100 / MAX_DIGITAL));
 			break;
 
 		case '1':
@@ -529,10 +539,11 @@ int main(void)
 						gs_us_high_threshold);
 				/* Renew low threshold. */
 				gs_us_low_threshold = s_adc_value;
-				float f_low_threshold = (float)gs_us_low_threshold * VOLT_REF / MAX_DIGITAL;
+				float f_low_threshold = (float)gs_us_low_threshold *
+						VOLT_REF / MAX_DIGITAL;
 				uint32_t ul_low_threshold = f_to_int(f_low_threshold);
 				printf("Setting low threshold to %u mv (reg value to 0x%x ~%d%%)\n\r",
-						ul_low_threshold,
+						(unsigned int)ul_low_threshold,
 						gs_us_low_threshold,
 						gs_us_low_threshold * 100 / MAX_DIGITAL);
 			}
@@ -550,10 +561,11 @@ int main(void)
 						s_adc_value);
 				/* Renew high threshold. */
 				gs_us_high_threshold = s_adc_value;
-				float f_high_threshold = (float)gs_us_high_threshold * VOLT_REF / MAX_DIGITAL;
+				float f_high_threshold = (float)gs_us_high_threshold *
+						VOLT_REF / MAX_DIGITAL;
 				uint32_t ul_high_threshold = f_to_int(f_high_threshold);
 				printf("Setting high threshold to %u mv (reg value to 0x%x ~%d%%)\n\r",
-						ul_high_threshold,
+						(unsigned int)ul_high_threshold,
 						gs_us_high_threshold,
 						gs_us_high_threshold * 100 / MAX_DIGITAL);
 			}

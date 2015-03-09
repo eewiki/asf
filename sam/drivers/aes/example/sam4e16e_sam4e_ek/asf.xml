@@ -5,6 +5,7 @@
 		<build type="header-file" value="conf_clock.h"/>
 		<build type="header-file" value="conf_sleepmgr.h"/>
 		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.dmac"/>
 		<require idref="sam.drivers.aes.example"/>
 		<require idref="board.sam4e_ek" />
 		<generator value="iarewarm" />

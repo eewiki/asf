@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="config.common.services.qtouch.generic.sam" name="config.common.services.qtouch.generic.sam" caption="Atmel QTouch Library - SAM" default="qtouch_method">
 		<module type="service" id="config.common.services.qtouch.generic.sam#qtouch_method" caption="Atmel QTouch Library for QTouch Method in SAM devices">
-		<build type="doxygen-entry-point" value="group_sam_services_qtouch_generic_sam_qtouch"/>
+		<build type="doxygen-entry-point" value="group_common_services_qtouch"/>
 		<build type="define" name="_QTOUCH_" value=""/>
 		<require idref="common.services.qtouch.generic.sam.qtouch"/>
 		<build type="module-config" subtype="required-header-file" value="touch_qt_config.h"/>
@@ -14,5 +14,5 @@
 			<keyword value="Touch"/>
 		</info>
 		</module>
-	</select-by-config> 
+	</select-by-config>
 </asf>

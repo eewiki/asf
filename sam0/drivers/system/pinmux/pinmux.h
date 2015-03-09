@@ -431,13 +431,12 @@ static inline void system_pinmux_pin_set_input_sample_mode(
 		const enum system_pinmux_pin_sample mode)
 {
 	PortGroup* const port = system_pinmux_get_group_from_gpio_pin(gpio_pin);
-	uint32_t sample_quad_mask = (1UL << ((gpio_pin % 32) / 4));
+	uint32_t pin_index = (gpio_pin % 32);
 
 	if (mode == SYSTEM_PINMUX_PIN_SAMPLE_ONDEMAND) {
-		port->CTRL.reg |=  sample_quad_mask;
-	}
-	else {
-		port->CTRL.reg &= ~sample_quad_mask;
+		port->CTRL.reg |= (1 << pin_index);
+	} else {
+		port->CTRL.reg &= ~(1 << pin_index);
 	}
 }
 

@@ -63,6 +63,7 @@
  * shown in the state diagram below.
  *
  * The system clock is output on pin PCK0.
+ * \note For SAM4C_EK, PCK2 is used.
  *
  * \section compinfo Compilation Info
  * This software was written for the GNU GCC and IAR for SAM.
@@ -90,6 +91,11 @@ extern "C" {
 #endif
 /**INDENT-ON**/
 /// @endcond
+
+/** Programmable Clock ID for the example by default */
+#ifndef GCLK_ID
+#define GCLK_ID         GENCLK_PCK_0
+#endif
 
 /**
  * \brief Wait for the given number of milliseconds (using the ul_ms_ticks generated
@@ -155,24 +161,24 @@ int main(void)
 	ioport_disable_pin(GCLK_PIN);
 
 	/* Configure the output clock source and frequency */
-	genclk_config_defaults(&gcfg, GENCLK_PCK_0);
+	genclk_config_defaults(&gcfg, GCLK_ID);
 	genclk_config_set_source(&gcfg, GENCLK_PCK_SRC_PLLACK);
 	genclk_config_set_divider(&gcfg, GENCLK_PCK_PRES_1);
-	genclk_enable(&gcfg, GENCLK_PCK_0);
+	genclk_enable(&gcfg, GCLK_ID);
 
 	while (1) {
 		/*
-		 * Initial state: Running from 64/120 (SAM3/SAM4) MHz PLL (mainck = 12 Mhz)
-		 * oscillator with all prescalers disabled.
+		 * Initial state: check conf_clock.h for detail
+		 * (In most case, it is running from PLLA).
 		 */
 		wait_for_switches();
 
 		/*
-		 * Divide MCK frequency by 2. Now MCK = 32/60 (SAM3/SAM4) MHz.
+		 * Divide MCK frequency by 2.
 		 */
 		sysclk_set_prescalers(SYSCLK_PRES_2);
 		genclk_config_set_divider(&gcfg, GENCLK_PCK_PRES_2);
-		genclk_enable(&gcfg, GENCLK_PCK_0);
+		genclk_enable(&gcfg, GCLK_ID);
 		wait_for_switches();
 
 #ifdef BOARD_NO_32K_XTAL
@@ -183,7 +189,7 @@ int main(void)
 		sysclk_set_prescalers(SYSCLK_PRES_1);
 		genclk_config_set_source(&gcfg, GENCLK_PCK_SRC_SLCK_RC);
 		genclk_config_set_divider(&gcfg, GENCLK_PCK_PRES_1);
-		genclk_enable(&gcfg, GENCLK_PCK_0);
+		genclk_enable(&gcfg, GCLK_ID);
 		osc_disable(OSC_MAINCK_XTAL);
 		wait_for_switches();
 #endif
@@ -197,17 +203,17 @@ int main(void)
 		osc_wait_ready(OSC_MAINCK_4M_RC);
 		sysclk_set_source(SYSCLK_SRC_MAINCK_XTAL);
 		genclk_config_set_source(&gcfg, GENCLK_PCK_SRC_MAINCK_XTAL);
-		genclk_enable(&gcfg, GENCLK_PCK_0);
+		genclk_enable(&gcfg, GCLK_ID);
 		wait_for_switches();
 
 		/*
-		 * Switch to external 12 MHz crystal.
+		 * Switch to external crystal (8MHz or 12MHz, depend on the board).
 		 */
 		osc_enable(OSC_MAINCK_XTAL);
 		osc_wait_ready(OSC_MAINCK_XTAL);
 		sysclk_set_source(SYSCLK_SRC_MAINCK_XTAL);
 		genclk_config_set_source(&gcfg, GENCLK_PCK_SRC_MAINCK_XTAL);
-		genclk_enable(&gcfg, GENCLK_PCK_0);
+		genclk_enable(&gcfg, GCLK_ID);
 		osc_disable(OSC_MAINCK_4M_RC);
 		wait_for_switches();
 
@@ -217,7 +223,7 @@ int main(void)
 		sysclk_init();
 		genclk_config_set_source(&gcfg, GENCLK_PCK_SRC_PLLACK);
 		genclk_config_set_divider(&gcfg, GENCLK_PCK_PRES_1);
-		genclk_enable(&gcfg, GENCLK_PCK_0);
+		genclk_enable(&gcfg, GCLK_ID);
 	}
 }
 

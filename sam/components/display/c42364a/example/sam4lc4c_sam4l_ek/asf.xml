@@ -6,7 +6,7 @@
 		<build type="header-file" value="conf_sleepmgr.h"/>
 		<build type="header-file" value="conf_uart_serial.h"/>
 		<build type="header-file" value="conf_lcdca.h"/>
-		<build type="header-file" value="conf_c42364a.h"/>
+		<build type="header-file" value="conf_c42364a_lcdca.h"/>
 		<require idref="sam.components.display.c42364a.example"/>
 		<require idref="board.sam4l_ek"/>
 		<generator value="iarewarm"/>

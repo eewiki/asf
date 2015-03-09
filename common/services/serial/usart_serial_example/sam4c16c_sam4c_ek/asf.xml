@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="Similar API for Serial Interfaces / Example for SAM4C EK" id="common.services.basic.serial.example.sam4c_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="common.services.basic.serial.example"/>
+		<require idref="board.sam4c_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4c16c_0"/>
+	</project>
+</asf>

@@ -6,9 +6,8 @@
 		<info type="keyword" value="technology">
 			<keyword value="Memory"/>
 		</info>
-		<device-support value="sam4s"/>
+		<device-support value="sam"/>
 		<build type="c-source" value="smc_sram_example.c"/>
-		<require idref="sam.utils.cmsis.sam4s.source.template"/>
 		<require idref="sam.drivers.pmc"/>
 		<require idref="sam.drivers.pio"/>
 		<require idref="sam.drivers.uart"/>

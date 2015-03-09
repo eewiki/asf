@@ -111,48 +111,29 @@ static enum status_code _spi_set_config(
 	Assert(module->hw);
 
 	SercomSpi *const spi_module = &(module->hw->SPI);
-	Sercom *const sercom_module = module->hw;
+	Sercom *const hw = module->hw;
 
 	struct system_pinmux_config pin_conf;
 	system_pinmux_get_config_defaults(&pin_conf);
+	pin_conf.direction = SYSTEM_PINMUX_PIN_DIR_INPUT;
 
-	uint32_t pad0 = config->pinmux_pad0;
-	uint32_t pad1 = config->pinmux_pad1;
-	uint32_t pad2 = config->pinmux_pad2;
-	uint32_t pad3 = config->pinmux_pad3;
+	uint32_t pad_pinmuxes[] = {
+			config->pinmux_pad0, config->pinmux_pad1,
+			config->pinmux_pad2, config->pinmux_pad3
+		};
 
-	/* SERCOM PAD0 */
-	if (pad0 == PINMUX_DEFAULT) {
-		pad0 = _sercom_get_default_pad(sercom_module, 0);
-	}
-	pin_conf.mux_position = pad0 & 0xFFFF;
-	system_pinmux_pin_set_config(pad0 >> 16, &pin_conf);
+	/* Configure the SERCOM pins according to the user configuration */
+	for (uint8_t pad = 0; pad < 4; pad++) {
+		uint32_t current_pinmux = pad_pinmuxes[pad];
 
-	/* SERCOM PAD1 */
-	if (pad1 == PINMUX_DEFAULT) {
-		pad1 = _sercom_get_default_pad(sercom_module, 1);
-	}
-	if (pad1 != PINMUX_UNUSED) {
-		pin_conf.mux_position = pad1 & 0xFFFF;
-		system_pinmux_pin_set_config(pad1 >> 16, &pin_conf);
-	}
+		if (current_pinmux == PINMUX_DEFAULT) {
+			current_pinmux = _sercom_get_default_pad(hw, pad);
+		}
 
-	/* SERCOM PAD2 */
-	if (pad2 == PINMUX_DEFAULT) {
-		pad2 = _sercom_get_default_pad(sercom_module, 2);
-	}
-	if (pad2 != PINMUX_UNUSED) {
-		pin_conf.mux_position = pad2 & 0xFFFF;
-		system_pinmux_pin_set_config(pad2 >> 16, &pin_conf);
-	}
-
-	/* SERCOM PAD3 */
-	if (pad3 == PINMUX_DEFAULT) {
-		pad3 = _sercom_get_default_pad(sercom_module, 3);
-	}
-	if (pad3 != PINMUX_UNUSED) {
-		pin_conf.mux_position = pad3 & 0xFFFF;
-		system_pinmux_pin_set_config(pad3 >> 16, &pin_conf);
+		if (current_pinmux != PINMUX_UNUSED) {
+			pin_conf.mux_position = current_pinmux & 0xFFFF;
+			system_pinmux_pin_set_config(current_pinmux >> 16, &pin_conf);
+		}
 	}
 
 	module->mode             = config->mode;
@@ -261,52 +242,27 @@ static enum status_code _spi_check_config(
 	Assert(module->hw);
 
 	SercomSpi *const spi_module = &(module->hw->SPI);
-	Sercom *const sercom_module = module->hw;
+	Sercom *const hw = module->hw;
 
-	uint32_t pad0 = config->pinmux_pad0;
-	uint32_t pad1 = config->pinmux_pad1;
-	uint32_t pad2 = config->pinmux_pad2;
-	uint32_t pad3 = config->pinmux_pad3;
+	uint32_t pad_pinmuxes[] = {
+		config->pinmux_pad0, config->pinmux_pad1,
+		config->pinmux_pad2, config->pinmux_pad3
+	};
 
-	/* SERCOM PAD0 */
-	if (pad0 == PINMUX_DEFAULT) {
-		pad0 = _sercom_get_default_pad(sercom_module, 0);
-	}
-	if (pad0 != PINMUX_UNUSED) {
-		if ((pad0 & 0xFFFF) != system_pinmux_pin_get_mux_position(pad0 >> 16)) {
-			module->hw = NULL;
-			return STATUS_ERR_DENIED;
+	/* Compare the current SERCOM pins against the user configuration */
+	for (uint8_t pad = 0; pad < 4; pad++) {
+		uint32_t current_pinmux = pad_pinmuxes[pad];
+
+		if (current_pinmux == PINMUX_DEFAULT) {
+			current_pinmux = _sercom_get_default_pad(hw, pad);
 		}
-	}
 
-	/* SERCOM PAD1 */
-	if (pad1 == PINMUX_DEFAULT) {
-		pad1 = _sercom_get_default_pad(sercom_module, 1);
-	}
-	if (pad1 != PINMUX_UNUSED) {
-		if ((pad1 & 0xFFFF) != system_pinmux_pin_get_mux_position(pad1 >> 16)) {
-			module->hw = NULL;
-			return STATUS_ERR_DENIED;
+		if (current_pinmux == PINMUX_UNUSED) {
+			continue;
 		}
-	}
 
-	/* SERCOM PAD2 */
-	if (pad2 == PINMUX_DEFAULT) {
-		pad2 = _sercom_get_default_pad(sercom_module, 2);
-	}
-	if (pad2 != PINMUX_UNUSED) {
-		if ((pad2 & 0xFFFF) != system_pinmux_pin_get_mux_position(pad2 >> 16)) {
-			module->hw = NULL;
-			return STATUS_ERR_DENIED;
-		}
-	}
-
-	/* SERCOM PAD3 */
-	if (pad3 == PINMUX_DEFAULT) {
-		pad3 = _sercom_get_default_pad(sercom_module, 3);
-	}
-	if (pad3 != PINMUX_UNUSED) {
-		if ((pad3 & 0xFFFF) != system_pinmux_pin_get_mux_position(pad3 >> 16)) {
+		if ((current_pinmux & 0xFFFF) !=
+				system_pinmux_pin_get_mux_position(current_pinmux >> 16)) {
 			module->hw = NULL;
 			return STATUS_ERR_DENIED;
 		}
@@ -608,6 +564,99 @@ enum status_code spi_read_buffer_wait(
 	}
 
 	return STATUS_OK;
+}
+
+/**
+ * \brief Sends and reads a single SPI character
+ *
+ * This function will transfer a single SPI character via SPI and return the
+ * SPI character that is shifted into the shift register.
+ *
+ * In master mode the SPI character will be sent immediately and the received
+ * SPI character will be read as soon as the shifting of the data is
+ * complete.
+ *
+ * In slave mode this function will place the data to be sent into the transmit
+ * buffer. It will then block until an SPI master has shifted a complete
+ * SPI character, and the received data is available.
+ *
+ * \note The data to be sent might not be sent before the next transfer, as
+ *       loading of the shift register is dependent on SCK.
+ * \note If address matching is enabled for the slave, the first character
+ *       received and placed in the buffer will be the address.
+ *
+ * \param[in]  module   Pointer to the software instance struct
+ * \param[in]  tx_data  SPI character to transmit
+ * \param[out] rx_data  Pointer to store the received SPI character
+ *
+ * \return Status of the operation.
+ * \retval STATUS_OK            If the operation was completed
+ * \retval STATUS_ERR_TIMEOUT   If the operation was not completed within the
+ *                              timeout in slave mode
+ * \retval STATUS_ERR_DENIED    If the receiver is not enabled
+ * \retval STATUS_ERR_OVERFLOW  If the incoming data is overflown
+ */
+enum status_code spi_transceive_wait(
+		struct spi_module *const module,
+		uint16_t tx_data,
+		uint16_t *rx_data)
+{
+	/* Sanity check arguments */
+	Assert(module);
+
+	if (!(module->receiver_enabled)) {
+		return STATUS_ERR_DENIED;
+	}
+
+#  if SPI_CALLBACK_MODE == true
+	if (module->status == STATUS_BUSY) {
+		/* Check if the SPI module is busy with a job */
+		return STATUS_BUSY;
+	}
+#  endif
+
+	uint16_t j;
+	enum status_code retval = STATUS_OK;
+
+	/* Start timeout period for slave */
+	if (module->mode == SPI_MODE_SLAVE) {
+		for (j = 0; j <= SPI_TIMEOUT; j++) {
+			if (spi_is_ready_to_write(module)) {
+				break;
+			} else if (j == SPI_TIMEOUT) {
+				/* Not ready to write data within timeout period */
+				return STATUS_ERR_TIMEOUT;
+			}
+		}
+	}
+
+	/* Wait until the module is ready to write the character */
+	while (!spi_is_ready_to_write(module)) {
+	}
+
+	/* Write data */
+	spi_write(module, tx_data);
+
+	/* Start timeout period for slave */
+	if (module->mode == SPI_MODE_SLAVE) {
+		for (j = 0; j <= SPI_TIMEOUT; j++) {
+			if (spi_is_ready_to_read(module)) {
+				break;
+			} else if (j == SPI_TIMEOUT) {
+				/* Not ready to read data within timeout period */
+				return STATUS_ERR_TIMEOUT;
+			}
+		}
+	}
+
+	/* Wait until the module is ready to read the character */
+	while (!spi_is_ready_to_read(module)) {
+	}
+
+	/* Read data */
+	retval = spi_read(module, rx_data);
+
+	return retval;
 }
 
  /**

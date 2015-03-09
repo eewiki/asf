@@ -234,7 +234,7 @@ void flashcalw_set_flash_waitstate_and_readmode(uint32_t cpu_f_hz,
 			}
 		}
 	} else { /* ps_value == 1 */
-		if (cpu_f_hz > FLASH_FREQ_PS0_FWS_0_MAX_FREQ) { /* > 8MHz */
+		if (cpu_f_hz > FLASH_FREQ_PS1_FWS_0_MAX_FREQ) { /* > 8MHz */
 			/* Set a wait-state. */
 			flashcalw_set_wait_state(1);
 		} else {

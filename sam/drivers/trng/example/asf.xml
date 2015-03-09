@@ -2,12 +2,12 @@
 	<select-by-device id="sam.drivers.trng.example" caption="TRNG Example">
 		<module type="application" id="sam.drivers.trng.example#0" caption="TRNG Example">
 			<info type="description" value="summary">
-			This example demonstrates the True Random Number Generator (TRNG) provided on SAM3X microcontrollers. It enables the user to set an alarm and watch it being triggered when the timer reaches the corresponding value.
+			This example demonstrates the True Random Number Generator (TRNG) provided on SAM3X/SAM4C microcontrollers. It enables the user to set an alarm and watch it being triggered when the timer reaches the corresponding value.
 			</info>
 			<build type="c-source" value="trng_example.c"/>
 			<build type="include-path" value="."/>
 			<device-support value="sam3x"/>
-			<require idref="sam.utils.cmsis.sam3x.source.template"/>
+			<device-support value="sam4c"/>
 			<require idref="sam.drivers.trng"/>
 			<require idref="sam.drivers.pmc"/>
 			<require idref="sam.drivers.pio"/>

@@ -12,7 +12,7 @@
 					<keyword value="Memory"/>
 				</info>
 				<build type="doxygen-entry-point" value="nvm_group"/>
-				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="doxygen-quick-start" value="common_nvm_quickstart"/>
 				<build type="header-file" subtype="api" value="common_nvm.h"/>
 				<build type="c-source" value="xmega/xmega_nvm.c"/>
 				<build type="include-path" value="."/>
@@ -30,7 +30,7 @@
 					<keyword value="Memory"/>
 				</info>
 				<build type="doxygen-entry-point" value="nvm_group"/>
-				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="doxygen-quick-start" value="common_nvm_quickstart"/>
 				<build type="header-file" subtype="api" value="common_nvm.h"/>
 				<build type="c-source" value="uc3/uc3_nvm.c"/>
 				<build type="header-file" value="uc3/flash_api.h"/>
@@ -52,7 +52,7 @@
 					<keyword value="Memory"/>
 				</info>
 				<build type="doxygen-entry-point" value="nvm_group"/>
-				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="doxygen-quick-start" value="common_nvm_quickstart"/>
 				<build type="header-file" subtype="api" value="common_nvm.h"/>
 				<build type="c-source" value="uc3/uc3_nvm.c"/>
 				<build type="header-file" value="uc3/flash_api.h"/>
@@ -76,7 +76,7 @@
 					<keyword value="Memory"/>
 				</info>
 				<build type="doxygen-entry-point" value="nvm_group"/>
-				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="doxygen-quick-start" value="common_nvm_quickstart"/>
 				<build type="header-file" subtype="api" value="common_nvm.h"/>
 				<build type="c-source" value="sam/sam_nvm.c"/>
 				<build type="include-path" value="."/>
@@ -95,7 +95,7 @@
 					<keyword value="Memory"/>
 				</info>
 				<build type="doxygen-entry-point" value="nvm_group"/>
-				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="doxygen-quick-start" value="common_nvm_quickstart"/>
 				<require idref="thirdparty.wireless.avr2025_mac.source.pal.common.drivers.nvm"/>
 				<require idref="sam.drivers.flashcalw"/>
 				<device-support value="sam4l"/>
@@ -109,7 +109,7 @@
 					<keyword value="Memory"/>
 				</info>
 				<build type="doxygen-entry-point" value="nvm_group"/>
-				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="doxygen-quick-start" value="common_nvm_quickstart"/>
 				<require idref="thirdparty.wireless.avr2025_mac.source.pal.common.drivers.nvm"/>
 				<require idref="thirdparty.wireless.avr2025_mac.source.pal.mega.drivers.flash"/>
 				<device-support value="megarf"/>
@@ -124,7 +124,7 @@
 					<keyword value="Memory"/>
 				</info>
 				<build type="doxygen-entry-point" value="nvm_group"/>
-				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="doxygen-quick-start" value="common_nvm_quickstart"/>
 				<build type="header-file" subtype="api" value="common_nvm.h"/>
 				<build type="c-source" value="xmega/xmega_nvm.c"/>
 				<build type="include-path" value="."/>
@@ -147,7 +147,7 @@
 					<keyword value="Memory"/>
 				</info>
 				<build type="doxygen-entry-point" value="nvm_group"/>
-				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="doxygen-quick-start" value="common_nvm_quickstart"/>
 				<build type="header-file" subtype="api" value="common_nvm.h"/>
 				<build type="c-source" value="uc3/uc3_nvm.c"/>
 				<build type="header-file" value="uc3/flash_api.h"/>
@@ -171,7 +171,7 @@
 					<keyword value="Memory"/>
 				</info>
 				<build type="doxygen-entry-point" value="nvm_group"/>
-				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="doxygen-quick-start" value="common_nvm_quickstart"/>
 				<build type="header-file" subtype="api" value="common_nvm.h"/>
 				<build type="c-source" value="uc3/uc3_nvm.c"/>
 				<build type="header-file" value="uc3/flash_api.h"/>

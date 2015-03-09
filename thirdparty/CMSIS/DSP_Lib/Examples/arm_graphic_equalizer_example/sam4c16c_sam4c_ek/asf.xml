@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4 DSP graphic equalizer Example on SAM4C-EK" id="sam.utils.cmsis.dsp_lib.examples.arm_graphic_equalizer_example.sam4c_ek">
+		<require idref="sam.utils.cmsis.dsp_lib.examples.arm_graphic_equalizer_example"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="board.sam4c_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4c16c_0"/>
+	</project>
+</asf>

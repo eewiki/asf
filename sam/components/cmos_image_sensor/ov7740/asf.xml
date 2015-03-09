@@ -26,7 +26,7 @@
 		<require idref="common.services.delay"/>
 
 		<!-- Generator options -->
-		<build type="doxygen-entry-point" value="ov7740_cmos_image_sensor_group"/>
+		<build type="doxygen-entry-point" value="ov7740_CMOS_image_sensor_group"/>
 		<generator value="doxygen-module" default-mcu="unspecified-sam4s"/>
 	</module>
 </asf>

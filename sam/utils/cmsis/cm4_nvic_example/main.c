@@ -335,7 +335,7 @@ int main(void)
 	uint8_t uc_key;
 
 	/* Initialize the SAM4 system */
-	SystemInit();
+	sysclk_init();
 	board_init();
 
 	WDT->WDT_MR = WDT_MR_WDDIS;

@@ -54,14 +54,21 @@ extern "C" {
 /**
  * \defgroup sam_drivers_rtt_group Real-time Timer (RTT)
  *
- * The Real-time Timer is built around a 32-bit counter used to count 
- * roll-over events of the programmable 16-bit prescaler, which enables 
- * counting elapsed seconds from a 32 kHz slow clock source. 
+ * The Real-time Timer is built around a 32-bit counter used to count
+ * roll-over events of the programmable 16-bit prescaler, which enables
+ * counting elapsed seconds from a 32 kHz slow clock source.
  * This is a driver for configuration and use of the RTT peripheral.
  *
  * @{
  */
 
+/*
+ * In SAM4 series chip, the bit RTC1HZ and RTTDIS in RTT_MR are write only.
+ * So we use a variable to record status of these bits.
+ */
+#if SAM4N || SAM4S || SAM4E || SAM4C
+static uint32_t g_wobits_in_rtt_mr = 0;
+#endif
 
 /**
  * \brief Initialize the given RTT.
@@ -77,21 +84,15 @@ extern "C" {
  */
 uint32_t rtt_init(Rtt *p_rtt, uint16_t us_prescaler)
 {
-#if SAM4N || SAM4S || SAM4E
-	uint32_t sel_src;
-	sel_src = p_rtt->RTT_MR & RTT_MR_RTC1HZ;
-	if(sel_src) {
-		p_rtt->RTT_MR = RTT_MR_RTTRST | sel_src;
-	} else {
-		p_rtt->RTT_MR = (us_prescaler | RTT_MR_RTTRST);
-	}
+#if SAM4N || SAM4S || SAM4E || SAM4C
+	p_rtt->RTT_MR = (us_prescaler | RTT_MR_RTTRST | g_wobits_in_rtt_mr);
 #else
 	p_rtt->RTT_MR = (us_prescaler | RTT_MR_RTTRST);
 #endif
 	return 0;
 }
 
-#if SAM4N || SAM4S || SAM4E
+#if SAM4N || SAM4S || SAM4E || SAM4C
 /**
  * \brief Select RTT counter source.
  *
@@ -101,9 +102,11 @@ uint32_t rtt_init(Rtt *p_rtt, uint16_t us_prescaler)
 void rtt_sel_source(Rtt *p_rtt, bool is_rtc_sel)
 {
 	if(is_rtc_sel) {
-		p_rtt->RTT_MR |= RTT_MR_RTC1HZ;
+		g_wobits_in_rtt_mr |= RTT_MR_RTC1HZ;
+		p_rtt->RTT_MR |= g_wobits_in_rtt_mr;
 	} else {
-		p_rtt->RTT_MR &= ~RTT_MR_RTC1HZ;
+		g_wobits_in_rtt_mr &= ~RTT_MR_RTC1HZ;
+		p_rtt->RTT_MR |= g_wobits_in_rtt_mr;
 	}
 }
 
@@ -114,7 +117,8 @@ void rtt_sel_source(Rtt *p_rtt, bool is_rtc_sel)
  */
 void rtt_enable(Rtt *p_rtt)
 {
-	p_rtt->RTT_MR &= ~RTT_MR_RTTDIS;
+	g_wobits_in_rtt_mr &= ~RTT_MR_RTTDIS;
+	p_rtt->RTT_MR |= g_wobits_in_rtt_mr;
 }
 /**
  * \brief Disable RTT.
@@ -123,7 +127,8 @@ void rtt_enable(Rtt *p_rtt)
  */
 void rtt_disable(Rtt *p_rtt)
 {
-	p_rtt->RTT_MR |= RTT_MR_RTTDIS;
+	g_wobits_in_rtt_mr |= RTT_MR_RTTDIS;
+	p_rtt->RTT_MR |= g_wobits_in_rtt_mr;
 }
 #endif
 
@@ -135,7 +140,14 @@ void rtt_disable(Rtt *p_rtt)
  */
 void rtt_enable_interrupt(Rtt *p_rtt, uint32_t ul_sources)
 {
-	p_rtt->RTT_MR |= ul_sources;
+	uint32_t temp;
+
+	temp = p_rtt->RTT_MR;
+	temp |= ul_sources;
+#if SAM4N || SAM4S || SAM4E || SAM4C
+	temp |= g_wobits_in_rtt_mr;
+#endif
+	p_rtt->RTT_MR = temp;
 }
 
 /**
@@ -146,7 +158,14 @@ void rtt_enable_interrupt(Rtt *p_rtt, uint32_t ul_sources)
  */
 void rtt_disable_interrupt(Rtt *p_rtt, uint32_t ul_sources)
 {
-	p_rtt->RTT_MR &= (~ul_sources);
+	uint32_t temp = 0;
+
+	temp = p_rtt->RTT_MR;
+	temp &= (~ul_sources);
+#if SAM4N || SAM4S || SAM4E || SAM4C
+	temp |= g_wobits_in_rtt_mr;
+#endif
+	p_rtt->RTT_MR = temp;
 }
 
 /**

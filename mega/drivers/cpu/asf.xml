@@ -9,8 +9,7 @@
 		<build type="header-file" subtype="api" value="mega_reset_cause.h"/>
 
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="ccp_group"/>
-		<build type="doxygen-quick-start" value="mega_ccp_quickstart"/>
+		<build type="doxygen-entry-point" value="mega_rf_reset_cause_group"/>
 		<device-support value="mega"/>
 		<require idref="mega.utils"/>
 		<generator value="doxygen-module" default-mcu="unspecified-mega"/>

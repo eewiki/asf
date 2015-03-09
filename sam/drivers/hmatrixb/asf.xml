@@ -4,7 +4,7 @@
 			The HSB Bus Matrix implements a multi-layer bus structure that enables parallel access paths between multiple High Speed Bus (HSB) masters and slaves in a system, which increases the overall bandwidth.
 		</info>
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="sam_drivers_hmatrixb_group"/>
+		<build type="doxygen-entry-point" value="sam_drivers_hmatrix_group"/>
 		<build type="c-source" value="hmatrixb.c"/>
 		<build type="header-file" subtype="api" value="hmatrixb.h"/>
 		<device-support value="sam4l"/>

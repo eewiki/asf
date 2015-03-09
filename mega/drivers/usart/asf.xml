@@ -10,7 +10,7 @@
 		<build type="c-source" value="usart_megarf.c"/>
 		<build type="header-file" subtype="api" value="usart_megarf.h"/>
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="megarf_usart_group "/>
+		<build type="doxygen-entry-point" value="megarf_usart_group"/>
 		<build type="doxygen-quick-start" value="megarf_usart_quickstart"/>
 		<device-support value="megarf"/>
 		<require idref="common.services.basic.clock"/>

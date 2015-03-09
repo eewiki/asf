@@ -5,7 +5,7 @@
 		<build type="header-file" value="conf_ast.h"/>
 		<build type="header-file" value="conf_clock.h"/>
 		<build type="header-file" value="conf_lcdca.h"/>
-		<build type="header-file" value="conf_c42364a.h"/>
+		<build type="header-file" value="conf_c42364a_lcdca.h"/>
 		<build type="header-file" value="conf_sleepmgr.h"/>
 		<require idref="sam.applications.sam4l_qtouch_demo"/>
 		<require idref="board.sam4l_ek"/>

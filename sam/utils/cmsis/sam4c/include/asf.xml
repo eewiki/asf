@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4c.include" caption="SAM4C part definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4C
+		</info>
+		<build type="header-file" value="sam4c.h"/>
+		<build type="header-file" value="sam4c_0.h"/>
+		<build type="header-file" value="sam4c_1.h"/>
+		<build type="header-file" value="sam4c8c_0.h"/>
+		<build type="header-file" value="sam4c8c_1.h"/>
+		<build type="header-file" value="sam4c16c_0.h"/>
+		<build type="header-file" value="sam4c16c_1.h"/>
+		<build type="header-file" value="system_sam4c.h"/>
+		<build type="include-path" value="."/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam4c"/>
+	</module>
+</asf>

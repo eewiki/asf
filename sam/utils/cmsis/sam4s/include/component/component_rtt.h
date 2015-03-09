@@ -51,10 +51,10 @@
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
 /** \brief Rtt hardware registers */
 typedef struct {
-  RwReg RTT_MR; /**< \brief (Rtt Offset: 0x00) Mode Register */
-  RwReg RTT_AR; /**< \brief (Rtt Offset: 0x04) Alarm Register */
-  RoReg RTT_VR; /**< \brief (Rtt Offset: 0x08) Value Register */
-  RoReg RTT_SR; /**< \brief (Rtt Offset: 0x0C) Status Register */
+  __IO uint32_t RTT_MR; /**< \brief (Rtt Offset: 0x00) Mode Register */
+  __IO uint32_t RTT_AR; /**< \brief (Rtt Offset: 0x04) Alarm Register */
+  __I  uint32_t RTT_VR; /**< \brief (Rtt Offset: 0x08) Value Register */
+  __I  uint32_t RTT_SR; /**< \brief (Rtt Offset: 0x0C) Status Register */
 } Rtt;
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 /* -------- RTT_MR : (RTT Offset: 0x00) Mode Register -------- */

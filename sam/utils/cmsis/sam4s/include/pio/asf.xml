@@ -3,9 +3,12 @@
 		<info type="description" value="summary">
 		This file defines all structures and symbols for SAM4S PIO
 		</info>
-		<build type="header-file" value="pio_sam4s8b.h"/>
-		<build type="header-file" value="pio_sam4s8c.h"/>
-		<build type="header-file" value="pio_sam4s16b.h"/>
+		<build type="header-file" value="pio_sam4s2a.h"/>
+		<build type="header-file" value="pio_sam4s2b.h"/>
+		<build type="header-file" value="pio_sam4s2c.h"/>
+		<build type="header-file" value="pio_sam4s4a.h"/>
+		<build type="header-file" value="pio_sam4s4b.h"/>
+		<build type="header-file" value="pio_sam4s4c.h"/>
 		<build type="header-file" value="pio_sam4s8b.h"/>
 		<build type="header-file" value="pio_sam4s8c.h"/>
 		<build type="header-file" value="pio_sam4s16b.h"/>

@@ -12,6 +12,7 @@
 			<device-support value="sam4s"/>
 			<device-support value="sam4e"/>
 			<device-support value="sam4n"/>
+			<device-support value="sam4c"/>
 			<build type="include-path" value="../fatfs-r0.09/src"/>
 			<build type="header-file" subtype="api" value="../fatfs-r0.09/src/diskio.h"/>
 			<require idref="common.services.storage.ctrl_access"/>

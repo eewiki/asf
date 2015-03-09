@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<project caption="FatFS unit tests for SAM4C-EK" id="common.services.fs.fatfs.unit_tests.sam4c_ek" type="unit-test">
+		<info type="description" value="summary">
+		Unit tests for FatFS, it will make the FAT file system, create a file, write some data and read the data from the file.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_virtual_mem.h"/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<require idref="common.services.fs.fatfs.unit_tests"/>
+		<require idref="common.components.memory.virtual_mem"/>
+		<require idref="board.sam4c_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<device-support value="atsam4c16c_0"/>
+	</project>
+</asf>
