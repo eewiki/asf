@@ -31,5 +31,50 @@
 			<require idref="thirdparty.prime.phy.atpl230.addons.sniffer_if"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
+		<module type="application" id="thirdparty.prime.phy.atpl230.apps.phy_sniffer_tool#2" caption="PLC Phy Sniffer Tool Firmware - SAM4CMP16 implementation">
+			<info type="description" value="summary">
+			Demostrate how to manage the PLC PHY layer to monitor traffic. It configures PHY layer as serialized in order to communicate with ATMEL PHY Sniffer Tool.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="phy_sniffer_tool.c"/>
+			<device-support value="atsam4cmp16c_0"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="sam.drivers.supc"/>
+			<require idref="thirdparty.prime.phy.atpl230.addons.sniffer_if"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.phy.atpl230.apps.phy_sniffer_tool#3" caption="PLC Phy Sniffer Tool Firmware - SAM4CMS16 implementation">
+			<info type="description" value="summary">
+			Demostrate how to manage the PLC PHY layer to monitor traffic. It configures PHY layer as serialized in order to communicate with ATMEL PHY Sniffer Tool.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="phy_sniffer_tool.c"/>
+			<device-support value="atsam4cms16c_0"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="sam.drivers.supc"/>	
+			<require idref="thirdparty.prime.phy.atpl230.addons.sniffer_if"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.phy.atpl230.apps.phy_sniffer_tool#4" caption="PLC Phy Sniffer Tool Firmware - SAM4C16 implementation">
+			<info type="description" value="summary">
+			Demostrate how to manage the PLC PHY layer to monitor traffic. It configures PHY layer as serialized in order to communicate with ATMEL PHY Sniffer Tool.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="phy_sniffer_tool.c"/>
+			<device-support value="atsam4c16c_0"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="sam.drivers.supc"/>
+			<require idref="thirdparty.prime.phy.atpl230.addons.sniffer_if"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
 	</select-by-device>
 </asf>

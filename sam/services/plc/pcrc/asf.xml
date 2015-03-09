@@ -10,7 +10,9 @@
 		<build type="c-source" value="pcrc.c"/>
 		<build type="header-file" subtype="api" value="pcrc.h"/>
 		<build type="doxygen-entry-point" value="pcrc_plc_group"/>
+		<device-support value="sam4c"/>
 		<device-support value="sam4cp"/>
+		<device-support value="sam4cm"/>
 		<device-support value="sam4s"/>
 		<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
 	</module>		

@@ -1,0 +1,91 @@
+<asf xmlversion="1.0">
+	<module type ="service" caption="PRIME MAC Layer Serial Interface Module" id="thirdparty.prime.mac_1_3.addons.mac_serial_if">
+		<info type="description" value="summary">
+		Serial Interface Module acts as an interface for converting stream of command bytes to corresponding PRIME MAC API.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="PLC"/>
+			<keyword value="PRIME"/>
+		</info>
+		<build type="c-source" value="serial_if_mac.c"/>
+		<build type="header-file" subtype="api" value="serial_if_mac.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../../include"/>
+		<require idref="sam.services.plc.usi"/>
+		<require idref="thirdparty.prime.mac_1_3"/>
+		<build type="doxygen-entry-point" value="serial_mac_prime_group"/>
+		<device-support value="atsam4cp16b_0"/>
+		<device-support value="atsam4cmp16c_0"/>
+		<device-support value="atsam4cms16c_0"/>
+		<device-support value="atsam4c16c_0"/>
+		<device-support value="atsam4sd32c"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+	</module>
+	<module type ="service" caption="PRIME MLME Serial Interface Module" id="thirdparty.prime.mac_1_3.addons.mlme_serial_if">
+		<info type="description" value="summary">
+		Serial Interface Module acts as an interface for converting stream of command bytes to corresponding PRIME MLME API.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="PLC"/>
+			<keyword value="PRIME"/>
+		</info>
+		<build type="c-source" value="serial_if_mlme.c"/>
+		<build type="header-file" subtype="api" value="serial_if_mlme.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../../include"/>
+		<require idref="sam.services.plc.usi"/>
+		<require idref="thirdparty.prime.mac_1_3"/>
+		<build type="doxygen-entry-point" value="serial_mlme_prime_group"/>
+		<device-support value="atsam4cp16b_0"/>
+		<device-support value="atsam4cmp16c_0"/>
+		<device-support value="atsam4cms16c_0"/>
+		<device-support value="atsam4c16c_0"/>
+		<device-support value="atsam4sd32c"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+	</module>
+	<module type ="service" caption="PRIME PLME Serial Interface Module" id="thirdparty.prime.mac_1_3.addons.plme_serial_if">
+		<info type="description" value="summary">
+		Serial Interface Module acts as an interface for converting stream of command bytes to corresponding PRIME PLME API.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="PLC"/>
+			<keyword value="PRIME"/>
+		</info>
+		<build type="c-source" value="serial_if_plme.c"/>
+		<build type="header-file" subtype="api" value="serial_if_plme.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../../include"/>
+		<require idref="sam.services.plc.usi"/>
+		<require idref="thirdparty.prime.mac_1_3"/>
+		<build type="doxygen-entry-point" value="serial_plme_prime_group"/>
+		<device-support value="atsam4cp16b_0"/>
+		<device-support value="atsam4cmp16c_0"/>
+		<device-support value="atsam4cms16c_0"/>
+		<device-support value="atsam4c16c_0"/>
+		<device-support value="atsam4sd32c"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+	</module>
+	<module type ="service" caption="PRIME Embedded Sniffer Serial Interface Module" id="thirdparty.prime.mac_1_3.addons.snf_serial_if">
+		<info type="description" value="summary">
+		Serial Interface Module acts as an interface for converting stream of command bytes to corresponding PRIME Embedded Sniffer API.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="PLC"/>
+			<keyword value="PRIME"/>
+		</info>
+		<build type="c-source" value="serial_if_sniffer.c"/>
+		<build type="header-file" subtype="api" value="serial_if_sniffer.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../../include"/>
+		<require idref="sam.services.plc.usi"/>
+		<require idref="thirdparty.prime.pal"/>
+		<require idref="thirdparty.prime.mac_1_3"/>
+		<build type="doxygen-entry-point" value="serial_sniffer_prime_group"/>
+		<device-support value="atsam4cp16b_0"/>
+		<device-support value="atsam4cmp16c_0"/>
+		<device-support value="atsam4cms16c_0"/>
+		<device-support value="atsam4c16c_0"/>
+		<device-support value="atsam4sd32c"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+	</module>
+</asf>

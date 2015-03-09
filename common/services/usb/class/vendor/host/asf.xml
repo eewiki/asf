@@ -56,4 +56,37 @@
 		<device-support value="samr21"/>
 		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 	</module>
+
+	<module type="meta" id="common.services.usb.class.vendor.host.appnote" caption="USB Host Vendor (Application Note)">
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication" />
+		</info>
+		<info type="gui-flag" value="hidden"/>
+
+		<info type="appnote" value="AT09341"/>
+		<info type="keyword" value="pdf">
+			<keyword value="USB"/>
+			<keyword value="Universal Serial Bus"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes use cases for USB Host Stack Vendor driver - UHI Vendor.
+		</info>
+
+		<build type="include-path" value="."/>
+
+		<build type="header-file" value="uhi_vendor_doc.h"/>
+
+		<build type="doxygen-example-path" value="."/>
+		<build type="doxygen-example-path" value="..\..\"/>
+		<build type="doxygen-entry-point" value="asfdoc_uhi_vendor_group"/>
+
+		<require idref="common.services.usb.uhc.appnote"/>
+
+		<device-support value="sam"/>
+		<device-support value="sam0"/>
+		<device-support value="avr"/>
+		<generator default-mcu="unspecified-samd21" value="doxygen-module-v2"/>
+	</module>
 </asf>

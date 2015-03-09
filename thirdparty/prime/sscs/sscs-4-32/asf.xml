@@ -1,0 +1,51 @@
+<asf xmlversion="1.0">
+	<select-by-config id="thirdparty.prime.sscs_4_32" name="thirdparty.prime.sscs_4_32" caption="PRIME IEC 61334-4-32 Convergence Layer" default="service">
+		<info type="description" value="summary">
+		The 4-32 SSCS provides convergence functions for applications that use IEC 61334-4-32 services. Additionally, the PRIME 4-32 SSCS provides extra services that help map this connection-less protocol to the connection-oriented nature of PRIME MAC.
+		</info>
+		<module type="service" id="thirdparty.prime.sscs_4_32#service" caption="PRIME IEC 61334-4-32 Convergence Layer">
+			<info type="description" value="summary">
+			The 4-32 SSCS provides convergence functions for applications that use IEC 61334-4-32 services. Additionally, the PRIME 4-32 SSCS provides extra services that help map this connection-less protocol to the connection-oriented nature of PRIME MAC.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="./include"/>
+			<build type="header-file" subtype="api" value="./include/dl432.h"/>
+			<build type="header-file" subtype="api" value="./include/sscs432.h"/>
+			<build type="library" subtype="user" value="libs/iar/libsam4c-sscs432-sn-iar.a" toolchain="iarewarm" />
+			<build type="library" subtype="user" value="libs/gcc/libsam4c-sscs432-sn-gcc.a" toolchain="armgcc" />
+			<build type="library" subtype="user" value="libs/gcc/libsam4c-sscs432-sn-gcc.a" toolchain="as5_arm" />
+			<build type="doxygen-entry-point" value="sscs_prime_group"/>
+			<device-support value="atsam4cp16b_0"/>
+			<device-support value="atsam4cmp16c_0"/>
+			<device-support value="atsam4cms16c_0"/>
+			<device-support value="atsam4c16c_0"/>
+			<device-support value="atsam4sd32c"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+		</module>
+		<module type="service" id="thirdparty.prime.sscs_4_32#base" caption="PRIME IEC 61334-4-32 Convergence Layer">
+			<info type="description" value="summary">
+			The 4-32 SSCS provides convergence functions for applications that use IEC 61334-4-32 services. Additionally, the PRIME 4-32 SSCS provides extra services that help map this connection-less protocol to the connection-oriented nature of PRIME MAC.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="./include"/>
+			<build type="header-file" subtype="api" value="./include/dl432.h"/>
+			<build type="header-file" subtype="api" value="./include/sscs432.h"/>
+			<build type="library" subtype="user" value="libs/iar/libsam4c-sscs432-bn-iar.a" toolchain="iarewarm" />
+			<build type="library" subtype="user" value="libs/gcc/libsam4c-sscs432-bn-gcc.a" toolchain="armgcc" />
+			<build type="library" subtype="user" value="libs/gcc/libsam4c-sscs432-bn-gcc.a" toolchain="as5_arm" />
+			<build type="doxygen-entry-point" value="sscs_prime_group"/>
+			<device-support value="atsam4cp16b_0"/>
+			<device-support value="atsam4cmp16c_0"/>
+			<device-support value="atsam4cms16c_0"/>
+			<device-support value="atsam4c16c_0"/>
+			<device-support value="atsam4sd32c"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+		</module>
+	</select-by-config>
+</asf>

@@ -11,7 +11,7 @@
 		<build type="header-file" value="conf_eth.h"/>
 		<build type="header-file" value="conf_extint.h"/>
 		<build type="header-file" value="conf_spi.h"/>
-		<config name="config.thirdparty.lwip-port.141" value="standalone_samd20_ksz8851snl"/>
+		<config name="config.thirdparty.lwip-port.141" value="standalone_sam0_ksz8851snl"/>
 		<config name="config.thirdparty.lwip.version" value="1.4.1"/>
 		<require idref="thirdparty.lwip.raw_basic_http_example"/>
 		<require idref="board.samd20_xplained_pro"/>

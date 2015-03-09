@@ -14,5 +14,8 @@
 		<build type="doxygen-entry-point" value="serial_plc_group"/>
 		<device-support value="atsam4cp16b_0"/>
 		<device-support value="atsam4sd32c"/>
+		<device-support value="atsam4cmp16c_0"/>	
+		<device-support value="atsam4cms16c_0"/>
+		<device-support value="atsam4c16c_0"/>
 	</module>
 </asf>

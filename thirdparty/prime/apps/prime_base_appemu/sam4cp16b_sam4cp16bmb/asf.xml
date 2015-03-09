@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+  <project caption="Metering Application Emulator (APPEMU) for ATMEL PRIME v1.3 Base Node on SAM4CP16BMB" id="thirdparty.prime.apps.prime_base_appemu.sam4cp16bmb">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_pplc_if.h"/>
+		<build type="header-file" value="conf_buart_if.h"/>
+		<build type="header-file" value="conf_busart_if.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_app_emu.h"/>
+		<build type="header-file" value="conf_slcdc.h"/>
+		<build type="header-file" value="conf_c42364a_slcdc.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_usi.h"/>
+		<build type="header-file" value="conf_oss.h"/>
+		<build type="header-file" value="conf_prime.h"/>
+		<build type="header-file" value="conf_phy.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<config name="thirdparty.prime.mac_1_3" value="base"/>
+		<config name="thirdparty.prime.sscs_4_32" value="base"/>
+		<require idref="thirdparty.prime.apps.prime_base_appemu"/>
+		<require idref="board.sam4cp16bmb"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4cp16b_0"/>
+	</project>
+</asf>

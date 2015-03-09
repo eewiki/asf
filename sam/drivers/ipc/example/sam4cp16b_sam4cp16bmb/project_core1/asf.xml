@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4CP IPC example - Core 1" id="sam.drivers.ipc.example_core1.sam4cp16bmb">
+		<info type="description" value="summary">
+		This demonstration program makes one LED on the board blinking at a fixed rate.
+		</info>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.ipc.example.sam4cp16bmb.conf_src_common"/>
+		<require idref="sam.drivers.ipc.example.sam4cp16bmb.conf_src_core1"/>
+		<require idref="sam.drivers.ipc.example_core1"/>
+		<require idref="board.sam4cp16bmb"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<build type="distribute" subtype="file" value="./iar/core1_image.bin"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.debugger_use_flash_loader" value="no"/>
+		<config name="config.compiler.iarewarm.specified_bin_file_name" value="./../../core1_image.bin"/>
+		<config name="config.build.make.postbuild" value="cp -f $(project).bin ./../../../src_core0/core1_image.bin"/>
+		<config name="config.build.studio.postbuild" value="cp -f $(OutputDirectory)/$(OutputFileName).bin  $(SolutionDir)/core1_image.bin"/>
+		<build type="distribute" subtype="file" value="SAM4CP.JLinkScript"/>
+		<device-support value="atsam4cp16b_1"/>
+	</project>
+</asf>

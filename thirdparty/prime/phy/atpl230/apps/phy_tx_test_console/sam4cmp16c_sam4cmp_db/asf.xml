@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="PRIME Phy TX Test Console for SAM4CMP-DB" id="thirdparty.prime.phy.atpl230.apps.phy_tx_test_console.sam4cmp_db">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_pplc_if.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>		
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<build type="header-file" value="conf_phy.h"/>
+		<require idref="thirdparty.prime.phy.atpl230.apps.phy_tx_test_console"/>
+		<require idref="board.sam4cmp_db"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4cmp16c_0"/>
+	</project>
+</asf>

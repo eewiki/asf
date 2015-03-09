@@ -83,4 +83,36 @@
 		<device-support value="samr21"/>
 		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 	</module>
+	<module type="meta" id="common.services.usb.class.vendor.device.appnote" caption="USB Device Vendor (Application Note)">
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication" />
+		</info>
+		<info type="gui-flag" value="hidden"/>
+
+		<info type="appnote" value="AT09340"/>
+		<info type="keyword" value="pdf">
+			<keyword value="USB"/>
+			<keyword value="Universal Serial Bus"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes use cases for USB Device Stack Vendor driver - UDI Vendor.
+		</info>
+
+		<build type="include-path" value="."/>
+
+		<build type="header-file" value="udi_vendor_doc.h"/>
+
+		<build type="doxygen-example-path" value="."/>
+		<build type="doxygen-example-path" value="..\..\"/>
+		<build type="doxygen-entry-point" value="asfdoc_udi_vendor_group"/>
+
+		<require idref="common.services.usb.udc.appnote"/>
+
+		<device-support value="sam"/>
+		<device-support value="sam0"/>
+		<device-support value="avr"/>
+		<generator default-mcu="unspecified-samd21" value="doxygen-module-v2"/>
+	</module>
 </asf>

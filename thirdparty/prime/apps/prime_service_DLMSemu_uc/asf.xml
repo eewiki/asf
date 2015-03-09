@@ -1,0 +1,105 @@
+<asf xmlversion="1.0">
+	<select-by-device id="thirdparty.prime.apps.prime_service_dlmsemu_uc" caption="DLMS Application Emulator for ATMEL PRIME v.1.3 Service Node [uC mode]">
+		<module type="application" id="thirdparty.prime.apps.prime_service_dlmsemu_uc#0" caption="DLMS Application Emulator for ATMEL PRIME v.1.3 Service Node">
+			<info type="description" value="summary">
+			This is an application for a service node using PRIME v1.3 to emulate DLMS.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="dlms_emu.c"/>
+			<build type="header-file" value="dlms_emu.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<device-support value="atsam4cp16b_0"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="sam.components.display.c42364a"/>	
+			<require idref="sam.services.flash"/>
+			<require idref="sam.services.plc.hal.prime"/>
+			<require idref="thirdparty.prime.phy.atpl230"/>
+			<require idref="thirdparty.prime.pal"/>
+			<require idref="thirdparty.prime.mac_1_3"/>
+			<require idref="thirdparty.prime.sscs_4_32"/>
+			<require idref="sam.services.plc.usi"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.apps.prime_service_dlmsemu_uc#1" caption="DLMS Application Emulator for ATMEL PRIME v.1.3 Service Node [uC mode]">
+			<info type="description" value="summary">
+			This is an application for a service node using PRIME v1.3 to emulate DLMS.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="dlms_emu.c"/>
+			<build type="header-file" value="dlms_emu.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<device-support value="atsam4cmp16c_0"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>	
+			<require idref="sam.services.flash"/>
+			<require idref="sam.services.plc.hal.prime"/>
+			<require idref="thirdparty.prime.phy.atpl230"/>
+			<require idref="thirdparty.prime.pal"/>
+			<require idref="thirdparty.prime.mac_1_3"/>
+			<require idref="thirdparty.prime.sscs_4_32"/>
+			<require idref="sam.services.plc.usi"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.apps.prime_service_dlmsemu_uc#2" caption="DLMS Application Emulator for ATMEL PRIME v.1.3 Service Node [uC mode]">
+			<info type="description" value="summary">
+			This is an application for a service node using PRIME v1.3 to emulate DLMS.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="dlms_emu.c"/>
+			<build type="header-file" value="dlms_emu.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<device-support value="atsam4cms16c_0"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>	
+			<require idref="sam.services.flash"/>
+			<require idref="sam.services.plc.hal.prime"/>
+			<require idref="thirdparty.prime.phy.atpl230"/>
+			<require idref="thirdparty.prime.pal"/>
+			<require idref="thirdparty.prime.mac_1_3"/>
+			<require idref="thirdparty.prime.sscs_4_32"/>
+			<require idref="sam.services.plc.usi"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.apps.prime_service_dlmsemu_uc#3" caption="DLMS Application Emulator for ATMEL PRIME v.1.3 Service Node [uC mode]">
+			<info type="description" value="summary">
+			This is an application for a service node using PRIME v1.3 to emulate DLMS.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="dlms_emu.c"/>
+			<build type="header-file" value="dlms_emu.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<device-support value="atsam4c16c_0"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>	
+			<require idref="sam.services.flash"/>
+			<require idref="sam.services.plc.hal.prime"/>
+			<require idref="thirdparty.prime.phy.atpl230"/>
+			<require idref="thirdparty.prime.pal"/>
+			<require idref="thirdparty.prime.mac_1_3"/>
+			<require idref="thirdparty.prime.sscs_4_32"/>
+			<require idref="sam.services.plc.usi"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>	
+</asf>

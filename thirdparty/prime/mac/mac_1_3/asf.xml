@@ -1,0 +1,74 @@
+<asf xmlversion="1.0">
+	<select-by-config id="thirdparty.prime.mac_1_3" name="thirdparty.prime.mac_1_3" caption="PRIME MAC Layer" default="service">
+		<info type="description" value="summary">
+		The PRIME MAC layer provides core MAC functionalities of system access, bandwidth allocation, connection establishment/maintenance and topology resolution.
+		</info>
+		<module type="service" id="thirdparty.prime.mac_1_3#service" caption="PRIME MAC Layer">
+			<info type="description" value="summary">
+			The PRIME MAC layer provides core MAC functionalities of system access, bandwidth allocation, connection establishment/maintenance and topology resolution.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="./include"/>
+			<build type="include-path" value="./module_config"/>
+			
+			<build type="c-source" value="./source/PrimeVersion.c"/>
+						
+			<build type="header-file" value="module_config/conf_mac.h"/>
+			<build type="c-source" value="module_config/conf_mac.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_prime.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			
+			<build type="header-file" subtype="api" value="./include/mngl.h"/>
+			<build type="header-file" subtype="api" value="./include/prime.h"/>
+						
+			<build type="library" subtype="user" value="libs/iar/libsam4c-mac13-sn-iar.a" toolchain="iarewarm" />
+			<build type="library" subtype="user" value="libs/gcc/libsam4c-mac13-sn-gcc.a" toolchain="armgcc" />
+			<build type="library" subtype="user" value="libs/gcc/libsam4c-mac13-sn-gcc.a" toolchain="as5_arm" />
+			
+			<build type="doxygen-entry-point" value="mac_prime_group"/>
+			<device-support value="atsam4cp16b_0"/>
+			<device-support value="atsam4cmp16c_0"/>
+			<device-support value="atsam4cms16c_0"/>
+			<device-support value="atsam4c16c_0"/>
+			<device-support value="atsam4sd32c"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+		</module>
+		<module type="service" id="thirdparty.prime.mac_1_3#base" caption="PRIME MAC Layer">
+			<info type="description" value="summary">
+			The PRIME MAC layer provides core MAC functionalities of system access, bandwidth allocation, connection establishment/maintenance and topology resolution.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="./include"/>
+			<build type="include-path" value="./module_config"/>
+			
+			<build type="c-source" value="./source/PrimeVersion.c"/>
+			
+			<build type="header-file" value="module_config/conf_mac.h"/>
+			<build type="c-source" value="module_config/conf_mac.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_prime.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			
+			<build type="header-file" subtype="api" value="./include/mngl.h"/>
+			<build type="header-file" subtype="api" value="./include/prime.h"/>
+			<build type="header-file" subtype="api" value="./include/bmngt.h"/>
+						
+			<build type="library" subtype="user" value="libs/iar/libsam4c-mac13-bn-iar.a" toolchain="iarewarm" />
+			<build type="library" subtype="user" value="libs/gcc/libsam4c-mac13-bn-gcc.a" toolchain="armgcc" />
+			<build type="library" subtype="user" value="libs/gcc/libsam4c-mac13-bn-gcc.a" toolchain="as5_arm" />
+			
+			<build type="doxygen-entry-point" value="mac_prime_group"/>
+			<device-support value="atsam4cp16b_0"/>
+			<device-support value="atsam4cmp16c_0"/>
+			<device-support value="atsam4cms16c_0"/>
+			<device-support value="atsam4c16c_0"/>
+			<device-support value="atsam4sd32c"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+		</module>
+	</select-by-config>
+</asf>

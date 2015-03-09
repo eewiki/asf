@@ -18,7 +18,7 @@
 		<require idref="sam0.drivers.system"/>
 		<require idref="sam0.drivers.sercom.spi"/>
 		<require idref="common2.services.delay"/>
-		<device-support value="samd20"/>
+		<device-support value="sam0"/>
 		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 	</module>
 </asf>

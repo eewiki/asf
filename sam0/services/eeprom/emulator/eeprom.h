@@ -485,31 +485,25 @@ enum status_code eeprom_emulator_read_buffer(
  *		<th>Comments</td>
  *	</tr>
  *	<tr>
- *		<td>D</td>
- *		<td>03/2014</td>
- *		<td>Add SAM R21 support.</td>
- *	</tr>
- *	<tr>
  *		<td>C</td>
- *		<td>01/2014</td>
- *		<td>Add SAM D21 support.</td>
+ *		<td>07/2014</td>
+ *		<td>
+ *         - Add SAM D21 support
+ *         - Add SAM R21 support
+ *      </td>
  *	</tr>
  *  <tr>
  *	   <td>B</td>
  *	   <td>11/2013</td>
  *     <td>
- *        ASF 3.13: Fixed bugs related to eeprom_emulator_write_buffer() and
- *        eeprom_emulator_read_buffer(). The functions now handle offsets that
- *        are multiples of 60. The length can now be smaller than one page without
- *        risking corruption. Addresses that are multiples of 60 will be written
- *        correctly.
+ *        - ASF 3.13: Fixed bugs related to eeprom_emulator_write_buffer() and
+ *          eeprom_emulator_read_buffer(). The functions now handle offsets that
+ *          are multiples of 60. The length can now be smaller than one page without
+ *          risking corruption. Addresses that are multiples of 60 will be written
+ *          correctly
+ *        - Updated module figures and re-worded the module overview. Corrected
+ *          documentation typos
  *     </td>
- *	</tr>
- *	<tr>
- *		<td>B</td>
- *		<td>06/2013</td>
- *		<td>Updated module figures and re-worded the module overview. Corrected
- *          documentation typos.</td>
  *	</tr>
  *	<tr>
  *		<td>A</td>

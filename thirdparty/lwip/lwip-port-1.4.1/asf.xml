@@ -190,28 +190,28 @@
 			<build type="module-config" subtype="path" value="sam/module_config"/>
 			<build type="header-file" subtype="api" value="sam/include/arch/cc.h"/>
 			<build type="header-file" subtype="api" value="sam/include/arch/perf.h"/>
-			<build type="header-file" subtype="api" value="sam/include/netif/samd20_spi_ksz8851snl.h"/>
+			<build type="header-file" subtype="api" value="sam/include/netif/sam0_spi_ksz8851snl.h"/>
 			<build type="header-file" subtype="api" value="sam/include/arch/sys_arch.h"/>
 			<build type="include-path" value="sam/include"/>
-			<build type="c-source" value="sam/netif/samd20_spi_ksz8851snl.c"/>
+			<build type="c-source" value="sam/netif/sam0_spi_ksz8851snl.c"/>
 			<build type="c-source" value="sam/sys_arch.c"/>
 			<device-support value="samd20"/>
 			<require idref="sam0.drivers.tc"/>
 			<require idref="sam0.components.ethernet_phy.ksz8851snl"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 		</module>
-		<module type="service" id="thirdparty.lwip-port.141#standalone_samd20_ksz8851snl" caption="Stand-alone port(no OS) of the lwIP v141 stack on SAMD20 with Micrel KSZ8851SNL hardware module.">
+		<module type="service" id="thirdparty.lwip-port.141#standalone_sam0_ksz8851snl" caption="Stand-alone port(no OS) of the lwIP v141 stack on SAM0 with Micrel KSZ8851SNL hardware module.">
 			<info type="description" value="summary">
 			This lwIP port does not use any OS and is dedicated to the Ethernet Xplained Pro hardware module.
 			</info>
 			<info type="gui-flag" value="hidden"/>
 			<build type="header-file" subtype="api" value="sam/include/arch/cc.h"/>
 			<build type="header-file" subtype="api" value="sam/include/arch/perf.h"/>
-			<build type="header-file" subtype="api" value="sam/include/netif/samd20_spi_ksz8851snl.h"/>
+			<build type="header-file" subtype="api" value="sam/include/netif/sam0_spi_ksz8851snl.h"/>
 			<build type="include-path" value="sam/include"/>
 			<build type="include-path" value="sam/include/netif"/>
-			<build type="c-source" value="sam/netif/samd20_spi_ksz8851snl.c"/>
-			<device-support value="samd20"/>
+			<build type="c-source" value="sam/netif/sam0_spi_ksz8851snl.c"/>
+			<device-support value="sam0"/>
 			<require idref="sam0.drivers.tc"/>
 			<require idref="sam0.components.ethernet_phy.ksz8851snl"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samd20"/>

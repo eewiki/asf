@@ -2,6 +2,7 @@
 	<project caption="PLC Phy Tester Example on ATPL230AMB" id="thirdparty.prime.phy.atpl230.apps.phy_tester_tool.atpl230amb">
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_pplc_if.h"/>
 		<build type="header-file" value="conf_clock.h"/>
 		<build type="header-file" value="conf_uart_serial.h"/>	
 		<build type="header-file" value="conf_buart_if.h"/>		

@@ -2,6 +2,7 @@
 	<project caption="PLC Phy TX Test Console on SAM4CP16BMB" id="thirdparty.prime.phy.atpl230.apps.phy_tx_test_console.sam4cp16bmb">
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_pplc_if.h"/>
 		<build type="header-file" value="conf_clock.h"/>
 		<build type="header-file" value="conf_example.h"/>
 		<build type="header-file" value="conf_uart_serial.h"/>		

@@ -103,7 +103,7 @@
 		<device-support value="uc3"/>
 		<device-support value="sam3"/>
 		<device-support value="sam4"/>
-		<device-support value="samd20"/>
+		<device-support value="sam0"/>
 		<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
 	</module>
 	<select-by-config id="config.thirdparty.lwip.141.ipv" name="config.thirdparty.lwip.141.ipv" caption="IPv4 versus IPv6 configuration of lwIP v141" default="4">

@@ -8,12 +8,19 @@
 		</info>	
 		<build type="header-file" subtype="api" value="pplc_if.h"/>
 		<build type="c-source" value="pplc_if.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_pplc_if.h"/>
+		<build type="module-config" subtype="path" value="./module_config"/>
 		<build type="include-path" value="."/>
 		<build type="doxygen-entry-point" value="pplc_plc_group"/>
+		<require idref="common.services.ioport"/>		
 		<require idref="sam.drivers.spi"/>
 		<require idref="sam.drivers.pdc"/>
 		<require idref="sam.drivers.pio"/>
+		<require idref="sam.utils"/>
 		<device-support value="atsam4cp16b_0"/>
+		<device-support value="atsam4cmp16c_0"/>
+		<device-support value="atsam4cms16c_0"/>
+		<device-support value="atsam4c16c_0"/>
 		<device-support value="sam4s"/>
 		<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
 	</module>

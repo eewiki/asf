@@ -1,0 +1,32 @@
+<asf xmlversion="1.0">
+	<project id="thirdparty.lwip.raw_basic_http_example_ajax.samd21_xplained_pro" caption="lwIP TCP/IP Stack basic HTTP example using Raw API for SAMD21 Xplained Pro (with Micrel KSZ8851SNL PHY)">
+		<info type="description" value="summary">
+			Basic HTTP web server using the lwIP TCP/IP stack Raw API in standalone mode (i.e. without RTOS support).
+			This example uses the Ethernet extension (Micrel KSZ8851SNL PHY) on EXT1 for the MAC support.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="lwipopts.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_eth.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+		<build type="header-file" value="conf_timer.h"/>
+		<config name="config.thirdparty.lwip-port.141" value="standalone_sam0_ksz8851snl"/>
+		<config name="config.thirdparty.lwip.version" value="1.4.1"/>
+		<require idref="thirdparty.lwip.raw_basic_http_example_ajax"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.stack_size" value="0xa00"/>
+		<toolchain-config name="armgcc.linker.miscellaneous.LinkerFlags" value="-Xlinker --defsym=__stack_size__=0xa00" toolchain="armgcc"/>
+		<config name="config.compiler.iarewarm.sys_stack_size" value="0xa00"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

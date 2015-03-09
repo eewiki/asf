@@ -1,0 +1,46 @@
+<asf xmlversion="1.0">
+	<project caption="ASF USB Stack Manual" force-caption="true" id="common.services.usb.manual.atmel">
+		<require idref="common.services.usb.manual"/>
+
+		<generator value="doxygen-v2"/>
+
+		<info type="appnote" value="AT09331"/>
+
+		<info type="description" value="pdf">
+		This application note describes the USB Stack Usage for the Atmel SAM/AVR devices.
+		</info>
+		<info type="keyword" value="pdf">
+			<keyword value="ASF"/>
+			<keyword value="USB"/>
+			<keyword value="API"/>
+			<keyword value="Reference"/>
+			<keyword value="Manual"/>
+			<keyword value="Driver"/>
+			<keyword value="Service"/>
+			<keyword value="Quick Start"/>
+		</info>
+
+		<config name="config.compiler.doxygen-v2.document_type" value="asf_manual"/>
+
+		<build type="doxygen-enable-section" value="ASF_MANUAL"/>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" value="revhistory.h"/>
+
+		<require idref="common.services.usb.udc.appnote"/>
+		<require idref="common.services.usb.class.hid.device.generic.appnote"/>
+		<require idref="common.services.usb.class.hid.device.kbd.appnote"/>
+		<require idref="common.services.usb.class.hid.device.mouse.appnote"/>
+		<require idref="common.services.usb.class.cdc.device.appnote"/>
+		<require idref="common.services.usb.class.msc.device.appnote"/>
+		<require idref="common.services.usb.class.vendor.device.appnote"/>
+
+		<require idref="common.services.usb.uhc.appnote"/>
+		<require idref="common.services.usb.class.cdc.host.appnote"/>
+		<require idref="common.services.usb.class.hid.host.mouse.appnote"/>
+		<require idref="common.services.usb.class.msc.host.appnote"/>
+		<require idref="common.services.usb.class.vendor.host.appnote"/>
+
+		<device-support value="unspecified-samd21"/>
+	</project>
+</asf>

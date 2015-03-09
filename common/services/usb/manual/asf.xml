@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.usb.manual" caption="ASF USB Manual">
+		<info type="description" value="summary">
+		Complete driver API reference manual.
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" value="preface.h"/>
+
+		<build type="doxygen-image-path" value="docimg"/>
+
+		<device-support value="sam"/>
+		<device-support value="sam0"/>
+		<device-support value="avr"/>
+	</module>
+</asf>

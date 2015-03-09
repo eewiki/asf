@@ -12,6 +12,7 @@
 			<build type="c-source" value="phy_embedded_app.c"/>
 			<build type="header-file" value="phy_embedded_app.h"/>
 			<device-support value="atsam4cp16b_0"/>
+			<require idref="sam.drivers.tc"/>
 			<require idref="sam.drivers.wdt"/>
 			<require idref="sam.drivers.uart"/>
 			<require idref="sam.drivers.gpbr"/>
@@ -36,10 +37,86 @@
 			<build type="c-source" value="phy_embedded_app.c"/>
 			<build type="header-file" value="phy_embedded_app.h"/>
 			<device-support value="atsam4sd32c"/>
+			<require idref="sam.drivers.tc"/>
 			<require idref="sam.drivers.wdt"/>
 			<require idref="sam.drivers.uart"/>
 			<require idref="sam.drivers.gpbr"/>
 			<require idref="sam.drivers.rstc"/>
+			<require idref="sam.services.flash"/>
+			<require idref="thirdparty.prime.phy.atpl230"/>
+			<require idref="thirdparty.os.freertos.version"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.phy.atpl230.apps.phy_tx_test_console#2" caption="PLC Phy TX Test Console - SAM4CMP16C implementation">
+			<info type="description" value="summary">
+				Demostrate how to manage the PLC PHY layer using a serial console. It configures several parameters on PHY layer and launches transmission test.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="phy_tx_test_console.c"/>
+			<build type="c-source" value="phy_embedded_app.c"/>
+			<build type="header-file" value="phy_embedded_app.h"/>
+			<device-support value="atsam4cmp16c_0"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.drivers.wdt"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.drivers.gpbr"/>
+			<require idref="sam.drivers.rstc"/>
+			<require idref="sam.drivers.trng"/>
+			<require idref="sam.services.flash"/>
+			<require idref="thirdparty.prime.phy.atpl230"/>
+			<require idref="thirdparty.os.freertos.version"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.phy.atpl230.apps.phy_tx_test_console#3" caption="PLC Phy TX Test Console - SAM4CMS16C implementation">
+			<info type="description" value="summary">
+				Demostrate how to manage the PLC PHY layer using a serial console. It configures several parameters on PHY layer and launches transmission test.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="phy_tx_test_console.c"/>
+			<build type="c-source" value="phy_embedded_app.c"/>
+			<build type="header-file" value="phy_embedded_app.h"/>
+			<device-support value="atsam4cms16c_0"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.drivers.wdt"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.drivers.gpbr"/>
+			<require idref="sam.drivers.rstc"/>
+			<require idref="sam.drivers.trng"/>
+			<require idref="sam.services.flash"/>
+			<require idref="thirdparty.prime.phy.atpl230"/>
+			<require idref="thirdparty.os.freertos.version"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.phy.atpl230.apps.phy_tx_test_console#4" caption="PLC Phy TX Test Console - SAM4C16C implementation">
+			<info type="description" value="summary">
+				Demostrate how to manage the PLC PHY layer using a serial console. It configures several parameters on PHY layer and launches transmission test.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="phy_tx_test_console.c"/>
+			<build type="c-source" value="phy_embedded_app.c"/>
+			<build type="header-file" value="phy_embedded_app.h"/>
+			<device-support value="atsam4c16c_0"/>
+			<require idref="sam.drivers.tc"/>
+			<require idref="sam.drivers.wdt"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.drivers.gpbr"/>
+			<require idref="sam.drivers.rstc"/>
+			<require idref="sam.drivers.trng"/>
 			<require idref="sam.services.flash"/>
 			<require idref="thirdparty.prime.phy.atpl230"/>
 			<require idref="thirdparty.os.freertos.version"/>

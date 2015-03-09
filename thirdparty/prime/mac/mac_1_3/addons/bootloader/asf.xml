@@ -1,0 +1,63 @@
+<asf xmlversion="1.0">
+	<select-by-device id="thirdparty.prime.mac_1_3.addons.bootloader" caption="Bootloader with FU management capability">
+		<info type="description" value="summary">
+		Bootloader with FU management capability.
+		</info>
+		<module type ="application" caption="Bootloader for SAM4CP16BMB" id="thirdparty.prime.mac_1_3.addons.bootloader#1">
+			<info type="description" value="summary">
+			Bootloader with FU management capability for SAM4CP16BMB.
+			</info>
+			<info type="keyword" value="technology">
+			<keyword value="PLC"/>
+			<keyword value="PRIME"/>
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="bootloader.c"/>
+			<build type="header-file" value="./boot_regions_sam4cp16b_0.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_version.h"/>
+			<build type="module-config" subtype="path" value="./module_config"/>
+			<build type="include-path" value="."/>
+			<require idref="sam.services.flash"/>
+			<device-support value="atsam4cp16b_0"/>
+		</module>
+		<module type ="application" caption="Bootloader for SAM4CMP-DB" id="thirdparty.prime.mac_1_3.addons.bootloader#2">
+			<info type="description" value="summary">
+			Bootloader with FU management capability for SAM4CMP-DB.
+			</info>
+			<build type="c-source" value="bootloader.c"/>
+			<build type="header-file" value="./boot_regions_sam4cmp16c_0.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_version.h"/>
+			<build type="module-config" subtype="path" value="./module_config"/>
+			<build type="include-path" value="."/>
+			<require idref="sam.services.flash"/>
+			<build type="doxygen-entry-point" value="prime_group"/>
+			<device-support value="atsam4cmp16c_0"/>
+		</module>
+		<module type ="application" caption="Bootloader for SAM4CMS-DB" id="thirdparty.prime.mac_1_3.addons.bootloader#3">
+			<info type="description" value="summary">
+			Bootloader with FU management capability for SAM4CMS-DB.
+			</info>
+			<build type="c-source" value="bootloader.c"/>
+			<build type="header-file" value="./boot_regions_sam4cms16c_0.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_version.h"/>
+			<build type="module-config" subtype="path" value="./module_config"/>
+			<build type="include-path" value="."/>
+			<require idref="sam.services.flash"/>
+			<build type="doxygen-entry-point" value="prime_group"/>
+			<device-support value="atsam4cms16c_0"/>
+		</module>
+		<module type ="application" caption="Bootloader for SAM4C-EK" id="thirdparty.prime.mac_1_3.addons.bootloader#4">
+			<info type="description" value="summary">
+			Bootloader with FU management capability for SAM4C-EK.
+			</info>
+			<build type="c-source" value="bootloader.c"/>
+			<build type="header-file" value="./boot_regions_sam4c16c_0.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_version.h"/>
+			<build type="module-config" subtype="path" value="./module_config"/>
+			<build type="include-path" value="."/>
+			<require idref="sam.services.flash"/>
+			<build type="doxygen-entry-point" value="prime_group"/>
+			<device-support value="atsam4c16c_0"/>
+		</module>
+	</select-by-device>
+</asf>

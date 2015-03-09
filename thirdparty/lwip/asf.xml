@@ -36,7 +36,7 @@
 			<device-support value="uc3c"/>
 			<device-support value="sam3"/>
 			<device-support value="sam4"/>
-			<device-support value="samd20"/>
+			<device-support value="sam0"/>
 			<require idref="thirdparty.lwip.141"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>

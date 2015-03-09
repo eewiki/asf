@@ -1,0 +1,33 @@
+<asf xmlversion="1.0">
+		<module type="application" id="thirdparty.lwip.raw_basic_http_example_ajax" caption="lwIP TCP/IP Stack basic HTTP example using Raw API (with Micrel KSZ8851SNL PHY)">
+			<info type="description" value="summary">
+				Basic HTTP web server using the lwIP TCP/IP stack Raw API in standalone mode (i.e. without RTOS support).
+				This example uses the Micrel KSZ8851SNL PHY from the Ethernet Xplained Pro extension.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="network"/>
+			<build type="include-path" value="network/httpserver"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="network/ethernet.c"/>
+			<build type="header-file" value="network/ethernet.h"/>
+			<build type="c-source" value="network/timer_mgt.c"/>
+			<build type="header-file" value="network/timer_mgt.h"/>
+			<build type="c-source" value="network/httpserver/fs.c"/>
+			<build type="header-file" value="network/httpserver/fs.h"/>
+			<build type="c-source" value="network/httpserver/fsdata.c"/>
+			<build type="header-file" value="network/httpserver/fsdata.h"/>
+			<build type="c-source" value="network/httpserver/httpd.c"/>
+			<build type="header-file" value="network/httpserver/httpd.h"/>
+			<device-support value="sam0"/>
+			<require idref="sam0.drivers.sercom.usart"/>
+			<require idref="sam0.utils.stdio.stdio_serial"/>
+			<require idref="common2.services.delay"/>
+			<require idref="sam0.drivers.extint"/>
+			<require idref="thirdparty.lwip.version"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+
+</asf>

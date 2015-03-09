@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type ="service" caption="PRIME IEC 61334-4-32 Convergence Layer Serial Interface Module" id="thirdparty.prime.sscs_4_32.addons.serial_if">
+		<info type="description" value="summary">
+		Serial Interface Module acts as a interface for converting stream of command bytes to corresponding 4-32 SSCS Api's.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="PLC"/>
+			<keyword value="PRIME"/>
+		</info>
+		<build type="c-source" value="serial_432_if.c"/>
+		<build type="header-file" subtype="api" value="serial_432_if.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../../include"/>
+		<require idref="sam.services.plc.usi"/>
+		<require idref="thirdparty.prime.sscs_4_32"/>
+		<build type="doxygen-entry-point" value="serial_sscs_prime_group"/>
+		<device-support value="atsam4cp16b_0"/>
+		<device-support value="atsam4cmp16c_0"/>
+		<device-support value="atsam4cms16c_0"/>
+		<device-support value="atsam4c16c_0"/>
+		<device-support value="atsam4sd32c"/>
+	</module>
+</asf>

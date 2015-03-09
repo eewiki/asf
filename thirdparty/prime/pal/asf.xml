@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<select-by-config id="thirdparty.prime.pal" name="thirdparty.prime.pal" caption="Physical Abstraction Layer" default="atpl230_primemac13">
+		<info type="description" value="summary">
+			Physical Abstraction Layer. Provides functions to interface a Physical Layer and a MAC Layer.
+		</info>
+		<module type="component" id="thirdparty.prime.pal#atpl230_primemac13" caption="Physical Abstraction Layer (PAL) interface - ATPL230 and PRIME MAC 1.3">
+			<info type="description" value="summary">
+			Physical Abstraction Layer. Provides functions to interface a Physical Layer and a MAC Layer.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<require idref="thirdparty.prime.pal.atpl230_primemac13"/>
+			<device-support value="atsam4cp16b_0"/>
+			<device-support value="atsam4cmp16c_0"/>
+			<device-support value="atsam4cms16c_0"/>
+			<device-support value="atsam4c16c_0"/>
+			<device-support value="atsam4sd32c"/>
+			<build type="doxygen-entry-point" value="pal_prime_group"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+		</module>
+	</select-by-config>
+</asf>

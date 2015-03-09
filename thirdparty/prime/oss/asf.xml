@@ -1,0 +1,29 @@
+<asf xmlversion="1.0">
+	<module type="component" id="thirdparty.prime.oss" caption="PRIME Operative System Support (OSS)">
+		<info type="description" value="summary">
+		The Operative System Support (OSS) is used to adapt PRIME stack software to run using Operative System, in this case FreeRTOS.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="PLC"/>
+			<keyword value="PRIME"/>
+		</info>				
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="oss_if.h"/>
+		<build type="c-source" value="oss_if.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_oss.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<require idref="thirdparty.prime.phy.atpl230"/>
+		<require idref="thirdparty.prime.pal"/>
+		<require idref="thirdparty.prime.mac_1_3"/>
+		<require idref="thirdparty.prime.sscs_4_32"/>
+		<require idref="sam.services.plc.usi"/>
+		<require idref="thirdparty.os.freertos.version"/>
+		<device-support value="atsam4cp16b_0"/>
+		<device-support value="atsam4cmp16c_0"/>
+		<device-support value="atsam4cms16c_0"/>
+		<device-support value="atsam4c16c_0"/>
+		<device-support value="atsam4sd32c"/>
+		<build type="doxygen-entry-point" value="oss_prime_group"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+	</module>
+</asf>

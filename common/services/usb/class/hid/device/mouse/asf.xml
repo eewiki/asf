@@ -94,4 +94,36 @@
 		<device-support value="sam4c32e"/>
 		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 	</module>
+	<module type="meta" id="common.services.usb.class.hid.device.mouse.appnote" caption="USB Device HID Mouse (Application Note)">
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication" />
+		</info>
+		<info type="gui-flag" value="hidden"/>
+
+		<info type="appnote" value="AT09336"/>
+		<info type="keyword" value="pdf">
+			<keyword value="USB"/>
+			<keyword value="Universal Serial Bus"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes use cases for USB Device Stack HID Mouse driver - UDI HID Mouse.
+		</info>
+
+		<build type="include-path" value="."/>
+
+		<build type="header-file" value="udi_hid_mouse_doc.h"/>
+
+		<build type="doxygen-example-path" value="."/>
+		<build type="doxygen-example-path" value="..\..\"/>
+		<build type="doxygen-entry-point" value="asfdoc_udi_hid_mouse_group"/>
+
+		<require idref="common.services.usb.udc.appnote"/>
+
+		<device-support value="sam"/>
+		<device-support value="sam0"/>
+		<device-support value="avr"/>
+		<generator default-mcu="unspecified-samd21" value="doxygen-module-v2"/>
+	</module>
 </asf>

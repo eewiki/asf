@@ -1,0 +1,120 @@
+<asf xmlversion="1.0">
+	<select-by-device id="thirdparty.prime.apps.prime_base_serial" caption="Proxy Power Line Communication(PLC) Controller Interface">
+		<module type="application" id="thirdparty.prime.apps.prime_base_serial#0" caption="Example application for ATMEL PRIME v1.3 Base Node">
+			<info type="description" value="summary">
+			This is an application for a base node using serialized PRIME stack (SSCS432, MLME, PLME, BMNGT, MNGL).
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<device-support value="atsam4cp16b_0"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="sam.components.display.c42364a"/>
+			<require idref="sam.services.flash"/>
+			<require idref="sam.services.plc.hal.prime"/>
+			<require idref="thirdparty.prime.oss"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.mlme_serial_if"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.plme_serial_if"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.snf_serial_if"/>
+			<require idref="thirdparty.prime.sscs_4_32.addons.serial_if"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.apps.prime_base_serial#1" caption="Example application for ATMEL PRIME v1.3 Base Node">
+			<info type="description" value="summary">
+			This is an application for a base node using serialized PRIME stack (SSCS432, MLME, PLME, BMNGT, MNGL).
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<device-support value="atsam4sd32c"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="sam.services.flash"/>
+			<require idref="sam.services.plc.hal.prime"/>
+			<require idref="thirdparty.prime.oss"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.mlme_serial_if"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.plme_serial_if"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.snf_serial_if"/>
+			<require idref="thirdparty.prime.sscs_4_32.addons.serial_if"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.apps.prime_base_serial#2" caption="Example application for ATMEL PRIME v1.3 Base Node">
+			<info type="description" value="summary">
+			This is an application for a base node using serialized PRIME stack (SSCS432, MLME, PLME, BMNGT, MNGL).
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<device-support value="atsam4cmp16c_0"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="sam.services.flash"/>
+			<require idref="sam.services.plc.hal.prime"/>
+			<require idref="thirdparty.prime.oss"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.mlme_serial_if"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.plme_serial_if"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.snf_serial_if"/>
+			<require idref="thirdparty.prime.sscs_4_32.addons.serial_if"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.apps.prime_base_serial#3" caption="Example application for ATMEL PRIME v1.3 Base Node">
+			<info type="description" value="summary">
+			This is an application for a base node using serialized PRIME stack (SSCS432, MLME, PLME, BMNGT, MNGL).
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<device-support value="atsam4cms16c_0"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="sam.services.flash"/>
+			<require idref="sam.services.plc.hal.prime"/>
+			<require idref="thirdparty.prime.oss"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.mlme_serial_if"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.plme_serial_if"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.snf_serial_if"/>
+			<require idref="thirdparty.prime.sscs_4_32.addons.serial_if"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="thirdparty.prime.apps.prime_base_serial#4" caption="Example application for ATMEL PRIME v1.3 Base Node">
+			<info type="description" value="summary">
+			This is an application for a base node using serialized PRIME stack (SSCS432, MLME, PLME, BMNGT, MNGL).
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="PLC"/>
+				<keyword value="PRIME"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<device-support value="atsam4c16c_0"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="sam.services.flash"/>
+			<require idref="sam.services.plc.hal.prime"/>
+			<require idref="thirdparty.prime.oss"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.mlme_serial_if"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.plme_serial_if"/>
+			<require idref="thirdparty.prime.mac_1_3.addons.snf_serial_if"/>
+			<require idref="thirdparty.prime.sscs_4_32.addons.serial_if"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

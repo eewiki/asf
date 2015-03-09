@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="Template of a user-defined protocol for PLC USI service for SAM4C16C" id="sam.services.plc.usi.user_protocol_template.sam4c_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_buart_if.h"/>
+		<build type="header-file" value="conf_busart_if.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_usi.h"/>
+		<require idref="sam.services.plc.usi.user_protocol_template"/>
+		<require idref="board.sam4c_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam4c16c_0"/>
+	</project>
+</asf>

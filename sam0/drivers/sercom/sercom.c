@@ -108,7 +108,7 @@ enum status_code _sercom_get_async_baud_val(
 	uint32_t baud_int;
 
 	/* Check if the baudrate is outside of valid range */
-	if ((baudrate * sample_num) >= peripheral_clock) {
+	if ((baudrate * sample_num) > peripheral_clock) {
 		/* Return with error code */
 		return STATUS_ERR_BAUDRATE_UNAVAILABLE;
 	}

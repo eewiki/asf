@@ -17,7 +17,9 @@
 		<require idref="sam.drivers.tc"/>
 		<require idref="sam.drivers.pdc"/>
 		<require idref="sam.drivers.pmc"/>
+		<device-support value="sam4c"/>
 		<device-support value="sam4cp"/>
+		<device-support value="sam4cm"/>		
 		<device-support value="sam4s"/>
 		<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
 	</module>		

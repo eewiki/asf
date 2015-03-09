@@ -1,0 +1,9 @@
+<asf xmlversion="1.0">
+	<workspace id="sam.drivers.ipc.example_workspace.sam4cp16bmb" caption="SAM4CP16B IPC example" name="SAM4CP16B_IPC_example">
+		<require-project order="1" idref="sam.drivers.ipc.example_core1.sam4cp16bmb"/>
+		<require-project order="2" idref="sam.drivers.ipc.example_core0.sam4cp16bmb"/>
+		<generator value="as_solution"/>
+		<generator value="gcc_workspace"/>
+		<generator value="iarew_workspace"/>
+	</workspace>
+</asf>
