@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.events.quick_start_hook" caption="Quick Start for the SAM D20/D21/R21 EVENTS Driver (Interrupt Hook)">
+	<module type="application" id="sam0.drivers.events.quick_start_hook" caption="Quick Start for the SAM EVENTS Driver (Interrupt Hook)">
 		<info type="description" value="summary">
 		Quick start guide for the Peripheral Events module demonstrating event routing configuration.
 		</info>

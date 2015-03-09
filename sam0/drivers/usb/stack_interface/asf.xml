@@ -4,7 +4,8 @@
 		<build type="c-source" value="usb_dual.c"/>
 		<build type="header-file" subtype="api" value="usb_dual.h"/>
 		<device-support value="samd21"/>
-		<device-support value="samr21" />
+		<device-support value="samr21"/>
+		<device-support value="samd11"/>
 		<require idref="sam0.utils"/>
 		<require idref="sam0.drivers.system"/>
 		<require idref="sam0.drivers.extint"/>
@@ -21,7 +22,7 @@
 		<build type="include-path" value="."/>
 		<build type="c-source" value="usb_host_uhd.c"/>
 		<device-support value="samd21"/>
-		<device-support value="samr21" />
+		<device-support value="samr21"/>
 		<require idref="sam0.drivers.usb"/>
 		<require idref="sam0.drivers.usb.dual"/>
 		<require idref="common.services.basic.sleepmgr"/>
@@ -32,12 +33,13 @@
 			<keyword value="Communication" />
 		</info>
 		<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
-		</module>
-	<module type="driver" id="sam0.drivers.usb.udd" caption="SAM D21/R21 USB UDD interface">
+	</module>
+	<module type="driver" id="sam0.drivers.usb.udd" caption="SAM D21/R21/D11 USB UDD interface">
 		<build type="include-path" value="."/>
 		<build type="c-source" value="usb_device_udd.c"/>
 		<device-support value="samd21"/>
-		<device-support value="samr21" />
+		<device-support value="samr21"/>
+		<device-support value="samd11"/>
 		<require idref="sam0.drivers.usb"/>
 		<require idref="sam0.drivers.usb.dual"/>
 		<require idref="common.services.basic.sleepmgr"/>
@@ -48,5 +50,5 @@
 			<keyword value="Communication" />
 		</info>
 		<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
-		</module>
+	</module>
 </asf>

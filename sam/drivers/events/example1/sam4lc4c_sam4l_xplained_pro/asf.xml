@@ -12,7 +12,6 @@
 		<generator value="iarewarm"/>
 		<generator value="armgcc"/>
 		<generator value="as5_arm"/>
-		<generator value="doxygen"/>
 		<config name="config.compiler.iarewarm.create_aux" value="no"/>
 		<config name="config.compiler.armgcc.create_aux" value="no"/>
 		<config name="config.compiler.as5_arm.create_aux" value="no"/>

@@ -1,0 +1,29 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.utils.cmsis.samd11.include.component" caption="SAMD11 component definitions">
+		<info type="description" value="summary">
+		SAMD11 component definitions.
+		</info>
+		<build type="header-file" value="ac.h"/>
+		<build type="header-file" value="adc.h"/>
+		<build type="header-file" value="dac.h"/>
+		<build type="header-file" value="dmac.h"/>
+		<build type="header-file" value="dsu.h"/>
+		<build type="header-file" value="eic.h"/>
+		<build type="header-file" value="evsys.h"/>
+		<build type="header-file" value="gclk.h"/>
+		<build type="header-file" value="mtb.h"/>
+		<build type="header-file" value="nvmctrl.h"/>
+		<build type="header-file" value="pac.h"/>
+		<build type="header-file" value="pm.h"/>
+		<build type="header-file" value="port.h"/>
+		<build type="header-file" value="rtc.h"/>
+		<build type="header-file" value="sercom.h"/>
+		<build type="header-file" value="sysctrl.h"/>
+		<build type="header-file" value="tcc.h"/>
+		<build type="header-file" value="tc.h"/>
+		<build type="header-file" value="usb.h"/>
+		<build type="header-file" value="wdt.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samd11"/>
+	</module>
+</asf>

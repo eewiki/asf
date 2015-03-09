@@ -10,7 +10,7 @@
 	<select-by-config id="sam0.drivers.events" name="config.sam0.drivers.events" caption="EVSYS - Event System"  default="hook">
 
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21/R21 Event System. Provides a unified interface
+			Driver for the SAM Event System. Provides a unified interface
 			for the configuration and management of the Event channels within
 			the device, including the enabling, disabling and routing to and
 			from various modules within the device.
@@ -37,9 +37,7 @@
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
 
-			<device-support value="samd20"/>
-			<device-support value="samd21"/>
-			<device-support value="samr21"/>
+			<device-support value="sam0"/>
 
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>
@@ -58,7 +56,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Peripheral Event System on
-				the SAM D20/D21/R21, both the ASF driver and the peripheral itself.
+				the SAM, both the ASF driver and the peripheral itself.
 			</info>
 
 			<build type="define" name="EVENTS_INTERRUPT_HOOKS_MODE" value="true"/>
@@ -82,9 +80,7 @@
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
 
-			<device-support value="samd20"/>
-			<device-support value="samd21"/>
-			<device-support value="samr21"/>
+			<device-support value="sam0"/>
 
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>

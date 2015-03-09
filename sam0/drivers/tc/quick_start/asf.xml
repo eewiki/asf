@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.tc.quick_start" caption="Quick Start for the SAM D20/D21/R21 TC Driver (Polled)">
+	<module type="application" id="sam0.drivers.tc.quick_start" caption="Quick Start for the SAM TC Driver (Polled)">
 		<info type="description" value="summary">
 		Quick start guide for the TC interface module demonstrating module configuration.
 		</info>

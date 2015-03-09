@@ -7,16 +7,36 @@
 		<info type="keyword" value="technology">
 			<keyword value="Timers" />
 		</info>
+		
+		<info type="appnote" value="AT07942"/>		
+		<info type="keyword" value="pdf">
+			<keyword value="Asynchronous Clock" />
+			<keyword value="Timers"/>
+			<keyword value="Calendar"/>
+		</info>
+		
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver for
+			interfacing to the Asynchronous Timer on SAM.
+		</info>
+		
 		<build type="c-source" value="ast.c"/>
 		<build type="header-file" subtype="api" value="ast.h"/>
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="group_sam_drivers_ast"/>
+		
+		<build type="doxygen-entry-point" value="asfdoc_sam_drivers_ast_group"/>
 		<build type="module-config" subtype="required-header-file" value="conf_ast.h"/>
 		<build type="module-config" subtype="path" value="module_config"/>
+		
+		<build type="doxygen-example-path" value="example1"/>
+		<build type="header-file" value="example1/ast_example1.h"/>
+		<build type="doxygen-example-path" value="example2"/>
+		<build type="header-file" value="example2/ast_example2.h"/>
+		
 		<device-support value="sam4l"/>
 		<require idref="sam.utils"/>
 		<require idref="common.services.basic.clock"/>
 		<require idref="common.services.basic.sleepmgr"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-sam4l"/>
 	</module>
 </asf>

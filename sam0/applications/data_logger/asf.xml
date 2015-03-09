@@ -1,0 +1,33 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.applications.data_logger" caption="Data Logger Application">
+		<info type="description" value="summary">
+		This demo application shows how to effectively use the DMAC on D21 devices.
+		</info>
+
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+			<keyword value="Event System"/>
+		</info>
+
+		<info type="gui-flag" value="move-to-root"/>
+
+		<build type="c-source" value="data_logger.c"/>
+		<build type="header-file" value="data_logger.h"/>
+		<build type="include-path" value="."/>
+		<build type="library" subtype="compiler" value="libm"/>
+
+		<require idref="sam0.drivers.adc"/>
+		<require idref="sam0.drivers.port"/>
+		<require idref="sam0.drivers.events"/>
+		<require idref="sam0.drivers.dma"/>
+		<require idref="sam0.drivers.rtc"/>
+		<require idref="sam0.drivers.sercom.usart"/>
+		<require idref="common2.components.memory.serial_flash.at25dfx"/>
+		<require idref="common.boards"/>
+		
+		<build type="doxygen-image-path" value="docimg" />
+		<build type="doxygen-entry-point" value="appdoc_main" />
+			
+		<device-support value="samd21"/>
+	</module>
+</asf>

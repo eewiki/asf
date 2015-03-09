@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam0.drivers.sercom" caption="SERCOM">
 		<info type="description" value="summary">
-		Core common driver for the SAM D20/D21/R21 SERCOM module.
+		Core common driver for the SAM SERCOM module.
 		</info>
 
 		<info type="gui-flag" value="hidden"/>
@@ -13,9 +13,7 @@
 		<build type="c-source" value="sercom_interrupt.c"/>
 		<build type="header-file" subtype="api" value="sercom_interrupt.h"/>
 
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
-		<device-support value="samr21"/>
+		<device-support value="sam0"/>
 
 		<require idref="sam0.utils"/>
 		<require idref="sam0.drivers.system"/>

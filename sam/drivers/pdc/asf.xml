@@ -1,16 +1,36 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam.drivers.pdc" caption="PDC - Peripheral DMA Controller Example">
 		<info type="description" value="summary">
-			The Peripheral DMA Controller transfers data between on-chip serial peripherals and the on- and/or off-chip memories. The link between the PDC and a serial peripheral is operated by the AHB to ABP bridge.
+			The Peripheral DMA Controller transfers data between on-chip serial peripherals
+			and the on- and/or off-chip memories. The link between the PDC and a serial
+			peripheral is operated by the AHB to ABP bridge.
 		</info>
 		<info type="keyword" value="technology">
 			<keyword value="DMA Controller" />
 			<keyword value="Memory" />
 		</info>
+
+		<info type="appnote" value="AT08642"/>		
+		<info type="keyword" value="pdf">
+			<keyword value="DMA" />
+			<keyword value="Transfer"/>
+		</info>
+		
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver for
+			interfacing to the Peripheral DMA controller on SAM4.
+		</info>
+		
 		<build type="c-source" value="pdc.c"/>
 		<build type="header-file" subtype="api" value="pdc.h"/>
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="sam_drivers_pdc_group"/>
+                <build type="include-path" value="pdc_uart_example"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_sam_drivers_pdc_group"/>
+		
+		<build type="doxygen-example-path" value="pdc_uart_example"/>
+		<build type="header-file" value="pdc_uart_example/pdc_uart_example.h"/>
+
 		<device-support value="sam3"/>
 		<device-support value="sam4s"/>
 		<device-support value="sam4e"/>
@@ -19,6 +39,6 @@
 		<device-support value="sam4cm"/>
 		<device-support value="sam4cp"/>
 		<device-support value="samg"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-sam3s"/>
 	</module>
 </asf>

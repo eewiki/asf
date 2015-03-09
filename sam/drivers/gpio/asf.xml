@@ -11,9 +11,24 @@
 		<build type="include-path" value="."/>
 		<build type="doxygen-entry-point" value="group_sam_drivers_gpio"/>
 		<build type="doxygen-quick-start" value="sam_gpio_quick_start"/>
+		<build type="doxygen-example-path" value=" example"/>
 		<device-support value="sam4l"/>
 		<require idref="sam.utils"/>
 		<require idref="common.services.ioport"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		<info type="appnote" value="AT07903"/>
+		<info type="keyword" value="pdf">
+			<keyword value="GPIO" />
+			<keyword value="IO"/>
+			<keyword value="I/O"/>
+			<keyword value="Input"/>
+			<keyword value="Output"/>
+		</info>
+		
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver for
+			interfacing to the GPIO controller on SAM.
+		</info>	
+		<generator value="doxygen-module-v2" default-mcu="unspecified-sam4l"/>
 	</module>
 </asf>
+

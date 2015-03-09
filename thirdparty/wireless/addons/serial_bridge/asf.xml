@@ -3,10 +3,10 @@
 	<select-by-device id="thirdparty.wireless.addons.serial_bridge" caption="Serial Bridge">
         <module type="meta" id="thirdparty.wireless.addons.serial_bridge#1"     caption="Serial Bridge">
 			<info type="description" value="summary">
-				The serial Bridge Module is used in the host which acts as a bridge between the Pc and the NCP device. The serial Bridge  is used by Performance Analyzer application in 2p approach and for flashing image using Bootloader application,where it transfers data from the Pc to the NCP and vice-versa. 
+				The serial Bridge Module is used in the host which acts as a bridge between the Pc and the NCP device. The serial Bridge  is used by Performance Analyzer application in 2p approach and for flashing image using Bootloader application,where it transfers data from the Pc to the NCP and vice-versa.
 			</info>
 		<!-- +++++++++++++++++++++++++++++++++++++++++++++++BUILD+++++++++++++++++++++++++++++++++++++++++++++++. -->
-			
+
 			<require idref="common.services.ioport"/>
 			<require idref="common.services.delay"/>
 			<require idref="common.services.basic.clock"/>
@@ -23,12 +23,12 @@
 				<keyword value="Communication"/>
 			</info>
 		</module>
-	
+
 		<module type="meta" id="thirdparty.wireless.addons.serial_bridge#2"     caption="Serial Bridge For SAM0">
 			<info type="description" value="summary">
-				The serial Bridge Module is used in the host which acts as a bridge between the Pc and the NCP device. The serial Bridge  is used by Performance Analyzer application in 2p approach and for flashing image using Bootloader application,where it transfers data from the Pc to the NCP and vice-versa. 
+				The serial Bridge Module is used in the host which acts as a bridge between the Pc and the NCP device. The serial Bridge  is used by Performance Analyzer application in 2p approach and for flashing image using Bootloader application,where it transfers data from the Pc to the NCP and vice-versa.
 			</info>
-			
+
 			<require idref="sam0.drivers.port"/>
 			<require idref="sam0.utils"/>
 			<require idref="common2.services.delay"/>
@@ -37,7 +37,9 @@
 			<build type="c-source"      value="serial_bridge.c"/>
 			<build type="header-file"   value="serial_bridge.h"/>
 			<build type="include-path" value="."/>
-			<device-support value="sam0"/>
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 			<build type="doxygen-entry-point" value="group_serial_bridge"/>
 			<info type="keyword" value="technology">
 				<keyword value="Wireless"/>

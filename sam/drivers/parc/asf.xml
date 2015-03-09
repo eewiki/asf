@@ -1,36 +1,58 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam.drivers.parc" name="config.sam.drivers.parc" caption="PARC - Parallel Capture" default="callback">
 		<info type="description" value="summary">
-			Driver for Parallel Capture module. Provides a unified interface for the configuration and management of the PARC module.
+			Driver for Parallel Capture module. Provides a unified interface for the
+			configuration and management of the PARC module.
 		</info>
 		<info type="keyword" value="technology">
-			<keyword value="Communication"/>
+			<keyword value="Parallel capture"/>
+			<keyword value="PARC"/>
 		</info>
+		
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver for
+			interfacing to the Parallel Capture on SAM4L.
+		</info>
+		<info type="keyword" value="pdf">
+			<keyword value="Parallel capture"/>
+			<keyword value="PARC"/>
+		</info>
+					
 		<module type="driver" id="sam.drivers.parc#polled" caption="PARC - Parallel Capture (Polled Mode)">
 			<build type="c-source" value="parc.c"/>
 			<build type="header-file" subtype="api" value="parc.h"/>
 			<build type="include-path" value="."/>
 			<build type="define" name="PARC_CALLBACK_MODE" value="false"/>
-			<build type="doxygen-entry-point" value="group_sam_drivers_parc"/>
-			<build type="doxygen-quick-start" value="sam_parc_quick_start"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam_drivers_parc_group"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam_drivers_parc_qsg"/>
+			<build type="doxygen-example-path" value="example"/>
+			<build type="header-file" value="example/parc_example.h"/>
 			<device-support value="sam4l"/>
 			<require idref="sam.utils"/>
 			<require idref="common.services.basic.clock"/>
-			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+			<generator value="doxygen-module-v2" default-mcu="unspecified-sam4l"/>
 		</module>
 		<module type="driver" id="sam.drivers.parc#callback" caption="PARC - Parallel Capture (Callback Mode)">
+			<info type="appnote" value="AT07912"/>		
+			<info type="keyword" value="pdf">
+				<keyword value="External" />
+				<keyword value="Capture"/>
+			</info>
+			
 			<build type="c-source" value="parc.c"/>
 			<build type="c-source" value="parc_callback.c"/>
 			<build type="header-file" subtype="api" value="parc.h"/>
 			<build type="header-file" subtype="api" value="parc_callback.h"/>
 			<build type="include-path" value="."/>
 			<build type="define" name="PARC_CALLBACK_MODE" value="true"/>
-			<build type="doxygen-entry-point" value="group_sam_drivers_parc"/>
-			<build type="doxygen-quick-start" value="sam_parc_quick_start"/>
+			<build type="doxygen-entry-point" value="asfdoc_sam_drivers_parc_group"/>
+			<build type="doxygen-quick-start" value="asfdoc_sam_drivers_parc_qsg"/>
+			<build type="doxygen-example-path" value="example"/>
+			<build type="header-file" value="example/parc_example.h"/>
 			<device-support value="sam4l"/>
 			<require idref="sam.utils"/>
 			<require idref="common.services.basic.clock"/>
-			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+			<generator value="doxygen-module-v2" default-mcu="unspecified-sam4l"/>
 		</module>
 	</select-by-config>
 </asf>

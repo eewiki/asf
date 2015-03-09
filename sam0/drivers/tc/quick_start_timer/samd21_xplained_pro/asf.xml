@@ -4,6 +4,7 @@
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_clocks.h"/>
 		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_qs_tc_timer.h"/>
 		<require idref="board.samd21_xplained_pro"/>
 		<require idref="sam0.drivers.tc.quick_start_timer"/>
 		<config name="config.sam0.drivers.tc" value="callback"/>

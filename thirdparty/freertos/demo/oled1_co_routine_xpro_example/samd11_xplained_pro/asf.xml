@@ -1,0 +1,35 @@
+<asf xmlversion="1.0">
+	<project id="common.services.freertos.oled1_co_routines_xpro_example.samd11_xplained_pro" caption="FreeRTOS demo using event group feature on OLED1 Xplained Pro, for SAM D11 Xplained Pro">
+		<board-addon vendor="Atmel" caption="OLED1 Xplained Pro" position="EXT3"/>
+		<!-- Display can do double-buffering, so double the LCD height -->
+		<build type="define" name="GFX_MONO_LCD_HEIGHT" value="32"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_demo.h"/>
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<build type="include-path" value="."/>
+		<config name="common2.services.gfx_mono.display" value="ug_2832hsweg04"/>
+		<config name="config.sam0.drivers.sercom.usart" value="callback"/>
+		<config name="config.thirdparty.os.freertos.version" value="8.0.1"/>
+		<config name="config.thirdparty.os.freertos-8_0_1.memory_manager" value="1_static_allocation"/>
+		<device-support value="atsamd11d14am"/>
+		<require idref="board.samd11_xplained_pro"/>
+		<require idref="common.services.freertos.oled1_co_routines_xpro_example"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.sys_stack_size" value="0x180"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x0000"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<toolchain-config name="armgcc.linker.miscellaneous.LinkerFlags" value="-Wl,--defsym,__stack_size__=0x180" toolchain="armgcc"/>
+		<toolchain-config name="armgcc.compiler.optimization.level" value="Optimize for size (-Os)" toolchain="armgcc"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.optimization" value="size"/>
+		<config name="config.compiler.armgcc.stack_size" value="0x180"/>
+		<generator value="as5_arm"/>
+		<generator value="armgcc"/>
+		<generator value="iarewarm"/>
+		<generator value="doxygen-v2"/>
+	</project>
+</asf>

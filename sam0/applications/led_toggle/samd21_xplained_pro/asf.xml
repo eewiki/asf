@@ -7,6 +7,7 @@
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_clocks.h"/>
 		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_example.h"/>
 		<generator value="iarewarm"/>
 		<generator value="armgcc"/>
 		<generator value="as5_arm"/>

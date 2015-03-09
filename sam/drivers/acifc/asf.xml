@@ -1,19 +1,38 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam.drivers.acifc" caption="ACIFC - Analog Comparator Interface">
 		<info type="description" value="summary">
-		The Analog Comparator compares two voltages and the result of this comparison gives a compare output. The user can select a high-speed or low-power option. Additionally, the hysteresis level are configurable.
+		The Analog Comparator compares two voltages and the result of this comparison
+		gives a compare output. The user can select a high-speed or low-power option.
+		Additionally, the hysteresis level are configurable.
 		</info>
 		<info type="keyword" value="technology">
 			<keyword value="Analog Conversion" />
 		</info>
+		
+		<info type="appnote" value="AT09253"/>		
+		<info type="keyword" value="pdf">
+			<keyword value="Analog" />
+			<keyword value="Voltage" />
+			<keyword value="Opamp" />
+		</info>		
+		
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver for
+			interfacing to the Analog Comparator on SAM4L.
+		</info>
+		
 		<build type="c-source" value="acifc.c"/>
 		<build type="header-file" subtype="api" value="acifc.h"/>
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="sam_drivers_acifc_group"/>
+		
+		<build type="doxygen-example-path" value="acifc_example"/>
+		<build type="header-file" value="acifc_example/acifc_example.h"/>		
+		
+		<build type="doxygen-entry-point" value="asfdoc_sam_drivers_acifc_group"/>		
 		<device-support value="sam4l"/>
 		<require idref="common.services.basic.clock"/>
 		<require idref="common.services.basic.sleepmgr"/>
 		<require idref="sam.utils"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-sam4l"/>
 	</module>
 </asf>

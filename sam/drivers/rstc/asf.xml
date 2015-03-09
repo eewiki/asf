@@ -3,10 +3,32 @@
 		<info type="description" value="summary">
 			The Reset Controller, based on power-on reset cells, handles all the resets of the system without any external components. It reports which reset occurred last.
 		</info>
+		
+		<info type="keyword" value="technology">
+			<keyword value="Power Management" />
+		</info>		
+		
+		<info type="appnote" value="AT06864"/>			
+		<info type="keyword" value="pdf">
+			<keyword value="Reset" />
+			<keyword value="NRST"/>
+			<keyword value="External device"/>
+			<keyword value="Coprocessor"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver for
+			interfacing to the Reset Controller on SAM.
+		</info>
+		
 		<build type="c-source" value="rstc.c"/>
 		<build type="header-file" subtype="api" value="rstc.h"/>
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="sam_drivers_rstc_group"/>
+		
+		<build type="doxygen-entry-point" value="asfdoc_sam_drivers_rstc_group"/>
+		<build type="doxygen-example-path" value="example1"/>
+		<build type="header-file" value="example1/rstc_example1.h"/>
+
 		<device-support value="sam3"/>
 		<device-support value="sam4s"/>
 		<device-support value="sam4e"/>
@@ -16,6 +38,6 @@
 		<device-support value="sam4cp"/>
 		<device-support value="samg"/>
 		<require idref="sam.utils"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-sam3s"/>
 	</module>
 </asf>

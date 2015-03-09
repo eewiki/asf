@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.tc" name="config.sam0.drivers.tc" caption="TC - Timer Counter" default="callback">
 		<info type="description" value="summary">
-		  Driver for the SAM D20/D21/R21 Timer/Counter module. Provides a unified
+		  Driver for the SAM Timer/Counter module. Provides a unified
 		  interface for the configuration and management of the device's
 		  hardware timers.
 		</info>
@@ -52,7 +52,7 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the Timer Counter on the SAM D20/D21/R21,
+				This document describes how to use the Timer Counter on the SAM
 				both the ASF driver and the peripheral itself.
 			</info>
 

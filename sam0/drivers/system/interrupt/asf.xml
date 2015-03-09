@@ -1,7 +1,7 @@
 ﻿<asf xmlversion="1.0">
 	<module type="meta" id="sam0.drivers.system.interrupt.appnote" caption="SYSTEM - Interrupt Driver Application Note">
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21/R21 Interrupt System. Provides a unified
+			Driver for the SAM Interrupt System. Provides a unified
 			interface for the configuration and management interrupts within
 			the device, including the enabling, disabling and entering, leaving
 			of critical sections.
@@ -19,7 +19,7 @@
 		</info>
 
 		<info type="description" value="pdf">
-			This document describes how to use the Interrupts on the SAM D21,
+			This document describes how to use the Interrupts on the SAM,
 			both the ASF driver and the peripheral itself.
 		</info>
 
@@ -27,6 +27,7 @@
 		<build type="include-path" value="system_interrupt_samd20"/>
 		<build type="include-path" value="system_interrupt_samd21"/>
 		<build type="include-path" value="system_interrupt_samr21"/>
+		<build type="include-path" value="system_interrupt_samd10_d11"/>
 
 		<build type="c-source" value="system_interrupt.c"/>
 
@@ -34,6 +35,7 @@
 		<build type="header-file" value="system_interrupt_samd20/system_interrupt_features.h"/>
 		<build type="header-file" value="system_interrupt_samd21/system_interrupt_features.h"/>
 		<build type="header-file" value="system_interrupt_samr21/system_interrupt_features.h"/>
+		<build type="header-file" value="system_interrupt_samd10_d11/system_interrupt_features.h"/>
 
 		<build type="header-file" value="quick_start/qs_system_interrupt.h"/>
 
@@ -42,6 +44,7 @@
 		<build type="doxygen-example-path" value="system_interrupt_samd20"/>
 		<build type="doxygen-example-path" value="system_interrupt_samd21"/>
 		<build type="doxygen-example-path" value="system_interrupt_samr21"/>
+		<build type="doxygen-example-path" value="system_interrupt_samd10_d11"/>
 		<build type="doxygen-quick-start" value="asfdoc_sam0_system_interrupt_exqsg"/>
 
 		<device-support value="sam0"/>
@@ -180,6 +183,56 @@
 				<build type="doxygen-quick-start" value="asfdoc_sam0_system_interrupt_exqsg"/>
 
 				<device-support value="samr21"/>
+
+				<require idref="sam0.utils"/>
+				<require idref="thirdparty.cmsis"/>
+			</module>
+
+			<module type="driver" id="sam0.drivers.system.interrupt#samd10" caption="SYSTEM - Interrupt Driver">
+				<info type="description" value="summary">
+					Driver for the SAM D10 Interrupt System. Provides a unified
+					interface for the configuration and management interrupts within
+					the device, including the enabling, disabling and entering, leaving
+					of critical sections.
+				</info>
+
+				<info type="keyword" value="technology">
+					<keyword value="Interrupt" />
+				</info>
+				<build type="include-path" value="." />
+				<build type="include-path" value="system_interrupt_samd10_d11"/>
+
+				<build type="c-source" value="system_interrupt.c"/>
+
+				<build type="header-file" subtype="api" value="system_interrupt.h"/>
+				<build type="header-file" value="system_interrupt_samd10_d11/system_interrupt_features.h"/>
+
+				<device-support value="samd10"/>
+
+				<require idref="sam0.utils"/>
+				<require idref="thirdparty.cmsis"/>
+			</module>
+
+			<module type="driver" id="sam0.drivers.system.interrupt#samd11" caption="SYSTEM - Interrupt Driver">
+				<info type="description" value="summary">
+					Driver for the SAM D11 Interrupt System. Provides a unified
+					interface for the configuration and management interrupts within
+					the device, including the enabling, disabling and entering, leaving
+					of critical sections.
+				</info>
+
+				<info type="keyword" value="technology">
+					<keyword value="Interrupt" />
+				</info>
+				<build type="include-path" value="." />
+				<build type="include-path" value="system_interrupt_samd10_d11"/>
+
+				<build type="c-source" value="system_interrupt.c"/>
+
+				<build type="header-file" subtype="api" value="system_interrupt.h"/>
+				<build type="header-file" value="system_interrupt_samd10_d11/system_interrupt_features.h"/>
+
+				<device-support value="samd11"/>
 
 				<require idref="sam0.utils"/>
 				<require idref="thirdparty.cmsis"/>

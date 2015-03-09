@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.dac" name="config.sam0.drivers.dac" caption="DAC - Digital-to-Analog Converter" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21 Digital to Analog Converter. Provides a unified
+			Driver for the SAM Digital to Analog Converter. Provides a unified
 			interface for the configuration and management of the DAC in the
 			device, including channel configuration and conversions.
 		</info>
@@ -17,6 +17,8 @@
 			<build type="define" name="DAC_CALLBACK_MODE" value="false"/>
 			<device-support value="samd20"/>
 			<device-support value="samd21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
 		</module>
@@ -35,7 +37,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Digital-to-Analog
-				Converter on the SAM D20/D21, both the ASF driver and the
+				Converter on the SAM, both the ASF driver and the
 				peripheral itself.
 			</info>
 
@@ -47,6 +49,8 @@
 			<build type="define" name="DAC_CALLBACK_MODE" value="true"/>
 			<device-support value="samd20"/>
 			<device-support value="samd21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
 			<require idref="sam0.utils"/>
 			<require idref="sam0.drivers.system"/>
 		</module>
@@ -65,7 +69,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Digital-to-Analog
-				Converter on the SAM D20/D21, both the ASF driver and the
+				Converter on the SAM, both the ASF driver and the
 				peripheral itself.
 			</info>
 
@@ -90,6 +94,8 @@
 			<build type="doxygen-quick-start" value="asfdoc_sam0_dac_exqsg"/>
 			<device-support value="samd20"/>
 			<device-support value="samd21"/>
+			<device-support value="samd10"/>
+			<device-support value="samd11"/>
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 	</module>
 </asf>

@@ -2,16 +2,32 @@
 	<module type="driver" id="sam.drivers.aes" caption="AES - Advanced Encryption Standard Module">
 		<info type="description" value="summary">
 		Driver for the AES (Advanced Encryption Standard) module.
-		Provides functions for configuring and initiating ciphering/deciphering with AES algorithms.
+		Provides functions for configuring and initiating encryption/decryption with AES algorithms.
 		</info>
 		<info type="keyword" value="technology">
 			<keyword value="Cryptography"/>
-		</info>				
+		</info>		
+
+		<info type="appnote" value="AT07909"/>		
+		<info type="keyword" value="pdf">
+			<keyword value="Encryption" />
+			<keyword value="Decryption"/>
+		</info>
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver for
+			interfacing to the AES module on SAM.
+		</info>		
+		
 		<build type="c-source" value="aes.c"/>
 		<build type="header-file" subtype="api" value="aes.h"/>
 		<build type="include-path" value="."/>
+		
 		<build type="doxygen-entry-point" value="group_sam_drivers_aes"/>
 		<build type="doxygen-quick-start" value="sam_aes_quick_start"/>
+		
+		<build type="doxygen-example-path" value="example"/>
+		<build type="header-file" value="example/aes_example.h"/>
+		
 		<device-support value="sam4e"/>
 		<device-support value="sam4c"/>
 		<device-support value="sam4cm"/>
@@ -19,6 +35,6 @@
 		<require idref="sam.utils"/>
 		<require idref="common.services.basic.clock"/>
 		<require idref="common.services.basic.sleepmgr"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-sam4e"/>
 	</module>
 </asf>

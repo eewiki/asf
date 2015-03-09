@@ -4,18 +4,40 @@
 			Provide a unified interface for the configuration and management of
 			the event channels within the device.
 		</info>
+		
 		<info type="keyword" value="technology">
 			<keyword value="Peripheral Event System" />
 		</info>
+
+		<info type="appnote" value="AT06863"/>
+		<info type="keyword" value="pdf">
+			<keyword value="Peripheral Event System" />
+			<keyword value="Event Filter"/>
+			<keyword value="Event Glitch Filter"/>
+		</info>
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver for
+			interfacing to the Peripheral Event Controller for SAM.
+		</info>	
 		<build type="c-source" value="events.c"/>
 		<build type="header-file" subtype="api" value="events.h"/>
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="group_sam_drivers_events"/>
-		<build type="doxygen-quick-start" value="sam_events_quick_start"/>
+		
+		<build type="doxygen-entry-point" value="asfdoc_sam_drivers_events_group"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam_drivers_events_exqsg"/>
+
+		<build type="doxygen-example-path" value="example1"/>
+		<build type="header-file" value="example1/events_example1.h"/>
+
+		<build type="doxygen-example-path" value="example2"/>
+		<build type="header-file" value="example2/events_example2.h"/>
+		
 		<device-support value="sam4l"/>
+		
 		<require idref="sam.utils"/>
 		<require idref="common.services.basic.clock"/>
 		<require idref="common.services.basic.sleepmgr"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		
+		<generator value="doxygen-module-v2" default-mcu="unspecified-sam4l"/>
 	</module>
 </asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="LED Toggle Application" id="sam0.applications.led_toggle.samd11_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<require idref="board.samd11_xplained_pro"/>
+		<require idref="sam0.applications.led_toggle"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen-v2"/>
+		<device-support value="atsamd11d14am"/>
+	</project>
+</asf>

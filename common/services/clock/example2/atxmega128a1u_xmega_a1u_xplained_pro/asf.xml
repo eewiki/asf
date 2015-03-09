@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Clocks Control / Example 2 for XMEGA-A1U Xplained Pro" id="common.services.basic.clock.example2.xmega_a1u_xplained_pro">
+		<info type="description" value="summary">
+		Output system clock on EXT1_PIN_18
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example2.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.clock.example2"/>
+		<require idref="board.xmega_a1u_xplained_pro"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1u"/>
+	</project>
+</asf>

@@ -126,5 +126,21 @@
 			<require idref="common.services.delay"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
+		<module type="application" id="common.services.basic.clock.example3#8" caption="Common API for Clocks Control Example 3">
+			<info type="description" value="summary">
+			Switch between various system clock sources and prescalers at run time.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example3_xmega_a1u.c"/>
+			<device-support value="xmegaau"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.delay"/>
+			<require idref="xmega.drivers.cpu"/>
+			<require idref="xmega.drivers.ioport"/>
+			<require idref="xmega.utils"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
 	</select-by-device>
 </asf>

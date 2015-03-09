@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.rstc.example1" caption="SAM Reset Controller Driver - Example 1">
+		<info type="description" value="summary">
+	Example demonstrating Reset Controller (RSTC) management.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="rstc_example1.c"/>
+		<build type="header-file" value="rstc_example1.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.rstc"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<device-support value="sam4n"/>
+		<device-support value="sam4c"/>
+		<require idref="sam.drivers.wdt"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>		
+	</module>
+</asf>

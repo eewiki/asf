@@ -1,4 +1,14 @@
 <asf xmlversion="1.0">
+	<device-alias-map name="sam0_unlimited">
+		<device-support value="samd20"/>
+		<device-support value="samd21"/>
+		<device-support value="samr21"/>
+	</device-alias-map>
+	<device-alias-map name="sam0_limited">
+		<device-support value="samd10"/>
+		<device-support value="samd11"/>
+	</device-alias-map>
+
 	<select-by-device id="common.utils" caption="Compiler abstraction and code utilities">
 		<info type="description" value="summary">
 		Compiler abstraction layer and code utilities.  This module
@@ -181,7 +191,7 @@
 			<info type="description" value="summary">
 			Core functions for the unit test framework.
 			</info>
-			<device-support value="sam0"/>
+			<device-support-alias value="sam0_unlimited"/>
 			<build type="doxygen-entry-point" value="test_suite_group"/>
 			<build type="include-path" value="."/>
 			<build type="header-file" subtype="api" value="unit_test/suite.h"/>
@@ -343,6 +353,29 @@
 			Default toolchain settings for SAM.
 			</info>
 			<device-support value="sam"/>
+
+			<!-- ARMGCC -->
+			<toolchain-config name="armgcc.compiler.optimization.OtherFlags" value="-fdata-sections" toolchain="armgcc"/>
+			<toolchain-config name="armgcc.compiler.optimization.PrepareFunctionsForGarbageCollection" value="True" toolchain="armgcc"/>
+			<toolchain-config name="armgcc.compiler.warnings.AllWarnings" value="True" toolchain="armgcc"/>
+			<toolchain-config name="armgcc.linker.optimization.GarbageCollectUnusedSections" value="True" toolchain="armgcc"/>
+			<!-- Compiler flags are added to this config -->
+			<toolchain-config name="armgcc.compiler.miscellaneous.OtherFlags" value="-pipe -fno-strict-aliasing -Wall -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -std=gnu99 -ffunction-sections -fdata-sections -Wchar-subscripts -Wcomment -Wformat=2 -Wimplicit-int -Wmain -Wparentheses -Wsequence-point -Wreturn-type -Wswitch -Wtrigraphs -Wunused -Wuninitialized -Wunknown-pragmas -Wfloat-equal -Wundef -Wshadow -Wbad-function-cast -Wwrite-strings -Wsign-compare -Waggregate-return  -Wmissing-declarations -Wformat -Wmissing-format-attribute -Wno-deprecated-declarations -Wpacked -Wredundant-decls -Wnested-externs -Wlong-long -Wunreachable-code -Wcast-align --param max-inline-insns-single=500" toolchain="armgcc"/>
+			<!-- Linker flags, startup label and stack/heap size settings are added to this config -->
+			<toolchain-config name="armgcc.linker.miscellaneous.LinkerFlags" value="-Wl,--entry=Reset_Handler -Wl,--cref -mthumb" toolchain="armgcc"/>
+			<!-- Define symbols are added to this config, per workaround for AVRSV-1972 and AVRSV-2180 -->
+			<toolchain-config name="armgcc.preprocessingassembler.general.AssemblerFlags" value="" toolchain="armgcc"/>
+			<!-- Standard library settings for linker -->
+			<toolchain-config name="armgcc.linker.general.NoStartupOrDefaultLibs" value="False" toolchain="armgcc"/>
+			<toolchain-config name="armgcc.linker.general.DoNotUseDefaultLibraries" value="False" toolchain="armgcc"/>
+			<toolchain-config name="armgcc.linker.general.DoNotUseStandardStartFiles" value="False" toolchain="armgcc"/>
+		</module>
+
+		<module type="build-specific" id="common.utils.toolchain_config#sam0" caption="Toolchain configuration defaults for SAM0">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			Default toolchain settings for SAM0.
+			</info>
 			<device-support value="sam0"/>
 
 			<!-- ARMGCC -->
@@ -360,6 +393,7 @@
 			<toolchain-config name="armgcc.linker.general.NoStartupOrDefaultLibs" value="False" toolchain="armgcc"/>
 			<toolchain-config name="armgcc.linker.general.DoNotUseDefaultLibraries" value="False" toolchain="armgcc"/>
 			<toolchain-config name="armgcc.linker.general.DoNotUseStandardStartFiles" value="False" toolchain="armgcc"/>
+			<toolchain-config name="armgcc.linker.general.UseNewlibNano" value="True" toolchain="armgcc"/>
 		</module>
 	</select-by-device>
 </asf>

@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.usb.class.cdc.device.example4" caption="USB Device CDC Echo Example">
+		<module type="application" id="common.services.usb.class.cdc.device.example4#0" caption="USB Device CDC Echo Example">
+			<info type="description" value="summary">
+			Provide an application example of USB Communication Device Class (CDC) implementation: an echo application by USB Device CDC Class Interface
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="include-path" value="."/>
+			<require idref="sam0.drivers.system"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="samd11"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

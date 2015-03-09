@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.rtc.quick_start_calendar_polled" caption="Quick Start for the SAM D20/D21/R21 RTC Calendar Driver (Polled)">
+	<module type="application" id="sam0.drivers.rtc.quick_start_calendar_polled" caption="Quick Start for the SAM RTC Calendar Driver (Polled)">
 		<info type="description" value="summary">
 		Quick start guide for the RTC Calendar (Polled Mode) driver demonstrating configuration and initialization.
 		</info>
@@ -8,8 +8,6 @@
 		<build type="include-path" value="."/>
 		<require idref="sam0.drivers.rtc"/>
 		<require idref="sam0.drivers.port"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
-		<device-support value="samr21"/>
+		<device-support value="sam0"/>
 	</module>
 </asf>

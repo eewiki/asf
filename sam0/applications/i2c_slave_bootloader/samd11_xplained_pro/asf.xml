@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="I2C Slave bootloader for SAM D11" id="sam0.applications.i2c_slave_bootloader.samd11_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_bootloader.h"/>
+		<require idref="board.samd11_xplained_pro"/>
+		<require idref="sam0.applications.i2c_slave_bootloader"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen-v2"/>
+		<device-support value="atsamd11d14am"/>
+		<config name="config.sam0.drivers.sercom.i2c.slave" value="polled"/>
+	</project>
+</asf>

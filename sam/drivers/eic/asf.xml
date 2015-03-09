@@ -11,10 +11,24 @@
 		<build type="header-file" subtype="api" value="eic.h"/>
 		<build type="include-path" value="."/>
 		<build type="doxygen-entry-point" value="sam_drivers_eic_group"/>
+		<build type="doxygen-quick-start" value="sam_eic_quickstart"/>
+		<build type="doxygen-example-path" value=" example"/>
 		<device-support value="sam4l"/>
 		<require idref="common.services.basic.clock"/>
 		<require idref="common.services.basic.sleepmgr"/>
 		<require idref="sam.utils"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		<info type="appnote" value="AT07901"/>
+		<info type="keyword" value="pdf">
+			<keyword value="EIC" />
+			<keyword value="Interrupt"/>
+			<keyword value="Controller"/>
+			<keyword value="External"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver to
+			interface to the EIC on SAM.
+		</info>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-sam4l"/>
 	</module>
 </asf>

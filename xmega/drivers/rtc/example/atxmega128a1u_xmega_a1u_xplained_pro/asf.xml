@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Drivers RTC Example for XMEGA-A1U Xplained Pro" id="xmega.drivers.rtc.example.xmega_a1u_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_rtc.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="xmega.drivers.rtc.example"/>
+		<require idref="board.xmega_a1u_xplained_pro"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1u"/>
+	</project>
+</asf>

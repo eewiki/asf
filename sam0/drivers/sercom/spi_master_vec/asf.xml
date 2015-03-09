@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam0.drivers.sercom.spi_master_vec" caption="SERCOM SPI - Serial Peripheral Interface (Master Mode, Vectored I/O)">
 		<info type="description" value="summary">
-			SPI master driver for the SAM D20/D21/R21 SERCOM module with vectored I/O,
+			SPI master driver for the SAM SERCOM module with vectored I/O,
 			also known as scatter/gather I/O.
 			Vectored I/O means that the driver can transfer bytes to and/or from
 			a series of non-contiguous buffers in a single transaction, without
@@ -22,11 +22,13 @@
 		<build type="module-config" subtype="path" value="module-config"/>
 		<build type="module-config" subtype="required-header-file" value="conf_spi_master_vec.h"/>
 		<build type="module-config" subtype="required-header-file" value="conf_spi.h"/>
-		
+
 		<build type="include-path" value="."/>
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="samd10"/>
+		<device-support value="samd11"/>
 		<require idref="sam0.utils"/>
 		<require idref="sam0.drivers.sercom"/>
 		<require idref="sam0.drivers.sercom.spi"/>

@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.applications.sercom-usart-spi-i2c-slave-demo" caption="USART and SPI slave/I2C Slave Demo">
+		<info type="description" value="summary">
+			The demo will show how to communicate between SPI/I2C slave with master and display info by USART with Xplained Pro board.
+		</info>
+		<device-support value="sam0"/>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.sercom.i2c.slave"/>
+		<require idref="sam0.drivers.sercom.usart"/>
+		<require idref="sam0.drivers.sercom.spi"/>
+		<require idref="sam0.drivers.system"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,7 +1,7 @@
 Atmel Software Framework (ASF)
 ==============================
 
-The Atmel® Software Framework (ASF) is a collection of embedded software for Atmel flash MCU (www.atmel.com/asf)
+The Atmel?Software Framework (ASF) is a collection of embedded software for Atmel flash MCU (www.atmel.com/asf)
 
 * It simplifies the usage of microcontrollers, providing an abstraction to the hardware and high-value middlewares
 * ASF is designed to be used for evaluation, prototyping, design and production phases

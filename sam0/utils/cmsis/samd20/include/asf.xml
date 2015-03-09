@@ -14,7 +14,9 @@
 		<build type="header-file" value="samd20g15.h"/>
 		<build type="header-file" value="samd20g16.h"/>
 		<build type="header-file" value="samd20g17.h"/>
+		<build type="header-file" value="samd20g17u.h"/>
 		<build type="header-file" value="samd20g18.h"/>
+		<build type="header-file" value="samd20g18u.h"/>
 		<build type="header-file" value="samd20j14.h"/>
 		<build type="header-file" value="samd20j15.h"/>
 		<build type="header-file" value="samd20j16.h"/>

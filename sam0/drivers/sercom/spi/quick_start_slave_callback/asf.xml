@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.sercom.spi.quick_start_slave_callback" caption="Quick Start for the SAM D20/D21/R21 SERCOM SPI Driver (Slave Callback)">
+	<module type="application" id="sam0.drivers.sercom.spi.quick_start_slave_callback" caption="Quick Start for the SAM SERCOM SPI Driver (Slave Callback)">
 		<info type="description" value="summary">
 		Quick start guide for the SERCOM SPI interface module demonstrating module configuration for slave in callback mode.
 		</info>
@@ -10,5 +10,7 @@
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="samd10"/>
+		<device-support value="samd11"/>
 	</module>
 </asf>

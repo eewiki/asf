@@ -1,20 +1,40 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam.drivers.acc" caption="ACC - Analog Comparator Controller">
 		<info type="description" value="summary">
-			The Analog Comparator compares two voltages and the result of this comparison gives a compare output. The user can select a high-speed or low-power option. Additionally, the hysteresis level, edge detection and polarity are configurable.
+			The Analog Comparator compares two voltages and the result of this
+			comparison gives a compare output. The user can select a high-speed
+			or low-power option. Additionally, the hysteresis level, edge detection
+			and polarity are configurable.
 		</info>
 		<info type="keyword" value="technology">
 			<keyword value="Analog Conversion"/>
 		</info>
+		
+		<info type="appnote" value="AT07899"/>		
+		<info type="keyword" value="pdf">
+			<keyword value="Analog" />
+			<keyword value="Voltage" />
+			<keyword value="Opamp" />			
+		</info>
+		
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver for
+			interfacing to the Analog Comparator on SAM.
+		</info>
+		
 		<build type="c-source" value="acc.c"/>
 		<build type="header-file" subtype="api" value="acc.h"/>
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="sam_drivers_acc_group"/>
+		
+		<build type="doxygen-example-path" value="acc_example"/>
+		<build type="header-file" value="acc_example/acc_example.h"/>
+		
+		<build type="doxygen-entry-point" value="asfdoc_sam_drivers_acc_group"/>
 		<device-support value="sam3s"/>
 		<device-support value="sam3sd8"/>
 		<device-support value="sam4s"/>
 		<device-support value="sam4e"/>
 		<require idref="sam.utils"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-sam3s"/>
 	</module>
 </asf>

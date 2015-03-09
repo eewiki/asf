@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam0.services.eeprom_emulator" caption="EEPROM Emulator Service">
 		<info type="description" value="summary">
-			EEPROM Emulator service for SAM D20/D21/R21, providing a EEPROM-like safe
+			EEPROM Emulator service for SAM, providing a EEPROM-like safe
 			non-volatile data storage in FLASH memory for user application
 			configuration data.
 		</info>
@@ -16,7 +16,7 @@
 		</info>
 
 		<info type="description" value="pdf">
-			This document describes how to use the EEPROM on the SAM D20/D21/R21, both the ASF driver and the peripheral itself.
+			This document describes how to use the EEPROM on the SAM, both the ASF driver and the peripheral itself.
 		</info>
 
 		<build type="include-path" value="."/>

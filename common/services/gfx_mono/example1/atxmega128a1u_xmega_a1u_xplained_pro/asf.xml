@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Monochrome graphic library example for XMEGA-A1U Xplained Pro" id="common.services.gfx_mono.example1.xmega_a1u_xplained_pro">
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.spi_master_type" value="standard_spi"/>
+		<config name="config.gfx_mono.display" value="ug_2832hsweg04"/>
+		<require idref="common.services.gfx_mono.example1"/>
+		<require idref="board.xmega_a1u_xplained_pro"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1u"/>		
+	</project>
+</asf>

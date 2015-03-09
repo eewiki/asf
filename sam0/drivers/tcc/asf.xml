@@ -2,7 +2,7 @@
 
 	<select-by-config id="sam0.drivers.tcc" name="config.sam0.drivers.tcc" caption="TCC - Timer Counter for Control Applications" default="callback">
 		<info type="description" value="summary">
-		  Driver for the SAM D21/R21 Timer/Counter for Control Applications module.
+		  Driver for the SAM Timer/Counter for Control Applications module.
 		  Provides a unified interface for the configuration and management of
 		  the device's hardware timers.
 		</info>
@@ -35,6 +35,8 @@
 
 			<device-support value="samd21" />
 			<device-support value="samr21" />
+			<device-support value="samd10" />
+			<device-support value="samd11" />
 
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />
@@ -59,7 +61,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Timer Counter for Control Applications on the
-				SAM D21/R21, both the ASF driver and the peripheral itself.
+				SAM, both the ASF driver and the peripheral itself.
 			</info>
 
 			<build name="TCC_ASYNC" type="define" value="true" />
@@ -96,6 +98,8 @@
 
 			<device-support value="samd21" />
 			<device-support value="samr21" />
+			<device-support value="samd10" />
+			<device-support value="samd11" />
 
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />

@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="meta" id="sam0.drivers.system.clock.appnote" caption="SYSTEM - Clock Management Application Note">
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21/R21 Clock management units. Provides a unified
+			Driver for the SAM Clock management units. Provides a unified
 			interface for the configuration and management of the various clocks
 			in the device, including the bus and generic peripheral clocks.
 		</info>
@@ -20,7 +20,7 @@
 
 		<info type="description" value="pdf">
 			This document describes how to use the Clock and Generic Clock on
-			the SAM D20/D21/R21, both the ASF driver and the peripheral itself.
+			the SAM, both the ASF driver and the peripheral itself.
 		</info>
 
 		<build type="doxygen-entry-point" value="asfdoc_sam0_system_clock_group"/>
@@ -155,6 +155,59 @@
 			<require idref="sam0.utils"/>
 
 			<device-support value="samr21"/>
+		</module>
+
+		<module type="driver" id="sam0.drivers.system.clock#samd10" caption="SYSTEM - Clock Management for SAMD10">
+			<info type="description" value="summary">
+				Driver for the SAM D10 Clock management units. Provides a unified
+				interface for the configuration and management of the various clocks
+				in the device, including the bus and generic peripheral clocks.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks" />
+			</info>
+
+			<build type="include-path" value="."/>
+			<build type="include-path" value="clock_samd10_d11/"/>
+
+			<build type="header-file" subtype="api" value="clock.h"/>
+			<build type="header-file" subtype="api" value="gclk.h"/>
+			<build type="header-file" value="clock_samd10_d11/clock_config_check.h" />
+			<build type="c-source" value="clock_samd10_d11/clock.c"/>
+			<build type="c-source" value="clock_samd10_d11/gclk.c"/>
+
+			<build type="module-config" subtype="path" value="clock_samd10_d11/module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_clocks.h"/>
+			<require idref="sam0.drivers.system.interrupt"/>
+			<require idref="sam0.utils"/>
+
+			<device-support value="samd10"/>
+		</module>
+		<module type="driver" id="sam0.drivers.system.clock#samd11" caption="SYSTEM - Clock Management for SAMD11">
+			<info type="description" value="summary">
+				Driver for the SAM D11 Clock management units. Provides a unified
+				interface for the configuration and management of the various clocks
+				in the device, including the bus and generic peripheral clocks.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks" />
+			</info>
+
+			<build type="include-path" value="."/>
+			<build type="include-path" value="clock_samd10_d11/"/>
+
+			<build type="header-file" subtype="api" value="clock.h"/>
+			<build type="header-file" subtype="api" value="gclk.h"/>
+			<build type="header-file" value="clock_samd10_d11/clock_config_check.h" />
+			<build type="c-source" value="clock_samd10_d11/clock.c"/>
+			<build type="c-source" value="clock_samd10_d11/gclk.c"/>
+
+			<build type="module-config" subtype="path" value="clock_samd10_d11/module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_clocks.h"/>
+			<require idref="sam0.drivers.system.interrupt"/>
+			<require idref="sam0.utils"/>
+
+			<device-support value="samd11"/>
 		</module>
 	</select-by-device>
 </asf>

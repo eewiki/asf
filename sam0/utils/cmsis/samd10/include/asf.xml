@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.utils.cmsis.samd10.include" caption="SAMD10 part definitions">
+		<info type="description" value="summary">
+		SAMD10 device definitions.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="samd10.h"/>
+		<build type="header-file" value="samd10c12a.h"/>
+		<build type="header-file" value="samd10c13a.h"/>
+		<build type="header-file" value="samd10c14a.h"/>
+		<build type="header-file" value="samd10d12as.h"/>
+		<build type="header-file" value="samd10d13as.h"/>
+		<build type="header-file" value="samd10d14as.h"/>
+		<build type="header-file" value="samd10d12am.h"/>
+		<build type="header-file" value="samd10d13am.h"/>
+		<build type="header-file" value="samd10d14am.h"/>	
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samd10"/>
+	</module>
+</asf>

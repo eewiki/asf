@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam0.drivers.port" caption="PORT - GPIO Pin Control">
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21/R21 PORT module. Provides a unified interface for
+			Driver for the SAM PORT module. Provides a unified interface for
 			the configuration and management of the physical device GPIO pins,
 			including input/output state control.
 		</info>
@@ -20,7 +20,7 @@
 
 		<info type="description" value="pdf">
 			This document describes how to use the Port Controller on the
-			SAM D20/D21, both the ASF driver and the peripheral itself.
+			SAM, both the ASF driver and the peripheral itself.
 		</info>
 
 		<build type="include-path" value="."/>
@@ -33,10 +33,8 @@
 		<build type="doxygen-example-path" value="quick_start"/>
 		<build type="doxygen-quick-start" value="asfdoc_sam0_port_exqsg"/>
 
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
-		<device-support value="samr21"/>
-		
+		<device-support value="sam0"/>
+
 		<require idref="sam0.utils"/>
 		<require idref="sam0.drivers.system.pinmux"/>
 

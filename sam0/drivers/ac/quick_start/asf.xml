@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.ac.quick_start" caption="Quick Start for the SAM D20/D21/R21 AC Driver (Polled)">
+	<module type="application" id="sam0.drivers.ac.quick_start" caption="Quick Start for the SAM AC Driver (Polled)">
 		<info type="description" value="summary">
 		Quick start guide for the Analog Comparator module demonstrating module configuration.
 		</info>
@@ -12,5 +12,7 @@
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="samd10"/>
+		<device-support value="samd11"/>
 	</module>
 </asf>

@@ -1,16 +1,39 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam.drivers.tc" caption="TC - Timer Counter">
 		<info type="description" value="summary">
-			The Timer Counter includes three identical 16-bit Timer Counter channels. Each channel can be independently programmed to perform a wide range of functions including frequency measurement, event counting, interval measurement, pulse generation, delay timing and pulse width modulation.
+			Driver for the TC (Timer Counter).
+			The Timer Counter includes three identical 16-bit Timer Counter channels.
+			Each channel can be independently programmed to perform a wide range of
+			functions including frequency measurement, event counting, interval
+			measurement, pulse generation, delay timing and pulse width modulation.
 		</info>
 		<info type="keyword" value="technology">
 			<keyword value="Timers"/>
 		</info>
+		
+		<info type="appnote" value="AT07898"/>		
+		<info type="keyword" value="pdf">
+			<keyword value="Timers"/>
+		</info>
+		
+		<info type="description" value="pdf">
+			This application note describes how to use the ASF driver for
+			interfacing to the Timer Counter on SAM4.
+		</info>
+		
 		<build type="c-source" value="tc.c"/>
 		<build type="header-file" subtype="api" value="tc.h"/>
 		<build type="include-path" value="."/>
+		
+		<build type="doxygen-entry-point" value="asfdoc_sam_drivers_tc_group"/>
+		
+		<build type="doxygen-example-path" value="tc_capture_waveform_example"/>
+		<build type="header-file" value="tc_capture_waveform_example/tc_capture_waveform_example.h"/>
+		<build type="doxygen-example-path" value="tc_capture_waveform_example/sam4e16e_sam4e_ek"/>
+		<build type="header-file" value="tc_capture_waveform_example/sam4e16e_sam4e_ek/conf_board.h"/>
+			
 		<device-support value="sam"/>
-		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
-		<build type="doxygen-entry-point" value="sam_drivers_tc_group"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-sam3s"/>
+
 	</module>
 </asf>

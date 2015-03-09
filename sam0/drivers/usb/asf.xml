@@ -1,36 +1,70 @@
 <asf xmlversion="1.0">
-	<module type="driver" id="sam0.drivers.usb" caption="USB - Universal Serial Bus">
-		<info type="description" value="summary">
-			Driver for the SAM D21/R21 Universal Serial Bus module. Provides a
-			low level interface for the configuration and management of the
-			module.
-		</info>
+	<select-by-device id="sam0.drivers.usb" caption="USB - Universal Serial Bus">
+		<module type="driver" id="sam0.drivers.usb#0" caption="USB - Universal Serial Bus">
+			<info type="description" value="summary">
+				Driver for the SAM D21/R21 Universal Serial Bus module. Provides a
+				low level interface for the configuration and management of the
+				module.
+			</info>
 
-		<info type="gui-flag" value="hidden"/>
-		<info type="keyword" value="technology">
-			<keyword value="USB"/>
-			<keyword value="Communication" />
-		</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication" />
+			</info>
 
-		<build type="include-path" value="."/>
-		<build type="c-source" value="usb.c"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="usb.c"/>
 
-		<build type="header-file" subtype="api" value="usb.h"/>
+			<build type="header-file" subtype="api" value="usb.h"/>
 
-		<device-support value="samd21"/>
-		<device-support value="samr21" />
+			<device-support value="samd21"/>
+			<device-support value="samr21" />
 
-		<require idref="sam0.utils"/>
-		<require idref="sam0.drivers.system"/>
+			<require idref="sam0.utils"/>
+			<require idref="sam0.drivers.system"/>
 
-		<build type="doxygen-enable-section" value="USB_DEVICE_MODE"/>
-		<build type="doxygen-enable-section" value="USB_HOST_MODE"/>
-		<build type="doxygen-enable-section" value="USB_LS_MODE"/>
-		<build type="doxygen-enable-section" value="USB_LPM_MODE"/>
+			<build type="doxygen-enable-section" value="USB_DEVICE_MODE"/>
+			<build type="doxygen-enable-section" value="USB_HOST_MODE"/>
+			<build type="doxygen-enable-section" value="USB_LS_MODE"/>
+			<build type="doxygen-enable-section" value="USB_LPM_MODE"/>
 
-		<build type="doxygen-entry-point" value="asfdoc_sam0_usb_group" />
+			<build type="doxygen-entry-point" value="asfdoc_sam0_usb_group" />
 
-		<generator value="doxygen-module-v2" default-mcu="unspecified-samd21"/>
+			<generator value="doxygen-module-v2" default-mcu="unspecified-samd21"/>
 
-	</module>
+		</module>
+		<module type="driver" id="sam0.drivers.usb#1" caption="USB - Universal Serial Bus">
+			<info type="description" value="summary">
+				Driver for the SAM D11 Universal Serial Bus module. Provides a
+				low level interface for the configuration and management of the
+				module.
+			</info>
+
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication" />
+			</info>
+
+			<build type="include-path" value="."/>
+			<build type="c-source" value="usb.c"/>
+
+			<build type="header-file" subtype="api" value="usb.h"/>
+
+			<device-support value="samd11"/>
+
+			<require idref="sam0.utils"/>
+			<require idref="sam0.drivers.system"/>
+
+			<build type="doxygen-enable-section" value="USB_DEVICE_MODE"/>
+			<build type="doxygen-enable-section" value="USB_LS_MODE"/>
+			<build type="doxygen-enable-section" value="USB_LPM_MODE"/>
+
+			<build type="doxygen-entry-point" value="asfdoc_sam0_usb_group" />
+
+			<generator value="doxygen-module-v2" default-mcu="unspecified-samd11"/>
+
+		</module>
+	</select-by-device>
 </asf>

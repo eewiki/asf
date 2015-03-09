@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<board id="board.xmega_a1u_xplained_pro" vendor="Atmel" caption="XMEGA-A1U Xplained Pro">
+		<build type="define" name="BOARD" value="XMEGA_A1U_XPLAINED_PRO"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="c-source" value="board_init.c"/>
+		<build type="header-file" subtype="api" value="xmega_a1u_xplained_pro.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x20000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="common.utils"/>
+		<require idref="xmega.drivers.ioport"/>
+		<device-support value="atxmega128a1u"/>
+	</board>
+</asf>

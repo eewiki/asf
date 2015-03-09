@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="SAM D11 ADC VCC Monitor Example" id="sam0.applications.vcc_monitor.samd11_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<require idref="board.samd11_xplained_pro"/>
+		<require idref="sam0.applications.sleepwalking_adc"/>
+		<config name="config.sam0.drivers.adc" value="callback"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen-v2"/>
+		<device-support value="atsamd11d14am"/>
+		<config name="config.sam0.drivers.rtc" value="count_polled"/>
+		<build type="linker-config" subtype="flags" value="-lm" toolchain="armgcc"/>
+	</project>
+</asf>

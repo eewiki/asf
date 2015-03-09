@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.utils.cmsis.samd11.include.instance" caption="SAMD11 instance definitions">
+		<info type="description" value="summary">
+		SAMD11 PIO instance definitions.
+		</info>
+		<build type="header-file" value="ac.h"/>
+		<build type="header-file" value="adc.h"/>
+		<build type="header-file" value="dac.h"/>
+		<build type="header-file" value="dmac.h"/>
+		<build type="header-file" value="dsu.h"/>
+		<build type="header-file" value="eic.h"/>
+		<build type="header-file" value="evsys.h"/>
+		<build type="header-file" value="gclk.h"/>
+		<build type="header-file" value="mtb.h"/>
+		<build type="header-file" value="nvmctrl.h"/>
+		<build type="header-file" value="pac0.h"/>
+		<build type="header-file" value="pac1.h"/>
+		<build type="header-file" value="pac2.h"/>
+		<build type="header-file" value="pm.h"/>
+		<build type="header-file" value="port.h"/>
+		<build type="header-file" value="rtc.h"/>
+		<build type="header-file" value="sercom0.h"/>
+		<build type="header-file" value="sercom1.h"/>
+		<build type="header-file" value="sercom2.h"/>
+		<build type="header-file" value="sysctrl.h"/>
+		<build type="header-file" value="tc1.h"/>
+		<build type="header-file" value="tc2.h"/>
+		<build type="header-file" value="tcc0.h"/>
+		<build type="header-file" value="usb.h"/>
+		<build type="header-file" value="wdt.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samd11"/>
+	</module>
+</asf>

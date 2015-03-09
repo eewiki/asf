@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device HID Mouse for SAM D11 Xplained Pro" id="common.services.usb.class.hid.device.mouse.example.samd11_xpro">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.device" value="hid_mouse"/>
+		<require idref="common.services.usb.class.hid.device.mouse.example"/>
+		<require idref="sam0.drivers.extint"/>
+		<require idref="board.samd11_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.sys_stack_size" value="0x600"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.stack_size" value="0x600"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<toolchain-config name="armgcc.linker.miscellaneous.LinkerFlags" value="-Wl,--defsym,STACK_SIZE=0x600" toolchain="armgcc"/>
+		<device-support value="atsamd11d14am"/>
+	</project>
+</asf>

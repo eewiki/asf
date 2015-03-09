@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="application" id="sam0.applications.dac_sound_player" caption="Sound Player Example">
 		<info type="description" value="summary">
-		Plays a embedded raw sound recording using the DAC of the SAM D20/D21 devices.
+		Plays a embedded raw sound recording using the DAC of the SAM devices.
 		</info>
 
 		<info type="keyword" value="technology">

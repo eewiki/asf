@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.wdt" name="config.sam0.drivers.wdt" caption="WDT - Watchdog Timer" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21/R21 WDT module. Provides a unified interface for
+			Driver for the SAM WDT module. Provides a unified interface for
 			the configuration and management of the Watchdog module, including
 			timeout period, window period and early warning indications.
 		</info>
@@ -52,7 +52,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Watchdog Timer on the
-				SAM D20/D21/R21, both the ASF driver and the peripheral itself.
+				SAM, both the ASF driver and the peripheral itself.
 			</info>
 
 			<build type="include-path" value="."/>

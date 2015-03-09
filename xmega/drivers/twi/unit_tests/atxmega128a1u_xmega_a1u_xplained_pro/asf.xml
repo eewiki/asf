@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project id="xmega.drivers.twi.unit_tests.xmega_a1u_xplained_pro" caption="TWI unit tests on XMEGA-A1U Xplained Pro" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<require idref="xmega.drivers.twi.unit_tests"/>
+		<require idref="board.xmega_a1u_xplained_pro"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<generator value="as5_8"/>
+		<device-support value="atxmega128a1u"/>
+	</project>
+</asf>

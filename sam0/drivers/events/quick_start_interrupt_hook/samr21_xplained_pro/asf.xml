@@ -4,7 +4,7 @@
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_clocks.h"/>
 		<build type="header-file" value="conf_board.h"/>
-
+		<build type="header-file" value="conf_qs_events_interrupt_hook.h"/>
 		<config name="config.sam0.drivers.tc" value="polled" />
 
 		<require idref="board.samr21_xplained_pro"/>

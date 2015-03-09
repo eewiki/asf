@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.i2s" name="config.sam0.drivers.i2s" caption="I2S - Inter-IC Sound Controller" default="callback">
 		<info type="description" value="summary">
-		  Driver for the SAM D21 Inter-IC Sound Controller (I2S) module.
+		  Driver for the SAM Inter-IC Sound Controller (I2S) module.
 		  Provides a unified interface for the configuration and management of
 		  the device's I2S hardware.
 		</info>
@@ -53,7 +53,7 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the Inter-IC Sound Controller on the SAM D21,
+				This document describes how to use the Inter-IC Sound Controller on the SAM,
 				both the ASF driver and the peripheral itself.
 			</info>
 

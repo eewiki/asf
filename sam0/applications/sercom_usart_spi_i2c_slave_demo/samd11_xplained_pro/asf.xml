@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="SAM D11 USART and SPI slave/I2C Slave Demo" id="sam0.applications.sercom-usart-spi-i2c-slave-demo.samd11_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+		<require idref="board.samd11_xplained_pro"/>
+		<require idref="sam0.applications.sercom-usart-spi-i2c-slave-demo"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsamd11d14am"/>
+	</project>
+</asf>

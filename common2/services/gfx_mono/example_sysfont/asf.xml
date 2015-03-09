@@ -11,6 +11,8 @@
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="samd10"/>
+		<device-support value="samd11"/>
 		<require idref="common2.services.gfx_mono"/>
 		<require idref="common2.services.gfx_mono.font"/>
 	</module>

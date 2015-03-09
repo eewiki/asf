@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.tc.quick_start_callback" caption="Quick Start for the SAM D20/D21/R21 TC Driver (Callback)">
+	<module type="application" id="sam0.drivers.tc.quick_start_callback" caption="Quick Start for the SAM TC Driver (Callback)">
 		<info type="description" value="summary">
 		Quick start guide for the Timer/Counter module demonstrating module configuration and basic use.
 		</info>

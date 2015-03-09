@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.system.clock.quick_start_gclk" caption="Quick Start for the SAM D20/D21/R21 SYSTEM Generic Clock Source Driver">
+	<module type="application" id="sam0.drivers.system.clock.quick_start_gclk" caption="Quick Start for the SAM SYSTEM Generic Clock Source Driver">
 		<info type="description" value="summary">
 		Quick start guide for the Generic Clock module demonstrating clock configuration.
 		</info>
@@ -11,5 +11,7 @@
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="samd10"/>
+		<device-support value="samd11"/>
 	</module>
 </asf>

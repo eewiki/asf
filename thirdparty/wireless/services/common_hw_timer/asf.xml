@@ -8,134 +8,137 @@
 		</info>
 
 		<module type="meta" id="thirdparty.wireless.common_services.common_hw_timer#0" caption="Common HW Timer - XMEGA implementation">
-            <build type="header-file"   value="common_hw_timer.h"/>
-            <build type="include-path"  value="."/>
+			<build type="header-file"   value="common_hw_timer.h"/>
+			<build type="include-path"  value="."/>
 
-            <build type="c-source"      value="xmega/hw_timer.c"/>
-            <build type="header-file"   value="xmega/hw_timer.h"/>
-            <build type="include-path"  value="xmega/"/>
-            <build type="library" subtype="user" value="xmega/lib/xmegaa3_lib_hw_timer.r90" toolchain="iarew"/>
+			<build type="c-source"      value="xmega/hw_timer.c"/>
+			<build type="header-file"   value="xmega/hw_timer.h"/>
+			<build type="include-path"  value="xmega/"/>
+			<build type="library" subtype="user" value="xmega/lib/xmegaa3_lib_hw_timer.r90" toolchain="iarew"/>
 			<build type="library" subtype="user" value="xmega/lib/libxmegaa3_hw_timer_lib.a" toolchain="avrgcc"/>
 
-            <build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
-            <build type="module-config" subtype="path" value="module_config"/>
-            <build type="doxygen-entry-point" value="common_hw_timer_group"/>
-            <require idref="xmega.drivers.tc"/>
-            <require idref="common.services.basic.clock"/>
-            <device-support-alias value="xmega_hw_timer_support"/>
+			<build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="common_hw_timer_group"/>
+			<require idref="xmega.drivers.tc"/>
+			<require idref="common.services.basic.clock"/>
+			<device-support-alias value="xmega_hw_timer_support"/>
 		</module>
 
 		<module type="meta" id="thirdparty.wireless.common_services.common_hw_timer#1" caption="Common HW Timer - UC3 implementation">
-            <build type="header-file"   value="common_hw_timer.h"/>
-            <build type="include-path"  value="."/>
+			<build type="header-file"   value="common_hw_timer.h"/>
+			<build type="include-path"  value="."/>
 
-            <build type="c-source"      value="uc3/hw_timer.c"/>
-            <build type="header-file"   value="uc3/hw_timer.h"/>
-            <build type="include-path"  value="uc3/"/>
-            <build type="library" subtype="user" value="uc3/lib/uc3_lib_hw_timer.r82" toolchain="iarew32"/>
+			<build type="c-source"      value="uc3/hw_timer.c"/>
+			<build type="header-file"   value="uc3/hw_timer.h"/>
+			<build type="include-path"  value="uc3/"/>
+			<build type="library" subtype="user" value="uc3/lib/uc3_lib_hw_timer.r82" toolchain="iarew32"/>
 			<build type="library" subtype="user" value="uc3/lib/libuc3_lib_hw_timer.a" toolchain="avr32gcc"/>
 
-            <build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
-            <build type="module-config" subtype="path" value="module_config"/>
-            <build type="doxygen-entry-point" value="common_hw_timer_group"/>
-            <require idref="avr32.drivers.tc"/>
-            <require idref="common.services.basic.clock"/>
-            <device-support-alias value="uc3_hw_timer_support"/>
+			<build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="common_hw_timer_group"/>
+			<require idref="avr32.drivers.tc"/>
+			<require idref="common.services.basic.clock"/>
+			<device-support-alias value="uc3_hw_timer_support"/>
 		</module>
 
 		<module type="meta" id="thirdparty.wireless.common_services.common_hw_timer#2" caption="Common HW Timer - SAM implementation">
-            <build type="header-file"   value="common_hw_timer.h"/>
-            <build type="include-path"  value="."/>
+			<build type="header-file"   value="common_hw_timer.h"/>
+			<build type="include-path"  value="."/>
 
-            <build type="c-source"      value="sam/hw_timer.c"/>
-            <build type="header-file"   value="sam/hw_timer.h"/>
-            <build type="include-path"  value="sam/"/>
-            <build type="library" subtype="user" value="sam/lib/sam4l_lib_hw_timer.a" toolchain="iarewarm"/>
+			<build type="c-source"      value="sam/hw_timer.c"/>
+			<build type="header-file"   value="sam/hw_timer.h"/>
+			<build type="include-path"  value="sam/"/>
+			<build type="library" subtype="user" value="sam/lib/sam4l_lib_hw_timer.a" toolchain="iarewarm"/>
 			<build type="library" subtype="user" value="sam/lib/libsam4l_lib_hw_timer.a" toolchain="armgcc"/>
 
-            <build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
-            <build type="module-config" subtype="path" value="module_config"/>
-            <build type="doxygen-entry-point" value="common_hw_timer_group"/>
+			<build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="common_hw_timer_group"/>
 			<require idref="sam.drivers.tc"/>
-            <require idref="common.services.basic.clock"/>
-            <require idref="common.utils"/>
-            <device-support-alias value="sam_hw_timer_support"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils"/>
+			<device-support-alias value="sam_hw_timer_support"/>
 		</module>
 
 		<module type="meta" id="thirdparty.wireless.common_services.common_hw_timer#3" caption="Common HW Timer - MEGA-RFR2 implementation">
-            <build type="header-file"   value="common_hw_timer.h"/>
-            <build type="include-path"  value="."/>
+			<build type="header-file"   value="common_hw_timer.h"/>
+			<build type="include-path"  value="."/>
 
-            <build type="c-source"      value="mega/hw_timer.c"/>
-            <build type="header-file"   value="mega/hw_timer.h"/>
-            <build type="include-path"  value="mega/"/>
-            <build type="library" subtype="user" value="mega/lib/megarfr2_lib_hw_timer.r90" toolchain="iarew"/>
-            <build type="library" subtype="user" value="mega/lib/libmegarfr2_lib_hw_timer.a" toolchain="avrgcc"/>
+			<build type="c-source"      value="mega/hw_timer.c"/>
+			<build type="header-file"   value="mega/hw_timer.h"/>
+			<build type="include-path"  value="mega/"/>
+			<build type="library" subtype="user" value="mega/lib/megarfr2_lib_hw_timer.r90" toolchain="iarew"/>
+			<build type="library" subtype="user" value="mega/lib/libmegarfr2_lib_hw_timer.a" toolchain="avrgcc"/>
 
-            <build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
-            <build type="module-config" subtype="path" value="module_config"/>
-            <build type="doxygen-entry-point" value="common_hw_timer_group"/>
-            <require idref="thirdparty.wireless.services.mega.drivers.tc"/>
-            <require idref="common.services.basic.clock"/>
-            <device-support-alias value="megarfr2_hw_timer_support"/>
+			<build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="common_hw_timer_group"/>
+			<require idref="thirdparty.wireless.services.mega.drivers.tc"/>
+			<require idref="common.services.basic.clock"/>
+			<device-support-alias value="megarfr2_hw_timer_support"/>
 		</module>
 		<module type="meta" id="thirdparty.wireless.common_services.common_hw_timer#4" caption="Common HW Timer - MEGA-RFA1 implementation">
-            <build type="header-file"   value="common_hw_timer.h"/>
-            <build type="include-path"  value="."/>
+			<build type="header-file"   value="common_hw_timer.h"/>
+			<build type="include-path"  value="."/>
 
-            <build type="c-source"      value="mega/hw_timer.c"/>
-            <build type="header-file"   value="mega/hw_timer.h"/>
-            <build type="include-path"  value="mega/"/>
-            <build type="library" subtype="user" value="mega/lib/megarfa1_lib_hw_timer.r90" toolchain="iarew"/>
-            <build type="library" subtype="user" value="mega/lib/libmegarfa1_lib_hw_timer.a" toolchain="avrgcc"/>
+			<build type="c-source"      value="mega/hw_timer.c"/>
+			<build type="header-file"   value="mega/hw_timer.h"/>
+			<build type="include-path"  value="mega/"/>
+			<build type="library" subtype="user" value="mega/lib/megarfa1_lib_hw_timer.r90" toolchain="iarew"/>
+			<build type="library" subtype="user" value="mega/lib/libmegarfa1_lib_hw_timer.a" toolchain="avrgcc"/>
 
-            <build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
-            <build type="module-config" subtype="path" value="module_config"/>
-            <build type="doxygen-entry-point" value="common_hw_timer_group"/>
-            <require idref="thirdparty.wireless.services.mega.drivers.tc"/>
-            <require idref="common.services.basic.clock"/>
-            <device-support-alias value="megarfa1_hw_timer_support"/>
+			<build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="common_hw_timer_group"/>
+			<require idref="thirdparty.wireless.services.mega.drivers.tc"/>
+			<require idref="common.services.basic.clock"/>
+			<device-support-alias value="megarfa1_hw_timer_support"/>
 		</module>
 
 		<module type="meta" id="thirdparty.wireless.common_services.common_hw_timer#5" caption="Common HW Timer - SAM0 implementation">
-            <build type="header-file"   value="common_hw_timer.h"/>
-            <build type="include-path"  value="."/>
+			<build type="header-file"   value="common_hw_timer.h"/>
+			<build type="include-path"  value="."/>
 
-            <build type="c-source"      value="sam0/hw_timer.c"/>
-            <build type="header-file"   value="sam0/hw_timer.h"/>
-            <build type="include-path"  value="sam0/"/>
-            <build type="library" subtype="user" value="sam0/lib/libsam0_lib_hw_timer.a" toolchain="armgcc"/>
-            <build type="library" subtype="user" value="sam0/lib/sam0_lib_hw_timer.a" toolchain="iarewarm"/>
-            <build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
-            <build type="module-config" subtype="path" value="module_config"/>
-            <build type="doxygen-entry-point" value="common_hw_timer_group"/>
+			<build type="c-source"      value="sam0/hw_timer.c"/>
+			<build type="header-file"   value="sam0/hw_timer.h"/>
+			<build type="include-path"  value="sam0/"/>
+			<build type="library" subtype="user" value="sam0/lib/libsam0_lib_hw_timer.a" toolchain="armgcc"/>
+			<build type="library" subtype="user" value="sam0/lib/sam0_lib_hw_timer.a" toolchain="iarewarm"/>
+			<build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="common_hw_timer_group"/>
 			<require idref="sam0.drivers.tc"/>
 			<require idref="sam0.utils"/>
-            <require idref="sam0.drivers.system.clock"/>
-            <device-support-alias value="sam0_hw_timer_support"/>
-		</module>    </select-by-device>
+			<require idref="sam0.drivers.system.clock"/>
+			<device-support-alias value="sam0_hw_timer_support"/>
+		</module>
+	</select-by-device>
 
-    <device-alias-map name="xmega_hw_timer_support">
-        <device-support value="atxmega256a3"/>
-        <device-support value="atxmega256a3u"/>
-        <device-support value="atxmega256a3bu"/>
-    </device-alias-map>
-    <device-alias-map name="uc3_hw_timer_support">
-        <device-support value="uc3a3_a4"/>
-    </device-alias-map>
-    <device-alias-map name="sam_hw_timer_support">
-        <device-support value="sam4l"/>
-        <device-support value="sam4s"/>
-        <device-support value="sam4e"/>
-    </device-alias-map>
-    <device-alias-map name="sam0_hw_timer_support">
-        <device-support value="sam0"/>
-    </device-alias-map>    
+	<device-alias-map name="xmega_hw_timer_support">
+		<device-support value="atxmega256a3"/>
+		<device-support value="atxmega256a3u"/>
+		<device-support value="atxmega256a3bu"/>
+	</device-alias-map>
+	<device-alias-map name="uc3_hw_timer_support">
+		<device-support value="uc3a3_a4"/>
+	</device-alias-map>
+	<device-alias-map name="sam_hw_timer_support">
+		<device-support value="sam4l"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+	</device-alias-map>
+	<device-alias-map name="sam0_hw_timer_support">
+		<device-support value="samd20"/>
+		<device-support value="samd21"/>
+		<device-support value="samr21"/>
+	</device-alias-map>
 	<device-alias-map name="megarfr2_hw_timer_support">
-        <device-support value="atmega256rfr2"/>
-        <device-support value="atmega2564rfr2"/>
-    </device-alias-map>
-    <device-alias-map name="megarfa1_hw_timer_support">
-        <device-support value="atmega128rfa1"/>
-    </device-alias-map>	
+		<device-support value="atmega256rfr2"/>
+		<device-support value="atmega2564rfr2"/>
+	</device-alias-map>
+	<device-alias-map name="megarfa1_hw_timer_support">
+		<device-support value="atmega128rfa1"/>
+	</device-alias-map>
 </asf>

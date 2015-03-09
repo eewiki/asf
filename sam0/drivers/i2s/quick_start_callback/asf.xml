@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.i2s.quick_start_callback" caption="Quick Start for the SAM D21 I2S Driver (Callback)">
+	<module type="application" id="sam0.drivers.i2s.quick_start_callback" caption="Quick Start for the SAM I2S Driver (Callback)">
 		<info type="description" value="summary">
 		Quick start guide for the Inter-IC Sound Controller (I2S) module
 		demonstrating module configuration and basic use.

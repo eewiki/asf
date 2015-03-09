@@ -31,7 +31,9 @@
 				<build type="include-path"  value="uart/"/>
 				<build type="module-config" subtype="required-header-file" value="conf_sio2host.h"/>
 				<build type="module-config" subtype="path" value="module_config"/>
-				<device-support value="sam0"/>
+				<device-support value="samd20"/>
+				<device-support value="samd21"/>
+				<device-support value="samr21"/>
 				<build type="doxygen-entry-point" value="group_sio2host_uart"/>
 			</module>
 		</select-by-device>

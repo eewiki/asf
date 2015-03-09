@@ -90,6 +90,7 @@
 			XMEGA board drivers.  Provides functions for configuration
 			and using Sensors Xplained boards on the development platform.
 			</info>
+			<require idref="common.services.basic.gpio"/>
 			<device-support value="xmega"/>
 		</module>
 		<module type="meta" id="platform.boards.sensors_xplained#uc3" caption="Sensors - Sensors Xplained UC3 Platform">
