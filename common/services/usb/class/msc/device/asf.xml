@@ -41,6 +41,7 @@
 			<device-support value="sam4e"/>
 			<device-support value="samd21"/>
 			<device-support value="samr21"/>
+			<device-support value="sam4c32e"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>
 		<module type="service" id="common.services.usb.class.msc.device.composite#disable" caption="USB Device MSC disabled">
@@ -95,6 +96,7 @@
 		<device-support value="sam4e"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="sam4c32e"/>
 		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 	</module>
 </asf>

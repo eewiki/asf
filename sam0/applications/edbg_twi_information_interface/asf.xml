@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.applications.edbg_i2c_info_interface" caption="EDBG I2C Information Interface Demo">
+		<info type="description" value="summary">
+			EDBG I2C Information Interface Demo.
+		</info>
+
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.sercom.i2c.master"/>
+		<require idref="sam0.drivers.sercom.usart"/>
+		<require idref="sam0.utils"/>
+		<require idref="sam0.utils.stdio"/>
+		<require idref="sam0.utils.stdio.stdio_serial"/>
+		<device-support value="sam0"/>
+	</module>
+</asf>

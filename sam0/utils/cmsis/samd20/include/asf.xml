@@ -9,6 +9,7 @@
 		<build type="header-file" value="samd20e15.h"/>
 		<build type="header-file" value="samd20e16.h"/>
 		<build type="header-file" value="samd20e17.h"/>
+		<build type="header-file" value="samd20e18.h"/>
 		<build type="header-file" value="samd20g14.h"/>
 		<build type="header-file" value="samd20g15.h"/>
 		<build type="header-file" value="samd20g16.h"/>

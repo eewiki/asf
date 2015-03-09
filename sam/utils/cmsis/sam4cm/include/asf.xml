@@ -15,6 +15,9 @@
 		<build type="header-file" value="system_sam4cm.h"/>
 		<build type="include-path" value="."/>
 		<info type="gui-flag" value="hidden"/>
-		<device-support value="sam4cm"/>
+		<device-support value="sam4cmp8"/>
+		<device-support value="sam4cms8"/>
+		<device-support value="sam4cmp16"/>
+		<device-support value="sam4cms16"/>
 	</module>
 </asf>

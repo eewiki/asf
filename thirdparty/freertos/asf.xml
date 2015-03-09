@@ -11,99 +11,36 @@
 			<device-support value="uc3b"/>
 			<device-support value="uc3c"/>
 			<device-support value="uc3l"/>
+			<device-support value="sam"/>
 			<require idref="common.services.os.freertos"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+			<build type="doxygen-entry-point" value="group_common_services_os_freertos"/>
 		</module>
-		<select-by-device id="thirdparty.os.freertos.version#7.3.0" caption="FreeRTOS - Kernel 7.3.0">
-			<module type="service" id="thirdparty.os.freertos.version#7.3.0#0" caption="FreeRTOS - Kernel 7.3.0">
-				<info type="description" value="summary">
-					FreeRTOS is a popular, portable, open source, royalty free, mini Real Time Kernel.
-					For complete information on FreeRTOS, see www.freertos.org.
-				</info>
-				<build type="module-config" subtype="required-header-file" value="FreeRTOSConfig.h"/>
-				<build type="module-config" subtype="path" value="freertos-7.3.0/module_config"/>
-				<build type="distribute" subtype="license" value="freertos-7.3.0/license/license.txt" />
-				<build type="distribute" subtype="file" value="freertos-7.3.0/readme.txt"/>
-				<build type="distribute" subtype="file" value="freertos-7.3.0/ATMEL-disclaimer.txt"/>
-				<build type="c-source" value="freertos-7.3.0/source/FreeRTOS_CLI.c"/>
-				<build type="c-source" value="freertos-7.3.0/source/list.c"/>
-				<build type="c-source" value="freertos-7.3.0/source/queue.c"/>
-				<build type="c-source" value="freertos-7.3.0/source/tasks.c"/>
-				<build type="c-source" value="freertos-7.3.0/source/timers.c"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/croutine.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/FreeRTOS.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/FreeRTOS_CLI.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/list.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/mpu_wrappers.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/portable.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/projdefs.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/queue.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/semphr.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/StackMacros.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/task.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/timers.h"/>
-				<build type="c-source"     value="freertos-7.3.0/source/portable/gcc/sam/port.c" toolchain="armgcc"/>
-				<build type="header-file"  value="freertos-7.3.0/source/portable/gcc/sam/portmacro.h" toolchain="armgcc"/>
-				<build type="c-source"     value="freertos-7.3.0/source/portable/iar/sam/port.c" toolchain="iarewarm"/>
-				<build type="asm-source"   value="freertos-7.3.0/source/portable/iar/sam/portasm.s" toolchain="iarewarm"/>
-				<build type="header-file"  value="freertos-7.3.0/source/portable/iar/sam/portmacro.h" toolchain="iarewarm"/>
-				<build type="c-source"     value="freertos-7.3.0/source/portable/memmang/heap_4.c"/>
-				<build type="include-path" value="./freertos-7.3.0/source/include"/>
-				<build type="include-path" value="./freertos-7.3.0/source/portable/gcc/sam" toolchain="armgcc"/>
-				<build type="include-path" value="./freertos-7.3.0/source/portable/iar/sam" toolchain="iarewarm"/>
-				<require idref="common.services.basic.clock"/>
-				<device-support value="sam3"/>
-				<device-support value="sam4s"/>
-				<device-support value="sam4l"/>
-				<device-support value="sam4n"/>
-				<device-support value="sam4c"/>
-				<device-support value="sam4cp"/>
-				<generator value="doxygen-module" default-mcu="unspecified-sam3n"/>
-				<build type="doxygen-entry-point" value="group_common_services_os_freertos.7.3.0"/>
-			</module>
-			<module type="service" id="thirdparty.os.freertos.version#7.3.0#1" caption="FreeRTOS - Kernel 7.3.0">
-				<info type="description" value="summary">
-					FreeRTOS is a popular, portable, open source, royalty free, mini Real Time Kernel.
-					For complete information on FreeRTOS, see www.freertos.org.
-				</info>
-				<build type="module-config" subtype="required-header-file" value="FreeRTOSConfig.h"/>
-				<build type="module-config" subtype="path" value="freertos-7.3.0/module_config"/>
-				<build type="distribute" subtype="license" value="freertos-7.3.0/license/license.txt" />
-				<build type="distribute" subtype="file" value="freertos-7.3.0/readme.txt"/>
-				<build type="distribute" subtype="file" value="freertos-7.3.0/ATMEL-disclaimer.txt"/>
-				<build type="c-source" value="freertos-7.3.0/source/FreeRTOS_CLI.c"/>
-				<build type="c-source" value="freertos-7.3.0/source/list.c"/>
-				<build type="c-source" value="freertos-7.3.0/source/queue.c"/>
-				<build type="c-source" value="freertos-7.3.0/source/tasks.c"/>
-				<build type="c-source" value="freertos-7.3.0/source/timers.c"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/croutine.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/FreeRTOS.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/FreeRTOS_CLI.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/list.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/mpu_wrappers.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/portable.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/projdefs.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/queue.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/semphr.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/StackMacros.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/task.h"/>
-				<build type="header-file" subtype="api" value="freertos-7.3.0/source/include/timers.h"/>
-				<build type="c-source"     value="freertos-7.3.0/source/portable/gcc/arm_cm4f/port.c" toolchain="armgcc"/>
-				<build type="header-file"  value="freertos-7.3.0/source/portable/gcc/arm_cm4f/portmacro.h" toolchain="armgcc"/>
-				<build type="c-source"     value="freertos-7.3.0/source/portable/iar/arm_cm4f/port.c" toolchain="iarewarm"/>
-				<build type="asm-source"   value="freertos-7.3.0/source/portable/iar/arm_cm4f/portasm.s" toolchain="iarewarm"/>
-				<build type="header-file"  value="freertos-7.3.0/source/portable/iar/arm_cm4f/portmacro.h" toolchain="iarewarm"/>
-				<build type="c-source"     value="freertos-7.3.0/source/portable/memmang/heap_4.c"/>
-				<build type="include-path" value="./freertos-7.3.0/source/include"/>
-				<build type="include-path" value="./freertos-7.3.0/source/portable/gcc/arm_cm4f" toolchain="armgcc"/>
-				<build type="include-path" value="./freertos-7.3.0/source/portable/iar/arm_cm4f" toolchain="iarewarm"/>
-				<require idref="common.services.basic.clock"/>
-				<device-support value="sam4e"/>
-				<device-support value="atsam4c16c_1"/>
-				<device-support value="samg"/>
-				<generator value="doxygen-module" default-mcu="unspecified-sam3n"/>
-				<build type="doxygen-entry-point" value="group_common_services_os_freertos.7.3.0"/>
-			</module>
-		</select-by-device>
+		<module type="service" id="thirdparty.os.freertos.version#7.3.0" caption="FreeRTOS - Kernel 7.3.0">
+			<device-support value="sam"/>
+			<require idref="common.services.os.freertos.v7_3_0"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+			<build type="doxygen-entry-point" value="group_common_services_os_freertos"/>
+		</module>
+		<module type="service" id="thirdparty.os.freertos.version#7.4.2" caption="FreeRTOS - Kernel 7.4.2">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="sam0"/>
+			<require idref="thirdparty.os.freertos-7_4_2"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
+			<build type="doxygen-entry-point" value="group_common_services_os_freertos"/>
+		</module>
+		<module type="service" id="thirdparty.os.freertos.version#7.5.2" caption="FreeRTOS - Kernel 7.5.2">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="sam0"/>
+			<require idref="thirdparty.os.freertos-7_5_2"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
+			<build type="doxygen-entry-point" value="group_common_services_os_freertos"/>
+		</module>
+		<module type="service" id="thirdparty.os.freertos.version#8.0.1" caption="FreeRTOS - Kernel 8.0.1">
+			<device-support value="sam0"/>
+			<require idref="thirdparty.os.freertos-8_0_1"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
+			<build type="doxygen-entry-point" value="group_common_services_os_freertos"/>
+		</module>
 	</select-by-config>
 </asf>

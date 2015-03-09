@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4cm32.include" caption="SAM4CM32 part definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4CM32
+		</info>
+		<build type="header-file" value="sam4cm32.h"/>
+		<build type="header-file" value="sam4cmp32c_0.h"/>
+		<build type="header-file" value="sam4cmp32c_1.h"/>
+		<build type="header-file" value="sam4cms32c_0.h"/>
+		<build type="header-file" value="sam4cms32c_1.h"/>
+		<build type="header-file" value="system_sam4cm32.h"/>
+		<build type="include-path" value="."/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam4cmp32"/>
+		<device-support value="sam4cms32"/>
+	</module>
+</asf>

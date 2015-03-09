@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.applications.samd_qtouch_mutlcap_example" caption="SAMD20/D21 QTouch Mutual Capacitance Example">
+		<info type="description" value="summary">
+		SAMD20/D21 is running with QTouch library enabled.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="qtouch/touch.c"/>
+		<build type="header-file" value="qtouch/QDebugSettings.h"/>
+		<build type="include-path" value="qtouch/"/>
+		<require idref="sam0.drivers.rtc"/>
+		<require idref="sam0.drivers.tc"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.drivers.port"/>
+		<require idref="common2.services.delay"/>
+		<require idref="config.common.services.qtouch.qdebug.qt600.samd"/>
+		<require idref="sam.services.qtouch.devspecific.sam0.samd"/>
+		<require idref="sam0.utils.stdio.stdio_serial"/>
+		<device-support value="samd20"/>
+		<device-support value="samd21"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

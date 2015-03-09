@@ -15,6 +15,7 @@
 		<build type="header-file" value="conf_sleepmgr.h"/>
 		<build type="header-file" value="conf_example.h"/>
 		<config name="config.common.components.memory.sd_mmc" value="spi"/>
+		<config name="config.common.components.memory.sd_mmc.ctrl_access" value="enable"/>
 		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
 		<require idref="sam.applications.starter_kit_bootloader_demo.main"/>
 		<require idref="board.sam4n_xplained_pro"/>

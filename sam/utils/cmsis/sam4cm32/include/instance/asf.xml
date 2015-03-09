@@ -1,0 +1,50 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4cm32.include.instance" caption="SAM4CM32 instance definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4CM32 peripherals
+		</info>
+		<build type="header-file" value="adc.h"/>
+		<build type="header-file" value="aes.h"/>
+		<build type="header-file" value="chipid.h"/>
+		<build type="header-file" value="cmcc0.h"/>
+		<build type="header-file" value="cmcc1.h"/>
+		<build type="header-file" value="efc0.h"/>
+		<build type="header-file" value="efc1.h"/>
+		<build type="header-file" value="gpbr.h"/>
+		<build type="header-file" value="icm.h"/>
+		<build type="header-file" value="ipc0.h"/>
+		<build type="header-file" value="ipc1.h"/>
+		<build type="header-file" value="matrix0.h"/>
+		<build type="header-file" value="matrix1.h"/>
+		<build type="header-file" value="pioa.h"/>
+		<build type="header-file" value="piob.h"/>
+		<build type="header-file" value="pioc.h"/>
+		<build type="header-file" value="pmc.h"/>
+		<build type="header-file" value="pwm.h"/>
+		<build type="header-file" value="rstc.h"/>
+		<build type="header-file" value="rswdt.h"/>
+		<build type="header-file" value="rtc.h"/>
+		<build type="header-file" value="rtt.h"/>
+		<build type="header-file" value="slcdc.h"/>
+		<build type="header-file" value="smc0.h"/>
+		<build type="header-file" value="smc1.h"/>
+		<build type="header-file" value="spi0.h"/>
+		<build type="header-file" value="spi1.h"/>
+		<build type="header-file" value="supc.h"/>
+		<build type="header-file" value="tc0.h"/>
+		<build type="header-file" value="tc1.h"/>
+		<build type="header-file" value="trng.h"/>
+		<build type="header-file" value="twi0.h"/>
+		<build type="header-file" value="twi1.h"/>
+		<build type="header-file" value="uart0.h"/>
+		<build type="header-file" value="uart1.h"/>
+		<build type="header-file" value="usart0.h"/>
+		<build type="header-file" value="usart1.h"/>
+		<build type="header-file" value="usart2.h"/>
+		<build type="header-file" value="usart3.h"/>
+		<build type="header-file" value="wdt.h"/>
+		<device-support value="sam4cmp32"/>
+		<device-support value="sam4cms32"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

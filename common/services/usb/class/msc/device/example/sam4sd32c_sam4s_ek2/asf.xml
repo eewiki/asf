@@ -9,8 +9,9 @@
 		<build type="c-source" value="ui.c"/>
 		<build type="include-path" value="."/>
 		<require idref="common.components.memory.nand_flash"/>
-		<require idref="common.components.memory.sd_mmc.ctrl_access"/>
+		<require idref="common.components.memory.sd_mmc"/>
 		<config name="config.common.components.memory.sd_mmc" value="mci"/>
+		<config name="config.common.components.memory.sd_mmc.ctrl_access" value="enable"/>
 		<config name="config.common.services.usb.class.device" value="mass_storage"/>
 		<require idref="common.services.usb.class.msc.device.example"/>
 		<require idref="board.sam4s_ek2"/>

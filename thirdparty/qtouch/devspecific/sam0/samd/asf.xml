@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.services.qtouch.devspecific.sam0.samd" caption="Atmel QTouch Library for Atmel SAMD20/D21">
+		<module type="service" id="sam.services.qtouch.devspecific.sam0.samd#samd20" caption="QTouch Library for SAMD20/D21">
+			<info type="description" value="summary">
+			</info>
+			<build type="header-file" subtype="api" value="include/touch_api_SAMD.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="include/"/>
+			<build type="library" subtype="user" value="lib/iar/libsamd20_qt_iar.a" toolchain="iarewarm" />
+			<build type="library" subtype="user" value="lib/gcc/libsamd20_qt_gcc.a" toolchain="armgcc"/>
+			<build type="module-config" subtype="required-header-file" value="touch_config_samd.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="group_thirdparty_qtouch_devspecific_sam0_samd"/>
+			<device-support value="samd20" />
+			<build type="distribute" subtype="license" value="../../../license.txt"/>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+		</module>
+		
+		<module type="service" id="sam.services.qtouch.devspecific.sam0.samd#samd21" caption="QTouch Library for SAMD20/D21">
+			<info type="description" value="summary">
+			</info>
+			<build type="header-file" subtype="api" value="include/touch_api_SAMD.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="include/"/>
+			<build type="library" subtype="user" value="lib/iar/libsamd21_qt_iar.a" toolchain="iarewarm" />
+			<build type="library" subtype="user" value="lib/gcc/libsamd21_qt_gcc.a" toolchain="armgcc"/>
+			<build type="module-config" subtype="required-header-file" value="touch_config_samd.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="group_thirdparty_qtouch_devspecific_sam0_samd"/>
+			<device-support value="samd21" />
+			<build type="distribute" subtype="license" value="../../../license.txt"/>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+		</module>
+	</select-by-device>
+</asf>

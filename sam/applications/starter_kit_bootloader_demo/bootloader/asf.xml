@@ -33,7 +33,7 @@
 		<require idref="common.services.ioport"/>
 		<require idref="common.services.basic.clock"/>
 		<require idref="common.utils.stdio.stdio_serial"/>
-		<require idref="common.components.memory.sd_mmc.ctrl_access"/>
+		<require idref="common.components.memory.sd_mmc"/>
 		<require idref="common.services.fs.fatfs"/>
 
 		<device-support value="sam"/>

@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="SAMD20 QTouch Self Capacitance Example on SAMD20 Xplained Pro" id="sam.applications.samd_qtouch_selfcap_example.samd20_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="touch_config_samd.h"/>
+		<require idref="sam.applications.samd_qtouch_selfcap_example"/>
+		<require idref="board.samd20_xplained_pro"/>
+		<config name="config.common.services.qtouch.qdebug.qt600.samd" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<build type="define" name="_QTOUCH_" value=""/>
+		<device-support value="atsamd20j18"/>
+	</project>
+</asf>

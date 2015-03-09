@@ -1,18 +1,27 @@
 <asf xmlversion="1.0">
-	<module type="meta" id="common.components.memory.sd_mmc.ctrl_access" caption="SD/MMC stack + Memory Control Access (aka ctrl_access, required for file system or USB)">
-		<info type="description" value="summary">
-			SD/MMC stack for ctrl_access module.
-			This module is required to use the SD/MMC card stack with the ASF File System or the ASF USB Device Mass Storage.
-		</info>
-		<build type="c-source" value="sd_mmc_mem.c"/>
-		<build type="header-file" subtype="api" value="sd_mmc_mem.h"/>
-		<build type="include-path" value="."/>
-		<require idref="common.services.storage.ctrl_access"/>
-		<require idref="common.components.memory.sd_mmc"/>
-		<build type="define" name="SD_MMC_ENABLE" value=""/>
-		<device-support value="avr"/>
-		<device-support value="sam"/>
-	</module>
+	<select-by-config id="common.components.memory.sd_mmc.ctrl_access" name="config.common.components.memory.sd_mmc.ctrl_access" caption="SD/MMC Memory Control Access" default="disable">
+		<module type="component" id="common.components.memory.sd_mmc.ctrl_access#disable" caption="SD/MMC Memory Control Access - Disable">
+			<info type="description" value="summary">
+				This module is required to use the SD/MMC card stack with the ASF File System or the ASF USB Device Mass Storage.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="avr"/>
+			<device-support value="sam"/>
+		</module>
+		<module type="component" id="common.components.memory.sd_mmc.ctrl_access#enable" caption="SD/MMC Memory Control Access - Enable">
+			<info type="description" value="summary">
+				This module is required to use the SD/MMC card stack with the ASF File System or the ASF USB Device Mass Storage.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="sd_mmc_mem.c"/>
+			<build type="header-file" subtype="api" value="sd_mmc_mem.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.storage.ctrl_access"/>
+			<build type="define" name="SD_MMC_ENABLE" value=""/>
+			<device-support value="avr"/>
+			<device-support value="sam"/>
+		</module>
+	</select-by-config>
 	<select-by-config id="common.components.memory.sd_mmc" name="config.common.components.memory.sd_mmc" caption="SD/MMC stack" default="spi">
 		<module type="component" id="common.components.memory.sd_mmc#spi" caption="SD/MMC stack on SPI interface">
 			<info type="description" value="summary">
@@ -31,6 +40,7 @@
 			<build type="module-config" subtype="path" value="module_config_spi"/>
 			<build type="module-config" subtype="required-header-file" value="conf_sd_mmc.h"/>
 			<build type="doxygen-entry-point" value="sd_mmc_stack_group"/>
+			<require idref="common.components.memory.sd_mmc.ctrl_access"/>
 			<require idref="common.components.memory.sd_mmc.protocol"/>
 			<require idref="common.services.basic.spi_master"/>
 			<require idref="common.services.ioport"/>
@@ -55,6 +65,7 @@
 			<build type="module-config" subtype="path" value="module_config"/>
 			<build type="module-config" subtype="required-header-file" value="conf_sd_mmc.h"/>
 			<build type="doxygen-entry-point" value="sd_mmc_stack_group"/>
+			<require idref="common.components.memory.sd_mmc.ctrl_access"/>
 			<require idref="common.components.memory.sd_mmc.protocol"/>
 			<require idref="common.components.memory.sd_mmc.mci"/>
 			<require idref="common.services.ioport"/>

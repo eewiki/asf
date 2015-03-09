@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.ipc.example_core1" caption="SAM4C IPC example - Core 1">
+		<info type="description" value="summary">
+			This example demostrates how core 1 communicates with core 0 via IPC.
+		</info>
+		<build type="c-source" value="ipc_example_core1.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4c"/>
+		<require idref="sam.drivers.ipc"/>
+		<require idref="sam.drivers.usart"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -10,7 +10,7 @@
 		<build type="header-file" value="conf_fatfs.h"/>
 		<build type="header-file" value="conf_access.h"/>
 		<build type="c-source" value="example.c"/>
-		<require idref="common2.components.memory.sd_mmc.ctrl_access"/>
+		<require idref="common2.components.memory.sd_mmc"/>
 		<require idref="common.services.fs.fatfs"/>
 		<require idref="sam0.utils.stdio.stdio_serial"/>
 		<device-support value="sam0"/>

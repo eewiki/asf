@@ -12,7 +12,6 @@
 		<build type="header-file" value="can.h"/>
 		<build type="header-file" value="chipid.h"/>
 		<build type="header-file" value="cmcc.h"/>
-		<build type="header-file" value="crccu.h"/>
 		<build type="header-file" value="dacc.h"/>
 		<build type="header-file" value="dmac.h"/>
 		<build type="header-file" value="efc.h"/>

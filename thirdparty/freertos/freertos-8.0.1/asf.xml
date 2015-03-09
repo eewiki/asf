@@ -1,0 +1,120 @@
+<asf xmlversion="1.0">
+	<module type="service" id="thirdparty.os.freertos-8_0_1" caption="FreeRTOS - kernel 8.0.1">
+		<info type="description" value="summary">
+			FreeRTOS is a popular, portable, open source, royalty free, mini Real Time Kernel.
+			For complete information on FreeRTOS, see www.freertos.org.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="distribute" subtype="file" value="readme.txt"/>
+		<build type="distribute" subtype="file" value="Source/readme.txt"/>
+		<build type="distribute" subtype="license" value="License/license.txt"/>
+		<build type="define" name="__FREERTOS__" value=""/>
+		<build type="c-source" value="Source/croutine.c"/>
+		<build type="c-source" value="Source/list.c"/>
+		<build type="c-source" value="Source/queue.c"/>
+		<build type="c-source" value="Source/tasks.c"/>
+		<build type="c-source" value="Source/timers.c"/>
+		<build type="c-source" value="Source/event_groups.c"/>
+		<build type="include-path" value="Source/include"/>
+		<build type="header-file" subtype="api" value="Source/include/FreeRTOS.h"/>
+		<build type="header-file" subtype="api" value="Source/include/croutine.h"/>
+		<build type="header-file" subtype="api" value="Source/include/list.h"/>
+		<build type="header-file" subtype="api" value="Source/include/mpu_wrappers.h"/>
+		<build type="header-file" subtype="api" value="Source/include/portable.h"/>
+		<build type="header-file" subtype="api" value="Source/include/projdefs.h"/>
+		<build type="header-file" subtype="api" value="Source/include/queue.h"/>
+		<build type="header-file" subtype="api" value="Source/include/semphr.h"/>
+		<build type="header-file" subtype="api" value="Source/include/StackMacros.h"/>
+		<build type="header-file" subtype="api" value="Source/include/task.h"/>
+		<build type="header-file" subtype="api" value="Source/include/timers.h"/>
+		<build type="header-file" subtype="api" value="Source/include/event_groups.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="FreeRTOSConfig.h"/>
+		<device-support value="sam0"/>
+		<require idref="thirdparty.os.freertos-8_0_1.memory_manager"/>
+		<require idref="thirdparty.os.freertos-8_0_1.portable"/>
+	</module>
+
+	<module type="meta" id="thirdparty.os.freertos-8_0_1.portable.common" caption="Common files for FreeRTOS core ports">
+		<build type="distribute" subtype="file" value="Source/portable/readme.txt"/>
+	</module>
+
+	<select-by-device id="thirdparty.os.freertos-8_0_1.portable" caption="FreeRTOS core port">
+		<info type="description" value="summary">
+			Each real time kernel port consists of three files that contain the core
+			kernel components and are common to every port, and one or more files
+			that are specific to a particular microcontroller and/or compiler.
+		</info>
+		<module type="driver" id="thirdparty.os.freertos-8_0_1.portable#cm0p" caption="Cortex M0+ port of FreeRTOS core">
+			<info type="gui-flag" value="hidden"/>
+			<build type="asm-source" value="Source/portable/IAR/ARM_CM0/portasm.s" toolchain="iarewarm"/>
+			<build type="c-source" value="Source/portable/GCC/ARM_CM0/port.c" toolchain="armgcc"/>
+			<build type="c-source" value="Source/portable/IAR/ARM_CM0/port_cm0_iar.c" toolchain="iarewarm"/>
+			<build type="header-file" value="Source/portable/GCC/ARM_CM0/portmacro.h" toolchain="armgcc"/>
+			<build type="header-file" value="Source/portable/IAR/ARM_CM0/portmacro.h" toolchain="iarewarm"/>
+			<build type="include-path" value="Source/portable/GCC/ARM_CM0/" toolchain="armgcc"/>
+			<build type="include-path" value="Source/portable/IAR/ARM_CM0/" toolchain="iarewarm"/>
+			<device-support value="sam0"/>
+			<require idref="thirdparty.os.freertos-8_0_1.portable.common"/>
+		</module>
+	</select-by-device>
+
+	<select-by-config id="thirdparty.os.freertos-8_0_1.memory_manager" caption="FreeRTOS memory heap manager" name="config.thirdparty.os.freertos-8_0_1.memory_manager" default="1_static_allocation">
+		<info type="description" value="summary">
+			The RTOS kernel allocates RAM each time a task, queue, mutex, software timer or
+ 			semaphore is created. The standard C library malloc() and free() functions may
+ 			not be available or the optimum choice for a specific application, so FreeRTOS
+ 			gives the choice between four different memory managers.
+			For more information, please refer to http://www.freertos.org/.
+		</info>
+
+		<module type="service" id="thirdparty.os.freertos-8_0_1.memory_manager#1_static_allocation" caption="Memory heap manager variant #1">
+			<info type="description" value="summary">
+				This implementation can be used if your application never deletes a task, queue, semaphore,
+				mutex, etc. - which covers the majority of applications in which FreeRTOS is used.
+				Further, it is always deterministic, meaning it always takes the same amount of time to execute.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="Source/portable/MemMang/heap_1.c"/>
+			<device-support value="sam0"/>
+		</module>
+
+		<module type="service" id="thirdparty.os.freertos-8_0_1.memory_manager#2_best_fit_no_coallesce" caption="Memory heap manager variant #2">
+			<info type="description" value="summary">
+				This implementation could possibly result in memory fragmentation problems if your application
+				queues, tasks, semaphores, mutexes, etc. in an unpredictable order. This would be unlikely for
+				nearly all applications, but should be kept in mind.
+				It is not deterministic, but is much more efficient than most standard C library malloc
+				implementations.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="Source/portable/MemMang/heap_2.c"/>
+			<device-support value="sam0"/>
+		</module>
+
+		<module type="service" id="thirdparty.os.freertos-8_0_1.memory_manager#3_use_libc_malloc_free" caption="Memory heap manager variant #3">
+			<info type="description" value="summary">
+				This implementation requires the linker to set up a heap and the compiler library to provide
+				malloc() and free() implementations.
+				It is not deterministic, and will probably increase the RTOS kernel code size considerably.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="Source/portable/MemMang/heap_3.c"/>
+			<device-support value="sam0"/>
+		</module>
+
+		<module type="service" id="thirdparty.os.freertos-8_0_1.memory_manager#4_first_fit_coallesce" caption="Memory heap manager variant #4">
+			<info type="description" value="summary">
+				This implementation can be used even when the application repeatedly deletes tasks, queues,
+				semaphores, mutexes, etc., and is much less likely than implementation #2 to result in a heap
+				space that is badly fragmented into multiple small blocks - even when the memory being allocated
+				and freed is of random size.
+				It is not deterministic, but is much more efficient that most standard C library malloc
+				implementations.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="Source/portable/MemMang/heap_4.c"/>
+			<device-support value="sam0"/>
+		</module>
+	</select-by-config>
+</asf>

@@ -4,6 +4,7 @@
 			FreeRTOS is a popular, portable, open source, royalty free, mini Real Time Kernel.
 			For complete information on FreeRTOS, see www.freertos.org.
 		</info>
+		<info type="gui-flag" value="hidden"/>
 		<build type="distribute" subtype="file" value="readme.txt"/>
 		<build type="distribute" subtype="file" value="Source/readme.txt"/>
 		<build type="distribute" subtype="license" value="License/license.txt"/>

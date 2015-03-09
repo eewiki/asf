@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="sam.drivers.ipc.example.sam4c_ek.conf_src_common" caption="meta">
+		<build type="include-path" value="common"/>
+		<build type="header-file" value="common/conf_board.h"/>
+		<build type="header-file" value="common/conf_clock.h"/>
+		<build type="header-file" value="common/conf_example.h"/>
+	</module>
+	<module type="meta" id="sam.drivers.ipc.example.sam4c_ek.conf_src_core0" caption="meta">
+		<build type="include-path" value="core0"/>
+		<build type="header-file" value="core0/conf_uart_serial.h"/>
+	</module>
+	<module type="meta" id="sam.drivers.ipc.example.sam4c_ek.conf_src_core1" caption="meta">
+		<build type="include-path" value="core1"/>
+		<build type="header-file" value="core1/conf_uart_serial.h"/>
+	</module>
+</asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="EDBG I2C Information Interface Demo for SAM D21" id="sam0.applications.edbg_i2c_info_interface.samd21_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<require idref="sam0.applications.edbg_i2c_info_interface"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamd21j18a"/>
+		<config name="config.sam0.drivers.sercom.i2c.master" value="polled"/>
+	</project>
+</asf>

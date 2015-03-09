@@ -11,9 +11,10 @@
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_fatfs.h"/>
 		<require idref="common.services.fs.fatfs.access_example"/>
-		<require idref="common2.components.memory.sd_mmc.ctrl_access"/>
-		<require idref="board.samr21_xplained_pro"/>
+		<require idref="common2.components.memory.sd_mmc"/>
 		<config name="config.common2.components.memory.sd_mmc" value="spi"/>
+		<config name="config.common2.components.memory.sd_mmc.ctrl_access" value="enable"/>
+		<require idref="board.samr21_xplained_pro"/>
 		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
 		<config name="config.common2.services.delay" value="cycle"/>
 		<config name="config.sam0.drivers.rtc" value="calendar_polled"/>

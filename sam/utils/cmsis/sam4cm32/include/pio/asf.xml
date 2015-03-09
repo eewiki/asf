@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4cm32.include.pio" caption="SAM4CM32 PIO definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4CM32 PIO
+		</info>
+		<build type="header-file" value="sam4cmp32c.h"/>
+		<build type="header-file" value="sam4cms32c.h"/>
+		<device-support value="sam4cmp32"/>
+		<device-support value="sam4cms32"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

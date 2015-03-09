@@ -16,7 +16,7 @@
 		<require idref="common2.services.gfx_mono.font"/>
 		<require idref="sam0.drivers.system"/>
 		<require idref="sam0.drivers.sercom.usart"/>
-		<require idref="thirdparty.os.freertos-7_4_2"/>
+		<require idref="thirdparty.os.freertos.version"/>
 	</module>
 	<module type="driver" id="common.services.freertos.oled1_xpro_example.user_io" caption="User I/O driver for FreeRTOS demo">
 		<build type="header-file" subtype="api" value="cdc.h"/>

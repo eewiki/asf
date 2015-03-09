@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="SSD1306 OLED Controller example for SAM4L8-XPLAINED-PRO" id="common.components.display.ssd1306.example.sam4l8_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.display.ssd1306.example"/>
+		<require idref="board.sam4l8_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4lc8c"/>
+	</project>
+</asf>

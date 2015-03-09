@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.ipc.example_core0" caption="SAM4C IPC example - Core 0">
+		<info type="description" value="summary">
+			This demonstration program makes one LED on the board blinking at a fixed rate.
+		</info>
+		<build type="c-source" value="ipc_example_core0.c"/>
+		<build type="asm-source" value="core1_image.S" toolchain="armgcc"/>
+		<build type="include-path" value="."/>
+		<build type="distribute" subtype="file" value="core1_image.bin"/>
+		<device-support value="sam4c"/>
+		<require idref="sam.drivers.ipc"/>
+		<require idref="sam.drivers.rstc"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

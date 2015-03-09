@@ -30,6 +30,7 @@
 			<device-support value="sam4e"/>
 			<device-support value="samd21"/>
 			<device-support value="samr21"/>
+			<device-support value="sam4c32e"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>
 		<module type="service" id="common.utils.stdio.stdio_usb.composite#disable" caption="USB Device CDC Standard I/O (stdio) disabled">
@@ -71,6 +72,7 @@
 		<device-support value="sam4e"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
+		<device-support value="sam4c32e"/>
 	</module>
 
 	<select-by-device id="common.utils.stdio.stdio_usb.common" caption="USB Device CDC Standard I/O (stdio)">
@@ -128,6 +130,7 @@
 			<device-support value="sam4s"/>
 			<device-support value="sam4l"/>
 			<device-support value="sam4e"/>
+			<device-support value="sam4c32e"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
 		</module>
 		<module type="component" id="common.utils.stdio.stdio_usb.common#sam0" caption="USB Device CDC Standard I/O (stdio) - SAM0 implementation">

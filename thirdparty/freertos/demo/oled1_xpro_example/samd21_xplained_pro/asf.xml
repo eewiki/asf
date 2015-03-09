@@ -13,7 +13,8 @@
 		<build type="include-path" value="."/>
 		<config name="common2.services.gfx_mono.display" value="ug_2832hsweg04"/>
 		<config name="config.sam0.drivers.sercom.usart" value="callback"/>
-		<config name="config.thirdparty.os.freertos-7_4_2.memory_manager" value="1_static_allocation"/>
+		<config name="config.thirdparty.os.freertos.version" value="8.0.1"/>
+		<config name="config.thirdparty.os.freertos-8_0_1.memory_manager" value="1_static_allocation"/>
 		<device-support value="atsamd21j18a"/>
 		<require idref="board.samd21_xplained_pro"/>
 		<require idref="common.services.freertos.oled1_xpro_example"/>

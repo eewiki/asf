@@ -10,6 +10,7 @@
 		<build type="header-file" value="avr2025_mac.h"/>
 		<build type="header-file" value="mac_build_config.h"/>
 		<build type="header-file" value="tal_build_config.h"/>
+		<build type="define" name="_DEBUG_" value="0"/>
 		<build type="doxygen-entry-point" value="common_includes_group"/>
 		<build type="distribute" subtype="user-file" value="../doc/AVR2025_User_Guide_v3.1.1.pdf"/>		
 		<device-support-alias value="avr2025_mac_pal_support"/>

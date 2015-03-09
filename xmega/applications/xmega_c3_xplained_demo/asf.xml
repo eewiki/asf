@@ -29,7 +29,7 @@
 		<require idref="common.services.delay"/>
 		<require idref="common.services.gfx_mono.font"/>
 		<require idref="common.services.fs.fatfs"/>
-		<require idref="common.components.memory.sd_mmc.ctrl_access"/>
+		<require idref="common.components.memory.sd_mmc"/>
 		<require idref="xmega.drivers.tc"/>
 		<require idref="xmega.drivers.rtc"/>
 		<require idref="xmega.drivers.adc"/>

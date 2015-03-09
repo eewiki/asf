@@ -1,0 +1,102 @@
+<asf xmlversion="1.0">
+	<select-by-config id="sam.drivers.uhdp.device" name="config.sam.drivers.uhdp.device.sleepmgr" caption="USB - Universial Serial Bus driver" default="with_sleepmgr">
+		<info type="description" value="summary">
+		UHDP driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+		</info>
+		<module type="driver" id="sam.drivers.uhdp.device#with_sleepmgr" caption="USB - Universial Serial Bus driver (with sleep manager)">
+			<info type="description" value="summary">
+			UHDP driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication" />
+			</info>
+			<build type="c-source" value="uhdp_device.c"/>
+			<build type="header-file" value="uhdp_device.h"/>
+			<build type="header-file" value="uhdp_otg.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam4c32e"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4c"/>
+		</module>
+		<module type="driver" id="sam.drivers.uhdp.device#without_sleepmgr" caption="USB - Universial Serial Bus driver (without sleep manager)">
+			<info type="description" value="summary">
+			UHDP driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="uhdp_device.c"/>
+			<build type="header-file" value="uhdp_device.h"/>
+			<build type="header-file" value="uhdp_otg.h"/>
+			<build type="include-path" value="."/>
+			<build type="define" name="UDD_NO_SLEEP_MGR" value=""/>
+			<device-support value="sam4c32e"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.ioport"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4c"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="sam.drivers.uhdp.host" name="config.sam.drivers.uhdp.host.sleepmgr" caption="USB - Universial Serial Bus driver" default="with_sleepmgr">
+		<info type="description" value="summary">
+		UHDP driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+		</info>
+		<module type="driver" id="sam.drivers.uhdp.host#with_sleepmgr" caption="USB - Universial Serial Bus driver (with sleepmgr)">
+			<info type="description" value="summary">
+			UHDP driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="uhdp_host.c"/>
+			<build type="header-file" value="uhdp_host.h"/>
+			<build type="header-file" value="uhdp_otg.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam4c32e"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.utils"/>
+			<require idref="sam.utils.syscalls"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4c"/>
+		</module>
+		<module type="driver" id="sam.drivers.uhdp.host#without_sleepmgr" caption="USB - Universial Serial Bus driver (without sleep manager)">
+			<info type="description" value="summary">
+			UHDP driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="uhdp_host.c"/>
+			<build type="header-file" value="uhdp_host.h"/>
+			<build type="header-file" value="uhdp_otg.h"/>
+			<build type="include-path" value="."/>
+			<build type="define" name="UDD_NO_SLEEP_MGR" value=""/>
+			<device-support value="sam4c32e"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.ioport"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.utils"/>
+			<require idref="sam.utils.syscalls"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4c"/>
+		</module>
+	</select-by-config>
+</asf>

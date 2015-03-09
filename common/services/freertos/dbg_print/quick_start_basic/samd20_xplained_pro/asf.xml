@@ -6,6 +6,8 @@
 		<build type="include-path" value="."/>
 		<require idref="board.samd20_xplained_pro"/>
 		<require idref="common.services.freertos.dbg_print.quick_start"/>
+		<config name="config.thirdparty.os.freertos.version" value="8.0.1"/>
+		<config name="config.thirdparty.os.freertos-8_0_1.memory_manager" value="1_static_allocation"/>
 		<device-support value="atsamd20j18"/>
 		<generator value="as5_arm"/>
 		<generator value="armgcc"/>

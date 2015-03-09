@@ -26,6 +26,7 @@
 		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
 		<config name="config.spi_master_type" value="usart_spi"/>
 		<config name="config.gfx_mono.display" value="ug_2832hsweg04"/>
+		<config name="config.common.components.memory.sd_mmc.ctrl_access" value="enable"/>
 
 		<config name="config.compiler.iarew.dlib" value="full"/>
 		<config name="config.compiler.iarew.data_stack_size" value="0x800"/>

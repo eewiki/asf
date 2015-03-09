@@ -9,6 +9,7 @@
 		<require idref="common2.components.memory.sd_mmc.example2"/>
 		<require idref="board.samr21_xplained_pro"/>
 		<config name="config.common2.components.memory.sd_mmc" value="spi"/>
+		<config name="config.common2.components.memory.sd_mmc.ctrl_access" value="enable"/>
 		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
 		<config name="config.common2.services.delay" value="cycle"/>
 		<config name="config.sam0.drivers.rtc" value="calendar_polled"/>

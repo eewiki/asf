@@ -51,8 +51,10 @@
 			<device-support value="atsam4c32e_0"/>
 			<device-support value="atsam4cmp8c_0"/>
 			<device-support value="atsam4cmp16c_0"/>
+			<device-support value="atsam4cmp32c_0"/>
 			<device-support value="atsam4cms8c_0"/>
 			<device-support value="atsam4cms16c_0"/>
+			<device-support value="atsam4cms32c_0"/>
 			<device-support value="atsam4cp16b_0"/>
 			<device-support value="unspecified-sam4c"/>    <!-- A workaround for Jenkin doxygen-module check -->
 			<device-support value="unspecified-sam4cm"/>   <!-- A workaround for Jenkin doxygen-module check -->
@@ -74,8 +76,10 @@
 			<device-support value="atsam4c32e_1"/>
 			<device-support value="atsam4cmp8c_1"/>
 			<device-support value="atsam4cmp16c_1"/>
+			<device-support value="atsam4cmp32c_1"/>
 			<device-support value="atsam4cms8c_1"/>
 			<device-support value="atsam4cms16c_1"/>
+			<device-support value="atsam4cms32c_1"/>
 			<device-support value="atsam4cp16b_1"/>
 			<device-support value="samg"/>
 		</module>
@@ -304,7 +308,27 @@
 			<require idref="sam.utils.cmsis.sam4cm.include.pio"/>
 			<require idref="sam.utils.cmsis.sam4cm.source.template"/>
 			<info type="gui-flag" value="hidden"/>
-			<device-support value="sam4cm"/>
+			<device-support value="sam4cmp8"/>
+			<device-support value="sam4cms8"/>
+			<device-support value="sam4cmp16"/>
+			<device-support value="sam4cms16"/>
+			<device-support value="unspecified-sam4cm"/>   <!-- A workaround for Jenkin doxygen-module check -->
+		</module>
+		<!-- SAM4CM32 //-->
+		<module type="driver" id="sam.utils#15" caption="SAM4CM32 compiler driver">
+			<info type="description" value="summary">
+			Compiler abstraction layer and code utilities for SAM4CM devices. This module provides various abstraction layers and utilities to make code compatible between different compilers. It also contains utilities typically used while pre-processing code.
+			</info>
+			<require idref="sam.utils.common"/>
+			<require idref="sam.utils.cmsis.sam4cm32.include"/>
+			<require idref="sam.utils.cmsis.sam4cm32.include.component"/>
+			<require idref="sam.utils.cmsis.sam4cm32.include.instance"/>
+			<require idref="sam.utils.cmsis.sam4cm32.include.pio"/>
+			<require idref="sam.utils.cmsis.sam4cm32.source.template"/>
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="sam4cmp32"/>
+			<device-support value="sam4cms32"/>
+			<device-support value="unspecified-sam4cm"/>   <!-- A workaround for Jenkin doxygen-module check -->
 		</module>
 	</select-by-device>
 </asf>

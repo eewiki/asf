@@ -45,6 +45,33 @@
 		</module>
 	</select-by-config>
 
+	<select-by-config id="config.common.services.qtouch.qdebug.qt600.samd" name="config.common.services.qtouch.qdebug.qt600.samd" caption="Board QDebug support" default="no">
+		<module type="service" id="config.common.services.qtouch.qdebug.qt600.samd#no" caption="QT600 QDebug disabled">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+		</module>
+
+		<module type="service" id="config.common.services.qtouch.qdebug.qt600.samd#yes" caption="QT600 QDebug enabled">
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" value="QDebug_samd.h"/>
+			<build type="c-source" value="QDebug_samd.c"/>
+			<build type="header-file" value="../devspecific/sam0/samd/common/BitBangSPI_Master.h"/>
+			<build type="c-source" value="../devspecific/sam0/samd/common/BitBangSPI_Master.c"/>
+			<build type="header-file" value="../devspecific/sam0/samd/include/touch_api_SAMD.h"/>
+			<build type="c-source" value="QDebugTransport.c"/>
+			<build type="header-file" value="QDebugTransport.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="../devspecific/sam0/samd/common"/>
+			<build type="include-path" value="../devspecific/sam0/samd/include"/>
+			<require idref="common2.services.delay"/>
+			<require idref="sam0.drivers.port"/>
+			<require idref="sam0.drivers.sercom.usart"/>
+			<device-support value="samd20"/>
+			<device-support value="samd21"/>
+		</module>
+	</select-by-config>
+
 	<select-by-config id="config.common.services.qtouch.qdebug.xplained.uc3l0" name="config.common.services.qtouch.qdebug.xplained.uc3l0" caption="Board QDebug support" default="no">
 		<module type="service" id="config.common.services.qtouch.qdebug.xplained.uc3l0#no" caption="Xplained QDebug disabled">
 			<info type="gui-flag" value="hidden"/>
