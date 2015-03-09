@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="graphic library example for the EVK1105" id="common.services.gfx.example1.evk1105">
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_ebi.h"/>
+		<build type="header-file" value="conf_et024006dhu.h"/>
+		<build type="header-file" value="smiley.h"/>
+		<build type="header-file" value="atmel_logo.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.gfx.display" value="hx8347a_et024006dhu_ebi"/>
+		<require idref="common.services.gfx.example1"/>
+		<require idref="board.evk1105"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

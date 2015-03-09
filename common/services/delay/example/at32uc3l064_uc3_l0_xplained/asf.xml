@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="UC3-L0 Xplained Common Delay Service Example" id="common.services.basic.uc3-l0_delay-demo">
+		<config name="config.board.uc3_l0_xplained.led" value="yes"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="board.uc3_l0_xplained"/>
+		<require idref="common.services.delay.example"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.components.sensors.mcp980x" caption="MCP980X Temperature Sensor">
+		<info type="description" value="summary">
+			Low-level driver for the MCP9800/1/2/3 Temperature Sensor.
+		</info>
+		<build type="c-source" value="mcp980x.c"/>
+		<build type="header-file" subtype="api" value="mcp980x.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="common_component_sensors_mcp980x_group"/>
+		<build type="doxygen-quick-start" value="common_component_sensors_mcp980x_quickstart"/>
+		<require idref="common.services.basic.twi"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3u"/>
+	</module>
+</asf>

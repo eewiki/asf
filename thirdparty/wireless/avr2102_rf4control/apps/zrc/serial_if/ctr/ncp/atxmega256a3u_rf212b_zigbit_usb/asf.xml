@@ -1,0 +1,38 @@
+<asf xmlversion="1.0">
+	<project force-caption="true" force-description="true" caption="RF4CE-ZRC controller serial interface AT86RF212B-XMEGA-A3U AT86RF212B Zigbit(USB)" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.serial_if.ctr.ncp.atxmega256a3u_usb_zigbit_rf212b">
+		<info type="description" value="summary">
+		The RF4CE-ZRC controller stack running on the network co-processor and driven by the host application
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_usb.h"/>
+        <build type="header-file" value="conf_nvm.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="define" name="EXTERN_EEPROM_AVAILABLE" value ="0"/>
+
+
+		<config name="config.compiler.iarew.data_stack_size" value="0x200"/>
+		<config name="config.compiler.iarew.near_heap_size" value="0x40"/>
+		
+		<config name="config.spi_master_type" value="standard_spi"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf212b"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.sal" value="atxmega_sal"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.api" value="no" />
+		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<config name="config.common.drivers.nvm.mem_type" value="no_extmem"/>
+
+
+		<require idref="thirdparty.wireless.avr2102_rf4control.apps.zrc.serial_if.ctr.ncp"/>
+		<require idref="board.xmega_rf212b_zigbit"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3u"/>
+	</project>
+</asf>

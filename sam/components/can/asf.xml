@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.can.sn65hvd234" caption="CAN - SN65HVD234 Transceiver">
+		<info type="description" value="summary">
+		Low-level driver for the SN65HVD234 CAN Transceiver.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="sn65hvd234.c"/>
+		<build type="header-file" subtype="api" value="sn65hvd234.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<require idref="common.services.ioport"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		<build type="doxygen-entry-point" value="sam_component_sn65hvd234_transceiver_group"/>
+	</module>
+</asf>

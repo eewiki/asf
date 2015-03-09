@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.adc.example3" caption="ADC Scan example">
+		<info type="description" value="summary">
+		This simple example shows how to use the new scan feature found in the XMEGA devices.
+		Interrupt-based 12-bit ADC conversion using the internal 1 V voltage reference.
+		Channel 0 of the ADC is configured for single-ended measurements from the internal temperature sensor.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc_example3.c"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

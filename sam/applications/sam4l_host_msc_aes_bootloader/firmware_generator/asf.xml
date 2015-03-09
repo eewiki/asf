@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.applications.sam4l_host_msc_boot_aes_fw_gen" caption="SAM4L Firmware Generator for USB Host MSC Bootloader with AES">
+		<info type="description" value="summary">
+		Generates the output binary to use with the USB Host MSC Bootloader application for SAM4L with AES support.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="main.c"/>
+		<build type="header-file" value="main.h"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.usart"/>
+		<require idref="sam.drivers.flashcalw"/>
+		<require idref="sam.drivers.aesa"/>
+		<require idref="sam.drivers.crccu"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.fs.fatfs"/>
+		<require idref="common.services.usb.class.host"/>
+		<require idref="common.utils.interrupt"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

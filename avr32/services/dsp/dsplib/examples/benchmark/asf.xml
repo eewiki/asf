@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.dsplib.example.benchmark" caption="DSPLIB - Benchmark example">
+		<info type="description" value="summary">
+		Example application. This is a very simple application used to benchmark DSP library functions.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Digital Signal Processing"/>
+		</info>
+		<build type="c-source" value="benchmark.c"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="bench_config.h"/>
+		<device-support value="uc3"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.services.dsplib"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

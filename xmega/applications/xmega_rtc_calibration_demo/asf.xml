@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.applications.xmega_rtc_calibration_demo" caption="RTC Calibration Demo application">
+		<info type="description" value="summary">
+		RTC Calibration Demo application for XMEGA E.It shows how to calibrate the RTC clock source by using an external accurate clock
+		source.In this project, the calibration value will be calculated and this value will be stored in configured EEPROM address.
+		This calibration value from EEPROM can be used by user application code to load in RTC-CALIB register and automatic RTC correction
+		can be enabled. 		
+		More information can be found from application note 'Atmel AVR1638: XMEGA RTC Calibration', which is available in Atmel website.
+		</info>
+		<build type="c-source" value="rtc_calib_main.c"/>
+		<build type="c-source" value="rtc_calib_procedure.c"/>
+		<build type="header-file" value="rtc_calib_procedure.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_rtc_calibration.h"/>
+		<device-support value="xmegae"/>
+		<require idref="xmega.drivers.nvm"/>
+		<require idref="xmega.drivers.tc45"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

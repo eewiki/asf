@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project id="common.applications.user_application.stk600-mega.atmega168a" caption="ATmega168A on STK600 template project" type="template">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<require idref="common.applications.user_application"/>
+		<require idref="board.stk600-mega.atmega168a"/>
+		<generator value="as5_8_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega168a"/>
+	</project>
+</asf>

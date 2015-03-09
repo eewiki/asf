@@ -1,0 +1,87 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.components.display_controller.ili9341" caption="LCD - ILI9341 Display Controller">
+		<info type="description" value="summary">
+		This is the low level interface driver for ILI9341 display controller. This driver is
+		most commonly used in a combination with a display driver.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<device-support value="uc3"/>
+		<device-support value="xmega"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="ili9341_group"/>
+		<build type="doxygen-quick-start" value="common_ili9341_qs"/>
+		<build type="c-source" value="ili9341.c"/>
+		<build type="header-file" subtype="api" value="ili9341.h"/>
+		<build type="header-file" value="ili9341_regs.h"/>
+		<require idref="common.services.basic.spi_master"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.components.display_controller.ili9341.config"/>
+		<require idref="common.components.display_controller.ili9341.dma"/>
+		<require idref="common.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+	<select-by-device id="common.components.display_controller.ili9341.dma">
+		<module type="component" id="common.components.display_controller.ili9341.dma#xmega" caption="LCD - ILI9341 Display Controller">
+			<device-support value="xmega"/>
+			<info type="gui-flag" value="hidden"/>
+			<!-- Currently no DMA acceleration for XMEGA device -->
+		</module>
+		<module type="component" id="common.components.display_controller.ili9341.dma#uc3" caption="LCD - ILI9341 Display Controller">
+			<device-support value="uc3"/>
+			<info type="gui-flag" value="hidden"/>
+			<require idref="avr32.drivers.pdca"/>
+		</module>
+		<module type="component" id="common.components.display_controller.ili9341.dma#sam" caption="LCD - ILI9341 Display Controller">
+			<device-support value="sam3u"/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<info type="gui-flag" value="hidden"/>
+			<!-- Currently no DMA acceleration for these SAM devices -->
+		</module>
+		<module type="component" id="common.components.display_controller.ili9341.dma#sam_pdc" caption="LCD - ILI9341 Display Controller">
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd"/>
+			<device-support value="sam3n"/>
+			<device-support value="sam4s"/>
+			<info type="gui-flag" value="hidden"/>
+			<require idref="sam.drivers.pdc"/>
+		</module>
+	</select-by-device>
+
+	<select-by-device id="common.components.display_controller.ili9341.config">
+		<module type="component" id="common.components.display_controller.ili9341.config#xmega" caption="LCD - ILI9341 Display Controller">
+			<device-support value="xmegaa"/>
+			<device-support value="xmegaau"/>
+			<device-support value="xmegab1"/>
+			<device-support value="xmegac"/>
+			<device-support value="xmegad"/>
+			<device-support value="xmegae"/>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="conf_ili9341.h"/>
+			<build type="module-config" subtype="path" value="module_config/xmega"/>
+		</module>
+		<module type="component" id="common.components.display_controller.ili9341.config#xmegab3" caption="LCD - ILI9341 Display Controller">
+			<device-support value="xmegab3"/>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="conf_ili9341.h"/>
+			<build type="module-config" subtype="path" value="module_config/xmega_b3"/>
+		</module>
+		<module type="component" id="common.components.display_controller.ili9341.config#uc3" caption="LCD - ILI9341 Display Controller">
+			<device-support value="uc3"/>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="conf_ili9341.h"/>
+			<build type="module-config" subtype="path" value="module_config/uc3"/>
+		</module>
+		<module type="component" id="common.components.display_controller.ili9341.config#sam" caption="LCD - ILI9341 Display Controller">
+			<device-support value="sam"/>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="conf_ili9341.h"/>
+			<build type="module-config" subtype="path" value="module_config/sam"/>
+		</module>
+	</select-by-device>
+</asf>

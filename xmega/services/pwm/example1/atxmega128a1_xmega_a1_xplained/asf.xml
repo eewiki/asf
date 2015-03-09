@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="PWM driver example 1 - XMEGA-A1 Xplained" id="xmega.services.pwm.example1.xmega-a1_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.services.pwm.example1"/>
+		<require idref="board.xmega_a1_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

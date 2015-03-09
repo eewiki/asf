@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.applications.mega_uart_interrupt_example" caption="megaAVR interrupt UART example">
+		<info type="description" value="summary">
+		This application will set up the UART on a megaAVR device and use interrupts to read and write.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="mega_uart_interrupt_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_uart.h"/>
+		<build type="header-file" value="ring_buffer.h"/>
+		<build type="include-path" value="."/>
+		<require idref="mega.utils"/>
+		<device-support value="mega"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,32 @@
+<asf xmlversion="1.0">
+	<project caption="Low Power demo for SAM4L XPlained Pro" id="sam.applications.low_power.sam4l_xplained_pro">
+		<!-- Summary Description -->
+		<info type="description" value="summary">
+			This demo shows all the different low power modes with several types of wake-up sources.
+		</info>
+
+		<!-- Source -->
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_ast.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+
+		<!-- Device support -->
+		<device-support value="atsam4lc4c"/>
+
+		<!-- Required modules -->
+		<require idref="sam.applications.low_power"/>
+		<require idref="board.sam4l_xplained_pro"/>
+
+		<!-- Generators -->
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+	</project>
+</asf>

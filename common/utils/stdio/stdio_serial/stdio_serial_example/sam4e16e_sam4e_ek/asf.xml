@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4E_EK Serial Standard I/O Example" id="common.utils.stdio.stdio_serial.sam4e_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="common.utils.stdio.stdio_serial.stdio_serial_example"/>
+		<require idref="board.sam4e_ek"/>
+		<config name="config.board.sam4e_ek.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4e16e"/>
+	</project>
+</asf>

@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.twis" caption="TWIS - Two-Wire Slave Interface">
+		<info type="description" value="summary">
+		Driver for the TWIS (Two-Wire Slave Interface). This driver provides access to the main features of the TWIS controller. The TWIS interconnects components on a unique two-wire bus. The TWIS is programmable as a slave with sequential or single-byte access.
+		</info>
+		<build type="c-source" value="twis.c"/>
+		<build type="header-file" subtype="api" value="twis.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_twis_group"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device CDC unit tests for ATxmega128a1u on STK600" id="common.services.usb.class.cdc.device.unit_tests.stk600_atxmega128a1u" type="unit-test">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.usb.class.cdc.device.unit_tests"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<require idref="board.stk600-rc100x.atxmega128a1u"/>
+		<config name="config.board.stk600-rc100x.led" value="yes"/>
+		<generator value="avrgcc"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1u"/>
+	</project>
+</asf>

@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.mci" caption="MCI - MultiMedia Card Interface - Deprecated">
+		<info type="description" value="summary">
+		This driver interfaces the MCI (MultiMedia Card Interface) module. Deprecated; use the regular MCI - MultiMedia Card Interface driver.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<build type="header-file" subtype="api" value="mci.h"/>
+		<build type="header-file" subtype="api" value="sd_mmc_cmd.h"/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_mci"/>
+		<build type="c-source" value="mci.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a3_a4"/>
+	</module>
+</asf>

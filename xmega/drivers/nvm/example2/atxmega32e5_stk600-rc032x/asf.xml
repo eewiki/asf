@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="Drivers NVM Example 2 for stk600-rc032x with ATxmega32E5" id="xmega.drivers.nvm.example2.stk600-rc032x_atxmega32e5">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.nvm.example2"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="iarew"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

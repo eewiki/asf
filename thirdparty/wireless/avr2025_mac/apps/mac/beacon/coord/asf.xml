@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="meta" caption="MAC Beacon  Application - Coordinator" id="thirdparty.wireless.avr2025_mac.apps.mac.beacon.coord">
+		<info type="description" value="summary">
+		The basic MAC Example Beacon Application deploys a beacon-enabled network with star topology.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="define" name="HIGHEST_STACK_LAYER" value="MAC"/>
+		<build type="define" name="FFD" value=""/>
+		<build type="define" name="ENABLE_TSTAMP" value=""/>
+		<build type="define" name="BEACON_SUPPORT" value=""/>
+		<build type="define" name="SIO_HUB" value=""/>
+		<require idref="thirdparty.wireless.avr2025_mac"/>
+		<require idref="thirdparty.wireless.addons.sio2host"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.ioport"/>
+		<device-support-alias value="avr2025_mac_pal_support"/>
+		<device-support-alias value="avr2025_mac_api_parser_support"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

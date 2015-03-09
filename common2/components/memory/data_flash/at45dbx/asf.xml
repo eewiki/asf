@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common2.components.memory.data_flash.at45dbx" caption="AT45DBX DataFlash">
+		<info type="description" value="summary">
+		Driver for the AT45DBX series SPI DataFlash memories. It provides functions for initialization and read/write operations at byte or sector level.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="at45dbx.c"/>
+		<build type="header-file" value="at45dbx.h"/>
+		<build type="header-file" value="at45dbx_hal_spi.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_at45dbx.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="at45dbx_group"/>
+		<require idref="sam0.drivers.sercom.spi"/>
+		<device-support value="samd20"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+	</module>
+	</asf>

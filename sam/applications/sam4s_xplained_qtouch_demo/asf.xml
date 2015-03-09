@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.applications.sam4s_xplained_qtouch_demo" caption="SAM4S Xplained QTouch and LED Demonstration">
+		<info type="description" value="summary">
+		This demonstration program makes two LEDs on the board blinking depending on the QTouch input.
+		</info>
+		<build type="c-source" value="qtouch_demo.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4s"/>
+		<require idref="sam.drivers.tc"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.drivers.wdt"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" caption="Single button controller application - HOST" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.host">
+		<info type="description" value="summary">
+		Single button controller application running on the host and driving the ZRC controller stack running on the network co-processor
+		</info>
+		<build type="header-file" value="app_config.h"/>
+		<build type="header-file" value="conf_common_sw_timer.h"/>
+		<build type="header-file" value="keyboard.h"/>
+		<build type="include-path" value="."/>
+		<build type="define" name="PBP_REC" value=""/>
+		<build type="define" name="RF4CE_PLATFORM" value=""/>
+		<build type="define" name="CHANNEL_AGILITY" value=""/>
+		<require idref="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr"/>
+		<require idref="thirdparty.wireless.addons.sio2ncp"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.ioport"/>
+		<build type="doxygen-entry-point" value="zrc_group"/>
+		<device-support-alias value="avr2102_rf4control_api_parser_support"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

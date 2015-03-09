@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.usart" caption="USART - Universal Synchronous/Asynchronous Receiver/Transmitter">
+		<info type="description" value="summary">
+		Driver for the USART (Universal Synchronous Asynchronous Receiver Transmitter). The driver supports the following  modes: RS232, RS485, SPI, LIN and ISO7816.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="usart.c"/>
+		<build type="header-file" subtype="api" value="usart.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_usart"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

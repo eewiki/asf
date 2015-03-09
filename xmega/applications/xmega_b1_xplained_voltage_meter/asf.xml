@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.applications.xmega_b1_xplained_voltage_meter" caption="XMEGA Voltage Meter Example">
+		<info type="description" value="summary">
+		Basic Voltage demonstration that perfoms ADC on-board calibration to measure accurate voltage. The measure voltage is displayed using the on-board LCD.
+		</info>
+		<build type="header-file" value="main.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="header-file" value="ui.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmegab1"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="xmega.drivers.tc"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="xmega.components.display.c42048a"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,33 @@
+<asf xmlversion="1.0">
+	<module type ="application" caption="Network serial interface Application" id="thirdparty.wireless.avr2102_rf4control.apps.nwk.serial_if.ncp">
+		<info type="description" value="summary">
+		The RF4CE network stack running on the network co-processor and driven by the host application
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="app_config.h"/>
+		<build type="header-file" value="conf_common_sw_timer.h"/>
+		<build type="header-file" value="conf_pal.h"/>
+		<build type="define" name="HIGHEST_STACK_LAYER" value ="RF4CE"/>
+		<build type="define" name="PRIVATE_NIB" value =""/>
+		<build type="define" name="RF4CE_PLATFORM" value=""/>
+		<build type="define" name="RF4CE_SECURITY" value =""/>
+		<build type="define" name="CHANNEL_AGILITY" value =""/>
+		<build type="define" name="RF4CE_CALLBACK_PARAM" value =""/>
+		<build type="define" name="SIO_HUB" value =""/>
+		<build type="define" name="STB_ON_SAL" value =""/>
+		<build type="define" name="ENABLE_TRX_SRAM" value =""/>
+		<build type="define" name="NLDE_HANDLE" value =""/>
+		<build type="define" name="MAC_USER_BUILD_CONFIG" value =""/>
+		<build type="define" name="RSSI_TO_LQI_MAPPING" value =""/>
+		<build type="define" name="REDUCED_PARAM_CHECK" value =""/>
+		<build type="define" name="ENABLE_STACK_NVM" value =""/>
+		
+		<build type="doxygen-entry-point" value="group_rf4control"/>
+		<require idref="thirdparty.wireless.avr2102_rf4control.lib.nwk"/>
+		<require idref="thirdparty.wireless.avr2102_rf4control.apps.nwk.serial_if"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.pal"/>
+		<require idref="common.drivers.nvm"/>
+		
+        <device-support-alias value="avr2102_rf4control_nwk_support"/>
+	</module>
+</asf>

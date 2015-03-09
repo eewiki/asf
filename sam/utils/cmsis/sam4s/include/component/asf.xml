@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4s.include.component" caption="SAM4S component definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4S peripherals
+		</info>
+		<!--
+		<build type="include-path" value="."/>
+		-->
+		<build type="header-file" value="component_acc.h"/>
+		<build type="header-file" value="component_adc.h"/>
+		<build type="header-file" value="component_chipid.h"/>
+		<build type="header-file" value="component_cmcc.h"/>
+		<build type="header-file" value="component_crccu.h"/>
+		<build type="header-file" value="component_dacc.h"/>
+		<build type="header-file" value="component_efc.h"/>
+		<build type="header-file" value="component_gpbr.h"/>
+		<build type="header-file" value="component_hsmci.h"/>
+		<build type="header-file" value="component_matrix.h"/>
+		<build type="header-file" value="component_pdc.h"/>
+		<build type="header-file" value="component_pio.h"/>
+		<build type="header-file" value="component_pmc.h"/>
+		<build type="header-file" value="component_pwm.h"/>
+		<build type="header-file" value="component_rstc.h"/>
+		<build type="header-file" value="component_rtc.h"/>
+		<build type="header-file" value="component_rtt.h"/>
+		<build type="header-file" value="component_smc.h"/>
+		<build type="header-file" value="component_spi.h"/>
+		<build type="header-file" value="component_ssc.h"/>
+		<build type="header-file" value="component_supc.h"/>
+		<build type="header-file" value="component_tc.h"/>
+		<build type="header-file" value="component_twi.h"/>
+		<build type="header-file" value="component_uart.h"/>
+		<build type="header-file" value="component_udp.h"/>
+		<build type="header-file" value="component_usart.h"/>
+		<build type="header-file" value="component_wdt.h"/>
+		<device-support value="sam4s"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

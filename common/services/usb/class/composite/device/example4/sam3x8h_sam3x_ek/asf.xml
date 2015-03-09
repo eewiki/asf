@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<project caption="USB Composite Device CDC and MSC for SAM3X-EK" id="common.services.usb.composite.device.example.cdc_msc.sam3x_ek">
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_virtual_mem.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.usart"/>
+		<require idref="common.components.memory.virtual_mem"/>
+		<require idref="common.services.usb.composite.device.example.cdc_msc"/>
+		<config name="config.common.services.usb.class.device" value="composite"/>
+		<config name="config.common.services.usb.class.cdc.device.composite" value="enable"/>
+		<config name="config.common.services.usb.class.msc.device.composite" value="enable"/>
+		<require idref="board.sam3x_ek"/>
+		<config name="config.board.sam3x_ek.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam3x8h"/>
+	</project>
+</asf>

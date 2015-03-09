@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="common2.boards.user_board.common" caption="Common build items for user board support templates">
+		<build type="define" name="BOARD" value="USER_BOARD"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="user_board.h"/>
+		<build type="c-source" value="init.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<require idref="common.boards"/>
+	</module>
+
+	<board id="board.user_board.samd20j" caption="User Board">
+		<require idref="common2.boards.user_board.common"/>
+		<require idref="sam0.utils.linker_scripts"/>
+		<device-support value="samd20j"/>
+	</board>
+</asf>

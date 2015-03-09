@@ -1,0 +1,37 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.stk600-rc032x.led" name="config.board.stk600-rc032x.led" caption="STK600-RC032X LED support" default="no">
+		<module type="meta" id="config.board.stk600-rc032x.led#no" caption="STK600-RC032X LED support disabled">
+		</module>
+		<module type="meta" id="config.board.stk600-rc032x.led#yes" caption="STK600-RC032X LED support enabled">
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.stk600-rc032x.init" name="config.board.stk600-rc032x.init" caption="STK600-RC032X initialization support" default="yes">
+		<module type="meta" id="config.board.stk600-rc032x.init#no" caption="STK600-RC032X initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.stk600-rc032x.init#yes" caption="STK600-RC032X initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.stk600-rc032x.atxmega32e5" vendor="Atmel" caption="STK600">
+		<build type="define" name="BOARD" value="STK600_RC032X"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="stk600_rc032x.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../.."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x8000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.stk600-rc032x.led"/>
+		<require idref="config.board.stk600-rc032x.init"/>
+		<device-support value="atxmega32e5"/>
+	</board>
+
+</asf>

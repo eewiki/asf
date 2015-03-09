@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="MPU Example 1 for AT32UC3L064 in AVR Simulator" id="avr32.drivers.cpu.mpu.simulator_example1.at32uc3l064">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<build type="linker-config" subtype="script" value="link_uc3l064.lds" toolchain="avr32gcc"/>
+		<require idref="avr32.drivers.cpu.mpu.simulator_example1"/>
+		<require idref="board.avr_simulator_uc3.at32uc3l064"/>
+		<config name="config.avr32.drivers.intc.exception" value="no"/>
+		<config name="config.compiler.avr32gcc.optimization" value="none"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

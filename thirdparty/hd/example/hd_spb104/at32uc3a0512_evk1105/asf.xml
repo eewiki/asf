@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<project caption="Components Wifi H&amp;D SPB104 for EVK1105" id="avr32.components.wifi.hd_spb104.example.evk1105">
+		<require idref="avr32.components.wifi.example"/>
+		<require idref="board.evk1105"/>
+		<config name="config.board.evk1105.init" value="no"/>
+		<config name="config.board.evk1105.led" value="yes"/>
+		<config name="config.services.network.tcpip.lwip-port" value="hd"/>
+		<config name="config.thirdparty.lwip-port.140" value="hd"/>
+		<config name="config.thirdparty.lwip.version" value="1.3.2"/>
+		<config name="config.avr32.components.wifi.gui" value="yes"/>
+		<config name="config.avr32.components.wifi.wpa" value="yes"/>
+		<config name="config.avr32.components.wifi.key" value="yes"/>
+		<config name="config.avr32.components.wifi.fw_download" value="yes"/>
+		<config name="config.avr32.components.wifi.hd" value="spi"/>
+		<config name="config.avr32.components.wifi.interface" value="spi"/>
+		<require idref="avr32.components.display.et024006dhu"/>
+		<require idref="avr32.components.touch.qt1081"/>
+		<build type="include-path" value="../../ports/avr32/conf/"/>
+		<build type="header-file" value="../../ports/avr32/conf/conf_et024006dhu.h"/>
+		<build type="header-file" value="../../ports/avr32/conf/conf_ebi.h"/>
+		<build type="define" name="_ASSERT_ENABLE_" value=""/>
+		<build type="define" name="EXT_BOARD" value="SPB104"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

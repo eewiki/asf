@@ -1,0 +1,10 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.modules.debug.evk1100_usart1" caption="DSPLib - Debug module for EVK1100 through the USART1">
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="dsp_debug_setup_usart1_at32uc.c"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.services.dsplib.modules.debug.common"/>
+		<device-support value="uc3a"/>
+	</module>
+</asf>

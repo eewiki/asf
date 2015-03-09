@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.drivers.twi.slave_example" caption="TWI Slave Example">
+		<info type="description" value="summary">
+		TWI as Slave for megaRF
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="twi_slave_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_twi.h"/>
+		<device-support value="megarf"/>
+		<require idref="mega.drivers.twi"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.gpio"/>
+		<build type="doxygen-entry-point" value="megarf_twi_slave"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

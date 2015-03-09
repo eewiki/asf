@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.nvm.example5" caption="NVM Example 5">
+		<info type="description" value="summary">
+		Use the XMEGA NVM to get access to user signature memory : erase, write, read access and output status on LEDs.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="example5_xmega.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="xmega.drivers.nvm"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

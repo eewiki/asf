@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="LED Chaser Example for stk600-rcuc3l0" id="common.applications.led_chaser.stk600-rcuc3l0">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<require idref="common.applications.led_chaser"/>
+		<require idref="board.stk600-rcuc3l0"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="graphic library example for the XMEGA-A1 Xplain" id="common.services.gfx.example1.xmega_a1_xplain">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="header-file" value="conf_hx8347a.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="smiley.h"/>
+		<build type="header-file" value="atmel_logo.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<config name="config.gfx.display" value="hx8347a_et024006dhu"/>
+		<require idref="common.services.gfx.example1"/>
+		<require idref="board.xplain"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="iarew"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

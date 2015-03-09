@@ -1,0 +1,42 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.usb.class.cdc.device.unit_tests" caption="Unit Tests for the USB Device CDC Class">
+		<info type="description" value="summary">
+		Provide an unit test of USB Device CDC implementation.
+		</info>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="header-file" value="unit_tests.h"/>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l3"/>
+		<device-support value="uc3l4"/>
+		<device-support value="xmegaa1u"/>
+		<device-support value="xmegaa3u"/>
+		<device-support value="xmegaa3bu"/>
+		<device-support value="xmegaa4u"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="sam3s"/>
+		<device-support value="sam3sd"/>
+		<device-support value="sam3u"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4l"/>
+		<device-support value="sam4e"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.usb.class.device"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

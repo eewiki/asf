@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.drivers.events" caption="EVSYS - Event System">
+		<info type="description" value="summary">
+			Driver for the SAM D20 Event System. Provides a unified interface
+			for the configuration and management of the Event channels within
+			the device, including the enabling, disabling and routing to and
+			from various modules within the device.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Peripheral Event System"/>
+		</info>
+
+		<info type="appnote" value="AT03245"/>
+		<info type="keyword" value="pdf">
+			<keyword value="EVSYS"/>
+			<keyword value="Peripheral Event System"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Peripheral Event System on the SAM D20, both the ASF driver and the peripheral itself.
+		</info>		
+
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="events.h"/>
+		<build type="c-source" value="events.c"/>
+
+		<build type="header-file" value="quick_start/qs_events_basic.h"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_samd20_events_group"/>
+		<build type="doxygen-example-path" value="quick_start"/>
+
+		<device-support value="samd20"/>
+
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.system"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

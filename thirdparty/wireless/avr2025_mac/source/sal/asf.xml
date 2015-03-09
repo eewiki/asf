@@ -1,0 +1,61 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.thirdparty.wireless.avr2025_mac.source.sal" name="config.thirdparty.wireless.avr2025_mac.source.sal" caption="SAL Configuration" default="-">
+		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.sal#atxmega_sal"     caption="xmega sal support enabled">
+			<info type="description" value="summary">
+			The AES Engine of  XMEGA is used for performing SAL operations
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<require idref="thirdparty.wireless.avr2025_mac.source.sal.atxmega_sal"/>
+			<device-support value="xmega"/>
+		
+		</module>
+		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.sal#at86rf2xx"     caption="at86rf2xx sal support enabled">
+			<info type="description" value="summary">
+			The AES engine available in the AT86RFXX transceiver is used to perform Security functions
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<require idref="thirdparty.wireless.avr2025_mac.source.sal.at86rf2xx"/>
+			<device-support value="uc3"/>
+			<device-support value="sam4l"/>
+		</module>
+		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.sal#atmegarf_sal"     caption="atmegarf_sal  support enabled">
+			<info type="description" value="summary">
+			The AES engine available in the ATmegarf transceiver is used to perform Security functions
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<require idref="thirdparty.wireless.avr2025_mac.source.sal.atmegarf_sal"/>
+			<device-support value="megarf"/>
+		</module>
+		<module type="meta" id="config.thirdparty.wireless.avr2025_mac.source.sal#-"     caption="sal  support disabled">
+			<info type="description" value="summary">
+			No security features are used
+			</info>
+			<device-support value="avr"/>
+		</module>
+	</select-by-config>
+	<module type="driver" id="thirdparty.wireless.avr2025_mac.source.sal" caption="SAL">
+		<info type="description" value="summary">
+		The SAL (Security Abstraction Layer) provides an API that allows access to low level 
+		AES engine functions abstraction to encrypt and  decrypt frames.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="include-path"  value="inc/"/>
+		<build type="header-file"   value="inc/sal.h"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.sal.inc"/>
+		<require idref="config.thirdparty.wireless.avr2025_mac.source.sal"/>
+		<device-support value="xmega"/>
+        <device-support value="uc3"/>
+        <device-support value="megarf"/>
+		 <device-support value="sam4l"/>
+	</module>
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.sal.inc" caption="SAL">
+		<info type="description" value="summary">
+		Generic SAL Includes
+		</info>
+		<build type="header-file"   value="inc/sal_generic.h"/>
+		<build type="header-file"   value="inc/sal_types.h"/>
+		<build type="include-path"  value="inc/"/>
+		<build type="doxygen-entry-point" value="sal_group"/>
+
+	</module>
+</asf>

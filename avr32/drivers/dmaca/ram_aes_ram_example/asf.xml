@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.dmaca.example1" caption="DMACA RAM to AES to RAM Example 1">
+		<info type="description" value="summary">
+		Using the DMACA, transfer data from RAM to AES then transfer the data back to the RAM.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="DMA Controller"/>
+		</info>
+		<build type="c-source" value="ram_aes_ram_example.c"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.drivers.dmaca"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.aes"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

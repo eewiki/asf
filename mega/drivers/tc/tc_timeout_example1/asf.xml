@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.drivers.tc_timeout.example1" caption="Timer/Counter (TC) Timeout Example 1">
+		<info type="description" value="summary">
+		Uses the TC Timeout driver to run two timeouts flashing LEDS at different interval.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc_timeout_example1.c"/>
+		<device-support value="mega"/>
+		<require idref="mega.drivers.tc_timeout"/>
+		<require idref="mega.utils"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

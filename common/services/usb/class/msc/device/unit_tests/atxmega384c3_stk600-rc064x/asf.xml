@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device Mass Storage unit tests for ATxmega384C3 on STK600" id="common.services.usb.class.msc.device.unit_tests.stk600_atxmega384c" type="unit-test">
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.spi_master_type" value="standard_spi"/>
+		<require idref="common.components.memory.data_flash.at45dbx.ctrl_access"/>
+		<config name="config.common.services.usb.class.device" value="mass_storage"/>
+		<require idref="common.services.usb.class.msc.device.unit_tests"/>
+		<require idref="board.stk600-rc064x.atxmega384c3"/>
+		<config name="config.board.stk600-rc064x.led" value="yes"/>
+		<generator value="avrgcc"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

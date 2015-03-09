@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device HID Keyboard for SAM4E-EK" id="common.services.usb.class.hid.device.keyboard.example.sam4e_ek">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.usb.class.hid.device.keyboard.example"/>
+		<config name="config.common.services.usb.class.device" value="hid_keyboard"/>
+		<require idref="board.sam4e_ek"/>
+		<config name="config.board.sam4e_ek.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam4e16e"/>
+	</project>
+</asf>

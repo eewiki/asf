@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.components.crypto.sha204.unit_tests" caption="Unit Tests for the Common ATSHA204 Component">
+		<device-support value="xmega"/>
+		<info type="description" value="summary">
+			ATSHA204 CryptoAuth unit test. Test TWI communication with the four ATSHA204 components mounted on a Security Xplained extension board.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<require idref="common.boards"/>
+		<require idref="common.boards.security_xplained"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.cpu"/>
+		<require idref="xmega.drivers.wdt"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

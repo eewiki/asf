@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.utils.stdio.stdio_usb.example" caption="USB Standard I/O (stdio) Example">
+		<info type="description" value="summary">
+			Provide an application example of C-Library Standard I/O serial
+			interface to the USB Communication Device Class (CDC) service.
+		</info>
+		<build type="c-source" value="stdio_usb_example.c"/>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_common_utils_stdio_stdio_usb_example"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l3"/>
+		<device-support value="uc3l4"/>
+		<device-support value="xmegaa1u"/>
+		<device-support value="xmegaa3u"/>
+		<device-support value="xmegaa3bu"/>
+		<device-support value="xmegaa4u"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="sam3s"/>
+		<device-support value="sam3sd"/>
+		<device-support value="sam3u"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<require idref="common.services.usb.class.device"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

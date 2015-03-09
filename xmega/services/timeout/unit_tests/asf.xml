@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.services.timeout.unit_tests" caption="Unit Tests for the XMEGA Timeout Service">
+		<info type="description" value="summary">
+		Test all functions of XMEGA timeout service
+		</info>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmega"/>
+		<require idref="xmega.services.timeout"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

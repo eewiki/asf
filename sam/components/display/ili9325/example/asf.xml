@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.components.display.ili9325.example" caption="ILI9325 Display Controller Example">
+		<info type="description" value="summary">
+		A simple example for drawing pictures and strings on the ILI9325 LCD controller.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="c-source" value="ili9325_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.smc"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="sam.components.display.ili9325"/>
+		<require idref="sam.components.display.aat31xx"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

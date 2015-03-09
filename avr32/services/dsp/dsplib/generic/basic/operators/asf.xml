@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.generic.operators" caption="DSPLib - Generic operators function set">
+		<info type="description" value="summary">
+		Generic implementation of a useful set of functions to perform operations on fixed-point numbers.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="op_fix_ln.c"/>
+		<build type="c-source" value="op_fix_rand.c"/>
+		<build type="c-source" value="op_fix_log2.c"/>
+		<build type="c-source" value="op_dsp32_fix_sqrt.c"/>
+		<build type="c-source" value="op_dsp16_fix_sqrt.c"/>
+		<build type="c-source" value="op_fix_log10.c"/>
+		<build type="c-source" value="op_dsp16_kfix_ln.c"/>
+		<build type="c-source" value="op_dsp32_kfix_ln.c"/>
+		<build type="c-source" value="op_kfix_sin.c"/>
+		<build type="c-source" value="op_kfix_cos.c"/>
+		<build type="c-source" value="op_fix_sin.c"/>
+		<build type="c-source" value="op_fix_pow.c"/>
+		<build type="c-source" value="op_fix_asin.c"/>
+		<build type="c-source" value="op_fix_exp.c"/>
+		<build type="include-path" value="../../../include"/>
+		<build type="header-file" value="../../../include/dsp_operators.h"/>
+		<require idref="avr32.services.dsplib.common"/>
+		<build type="define" name="DSP_OPERATORS" value=""/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

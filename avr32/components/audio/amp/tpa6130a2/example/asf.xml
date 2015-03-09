@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.audio.amp.tpa6130a2.example" caption="Audio Amplifier TPA6130A2 Example">
+		<info type="description" value="summary">
+		Using the TPA6130, stream an audio buffer from a DAC.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Audio"/>
+		</info>
+		<build type="header-file" value="conf_tpa6130.h"/>
+		<build type="header-file" value="conf_twi.h"/>
+		<build type="header-file" value="sound.h"/>
+		<build type="c-source" value="tpa6130_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.components.audio.amp.tpa6130a2"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,74 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.crypto.polarssl" caption="PolarSSL - Small Cryptographic and SSL/TLS Library">
+		<info type="description" value="summary">
+		PolarSSL is a light-weight open source cryptographic and SSL/TLS library written in C.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography" />
+		</info>
+		<build type="distribute" subtype="file" value="ChangeLog.txt"/>
+		<build type="distribute" subtype="license" value="license.txt"/>
+		<build type="c-source" value="aes.c"/>
+		<build type="c-source" value="arc4.c"/>
+		<build type="c-source" value="base64.c"/>
+		<build type="c-source" value="bignum.c"/>
+		<build type="c-source" value="camellia.c"/>
+		<build type="c-source" value="certs.c"/>
+		<build type="c-source" value="debug.c"/>
+		<build type="c-source" value="des.c"/>
+		<build type="c-source" value="dhm.c"/>
+		<build type="c-source" value="havege.c"/>
+		<build type="c-source" value="md2.c"/>
+		<build type="c-source" value="md4.c"/>
+		<build type="c-source" value="md5.c"/>
+		<build type="c-source" value="md5.c"/>
+		<build type="c-source" value="padlock.c"/>
+		<build type="c-source" value="rsa.c"/>
+		<build type="c-source" value="sha1.c"/>
+		<build type="c-source" value="sha2.c"/>
+		<build type="c-source" value="sha4.c"/>
+		<build type="c-source" value="ssl_cli.c"/>
+		<build type="c-source" value="ssl_srv.c"/>
+		<build type="c-source" value="timing.c"/>
+		<build type="c-source" value="x509parse.c"/>
+		<build type="c-source" value="xtea.c"/>
+		<build type="header-file" subtype="api" value="include/polarssl/aes.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/arc4.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/base64.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/bignum.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/bn_mul.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/camellia.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/certs.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/config.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/debug.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/des.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/dhm.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/havege.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/md2.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/md4.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/md5.h"/>
+		<build type="header-file"               value="include/polarssl/net.h"/>
+		<build type="header-file"               value="include/polarssl/openssl.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/padlock.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/rsa.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/sha1.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/sha2.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/sha4.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/ssl.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/timing.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/x509.h"/>
+		<build type="header-file" subtype="api" value="include/polarssl/xtea.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="include/"/>
+		<build type="header-file" value="docsrc/documentation.h"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_crypto_polarssl"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<device-support value="uc3d"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

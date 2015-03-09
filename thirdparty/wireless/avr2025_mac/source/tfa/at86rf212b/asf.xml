@@ -1,0 +1,8 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.tfa.at86rf212b" caption="TFA_AT86RF212B">
+		<info type="description" value="summary">
+		AT86RF212B Transceiver Feature Access
+		</info>
+		<build type="c-source"      value="src/tfa.c"/>
+	</module>
+</asf>

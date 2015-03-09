@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<project force-caption="true" force-description="true" caption="MAC NoBeacon Sleep Application AT86RF233-XMEGA-A3U AT86RF233 Zigbit(USB)" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon_sleep.atxmega256a3u_rf233_zigbit_usb">
+		<info type="description" value="summary">
+		The MAC NoBeacon Sleep application demonstrates transceiver sleep feature .The device wakes from sleep every 2 seconds and transmits data to the coordinator.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+
+		<config name="config.spi_master_type" value="standard_spi"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf233"/>
+		<config name= "config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon_sleep"/>
+		<require idref="board.xmega_rf233_zigbit"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3u"/>
+	</project>
+</asf>

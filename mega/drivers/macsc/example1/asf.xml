@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.drivers.macsc.example1" caption="MACSC Example 1">
+		<info type="description" value="summary">
+		Configure the megaRF MAC Symbol Counter module to generate overflow interrupt,compare matches(1,2,3) and use the back-off slot counter.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+			<keyword value="Wireless"/>
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="macsc_megarf_example1.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="mega"/>
+		<require idref="mega.drivers.macsc"/>
+		<require idref="common.utils"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.ioport"/>
+		<require idref="mega.drivers.usart"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

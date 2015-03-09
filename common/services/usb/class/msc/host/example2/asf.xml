@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.usb.class.msc.host.example2" caption="USB Host MSC FatFS Example">
+		<module type="application" id="common.services.usb.class.msc.host.example2#0" caption="USB Host MSC FatFS Example">
+			<info type="description" value="summary">
+			Provide an application example of USB host Mass Storage Class implementation.
+			</info>
+			<build type="header-file" value="conf_fatfs.h"/>
+			<build type="header-file" value="conf_access.h"/>
+			<build type="header-file" value="conf_usb_host.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.fs.fatfs"/>
+			<require idref="common.services.usb.class.host"/>
+			<device-support value="sam"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

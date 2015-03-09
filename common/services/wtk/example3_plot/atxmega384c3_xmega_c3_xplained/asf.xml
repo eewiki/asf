@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="Widget library example 3 for the XMEGA-C3 XPLAINED" id="common.services.wtk.example3.xmega_c3_xplained">
+		<build type="header-file" value="conf_ili9341.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="header-file" value="conf_mxt.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.gfx.display" value="ili9341_sdt028atft"/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<require idref="common.services.wtk.example3"/>
+		<require idref="board.xmega_c3_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

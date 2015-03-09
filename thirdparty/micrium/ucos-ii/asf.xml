@@ -1,0 +1,46 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.os.ucosii" caption="Micrium uC/OS-II">
+		<info type="description" value="summary">
+		uC/OS-II is a portable, ROMable, scalable, preemptive, real-time deterministic multitasking kernel for microprocessors, microcontrollers and DSPs. Offering unprecedented ease-of-use, uC/OS-II is delivered with complete 100% ANSI C source code and in-depth documentation.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="distribute" subtype="directory" value="licensing"/>
+		<build type="distribute" subtype="directory" value="ucos-ii/doc"/>
+		<build type="module-config" subtype="required-header-file" value="os_cfg.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="header-file" subtype="api" toolchain="iarew32" value="uc-cpu/avr32/uc3/iar/cpu.h"/>
+		<build type="asm-source" toolchain="iarew32" value="uc-cpu/avr32/uc3/iar/cpu_a.asm"/>
+		<build type="header-file" subtype="api" toolchain="avr32gcc" value="uc-cpu/avr32/uc3/gnu/cpu.h"/>
+		<build type="asm-source" toolchain="avr32gcc" value="uc-cpu/avr32/uc3/gnu/cpu_a.asm"/>
+		<build type="header-file" value="uc-cpu/cpu_def.h"/>
+		<build type="c-source" value="ucos-ii/source/os_core.c"/>
+		<build type="c-source" value="ucos-ii/source/os_flag.c"/>
+		<build type="c-source" value="ucos-ii/source/os_mbox.c"/>
+		<build type="c-source" value="ucos-ii/source/os_mem.c"/>
+		<build type="c-source" value="ucos-ii/source/os_mutex.c"/>
+		<build type="c-source" value="ucos-ii/source/os_q.c"/>
+		<build type="c-source" value="ucos-ii/source/os_sem.c"/>
+		<build type="c-source" value="ucos-ii/source/os_task.c"/>
+		<build type="c-source" value="ucos-ii/source/os_time.c"/>
+		<build type="c-source" value="ucos-ii/source/os_tmr.c"/>
+		<build type="header-file" subtype="api" value="ucos-ii/source/ucos_ii.h"/>
+		<build type="header-file" toolchain="iarew32" value="ucos-ii/ports/avr32/uc3/iar/os_cpu.h"/>
+		<build type="asm-source" toolchain="iarew32" value="ucos-ii/ports/avr32/uc3/iar/os_cpu_a.asm"/>
+		<build type="c-source" toolchain="iarew32" value="ucos-ii/ports/avr32/uc3/iar/os_cpu_c.c"/>
+		<build type="c-source" toolchain="iarew32" value="ucos-ii/ports/avr32/uc3/iar/os_dbg.c"/>
+		<build type="header-file" toolchain="avr32gcc" value="ucos-ii/ports/avr32/uc3/gnu/os_cpu.h"/>
+		<build type="asm-source" toolchain="avr32gcc" value="ucos-ii/ports/avr32/uc3/gnu/os_cpu_a.asm"/>
+		<build type="c-source" toolchain="avr32gcc" value="ucos-ii/ports/avr32/uc3/gnu/os_cpu_c.c"/>
+		<build type="c-source" toolchain="avr32gcc" value="ucos-ii/ports/avr32/uc3/gnu/os_dbg.c"/>
+		<build type="include-path" value="uc-cpu/"/>
+		<build type="include-path" toolchain="iarew32" value="uc-cpu/avr32/uc3/iar"/>
+		<build type="include-path" toolchain="avr32gcc" value="uc-cpu/avr32/uc3/gnu"/>
+		<build type="include-path" value="ucos-ii/source/"/>
+		<build type="include-path" toolchain="iarew32" value="ucos-ii/ports/avr32/uc3/iar"/>
+		<build type="include-path" toolchain="avr32gcc" value="ucos-ii/ports/avr32/uc3/gnu"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3c"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

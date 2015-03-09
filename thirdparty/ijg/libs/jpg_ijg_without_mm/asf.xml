@@ -1,0 +1,56 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="avr32.utils.libs.jpg_ijg_without_mm.common" caption="IJG JPEG library  without standard memory management backend">
+		<info type="description" value="summary">
+		This library version of the IJG JPEG decoder does not use malloc and free as backend for memory management. In this case the application must provide the memory management functions.
+This implementation can therefore be used to have its separate memory management while the main application still uses malloc and free. One case for this scenario is when the application uses internal SRAM for allocation while the decoder uses external SDRAM. In that case both have different memory allocation backends since it is often not possible to use one for both.
+		</info>
+		<build type="include-path" value="include/"/>
+		<build type="header-file" value="include/cderror.h"/>
+		<build type="header-file" value="include/cdjpeg.h"/>
+		<build type="header-file" value="include/jchuff.h"/>
+		<build type="header-file" value="include/jconfig.h"/>
+		<build type="header-file" value="include/jdct.h"/>
+		<build type="header-file" value="include/jdhuff.h"/>
+		<build type="header-file" value="include/jerror.h"/>
+		<build type="header-file" value="include/jinclude.h"/>
+		<build type="header-file" value="include/jmemsys.h"/>
+		<build type="header-file" value="include/jmorecfg.h"/>
+		<build type="header-file" value="include/jpegint.h"/>
+		<build type="header-file" value="include/jpeglib.h"/>
+		<build type="header-file" value="include/jversion.h"/>
+		<build type="header-file" value="include/transupp.h"/>
+		<device-support value="uc3" />
+	</module>
+	<select-by-config id="avr32.utils.libs.jpg_ijg_without_mm" name="jpg_ijg_without_mm.optimization" default="speed" caption="jpg_ijg_without_mm optimization selector">
+		<select-by-device id="avr32.utils.libs.jpg_ijg_without_mm#speed" caption="jpg_ijg_without_mm speed device selector">
+			<module type="library" id="avr32.utils.libs.jpg_ijg_without_mm#speed#ucr2" caption="jpg_ijg_without_mm speed optimized for ucr2">
+				<info type="gui-flag" value="hidden"/>
+				<build type="library" subtype="user" value="at32ucr2/gcc/libjpg_ijg_without_mm-at32ucr2-speed_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr2/iar/libjpg_ijg_without_mm-at32ucr2-speed_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.jpg_ijg_without_mm.common" />
+				<build type="distribute" subtype="license" value="../../license.txt" />
+				<device-support value="ucr2" />
+			</module>
+		</select-by-device>
+		<select-by-device id="avr32.utils.libs.jpg_ijg_without_mm#balanced" caption="jpg_ijg_without_mm balanced device selector">
+			<module type="library" id="avr32.utils.libs.jpg_ijg_without_mm#balanced#ucr2" caption="jpg_ijg_without_mm balanced optimized for ucr2">
+				<info type="gui-flag" value="hidden"/>
+				<build type="library" subtype="user" value="at32ucr2/gcc/libjpg_ijg_without_mm-at32ucr2-balanced_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr2/iar/libjpg_ijg_without_mm-at32ucr2-balanced_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.jpg_ijg_without_mm.common" />
+				<build type="distribute" subtype="license" value="../../license.txt" />
+				<device-support value="ucr2" />
+			</module>
+		</select-by-device>
+		<select-by-device id="avr32.utils.libs.jpg_ijg_without_mm#size" caption="jpg_ijg_without_mm size device selector">
+			<module type="library" id="avr32.utils.libs.jpg_ijg_without_mm#size#ucr2" caption="jpg_ijg_without_mm size optimized for ucr2">
+				<info type="gui-flag" value="hidden"/>
+				<build type="library" subtype="user" value="at32ucr2/gcc/libjpg_ijg_without_mm-at32ucr2-size_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr2/iar/libjpg_ijg_without_mm-at32ucr2-size_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.jpg_ijg_without_mm.common" />
+				<build type="distribute" subtype="license" value="../../license.txt" />
+				<device-support value="ucr2" />
+			</module>
+		</select-by-device>
+	</select-by-config>
+</asf>

@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.utils.cmsis.samd20.include.component" caption="SAMD20 component definitions">
+		<info type="description" value="summary">
+		SAMD20 component definitions.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="component_ac.h"/>
+		<build type="header-file" value="component_adc.h"/>
+		<build type="header-file" value="component_dac.h"/>
+		<build type="header-file" value="component_dsu.h"/>
+		<build type="header-file" value="component_eic.h"/>
+		<build type="header-file" value="component_evsys.h"/>
+		<build type="header-file" value="component_gclk.h"/>
+		<build type="header-file" value="component_nvmctrl.h"/>
+		<build type="header-file" value="component_pac.h"/>
+		<build type="header-file" value="component_pm.h"/>
+		<build type="header-file" value="component_port.h"/>
+		<build type="header-file" value="component_rtc.h"/>
+		<build type="header-file" value="component_sercom.h"/>
+		<build type="header-file" value="component_sysctrl.h"/>
+		<build type="header-file" value="component_tc.h"/>
+		<build type="header-file" value="component_wdt.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samd20"/>
+	</module>
+</asf>

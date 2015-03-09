@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.freertos.uc3_example" caption="FreeRTOS Basic Example">
+		<info type="description" value="summary">
+		Default FreeRTOS.org demo application creating several tasks to showcase the use of the FreeRTOS API.
+		</info>
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<build type="header-file" value="documentation.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="partest/ParTest.c"/>
+		<build type="c-source" value="serial/serial.c"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../common/include"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="common.services.os.freertos"/>
+		<require idref="common.services.freertos.demo.common.minimal"/>
+	</module>
+</asf>

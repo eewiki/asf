@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="LCD c42048a Example for XMEGA B1 Xplained" id="xmega.components.display.c42048a.example.xmega_b1_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.components.display.c42048a.example"/>
+		<require idref="board.xmega_b1_xplained"/>
+		<require idref="xmega.drivers.tc"/>
+		<config name="config.board.xmega_b1_xplained.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128b1"/>
+	</project>
+</asf>

@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="TWIM Master Example for STK600_RCUC3D" id="avr32.drivers.twim.master_example.stk600-rcuc3d">
+		<require idref="avr32.drivers.twim.master_example"/>
+		<build type="include-path" value="../conf/"/>
+		<build type="header-file" value="../conf/conf_twim.h"/>
+		<require idref="board.stk600-rcuc3d"/>
+		<config name="config.board.stk600-rcuc3d.init" value="no"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc128d3"/>
+	</project>
+</asf>

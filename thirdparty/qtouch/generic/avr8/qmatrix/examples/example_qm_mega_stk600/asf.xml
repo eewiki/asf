@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<select-by-device id="mega.services.qtouch.generic.avr8.qmatrix.examples.example_qm_mega_stk600.device" caption="">
+		<module id="mega.services.qtouch.generic.avr8.qmatrix.examples.example_qm_mega_stk600.device#atmega128rfa1" caption="" type="meta">
+			<device-support value="atmega128rfa1"/>
+			<build type="c-source" value="./atmega128rfa1_stk600/main_m128rfa1.c"/>
+			<require idref="config.common.services.qtouch.generic.avr8.mega128rfa1_stk600.method"/>
+		</module>
+	</select-by-device>
+	<module type="application" id="mega.services.qtouch.generic.avr8.qmatrix.examples.example_qm_mega_stk600" caption="QMatrix Method Example Application - ATMEGA">
+		<info type="description" value="summary">
+		This QTouch Library Example Application demonstrates usage of the Qmatrix method on STK600-ATMEGA128RFA1-MCU board .
+		</info>
+		<build type="c-source" value="BitBangSPI_Master.c"/>
+		<build type="header-file" value="avr_compiler.h"/>
+		<build type="header-file" value="BitBangSPI_Master.h"/>
+		<build type="header-file" value="QDebugSettings.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="include-path" value="."/>
+		<require idref="mega.services.qtouch.generic.avr8.qmatrix.examples.example_qm_mega_stk600.device"/>
+		<device-support value="atmega128rfa1"/>
+		<require idref="config.common.services.qtouch.qdebug.stk600.mega"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

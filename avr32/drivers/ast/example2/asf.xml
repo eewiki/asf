@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.ast.example2" caption="AST Example 2">
+		<info type="description" value="summary">
+		Initialize the AST module, use with the 32KHz oscillator and setup an alarm to wake-up from sleep mode every second.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="ast_example2.c"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.ast"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.usart"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

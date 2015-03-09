@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="Timeout example 1 for stk600-rc032x with ATxmega32E5" id="xmega.services.timeout.example1.stk600-rc032x_atxmega32e5">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_timeout.h"/>
+		<build type="header-file" value="conf_rtc.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<config name="config.board.stk600-rc032x.led" value="yes"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<require idref="xmega.services.timeout.example1"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

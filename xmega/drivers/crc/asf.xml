@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.crc" caption="Cyclic Redundancy Check module driver">
+		<info type="description" value="summary">
+		Cyclic Redundancy Check module driver.
+		</info>
+		<build type="c-source" value="crc.c"/>
+		<build type="header-file" subtype="api" value="crc.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="xmegae"/>
+		<require idref="xmega.utils"/>
+		<require idref="xmega.drivers.nvm"/>
+		<build type="doxygen-entry-point" value="crc_group"/>
+		<build type="doxygen-quick-start" value="xmega_crc_quickstart"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa"/>
+	</module>
+</asf>

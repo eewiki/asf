@@ -1,0 +1,65 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.services.resistive_touch.example" caption="Example - Resistive Touch Example">
+		<module type="application" id="sam.services.resistive_touch.example#ili93xx" caption="ADS7843 LCD Resistive Touch Controller Example">
+			<info type="description" value="summary">
+				A simple example using the ADS7843 component and ILI93xx lcd controller.
+			</info>
+			<build type="c-source" value="ads7843_example.c"/>
+			<build type="c-source" value="rtouch_calibrate.c"/>
+			<build type="header-file" value="rtouch_calibrate.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.ioport"/>
+			<require idref="sam.components.display.ili93xx"/>
+			<require idref="sam.components.display.aat31xx"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.drivers.smc"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.services.resistive_touch"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<device-support value="sam4e"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="sam.services.resistive_touch.example#ili9325" caption="ADS7843 LCD Resistive Touch Controller Example">
+			<info type="description" value="summary">
+				A simple example using the ADS7843 component and ILI9325 lcd controller.
+			</info>
+			<build type="c-source" value="ads7843_example.c"/>
+			<build type="c-source" value="rtouch_calibrate.c"/>
+			<build type="header-file" value="rtouch_calibrate.h"/>
+			<build type="include-path" value="."/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.drivers.smc"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.components.display.ili9325"/>
+			<require idref="sam.components.display.aat31xx"/>
+			<require idref="sam.services.resistive_touch"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd8"/>
+			<device-support value="sam4s"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="sam.services.resistive_touch.example#hx8347a" caption="ADS7843 LCD Resistive Touch Controller Example">
+			<info type="description" value="summary">
+				A simple example using the ADS7843 component and HX8347A lcd controller.
+			</info>
+			<build type="c-source" value="ads7843_example.c"/>
+			<build type="c-source" value="rtouch_calibrate.c"/>
+			<build type="header-file" value="rtouch_calibrate.h"/>
+			<build type="include-path" value="."/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.drivers.smc"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.components.display.hx8347a"/>
+			<require idref="sam.components.display.aat31xx"/>
+			<require idref="sam.services.resistive_touch"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3u"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

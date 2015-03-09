@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.acifc" caption="ACIFC - Analog Comparator Interface">
+		<info type="description" value="summary">
+		The Analog Comparator compares two voltages and the result of this comparison gives a compare output. The user can select a high-speed or low-power option. Additionally, the hysteresis level are configurable.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion" />
+		</info>
+		<build type="c-source" value="acifc.c"/>
+		<build type="header-file" subtype="api" value="acifc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_acifc_group"/>
+		<device-support value="sam4l"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

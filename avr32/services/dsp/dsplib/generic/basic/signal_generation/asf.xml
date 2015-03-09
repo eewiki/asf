@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.generic.signal_generation" caption="DSPLib - Generic signal generator function set">
+		<info type="description" value="summary">
+		Generic implementation of a useful set of functions to generate many kind of fixed-point signals.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="gen_dirac.c"/>
+		<build type="c-source" value="gen_step.c"/>
+		<build type="c-source" value="gen_ramp.c"/>
+		<build type="c-source" value="gen_noise.c"/>
+		<build type="c-source" value="gen_sinusoidal.c"/>
+		<build type="c-source" value="gen_cosinusoidal.c"/>
+		<build type="c-source" value="gen_diraccomb.c"/>
+		<build type="c-source" value="gen_rectangular.c"/>
+		<build type="c-source" value="gen_sawtooth.c"/>
+		<build type="include-path" value="../../../include"/>
+		<build type="header-file" value="../../../include/dsp_signal_generation.h"/>
+		<require idref="avr32.services.dsplib.common"/>
+		<!-- Extra dependencies //-->
+		<require idref="avr32.services.dsplib.operators"/>
+		<require idref="avr32.services.dsplib.vectors"/>
+		<build type="define" name="DSP_SIGNAL_GENERATION" value=""/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

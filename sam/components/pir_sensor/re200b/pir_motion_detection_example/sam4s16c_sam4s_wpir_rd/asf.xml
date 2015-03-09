@@ -1,0 +1,27 @@
+﻿<asf xmlversion="1.0">
+	<project id="sam.components.pir_sensor.re200b.pir_motion_detection_example.sam4s16c_sam4s_wpir_rd" caption="RE200B PIR sensor motion detection example for SAM4S-WPIR-RD">
+		<!-- Files -->
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_ili9325.h"/>
+		<build type="header-file" value="conf_aat31xx.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+
+		<!-- Device support -->
+		<device-support value="atsam4s16c"/>
+
+		<!-- Required modules -->
+		<require idref="board.sam4s_wpir_rd"/>
+		<require idref="sam.components.pir_sensor.re200b.pir_motion_detection_example"/>
+
+		<!-- Generator options -->
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="yes"/>
+		<config name="config.compiler.armgcc.create_aux" value="yes"/>
+		<config name="config.compiler.as5_arm.create_aux" value="yes"/>
+	</project>
+</asf>

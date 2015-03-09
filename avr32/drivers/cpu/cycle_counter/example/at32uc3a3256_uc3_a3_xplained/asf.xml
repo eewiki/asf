@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="CPU Cycle Counter Example for UC3-A3 Xplained" id="avr32.drivers.cpu.cc.example.uc3_a3_xplained">
+		<require idref="avr32.drivers.cpu.cc.example"/>
+		<require idref="board.uc3_a3_xplained"/>
+		<config name="config.board.uc3_a3_xplained.init" value="no"/>
+		<config name="config.board.uc3_a3_xplained.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.components.crypto.sha204" caption="ATSHA204 device">
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<info type="description" value="summary">
+			Crypto Authentication device ATSHA204
+		</info>
+		<build type="module-config" subtype="path" value="./module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_atsha204.h"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="sha204_config.h"/>
+		<build type="header-file" subtype="api" value="sha204_physical.h"/>
+		<build type="header-file" subtype="api" value="sha204_comm.h"/>
+		<build type="header-file" subtype="api" value="sha204_command_marshaling.h"/>
+		<build type="header-file" subtype="api" value="sha204_lib_return_codes.h"/>
+		<build type="c-source" value="sha204_i2c.c"/>
+		<build type="c-source" value="sha204_comm.c"/>
+		<build type="c-source" value="sha204_command_marshaling.c"/>
+		<build type="doxygen-entry-point" value="sha204_command_marshaling_group"/>
+		<require idref="common.components.crypto.sha204.xmega_sha204"/>
+		<require idref="common.services.basic.twi"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<device-support value="xmegaa1"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="TWI master Example for evk1105" id="avr32.drivers.twi.master_example.evk1105">
+		<require idref="avr32.drivers.twi.master_example"/>
+		<build type="include-path" value="../"/>
+		<build type="header-file" value="../conf_twi.h"/>
+		<require idref="board.evk1105"/>
+		<config name="config.board.evk1105.init" value="no"/>
+		<config name="config.utils.interrupt.intc" value="force"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

@@ -1,0 +1,52 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.usb.class.dfu_atmel.device.bootloader.xmega" caption="AVR XMEGA USB DFU Bootloader">
+		<info type="description" value="summary">
+		ISP application, allowing R/W access to several on-chip memories through a USB DFU interface.
+		</info>
+		<build type="header-file" value="main.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./conf"/>
+		<build type="header-file" value="conf/conf_usb.h"/>
+		<build type="header-file" value="conf/conf_clock.h"/>
+		<build type="header-file" value="conf/conf_board.h"/>
+		<build type="header-file" value="conf/conf_isp.h"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.cpu"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<require idref="common.services.usb.class.device"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+			<keyword value="USB"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<module type="application" id="common.services.usb.class.dfu_atmel.device.bootloader.xmega.small" caption="AVR XMEGA USB DFU Bootloader 4KB">
+		<info type="description" value="summary">
+		ISP application, allowing R/W access to several on-chip memories through a USB DFU interface.
+		The target is the bootloaders 4KB.
+		</info>
+		<build type="header-file" value="main.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="sysclk_opt.c"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./conf"/>
+		<build type="header-file" value="conf/conf_usb.h"/>
+		<build type="header-file" value="conf/conf_clock.h"/>
+		<build type="header-file" value="conf/conf_board.h"/>
+		<build type="header-file" value="conf/conf_isp.h"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.cpu"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<require idref="common.services.usb.class.device"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+			<keyword value="USB"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

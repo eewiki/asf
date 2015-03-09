@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="AT45DBX DataFlash example for STK600-RC044X" id="common.components.memory.data_flash.at45dbx.example.stk600-rc044x_atxmega32a4u">
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_data_flash_example.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.data_flash.at45dbx.example"/>
+		<require idref="board.stk600-rc044x.atxmega32a4u"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32a4u"/>
+	</project>
+</asf>

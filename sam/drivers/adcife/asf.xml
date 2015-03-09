@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.adcife" caption="ADCIFE - ADC Interface">
+		<info type="description" value="summary">
+		Driver for the ADCIFE (Analog-to-Digital Converter Interface).
+		Provides functions for configuration of conversion parameters (up to 12-bit signed at 350 ksps), channel sequencing (max. 16 channels, w/ 16 different inputs and up to 64x gain), window monitoring, interrupt and conversion triggering.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adcife.c"/>
+		<build type="header-file" subtype="api" value="adcife.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_adcife_group"/>
+		<build type="module-config" subtype="required-header-file" value="conf_adcife.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<device-support value="sam4l"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="sam.utils"/>
+		<require idref="sam.drivers.pdca"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

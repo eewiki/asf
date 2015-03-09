@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.spi" caption="SPI - Serial Peripheral Interface">
+		<info type="description" value="summary">
+		Driver for the SPI (Serial Peripheral Interface). The SPI circuit is a synchronous serial data link that provides communication with external devices in Master or Slave mode. Connection to Peripheral DMA Controller channel capabilities optimizes data transfers.
+		</info>
+		<build type="c-source" value="spi.c"/>
+		<build type="header-file" subtype="api" value="spi.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_spi"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.utils"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

@@ -1,0 +1,193 @@
+<asf xmlversion="1.0">
+	<select-by-config id="common.drivers.nvm" name="config.common.drivers.nvm.mem_type" caption="NVM - Non Volatile Memory access (Common API)" default="no_extmem">
+		<info type="description" value="summary">
+			API for using NVM (Non Volatile memory) without directly accessing the registers. Common API.
+		</info>
+		<select-by-device id="common.drivers.nvm#no_extmem">
+			<module type="driver" id="common.drivers.nvm#no_extmem#0" caption="NVM - Non volatile memory access">
+				<info type="description" value="summary">
+				Driver for NVM access. Provides functions for initializing, reading, writing, erasing NVM and getting configuration parameters. Common API.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Memory"/>
+				</info>
+				<build type="doxygen-entry-point" value="nvm_group"/>
+				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="header-file" subtype="api" value="common_nvm.h"/>
+				<build type="c-source" value="xmega/xmega_nvm.c"/>
+				<build type="include-path" value="."/>
+				<build type="module-config" subtype="required-header-file" value="conf_nvm.h"/>
+				<build type="module-config" subtype="path" value="xmega/module_config"/>
+				<require idref="xmega.drivers.nvm"/>
+				<device-support value="xmega"/>
+				<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+			</module>
+			<module type="driver" id="common.drivers.nvm#no_extmem#1" caption="NVM - Non volatile memory access">
+				<info type="description" value="summary">
+				Driver for NVM access. Provides functions for initializing, reading, writing, erasing NVM and getting configuration parameters. Common API.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Memory"/>
+				</info>
+				<build type="doxygen-entry-point" value="nvm_group"/>
+				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="header-file" subtype="api" value="common_nvm.h"/>
+				<build type="c-source" value="uc3/uc3_nvm.c"/>
+				<build type="header-file" value="uc3/flash_api.h"/>
+				<build type="include-path" value="."/>
+				<build type="module-config" subtype="required-header-file" value="conf_nvm.h"/>
+				<build type="module-config" subtype="path" value="uc3/module_config"/>
+				<require idref="avr32.drivers.flashcdw"/>
+				<device-support value="uc3d"/>
+				<device-support value="uc3l0"/>
+				<device-support value="uc3l3"/>
+				<device-support value="uc3l4"/>
+				<generator value="doxygen-module" default-mcu="unspecified-uc3d"/>
+			</module>
+			<module type="driver" id="common.drivers.nvm#no_extmem#2" caption="NVM - Non volatile memory access">
+				<info type="description" value="summary">
+				Driver for NVM access. Provides functions for initializing, reading, writing, erasing NVM and getting configuration parameters. Common API.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Memory"/>
+				</info>
+				<build type="doxygen-entry-point" value="nvm_group"/>
+				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="header-file" subtype="api" value="common_nvm.h"/>
+				<build type="c-source" value="uc3/uc3_nvm.c"/>
+				<build type="header-file" value="uc3/flash_api.h"/>
+				<build type="include-path" value="."/>
+				<build type="module-config" subtype="required-header-file" value="conf_nvm.h"/>
+				<build type="module-config" subtype="path" value="uc3/module_config"/>
+				<require idref="avr32.drivers.flashc"/>
+				<device-support value="uc3a"/>
+				<device-support value="uc3a3"/>
+				<device-support value="uc3a3s"/>
+				<device-support value="uc3a4"/>
+				<device-support value="uc3b"/>
+				<device-support value="uc3c"/>
+				<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+			</module>
+			<module type="driver" id="common.drivers.nvm#no_extmem#3" caption="NVM - Non volatile memory access">
+				<info type="description" value="summary">
+				Driver for NVM access. Provides functions for initializing, reading, writing, erasing NVM and getting configuration parameters. Common API.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Memory"/>
+				</info>
+				<build type="doxygen-entry-point" value="nvm_group"/>
+				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="header-file" subtype="api" value="common_nvm.h"/>
+				<build type="c-source" value="sam/sam_nvm.c"/>
+				<build type="include-path" value="."/>
+				<build type="module-config" subtype="required-header-file" value="conf_nvm.h"/>
+				<build type="module-config" subtype="path" value="sam/module_config"/>
+				<require idref="sam.services.flash"/>
+				<device-support value="sam3"/>
+				<device-support value="sam4s"/>
+				<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+			</module>
+			<module type="driver" id="common.drivers.nvm#no_extmem#5" caption="NVM - Non volatile memory access">
+				<info type="description" value="summary">
+				Driver for NVM access. Provides functions for initializing, reading, writing, erasing NVM and getting configuration parameters. Common API.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Memory"/>
+				</info>
+				<build type="doxygen-entry-point" value="nvm_group"/>
+				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<require idref="thirdparty.wireless.avr2025_mac.source.pal.common.drivers.nvm"/>
+				<require idref="sam.drivers.flashcalw"/>
+				<device-support value="sam4l"/>
+				<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+			</module>
+			<module type="driver" id="common.drivers.nvm#no_extmem#4" caption="NVM - Non volatile memory access">
+				<info type="description" value="summary">
+				Driver for NVM access. Provides functions for initializing, reading, writing, erasing NVM and getting configuration parameters. Common API.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Memory"/>
+				</info>
+				<build type="doxygen-entry-point" value="nvm_group"/>
+				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<require idref="thirdparty.wireless.avr2025_mac.source.pal.common.drivers.nvm"/>
+				<require idref="thirdparty.wireless.avr2025_mac.source.pal.mega.drivers.flash"/>
+				<device-support value="megarf"/>
+			</module>
+		</select-by-device>
+		<select-by-device id="common.drivers.nvm#extmem">
+			<module type="driver" id="common.drivers.nvm#extmem#0" caption="NVM - Non volatile memory access">
+				<info type="description" value="summary">
+				Driver for NVM access. Includes AT45DBX external dataflash. Provides functions for initializing, reading, writing, erasing NVM and getting configuration parameters. Common API.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Memory"/>
+				</info>
+				<build type="doxygen-entry-point" value="nvm_group"/>
+				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="header-file" subtype="api" value="common_nvm.h"/>
+				<build type="c-source" value="xmega/xmega_nvm.c"/>
+				<build type="include-path" value="."/>
+				<build type="define" name="USE_EXTMEM" value="" />
+				<build type="module-config" subtype="required-header-file" value="conf_nvm.h"/>
+				<build type="module-config" subtype="path" value="xmega/module_config"/>
+				<require idref="xmega.drivers.nvm"/>
+				<require idref="common.components.memory.data_flash.at45dbx"/>
+				<device-support value="xmegaa"/>
+				<device-support value="xmegaau"/>
+				<device-support value="xmegab"/>
+				<device-support value="xmegad"/>
+				<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+			</module>
+			<module type="driver" id="common.drivers.nvm#extmem#1" caption="NVM - Non volatile memory access">
+				<info type="description" value="summary">
+				Driver for NVM access. Includes AT45DBX external dataflash. Provides functions for initializing, reading, writing, erasing NVM and getting configuration parameters. Common API.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Memory"/>
+				</info>
+				<build type="doxygen-entry-point" value="nvm_group"/>
+				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="header-file" subtype="api" value="common_nvm.h"/>
+				<build type="c-source" value="uc3/uc3_nvm.c"/>
+				<build type="header-file" value="uc3/flash_api.h"/>
+				<build type="include-path" value="."/>
+				<build type="define" name="USE_EXTMEM" value="" />
+				<build type="module-config" subtype="required-header-file" value="conf_nvm.h"/>
+				<build type="module-config" subtype="path" value="uc3/module_config"/>
+				<require idref="avr32.drivers.flashcdw"/>
+				<require idref="common.components.memory.data_flash.at45dbx"/>
+				<device-support value="uc3d"/>
+				<device-support value="uc3l0"/>
+				<device-support value="uc3l3"/>
+				<device-support value="uc3l4"/>
+				<generator value="doxygen-module" default-mcu="unspecified-uc3d"/>
+			</module>
+			<module type="driver" id="common.drivers.nvm#extmem#2" caption="NVM - Non volatile memory access">
+				<info type="description" value="summary">
+				Driver for NVM access. Includes AT45DBX external dataflash. Provides functions for initializing, reading, writing, erasing NVM and getting configuration parameters. Common API.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Memory"/>
+				</info>
+				<build type="doxygen-entry-point" value="nvm_group"/>
+				<build type="doxygen-quick-start" value="nvm_quickstart"/>
+				<build type="header-file" subtype="api" value="common_nvm.h"/>
+				<build type="c-source" value="uc3/uc3_nvm.c"/>
+				<build type="header-file" value="uc3/flash_api.h"/>
+				<build type="include-path" value="."/>
+				<build type="define" name="USE_EXTMEM" value="" />
+				<build type="module-config" subtype="required-header-file" value="conf_nvm.h"/>
+				<build type="module-config" subtype="path" value="uc3/module_config"/>
+				<require idref="avr32.drivers.flashc"/>
+				<require idref="common.components.memory.data_flash.at45dbx"/>
+				<device-support value="uc3a"/>
+				<device-support value="uc3a3"/>
+				<device-support value="uc3a4"/>
+				<device-support value="uc3b"/>
+				<device-support value="uc3c"/>
+				<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+			</module>
+		</select-by-device>
+	</select-by-config>
+</asf>

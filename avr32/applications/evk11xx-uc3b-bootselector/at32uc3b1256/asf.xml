@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="Boot selector Application " id="avr32.applications.evk11xx-uc3b-bootselector.example">
+		<require idref="avr32.applications.evk11xx-uc3b-bootselector"/>
+		<require idref="board.dummy.at32uc3b1256"/>
+		<build type="linker-config" subtype="script" value="../linker_scripts/gcc/link_uc3b1256_bootselector.lds" toolchain="avr32gcc"/>
+		<build type="linker-config" subtype="script" value="../linker_scripts/iar/lnkuc3b1256_bootselector.xcl" toolchain="iarew32"/>
+		<config name="config.avr32.utils.trampoline" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b1256"/>
+	</project>
+</asf>

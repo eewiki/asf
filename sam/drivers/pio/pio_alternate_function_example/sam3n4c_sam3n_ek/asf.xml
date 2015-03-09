@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="PIO Alternate Function Example for SAM3N" id="sam.drivers.pio.alternate_function_example.sam3n_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.pio.alternate_function_example"/>
+		<require idref="board.sam3n_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<device-support value="atsam3n4c"/>
+	</project>
+</asf>

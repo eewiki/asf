@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project id="common.services.calendar.unit_tests.uc3_l0_xplained" caption="Calendar driver unit tests on UC3-L0 Xplained" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="common.services.calendar.unit_tests"/>
+		<require idref="board.uc3_l0_xplained"/>
+		<generator value="avr32gcc"/>
+		<generator value="iarew32"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<generator value="as5_32"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.qdec.example1" caption="XMEGA Quadrature Decoder Example 1">
+		<info type="description" value="summary">
+		XMEGA Quadrature decoder example application shows how to use quadrature decoder driver, detects position and scolling frequency.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+			<keyword value="Peripheral Event System"/>
+		</info>
+		<build type="c-source" value="qdec_example1.c"/>
+		<require idref="xmega.drivers.qdec"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<device-support value="xmegae"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,52 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.basic.cpu" caption="Chip Reset Cause Access (Common API)">
+		<info type="description" value="summary">
+		Chip Reset Cause Access. Provides functions for getting and clearing the chip reset source. Common API.
+		</info>
+		<module type="service" id="common.services.basic.cpu#0" caption="Chip Reset Cause Access - XMEGA implementation">
+			<info type="description" value="summary">
+			Chip Reset Cause Access. Provides functions for getting and clearing the chip reset source. XMEGA implementation of common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="CPU"/>
+			</info>
+			<build type="header-file" subtype="api" value="reset_cause.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="reset_cause_group"/>
+			<build type="doxygen-quick-start" value="reset_cause_quickstart"/>
+			<device-support value="xmega"/>
+			<require idref="xmega.drivers.cpu"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.basic.cpu#1" caption="Chip Reset Cause Access - UC3 implementation">
+			<info type="description" value="summary">
+			Chip Reset Cause Access. Provides functions for getting and clearing the chip reset source. UC3 implementation of common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="CPU"/>
+			</info>
+			<build type="header-file" subtype="api" value="reset_cause.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="reset_cause_group"/>
+			<build type="doxygen-quick-start" value="reset_cause_quickstart"/>
+			<device-support value="uc3"/>
+			<require idref="avr32.drivers.cpu"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+		</module>
+		<module type="service" id="common.services.basic.cpu#2" caption="Chip Reset Cause Access - SAM4L implementation">
+			<info type="description" value="summary">
+			Chip Reset Cause Access. Provides functions for getting and clearing the chip reset source. SAM4L implementation of common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="CPU"/>
+			</info>
+			<build type="header-file" subtype="api" value="reset_cause.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="reset_cause_group"/>
+			<build type="doxygen-quick-start" value="reset_cause_quickstart"/>
+			<device-support value="sam4l"/>
+			<require idref="sam.drivers.cpu"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+	</select-by-device>
+</asf>

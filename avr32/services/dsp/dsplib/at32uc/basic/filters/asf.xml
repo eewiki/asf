@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.uc3.filters" caption="DSPLib - Filter function set">
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="filt_dsp16_iirpart_at32uc.c"/>
+		<build type="c-source" value="filt_dsp16_iir_at32uc.c"/>
+		<build type="c-source" value="filt_dsp32_iirpart_at32uc.c"/>
+		<build type="c-source" value="filt_dsp32_iir_at32uc.c"/>
+		<build type="c-source" value="filt_dsp32_lms_at32uc.c"/>
+		<build type="c-source" value="filt_dsp32_nlms_at32uc.c"/>
+		<build type="asm-source" value="filt_dsp16_lms_at32uc.S" toolchain="avr32gcc"/>
+		<build type="asm-source" value="filt_dsp16_lms_at32uc.s82" toolchain="iarew32"/>
+		<build type="asm-source" value="filt_dsp16_nlms_at32uc.S" toolchain="avr32gcc"/>
+		<build type="asm-source" value="filt_dsp16_nlms_at32uc.s82" toolchain="iarew32"/>
+		<build type="asm-source" value="filt_dsp32_nlms_fir_at32uc.S" toolchain="avr32gcc"/>
+		<build type="asm-source" value="filt_dsp32_nlms_fir_at32uc.s82" toolchain="iarew32"/>
+		<build type="asm-source" value="filt_dsp32_lms_fir_at32uc.S" toolchain="avr32gcc"/>
+		<build type="asm-source" value="filt_dsp32_lms_fir_at32uc.s82" toolchain="iarew32"/>
+		<require idref="avr32.services.dsplib.uc3"/>
+		<require idref="avr32.services.dsplib.generic.filters"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

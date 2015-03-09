@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.services.timeout.example1" caption="Timeout Service Example 1">
+		<info type="description" value="summary">
+		Timeout service example 1. This example demonstrates how to use the periodic timeout feature to toggle two LED's with different frequency.
+		</info>
+		<!-- Keyword for sorting in example project wizard -->
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<!-- Device support, can be one device or a device family -->
+		<device-support value="xmega"/>
+		<!-- Include paths -  "." is the minimum required by the generator -->
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<!-- Lists build information and dependencies -->
+		<build type="c-source" value="example1.c"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.services.timeout"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

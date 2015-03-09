@@ -1,0 +1,65 @@
+<asf xmlversion="1.0">
+	<project caption="SAM toolkit demo for SAM4S-EK2" id="sam.application.sam_toolkit_demo.sam4s_ek2">
+		<info type="description" value="summary">
+		The SAM4S-EK2 toolkit demo presents the general features of the board. It will draw the bmpfile stored in the nand flash through FatFS. Then the individual toolkit functions can be accessed through the icon widgets.
+		</info>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_nf.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<build type="header-file" value="conf_demo.h"/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="header-file" value="conf_ili9325.h"/>
+		<build type="header-file" value="conf_aat31xx.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_ads7843.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_membag.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_win.h"/>
+		<build type="header-file" value="conf_wtk.h"/>
+		<build type="header-file" value="QDebugSettings.h"/>
+		<build type="header-file" value="demo_board.h"/>
+		<build type="c-source" value="demo_board.c"/>
+		<build type="include-path" value="."/>
+		<require idref="config.common.services.qtouch.generic.sam"/>
+		<config name="config.common.services.qtouch.generic.sam" value="qtouch_method"/>
+		<require idref="config.common.services.qtouch.qdebug.qt600.generic"/>
+		<config name="config.common.services.qtouch.qdebug.qt600.generic" value="yes"/>
+		<require idref="common.components.memory.nand_flash"/>
+		<config name="config.common.services.usb.class.device" value="mass_storage"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<config name="config.gfx.display" value="ili9325_ftm280c34d"/>
+		<require idref="sam.application.sam_toolkit_demo"/>
+		<require idref="board.sam4s_ek2"/>
+		<require idref="sam.drivers.wdt"/>
+		<config name="config.board.sam4s_ek2.led" value="yes"/>
+		<config name="config.board.sam4s_ek2.init" value="no"/>
+		<build type="define" name="QT_NUM_CHANNELS" value="32"/>
+		<build type="define" name="QT_DELAY_CYCLES" value="5"/>
+		<build type="define" name="_DEBUG_INTERFACE_" value=""/>
+		<build type="define" name="_QTOUCH_" value=""/>
+		<build type="define" name="QTOUCH_SLIDER_REVERSED" value=""/>
+		<build type="define" name="SNS1" value="C"/>
+		<build type="define" name="SNSK1" value="C"/>
+		<build type="define" name="SNS2" value="A"/>
+		<build type="define" name="SNSK2" value="A"/>
+		<build type="define" name="_SNS1_SNSK1_SAME_PORT_" value=""/>
+		<build type="define" name="_SNS2_SNSK2_SAME_PORT_" value=""/>
+		<build type="define" name="DEF_TOUCH_QDEBUG_ENABLE_QM" value="0"/>
+		<build type="define" name="DEF_TOUCH_QDEBUG_ENABLE_QTA" value="0"/>
+		<build type="define" name="DEF_TOUCH_QDEBUG_ENABLE_QTB" value="0"/>
+		<build type="define" name="DEF_TOUCH_QDEBUG_ENABLE_AT" value="0"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x8000"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>

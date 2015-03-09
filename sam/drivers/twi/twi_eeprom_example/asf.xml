@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.twi.twi_eeprom_example" caption="TWI EEPROM Example">
+		<info type="description" value="summary">
+			The application demonstrates how to use the TWI driver to access an external serial EEPROM chip.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="twi_eeprom_example.c"/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.drivers.twi"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

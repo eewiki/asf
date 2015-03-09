@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="PM Example2 for EVK1100" id="avr32.drivers.pm.example2.evk1100">
+		<require idref="avr32.drivers.pm.example2"/>
+		<require idref="board.evk1100"/>
+		<config name="config.board.evk1100.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

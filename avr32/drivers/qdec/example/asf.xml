@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.qdec.example" caption="QDEC Example">
+		<info type="description" value="summary">
+		Using the QDEC module in timer mode (interrupt-based example), output a varying duty cycle square wave on a pin.
+		</info>
+		<build type="c-source" value="qdec_example.c"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.flashc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.qdec"/>
+		<require idref="avr32.drivers.scif"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

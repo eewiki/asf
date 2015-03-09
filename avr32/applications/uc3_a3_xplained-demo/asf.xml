@@ -1,0 +1,35 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.uc3-a3_xplained_demo_application" caption="UC3-A3 Xplained demo application">
+		<info type="description" value="summary">
+		Demo application for UC3-A3 that reads the value from a touch slider to set the brightness of a LED using PWM.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="uc3-a3_xplained_demo.c"/>
+		<build type="c-source" value="touch.c"/>
+		<build type="header-file" value="uc3-a3_xplained_demo.h"/>
+		<build type="header-file" value="touch_config.h"/>
+		<build type="header-file" value="touch_api.h"/>
+		<build type="library" subtype="user" value="libuc3a-32qt-k-8rs.a" toolchain="avr32gcc"/>
+		<build type="library" subtype="user" value="libuc3a-32qt-k-8rs.r82" toolchain="iarew32"/>
+		<build type="include-path" value="qdebug"/>
+		<build type="c-source" value="qdebug/QDebug.c"/>
+		<build type="c-source" value="qdebug/QDebugTransport.c"/>
+		<build type="c-source" value="qdebug/SPI_Master.c"/>
+		<build type="header-file" value="qdebug/QDebugSettings.h"/>
+		<build type="header-file" value="qdebug/QDebug.h"/>
+		<build type="header-file" value="qdebug/QDebugTransport.h"/>
+		<build type="header-file" value="qdebug/SPI_Master.h"/>
+		<build type="distribute" subtype="license" value="license.txt"/>
+		<device-support value="uc3a"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="common.services.basic.clock"/>
+		<device-support value="at32uc3a3256"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

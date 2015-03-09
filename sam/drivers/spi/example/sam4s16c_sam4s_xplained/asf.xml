@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="SPI Example for SAM4S Xplained" id="sam.drivers.spi.example.sam4s_xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.spi.example"/>
+		<require idref="sam.utils.cmsis.sam4s.source.template"/>
+		<require idref="board.sam4s_xplained"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4s16c"/>
+	</project>
+</asf>

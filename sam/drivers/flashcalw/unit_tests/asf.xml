@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.flashcalw.unit_tests" caption="Unit Tests for the SAM FLASHCALW Driver">
+		<info type="description" value="summary">
+		Unit test application for the flashcalw driver.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="unit_tests.c"/>
+		<device-support value="sam4l"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="sam.drivers.flashcalw"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

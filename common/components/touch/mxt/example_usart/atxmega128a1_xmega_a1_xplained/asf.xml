@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="maXTouch component USART event example - XMEGA-A1 XPLAINED" id="common.components.touch.mxt.example_usart.atxmega128a1_xplained">
+		<info type="description" value="summary">
+			This example demonstrates the mXT143E Xplained top module on an XMEGA-A1 Xplained kit
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_mxt.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.touch.mxt.example_usart"/>
+		<require idref="board.xmega_a1_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

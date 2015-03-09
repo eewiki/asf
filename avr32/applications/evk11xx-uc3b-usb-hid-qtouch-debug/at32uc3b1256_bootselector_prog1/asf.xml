@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="Application EVK11XX UC3B USB HID QTOUCH DEBUG prog1" id="avr32.applications.evk11xx-uc3b-usb-hid-qtouch-debug.example2">
+		<require idref="avr32.applications.evk11xx-uc3b-usb-hid-qtouch-debug"/>
+		<require idref="board.user_board.at32uc3b1256"/>
+		<config name="config.user_board.at32uc3b1256.init" value="no"/>
+		<build type="linker-config" subtype="script" value="../../evk11xx-uc3b-bootselector/linker_scripts/gcc/link_uc3b1256_prog1.lds" toolchain="avr32gcc"/>
+		<build type="linker-config" subtype="script" value="../../evk11xx-uc3b-bootselector/linker_scripts/iar/lnkuc3b1256_prog1.xcl" toolchain="iarew32"/>
+		<config name="config.avr32.utils.trampoline" value="no"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x1D00"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x0000"/>
+		<config name="config.compiler.iarew32.heap_size" value="0x4D00"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b1256"/>
+	</project>
+</asf>

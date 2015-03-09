@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<project caption="Starter Kit Demo" id="sam.applications.starter_kit_demo.sam4s_xplained_pro">
+		<info type="description" value="summary">
+			This demo for the SAM4S Xplained Pro features the following extensions: IO1, OLED1.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_sd_mmc.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<config name="config.common.components.memory.sd_mmc" value="spi"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<require idref="sam.applications.starter_kit_demo"/>
+		<require idref="board.sam4s_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>

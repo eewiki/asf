@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="SD/MMC using SPI Example for UC3C_EK" id="avr32.components.memory.sdmmc.spi.example.uc3c_ek">
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<require idref="avr32.components.memory.sdmmc.spi.example"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

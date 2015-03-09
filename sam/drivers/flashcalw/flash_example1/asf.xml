@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.flashcalw.example1" caption="FLASHCALW Example1">
+		<info type="description" value="summary">
+		Use the FLASHCALW, read and write data to the internal flash, using a flash block as an NVRAM, located either in the flash array or in the user page. Use the last page as the locked page, check the lock status and finally unlock it.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="flashcalw_example1.c"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.flashcalw"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

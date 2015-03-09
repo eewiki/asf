@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.services.qtouch.generic.avr8.qtouch.examples.example_qt_qt600" caption="QTouch Method and Debug Example">
+		<info type="description" value="summary">
+		This QTouch Library Example Application demonstrates usage of the QTouch method and QTouch Debug through QT600 board.
+		</info>
+		<build type="c-source" value="BitBangSPI_Master.c"/>
+		<build type="header-file" value="avr_compiler.h"/>
+		<build type="header-file" value="BitBangSPI_Master.h"/>
+		<build type="header-file" value="QDebugSettings.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.cpu"/>
+		<require idref="xmega.drivers.tc"/>
+		<require idref="xmega.drivers.nvm"/>
+		<require idref="common.services.qtouch.qdebug.xmega"/>
+		<device-support value="atxmega128a1"/>
+		<device-support value="atxmega384c3"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

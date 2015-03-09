@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.ethernet_phy" caption="Ethernet Physical Device Manager API entry page">
+		<info type="description" value="summary">
+		Ethernet physical device manager provides functionality to select one of several Ethernet physical device drivers.
+		</info>
+		<build type="header-file" value="documentation.h"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3c"/>
+		<info type="gui-flag" value="hidden"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

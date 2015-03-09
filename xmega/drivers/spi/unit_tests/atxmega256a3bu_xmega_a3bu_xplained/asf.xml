@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project type="unit-test" id="xmega.drivers.spi.unit_tests.atxmega256a3bu_xmega_a3bu_xplained" caption="SPI driver unit tests on XMEGA-A3BU Xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="xmega.drivers.spi.unit_tests"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

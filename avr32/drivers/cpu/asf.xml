@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.cpu" caption="CPU Reset Cause">
+		<info type="description" value="summary">
+		Driver for CPU specific features. It provides functions for the Cycle Counter, Memory Protection Unit, Secure State or Flashvault, and MCU Reset Cause.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="CPU" />
+		</info>
+		<build type="header-file" subtype="api" value="avr32_reset_cause.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_cpu"/>
+		<device-support value="uc3"/>
+		<require idref="avr32.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+	</module>
+</asf>

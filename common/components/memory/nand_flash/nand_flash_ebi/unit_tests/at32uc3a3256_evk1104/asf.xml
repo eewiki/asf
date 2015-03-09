@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project id="common.components.memory.nand_flash.unit_tests.evk1104" caption="NAND Flash component unit Test for EVK1104" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="smc_nf.h"/>
+		<build type="header-file" value="conf_ebi.h"/>
+		<build type="header-file" value="conf_nf.h"/>
+		<require idref="common.components.memory.nand_flash.unit_tests"/>
+		<config name="config.board.evk1104.init" value="yes"/>
+		<require idref="board.evk1104"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x4000"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x1000"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

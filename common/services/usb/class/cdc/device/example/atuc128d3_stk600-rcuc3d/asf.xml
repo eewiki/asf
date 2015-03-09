@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device CDC Example for STK600_RCUC3D" id="common.services.usb.class.cdc.device.example.stk600-rcuc3d">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="common.services.usb.class.cdc.device.example"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<require idref="board.stk600-rcuc3d"/>
+		<config name="config.board.stk600-rcuc3d.led" value="yes"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc128d3"/>
+	</project>
+</asf>

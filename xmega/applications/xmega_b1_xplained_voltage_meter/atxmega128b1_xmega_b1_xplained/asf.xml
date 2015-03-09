@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Basic Voltage meter demonstration" id="xmega.applications.xmega_b1_xplained_voltage_meter.xmega_b1_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_adc.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.xmega_b1_xplained"/>
+		<require idref="xmega.applications.xmega_b1_xplained_voltage_meter"/>
+		<config name="config.board.xmega_b1_xplained.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128b1"/>
+	</project>
+</asf>

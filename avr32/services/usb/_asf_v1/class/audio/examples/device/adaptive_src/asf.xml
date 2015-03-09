@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.usb.audio.device.adaptif_src.example" caption="USB Device Audio Class - adaptive source example (from ASF V1)">
+		<info type="description" value="summary">
+		Using the USBB module and the deprecated USB software stack from ASF v1, USB Audio Class application that behaves as a standard USB audio stereo headset device with microphone. Applying an adaptive filter on samples to control the audio stream synchronization.
+		</info>
+		<build type="header-file" value="conf_audio_mixer.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<require idref="avr32.services.usb.audio.device.example"/>
+		<require idref="avr32.utils.libs.dsplib"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

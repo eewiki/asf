@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project id="xmega.drivers.crc.example1.stk600_rc064x_atxmega384c3" caption="Example1 for CRC driver for ATxmega384C3 on STK600-rc064x">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<config name="config.board.stk600-rc064x.led" value="yes"/>
+		<require idref="xmega.drivers.crc.example1"/>
+		<require idref="board.stk600-rc064x.atxmega384c3"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

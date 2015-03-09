@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="ILI9341 Display Controller Example for UC3-A3-XPLAINED" id="common.components.display_controller.ili9341.example1.uc3_a3_xplained">
+		<build type="header-file" value="conf_ili9341.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.spi_master_type" value="standard_spi"/>
+		<require idref="common.components.display_controller.ili9341.example1"/>
+		<require idref="board.uc3_a3_xplained"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

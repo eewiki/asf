@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.usart.usart_example" caption="USART Example">
+		<info type="description" value="summary">
+		Using the USART module, echo all incoming characters back until a CR character is received. Afterwards, switch the device into STATIC sleep mode.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="usart_example.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.usart"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device Mass Storage for SAM4S Xplained" id="common.services.usb.class.msc.device.example.sam4s_xplained">
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_virtual_mem.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.virtual_mem"/>
+		<require idref="sam.drivers.usart"/>
+		<config name="config.common.services.usb.class.device" value="mass_storage"/>
+		<require idref="common.services.usb.class.msc.device.example"/>
+		<require idref="board.sam4s_xplained"/>
+		<config name="config.board.sam4s_xplained.led" value="yes"/>
+		<require idref="sam.drivers.smc"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.stack_size" value="16K"/>
+		<config name="config.compiler.iarewarm.sys_stack_size" value="16K"/>
+		<device-support value="atsam4s16c"/>
+	</project>
+</asf>

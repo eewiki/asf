@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="USART example 2 for STK600-RCUC3L4" id="avr32.drivers.usart.usart_example2.stk600-rcuc3l4">
+		<require idref="avr32.drivers.usart.usart_example2"/>
+		<require idref="board.stk600-rcuc3l4"/>
+		<config name="config.board.stk600-rcuc3l4.init" value="yes"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example_usart.h"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc256l4u"/>
+	</project>
+</asf>

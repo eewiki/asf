@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="TC Example 1 for stk600-rc044x" id="xmega.drivers.tc.example1.stk600-rc044x_atxmega32d4">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="xmega.drivers.tc.example1"/>
+		<require idref="board.stk600-rc044x.atxmega32d4"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32d4"/>
+	</project>
+</asf>

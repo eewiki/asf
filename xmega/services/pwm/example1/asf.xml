@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.services.pwm.example1" caption="PWM Example 1 - Dimming LEDs">
+		<info type="description" value="summary">
+		This simple example shows how to use the PWM service to dim LEDs.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<device-support value="xmega"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="example1.c"/>
+		<require idref="xmega.services.pwm"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

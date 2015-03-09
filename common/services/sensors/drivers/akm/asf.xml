@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="common.services.sensors.drivers.akm" caption="Sensors - AKM Sensor">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<info type="description" value="summary">
+		Low-level AKM sensor device drivers.
+		</info>
+		<build type="c-source" value="ak8975.c"/>
+		<build type="header-file" value="ak8975.h"/>
+		<device-support value="avr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmega"/>
+	</module>
+</asf>

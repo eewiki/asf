@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.ebi" caption="EBI - External Bus Interface">
+		<info type="description" value="summary">
+		Driver for the External Bus Interface (EBI).
+		Provides functions for connecting and accessing external peripheral and memory using the EBI.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<build type="c-source" value="ebi.c"/>
+		<build type="header-file" subtype="api" value="ebi.h"/>
+		<build type="header-file" subtype="api" value="ebi_port.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="ebi_group"/>
+		<build type="doxygen-quick-start" value="xmega_ebi_quickstart"/>
+		<device-support value="xmegaa1"/>
+		<device-support value="xmegaa1u"/>
+		<require idref="xmega.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="xmega.drivers.pmic"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

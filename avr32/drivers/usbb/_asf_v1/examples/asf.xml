@@ -1,0 +1,36 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.usbb.example" caption="USBB Driver Examples">
+		<info type="description" value="summary">
+		Using the USBB module and the deprecated USB software stack from ASF v1, perform a basic USB enumeration in device mode or in reduced-host mode (depending on the USB ID pin).
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="device_template_task.c"/>
+		<build type="header-file" value="device_template_task.h"/>
+		<build type="header-file" value="enum/conf_usb.h"/>
+		<build type="c-source" value="enum/device/usb_descriptors.c"/>
+		<build type="header-file" value="enum/device/usb_descriptors.h"/>
+		<build type="c-source" value="enum/device/usb_specific_request.c"/>
+		<build type="header-file" value="enum/device/usb_specific_request.h"/>
+		<build type="c-source" value="enum_example.c"/>
+		<build type="c-source" value="host_template_task.c"/>
+		<build type="header-file" value="host_template_task.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./enum/"/>
+		<build type="include-path" value="./enum/device/"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.usbb._asf_v1.enum.device"/>
+		<require idref="avr32.drivers.usbb._asf_v1.enum.host"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

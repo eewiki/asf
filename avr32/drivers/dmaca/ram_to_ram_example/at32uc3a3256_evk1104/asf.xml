@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="DMACA RAM_TO_RAM_EXAMPLE  Example2 for evk1104" id="avr32.drivers.dmaca.example2.evk1104">
+		<require idref="avr32.drivers.dmaca.example2"/>
+		<require idref="board.evk1104"/>
+		<config name="config.board.evk1104.init" value="no"/>
+		<build type="define" name="DMACA_RAM2RAM_EVAL_CPU_FREQ" value="12000000"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

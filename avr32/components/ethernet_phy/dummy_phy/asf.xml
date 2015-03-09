@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.ethernet_phy.dummy_phy" caption="Empty Ethernet Physical">
+		<info type="description" value="summary">
+		User dummy Ethernet Physical Layer Transceiver device. Provides functions for initializing and controlling the ethernet physical.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication" />
+		</info>
+		<build type="header-file" value="ethernet_phy.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.components.ethernet_phy"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3c"/>
+		<info type="gui-flag" value="hidden"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

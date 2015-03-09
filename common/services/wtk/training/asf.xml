@@ -1,0 +1,31 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.wtk.training" caption="WTK (Widget ToolKit) Library Training">
+		<info type="description" value="summary">
+			Training skeleton code for the application note
+			"AVR1614: Widget ToolKit - Getting Started".
+		</info>
+		<info type="appnote" value="avr1614"/>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+			<keyword value="Touch"/>
+		</info>
+		<build type="c-source" value="app_widget.c"/>
+		<build type="c-source" value="main.c"/>
+		<build type="distribute" subtype="file" value="app_widget_solution.c"/>
+		<build type="header-file" value="app_widget.h"/>
+		<build type="header-file" value="conf_membag.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_win.h"/>
+		<build type="header-file" value="conf_wtk.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam"/>
+		<require idref="common.boards"/>
+		<require idref="common.components.touch.mxt"/>
+		<require idref="common.services.wtk"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

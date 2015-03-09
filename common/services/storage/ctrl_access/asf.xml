@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.storage.ctrl_access" caption="Memory Control Access Interface">
+		<info type="description" value="summary">
+		Common abstraction layer for memory interfaces. It provides interfaces between: Memory and USB, Memory and RAM, Memory and Memory. Common API.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<build type="c-source" value="ctrl_access.c"/>
+		<build type="header-file" subtype="api" value="ctrl_access.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_access.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_common_services_storage_ctrl_access"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

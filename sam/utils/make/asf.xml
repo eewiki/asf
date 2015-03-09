@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="build-specific" id="sam.utils.makefile" caption="Generic Makefile for SAM products">
+		<info type="description" value="summary">
+		Generic Makefile for SAM3 products, used by GCC projects. These
+		makefiles are intended to be included from the project specific
+		Makefile and contains common build rules for object files and
+		linking. There is also two makefiles which contains device
+		program targets.
+		</info>
+		<build type="distribute" subtype="file" value="Makefile.sam.in" toolchain="armgcc"/>
+		<require idref="thirdparty.cmsis"/>
+		<device-support value="sam"/>
+	</module>
+</asf>

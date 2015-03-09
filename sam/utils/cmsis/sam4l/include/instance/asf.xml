@@ -1,0 +1,55 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4l.include.instance" caption="SAM4L instance definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4L peripherals
+		</info>
+		<!--
+		<build type="include-path" value="."/>
+		-->
+		<build type="header-file" value="instance_abdacb.h"/>
+		<build type="header-file" value="instance_acifc.h"/>
+		<build type="header-file" value="instance_adcife.h"/>
+		<build type="header-file" value="instance_aesa.h"/>
+		<build type="header-file" value="instance_ast.h"/>
+		<build type="header-file" value="instance_bpm.h"/>
+		<build type="header-file" value="instance_bscif.h"/>
+		<build type="header-file" value="instance_catb.h"/>
+		<build type="header-file" value="instance_chipid.h"/>
+		<build type="header-file" value="instance_crccu.h"/>
+		<build type="header-file" value="instance_dacc.h"/>
+		<build type="header-file" value="instance_eic.h"/>
+		<build type="header-file" value="instance_freqm.h"/>
+		<build type="header-file" value="instance_gloc.h"/>
+		<build type="header-file" value="instance_gpio.h"/>
+		<build type="header-file" value="instance_hcache.h"/>
+		<build type="header-file" value="instance_hflashc.h"/>
+		<build type="header-file" value="instance_hmatrix.h"/>
+		<build type="header-file" value="instance_iisc.h"/>
+		<build type="header-file" value="instance_lcdca.h"/>
+		<build type="header-file" value="instance_parc.h"/>
+		<build type="header-file" value="instance_pdca.h"/>
+		<build type="header-file" value="instance_pevc.h"/>
+		<build type="header-file" value="instance_picouart.h"/>
+		<build type="header-file" value="instance_pm.h"/>
+		<build type="header-file" value="instance_scif.h"/>
+		<build type="header-file" value="instance_smap.h"/>
+		<build type="header-file" value="instance_spi.h"/>
+		<build type="header-file" value="instance_tc0.h"/>
+		<build type="header-file" value="instance_tc1.h"/>
+		<build type="header-file" value="instance_trng.h"/>
+		<build type="header-file" value="instance_twim0.h"/>
+		<build type="header-file" value="instance_twim1.h"/>
+		<build type="header-file" value="instance_twim2.h"/>
+		<build type="header-file" value="instance_twim3.h"/>
+		<build type="header-file" value="instance_twis0.h"/>
+		<build type="header-file" value="instance_twis1.h"/>
+		<build type="header-file" value="instance_usart0.h"/>
+		<build type="header-file" value="instance_usart1.h"/>
+		<build type="header-file" value="instance_usart2.h"/>
+		<build type="header-file" value="instance_usart3.h"/>
+		<build type="header-file" value="instance_usbc.h"/>
+		<build type="header-file" value="instance_wdt.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam4l"/>
+	</module>
+</asf>

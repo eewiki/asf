@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="Watchdog Timer Example on SAM4S Xplained" id="sam.drivers.wdt.example.sam4s_xplained">
+		<info type="description" value="summary">
+		Basic example of watchdog timer on SAM4S Xplained.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.wdt.example"/>
+		<require idref="board.sam4s_xplained"/>
+		<config name="config.board.sam4s_xplained.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4s16c"/>
+	</project>
+</asf>

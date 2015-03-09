@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.simulator.xmega_a1.init" name="config.board.simulator.xmega_a1.init" caption="XMEGA-A1 Simulator initialization support" default="yes">
+		<module type="meta" id="config.board.simulator.xmega_a1.init#no" caption="XMEGA-A1 Simulator initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.simulator.xmega_a1.init#yes" caption="XMEGA-A1 Simulator initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.simulator.xmega_a1" caption="Simulator">
+		<build type="define" name="BOARD" value="SIMULATOR_XMEGA_A1"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="header-file" value="simulator_xmega_a1.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="include-path" value="../.."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x20000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.simulator.xmega_a1.init"/>
+		<device-support value="atxmega128a1"/>
+	</board>
+</asf>

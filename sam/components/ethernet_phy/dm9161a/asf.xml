@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.ethernet_phy.dm9161a" caption="Ethernet Physical Transceiver (DM9161A)">
+		<info type="description" value="summary">
+		Driver for DM9161A Ethernet Physical Layer Transceiver device. Provides functions for initializing and controlling the ethernet physical.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication" />
+		</info>		
+		<build type="c-source" value="ethernet_phy.c"/>
+		<build type="header-file" subtype="api" value="ethernet_phy.h"/>
+		<build type="header-file" value="mii.h"/>	
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="dm9161a_ethernet_phy_group"/>
+		<require idref="sam.components.ethernet_phy"/>
+		<require idref="sam.drivers.emac"/>
+		<device-support value="sam3x"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+	</module>
+</asf>

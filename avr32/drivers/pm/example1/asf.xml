@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.pm.example1" caption="PM Example 1">
+		<info type="description" value="summary">
+		Configure OSC0 as source of the main clock and configure a generic clock GCLK with OSC0 as input. Output the generic clock on a pin. Switch into the FROZEN sleep mode while still maintaining the generic clock output.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks"/>
+			<keyword value="Power Management"/>
+		</info>
+		<build type="c-source" value="pm_example1.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

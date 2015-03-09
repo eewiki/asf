@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="Similar API for Serial Interfaces / Example for UC3-L0 Xplained" id="common.services.basic.serial.example.uc3_l0_xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="board.uc3_l0_xplained"/>
+		<require idref="common.services.basic.serial.example"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<generator value="iarew32"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

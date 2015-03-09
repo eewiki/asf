@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Clocks Control / Example 3 for SAM3S_EK2" id="common.services.basic.clock.example3.sam3s_ek2">
+		<info type="description" value="summary">
+		Switch between various system clock sources and prescalers at run time.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example3.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.clock.example3"/>
+		<require idref="board.sam3s_ek2"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3sd8c"/>
+	</project>
+</asf>

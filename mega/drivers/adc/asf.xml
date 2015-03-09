@@ -1,0 +1,79 @@
+<asf xmlversion="1.0">
+	<select-by-device id="mega.drivers.adc" caption="ADC - Analog to Digital Converter">
+		<module type="driver" id="mega.drivers.adc#0" caption="ADC - Analog to Digital Converter">
+			<info type="description" value="summary">
+			ADC driver for the megaAVR devices
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>
+			<build type="header-file" subtype="api" value="adc.h"/>
+			<build type="header-file" value="adc_megaxx8.h"/>
+			<build type="include-path" value="."/>
+			<require idref="mega.utils"/>
+			<device-support value="megax8"/>
+			<build type="doxygen-entry-point" value="mega_adc_group"/>
+			<generator value="doxygen-module" default-mcu="atmega88"/>
+		</module>
+		<module type="driver" id="mega.drivers.adc#1" caption="ADC - Analog to Digital Converter">
+			<info type="description" value="summary">
+			ADC driver for the megaAVR devices
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>			
+			<build type="header-file" subtype="api" value="adc.h"/>
+			<build type="header-file" value="adc_megaxx0_1_4.h"/>
+			<build type="include-path" value="."/>
+			<require idref="mega.utils"/>
+			<device-support value="megaxx4a"/>
+			<build type="doxygen-entry-point" value="mega_adc_group"/>
+			<generator value="doxygen-module" default-mcu="atmega1284p"/>
+		</module>
+		<module type="driver" id="mega.drivers.adc#2" caption="ADC - Analog to Digital Converter">
+			<info type="description" value="summary">
+			ADC driver for the megaAVR devices
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>			
+			<build type="header-file" subtype="api" value="adc.h"/>
+			<build type="header-file" value="adc_megaxx0_1_4.h"/>
+			<build type="include-path" value="."/>
+			<require idref="mega.utils"/>
+			<device-support value="megaxx0_1"/>
+			<build type="doxygen-entry-point" value="mega_adc_group"/>
+			<generator value="doxygen-module" default-mcu="atmega2560"/>
+		</module>
+		<module type="driver" id="mega.drivers.adc#3" caption="ADC - Analog to Digital Converter">
+			<info type="description" value="summary">
+			ADC driver for the megaAVR devices
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>			
+			<build type="header-file" subtype="api" value="adc.h"/>
+			<build type="header-file" value="adc_megaxx.h"/>
+			<build type="include-path" value="."/>
+			<require idref="mega.utils"/>
+			<device-support value="atmega16"/>
+			<build type="doxygen-entry-point" value="mega_adc_group"/>
+			<generator value="doxygen-module" default-mcu="atmega16"/>
+		</module>
+		<module type="driver" id="mega.drivers.adc#4" caption="ADC - Analog to Digital Converter">
+			<info type="description" value="summary">
+			ADC driver for the megaRF devices
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>			
+			<build type="header-file" subtype="api" value="adc.h"/>
+			<build type="header-file" value="adc_megarf.h"/>
+			<build type="include-path" value="."/>
+			<require idref="mega.utils"/>
+			<device-support value="megarf"/>
+			<build type="doxygen-entry-point" value="mega_adc_group"/>
+			<generator value="doxygen-module" default-mcu="atmega128rfa1"/>
+		</module>
+	</select-by-device>
+</asf>

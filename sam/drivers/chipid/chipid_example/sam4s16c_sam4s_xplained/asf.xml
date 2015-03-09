@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="CHIPID example for SAM4S Xplained" id="sam.drivers.chipid.example.sam4s_xplained">
+		<info type="description" value="summary">
+		Read chipid and dump it to debug output.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.chipid.example"/>
+		<require idref="board.sam4s_xplained"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4s16c"/>
+	</project>
+</asf>

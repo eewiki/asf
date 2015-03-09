@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="USB DFU ATMEL for atxmega64b3" id="common.services.usb.class.dfu_atmel.device.bootloader.atxmega64b3">
+		<build type="include-path" value="iar/" toolchain="iarew"/>
+		<build type="linker-config" subtype="script" value="iar/atxmega64b3_boot.xcl" toolchain="iarew"/>
+		<config name="config.compiler.iarew.enable_config" value="no"/>
+		<config name="config.compiler.iarew.enable_mfc" value="yes"/>
+		<config name="config.compiler.iarew.discard_unused_publics" value="yes"/>
+		<config name="config.compiler.iarew.mfc_both_configs" value="yes"/>
+		<config name="config.xmega.drivers.usb.device.sleepmgr" value="without_sleepmgr"/>
+		<config name="config.common.services.usb.class.device" value="dfu_atmel"/>
+		<config name="config.common.services.usb.class.dfu.device.atmel.optimization" value="size_optimization"/>
+		<require idref="common.services.usb.class.dfu_atmel.device.bootloader.xmega.small"/>
+		<require idref="board.dummy.atxmega64b3"/>
+		<generator value="iarew"/>
+		<device-support value="atxmega64b3"/>
+	</project>
+</asf>

@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.xcl" caption="XCL - XMEGA Configurable Logic">
+		<info type="description" value="summary">
+		Driver for the XMEGA Configurable Logic (XCL).
+		Provides functions for configuring and using the XCL.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers" />
+		</info>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_xcl.h"/>
+		<build type="c-source" value="xcl.c"/>
+		<build type="header-file" subtype="api" value="xcl.h"/>
+		<build type="header-file" value="xcl_glue_logic.h"/>
+		<build type="header-file" value="xcl_timer.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="xcl_group"/>
+		<build type="doxygen-quick-start" value="xmega_xcl_quickstart"/>
+		<build type="doxygen-image-path" value="docsrc"/>
+		<build type="distribute" subtype="directory" value="./docsrc"/>
+		<device-support value="xmegae"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegae"/>
+	</module>
+</asf>

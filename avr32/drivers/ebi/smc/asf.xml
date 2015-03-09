@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.ebi.smc" caption="EBI Static Memory Controller (SMC)">
+		<info type="description" value="summary">
+		EBI (External Bus Interface) SMC (Static Memory Controller) allows to connect a Static Memory to the microcontroller.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<build type="c-source" value="smc.c"/>
+		<build type="header-file" subtype="api" value="smc.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_ebi.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_ebi_smc"/>
+		<device-support value="uc3a0"/>
+		<device-support value="uc3a3"/>
+		<device-support value="uc3a3s"/>
+		<device-support value="uc3c0"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

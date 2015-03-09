@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="Widget library example for the XMEGA-A3BU XPLAINED" id="common.services.wtk.example1.xmega_a3bu_xplained">
+		<build type="header-file" value="conf_ili9341.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="header-file" value="conf_mxt.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<build type="header-file" value="atmel_logo_small.h"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="touch_interface.c"/>
+		<config name="config.gfx.display" value="ili9341_sdt028atft"/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<require idref="common.components.touch.mxt"/>
+		<require idref="common.services.wtk.example1"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

@@ -1,0 +1,163 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.os.freertos" caption="FreeRTOS mini Real-Time Kernel">
+		<module type="service" id="common.services.os.freertos#uc3" caption="FreeRTOS mini Real-Time Kernel">
+			<info type="description" value="summary">
+			FreeRTOS is a popular, portable, open source, royalty free, mini Real Time Kernel.
+			For complete information on FreeRTOS, see www.freertos.org.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="FreeRTOSConfig.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="distribute" subtype="license" value="license/license.txt" />
+        
+			<build type="distribute" subtype="file" value="readme.txt"/>
+			<build type="distribute" subtype="file" value="ATMEL-disclaimer.txt"/>
+			<build type="c-source" value="source/croutine.c"/>
+			<build type="c-source" value="source/list.c"/>
+			<build type="c-source" value="source/queue.c"/>
+			<build type="c-source" value="source/tasks.c"/>
+			<build type="c-source" value="source/timers.c"/>
+			<build type="header-file" subtype="api" value="source/include/FreeRTOS.h"/>
+			<build type="header-file" subtype="api" value="source/include/croutine.h"/>
+			<build type="header-file" subtype="api" value="source/include/list.h"/>
+			<build type="header-file" subtype="api" value="source/include/portable.h"/>
+			<build type="header-file" subtype="api" value="source/include/projdefs.h"/>
+			<build type="header-file" subtype="api" value="source/include/queue.h"/>
+			<build type="header-file" subtype="api" value="source/include/mpu_wrappers.h"/>
+			<build type="header-file" subtype="api" value="source/include/semphr.h"/>
+			<build type="header-file" subtype="api" value="source/include/StackMacros.h"/>
+			<build type="header-file" subtype="api" value="source/include/task.h"/>
+			<build type="header-file" subtype="api" value="source/include/timers.h"/>
+			<build type="asm-source" value="source/portable/gcc/avr32_uc3/exception.S" toolchain="avr32gcc"/>
+			<build type="header-file" value="source/portable/gcc/avr32_uc3/portmacro.h" toolchain="avr32gcc"/>
+			<build type="asm-source" value="source/portable/iar/avr32_uc3/exception.s82" toolchain="iarew32"/>
+			<build type="header-file" value="source/portable/iar/avr32_uc3/portmacro.h" toolchain="iarew32"/>
+			<build type="c-source" value="source/portable/memmang/heap_3.c"/>
+			<build type="include-path" value="./source/include"/>
+			<build type="include-path" value="./source/portable/gcc/avr32_uc3" toolchain="avr32gcc"/>
+			<build type="include-path" value="./source/portable/iar/avr32_uc3" toolchain="iarew32"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3l"/>
+			<require idref="config.avr32.services.os.freertos.port"/>
+			<require idref="config.avr32.services.os.freertos.stdio"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<require idref="avr32.drivers.tc"/>
+			<require idref="avr32.drivers.usart"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="common.services.os.freertos#sam" caption="FreeRTOS mini Real-Time Kernel">
+			<info type="description" value="summary">
+			FreeRTOS is a popular, portable, open source, royalty free, mini Real Time Kernel.
+			For complete information on FreeRTOS, see www.freertos.org.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="FreeRTOSConfig.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="distribute" subtype="license" value="license/license.txt" />
+
+			<build type="distribute" subtype="file" value="readme.txt"/>
+			<build type="distribute" subtype="file" value="ATMEL-disclaimer.txt"/>
+			<build type="c-source" value="source/croutine.c"/>
+			<build type="c-source" value="source/list.c"/>
+			<build type="c-source" value="source/queue.c"/>
+			<build type="c-source" value="source/tasks.c"/>
+			<build type="c-source" value="source/timers.c"/>
+			<build type="header-file" subtype="api" value="source/include/FreeRTOS.h"/>
+			<build type="header-file" subtype="api" value="source/include/croutine.h"/>
+			<build type="header-file" subtype="api" value="source/include/list.h"/>
+			<build type="header-file" subtype="api" value="source/include/portable.h"/>
+			<build type="header-file" subtype="api" value="source/include/projdefs.h"/>
+			<build type="header-file" subtype="api" value="source/include/queue.h"/>
+			<build type="header-file" subtype="api" value="source/include/mpu_wrappers.h"/>
+			<build type="header-file" subtype="api" value="source/include/semphr.h"/>
+			<build type="header-file" subtype="api" value="source/include/StackMacros.h"/>
+			<build type="header-file" subtype="api" value="source/include/task.h"/>
+			<build type="header-file" subtype="api" value="source/include/timers.h"/>
+			<build type="c-source" value="source/portable/gcc/sam/port.c" toolchain="armgcc"/>
+			<build type="header-file" value="source/portable/gcc/sam/portmacro.h" toolchain="armgcc"/>
+			<build type="c-source" value="source/portable/iar/sam/port.c" toolchain="iarewarm"/>
+			<build type="asm-source" value="source/portable/iar/sam/portasm.s" toolchain="iarewarm"/>
+			<build type="header-file" value="source/portable/iar/sam/portmacro.h" toolchain="iarewarm"/>
+			<build type="c-source" value="source/portable/memmang/heap_3.c"/>
+			<build type="include-path" value="./source/include"/>
+			<build type="include-path" value="./source/portable/gcc/sam" toolchain="armgcc"/>
+			<build type="include-path" value="./source/portable/iar/sam" toolchain="iarewarm"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4l"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3n"/>
+		</module>
+		<module type="service" id="common.services.os.freertos#sam_cm4f" caption="FreeRTOS mini Real-Time Kernel">
+			<info type="description" value="summary">
+			FreeRTOS is a popular, portable, open source, royalty free, mini Real Time Kernel.
+			For complete information on FreeRTOS, see www.freertos.org.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="FreeRTOSConfig.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="distribute" subtype="license" value="license/license.txt" />
+
+			<build type="distribute" subtype="file" value="readme.txt"/>
+			<build type="distribute" subtype="file" value="ATMEL-disclaimer.txt"/>
+			<build type="c-source" value="source/croutine.c"/>
+			<build type="c-source" value="source/list.c"/>
+			<build type="c-source" value="source/queue.c"/>
+			<build type="c-source" value="source/tasks.c"/>
+			<build type="c-source" value="source/timers.c"/>
+			<build type="header-file" subtype="api" value="source/include/FreeRTOS.h"/>
+			<build type="header-file" subtype="api" value="source/include/croutine.h"/>
+			<build type="header-file" subtype="api" value="source/include/list.h"/>
+			<build type="header-file" subtype="api" value="source/include/portable.h"/>
+			<build type="header-file" subtype="api" value="source/include/projdefs.h"/>
+			<build type="header-file" subtype="api" value="source/include/queue.h"/>
+			<build type="header-file" subtype="api" value="source/include/mpu_wrappers.h"/>
+			<build type="header-file" subtype="api" value="source/include/semphr.h"/>
+			<build type="header-file" subtype="api" value="source/include/StackMacros.h"/>
+			<build type="header-file" subtype="api" value="source/include/task.h"/>
+			<build type="header-file" subtype="api" value="source/include/timers.h"/>
+			<build type="c-source" value="source/portable/gcc/sam_cm4f/port.c" toolchain="armgcc"/>
+			<build type="header-file" value="source/portable/gcc/sam_cm4f/portmacro.h" toolchain="armgcc"/>
+			<build type="c-source" value="source/portable/iar/sam_cm4f/port.c" toolchain="iarewarm"/>
+			<build type="asm-source" value="source/portable/iar/sam_cm4f/portasm.s" toolchain="iarewarm"/>
+			<build type="header-file" value="source/portable/iar/sam_cm4f/portmacro.h" toolchain="iarewarm"/>
+			<build type="c-source" value="source/portable/memmang/heap_3.c"/>
+			<build type="include-path" value="./source/include"/>
+			<build type="include-path" value="./source/portable/gcc/sam_cm4f" toolchain="armgcc"/>
+			<build type="include-path" value="./source/portable/iar/sam_cm4f" toolchain="iarewarm"/>
+			<device-support value="sam4e"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+		</module>
+	</select-by-device>
+	<select-by-config id="config.avr32.services.os.freertos.port" name="config.avr32.services.os.freertos.port" caption="FreeRTOS AVR UC3 port" default="default">
+		<module type="meta" id="config.avr32.services.os.freertos.port#default" caption="FreeRTOS AVR UC3 port without SDRAM support">
+			<info type="description" value="summary">
+			Default configuration for the FreeRTOS kernel where the AVR UC3 port does not initialize the mt48lc16m16a2tg7e SDRAM at startup.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="source/portable/gcc/avr32_uc3/port.c" toolchain="avr32gcc"/>
+			<build type="c-source" value="source/portable/iar/avr32_uc3/port.c" toolchain="iarew32"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="config.avr32.services.os.freertos.stdio" name="config.avr32.services.os.freertos.stdio" caption="FreeRTOS AVR UC3 port" default="default">
+		<module type="meta" id="config.avr32.services.os.freertos.stdio#default" caption="FreeRTOS AVR UC3 port with stdio support">
+			<info type="description" value="summary">
+			Default configuration for the FreeRTOS kernel where the AVR UC3 port embeds stdio support.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="source/portable/gcc/avr32_uc3/read.c" toolchain="avr32gcc"/>
+			<build type="c-source" value="source/portable/gcc/avr32_uc3/write.c" toolchain="avr32gcc"/>
+			<build type="c-source" value="source/portable/iar/avr32_uc3/read.c" toolchain="iarew32"/>
+			<build type="c-source" value="source/portable/iar/avr32_uc3/write.c" toolchain="iarew32"/>
+		</module>
+		<module type="meta" id="config.avr32.services.os.freertos.stdio#no" caption="FreeRTOS AVR UC3 port without stdio support">
+			<info type="description" value="summary">
+			Configuration for the FreeRTOS kernel where the AVR UC3 port does not embed stdio support.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+		</module>
+	</select-by-config>
+</asf>

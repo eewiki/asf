@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.tools.dataget" caption="DSPLib - Data Get">
+		<info type="gui-flag" value="hidden"/>
+		<build type="include-path" value="docsrc"/>
+		<build type="distribute" subtype="file" value="main.c"/>
+		<build type="distribute" subtype="file" value="error_management.h"/>
+		<build type="distribute" subtype="file" value="error_management.c"/>
+		<build type="distribute" subtype="file" value="rs232.h"/>
+		<build type="distribute" subtype="file" value="rs232.c"/>
+		<build type="distribute" subtype="file" value="DataGet.exe"/>
+		<build type="header-file" value="docsrc/documentation.h"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+	<select-by-config id="avr32.services.audio.audio_player.ai_sd_mmc" name="config.avr32.services.audio.audio_player.ai_sd_mmc.interface" caption="SD/MMC card interface selection" default="spi">
+		<module type="service" id="avr32.services.audio.audio_player.ai_sd_mmc#spi" caption="Audio Interface - SD / MMC card - SPI">
+			<info type="gui-flag" value="hidden"/>
+			<require idref="avr32.components.memory.sd_mmc.sd_mmc_spi"/>
+			<require idref="avr32.services.audio.audio_player.ai_sd_mmc.common"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3a3_a4"/>
+		</module>
+		<module type="service" id="avr32.services.audio.audio_player.ai_sd_mmc#mci" caption="Audio Interface - SD / MMC card - MCI">
+			<info type="gui-flag" value="hidden"/>
+			<require idref="avr32.components.memory.sd_mmc.sd_mmc_mci"/>
+			<require idref="avr32.services.audio.audio_player.ai_sd_mmc.common"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3a3_a4"/>
+		</module>
+	</select-by-config>
+
+	<module type="service" id="avr32.services.audio.audio_player.ai_sd_mmc.common" caption="Audio Interface - SD / MMC card">
+		<info type="description" value="summary">
+		SD / MMC card support for the Audio Interface (AI).
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="ai_sd_mmc.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.services.audio.audio_player"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

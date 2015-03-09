@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="MATRIX example for SAM3N_EK" id="sam.drivers.matrix.example.sam3n_ek">
+		<info type="description" value="summary">
+		Basic example of MATRIX on SAM3N-EK.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.matrix.example"/>
+		<require idref="board.sam3n_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3n4c"/>
+	</project>
+</asf>

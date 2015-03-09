@@ -1,0 +1,99 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.basic.clock.example1" caption="Common API for Clocks Control Example 1">
+		<module type="application" id="common.services.basic.clock.example1#0" caption="Common API for Clocks Control Example 1">
+			<info type="description" value="summary">
+			Initialize the system clock and blink a LED at a constant 1Hz frequency.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example1.c"/>
+			<device-support value="xmega"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.delay"/>
+			<require idref="xmega.drivers.cpu"/>
+			<require idref="xmega.drivers.ioport"/>
+			<require idref="xmega.utils"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example1#1" caption="Common API for Clocks Control Example 1">
+			<info type="description" value="summary">
+			Initialize the system clock and blink a LED at a constant 1Hz frequency.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example1.c"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3l"/>
+			<device-support value="uc3d"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example1#2" caption="Common API for Clocks Control Example 1">
+			<info type="description" value="summary">
+			Initialize the system clock and blink a LED at a constant 1Hz frequency.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example1_sam.c"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.services.basic.clock"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example1#3" caption="Common API for Clocks Control Example 1">
+			<info type="description" value="summary">
+			Initialize the system clock and blink a LED at a constant 1Hz frequency.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example1_sam.c"/>
+			<device-support value="sam4l"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.clock"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example1#4" caption="Common API for Clocks Control Example 1">
+			<info type="description" value="summary">
+			Initialize the system clock and blink a LED at a constant 1Hz frequency.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example1.c"/>
+			<device-support value="mega"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.delay"/>
+			<require idref="mega.drivers.cpu"/>
+			<require idref="mega.drivers.ioport"/>
+			<require idref="mega.utils"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example1#5" caption="Common API for Clocks Control Example 1">
+			<info type="description" value="summary">
+			Initialize the system clock and blink a LED at a constant 1Hz frequency.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example1_sam.c"/>
+			<device-support value="sam4e"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.clock"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

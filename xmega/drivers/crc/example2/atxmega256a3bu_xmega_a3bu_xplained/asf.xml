@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project id="xmega.drivers.crc.example2.xmega_a3bu_xplained" caption="Example2 for CRC driver on XMEGA-A3BU Xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_st7565r.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<config name="config.gfx_mono.display" value="c12832_a1z"/>
+		<require idref="xmega.drivers.crc.example2"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

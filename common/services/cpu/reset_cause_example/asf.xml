@@ -1,0 +1,40 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.basic.cpu.example" caption="Common API for Chip Reset Cause Access Example">
+		<module type="application" id="common.services.basic.cpu.example#xmega" caption="Common API for Chip Reset Cause Access Example">
+			<info type="description" value="summary">
+			This example demonstrates how to use the Common API for Chip Reset Cause Access.
+			</info>
+			<build type="c-source" value="reset_cause_example.c"/>
+			<device-support value="xmega"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.boards"/>
+			<require idref="common.services.basic.cpu"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.cpu.example#uc3" caption="Common API for Chip Reset Cause Access Example">
+			<info type="description" value="summary">
+			This example demonstrates how to use the Common API for Chip Reset Cause Access.
+			</info>
+			<build type="c-source" value="reset_cause_example.c"/>
+			<device-support value="uc3"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="common.boards"/>
+			<require idref="common.services.basic.cpu"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.cpu.example#sam4l" caption="Common API for Chip Reset Cause Access Example">
+			<info type="description" value="summary">
+			This example demonstrates how to use the Common API for Chip Reset Cause Access.
+			</info>
+			<build type="c-source" value="reset_cause_example_sam4l.c"/>
+			<device-support value="sam4l"/>
+			<require idref="sam.drivers.wdt"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="common.boards"/>
+			<require idref="common.services.basic.cpu"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

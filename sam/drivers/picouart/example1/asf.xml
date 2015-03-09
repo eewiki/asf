@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.picouart.example1" caption="PICOUART Example 1">
+		<info type="description" value="summary">
+		Initialize the PICOUART module, use with the 32KHz oscillator and wakeup the system.
+		</info>
+		<build type="c-source" value="picouart_example1.c"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.picouart"/>
+		<require idref="sam.drivers.bpm"/>
+		<require idref="sam.drivers.eic"/>
+		<require idref="sam.drivers.ast"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,47 @@
+<asf xmlversion="1.0">
+	<project caption="USB Audio Player WAV for EVK1104" id="avr32.applications.audio-player.wav.evk1104">
+		<build type="header-file" value="conf_audio_player.h"/>
+		<build type="include-path" value="."/>
+		<build type="build-config" subtype="c-compiler-flags" value="-fshort-wchar" toolchain="avr32gcc"/>
+		<config name="config.avr32.services.audio.audio_player.ai_usb_ms.mode" value="filterlist"/>
+		<config name="config.avr32.services.fs.fat.nav_automatic.custom" value="custom"/>
+		<config name="config.avr32.drivers.usbb._asf_v1.enum.host.custom" value="yes"/>
+		<config name="config.avr32.drivers.usbb._asf_v1.enum.custom" value="yes"/>
+		<config name="newlib.optimization" value="speed"/>
+		<config name="libmad.optimization" value="speed"/>
+		<config name="jpg_ijg_without_mm.optimization" value="speed"/>
+		<require idref="avr32.applications.uc3-audio-player.wav"/>
+		<require idref="avr32.applications.uc3-audio-player.usb_host"/>
+		<config name="config.avr32.services.audio.audio_player.ai_sd_mmc.interface" value="mci"/>
+		<require idref="avr32.applications.uc3-audio-player.sd_mmc_card"/>
+		<!-- Hardware Selection //-->
+		<config name="config.app.audio_player.hardware.tpa6130a2" value="yes"/>
+		<config name="config.app.audio_player.controller" value="qt60168"/>
+		<config name="config.app.audio_player.gui" value="et024006dhu"/>
+		<!-- Clock Configuration //-->
+		<config name="config.app.audio_player.clock" value="12.00_and_11.28"/>
+		<require idref="board.evk1104"/>
+		<config name="config.board.evk1104.init" value="no"/>
+		<config name="config.board.evk1104.led" value="yes"/>
+		<!-- Extra files to be distributed //-->
+		<build type="distribute" subtype="file" value="../root/EVK1104_program_mass_storage.cmd"/>
+		<build type="distribute" subtype="file" value="../root/uc3a3256-mass_storage_data_flash.elf"/>
+		<config name="config.compiler.iarew32.optimization" value="high"/>
+		<config name="config.compiler.avr32gcc.optimization" value="high"/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x1000"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x0000"/>
+		<config name="config.compiler.iarew32.heap_size" value="0xD41C"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<toolchain-config name="avr32gcc.linker.miscellaneous.LinkerFlags" value="-Wl,--defsym,__stack_size__=5K" toolchain="avr32gcc"/>
+		<config name="config.compiler.avr32gcc.stack_size" value="5K"/>
+		<toolchain-config name="avr32gcc.linker.general.DoNotUseStandardStartFiles" value="False" toolchain="avr32gcc"/>
+		<config name="config.compiler.avr32gcc.use_startfiles" value="yes"/>
+		<config name="config.avr32.utils.gccstartup" value="no"/>
+		<config name="config.utils.interrupt.intc" value="force"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

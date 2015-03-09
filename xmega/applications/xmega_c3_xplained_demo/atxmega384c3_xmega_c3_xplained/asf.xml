@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<project id="xmega.applications.xmega_c3_xplained_demo.xmega_c3_xplained" caption="Demo for XMEGA-C3 Xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_rtc.h"/>
+		<build type="header-file" value="conf_adc.h"/>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_sd_mmc.h"/>
+		<build type="header-file" value="conf_app_display.h"/>
+		<build type="include-path" value="."/>
+
+		<require idref="xmega.applications.xmega_c3_xplained_demo"/>
+		<require idref="board.xmega_c3_xplained"/>
+
+		<config name="config.board.xmega_c3_xplained.led" value="yes"/>
+		<config name="config.common.services.qtouch.generic.avr8.xmega_c3_xplained.method" value="qtouch_method"/>
+		<config name="config.common.services.usb.class.device" value="composite"/>
+		<config name="config.common.services.usb.class.msc.device.composite" value="enable"/>
+		<config name="config.common.utils.stdio.stdio_usb.composite" value="enable"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<config name="config.gfx_mono.display" value="ug_2832hsweg04"/>
+
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<config name="config.compiler.iarew.data_stack_size" value="0x800"/>
+
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device Mass Storage unit tests for SAM4S Xplained" id="common.services.usb.class.msc.device.unit_tests.sam4s_xplained" type="unit-test">
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_virtual_mem.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.virtual_mem"/>
+		<config name="config.common.services.usb.class.device" value="mass_storage"/>
+		<require idref="common.services.usb.class.msc.device.unit_tests"/>
+		<require idref="board.sam4s_xplained"/>
+		<require idref="sam.drivers.smc"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.utils"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<device-support value="atsam4s16c"/>
+	</project>
+</asf>

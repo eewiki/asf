@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="USB Host CDC for Arduino Due/X" id="common.services.usb.class.cdc.host.example.arduino_due_x">
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.usb.class.cdc.host.example"/>
+		<config name="config.common.services.usb.class.host" value="cdc"/>
+		<require idref="board.arduino_due_x"/>
+		<config name="config.board.arduino_due_x.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam3x8e"/>
+	</project>
+</asf>

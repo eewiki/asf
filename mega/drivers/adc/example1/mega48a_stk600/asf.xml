@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="ADC example 1 for the ATmega48A" id="mega.drivers.adc.example1.mega48a_stk600">
+		<info type="description" value="summary">
+		ATmega48A ADC example 1
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.stk600-mega.atmega48a"/>
+		<require idref="mega.drivers.adc.example1"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<generator value="iarew"/>
+		<device-support value="atmega48a"/>
+	</project>
+</asf>

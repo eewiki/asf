@@ -1,0 +1,43 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.drivers.pac" caption="PAC - Peripheral Access Controller">
+		<info type="description" value="summary">
+			Driver for the SAM D20 Peripheral Access Controller. Provides a
+			unified interface for the locking and unlocking of peripherals on
+			the device peripheral busses, to protect them against inadvertent
+			writes due to application errors.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="CPU"/>
+		</info>
+
+		<info type="appnote" value="AT03229"/>
+		<info type="keyword" value="pdf">
+			<keyword value="PAC"/>
+			<keyword value="Peripheral Access Controller"/>
+			<keyword value="security"/>
+			<keyword value="lock"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Peripheral Access Controller
+			on the SAM D20, both the ASF driver and the peripheral itself.
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="c-source" value="pac.c"/>
+
+		<build type="header-file" subtype="api" value="pac.h"/>
+
+		<build type="header-file" value="quick_start/qs_pac_basic.h"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_samd20_pac_group"/>
+		<build type="doxygen-example-path" value="quick_start"/>
+
+		<device-support value="samd20"/>
+
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.system"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

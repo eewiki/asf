@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.components.display.c42364a.example" caption="C42364A Display LCD Glass Example">
+		<info type="description" value="summary">
+			A simple example for drawing pictures and strings on the C42364A LCD Glass.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="c-source" value="c42364a_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="sam.components.display.c42364a"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

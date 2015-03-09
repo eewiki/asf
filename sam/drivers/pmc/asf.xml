@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.pmc" caption="PMC - Power Management Controller">
+		<info type="description" value="summary">
+			The Power Management Controller optimizes power consumption by controlling all system and user peripheral clocks. The PMC enables/disables the clock inputs to many of the peripherals and the Processor.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Power Management" />
+		</info>
+		<build type="c-source" value="pmc.c"/>
+		<build type="c-source" value="sleep.c"/>
+		<build type="header-file" subtype="api" value="pmc.h"/>
+		<build type="header-file" subtype="api" value="sleep.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		<build type="doxygen-entry-point" value="sam_drivers_pmc_group"/>
+		<build type="doxygen-quick-start" value="sam_pmc_quickstart"/>
+	</module>
+</asf>

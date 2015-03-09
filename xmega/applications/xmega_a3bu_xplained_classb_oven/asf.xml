@@ -1,0 +1,87 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.applications.xmega_a3bu_xplained_classb" caption="Class B Oven Controller Example">
+		<info type="description" value="summary">
+			Example demonstrating the use of Class B tests in a simulated application.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="oven_classb.c"/>
+		<build type="c-source" value="oven_controller.c"/>
+		<build type="c-source" value="oven_plant.c"/>
+		<build type="c-source" value="oven_ui.c"/>
+		<build type="c-source" value="oven_bitmaps.c"/>
+		<build type="header-file" value="oven.h"/>
+		<build type="header-file" value="oven_bitmaps.h"/>
+		<build type="header-file" value="oven_classb.h"/>
+		<build type="header-file" value="oven_controller.h"/>
+		<build type="header-file" value="oven_plant.h"/>
+		<build type="header-file" value="oven_ui.h"/>
+		<build type="include-path" value="."/>
+		<build type="library" subtype="compiler" value="libm" toolchain="avrgcc"/>
+		<build type="build-config" subtype="c-compiler-flags" value="-fshort-enums" toolchain="avrgcc"/>
+		<build type="linker-config" subtype="flags" value="--section-start=.classb_sram_buffer=0x802000"/>
+		<build type="linker-config" subtype="flags" value="--section-start=.data=0x802500"/>
+		<build type="distribute" subtype="file" value="doxygen_images/class_b_demo.png" toolchain="doxygen"/>
+		<build type="doxygen-image-path" value="doxygen_images"/>
+		<device-support value="xmegaa3bu"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.gfx_mono"/>
+		<require idref="common.services.gfx_mono.font"/>
+		<require idref="common.services.gfx_mono.menu"/>
+		<require idref="common.services.gfx_mono.spinctrl"/>
+		<require idref="xmega.applications.xmega_a3bu_xplained_classb.tests"/>
+		<require idref="xmega.applications.xmega_a3bu_xplained_classb.drivers"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="xmega.drivers.dac"/>
+		<require idref="xmega.drivers.nvm"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.drivers.rtc32"/>
+		<require idref="xmega.drivers.tc"/>
+		<require idref="xmega.drivers.wdt"/>
+		<require idref="xmega.utils"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<module type="meta" id="xmega.applications.xmega_a3bu_xplained_classb.tests" caption="Class B test routines">
+		<build type="define" name="F_CPU" value="24000000UL"/>
+		<build type="define" name="CLASSB_INT_MON" value=""/>
+		<build type="define" name="CLASSB_FREQ_TEST" value=""/>
+		<build type="c-source" value="classb_tests_cert/classb_rtc_common.c"/>
+		<build type="c-source" value="classb_tests_cert/analog/classb_analog.c"/>
+		<build type="c-source" value="classb_tests_cert/crc/classb_crc_hw.c"/>
+		<build type="c-source" value="classb_tests_cert/crc/classb_crc_sw.c"/>
+		<build type="c-source" value="classb_tests_cert/freq/classb_freq.c"/>
+		<build type="c-source" value="classb_tests_cert/interrupts/classb_interrupt_monitor.c"/>
+		<build type="c-source" value="classb_tests_cert/registers/classb_cpu_gcc.c"/>
+		<build type="c-source" value="classb_tests_cert/sram/classb_sram.c"/>
+		<build type="c-source" value="classb_tests_cert/wdt/classb_wdt_test.c"/>
+		<build type="header-file" value="classb_tests_cert/error_handler.h"/>
+		<build type="header-file" value="classb_tests_cert/classb_rtc_common.h"/>
+		<build type="header-file" value="classb_tests_cert/analog/classb_analog.h"/>
+		<build type="header-file" value="classb_tests_cert/crc/classb_crc.h"/>
+		<build type="header-file" value="classb_tests_cert/crc/classb_crc_hw.h"/>
+		<build type="header-file" value="classb_tests_cert/crc/classb_crc_sw.h"/>
+		<build type="header-file" value="classb_tests_cert/freq/classb_freq.h"/>
+		<build type="header-file" value="classb_tests_cert/interrupts/classb_interrupt_monitor.h"/>
+		<build type="header-file" value="classb_tests_cert/registers/classb_cpu.h"/>
+		<build type="header-file" value="classb_tests_cert/sram/classb_sram.h"/>
+		<build type="header-file" value="classb_tests_cert/wdt/classb_wdt_test.h"/>
+		<build type="include-path" value="classb_tests_cert/"/>
+		<build type="include-path" value="classb_tests_cert/analog/"/>
+		<build type="include-path" value="classb_tests_cert/crc/"/>
+		<build type="include-path" value="classb_tests_cert/freq/"/>
+		<build type="include-path" value="classb_tests_cert/interrupts/"/>
+		<build type="include-path" value="classb_tests_cert/registers/"/>
+		<build type="include-path" value="classb_tests_cert/sram/"/>
+		<build type="include-path" value="classb_tests_cert/wdt/"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="xmega.drivers.dac"/>
+		<require idref="xmega.drivers.nvm"/>
+		<require idref="xmega.drivers.rtc32"/>
+		<require idref="xmega.drivers.tc"/>
+		<require idref="xmega.drivers.wdt"/>
+		<require idref="xmega.utils"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.tc45.example5" caption="TC45 Example 5">
+		<info type="description" value="summary">
+		Use the XMEGA TC45 Timer Counter module : TC4 and TC5 are configured in Waveform generator mode and WeX is used to output PWM signals from Compare modules CCA and CCB  of both timers. These signals are switched on the differnent PORTC pins according to Output Matix modes. The OTMX modes are changed with SW0 pushbutton.		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc45_example5.c"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.gfx_mono"/>
+		<require idref="xmega.drivers.tc45"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

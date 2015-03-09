@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="ADC Scan example for XMEGA-A3BU Xplain" id="xmega.drivers.adc.example3.xmega_a3bu_xplained">
+		<build type="header-file" value="conf_adc.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.adc.example3"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

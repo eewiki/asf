@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="USB QTouch Device HID Generic Example for ATxmega256A3BU on XMEGA-A3BU Xplained" id="common.services.usb.class.hid.device.generic.example2.atxmega256a3bu_xmega_a3bu_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.usb.class.hid.device.generic.example2"/>
+		<config name="config.common.services.usb.class.device" value="hid_generic"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<config name="config.board.xmega_a3bu_xplained.led" value="yes"/>
+		<require idref="config.common.services.qtouch.generic.avr8.xmega_a3bu_xplained.method"/>
+		<config name="config.common.services.qtouch.generic.avr8.xmega_a3bu_xplained.method" value="qtouch_method"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

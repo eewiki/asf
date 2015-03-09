@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="Clock example for the ATmega1284P" id="mega.applications.mega_clock_example.mega1284p_stk600">
+		<info type="description" value="summary">
+		ATmega1284P STK600 libc delay demo application
+		</info>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.stk600-mega.atmega1284p"/>
+		<require idref="mega.applications.mega_clock_example"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega1284p"/>
+	</project>
+</asf>

@@ -1,0 +1,144 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.demo.evk1100.example" caption="EVK1100 Control Panel">
+		<info type="description" value="summary">
+		Demonstration application. Its purpose is to automatically log local sensors and actuators data and events and make these available through the various connectivity channels supported by the AVR UC3.The logs are accessible locally through USART or USB (Mass Storage class), and/or remotely through the Internet (Web server). The Control Panel is locally configurable through USART or USB (Mass Storage class) or remotely configurable through the Internet (Web server).
+		</info>
+		<build type="distribute" subtype="directory" value="./docsrc"/>
+		<build type="header-file" value="docsrc/documentation.h"/>
+		<build type="header-file" value="docsrc/doc_defaultmenu.h"/>
+		<build type="header-file" value="docsrc/doc_ethSMTPclient.h"/>
+		<build type="header-file" value="docsrc/doc_ethwebserver.h"/>
+		<build type="header-file" value="docsrc/doc_shellusage.h"/>
+		<build type="header-file" value="docsrc/doc_smtpsrvcygwin.h"/>
+		<build type="header-file" value="docsrc/doc_troubleshoot.h"/>
+		<build type="header-file" value="docsrc/doc_updwebserver.h"/>
+		<build type="header-file" value="docsrc/doc_usbcpmsd.h"/>
+		<build type="header-file" value="docsrc/doc_usbcpmsh.h"/>
+		<build type="doxygen-image-path" value="docsrc"/>
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_ctrlpanel.h"/>
+		<build type="header-file" value="conf_eth.h"/>
+		<build type="header-file" value="conf_explorer.h"/>
+		<build type="header-file" value="conf_lwip_threads.h"/>
+		<build type="header-file" value="conf_sd_mmc_spi.h"/>
+		<build type="header-file" value="conf_dip204.h"/>
+		<build type="header-file" value="lwipopts.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="distribute" subtype="directory" value="dataflash_content"/>
+		<build type="include-path" value="actuators/"/>
+		<build type="c-source" value="actuators/actuator.c"/>
+		<build type="header-file" value="actuators/actuator.h"/>
+		<build type="c-source" value="actuators/cpled.c"/>
+		<build type="header-file" value="actuators/cpled.h"/>
+		<build type="c-source" value="actuators/lcd.c"/>
+		<build type="header-file" value="actuators/lcd.h"/>
+		<build type="include-path" value="config/"/>
+		<build type="c-source" value="config/config_file.c"/>
+		<build type="header-file" value="config/config_file.h"/>
+		<build type="include-path" value="localctrl/"/>
+		<build type="c-source" value="localctrl/cptime.c"/>
+		<build type="header-file" value="localctrl/cptime.h"/>
+		<build type="c-source" value="localctrl/datalog.c"/>
+		<build type="header-file" value="localctrl/datalog.h"/>
+		<build type="c-source" value="localctrl/supervisor.c"/>
+		<build type="header-file" value="localctrl/supervisor.h"/>
+		<build type="c-source" value="localctrl/syscmds.c"/>
+		<build type="header-file" value="localctrl/syscmds.h"/>
+		<build type="include-path" value="mmi/"/>
+		<build type="c-source" value="mmi/mmi.c"/>
+		<build type="header-file" value="mmi/mmi.h"/>
+		<build type="include-path" value="network/"/>
+		<build type="c-source" value="network/ethernet.c"/>
+		<build type="header-file" value="network/ethernet.h"/>
+		<build type="include-path" value="network/smtpclient"/>
+		<build type="c-source" value="network/smtpclient/BasicSMTP.c"/>
+		<build type="header-file" value="network/smtpclient/BasicSMTP.h"/>
+		<build type="include-path" value="network/tftpserver"/>
+		<build type="c-source" value="network/tftpserver/BasicTFTP.c"/>
+		<build type="header-file" value="network/tftpserver/BasicTFTP.h"/>
+		<build type="include-path" value="network/webserver"/>
+		<build type="c-source" value="network/webserver/BasicWEB.c"/>
+		<build type="header-file" value="network/webserver/BasicWEB.h"/>
+		<build type="header-file" value="network/webserver/defaultpage.htm.h"/>
+		<build type="distribute" subtype="file" value="network/webserver/defaultpage.htm"/>
+		<build type="include-path" value="usb/appli/"/>
+		<build type="include-path" value="usb/appli/mass_storage/"/>
+		<build type="c-source" value="usb/appli/mass_storage/device_mass_storage_task.c"/>
+		<build type="header-file" value="usb/appli/mass_storage/device_mass_storage_task.h"/>
+		<build type="c-source" value="usb/appli/mass_storage/host_mass_storage_task.c"/>
+		<build type="header-file" value="usb/appli/mass_storage/host_mass_storage_task.h"/>
+		<build type="c-source" value="usb/appli/usbsys.c"/>
+		<build type="header-file" value="usb/appli/usbsys.h"/>
+		<build type="include-path" value="usb/appli/enum/"/>
+		<build type="header-file" value="usb/appli/enum/conf_usb.h"/>
+		<build type="include-path" value="usb/appli/enum/device/"/>
+		<build type="c-source" value="usb/appli/enum/device/usb_descriptors.c"/>
+		<build type="header-file" value="usb/appli/enum/device/usb_descriptors.h"/>
+		<build type="c-source" value="usb/appli/enum/device/usb_specific_request.c"/>
+		<build type="header-file" value="usb/appli/enum/device/usb_specific_request.h"/>
+		<build type="include-path" value="sensors/"/>
+		<build type="c-source" value="sensors/joystick.c"/>
+		<build type="header-file" value="sensors/joystick.h"/>
+		<build type="c-source" value="sensors/light.c"/>
+		<build type="header-file" value="sensors/light.h"/>
+		<build type="c-source" value="sensors/potentiometer.c"/>
+		<build type="header-file" value="sensors/potentiometer.h"/>
+		<build type="c-source" value="sensors/pushb.c"/>
+		<build type="header-file" value="sensors/pushb.h"/>
+		<build type="c-source" value="sensors/sensor.c"/>
+		<build type="header-file" value="sensors/sensor.h"/>
+		<build type="c-source" value="sensors/temperature.c"/>
+		<build type="header-file" value="sensors/temperature.h"/>
+		<build type="include-path" value="serial/"/>
+		<build type="c-source" value="serial/serial.c"/>
+		<build type="header-file" value="serial/serial.h"/>
+		<build type="include-path" value="shell/"/>
+		<build type="c-source" value="shell/com1shell.c"/>
+		<build type="header-file" value="shell/com1shell.h"/>
+		<build type="c-source" value="shell/fscmds.c"/>
+		<build type="header-file" value="shell/fscmds.h"/>
+		<build type="c-source" value="shell/shell.c"/>
+		<build type="header-file" value="shell/shell.h"/>
+		<build type="include-path" value="utils/"/>
+		<build type="header-file" value="utils/tracedump.h"/>
+		<build type="c-source" value="utils/tracedump.c"/>
+		<build type="c-source" value="utils/printf-stdarg.c"/>
+		<build type="distribute" subtype="directory" value="websrc"/>
+		<device-support value="uc3a"/>
+		<require idref="avr32.components.display.dip204"/>
+		<require idref="avr32.components.joystick.skrhabe010"/>
+		<require idref="avr32.components.memory.sd_mmc.sd_mmc_spi"/>
+		<require idref="avr32.components.memory.sdram.mt48lc16m16a2tg7e"/>
+		<require idref="avr32.drivers.adc"/>
+		<require idref="avr32.drivers.ebi.sdramc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.macb"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.pwm"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.services.fs.fat"/>
+		<require idref="avr32.services.fs.fat.os"/>
+		<require idref="common.services.os.freertos"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="common.components.memory.data_flash.at45dbx._asf_v1"/>
+		<require idref="avr32.drivers.usbb._asf_v1"/>
+		<require idref="avr32.drivers.usbb._asf_v1.enum.device"/>
+		<require idref="avr32.drivers.usbb._asf_v1.enum.host"/>
+		<require idref="avr32.services.usb._asf_v1.class.mass_storage.scsi_decoder"/>
+		<require idref="avr32.services.usb._asf_v1.class.mass_storage.host_mem"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<require idref="thirdparty.lwip.version"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

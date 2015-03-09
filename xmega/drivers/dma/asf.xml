@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.dma" caption="DMA - Direct Memory Access">
+		<info type="description" value="summary">
+		Driver for the Direct Memory Access (DMA) controller. It provides functions for configuring and using the DMA controller. The DMA controller can transfer data between memories and peripherals with minimal CPU intervention.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="DMA Controller"/>
+		</info>
+		<build type="c-source" value="dma.c"/>
+		<build type="header-file" subtype="api" value="dma.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="dma_group"/>
+		<build type="doxygen-quick-start" value="xmega_dma_quickstart"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.hugemem"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

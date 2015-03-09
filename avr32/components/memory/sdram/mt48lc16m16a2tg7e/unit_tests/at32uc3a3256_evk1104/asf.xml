@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project id="avr32.components.memory.sdram.mt48lc16m16a2tg7e.unit_tests.evk1104" caption="Unit tests for mt48LC16m16a2tg7 SDRAM component on EVK1104" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="avr32.components.memory.sdram.mt48lc16m16a2tg7e.unit_tests"/>
+		<require idref="board.evk1104"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

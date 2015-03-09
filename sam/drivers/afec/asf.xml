@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.afec" caption="AFEC - Analog-Front-End Controller">
+		<info type="description" value="summary">
+			The Analog-Front-End Controller is able to capture analog signals and transform them into digital format with 10-bit or 12-bit resolution which can be extended up to a 16-bit resolution by digital averaging.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="afec.c"/>
+		<build type="header-file" subtype="api" value="afec.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_afec_group"/>
+		<build type="doxygen-quick-start" value="sam_afec_quickstart"/>
+		<device-support value="sam4e"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+	</module>
+</asf>

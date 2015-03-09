@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<project force-caption="true" force-description="true" caption="MAC Beacon Application Coordinator AT86RF212B Zigbit(Carrier)-SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.beacon.coord.ncp.sam4lc4c_rf212b_zigbit_ext">
+		<info type="description" value="summary">
+		The basic MAC Example Beacon Application deploys a beacon-enabled network with star topology.
+		</info>	
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+
+		<config name="config.thirdparty.wireless.addons.sio2host" value="uart"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf212b"/>
+
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.beacon.coord.ncp"/>
+		<require idref="board.sam4l_xplained_pro"/>
+		
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

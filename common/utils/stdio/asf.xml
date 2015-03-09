@@ -1,0 +1,61 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.utils.stdio" caption="Standard I/O (stdio) Interface">
+		<info type="description" value="summary">
+		Common standard I/O driver that implements the stdio
+		read and write functions.
+		</info>
+		<module type="driver" id="common.utils.stdio#uc3" caption="Standard I/O (stdio) Interface - UC3 implementation">
+			<info type="description" value="summary">
+			Common standard I/O driver that implements the stdio
+			read and write functions on AVR devices.
+			</info>
+			<device-support value="uc3"/>
+			<require idref="avr32.utils"/>
+			<require idref="common.utils.stdio.common"/>
+			<build type="doxygen-entry-point" value="group_common_utils_stdio"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+			<info type="gui-flag" value="hidden"/>
+		</module>
+		<module type="driver" id="common.utils.stdio#xmega" caption="Standard I/O (stdio) Interface - XMEGA implementation">
+			<info type="description" value="summary">
+			Common standard I/O driver that implements the stdio
+			read and write functions on AVR devices.
+			</info>
+			<device-support value="xmega"/>
+			<require idref="common.utils.stdio.common"/>
+			<require idref="xmega.utils"/>
+			<build type="doxygen-entry-point" value="group_common_utils_stdio"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa"/>
+			<info type="gui-flag" value="hidden"/>
+		</module>
+		<module type="driver" id="common.utils.stdio#sam" caption="Standard I/O (stdio) Interface - SAM implementation">
+			<info type="description" value="summary">
+			Common standard I/O driver that implements the stdio
+			read and write functions on SAM devices.
+			</info>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<require idref="common.utils.stdio.common"/>
+			<require idref="sam.utils"/>
+			<build type="doxygen-entry-point" value="group_common_utils_stdio"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+			<info type="gui-flag" value="hidden"/>
+		</module>
+		<module type="driver" id="common.utils.stdio#mega" caption="Standard I/O (stdio) Interface - mega implementation">
+			<info type="description" value="summary">
+			Common standard I/O driver that implements the stdio
+			read and write functions on mega devices.
+			</info>
+			<device-support value="mega"/>
+			<require idref="common.utils.stdio.common"/>
+			<require idref="mega.utils"/>
+			<build type="doxygen-entry-point" value="group_common_utils_stdio"/>
+			<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+			<info type="gui-flag" value="hidden"/>
+		</module>
+	</select-by-device>
+	<module type="meta" id="common.utils.stdio.common" caption="Standard I/O (stdio) Interface">
+		<build type="c-source" value="read.c"/>
+		<build type="c-source" value="write.c"/>
+	</module>
+</asf>

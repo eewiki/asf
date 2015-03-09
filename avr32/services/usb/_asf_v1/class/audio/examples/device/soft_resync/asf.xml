@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.usb.audio.device.add_del.example" caption="USB Device Audio Class - Addition and deletion of audio samples example (from ASF V1)">
+		<info type="description" value="summary">
+		Using the USBB module and the deprecated USB software stack from ASF v1, USB Audio Class application that behaves as a standard USB audio stereo headset device with microphone. Applying a basic Add &amp; Delete samples filter to control the audio stream synchronization.
+		</info>
+		<build type="header-file" value="conf_audio_mixer.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.services.usb.audio.device.example"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

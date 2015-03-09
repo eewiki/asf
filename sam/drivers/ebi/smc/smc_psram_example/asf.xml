@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.ebi.smc.smc_psram_example" caption="SMC PSRAM Example">
+		<info type="description" value="summary">
+		A simple example shows how to configure the Static Memory Controller (SMC) for PSRAM, and do write and read operations to check the configuration.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<device-support value="sam"/>
+		<build type="c-source" value="smc_psram_example.c"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.drivers.smc"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

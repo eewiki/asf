@@ -1,0 +1,10 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.uc3.operators" caption="DSPLib - Operators function set">
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="op_dsp16_sqrt_at32uc.c"/>
+		<build type="c-source" value="op_dsp16_ln_at32uc.c"/>
+		<require idref="avr32.services.dsplib.generic.operators"/>
+		<require idref="avr32.services.dsplib.uc3"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

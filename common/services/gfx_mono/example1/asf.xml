@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.gfx_mono.example1" caption="Monochrome Graphics Library Example">
+		<info type="description" value="summary">
+		Monochrome graphic library graphic primitives example. Draw graphics shapes to a connected LCD display or framebuffer
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="c-source" value="example1.c"/>
+		<device-support value="xmega"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.gfx_mono"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

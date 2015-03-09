@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project type="unit-test" caption="XMEGA XCL unittest for XMEGA-E5 Xplained" id="xmega.drivers.xcl.unit_tests.xmega_e5_xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_xcl.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="xmega.drivers.xcl.unit_tests"/>
+		<require idref="board.xmega_e5_xplained"/>
+		<generator value="as5_8"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

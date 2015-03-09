@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.tools.dataextract" caption="DSPLib - Data Extract">
+		<info type="gui-flag" value="hidden"/>
+		<build type="include-path" value="docsrc"/>
+		<build type="distribute" subtype="file" value="main.c"/>
+		<build type="distribute" subtype="file" value="format_data.h"/>
+		<build type="distribute" subtype="file" value="format_data.c"/>
+		<build type="distribute" subtype="file" value="script.h"/>
+		<build type="distribute" subtype="file" value="script.c"/>
+		<build type="distribute" subtype="file" value="error_management.h"/>
+		<build type="distribute" subtype="file" value="error_management.c"/>
+		<build type="distribute" subtype="file" value="DataExtract.exe"/>
+		<build type="header-file" value="docsrc/documentation.h"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

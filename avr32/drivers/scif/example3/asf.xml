@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.scif.example3" caption="SCIF Example 3">
+		<info type="description" value="summary">
+		Configure and start the OSC32K 32kHz oscillator. Set-up a generic clock GCLK with the OSC32K as input. Output the generic clock on a pin. Switch into the STATIC sleep mode while still maintaining the generic clock output.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks"/>
+		</info>
+		<build type="c-source" value="scif_example3.c"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,10 @@
+<asf xmlversion="1.0">
+	<module type="build-specific" id="avr32.utils.header_files" caption="32-bit AVR header files">
+		<info type="description" value="summary">
+		Header files update for 32-bit AVR devices. These header files
+		fix bugs in the header files installed by the toolchain.
+		</info>
+		<build type="distribute" subtype="file" value="avr32-headers.zip"/>
+		<device-support value="uc3" />
+	</module>
+</asf>

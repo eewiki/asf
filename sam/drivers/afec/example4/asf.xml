@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.afec.example4" caption="AFEC Feature Test Example">
+		<info type="description" value="summary">
+		This example demonstrates how to use some features inside the microcontroller.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="afec_example4.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4e"/>
+		<require idref="sam.drivers.afec"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.tc"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

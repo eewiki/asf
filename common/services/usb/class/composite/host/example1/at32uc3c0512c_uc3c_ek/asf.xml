@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="USB Host MSC and HID mouse for uc3c_ek" id="common.services.usb.class.composite.host.example1.uc3c_ek">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.eic"/>
+		<config name="config.common.services.usb.class.host" value="multiple_classes"/>
+		<config name="config.common.services.usb.class.hid.host.composite.mouse" value="enable"/>
+		<config name="config.common.services.usb.class.msc.host.composite.ctrl_access" value="enable"/>
+		<require idref="common.services.usb.class.composite.host.example1"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

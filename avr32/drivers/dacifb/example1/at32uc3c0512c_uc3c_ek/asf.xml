@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="DACIFB Example 1 for UC3C_EK" id="avr32.drivers.dacifb.example1.uc3c_ek">
+		<require idref="avr32.drivers.dacifb.example1"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

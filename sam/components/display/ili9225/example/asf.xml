@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.components.display.ili9225.example" caption="ILI9225 Display Controller Example">
+		<info type="description" value="summary">
+		A simple example for verifying that the ILI9225 low level driver works.
+		</info>
+		<build type="c-source" value="ili9225_example.c"/>
+		<device-support value="sam"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="sam.components.display.ili9225"/>
+		<require idref="sam.components.display.aat31xx"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

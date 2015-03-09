@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project id="xmega.applications.xmega_rtc_calibration_demo.xmega_e_userboard" caption="RTC Calibration Demo application for XMEGA E">
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_rtc_calibration.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.applications.xmega_rtc_calibration_demo"/>
+		<require idref="board.dummy.atxmega32e5"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

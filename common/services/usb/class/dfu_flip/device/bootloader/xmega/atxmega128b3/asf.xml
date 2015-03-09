@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="USB DFU ATMEL for ATxmega128b3" id="common.services.usb.class.dfu_atmel.device.bootloader.atxmega128b3">
+		<build type="include-path" value="iar/" toolchain="iarew"/>
+		<build type="linker-config" subtype="script" value="iar/atxmega128b3_boot.xcl" toolchain="iarew"/>
+		<config name="config.compiler.iarew.enable_config" value="no"/>
+		<config name="config.xmega.drivers.usb.device.sleepmgr" value="without_sleepmgr"/>
+		<require idref="common.services.usb.class.dfu_atmel.device.bootloader.xmega"/>
+		<config name="config.common.services.usb.class.device" value="dfu_atmel"/>
+		<require idref="board.dummy.atxmega128b3"/>
+		<generator value="iarew"/>
+		<device-support value="atxmega128b3"/>
+	</project>
+</asf>

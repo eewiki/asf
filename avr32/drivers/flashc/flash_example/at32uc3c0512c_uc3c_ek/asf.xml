@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="FLASHC Example for uc3c_ek" id="avr32.drivers.flashc.example.uc3c_ek">
+		<require idref="avr32.drivers.flashc.example"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<build type="linker-config" subtype="script" value="link_uc3c0512c.lds" toolchain="avr32gcc"/>
+		<build type="linker-config" subtype="script" value="lnkuc3c0512c.xcl" toolchain="iarew32"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

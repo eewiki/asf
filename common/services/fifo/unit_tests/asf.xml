@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.basic.fifo.unit_tests" caption="Unit Tests for the Common FIFO Service">
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="unit_tests.c"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.fifo"/>
+		<require idref="common.utils"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.utils.unit_test"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

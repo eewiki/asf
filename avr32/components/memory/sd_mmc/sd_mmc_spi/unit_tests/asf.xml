@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.memory.sdmmc.spi.unit_tests" caption="Unit Tests for the UC3 SD/MMC Component (Using SPI)">
+		<info type="description" value="summary">
+		This is the unit tests of the SD/MMC card using the SPI Interface.
+		</info>
+		<build type="header-file" value="conf/conf_access.h"/>
+		<build type="include-path" value="conf"/>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<require idref="avr32.components.memory.sd_mmc.sd_mmc_spi"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

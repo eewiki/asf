@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.aesa" caption="AESA - Advanced Encryption Standard Module">
+		<info type="description" value="summary">
+		Driver for the AESA (Advanced Encryption Standard) module.
+		Provides functions for configuring and initiating ciphering/deciphering with AES algorithms.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>				
+		<build type="c-source" value="aesa.c"/>
+		<build type="header-file" subtype="api" value="aesa.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_sam_drivers_aesa"/>
+		<build type="doxygen-quick-start" value="sam_aesa_quick_start"/>
+		<build type="module-config" subtype="required-header-file" value="conf_aesa.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

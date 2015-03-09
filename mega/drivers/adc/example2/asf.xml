@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.drivers.adc.example2" caption="ADC Example 2">
+		<info type="description" value="summary">
+		Read ADC channels and do an average using free running mode.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc_example2.c"/>
+		<device-support value="mega"/>
+		<require idref="mega.drivers.adc"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

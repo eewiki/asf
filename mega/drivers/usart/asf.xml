@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="mega.drivers.usart" caption="USART - Universal Synchronous/Asynchronous Receiver/Transmitter">
+		<info type="description" value="summary">
+		MegaRF Driver for the Universal Synchronous and Asynchronous Serial Receiver and Transmitter (USART).
+		Provides functions for configuring and using the USART in RS232 and SPI mode.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication" />
+		</info>
+		<build type="c-source" value="usart_megarf.c"/>
+		<build type="header-file" subtype="api" value="usart_megarf.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="megarf_usart_group "/>
+		<build type="doxygen-quick-start" value="megarf_usart_quickstart"/>
+		<device-support value="megarf"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="mega.utils"/>
+		<require idref="mega.drivers.ioport"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+	</module>
+</asf>

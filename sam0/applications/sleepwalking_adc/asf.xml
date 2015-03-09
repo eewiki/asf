@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.applications.sleepwalking_adc" caption="SAM D20 Sleepwalking Voltage Monitor Application">
+		<info type="description" value="summary">
+		This examples configures the ADC as a sleepwalking peripheral, using the RTC for conversion timing, to monitor the
+		device supply voltage, and alert the application when the voltage goes below a predefined voltage.
+		The ADC is setup to do hardware averaging to smooth the resulting voltage readings.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="vcc_monitor.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.adc"/>
+		<require idref="sam0.drivers.events"/>
+		<require idref="sam0.drivers.rtc"/>
+		<require idref="common2.services.delay"/>
+		<device-support value="samd20"/>
+	</module>
+</asf>

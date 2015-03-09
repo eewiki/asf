@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.memory.eeprom.at24cxx.example" caption="EEPROM AT24Cxx Example">
+		<info type="description" value="summary">
+		Read and write bytes to an external EEPROM AT24Cx memory through I2C.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="at24cxx_example.c"/>
+		<build type="header-file" value="conf_at24cxx.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.components.memory.eeprom.at24cxx"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.twim"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

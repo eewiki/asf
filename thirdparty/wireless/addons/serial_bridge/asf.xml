@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++MODULE+++++++++++++++++++++++++++++++++++++++++++++++. -->
+	<module type="service" id="thirdparty.wireless.addons.serial_bridge" caption="Serial Bridge ">
+		<info type="description" value="summary">
+			The serial Bridge Module is used in the host which acts as a bridge between the Pc and the NCP device. The serial Bridge  is used by Performance Analyzer application in 2p approach and for flashing image using Bootloader application,where it transfers data from the Pc to the NCP and vice-versa. 
+		</info>
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++BUILD+++++++++++++++++++++++++++++++++++++++++++++++. -->
+        
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.delay"/>
+		<require idref="thirdparty.wireless.addons.sio2host"/>
+		<require idref="thirdparty.wireless.addons.sio2ncp"/>
+		<build type="c-source"      value="serial_bridge.c"/>
+        <build type="header-file"   value="serial_bridge.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<device-support value="atmega256rfr2"/>
+		<build type="doxygen-entry-point" value="group_serial_bridge"/>
+        <info type="keyword" value="technology">
+            <keyword value="Wireless"/>
+            <keyword value="Communication"/>
+		</info>
+	</module>
+</asf>

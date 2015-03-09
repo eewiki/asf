@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.usart.usart_dmac_example" caption="USART DMAC Example">
+		<info type="description" value="summary">
+			This example demonstrates how to use DMAC to implement USART peripherals function in serial mode.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="usart_example_dmac.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam3x"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.usart"/>
+		<require idref="sam.drivers.dmac"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

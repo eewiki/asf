@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.components.sensor.mma7341l.example" caption="MMA7341L Accelerometer Example">
+		<module type="application" id="sam.components.sensor.mma7341l.example#0" caption="MMA7341L Accelerometer Example">
+			<info type="description" value="summary">
+			This example demonstrates how to configure MMA7341L accelerometer and check gravity value of three axis by it.
+			</info>
+			<build type="c-source" value="mma7341l_example.c"/>
+			<device-support value="sam3u"/>
+			<require idref="sam.utils.syscalls"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="sam.components.sensor.mma7341l"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.fs.fat.fsaccess.example" caption="FAT File System Example 2">
+		<info type="description" value="summary">
+		USART Shell-like application providing 3 operations to be performed on files on a FAT file system stored in a dataFlash memory(AT45DBX). Implemented with the POSIX-like API.
+		</info>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_explorer.h"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="fsaccess_example.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="avr32.services.fs.fat"/>
+		<require idref="avr32.services.fs.fat.os"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="common.components.memory.data_flash.at45dbx._asf_v1"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

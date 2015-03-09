@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+    <module type="meta" id="thirdparty.wireless.avr2025_mac.source.pal.common_sw_timer" caption="Common SW Timer">
+        <info type="description" value="summary">
+        Common SW Timer Algorithm used by the stack
+        </info>
+        <build type="module-config" subtype="required-header-file" value="conf_common_sw_timer.h"/>
+        <build type="module-config" subtype="path" value="module_config"/>
+        <build type="c-source"      value="common_sw_timer.c"/>
+        <build type="header-file"   value="common_sw_timer.h"/>
+        <build type="include-path"  value="."/>
+        <build type="doxygen-entry-point" value="group_pal_common_sw_timer"/>
+        <require idref="thirdparty.wireless.avr2025_mac.source.pal.common_hw_timer"/>
+        <device-support-alias value="xmega_hw_timer_support"/>
+        <device-support-alias value="uc3_hw_timer_support"/>
+        <device-support-alias value="sam_hw_timer_support"/>
+        <device-support-alias value="mega_hw_timer_support"/>
+	</module>
+</asf>

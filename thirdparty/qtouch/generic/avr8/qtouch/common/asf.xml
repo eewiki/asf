@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="config.common.services.qtouch.generic.avr8.qtouch.common" caption="Atmel QTouch Library - Common files">
+	    <info type="description" value="summary">
+		The pre-compiled QTouch Library, common and include files for AVR 8-bit devices.
+		For more information on the QTouch Library, goto www.atmel.com/qtouchlib.
+		For support queries, email touch@atmel.com.
+		</info>		
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>	
+				
+		<build type="header-file" subtype="api" value="../../../include/touch_api.h"/>
+		<build type="include-path" value="../../../include"/>		
+		
+		<build type="header-file" subtype="api" value="touch_qt_config.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="touch_qt_config.h"/>
+		<build type="module-config" subtype="path" value="./"/>
+				
+		
+	</module>
+</asf>

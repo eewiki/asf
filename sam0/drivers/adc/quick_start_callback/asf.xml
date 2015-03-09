@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.adc.quick_start_callback" caption="Quick Start for the SAM D20 ADC Driver (Callback)">
+		<info type="description" value="summary">
+		Quick start guide for the Analog-to-Digital Converter module demonstrating module configuration.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_adc_callback.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.adc"/>
+		<device-support value="samd20"/>
+	</module>
+</asf>

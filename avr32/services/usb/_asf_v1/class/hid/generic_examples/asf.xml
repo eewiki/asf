@@ -1,0 +1,42 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.usb.hid.generic.example" caption="USB Dual Role (Device and Host) HID Generic example (from ASF V1)">
+		<info type="description" value="summary">
+		Using the USBB module and the deprecated USB software stack from ASF v1, USB HID Class application that behaves as a USB HID generic device in USB Device mode or operates in USB Reduced-Host mode when connected to a USB HID Generic device.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+		</info>
+		<build type="distribute" subtype="directory" value="../examples/docsrc"/>
+		<build type="c-source" value="hid_generic_example.c"/>
+		<build type="header-file" value="hid_generic_example.h"/>
+		<build type="c-source" value="device_generic_hid_task.c"/>
+		<build type="header-file" value="device_generic_hid_task.h"/>
+		<build type="c-source" value="enum/device/usb_descriptors.c"/>
+		<build type="header-file" value="enum/device/usb_descriptors.h"/>
+		<build type="c-source" value="enum/device/usb_specific_request.c"/>
+		<build type="header-file" value="enum/device/usb_specific_request.h"/>
+		<build type="header-file" value="conf/conf_usb.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./conf/"/>
+		<build type="include-path" value="./enum/"/>
+		<build type="include-path" value="./enum/device/"/>
+		<build type="doxygen-image-path" value="../examples/docsrc"/>
+		<build type="c-source" value="../../../../../../../thirdparty/freertos/freertos-7.0.0/source/portable/iar/avr32_uc3/read.c" toolchain="iarew32"/>
+		<build type="c-source" value="../../../../../../../thirdparty/freertos/freertos-7.0.0/source/portable/iar/avr32_uc3/write.c" toolchain="iarew32"/>
+		<require idref="avr32.services.usb._asf_v1.class.hid"/>
+		<require idref="avr32.drivers.usbb._asf_v1.enum.device"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.utils.libs.newlib_addons"/>
+		<require idref="avr32.utils.debug"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.components.joystick.skrhabe010"/>
+		<require idref="avr32.drivers.flashc"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3"/>
+		<device-support value="uc3b"/>
+	</module>
+</asf>

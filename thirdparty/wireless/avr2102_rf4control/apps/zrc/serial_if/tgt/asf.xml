@@ -1,0 +1,11 @@
+<asf xmlversion="1.0">
+	<module type="meta" caption="Serial Interface for AVR2102 zrc controller" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.serial_if.tgt">
+		<info type="description" value="summary">
+		SERIAL INTERFACE APPLICATION FOR RF4CE ZRC TARGET
+		</info>
+		<require idref="thirdparty.wireless.avr2102_rf4control.apps.zrc.serial_if"/>
+		<device-support-alias value="avr2102_rf4control_zrc_tgt_support"/>
+		<device-support value="sam4l"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

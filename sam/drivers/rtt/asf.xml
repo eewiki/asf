@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.rtt" caption="RTT - Real Time Timer">
+		<info type="description" value="summary">
+			The Real-time Timer is built around a 32-bit counter used to count roll-over events of the 16-bit prescaler which size enables to count elapsed seconds from a 32 kHz slow clock source. It generates a periodic interrupt and/or triggers an alarm on a programmed value.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="rtt.c"/>
+		<build type="header-file" subtype="api" value="rtt.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_rtt_group"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

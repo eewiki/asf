@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.bluetooth.cybercom.t2bf" caption="Cybercom Bluetooth T2BF Stack">
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<info type="description" value="summary">
+		T2BF is a Bluetooth framework with advanced Hands-free and other features for telematic usages.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="distribute" subtype="file" value="T2BF SPP Lite API Specification.pdf"/>
+		<build type="header-file" subtype="api" value="btypes.h"/>
+		<build type="header-file" subtype="api" value="t2bf.h"/>
+		<build type="header-file" subtype="api" value="unistr.h"/>
+		<build type="include-path" value="."/>
+		<build type="library" subtype="user" value="iar/t2bf_lib.r82" toolchain="iarew32"/>
+		<build type="library" subtype="user" value="iar/tblue_lib.r82" toolchain="iarew32"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3c"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

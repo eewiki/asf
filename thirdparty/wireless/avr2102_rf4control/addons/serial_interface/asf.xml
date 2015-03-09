@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+    <module type="service" id="thirdparty.wireless.avr2102_rf4control.addons.serial_interface" caption="AVR2102 -Serial Interface support for RF4CE">
+        <info type="description" value="summary">
+            This module is responsible for encoding and decoding the serial bytes to/from Host into corresponding RF4Control APIs .
+        </info>
+        <build type="doxygen-entry-point" value="group_sif_rf4ce"/>
+        <build type="c-source" value="serial_interface.c"/>
+        <build type="header-file" value="serial_interface.h"/>
+        <build type="include-path" value="."/>
+        <device-support-alias value="avr2102_rf4control_nwk_support"/>
+        <device-support value="sam4l"/>
+    </module>	
+</asf>

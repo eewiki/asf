@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Chip Reset Cause Access / Example for EVK1104" id="common.services.basic.cpu.example.evk1104">
+		<info type="description" value="summary">
+		This example demonstrates how to use the Common API for Chip Reset Cause Access.
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.cpu.example"/>
+		<require idref="board.evk1104"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

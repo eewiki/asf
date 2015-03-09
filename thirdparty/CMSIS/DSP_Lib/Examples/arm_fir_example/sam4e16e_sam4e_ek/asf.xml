@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4 DSP FIR Example on SAM4E-EK" id="sam.utils.cmsis.dsp_lib.examples.arm_fir_example.sam4e_ek">
+		<require idref="sam.utils.cmsis.dsp_lib.examples.arm_fir_example"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="board.sam4e_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4e16e"/>
+	</project>
+</asf>

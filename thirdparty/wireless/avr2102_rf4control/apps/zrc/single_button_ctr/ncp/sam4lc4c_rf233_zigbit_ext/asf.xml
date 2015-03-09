@@ -1,0 +1,40 @@
+<asf xmlversion="1.0">
+	<project force-caption="true" force-description="true" caption="Single button controller application AT86RF233 Zigbit(Carrier)-SAM4L XPLAINED Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.ncp.sam4lc4c_rf233_zigbit_ext">
+		<info type="description" value="summary">
+		he RF4CE-ZRC controller stack running on the network co-processor and driven by the host application
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+        <build type="header-file" value="conf_nvm.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="define" name="EXTERN_EEPROM_AVAILABLE" value ="0"/>
+		<build type="define" name="TFA_BAT_MON" value =""/>
+
+	
+		
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf233"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tfa" value="at86rf233"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.sal" value="at86rf2xx"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.api" value="no" />
+		<config name="config.thirdparty.wireless.addons.sio2host" value="uart"/>
+		<config name="config.common.drivers.nvm.mem_type" value="no_extmem"/>
+
+
+	    <require idref="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.ncp"/>
+		<require idref="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.tfa"/>
+		<require idref="board.sam4l_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

@@ -1,0 +1,203 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.common.boards.user_board.init" name="config.common.boards.user_board.init" caption="Common board initialization support" default="yes">
+		<module type="meta" id="config.common.boards.user_board.init#no" caption="Common board initialization support disabled">
+		</module>
+		<module type="meta" id="config.common.boards.user_board.init#yes" caption="Common board initialization support enabled">
+			<build type="c-source" value="init.c"/>
+		</module>
+	</select-by-config>
+
+	<module type="meta" id="common.boards.user_board.common" caption="Common build items for user board support templates">
+		<build type="define" name="BOARD" value="USER_BOARD"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="user_board.h"/>
+		<require idref="config.common.boards.user_board.init"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<require idref="common.boards"/>
+	</module>
+
+	<board id="board.user_board.xmegaa" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="xmegaa"/>
+	</board>
+
+	<board id="board.user_board.xmegaau" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="xmegaau"/>
+	</board>
+
+	<board id="board.user_board.xmegab" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="xmegab"/>
+	</board>
+
+	<board id="board.user_board.xmegac" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="xmegac"/>
+	</board>
+
+	<board id="board.user_board.xmegad" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="xmegad"/>
+	</board>
+
+	<board id="board.user_board.xmegae" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="xmegae"/>
+	</board>
+
+	<board id="board.user_board.uc3a" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="uc3a"/>
+	</board>
+
+	<board id="board.user_board.uc3a3_a4" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="uc3a3_a4"/>
+	</board>
+
+	<board id="board.user_board.uc3b" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="uc3b"/>
+	</board>
+
+	<board id="board.user_board.uc3c" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="uc3c"/>
+	</board>
+
+		<board id="board.user_board.uc3d" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="uc3d"/>
+	</board>
+
+	<board id="board.user_board.uc3l" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="uc3l"/>
+	</board>
+
+	<board id="board.user_board.sam3n" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="sam3n"/>
+	</board>
+
+	<board id="board.user_board.sam3s" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="sam3s"/>
+	</board>
+
+	<board id="board.user_board.sam3sd" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="sam3sd"/>
+	</board>
+
+	<board id="board.user_board.sam3u" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="sam3u"/>
+	</board>
+
+	<board id="board.user_board.sam3x" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="sam3x"/>
+	</board>
+
+	<board id="board.user_board.sam4s" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="sam4s"/>
+	</board>
+
+	<board id="board.user_board.sam4e" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="sam4e"/>
+	</board>
+
+	<board id="board.user_board.megarf" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="megarf"/>
+	</board>
+
+	<board id="board.user_board.sam4lc4a" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4lc4a"/>
+	</board>
+
+	<board id="board.user_board.sam4lc4b" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4lc4b"/>
+	</board>
+
+	<board id="board.user_board.sam4lc4c" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4lc4c"/>
+	</board>
+
+	<board id="board.user_board.sam4ls4a" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4ls4a"/>
+	</board>
+
+	<board id="board.user_board.sam4ls4b" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4ls4b"/>
+	</board>
+
+	<board id="board.user_board.sam4ls4c" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4ls4c"/>
+	</board>
+
+	<board id="board.user_board.sam4lc2a" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4lc2a"/>
+	</board>
+
+	<board id="board.user_board.sam4lc2b" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4lc2b"/>
+	</board>
+
+	<board id="board.user_board.sam4lc2c" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4lc2c"/>
+	</board>
+
+	<board id="board.user_board.sam4ls2a" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4ls2a"/>
+	</board>
+
+	<board id="board.user_board.sam4ls2b" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4ls2b"/>
+	</board>
+
+	<board id="board.user_board.sam4ls2c" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4ls2c"/>
+	</board>
+
+	<board id="board.user_board.sam4e8e" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4e8e"/>
+	</board>
+
+	<board id="board.user_board.sam4e16e" caption="User Board">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4e16e"/>
+	</board>
+</asf>

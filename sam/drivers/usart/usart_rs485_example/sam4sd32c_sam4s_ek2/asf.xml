@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="USART RS485 Example for SAM4S-EK2" id="sam.drivers.usart.usart_rs485_example.sam4s_ek2">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.usart.usart_rs485_example"/>
+		<require idref="board.sam4s_ek2"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>

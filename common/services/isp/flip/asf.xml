@@ -1,0 +1,99 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.isp.flip" caption="FLIP-compliant In System Programming service">
+		<module type="service" id="common.services.isp.flip#0" caption="FLIP-compliant In System Programming service">
+			<info type="description" value="summary">
+			This service provides an In system Programming interface and boot process dedicated to FLIP. 
+			FLIP is an application developed by Atmel to perform firmware upgrade.
+			This software is a flexible application which lets you program and 
+			configure Atmel's microcontroller devices in their final environment 
+			without needing any dedicated hardware.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" value="isp.h"/>
+			<build type="c-source" value="uc3/isp.c"/>
+			<build type="header-file" value="uc3/flash_api.h"/>
+			<build type="header-file" value="uc3/boot.h"/>
+			<build type="asm-source" value="uc3/boot.S" toolchain="avr32gcc"/>
+			<build type="asm-source" value="uc3/boot.s82" toolchain="iarew32"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="./uc3"/>
+			<require idref="common.services.isp.flip.protocol"/>
+			<require idref="avr32.drivers.flashcdw"/>
+			<build type="module-config" subtype="required-header-file" value="conf_isp.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<device-support value="uc3d"/>
+			<device-support value="uc3l0"/>
+			<device-support value="uc3l3"/>
+			<device-support value="uc3l4"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="common.services.isp.flip#1" caption="FLIP-compliant In System Programming service">
+			<info type="description" value="summary">
+			This service provides an In system Programming interface and boot process dedicated to FLIP. 
+			FLIP is an application developed by Atmel to perform firmware upgrade.
+			This software is a flexible application which lets you program and 
+			configure Atmel's microcontroller devices in their final environment 
+			without needing any dedicated hardware.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" value="isp.h"/>
+			<build type="c-source" value="uc3/isp.c"/>
+			<build type="header-file" value="uc3/flash_api.h"/>
+			<build type="header-file" value="uc3/boot.h"/>
+			<build type="asm-source" value="uc3/boot.S" toolchain="avr32gcc"/>
+			<build type="asm-source" value="uc3/boot.s82" toolchain="iarew32"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="./uc3"/>
+			<require idref="common.services.isp.flip.protocol"/>
+			<require idref="avr32.drivers.flashc"/>
+			<build type="module-config" subtype="required-header-file" value="conf_isp.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+			<device-support value="uc3a4"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3c"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="common.services.isp.flip#2" caption="FLIP-compliant In System Programming service">
+			<info type="description" value="summary">
+			This service provides an In system Programming interface and boot process dedicated to FLIP. 
+			FLIP is an application developed by Atmel to perform firmware upgrade.
+			This software is a flexible application which lets you program and 
+			configure Atmel's microcontroller devices in their final environment 
+			without needing any dedicated hardware.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" value="isp.h"/>
+			<build type="c-source" value="xmega/isp.c"/>
+			<build type="asm-source" value="xmega/cstartup.s90" toolchain="iarew"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.isp.flip.protocol"/>
+			<require idref="xmega.drivers.nvm"/>
+			<build type="module-config" subtype="required-header-file" value="conf_isp.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa3bu"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+		</module>
+	</select-by-device>
+	<module type="service" id="common.services.isp.flip.protocol" caption="FLIP protocols definitions">
+		<info type="description" value="summary">
+		FLIP Protocols definitions.
+		To perform firmware upgrade, Atmel has developed an application called FLIP.
+		This software is a flexible application which lets you program and 
+		configure Atmel's microcontroller devices in their final environment 
+		without needing any dedicated hardware.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" value="flip_protocol.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3"/>
+		<device-support value="xmega"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmega"/>
+	</module>
+</asf>

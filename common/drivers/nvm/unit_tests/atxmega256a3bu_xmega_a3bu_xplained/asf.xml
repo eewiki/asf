@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="Common NVM driver unit tests for atxmega256a3bu on XMEGA-A3BU Xplained" id="common.drivers.nvm.unit_tests.atxmega256a3bu_xmega_a3bu_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_nvm.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.drivers.nvm.unit_tests"/>
+		<config name="config.common.drivers.nvm.mem_type" value="no_extmem"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<config name="config.board.xmega_a3bu_xplained.led" value="yes"/>
+		<generator value="iarew"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

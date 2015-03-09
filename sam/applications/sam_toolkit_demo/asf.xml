@@ -1,0 +1,50 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.application.sam_toolkit_demo" caption="SAM Toolkit Demo Application">
+		<info type="description" value="summary">
+		This SAM toolkit demo program presents the general features of the SAM-EK boards. The basic features involved include FreeRTOS, QTouch, FatFS, nandflash, usb mass storage and LCD.
+		</info>
+		<build type="module-config" subtype="required-header-file" value="conf_demo.h"/>
+		<build type="module-config" subtype="path" value="demo_config"/>
+		<build type="c-source" value="demo.c"/>
+		<build type="c-source" value="widget_scr_main.c"/>
+		<build type="c-source" value="widget_scr_settings.c"/>
+		<build type="c-source" value="widget_scr_settings_backlight.c"/>
+		<build type="c-source" value="widget_scr_settings_date.c"/>
+		<build type="c-source" value="widget_scr_settings_time.c"/>
+		<build type="c-source" value="widget_scr_lpm.c"/>
+		<build type="c-source" value="widget_scr_lpm_backup.c"/>
+		<build type="c-source" value="widget_scr_lpm_sleep.c"/>
+		<build type="c-source" value="widget_scr_lpm_wait.c"/>
+		<build type="c-source" value="widget_scr_qtouch.c"/>
+		<build type="c-source" value="widget_scr_info.c"/>
+		<build type="c-source" value="widget_scr_audio.c"/>
+		<build type="c-source" value="widget_scr_fft.c"/>
+		<build type="c-source" value="demo_draw_bmpfile.c"/>
+		<build type="header-file" value="demo.h"/>
+		<build type="c-source" value="rtouch_calibrate.c"/>
+		<build type="header-file" value="rtouch_calibrate.h"/>
+		<build type="c-source" value="demo_parameters.c"/>
+		<build type="c-source" value="demo_qtouch.c"/>
+		<build type="header-file" value="demo_parameters.h"/>
+		<build type="header-file" value="bitmaps.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.application.sam_toolkit_demo.resources"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.rtc"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.services.usb.class.device"/>
+		<require idref="common.services.os.freertos"/>
+		<require idref="common.services.fs.fatfs"/>
+		<require idref="sam.services.resistive_touch"/>
+		<require idref="common.services.wtk"/>
+		<require idref="sam.services.flash"/>
+		<require idref="sam.components.display.aat31xx"/>
+		<require idref="sam.drivers.supc"/>
+		<require idref="sam.drivers.adc"/>
+		<require idref="sam.drivers.tc"/>
+		<require idref="sam.drivers.pdc"/>
+		<device-support value="sam"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

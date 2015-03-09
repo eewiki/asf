@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.tc.example2" caption="TC Example 2">
+		<info type="description" value="summary">
+		Use the XMEGA Timer Counter module : uses and configures two TC modules. One is configured to generate single slope PWM on LED0. One is used in generate a 50ms overflow interrupt.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc_example2.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="xmega.drivers.tc"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

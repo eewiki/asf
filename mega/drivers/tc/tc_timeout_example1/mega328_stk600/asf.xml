@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project id="mega.drivers.tc_timeout.example1.mega328_stk600" caption="Timer/Counter (TC) Timeout Example 1 for ATmega328 on STK600">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_tc_timeout.h"/>
+		<require idref="mega.drivers.tc_timeout.example1"/>
+		<require idref="board.stk600-mega.atmega328"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega328"/>
+	</project>
+</asf>

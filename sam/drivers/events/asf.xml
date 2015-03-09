@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.events" caption="PEVC - Peripheral Event Controller Driver for SAM">
+		<info type="description" value="summary">
+			Provide a unified interface for the configuration and management of
+			the event channels within the device.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Peripheral Event System" />
+		</info>
+		<build type="c-source" value="events.c"/>
+		<build type="header-file" subtype="api" value="events.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_sam_drivers_events"/>
+		<build type="doxygen-quick-start" value="sam_events_quick_start"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

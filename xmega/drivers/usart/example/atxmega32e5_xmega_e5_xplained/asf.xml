@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="XMEGA USART Example for XMEGA-E5 Xplained" id="xmega.drivers.usart.example.xmega_e5_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_usart_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.usart.example"/>
+		<require idref="board.xmega_e5_xplained"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

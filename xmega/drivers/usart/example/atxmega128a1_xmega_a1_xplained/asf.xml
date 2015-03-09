@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="USART Example for XMEGA-A1 Xplained" id="xmega.drivers.usart.example.xmega_a1_xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_usart_example.h"/>
+		<require idref="xmega.drivers.usart.example"/>
+		<require idref="board.xmega_a1_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

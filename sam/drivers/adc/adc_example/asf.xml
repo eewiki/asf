@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.adc.adc_example" caption="ADC Example">
+		<info type="description" value="summary">
+		This example will demonstrates how to configure ADC peripheral with several modes.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.adc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.drivers.tc"/>
+		<require idref="sam.drivers.pwm"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

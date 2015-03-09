@@ -1,0 +1,54 @@
+<asf xmlversion="1.0">
+	<select-by-config id="xmega.drivers.usb.device" name="config.xmega.drivers.usb.device.sleepmgr" caption="USB - Universal Serial Bus Interface" default="with_sleepmgr">
+		<info type="description" value="summary">
+		The USB driver offers the basics for accessing the USB module registers, it provides functions for configuring and using the on-chip USB.
+		</info>
+		<module type="driver" id="xmega.drivers.usb.device#with_sleepmgr" caption="USB - Universal Serial Bus Interface (with sleepmgr)">
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+			</info>
+			<info type="description" value="summary">
+			The USB driver offers the basics for accessing the USB module registers, it provides functions for configuring and using the on-chip USB.
+			</info>
+			<build type="c-source" value="usb_device.c"/>
+			<build type="header-file" value="usb_device.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="usb_device_group"/>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa3bu"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="xmega.drivers.nvm"/>
+			<require idref="xmega.utils"/>
+			<generator value="doxygen-module" default-mcu="atxmega32a4u"/>
+		</module>
+		<module type="driver" id="xmega.drivers.usb.device#without_sleepmgr" caption="USB - Universal Serial Bus Interface (without sleepmgr)">
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+			</info>
+			<info type="description" value="summary">
+			The USB driver offers the basics for accessing the USB module registers, it provides functions for configuring and using the on-chip USB.
+			</info>
+			<build type="c-source" value="usb_device.c"/>
+			<build type="header-file" value="usb_device.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="usb_device_group"/>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa3bu"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.nvm"/>
+			<require idref="xmega.utils"/>
+			<generator value="doxygen-module" default-mcu="atxmega32a4u"/>
+		</module>
+	</select-by-config>
+</asf>

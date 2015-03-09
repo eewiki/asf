@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.display.hx8347a" caption="Display - HX8347A LCD Controller">
+		<info type="description" value="summary">
+			Low-level driver for the HX8347A LCD controller.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<build type="c-source" value="hx8347a.c"/>
+		<build type="header-file" subtype="api" value="hx8347a.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="hx8347a_display_group"/>
+		<require idref="sam.drivers.smc"/>
+		<device-support value="sam"/>
+		<build type="module-config" subtype="required-header-file" value="conf_hx8347a.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

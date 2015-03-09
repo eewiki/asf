@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project id="common.services.gfx_mono.unit_test_menu.xmega_a1_xplain" caption="Unit test for gfx_mono menu system on XMEGA-A1 Xplain" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_menu.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<require idref="common.services.gfx_mono.unit_test_menu"/>
+		<require idref="board.xplain"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

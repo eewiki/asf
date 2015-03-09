@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.adc.example7" caption="ADC Oversampling example">
+		<info type="description" value="summary">
+		Increasing the 12-bit resolution with the hardware oversampling feature of XMEGA E ADC.
+		The DAC is used to generate an ADC input voltage with a periodic signal.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc_oversampling.c"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="xmega.drivers.dac"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<device-support value="xmegae"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

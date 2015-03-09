@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project id="mega.drivers.wdt.unit_tests.atmega128rfa1_stk600-rc128x_rfx" caption="WDT unit tests on atmega128rfa1_stk600-rc128x_rfx" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>		
+		<require idref="mega.drivers.wdt.unit_tests"/>
+		<require idref="board.stk600-mega.atmega128rfa1"/>
+		<config name="config.compiler.iarew.data_stack_size" value="0x100"/>
+		<config name="config.compiler.iarew.return_stack_size" value="0x100"/>
+		<config name="config.compiler.iarew.near_heap_size" value="0x40"/>		
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="doxygen"/>
+		<generator value="as5_8"/>
+		<device-support value="atmega128rfa1"/>
+	</project>
+</asf>

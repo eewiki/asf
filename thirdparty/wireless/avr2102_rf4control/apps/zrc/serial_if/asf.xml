@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.serial_if" caption="Serial IF App">
+		<info type="description" value="summary">
+
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="main.c"/>
+		<require idref="thirdparty.wireless.avr2102_rf4control.addons.serial_interface"/>
+		<require idref="thirdparty.wireless.avr2102_rf4control.include"/>
+		<require idref="thirdparty.wireless.avr2102_rf4control"/>
+		<require idref="thirdparty.wireless.addons.sio2host"/>
+		
+		<build type="doxygen-entry-point" value="zrc_group"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="megarf"/>
+		<device-support value="sam4l"/>
+	</module>
+</asf>

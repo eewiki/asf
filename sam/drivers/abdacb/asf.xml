@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.abdacb" caption="ABDACB - Audio Bitstream DAC">
+		<info type="description" value="summary">
+		Audio Bitstream DAC (Digital to Analog Converter) provides functions to convert a 16-bit sample value to a digital bitstream.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion" />
+		</info>
+		<build type="c-source" value="abdacb.c"/>
+		<build type="header-file" subtype="api" value="abdacb.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_sam_drivers_abdacb"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

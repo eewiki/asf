@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="TC Capture Waveform Example on Arduino Due/X" id="sam.drivers.tc.tc_capture_waveform_example.arduino_due_x">
+		<info type="description" value="summary">
+		This example shows how to configure TC in waveform and capture mode and use this function to calculate the input pulse frequency.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.tc.tc_capture_waveform_example"/>
+		<require idref="board.arduino_due_x"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3x8e"/>
+	</project>
+</asf>

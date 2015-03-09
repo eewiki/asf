@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.applications.tictactoe" caption="Tic-Tac-Toe Application">
+		<info type="description" value="summary">
+		Example application to play Tic-tac-toe on the OLED1 Xplained Pro extension wing.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+
+		<build type="c-source" value="tictactoe.c"/>
+
+		<build type="include-path" value="."/>
+
+		<require idref="sam0.drivers.system"/>
+		<require idref="common2.services.gfx_mono"/>
+		<require idref="common2.services.gfx_mono.font"/>
+		<require idref="common2.services.delay"/>
+		<require idref="sam0.drivers.port"/>
+
+		<device-support value="samd20"/>
+	</module>
+</asf>

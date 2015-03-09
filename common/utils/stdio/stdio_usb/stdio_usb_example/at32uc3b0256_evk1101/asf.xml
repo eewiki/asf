@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="USB Standard I/O Example for evk1101" id="common.utils.stdio.stdio_usb.example.evk1101">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.utils.stdio.stdio_usb.example"/>
+		<config name="config.common.services.usb.class.device" value="cdc_stdio"/>
+		<require idref="board.evk1101"/>
+		<config name="config.board.evk1101.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

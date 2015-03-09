@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="AFEC Feature Test Example on SAM4E-EK" id="sam.drivers.afec.example4.sam4e_ek">
+		<info type="description" value="summary">
+		This example demonstrates how to use some features inside the microcontroller.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.afec.example4"/>
+		<config name="config.compiler.armgcc.printf" value="printf"/>
+		<require idref="board.sam4e_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4e16e"/>
+	</project>
+</asf>

@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.accelerometer.example" caption="Accelerometer LIS3L06AL Example">
+		<info type="description" value="summary">
+		Use the on-board lis3l06al accelerometer to control messages displayed on the UART.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<build type="c-source" value="acc_example.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.components.accelerometer.lis3l06al"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

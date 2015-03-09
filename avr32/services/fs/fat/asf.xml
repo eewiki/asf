@@ -1,0 +1,152 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.fs.fat" caption="FAT file system">
+		<info type="description" value="summary">
+		FAT file system driver that provides an interface for accessing a FAT file system located on a memory device. Supports FAT12, FAT16 and FAT32.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="fat.c"/>
+		<build type="c-source" value="fat_unusual.c"/>
+		<build type="c-source" value="file.c"/>
+		<build type="c-source" value="navigation.c"/>
+		<build type="header-file" subtype="api" value="fat.h"/>
+		<build type="header-file" subtype="api" value="file.h"/>
+		<build type="header-file" subtype="api" value="fs_com.h"/>
+		<build type="header-file" subtype="api" value="navigation.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_explorer.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_fs_fat"/>
+		<device-support value="uc3"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<build type="define" name="ACCESS_MEM_TO_RAM_ENABLED" value=""/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+
+	<select-by-config id="avr32.services.fs.fat.nav_automatic" name="config.avr32.services.fs.fat.nav_automatic.custom" caption="FAT file system with automatic navigation" default="default">
+		<info type="description" value="summary">
+		FAT file system with automatic navigation.
+
+		Supports either using default nav_automatic.c or custom nav_automatic.c provided by the user.
+		</info>
+		<module type="service" id="avr32.services.fs.fat.nav_automatic#default" caption="FAT file system with default automatic navigation">
+			<info type="description" value="summary">
+			FAT file system with automatic navigation.
+			</info>
+			<build type="c-source" value="nav_automatic.c"/>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="nav_automatic.h"/>
+			<build type="header-file" subtype="api" value="play_list.h"/>
+			<require idref="avr32.services.fs.fat"/>
+			<build type="doxygen-entry-point" value="group_avr32_services_fs_fat"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<!-- For application audio player which uses a specific nav_automatic.c -->
+		<module type="service" id="avr32.services.fs.fat.nav_automatic#custom" caption="FAT file system with custom automatic navigation">
+			<info type="description" value="summary">
+			FAT file system with automatic navigation which expects the user to provide an implementation of the nav_automatic.c file.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="nav_automatic.h"/>
+			<build type="header-file" subtype="api" value="play_list.h"/>
+			<require idref="avr32.services.fs.fat"/>
+			<build type="doxygen-entry-point" value="group_avr32_services_fs_fat"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+
+	<module type="service" id="avr32.services.fs.fat.nav_filterflat" caption="FAT file system with navigation filtered in flat mode">
+		<info type="description" value="summary">
+		FAT file system with file navigation filtered in flat mode.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="nav_filterflat.c"/>
+		<build type="header-file" subtype="api" value="nav_filterflat.h"/>
+		<require idref="avr32.services.fs.fat.nav_filterlist"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_fs_fat"/>
+		<device-support value="uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+
+	<module type="service" id="avr32.services.fs.fat.nav_filterlist" caption="FAT file system with navigation filtered in list">
+		<info type="description" value="summary">
+		FAT file system with file navigation filtered in a list.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="nav_filterlist.c"/>
+		<build type="header-file" subtype="api" value="nav_filterlist.h"/>
+		<require idref="avr32.services.fs.fat"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_fs_fat"/>
+		<device-support value="uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+
+	<module type="service" id="avr32.services.fs.fat.nav_flat" caption="FAT file system with flat navigation">
+		<info type="description" value="summary">
+		FAT file system with flat file navigation.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="nav_flat.c"/>
+		<build type="header-file" subtype="api" value="nav_flat.h"/>
+		<require idref="avr32.services.fs.fat"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_fs_fat"/>
+		<device-support value="uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+
+	<module type="service" id="avr32.services.fs.fat.play_list" caption="FAT file system with play list support">
+		<info type="description" value="summary">
+		FAT file system with play list support.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="play_list.c"/>
+		<build type="header-file" subtype="api" value="play_list.h"/>
+		<require idref="avr32.services.fs.fat.reader_txt"/>
+		<require idref="avr32.services.fs.fat"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_fs_fat"/>
+		<device-support value="uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+
+	<module type="service" id="avr32.services.fs.fat.reader_txt" caption="FAT file system with text file support">
+		<info type="description" value="summary">
+		FAT file system with text file support.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="reader_txt.c"/>
+		<build type="header-file" subtype="api" value="reader_txt.h"/>
+		<require idref="avr32.services.fs.fat.unicode"/>
+		<require idref="avr32.services.fs.fat"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_fs_fat"/>
+		<device-support value="uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+
+	<module type="service" id="avr32.services.fs.fat.unicode" caption="FAT file system with unicode support">
+		<info type="description" value="summary">
+		FAT file system with unicode support.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="unicode.c"/>
+		<build type="header-file" subtype="api" value="unicode.h"/>
+		<require idref="avr32.services.fs.fat"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_fs_fat"/>
+		<device-support value="uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+
+	<module type="service" id="avr32.services.fs.fat.os" caption="FAT file system with POSIX API support">
+		<info type="description" value="summary">
+		FAT file system with POSIX compilent access methods.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="fsaccess.c"/>
+		<build type="header-file" subtype="api" value="fsaccess.h"/>
+		<require idref="avr32.services.fs.fat"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_fs_fat"/>
+		<device-support value="uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

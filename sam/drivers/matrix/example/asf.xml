@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.matrix.example" caption="MATRIX Example">
+		<info type="description" value="summary">
+		This example demonstrates the bus matrix provided on SAM microcontrollers.
+		</info>
+		<build type="c-source" value="matrix_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.matrix"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

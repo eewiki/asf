@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device CDC multiple Example for SAM4S-EK" id="common.services.usb.class.cdc.device.example2.sam4s_ek">
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.usart"/>
+		<require idref="common.services.usb.class.cdc.device.example2"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<require idref="board.sam4s_ek"/>
+		<config name="config.board.sam4s_ek.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam4s16c"/>
+	</project>
+</asf>

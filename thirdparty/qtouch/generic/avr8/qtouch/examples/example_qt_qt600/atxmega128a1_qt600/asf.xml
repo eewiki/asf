@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="QTouch method Example Application - ATXMEGA128A1" id="xmega.services.qtouch.generic.avr8.qtouch.examples.example_qt_qt600.xmega128a1_qt600">
+		<info type="description" value="summary">
+		This QTouch Library Example demonstrates usage of the QTouch method on QT600-ATXMEGA128A1-MCU board and QT16 Touch panel.
+		</info>
+		<require idref="xmega.services.qtouch.generic.avr8.qtouch.examples.example_qt_qt600"/>
+		<config name="config.common.services.qtouch.qdebug.xmega" value="yes"/>
+		<require idref="config.common.services.qtouch.generic.avr8.xmega128a1_qt600.method"/>
+		<config name="config.common.services.qtouch.generic.avr8.xmega128a1_qt600.method" value="qtouch_method"/>
+		<require idref="board.xmega128a1_qt600"/>
+		<build type="c-source" value="main_xm128a1.c"/>
+
+		<generator value="avrgcc" />
+		<generator value="as5_8" />
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

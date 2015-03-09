@@ -1,0 +1,55 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.components.touch.at42qt1060" caption="AT42QT1060 QTouch 6-channel sensor">
+		<info type="description" value="summary">
+		This driver offers configuration as well as checking the status
+		of the touch sensor. The communication with the sensor is done
+		via the TWI interface and a change of the sensor status is
+		signalled via a GPIO. The driver offers the possibility to add
+		callback function from the application which will be executed
+		each time a change in the sensor is detected.
+		</info>
+		<module type="component" id="avr32.components.touch.at42qt1060#0" caption="AT42QT1060 - UC3 A/B implementation">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+				<keyword value="Touch" />
+			</info>
+			<info type="description" value="summary">
+			UC3 A/B implementation utilizing the touch sensor AT42QT1060.
+			</info>
+			<build type="header-file" value="at42qt1060.h"/>
+			<build type="c-source" value="at42qt1060.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_at42qt1060.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_components_touch_at42qt1060"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.twi"/>
+			<require idref="avr32.drivers.cpu.cycle_counter"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="component" id="avr32.components.touch.at42qt1060#1" caption="AT42QT1060 - UC3 A3/A4/C/L implementation">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+				<keyword value="Touch"/>
+			</info>
+			<info type="description" value="summary">
+			UC3 A3/A4/C/L implementation utilizing the touch sensor AT42QT1060.
+			</info>
+			<build type="header-file" value="at42qt1060.h"/>
+			<build type="c-source" value="at42qt1060.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_at42qt1060.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_components_touch_at42qt1060"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3l"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.twim"/>
+			<require idref="avr32.drivers.cpu.cycle_counter"/>
+			<generator value="doxygen-module" default-mcu="at32uc3a364"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.memory.sdram.mt48lc16m16a2tg7e.unit_tests" caption="Unit Tests for the UC3 mt48LC16m16a2tg7 SDRAM Component">
+		<device-support value="uc3"/>
+		<info type="description" value="summary">
+		This application is aimed to implement unit tests for mt48LC16m16a2tg7 SDRAM component.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="header-file" value="unit_tests.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.components.memory.sdram.mt48lc16m16a2tg7e"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.ebi.sdramc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

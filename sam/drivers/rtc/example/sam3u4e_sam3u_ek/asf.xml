@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="Drivers RTC Example for SAM3U" id="sam.drivers.rtc.example.sam3u_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.rtc.example"/>
+		<require idref="sam.utils.cmsis.sam3u.source.template"/>
+		<require idref="board.sam3u_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3u4e"/>
+	</project>
+</asf>

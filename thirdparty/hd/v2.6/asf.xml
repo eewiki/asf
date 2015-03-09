@@ -1,0 +1,98 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.components.wifi.hd" caption="H&amp;D Wi-Fi WL library">
+		<info type="description" value="summary">
+		H&amp;D WIFI WL library. WL API is a programming interface for WiFi (802.11).
+		</info>
+		<module type="library" id="avr32.components.wifi.hd#ucr1" caption="H&amp;D Wi-Fi WL library - UC3 UCR1 Implementation">
+			<info type="description" value="summary">
+			H&amp;D WIFI WL library, compiled for AVR UC Revision 1 architecture. WL API is a programming interface for WiFi (802.11).
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<device-support value="ucr1" />
+			<build type="library" subtype="user" value="ucr1/gcc/lib_ucr1_hd_wl_standalone_v2.6.a" toolchain="avr32gcc" />
+			<build type="include-path" value="include"/>
+			<build type="header-file" subtype="api" value="include/wl_api.h"/>
+			<build type="doxygen-entry-point" value="group_avr32_components_wifi_hd"/>
+			<require idref="avr32.components.wifi.hd.transport.library"/>
+		</module>
+
+		<module type="library" id="avr32.components.wifi.hd#ucr2" caption="H&amp;D Wi-Fi WL library - UC3 UCR2 Implementation">
+			<info type="description" value="summary">
+			H&amp;D Wi-Fi WL library, compiled for AVR UC Revision 2 architecture. WL API is a programming interface for WiFi (802.11).
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<device-support value="ucr2" />
+			<build type="library" subtype="user" value="ucr2/gcc/lib_ucr2_hd_wl_standalone_v2.6.a" toolchain="avr32gcc" />
+			<build type="include-path" value="include"/>
+			<build type="header-file" subtype="api" value="include/wl_api.h"/>
+			<build type="doxygen-entry-point" value="group_avr32_components_wifi_hd"/>
+			<require idref="avr32.components.wifi.hd.transport.library"/>
+		</module>
+
+	</select-by-device>
+	<select-by-config id="avr32.components.wifi.hd.transport.library" name="config.avr32.components.wifi.hd" default="spi" caption="H&amp;D Wi-Fi transport library">
+		<info type="description" value="summary">
+		H&amp;D Wi-Fi Transport library. Supports either SPI or SDIO.
+		</info>
+		<select-by-device id="avr32.components.wifi.hd.transport.library#sdio">
+			<module type="library" id="avr32.components.wifi.hd.transport.library#sdio#ucr1" caption="H&amp;D Wi-Fi SDIO transport library - UC3 UCR1 Implementation">
+				<info type="description" value="summary">
+				H&amp;D Wi-Fi SDIO library, compiled for AVR UC Revision 1 architecture.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Communication" />
+				</info>
+				<info type="gui-flag" value="hidden"/>
+				<device-support value="ucr1" />
+				<build type="library" subtype="user" value="ucr1/gcc/lib_ucr1_hd_sdio_standalone_v2.6.a" toolchain="avr32gcc" />
+				<build type="include-path" value="include"/>
+				<build type="header-file" subtype="api" value="include/wl_sdio.h"/>
+			</module>
+			<module type="library" id="avr32.components.wifi.hd.transport.library#sdio#ucr2" caption="H&amp;D Wi-Fi SDIO transport library - UC3 UCR2 Implementation">
+				<info type="description" value="summary">
+				H&amp;D Wi-Fi SDIO library, compiled for AVR UC Revision 2 architecture.
+				</info>
+				<info type="gui-flag" value="hidden"/>
+				<info type="keyword" value="technology">
+					<keyword value="Communication" />
+				</info>
+				<device-support value="ucr2" />
+				<build type="library" subtype="user" value="ucr2/gcc/lib_ucr2_hd_sdio_standalone_v2.6.a" toolchain="avr32gcc" />
+				<build type="include-path" value="include"/>
+				<build type="header-file" subtype="api" value="include/wl_sdio.h"/>
+			</module>
+		</select-by-device>
+		<select-by-device id="avr32.components.wifi.hd.transport.library#spi">
+			<module type="library" id="avr32.components.wifi.hd.transport.library#spi#ucr1" caption="H&amp;D Wi-Fi SPI transport library - UC3 UCR1 Implementation">
+				<info type="description" value="summary">
+				H&amp;D Wi-Fi SPI library, compiled for AVR UC Revision 1 architecture.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Communication" />
+				</info>
+				<info type="gui-flag" value="hidden"/>
+				<device-support value="ucr1" />
+				<build type="library" subtype="user" value="ucr1/gcc/lib_ucr1_hd_spi_standalone_v2.6.a" toolchain="avr32gcc" />
+				<build type="include-path" value="include"/>
+				<build type="header-file" subtype="api" value="include/wl_spi.h"/>
+			</module>
+			<module type="library" id="avr32.components.wifi.hd.transport.library#spi#ucr2" caption="H&amp;D Wi-Fi SPI transport library - UC3 UCR2 Implementation">
+				<info type="description" value="summary">
+				H&amp;D Wi-Fi SDIO library, compiled for AVR UC Revision 2 architecture.
+				</info>
+				<info type="keyword" value="technology">
+					<keyword value="Communication" />
+				</info>
+				<info type="gui-flag" value="hidden"/>
+				<device-support value="ucr2" />
+				<build type="library" subtype="user" value="ucr2/gcc/lib_ucr2_hd_spi_standalone_v2.6.a" toolchain="avr32gcc" />
+				<build type="include-path" value="include"/>
+				<build type="header-file" subtype="api" value="include/wl_spi.h"/>
+			</module>
+		</select-by-device>
+	</select-by-config>
+</asf>

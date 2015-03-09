@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.edma" caption="EDMA - Enhanced Direct Memory Access">
+		<info type="description" value="summary">
+		Driver for the Direct Enhanced Memory Access (EDMA) controller. It provides functions for configuring and using the EDMA controller. The EDMA controller can transfer data between memories and peripherals with minimal CPU intervention.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="DMA Controller"/>
+		</info>
+		<build type="c-source" value="edma.c"/>
+		<build type="header-file" subtype="api" value="edma.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="edma_group"/>
+		<build type="doxygen-quick-start" value="xmega_edma_quickstart"/>
+		<device-support value="xmegae"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegae"/>
+	</module>
+</asf>

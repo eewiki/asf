@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.drivers.pwm" caption="PWM - Pulse with Modulation">
+		<info type="description" value="summary">
+		Pulse Width Modulation (PWM) Software Driver for PWM controller.
+		This driver provides an API to get access to the main features of the PWM controller.
+		</info>
+		<module type="driver" id="avr32.drivers.pwm#0" caption="PWM - UC3 A/B implementation">
+			<info type="description" value="summary">
+			Pulse Width Modulation (PWM) Software Driver for PWM controller below revision &gt;v4.0.0.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks" />
+			</info>
+			<build type="c-source" value="pwm.c"/>
+			<build type="header-file" subtype="api" value="pwm.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_pwm"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="driver" id="avr32.drivers.pwm#1" caption="PWM - UC3C implementation">
+			<info type="description" value="summary">
+			Pulse Width Modulation (PWM) Software Driver for PWM controller above revision &gt;v4.0.0.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks" />
+			</info>
+			<build type="c-source" value="pwm4.c"/>
+			<build type="header-file" subtype="api" value="pwm4.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_pwm"/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.calendar.example1" caption="Calendar Example 1">
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<info type="description" value="summary">
+		An example application that converts a date to a timestamp and lights up a 
+		led if the timestamp is correct.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="example1.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.calendar"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.ecchrs" caption="ECCHRS - Error Corrected Code Controller">
+		<info type="description" value="summary">
+		Hardware Error Corrected Code Generation (Hamming and Reed-Solomon).
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<build type="header-file" subtype="api" value="ecchrs.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_ecchrs"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a3_a4"/>
+	</module>
+</asf>

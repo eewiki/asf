@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.dsplib.example.dsp16_resampling" caption="DSPLIB - 16-bit fixed-point re-sampling example">
+		<info type="description" value="summary">
+		Example application. It demonstrates how to re-sample a 16-bit fixed-point vector using the DSP library.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Digital Signal Processing"/>
+		</info>
+		<build type="c-source" value="resampling_example.c"/>
+		<device-support value="uc3"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.services.dsplib.resampling"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.basic.usart_spi_master_example" caption="Similar API for USART-SPI Master Mode Example">
+		<module type="application" id="common.services.basic.usart_spi_master_example#sam" caption="Similar API for USART-SPI Master Mode Example">
+			<info type="description" value="summary">
+			Provide an application example of USART_SPI Master Mode Basic Services. Send "Read Status" commands to the ATMEL DataFlash and read back its manufacturer and device ID.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usart_spi_master_example.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_usart_spi_master_example.h"/>
+			<device-support value="sam"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.spi_master"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.usart_spi_master_example#megarf" caption="Similar API for USART-SPI Master Mode Example">
+			<info type="description" value="summary">
+			Provide an application example of USART_SPI Master Mode Basic Services. Send &quot;Read Status&quot; commands to the ATMEL DataFlash and read back its manufacturer and device ID.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usart_spi_master_example.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_usart_spi_master_example.h"/>
+			<device-support value="megarf"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.spi_master"/>
+			<info type="gui-flag" value="move-to-root"/>			
+		</module>		
+	</select-by-device>
+</asf>

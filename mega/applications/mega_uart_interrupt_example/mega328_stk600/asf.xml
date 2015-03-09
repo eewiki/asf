@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="UART interrupt example for the ATmega328" id="mega.applications.mega_uart_interrupt_example.mega328_stk600">
+		<info type="description" value="summary">
+		ATmega328 STK600 UART example application using interrupts to read/write.
+		</info>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.stk600-mega.atmega328"/>
+		<require idref="mega.applications.mega_uart_interrupt_example"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega328"/>
+	</project>
+</asf>

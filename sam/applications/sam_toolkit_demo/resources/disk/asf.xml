@@ -1,0 +1,6 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="sam.application.sam_toolkit_demo.resources" caption="SAM Toolkit Demo Application Resources">
+		<build type="distribute" subtype="user-file" value="sam_toolkit_demo_sdcard_resources.zip"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

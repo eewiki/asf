@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Wireless USB Application UC3A AT86RF230B-RZ600" id="avr32.applications.rz600-uc3a-wireless-uart-at86rf230b" force-caption="true" force-description="true">
+		<require idref="avr32.applications.rz600-uc3a-wireless-uart"/>
+		<require idref="board.rz600"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<config name="config.common.wireless.at86rf" value="230b"/>
+		<config name="config.board.rz600.init" value="yes"/>
+		<config name="config.board.rz600.led" value="yes"/>
+		<build type="define" name="UDD_NO_SLEEP_MGR" value=""/>
+		<config name="config.compiler.iarew32.dlib" value="normal"/>
+		<config name="config.avr32.utils.gccstartup" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256s"/>
+	</project>
+</asf>

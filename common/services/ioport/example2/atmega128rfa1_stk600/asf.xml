@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Common IOPORT service example 2 for ATmega128RFA1-STK600" id="common.services.ioport.example2.atmega128rfa1_stk600">
+		<info type="description" value="summary">
+			Should toggle one pin on the megarf onboard green Led.
+		</info>
+		<build type="include-path" value="." />
+		<build type="header-file" value="conf_board.h" />
+		<build type="header-file" value="conf_clock.h" />
+		<build type="header-file" value="conf_example.h" />
+		<require idref="common.services.ioport.example2" />
+		<require idref="board.stk600-mega.atmega128rfa1" />
+		<generator value="iarew" />
+		<generator value="avrgcc" />
+		<generator value="as5_8" />
+		<generator value="doxygen" />
+		<device-support value="atmega128rfa1" />
+	</project>
+</asf>

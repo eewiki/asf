@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.services.flash.read.unique.id_example" caption="Flash Read Unique Id Example">
+		<info type="description" value="summary">
+		Read the flash Unique ID information.
+		</info>
+		<build type="c-source" value="flash_read_unique_id_example.c"/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.services.flash"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

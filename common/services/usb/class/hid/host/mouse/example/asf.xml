@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.usb.class.hid.host.mouse.example" caption="USB Host HID mouse example">
+		<info type="description" value="summary">
+		Provide an application example of USB host HID mouse implementation.
+		</info>
+		<build type="header-file" value="conf_usb_host.h"/>
+		<build type="header-file" value="ui.h"/>
+		<build type="header-file" value="main.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b0"/>
+		<device-support value="uc3c"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4l"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.usb.class.host"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

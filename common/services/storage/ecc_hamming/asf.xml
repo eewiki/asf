@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.storage.ecc_hamming" caption="Hamming ECC software algorithm">
+		<info type="description" value="summary">
+		Software implementation of the Hamming ECC algorithm, typically used to verify the contents of single level cell (SLC) NAND flash. Can correct up to 1 bit error and identify multiple bit errors.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="ecc-sw.c"/>
+		<build type="header-file" value="ecc-sw.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<device-support value="uc3a3_a4"/>
+	</module>
+</asf>

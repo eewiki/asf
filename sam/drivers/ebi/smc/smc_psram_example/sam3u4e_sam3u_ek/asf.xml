@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Smc Controller example for SAM3U_EK" id="sam.drivers.ebi.smc.smc_psram_example.sam3u_ek">
+		<info type="description" value="summary">
+		A simple example shows how to configure the Static Memory Controller (SMC) for PSRAM, and do write and read operations to check the configuration.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.ebi.smc.smc_psram_example"/>
+		<require idref="board.sam3u_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3u4e"/>
+	</project>
+</asf>

@@ -1,0 +1,44 @@
+<asf xmlversion="1.0">
+	<module type="application" caption="ZRC Target - Terminal target application" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.terminal_tgt">
+		<info type="description" value="summary">
+        Terminal target application for RF4CE-ZRC target-controller setup
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="vendor_data.c"/>
+		<build type="header-file" value="conf_common_sw_timer.h"/>
+		<build type="header-file" value="conf_pal.h"/>
+		<build type="header-file" value="app_config.h"/>
+
+		<build type="define" name="HIGHEST_STACK_LAYER" value ="RF4CE"/>
+		<build type="define" name="PRIVATE_NIB" value =""/>
+		<build type="define" name="RF4CE_TARGET" value =""/>
+		<build type="define" name="CHANNEL_AGILITY" value =""/>
+		<build type="define" name="RF4CE_SECURITY" value =""/>
+		<build type="define" name="ZRC_PROFILE" value =""/>
+		<build type="define" name="ZRC_CMD_DISCOVERY" value =""/>
+		<build type="define" name="PBP_REC" value =""/>
+		<build type="define" name="VENDOR_DATA" value =""/>
+		<build type="define" name="RF4CE_CALLBACK_PARAM" value =""/>
+		<build type="define" name="SIO_HUB" value =""/>
+		<build type="define" name="STB_ON_SAL" value =""/>
+		<build type="define" name="ENABLE_TRX_SRAM" value =""/>
+		<build type="define" name="NLDE_HANDLE" value =""/>
+		<build type="define" name="MAC_USER_BUILD_CONFIG" value =""/>
+		<build type="define" name="RSSI_TO_LQI_MAPPING" value =""/>
+		<build type="define" name="REDUCED_PARAM_CHECK" value =""/>
+		<build type="define" name="ENABLE_STACK_NVM" value =""/>
+		
+		<require idref="thirdparty.wireless.avr2102_rf4control.include"/>
+        <require idref="thirdparty.wireless.avr2102_rf4control.lib.zrc.tgt"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.pal"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.sal"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.stb"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.mac"/>
+		<require idref="thirdparty.wireless.addons.sio2host"/>
+		<require idref="common.drivers.nvm"/>
+		
+		<build type="doxygen-entry-point" value="zrc_group"/>
+		<device-support-alias value="avr2102_rf4control_zrc_tgt_support"/>
+	</module>
+</asf>

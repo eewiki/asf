@@ -1,0 +1,429 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.utils.linker_scripts" caption="Linker scripts for IAR and GCC toolchain">
+		<module type="build-specific" caption="Linker script for UC3A0128" id="avr32.utils.linker_scripts#at32uc3a0128">
+			<info type="description" value="summary">
+			Linker script for UC3A0128 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a/0128/gcc/link_uc3a0128.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a/0128/iar/lnkuc3a0128.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a0128" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A0256" id="avr32.utils.linker_scripts#at32uc3a0256">
+			<info type="description" value="summary">
+			Linker script for UC3A0256 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a/0256/gcc/link_uc3a0256.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a/0256/iar/lnkuc3a0256.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a0256" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A0512" id="avr32.utils.linker_scripts#at32uc3a0512">
+			<info type="description" value="summary">
+			Linker script for UC3A0512 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a/0512/gcc/link_uc3a0512.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a/0512/iar/lnkuc3a0512.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a0512" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A1128" id="avr32.utils.linker_scripts#at32uc3a1128">
+			<info type="description" value="summary">
+			Linker script for UC3A1128 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a/1128/gcc/link_uc3a1128.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a/1128/iar/lnkuc3a1128.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a1128" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A1256" id="avr32.utils.linker_scripts#at32uc3a1256">
+			<info type="description" value="summary">
+			Linker script for UC3A1256 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a/1256/gcc/link_uc3a1256.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a/1256/iar/lnkuc3a1256.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a1256" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A1512" id="avr32.utils.linker_scripts#at32uc3a1512">
+			<info type="description" value="summary">
+			Linker script for UC3A1512 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a/1512/gcc/link_uc3a1512.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a/1512/iar/lnkuc3a1512.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a1512" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A3256" id="avr32.utils.linker_scripts#at32uc3a3256">
+			<info type="description" value="summary">
+			Linker script for UC3A3256 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a3/256/gcc/link_uc3a3256.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a3/256/iar/lnkuc3a3256.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a3256" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A3256S" id="avr32.utils.linker_scripts#at32uc3a3256s">
+			<info type="description" value="summary">
+			Linker script for UC3A3256S devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a3/256s/gcc/link_uc3a3256s.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a3/256s/iar/lnkuc3a3256s.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a3256s" />
+		</module>
+		
+		<module type="build-specific" caption="Linker script for UC3A3128" id="avr32.utils.linker_scripts#at32uc3a3128">
+			<info type="description" value="summary">
+			Linker script for UC3A3128 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a3/128/gcc/link_uc3a3128.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a3/128/iar/lnkuc3a3128.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a3128" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A3128S" id="avr32.utils.linker_scripts#at32uc3a3128s">
+			<info type="description" value="summary">
+			Linker script for UC3A3128S devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a3/128s/gcc/link_uc3a3128s.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a3/128s/iar/lnkuc3a3128s.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a3128s" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A364" id="avr32.utils.linker_scripts#at32uc3a364">
+			<info type="description" value="summary">
+			Linker script for UC3A364 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a3/64/gcc/link_uc3a364.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a3/64/iar/lnkuc3a364.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a364" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A364S" id="avr32.utils.linker_scripts#at32uc3a364s">
+			<info type="description" value="summary">
+			Linker script for UC3A364S devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a3/64s/gcc/link_uc3a364s.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a3/64s/iar/lnkuc3a364s.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a364s" />
+		</module>
+				<module type="build-specific" caption="Linker script for UC3A4256" id="avr32.utils.linker_scripts#at32uc3a4256">
+			<info type="description" value="summary">
+			Linker script for UC3A4256 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a4/256/gcc/link_uc3a4256.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a4/256/iar/lnkuc3a4256.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a4256" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A4256S" id="avr32.utils.linker_scripts#at32uc3a4256s">
+			<info type="description" value="summary">
+			Linker script for UC3A4256S devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a4/256s/gcc/link_uc3a4256s.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a4/256s/iar/lnkuc3a4256s.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a4256s" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A4128" id="avr32.utils.linker_scripts#at32uc3a4128">
+			<info type="description" value="summary">
+			Linker script for UC3A4128 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a4/128/gcc/link_uc3a4128.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a4/128/iar/lnkuc3a4128.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a4128" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A4128S" id="avr32.utils.linker_scripts#at32uc3a4128s">
+			<info type="description" value="summary">
+			Linker script for UC3A4128S devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a4/128s/gcc/link_uc3a4128s.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a4/128s/iar/lnkuc3a4128s.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a4128s" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A464" id="avr32.utils.linker_scripts#at32uc3a464">
+			<info type="description" value="summary">
+			Linker script for UC3A464 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a4/64/gcc/link_uc3a464.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a4/64/iar/lnkuc3a464.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a464" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3A464S" id="avr32.utils.linker_scripts#at32uc3a464s">
+			<info type="description" value="summary">
+			Linker script for UC3A464S devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3a4/64s/gcc/link_uc3a464s.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3a4/64s/iar/lnkuc3a464s.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3a464s" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3B0128" id="avr32.utils.linker_scripts#at32uc3b0128">
+			<info type="description" value="summary">
+			Linker script for UC3B0128 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3b/0128/gcc/link_uc3b0128.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3b/0128/iar/lnkuc3b0128.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3b0128" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3B0256" id="avr32.utils.linker_scripts#at32uc3b0256">
+			<info type="description" value="summary">
+			Linker script for UC3B0256 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3b/0256/gcc/link_uc3b0256.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3b/0256/iar/lnkuc3b0256.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3b0256" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3B0512" id="avr32.utils.linker_scripts#at32uc3b0512">
+			<info type="description" value="summary">
+			Linker script for UC3B0512 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3b/0512/gcc/link_uc3b0512.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3b/0512/iar/lnkuc3b0512.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3b0512" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3B064" id="avr32.utils.linker_scripts#at32uc3b064">
+			<info type="description" value="summary">
+			Linker script for UC3B064 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3b/064/gcc/link_uc3b064.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3b/064/iar/lnkuc3b064.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3b064" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3B1128" id="avr32.utils.linker_scripts#at32uc3b1128">
+			<info type="description" value="summary">
+			Linker script for UC3B1128 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3b/1128/gcc/link_uc3b1128.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3b/1128/iar/lnkuc3b1128.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3b1128" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3B1256" id="avr32.utils.linker_scripts#at32uc3b1256">
+			<info type="description" value="summary">
+			Linker script for UC3B1256 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3b/1256/gcc/link_uc3b1256.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3b/1256/iar/lnkuc3b1256.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3b1256" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3B1512" id="avr32.utils.linker_scripts#at32uc3b1512">
+			<info type="description" value="summary">
+			Linker script for UC3B1512 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3b/1512/gcc/link_uc3b1512.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3b/1512/iar/lnkuc3b1512.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3b1512" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3B164" id="avr32.utils.linker_scripts#at32uc3b164">
+			<info type="description" value="summary">
+			Linker script for UC3B164 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3b/164/gcc/link_uc3b164.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3b/164/iar/lnkuc3b164.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3b164" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C0512C" id="avr32.utils.linker_scripts#at32uc3c0512c">
+			<info type="description" value="summary">
+			Linker script for UC3C0512C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/0512c/gcc/link_uc3c0512c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/0512c/iar/lnkuc3c0512c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c0512c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C0256C" id="avr32.utils.linker_scripts#at32uc3c0256c">
+			<info type="description" value="summary">
+			Linker script for UC3C0256C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/0256c/gcc/link_uc3c0256c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/0256c/iar/lnkuc3c0256c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c0256c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C0128C" id="avr32.utils.linker_scripts#at32uc3c0128c">
+			<info type="description" value="summary">
+			Linker script for UC3C0128C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/0128c/gcc/link_uc3c0128c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/0128c/iar/lnkuc3c0128c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c0128c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C064C" id="avr32.utils.linker_scripts#at32uc3c064c">
+			<info type="description" value="summary">
+			Linker script for UC3C064C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/064c/gcc/link_uc3c064c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/064c/iar/lnkuc3c064c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c064c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C1512C" id="avr32.utils.linker_scripts#at32uc3c1512c">
+			<info type="description" value="summary">
+			Linker script for UC3C1512C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/1512c/gcc/link_uc3c1512c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/1512c/iar/lnkuc3c1512c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c1512c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C1256C" id="avr32.utils.linker_scripts#at32uc3c1256c">
+			<info type="description" value="summary">
+			Linker script for UC3C1256C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/1256c/gcc/link_uc3c1256c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/1256c/iar/lnkuc3c1256c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c1256c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C1128C" id="avr32.utils.linker_scripts#at32uc3c1128c">
+			<info type="description" value="summary">
+			Linker script for UC3C1128C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/1128c/gcc/link_uc3c1128c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/1128c/iar/lnkuc3c1128c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c1128c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C164C" id="avr32.utils.linker_scripts#at32uc3c164c">
+			<info type="description" value="summary">
+			Linker script for UC3C164C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/164c/gcc/link_uc3c164c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/164c/iar/lnkuc3c164c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c164c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C2512C" id="avr32.utils.linker_scripts#at32uc3c2512c">
+			<info type="description" value="summary">
+			Linker script for UC3C2512C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/2512c/gcc/link_uc3c2512c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/2512c/iar/lnkuc3c2512c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c2512c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C2256C" id="avr32.utils.linker_scripts#at32uc3c2256c">
+			<info type="description" value="summary">
+			Linker script for UC3C2256C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/2256c/gcc/link_uc3c2256c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/2256c/iar/lnkuc3c2256c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c2256c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C2128C" id="avr32.utils.linker_scripts#at32uc3c2128c">
+			<info type="description" value="summary">
+			Linker script for UC3C2128C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/2128c/gcc/link_uc3c2128c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/2128c/iar/lnkuc3c2128c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c2128c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3C264C" id="avr32.utils.linker_scripts#at32uc3c264c">
+			<info type="description" value="summary">
+			Linker script for UC3C264C devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3c/264c/gcc/link_uc3c264c.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3c/264c/iar/lnkuc3c264c.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3c264c" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC64D3" id="avr32.utils.linker_scripts#atuc64d3">
+			<info type="description" value="summary">
+			Linker script for UC64D3 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="atuc_d/64/gcc/link_uc64dx.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="atuc_d/64/iar/lnkuc64dx.xcl" toolchain="iarew32"/>
+			<device-support value="atuc64d3" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC128D3" id="avr32.utils.linker_scripts#atuc128d3">
+			<info type="description" value="summary">
+			Linker script for UC128D3 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="atuc_d/128/gcc/link_uc128dx.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="atuc_d/128/iar/lnkuc128dx.xcl" toolchain="iarew32"/>
+			<device-support value="atuc128d3" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC64D4" id="avr32.utils.linker_scripts#atuc64d4">
+			<info type="description" value="summary">
+			Linker script for UC64D4 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="atuc_d/64/gcc/link_uc64dx.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="atuc_d/64/iar/lnkuc64dx.xcl" toolchain="iarew32"/>
+			<device-support value="atuc64d4" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC128D4" id="avr32.utils.linker_scripts#atuc128d4">
+			<info type="description" value="summary">
+			Linker script for UC128D4 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="atuc_d/128/gcc/link_uc128dx.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="atuc_d/128/iar/lnkuc128dx.xcl" toolchain="iarew32"/>
+			<device-support value="atuc128d4" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3L016" id="avr32.utils.linker_scripts#at32uc3l016">
+			<info type="description" value="summary">
+			Linker script for UC3L016 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3l/016/gcc/link_uc3l016.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3l/016/iar/lnkuc3l016.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3l016" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3L032" id="avr32.utils.linker_scripts#at32uc3l032">
+			<info type="description" value="summary">
+			Linker script for UC3L032 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3l/032/gcc/link_uc3l032.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3l/032/iar/lnkuc3l032.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3l032" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3L064" id="avr32.utils.linker_scripts#at32uc3l064">
+			<info type="description" value="summary">
+			Linker script for UC3L064 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3l/064/gcc/link_uc3l064.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3l/064/iar/lnkuc3l064.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3l064" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3L0128" id="avr32.utils.linker_scripts#at32uc3l0128">
+			<info type="description" value="summary">
+			Linker script for UC3L0128 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3l/0128/gcc/link_uc3l0128.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3l/0128/iar/lnkuc3l0128.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3l0128" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC3L0256" id="avr32.utils.linker_scripts#at32uc3l0256">
+			<info type="description" value="summary">
+			Linker script for UC3L0256 devices.
+			</info>
+			<build type="linker-config" subtype="script" value="at32uc3l/0256/gcc/link_uc3l0256.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="at32uc3l/0256/iar/lnkuc3l0256.xcl" toolchain="iarew32"/>
+			<device-support value="at32uc3l0256" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC256L3U" id="avr32.utils.linker_scripts#atuc256l3u">
+			<info type="description" value="summary">
+			Linker script for UC256L3U devices.
+			</info>
+			<build type="linker-config" subtype="script" value="atuc_l3u/256/gcc/link_uc256l3u.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="atuc_l3u/256/iar/lnkuc256l3u.xcl" toolchain="iarew32"/>
+			<device-support value="atuc256l3u" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC128L3U" id="avr32.utils.linker_scripts#atuc128l3u">
+			<info type="description" value="summary">
+			Linker script for UC128L3U devices.
+			</info>
+			<build type="linker-config" subtype="script" value="atuc_l3u/128/gcc/link_uc128l3u.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="atuc_l3u/128/iar/lnkuc128l3u.xcl" toolchain="iarew32"/>
+			<device-support value="atuc128l3u" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC64L3U" id="avr32.utils.linker_scripts#atuc64l3u">
+			<info type="description" value="summary">
+			Linker script for UC64L3U devices.
+			</info>
+			<build type="linker-config" subtype="script" value="atuc_l3u/64/gcc/link_uc64l3u.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="atuc_l3u/64/iar/lnkuc64l3u.xcl" toolchain="iarew32"/>
+			<device-support value="atuc64l3u" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC256L4U" id="avr32.utils.linker_scripts#atuc256l4u">
+			<info type="description" value="summary">
+			Linker script for UC256L4U devices.
+			</info>
+			<build type="linker-config" subtype="script" value="atuc_l4u/256/gcc/link_uc256l4u.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="atuc_l4u/256/iar/lnkuc256l4u.xcl" toolchain="iarew32"/>
+			<device-support value="atuc256l4u" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC128L4U" id="avr32.utils.linker_scripts#atuc128l4u">
+			<info type="description" value="summary">
+			Linker script for UC128L4U devices.
+			</info>
+			<build type="linker-config" subtype="script" value="atuc_l4u/128/gcc/link_uc128l4u.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="atuc_l4u/128/iar/lnkuc128l4u.xcl" toolchain="iarew32"/>
+			<device-support value="atuc128l4u" />
+		</module>
+		<module type="build-specific" caption="Linker script for UC64L4U" id="avr32.utils.linker_scripts#atuc64l4u">
+			<info type="description" value="summary">
+			Linker script for UC64L4U devices.
+			</info>
+			<build type="linker-config" subtype="script" value="atuc_l4u/64/gcc/link_uc64l4u.lds" toolchain="avr32gcc"/>
+			<build type="linker-config" subtype="script" value="atuc_l4u/64/iar/lnkuc64l4u.xcl" toolchain="iarew32"/>
+			<device-support value="atuc64l4u" />
+		</module>
+	</select-by-device>
+</asf>

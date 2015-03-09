@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.xcl.example1" caption="XCL Example 1">
+		<info type="description" value="summary">
+		 This example illustrates how to configure an XCL LUT to perform a logic XOR between two input pins and outputs the result on a third pin used to drive an LED.
+		 </info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="xcl_example1.c"/>
+		<device-support value="xmegae"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.boards"/>
+		<require idref="xmega.drivers.xcl"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

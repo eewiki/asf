@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.ssc.i2s" caption="SSC - Synchronous Serial Controller (I2S)">
+		<info type="description" value="summary">
+		Driver for the I2S protocol using the SSC (Synchronous Serial Controller). The Atmel SSC provides a synchronous communication link with external devices. It supports several serial synchronous communication protocols generally used in audio and telecom applications such as I2S, Short Frame Sync, Long Frame Sync, etc.
+		</info>
+		<build type="c-source" value="ssc_i2s.c"/>
+		<build type="header-file" subtype="api" value="ssc_i2s.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_ssc_i2s"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.utils"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

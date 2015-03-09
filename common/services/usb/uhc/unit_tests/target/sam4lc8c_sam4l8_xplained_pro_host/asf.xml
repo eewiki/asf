@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="USB Host core tests on SAM4L8 Xplained Pro" id="common.services.usb.host.tests.targets.sam4l8_xplained_pro_host" type="unit-test">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.host" value="hid_mouse"/>
+		<require idref="common.services.usb.host.tests.targets"/>
+		<require idref="board.sam4l8_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x200"/>
+		<device-support value="atsam4lc8c"/>
+	</project>
+</asf>

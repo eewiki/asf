@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="DSPLIB 16-bit fixed-point signal generation example" id="avr32.services.dsplib.example.dsp16_signal_generation.evk1101">
+		<require idref="board.evk1101"/>
+		<config name="config.board.evk1101.init" value="no"/>
+		<require idref="avr32.services.dsplib.example.dsp16_signal_generation"/>
+		<require idref="avr32.services.dsplib.modules.debug.evk1101_usart1"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

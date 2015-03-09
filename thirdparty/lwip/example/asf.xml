@@ -1,0 +1,102 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.network.tcpip.lwip.example" caption="lwIP TCP/IP Stack Stand-alone (no RTOS) Example">
+		<module type="application" id="common.services.network.tcpip.lwip.example#uc3" caption="lwIP TCP/IP Stack Stand-alone(no OS) Example">
+			<info type="description" value="summary">
+		Basic HTTP web server using the lwIP TCP/IP stack stand-alone UC3 port (i.e. no OS).
+		</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="header-file" value="lwipopts.h"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="standalone_lwip_demo.c"/>
+			<build type="header-file" value="display/display.h"/>
+			<build type="include-path" value="display"/>
+			<build type="c-source" value="network/ethernet.c"/>
+			<build type="header-file" value="network/ethernet.h"/>
+			<build type="c-source" value="network/timer_mgt.c"/>
+			<build type="header-file" value="network/timer_mgt.h"/>
+			<build type="c-source" value="network/httpserver_raw/fs.c"/>
+			<build type="header-file" value="network/httpserver_raw/fs.h"/>
+			<build type="c-source" value="network/httpserver_raw/fsdata.c"/>
+			<build type="header-file" value="network/httpserver_raw/fsdata.h"/>
+			<build type="c-source" value="network/httpserver_raw/httpd.c"/>
+			<build type="header-file" value="network/httpserver_raw/httpd.h"/>
+			<build type="include-path" value="network"/>
+			<build type="include-path" value="network/httpserver_raw"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3c"/>
+			<require idref="thirdparty.lwip.version"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.tc"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.network.tcpip.lwip.example#sam3" caption="lwIP TCP/IP Stack Standalone(no OS) Example">
+			<info type="description" value="summary">
+		Basic HTTP web server using the lwIP TCP/IP stack standalone SAM port (i.e. no OS).
+		</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="header-file" value="lwipopts.h"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="standalone_lwip_demo_sam.c"/>
+			<build type="c-source" value="network/ethernet_sam.c"/>
+			<build type="header-file" value="network/ethernet_sam.h"/>
+			<build type="c-source" value="network/timer_mgt_sam.c"/>
+			<build type="header-file" value="network/timer_mgt_sam.h"/>
+			<build type="c-source" value="network/httpserver_raw/fs.c"/>
+			<build type="header-file" value="network/httpserver_raw/fs.h"/>
+			<build type="c-source" value="network/httpserver_raw/fsdata.c"/>
+			<build type="header-file" value="network/httpserver_raw/fsdata.h"/>
+			<build type="c-source" value="network/httpserver_raw/httpd.c"/>
+			<build type="header-file" value="network/httpserver_raw/httpd.h"/>
+			<build type="include-path" value="network"/>
+			<build type="include-path" value="network/httpserver_raw"/>
+			<device-support value="sam3x"/>
+			<require idref="thirdparty.lwip.version"/>
+			<require idref="sam.utils.cmsis.sam3x.source.template"/>
+			<require idref="sam.components.ethernet_phy.dm9161a"/>
+			<require idref="sam.drivers.emac"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.network.tcpip.lwip.example#sam4" caption="lwIP TCP/IP Stack Standalone(no OS) Example">
+			<info type="description" value="summary">
+		Basic HTTP web server using the lwIP TCP/IP stack standalone SAM port (i.e. no OS).
+		</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="header-file" value="lwipopts.h"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="standalone_lwip_demo_sam.c"/>
+			<build type="c-source" value="network/ethernet_sam.c"/>
+			<build type="header-file" value="network/ethernet_sam.h"/>
+			<build type="c-source" value="network/timer_mgt_sam.c"/>
+			<build type="header-file" value="network/timer_mgt_sam.h"/>
+			<build type="c-source" value="network/httpserver_raw/fs.c"/>
+			<build type="header-file" value="network/httpserver_raw/fs.h"/>
+			<build type="c-source" value="network/httpserver_raw/fsdata.c"/>
+			<build type="header-file" value="network/httpserver_raw/fsdata.h"/>
+			<build type="c-source" value="network/httpserver_raw/httpd.c"/>
+			<build type="header-file" value="network/httpserver_raw/httpd.h"/>
+			<build type="include-path" value="network"/>
+			<build type="include-path" value="network/httpserver_raw"/>
+			<device-support value="sam4e"/>
+			<require idref="thirdparty.lwip.version"/>
+			<require idref="sam.utils.cmsis.sam4e.source.template"/>
+			<require idref="sam.components.ethernet_phy.ksz8051mnl"/>
+			<require idref="sam.drivers.gmac"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

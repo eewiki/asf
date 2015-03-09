@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device HID Generic for SAM3X-EK" id="common.services.usb.class.hid.device.generic.example.sam3x_ek">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.usb.class.hid.device.generic.example"/>
+		<config name="config.common.services.usb.class.device" value="hid_generic"/>
+		<require idref="board.sam3x_ek"/>
+		<config name="config.board.sam3x_ek.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam3x8h"/>
+	</project>
+</asf>

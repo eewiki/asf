@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="Autonomous QTouch Example on UC3_L0_XPLAINED" id="avr32.services.qtouch.devspecific.uc3.uc3l0.examples.example_at.uc3_l0_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x1000"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x0000"/>
+		<config name="config.compiler.iarew32.heap_size" value="0x1000"/>
+		<require idref="avr32.services.qtouch.devspecific.uc3.uc3l0.examples.example_at"/>
+		<require idref="board.uc3_l0_xplained"/>
+		<config name="config.board.uc3_l0_xplained.init" value="no"/>
+		<config name="config.common.services.qtouch.qdebug.xplained.uc3l0" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

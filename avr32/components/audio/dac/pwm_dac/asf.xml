@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.audio.dac.pwm_dac" caption="Mono Audio PWM DAC">
+		<info type="description" value="summary">
+		Mono Audio DAC implemented with a PWM hardware module. This software module constructs a 16-bit DAC output using two 8-bit PWM channels combined with a resistor ladder network. The interface provides functions to configure and control this software DAC.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Audio" />
+		</info>
+		<build type="c-source" value="pwm_dac.c"/>
+		<build type="header-file" subtype="api" value="pwm_dac.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_pwm_dac.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_components_audio_dac_pwm_dac"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.components.audio"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

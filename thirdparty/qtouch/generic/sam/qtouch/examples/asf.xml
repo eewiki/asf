@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.qtouch.generic.sam.qtouch.example" caption="QTouch Method Example Application">
+		<info type="description" value="summary">
+		This application is a demonstration of QTouch Capacitive Touch method on the board of Atmel SAM devices.
+		</info>
+		<build type="c-source" value="qtouch_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.drivers.wdt"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

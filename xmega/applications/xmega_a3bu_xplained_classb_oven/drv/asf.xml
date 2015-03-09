@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.applications.xmega_a3bu_xplained_classb.drivers" caption="UI drivers for class B demo">
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" subtype="api" value="keyboard.h"/>
+		<build type="header-file" subtype="api" value="touch.h"/>
+		<build type="c-source" value="keyboard.c"/>
+		<build type="c-source" value="touch.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.boards"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="config.common.services.qtouch.generic.avr8.xmega_a3bu_xplained.method"/>
+		<require idref="xmega.drivers.tc"/>
+		<require idref="xmega.utils"/>
+		<device-support value="atxmega256a3bu"/>
+	</module>
+</asf>

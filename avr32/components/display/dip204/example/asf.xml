@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.display.dip204.example" caption="DIP204 Display Controller Example">
+		<info type="description" value="summary">
+		Using the DIP204 display, display text messages and control the backlight with the on-board buttons.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="c-source" value="dip204_example.c"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.components.display.dip204"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.flashc"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<device-support value="uc3a"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

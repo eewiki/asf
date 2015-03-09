@@ -1,0 +1,164 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.usb.protocol" caption="USB protocol definition">
+		<info type="description" value="summary">
+		Definition of constants and structures from USB protocol
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" value="usb_atmel.h"/>
+		<build type="header-file" value="usb_protocol.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l3"/>
+		<device-support value="uc3l4"/>
+		<device-support value="xmegaa1u"/>
+		<device-support value="xmegaa3u"/>
+		<device-support value="xmegaa3bu"/>
+		<device-support value="xmegaa4u"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="sam3s"/>
+		<device-support value="sam3sd"/>
+		<device-support value="sam3u"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4l"/>
+		<device-support value="sam4e"/>
+	</module>
+
+	<select-by-device id="common.drivers.usb.device" caption="USB Device">
+		<module type="driver" id="common.drivers.usb.device#0" caption="USB Device - XMEGA implementation">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			USB Device driver. Provides functions for configuring and using the USB Device functionality. XMEGA implementation of common API.
+			</info>
+			<require idref="xmega.drivers.usb.device"/>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa3bu"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<generator value="doxygen-module" default-mcu="atxmega32a4u"/>
+		</module>
+		<module type="driver" id="common.drivers.usb.device#1" caption="USB Device - UC3 A/B implementation">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			USB Device driver. Provides functions for configuring and using the USB Device functionality. UC3 A/B implementation of common API.
+			</info>
+			<build type="define" name="UDD_ENABLE" value=""/>
+			<require idref="avr32.drivers.usbb.device"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="driver" id="common.drivers.usb.device#2" caption="USB Device - UC3 C/D implementation">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			USB Device driver. Provides functions for configuring and using the USB Device functionality. UC3 C/D implementation of common API.
+			</info>
+			<build type="define" name="UDD_ENABLE" value=""/>
+			<require idref="avr32.drivers.usbc.device"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3d"/>
+			<device-support value="uc3l3"/>
+			<device-support value="uc3l4"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+		</module>
+		<module type="driver" id="common.drivers.usb.device#3" caption="USB Device - SAM UDP implementation">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			USB Device driver. Provides functions for configuring and using the USB Device functionality. SAM UDP implementation of common API.
+			</info>
+			<build type="define" name="UDD_ENABLE" value=""/>
+			<require idref="sam.drivers.udp.device"/>
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="driver" id="common.drivers.usb.device#4" caption="USB Device - SAM UDPHS implementation">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			USB Device driver. Provides functions for configuring and using the USB Device functionality. SAM UDPHS implementation of common API.
+			</info>
+			<build type="define" name="UDD_ENABLE" value=""/>
+			<require idref="sam.drivers.udphs.device"/>
+			<device-support value="sam3u"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3u"/>
+		</module>
+		<module type="driver" id="common.drivers.usb.device#5" caption="USB Device - SAM UOTGHS implementation">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			USB Device driver. Provides functions for configuring and using the USB Device functionality. SAM UOTGHS implementation of common API.
+			</info>
+			<build type="define" name="UDD_ENABLE" value=""/>
+			<require idref="sam.drivers.uotghs.device"/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		</module>
+		<module type="driver" id="common.drivers.usb.device#6" caption="USB Device - SAM USBC implementation">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			USB Device driver. Provides functions for configuring and using the USB Device functionality. SAM USBC implementation of common API.
+			</info>
+			<build type="define" name="UDD_ENABLE" value=""/>
+			<require idref="sam.drivers.usbc.device"/>
+			<device-support value="sam4l"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+	</select-by-device>
+
+	<select-by-device id="common.drivers.usb.host" caption="USB Host">
+		<module type="driver" id="common.drivers.usb.host#0" caption="USB Host driver - UC3 A/B implementation">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			USB Host driver. Provides functions for configuring and using the USB host functionality. UC3 A/B implementation of common API. 
+			</info>
+			<build type="define" name="UHD_ENABLE" value=""/>
+			<require idref="avr32.drivers.usbb.host"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="driver" id="common.drivers.usb.host#1" caption="USB Host driver - UC3 C/D implementation">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			USB Host driver. Provides functions for configuring and using the USB host functionality. UC3 C/D implementation of common API. 
+			</info>
+			<build type="define" name="UHD_ENABLE" value=""/>
+			<require idref="avr32.drivers.usbc.host"/>
+			<device-support value="uc3c"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+		</module>
+		<module type="driver" id="common.drivers.usb.host#2" caption="USB host driver - SAM UOTGHS implementation">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			USB host driver. Provides functions for configuring and using the USB host functionality. SAM UOTGHS implementation of common API. 
+			</info>
+			<build type="define" name="UHD_ENABLE" value=""/>
+			<require idref="sam.drivers.uotghs.host"/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		</module>
+		<module type="driver" id="common.drivers.usb.host#3" caption="USB Host driver - SAM USBC implementation">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			USB Host driver. Provides functions for configuring and using the USB host functionality. SAM USBC implementation of common API. 
+			</info>
+			<build type="define" name="UHD_ENABLE" value=""/>
+			<require idref="sam.drivers.usbc.host"/>
+			<device-support value="sam4l"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+	</select-by-device>
+</asf>

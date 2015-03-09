@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.abdacb.example" caption="ABDACB - Audio Bitstream DAC Example">
+		<info type="description" value="summary">
+			This example shows how to output a audio from the ABDACB.
+			</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="abdacb_example.c"/>
+		<build type="header-file" value="sound.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.abdacb"/>
+		<require idref="sam.drivers.pdca"/>
+		<require idref="sam.drivers.eic"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

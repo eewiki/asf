@@ -1,0 +1,45 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.drivers.wdt" caption="WDT - Watchdog Timer">
+		<info type="description" value="summary">
+			Driver for the Watchdog Timer (WDT).
+			This driver provides functions for selecting the mode, setting the time-out
+			period and enabling/disabling the WDT.
+		</info>
+		<module type="driver" id="avr32.drivers.wdt#0" caption="WDT Watchdog Timer - UC3 A0/A1/A3/A4/B0/B1 implementation">
+			<info type="description" value="summary">
+				This implementation supports revisions &lt;v4.0.0 of the WDT, found in AVR UC3
+				A0/A1/A3/A4/B0/B1.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Timers" />
+			</info>
+			<build type="c-source" value="wdt.c"/>
+			<build type="header-file" subtype="api" value="wdt.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_wdt"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="driver" id="avr32.drivers.wdt#1" caption="WDT Watchdog Timer - UC3 C/L implementation">
+			<info type="description" value="summary">
+				This implementation supports revisions &gt;=v4.0.0 of the WDT, found in AVR UC3
+				C/L.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Timers" />
+			</info>
+			<build type="c-source" value="wdt4.c"/>
+			<build type="header-file" subtype="api" value="wdt.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_wdt"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3d"/>
+			<device-support value="uc3l"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+		</module>
+	</select-by-device>
+</asf>

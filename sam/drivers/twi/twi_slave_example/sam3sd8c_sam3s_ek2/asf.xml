@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="TWI SLAVE Example for SAM3S-EK2" id="sam.drivers.twi.twi_slave_example.sam3s_ek2">
+		<info type="description" value="summary">
+		The application demonstrates how to use use the SAM TWI peripheral in slave mode.
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_twi_slave_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.twi.twi_slave_example"/>
+		<require idref="board.sam3s_ek2"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3sd8c"/>
+	</project>
+</asf>

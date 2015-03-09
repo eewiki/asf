@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.applications.xmega_adc_oversampling_demo" caption="ADC Oversampling Demo application">
+		<info type="description" value="summary">
+		XMEGA ADC Demo application for XMEGA-A3BU Xplained.It shows how to use oversampling technique to increase the resolution of ADC.
+		More information can be found from application note 'Atmel AVR1629:XMEGA ADC Oversampling' which is available in Atmel website.
+		</info>
+		<build type="c-source" value="oversampling.c"/>
+		<build type="c-source" value="adc_oversampling.c"/>
+		<build type="header-file" value="oversampling.h"/>
+		<build type="header-file" value="adc_oversampling.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_oversampling.h"/>
+		<device-support value="xmegaa3bu"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.gfx_mono"/>
+		<require idref="common.services.gfx_mono.font"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

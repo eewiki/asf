@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="QTouch method Example Application for XMEGA-C3 Xplained" id="xmega.services.qtouch.generic.avr8.qtouch.examples.example_qt_qt600.xmega_c3_xplained">
+		<info type="description" value="summary">
+		This QTouch Library Example demonstrates usage of the QTouch method and QTouch Debug on XMEGA-C3 Xplained board.
+		A QT600 Bridge is used as interface with Qtouch Analyser tools.
+		</info>
+		<require idref="xmega.services.qtouch.generic.avr8.qtouch.examples.example_qt_qt600"/>
+		<config name="config.common.services.qtouch.qdebug.xmega" value="yes"/>
+		<require idref="config.common.services.qtouch.generic.avr8.xmega_c3_xplained.method"/>
+		<config name="config.common.services.qtouch.generic.avr8.xmega_c3_xplained.method" value="qtouch_method"/>
+		<require idref="board.xmega_c3_xplained"/>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="app_touch.c"/>
+		<build type="header-file" value="app_touch.h"/>
+		<build type="include-path" value="."/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

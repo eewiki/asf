@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="EIC Example2 for STK600_RCUC3D" id="avr32.drivers.eic.example2.stk600-rcuc3d">
+		<build type="header-file" value="conf_example2.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.eic.example2"/>
+		<require idref="board.stk600-rcuc3d"/>
+		<config name="config.board.stk600-rcuc3d.init" value="no"/>
+		<config name="config.avr32.drivers.intc.exception" value="no"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc128d3"/>
+	</project>
+</asf>

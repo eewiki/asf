@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.applications.xmega_b1_xplained_demo.xmega_b1_xplained_app" caption="XMEGA B1 Xplained demo application">
+		<info type="description" value="summary">
+		Demo application for XMEGA-B1 Xplained. The application displays on-board sensors on the LCD and operates as a comosite USB device with mass storage and generic HID interface. This application is detailled in AVR1619 application note.
+		</info>
+		<build type="header-file" value="ui.h"/>
+		<build type="header-file" value="main.h"/>
+		<build type="header-file" value="adc_sensors.h"/>
+		<build type="header-file" value="usb_hid_com.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="adc_sensors.c"/>
+		<build type="c-source" value="usb_hid_com.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmegab1"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.usb.class.device"/>
+		<require idref="common.components.memory.data_flash.at45dbx"/>
+		<require idref="common.components.memory.data_flash.at45dbx.ctrl_access"/>
+		<require idref="xmega.drivers.tc"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="xmega.drivers.nvm"/>
+		<require idref="xmega.components.display.c42048a"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

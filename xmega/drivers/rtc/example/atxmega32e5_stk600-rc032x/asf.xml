@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Drivers RTC Example for stk600-rc032x with ATxmega32E5" id="xmega.drivers.rtc.example.stk600-rc032x_atxmega32e5">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_rtc.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<config name="config.board.stk600-rc032x.led" value="yes"/>
+		<require idref="xmega.drivers.rtc.example"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

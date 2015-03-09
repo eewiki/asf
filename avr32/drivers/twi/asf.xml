@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.twi" caption="TWI - Two-Wire Interface">
+		<info type="description" value="summary">
+		Driver for the TWI (Two-Wire Interface). This driver provides access to the main features of the TWI controller. The TWI interconnects components on a unique two-wire bus. The TWI is programmable as a master or a slave with sequential or single-byte access. Multiple master capability is supported.
+		</info>
+		<build type="c-source" value="twi.c"/>
+		<build type="header-file" subtype="api" value="twi.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_twi.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_twi"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.utils"/>
+		<require idref="avr32.drivers.intc"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

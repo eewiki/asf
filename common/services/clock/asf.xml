@@ -1,0 +1,483 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.basic.clock" caption="System Clock Control">
+		<info type="description" value="summary">
+		Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks"/>
+		</info>
+		<module type="service" id="common.services.basic.clock#0" caption="System Clock Control - UC3 A implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="uc3a0_a1/genclk.h"/>
+			<build type="header-file" value="uc3a0_a1/osc.h"/>
+			<build type="header-file" value="uc3a0_a1/pll.h"/>
+			<build type="c-source" value="uc3a0_a1/sysclk.c"/>
+			<build type="header-file" value="uc3a0_a1/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<require idref="avr32.drivers.flashc"/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="uc3a0_a1/module_config"/>
+			<device-support value="uc3a"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#1" caption="System Clock Control - UC3 A3/A4 implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="uc3a3_a4/genclk.h"/>
+			<build type="header-file" value="uc3a3_a4/osc.h"/>
+			<build type="header-file" value="uc3a3_a4/pll.h"/>
+			<build type="c-source" value="uc3a3_a4/sysclk.c"/>
+			<build type="header-file" value="uc3a3_a4/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<require idref="avr32.drivers.flashc"/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="uc3a3_a4/module_config"/>
+			<device-support value="uc3a3_a4"/>
+			<generator value="doxygen-module" default-mcu="at32uc3a364"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#2" caption="System Clock Control - UC3 B0 implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="uc3b0_b1/genclk.h"/>
+			<build type="header-file" value="uc3b0_b1/osc.h"/>
+			<build type="header-file" value="uc3b0_b1/pll.h"/>
+			<build type="c-source" value="uc3b0_b1/sysclk.c"/>
+			<build type="header-file" value="uc3b0_b1/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<require idref="avr32.drivers.flashc"/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="uc3b0_b1/module_config"/>
+			<device-support value="uc3b"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#3" caption="System Clock Control - UC3 L0 implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="dfll.h"/>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="uc3l/dfll.h"/>
+			<build type="c-source" value="uc3l/dfll.c"/>
+			<build type="header-file" value="uc3l/genclk.h"/>
+			<build type="header-file" value="uc3l/osc.h"/>
+			<build type="c-source" value="uc3l/osc.c"/>
+			<build type="c-source" value="uc3l/sysclk.c"/>
+			<build type="header-file" value="uc3l/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<require idref="avr32.drivers.flashcdw"/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="uc3l/module_config"/>
+			<device-support value="uc3l0"/>
+			<generator value="doxygen-module" default-mcu="at32uc3l016"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#4" caption="System Clock Control - UC3 L0 with PLL implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="dfll.h"/>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="uc3l/dfll.h"/>
+			<build type="c-source" value="uc3l/dfll.c"/>
+			<build type="header-file" value="uc3l/genclk.h"/>
+			<build type="header-file" value="uc3l/osc.h"/>
+			<build type="c-source" value="uc3l/osc.c"/>
+			<build type="c-source" value="uc3l/sysclk.c"/>
+			<build type="header-file" value="uc3l/sysclk.h"/>
+			<build type="c-source" value="uc3l/pll.c"/>
+			<build type="header-file" value="uc3l/pll.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<require idref="avr32.drivers.flashcdw"/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="uc3l/module_config"/>
+			<device-support value="uc3l0pll"/>
+			<device-support value="uc3l3"/>
+			<device-support value="uc3l4"/>
+			<generator value="doxygen-module" default-mcu="at32uc3l0128"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#5" caption="System Clock Control - UC3 C implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="uc3c/genclk.h"/>
+			<build type="header-file" value="uc3c/sysclk.h"/>
+			<build type="header-file" value="uc3c/osc.h"/>
+			<build type="header-file" value="uc3c/pll.h"/>
+			<build type="c-source" value="uc3c/sysclk.c"/>
+			<build type="c-source" value="uc3c/osc.c"/>
+			<build type="c-source" value="uc3c/pll.c"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<require idref="avr32.drivers.flashc"/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="uc3c/module_config"/>
+			<device-support value="uc3c"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#6" caption="System Clock Control - UC3 D implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="uc3d/genclk.h"/>
+			<build type="header-file" value="uc3d/sysclk.h"/>
+			<build type="header-file" value="uc3d/osc.h"/>
+			<build type="header-file" value="uc3d/pll.h"/>
+			<build type="c-source" value="uc3d/sysclk.c"/>
+			<build type="c-source" value="uc3d/osc.c"/>
+			<build type="c-source" value="uc3d/pll.c"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<require idref="avr32.drivers.flashcdw"/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="uc3d/module_config"/>
+			<device-support value="uc3d"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3d"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#8" caption="System Clock Control - XMEGA A1/A3/A3B/A4/D/E implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API .
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="xmega/osc.h"/>
+			<build type="header-file" value="xmega/pll.h"/>
+			<build type="c-source" value="xmega/sysclk.c"/>
+			<build type="header-file" value="xmega/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="xmega/module_config"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="xmegaa1"/>
+			<device-support value="xmegaa3"/>
+			<device-support value="xmegaa4"/>
+			<device-support value="xmegaa3b"/>
+			<device-support value="xmegad"/>
+			<device-support value="xmegae"/>
+			<require idref="xmega.drivers.cpu"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#9" caption="System Clock Control - XMEGA A1U/A3U/A3BU/A4U/B/C implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="xmega/osc.h"/>
+			<build type="header-file" value="xmega/pll.h"/>
+			<build type="c-source" value="xmega/sysclk.c"/>
+			<build type="header-file" value="xmega/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="xmega/module_config_usb"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa3bu"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<require idref="xmega.drivers.cpu"/>
+			<require idref="xmega.drivers.nvm"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa3u"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#10" caption="System Clock Control - SAM3S implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="sam3s/genclk.h"/>
+			<build type="header-file" value="sam3s/osc.h"/>
+			<build type="header-file" value="sam3s/pll.h"/>
+			<build type="c-source" value="sam3s/sysclk.c"/>
+			<build type="header-file" value="sam3s/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="sam3s/module_config"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="sam3s"/>
+			<require idref="sam.drivers.pmc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#11" caption="System Clock Control - SAM3X/A implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="sam3x/genclk.h"/>
+			<build type="header-file" value="sam3x/osc.h"/>
+			<build type="header-file" value="sam3x/pll.h"/>
+			<build type="c-source" value="sam3x/sysclk.c"/>
+			<build type="header-file" value="sam3x/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="sam3x/module_config"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<require idref="sam.drivers.pmc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#12" caption="System Clock Control - SAM3N implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="sam3n/genclk.h"/>
+			<build type="header-file" value="sam3n/osc.h"/>
+			<build type="header-file" value="sam3n/pll.h"/>
+			<build type="c-source" value="sam3n/sysclk.c"/>
+			<build type="header-file" value="sam3n/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="sam3n/module_config"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="sam3n"/>
+			<require idref="sam.drivers.pmc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3n"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#13" caption="System Clock Control - SAM3U implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="sam3u/genclk.h"/>
+			<build type="header-file" value="sam3u/osc.h"/>
+			<build type="header-file" value="sam3u/pll.h"/>
+			<build type="c-source" value="sam3u/sysclk.c"/>
+			<build type="header-file" value="sam3u/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="sam3u/module_config"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="sam3u"/>
+			<require idref="sam.drivers.pmc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3u"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#14" caption="System Clock Control - SAM3SD implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="sam3s/genclk.h"/>
+			<build type="header-file" value="sam3s/osc.h"/>
+			<build type="header-file" value="sam3s/pll.h"/>
+			<build type="c-source" value="sam3s/sysclk.c"/>
+			<build type="header-file" value="sam3s/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="sam3s/module_config"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="sam3sd"/>
+			<require idref="sam.drivers.pmc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3sd"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#15" caption="System Clock Control - SAM4S implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="sam4s/genclk.h"/>
+			<build type="header-file" value="sam4s/osc.h"/>
+			<build type="header-file" value="sam4s/pll.h"/>
+			<build type="c-source" value="sam4s/sysclk.c"/>
+			<build type="header-file" value="sam4s/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="sam4s/module_config"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="sam4s"/>
+			<require idref="sam.drivers.pmc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4s"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#16" caption="System Clock Control - SAM4L implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="dfll.h"/>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="sam4l/dfll.h"/>
+			<build type="c-source" value="sam4l/dfll.c"/>
+			<build type="header-file" value="sam4l/genclk.h"/>
+			<build type="header-file" value="sam4l/osc.h"/>
+			<build type="c-source" value="sam4l/osc.c"/>
+			<build type="c-source" value="sam4l/sysclk.c"/>
+			<build type="header-file" value="sam4l/sysclk.h"/>
+			<build type="c-source" value="sam4l/pll.c"/>
+			<build type="header-file" value="sam4l/pll.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="sam4l/module_config"/>
+			<device-support value="sam4l"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+			<require idref="sam.drivers.flashcalw"/>
+			<require idref="sam.drivers.bpm"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#17" caption="System Clock Control - MEGA RF A1 implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="c-source" value="mega/sysclk.c"/>
+			<build type="header-file" value="mega/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="mega/module_config"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="mega"/>
+			<require idref="mega.drivers.cpu"/>
+			<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#18" caption="System Clock Control - SAM4E implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="sam4e/genclk.h"/>
+			<build type="header-file" value="sam4e/osc.h"/>
+			<build type="header-file" value="sam4e/pll.h"/>
+			<build type="c-source" value="sam4e/sysclk.c"/>
+			<build type="header-file" value="sam4e/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="sam4e/module_config"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="sam4e"/>
+			<require idref="sam.drivers.pmc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+		</module>
+	</select-by-device>
+</asf>

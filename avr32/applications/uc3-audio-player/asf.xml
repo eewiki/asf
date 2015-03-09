@@ -1,0 +1,320 @@
+<asf xmlversion="1.0">
+	<!-- Clock Settings //-->
+	<select-by-config id="avr32.applications.uc3-audio-player.common.clock" name="config.app.audio_player.clock" caption="USB Audio player application clocks" default="12.00_and_11.28">
+		<module type="meta" id="avr32.applications.uc3-audio-player.common.clock#12.00_and_11.28" caption="USB Audio player application clocks">
+			<build type="c-source" value="clocks/clocks_fosc0_12000000_fosc1_11289600.c"/>
+			<build type="header-file" value="clocks/clocks.h"/>
+			<build type="include-path" value="./clocks/"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+		</module>
+		<module type="meta" id="avr32.applications.uc3-audio-player.common.clock#cs2200" caption="USB Audio player application clocks">
+			<build type="c-source" value="clocks/clocks_cs2200.c"/>
+			<build type="header-file" value="clocks/clocks.h"/>
+			<build type="include-path" value="./clocks/"/>
+			<build type="header-file" value="conf/conf_cs2200.h"/>
+			<build type="include-path" value="./conf/"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+		</module>
+	</select-by-config>
+	<!-- Hardware Selection //-->
+	<!-- ms3 //-->
+	<select-by-config id="avr32.applications.uc3-audio-player.hardware.ms3" name="config.app.audio_player.hardware.ms3" caption="Audio Player Hardware Selection - ms3 codec" default="no">
+		<module type="meta" id="avr32.applications.uc3-audio-player.hardware.ms3#yes" caption="MS3 codec support">
+			<require idref="avr32.components.audio.codec.ms3.common"/>
+			<device-support value="uc3a"/>
+		</module>
+		<module type="meta" id="avr32.applications.uc3-audio-player.hardware.ms3#no" caption="No">
+			<device-support value="uc3"/>
+		</module>
+	</select-by-config>
+	<!-- tlv320aic23b //-->
+	<select-by-config id="avr32.applications.uc3-audio-player.hardware.tlv320aic23b" name="config.app.audio_player.hardware.tlv320aic23b" caption="Audio Player Hardware Selection - tlv320aic23b codec" default="no">
+		<module type="meta" id="avr32.applications.uc3-audio-player.hardware.tlv320aic23b#yes" caption="tlv320aic23b codec support">
+			<build type="header-file" value="conf/conf_tlv320aic23b.h"/>
+			<require idref="avr32.components.audio.codec.tlv320aic23b.common"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+		</module>
+		<module type="meta" id="avr32.applications.uc3-audio-player.hardware.tlv320aic23b#no" caption="No">
+			<device-support value="uc3"/>
+		</module>
+	</select-by-config>
+	<!-- PWM DAC //-->
+	<select-by-config id="avr32.applications.uc3-audio-player.hardware.pwm_dac" name="config.app.audio_player.hardware.pwm_dac" caption="Audio Player Hardware Selection - PWM DAC" default="no">
+		<module type="meta" id="avr32.applications.uc3-audio-player.hardware.pwm_dac#yes" caption="PWM DAC support">
+			<build type="header-file" value="conf/conf_pwm_dac.h"/>
+			<require idref="avr32.components.audio.dac.pwm_dac"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+		</module>
+		<module type="meta" id="avr32.applications.uc3-audio-player.hardware.pwm_dac#no" caption="No">
+			<device-support value="uc3"/>
+		</module>
+	</select-by-config>
+	<!-- tpa6130a2 //-->
+	<select-by-config id="avr32.applications.uc3-audio-player.hardware.tpa6130a2" name="config.app.audio_player.hardware.tpa6130a2" caption="Audio Player Hardware Selection - tpa6130a2" default="no">
+		<module type="meta" id="avr32.applications.uc3-audio-player.hardware.tpa6130a2#yes" caption="tpa6130a2 support">
+			<build type="header-file" value="conf/conf_tpa6130.h"/>
+			<require idref="avr32.components.audio.amp.tpa6130a2"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+		</module>
+		<module type="meta" id="avr32.applications.uc3-audio-player.hardware.tpa6130a2#no" caption="No">
+			<device-support value="uc3"/>
+		</module>
+	</select-by-config>
+	<!-- Controller //-->
+	<select-by-config id="avr32.applications.uc3-audio-player.controller" name="config.app.audio_player.controller" caption="Audio Player Controller Selection" default="no_controller">
+		<module type="meta" id="avr32.applications.uc3-audio-player.controller#no_controller" caption="No controller">
+			<build type="c-source" value="user_interface/controller/no_controller.c"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+		</module>
+		<module type="meta" id="avr32.applications.uc3-audio-player.controller#joystick_controller" caption="Joystick controller">
+			<build type="c-source" value="user_interface/controller/joystick_controller.c"/>
+			<require idref="avr32.components.touch.qt1081"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+		</module>
+		<module type="meta" id="avr32.applications.uc3-audio-player.controller#qt60168" caption="Qt60168 controller">
+			<build type="c-source" value="user_interface/controller/qt60168_controller.c"/>
+			<build type="include-path" value="./user_interface/controller/"/>
+			<build type="header-file" value="conf/conf_qt60168.h"/>
+			<require idref="avr32.components.touch.qt60168"/>
+			<require idref="avr32.drivers.rtc"/>
+			<device-support value="uc3a3"/>
+		</module>
+	</select-by-config>
+	<!-- GUI //-->
+	<select-by-config id="avr32.applications.uc3-audio-player.gui" name="config.app.audio_player.gui" caption="Audio Player GUI Selection" default="no_gui">
+		<module type="meta" id="avr32.applications.uc3-audio-player.gui#no_gui" caption="No GUI">
+			<build type="c-source" value="user_interface/gui/no_gui.c"/>
+			<device-support value="uc3"/>
+		</module>
+		<module type="meta" id="avr32.applications.uc3-audio-player.gui#et024006dhu" caption="et024006dhu GUI">
+			<build type="header-file" value="conf/conf_ebi.h"/>
+			<build type="header-file" value="conf/conf_et024006dhu.h"/>
+			<build type="c-source" value="user_interface/gui/et024006dhu_gui.c"/>
+			<require idref="avr32.components.display.et024006dhu"/>
+			<build type="header-file" value="conf/conf_at45dbx.h"/>
+			<require idref="common.components.memory.data_flash.at45dbx._asf_v1"/>
+			<require idref="avr32.applications.uc3-audio-player.fs"/>
+			<build type="c-source" value="user_interface/gui/sdram_loader.c"/>
+			<build type="header-file" value="user_interface/gui/sdram_loader.h"/>
+			<build type="include-path" value="./user_interface/gui/."/>
+			<build type="header-file" value="conf/conf_dlmalloc.h"/>
+			<require idref="avr32.services.storage.dlmalloc"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+		</module>
+	</select-by-config>
+	<!-- Audio Player Common Base //-->
+	<module type="application" id="avr32.applications.uc3-audio-player.common.base" caption="USB Audio player">
+		<info type="description" value="summary">
+		Audio player application. It features a complete audio player application optimized for Atmel 32-bit AVRs. Highly configurable, it can play files or access audio streams from various peripheral including USB mass storage devices or SD/MMC cards. It also supports many clocking schemes to handle most configurations and can be attached to any audio codec or DAC (using I2S bus interface or a standard analog output). This software provides an easy way to interact with a custom HMI (Human Machine Interface) and can handle extra user-defined tasks.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Audio"/>
+		</info>
+		<build type="c-source" value="com_task.c"/>
+		<build type="header-file" value="com_task.h"/>
+		<build type="header-file" value="com_task_struct.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="user_interface/gui/gui.h"/>
+		<build type="include-path" value="./user_interface/gui/"/>
+		<build type="header-file" value="./user_interface/controller/controller.h"/>
+		<build type="include-path" value="./user_interface/controller/"/>
+		<build type="header-file" value="conf/conf_audio_interface.h"/>
+		<build type="header-file" value="conf/conf_audio_mixer.h"/>
+		<build type="header-file" value="conf/conf_version.h"/>
+		<build type="include-path" value="./conf/"/>
+		<require idref="avr32.applications.uc3-audio-player.common.clock"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.libs.newlib_addons"/>
+		<require idref="avr32.utils.libs.avr32gcc.libm"/>
+		<build type="module-config" subtype="required-header-file" value="conf_version.h"/>
+		<!-- All possible hardware //-->
+		<require idref="avr32.applications.uc3-audio-player.hardware.ms3"/>
+		<require idref="avr32.applications.uc3-audio-player.hardware.tlv320aic23b"/>
+		<require idref="avr32.applications.uc3-audio-player.hardware.pwm_dac"/>
+		<require idref="avr32.applications.uc3-audio-player.hardware.tpa6130a2"/>
+		<require idref="avr32.applications.uc3-audio-player.controller"/>
+		<require idref="avr32.applications.uc3-audio-player.gui"/>
+		<build type="distribute" subtype="directory" value="docsrc"/>
+		<build type="distribute" subtype="directory" value="pictures"/>
+		<!-- Documentation //-->
+		<build type="header-file" value="docsrc/documentation.h"/>
+		<build type="header-file" value="docsrc/documentation_iar.h"/>
+		<build type="header-file" value="docsrc/documentation_gcc.h"/>
+		<build type="doxygen-image-path" value="docsrc"/>
+		<!-- Device supported //-->
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<!-- Device Specific //-->
+	<select-by-device id="avr32.applications.uc3-audio-player.common" caption="USB Audio player">
+		<!-- UC3A //-->
+		<module type="meta" id="avr32.applications.uc3-audio-player.common#0" caption="USB Audio player">
+			<info type="description" value="summary">
+			USB audio player application for UC3A0 and UC3A1 devices. This application includes a software MP3 decoder, a file system, and a USB Host mass storage class support.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Audio"/>
+			</info>
+			<build type="header-file" value="conf/conf_twi.h"/>
+			<require idref="avr32.applications.uc3-audio-player.common.base"/>
+			<build type="header-file" value="conf/conf_ebi.h"/>
+			<require idref="avr32.components.memory.sdram.mt48lc16m16a2tg7e"/>
+			<build type="linker-config" subtype="script" value="linker_scripts/at32uc3a/0512/gcc/link_uc3a0512_sdram.lds" toolchain="avr32gcc"/>
+			<device-support value="uc3a"/>
+			<build type="distribute" subtype="file" value="docsrc/documentation_evk1105_software.h"/>
+			<build type="distribute" subtype="file" value="docsrc/documentation_evk1105_hardware.h"/>
+		</module>
+		<!-- UC3A3 //-->
+		<module type="meta" id="avr32.applications.uc3-audio-player.common#1" caption="USB Audio player">
+			<info type="description" value="summary">
+			USB audio player application for UC3A3 devices. This application includes a software MP3 decoder, a file system, and a USB Host mass storage class support.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Audio"/>
+			</info>
+			<build type="c-source" value="user_interface/controller/qt60168_controller.c"/>
+			<build type="include-path" value="./user_interface/controller/"/>
+			<build type="header-file" value="conf/conf_qt60168.h"/>
+			<build type="header-file" value="conf/conf_twim.h"/>
+			<require idref="avr32.components.touch.qt60168"/>
+			<require idref="avr32.drivers.rtc"/>
+			<require idref="avr32.applications.uc3-audio-player.common.base"/>
+			<build type="header-file" value="conf/conf_ebi.h"/>
+			<require idref="avr32.components.memory.sdram.mt48lc16m16a2tg7e"/>
+			<build type="linker-config" subtype="script" value="linker_scripts/at32uc3a3/256/gcc/link_uc3a3256_sdram.lds" toolchain="avr32gcc"/>
+			<device-support value="uc3a3"/>
+			<build type="distribute" subtype="file" value="docsrc/documentation_evk1104_software.h"/>
+			<build type="distribute" subtype="file" value="docsrc/documentation_evk1104_hardware.h"/>
+		</module>
+	</select-by-device>
+	<!-- USB //-->
+	<module type="meta" id="avr32.applications.uc3-audio-player.usb_common" caption="USB common support for the audio player">
+		<info type="description" value="summary">
+		USB support for the audio player.
+		</info>
+		<build type="header-file" value="conf/conf_usb.h"/>
+		<build type="c-source" value="usb_task.c"/>
+		<device-support value="uc3"/>
+	</module>
+	<module type="meta" id="avr32.applications.uc3-audio-player.usb_device" caption="USB device for the audio player">
+		<info type="description" value="summary">
+		USB device support for the audio player.
+		</info>
+		<require idref="avr32.applications.uc3-audio-player.usb_common"/>
+		<build type="header-file" value="enum/device/usb_descriptors.h"/>
+		<build type="header-file" value="enum/device/usb_specific_request.h"/>
+		<build type="include-path" value="enum/device/"/>
+		<build type="c-source" value="enum/device/usb_descriptors.c"/>
+		<build type="c-source" value="enum/device/usb_specific_request.c"/>
+		<device-support value="uc3"/>
+	</module>
+	<module type="meta" id="avr32.applications.uc3-audio-player.usb_host" caption="USB  for the audio player">
+		<info type="description" value="summary">
+		USB host support for the audio player.
+		</info>
+		<build type="c-source" value="usb_host_task.c"/>
+		<build type="header-file" value="usb_host_task.h"/>
+		<build type="c-source" value="usb_host_enum.c"/>
+		<build type="header-file" value="usb_host_enum.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.applications.uc3-audio-player.usb_common"/>
+		<device-support value="uc3"/>
+	</module>
+	<!-- FAT File System //-->
+	<module type="meta" id="avr32.applications.uc3-audio-player.fs" caption="USB Audio player file system">
+		<info type="description" value="summary">
+		USB audio player application file system. This application includes a software MP3 decoder, a file system, and a USB Host mass storage class support.
+		</info>
+		<build type="c-source" value="nav_automatic.c"/>
+		<build type="header-file" value="conf/conf_explorer.h"/>
+		<build type="header-file" value="conf/conf_buff_player.h"/>
+		<build type="header-file" value="conf/conf_access.h"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.wdt"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<require idref="avr32.services.fs.fat.nav_automatic"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3"/>
+		<build type="header-file" value="docsrc/documentation_mass_storage.h"/>
+	</module>
+	<!-- JPEG Support //-->
+	<module type="meta" id="avr32.applications.uc3-audio-player.jpg" caption="USB Audio player JPG module">
+		<info type="description" value="summary">
+		USB audio player application JPG module. This application includes a software MP3 decoder, a file system, and a USB Host mass storage class support.
+		</info>
+		<build type="c-source" value="jpg/jdatasrc.c"/>
+		<build type="c-source" value="jpg/jmemsdram.c"/>
+		<build type="header-file" value="jpg/jpeg_decoder.h"/>
+		<build type="include-path" value="./jpg/"/>
+		<build type="module-config" subtype="required-header-file" value="conf_jpeg_decoder.h"/>
+		<build type="header-file" value="conf/conf_jpeg_decoder.h"/>
+		<build type="header-file" value="conf/conf_dlmalloc.h"/>
+		<require idref="avr32.services.storage.dlmalloc"/>
+		<require idref="avr32.utils.libs.jpg_ijg_without_mm"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3"/>
+	</module>
+	<!-- MP3 Support //-->
+	<module type="meta" id="avr32.applications.uc3-audio-player.mp3" caption="USB Audio player application: MP3">
+		<info type="description" value="summary">
+		USB audio player application with MP3 support. This application includes a software MP3 decoder, a file system, and a USB Host mass storage class support.
+		</info>
+		<build type="c-source" value="codec_mp3_task.c"/>
+		<require idref="avr32.services.audio.audio_player.ai_usb_ms.mp3"/>
+		<require idref="avr32.services.audio.audio_player.players.mp3"/>
+		<require idref="avr32.applications.uc3-audio-player.fs"/>
+		<require idref="avr32.applications.uc3-audio-player.jpg"/>
+		<require idref="avr32.applications.uc3-audio-player.common"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3"/>
+		<build type="distribute" subtype="file" value="docsrc/documentation_mp3.h"/>
+	</module>
+	<!-- WAV Support //-->
+	<module type="meta" id="avr32.applications.uc3-audio-player.wav" caption="USB Audio player application: WAV">
+		<info type="description" value="summary">
+		USB audio player application with WAV support. This application includes a software WAV decoder, a file system, and a USB Host mass storage class support.
+		</info>
+		<build type="c-source" value="codec_wav_task.c"/>
+		<require idref="avr32.services.audio.wav"/>
+		<require idref="avr32.services.audio.audio_player.ai_usb_ms.wav"/>
+		<require idref="avr32.services.audio.audio_player.players.wav"/>
+		<require idref="avr32.applications.uc3-audio-player.fs"/>
+		<require idref="avr32.applications.uc3-audio-player.common"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3"/>
+		<build type="distribute" subtype="file" value="docsrc/documentation_wav.h"/>
+	</module>
+	<!-- SD/MMC SPI Card Support //-->
+	<select-by-config id="avr32.applications.uc3-audio-player.sd_mmc_card" name="config.avr32.services.audio.audio_player.ai_sd_mmc.interface" caption="SD/MMC card interface selection" default="spi">
+		<module type="meta" id="avr32.applications.uc3-audio-player.sd_mmc_card#spi" caption="Audio player application: SD/MMC Card, SPI interface">
+			<info type="description" value="summary">
+			Audio player application with SD/MMC card support (SPI interface). This application includes a SD/MMC card support.
+			</info>
+			<build type="header-file" value="conf/conf_sd_mmc_spi.h"/>
+			<require idref="avr32.services.audio.audio_player.ai_sd_mmc"/>
+			<require idref="avr32.applications.uc3-audio-player.common"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+		</module>
+		<module type="meta" id="avr32.applications.uc3-audio-player.sd_mmc_card#mci" caption="Audio player application: SD/MMC Card, MCI interface">
+			<info type="description" value="summary">
+			Audio player application with SD/MMC card support (MCI interface). This application includes a SD/MMC card support.
+			</info>
+			<build type="header-file" value="conf/conf_sd_mmc_mci.h"/>
+			<require idref="avr32.services.audio.audio_player.ai_sd_mmc"/>
+			<require idref="avr32.applications.uc3-audio-player.common"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+		</module>
+	</select-by-config>
+</asf>

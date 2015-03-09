@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<project force-caption="true" force-description="true" caption="Single button controller application HOST-SAM4L Xplained Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.host.sam4l_xplained_pro">
+		<info type="description" value="summary">
+		Single button controller application running on the host and driving the ZRC controller stack running on the network co-processor
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sio2ncp.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>		
+		<build type="header-file" value="conf_uart_serial.h"/>
+        <build type="header-file" value="conf_hw_timer.h"/>
+		<build type="define" name="EXTERN_EEPROM_AVAILABLE" value ="0"/>
+
+		<config name="config.thirdparty.wireless.avr2102_rf4control" value="api_parser"/>
+		<config name="config.thirdparty.wireless.addons.sio2host" value="uart"/>
+		<config name="config.thirdparty.wireless.addons.sio2ncp" value="uart"/>
+		<require idref="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.host"/>
+
+		<require idref="board.sam4l_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

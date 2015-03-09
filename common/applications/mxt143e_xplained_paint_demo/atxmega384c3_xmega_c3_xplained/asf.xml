@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="mXT143E Xplained paint demo for XMEGA-C3 Xplained" id="common.applications.mxt143e_xplained_paint_demo.xmega_c3_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_ili9341.h"/>
+		<build type="header-file" value="conf_mxt.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.compiler.iarew.near_heap_size" value="0x1000"/>
+		<config name="config.gfx.display" value="ili9341_sdt028atft"/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<require idref="common.applications.mxt143e_xplained_paint_demo"/>
+		<require idref="board.xmega_c3_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

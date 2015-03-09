@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="CPU SAU Example for UC3C_EK" id="avr32.drivers.cpu.sau.example.uc3c_ek">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.cpu.sau.example"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<config name="config.board.uc3c_ek.led" value="yes"/>
+		<config name="config.avr32.drivers.intc.exception" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

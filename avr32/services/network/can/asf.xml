@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.network.can" caption="CAN software stack">
+		<info type="description" value="summary">
+		CAN software stack for 32-bit AVR that supports initializing the CAN bus and sending/receiving data.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication" />
+		</info>
+		<build type="c-source" value="can.c"/>
+		<build type="header-file" subtype="api" value="can.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_services_network_can"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.canif"/>
+		<require idref="common.services.delay"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+	</module>
+</asf>

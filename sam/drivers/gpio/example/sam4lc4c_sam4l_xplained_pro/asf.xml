@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="GPIO interrupt example for SAM4L Xplained Pro" id="sam.drivers.gpio.example.sam4l_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="sam.drivers.gpio.example"/>
+		<require idref="board.sam4l_xplained_pro"/>
+		<config name="config.board.sam4l_xplained_pro.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.adc" caption="ADC - Analog to Digital Converter">
+		<info type="description" value="summary">
+		Analog to Digital Converter is able to capture analog signals and transform them into digital format with 10-bit resolution.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc.c"/>
+		<build type="header-file" subtype="api" value="adc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_adc"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

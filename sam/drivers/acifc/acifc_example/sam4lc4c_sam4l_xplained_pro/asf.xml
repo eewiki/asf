@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="ACIFC Example on SAM4L Xplained Pro" id="sam.drivers.acifc.example.sam4l_xplained_pro">
+		<info type="description" value="summary">
+		This example is aimed to demonstrate the usage of the ACIFC peripheral.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h" />
+		<require idref="sam.drivers.acifc.example"/>
+		<require idref="board.sam4l_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

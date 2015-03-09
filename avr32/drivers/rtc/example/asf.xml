@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.rtc.example" caption="RTC Example">
+		<info type="description" value="summary">
+		Use the RTC module with an external 32 KHz oscillator.: display on a USART a real time counter incremented every second (interrupt-based example).
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="rtc_example.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.rtc"/>
+		<require idref="avr32.drivers.usart"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

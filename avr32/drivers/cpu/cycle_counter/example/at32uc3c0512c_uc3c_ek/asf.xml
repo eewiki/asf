@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="CPU Cycle Counter Example for UC3C_EK" id="avr32.drivers.cpu.cc.example.uc3c_ek">
+		<require idref="avr32.drivers.cpu.cc.example"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<config name="config.board.uc3c_ek.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

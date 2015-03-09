@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="Peripheral DMA Controller Example on SAM4L Xplained Pro" id="sam.drivers.pdca.pdca_usart_example.sam4l_xplained_pro">
+		<info type="description" value="summary">
+		This example shows how to configure PDCA for receiving data from USART.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.pdca.pdca_usart_example"/>
+		<require idref="board.sam4l_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

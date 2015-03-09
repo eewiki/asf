@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="Example1 for CRC driver for stk600-rc032x with ATxmega32E5" id="xmega.drivers.crc.example1.stk600-rc032x_atxmega32e5">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<config name="config.board.stk600-rc032x.led" value="yes"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.crc.example1"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="iarew"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

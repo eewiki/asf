@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.uc3.vectors" caption="DSPLib - Vectors function set">
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="vect_dsp32_neg_at32uc.c"/>
+		<build type="c-source" value="vect_dsp32_min_at32uc.c"/>
+		<build type="c-source" value="vect_dsp32_max_at32uc.c"/>
+		<build type="c-source" value="vect_dsp16_complex_conj_at32uc.c"/>
+		<build type="c-source" value="vect_dsp16_neg_at32uc.c"/>
+		<build type="c-source" value="vect_dsp16_add_at32uc.c"/>
+		<build type="c-source" value="vect_dsp32_add_at32uc.c"/>
+		<build type="c-source" value="vect_dsp16_sub_at32uc.c"/>
+		<build type="c-source" value="vect_dsp32_sub_at32uc.c"/>
+		<build type="c-source" value="vect_dsp16_realmul_at32uc.c"/>
+		<build type="c-source" value="vect_dsp16_realdiv_at32uc.c"/>
+		<build type="c-source" value="vect_dsp16_dotmul_at32uc.c"/>
+		<build type="c-source" value="vect_dsp16_dotdiv_at32uc.c"/>
+		<build type="c-source" value="vect_dsp32_realmul_at32uc.c"/>
+		<build type="c-source" value="vect_dsp32_convpart_at32uc.c"/>
+		<build type="c-source" value="vect_dsp16_convpart_at32uc.c"/>
+		<require idref="avr32.services.dsplib.generic.vectors"/>
+		<require idref="avr32.services.dsplib.uc3"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

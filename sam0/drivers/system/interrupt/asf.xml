@@ -1,0 +1,41 @@
+﻿<asf xmlversion="1.0">
+	<module type="driver" id="sam0.drivers.system.interrupt" caption="SYSTEM - Interrupt Driver">
+		<info type="description" value="summary">
+			Driver for the SAM D20 Interrupt System. Provides a unified interface
+			for the configuration and management interrupts within the device,
+			including the enabling, disabling and entering, leaving of critical
+			sections.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Interrupt" />
+		</info>
+
+		<info type="appnote" value="AT03261"/>
+		<info type="keyword" value="pdf">
+			<keyword value="SYSTEM"/>
+			<keyword value="I/O"/>
+			<keyword value="Interrupt" />
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Interrupts on the SAM D20, both the ASF driver and the peripheral itself.
+		</info>
+
+		<build type="include-path" value="." />
+		<build type="c-source" value="system_interrupt.c"/>
+
+		<build type="header-file" subtype="api" value="system_interrupt.h"/>
+
+		<build type="header-file" value="quick_start/qs_system_interrupt.h"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_samd20_system_interrupt_group"/>
+		<build type="doxygen-example-path" value="quick_start"/>
+
+		<device-support value="samd20"/>
+
+		<require idref="sam0.utils"/>
+		<require idref="thirdparty.cmsis"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

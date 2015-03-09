@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.calendar.unit_tests" caption="Unit Tests for the Common Calendar Service">
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<info type="description" value="summary">
+		Unit tests for calendar functionality
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.services.calendar"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

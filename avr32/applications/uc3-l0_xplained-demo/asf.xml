@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.uc3-l0_xplained-demo" caption="UC3-L0 Xplained demo application">
+		<info type="description" value="summary">
+			Demo application for UC3-L0 that reads temperature and light sensors and transmit the data via UART and a touch slider that changes the color of the RGB LED.
+			</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="uc3-l0_xplained_demo.c"/>
+		<build type="c-source" value="touch.c"/>
+		<build type="header-file" value="touch_config_at32uc3l.h"/>
+		<build type="header-file" value="QDebugSettings.h"/>
+		<build type="header-file" value="uc3-l0_xplained_demo.h"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.scif"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.adcifb"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.pwma"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="avr32.services.qtouch.devspecific.uc3.uc3l0"/>
+		<require idref="config.common.services.qtouch.qdebug.xplained.uc3l0"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

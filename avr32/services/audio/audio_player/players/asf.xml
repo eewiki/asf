@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.audio.audio_player.players" caption="USB Audio player">
+		<info type="description" value="summary">
+		Various USB audio players for various formats (MP3, WAV etc.)
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Audio" />
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="buff_player.c"/>
+		<build type="header-file" value="buff_player.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_buff_player.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.services.audio.audio_mixer"/>
+		<require idref="avr32.services.audio.audio_player"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

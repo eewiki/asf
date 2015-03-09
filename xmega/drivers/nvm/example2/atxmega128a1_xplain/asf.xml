@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="Drivers NVM Example 2 for Xplain" id="xmega.drivers.nvm.example2.xplain">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.nvm.example2"/>
+		<require idref="board.xplain"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

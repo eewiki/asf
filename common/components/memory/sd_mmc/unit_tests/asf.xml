@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.components.memory.sd_mmc.unit_tests" caption="Unit Tests for the Common SD/MMC/SDIO Card Component">
+		<info type="description" value="summary">
+		Test the installation, the read and write access on an external SD/MMC/SDIO card.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="unit_tests.c"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.components.memory.sd_mmc"/>
+		<device-support value="avr"/>
+		<device-support value="sam"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

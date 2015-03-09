@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.eic.example3" caption="EIC (External Interrupt Controller) Example 3">
+		<info type="description" value="summary">
+		Use the EIC (External Interrupt Controller) and the SCAN Keypad interface: decode the key pressend and light LEDs.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Interrupt"/>
+		</info>
+		<build type="c-source" value="eic_example3.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3d"/>
+		<require idref="avr32.drivers.eic"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

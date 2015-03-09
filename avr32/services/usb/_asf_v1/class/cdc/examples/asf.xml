@@ -1,0 +1,65 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.usb.cdc.example" caption="USB Dual Role (Device and Host) CDC example (from ASF V1)">
+		<info type="description" value="summary">
+		Using the USBB module and the deprecated USB software stack from ASF v1, USB CDC Class application that behaves as a Virtual COM Port application in USB Device mode or as a SerialPort-USB gateway in USB Reduced-Host mode.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+		</info>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3"/>
+		<require idref="avr32.services.usb.cdc.example.main"/>
+	</module>
+	<module type="meta" id="avr32.services.usb.cdc.example.main" caption="Main module for examples">
+		<build type="c-source" value="cdc_example.c"/>
+		<build type="header-file" value="cdc_example.h"/>
+		<build type="c-source" value="device_cdc_task.c"/>
+		<build type="header-file" value="device_cdc_task.h"/>
+		<build type="c-source" value="host_cdc_task.c"/>
+		<build type="header-file" value="host_cdc_task.h"/>
+		<build type="c-source" value="uart_usb_lib.c"/>
+		<build type="header-file" value="uart_usb_lib.h"/>
+		<build type="c-source" value="enum/device/usb_descriptors.c"/>
+		<build type="header-file" value="enum/device/usb_descriptors.h"/>
+		<build type="c-source" value="enum/device/usb_specific_request.c"/>
+		<build type="header-file" value="enum/device/usb_specific_request.h"/>
+		<build type="header-file" value="conf/conf_usb.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./conf/"/>
+		<build type="include-path" value="./enum/"/>
+		<build type="include-path" value="./enum/device/"/>
+		<build type="doxygen-image-path" value="docsrc"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3"/>
+		<build type="c-source" value="../../../../../../../thirdparty/freertos/freertos-7.0.0/source/portable/iar/avr32_uc3/read.c" toolchain="iarew32"/>
+		<build type="c-source" value="../../../../../../../thirdparty/freertos/freertos-7.0.0/source/portable/iar/avr32_uc3/write.c" toolchain="iarew32"/>
+		<require idref="common.services.basic.fifo"/>
+		<require idref="avr32.services.usb._asf_v1.class.cdc"/>
+		<require idref="avr32.drivers.usbb._asf_v1.enum.device"/>
+		<require idref="avr32.drivers.usbb._asf_v1.enum.host"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.components.joystick.skrhabe010"/>
+		<require idref="avr32.drivers.flashc"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.utils.libs.newlib_addons"/>
+		<build type="distribute" subtype="file" value="driver/at32uc3xxx_cdc.inf"/>
+		<build type="distribute" subtype="directory" value="./docsrc"/>
+		<build type="distribute" subtype="file" value="./docsrc/appli.jpg"/>
+		<build type="distribute" subtype="file" value="./docsrc/appli_evk1100_device.jpg"/>
+		<build type="distribute" subtype="file" value="./docsrc/appli_evk1101_device.jpg"/>
+		<build type="distribute" subtype="file" value="./docsrc/appli_host.jpg"/>
+		<build type="distribute" subtype="file" value="./docsrc/arch_full.jpg"/>
+		<build type="distribute" subtype="file" value="./docsrc/install_1.jpg"/>
+		<build type="distribute" subtype="file" value="./docsrc/install_2.jpg"/>
+		<build type="distribute" subtype="file" value="./docsrc/install_3.jpg"/>
+		<build type="distribute" subtype="file" value="./docsrc/install_4.jpg"/>
+		<build type="distribute" subtype="file" value="./docsrc/install_5.jpg"/>
+		<build type="distribute" subtype="file" value="./docsrc/usb_cdc_device_manager.jpg"/>
+	</module>
+</asf>

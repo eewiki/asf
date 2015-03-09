@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="Timer/Counter Example 1 for AT32UC3A0512 in AVR Simulator" id="avr32.drivers.tc.simulator_example1.at32uc3a0512">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.tc.simulator_example1"/>
+		<require idref="board.avr_simulator_uc3.at32uc3a0512"/>
+		<config name="config.compiler.avr32gcc.optimization" value="none"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

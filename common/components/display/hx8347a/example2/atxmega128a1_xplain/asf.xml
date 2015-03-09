@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="HX8347A Display Controller Example for Xplain" id="common.components.display_controller.hx8347a.example2.xplain">
+		<build type="header-file" value="conf_hx8347a.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<require idref="common.components.display_controller.hx8347a.example2"/>
+		<require idref="board.xplain"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

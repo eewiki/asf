@@ -1,0 +1,11 @@
+<asf xmlversion="1.0">
+	<project caption="UC3C Fractal Display using the FPU Application for uc3c_ek" id="avr32.applications.uc3c-fpu-demo.uc3c_ek">
+		<build type="include-path" value="../conf/"/>
+		<require idref="avr32.applications.uc3c-fpu-demo"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

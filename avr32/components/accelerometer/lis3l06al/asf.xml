@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.accelerometer.lis3l06al" caption="Accelerometer LIS3L06AL">
+		<info type="gui-flag" value="hidden"/>
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="description" value="summary">
+		Software Driver for the Accelerometer LIS3L06AL. This driver relies on the ADC hardware module.
+		It provides functions to initialize the module, to read (x,y,z) coordinates and to get acceleration/orientation/angle information.
+		</info>
+		<build type="c-source" value="lis3l06al.c"/>
+		<build type="header-file" subtype="api" value="lis3l06al.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_components_accelerometer_lis3l06al"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.drivers.adc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.utils.libs.avr32gcc.libm"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

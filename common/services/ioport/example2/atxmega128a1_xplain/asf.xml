@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Common IOPORT service example 2 for XPLAIN" id="common.services.ioport.example2.xplain">
+		<info type="description" value="summary">
+			Should toggle one pin on the Xmega port A
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<require idref="common.services.ioport.example2"/>
+		<require idref="board.xplain"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

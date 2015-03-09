@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project id="common.services.gfx_mono.example.sysfont.xmega_c3_xplained" caption="Example for GFX Monochrome System Font driver on XMEGA-C3 Xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<config name="config.gfx_mono.display" value="ug_2832hsweg04"/>
+		<require idref="common.services.gfx_mono.example.sysfont"/>
+		<require idref="board.xmega_c3_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

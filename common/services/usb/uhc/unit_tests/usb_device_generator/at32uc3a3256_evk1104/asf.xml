@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="EVK1104 USB device generator to test USB host core" id="common.services.usb.host.tests.generator.evk1104">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.evk1104"/>
+		<config name="config.board.evk1104.led" value="yes"/>
+		<require idref="common.services.usb.host.tests.generator"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

@@ -1,0 +1,153 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.wifi.example" caption="Wi-Fi H&amp;D Stack Example">
+		<info type="description" value="summary">
+		H&amp;D WIFI Stack demonstrate a basic web server using the EXTWIFI SPB104 or SPB105 hardware kits.
+		</info>
+		<device-support value="uc3"/>
+		<info type="gui-flag" value="hidden"/>
+		<require idref="avr32.components.wifi.common"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<!-- This common module needs to be a service not a meta module to ensure that the files are not mangled in as5_32 generator -->
+	<module type="service" id="avr32.components.wifi.common" caption="Wi-Fi H&amp;D Stack Service">
+		<info type="description" value="summary">
+		H&amp;D WIFI Stack demonstrate a basic web server using the EXTWIFI SPB104 or SPB105 hardware kits.
+		</info>
+		<require idref="avr32.components.wifi.license"/>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="net/httpd.c"/>
+		<build type="header-file" value="net/httpd.h"/>
+		<build type="c-source" value="net/fs.c"/>
+		<build type="header-file" value="net/fs.h"/>
+		<build type="c-source" value="net/ping.c"/>
+		<build type="header-file" value="net/ping.h"/>
+		<build type="c-source" value="net/ttcp.c"/>
+		<build type="header-file" value="net/ttcp.h"/>
+		<build type="c-source" value="util/printf-stdarg.c"/>
+		<build type="header-file" value="util/printf-stdarg.h"/>
+		<build type="c-source" value="http_server/main.c"/>
+		<build type="c-source" value="http_server/fsdata.c"/>
+		<build type="header-file" value="http_server/fsdata_app.h"/>
+		<build type="c-source" value="ports/avr32/timer.c"/>
+		<build type="header-file" value="ports/avr32/timer.h"/>
+		<build type="c-source" value="ports/avr32/board_init.c"/>
+		<build type="header-file" value="ports/avr32/board_init.h"/>
+		<build type="c-source" value="util/util.c"/>
+		<build type="header-file" value="util/util.h"/>
+		<build type="c-source" value="util/getopt.c"/>
+		<build type="c-source" value="wl/cmd_wl.c"/>
+		<build type="header-file" value="wl/cmd_wl.h"/>
+		<build type="c-source" value="net/lwip_setup.c"/>
+		<build type="c-source" value="util/console.c"/>
+		<build type="header-file" value="util/console.h"/>
+		<build type="c-source" value="wl/wl_cm.c"/>
+		<build type="header-file" value="wl/wl_cm.h"/>
+		<build type="doxygen-entry-point" value="http_server_demo"/>
+		<build type="header-file" value="net/fsdata_file.h"/>
+		<build type="header-file" value="net/hdwireless_gif.h"/>
+		<build type="header-file" value="net/lwip_setup.h"/>
+		<build type="include-path" value="ports/avr32/conf/"/>
+		<build type="header-file" value="ports/avr32/conf/conf_access.h"/>
+		<build type="header-file" value="ports/avr32/conf/conf_at45dbx.h"/>
+		<build type="header-file" value="ports/avr32/conf/conf_clock.h"/>
+		<build type="header-file" value="ports/avr32/conf/conf_eth.h"/>
+		<build type="header-file" value="ports/avr32/conf/lwipopts.h"/>
+		<build type="header-file" value="util/nvram.h"/>
+		<build type="header-file" value="util/top_defs.h"/>
+		<build type="header-file" value="util/trace.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="ucr1"/>
+		<device-support value="ucr2"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.rtc"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.adc"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="common.services.delay"/>
+		<require idref="avr32.components.wifi.hd"/>
+		<require idref="thirdparty.lwip.version"/>
+		<require idref="common.components.memory.data_flash.at45dbx._asf_v1"/>
+		<require idref="avr32.components.wifi.interface"/>
+		<require idref="avr32.components.wifi.gui"/>
+		<require idref="avr32.components.wifi.wpa"/>
+		<require idref="avr32.components.wifi.key"/>
+		<require idref="avr32.components.wifi.fw_download"/>
+	</module>
+	<select-by-config id="avr32.components.wifi.gui" name="config.avr32.components.wifi.gui" caption="WIFI H&amp;D Stack Example with GUI" default="no">
+		<module type="meta" id="avr32.components.wifi.gui#no" caption="GUI disabled">
+			<info type="description" value="summary">
+			Use the WIFI H&amp;D stack, connect to a HTTP server.
+			</info>
+			<build type="header-file" value="http_server/http_server_gui.h"/>
+			<build type="header-file" value="ports/avr32/gui.h"/>
+			<build type="include-path" value="ports/avr32"/>
+			<device-support value="uc3"/>
+		</module>
+		<module type="meta" id="avr32.components.wifi.gui#yes" caption="GUI enabled">
+			<info type="description" value="summary">
+			Use the WIFI H&amp;D stack, connect to a HTTP server.
+			</info>
+			<build type="c-source" value="ports/avr32/gui_getstring.c"/>
+			<build type="c-source" value="ports/avr32/gui.c"/>
+			<build type="header-file" value="ports/avr32/gui.h"/>
+			<build type="include-path" value="ports/avr32"/>
+			<build type="c-source" value="http_server/http_server_gui.c"/>
+			<build type="header-file" value="http_server/http_server_gui.h"/>
+			<build type="define" name="WITH_GUI" value=""/>
+			<device-support value="uc3"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="avr32.components.wifi.fw_download" name="config.avr32.components.wifi.fw_download" caption="Wifi internal firmware" default="no">
+		<module type="meta" id="avr32.components.wifi.fw_download#no" caption="fw_download disabled">
+			<info type="description" value="summary">
+			Download firmware to the H&amp;D WIFI card.
+			</info>
+			<build type="header-file" value="wl/fw_download.h"/>
+			<build type="c-source" value="ports/avr32/fw_download_extflash.c"/>
+			<build type="c-source" value="ports/avr32/nvram.c"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3"/>
+		</module>
+		<module type="meta" id="avr32.components.wifi.fw_download#yes" caption="fw_download enabled">
+			<info type="description" value="summary">
+			Download firmware to the H&amp;D WIFI card.
+			</info>
+			<build type="c-source" value="wl/fw_download.c"/>
+			<build type="header-file" value="wl/fw_download.h"/>
+			<build type="include-path" value="."/>
+			<require idref="avr32.components.wifi.helper"/>
+			<device-support value="uc3"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="avr32.components.wifi.interface" name="config.avr32.components.wifi.interface" caption="WIFI interface" default="spi">
+		<module type="meta" id="avr32.components.wifi.interface#sdio" caption="sdio">
+			<build type="c-source" value="ports/avr32/avr32_sdio.c"/>
+			<device-support value="uc3"/>
+		</module>
+		<module type="meta" id="avr32.components.wifi.interface#spi" caption="spi">
+			<build type="c-source" value="ports/avr32/avr32_spi.c"/>
+			<device-support value="uc3"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="avr32.components.wifi.wpa" name="config.avr32.components.wifi.wpa" caption="WIFI WPA" default="yes">
+		<module type="meta" id="avr32.components.wifi.wpa#no" caption="WPA disabled">
+			<device-support value="uc3"/>
+		</module>
+		<module type="meta" id="avr32.components.wifi.wpa#yes" caption="WPA enabled">
+			<build type="define" name="WITH_WPA" value=""/>
+			<device-support value="uc3"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="avr32.components.wifi.key" name="config.avr32.components.wifi.key" caption="WIFI key" default="yes">
+		<module type="meta" id="avr32.components.wifi.key#no" caption="Key disabled">
+			<device-support value="uc3"/>
+		</module>
+		<module type="meta" id="avr32.components.wifi.key#yes" caption="Key enabled">
+			<build type="define" name="WITH_KEY" value=""/>
+			<device-support value="uc3"/>
+		</module>
+	</select-by-config>
+</asf>

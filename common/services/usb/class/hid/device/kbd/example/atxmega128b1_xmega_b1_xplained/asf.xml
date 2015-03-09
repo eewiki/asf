@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device HID Keyboard for XMEGA B1 Xplained" id="common.services.usb.class.hid.device.keyboard.example.example.xmega_b1_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.usb.class.hid.device.keyboard.example"/>
+		<config name="config.common.services.usb.class.device" value="hid_keyboard"/>
+		<require idref="board.xmega_b1_xplained"/>
+		<config name="config.board.xmega_b1_xplained.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128b1"/>
+	</project>
+</asf>

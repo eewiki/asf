@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.rtc" caption="RTC - Real Time Counter">
+		<info type="description" value="summary">
+		Driver for the RTC (32-bit Real Time Counter). The RTC enables periodic interrupts at long intervals, or accurate measurement of real-time sequences. Can be clocked from internal RC oscillator or external 32 kHz crystal.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers" />
+		</info>
+		<build type="c-source" value="rtc.c"/>
+		<build type="header-file" subtype="api" value="rtc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_rtc"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

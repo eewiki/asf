@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="Autonomous QTouch Example on STK600" id="avr32.services.qtouch.devspecific.uc3.uc3l0.examples.example_at.at32uc3l064_stk600-rcuc3l0">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="QDebugSettings.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x1000"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x0000"/>
+		<config name="config.compiler.iarew32.heap_size" value="0x1000"/>
+		<require idref="avr32.services.qtouch.devspecific.uc3.uc3l0.examples.example_at"/>
+		<require idref="board.stk600-rcuc3l0"/>
+		<require idref="config.common.services.qtouch.qdebug.qt600.uc3l0"/>
+		<config name="config.board.stk600-rcuc3l0.init" value="no"/>
+		<config name="config.common.services.qtouch.qdebug.qt600.uc3l0" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

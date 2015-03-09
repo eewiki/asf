@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.applications.mxt143e_xplained_calc_demo" caption="Widget calculator example">
+		<info type="description" value="summary">
+		Example application demonstrating a calculator using the widget toolkit.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+			<keyword value="Touch"/>
+		</info>
+		<build type="c-source" value="calculator.c"/>
+		<build type="c-source" value="widget_gui.c"/>
+		<build type="header-file" value="widget_gui.h"/>
+		<build type="header-file" value="conf_membag.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_wtk.h"/>
+		<build type="header-file" value="conf_win.h"/>
+		<build type="header-file" value="atmel_logo_small.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.wtk"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.components.touch.mxt"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

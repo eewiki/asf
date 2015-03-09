@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="Basic SD/MMC/SDIO card example for XMEGA-C3 Xplained" id="common.components.memory.sd_mmc.example1.xmega_c3_xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_sd_mmc.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<require idref="common.components.memory.sd_mmc.example1"/>
+		<config name="config.common.components.memory.sd_mmc" value="spi"/>
+		<require idref="board.xmega_c3_xplained"/>
+		<config name="config.board.xmega_c3_xplained.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

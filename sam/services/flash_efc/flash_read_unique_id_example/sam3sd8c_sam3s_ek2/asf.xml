@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="Flash Read Unique Id Example for SAM3S_EK2" id="sam.services.flash.read.unique.id_example.sam3s_ek2">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.services.flash.read.unique.id_example"/>
+		<require idref="sam.utils.cmsis.sam3sd8.source.template"/>
+		<require idref="board.sam3s_ek2"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam3sd8c"/>
+	</project>
+</asf>

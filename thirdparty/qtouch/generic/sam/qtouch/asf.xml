@@ -1,0 +1,118 @@
+<asf xmlversion="1.0">
+   	<select-by-device id="common.services.qtouch.generic.sam.qtouch" caption="Atmel QTouch Library for Atmel SAM">
+		<module type="service" id="common.services.qtouch.generic.sam.qtouch#sam3x" caption="Atmel QTouch Library 4.4 for Atmel SAM3X devices">
+			<info type="description" value="summary">
+			This is the Atmel QTouch Library for Atmel SAM3X that consists of
+			one api header file (touch_api.h) and the required library files.
+			All projects using this library must also provide the required header file(touch_qt_config.h)
+			used to configure the library.
+			For more information on the Atmel QTouch Library, check www.atmel.com/qtouchlib.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="../../include/touch_api.h"/>
+			<build type="include-path" value="../../include"/>
+			<build type="library" subtype="user" value="lib/iar/libsam3x-32qt-k-8rs-iar.a" toolchain="iarewarm"/>
+			<build type="library" subtype="user" value="lib/gcc/libsam3x-32qt-k-8rs-gnu.a" toolchain="armgcc"/>
+			<device-support value="sam3x"/>
+			<build type="distribute" subtype="license" value="../../../license.txt"/>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+		</module>
+		<module type="service" id="common.services.qtouch.generic.sam.qtouch#sam3s" caption="Atmel QTouch Library 4.4 for Atmel SAM3S devices">
+			<info type="description" value="summary">
+			This is the Atmel QTouch Library for Atmel SAM3S that consists of
+			one api header file (touch_api.h) and the required library files.
+			All projects using this library must also provide the required header file(touch_qt_config.h)
+			used to configure the library.
+			For more information on the Atmel QTouch Library, check www.atmel.com/qtouchlib.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="../../include/touch_api.h"/>
+			<build type="include-path" value="../../include"/>
+			<build type="library" subtype="user" value="lib/iar/libsam3s-32qt-k-8rs-iar.a" toolchain="iarewarm"/>
+			<build type="library" subtype="user" value="lib/gcc/libsam3s-32qt-k-8rs-gnu.a" toolchain="armgcc"/>
+			<device-support value="sam3s"/>
+			<build type="distribute" subtype="license" value="../../../license.txt"/>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+		</module>
+		<module type="service" id="common.services.qtouch.generic.sam.qtouch#sam3sd8" caption="Atmel QTouch Library 4.4 for Atmel SAM3SD8 devices">
+			<info type="description" value="summary">
+			This is the Atmel QTouch Library for Atmel SAM3SD8 that consists of
+			one api header file (touch_api.h) and the required library files.
+			All projects using this library must also provide the required header file(touch_qt_config.h)
+			used to configure the library.
+			For more information on the Atmel QTouch Library, check www.atmel.com/qtouchlib.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="../../include/touch_api.h"/>
+			<build type="include-path" value="../../include"/>
+			<build type="library" subtype="user" value="lib/iar/libsam3sd8-32qt-k-8rs-iar.a" toolchain="iarewarm"/>
+			<build type="library" subtype="user" value="lib/gcc/libsam3sd8-32qt-k-8rs-gnu.a" toolchain="armgcc"/>
+			<device-support value="sam3sd8"/>
+			<build type="distribute" subtype="license" value="../../../license.txt"/>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+		</module>		
+		<module type="service" id="common.services.qtouch.generic.sam.qtouch#sam4s" caption="Atmel QTouch Library 5.0 for Atmel SAM4S devices">
+			<info type="description" value="summary">
+			This is the Atmel QTouch Library for Atmel SAM4S that consists of
+			one api header file (touch_api.h) and the required library files.
+			All projects using this library must also provide the required header file(touch_qt_config.h)
+			used to configure the library.
+			For more information on the Atmel QTouch Library, check www.atmel.com/qtouchlib.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="../../include/touch_api.h"/>
+			<build type="include-path" value="../../include"/>
+			<build type="library" subtype="user" value="lib/iar/libsam4s-32qt-k-8rs-iar.a" toolchain="iarewarm"/>
+			<build type="library" subtype="user" value="lib/gcc/libsam4s-32qt-k-8rs-gnu.a" toolchain="armgcc"/>
+			<device-support value="sam4s"/>
+			<build type="distribute" subtype="license" value="../../../license.txt"/>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+		</module>	
+		<module type="service" id="common.services.qtouch.generic.sam.qtouch#sam3n" caption="Atmel QTouch Library 4.4 for Atmel SAM3N devices">
+			<info type="description" value="summary">
+			This is the Atmel QTouch Library for Atmel SAM3N that consists of
+			one api header file (touch_api.h) and the required library files.
+			All projects using this library must also provide the required header file(touch_qt_config.h)
+			used to configure the library.
+			For more information on the Atmel QTouch Library, check www.atmel.com/qtouchlib.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="../../include/touch_api.h"/>
+			<build type="include-path" value="../../include"/>
+			<build type="library" subtype="user" value="lib/iar/libsam3n-32qt-k-8rs-iar.a" toolchain="iarewarm"/>
+			<build type="library" subtype="user" value="lib/gcc/libsam3n-32qt-k-8rs-gnu.a" toolchain="armgcc"/>
+			<device-support value="sam3n"/>
+			<build type="distribute" subtype="license" value="../../../license.txt"/>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+		</module>		
+		<module type="service" id="common.services.qtouch.generic.sam.qtouch#sam3u" caption="Atmel QTouch Library 4.4 for Atmel SAM3U devices">
+			<info type="description" value="summary">
+			This is the Atmel QTouch Library for Atmel SAM3U that consists of
+			one api header file (touch_api.h) and the required library files.
+			All projects using this library must also provide the required header file(touch_qt_config.h)
+			used to configure the library.
+			For more information on the Atmel QTouch Library, check www.atmel.com/qtouchlib.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="../../include/touch_api.h"/>
+			<build type="include-path" value="../../include"/>
+			<build type="library" subtype="user" value="lib/iar/libsam3u-32qt-k-8rs-iar.a" toolchain="iarewarm"/>
+			<build type="library" subtype="user" value="lib/gcc/libsam3u-32qt-k-8rs-gnu.a" toolchain="armgcc"/>
+			<device-support value="sam3u"/>
+			<build type="distribute" subtype="license" value="../../../license.txt"/>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+		</module>		
+	</select-by-device>
+</asf>

@@ -1,0 +1,94 @@
+<asf xmlversion="1.0">
+	<select-by-config id="common.services.usb.class.msc.host.composite.ctrl_access" name="config.common.services.usb.class.msc.host.composite.ctrl_access" caption="USB Host MSC (Multiple classes support)" default="disable">
+		<module type="service" id="common.services.usb.class.msc.host.composite.ctrl_access#enable" caption="USB Host MSC (Multiple classes support)">
+			<info type="description" value="summary">
+			Provides USB Mass Storage Class (MSC) interface to run on USB host which support multiple class.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="uhi_msc_mem.h"/>
+			<build type="c-source" value="uhi_msc_mem.c"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="uhi_msc_mem_group"/>
+			<build type="doxygen-quick-start" value="uhi_msc_mem_quickstart"/>
+			<require idref="common.services.usb.class.msc.host.composite"/>
+			<require idref="common.services.storage.ctrl_access"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b0"/>
+			<device-support value="uc3c"/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<device-support value="sam4l"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="common.services.usb.class.msc.host.composite.ctrl_access#disable" caption="USB Host MSC disabled">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="avr"/>
+			<device-support value="sam"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	<module type="service" id="common.services.usb.class.msc.host.composite" caption="USB Host MSC (Multiple classes support)">
+		<info type="description" value="summary">
+		Provides USB Mass Storage Class (MSC) interface to run on USB host which support multiple class.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" subtype="api" value="uhi_msc.h"/>
+		<build type="c-source" value="uhi_msc.c"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="uhi_msc_group"/>
+		<require idref="common.services.usb.class.msc.protocol"/>
+		<require idref="common.services.usb.class.composite.host"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b0"/>
+		<device-support value="uc3c"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4l"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+	<module type="service" id="common.services.usb.class.msc.host.ctrl_access" caption="USB Host MSC (Single Class support)">
+		<info type="description" value="summary">
+		Provides USB Mass Storage Class (MSC) interface to run on USB host with a single class support.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" subtype="api" value="uhi_msc_mem.h"/>
+		<build type="c-source" value="uhi_msc_mem.c"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="uhi_msc_mem_group"/>
+		<require idref="common.services.usb.class.msc.host"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b0"/>
+		<device-support value="uc3c"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4l"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+	<module type="service" id="common.services.usb.class.msc.host" caption="USB Host MSC (Single Class support)">
+		<info type="description" value="summary">
+		Provides USB Mass Storage Class (MSC) interface to run on USB host with a single class support.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" subtype="api" value="uhi_msc.h"/>
+		<build type="c-source" value="uhi_msc.c"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="uhi_msc_group"/>
+		<build type="module-config" subtype="required-header-file" value="conf_usb_host.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<require idref="common.services.usb.class.msc.protocol"/>
+		<require idref="common.services.usb.host"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b0"/>
+		<device-support value="uc3c"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4l"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+
+</asf>

@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.applications.led_chaser" caption="LED Chaser Example">
+		<module type="application" id="common.applications.led_chaser#0" caption="LED Chaser Example">
+			<info type="description" value="summary">
+			Provides a simple LED Chaser application with defined timing interval in ms between each LED.
+			</info>
+			<build type="c-source" value="led_example.c"/>
+			<device-support value="uc3l"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="common.services.basic.clock"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.applications.led_chaser#1" caption="LED Chaser Example">
+			<info type="description" value="summary">
+			Provides a simple LED Chaser application with defined timing interval in ms between each LED.
+			</info>
+			<build type="c-source" value="led_example.c"/>
+			<device-support value="xmega"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.services.basic.clock"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

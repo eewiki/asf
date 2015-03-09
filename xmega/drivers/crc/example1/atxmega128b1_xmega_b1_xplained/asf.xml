@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project id="xmega.drivers.crc.example1.xmega_b1_xplained" caption="Example1 for CRC driver on XMEGA-B1 Xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<config name="config.board.xmega_b1_xplained.led" value="yes"/>
+		<require idref="xmega.drivers.crc.example1"/>
+		<require idref="board.xmega_b1_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128b1"/>
+	</project>
+</asf>

@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="NVM example for sam4s16c on SAM3U_EK" id="common.drivers.nvm.example.sam3u_ek">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_nvm_example.h"/>
+		<build type="header-file" value="conf_nvm.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.drivers.nvm.example"/>
+		<config name="config.common.drivers.nvm.mem_type" value="no_extmem"/>
+		<require idref="board.sam3u_ek"/>
+		<require idref="common.utils.stdio"/>
+		<config name="config.board.sam3u_ek.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3u4e"/>
+	</project>
+</asf>

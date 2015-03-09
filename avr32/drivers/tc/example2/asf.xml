@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.tc.example2" caption="TC Example 2">
+		<info type="description" value="summary">
+		This example involves 2 timer/counter channels, one configured in capture mode(input) and the other configured in Waveform mode(output) to generate a PWM on the output.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc_example2.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.tc"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

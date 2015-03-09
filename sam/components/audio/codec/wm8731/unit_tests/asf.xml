@@ -1,0 +1,41 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.components.audio.codec.wm8731.unit_tests" caption="Unit Tests for the SAM WM8731 Component">
+		<module type="application" id="sam.components.audio.codec.wm8731.unit_tests#0" caption="Unit Tests for the SAM WM8731 Component">
+			<info type="description" value="summary">
+				Unit test application for the WM8731 module.
+			</info>
+			<build type="c-source" value="unit_tests.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_wm8731.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam3x"/>
+			<require idref="sam.utils.cmsis.sam3x.source.template"/>
+			<require idref="sam.components.audio.codec.wm8731"/>
+			<require idref="common.components.memory.eeprom.at24cxx"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.drivers.ssc"/>
+			<require idref="sam.drivers.dmac"/>
+			<require idref="common.utils.unit_test"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="sam.components.audio.codec.wm8731.unit_tests#1" caption="Unit Tests for the SAM WM8731 Component">
+			<info type="description" value="summary">
+				Unit test application for the WM8731 module.
+			</info>
+			<build type="c-source" value="unit_tests.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_wm8731.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam3u"/>
+			<require idref="sam.utils.cmsis.sam3u.source.template"/>
+			<require idref="sam.components.audio.codec.wm8731"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.drivers.ssc"/>
+			<require idref="sam.drivers.dmac"/>
+			<require idref="common.utils.unit_test"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

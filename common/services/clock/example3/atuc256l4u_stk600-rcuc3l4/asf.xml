@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Clocks Control / Example 3 for STK600-RCUC3L4" id="common.services.basic.clock.example3.stk600-rcuc3l4">
+		<info type="description" value="summary">
+		Switch between various system clock sources and prescalers at run time.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example3.h"/>
+		<require idref="common.services.basic.clock.example3"/>
+		<require idref="board.stk600-rcuc3l4"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc256l4u"/>
+	</project>
+</asf>

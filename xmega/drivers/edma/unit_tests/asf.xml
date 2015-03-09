@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.edma.unit_tests" caption="Unit Tests for the XMEGA EDMA Driver">
+		<info type="description" value="summary">
+			Perform a range of test on the EDMA module.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="DMA Controller"/>
+		</info>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<device-support value="xmegae"/>
+		<require idref="xmega.drivers.edma"/>
+		<require idref="xmega.drivers.tc45"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.ebi.smc.example" caption="SMC (Static Memory Controller) Example">
+		<info type="description" value="summary">
+		Using the SMC, write data to an external RAM memory connected to the SMC and read data back.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="smc_example.c"/>
+		<build type="header-file" value="smc_peripheral.h"/>
+		<build type="header-file" value="conf_ebi.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<require idref="avr32.drivers.ebi.smc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.usart"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

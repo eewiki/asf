@@ -1,0 +1,81 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.usb.class.cdc.device.example" caption="USB Device CDC Example">
+		<module type="application" id="common.services.usb.class.cdc.device.example#0" caption="USB Device CDC Example">
+			<info type="description" value="summary">
+			Provide an application example of USB Communication Device Class (CDC) implementation: a bridge between USART and USB CDC interface.
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="uart.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="uart_uc3.c"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="uc3"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.usb.class.cdc.device.example#1" caption="USB Device CDC Example">
+			<info type="description" value="summary">
+			Provide an application example of USB Communication Device Class (CDC) implementation: a bridge between USART and USB CDC interface.
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="uart.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="uart_xmega.c"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa3bu"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.usb.class.cdc.device.example#2" caption="USB Device CDC Example">
+			<info type="description" value="summary">
+			Provide an application example of USB Communication Device Class (CDC) implementation: a bridge between USART and USB CDC interface.
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="uart.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<build type="module-config" subtype="path" value="example_config"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="uart_sam.c"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd"/>
+			<device-support value="sam3u"/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4l"/>
+			<device-support value="sam4e"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

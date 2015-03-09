@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="common.boards.security_xplained" caption="Security - Security Xplained Extension Board">
+		<build type="define" name="EXT_BOARD" value="SECURITY_XPLAINED"/>
+		<build type="header-file" value="security_xplained.h"/>
+		<build type="c-source" value="security_xplained.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.boards"/>
+		<require idref="common.components.crypto.sha204"/>
+		<device-support value="xmegaa1"/>
+		<generator value="doxygen-module" default-mcu="atxmega128a1"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

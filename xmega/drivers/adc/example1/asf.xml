@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.adc.example1" caption="ADC Internal temperature sensor example">
+		<info type="description" value="summary">
+		Interrupt-based 12-bit ADC conversion using the internal 1 V voltage reference. Channel 0 of the ADC is configured for single-ended measurements from the internal temperature sensor.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc_example1.c"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegad"/>
+		<device-support value="xmegae"/>
+		<require idref="xmega.drivers.adc"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<module type="application" id="xmega.drivers.adc.example1_gfx" caption="ADC Internal temperature sensor example - Graphics">
+		<info type="description" value="summary">
+			Interrupt-based 12-bit ADC conversion using the internal 1 V voltage reference. Channel 0 of the ADC is configured for single-ended measurements from the internal temperature sensor, and output on the display.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc_example1_gfx.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="common.services.gfx_mono"/>
+		<require idref="common.services.gfx_mono.font"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.drivers.twi.unit_tests" caption="Unit Tests for the MEGARF Twi driver">
+		<device-support value="mega"/>
+		<info type="description" value="summary">
+		Unit tests for the MEGARF TWI driver.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_twi.h"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="mega.drivers.twi"/>
+		<require idref="common.services.delay"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

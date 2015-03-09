@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="GPIO Local BUS Example for STK600_RCUC3L0" id="avr32.drivers.gpio.local_bus_example.stk600-rcuc3l0256">
+		<require idref="avr32.drivers.gpio.local_bus_example"/>
+		<require idref="board.stk600-rcuc3l0256"/>
+		<config name="config.board.stk600-rcuc3l0.init" value="no"/>
+		<config name="config.compiler.iarew32.optimization" value="high"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l0256"/>
+	</project>
+</asf>

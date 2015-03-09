@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.cpu.sau" caption="CPU SAU - Secure Access Unit">
+		<info type="description" value="summary">
+			Drivers for Security Access Unit (SAU). SAU is set up to provide a secure channel into specific memory locations that are protected by the MPU.
+		</info>
+		<build type="c-source" value="sau.c"/>
+		<build type="header-file" value="sau.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_driver_cpu_sau"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

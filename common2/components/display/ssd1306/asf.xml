@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common2.components.display.ssd1306" caption="SSD1306 OLED controller">
+		<info type="description" value="summary">
+		Low-level driver for the SSD1306 OLED controller through 4-wire SPI.
+		Note: Controller inside display UG-2832HSWEG04 OLED (128 x 32, Monochrome).
+		This display is available on SAMD20 Xplained Pro
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<device-support value="samd20"/>
+		<build type="c-source" value="ssd1306.c"/>
+		<build type="header-file" subtype="api" value="ssd1306.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_ssd1306.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="ssd1306_oled_controller_group"/>
+		<require idref="sam0.drivers.port"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.drivers.sercom.spi"/>
+		<require idref="common2.services.delay"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

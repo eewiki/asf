@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="service" id="sam.services.flash" caption="Flash - SAM Flash Service API">
+		<info type="description" value="summary">
+		Flash service API for accessing internal flash memory.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<build type="c-source" value="flash_efc.c"/>
+		<build type="header-file" subtype="api" value="flash_efc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_services_flash_efc_group"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="sam.drivers.efc"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

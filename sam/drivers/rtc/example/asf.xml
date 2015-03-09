@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.rtc.example" caption="RTC Example">
+		<info type="description" value="summary">
+		This example is aimed to demonstrate the usage of RTC peripheral.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="rtc_example.c"/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.rtc"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

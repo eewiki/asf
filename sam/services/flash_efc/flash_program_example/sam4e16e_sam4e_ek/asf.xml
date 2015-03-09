@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="Flash Program Example for SAM4E_EK" id="sam.services.flash.program_example.sam4e_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.services.flash.program_example"/>
+		<require idref="board.sam4e_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam4e16e"/>
+	</project>
+</asf>

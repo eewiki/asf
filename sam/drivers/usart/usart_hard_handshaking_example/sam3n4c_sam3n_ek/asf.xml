@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="USART Hardware Handshaking Example for SAM3N_EK" id="sam.drivers.usart.usart_hard_handshaking_example.sam3n_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.usart.usart_hard_handshaking_example"/>
+		<require idref="board.sam3n_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam3n4c"/>
+	</project>
+</asf>

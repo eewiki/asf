@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.user_board.at32uc3b1256.init" name="config.user_board.at32uc3b1256.init" caption="User board initialization support" default="yes">
+		<module type="meta" id="config.user_board.at32uc3b1256.init#no" caption="User board initialization support disabled">
+		</module>
+		<module type="meta" id="config.user_board.at32uc3b1256.init#yes" caption="User board initialization support enabled">
+			<build type="module-config" subtype="required-header-file" value="user_board.h"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.user_board.at32uc3b1256" caption="User Board">
+		<build type="define" name="BOARD" value="USER_BOARD"/>
+		<require idref="config.user_board.at32uc3b1256.init"/>
+		<require idref="common.boards"/>
+		<device-support value="at32uc3b1256"/>
+	</board>
+</asf>

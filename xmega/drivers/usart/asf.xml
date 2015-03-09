@@ -1,0 +1,89 @@
+<asf xmlversion="1.0">
+	<select-by-device id="xmega.drivers.usart" caption="USART - Universal Synchronous/Asynchronous Receiver/Transmitter">
+		<module type="driver" id="xmega.drivers.usart#0" caption="USART - Universal Synchronous/Asynchronous Receiver/Transmitter">
+			<info type="description" value="summary">
+			Driver for the Universal Synchronous and Asynchronous Serial Receiver and Transmitter (USART).
+			Provides functions for configuring and using the USART in RS232 and SPI mode.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="c-source" value="usart.c"/>
+			<build type="header-file" subtype="api" value="usart.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="usart_group"/>
+			<build type="doxygen-quick-start" value="xmega_usart_quickstart"/>
+			<device-support value="xmegaa"/>
+			<device-support value="xmegaau"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<device-support value="xmegad"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.pmic"/>
+			<require idref="xmega.utils"/>
+			<require idref="common.services.ioport"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="driver" id="xmega.drivers.usart#1" caption="USART - Universal Synchronous/Asynchronous Receiver/Transmitter">
+			<require idref="xmega.drivers.usart_xmegae"/>
+			<device-support value="xmegae"/>
+			<build type="doxygen-entry-point" value="usart_group"/>
+			<build type="doxygen-quick-start" value="xmega_usart_quickstart"/>
+		</module>
+	</select-by-device>
+
+
+	<select-by-config id="xmega.drivers.usart_xmegae" name="config.xmega.drivers.usart_xmegae" caption="USART for XMEGA E" default="standard">
+		<info type="description" value="summary">
+			Driver for the Universal Synchronous and Asynchronous Serial Receiver and Transmitter (USART).
+			Provides functions for configuring and using the USART in RS232 and SPI mode. For XMEGA E parts, the driver can be configured to implement or not the XMEGA E specific features (enhanced selection) or not (standard selection). The standard configuration keeps the drivers interface fully compatible will other XMEGA families, whereas the enhanced configuration allows to acces the USART XMEGA E specific features (start frame detection, variable frame lenght, encoding/decoding). 
+		</info>
+		<module type="driver" id="xmega.drivers.usart_xmegae#standard" caption="USART XMEGA Driver with standad XMEGA features">
+			<info type="description" value="summary">
+			Driver for the Universal Synchronous and Asynchronous Serial Receiver and Transmitter (USART).
+			Provides functions for configuring and using the USART in RS232 and SPI mode.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="usart.c"/>
+			<build type="header-file" subtype="api" value="usart.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="usart_group"/>
+			<build type="doxygen-quick-start" value="xmega_usart_quickstart"/>
+			<device-support value="xmegae"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.pmic"/>
+			<require idref="xmega.utils"/>
+			<require idref="common.services.ioport"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+
+		<module type="driver" id="xmega.drivers.usart_xmegae#extended" caption="USART XMEGA Driver with XMEGA E enhanced features">
+			<info type="description" value="summary">
+			Driver for the Universal Synchronous and Asynchronous Serial Receiver and Transmitter (USART).
+			Provides functions for configuring and using the USART in RS232 and SPI mode.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="usart.c"/>
+			<build type="c-source" value="usart_xmegae.c"/>
+			<build type="header-file" subtype="api" value="usart.h"/>
+			<build type="header-file" subtype="api" value="usart_xmegae.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="usart_group"/>
+			<build type="doxygen-quick-start" value="xmega_usart_quickstart"/>
+			<device-support value="xmegae"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.xcl"/>
+			<require idref="xmega.drivers.pmic"/>
+			<require idref="xmega.utils"/>
+			<require idref="common.services.ioport"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegae"/>
+		</module>
+	</select-by-config>
+
+</asf>

@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.usb.host.tests.targets" caption="Unit Tests for the USB Host Core Driver">
+		<info type="description" value="summary">
+		Provide a USB host core unit tests implementation.
+		</info>
+		<build type="header-file" value="conf_usb_host.h"/>
+		<build type="header-file" value="unit_tests.h"/>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b0"/>
+		<device-support value="uc3c"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4l"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.usb.class.host"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

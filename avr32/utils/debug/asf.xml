@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.utils.debug" caption="Debug macros and functions">
+		<info type="description" value="summary">
+		Debug macros and functions for tracing memory usage for the malloc() and free() functions. Can also be used to get
+		information about both size and placement of the heap memory.
+		</info>
+		<build type="c-source"  value="debug.c"/>
+		<build type="header-file" subtype="api" value="debug.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_utils_debug"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c" />
+	</module>
+	<module type="service" id="avr32.utils.print_funcs" caption="USART Debug strings">
+		<info type="description" value="summary">
+		This driver adds functionality to print debug strings and data through a dedicated USART. It supports writing both single
+		characters, strings, and integer values in both decimal and hexadecimal form.
+		</info>
+		<build type="c-source" value="print_funcs.c"/>
+		<build type="header-file" subtype="api" value="print_funcs.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_utils_print_funcs"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.gpio"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c" />
+	</module>
+</asf>

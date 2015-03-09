@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="TC Example 2 for xplain" id="xmega.drivers.tc.example2.xplain">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="xmega.drivers.tc.example2"/>
+		<require idref="board.xplain"/>
+		<config name="config.board.xplain.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="PM Example2 for UC3L_EK" id="avr32.drivers.pm.example2.uc3l_ek">
+		<require idref="avr32.drivers.pm.example2"/>
+		<require idref="board.uc3l_ek"/>
+		<config name="config.board.uc3l_ek.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.twim" caption="TWI - Two-Wire Master Interface">
+		<info type="description" value="summary">
+		Driver for the TWIM (Two-Wire Master Interface). This driver provides access to the main features of the TWIM controller. The TWIM interconnects components on a unique two-wire bus. The TWIM is programmable as a master with sequential or single-byte access. Multiple master capability is supported.
+		</info>
+		<build type="c-source" value="twim.c"/>
+		<build type="header-file" subtype="api" value="twim.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_twim_group"/>
+		<build type="doxygen-quick-start" value="sam_twim_quick_start"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

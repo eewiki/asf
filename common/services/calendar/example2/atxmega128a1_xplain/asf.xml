@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project id="common.services.calendar.example2.xplain" caption="Calendar service example 2 for Xplain">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="common.services.calendar.example2"/>
+		<require idref="board.xplain"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="iarew"/>
+		<config name="config.board.xplain.led" value="yes"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

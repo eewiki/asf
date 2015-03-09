@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.spi.spi_dmac_slave_example" caption="SPI DMAC Slave Example">
+		<info type="description" value="summary">
+		This example is aimed to demonstrate the usage of SPI peripheral with DMAC function.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="spi_dmac_slave_example.c"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3u"/>
+		<device-support value="sam4e"/>
+		<require idref="sam.drivers.spi"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.dmac"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type ="service" caption="AVR2025-MAC Serial Interface Module" id="thirdparty.wireless.avr2025_mac.addons.serial_if">
+		<info type="description" value="summary">
+		Serial Interface Module acts as a interface for  converting stream of command bytes to corresponding MAC Api's
+		</info>
+		<build type="c-source" value="src/serial_interface.c"/>
+		<build type="header-file" value="inc/serial_interface.h"/>
+		<build type="header-file" value="inc/private_const.h"/>
+		<build type="include-path" value="inc/"/>
+		<build type="doxygen-entry-point" value="group_mac_serial_if"/>
+        <require idref="thirdparty.wireless.avr2025_mac.includes"/>
+        <require idref="thirdparty.wireless.avr2025_mac.source.mac.inc"/>
+		<require idref="thirdparty.wireless.addons.sio2host"/>
+        <device-support-alias value="avr2025_mac_pal_support"/>
+		<device-support value="sam4l"/>
+	</module>
+</asf>

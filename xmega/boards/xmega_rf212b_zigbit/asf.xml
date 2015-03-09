@@ -1,0 +1,37 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.xmega_rf212b_zigbit.led" name="config.board.xmega_rf212b_zigbit.led" caption="XMEGA-ZIGBIT RF212b LED support" default="yes">
+		<module type="meta" id="config.board.xmega_rf212b_zigbit.led#no" caption="XMEGA-ZIGBIT RF212b LED support disabled">
+		</module>
+		<module type="meta" id="config.board.xmega_rf212b_zigbit.led#yes" caption="XMEGA-ZIGBIT RF212b LED support enabled">
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.xmega_rf212b_zigbit.init" name="config.board.xmega_rf212b_zigbit.init" caption="XMEGA-ZIGBIT RF212b initialization support" default="yes">
+		<module type="meta" id="config.board.xmega_rf212b_zigbit.init#no" caption="XMEGA-ZIGBIT RF212b initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.xmega_rf212b_zigbit.init#yes" caption="XMEGA-ZIGBIT RF212b initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.xmega_rf212b_zigbit" vendor="Atmel" caption="XMEGA-A3U AT86RF212B Zigbit">
+		<build type="define" name="BOARD" value="XMEGA_RF212B_ZIGBIT"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="xmega_rf212b_zigbit.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="define" name="CONFIG_NVM_IGNORE_XMEGA_A3_D3_REVB_ERRATA" value=""/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x40000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.xmega_rf212b_zigbit.led"/>
+		<require idref="config.board.xmega_rf212b_zigbit.init"/>
+		<device-support value="atxmega256a3u"/>
+	</board>
+</asf>

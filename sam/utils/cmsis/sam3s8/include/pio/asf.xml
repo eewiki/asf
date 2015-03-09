@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam3s8.include.pio" caption="SAM3S8 PIO definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM3S8 PIO
+		</info>
+		<!--
+		<build type="include-path" value="."/>
+		-->
+		<build type="header-file" value="pio_sam3s8b.h"/>
+		<build type="header-file" value="pio_sam3s8c.h"/>
+		<build type="header-file" value="pio_sam3sd8b.h"/>
+		<build type="header-file" value="pio_sam3sd8c.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam3sd"/>
+	</module>
+</asf>

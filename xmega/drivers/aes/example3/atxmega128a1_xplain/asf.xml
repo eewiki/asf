@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="XMEGA AES xplain example3" id="xmega.drivers.aes.example3.xplain">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<require idref="xmega.drivers.aes.example3"/>
+		<require idref="board.xplain"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

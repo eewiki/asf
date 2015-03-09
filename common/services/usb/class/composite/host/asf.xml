@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.usb.class.composite.host" caption="USB Host Multiple classes support">
+		<info type="description" value="summary">
+		Provide a default usb host configuration file with all USB interface availables.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="module-config" subtype="required-header-file" value="conf_usb_host.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<require idref="common.services.usb.host"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b0"/>
+		<device-support value="uc3c"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4l"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

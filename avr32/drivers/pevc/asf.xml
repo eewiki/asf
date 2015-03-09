@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.pevc" caption="Peripheral Event Controller (PEVC) Driver">
+		<info type="description" value="summary">
+		The Peripheral EVent Controller (PEVC) offers a set of features that allows peripherals to interact
+		without intervention from the CPU. The PEVC connects Event Generators to Event Users.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Peripheral Event System" />
+		</info>
+		<build type="c-source" value="pevc.c"/>
+		<build type="header-file" subtype="api" value="pevc.h"/>
+		<build type="header-file" value="uc3c_pevc_ids.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_pevc"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+	</module>
+</asf>

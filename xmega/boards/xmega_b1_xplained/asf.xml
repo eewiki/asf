@@ -1,0 +1,37 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.xmega_b1_xplained.led" name="config.board.xmega_b1_xplained.led" caption="XMEGA-B1 Xplained LED support" default="yes">
+		<module type="meta" id="config.board.xmega_b1_xplained.led#no" caption="XMEGA-B1 Xplained LED support disabled">
+		</module>
+		<module type="meta" id="config.board.xmega_b1_xplained.led#yes" caption="XMEGA-B1 Xplained LED support enabled">
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+	
+	<select-by-config id="config.board.xmega_b1_xplained.init" name="config.board.xmega_b1_xplained.init" caption="XMEGA-B1 Xplained initialization support" default="yes">
+		<module type="meta" id="config.board.xmega_b1_xplained.init#no" caption="XMEGA-B1 Xplained initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.xmega_b1_xplained.init#yes" caption="XMEGA-B1 Xplained initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.xmega_b1_xplained" vendor="Atmel" caption="XMEGA-B1 Xplained">
+		<build type="define" name="BOARD" value="XMEGA_B1_XPLAINED"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="xmega_b1_xplained.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x20000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.xmega_b1_xplained.init"/>
+		<require idref="config.board.xmega_b1_xplained.led"/>
+		<config name="config.c42048a_type" value="full_matrix0"/>
+		<device-support value="atxmega128b1"/>
+	</board>
+</asf>

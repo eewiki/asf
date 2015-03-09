@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="service" id="xmega.services.pwm" caption="PWM service using timer/counter">
+		<info type="description" value="summary">
+		Service for basic PWM use that includes API for quick setup of a XMEGA timer/counter as single slope PWM in normal or interrupt mode. For advanced PWM use with direct access to register, please use the XMEGA timer/counter driver.
+		</info>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="xmegad"/>
+
+		<build type="include-path" value="."/>
+		<build type="c-source" value="pwm.c"/>
+		<build type="header-file" subtype="api" value="pwm.h"/>
+		<build type="doxygen-entry-point" value="pwm_group"/>
+		<build type="doxygen-quick-start" value="pwm_quickstart"/>
+		<require idref="xmega.drivers.tc"/>
+		<require idref="xmega.utils"/>
+
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

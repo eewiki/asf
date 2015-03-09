@@ -1,0 +1,36 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.uc3l-ek-touch-demo" caption="UC3L-EK Touch Application">
+		<info type="description" value="summary">
+		This application is a demonstration application that interfaces with QTouch Studio and controls the LEDs with the touch sensors. It is using the Atmel QTouch Libraries for the AVR UC3 L0 series. 
+		</info>
+		<build type="c-source" value="demo.c"/>
+		<build type="header-file" value="demo.h"/>
+		<build type="header-file" value="QDebugSettings.h"/>
+		<build type="header-file" value="touch_api_at32uc3l.h"/>
+		<build type="header-file" value="touch_config_at32uc3l.h"/>
+		<build type="c-source" value="uc3l-ek-touch-demo.c"/>
+		<build type="library" subtype="user" value="atmel_qtouch_libraries_4.3/device_specific_libraries/32bit_avr/uc3l0/library_files/libuc3l-qtouch-gnu.a" toolchain="avr32gcc"/>
+		<build type="library" subtype="user" value="atmel_qtouch_libraries_4.3/device_specific_libraries/32bit_avr/uc3l0/library_files/libuc3l-qtouch-iar.r82" toolchain="iarew32"/>
+		<build type="c-source" value="qdebug/qdebug.c"/>
+		<build type="header-file" value="qdebug/qdebug.h"/>
+		<build type="c-source" value="qdebug/qdebugtransport.c"/>
+		<build type="header-file" value="qdebug/qdebugtransport.h"/>
+		<build type="c-source" value="qdebug/serial.c"/>
+		<build type="header-file" value="qdebug/serial.h"/>
+		<build type="header-file" value="conf/conf_clock.h"/>
+		<build type="include-path" value="./conf/"/>
+		<require idref="common.services.delay"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.pwma"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.usart"/>
+		<device-support value="uc3l"/>
+		<build type="distribute" subtype="license" value="atmel_qtouch_libraries_4.3/device_specific_libraries/32bit_avr/uc3l0/library_files/License.txt"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

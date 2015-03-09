@@ -1,0 +1,50 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.usb.class.cdc.host.example" caption="USB Host CDC example">
+		<module type="application" id="common.services.usb.class.cdc.host.example#0" caption="USB Host CDC Example">
+			<info type="description" value="summary">
+			Provide an application example of USB Host Communication Device Class (CDC) implementation: a bridge between USART and a USB device CDC.
+			</info>
+			<build type="header-file" value="conf_usb_host.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="uart.h"/>
+			<build type="c-source" value="uart_uc3.c"/>
+			<build type="header-file" value="main.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="include-path" value="."/>
+			<require idref="avr32.drivers.usart"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.host"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="uc3"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.usb.class.cdc.host.example#1" caption="USB Host CDC Example">
+			<info type="description" value="summary">
+			Provide an application example of USB Host Communication Device Class (CDC) implementation: a bridge between USART and a USB device CDC.
+			</info>
+			<build type="header-file" value="conf_usb_host.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="uart.h"/>
+			<build type="c-source" value="uart_sam.c"/>
+			<build type="header-file" value="main.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="include-path" value="."/>
+			<require idref="sam.drivers.usart"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.host"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<device-support value="sam4l"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

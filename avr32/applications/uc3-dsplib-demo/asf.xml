@@ -1,0 +1,43 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.uc3.dsplib.demo" caption="DSPLib Application">
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<info type="keyword" value="technology">
+			<keyword value="CPU"/>
+			<keyword value="Communication"/>
+		</info>
+		<info type="description" value="summary">
+		This application is aimed to demonstrate the AVR UC3 series capabilities in term of DSP computations.
+		</info>
+		<build type="c-source" value="background_image.c"/>
+		<build type="header-file" value="background_image.h"/>
+		<build type="header-file" value="conf/conf_demo.h"/>
+		<build type="header-file" value="conf/conf_ebi.h"/>
+		<build type="header-file" value="conf/conf_et024006dhu.h"/>
+		<build type="header-file" value="conf/conf_tpa6130.h"/>
+		<build type="header-file" value="conf/conf_twi.h"/>
+		<build type="header-file" value="conf/conf_twim.h"/>
+		<build type="include-path" value="./conf/"/>
+		<build type="header-file" value="controller.h"/>
+		<build type="c-source" value="demo.c"/>
+		<build type="c-source" value="dsp_process.c"/>
+		<build type="header-file" value="dsp_process.h"/>
+		<build type="c-source" value="dsp_sprintf.c"/>
+		<build type="header-file" value="dsp_sprintf.h"/>
+		<build type="c-source" value="gui.c"/>
+		<build type="header-file" value="gui.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_demo.h"/>
+		<require idref="avr32.components.audio.amp.tpa6130a2"/>
+		<require idref="avr32.components.display.et024006dhu"/>
+		<require idref="avr32.drivers.abdac"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.ebi.smc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.utils.libs.dsplib"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

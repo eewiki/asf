@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.generic.adpcm" caption="DSPLib - ADPCM generic implementation">
+		<info type="description" value="summary">
+		A useful set of functions for ADPCM encoding/decoding.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="adpcm.c"/>
+		<build type="include-path" value="../../../include"/>
+		<build type="header-file" value="../../../include/dsp_adpcm.h"/>
+		<require idref="avr32.services.dsplib.common"/>
+		<build type="define" name="DSP_ADPCM" value=""/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

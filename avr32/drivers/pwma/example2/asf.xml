@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.pwma.example2" caption="PWMA Example 2">
+		<info type="description" value="summary">
+		Using Analog Comparator increasing/decreasing the duty cycle of the PWMA Module
+		by enabling the Peripheral Event System in PWMA.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks"/>
+		</info>
+		<build type="c-source" value="pwma_example2.c"/>
+		<device-support value="uc3l"/>
+		<device-support value="uc3d"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.delay"/>
+		<require idref="avr32.drivers.pwma"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.acifb"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.intc"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

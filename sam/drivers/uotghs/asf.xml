@@ -1,0 +1,121 @@
+<asf xmlversion="1.0">
+	<select-by-config id="sam.drivers.uotghs.device" name="config.sam.drivers.uotghs.device.sleepmgr" caption="USB - Universial Serial Bus driver" default="with_sleepmgr">
+		<info type="description" value="summary">
+		UOTGHS driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+		</info>
+		<module type="driver" id="sam.drivers.uotghs.device#with_sleepmgr" caption="USB - Universial Serial Bus driver (with sleep manager)">
+			<info type="description" value="summary">
+			UOTGHS driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication" />
+			</info>
+			<build type="c-source" value="uotghs_device.c"/>
+			<build type="header-file" value="uotghs_device.h"/>
+			<build type="header-file" value="uotghs_otg.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		</module>
+		<module type="driver" id="sam.drivers.uotghs.device#without_sleepmgr" caption="USB - Universial Serial Bus driver (without sleep manager)">
+			<info type="description" value="summary">
+			UOTGHS driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="uotghs_device.c"/>
+			<build type="header-file" value="uotghs_device.h"/>
+			<build type="header-file" value="uotghs_otg.h"/>
+			<build type="include-path" value="."/>
+			<build type="define" name="UDD_NO_SLEEP_MGR" value=""/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="sam.drivers.uotghs.host" name="config.sam.drivers.uotghs.host.sleepmgr" caption="USB - Universial Serial Bus driver" default="with_sleepmgr">
+		<info type="description" value="summary">
+		UOTGHS driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+		</info>
+		<module type="driver" id="sam.drivers.uotghs.host#with_sleepmgr" caption="USB - Universial Serial Bus driver (with sleepmgr)">
+			<info type="description" value="summary">
+			UOTGHS driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="uotghs_host.c"/>
+			<build type="header-file" value="uotghs_host.h"/>
+			<build type="header-file" value="uotghs_otg.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.utils"/>
+			<require idref="sam.utils.syscalls"/>
+			<require idref="sam.drivers.uart" /> 
+			<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		</module>
+		<module type="driver" id="sam.drivers.uotghs.host#without_sleepmgr" caption="USB - Universial Serial Bus driver (without sleep manager)">
+			<info type="description" value="summary">
+			UOTGHS driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="uotghs_host.c"/>
+			<build type="header-file" value="uotghs_host.h"/>
+			<build type="header-file" value="uotghs_otg.h"/>
+			<build type="include-path" value="."/>
+			<build type="define" name="UDD_NO_SLEEP_MGR" value=""/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.utils"/>
+			<require idref="sam.utils.syscalls"/>
+			<require idref="sam.drivers.uart" /> 
+			<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		</module>
+	</select-by-config>
+	<module type="driver" id="sam.drivers.uotghs.headers" caption="USB - Universial Serial Bus interface headers">
+		<info type="description" value="summary">
+		UOTGHS device and host driver headers provided to create USB generators without USB stack.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+		</info>
+		<build type="header-file" value="uotghs_device.h"/>
+		<build type="header-file" value="uotghs_host.h"/>
+		<build type="header-file" value="uotghs_otg.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+	</module>
+</asf>

@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="PEVC Unit Test for SAM4L Xplained Pro" id="sam.drivers.events.unit_tests.sam4l_xplained_pro" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_ast.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="sam.drivers.events.unit_tests"/>
+		<require idref="board.sam4l_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

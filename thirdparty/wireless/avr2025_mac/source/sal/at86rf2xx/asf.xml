@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.sal.at86rf2xx" caption="SAL for At86rfxx">
+		<info type="description" value="summary">
+		The AES engine available in the AT86RFXX transceiver is used to perform Security functions
+		</info>
+
+		<build type="c-source"  value="src/sal.c"/>
+		<build type="doxygen-entry-point" value="sal_group"/>
+		<build type="define" name="SAL_TYPE" value ="AT86RF2xx"/>
+			<device-support value="uc3"/>
+			<device-support value="sam4l"/>
+	</module>
+</asf>

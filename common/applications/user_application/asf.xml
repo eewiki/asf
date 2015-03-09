@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.applications.user_application" caption="User application template">
+		<device-support value="avr"/>
+		<device-support value="sam"/>
+		<build type="c-source" value="main.c"/>
+		<require idref="common.boards"/>
+		<info type="description" value="summary">
+			This user application template contains the bare minimum of files needed to
+			start a project which works with the ASF application builder wizard.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

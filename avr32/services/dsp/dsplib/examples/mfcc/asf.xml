@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.dsplib.example.mfcc" caption="DSPLIB - MFCC Sphinx-4 example">
+		<info type="description" value="summary">
+		Example application. It demonstrates how to implement the MFCC Sphinx-4 algorithm using the standard functions provided by the DSP library.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Digital Signal Processing"/>
+		</info>
+		<build type="c-source" value="mfcc_example.c"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_mfcc.h"/>
+		<device-support value="uc3"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.services.dsplib.vectors"/>
+		<require idref="avr32.services.dsplib.operators"/>
+		<require idref="avr32.services.dsplib.transforms"/>
+		<require idref="avr32.services.dsplib.windowing"/>
+		<require idref="avr32.services.dsplib.signal_generation"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

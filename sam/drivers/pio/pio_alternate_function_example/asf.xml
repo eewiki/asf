@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.pio.alternate_function_example" caption="PIO Alternate Function Example">
+		<info type="description" value="summary">
+		This example is aimed to demonstrate the usage of PIO peripheral.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="I/O"/>
+		</info>
+		<build type="c-source" value="pio_alternate_function_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.matrix"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.services.flash"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

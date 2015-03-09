@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.components.display.st7565r.example" caption="ST7565R Display Controller Example">
+		<info type="description" value="summary">
+		A simple example for verifying that the ST7565R low level driver works.
+		</info>
+		<build type="c-source" value="st7565r_example.c"/>
+		<device-support value="xmega"/>
+		<require idref="common.boards"/>
+		<require idref="common.components.display.st7565r"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

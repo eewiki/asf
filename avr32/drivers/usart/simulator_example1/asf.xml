@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.usart.simulator_example1" caption="USART Loopback Simulator Example">
+		<info type="description" value="summary">
+		Using the USART module, send and receive characters using the loopback mode to test the USART functionality in AVR Studio 5 Simulator.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="usart_simulator_example1.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

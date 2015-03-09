@@ -1,0 +1,129 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.basic.clock.example3" caption="Common API for Clocks Control Example 3">
+		<module type="application" id="common.services.basic.clock.example3#0" caption="Common API for Clocks Control Example 3">
+			<info type="description" value="summary">
+			Switch between various system clock sources and prescalers at run time.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example3_xmega.c"/>
+			<device-support value="xmega"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.delay"/>
+			<require idref="xmega.drivers.cpu"/>
+			<require idref="xmega.drivers.ioport"/>
+			<require idref="xmega.utils"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example3#1" caption="Common API for Clocks Control Example 3">
+			<info type="description" value="summary">
+			Switch between various system clock sources and prescalers at run time.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example3_uc3a_uc3b.c"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<require idref="avr32.drivers.flashc"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example3#2" caption="Common API for Clocks Control Example 3">
+			<info type="description" value="summary">
+			Switch between various system clock sources and prescalers at run time.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example3_uc3l.c"/>
+			<device-support value="uc3l"/>
+			<require idref="avr32.drivers.flashcdw"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example3#3" caption="Common API for Clocks Control Example 3">
+			<info type="description" value="summary">
+			Switch between various system clock sources and prescalers at run time.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example3_uc3a3_a4.c"/>
+			<device-support value="uc3a3"/>
+			<require idref="avr32.drivers.flashc"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example3#4" caption="Common API for Clocks Control Example 3">
+			<info type="description" value="summary">
+			Switch between various system clock sources and prescalers at run time.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example3_uc3c.c"/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.drivers.flashc"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example3#5" caption="Common API for Clocks Control Example 3">
+			<info type="description" value="summary">
+			Switch between various system clock sources and prescalers at run time.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example3_uc3d.c"/>
+			<device-support value="uc3d"/>
+			<require idref="avr32.drivers.flashcdw"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="common.services.basic.clock"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example3#6" caption="Common API for Clocks Control Example 3">
+			<info type="description" value="summary">
+			Switch between various system clock sources and prescalers at run time.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example3_sam.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example3.h"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.services.basic.clock"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.clock.example3#7" caption="Common API for Clocks Control Example 3">
+			<info type="description" value="summary">
+			Switch between various system clock sources and prescalers at run time.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="clock_example3_sam4l.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example3.h"/>
+			<device-support value="sam4l"/>
+			<require idref="sam.drivers.flashcalw"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

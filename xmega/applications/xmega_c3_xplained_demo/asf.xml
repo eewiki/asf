@@ -1,0 +1,42 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.applications.xmega_c3_xplained_demo" caption="Demo for XMEGA-C3 Xplained">
+		<info type="description" value="summary">
+		XMEGA-C3 Xplained demo which use LEDs, switchs, Qtouch buttons, OLED display,
+		USB, temperature sensor, light sensor, rtc oscillator, MicroSD slot.
+		Refer to application note AVR1939.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="app_cpu_load.c"/>
+		<build type="header-file" value="app_cpu_load.h"/>
+		<build type="c-source" value="app_usb.c"/>
+		<build type="header-file" value="app_usb.h"/>
+		<build type="c-source" value="app_sampling.c"/>
+		<build type="header-file" value="app_sampling.h"/>
+		<build type="c-source" value="app_touch.c"/>
+		<build type="header-file" value="app_touch.h"/>
+		<build type="c-source" value="app_microsd.c"/>
+		<build type="header-file" value="app_microsd.h"/>
+		<build type="header-file" value="atmel_devices_cdc_inf.h"/>
+		<build type="header-file" value="readme_mht.h"/>
+		<build type="c-source" value="app_bitmaps.c"/>
+		<build type="define" name="ISR_CUSTOM_H" value="\&quot;app_cpu_load.h\&quot;" toolchain="avrgcc"/>
+		<build type="define" name="ISR_CUSTOM_H" value="&quot;app_cpu_load.h&quot;" toolchain="iarew"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.fifo"/>
+		<require idref="common.services.usb.class.device"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.gfx_mono.font"/>
+		<require idref="common.services.fs.fatfs"/>
+		<require idref="common.components.memory.sd_mmc.ctrl_access"/>
+		<require idref="xmega.drivers.tc"/>
+		<require idref="xmega.drivers.rtc"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="config.common.services.qtouch.generic.avr8.xmega_c3_xplained.method"/>
+		<device-support value="xmegac3"/>
+		<build type="doxygen-image-path" value="docsrc"/>
+		<build type="distribute" subtype="file" value="./docsrc/tasks.png"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.cpu.cycle_counter" caption="CPU Cycle Counter">
+		<info type="description" value="summary">
+		CPU Cycle Counter provides an interface to the COUNT and COMPARE registers.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="CPU" />
+		</info>		
+		<build type="header-file" subtype="api" value="cycle_counter.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_cpu_cycle_counter"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

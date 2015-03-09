@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.qtouch.devspecific.uc3.uc3l0.examples.example_at" caption="Autonomous QTouch Example Application">
+		<info type="description" value="summary">
+		When using STK600 board, this application demonstrates AT32UC3L0 Autonomous QTouch Capacitive Touch method. External Touch Sensors can be connected to the STK600 GPIO pins for testing. QT600 USB Bridge can be used to interface with QTouch Studio to display Touch debug data.
+		When using UC3L-EK board, this application demonstrates AT32UC3L0 Sleepwalking feature with asynchronous wakeup from sleep using Autonomous QTouch Capacitive Touch method. External Touch Sensors can be connected to the GPIO pins for testing.
+		When using UC3-L0-XPLAINED board, this application demonstrates AT32UC3L0 Sleepwalking feature with asynchronous wakeup from sleep using Autonomous QTouch Capacitive Touch method. Onboard QTouch button QT0 can be used for testing.
+		</info>
+		<build type="doxygen-entry-point" value="group_avr32_services_qtouch_devspecific_uc3_uc3l0_examples_example_at"/>
+		<build type="c-source" value="main.c"/>
+		<build type="header-file" value="touch_config_at32uc3l.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.ast"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.scif"/>
+		<require idref="avr32.drivers.flashcdw"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.utils"/>
+		<require idref="avr32.services.qtouch.devspecific.uc3.uc3l0"/>
+		<device-support value="uc3l"/>
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

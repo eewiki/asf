@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.services.network.lin.unit_tests" caption="Unit Tests for the SAM LIN Service">
+		<info type="description" value="summary">
+			Unit test application for LIN service.
+		</info>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam3x"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.usart"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.drivers.tc"/>
+		<require idref="sam.services.network.lin"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

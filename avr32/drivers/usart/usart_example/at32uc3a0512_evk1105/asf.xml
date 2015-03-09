@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="USART Example for EVK1105" id="avr32.drivers.usart.usart_example.evk1105">
+		<require idref="avr32.drivers.usart.usart_example"/>
+		<require idref="board.evk1105"/>
+		<config name="config.board.evk1105.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

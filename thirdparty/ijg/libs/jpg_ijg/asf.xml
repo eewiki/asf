@@ -1,0 +1,56 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="avr32.utils.libs.jpg_ijg.common" caption="IJG JPEG library with standard memory management backend">
+		<info type="description" value="summary">
+		This library version of the IJG JPEG decoder uses malloc and free to handle any memory allocation. The memory functions are not implemented in the library itself, instead they must be linked from the application or e.g. the standard C library.
+		</info>
+		<build type="include-path" value="include/"/>
+		<build type="header-file" value="include/cderror.h"/>
+		<build type="header-file" value="include/cdjpeg.h"/>
+		<build type="header-file" value="include/jchuff.h"/>
+		<build type="header-file" value="include/jconfig.h"/>
+		<build type="header-file" value="include/jdct.h"/>
+		<build type="header-file" value="include/jdhuff.h"/>
+		<build type="header-file" value="include/jerror.h"/>
+		<build type="header-file" value="include/jinclude.h"/>
+		<build type="header-file" value="include/jmemsys.h"/>
+		<build type="header-file" value="include/jmorecfg.h"/>
+		<build type="header-file" value="include/jpegint.h"/>
+		<build type="header-file" value="include/jpeglib.h"/>
+		<build type="header-file" value="include/jversion.h"/>
+		<build type="header-file" value="include/transupp.h"/>
+		<device-support value="uc3" />
+	</module>
+	<select-by-config id="avr32.utils.libs.jpg_ijg" name="jpg_ijg.optimization" default="speed" caption="JPG IJG optimization selector">
+		<select-by-device id="avr32.utils.libs.jpg_ijg#speed" caption="jpg_ijg speed device selector">
+			<module type="library" id="avr32.utils.libs.jpg_ijg#speed#ucr2" caption="jpg_ijg speed optimized for ucr2">
+				<info type="gui-flag" value="hidden"/>
+				<build type="library" subtype="user" value="at32ucr2/gcc/libjpg_ijg-at32ucr2-speed_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr2/iar/libjpg_ijg-at32ucr2-speed_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.jpg_ijg.common" />
+				<build type="distribute" subtype="license" value="../../license.txt" />
+
+				<device-support value="ucr2" />
+			</module>
+		</select-by-device>
+		<select-by-device id="avr32.utils.libs.jpg_ijg#balanced" caption="JPG IJG balanced device selector">
+			<module type="library" id="avr32.utils.libs.jpg_ijg#balanced#ucr2" caption="JPG IJG balanced optimized for ucr2">
+				<info type="gui-flag" value="hidden"/>
+				<build type="library" subtype="user" value="at32ucr2/gcc/libjpg_ijg-at32ucr2-balanced_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr2/iar/libjpg_ijg-at32ucr2-balanced_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.jpg_ijg.common" />
+				<build type="distribute" subtype="license" value="../../license.txt" />
+				<device-support value="ucr2" />
+			</module>
+		</select-by-device>
+		<select-by-device id="avr32.utils.libs.jpg_ijg#size" caption="JPG IJG size device selector">
+			<module type="library" id="avr32.utils.libs.jpg_ijg#size#ucr2" caption="JPG IJG size optimized for ucr2">
+				<info type="gui-flag" value="hidden"/>
+				<build type="library" subtype="user" value="at32ucr2/gcc/libjpg_ijg-at32ucr2-size_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr2/iar/libjpg_ijg-at32ucr2-size_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.jpg_ijg.common" />
+				<build type="distribute" subtype="license" value="../../license.txt" />
+				<device-support value="ucr2" />
+			</module>
+		</select-by-device>
+	</select-by-config>
+</asf>

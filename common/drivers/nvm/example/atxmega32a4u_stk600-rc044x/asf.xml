@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="NVM example for STK600-RC044X" id="common.drivers.nvm.example.stk600-rc044x_atxmega32a4u">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_nvm_example.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_nvm.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.drivers.nvm.example"/>
+		<config name="config.common.drivers.nvm.mem_type" value="extmem"/>
+		<require idref="board.stk600-rc044x.atxmega32a4u"/>
+		<config name="config.board.stk600-rc044x.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32a4u"/>
+	</project>
+</asf>

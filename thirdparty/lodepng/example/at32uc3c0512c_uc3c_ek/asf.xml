@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="LodePNG PNG Decoder Example for UC3C-EK" id="avr32.services.picture.png.example.uc3c_ek">
+		<require idref="avr32.services.picture.png.example"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<build type="linker-config" subtype="script" value="link_uc3c0512c_extsdram.lds" toolchain="avr32gcc"/>
+		<build type="linker-config" subtype="script" value="lnkuc3c0512c_extsdram.xcl" toolchain="iarew32"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x1000"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x0000"/>
+		<config name="config.compiler.iarew32.heap_size" value="0x1FFFFFF"/>
+		<config name="config.compiler.avr32gcc.use_startfiles" value="no"/>
+		<config name="config.avr32.utils.gccstartup" value="no"/>
+		<build type="asm-source" value="../crt0.S" toolchain="avr32gcc"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.nvm" caption="NVM - Non Volatile Memory">
+		<info type="description" value="summary">
+		Driver for the Non Volatile Memories (NVM).
+		Provides functions for accessing the program memory, EEPROM, signature row, fuse bits and lock bits.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>		
+		<build type="asm-source" value="nvm_asm.s"/>
+		<build type="c-source" value="nvm.c"/>
+		<build type="header-file" subtype="api" value="nvm.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="nvm_group"/>
+		<build type="doxygen-quick-start" value="xmega_nvm_quickstart"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="xmegad"/>
+		<device-support value="xmegae"/>
+		<require idref="xmega.utils"/>
+		<require idref="xmega.drivers.cpu"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

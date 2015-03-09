@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.crccu" caption="CRCCU - Cyclic Redundancy Check Calculation Unit">
+		<info type="description" value="summary">
+			The CRCCU integrates a dedicated Cyclic Redundancy Check (CRC) engine. When configured and activated, this CRC engine performs a checksum computation on a Memory Area. CRC computation is performed from the LSB to MSB bit. Three different polynomials are available CCIT802.3, CASTAGNOLI and CCIT16.
+		</info>
+		<build type="c-source" value="crccu.c"/>
+		<build type="header-file" subtype="api" value="crccu.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_crccu_group"/>
+		<device-support value="sam3s"/>
+		<device-support value="sam3sd8"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

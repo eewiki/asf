@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project id="common.services.gfx_mono.unit_tests_spinctrl.xplain" caption="Unit tests for spinner widget on Xplain" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_spinctrl.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<require idref="common.services.gfx_mono.unit_tests_spinctrl"/>
+		<require idref="common.services.gfx_mono.display"/>
+		<require idref="board.xplain"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<generator value="as5_8"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

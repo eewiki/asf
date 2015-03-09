@@ -1,0 +1,143 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.fs.fatfs" caption="FatFS file system">
+		<info type="description" value="summary">
+		FatFS is a generic FAT file system module for small embedded systems. The FatFS is written in compliance with ANSI C and completely separated from the disk I/O layer. For more information on FatFS, check elm-chan.org/fsw/ff/00index_e.html.
+		</info>
+		<build type="distribute" subtype="file" value="00readme.txt"/>
+		<build type="distribute" subtype="license" value="../../license.txt"/>
+		<build type="distribute" subtype="file" value="../../ATMEL-disclaimer.txt"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="ff.c"/>
+		<build type="header-file" subtype="api" value="ff.h"/>
+		<build type="header-file" subtype="api" value="diskio.h"/>
+		<build type="header-file" subtype="api" value="integer.h"/>
+		<build type="header-file" subtype="api" value="ffconf.h"/>
+		<build type="distribute" subtype="file" value="../doc/00index_e.html"/>
+		<build type="distribute" subtype="file" value="../doc/00index_j.html"/>
+		<build type="distribute" subtype="file" value="../doc/css_e.css"/>
+		<build type="distribute" subtype="file" value="../doc/css_j.css"/>
+		<build type="distribute" subtype="file" value="../doc/updates.txt"/>
+		<build type="distribute" subtype="file" value="../doc/img/f1.png"/>
+		<build type="distribute" subtype="file" value="../doc/img/f2.png"/>
+		<build type="distribute" subtype="file" value="../doc/img/f3.png"/>
+		<build type="distribute" subtype="file" value="../doc/img/f4.png"/>
+		<build type="distribute" subtype="file" value="../doc/img/f5.png"/>
+		<build type="distribute" subtype="file" value="../doc/img/f6.png"/>
+		<build type="distribute" subtype="file" value="../doc/img/layers.png"/>
+		<build type="distribute" subtype="file" value="../doc/img/layers3.png"/>
+		<build type="distribute" subtype="file" value="../doc/img/rwtest.png"/>
+		<build type="distribute" subtype="file" value="../doc/img/rwtest2.png"/>
+		<build type="distribute" subtype="file" value="../doc/img/rwtest3.png"/>
+		<build type="distribute" subtype="file" value="../doc/en/appnote.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/chdir.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/chdrive.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/chmod.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/close.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/dinit.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/dioctl.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/dread.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/dstat.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/dwrite.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/eof.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/error.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/fattime.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/fdisk.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/filename.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/forward.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/getcwd.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/getfree.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/gets.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/lseek.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/mkdir.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/mkfs.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/mount.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/open.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/opendir.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/printf.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/putc.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/puts.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/rc.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/read.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/readdir.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/rename.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/sdir.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/sfatfs.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/sfile.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/sfileinfo.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/size.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/stat.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/sync.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/tell.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/truncate.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/unlink.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/utime.html"/>
+		<build type="distribute" subtype="file" value="../doc/en/write.html"/>
+		<require idref="config.common.services.fs.fatfs.codepage"/>
+		<require idref="common.services.fs.fatfs-port"/>
+		<device-support value="sam"/>
+		<device-support value="xmega"/>
+		<build type="doxygen-entry-point" value="thirdparty_fatfs_group"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+	<select-by-config id="config.common.services.fs.fatfs.codepage" name="config.common.services.fs.fatfs.codepage" caption="FATFS OEM code page to be used on the target system" default="sbcs">
+		<module type="meta" id="config.common.services.fs.fatfs.codepage#932" caption="FATFS OEM code page to be used on the target system">
+			<info type="description" value="summary">
+			FATFS OEM code page 932: Japanese Shift-JIS (DBCS, OEM, Windows).
+			</info>
+			<build type="c-source" value="option/cc932.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
+			<build type="module-config" subtype="path" value="module_config_932/"/>
+			<device-support value="sam"/>
+			<device-support value="xmega"/>
+		</module>
+		<module type="meta" id="config.common.services.fs.fatfs.codepage#936" caption="FATFS OEM code page to be used on the target system">
+			<info type="description" value="summary">
+			FATFS OEM code page 936: Simplified Chinese GBK (DBCS, OEM, Windows).
+			</info>
+			<build type="c-source" value="option/cc936.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
+			<build type="module-config" subtype="path" value="module_config_936/"/>
+			<device-support value="sam"/>
+			<device-support value="xmega"/>
+		</module>
+		<module type="meta" id="config.common.services.fs.fatfs.codepage#949" caption="FATFS OEM code page to be used on the target system">
+			<info type="description" value="summary">
+			FATFS OEM code page 949: Korean (DBCS, OEM, Windows).
+			</info>
+			<build type="c-source" value="option/cc949.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
+			<build type="module-config" subtype="path" value="module_config_949/"/>
+			<device-support value="sam"/>
+			<device-support value="xmega"/>
+		</module>
+		<module type="meta" id="config.common.services.fs.fatfs.codepage#950" caption="FATFS OEM code page to be used on the target system">
+			<info type="description" value="summary">
+			FATFS OEM code page 950: Traditional Chinese Big5 (DBCS, OEM, Windows).
+			</info>
+			<build type="c-source" value="option/cc950.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
+			<build type="module-config" subtype="path" value="module_config_950/"/>
+			<device-support value="sam"/>
+			<device-support value="xmega"/>
+		</module>
+		<module type="meta" id="config.common.services.fs.fatfs.codepage#sbcs" caption="FATFS OEM code page to be used on the target system">
+			<info type="description" value="summary">
+			FATFS OEM code page SBCS: SBCS code pages (DBCS, OEM, Windows).
+			</info>
+			<build type="c-source" value="option/ccsbcs.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
+			<build type="module-config" subtype="path" value="module_config_sbcs/"/>
+			<device-support value="sam"/>
+			<device-support value="xmega"/>
+		</module>
+		<module type="meta" id="config.common.services.fs.fatfs.codepage#1" caption="FATFS OEM code page to be used on the target system">
+			<info type="description" value="summary">
+			FATFS OEM code page 1: ASCII only mode. Valid for non LFN cfg, the macro of "_USE_LFN" in the conf_fatfs.h must be set to 0.
+			</info>
+			<build type="module-config" subtype="required-header-file" value="conf_fatfs.h"/>
+			<build type="module-config" subtype="path" value="module_config_1/"/>
+			<device-support value="sam"/>
+			<device-support value="xmega"/>
+		</module>
+	</select-by-config>
+</asf>

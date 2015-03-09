@@ -1,0 +1,52 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.wtk" caption="Graphical Widget Library Toolkit">
+		<info type="description" value="summary">
+		Graphical Widget library toolkit (WTK) for the creation of interactive GUI
+		widgets using the high level graphics library service.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="header-file" subtype="api" value="wtk.h"/>
+		<build type="header-file" subtype="api" value="win.h"/>
+		<build type="header-file" value="wtk_basic_frame.h"/>
+		<build type="header-file" value="wtk_button.h"/>
+		<build type="header-file" value="wtk_basic_frame.h"/>
+		<build type="header-file" value="wtk_check_box.h"/>
+		<build type="header-file" value="wtk_frame.h"/>
+		<build type="header-file" value="wtk_icon.h"/>
+		<build type="header-file" value="wtk_label.h"/>
+		<build type="header-file" value="wtk_plot.h"/>
+		<build type="header-file" value="wtk_progress_bar.h"/>
+		<build type="header-file" value="wtk_radio_button.h"/>
+		<build type="header-file" value="wtk_slider.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_wtk.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_win.h"/>
+		<build type="c-source" value="wtk.c"/>
+		<build type="c-source" value="win.c"/>
+		<build type="c-source" value="wtk_basic_frame.c"/>
+		<build type="c-source" value="wtk_button.c"/>
+		<build type="c-source" value="wtk_basic_frame.c"/>
+		<build type="c-source" value="wtk_check_box.c"/>
+		<build type="c-source" value="wtk_frame.c"/>
+		<build type="c-source" value="wtk_icon.c"/>
+		<build type="c-source" value="wtk_label.c"/>
+		<build type="c-source" value="wtk_plot.c"/>
+		<build type="c-source" value="wtk_progress_bar.c"/>
+		<build type="c-source" value="wtk_radio_button.c"/>
+		<build type="c-source" value="wtk_slider.c"/>
+		<build type="doxygen-image-path" value="docsrc"/>
+		<build type="doxygen-entry-point" value="gfx_group"/>
+		<require idref="common.services.gfx"/>
+		<require idref="common.services.gfx.display"/>
+		<require idref="common.services.gfx.font"/>
+		<require idref="common.utils.membag"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

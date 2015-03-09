@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project id="xmega.drivers.dac.unit_tests.xmega_a1_xplained" caption="DAC unit tests on Xplain using ADC" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_adc.h"/>
+		<require idref="xmega.drivers.dac.unit_tests"/>
+		<require idref="board.xmega_a1_xplained"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<generator value="as5_8"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

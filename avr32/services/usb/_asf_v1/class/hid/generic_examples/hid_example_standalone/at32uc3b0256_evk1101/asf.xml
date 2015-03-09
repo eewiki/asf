@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="USB Dual Role (Device and Host) HID Generic class example (from ASF V1) for EVK1101" id="avr32.services.usb.hid.generic.example.evk1101.asfv1">
+		<require idref="avr32.services.usb.hid.generic.example"/>
+		<require idref="board.evk1101"/>
+		<config name="config.board.evk1101.init" value="no"/>
+		<config name="config.board.evk1101.led" value="yes"/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x3D00"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x0000"/>
+		<config name="config.compiler.iarew32.heap_size" value="0x3D00"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

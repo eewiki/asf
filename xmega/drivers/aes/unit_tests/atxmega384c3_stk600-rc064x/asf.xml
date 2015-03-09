@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project id="xmega.drivers.aes.unit_tests.stk600-rc064x_atxmega384c3" caption="AES driver unit tests on STK600 and ATxmega384C3" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="xmega.drivers.aes.unit_tests"/>
+		<require idref="board.stk600-rc064x.atxmega384c3"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

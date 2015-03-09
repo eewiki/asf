@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="mega.drivers.tc_timeout" caption="Timer/Counter (TC) Timeout driver">
+		<info type="gui-flag" value="hidden"/>
+		<info type="description" value="summary">
+		Driver for timeout functionality using the Timer/Counter.
+		Provides interface to have a fixed number of timeouts based on tick generated from TC.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers" />
+		</info>		
+		<build type="c-source" value="tc_timeout.c"/>
+		<build type="header-file" subtype="api" value="tc_timeout.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_tc_timeout.h"/>
+		<device-support value="mega"/>
+		<require idref="mega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+	</module>
+</asf>

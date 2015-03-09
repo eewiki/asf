@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sensors.inertial.demo" caption="Inertial Sensor Demonstration">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="description" value="summary">
+			This application obtains sensor data from inertial sensor devices
+			installed on a selected Atmel development board then displays
+			accelerometer, gyroscope, and electronic compass data.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="linker-config" subtype="flags" value="-u,vfprintf -lprintf_flt" toolchain="avrgcc"/>
+		<device-support value="uc3"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.sensors"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

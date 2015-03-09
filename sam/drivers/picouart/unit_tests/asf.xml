@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.picouart.unit_tests" caption="Set of unit tests for PICOUART - Picopower UART">
+		<info type="description" value="summary">
+		Unit test for the PICOUART(Picopower UART).
+		</info>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.picouart"/>
+		<require idref="sam.drivers.bpm"/>
+		<require idref="sam.drivers.ast"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.utils.unit_test"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

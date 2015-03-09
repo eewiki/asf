@@ -1,0 +1,108 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="avr32.utils.libs.libmad.common" caption="Libmad MP3 Decoder library">
+		<build type="include-path" value="include/"/>
+		<build type="header-file" subtype="api" value="include/mad.h"/>
+		<device-support value="uc3" />
+	</module>
+	<select-by-config id="avr32.utils.libs.libmad" name="libmad.optimization" default="speed" caption="libmad optimization selector">
+		<info type="description" value="summary">
+		MAD is a high-quality MPEG audio decoder. It currently supports
+		MPEG-1 and the MPEG-2 extension to lower sampling frequencies,
+		as well as the de facto MPEG 2.5 format. All three audio
+		layers: Layer I, Layer II, and Layer III (i.e. MP3), are fully
+		implemented.
+
+		A selection between speed, balanced or size optimization can be chosen.
+		</info>
+		<select-by-device id="avr32.utils.libs.libmad#speed" caption="libmad speed device selector">
+			<module type="library" id="avr32.utils.libs.libmad#speed#ucr1" caption="libmad speed optimized for ucr1">
+				<info type="description" value="summary">
+				MAD is a high-quality MPEG audio decoder. It currently supports
+				MPEG-1 and the MPEG-2 extension to lower sampling frequencies,
+				as well as the de facto MPEG 2.5 format. All three audio
+				layers: Layer I, Layer II, and Layer III (i.e. MP3), are fully
+				implemented.
+				</info>
+				<build type="library" subtype="user" value="at32ucr1/gcc/libmad-at32ucr1-speed_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr1/iar/libmad-at32ucr1-speed_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.libmad.common" />
+				<build type="distribute" subtype="license" value="../COPYING" />
+				<device-support value="ucr1" />
+			</module>
+			<module type="library" id="avr32.utils.libs.libmad#speed#ucr2" caption="libmad speed optimized for AVR UC Revision 2 Architecture">
+				<info type="description" value="summary">
+				MAD is a high-quality MPEG audio decoder. It currently supports
+				MPEG-1 and the MPEG-2 extension to lower sampling frequencies,
+				as well as the de facto MPEG 2.5 format. All three audio
+				layers: Layer I, Layer II, and Layer III (i.e. MP3), are fully
+				implemented.
+				</info>
+				<build type="library" subtype="user" value="at32ucr2/gcc/libmad-at32ucr2-speed_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr2/iar/libmad-at32ucr2-speed_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.libmad.common" />
+				<build type="distribute" subtype="license" value="../COPYING" />
+				<device-support value="ucr2" />
+			</module>
+		</select-by-device>
+		<select-by-device id="avr32.utils.libs.libmad#balanced" caption="libmad balanced device selector">
+			<module type="library" id="avr32.utils.libs.libmad#balanced#ucr1" caption="libmad balanced optimized for AVR UC Revision 1 Architecture">
+				<info type="description" value="summary">
+				MAD is a high-quality MPEG audio decoder. It currently supports
+				MPEG-1 and the MPEG-2 extension to lower sampling frequencies,
+				as well as the de facto MPEG 2.5 format. All three audio
+				layers: Layer I, Layer II, and Layer III (i.e. MP3), are fully
+				implemented.
+				</info>
+				<build type="library" subtype="user" value="at32ucr1/gcc/libmad-at32ucr1-balanced_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr1/iar/libmad-at32ucr1-balanced_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.libmad.common" />
+				<build type="distribute" subtype="license" value="../COPYING" />
+				<device-support value="ucr1" />
+			</module>
+			<module type="library" id="avr32.utils.libs.libmad#balanced#ucr2" caption="libmad balanced optimized for AVR UC Revision 2 Architecture">
+				<info type="description" value="summary">
+				MAD is a high-quality MPEG audio decoder. It currently supports
+				MPEG-1 and the MPEG-2 extension to lower sampling frequencies,
+				as well as the de facto MPEG 2.5 format. All three audio
+				layers: Layer I, Layer II, and Layer III (i.e. MP3), are fully
+				implemented.
+				</info>
+				<build type="library" subtype="user" value="at32ucr2/gcc/libmad-at32ucr2-balanced_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr2/iar/libmad-at32ucr2-balanced_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.libmad.common" />
+				<build type="distribute" subtype="license" value="../COPYING" />
+				<device-support value="ucr2" />
+			</module>
+		</select-by-device>
+		<select-by-device id="avr32.utils.libs.libmad#size" caption="libmad size device selector">
+			<module type="library" id="avr32.utils.libs.libmad#size#ucr1" caption="libmad size optimized for AVR UC Revision 1 Architecture">
+				<info type="description" value="summary">
+				MAD is a high-quality MPEG audio decoder. It currently supports
+				MPEG-1 and the MPEG-2 extension to lower sampling frequencies,
+				as well as the de facto MPEG 2.5 format. All three audio
+				layers: Layer I, Layer II, and Layer III (i.e. MP3), are fully
+				implemented.
+				</info>
+				<build type="library" subtype="user" value="at32ucr1/gcc/libmad-at32ucr1-size_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr1/iar/libmad-at32ucr1-size_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.libmad.common" />
+				<build type="distribute" subtype="license" value="../COPYING" />
+				<device-support value="ucr1" />
+			</module>
+			<module type="library" id="avr32.utils.libs.libmad#size#ucr2" caption="libmad size optimized for AVR UC Revision 2 Architecture">
+				<info type="description" value="summary">
+				MAD is a high-quality MPEG audio decoder. It currently supports
+				MPEG-1 and the MPEG-2 extension to lower sampling frequencies,
+				as well as the de facto MPEG 2.5 format. All three audio
+				layers: Layer I, Layer II, and Layer III (i.e. MP3), are fully
+				implemented.
+				</info>
+				<build type="library" subtype="user" value="at32ucr2/gcc/libmad-at32ucr2-size_opt.a" toolchain="avr32gcc"/>
+				<build type="library" subtype="user" value="at32ucr2/iar/libmad-at32ucr2-size_opt.r82" toolchain="iarew32"/>
+				<require idref="avr32.utils.libs.libmad.common" />
+				<build type="distribute" subtype="license" value="../COPYING" />
+				<device-support value="ucr2" />
+			</module>
+		</select-by-device>
+	</select-by-config>
+</asf>

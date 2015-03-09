@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.generic.transforms" caption="DSPLib - Generic transforms function set">
+		<info type="description" value="summary">
+		Generic implementation of a useful set of functions to compute fixed-point transforms.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="trans_dsp32_realcomplex_fft.c"/>
+		<build type="c-source" value="trans_dsp16_realcomplex_fft.c"/>
+		<build type="c-source" value="trans_dsp16_complex_fft.c"/>
+		<build type="c-source" value="trans_dsp16_complex_ifft.c"/>
+		<build type="c-source" value="trans_dsp16_twiddle_factors.c"/>
+		<build type="c-source" value="trans_dsp32_twiddle_factors.c"/>
+		<build type="header-file" value="trans_dsp32_twiddle_factors.h"/>
+		<build type="header-file" value="trans_dsp16_twiddle_factors.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../../../include"/>
+		<build type="header-file" value="../../../include/dsp_transforms.h"/>
+		<require idref="avr32.services.dsplib.common"/>
+		<!-- Extra dependencies //-->
+		<require idref="avr32.services.dsplib.vectors"/>
+
+		<build type="define" name="DSP_TRANSFORMS" value=""/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

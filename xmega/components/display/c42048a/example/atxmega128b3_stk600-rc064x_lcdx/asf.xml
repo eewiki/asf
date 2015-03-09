@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="LCD c42048a Example for STK600 and LCDX" id="xmega.components.display.c42048a.example.stk600_rc064x_lcdx">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.components.display.c42048a.example"/>
+		<require idref="board.stk600-rc064x_lcdx.atxmega128b3"/>
+		<require idref="xmega.drivers.tc"/>
+		<config name="config.board.stk600-rc064x_lcdx.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128b3"/>
+	</project>
+</asf>

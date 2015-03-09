@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.ecchrs.example" caption="ECCHRS Example">
+		<info type="description" value="summary">
+		Using the ECCHRS, program an external Nand Flash block and write the corresponding ECC codewords, then read back the data and check if they are valid thanks to the ECC codewords.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="header-file" value="conf/conf_ebi.h"/>
+		<build type="header-file" value="conf/conf_nf.h"/>
+		<build type="header-file" value="conf/smc_nf.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./conf/"/>
+		<build type="c-source" value="ecchrs_example.c"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.components.memory.nand_flash.nand_flash_ebi"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.ecchrs"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

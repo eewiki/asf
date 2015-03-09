@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="SAM3N_EK Common Delay Service Example" id="common.services.delay.example.sam3n_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.delay.example"/>
+		<require idref="board.sam3n_ek"/>
+		<config name="config.board.sam3n_ek.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<device-support value="atsam3n4c"/>
+	</project>
+</asf>

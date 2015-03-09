@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" caption="MAC No-Beacon  Application - Device" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.dev.ncp">
+		<info type="description" value="summary">
+		The basic MAC Example Nobeacon Application deploys a nonbeacon-enabled network.
+		</info>
+		<build type="header-file" value="app_config.h"/>
+		<build type="header-file" value="conf_common_sw_timer.h"/>
+		<build type="header-file" value="conf_pal.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_mac"/>
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.dev"/>
+		<device-support-alias value="avr2025_mac_pal_support"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

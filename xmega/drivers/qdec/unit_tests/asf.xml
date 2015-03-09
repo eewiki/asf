@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.qdec.unit_tests" caption="Unit Tests for the XMEGA QDEC Driver">
+		<info type="description" value="summary">
+		Unit tests for the XMEGA QDEC driver.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+			<keyword value="Peripheral Event System"/>
+		</info>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="xmega.drivers.qdec"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="xmegad"/>
+		<device-support value="xmegae"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.tc.simulator_example1" caption="Timer/Counter Simulator Example 1">
+		<info type="description" value="summary">
+		Using the TC module, generate an interrupt every 10 milliseconds and check its functionality in AVR Studio 5 Simulator.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc_simulator_example1.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

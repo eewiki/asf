@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.bod.quick_start" caption="Quick Start for the SAM D20 BOD Driver (Polled)">
+		<info type="description" value="summary">
+	Quick start guide demonstrating BOD configuration.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_bod_basic_use.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.bod"/>
+		<device-support value="samd20"/>
+	</module>
+</asf>

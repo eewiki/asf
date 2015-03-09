@@ -1,0 +1,51 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.applications.xmega_a3bu_xplained_demo" caption="XMEGA-A3BU Xplained demo application">
+		<info type="description" value="summary">
+		Demo application for XMEGA-A3BU with monocrome display drivers, temperature and light sensor readout.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="adc_sensors.c"/>
+		<build type="c-source" value="lightsensor.c"/>
+		<build type="header-file" value="lightsensor.h"/>
+		<build type="c-source" value="ntc_sensor.c"/>
+		<build type="header-file" value="ntc_sensor.h"/>
+		<build type="c-source" value="bitmaps.c"/>
+		<build type="header-file" value="bitmaps.h"/>
+		<build type="c-source" value="keyboard.c"/>
+		<build type="header-file" value="keyboard.h"/>
+		<build type="c-source" value="production_date.c"/>
+		<build type="header-file" value="production_date.h"/>
+		<build type="c-source" value="date_time.c"/>
+		<build type="header-file" value="date_time.h"/>
+		<build type="c-source" value="timezone.c"/>
+		<build type="header-file" value="timezone.h"/>
+		<build type="c-source" value="qtouch/touch.c"/>
+		<build type="header-file" value="qtouch/touch_qt_config.h"/>
+		<build type="header-file" value="qtouch/touch_api.h"/>
+		<build type="library" subtype="user" value="qtouch/libavrxmega6g1-4qt-k-0rs.a" toolchain="avrgcc"/>
+		<build type="asm-source" value="qtouch/qt_asm_xmega.s"/>
+		<build type="distribute" subtype="license" value="qtouch/license.txt"/>
+		<build type="header-file" value="adc_sensors.h"/>
+		<build type="include-path" value="qtouch/"/>
+		<build type="library" subtype="compiler" value="libm" toolchain="avrgcc"/>
+		<build type="c-source" value="cdc.c"/>
+		<build type="header-file" value="cdc.h"/>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmegaa3bu"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.drivers.rtc32"/>
+		<require idref="xmega.drivers.tc"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.calendar"/>
+		<require idref="common.services.gfx_mono"/>
+		<require idref="common.services.gfx_mono.font"/>
+		<require idref="common.services.gfx_mono.menu"/>
+		<require idref="common.services.gfx_mono.spinctrl"/>
+		<require idref="common.services.usb.class.device"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

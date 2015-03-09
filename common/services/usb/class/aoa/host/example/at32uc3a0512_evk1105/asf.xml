@@ -1,0 +1,37 @@
+<asf xmlversion="1.0">
+	<project caption="EVK1105 USB Android Accessory Application" id="common.services.usb.class.aoa.host.example.at32uc3a0512_evk1105.example">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_et024006dhu.h"/>
+		<build type="header-file" value="conf_ebi.h"/>
+		<build type="header-file" value="conf_aoa.h"/>
+		<build type="header-file" value="usb_connector.h"/>
+		<build type="header-file" value="cellphone.h"/>
+		<build type="c-source" value="usb_connector.c"/>
+		<build type="c-source" value="cellphone.c"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.usb.class.aoa.host.example"/>
+		<config name="config.common.services.usb.class.host" value="android"/>
+		<require idref="avr32.components.display.et024006dhu"/>
+		<require idref="avr32.components.touch.qt1081"/>
+		<require idref="avr32.drivers.eic"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.rtc"/>
+		<require idref="avr32.drivers.ebi.smc"/>
+		<require idref="avr32.drivers.pwm"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="common.utils.interrupt"/>
+		<config name="config.utils.interrupt.intc" value="force"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="common.services.delay"/>
+		<require idref="board.evk1105"/>
+		<config name="config.board.evk1105.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

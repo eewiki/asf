@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.ebi.example.sdram" caption="EBI SDRAM Example">
+		<info type="description" value="summary">
+		Use the XMEGA External Bus Interface to address the SDRAM device. Run through tests detecting faults to address, data lines and finally checking data integrity.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="ebi_sdram_example.c"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<require idref="xmega.drivers.ebi"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.hugemem"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

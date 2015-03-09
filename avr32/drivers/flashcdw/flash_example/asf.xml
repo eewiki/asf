@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.flashcdw.example" caption="FLASHCDW Example">
+		<info type="description" value="summary">
+		Use the FLASHCDW, read and write data to the internal flash, using a flash block as an NVRAM, located either in the flash array or in the Flash User Page.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="flash_example.c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

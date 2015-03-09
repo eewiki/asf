@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4L QTouch Example on SAM4L Xplained Pro" id="sam.applications.sam4l_qtouch_example.sam4l_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_ast.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="touch_config_sam4l.h"/>
+		<require idref="sam.applications.sam4l_qtouch_example"/>
+		<require idref="board.sam4l_xplained_pro"/>
+		<config name="config.board.sam4l_xplained_pro.led" value="yes"/>
+		<config name="config.common.services.qtouch.qdebug.qt600.sam4l" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<build type="define" name="_QTOUCH_" value=""/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

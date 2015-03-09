@@ -1,0 +1,35 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.components.memory.data_flash.at45dbx" caption="AT45DBX DataFlash">
+		<info type="description" value="summary">
+		Driver for the AT45dbX series SPI DataFlash memories. It provides functions for initialization and read/write operations at byte or sector level. Common implementation for UC3, XMEGA and SAM.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="at45dbx.c"/>
+		<build type="header-file" value="at45dbx.h"/>
+		<build type="header-file" value="at45dbx_hal_spi.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_at45dbx.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="at45dbx_group"/>
+		<require idref="common.services.basic.spi_master"/>
+		<device-support value="avr"/>
+		<device-support value="sam"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+	<module type="component" id="common.components.memory.data_flash.at45dbx.ctrl_access" caption="AT45DBX DataFlash Control access">
+		<info type="description" value="summary">
+		Driver for the AT45dbX series SPI DataFlash memories. It provides functions for initialization and read/write operations at byte or sector level. Common implementation for UC3, XMEGA and SAM.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="at45dbx_mem.c"/>
+		<build type="header-file" value="at45dbx_mem.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="at45dbx_group"/>
+		<require idref="common.components.memory.data_flash.at45dbx"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<build type="define" name="AT45DBX_ENABLE" value=""/>
+		<device-support value="avr"/>
+		<device-support value="sam"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

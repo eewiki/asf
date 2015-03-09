@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.dmaca" caption="DMACA - DMA Controller A">
+		<info type="description" value="summary">
+		The DMA (Direct Memory Access Controller) Controller transfers data from a source peripheral to a destination peripheral over one or more System Bus.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="DMA Controller" />
+		</info>
+		<build type="header-file" subtype="api" value="dmaca.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_dmaca"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a3_a4"/>
+	</module>
+</asf>

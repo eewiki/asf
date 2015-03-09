@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="config.common.services.qtouch.generic.avr8.qmatrix.examples.example_qm_mega_stk600.atmega128rfa1_stk600.include" caption="Atmel QTouch Library - ATmega128rfa1 Include Files">
+	    <info type="description" value="summary">
+		The pre-compiled QTouch Library, common and include files for AVR 8-bit devices.
+		For more information on the QTouch Library, goto www.atmel.com/qtouchlib.
+		For support queries, email touch@atmel.com.
+		</info>		
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>	
+		<build type="header-file" subtype="api" value="touch_config.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="touch_config.h"/>
+		<build type="module-config" subtype="path" value="./"/>
+				
+	</module>
+</asf>

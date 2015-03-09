@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<asf xmlversion="1.0">
+	<module type="application" id="common2.services.delay.example" caption="Delay Service Example">
+		<info type="description" value="summary">
+		Initialize the system clock and blink a LED at a constant 1Hz frequency.
+		</info>
+		<build type="c-source" value="delay_example.c"/>
+		<device-support value="samd20"/>
+		<require idref="common2.services.delay"/>
+		<require idref="sam0.drivers.port"/>
+	</module>
+</asf>

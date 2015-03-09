@@ -1,0 +1,35 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.dacc" caption="DACC - Digital-to-Analog Converter">
+		<info type="description" value="summary">
+			The Digital-to-Analog Converter Controller offers up to 2 analog outputs, making it possible for the digital-to-analog conversion to drive up to 2 independent analog lines.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="dacc.c"/>
+		<build type="header-file" subtype="api" value="dacc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_dacc_group"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam3s8"/>
+		<device-support value="sam3sd8"/>
+		<device-support value="atsam3n1b"/>
+		<device-support value="atsam3n1c"/>
+		<device-support value="atsam3n2b"/>
+		<device-support value="atsam3n2c"/>
+		<device-support value="atsam3n4b"/>
+		<device-support value="atsam3n4c"/>
+		<device-support value="atsam3s1b"/>
+		<device-support value="atsam3s1c"/>
+		<device-support value="atsam3s2b"/>
+		<device-support value="atsam3s2c"/>
+		<device-support value="atsam3s4b"/>
+		<device-support value="atsam3s4c"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4l"/>
+		<device-support value="sam4e"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

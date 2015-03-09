@@ -1,0 +1,58 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="mega.mega_1284p_xplained.driver.init" caption="MEGA-1284P Xplained board support - init">
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="init.c"/>
+		<build type="header-file" value="init.h"/>
+		<device-support value="atmega1284p"/>
+	</module>
+	<module type="driver" id="mega.mega_1284p_xplained.driver.usart" caption="MEGA-1284P Xplained board support - USART">
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="usart.c"/>
+		<build type="header-file" value="usart.h"/>
+		<device-support value="atmega1284p"/>
+	</module>
+	<module type="driver" id="mega.mega_1284p_xplained.driver.qt" caption="MEGA-1284P Xplained board support - QTouch">
+		<info type="gui-flag" value="hidden"/>
+		<build type="asm-source" value="qt_asm_tiny_mega.s"/>
+		<build type="header-file" value="touch_api.h"/>
+		<build type="header-file" value="touch_qt_config.h"/>
+		<build type="library" value="libavr51g1-4qt-k-0rs.a" subtype="user"/>
+		<build type="define" name="_QTOUCH_" value=""/>
+		<build type="define" name="QT_NUM_CHANNELS" value="4"/>
+		<build type="define" name="QTOUCH_STUDIO_MASKS" value="1"/>
+		<build type="define" name="_DEBUG_INTERFACE_" value=""/>
+		<build type="define" name="SNS1" value="D"/>
+		<build type="define" name="SNSK1" value="D"/>
+		<build type="define" name="_SNS1_SNSK1_SAME_PORT_" value=""/>
+		<build type="distribute" subtype="license" value="license.txt"/>
+		<device-support value="atmega1284p"/>
+	</module>
+	<module type="application" id="mega.applications.mega_1284p_xplained" caption="MEGA-1284P Xplained demo application">
+		<info type="description" value="summary">
+		This example application demonstrates some of the basic features of the MEGA-1284P Xplained kit. This includes sleep modes, reading the light sensor and the ntc sensor.
+		</info>
+		<build type="header-file" value="avr_compiler.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="atmega1284p"/>
+		<require idref="mega.mega_1284p_xplained.driver.qt"/>
+		<require idref="mega.mega_1284p_xplained.driver.init"/>
+		<require idref="mega.mega_1284p_xplained.driver.usart"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<project caption="MEGA-128P Xplained example" id="mega.applications.mega_1284p_xplained.example">
+		<info type="description" value="summary">
+		MEGA-1284P Xplained demo application
+		</info>
+		<build type="c-source" value="mega_1284p_xplained_example.c"/>
+		<build type="header-file" value="mega_1284p_xplained_example.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="doxygen-image-path" value="docsrc"/>
+		<build type="distribute" subtype="directory" value="./docsrc"/>
+		<require idref="mega.applications.mega_1284p_xplained"/>
+		<require idref="board.mega_1284p_xplained"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega1284p"/>
+	</project>
+</asf>

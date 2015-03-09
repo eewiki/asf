@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.services.pwm.example2" caption="PWM Example 2 - LED Fading">
+		<info type="description" value="summary">
+		This example will demostrate how to use the PWM service with interrupts to fade LEDs.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<device-support value="xmega"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="example2.c"/>
+		<require idref="xmega.services.pwm"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

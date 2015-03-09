@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="MMA7341L Accelerometer example for SAM3U_EK" id="sam.components.sensor.mma7341l.example.sam3u_ek">
+		<info type="description" value="summary">
+		This example demonstrates how to configure MMA7341L accelerometer and check gravity value of three axis by it.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_mma7341l.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.components.sensor.mma7341l.example"/>
+		<require idref="board.sam3u_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3u4e"/>
+	</project>
+</asf>

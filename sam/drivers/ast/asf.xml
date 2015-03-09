@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.ast" caption="AST - Asynchronous Timer">
+		<info type="description" value="summary">
+		Driver for the AST (Asynchronous Timer).
+		Provides functions for configuring and operating the AST in the calendar or timer/counter modes.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers" />
+		</info>
+		<build type="c-source" value="ast.c"/>
+		<build type="header-file" subtype="api" value="ast.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_sam_drivers_ast"/>
+		<build type="module-config" subtype="required-header-file" value="conf_ast.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

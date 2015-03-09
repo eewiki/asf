@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.usart.example" caption="USART Example">
+		<info type="description" value="summary">
+		Use the XMEGA USART module : initialization, waits for a received character and echoes the character back to the same USART.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="usart_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_usart_example.h"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.boards"/>
+		<require idref="xmega.drivers.usart"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.des.example" caption="DES Example">
+		<info type="description" value="summary">
+		Use the XMEGA Data Encryption Standard (DES) core instruction. A single block is encrypted and decrypted.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<build type="c-source" value="des_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<require idref="xmega.drivers.des"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

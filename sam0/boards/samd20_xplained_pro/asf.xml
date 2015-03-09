@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<board id="board.samd20_xplained_pro" vendor="Atmel" caption="SAM D20 Xplained Pro">
+		<build type="define" name="BOARD" value="SAMD20_XPLAINED_PRO"/>
+		<build type="define" name="__SAMD20J18__" value=""/>
+		<build type="c-source" value="board_init.c"/>
+		<build type="header-file" value="samd20_xplained_pro.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/gcc/samd20_xplained_pro_flash.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/gcc/samd20_xplained_pro_sram.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/iar/samd20_xplained_pro_flash.mac" toolchain="iarewarm"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/iar/samd20_xplained_pro_sram.mac" toolchain="iarewarm"/>
+		<require idref="sam0.utils.cmsis.samd20.source.template"/>
+		<require idref="common.utils"/>
+		<require idref="common.boards"/>
+		<require idref="sam0.drivers.port"/>
+		<device-support value="atsamd20j18"/>
+	</board>
+</asf>

@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="External Interrupt Example for ATmega256RFR2 Xplained Pro" id="mega.drivers.ext_int.example1.atmega256rfr2_xplained_pro">
+		<build type="header-file" value="conf_interrupt.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>		
+		<build type="include-path" value="."/>
+		<require idref="mega.drivers.ext_int.example1"/>
+		<require idref="board.atmega256rfr2_xplained_pro"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc" />
+		<generator value="as5_8" />
+		<generator value="doxygen"/>
+		<device-support value="atmega256rfr2"/>
+	</project>
+</asf>

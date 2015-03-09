@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="EMAC example for SAM3X_EK" id="sam.drivers.emac.emac_example.sam3x_ek">
+		<info type="description" value="summary">
+		Ethernet example with ethernet MAC, process simple ethernet packets.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_eth.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.emac.emac_example"/>
+		<require idref="board.sam3x_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3x8h"/>
+	</project>
+</asf>

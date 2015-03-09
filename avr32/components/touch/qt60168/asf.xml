@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.touch.qt60168" caption="QT60168 16-key QMatrix touch sensor">
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>
+		<info type="description" value="summary">
+		This driver offers configuration as well as checking the status of the touch sensor. The driver uses the SPI to communicate with the sensor and GPIO as a status change input from the sensor. It is possible to add a callback function from the application and this will be executed each time a change has been detected in the sensor state.
+		</info>
+		<build type="header-file" value="qt60168.h"/>
+		<build type="c-source" value="qt60168.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_qt60168.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_components_touch_qt60168"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

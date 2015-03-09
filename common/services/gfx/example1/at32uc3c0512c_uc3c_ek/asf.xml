@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="graphic library example for the UC3C-EK" id="common.services.gfx.example1.uc3c_ek">
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_ebi.h"/>
+		<build type="header-file" value="conf_et024006dhu.h"/>
+		<build type="header-file" value="smiley.h"/>
+		<build type="header-file" value="atmel_logo.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.gfx.display" value="hx8347a_et024006dhu_ebi"/>
+		<require idref="common.services.gfx.example1"/>
+		<require idref="board.uc3c_ek"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

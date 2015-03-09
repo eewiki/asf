@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.wdt.example" caption="WDT Example">
+		<info type="description" value="summary">
+		Example to set-up a watchdog deadline, read the reset cause PM register and use a GPLP register.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="wdt_example.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.wdt"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

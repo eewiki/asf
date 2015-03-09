@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device Vendor Class example for ATxmega384c3 on STK600" id="common.services.usb.class.vendor.device.example.stk600_atxmega384c3">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.device" value="vendor_class"/>
+		<require idref="common.services.usb.class.vendor.device.example"/>
+		<require idref="board.stk600-rc064x.atxmega384c3"/>
+		<config name="config.board.stk600-rc064x.led" value="yes"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="iarew"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

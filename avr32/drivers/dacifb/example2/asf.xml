@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.dacifb.example2" caption="DACIFB Example 2">
+		<info type="description" value="summary">
+		Using the DACIFB, configure the PEVC to generate the DACIFB clock from a Generick Clock (GCLK) and generate a sinus.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="sinus.c"/>
+		<build type="header-file" value="sinus.h"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="dacifb_example2.c"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.dacifb"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.pevc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.drivers.intc"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

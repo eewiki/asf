@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Controlling a TWI Module / Master Mode Example for STK600-RC100X with ATXMEGA128A1" id="common.services.basic.twi.master.example.stk600">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.twi.master.example"/>
+		<config name="config.xmega.drivers.twi.mode" value="master"/>
+		<require idref="board.stk600-rc100x.atxmega128a1"/>
+		<config name="config.board.stk600-rc100x.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

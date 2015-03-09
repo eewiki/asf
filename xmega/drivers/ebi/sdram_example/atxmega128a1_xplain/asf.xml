@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="EBI SDRAM Example for xplain" id="xmega.drivers.ebi.example.sdram.xplain">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.ebi.example.sdram"/>
+		<require idref="board.xplain"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

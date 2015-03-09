@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.aes.example3" caption="AES Example 3">
+		<info type="description" value="summary">
+		Use the XMEGA built-in AES accelerator. DMA channel 0 is used to access AES register.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<build type="c-source" value="aes_example3.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<require idref="xmega.drivers.aes"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.dma"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

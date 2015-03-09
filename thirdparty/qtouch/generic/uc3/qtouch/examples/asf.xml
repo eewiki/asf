@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.qtouch.generic.uc3.qtouch.example1" caption="QTouch Method Example Application">
+		<info type="description" value="summary">
+		This application is a demonstration of QTouch Capacitive Touch method on the STK600 board for Atmel UC3 devices. External Touch Sensors can be connected to the STK600 GPIO pins for testing. QT600 USB Bridge can be used to interface with QTouch Studio to display Touch debug data. 
+		</info>
+		<build type="c-source" value="qtouch_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

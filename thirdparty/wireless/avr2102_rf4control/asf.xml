@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<select-by-config id="thirdparty.wireless.avr2102_rf4control" name="config.thirdparty.wireless.avr2102_rf4control" caption="AVR2102 - RF4Control" default="source">
+		<info type="description" value="summary">
+			This module is included only for RF4Control applications or if the Highest Stack Layer is RF4CE. The RF4Control stack is a ZigBee® RF4CE Certified Platform implementing the ZigBee 
+            RF4CE standard.The "source" option is selected  if the  RF4Control source needs to be added for  application and "api-parser" is selected for RF4control applications for Host device in 2p approach .
+		</info>
+        <module type="component" id="thirdparty.wireless.avr2102_rf4control#source" caption="AVR2102 - RF4Control Configuration - Stack">
+            <info type="description" value="summary">
+           This module is used by default in a single processor approach and by NCP(Network Co-Processor) for a two processor approach.This module includes the whole RF4Control Stack including the RF4Control Include files,MAC ,TAL and PAL Layer source code and should be included only for RF4Control applications or if the Highest Stack Layer is RF4CE.Based on the application requirements the RF4Control Libraries needs to be included from the modules "AVR2102-RF4Control NWK LIB" or "AVR2102- ZRC LIB for Target" or "AVR2102- ZRC LIB for Controller".The "AVR2025-TAL" module need not be added if this module is included since it pulls that module automaticlly,If TFA features needs to be added ,the "AVR2025-TFA" module needs to be added and the same transceiver selected in this module should be selected .For applications requiring Serial I/O communication the "Serial I/o-Host" or "Serial I/O-NCP" module should be included along with his module.
+            </info>
+            <require idref="thirdparty.wireless.avr2025_mac.source.mac"/>
+			<require idref="thirdparty.wireless.avr2025_mac.source.pal"/>
+		    <require idref="thirdparty.wireless.avr2025_mac.source.sal"/>
+		    <require idref="thirdparty.wireless.avr2025_mac.source.stb"/>
+            <require idref="thirdparty.wireless.avr2102_rf4control.include"/>
+			<build type="doxygen-entry-point" value="group_rf4control"/>
+            <build type="distribute" subtype="license" value="../EULA.txt"/>
+            <info type="keyword" value="technology">
+                <keyword value="Wireless"/>
+                <keyword value="Communication"/>
+            </info>
+            <device-support-alias value="avr2102_rf4control_nwk_support"/>
+        </module>
+        <module type="component" id="thirdparty.wireless.avr2102_rf4control#api_parser" caption="AVR2102 - RF4Control Configuration - API Parser">
+            <info type="description" value="summary">
+             This module is responsible for encoding and decoding the serial bytes to/from NCP into  RF4Control APIs to provide seamless working for application similar to stack running in same processor or on NCP.This module is only used for Two processor approach by the Host device.The RF4Control Stack runs on the NCP and the  application runs on the Host.For applications requiring Serial I/O communication the "Serial I/o-Host" or "Serial I/O-NCP" module should be included along with his module.No RF4Control Stack source code is included from this module.
+            </info>
+            <require idref="thirdparty.wireless.avr2102_rf4control.include"/>
+            <require idref="thirdparty.wireless.avr2102_rf4control.addons.api_parser"/>
+			<build type="doxygen-entry-point" value="group_rf4control"/>
+            <build type="distribute" subtype="license" value="../EULA.txt"/>
+            <info type="keyword" value="technology">
+                <keyword value="Wireless"/>
+                <keyword value="Communication"/>
+            </info>
+            <device-support-alias value="avr2102_rf4control_api_parser_support"/>
+        </module>
+	</select-by-config>
+</asf>

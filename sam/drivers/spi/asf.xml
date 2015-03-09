@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.spi" caption="SPI - Serial Peripheral Interface">
+		<info type="description" value="summary">
+		The Serial Peripheral Interface (SPI) circuit is a synchronous serial data link that provides communication with external devices in Master or Slave Mode.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="spi.c"/>
+		<build type="header-file" subtype="api" value="spi.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_spi_group"/>
+		<device-support value="sam"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

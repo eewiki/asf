@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="PARC unit tests on SAM4L Xplained Pro" id="sam.drivers.parc.unit_tests.sam4l_xplained_pro_host" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<config name="config.sam.drivers.parc" value="callback"/>
+		<require idref="sam.drivers.parc.unit_tests"/>
+		<require idref="board.sam4l_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

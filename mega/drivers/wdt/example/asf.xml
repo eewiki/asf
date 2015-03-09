@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.drivers.wdt.example" caption="WDT Example">
+		<info type="description" value="summary">
+		Use the MEGARF WDT module :  enables the WDT in different modes,and tests all WDT features. Uses the LED to show WDT status.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers" />
+			<keyword value="Interrupt" />
+			<keyword value="Clocks" />
+		</info>		
+		<build type="c-source" value="wdt_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<device-support value="megarf"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.delay"/>
+		<require idref="mega.drivers.wdt"/>
+		<require idref="mega.drivers.cpu"/>		
+	</module>
+</asf>

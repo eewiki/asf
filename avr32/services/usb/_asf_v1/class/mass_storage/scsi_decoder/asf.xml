@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.usb._asf_v1.class.mass_storage.scsi_decoder" caption="USB Mass storage SCSI decoder (from ASF ver. 1)">
+		<info type="description" value="summary">
+		Driver implementing the USB mass storage SCSI decoder, using
+		USB stack from ASF version 1.x.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="scsi_decoder.c"/>
+		<build type="header-file" subtype="api" value="scsi_decoder.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

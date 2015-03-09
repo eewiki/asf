@@ -1,0 +1,11 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.tools.benchmark" caption="DSPLib - Benchmark">
+		<info type="gui-flag" value="hidden"/>
+		<build type="include-path" value="docsrc"/>
+		<build type="distribute" subtype="file" value="benchmark"/>
+		<build type="distribute" subtype="file" value="benchmark_loader.sce"/>
+		<build type="distribute" subtype="file" value="benchmark_proc"/>
+		<build type="header-file" value="docsrc/documentation.h"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

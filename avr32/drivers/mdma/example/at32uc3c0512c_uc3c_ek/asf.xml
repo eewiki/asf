@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="MDMA Example for UC3C_EK" id="avr32.drivers.mdma.example.uc3c_ek">
+		<info type="description" value="summary">
+		Perform several memory transfers using the MDMA from and to different memory areas: flash memory, external SDRAM, HSB RAM, CPU RAM.
+		</info>
+		<require idref="avr32.drivers.mdma.example"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<config name="config.board.uc3c_ek.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

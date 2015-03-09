@@ -1,0 +1,228 @@
+<asf xmlversion="1.0">
+	<select-by-config id="common.services.basic.spi_master" name="config.spi_master_type" caption="SPI - Serial Peripheral Interface Master (Common API)" default="standard_spi">
+		<info type="description" value="summary">
+		API for using SPI (Serial Peripheral Interface) bus in Master mode without directly accessing the registers. Common API. UC3 supports SPI peripheral. XMEGA supports SPI peripheral and USART peripheral in master SPI mode. SAM supports SPI peripheral and USART peripheral in master SPI mode.
+		</info>
+		<module type="service" id="common.services.basic.spi_master#standard_spi" caption="SPI - implementation">
+			<info type="description" value="summary">
+			Implementation for the common SPI API using the standard SPI peripheral.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="doxygen-entry-point" value="spi_group"/>
+			<build type="doxygen-quick-start" value="common_spi_master_quickstart"/>
+			<require idref="common.services.basic.spi_master.standard_spi"/>
+			<device-support value="xmega"/>
+			<device-support value="uc3"/>
+			<device-support value="sam"/>
+			<device-support value="megarf"/>			
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.basic.spi_master#usart_spi" caption="SPI - implementation">
+			<info type="description" value="summary">
+			Implementation for the common SPI API using the USART peripheral in SPI mode.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="doxygen-entry-point" value="spi_group"/>
+			<build type="doxygen-quick-start" value="common_spi_master_quickstart"/>
+			<require idref="common.services.basic.spi_master.usart_spi"/>
+			<device-support value="xmega"/>
+			<device-support value="uc3"/>
+			<device-support value="sam"/>
+			<device-support value="megarf"/>				
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.basic.spi_master#usart_and_standard_spi" caption="SPI - implementation">
+			<info type="description" value="summary">
+			Implementation for the common SPI API using both standard SPI peripheral and USART peripheral in SPI mode.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="doxygen-entry-point" value="spi_group"/>
+			<build type="doxygen-quick-start" value="common_spi_master_quickstart"/>
+			<require idref="common.services.basic.spi_master.standard_spi"/>
+			<require idref="common.services.basic.spi_master.usart_spi"/>
+			<device-support value="xmega"/>
+			<device-support value="uc3"/>
+			<device-support value="sam"/>
+			<device-support value="megarf"/>				
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+	</select-by-config>
+
+	<select-by-device id="common.services.basic.spi_master.standard_spi">
+		<module type="service" id="common.services.basic.spi_master.standard_spi#0" caption="SPI - XMEGA implementation">
+			<info type="description" value="summary">
+			XMEGA implementation for the common SPI API using the standard SPI peripheral.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="header-file" subtype="api" value="spi_master.h"/>
+			<build type="header-file" subtype="api" value="xmega_spi/spi_master.h"/>
+			<build type="c-source" value="xmega_spi/spi_master.c"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="xmega_spi"/>
+			<build type="doxygen-entry-point" value="spi_group"/>
+			<build type="doxygen-quick-start" value="common_spi_master_quickstart"/>
+			<device-support value="xmega"/>
+			<build type="module-config" subtype="path" value="xmega_spi/module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_spi_master.h"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.spi"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.basic.spi_master.standard_spi#1" caption="SPI - UC3 implementation">
+			<info type="description" value="summary">
+			UC3 implementation for the common SPI API. 
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="header-file" subtype="api" value="spi_master.h"/>
+			<build type="c-source" value="uc3_spi/spi_master.c"/>
+			<build type="header-file" subtype="api" value="uc3_spi/spi_master.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="uc3_spi"/>
+			<build type="module-config" subtype="required-header-file" value="conf_spi_master.h"/>
+			<build type="module-config" subtype="path" value="uc3_spi/module_config"/>
+			<build type="doxygen-entry-point" value="spi_group"/>
+			<build type="doxygen-quick-start" value="common_spi_master_quickstart"/>
+			<device-support value="uc3"/>
+			<require idref="avr32.drivers.spi"/>
+			<require idref="common.services.basic.clock"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+		</module>
+		<module type="service" id="common.services.basic.spi_master.standard_spi#2" caption="SPI - SAM Implementation">
+			<info type="description" value="summary">
+			SAM implementation for the common SPI API. 
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="header-file" subtype="api" value="spi_master.h"/>
+			<build type="c-source" value="sam_spi/spi_master.c"/>
+			<build type="header-file" subtype="api" value="sam_spi/spi_master.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="sam_spi"/>
+			<build type="module-config" subtype="required-header-file" value="conf_spi_master.h"/>
+			<build type="module-config" subtype="path" value="sam_spi/module_config"/>
+			<build type="doxygen-entry-point" value="spi_group"/>
+			<build type="doxygen-quick-start" value="common_spi_master_quickstart"/>
+			<device-support value="sam"/>
+			<require idref="sam.drivers.spi"/>
+			<require idref="common.services.basic.clock"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="service" id="common.services.basic.spi_master.standard_spi#3" caption="SPI - MEGARF implementation">
+			<info type="description" value="summary">
+			MEGARF implementation for the common SPI API using the standard SPI peripheral.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="header-file" subtype="api" value="spi_master.h"/>
+			<build type="header-file" subtype="api" value="megarf_spi/spi_master.h"/>
+			<build type="c-source" value="megarf_spi/spi_master.c"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="megarf_spi"/>
+			<build type="doxygen-entry-point" value="spi_group"/>
+			<build type="doxygen-quick-start" value="common_spi_master_quickstart"/>
+			<device-support value="megarf"/>
+			<build type="module-config" subtype="path" value="megarf_spi/module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_spi_master.h"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="mega.drivers.spi"/>
+			<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		</module>		
+	</select-by-device>
+
+	<select-by-device id="common.services.basic.spi_master.usart_spi">
+		<module type="service" id="common.services.basic.spi_master.usart_spi#0" caption="SPI - XMEGA implementation">
+			<info type="description" value="summary">
+			XMEGA implementation for the common SPI API using the USART peripheral in SPI mode.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="header-file" subtype="api" value="usart_spi.h"/>
+			<build type="header-file" subtype="api" value="xmega_usart_spi/usart_spi.h"/>
+			<build type="c-source" value="xmega_usart_spi/usart_spi.c"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_usart_spi.h"/>
+			<build type="module-config" subtype="path" value="xmega_usart_spi/module_config"/>
+			<build type="doxygen-entry-point" value="spi_group"/>
+			<build type="doxygen-quick-start" value="common_spi_master_quickstart"/>
+			<device-support value="xmega"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.usart"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.basic.spi_master.usart_spi#1" caption="SPI - SAM implementation">
+			<info type="description" value="summary">
+			SAM implementation for the common SPI API using the USART peripheral in SPI mode.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="header-file" subtype="api" value="usart_spi.h"/>
+			<build type="header-file" subtype="api" value="sam_usart_spi/usart_spi.h"/>
+			<build type="c-source" value="sam_usart_spi/usart_spi.c"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="sam_usart_spi"/>
+			<build type="module-config" subtype="required-header-file" value="conf_usart_spi.h"/>
+			<build type="module-config" subtype="path" value="sam_usart_spi/module_config"/>
+			<build type="doxygen-entry-point" value="spi_group"/>
+			<build type="doxygen-quick-start" value="common_spi_master_quickstart"/>
+			<device-support value="sam"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.drivers.usart"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="service" id="common.services.basic.spi_master.usart_spi#2" caption="SPI - UC3 implementation">
+			<info type="description" value="summary">
+			UC3 implementation for the common SPI API using the USART peripheral in SPI mode.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="header-file" subtype="api" value="usart_spi.h"/>
+			<build type="header-file" subtype="api" value="uc3_usart_spi/usart_spi.h"/>
+			<build type="c-source" value="uc3_usart_spi/usart_spi.c"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="uc3_usart_spi"/>
+			<build type="module-config" subtype="required-header-file" value="conf_usart_spi.h"/>
+			<build type="module-config" subtype="path" value="uc3_usart_spi/module_config"/>
+			<build type="doxygen-entry-point" value="spi_group"/>
+			<build type="doxygen-quick-start" value="common_spi_master_quickstart"/>
+			<device-support value="uc3"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="avr32.drivers.usart"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+		</module>
+		<module type="service" id="common.services.basic.spi_master.usart_spi#3" caption="SPI - MEGARF implementation">
+			<info type="description" value="summary">
+			MEGARF implementation for the common SPI API using the USART peripheral in SPI mode.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="header-file" subtype="api" value="usart_spi.h"/>
+			<build type="header-file" subtype="api" value="megarf_usart_spi/usart_spi.h"/>
+			<build type="c-source" value="megarf_usart_spi/usart_spi.c"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_usart_spi.h"/>
+			<build type="module-config" subtype="path" value="megarf_usart_spi/module_config"/>
+			<build type="doxygen-entry-point" value="spi_group"/>
+			<build type="doxygen-quick-start" value="common_spi_master_quickstart"/>
+			<device-support value="megarf"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="mega.drivers.usart"/>
+			<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		</module>		
+	</select-by-device>
+</asf>

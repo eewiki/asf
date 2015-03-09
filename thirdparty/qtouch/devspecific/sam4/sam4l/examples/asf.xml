@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.applications.sam4l_qtouch_example" caption="SAM4L QTouch Example">
+		<info type="description" value="summary">
+		SAM4L is running with QTouch library enabled.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="qtouch/touch.c"/>
+		<build type="header-file" value="qtouch/QDebugSettings.h"/>
+		<build type="include-path" value="qtouch/"/>
+		<require idref="sam.drivers.ast"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="config.common.services.qtouch.qdebug.qt600.sam4l"/>
+		<require idref="sam.services.qtouch.devspecific.sam.sam4l"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<device-support value="sam4l"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

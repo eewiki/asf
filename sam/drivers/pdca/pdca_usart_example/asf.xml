@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.pdca.pdca_usart_example" caption="Peripheral DMA Controller Example">
+		<info type="description" value="summary">
+			This example shows how to configure PDCA for receiving data from USART.
+			</info>
+		<info type="keyword" value="technology">
+			<keyword value="DMA Controller"/>
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="pdca_usart_example.c"/>
+		<build type="header-file" value="ascii_anim1.h"/>
+		<build type="header-file" value="ascii_anim2.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.pdca"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

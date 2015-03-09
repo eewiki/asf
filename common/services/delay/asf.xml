@@ -1,0 +1,58 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.delay" caption="Delay routines">
+		<module type="service" id="common.services.delay#uc3" caption="Delay routines">
+			<info type="description" value="summary">
+			Loop based delay routines. Provides microseconds, milliseconds
+			and second delays. Common API for SAM, UC3 and XMEGA.
+			</info>
+			<build type="doxygen-entry-point" value="group_common_services_delay"/>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="delay.h"/>
+			<require idref="avr32.drivers.cpu.cycle_counter"/>
+			<require idref="common.services.basic.clock"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+		</module>
+		<module type="service" id="common.services.delay#xmega" caption="Delay routines">
+			<info type="description" value="summary">
+			Loop based delay routines. Provides microseconds, milliseconds
+			and second delays. Common API for SAM, UC3 and XMEGA.
+			</info>
+			<build type="doxygen-entry-point" value="group_common_services_delay"/>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="delay.h"/>
+			<build type="header-file" value="xmega/cycle_counter.h"/>
+			<require idref="common.services.basic.clock"/>
+			<device-support value="xmega"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.delay#sam" caption="Delay routines">
+			<info type="description" value="summary">
+			Loop based delay routines. Provides microseconds, milliseconds
+			and second delays. Common API for SAM, UC3 and XMEGA.
+			</info>
+			<build type="doxygen-entry-point" value="group_common_services_delay"/>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="delay.h"/>
+			<build type="header-file" value="sam/cycle_counter.h"/>
+			<build type="c-source" value="sam/cycle_counter.c"/>
+			<require idref="common.services.basic.clock"/>
+			<device-support value="sam"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="service" id="common.services.delay#mega" caption="Delay routines">
+			<info type="description" value="summary">
+			Loop based delay routines. Provides microseconds, milliseconds
+			and second delays. Common API for SAM, UC3, MEGA and XMEGA.
+			</info>
+			<build type="doxygen-entry-point" value="group_common_services_delay"/>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="delay.h"/>
+			<build type="header-file" value="mega/cycle_counter.h"/>
+			<require idref="common.services.basic.clock"/>
+			<device-support value="mega"/>
+			<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		</module>
+
+	</select-by-device>
+</asf>

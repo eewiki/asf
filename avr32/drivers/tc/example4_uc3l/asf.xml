@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.tc.example4" caption="TC Example 4">
+		<info type="description" value="summary">
+		Set-up one TC channel configured in capture mode (input). Upon a GPIO pin change, an event triggers a TC.Ai capture.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc_event_example4_uc3l.c"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.usart"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

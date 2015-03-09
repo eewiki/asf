@@ -1,0 +1,148 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.stk600-rc044x.led" name="config.board.stk600-rc044x.led" caption="STK600-RC044X LED support" default="yes">
+		<module type="meta" id="config.board.stk600-rc044x.led#no" caption="STK600-RC044X LED support disabled">
+		</module>
+		<module type="meta" id="config.board.stk600-rc044x.led#yes" caption="STK600-RC044X LED support enabled">
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.stk600-rc044x.init" name="config.board.stk600-rc044x.init" caption="STK600-RC044X initialization support" default="yes">
+		<module type="meta" id="config.board.stk600-rc044x.init#no" caption="STK600-RC044X initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.stk600-rc044x.init#yes" caption="STK600-RC044X initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.stk600-rc044x.atxmega128a4u" vendor="Atmel" caption="STK600">
+		<build type="define" name="BOARD" value="STK600_RC044X"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="stk600_rc044x.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../.."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x20000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.stk600-rc044x.led"/>
+		<require idref="config.board.stk600-rc044x.init"/>
+		<device-support value="atxmega128a4u"/>
+	</board>
+
+	<board id="board.stk600-rc044x.atxmega64a4u" vendor="Atmel" caption="STK600">
+		<build type="define" name="BOARD" value="STK600_RC044X"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="stk600_rc044x.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../.."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x10000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.stk600-rc044x.led"/>
+		<require idref="config.board.stk600-rc044x.init"/>
+		<device-support value="atxmega64a4u"/>
+	</board>
+
+	<board id="board.stk600-rc044x.atxmega32a4" vendor="Atmel" caption="STK600">
+		<build type="define" name="BOARD" value="STK600_RC044X"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="stk600_rc044x.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../.."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x8000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.stk600-rc044x.led"/>
+		<require idref="config.board.stk600-rc044x.init"/>
+		<device-support value="atxmega32a4"/>
+	</board>
+
+	<board id="board.stk600-rc044x.atxmega32a4u" vendor="Atmel" caption="STK600">
+		<build type="define" name="BOARD" value="STK600_RC044X"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="stk600_rc044x.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../.."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x8000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.stk600-rc044x.led"/>
+		<require idref="config.board.stk600-rc044x.init"/>
+		<device-support value="atxmega32a4u"/>
+	</board>
+
+	<board id="board.stk600-rc044x.atxmega16a4" vendor="Atmel" caption="STK600">
+		<build type="define" name="BOARD" value="STK600_RC044X"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="stk600_rc044x.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../.."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x4000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.stk600-rc044x.led"/>
+		<require idref="config.board.stk600-rc044x.init"/>
+		<device-support value="atxmega16a4"/>
+	</board>
+
+	<board id="board.stk600-rc044x.atxmega16a4u" vendor="Atmel" caption="STK600">
+		<build type="define" name="BOARD" value="STK600_RC044X"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="stk600_rc044x.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../.."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x4000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.stk600-rc044x.led"/>
+		<require idref="config.board.stk600-rc044x.init"/>
+		<device-support value="atxmega16a4u"/>
+	</board>
+
+	<board id="board.stk600-rc044x.atxmega32c4" vendor="Atmel" caption="STK600">
+		<build type="define" name="BOARD" value="STK600_RC044X"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="stk600_rc044x.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../.."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x8000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.stk600-rc044x.led"/>
+		<require idref="config.board.stk600-rc044x.init"/>
+		<device-support value="atxmega32c4"/>
+	</board>
+
+	<board id="board.stk600-rc044x.atxmega16c4" vendor="Atmel" caption="STK600">
+		<build type="define" name="BOARD" value="STK600_RC044X"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="stk600_rc044x.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../.."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x4000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.stk600-rc044x.led"/>
+		<require idref="config.board.stk600-rc044x.init"/>
+		<device-support value="atxmega16c4"/>
+	</board>
+
+	<board id="board.stk600-rc044x.atxmega32d4" vendor="Atmel" caption="STK600">
+		<build type="define" name="BOARD" value="STK600_RC044X"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="stk600_rc044x.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../.."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x8000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.stk600-rc044x.led"/>
+		<require idref="config.board.stk600-rc044x.init"/>
+		<device-support value="atxmega32d4"/>
+	</board>
+</asf>

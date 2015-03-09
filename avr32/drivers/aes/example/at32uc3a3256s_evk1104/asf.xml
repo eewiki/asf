@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="AES Example for EVK1104S" id="avr32.drivers.aes.example.evk1104s">
+		<require idref="avr32.drivers.aes.example"/>
+		<build type="define" name="AES_EXAMPLE_CPU_FREQ" value="12000000"/>
+		<require idref="board.evk1104s"/>
+		<config name="config.board.evk1104.init" value="no"/>
+		<generator value="iarew32"/>
+		<config name="config.compiler.iarew32.catch_unimplemented_interrupts" value="no"/>
+		<config name="config.compiler.iarew32.catch_unhandled_cpu_exceptions" value="no"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256s"/>
+	</project>
+</asf>

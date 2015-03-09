@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.sensor.mma7341l" caption="Accelerometer MMA7341L">
+		<info type="description" value="summary">
+		Low-level driver for the MMA7341L Accelerometer.
+		</info>
+		<build type="c-source" value="mma7341l.c"/>
+		<build type="header-file" subtype="api" value="mma7341l.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="mma7341l_sensor_group"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="sam.drivers.adc"/>
+		<require idref="sam.drivers.pmc"/>
+		<build type="module-config" subtype="required-header-file" value="conf_mma7341l.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3u"/>
+	</module>
+</asf>

@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device PHDC for SAM4S-EK" id="common.services.usb.class.phdc.device.example.sam4s_ek">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.device" value="phdc"/>
+		<require idref="common.services.usb.class.phdc.device.example"/>
+		<require idref="board.sam4s_ek"/>
+		<config name="config.board.sam4s_ek.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4s16c"/>
+	</project>
+</asf>

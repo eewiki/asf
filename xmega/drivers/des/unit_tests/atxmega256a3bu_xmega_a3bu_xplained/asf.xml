@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project id="xmega.drivers.des.unit_tests.xmega_a3bu_xplained" caption="DES driver unit tests on XMEGA-A3BU Xplained" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="xmega.drivers.des.unit_tests"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

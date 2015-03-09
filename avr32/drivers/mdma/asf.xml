@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.mdma" caption="MDMA - Memory DMA Controller">
+		<info type="description" value="summary">
+		This driver interfaces the MDMA (Memory Direct Memory Access Controller) which performs memory-to-memory transfers with as little CPU intervention as possible.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+			<keyword value="DMA Controller" />
+		</info>
+		<build type="c-source" value="mdma.c"/>
+		<build type="header-file" subtype="api" value="mdma.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_mdma"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+	</module>
+</asf>

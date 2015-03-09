@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="I2S Example for evk1101" id="avr32.drivers.ssc_i2s.example.evk1101">
+		<require idref="avr32.drivers.ssc_i2s.example"/>
+		<require idref="board.evk1101"/>
+		<config name="config.board.evk1101.init" value="no"/>
+		<config name="config.board.evk1101.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

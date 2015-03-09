@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="common.services.sensors.drivers.bosch" caption="Sensors - Bosch Sensor">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<info type="description" value="summary">
+		Low-level Bosch sensor device drivers.
+		</info>
+		<build type="c-source" value="bma_axis.inc.c"/>
+		<build type="header-file" value="bma_axis.inc.h"/>
+		<build type="c-source" value="bma020.c"/>
+		<build type="header-file" value="bma020.h"/>
+		<build type="c-source" value="bma150.c"/>
+		<build type="header-file" value="bma150.h"/>
+		<build type="c-source" value="bma180.c"/>
+		<build type="header-file" value="bma180.h"/>
+		<build type="c-source" value="bma220.c"/>
+		<build type="header-file" value="bma220.h"/>
+		<build type="c-source" value="bma222.c"/>
+		<build type="header-file" value="bma222.h"/>
+		<build type="c-source" value="bma250.c"/>
+		<build type="header-file" value="bma250.h"/>
+		<build type="c-source" value="bmp.c"/>
+		<build type="header-file" value="bmp.h"/>
+		<device-support value="avr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmega"/>
+	</module>
+</asf>

@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.matrix" caption="MATRIX - Bus Matrix">
+		<info type="description" value="summary">
+			The Bus Matrix implements a multi-layer AHB that enables parallel access paths between multiple AHB masters and slaves in a system, which increases the overall bandwidth.
+		</info>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_matrix_group"/>
+		<build type="c-source" value="matrix.c"/>
+		<build type="header-file" subtype="api" value="matrix.h"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

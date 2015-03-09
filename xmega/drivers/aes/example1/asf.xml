@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.aes.example1" caption="AES Example 1">
+		<info type="description" value="summary">
+		Use the XMEGA built-in AES accelerator. A single block is encrypted and decrypted.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<build type="c-source" value="aes_example1.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegac"/>
+		<require idref="xmega.drivers.aes"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

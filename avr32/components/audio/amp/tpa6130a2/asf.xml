@@ -1,0 +1,55 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.components.audio.amp.tpa6130a2" caption="TPA6130A2 Audio Amplifier Component">
+		<info type="description" value="summary">
+			This driver provides functions for initializing and configuring the TPA6130A2 Audio Amplifier, and for sending both data/audio and control commands to it.
+
+			The TPA6130A2 must be connected to an ABDAC peripheral module for the data stream/audio signal and a TWI or TWIM peripheral module, depending on the device, for the control stream.
+		</info>
+		<module type="component" id="avr32.components.audio.amp.tpa6130a2#0" caption="TPA6130A2 Audio Amplifier Component - UC3 A0/A1 implementation">
+			<info type="description" value="summary">
+				Driver implementation for AVR UC3 A0/A1, making use of the TWI module for the control stream.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Audio" />
+			</info>
+			<build type="c-source" value="tpa6130.c"/>
+			<build type="header-file" subtype="api" value="tpa6130.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_tpa6130.h"/>
+			<build type="module-config" subtype="path" value="module_config/uc3a0_a1"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_components_audio_amp_tpa6130a2"/>
+			<device-support value="uc3a"/>
+			<require idref="avr32.components.audio"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<require idref="avr32.drivers.pdca"/>
+			<require idref="avr32.drivers.ssc.i2s"/>
+			<require idref="avr32.drivers.twi"/>
+			<require idref="avr32.drivers.abdac"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="component" id="avr32.components.audio.amp.tpa6130a2#1" caption="TPA6130A2 Audio Amplifier Component - UC3 A3/A4 implementation">
+			<info type="description" value="summary">
+			Driver implementation for AVR UC3 A3/A4, making use of the TWIM module for the control stream.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Audio" />
+			</info>
+			<build type="c-source" value="tpa6130.c"/>
+			<build type="header-file" subtype="api" value="tpa6130.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_tpa6130.h"/>
+			<build type="module-config" subtype="path" value="module_config/uc3a3_a4"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_components_audio_amp_tpa6130a2"/>
+			<device-support value="uc3a3_a4"/>
+			<require idref="avr32.components.audio"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<require idref="avr32.drivers.pdca"/>
+			<require idref="avr32.drivers.ssc.i2s"/>
+			<require idref="avr32.drivers.twim"/>
+			<require idref="avr32.drivers.abdac"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a3_a4"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="QTouch Example Application on STK600" id="avr32.services.qtouch.devspecific.uc3.uc3l0.examples.example_qt.at32uc3l064_stk600-rcuc3l0">
+		<require idref="avr32.services.qtouch.devspecific.uc3.uc3l0.examples.example_qt"/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x1000"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x0000"/>
+		<config name="config.compiler.iarew32.heap_size" value="0x1000"/>
+		<require idref="board.stk600-rcuc3l0"/>
+		<config name="config.board.stk600-rcuc3l0.init" value="no"/>
+		<config name="config.common.services.qtouch.qdebug.qt600.uc3l0" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

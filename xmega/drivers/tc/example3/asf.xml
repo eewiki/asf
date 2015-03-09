@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.tc.example3" caption="TC Example 3">
+		<info type="description" value="summary">
+		Use the XMEGA Timer Counter module : Dimming the duty-cycle of the two signals in an opposite way. Configures the Timer E0 (TCE0) in waveform  generator mode. AWex is used to output PWM signals from Compare modules CCA and CCB. These complementary signals are output on Port E0 and E1.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc_example3.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="xmega.drivers.tc"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="PMC clock failure detection example for SAM3N" id="sam.drivers.pmc.pmc_clock_failure_detect_example.sam3n_ek">
+		<info type="description" value="summary">
+		This example shows how to use the Clock Failure Detection feature of the SAM MCUs when the external oscillator fails.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.pmc.pmc_clock_failure_detect_example"/>
+		<require idref="board.sam3n_ek"/>
+		<config name="config.board.sam3n_ek.led" value="yes" />
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3n4c"/>
+	</project>
+</asf>

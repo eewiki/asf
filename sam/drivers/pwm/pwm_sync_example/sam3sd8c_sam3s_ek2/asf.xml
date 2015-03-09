@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="PWM SYNC example for SAM3S-EK2" id="sam.drivers.pwm.pwm_sync_example.sam3s_ek2">
+		<info type="description" value="summary">
+			PWM synchronous channels example on SAM3S-EK2.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.pwm.pwm_sync_example"/>
+		<require idref="board.sam3s_ek2"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3sd8c"/>
+	</project>
+</asf>

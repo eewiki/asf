@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.flashcalw" caption="FLASHCALW Controller Software Driver">
+		<info type="description" value="summary">
+		Driver for the Flash CALW Controller(FLASHCALW). It provides functions for configuring and using the on-chip FLASHCALW.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>	
+		<build type="c-source" value="flashcalw.c"/>
+		<build type="header-file" subtype="api" value="flashcalw.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_sam_drivers_flashcalw"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

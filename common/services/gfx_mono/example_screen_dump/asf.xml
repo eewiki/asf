@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.gfx_mono.example_screen_dump" caption="Monochrome graphic library example">
+		<info type="description" value="summary">
+		Monochrome graphic library example with screen dump
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="c-source" value="example_screen_dump.c"/>
+		<build type="header-file" value="gfx_mono_screen_dump.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmega"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.gfx_mono"/>
+		<require idref="common.services.basic.serial"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

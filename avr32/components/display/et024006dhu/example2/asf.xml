@@ -1,0 +1,44 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.components.display.et024006dhu.example2" caption="ET024006DHU Panel Display Controller Example 2">
+		<module type="application" id="avr32.components.display.et024006dhu.example2#0" caption="ET024006DHU Panel Display Controller Example 2">
+			<info type="description" value="summary">
+			Use the ET024006DHU TFT display, display a colored animation to the screen.
+			</info>
+			<build type="header-file" value="conf/conf_clock.h"/>
+			<build type="header-file" value="conf/conf_ebi.h"/>
+			<info type="keyword" value="technology">
+				<keyword value="Graphics"/>
+			</info>
+			<build type="header-file" value="conf/conf_et024006dhu.h"/>
+			<build type="include-path" value="conf"/>
+			<build type="c-source" value="et024006dhu_example2.c"/>
+			<device-support value="uc3a"/>
+			<require idref="avr32.components.display.et024006dhu"/>
+			<require idref="avr32.drivers.intc"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="avr32.drivers.pwm"/>
+			<require idref="common.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="avr32.components.display.et024006dhu.example2#1" caption="ET024006DHU Panel Display Controller Example 2">
+			<info type="description" value="summary">
+			Use the ET024006DHU TFT display, display a colored animation to the screen.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Graphics"/>
+			</info>
+			<build type="header-file" value="conf/conf_clock.h"/>
+			<build type="header-file" value="conf/conf_ebi.h"/>
+			<build type="header-file" value="conf/conf_et024006dhu.h"/>
+			<build type="include-path" value="conf"/>
+			<build type="c-source" value="et024006dhu_example2.c"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.components.display.et024006dhu"/>
+			<require idref="avr32.drivers.intc"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="common.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

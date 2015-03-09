@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="CMSIS NVIC example for SAM4S-EK2" id="sam.utils.cmsis.cm4_nvic_example.sam4s_ek2">
+		<info type="description" value="summary">
+		The demonstration program makes two buttons as the NVIC trigger. Each button would trigger one LED flash. When an NVIC interrupt preemptive happened, both the LEDs are on. 
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="sam.utils.cmsis.cm4_nvic_example"/>
+		<require idref="board.sam4s_ek2"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>

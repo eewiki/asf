@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="NVM example for atxmega128b1 on XMEGA-B1 Xplained" id="common.drivers.nvm.example.atxmega128b1_xmega_b1_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_nvm_example.h"/>
+		<build type="header-file" value="conf_nvm.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.drivers.nvm.example"/>
+		<config name="config.common.drivers.nvm.mem_type" value="no_extmem"/>
+		<require idref="board.xmega_b1_xplained"/>
+		<config name="config.board.xmega_b1_xplained.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128b1"/>
+	</project>
+</asf>

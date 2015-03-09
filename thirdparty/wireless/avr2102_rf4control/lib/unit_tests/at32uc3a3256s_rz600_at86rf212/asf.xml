@@ -1,0 +1,32 @@
+<asf xmlversion="1.0">
+	<project type="unit-test" caption="Unit Tests for RF4Control AT86RF212-RZ600" force-caption="true" id="thirdparty.wireless.avr2102_rf4control.lib.unit_tests.at32uc3a3256s_rz600_at86rf212">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="header-file" value="conf_nvm.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+
+        <config name="config.compiler.iarew.data_stack_size" value="0x200"/>
+		<config name="config.compiler.iarew.near_heap_size" value="0x40"/>
+
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf212"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.sal" value="at86rf2xx"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.api" value="no" />
+		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<config name="config.common.drivers.nvm.mem_type" value="no_extmem"/>
+		<require idref="board.rz600"/>
+        <require idref="thirdparty.wireless.avr2102_rf4control.zrc.unit_tests"/>
+   		<require idref="common.utils.stdio.stdio_usb"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<generator value="iarew32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256s"/>
+	</project>
+</asf>
+

@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.resources" caption="RESOURCES_MANAGEMENT">
+		<info type="description" value="summary">
+		The Resource Management provides access to resources like Buffers or Queues of the stack or the application.
+		</info>
+		<build type="c-source"      value="buffer/src/bmm.c"/>
+		<build type="c-source"      value="queue/src/qmm.c"/>
+		<build type="header-file"   value="../tal/inc/tal.h"/>
+		<build type="include-path"  value="../tal/inc/"/>
+        <build type="module-config" subtype="required-header-file" value="app_config.h"/>
+        <build type="module-config" subtype="path" value="module_config"/>
+        <build type="doxygen-entry-point" value="group_resources"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.resources.inc"/>
+        <require idref="thirdparty.wireless.avr2025_mac.includes"/>
+        <require idref="thirdparty.wireless.avr2025_mac.source.mac.inc"/>
+        <device-support-alias value="avr2025_mac_pal_support"/>
+	</module>
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.resources.inc" caption="RESOURCES_MANAGEMENT">
+		<info type="description" value="summary">
+		The Resource Management provides access to resources like Buffers or Queues of the stack or the application.
+		</info>
+		<build type="header-file"   value="buffer/inc/bmm.h"/>
+		<build type="header-file"   value="queue/inc/qmm.h"/>
+		<build type="include-path"  value="buffer/inc/"/>
+		<build type="include-path"  value="queue/inc/"/>
+        <device-support-alias value="avr2025_mac_pal_support"/>
+	</module>
+</asf>

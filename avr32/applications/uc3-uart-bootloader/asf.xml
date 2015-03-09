@@ -1,0 +1,35 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.uc3_uart_bootloader" caption="AVR UC3 UART Bootloader">
+		<info type="description" value="summary">
+		ISP application, allowing R/W access to several on-chip memories through a UART interface.  
+		</info>
+		<build type="header-file" value="flash_api.h"/>
+		<build type="c-source" value="isp.c"/>
+		<build type="header-file" value="isp.h"/>
+		<build type="c-source" value="uart_dfu.c"/>
+		<build type="header-file" value="uart_dfu.h"/>
+		<build type="header-file" value="boot/boot.h"/>
+		<build type="asm-source" value="boot/boot.S" toolchain="avr32gcc"/>
+		<build type="asm-source" value="boot/boot.s82" toolchain="iarew32"/>
+		<build type="header-file" value="boot/trampoline.h"/>
+		<build type="c-source" value="clocks/conf_clocks.c"/>
+		<build type="header-file" value="conf/conf_clocks.h"/>
+		<build type="header-file" value="conf/conf_isp.h"/>
+		<build type="header-file" value="conf/conf_uart.h"/>
+		<build type="c-source" value="intc/intc.c"/>
+		<build type="header-file" value="intc/intc.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./boot"/>
+		<build type="include-path" value="./conf"/>
+		<build type="include-path" value="./intc"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.usart"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

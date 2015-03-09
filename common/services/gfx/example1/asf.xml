@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.gfx.example1" caption="Graphics Library Example">
+		<info type="description" value="summary">
+		Graphic library graphic primitives example. Draw graphics shapes to a connected LCD display.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="c-source" value="example1.c"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.gfx"/>
+		<require idref="common.services.gfx.font"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

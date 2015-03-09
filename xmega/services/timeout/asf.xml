@@ -1,0 +1,58 @@
+<asf xmlversion="1.0">
+	<select-by-device id="xmega.services.timeout" caption="Timeout Service XMEGA">
+		
+		<!-- For devices with RTC --> 
+		<module type="service" id="xmega.services.timeout#0" caption="Timeout Service XMEGA">
+			<info type="description" value="summary">
+			Timeout service for XMEGA that uses the RTC driver as time source in order to have a system tick. Multiple timeout channels supported. Internal 32kHz oscillator or external 32kHz crystal oscillator can be used as clock source. Includes possibility to set singleshot and periodic timeouts. 
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Timers" />
+			</info>
+			<device-support value="xmegaa1"/>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa4"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegad"/>
+			<device-support value="xmegae"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="timeout_group"/>
+			<build type="c-source" value="timeout.c"/>
+			<build type="header-file" subtype="api" value="timeout.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_timeout.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.rtc"/>
+			<require idref="xmega.drivers.pmic"/>
+			<require idref="xmega.utils"/>
+			<build type="doxygen-quick-start" value="timeout_quickstart"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+
+		<!-- For devices with RTC32 -->
+		<module type="service" id="xmega.services.timeout#1" caption="Timeout Service XMEGA">
+			<info type="description" value="summary">
+			Timeout service for XMEGA that uses the RTC driver as time source in order to have a system tick. Multiple timeout channels supported. Internal 32kHz oscillator or external 32kHz crystal oscillator can be used as clock source. Includes possibility to set singleshot and periodic timeouts. 
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Timers" />
+			</info>
+			<device-support value="xmegaa3b"/>
+			<device-support value="xmegaa3bu"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="timeout_group"/>
+			<build type="c-source" value="timeout.c"/>
+			<build type="header-file" subtype="api" value="timeout.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_timeout.h"/>
+			<build type="module-config" subtype="path" value="module_config_rtc32"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.rtc32"/>
+			<require idref="xmega.drivers.pmic"/>
+			<require idref="xmega.utils"/>
+			<build type="doxygen-quick-start" value="timeout_quickstart"/>
+			<generator value="doxygen-module" default-mcu="atxmega256a3b"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.graphics.codec.png.lodepng" caption="LodePNG PNG Decoder">
+		<info type="description" value="summary">
+		LodePNG is a PNG image decoder. It is made for C (ISO C90), and has a C++ wrapper with a more convenient interface on top.
+		More info at: http://members.gamedev.net/lode/projects/LodePNG/
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<build type="c-source" value="lodepng.c"/>
+		<build type="header-file" subtype="api" value="lodepng.h"/>
+		<build type="distribute" subtype="license" value="license.txt" />
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_services_graphics_codec_png_lodepng"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

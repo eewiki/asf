@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device Mass Storage unit tests for SAM3X-EK" id="common.services.usb.class.msc.device.unit_tests.sam3x_ek" type="unit-test">
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_nf.h"/>
+		<build type="header-file" value="conf_sd_mmc.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.nand_flash"/>
+		<require idref="common.components.memory.sd_mmc.ctrl_access"/>
+		<config name="config.common.components.memory.sd_mmc" value="mci"/>
+		<config name="config.common.services.usb.class.device" value="mass_storage"/>
+		<require idref="common.services.usb.class.msc.device.unit_tests"/>
+		<require idref="board.sam3x_ek"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.utils"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<device-support value="atsam3x8h"/>
+	</project>
+</asf>

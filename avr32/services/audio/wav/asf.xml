@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.audio.wav" caption="WAV decoder">
+		<info type="description" value="summary">
+		WAV decoder.
+		</info>
+			<info type="keyword" value="technology">
+				<keyword value="Audio"/>
+			</info>		
+		<build type="c-source" value="wavdecode.c"/>
+		<build type="header-file" value="wavdecode.h"/>
+		<build type="include-path" value="."/>
+                <build type="doxygen-entry-point" value="group_avr32_services_audio_wav"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3_a4"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

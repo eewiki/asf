@@ -1,0 +1,82 @@
+<asf xmlversion="1.0">
+        <select-by-config id="thirdparty.services.atmel_rf4ce.lib.method" name="thirdparty.services.atmel_rf4ce.lib.method" caption="RF4CE Libraries V1.3.0 for remote and target for megaRF platform" default="no_method">
+		<info type="description" value="summary">
+			The pre-compiled ZRC (ZigBee Remote Control Profile based on RF4CE nwk layer) libraries for ATMega128RFA1 based devices.
+			The ZRC profile implements the Remote control functionalities like pairing with Target (like TV, STB) and data exchanges between controller and target.
+			ZRC profile uses the RF4CE nwk layer and IEEE 802.15.4 MAC layer as the base layers.
+			For more information on the RF4CE Libraries, check http://www.atmel.com/tools/RF4CONTROL-ZIGBEERF4CE.aspx
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Wireless" />
+			</info>
+		<module type="service" id="thirdparty.services.atmel_rf4ce.lib.method#no_method" caption="RF4CE Libraries V1.3.0 for remote and target for megaRF platform">
+			<build type="doxygen-entry-point" value="group_common_services_wireless_rf4ce"/>
+			<info type="description" value="summary">
+			The pre-compiled ZRC (ZigBee Remote Control Profile based on RF4CE nwk layer) libraries for ATMega128RFA1 based devices.
+			The ZRC profile implements the Remote control functionalities like pairing with Target (like TV, STB) and data exchanges between controller and target.
+			ZRC profile uses the RF4CE nwk layer and IEEE 802.15.4 MAC layer as the base layers.
+			For more information on the RF4CE Libraries, check http://www.atmel.com/tools/RF4CONTROL-ZIGBEERF4CE.aspx
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Wireless" />
+			</info>
+			<device-support value="atmega128rfa1"/>
+		</module>
+		<module type="service" id="thirdparty.services.atmel_rf4ce.lib.method#remote_method" caption="RF4CE Libraries V1.3.0 for remote for megaRF platform">
+			<info type="description" value="summary">
+			The pre-compiled ZRC (ZigBee Remote Control Profile based on RF4CE nwk layer) libraries for controller for ATMega128RFA1 based devices.
+			The ZRC profile library functions support the initialization of micro-controller, board and transceiver.
+			The microcontroller and board are interfaced using the Platform Abstraction Layer (PAL).
+			The transceiver is interfaced using the Transceiver Abstraction Layer (TAL).
+			The ZRC profile implements the Remote control functionalities like pairing with Target (like TV, STB) and data exchanges between controller and target.
+			ZRC profile uses the RF4CE nwk layer and IEEE 802.15.4 MAC layer as the base layers.
+			For more information on the RF4CE Libraries, check http://www.atmel.com/tools/RF4CONTROL-ZIGBEERF4CE.aspx
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Wireless" />
+			</info>
+
+			<require idref="thirdparty.services.atmel_rf4ce"/>
+			<require idref="thirdparty.services.atmel_rf4ce.lib.inc"/>
+			<build type="library" subtype="user" value="megarf/gcc/lib_rf4ce_controller_no_serial_bootloader.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="megarf/gcc/lib_rf4ce_controller.a" toolchain="avrgcc"/>
+
+			<build type="distribute" subtype="file" value="megarf/iar/lib_rf4ce_controller_no_serial_bootloader.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="megarf/iar/lib_rf4ce_controller.r90" toolchain="iarew"/>
+
+			<build type="distribute" subtype="license" value="../license.txt"/>
+
+			<build type="doxygen-entry-point" value="group_common_services_wireless_rf4ce"/>
+			<device-support value="atmega128rfa1"/>
+		</module>
+
+		<module type="service" id="thirdparty.services.atmel_rf4ce.lib.method#target_method" caption="RF4CE Libraries V1.3.0 for target for megaRF platform">
+			<info type="description" value="summary">
+			The pre-compiled ZRC (ZigBee Remote Control Profile based on RF4CE nwk layer) file for Target libraries for ATMega128RFA1 based devices.
+			The ZRC profile library functions support the initialization of micro-controller, board and transceiver.
+			The microcontroller and board are interfaced using the Platform Abstraction Layer (PAL).
+			The transceiver is interfaced using the Transceiver Abstraction Layer (TAL).
+			The ZRC profile implements the Remote control functionalities like pairing with Target (like TV, STB) and data exchanges between controller and target.
+			ZRC profile uses the RF4CE nwk layer and IEEE 802.15.4 MAC layer as the base layers.
+			For more information on the RF4CE Libraries, check http://www.atmel.com/tools/RF4CONTROL-ZIGBEERF4CE.aspx
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Wireless" />
+			</info>
+
+			<require idref="thirdparty.services.atmel_rf4ce"/>
+			<require idref="thirdparty.services.atmel_rf4ce.lib.inc"/>
+
+			<build type="library" subtype="user" value="megarf/gcc/lib_rf4ce_target_no_serial_bootloader.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="megarf/gcc/lib_rf4ce_target.a" toolchain="avrgcc"/>
+
+			<build type="distribute" subtype="file" value="megarf/iar/lib_rf4ce_target_no_serial_bootloader.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="megarf/iar/lib_rf4ce_target.r90" toolchain="iarew"/>
+
+			<build type="distribute" subtype="license" value="../license.txt"/>
+
+			<build type="doxygen-entry-point" value="group_common_services_wireless_rf4ce"/>
+			<device-support value="atmega128rfa1"/>
+		</module>
+</select-by-config>
+</asf>

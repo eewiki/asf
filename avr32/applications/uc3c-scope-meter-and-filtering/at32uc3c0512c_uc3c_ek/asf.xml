@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="UC3C Scope Meter And Filtering Application for uc3c_ek" id="avr32.applications.scope-meter-and-filtering-demo.uc3c_ek">
+		<build type="include-path" value="../conf/"/>
+		<require idref="avr32.applications.scope-meter-and-filtering-demo"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

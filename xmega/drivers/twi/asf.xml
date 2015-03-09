@@ -1,0 +1,68 @@
+<asf xmlversion="1.0">
+	<select-by-config id="xmega.drivers.twi" name="config.xmega.drivers.twi.mode" caption="TWI - Two-wire Interface" default="both">
+		<info type="description" value="summary">
+		Driver for the Two-Wire Interface (TWI).
+		Provides functions for configuring and using the TWI in both master and slave mode.
+		</info>
+		<module type="driver" id="xmega.drivers.twi#both" caption="TWI - Two-wire Master and Slave Interface">
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_twim.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="c-source" value="twim.c"/>
+			<build type="header-file" subtype="api" value="twim.h"/>
+			<build type="c-source" value="twis.c"/>
+			<build type="header-file" subtype="api" value="twis.h"/>
+			<build type="header-file" value="twi_common.h"/>
+			<build type="doxygen-entry-point" value="group_xmega_drivers_twi"/>
+			<device-support value="xmegaa"/>
+			<device-support value="xmegaau"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<device-support value="xmegad"/>
+			<device-support value="xmegae"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+			<require idref="xmega.utils"/>
+		</module>
+		<module type="driver" id="xmega.drivers.twi#master" caption="TWI - Two-wire Master Interface">
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_twim.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="c-source" value="twim.c"/>
+			<build type="header-file" subtype="api" value="twim.h"/>
+			<build type="header-file" value="twi_common.h"/>
+			<build type="doxygen-entry-point" value="group_xmega_drivers_twi"/>
+			<device-support value="xmegaa"/>
+			<device-support value="xmegaau"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<device-support value="xmegad"/>
+			<device-support value="xmegae"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+			<require idref="xmega.utils"/>
+		</module>
+		<module type="driver" id="xmega.drivers.twi#slave" caption="TWI - Two-wire Slave Interface">
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="twis.c"/>
+			<build type="header-file" subtype="api" value="twis.h"/>
+			<build type="header-file" value="twi_common.h"/>
+			<build type="doxygen-entry-point" value="group_xmega_drivers_twi"/>
+			<device-support value="xmegaa"/>
+			<device-support value="xmegaau"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<device-support value="xmegad"/>
+			<device-support value="xmegae"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+			<require idref="xmega.utils"/>
+		</module>
+	</select-by-config>
+</asf>

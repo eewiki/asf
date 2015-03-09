@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="Common NVM driver unit tests for at32uc3a3256 on EVK1104" id="common.drivers.nvm.unit_tests.at32uc3a3256_evk1104">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_nvm.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.drivers.nvm.unit_tests"/>
+		<config name="config.common.drivers.nvm.mem_type" value="no_extmem"/>
+		<require idref="board.evk1104"/>
+		<config name="config.board.evk1104.led" value="yes"/>
+		<generator value="iarew32"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

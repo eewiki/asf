@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="mega.drivers.macsc" caption="MAC Symbol Counter">
+		<info type="description" value="summary">
+		Driver for the MAC Symbol Counter.
+		Provides functions for configuring and using the 32-bit MAC Symbol Counter in megaRF devices.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+			<keyword value="Wireless"/>
+		</info>
+		<build type="c-source" value="macsc_megarf.c"/>
+		<build type="header-file" subtype="api" value="macsc_megarf.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="macsc_megarf_group"/>
+		<build type="doxygen-quick-start" value="macsc_megarf_quickstart"/>
+		<require idref="mega.utils"/>
+		<device-support value="megarf"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.ioport"/>
+		<require idref="mega.drivers.usart"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+	</module>
+</asf>

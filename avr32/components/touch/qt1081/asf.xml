@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.touch.qt1081" caption="QT1081 QTouch sensor">
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>
+		<info type="description" value="summary">
+		The QT1081 sensor is operated by GPIOs and this driver provides a wrapper for the GPIO accesses.
+		</info>
+		<build type="header-file" value="qt1081.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_components_touch_qt1081"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

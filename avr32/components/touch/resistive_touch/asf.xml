@@ -1,0 +1,43 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.components.touch.resistive_touch" caption="Resistive Touch driver">
+		<module type="component" id="avr32.components.touch.resistive_touch#0" caption="Resistive Touch driver">
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+			<info type="description" value="summary">
+			This driver offers resistive touch measurements by using the on-chip ADC. In addition it offers calibration and a callback function for the application. To improve the overall results four ADC channels are used to measure the touch position. That means the measurements are done from each direction of the touch surface.
+			</info>
+			<build type="header-file" subtype="api" value="rtouch.h"/>
+			<build type="c-source" value="rtouch.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_rtouch.h"/>
+			<build type="module-config" subtype="path" value="module_config/uc3a"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_components_touch_resistive_touch"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.adc"/>
+			<require idref="avr32.drivers.intc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+		</module>
+		<module type="component" id="avr32.components.touch.resistive_touch#1" caption="Resistive Touch driver">
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+			<info type="description" value="summary">
+			This driver offers resistive touch measurements by using the on-chip ADC. In addition it offers calibration and a callback function for the application. To improve the overall results four ADC channels are used to measure the touch position. That means the measurements are done from each direction of the touch surface.
+			</info>
+			<build type="header-file" subtype="api" value="rtouch.h"/>
+			<build type="c-source" value="rtouch.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_rtouch.h"/>
+			<build type="module-config" subtype="path" value="module_config/uc3c"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_components_touch_resistive_touch"/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.adcifa"/>
+			<require idref="avr32.drivers.intc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+		</module>
+	</select-by-device>
+</asf>

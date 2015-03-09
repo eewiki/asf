@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.efc" caption="EEFC - Enhanced Embedded Flash Controller">
+		<info type="description" value="summary">
+		The Enhanced Embedded Flash Controller (EFC/EEFC) ensures the interface of the Flash block with the 32-bit internal bus.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<build type="c-source" value="efc.c"/>
+		<build type="header-file" subtype="api" value="efc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_efc_group"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

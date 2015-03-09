@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="mega.drivers.cpu" caption="CPU specific features">
+		<info type="description" value="summary">
+		Driver for CPU specific features. It provides functions for writing the CCP (Configuration Change Protection) register according to the timed sequence in the AVR XMEGA manual. Functions for getting the system reset cause and to do a soft reset of the microcontroller are also provided.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="CPU"/>
+		</info>
+		<build type="header-file" subtype="api" value="mega_reset_cause.h"/>
+
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="ccp_group"/>
+		<build type="doxygen-quick-start" value="mega_ccp_quickstart"/>
+		<device-support value="mega"/>
+		<require idref="mega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+	</module>
+</asf>

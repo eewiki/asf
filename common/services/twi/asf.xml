@@ -1,0 +1,160 @@
+<asf xmlversion="1.0">
+	<select-by-config id="common.services.basic.twi.mode" name="config.common.services.basic.twi.mode" caption="TWI - Two-Wire Interface" default="both">
+		<info type="description" value="summary">
+		TWI Two-Wire Interface service. Common API.
+		</info>
+		<module type="meta" id="common.services.basic.twi.mode#both" caption="TWI - Two-Wire Interface">
+			<info type="description" value="summary">
+			TWI Two-Wire Interface service. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<require idref="avr32.drivers.twim"/>
+			<require idref="avr32.drivers.twis"/>
+		</module>
+		<module type="meta" id="common.services.basic.twi.mode#master" caption="TWI - Two-Wire Interface">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<info type="description" value="summary">
+			TWI Two-Wire Interface service. Common API.
+			</info>
+			<require idref="avr32.drivers.twim"/>
+		</module>
+		<module type="meta" id="common.services.basic.twi.mode#slave" caption="TWI - Two-Wire Interface">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<info type="description" value="summary">
+			TWI Two-Wire Interface service. Common API.
+			</info>
+			<require idref="avr32.drivers.twis"/>
+		</module>
+	</select-by-config>
+	<select-by-device id="common.services.basic.twi" caption="TWI - Two-Wire Interface (Common API)">
+		<info type="description" value="summary">
+		TWI Two-Wire Interface service. Common API.
+		</info>
+		<module type="service" id="common.services.basic.twi#0" caption="TWI - Two-Wire Interface - XMEGA implementation">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<info type="description" value="summary">
+			TWI Two-Wire Interface service. Common API.
+			</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="twi_slave.h"/>
+			<build type="header-file" subtype="api" value="twi_master.h"/>
+			<build type="header-file" subtype="api" value="xmega_twi/twi_slave.h"/>
+			<build type="header-file" subtype="api" value="xmega_twi/twi_master.h"/>
+			<build type="doxygen-entry-point" value="twi_group"/>
+			<build type="doxygen-quick-start" value="twi_quickstart"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.twi"/>
+			<require idref="xmega.utils"/>
+			<device-support value="xmega"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.basic.twi#1" caption="TWI - Two-Wire Interface - UC3 A/B implementation">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<info type="description" value="summary">
+			TWI Two-Wire Interface service. Common API.
+			</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="twi_master.h"/>
+			<build type="header-file" subtype="api" value="uc3_twi/twi_master.h"/>
+			<build type="doxygen-entry-point" value="twi_group"/>
+			<build type="doxygen-quick-start" value="twi_quickstart"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="avr32.drivers.twi"/>
+			<require idref="avr32.utils"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="common.services.basic.twi#2" caption="TWI - Two-Wire Interface - UC3 A3/A4/C/D/L implementation">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<info type="description" value="summary">
+			TWI Two-Wire Interface service. Common API.
+			</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="twi_master.h"/>
+			<build type="header-file" subtype="api" value="uc3_twim/twi_master.h"/>
+			<build type="doxygen-entry-point" value="twi_group"/>
+			<build type="doxygen-quick-start" value="twi_quickstart"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.twi.mode"/>
+			<require idref="avr32.utils"/>
+			<device-support value="uc3d"/>
+			<device-support value="uc3l"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3a3_a4"/>
+			<generator value="doxygen-module" default-mcu="at32uc3l064"/>
+		</module>
+		<module type="service" id="common.services.basic.twi#3" caption="TWI - Two-Wire Interface - SAM implementation">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<info type="description" value="summary">
+			TWI Two-Wire Interface service. Common API.
+			</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="twi_slave.h"/>
+			<build type="header-file" subtype="api" value="twi_master.h"/>
+			<build type="header-file" subtype="api" value="sam_twi/twi_slave.h"/>
+			<build type="header-file" subtype="api" value="sam_twi/twi_master.h"/>
+			<build type="doxygen-entry-point" value="twi_group"/>
+			<build type="doxygen-quick-start" value="twi_quickstart"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.drivers.twi"/>
+			<require idref="sam.utils"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="service" id="common.services.basic.twi#4" caption="TWI - Two-Wire Interface - SAM4L implementation">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<info type="description" value="summary">
+			TWI Two-Wire Interface service. Common API.
+			</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="twi_master.h"/>
+			<build type="header-file" subtype="api" value="sam_twim/twi_master.h"/>
+			<build type="doxygen-entry-point" value="twi_group"/>
+			<build type="doxygen-quick-start" value="twi_quickstart"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.drivers.twim"/>
+			<require idref="sam.utils"/>
+			<device-support value="sam4l"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+		<module type="service" id="common.services.basic.twi#5" caption="TWI - Two-Wire Interface - megaRF implementation">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<info type="description" value="summary">
+			TWI Two-Wire Interface service. Common API.
+			</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="twi_master.h"/>
+			<build type="header-file" subtype="api" value="megarf_twi/twi_master.h"/>
+			<build type="header-file" subtype="api" value="twi_slave.h"/>
+			<build type="header-file" subtype="api" value="megarf_twi/twi_slave.h"/>			
+			<build type="doxygen-entry-point" value="twi_group"/>
+			<build type="doxygen-quick-start" value="twi_quickstart"/>	
+			<require idref="common.services.basic.clock"/>
+			<require idref="mega.drivers.twi"/>
+			<require idref="mega.utils"/>
+			<device-support value="megarf"/>
+			<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		</module>			
+	</select-by-device>
+</asf>

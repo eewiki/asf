@@ -1,0 +1,76 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.basic.sleepmgr.example" caption="Common API for Sleep Management Example">
+		<module type="application" id="common.services.basic.sleepmgr.example#0" caption="Common API for Sleep Management Example">
+			<info type="description" value="summary">
+			This example shows how to use the Common API for Sleep Management on AVR XMEGA devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management"/>
+			</info>
+			<build type="c-source" value="sleepmgr_example_xmega.c"/>
+			<device-support value="xmega"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="xmega.drivers.cpu"/>
+			<require idref="xmega.drivers.ioport"/>
+			<require idref="xmega.drivers.sleep"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.sleepmgr.example#1" caption="Common API for Sleep Management Example">
+			<info type="description" value="summary">
+			This example shows how to use the Common API for Sleep Management on AVR UC3 A0/A1/A3/A4/B0/B1 devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management"/>
+			</info>
+			<build type="c-source" value="sleepmgr_example_uc3_rtc.c"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3"/>
+			<device-support value="uc3b"/>
+			<require idref="avr32.drivers.cpu.cycle_counter"/>
+			<require idref="avr32.drivers.eic"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="avr32.drivers.rtc"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.sleepmgr.example#2" caption="Common API for Sleep Management Example">
+			<info type="description" value="summary">
+			This example shows how to use the Common API for Sleep Management on AVR UC3 C/L/D devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management"/>
+			</info>
+			<build type="c-source" value="sleepmgr_example_uc3_ast.c"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3l"/>
+			<device-support value="uc3d"/>
+			<require idref="avr32.drivers.cpu.cycle_counter"/>
+			<require idref="avr32.drivers.eic"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="avr32.drivers.ast"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.sleepmgr.example#3" caption="Common API for Sleep Management Example">
+			<info type="description" value="summary">
+			This example shows how to use the Common API for Sleep Management on SAM4L devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management"/>
+			</info>
+			<build type="c-source" value="sleepmgr_example_sam4l_ast.c"/>
+			<device-support value="sam4l"/>
+			<require idref="sam.drivers.ast"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.delay"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="HMATRIXB example for SAM4L8 Xplained Pro" id="sam.drivers.hmatrixb.example.sam4l8_xplained_pro">
+		<info type="description" value="summary">
+		Basic example of HMATRIXB on SAM4L Xplained Pro.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="." />
+		<require idref="sam.drivers.hmatrixb.example"/>
+		<require idref="board.sam4l8_xplained_pro"/>
+		<config name="config.board.sam4l8_xplained_pro.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<device-support value="atsam4lc8c"/>
+	</project>
+</asf>

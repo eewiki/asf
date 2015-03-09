@@ -1,0 +1,41 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.components.audio.codec.wm8731.example" caption="WM8731 Audio Codec Example">
+		<module type="application" id="sam.components.audio.codec.wm8731.example#0" caption="WM8731 Audio Codec Example">
+			<info type="description" value="summary">
+				A simple example for the WM8731 by playing back a WAV file.
+			</info>
+			<build type="c-source" value="xmodem.c"/>
+			<build type="header-file" value="xmodem.h"/>
+			<build type="c-source" value="wm8731_example.c"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam3x"/>
+			<require idref="sam.utils.cmsis.sam3x.source.template"/>
+			<require idref="sam.components.audio.codec.wm8731"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.drivers.ssc"/>
+			<require idref="sam.drivers.dmac"/>
+			<require idref="sam.drivers.sdramc"/>
+			<require idref="sam.components.memory.sdram.mt48lc16m16a2"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="sam.components.audio.codec.wm8731.example#1" caption="WM8731 Audio Codec Example">
+			<info type="description" value="summary">
+				A simple example for the WM8731 by playing back a WAV file.
+			</info>
+			<build type="c-source" value="xmodem.c"/>
+			<build type="header-file" value="xmodem.h"/>
+			<build type="c-source" value="wm8731_example.c"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam3u"/>
+			<require idref="sam.utils.cmsis.sam3u.source.template"/>
+			<require idref="sam.components.audio.codec.wm8731"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.drivers.ssc"/>
+			<require idref="sam.drivers.smc"/>
+			<require idref="sam.drivers.dmac"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

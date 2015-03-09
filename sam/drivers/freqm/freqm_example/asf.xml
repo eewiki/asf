@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.freqm.example" caption="FREQM (Frequency Meter) Example">
+		<info type="description" value="summary">
+			This example demonstrates how to use frequency meter.
+			</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks"/>
+		</info>
+		<build type="c-source" value="freqm_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.freqm"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

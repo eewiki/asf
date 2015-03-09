@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.memory.sd_mmc.sd_mmc_spi" caption="SD/MMC card access using SPI">
+		<info type="description" value="summary">
+		Driver for SD (Secure Digital) / MMC (MultiMedia Card) access using SPI (Serial Peripheral Interface). This driver is used to
+		setup access to SD/MMC memory cards using the SPI interface.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="sd_mmc_spi.c"/>
+		<build type="header-file" subtype="api" value="sd_mmc_spi.h"/>
+		<build type="c-source" value="sd_mmc_spi_mem.c"/>
+		<build type="header-file" subtype="api" value="sd_mmc_spi_mem.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_sd_mmc_spi.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="define" name="SD_MMC_SPI_ENABLE" value=""/>
+		<build type="doxygen-entry-point" value="group_avr32_components_memory_sd_mmc_sd_mmc_spi"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

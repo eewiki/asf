@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.audio.codec.ms3.common" caption="MS3 Audio Codec">
+		<info type="description" value="summary">
+		Audio Codec Software Driver for the MobileSound 3 (MS3) from Bang &amp; Olufsen ICEPower configured to be used with the external CS2200 clock synthesizer.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Audio" />
+		</info>
+		<build type="c-source" value="ms3.c"/>
+		<build type="header-file" subtype="api" value="ms3.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_components_audio_codec_ms3_common"/>
+		<require idref="avr32.components.clock_synthesizer.cirrus_logic_cs2200-cp"/>
+		<require idref="avr32.components.audio"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.ssc.i2s"/>
+		<require idref="avr32.drivers.twi"/>
+		<device-support value="uc3a"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

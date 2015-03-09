@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.freqm.example" caption="FREQM Example">
+		<info type="description" value="summary">
+			Use the 32KHz reference clock to measure the
+			CPU, HSB, PBA and PBB clock frequency and output results to usart.
+		</info>
+		<build type="c-source" value="freqm_example.c"/>
+		<device-support value="uc3"/>
+		<require idref="avr32.drivers.freqm"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

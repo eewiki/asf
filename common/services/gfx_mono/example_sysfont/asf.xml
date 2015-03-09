@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.gfx_mono.example.sysfont" caption="GFX Monochrome System Font Example">
+		<info type="description" value="summary">
+		Example showing how to use the system font driver to display text strings on a monochrome display.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="example_sysfont.c"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.gfx_mono"/>
+		<require idref="common.services.gfx_mono.font"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

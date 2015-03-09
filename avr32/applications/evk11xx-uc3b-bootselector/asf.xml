@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.evk11xx-uc3b-bootselector" caption="EVK11xx Boot Selector Application">
+		<info type="description" value="summary">
+		Boot application for the UC3L-EK UC3B MCU which selects the USB HID QTouch firmware or USB VPC firmware at startup.
+		</info>
+		<build type="c-source" value="bootselector.c"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.flashc"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

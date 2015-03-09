@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.acifa.example" caption="ACIFA Example">
+		<info type="description" value="summary">
+		Initialize the ACIFA comparators and print the compare output information.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="acifa_example.c"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.acifa"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.wdt.example" caption="WDT Example">
+		<info type="description" value="summary">
+		Use the XMEGA WDT module : enables the WDT in both modes, standard and window, and tests all WDT features. Uses the LEDs to show WDT status.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+			<keyword value="Interrupt"/>
+			<keyword value="Clocks"/>
+		</info>
+		<build type="c-source" value="wdt_example.c"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.delay"/>
+		<require idref="xmega.drivers.wdt"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

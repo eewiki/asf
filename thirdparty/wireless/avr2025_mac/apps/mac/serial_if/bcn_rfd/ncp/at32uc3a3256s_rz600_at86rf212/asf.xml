@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<project force-caption="true" force-description="true" caption="MAC Serial Interface Beacon RFD AT86RF212-RZ600" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_rfd.ncp.at32uc3a3256s_rz600_at86rf212">
+		<info type="description" value="summary">
+		MAC Serial Interface Application - Beacon RFD
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+
+		<build type="define" name="TEST_HARNESS_BIG_ENDIAN" value =""/>
+
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf212"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
+		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_rfd.ncp"/>
+		<require idref="board.rz600"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256s"/>
+	</project>
+</asf>

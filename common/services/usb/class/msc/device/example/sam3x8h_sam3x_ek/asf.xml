@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device Mass Storage for SAM3X-EK" id="common.services.usb.class.msc.device.example.sam3x_ek">
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_virtual_mem.h"/>
+		<build type="header-file" value="conf_sd_mmc.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_nf.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.nand_flash"/>
+		<require idref="common.components.memory.virtual_mem"/>
+		<require idref="common.components.memory.sd_mmc.ctrl_access"/>
+		<config name="config.common.components.memory.sd_mmc" value="mci"/>
+		<config name="config.common.services.usb.class.device" value="mass_storage"/>
+		<require idref="common.services.usb.class.msc.device.example"/>
+		<require idref="board.sam3x_ek"/>
+		<config name="config.board.sam3x_ek.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.stack_size" value="16K"/>
+		<config name="config.compiler.iarewarm.sys_stack_size" value="16K"/>
+		<device-support value="atsam3x8h"/>
+	</project>
+</asf>

@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device CDC unit tests for evk1101" id="common.services.usb.class.cdc.device.unit_tests.evk1101" type="unit-test">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.usb.class.cdc.device.unit_tests"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<require idref="board.evk1101"/>
+		<config name="config.board.evk1101.led" value="yes"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="DSPLIB 32-bit fixed-point vectors example for Simulator" id="avr32.services.dsplib.simulator_example.dsp32_vectors.at32uc3a0512">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.avr_simulator_uc3.at32uc3a0512"/>
+		<require idref="avr32.services.dsplib.simulator_example.dsp32_vectors"/>
+		<require idref="avr32.services.dsplib.modules.debug.common"/>
+		<config name="config.compiler.avr32gcc.optimization" value="none"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

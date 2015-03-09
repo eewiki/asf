@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.freqm" caption="FREQM - Frequency Meter">
+		<info type="description" value="summary">
+		The FREQM can be used to accurately measure the frequency of a clock by comparing it to a known reference clock.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks" />
+		</info>
+		<build type="c-source" value="freqm.c"/>
+		<build type="header-file" subtype="api" value="freqm.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_freqm_group"/>
+		<device-support value="sam4l"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

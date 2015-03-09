@@ -1,0 +1,56 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.components.memory.data_flash.at45dbx._asf_v1" caption="AT45DBX DataFlash (from ASF ver. 1)">
+		<info type="description" value="summary">
+		Driver for the AT45dbX series SPI DataFlash memories (from ASF V1). It provides functions for initialization and read/write operations at byte or sector level.
+		</info>
+		<build type="c-source" value="at45dbx_mem.c"/>
+		<build type="header-file" value="at45dbx_mem.h"/>
+		<build type="c-source" value="at45dbx.c"/>
+		<build type="header-file" value="at45dbx.h"/>
+		<build type="include-path" value="."/>
+		<build type="define" name="AT45DBX_ENABLE" value=""/>
+		<build type="doxygen-entry-point" value="group_common_components_memory_data_flash_at45dbx_asf_v1"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<require idref="common.components.memory.data_flash.at45dbx._asf_v1.config"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+	<select-by-device id="common.components.memory.data_flash.at45dbx._asf_v1.config">
+		<module type="component" id="common.components.memory.data_flash.at45dbx._asf_v1.config#uc3a0_a1" caption="AT45DBX DataFlash (from ASF ver. 1)">
+			<device-support value="uc3a"/>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="conf_at45dbx.h"/>
+			<build type="module-config" subtype="path" value="module_config/uc3a0_a1"/>
+		</module>
+		<module type="component" id="common.components.memory.data_flash.at45dbx._asf_v1.config#uc3a3_a4" caption="AT45DBX DataFlash (from ASF ver. 1)">
+			<device-support value="uc3a3_a4"/>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="conf_at45dbx.h"/>
+			<build type="module-config" subtype="path" value="module_config/uc3a3_a4"/>
+		</module>
+		<module type="component" id="common.components.memory.data_flash.at45dbx._asf_v1.config#uc3b0_b1" caption="AT45DBX DataFlash (from ASF ver. 1)">
+			<device-support value="uc3b"/>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="conf_at45dbx.h"/>
+			<build type="module-config" subtype="path" value="module_config/uc3b0_b1"/>
+		</module>
+		<module type="component" id="common.components.memory.data_flash.at45dbx._asf_v1.config#uc3c" caption="AT45DBX DataFlash (from ASF ver. 1)">
+			<device-support value="uc3c"/>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="conf_at45dbx.h"/>
+			<build type="module-config" subtype="path" value="module_config/uc3c"/>
+		</module>
+		<module type="component" id="common.components.memory.data_flash.at45dbx._asf_v1.config#uc3l" caption="AT45DBX DataFlash (from ASF ver. 1)">
+			<device-support value="uc3l"/>
+			<info type="gui-flag" value="hidden"/>
+			<build type="module-config" subtype="required-header-file" value="conf_at45dbx.h"/>
+			<build type="module-config" subtype="path" value="module_config/uc3l"/>
+		</module>
+	</select-by-device>	
+</asf>

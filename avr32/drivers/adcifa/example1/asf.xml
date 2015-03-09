@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.adcifa.example1" caption="ADCIFA Example 1">
+		<info type="description" value="summary">
+		Initialize the ADCIFA, use the on-board sensors and display the value change on a terminal.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adcifa_example.c"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clock.h"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.scif"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.drivers.adcifa"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

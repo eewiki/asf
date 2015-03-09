@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="PMC clock switching for SAM4E" id="sam.drivers.pmc.pmc_clock_switching_example.sam4e_ek">
+		<info type="description" value="summary">
+		The Power Management Controller (PMC) optimizes power consumption by controlling all system and user peripheral clocks. The PMC enables/disables the clock inputs to many of the peripherals and the Cortex-M4 Processor.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_pmc_clock_switching_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.pmc.pmc_clock_switching_example"/>
+		<require idref="board.sam4e_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4e16e"/>
+	</project>
+</asf>

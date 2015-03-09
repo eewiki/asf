@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam0.components.sensor.at30tse75x" caption="AT30TSE75X Temperature Sensor">
+		<info type="description" value="summary">
+		Driver for the AT30TSE75X Series Temperature Sensor.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Sensors" />
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="at30tse75x.h"/>
+		<build type="header-file" value="quick_start/qs_at30tse75x.h"/>
+		<build type="c-source" value="at30tse75x.c"/>
+
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_at30tse75x.h"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_samd20_at30tse75x_group"/>
+		<build type="doxygen-example-path" value="quick_start/"/>
+
+		<device-support value="samd20"/>
+
+		<require idref="sam0.drivers.sercom.i2c.master"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

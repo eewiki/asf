@@ -1,0 +1,10 @@
+<asf xmlversion="1.0">
+	<board id="board.mega_1284p_xplained" vendor="Atmel" caption="MEGA-1284P Xplained">
+		<build type="define" name="BOARD" value="MEGA_1284P_XPLAINED"/>
+		<build type="c-source" value="init.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<require idref="common.boards"/>
+		<device-support value="atmega1284p"/>
+	</board>
+</asf>

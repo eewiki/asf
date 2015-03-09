@@ -1,0 +1,35 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.uc3_l0_xplained.led" name="config.board.uc3_l0_xplained.led" caption="UC3-L0 Xplained LED support" default="yes">
+		<module type="meta" id="config.board.uc3_l0_xplained.led#no" caption="UC3-L0 Xplained LED support disabled">
+		</module>
+		<module type="meta" id="config.board.uc3_l0_xplained.led#yes" caption="UC3-L0 Xplained LED support enabled">
+			<build type="c-source" value="led.c"/>
+			<build type="include-path" value="."/>
+			<require idref="avr32.drivers.gpio"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.uc3_l0_xplained.init" name="config.board.uc3_l0_xplained.init" caption="UC3-L0 Xplained initialization support" default="yes">
+		<module type="meta" id="config.board.uc3_l0_xplained.init#no" caption="UC3-L0 Xplained initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.uc3_l0_xplained.init#yes" caption="UC3-L0 Xplained initialization support enabled">
+			<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+			<build type="module-config" subtype="path" value="board_config"/>
+			<build type="c-source" value="init.c"/>
+			<require idref="avr32.drivers.gpio"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.uc3_l0_xplained" vendor="Atmel" caption="UC3-L0 Xplained">
+		<build type="define" name="BOARD" value="UC3_L0_XPLAINED"/>
+		<build type="header-file" value="uc3_l0_xplained.h"/>
+		<build type="header-file" subtype="api" value="led.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<require idref="common.boards"/>
+		<require idref="config.board.uc3_l0_xplained.led"/>
+		<require idref="config.board.uc3_l0_xplained.init"/>
+		<config name="config.compiler.avr32gcc.programming_clock" value="int"/>
+		<device-support value="at32uc3l064"/>
+	</board>
+</asf>

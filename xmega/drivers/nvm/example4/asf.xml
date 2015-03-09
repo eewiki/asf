@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.nvm.example4" caption="NVM Example 4">
+		<info type="description" value="summary">
+		Use the XMEGA NVM to get access to fuse and lock bits memory : read FUSEBYTE2, read and write lock bits.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="example4_xmega.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.boards"/>
+		<require idref="xmega.drivers.nvm"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

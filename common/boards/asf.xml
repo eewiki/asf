@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="common.boards" caption="Generic board support">
+		<info type="description" value="summary">
+		The generic board support module includes board-specific definitions and function prototypes, such as the board initialization function.
+		</info>
+		<build type="header-file" subtype="api" value="board.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_common_boards"/>
+		<device-support value="avr"/>
+		<device-support value="sam"/>
+		<device-support value="sam0"/>
+		<require idref="common.utils"/>
+	</module>
+</asf>

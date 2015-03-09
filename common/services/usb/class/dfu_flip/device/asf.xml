@@ -1,0 +1,69 @@
+<asf xmlversion="1.0">
+	<select-by-config id="common.services.usb.class.dfu.device.atmel" name="config.common.services.usb.class.dfu.device.atmel.optimization" caption="USB DFU ATMEL (Device)" default="normal">
+		<info type="description" value="summary">
+		Provides USB Atmel Device Firmware Upgrade (DFU) interface.
+
+		A selector is provided to select between a normal variant and a DFU optimized variant.
+		</info>
+		<module type="service" id="common.services.usb.class.dfu.device.atmel#normal" caption="USB DFU ATMEL (Device)">
+			<info type="description" value="summary">
+			Provides USB Atmel Device Firmware Upgrade (DFU) interface.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" value="udi_dfu_atmel.h"/>
+			<build type="c-source" value="udi_dfu_atmel.c"/>
+			<build type="header-file" value="udi_dfu_atmel_conf.h"/>
+			<build type="c-source" value="udi_dfu_atmel_desc.c"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_usb.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<require idref="common.services.usb.device"/>
+			<require idref="common.services.usb.class.dfu.protocol"/>
+			<require idref="common.services.isp.flip"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3d"/>
+			<device-support value="uc3l3"/>
+			<device-support value="uc3l4"/>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa3bu"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="common.services.usb.class.dfu.device.atmel#size_optimization" caption="USB DFU ATMEL optimized (Device)">
+			<info type="description" value="summary">
+			Provides USB Atmel Device Firmware Upgrade (DFU) interface optimized whihch does not support composite device.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" value="udi_dfu_atmel.h"/>
+			<build type="c-source" value="udi_dfu_atmel.c"/>
+			<build type="header-file" value="udi_dfu_atmel_conf.h"/>
+			<build type="c-source" value="udi_dfu_atmel_desc.c"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_usb.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<require idref="common.services.usb.device.dfu_optimization"/>
+			<require idref="common.services.usb.class.dfu.protocol"/>
+			<require idref="common.services.isp.flip"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3d"/>
+			<device-support value="uc3l3"/>
+			<device-support value="uc3l4"/>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa3bu"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+</asf>

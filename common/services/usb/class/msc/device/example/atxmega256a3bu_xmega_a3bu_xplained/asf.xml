@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device Mass Storage for XMEGA-A3BU Xplained" id="common.services.usb.class.msc.device.example.atxmega256a3bu_xmega_a3bu_xplained">
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<require idref="common.components.memory.data_flash.at45dbx.ctrl_access"/>
+		<config name="config.common.services.usb.class.device" value="mass_storage"/>
+		<require idref="common.services.usb.class.msc.device.example"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<config name="config.board.xmega_a3bu_xplained.led" value="yes"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

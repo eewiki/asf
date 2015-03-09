@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.drivers.spi.example" caption="SPI in Slave Mode Example">
+		<info type="description" value="summary">
+		Use the MEGARF SPI module : initialization of SPI in slave mode, waits for data from USART SPI master and tranfers data to master.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>		
+		<build type="c-source" value="spi_slave_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_spi_slave_example.h"/>
+		<device-support value="megarf"/>
+		<require idref="mega.drivers.spi"/>		
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.basic.spi_master"/>
+		<info type="gui-flag" value="move-to-root"/>		
+	</module>
+</asf>

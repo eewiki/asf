@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.generic.resampling" caption="DSPLib - Signal re-sampling generic implementation">
+		<info type="description" value="summary">
+		A useful set of functions to re-sample on-the-fly the bit rate of a signal.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="dsp16_resampling.c"/>
+		<build type="include-path" value="../../../include"/>
+		<build type="header-file" value="../../../include/dsp_resampling.h"/>
+		<build type="define" name="DSP_RESAMPLING" value=""/>
+		<!-- Extra dependencies //-->
+		<require idref="avr32.services.dsplib.filters"/>
+		<require idref="avr32.services.dsplib.windowing"/>
+		<require idref="avr32.services.dsplib.vectors"/>
+		<require idref="avr32.services.dsplib.operators"/>
+		<require idref="avr32.services.dsplib.common"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

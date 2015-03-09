@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project id="common.applications.user_application.xplained_pro.sam4l8_xplained_pro" caption="SAM4L8 Xplained Pro template project" type="template">
+		<device-support value="atsam4lc8c"/>
+		<require idref="common.applications.user_application.xplained_pro"/>
+		<require idref="board.sam4l8_xplained_pro"/>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<build type="header-file" value="config/conf_clock.h"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+	</project>
+</asf>

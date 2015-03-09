@@ -1,0 +1,37 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.xmega_rf233_zigbit.led" name="config.board.xmega_rf233_zigbit.led" caption="XMEGA-ZIGBIT RF233 LED support" default="yes">
+		<module type="meta" id="config.board.xmega_rf233_zigbit.led#no" caption="XMEGA-ZIGBIT RF233 LED support disabled">
+		</module>
+		<module type="meta" id="config.board.xmega_rf233_zigbit.led#yes" caption="XMEGA-ZIGBIT RF233 LED support enabled">
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.xmega_rf233_zigbit.init" name="config.board.xmega_rf233_zigbit.init" caption="XMEGA-ZIGBIT RF233 initialization support" default="yes">
+		<module type="meta" id="config.board.xmega_rf233_zigbit.init#no" caption="XMEGA-ZIGBIT RF233 initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.xmega_rf233_zigbit.init#yes" caption="XMEGA-ZIGBIT RF233 initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.xmega_rf233_zigbit" vendor="Atmel" caption="XMEGA-A3U AT86RF233 Zigbit">
+		<build type="define" name="BOARD" value="XMEGA_RF233_ZIGBIT"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="xmega_rf233_zigbit.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="define" name="CONFIG_NVM_IGNORE_XMEGA_A3_D3_REVB_ERRATA" value=""/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x40000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.xmega_rf233_zigbit.led"/>
+		<require idref="config.board.xmega_rf233_zigbit.init"/>
+		<device-support value="atxmega256a3u"/>
+	</board>
+</asf>

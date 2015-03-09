@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.drivers.system.pinmux" caption="SYSTEM - I/O Pin Multiplexer">
+		<info type="description" value="summary">
+			Driver for the SAM D20 Pin Multiplexer. Provides a unified interface
+			for the configuration and routing of physical device I/O pins to
+			peripherals within the device.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="I/O"/>
+		</info>
+
+		<info type="appnote" value="AT03262"/>
+		<info type="keyword" value="pdf">
+			<keyword value="SYSTEM"/>
+			<keyword value="I/O"/>
+			<keyword value="PINMUX" />
+			<keyword value="Pin Multiplexer"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Pin Multiplexer on the SAM D20, both the ASF driver and the peripheral itself.
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="pinmux.h"/>
+		<build type="c-source" value="pinmux.c"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_samd20_system_pinmux_group"/>
+		<build type="doxygen-example-path" value="quick_start"/>
+
+		<build type="header-file" value="quick_start/qs_pinmux_basic.h"/>
+
+		<device-support value="samd20"/>
+
+		<require idref="sam0.utils"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

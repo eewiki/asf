@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.memory.dataflash.at45dbx.example" caption="DataFlash AT45DBX Example (from ASF V1)">
+		<info type="description" value="summary">
+		Provide an application example (from ASF V1) using the Atmel DataFlash AT25DBx component. The DataFlash requires an SPI bus as a low level communication interface.
+		</info>
+		<build type="c-source" value="at45dbx_example.c"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="common.components.memory.data_flash.at45dbx._asf_v1"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

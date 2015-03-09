@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Sleep Management / Example for STK600_RCUC3D" id="common.services.basic.sleepmgr.example.stk600-rcuc3d">
+		<info type="description" value="summary">
+		This example shows how to use the Common API for Sleep Management on AVR UC3 D devices.
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.sleepmgr.example"/>
+		<require idref="board.stk600-rcuc3d"/>
+		<config name="config.board.stk600-rcuc3d.led" value="yes"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc128d3"/>
+	</project>
+</asf>

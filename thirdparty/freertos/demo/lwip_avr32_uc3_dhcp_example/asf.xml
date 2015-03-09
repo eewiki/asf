@@ -1,0 +1,42 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.freertos.lwip_dhcp_example" caption="lwIP + DHCP + FreeRTOS Example">
+		<info type="description" value="summary">
+		Basic web server and basic TFTP server and basic SMTP client application with DHCP enabled using the lwIP TCP/IP stack FreeRTOS UC3 port.
+		</info>
+		<build type="header-file" value="conf_lwip_threads.h"/>
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<build type="header-file" value="lwipopts.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="header-file" value="display/display.h"/>
+		<build type="c-source" value="display/displayTask.c"/>
+		<build type="header-file" value="display/displayTask.h"/>
+		<build type="c-source" value="network/ethernet.c"/>
+		<build type="header-file" value="../lwip_avr32_uc3_example/network/ethernet.h"/>
+		<build type="c-source" value="../lwip_avr32_uc3_example/network/basicsmtp/BasicSMTP.c"/>
+		<build type="header-file" value="../lwip_avr32_uc3_example/network/basicsmtp/BasicSMTP.h"/>
+		<build type="c-source" value="../lwip_avr32_uc3_example/network/basictftp/BasicTFTP.c"/>
+		<build type="header-file" value="../lwip_avr32_uc3_example/network/basictftp/BasicTFTP.h"/>
+		<build type="c-source" value="../lwip_avr32_uc3_example/network/basicweb/BasicWEB.c"/>
+		<build type="header-file" value="../lwip_avr32_uc3_example/network/basicweb/BasicWEB.h"/>
+		<build type="c-source" value="../lwip_avr32_uc3_example/partest/ParTest.c"/>
+		<build type="c-source" value="../common/minimal/flash.c"/>
+		<build type="header-file" value="../common/include/flash.h"/>
+		<build type="header-file" value="../common/include/partest.h"/>
+		<build type="c-source" value="../lwip_avr32_uc3_example/printf-stdarg.c" toolchain="avr32gcc"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./display"/>
+		<build type="include-path" value="../common/include"/>
+		<build type="include-path" value="../lwip_avr32_uc3_example/network"/>
+		<build type="include-path" value="../lwip_avr32_uc3_example/network/basicsmtp"/>
+		<build type="include-path" value="../lwip_avr32_uc3_example/network/basictftp"/>
+		<build type="include-path" value="../lwip_avr32_uc3_example/network/basicweb"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="common.services.os.freertos"/>
+		<require idref="thirdparty.lwip.version"/>
+		<require idref="common.services.basic.clock"/>
+	</module>
+</asf>

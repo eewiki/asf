@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.iisc" caption="IISC - Inter-IC Sound Controller">
+		<info type="description" value="summary">
+		IISC provides a 5-wire, bidirectional, synchronous, digital audio link with off-chip audio devices: ISDI, ISDO, IWS, ISCK and IMCK pins.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication" />
+		</info>
+		<build type="c-source" value="iisc.c"/>
+		<build type="header-file" subtype="api" value="iisc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_iisc"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d3"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+	</module>
+</asf>

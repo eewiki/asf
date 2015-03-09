@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.usart.usart_example2" caption="USART Example 2">
+		<info type="description" value="summary">
+		Using the USART module, echo all incoming characters back until a CR character is received.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="usart_example2.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example_usart.h"/>
+		<device-support value="uc3l"/>
+		<device-support value="uc3a3"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

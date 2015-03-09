@@ -1,0 +1,67 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.evk1101-demo" caption="EVK1101 Control Panel">
+		<info type="description" value="summary">
+		Demonstration application. Its purpose is to scan onboard sensors and actuators data and events (data acquisition through ADC channels) and make these available to a PC application (known as AVR UC3B Series Control Panel) through a simple USB cable.
+		</info>
+		<build type="distribute" subtype="directory" value="./docsrc"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="device_ctrl_panel_task.c"/>
+		<build type="header-file" value="device_ctrl_panel_task.h"/>
+		<build type="c-source" value="device_mass_storage_task.c"/>
+		<build type="header-file" value="device_mass_storage_task.h"/>
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<build type="c-source" value="main.c"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.adc"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.components.joystick.skrhabe010"/>
+		<build type="c-source" value="actuators/cpled.c"/>
+		<build type="include-path" value="actuators/"/>
+		<build type="header-file" value="actuators/cpled.h"/>
+		<build type="include-path" value="conf/"/>
+		<build type="header-file" value="conf/conf_access.h"/>
+		<build type="header-file" value="conf/conf_at45dbx.h"/>
+		<build type="header-file" value="conf/conf_explorer.h"/>
+		<build type="header-file" value="conf/conf_usb.h"/>
+		<build type="header-file" value="docsrc/documentation.h"/>
+		<build type="include-path" value="enum/device/"/>
+		<build type="c-source" value="enum/device/usb_descriptors.c"/>
+		<build type="header-file" value="enum/device/usb_descriptors.h"/>
+		<build type="c-source" value="enum/device/usb_specific_request.c"/>
+		<build type="header-file" value="enum/device/usb_specific_request.h"/>
+		<build type="include-path" value="sensors/"/>
+		<build type="c-source" value="sensors/s_accelerometer.c"/>
+		<build type="header-file" value="sensors/s_accelerometer.h"/>
+		<build type="c-source" value="sensors/s_joystick.c"/>
+		<build type="header-file" value="sensors/s_joystick.h"/>
+		<build type="c-source" value="sensors/s_light.c"/>
+		<build type="header-file" value="sensors/s_light.h"/>
+		<build type="c-source" value="sensors/s_pushb.c"/>
+		<build type="header-file" value="sensors/s_pushb.h"/>
+		<build type="c-source" value="sensors/s_temperature.c"/>
+		<build type="header-file" value="sensors/s_temperature.h"/>
+		<build type="doxygen-image-path" value="docsrc"/>
+		<require idref="common.services.os.freertos"/>
+		<require idref="avr32.drivers.usbb._asf_v1"/>
+		<require idref="avr32.services.usb._asf_v1.class.hid"/>
+		<require idref="avr32.drivers.usbb._asf_v1.enum.device"/>
+		<require idref="avr32.drivers.usbb._asf_v1.enum.host"/>
+		<require idref="common.components.memory.data_flash.at45dbx._asf_v1"/>
+		<require idref="avr32.services.usb._asf_v1.class.mass_storage.scsi_decoder"/>
+		<require idref="avr32.services.usb._asf_v1.class.mass_storage.host_mem"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<device-support value="uc3b"/>
+		<build type="distribute" subtype="file" value="./pc_appli/AVR32 UC3B Control Panel PC Demo Installer.exe"/>
+		<build type="distribute" subtype="file" value="./pc_appli/readme.txt"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

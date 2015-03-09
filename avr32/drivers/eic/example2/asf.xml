@@ -1,0 +1,37 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.drivers.eic.example2" caption="EIC (External Interrupt Controller) Example 2">
+		<module type="application" id="avr32.drivers.eic.example2#0" caption="EIC (External Interrupt Controller) Example 2">
+			<info type="description" value="summary">
+			Use the EIC (External Interrupt Controller) to generate interrupts.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Interrupt"/>
+			</info>
+			<build type="c-source" value="eic_example2.c"/>
+			<build type="asm-source" value="exception.S" toolchain="avr32gcc"/>
+			<build type="asm-source" value="exception.s82" toolchain="iarew32"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3d"/>
+			<require idref="avr32.drivers.eic"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="avr32.drivers.eic.example2#1" caption="EIC (External Interrupt Controller) Example 2">
+			<info type="description" value="summary">
+			Use the EIC (External Interrupt Controller) to generate interrupts.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Interrupt"/>
+			</info>
+			<build type="c-source" value="eic_example2.c"/>
+			<device-support value="uc3b"/>
+			<require idref="avr32.drivers.eic"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.sercom.usart.quick_start" caption="Quick Start for the SAM D20 SERCOM USART Driver (Polled)">
+		<info type="description" value="summary">
+		Quick start guide for the SERCOM USART interface module demonstrating module configuration and basic use.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_usart_basic_use.c"/>
+		<build type="header-file" value="qs_usart_basic_use.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.sercom.usart"/>
+		<device-support value="samd20"/>
+	</module>
+</asf>

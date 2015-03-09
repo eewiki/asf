@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.applications.xmega_e5_xplained_demo" caption="Demo for XMEGA-E5 Xplained">
+		<info type="description" value="summary">
+		XMEGA-E5 Xplained demonstration firmware which uses LEDs, switchs, OLED display,
+		light sensor, RTC oscillator, Quadrature Decoder...
+		Refer to related application note.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="app_cpu_load.c"/>
+		<build type="header-file" value="app_cpu_load.h"/>
+		<build type="c-source" value="app_sampling.c"/>
+		<build type="header-file" value="app_sampling.h"/>
+		<build type="c-source" value="app_bitmaps.c"/>
+		<build type="define" name="ISR_CUSTOM_H" value="\&quot;app_cpu_load.h\&quot;" toolchain="avrgcc"/>
+		<build type="define" name="ISR_CUSTOM_H" value="&quot;app_cpu_load.h&quot;" toolchain="iarew"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.fifo"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.gfx_mono.font"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="xmega.drivers.qdec"/>
+		<require idref="xmega.drivers.tc45"/>
+		<require idref="xmega.drivers.rtc"/>
+		<require idref="xmega.drivers.adc"/>
+		<device-support value="xmegae"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

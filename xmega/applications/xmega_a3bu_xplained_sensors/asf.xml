@@ -1,0 +1,61 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="xmega.applications.avrsbin1_common" caption="ATAVRSBIN1 Common Demo Components">
+		<build type="header-file" value="sensor_demo.h"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf/conf_board.h"/>
+		<build type="header-file" value="conf/conf_st7565r.h"/>
+		<build type="header-file" value="conf/conf_sysfont.h"/>
+		<build type="header-file" value="conf/conf_twim.h"/>
+		<build type="header-file" value="conf/conf_sleepmgr.h"/>
+		<build type="header-file" value="conf/conf_usart_spi.h"/>
+		<build type="include-path" value="./conf"/>
+		<require idref="board.sensors_xplained.inertial_1"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.gfx_mono.font"/>
+		<require idref="common.services.sensors"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<module type="application" id="xmega.applications.avrsbin1_display" caption="ATAVRSBIN1 Board Data Display">
+		<info type="description" value="summary">
+		Demo application obtains sensor data from an Atmel Sensors Xplained
+		Inertial 1 board (ATAVRSBIN1) then displays accelerometer, gyroscope,
+		and electronic compass data on the monochrome display.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<build type="c-source" value="inertial_sensor.c"/>
+		<device-support value="xmegaa3bu"/>
+		<require idref="xmega.applications.avrsbin1_common"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<module type="application" id="xmega.applications.avrsbin1_calibrate" caption="ATAVRSBIN1 Board Compass Calibration">
+		<info type="description" value="summary">
+		Demo application obtains electronic compass data from an Atmel Sensors
+		Xplained Inertial 1 board (ATAVRSBIN1) then uses the monochrome display
+		to prompt the user to make a series of manual steps to calibrate the
+		compass to the local geomagnetic field.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<build type="c-source" value="compass_calibrate.c"/>
+		<device-support value="xmegaa3bu"/>
+		<require idref="xmega.applications.avrsbin1_common"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<module type="application" id="xmega.applications.avrsbin1_drop" caption="ATAVRSBIN1 Board Drop Detector">
+		<info type="description" value="summary">
+		Demo application obtains sensor data from an Atmel Sensors Xplained
+		Inertial 1 board (ATAVRSBIN1) then plots accelerometer data points on
+		the monochrome display when the board is dropped from some height.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<build type="c-source" value="drop_detector.c"/>
+		<device-support value="xmegaa3bu"/>
+		<require idref="xmega.applications.avrsbin1_common"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

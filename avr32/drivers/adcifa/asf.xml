@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.adcifa" caption="ADCIFA - ADC Interface A">
+		<info type="description" value="summary">
+		Driver for the ADCIFA (Analog-to-Digital Converter Interface A).
+		Provides functions for configuration of conversion parameters (up to 12-bit signed at 1.5 Msps), channel sequencing (max. 16 channels, w/ 16 different inputs and up to 64x gain), window monitoring, interrupt and conversion triggering.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>	
+		<build type="c-source" value="adcifa.c"/>
+		<build type="header-file" subtype="api" value="adcifa.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_adcifa"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+	</module>
+</asf>

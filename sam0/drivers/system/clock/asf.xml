@@ -1,0 +1,50 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.drivers.system.clock" caption="SYSTEM - Clock Management">
+		<info type="description" value="summary">
+			Driver for the SAM D20 Clock management units. Provides a unified
+			interface for the configuration and management of the various clocks
+			in the device, including the bus and generic peripheral clocks.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks" />
+		</info>
+
+		<info type="appnote" value="AT03259"/>
+		<info type="keyword" value="pdf">
+			<keyword value="SYSTEM"/>
+			<keyword value="I/O"/>
+			<keyword value="Clock" />
+			<keyword value="GCLK" />
+			<keyword value="Generic Clock" />
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the Clock and Generic Clock on the SAM D20, both the ASF driver and the peripheral itself.
+		</info>
+
+		<device-support value="samd20"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_samd20_system_clock_group"/>
+		<build type="doxygen-example-path" value="quick_start_gclk"/>
+		<build type="doxygen-example-path" value="quick_start_clock"/>
+
+		<build type="include-path" value="."/>
+
+		<build type="header-file" subtype="api" value="gclk.h"/>
+		<build type="header-file" subtype="api" value="clock.h"/>
+		<build type="header-file" value="clock_config_check.h"/>
+		<build type="c-source" value="clock.c"/>
+		<build type="c-source" value="gclk.c"/>
+
+		<build type="header-file" value="quick_start_gclk/qs_gclk_basic.h"/>
+		<build type="header-file" value="quick_start_clock/qs_clock_source.h"/>
+
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_clocks.h"/>
+
+		<require idref="sam0.drivers.system.interrupt"/>
+		<require idref="sam0.utils"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

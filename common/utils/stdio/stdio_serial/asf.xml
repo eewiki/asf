@@ -1,0 +1,75 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.utils.stdio.stdio_serial" caption="Standard serial I/O (stdio)">
+		<module type="driver" id="common.utils.stdio.stdio_serial#uc3" caption="Standard serial I/O (stdio) - UC3 implementation">
+			<info type="description" value="summary">
+			Common standard serial I/O management driver that
+			implements a stdio serial interface on AVR devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<device-support value="uc3"/>
+			<build type="header-file" subtype="api" value="stdio_serial.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_common_utils_stdio_stdio_serial"/>
+			<require idref="avr32.utils"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.serial"/>
+			<require idref="common.utils.stdio"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+		</module>
+		<module type="driver" id="common.utils.stdio.stdio_serial#xmega" caption="Standard serial I/O (stdio) - XMEGA implementation">
+			<info type="description" value="summary">
+			Common standard serial I/O management driver that
+			implements a stdio serial interface on AVR devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<device-support value="xmega"/>
+			<build type="header-file" subtype="api" value="stdio_serial.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_common_utils_stdio_stdio_serial"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.serial"/>
+			<require idref="common.utils.stdio"/>
+			<require idref="xmega.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="driver" id="common.utils.stdio.stdio_serial#sam" caption="Standard serial I/O (stdio) - SAM implementation">
+			<info type="description" value="summary">
+			Common standard serial I/O management driver that
+			implements a stdio serial interface on SAM devices.
+			</info>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<build type="header-file" subtype="api" value="stdio_serial.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_common_utils_stdio_stdio_serial"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.serial"/>
+			<require idref="common.utils.stdio"/>
+			<require idref="sam.utils"/>
+			<require idref="sam.utils.syscalls"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="driver" id="common.utils.stdio.stdio_serial#megarf" caption="Standard serial I/O (stdio) - MEGARF implementation">
+			<info type="description" value="summary">
+			Common standard serial I/O management driver that
+			implements a stdio serial interface on megarf devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="header-file" subtype="api" value="stdio_serial.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_common_utils_stdio_stdio_serial"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.serial"/>
+			<require idref="common.utils.stdio"/>
+			<require idref="mega.utils"/>
+			<device-support value="megarf"/>
+			<generator value="doxygen-module" default-mcu="atmega128rfa1"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="NAND Flash on EBI Example 1 for SAM4S-EK2" id="common.components.memory.nand_flash.example1.sam4s_ek2">
+		<info type="description" value="summary">
+		Read and write raw data to an external NAND Flash memory through the EBI.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_nf.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="common.components.memory.nand_flash.example1"/>
+		<require idref="sam.utils.cmsis.sam4s.source.template"/>
+		<require idref="board.sam4s_ek2"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>

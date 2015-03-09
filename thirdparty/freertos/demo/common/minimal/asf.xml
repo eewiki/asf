@@ -1,0 +1,61 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.freertos.demo.common.minimal" caption="RTOS - FreeRTOS examples helper files">
+		<info type="description" value="summary">
+		Common minimal set of files used by several FreeRTOS examples.
+		Each of these files contains one or several tasks which purpose is to test one or several features of the FreeRTOS kernel.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="uc3"/>
+		<device-support value="sam"/>
+		<build type="c-source" value="AltBlckQ.c"/>
+		<build type="c-source" value="AltBlock.c"/>
+		<build type="c-source" value="AltPollQ.c"/>
+		<build type="c-source" value="AltQTest.c"/>
+		<build type="c-source" value="BlockQ.c"/>
+		<build type="c-source" value="blocktim.c"/>
+		<build type="c-source" value="comtest.c"/>
+		<build type="c-source" value="countsem.c"/>
+		<build type="c-source" value="crflash.c"/>
+		<build type="c-source" value="crhook.c"/>
+		<build type="c-source" value="death.c"/>
+		<build type="c-source" value="dynamic.c"/>
+		<build type="c-source" value="flash.c"/>
+		<build type="c-source" value="flop.c"/>
+		<build type="c-source" value="GenQTest.c"/>
+		<build type="c-source" value="integer.c"/>
+		<build type="c-source" value="PollQ.c"/>
+		<build type="c-source" value="QPeek.c"/>
+		<build type="c-source" value="recmutex.c"/>
+		<build type="c-source" value="semtest.c"/>
+		<build type="header-file" subtype="api" value="../include/AltBlckQ.h"/>
+		<build type="header-file" subtype="api" value="../include/AltBlock.h"/>
+		<build type="header-file" subtype="api" value="../include/AltPollQ.h"/>
+		<build type="header-file" subtype="api" value="../include/AltQTest.h"/>
+		<build type="header-file" subtype="api" value="../include/BlockQ.h"/>
+		<build type="header-file" subtype="api" value="../include/blocktim.h"/>
+		<build type="header-file" subtype="api" value="../include/comtest.h"/>
+		<build type="header-file" subtype="api" value="../include/comtest2.h"/>
+		<build type="header-file" subtype="api" value="../include/countsem.h"/>
+		<build type="header-file" subtype="api" value="../include/crflash.h"/>
+		<build type="header-file" subtype="api" value="../include/crhook.h"/>
+		<build type="header-file" subtype="api" value="../include/death.h"/>
+		<build type="header-file" subtype="api" value="../include/dynamic.h"/>
+		<build type="header-file" subtype="api" value="../include/fileIO.h"/>
+		<build type="header-file" subtype="api" value="../include/flash.h"/>
+		<build type="header-file" subtype="api" value="../include/flop.h"/>
+		<build type="header-file" subtype="api" value="../include/GenQTest.h"/>
+		<build type="header-file" subtype="api" value="../include/integer.h"/>
+		<build type="header-file" subtype="api" value="../include/IntQueue.h"/>
+		<build type="header-file" subtype="api" value="../include/mevents.h"/>
+		<build type="header-file" subtype="api" value="../include/partest.h"/>
+		<build type="header-file" subtype="api" value="../include/PollQ.h"/>
+		<build type="header-file" subtype="api" value="../include/print.h"/>
+		<build type="header-file" subtype="api" value="../include/QPeek.h"/>
+		<build type="header-file" subtype="api" value="../include/recmutex.h"/>
+		<build type="header-file" subtype="api" value="../include/semtest.h"/>
+		<build type="header-file" subtype="api" value="../include/serial.h"/>
+		<build type="include-path" value="../include"/>
+		<require idref="common.services.os.freertos"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+	</module>
+</asf>

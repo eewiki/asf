@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Bluetooth (SPP Profile) with Cybercom Stack Application for evk1105" id="avr32.applications.uc3-bluetooth-t2bf-spp-demo.evk1105">
+		<require idref="avr32.applications.uc3-bluetooth-t2bf-spp-demo-demo"/>
+		<build type="include-path" value="."/>
+		<require idref="board.evk1105"/>
+		<config name="config.board.evk1105.init" value="no"/>
+		<config name="config.board.evk1105.led" value="yes"/>
+		<config name="config.avr32.drivers.intc.exception" value="no"/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0xC0"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x10"/>
+		<config name="config.compiler.iarew32.heap_size" value="0x462E"/>
+		<build type="linker-config" subtype="script" value="lnkuc3a0512_nvram.xcl" toolchain="iarew32"/>
+		<generator value="iarew32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

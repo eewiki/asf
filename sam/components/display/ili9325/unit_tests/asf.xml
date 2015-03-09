@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.components.display.ili9325.unit_tests" caption="Unit Tests for the SAM ILI9325 Display Driver">
+		<info type="description" value="summary">
+			Unit test application for ILI9325 driver.
+		</info>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.smc"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="sam.components.display.ili9325"/>
+		<require idref="sam.components.display.aat31xx"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

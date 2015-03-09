@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.tc45.example4" caption="TC45 Example 4">
+		<info type="description" value="summary">
+		Use the XMEGA TC45 Timer Counter module : Capture example
+		Enable one TC45 for frequency capture and measure the time between press and release of 
+		button. Display the result on leds.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc45_example4.c"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="xmega.drivers.tc45"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

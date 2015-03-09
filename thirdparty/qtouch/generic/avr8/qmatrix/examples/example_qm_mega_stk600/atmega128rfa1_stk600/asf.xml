@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="QMatrix method Example Application - ATMEGA128RFA1" id="mega.services.qtouch.generic.avr8.qmatrix.examples.example_qm_mega_stk600.mega128rfa1_stk600">
+		<require idref="mega.services.qtouch.generic.avr8.qmatrix.examples.example_qm_mega_stk600"/>
+		<config name="config.common.services.qtouch.qdebug.stk600.mega" value="yes"/>
+		<config name="config.common.services.qtouch.generic.avr8.mega128rfa1_stk600.method" value="qmatrix_method"/>
+		<require idref="board.stk600-mega.atmega128rfa1"/>
+		<build type="doxygen-entry-point" value="mega_services_qtouch_generic_avr8_qmatrix_examples_example_qm_mega_stk600_mega128rfa1"/>
+		<require idref="config.common.services.qtouch.generic.avr8.qmatrix.examples.example_qm_mega_stk600.atmega128rfa1_stk600.include"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega128rfa1"/>
+	</project>
+</asf>

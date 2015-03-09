@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.tools" caption="DSPLib - Tools">
+		<info type="gui-flag" value="hidden"/>
+		<require idref="avr32.services.dsplib.tools.adpcmencode"/>
+		<require idref="avr32.services.dsplib.tools.adpcmstreaming"/>
+		<require idref="avr32.services.dsplib.tools.dataprint"/>
+		<require idref="avr32.services.dsplib.tools.dataget"/>
+		<require idref="avr32.services.dsplib.tools.dataextract"/>
+		<require idref="avr32.services.dsplib.tools.twiddlefactors"/>
+		<require idref="avr32.services.dsplib.tools.serialscope"/>
+		<require idref="avr32.services.dsplib.tools.resamplingcoefficients"/>
+		<require idref="avr32.services.dsplib.tools.printrealvect"/>
+		<require idref="avr32.services.dsplib.tools.printcomplexvect"/>
+		<require idref="avr32.services.dsplib.tools.benchmark"/>
+		<require idref="avr32.services.dsplib.tools.adpcmencoder"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

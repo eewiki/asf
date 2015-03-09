@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.usb.class.dfu_atmel.device.bootloader.avr32" caption="AVR UC3 USB DFU Bootloader">
+		<info type="description" value="summary">
+		ISP application, allowing R/W access to several on-chip memories through a USB DFU interface.  
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="header-file" value="main.h"/>
+		<build type="header-file" value="sysclk_auto.h"/>
+		<build type="header-file" value="conf/conf_board.h"/>
+		<build type="header-file" value="conf/conf_clock.h"/>
+		<build type="header-file" value="conf/conf_freq_detect.h"/>
+		<build type="header-file" value="conf/conf_isp.h"/>
+		<build type="header-file" value="conf/conf_usb.h"/>
+		<build type="c-source" value="intc/intc.c"/>
+		<build type="header-file" value="intc/intc.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./conf"/>
+		<build type="include-path" value="./intc"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l3"/>
+		<device-support value="uc3l4"/>
+		<require idref="avr32.services.freq_detect"/>
+		<require idref="common.services.usb.class.device"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+			<keyword value="USB"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

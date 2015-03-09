@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.tc.simulator_example1" caption="TC Example">
+		<info type="description" value="summary">
+		Use the XMEGA Timer Counter module : configures one TC module in normal mode and uses three TC interrupts (overflow, Capture/Compare Channels A and B).
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc_example1.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="xmega.drivers.tc"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

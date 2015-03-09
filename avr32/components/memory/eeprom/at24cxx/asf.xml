@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.memory.eeprom.at24cxx" caption="EEPROM AT24Cxx">
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<info type="description" value="summary">
+		Driver to access (read and write) AT24Cxx series EEPROM through a TWI interface.
+		</info>
+		<build type="c-source" value="at24cxx.c"/>
+		<build type="header-file" subtype="api" value="at24cxx.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_at24cxx.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_components_memory_eeprom_at24cxx"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.twim"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+	</module>
+</asf>

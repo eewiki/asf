@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sensors.inertial.visualizer" caption="Inertial Sensor Data Visualizer">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="description" value="summary">
+			This application obtains sensor data from the accelerometer,
+			gyroscope, and electronic compass devices installed on a selected
+			Atmel Xplained inertial sensor development top board.  The data is
+			then formatted and transferred to a remote host for display using
+			the Atmel Data Visualizer tool.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="data_visualizer.c"/>
+		<build type="header-file" value="data_visualizer.h"/>
+		<build type="linker-config" subtype="flags" value="-u,vfprintf -lprintf_flt" toolchain="avrgcc"/>
+		<device-support value="uc3"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.sensors"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

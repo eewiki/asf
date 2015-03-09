@@ -1,0 +1,46 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.drivers.hsmci" caption="HSMCI - High Speed MultiMedia Card Interface">
+		<module type="driver" id="sam.drivers.hsmci#1" caption="High Speed Multimedia Card Interface">
+			<info type="description" value="summary">
+			This driver interfaces the HSMCI (MultiMedia Card Interface) module.
+			It will add functions for SD/MMC card reading, writing and management.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Memory" />
+			</info>
+			<build type="c-source" value="hsmci.c"/>
+			<build type="header-file" subtype="api" value="hsmci.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.components.memory.sd_mmc.protocol"/>
+			<require idref="sam.drivers.dmac"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="common.services.basic.clock"/>
+			<device-support value="sam3u"/>
+			<device-support value="sam3x"/>
+			<build type="doxygen-entry-point" value="sam_drivers_hsmci"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+		</module>
+		<module type="driver" id="sam.drivers.hsmci#2" caption="High Speed Multimedia Card Interface">
+			<info type="description" value="summary">
+			This driver interfaces the HSMCI (MultiMedia Card Interface) module.
+			It will add functions for SD/MMC card reading, writing and management.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Memory" />
+			</info>
+			<build type="c-source" value="hsmci.c"/>
+			<build type="header-file" subtype="api" value="hsmci.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.components.memory.sd_mmc.protocol"/>
+			<require idref="sam.drivers.pdc"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="common.services.basic.clock"/>
+			<device-support value="sam3sd"/>
+			<device-support value="sam3s"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<build type="doxygen-entry-point" value="sam_drivers_hsmci"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+	</select-by-device>
+</asf>

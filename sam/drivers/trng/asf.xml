@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.trng" caption="TRNG - True Random Number Generator Register">
+		<info type="description" value="summary">
+		Driver for the True Random Number Generator Register (TRNG). Provides functions for using the TRNG.
+		</info>
+		<build type="c-source" value="trng.c"/>
+		<build type="header-file" subtype="api" value="trng.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_sam_drivers_trng"/>
+		<device-support value="sam3x"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+	</module>
+</asf>

@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="TC Example 3 for STK600_RCUC3D" id="avr32.drivers.tc.example3.stk600-rcuc3d">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.tc.example3"/>
+		<require idref="board.stk600-rcuc3d"/>
+		<config name="config.board.stk600-rcuc3d.init" value="no"/>
+		<config name="config.board.stk600-rcuc3d.led" value="yes"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc128d3"/>
+	</project>
+</asf>

@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="LCD Example for STK600-RC100X-LCDX" id="xmega.drivers.lcd.example.stk600-rc100x_lcdx">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.tc"/>
+		<require idref="xmega.drivers.lcd.example"/>
+		<require idref="board.stk600-rc100x_lcdx.atxmega128b1"/>
+		<config name="config.board.stk600-rc100x_lcdx.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128b1"/>
+	</project>
+</asf>

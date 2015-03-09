@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="common.applications.user_application.sam0_system.user_board.common" caption="User board project template">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<build type="header-file" value="config/conf_clocks.h"/>
+		<require idref="common.applications.user_application.sam0_system"/>
+	</module>
+
+	<project workspace-name="user_application" id="common.applications.user_application.sam0_system.user_board.samd20j" caption="User board project template for SAMD20J18" type="template">
+		<info type="description" value="summary">
+		User board project template for SAMD20J18 devices.
+		</info>
+		<require idref="common.applications.user_application.sam0_system.user_board.common"/>
+		<require idref="board.user_board.samd20j"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamd20j18"/>
+	</project>
+</asf>

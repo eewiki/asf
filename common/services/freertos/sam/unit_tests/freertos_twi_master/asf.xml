@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.freertos_sam_twi.unit_tests" caption="Unit Tests for the SAM FreeRTOS TWI Interface Layer">
+		<info type="description" value="summary">
+			Unit test application for the FreeRTOS TWI interface layer.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<build type="c-source" value="twi_unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<device-support value="sam"/>
+		<require idref="common.components.memory.eeprom.at24cxx"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="thirdparty.os.freertos.version"/>
+		<require idref="common.services.layer.freertos.pdc"/>
+		<require idref="common.services.layer.freertos.twi"/>
+		<require idref="common.utils.unit_test"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

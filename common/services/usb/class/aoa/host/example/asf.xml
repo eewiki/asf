@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.usb.class.aoa.host.example" caption="USB Host Android Accessory Application">
+		<info type="description" value="summary">
+		This application is aimed to demonstrate the USB Accessory with Android Devices.
+		</info>
+		<build type="header-file" value="conf_usb_host.h"/>
+		<build type="header-file" value="ui.h"/>
+		<build type="header-file" value="main.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.usb.class.host"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication"/>
+		</info>
+		<device-support value="uc3"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

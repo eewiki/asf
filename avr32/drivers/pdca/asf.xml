@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.pdca" caption="PDCA - Peripheral DMA Controller">
+		<info type="description" value="summary">
+		The Peripheral DMA controller (PDCA) transfers data between on-chip
+		peripheral modules such as USART, SPI, SSC and on- and off-chip memories.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="DMA Controller" />
+			<keyword value="Memory" />
+		</info>
+		<build type="c-source" value="pdca.c"/>
+		<build type="header-file" subtype="api" value="pdca.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_pdca"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

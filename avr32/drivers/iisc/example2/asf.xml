@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.iisc.example2" caption="IISC Example 2">
+		<info type="description" value="summary">
+		Basic example of I2S streaming in master mode.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="iisc_example.c"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.iisc"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d3"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

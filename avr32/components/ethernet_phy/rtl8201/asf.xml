@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.ethernet_phy.rtl8201" caption="Ethernet Physical (RTL8201)">
+		<info type="description" value="summary">
+		Driver for Realtek RTL8201 Ethernet Physical Layer Transceiver device. Provides functions for initializing and controlling the ethernet physical.
+		</info>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3c"/>
+		<build type="header-file" value="ethernet_phy.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.components.ethernet_phy"/>
+		<require idref="common.services.delay"/>
+		<info type="gui-flag" value="hidden"/>
+		<build type="module-config" subtype="required-header-file" value="conf_rtl8201.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4 DSP FFT bin Example on SAM4L Xplained Pro" id="sam.utils.cmsis.dsp_lib.examples.arm_fft_bin_example.sam4l_xplained_pro">
+		<require idref="sam.utils.cmsis.dsp_lib.examples.arm_fft_bin_example"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="board.sam4l_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

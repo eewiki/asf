@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="Audio Amplifier TPA6130A2 Example for evk1104" id="avr32.components.audio.amp.tpa6130a2.example.evk1104">
+		<require idref="avr32.components.audio.amp.tpa6130a2.example"/>
+		<build type="header-file" value="../conf_twim.h"/>
+		<build type="include-path" value="../."/>
+		<require idref="board.evk1104"/>
+		<config name="config.board.evk1104.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

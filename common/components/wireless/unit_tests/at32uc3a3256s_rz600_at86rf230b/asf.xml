@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project type="unit-test" caption="Unit Tests for the UC3 AT86RF230B-RZ600" id="common.components.wireless.unit_tests.rz600.at86rf230b" force-caption="true" force-description="true">
+		<build type="header-file" value="conf_at86rfx.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<config  name="config.common.wireless.at86rf" value="230b"/>
+		<require idref="common.components.wireless.unit_tests"/>
+		<require idref="board.rz600"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc" />
+		<generator value="as5_32" />
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256s"/>
+	</project>
+</asf>

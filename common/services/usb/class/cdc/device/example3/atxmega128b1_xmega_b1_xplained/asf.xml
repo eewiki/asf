@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device 7x CDC example for for XMEGA B1 Xplained" id="common.services.usb.class.cdc.device.example3.xmega_b1_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.usart"/>
+		<require idref="common.services.usb.class.cdc.device.example3"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<require idref="board.xmega_b1_xplained"/>
+		<config name="config.board.xmega_b1_xplained.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128b1"/>
+	</project>
+</asf>

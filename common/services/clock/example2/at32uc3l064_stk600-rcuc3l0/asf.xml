@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Clocks Control / Example 2 for STK600-RCUC3L0" id="common.services.basic.clock.example2.stk600-rcuc3l0">
+		<info type="description" value="summary">
+		Initialize the clock system and output the CPU clock on a dedicated pin.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example2.h"/>
+		<require idref="common.services.basic.clock.example2"/>
+		<require idref="board.stk600-rcuc3l0"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

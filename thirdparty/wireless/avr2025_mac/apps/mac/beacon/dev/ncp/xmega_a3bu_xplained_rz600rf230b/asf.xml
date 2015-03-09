@@ -1,0 +1,31 @@
+<asf xmlversion="1.0">
+	<project caption="MAC Beacon Application Device AT86RF230b-XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.beacon.dev.ncp.xmega_a3bu_xplained_rz600rf230b" force-caption="true" force-description="true">
+		<info type="description" value="summary">
+		The basic MAC Example Beacon Application deploys a beacon-enabled network with star topology.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+
+		<config name="config.compiler.iarew.data_stack_size" value="0x300"/>
+		<config name="config.compiler.iarew.near_heap_size" value="0x40"/>
+
+		<config name="config.spi_master_type" value="standard_spi"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf230b"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.beacon.dev.ncp"/>
+		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

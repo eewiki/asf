@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Shared AVR API for Controlling a TWI Module / Master Mode Example for EVK1105" id="common.services.basic.twi.master.example.evk1105">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_twi.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.twi.master.example"/>
+		<config name="config.board.evk1105.led" value="yes"/>
+		<config name="config.utils.interrupt.intc" value="force"/>
+		<require idref="board.evk1105"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

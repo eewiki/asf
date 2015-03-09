@@ -1,0 +1,20 @@
+﻿<asf xmlversion="1.0">
+	<project id="common.applications.user_application.sam4s_wpir_rd" caption="SAM4S-WPIR-RD template project" type="template">
+		<!-- Files -->
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<build type="header-file" value="config/conf_clock.h"/>
+
+		<!-- Device support -->
+		<device-support value="atsam4s16c"/>
+
+		<!-- Required modules -->
+		<require idref="board.sam4s_wpir_rd"/>
+		<require idref="common.applications.user_application"/>
+
+		<!-- Generator options -->
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+	</project>
+</asf>

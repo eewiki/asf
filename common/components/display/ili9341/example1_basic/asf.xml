@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.components.display_controller.ili9341.example1" caption="ILI9341 Display Controller Example 1">
+		<info type="description" value="summary">
+		A simple example for verifying that the ILI9341 low level driver works
+		</info>
+		<build type="doxygen-entry-point" value="ili9341_example_group"/>
+		<build type="c-source" value="ili9341_example.c"/>
+		<device-support value="uc3"/>
+		<device-support value="xmega"/>
+		<device-support value="sam"/>
+		<require idref="common.components.display_controller.ili9341"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project id="common.services.basic.clock.unit_tests.evk1101" caption="Basic clock service unit tests for EVK1101" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="common.services.basic.clock.unit_tests"/>
+		<require idref="board.evk1101"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

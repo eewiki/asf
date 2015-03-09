@@ -1,0 +1,35 @@
+<asf xmlversion="1.0">
+	<project caption="AVR UC3 UART Bootloader" id="avr32.applications.uc3_uart_bootloader.example">
+		<require idref="avr32.applications.uc3_uart_bootloader"/>
+		<require idref="board.dummy.at32uc3l016"/>
+		<build type="linker-config" subtype="script" value="link_at32uc3l-isp.lds" toolchain="avr32gcc"/>
+		<build type="linker-config" subtype="script" value="lnkat32uc3l-isp.xcl" toolchain="iarew32"/>
+		<build type="distribute" subtype="file" value="./releases/release_note.txt"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.0/at32uc3l-uart-isp-1.0.0.bin"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.0/at32uc3l-uart-isp_cfg-1.0.0.dat"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.0/program_at32uc3l-uart-isp-1.0.0.cmd"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.0/program_at32uc3l-uart-isp-1.0.0.sh"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.1/at32uc3l-uart-isp-1.0.1.bin"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.1/at32uc3l-uart-isp_cfg-1.0.1.dat"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.1/program_at32uc3l-uart-isp-1.0.1.cmd"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.1/program_at32uc3l-uart-isp-1.0.1.sh"/>
+		<!-- DO NOT DISTRIBUTE UNTIL IT IS PROPERLY TESTED AND RELEASED.
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.2/at32uc3l016-32-64-uart-isp-1.0.2.a82"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.2/at32uc3l-uart-isp_cfg-1.0.2.dat"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.2/program_at32uc3l016-32-64-uart-isp-1.0.2.cmd"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3l-isp-1.0.2/program_at32uc3l016-32-64-uart-isp-1.0.2.sh"/>
+		-->
+		<config name="config.avr32.utils.trampoline" value="no"/>
+		<config name="config.compiler.avr32gcc.use_startfiles" value="no"/>
+		<config name="config.avr32.utils.gccstartup" value="no"/>
+		<config name="config.utils.interrupt.intc" value="no"/>
+		<config name="config.avr32.drivers.intc.exception" value="no"/>
+		<config name="config.compiler.iarew32.catch_unimplemented_interrupts" value="no"/>
+		<config name="config.compiler.iarew32.catch_unhandled_cpu_exceptions" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l016"/>
+	</project>
+</asf>

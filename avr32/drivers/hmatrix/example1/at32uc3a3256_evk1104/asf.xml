@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="HMATRIX Example1 for evk1104" id="avr32.drivers.hmatrix.example.evk1104">
+		<require idref="board.evk1104"/>
+		<require idref="avr32.drivers.hmatrix.example"/>
+		<config name="config.board.evk1104.init" value="no"/>
+		<config name="config.board.evk1104.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.usb.ms.example.freertos" caption="USB Dual Role (Device and Host) MSC class examples with FreeRTOS (from ASF V1)">
+		<info type="description" value="summary">
+		Using the USBB module and the deprecated USB software stack from ASF v1, USB Mass-Storage Class application that behaves as a USB Mass-Storage device(removable drive) in USB Device mode or operates in USB Reduced-Host mode when connected to a USB Mass-Storage device. Implementation with FreeRTOS.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+		</info>
+		<build type="header-file" value="freertos/FreeRTOSConfig.h"/>
+		<build type="include-path" value="./freertos/"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3"/>
+		<require idref="common.services.os.freertos"/>
+		<require idref="avr32.services.usb.ms.example.main"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

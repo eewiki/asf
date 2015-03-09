@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<select-by-config id="xmega.components.display.c42048a" name="config.c42048a_type" caption="LCD - Atmel YMCC42048AAAYDCL" default="full_matrix0">
+		<info type="description" value="summary">
+		Driver for Atmel YMCC42048AAAYDCL LCD component (custom LCD used e.g. for XMEGA-B1 Xplained and STK600_RC064X_LCDX). Provides functions for initialization and control of the LCD segments.
+
+		'full_matrix0' uses the full LCD matrix (For the XMEGA-B1 Xplained board). 'partial_matrix0' uses part of the LCD matrix (For the STK600_RC064X_LCDX board).
+		</info>
+		<module type="component" id="xmega.components.display.c42048a#full_matrix0" caption="LCD - Atmel YMCC42048AAAYDCL Full Matrix">
+			<info type="description" value="summary">
+			Driver for Atmel YMCC42048AAAYDCL LCD component (custom LCD used e.g. for XMEGA-B1 Xplained). This version called 'full_matrix0' uses the full LCD matrix. Provides functions for initialization and control of the LCD segments.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Graphics" />
+			</info>
+			<build type="header-file" subtype="api" value="c42048a_full_matrix0/c42048a.h"/>
+			<build type="c-source" value="c42048a_full_matrix0/c42048a.c"/>
+			<build type="include-path" value="./c42048a_full_matrix0"/>
+			<build type="doxygen-entry-point" value="c42048a_group"/>
+			<device-support value="xmegab"/>
+			<require idref="xmega.drivers.lcd"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegab"/>
+		</module>
+		<module type="component" id="xmega.components.display.c42048a#partial_matrix0" caption="LCD - Atmel YMCC42048AAAYDCL Custom Matrix V1">
+			<info type="description" value="summary">
+			Driver for Atmel YMCC42048AAAYDCL LCD component (custom LCD used e.g. for STK600_RC064X_LCDX). This version called 'partial_matrix0' uses part of the LCD matrix. Provides functions for initialization and control of the LCD segments.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Graphics" />
+			</info>
+			<build type="header-file" subtype="api" value="c42048a_partial_matrix0/c42048a.h"/>
+			<build type="c-source" value="c42048a_partial_matrix0/c42048a.c"/>
+			<build type="include-path" value="./c42048a_partial_matrix0"/>
+			<build type="doxygen-entry-point" value="c42048a_group"/>
+			<device-support value="xmegab"/>
+			<require idref="xmega.drivers.lcd"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegab"/>
+		</module>
+	</select-by-config>
+</asf>

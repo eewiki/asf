@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="CMSIS Example for SAM3S-EK" id="sam.utils.cmsis.cm3_cmsis_example.sam3s_ek">
+		<!-- <config name="config.compiler.iarewarm.optimization" value="high"/> -->
+		<require idref="sam.utils.cmsis.cm3_cmsis_example"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="board.sam3s_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3s4c"/>
+	</project>
+</asf>

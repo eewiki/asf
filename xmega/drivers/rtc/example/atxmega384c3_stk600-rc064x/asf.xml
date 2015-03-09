@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Drivers RTC Example for STK600 and ATxmega384C3" id="xmega.drivers.rtc.example.stk600_rc064x_atxmega384c3">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_rtc.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<config name="config.board.stk600-rc044x.led" value="yes"/>
+		<require idref="xmega.drivers.rtc.example"/>
+		<require idref="board.stk600-rc064x.atxmega384c3"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

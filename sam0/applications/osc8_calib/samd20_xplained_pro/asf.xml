@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="8MHz Oscillator Calibration Application" id="sam0.applications.osc8_calib.samd20_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<require idref="board.samd20_xplained_pro"/>
+		<require idref="sam0.applications.osc8_calib"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen-v2"/>
+		<device-support value="atsamd20j18"/>
+	</project>
+</asf>

@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project id="xmega.drivers.crc.example3.xmega_a3bu_xplained" caption="Example3 for CRC driver on XMEGA-A3BU Xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<config name="config.board.xmega_a3bu_xplained.led" value="yes"/>
+		<require idref="xmega.drivers.crc.example3"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

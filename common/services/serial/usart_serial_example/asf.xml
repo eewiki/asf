@@ -1,0 +1,68 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.basic.serial.example" caption="Similar API for Serial Interfaces Example">
+		<module type="application" id="common.services.basic.serial.example#0" caption="Similar API for Serial Interfaces Example">
+			<info type="description" value="summary">
+			Initialize USART, send message on RS232 Com Port and echo of any received character.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usart_serial_example.c"/>
+			<build type="include-path" value="."/>
+			<require idref="xmega.utils"/>
+			<require idref="common.services.basic.serial"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.boards"/>
+			<device-support value="xmega"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.serial.example#1" caption="Similar API for Serial Interfaces Example">
+			<info type="description" value="summary">
+			Initialize USART, send message on RS232 Com Port and echo of any received character.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usart_serial_example.c"/>
+			<build type="include-path" value="."/>
+			<require idref="avr32.utils"/>
+			<require idref="common.services.basic.serial"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.boards"/>
+			<device-support value="uc3"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.serial.example#2" caption="Similar API for Serial Interfaces Example">
+			<info type="description" value="summary">
+			Initialize USART, send message on RS232 Com Port and echo of any received character.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usart_serial_example.c"/>
+			<build type="include-path" value="."/>
+			<require idref="sam.utils"/>
+			<require idref="common.services.basic.serial"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.boards"/>
+			<device-support value="sam"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.serial.example#3" caption="Similar API for Serial Interfaces Example">
+			<info type="description" value="summary">
+			Initialize USART, send message on RS232 Com Port and echo of any received character.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usart_serial_example.c"/>
+			<build type="include-path" value="."/>
+			<require idref="mega.utils"/>
+			<require idref="common.services.basic.serial"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.boards"/>
+			<device-support value="megarf"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

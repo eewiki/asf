@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.services.sensors.math" caption="Sensors - Device Math (C++)">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<info type="description" value="summary">
+		The sensor service math APIs provide high-level interfaces to numeric
+		types and functions supporting sensor applications. Common API for
+		UC3, XMEGA, and AVR MEGA.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="plane.h"/>
+		<build type="header-file" subtype="api" value="quaternion.h"/>
+		<build type="c-source" value="fixed_t.c"/>
+		<build type="header-file" value="fixed_t.h"/>
+		<build type="c-source" value="fixed.cpp"/>
+		<build type="header-file" value="fixed.h"/>
+		<build type="header-file" value="precision.h"/>
+		<build type="header-file" value="vector.h"/>
+		<build type="c-source" value="matrix.cpp"/>
+		<build type="header-file" value="matrix.h"/>
+		<device-support value="uc3"/>
+		<device-support value="xmega"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

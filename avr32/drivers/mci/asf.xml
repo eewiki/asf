@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.mci.v2" caption="MCI - MultiMedia Card Interface">
+		<info type="description" value="summary">
+		This driver interfaces the MCI (MultiMedia Card Interface) module.
+		It will add functions to read, write a SD/MMC card.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<build type="c-source" value="mci.c"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="mci.h"/>
+		<build type="doxygen-entry-point" value="avr32_drivers_mci"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.utils"/>
+		<require idref="common.components.memory.sd_mmc.protocol"/>
+		<require idref="common.services.basic.clock"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a3_a4"/>
+	</module>
+</asf>

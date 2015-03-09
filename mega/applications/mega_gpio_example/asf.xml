@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.applications.mega_gpio_example" caption="megaAVR GPIO example">
+		<info type="description" value="summary">
+		This application show how to set use the different GPIO features on megaAVR.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="I/O"/>
+		</info>
+		<build type="c-source" value="mega_gpio_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="mega.utils"/>
+		<device-support value="mega"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Drivers RTC32 Example for stk600-rc064x" id="xmega.drivers.rtc32.example.stk600-rc064x">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_rtc32.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="xmega.drivers.rtc32.example"/>
+		<require idref="board.stk600-rc064x.atxmega256a3b"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3b"/>
+	</project>
+</asf>

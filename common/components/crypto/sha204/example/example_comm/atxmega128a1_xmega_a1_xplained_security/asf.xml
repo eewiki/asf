@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="ATSHA204 Example for Security Xplained Ext. Board" id="common.components.crypto.sha204.example_comm.atxmega128a1_xplain">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_atsha204.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.crypto.sha204.example_comm"/>
+		<require idref="board.xmega_a1_xplained"/>
+		<config name="config.board.xmega_a1_xplained.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

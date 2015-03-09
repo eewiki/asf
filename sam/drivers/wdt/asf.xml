@@ -1,0 +1,37 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.drivers.wdt" caption="WDT - Watchdog Timer">
+		<module type="driver" id="sam.drivers.wdt#sam3" caption="WDT - Watchdog Timer">
+			<info type="description" value="summary">
+				The Watchdog Timer can be used to prevent system lock-up if the software becomes trapped in a deadlock. It features a 12-bit down counter that allows a watchdog period of up to 16 seconds (slow clock at 32.768 kHz).
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Timers" />
+			</info>
+			<build type="c-source" value="wdt.c"/>
+			<build type="header-file" subtype="api" value="wdt.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="sam_drivers_wdt_group"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<require idref="sam.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="driver" id="sam.drivers.wdt#sam4l" caption="WDT - Watchdog Timer">
+			<info type="description" value="summary">
+				The Watchdog Timer can be used to prevent system lock-up if the software becomes trapped in a deadlock.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Timers" />
+			</info>
+			<build type="c-source" value="wdt_sam4l.c"/>
+			<build type="header-file" subtype="api" value="wdt_sam4l.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_sam_drivers_wdt_sam4l"/>
+			<device-support value="sam4l"/>
+			<require idref="sam.utils"/>
+			<require idref="common.services.basic.clock"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+	</select-by-device>
+</asf>

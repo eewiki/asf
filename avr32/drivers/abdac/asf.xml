@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.abdac" caption="ABDAC - Audio Bitstream DAC">
+		<info type="description" value="summary">
+		Audio Bitstream DAC (Digital to Analog Converter) provides functions to convert a 16-bit sample value to a digital bitstream.
+		For UC3 B, this module is only available in AT32UC3B0512 and AT32UC3B1512.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion" />
+		</info>
+		<build type="c-source" value="abdac.c"/>
+		<build type="header-file" subtype="api" value="abdac.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_abdac"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="at32uc3b0512"/>
+		<device-support value="at32uc3b1512"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

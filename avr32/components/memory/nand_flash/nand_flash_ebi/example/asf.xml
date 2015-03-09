@@ -1,0 +1,29 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.memory.nand_flash.nand_flash_ebi.example" caption="NAND Flash on EBI Example">
+		<info type="description" value="summary">
+		Read and write data to an external Nand flash memory through the EBI.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="nf_example.c"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="conf"/>
+		<build type="header-file" value="conf/conf_stdio_serial.h"/>
+		<build type="header-file" value="conf/conf_clock.h"/>
+		<build type="header-file" value="conf/conf_usart_serial.h"/>
+		<build type="header-file" value="conf/conf_board.h"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.components.memory.nand_flash.nand_flash_ebi"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.flashc"/>
+		<require idref="avr32.drivers.ecchrs"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

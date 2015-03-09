@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.memory.sdram.mt48lc16m16a2tg7e.example" caption="SDRAM MT48LC16M16A2TG7E Memory Example">
+		<info type="description" value="summary">
+		Read and write data to an external SDRAM connected to the EBI SDRAMC.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="sdramc_example.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.components.memory.sdram.mt48lc16m16a2tg7e"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.ebi.sdramc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

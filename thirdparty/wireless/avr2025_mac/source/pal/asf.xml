@@ -1,0 +1,69 @@
+<asf xmlversion="1.0">
+	<select-by-device id="thirdparty.wireless.avr2025_mac.source.pal" caption="Platform Abstraction Layer (PAL)">
+        <module type="meta" id="thirdparty.wireless.avr2025_mac.source.pal#1"     caption="PAL SPI access for external transceivers">
+            <info type="description" value="summary">
+            The PAL Layer forms the wrapper layer that forms the interface between the Stack and the Low level drivers.This module includes PAL(Platform Abstraction Layer) wrapper files for boards with External Transceivers
+            </info>
+			<info type="gui-flag" value="hidden"/>
+            <build type="c-source"      value="pal.c"/>
+            <build type="header-file"   value="pal.h"/>
+            <build type="header-file"   value="pal_ext_trx.h"/>
+            <build type="c-source"      value="pal_ext_trx.c"/>
+            <build type="doxygen-entry-point" value="group_pal"/>
+			<build type="module-config" subtype="required-header-file" value="conf_pal.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+
+            <require idref="thirdparty.wireless.avr2025_mac.source.pal.common_sw_timer"/>
+            <require idref="thirdparty.wireless.avr2025_mac.source.pal.inc"/>
+            <require idref="common.services.delay"/>
+            <require idref="common.services.basic.spi_master"/>
+            <require idref="common.services.ioport"/>
+            <require idref="common.utils"/>
+            <device-support-alias value="avr2025_mac_pal_spi_support"/>
+		</module>
+
+		<module type="meta" id="thirdparty.wireless.avr2025_mac.source.pal#2"     caption="PAL access for SoC">
+            <info type="description" value="summary">
+            The PAL Layer forms the wrapper layer that forms the interface between the Stack and the Low level drivers.This module includes PAL(Platform Abstraction Layer) wrapper files for Soc's
+            </info>
+			<info type="gui-flag" value="hidden"/>
+            <build type="c-source"      value="pal.c"/>
+            <build type="header-file"   value="pal.h"/>
+            <build type="doxygen-entry-point" value="group_pal"/>
+			<build type="module-config" subtype="required-header-file" value="conf_pal.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+
+            <require idref="thirdparty.wireless.avr2025_mac.source.pal.common_sw_timer"/>
+            <require idref="thirdparty.wireless.avr2025_mac.source.pal.inc"/>
+            <require idref="common.services.delay"/>
+            <device-support-alias value="avr2025_mac_pal_soc_support"/>
+		</module>
+    </select-by-device>
+
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.pal.inc" caption="PAL Includes">
+		<info type="description" value="summary">
+		Pal Generic Include files are included by this module
+		</info>
+		<build type="header-file"   value="pal_generic.h"/>
+		<build type="include-path"  value="."/>
+		<build type="header-file"   value="../../include/return_val.h"/>
+		<build type="include-path"  value="../../include/"/>
+	</module>
+
+    <device-alias-map name="avr2025_mac_pal_support">
+        <device-support value="atxmega256a3u"/>
+        <device-support value="atxmega256a3bu"/>
+        <device-support value="uc3a3_a4"/>
+        <device-support value="sam4l"/>
+        <device-support value="atmega256rfr2"/>
+    </device-alias-map>
+    <device-alias-map name="avr2025_mac_pal_spi_support">
+        <device-support value="atxmega256a3u"/>
+        <device-support value="atxmega256a3bu"/>
+        <device-support value="uc3a3_a4"/>
+        <device-support value="sam4l"/>
+    </device-alias-map>
+    <device-alias-map name="avr2025_mac_pal_soc_support">
+        <device-support value="atmega256rfr2"/>
+    </device-alias-map>
+</asf>

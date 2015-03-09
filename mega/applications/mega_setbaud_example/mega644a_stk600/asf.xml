@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="AVR libc setbaud utility example for the ATmega644A" id="mega.applications.mega_setbaud_example.mega644a_stk600">
+		<info type="description" value="summary">
+		ATmega644A STK600 avr libc setbaud utility demo application
+		</info>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.stk600-mega.atmega644a"/>
+		<require idref="mega.applications.mega_setbaud_example"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega644a"/>
+	</project>
+</asf>

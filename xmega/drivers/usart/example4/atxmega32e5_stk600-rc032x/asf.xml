@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="XMEGA USART Example 4 for stk600-rc032x with ATxmega32E5" id="xmega.drivers.usart.example4.stk600-rc032x_atxmega32e5">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_xcl.h"/>
+		<build type="header-file" value="conf_usart_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.usart.example4"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<config name="config.xmega.drivers.usart_xmegae" value="extended"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

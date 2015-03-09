@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.usart.example4" caption="USART Example 4">
+		<info type="description" value="summary">
+		 The example demonstrates how to use the XMEGA E USART with XCL module to generate USART variable frame lenght communication.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="usart_example4.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_usart_example.h"/>
+		<device-support value="xmegae"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.boards"/>
+		<require idref="xmega.drivers.usart"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

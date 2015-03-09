@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="QTouch Sensor example with I2C interface for SAM4E-EK" id="common.components.touch.qt.qt_i2c.example.sam4e_ek">
+		<info type="description" value="summary">
+			The application demonstrates how to configure an AT42QT2160 device and get device status on SAM4E-EK.
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_qt_i2c.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.touch.qt.qt_i2c.example"/>
+		<require idref="board.sam4e_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4e16e"/>
+	</project>
+</asf>

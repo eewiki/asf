@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device HID Mouse for evk1101" id="common.services.usb.class.hid.device.mouse.example.evk1101">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.eic"/>
+		<require idref="avr32.components.joystick.skrhabe010"/>
+		<require idref="avr32.components.accelerometer.lis3l06al"/>
+		<config name="config.common.services.usb.class.device" value="hid_mouse"/>
+		<require idref="common.services.usb.class.hid.device.mouse.example"/>
+		<require idref="board.evk1101"/>
+		<config name="config.board.evk1101.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

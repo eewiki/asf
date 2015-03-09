@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="common.services.sensors.drivers" caption="Sensors - Sensor Drivers">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<info type="description" value="summary">
+		Low-level sensor device drivers.
+		</info>
+		<require idref="common.services.sensors.drivers.adi"/>
+		<require idref="common.services.sensors.drivers.akm"/>
+		<require idref="common.services.sensors.drivers.bosch"/>
+		<require idref="common.services.sensors.drivers.honeywell"/>
+		<require idref="common.services.sensors.drivers.invensense"/>
+		<require idref="common.services.sensors.drivers.kionix"/>
+		<require idref="common.services.sensors.drivers.osram"/>
+		<device-support value="mega"/>
+		<device-support value="uc3"/>
+		<device-support value="xmega"/>
+		<device-support value="sam"/>
+	</module>
+</asf>

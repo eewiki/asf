@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="NAND Flash component unit Test for SAM3U" id="common.components.memory.nand_flash.unit_tests.sam3u_ek" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_nf.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<require idref="common.components.memory.nand_flash.unit_tests"/>
+		<require idref="board.sam3u_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<device-support value="atsam3u4e"/>
+	</project>
+</asf>

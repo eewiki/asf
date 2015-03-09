@@ -1,0 +1,95 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.layer.freertos.pdc" caption="FreeRTOS - PDC Interface Layer">
+		<module type="service" id="common.services.layer.freertos.pdc#0" caption="FreeRTOS - PDC Interface Layer">
+			<info type="description" value="summary">
+				PDC interface abstraction layer to the FreeRTOS kernel.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="I/O"/>
+			</info>
+			<require idref="thirdparty.os.freertos.version"/>
+			<require idref="sam.drivers.pdc"/>
+
+			<build type="c-source" value="freertos_peripheral_control.c"/>
+			<build type="header-file" subtype="api" value="freertos_peripheral_control.h"/>
+			<build type="header-file" subtype="api" value="freertos_peripheral_control_private.h"/>
+
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="freertos_service_group"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+	</select-by-device>
+
+	<select-by-device id="common.services.layer.freertos.spi" caption="FreeRTOS - SPI Interface Layer">
+		<module type="service" id="common.services.layer.freertos.spi#0" caption="FreeRTOS - SPI Interface Layer">
+			<info type="description" value="summary">
+				SPI interface abstraction layer to the FreeRTOS kernel.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="I/O"/>
+			</info>
+			<require idref="thirdparty.os.freertos.version"/>
+			<require idref="common.services.layer.freertos.pdc"/>
+			<require idref="common.services.basic.spi_master"/>
+
+			<build type="c-source" value="freertos_spi_master.c"/>
+			<build type="header-file" subtype="api" value="freertos_spi_master.h"/>
+
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="freertos_spi_peripheral_control_group"/>
+			<device-support value="sam3n"/>
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd"/>
+			<device-support value="sam4s"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+	</select-by-device>
+
+	<select-by-device id="common.services.layer.freertos.twi" caption="FreeRTOS - TWI Interface Layer">
+		<module type="service" id="common.services.layer.freertos.twi#0" caption="FreeRTOS - TWI Interface Layer">
+			<info type="description" value="summary">
+				TWI interface abstraction layer to the FreeRTOS kernel.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="I/O"/>
+			</info>
+			<require idref="thirdparty.os.freertos.version"/>
+			<require idref="common.services.layer.freertos.pdc"/>
+			<require idref="common.services.basic.twi"/>
+
+			<build type="c-source" value="freertos_twi_master.c"/>
+			<build type="header-file" subtype="api" value="freertos_twi_master.h"/>
+
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="freertos_twi_peripheral_control_group"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+	</select-by-device>
+
+	<select-by-device id="common.services.layer.freertos.usart" caption="FreeRTOS - USART Interface Layer">
+		<module type="service" id="common.services.layer.freertos.usart#0" caption="FreeRTOS - USART Interface Layer">
+			<info type="description" value="summary">
+				USART interface abstraction layer to the FreeRTOS kernel.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="I/O"/>
+			</info>
+			<require idref="thirdparty.os.freertos.version"/>
+			<require idref="common.services.layer.freertos.pdc"/>
+			<require idref="common.services.basic.serial"/>
+
+			<build type="header-file" subtype="api" value="freertos_uart_serial.h"/>
+			<build type="c-source" value="freertos_usart_serial.c"/>
+
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="freertos_usart_peripheral_control_group"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+	</select-by-device>
+</asf>

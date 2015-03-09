@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="ILI9325 LCD Controller example for SAM4S-EK2" id="sam.components.display.ili9325.example.sam4s_ek2">
+		<info type="description" value="summary">
+		This example demonstrates how to configure the ILI9325 LCD controller to draw pictures and strings on the display.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_ili9325.h"/>
+		<build type="header-file" value="conf_aat31xx.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.components.display.ili9325.example"/>
+		<require idref="board.sam4s_ek2"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.twim.master_example" caption="TWIM Master Example">
+		<info type="description" value="summary">
+		Using the TWIM module, perform read and write operations from/to a virtual memory space pre-allocated in internal RAM in a slave TWI device. To be used with two boards with the corresponding TWIS module example.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="twim_example.c"/>
+		<device-support value="uc3"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.twim"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

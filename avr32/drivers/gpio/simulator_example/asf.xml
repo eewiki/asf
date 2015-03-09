@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.gpio.simulator_example" caption="GPIO Peripheral Bus Simulator Example">
+		<info type="description" value="summary">
+		Using the GPIO controller, set/toggle/clear/read IOs and use pin change interrupt through the peripheral bus interface in AVR Studio 5 Simulator.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="I/O"/>
+		</info>
+		<build type="c-source" value="gpio_simulator_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.components.display.ssd1306" caption="SSD1306 OLED controller">
+		<info type="description" value="summary">
+		Low-level driver for the SSD1306 OLED controller through 4-wire SPI.
+		Note: Controller inside display UG-2832HSWEG04 OLED (128 x 32, Monochrome).
+		This display is available on XMEGA-C3 Xplained
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<device-support value="xmega"/>
+		<device-support value="sam4sd32"/>
+		<build type="c-source" value="ssd1306.c"/>
+		<build type="header-file" subtype="api" value="ssd1306.h"/>
+		<build type="c-source" value="font.c"/>
+		<build type="header-file" subtype="api" value="font.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_ssd1306.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="ssd1306_oled_controller_group"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.spi_master"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

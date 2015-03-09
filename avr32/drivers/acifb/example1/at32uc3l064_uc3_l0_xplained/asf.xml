@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="ACIFB Example 1 with Sleepwalking feature for UC3_L0_XPLAINED" id="avr32.drivers.acifb.example1.uc3_l0_xplained">
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.acifb.example1"/>
+		<require idref="board.uc3_l0_xplained"/>
+		<config name="config.board.uc3_l0_xplained.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

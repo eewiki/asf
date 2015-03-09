@@ -1,0 +1,53 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4e.include.instance" caption="SAM4E instance definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4E peripherals 
+		</info>
+		<!--
+		<build type="include-path" value="."/>
+		-->
+		<build type="header-file" value="acc.h"/>
+		<build type="header-file" value="aes.h"/>
+		<build type="header-file" value="afec0.h"/>
+		<build type="header-file" value="afec1.h"/>
+		<build type="header-file" value="can0.h"/>
+		<build type="header-file" value="can1.h"/>
+		<build type="header-file" value="chipid.h"/>
+		<build type="header-file" value="cmcc.h"/>
+		<build type="header-file" value="crccu.h"/>
+		<build type="header-file" value="dacc.h"/>
+		<build type="header-file" value="dmac.h"/>
+		<build type="header-file" value="efc.h"/>
+		<build type="header-file" value="gmac.h"/>
+		<build type="header-file" value="gpbr.h"/>
+		<build type="header-file" value="hsmci.h"/>
+		<build type="header-file" value="matrix.h"/>
+		<build type="header-file" value="pioa.h"/>
+		<build type="header-file" value="piob.h"/>
+		<build type="header-file" value="pioc.h"/>
+		<build type="header-file" value="piod.h"/>
+		<build type="header-file" value="pioe.h"/>
+		<build type="header-file" value="pmc.h"/>
+		<build type="header-file" value="pwm.h"/>
+		<build type="header-file" value="rstc.h"/>
+		<build type="header-file" value="rswdt.h"/>
+		<build type="header-file" value="rtc.h"/>
+		<build type="header-file" value="rtt.h"/>
+		<build type="header-file" value="smc.h"/>
+		<build type="header-file" value="spi.h"/>
+		<build type="header-file" value="supc.h"/>
+		<build type="header-file" value="tc0.h"/>
+		<build type="header-file" value="tc1.h"/>
+		<build type="header-file" value="tc2.h"/>
+		<build type="header-file" value="twi0.h"/>
+		<build type="header-file" value="twi1.h"/>
+		<build type="header-file" value="uart0.h"/>
+		<build type="header-file" value="uart1.h"/>
+		<build type="header-file" value="udp.h"/>
+		<build type="header-file" value="usart0.h"/>
+		<build type="header-file" value="usart1.h"/>
+		<build type="header-file" value="wdt.h"/>
+		<device-support value="sam4e"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

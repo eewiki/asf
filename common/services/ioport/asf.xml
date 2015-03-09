@@ -1,0 +1,101 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.ioport" caption="IOPORT - General purpose I/O service">
+		<module type="service" id="common.services.ioport#0" caption="IOPORT - General purpose I/O service">
+			<info type="keyword" value="technology">
+				<keyword value="I/O"/>
+			</info>
+			<info type="description" value="summary">
+			IOPORT - General purpose I/O driver that includes functions for various I/O operations (set direction, set/get pin value, toggle pins etc.) Common API for XMEGA, UC3 and SAM.
+			</info>
+			<build type="doxygen-entry-point" value="ioport_group"/>
+			<build type="doxygen-quick-start" value="ioport_quickstart"/>
+			<build type="header-file" subtype="api" value="ioport.h"/>
+			<build type="c-source" value="xmega/ioport_compat.c"/>
+			<build type="header-file" value="xmega/ioport_compat.h"/>
+			<build type="header-file" value="xmega/ioport.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="xmega"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.ioport#1" caption="IOPORT - General purpose I/O service">
+			<info type="keyword" value="technology">
+				<keyword value="I/O"/>
+			</info>
+			<info type="description" value="summary">
+			IOPORT - General purpose I/O driver that includes functions for various I/O operations (set direction, set/get pin value, toggle pins etc.) Common API for XMEGA, UC3 and SAM.
+			</info>
+			<build type="doxygen-entry-point" value="ioport_group"/>
+			<build type="doxygen-quick-start" value="ioport_quickstart"/>
+			<build type="header-file" subtype="api" value="ioport.h"/>
+			<build type="header-file" value="uc3/ioport.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.clock"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+		</module>
+		<module type="service" id="common.services.ioport#2" caption="IOPORT - General purpose I/O service">
+			<info type="keyword" value="technology">
+				<keyword value="I/O"/>
+			</info>
+			<info type="description" value="summary">
+			IOPORT - General purpose I/O driver that includes functions for various I/O operations (set direction, set/get pin value, toggle pins etc.) Common API for XMEGA, UC3 and SAM.
+			</info>
+			<build type="doxygen-entry-point" value="ioport_group"/>
+			<build type="doxygen-quick-start" value="ioport_quickstart"/>
+			<build type="header-file" subtype="api" value="ioport.h"/>
+			<build type="header-file" value="sam/ioport_pio.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.clock"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="service" id="common.services.ioport#3" caption="IOPORT - General purpose I/O service">
+			<info type="keyword" value="technology">
+				<keyword value="I/O"/>
+			</info>
+			<info type="description" value="summary">
+			IOPORT - General purpose I/O driver that includes functions for various I/O operations (set direction, set/get pin value, toggle pins etc.) Common API for XMEGA, UC3 and SAM.
+			</info>
+			<build type="doxygen-entry-point" value="ioport_group"/>
+			<build type="doxygen-quick-start" value="ioport_quickstart"/>
+			<build type="header-file" subtype="api" value="ioport.h"/>
+			<build type="header-file" value="sam/ioport_gpio.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.clock"/>
+			<device-support value="sam4l"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+		<module type="service" id="common.services.ioport#4" caption="IOPORT - General purpose I/O service">
+			<info type="keyword" value="technology">
+				<keyword value="I/O"/>
+			</info>
+			<info type="description" value="summary">
+				IOPORT - General purpose I/O driver that includes functions for various I/O operations (set direction, set/get pin value, toggle pins etc.) Common API for XMEGA, UC3 and SAM.
+			</info>
+			<build type="doxygen-entry-point" value="ioport_group"/>
+			<build type="doxygen-quick-start" value="ioport_quickstart"/>
+			<build type="header-file" subtype="api" value="ioport.h"/>
+ 			<build type="header-file" value="mega/ioport.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="mega"/>
+			<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		</module>
+		<module type="service" id="common.services.ioport#5" caption="IOPORT - General purpose I/O service">
+			<info type="keyword" value="technology">
+				<keyword value="I/O"/>
+			</info>
+			<info type="description" value="summary">
+				IOPORT - General purpose I/O driver that includes functions for various I/O operations (set direction, set/get pin value, toggle pins etc.) Common API for XMEGA, UC3 and SAM.
+			</info>
+			<build type="doxygen-entry-point" value="ioport_group"/>
+			<build type="doxygen-quick-start" value="ioport_quickstart"/>
+			<build type="header-file" subtype="api" value="ioport.h"/>
+ 			<build type="header-file" value="sam0/ioport.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam0"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.storage.dlmalloc" caption="DLMALLOC - Dynamic memory allocation">
+		<info type="description" value="summary">
+		Dlmalloc is a version of malloc/free/realloc, which offers memory administration functionallity.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<build type="distribute" subtype="license" value="license.txt" />
+		<build type="c-source" value="dlmalloc.c"/>
+		<build type="header-file" subtype="api" value="dlmalloc.h"/>
+		<build type="header-file" value="docsrc/documentation.h"/>
+		<build type="c-source" value="dlsbrk.c"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="portable/iar/avr32_uc3/syscalls.c" toolchain="iarew32"/>
+		<build type="module-config" subtype="required-header-file" value="conf_dlmalloc.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_storage_dlmalloc"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

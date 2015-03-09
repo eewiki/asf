@@ -1,0 +1,89 @@
+<asf xmlversion="1.0">
+	<select-by-config id="common.services.usb.class.hid.device.generic.composite" name="config.common.services.usb.class.hid.device.generic.composite" caption="USB Device HID Generic (Composite Device)" default="disable">
+		<module type="service" id="common.services.usb.class.hid.device.generic.composite#enable" caption="USB Device HID Generic (Composite Device)">
+			<info type="description" value="summary">
+			USB Human Interface Device (HID) generic for composite device.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication" />
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="udi_hid_generic.h"/>
+			<build type="c-source" value="udi_hid_generic.c"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="udi_hid_generic_group"/>
+			<build type="doxygen-quick-start" value="udi_hid_generic_use_case_composite"/>
+			<require idref="common.services.usb.class.hid.device"/>
+			<require idref="common.services.usb.class.composite.device"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3c"/>
+			<device-support value="uc3d"/>
+			<device-support value="uc3l3"/>
+			<device-support value="uc3l4"/>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa3bu"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd"/>
+			<device-support value="sam3u"/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4l"/>
+			<device-support value="sam4e"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="common.services.usb.class.hid.device.generic.composite#disable" caption="USB Device HID Generic disabled">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="avr"/>
+			<device-support value="sam"/>
+		</module>
+	</select-by-config>
+	<module type="service" id="common.services.usb.class.hid.device.generic.single" caption="USB Device HID Generic (Single Interface Device)">
+		<info type="description" value="summary">
+		USB Human Interface Device (HID) generic is configurated to run on USB device with a single interface.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication" />
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" subtype="api" value="udi_hid_generic.h"/>
+		<build type="c-source" value="udi_hid_generic.c"/>
+		<build type="header-file" value="udi_hid_generic_conf.h"/>
+		<build type="c-source" value="udi_hid_generic_desc.c"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_usb.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="udi_hid_generic_group"/>
+		<require idref="common.services.usb.class.hid.device"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l3"/>
+		<device-support value="uc3l4"/>
+		<device-support value="xmegaa1u"/>
+		<device-support value="xmegaa3u"/>
+		<device-support value="xmegaa3bu"/>
+		<device-support value="xmegaa4u"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="sam3s"/>
+		<device-support value="sam3sd"/>
+		<device-support value="sam3u"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4l"/>
+		<device-support value="sam4e"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

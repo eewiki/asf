@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.dmac" caption="DMAC - DMAC Controller">
+		<info type="description" value="summary">
+		Driver for DMAC Controller (DMAC). It provides functions for configuring and using the on-chip DMAC.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="DMA Controller"/>
+		</info>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam3u"/>
+		<device-support value="sam4e"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_driver_dmac_group"/>
+		<build type="c-source" value="dmac.c"/>
+		<build type="header-file" subtype="api" value="dmac.h"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+	</module>
+</asf>

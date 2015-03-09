@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.acifb" caption="ACIFB - Analog Comparator Interface">
+		<info type="description" value="summary">
+		Analog Comparator Interface is able to control a number of Analog Comparators (AC) with identical behavior.
+		</info>
+		<build type="c-source" value="acifb.c"/>
+		<build type="header-file" subtype="api" value="acifb.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_acifb"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.utils"/>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3l"/>
+	</module>
+</asf>

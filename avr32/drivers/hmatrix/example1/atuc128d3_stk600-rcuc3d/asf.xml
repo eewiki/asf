@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="HMATRIX Example1 for STK600-RCUC3D" id="avr32.drivers.hmatrix.example.stk600-rcuc3d">
+		<require idref="board.stk600-rcuc3d"/>
+		<require idref="avr32.drivers.hmatrix.example"/>
+		<config name="config.board.stk600-rcuc3d.init" value="no"/>
+		<config name="config.board.stk600-rcuc3d.led" value="yes"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc128d3"/>
+	</project>
+</asf>

@@ -1,0 +1,29 @@
+<asf xmlversion="1.0">
+	<project caption="QTouch Method Example Application on STK600-RCUC3A0" id="avr32.services.qtouch.generic.uc3.qtouch.example1.stk600-rcuc3a0">
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>	
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="QDebugSettings.h"/>
+		<require idref="board.stk600-rcuc3a0"/>
+		<require idref="avr32.services.qtouch.generic.uc3.qtouch.example1"/>
+		<require idref="config.avr32.services.qtouch.generic.uc3"/>
+		<config name="config.avr32.services.qtouch.generic.uc3" value="qtouch_method"/>
+		<require idref="config.common.services.qtouch.qdebug.qt600.generic"/>
+		<config name="config.common.services.qtouch.qdebug.qt600.generic" value="yes"/>
+		<config name="config.board.stk600-rcuc3a0.init" value="no"/>
+		<config name="config.board.stk600-rcuc3a0.led" value="no"/>
+		<build type="define" name="QT_NUM_CHANNELS" value="32"/>
+		<build type="define" name="SNSK" value="B"/>
+		<build type="define" name="SNS" value="A"/>
+		<build type="define" name="QT_DELAY_CYCLES" value="5"/>
+		<build type="define" name="_DEBUG_INTERFACE_" value=""/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

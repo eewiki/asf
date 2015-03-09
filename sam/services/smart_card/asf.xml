@@ -1,0 +1,45 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.services.smart_card" caption="Smart Card - ISO7816 smart card">
+		<info type="description" value="summary">
+			Smart card service API for communicating with smart card using ISO7816 protocol.
+		</info>
+		<info type="keyword" value="technology">
+				<keyword value="Communication" />
+		</info>
+		<module type="service" id="sam.services.smart_card#gpio" caption="Smart Card - ISO7816 smart card using GPIO">
+			<info type="description" value="summary">
+			Smart card service API for communicating with smart card using ISO7816 protocol.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="c-source" value="iso7816.c"/>
+			<build type="header-file" subtype="api" value="iso7816.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="sam_services_smart_card_group"/>
+			<build type="define" name="SMART_CARD_USING_GPIO" value=""/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<require idref="sam.drivers.usart"/>
+			<require idref="common.services.basic.gpio"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="service" id="sam.services.smart_card#ioport" caption="Smart Card - ISO7816 smart card using IOPORT">
+			<info type="description" value="summary">
+			Smart card service API for communicating with smart card using ISO7816 protocol.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="c-source" value="iso7816.c"/>
+			<build type="header-file" subtype="api" value="iso7816.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="sam_services_smart_card_group"/>
+			<build type="define" name="SMART_CARD_USING_IOPORT" value=""/>
+			<device-support value="sam4e"/>
+			<require idref="sam.drivers.usart"/>
+			<require idref="common.services.ioport"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+		</module>
+	</select-by-device>
+</asf>

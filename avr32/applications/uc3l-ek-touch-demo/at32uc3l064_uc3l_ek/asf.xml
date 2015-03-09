@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="UC3L-EK Touch Application" id="avr32.applications.uc3l-ek-touch-demo.example">
+		<build type="include-path" value="../"/>
+		<build type="include-path" value="../qdebug/"/>
+		<require idref="avr32.applications.uc3l-ek-touch-demo"/>
+		<require idref="board.uc3l_ek"/>
+		<config name="config.board.uc3l_ek.init" value="no"/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x1000"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x0000"/>
+		<config name="config.compiler.iarew32.heap_size" value="0x1000"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

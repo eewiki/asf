@@ -1,0 +1,46 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.usb.host.tests.generator" caption="USB Device Generator for the USB Host Core Unit Tests">
+		<module type="application" id="common.services.usb.host.tests.generator#usbb" caption="USB Device Generator for the USB Host Core Unit Tests">
+			<info type="description" value="summary">
+			This test application implements several USB error sequences to test the robustness of a USB host core.
+			</info>
+			<build type="c-source" value="unit_tests.c"/>
+			<build type="header-file" value="unit_tests.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.usb.protocol"/>
+			<require idref="common.services.usb.class.hid.protocol"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="avr32.drivers.usbb.headers"/>
+			<require idref="common.services.delay"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b0"/>
+			<device-support value="uc3c"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.usb.host.tests.generator#uotghs" caption="USB Device Generator for the USB Host Core Unit Tests">
+			<info type="description" value="summary">
+			This test application implements several USB error sequences to test the robustness of a USB host core.
+			</info>
+			<build type="c-source" value="unit_tests.c"/>
+			<build type="header-file" value="unit_tests.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.usb.protocol"/>
+			<require idref="common.services.usb.class.hid.protocol"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="sam.drivers.uotghs.headers"/>
+			<require idref="common.services.delay"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

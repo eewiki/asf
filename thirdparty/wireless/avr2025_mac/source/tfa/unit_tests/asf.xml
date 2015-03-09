@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<module type="application" id="thirdparty.wireless.avr2025_mac.source.tfa.unit_tests" caption="Unit Tests for Transceiver Feature Access">
+		<info type="description" value="summary">
+		Unit Tests for TFA ensure the good functionality of this module by testing one by one the main features of the TFA component.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="header-file" value="unit_tests.h"/>
+		<build type="header-file" value="app_config.h"/>
+		<build type="header-file" value="conf_common_sw_timer.h"/>
+		<build type="header-file" value="conf_pal.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.boards"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.tfa"/>
+		<require idref="thirdparty.wireless.avr2025_mac.includes"/>
+		<require idref="common.utils.unit_test"/>
+		<build type="define" name="HIGHEST_STACK_LAYER" value="TAL"/>
+		<build type="define" name="FFD" value=""/>
+		<device-support value="uc3"/>
+		<device-support value="xmega"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

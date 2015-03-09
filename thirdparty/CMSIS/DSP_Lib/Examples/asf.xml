@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="sam.utils.cmsis.dsp_lib.examples.common" caption="Common math helper code for CMSIS Examples">
+		<info type="description" value="summary">
+			Common code for CMSIS Examples
+		</info>
+		<build type="c-source" value="Common/Source/math_helper.c"/>
+		<build type="header-file" value="Common/Include/math_helper.h"/>
+		<build type="include-path" value="Common/Include"/>
+		<device-support value="sam4"/>
+		<require idref="thirdparty.cmsis.license"/>
+	</module>
+</asf>

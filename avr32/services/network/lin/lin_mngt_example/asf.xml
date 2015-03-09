@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.lin.example" caption="Lin Software Stack Example">
+		<info type="description" value="summary">
+		Basic example supporting Master and Slave Modes, using the LIN Software Stack . Requires the use of another LIN device (e.g. the CANVector PC Tool).
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="lin_mngt_example.c"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.flashc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.services.network.lin"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

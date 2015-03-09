@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="Timeout example 2 for XMEGA A1 Xplained" id="xmega.services.timeout.example2.xmega_a1_xplained">
+		<!-- List board specific header and source files here -->
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_timeout.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_rtc.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<!-- Include paths -->
+		<build type="include-path" value="."/>
+		<!-- Include example and board -->
+		<require idref="xmega.services.timeout.example2"/>
+		<require idref="board.xmega_a1_xplained"/>
+		<!-- Setup generators -->
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.chipid" caption="CHIPID - Chip Identifier">
+		<info type="description" value="summary">
+			The Chip Identifier registers permit recognition of the device and its revision. These registers provide the sizes and types of the on-chip memories, as well as the set of embedded peripherals.
+		</info>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_chipid_group"/>
+		<build type="c-source" value="chipid.c"/>
+		<build type="header-file" subtype="api" value="chipid.h"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

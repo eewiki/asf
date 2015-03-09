@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.adc.example5" caption="ADC Calibration example with DAC">
+		<info type="description" value="summary">
+		This example demonstrates an offset and gain calibration method for XMEGA E ADC using hardware compensation.
+		The DAC output is used on ADC input.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc_calibration.c"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="xmega.drivers.dac"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<device-support value="xmegae"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.utils.membag.unit_tests" caption="Unit Tests for the MEMBAG Memory Allocator">
+		<info type="description" value="summary">
+			Perform a range of unit tests on the MEMBAG utility to ensure correct operation.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.utils.membag"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

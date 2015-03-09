@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.parc.example" caption="PARC Example">
+		<info type="description" value="summary">
+		This example uses PARC driver to capture parallel data.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="parc_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.parc"/>
+		<require idref="sam.drivers.usart"/>
+		<require idref="sam.drivers.tc"/>
+		<require idref="sam.drivers.pdca"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

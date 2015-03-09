@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.audio.audio_player.players.wav" caption="USB Audio player - WAV">
+		<info type="description" value="summary">
+		USB Audio Player for the Waveform Audio (WAV) file format.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="wav_player.c"/>
+		<build type="header-file" value="wav_player.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.services.audio.audio_player.players"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

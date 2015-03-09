@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="WM8731 example for SAM3U_EK" id="sam.components.audio.codec.wm8731.example.sam3u_ek">
+		<info type="description" value="summary">
+			A simple example for the WM8731 by playing back a WAV file.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_wm8731.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.components.audio.codec.wm8731.example"/>
+		<require idref="board.sam3u_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3u4e"/>
+	</project>
+</asf>

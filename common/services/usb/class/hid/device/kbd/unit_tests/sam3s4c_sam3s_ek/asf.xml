@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device HID Keyboard unit tests for SAM3S-EK" id="common.services.usb.class.hid.device.keyboard.unit_tests.sam3s_ek" type="unit-test">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.device" value="hid_keyboard"/>
+		<require idref="common.services.usb.class.hid.device.keyboard.unit_tests"/>
+		<require idref="board.sam3s_ek"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.utils"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<device-support value="atsam3s4c"/>
+	</project>
+</asf>

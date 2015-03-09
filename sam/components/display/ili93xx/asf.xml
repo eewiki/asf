@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.display.ili93xx" caption="Display - ILI93xx LCD Controller">
+		<info type="description" value="summary">
+			Low-level driver for the ILI93xx LCD controller.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<build type="c-source" value="ili93xx.c"/>
+		<build type="header-file" subtype="api" value="ili93xx.h"/>
+		<build type="header-file" subtype="api" value="ili9325_regs.h"/>
+		<build type="header-file" subtype="api" value="ili9341_regs.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="ili93xx_display_group"/>
+		<device-support value="sam"/>
+		<build type="module-config" subtype="required-header-file" value="conf_ili93xx.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+	</module>
+</asf>

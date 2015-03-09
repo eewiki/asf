@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="SD/MMC using SPI Example for EVK1105" id="avr32.components.memory.sdmmc.spi.example.evk1105">
+		<require idref="board.evk1105"/>
+		<config name="config.board.evk1105.init" value="no"/>
+		<require idref="avr32.components.memory.sdmmc.spi.example"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

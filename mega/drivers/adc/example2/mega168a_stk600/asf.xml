@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="ADC example 2 for the ATmega168A" id="mega.drivers.adc.example2.mega168a_stk600">
+		<info type="description" value="summary">
+		ATmega168A ADC example 2
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.stk600-mega.atmega168a"/>
+		<require idref="mega.drivers.adc.example2"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega168a"/>
+	</project>
+</asf>

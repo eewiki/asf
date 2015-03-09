@@ -1,0 +1,31 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.avr32.drivers.intc.exception" name="config.avr32.drivers.intc.exception" caption="INTC - Interrupt Controller" default="yes">
+		<module type="meta" id="config.avr32.drivers.intc.exception#no" caption="No exception support">
+		</module>
+		<module type="meta" id="config.avr32.drivers.intc.exception#yes" caption="Exception support">
+			<build type="asm-source" value="exception.S" toolchain="avr32gcc"/>
+			<build type="asm-source" value="exception.s82" toolchain="iarew32"/>
+		</module>
+	</select-by-config>
+	<module type="driver" id="avr32.drivers.intc" caption="INTC - Interrupt Controller">
+		<info type="description" value="summary">
+		This driver interfaces the INTC module which collects interrupt requests from the peripherals, prioritizes them, and delivers an interrupt request and an autovector to the CPU.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Interrupt"/>
+		</info>	
+		<build type="c-source" value="intc.c"/>
+		<build type="header-file" subtype="api" value="intc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="intc_group"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="config.avr32.drivers.intc.exception"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

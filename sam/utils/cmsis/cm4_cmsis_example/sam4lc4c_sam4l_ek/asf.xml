@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="CMSIS Example for SAM4L-EK" id="sam.utils.cmsis.cm4_cmsis_example.sam4l_ek">
+		<require idref="sam.utils.cmsis.cm4_cmsis_example"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="board.sam4l_ek"/>
+		<config name="config.board.sam4l_ek.led" value="yes"/>
+		<config name="config.board.sam4l_ek.bm" value="no"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

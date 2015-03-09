@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.usbb._asf_v1" caption="USBB - Universial Serial Bus Interface (ver. 1)">
+		<info type="description" value="summary">
+		Low level driver for USB (USBB). Provides functions for configuring and accessing the USBB peripheral module. Required by USB device drivers and class implementations.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="distribute" subtype="directory" value="./docsrc"/>
+		<build type="c-source" value="usb_drv.c"/>
+		<build type="header-file" subtype="api" value="usb_drv.h"/>
+		<build type="header-file" value="usbb.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_usb.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-image-path" value="docsrc"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.utils"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication" />
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

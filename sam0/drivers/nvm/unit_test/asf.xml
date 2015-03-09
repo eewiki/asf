@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.nvm.unit_test" caption="Unit Tests for the SAM D20 NVM Driver">
+		<info type="description" value="summary">
+		Unit test for the NVM module.
+		</info>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<build type="include-path" value="."/>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="unit_test.c"/>
+		<require idref="sam0.drivers.nvm"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="sam0.utils.stdio.stdio_serial"/>
+		<device-support value="samd20"/>
+	</module>
+</asf>

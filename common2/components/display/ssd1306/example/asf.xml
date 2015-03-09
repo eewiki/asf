@@ -1,0 +1,11 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common2.components.display.ssd1306.example" caption="SSD1306 Display Controller Example">
+		<info type="description" value="summary">
+		A simple example for verifying that the SSD1306 low level driver works.
+		</info>
+		<build type="c-source" value="ssd1306_example.c"/>
+		<device-support value="samd20"/>
+		<require idref="common2.components.display.ssd1306"/>
+		<require idref="sam0.drivers.system"/>
+	</module>
+</asf>

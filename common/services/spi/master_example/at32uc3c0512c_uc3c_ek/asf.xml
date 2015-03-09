@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="Shared AVR API for SPI Master Mode / Example for UC3C-EK" id="common.services.basic.spi.master_example.uc3c_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_spi_master_example.h"/>
+		<require idref="common.services.basic.spi.master_example"/>
+		<require idref="board.uc3c_ek"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project id="common.applications.user_application.evk1104" caption="EVK1104 template project" type="template">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<require idref="common.applications.user_application"/>
+		<require idref="board.evk1104"/>
+		<generator value="as5_32_template"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+	<project id="common.applications.user_application.evk1104s" caption="EVK1104S template project" type="template">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<require idref="common.applications.user_application"/>
+		<require idref="board.evk1104s"/>
+		<generator value="as5_32_template"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256s"/>
+	</project>
+</asf>

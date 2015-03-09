@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="USB Host core tests on SAM3X-EK" id="common.services.usb.host.tests.targets.sam3x_ek_host" type="unit-test">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.host" value="hid_mouse"/>
+		<require idref="common.services.usb.host.tests.targets"/>
+		<require idref="board.sam3x_ek"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.utils"/>
+		<require idref="sam.utils.syscalls"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<device-support value="atsam3x8h"/>
+	</project>
+</asf>

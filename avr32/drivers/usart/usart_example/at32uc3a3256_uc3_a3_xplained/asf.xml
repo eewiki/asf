@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="USART Example for UC3-A3 Xplained" id="avr32.drivers.usart.usart_example.uc3_a3_xplained">
+		<require idref="avr32.drivers.usart.usart_example"/>
+		<require idref="board.uc3_a3_xplained"/>
+		<config name="config.board.uc3_a3_xplained.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

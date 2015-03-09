@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.display.ili9225" caption="Display - ILI9225 LCD Controller">
+		<info type="description" value="summary">
+			Low-level driver for the ILI9225 LCD controller.
+		</info>
+		<build type="c-source" value="ili9225.c"/>
+		<build type="header-file" subtype="api" value="ili9225.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="ili9225_display_group"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.spi_master"/>
+		<build type="module-config" subtype="required-header-file" value="conf_ili9225.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

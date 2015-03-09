@@ -1,0 +1,46 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.usb.class.msc.device.example.freertos" caption="USB Device MSC Example with FreeRTOS">
+		<module type="application" id="common.services.usb.class.msc.device.example.freertos#0" caption="USB Device MSC Example with FreeRTOS">
+			<info type="description" value="summary">
+			Provide an application example of USB Device Mass Storage implementation with FreeRTOS. Relies on the native operating system USB MSC driver*, displays all available memories of the board as removable disks* (*except for Windows 98).
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="memories_initialization_uc3.c"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="uc3"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.usb.class.msc.device.example.freertos#1" caption="USB Device MSC Example with FreeRTOS">
+			<info type="description" value="summary">
+			Provide an application example of USB Device Mass Storage implementation with FreeRTOS. Relies on the native operating system USB MSC driver*, displays all available memories of the board as removable disks* (*except for Windows 98).
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="memories_initialization_sam.c"/>
+			<build type="c-source" value="exceptions_sam.c"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<require idref="sam.utils.syscalls"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="sam"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.network.can.example1" caption="CAN Software Stack Example 1">
+		<info type="description" value="summary">
+		Switch the device into STATIC sleep mode, then wake-up from any event on the CAN network. Requires the use of another CAN device (e.g. the CANVector PC Tool).
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="can_example1.c"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.scif"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.services.network.can"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

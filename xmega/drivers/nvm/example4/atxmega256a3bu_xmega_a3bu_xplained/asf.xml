@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="Drivers NVM Example 4 for XMEGA A3BU Xplained" id="xmega.drivers.nvm.example4.xmega_a3bu_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.nvm.example4"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

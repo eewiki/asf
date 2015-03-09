@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="PARC Example for SAM4L8 Xplained Pro" id="sam.drivers.parc.example.sam4l8_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_pdca.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<config name="config.sam.drivers.parc" value="polled"/>
+		<require idref="sam.drivers.parc.example"/>
+		<require idref="board.sam4l8_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc8c"/>
+	</project>
+</asf>

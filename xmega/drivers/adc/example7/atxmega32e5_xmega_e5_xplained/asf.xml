@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="ADC Oversampling example for XMEGA-E5 Xplained" id="xmega.drivers.adc.example7.xmega_e5_xplained">
+		<build type="header-file" value="conf_adc.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.adc.example7"/>
+		<require idref="board.xmega_e5_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

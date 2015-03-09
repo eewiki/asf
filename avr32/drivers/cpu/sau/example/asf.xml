@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.cpu.sau.example" caption="CPU SAU Example">
+		<info type="description" value="summary">
+ 			Use the CPU Secure Access Unit (SAU): setup memory areas with different 
+ 			access permission and trigger CPU exception on different access.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="CPU"/>
+		</info>
+		<build type="c-source" value="sau_example.c"/>
+		<build type="asm-source" value="sau_exception.S" toolchain="avr32gcc"/>
+		<build type="asm-source" value="sau_exception.s82" toolchain="iarew32"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.cpu.sau"/>
+		<require idref="avr32.drivers.cpu.mpu"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.cpu.mpu.simulator_example1" caption="MPU Simulator Example 1">
+		<info type="description" value="summary">
+		Use the CPU Memory Protection Unit (MPU): setup memory areas with different access permission and trigger CPU exception on different access violations.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="CPU"/>
+		</info>
+		<build type="c-source" value="mpu_simulator_example1.c"/>
+		<build type="asm-source" value="mpu_exception.S" toolchain="avr32gcc"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.cpu.mpu"/>
+		<require idref="avr32.utils"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

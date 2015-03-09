@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="INTC Example for STK600_RCUC3L0" id="avr32.drivers.intc.example.stk600-rcuc3l0">
+		<info type="description" value="summary">
+		Interrupt-based USART reception: each character received is echoed back.
+		</info>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.intc.example"/>
+		<require idref="board.stk600-rcuc3l0"/>
+		<config name="config.board.stk600-rcuc3l0.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

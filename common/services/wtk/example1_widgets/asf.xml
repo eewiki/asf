@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.wtk.example1" caption="WTK (Widget ToolKit) Library Example">
+		<info type="description" value="summary">
+		Graphical widget library toolkit service example, showing a variety of
+		interactive widgets on a display with can be manipulated via touch.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+			<keyword value="Touch"/>
+		</info>
+		<build type="c-source" value="example1.c"/>
+		<build type="c-source" value="widget_gui.c"/>
+		<build type="header-file" value="widget_gui.h"/>
+		<build type="header-file" value="touch_interface.h"/>
+		<build type="header-file" value="conf_membag.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_wtk.h"/>
+		<build type="header-file" value="conf_win.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.wtk"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

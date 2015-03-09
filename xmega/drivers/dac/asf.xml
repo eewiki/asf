@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.dac" caption="DAC - Digital to Analog Converter">
+		<info type="description" value="summary">
+		Driver for the Digital to Analog Converter (DAC). It provides functions for configuring and using the DAC and its channels.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="dac.c"/>
+		<build type="header-file" subtype="api" value="dac.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="dac_group"/>
+		<build type="doxygen-quick-start" value="dac_quickstart"/>
+		<device-support value="xmegaa1"/>
+		<device-support value="xmegaa1u"/>
+		<device-support value="xmegaa3"/>
+		<device-support value="xmegaa3u"/>
+		<device-support value="xmegaa3b"/>
+		<device-support value="xmegaa3bu"/>
+		<device-support value="xmegaa4"/>
+		<device-support value="xmegaa4u"/>
+		<device-support value="xmegae"/>
+		<require idref="xmega.utils"/>
+		<require idref="xmega.drivers.nvm"/>
+		<require idref="xmega.drivers.sleep"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

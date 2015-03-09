@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.applications.mega_setbaud_example" caption="megaAVR libc util/setbaud example">
+		<info type="description" value="summary">
+		This application show how to use the avr libc setbaud utility to set correct values for the baudrate registers depending on the baudrate.
+		</info>
+		<build type="c-source" value="mega_setbaud_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_uart.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<require idref="mega.utils"/>
+		<device-support value="mega"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

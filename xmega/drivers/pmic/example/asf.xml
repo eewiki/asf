@@ -1,0 +1,36 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.pmic.example" caption="PMIC Example">
+		<info type="description" value="summary">
+		Use the XMEGA PMIC to define Interrupt Service Routines (ISRs), to enable globally interrupts or individual interrupt levels, to demonstrate interruptability of lower interrupt levels.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Interrupt"/>
+		</info>
+		<build type="c-source" value="pmic_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="xmegad"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.ioport"/>
+		<require idref="xmega.drivers.pmic"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<module type="application" id="xmega.drivers.pmic.example_xmegae" caption="PMIC Example">
+		<info type="description" value="summary">
+		Use the XMEGA PMIC to define Interrupt Service Routines (ISRs), to enable globally interrupts or individual interrupt levels, to demonstrate interruptability of lower interrupt levels.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Interrupt"/>
+		</info>
+		<build type="c-source" value="pmic_example_xmegae.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="xmegae"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.ioport"/>
+		<require idref="xmega.drivers.pmic"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

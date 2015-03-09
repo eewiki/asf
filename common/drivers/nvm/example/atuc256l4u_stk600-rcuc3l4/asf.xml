@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="NVM example for STK600_RCUC3L4" id="common.drivers.nvm.example.stk600-rcuc3l4">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_nvm_example.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_nvm.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<require idref="common.drivers.nvm.example"/>
+		<config name="config.common.drivers.nvm.mem_type" value="extmem"/>
+		<require idref="board.stk600-rcuc3l4"/>
+		<config name="config.board.stk600-rcuc3l4.led" value="yes"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc256l4u"/>
+	</project>
+</asf>

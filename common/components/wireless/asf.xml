@@ -1,0 +1,68 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.common.wireless.at86rf" name="config.common.wireless.at86rf" caption="Transceiver support" default="231">
+		<module type="meta" id="config.common.wireless.at86rf#231" caption="AT86RF231 support enabled">
+			<info type="description" value="summary">
+			Low-level driver to access AT86RF231 explicitly. This file contains AT86RF231 dependant initialization, configurations, state handling, IRQ handling, etc...
+			</info>
+			<require idref="common.services.basic.clock"/>
+			<build type="c-source" value="at86rf231/at86rf231.c"/>
+			<build type="header-file" value="at86rf231/at86rf231.h"/>
+			<build type="define" name="EXT_BOARD" value="RZ600_AT86RF231"/>
+		</module>
+
+		<module type="meta" id="config.common.wireless.at86rf#230b" caption="AT86RF230B support enabled">
+			<info type="description" value="summary">
+			Low-level driver to access AT86RF230B explicitly. This file contains AT86RF230B dependant initialization, configurations, state handling, IRQ handling, etc...
+			</info>
+			<require idref="common.services.basic.clock"/>
+			<build type="c-source" value="at86rf230b/at86rf230b.c"/>
+			<build type="header-file" value="at86rf230b/at86rf230b.h"/>
+			<build type="define" name="EXT_BOARD" value="RZ600_AT86RF230B"/>
+		</module>
+
+		<module type="meta" id="config.common.wireless.at86rf#212" caption="AT86RF212 support enabled">
+			<info type="description" value="summary">
+			Low-level driver to access AT86RF212 explicitly. This file contains AT86RF212 dependant initialization, configurations, state handling, IRQ handling, etc...
+			</info>
+			<require idref="common.services.basic.clock"/>
+			<build type="c-source" value="at86rf212/at86rf212.c"/>
+			<build type="header-file" value="at86rf212/at86rf212.h"/>
+			<build type="define" name="EXT_BOARD" value="RZ600_AT86RF212"/>
+		</module>
+	</select-by-config>
+	<module type="component" id="common.components.wireless.at86rfxdriver" caption="AT86RFx Driver">
+		<info type="description" value="summary">
+		Common driver for the AT86RF family transceivers. This layer provides Transceiver Abstraction Layer(TAL) for the application across AT86RF family.
+
+		Basic Architecture:
+		-------------------
+
+		 -------------            ----------------            --------------------------------
+		| Application | -------> | AT86RFx Driver | -------> | AT86RF231/AT86RF230B/AT86RF212 |
+		 -------------            ----------------            --------------------------------
+
+		Some of Acronyms used:
+		----------------------
+		1. TX		- Transmission
+		2. RX		- Reception
+		3. TAL		- Transceiver Abstration Layer.
+		4. PAL		- Platform  Abstration Layer.
+		5. CSMA-CA	- Carrier Sense Multiple Access with Collision Avoidance
+		6. TRX		- Transceiver
+		7. CCA		- Clear Channel Assessment
+		8. CRC		- Cyclic Redundancy Check
+		9. FCS		- Frame Check Sequence
+		</info>
+		<build type="c-source" value="at86rfx_driver.c"/>
+		<build type="header-file" value="at86rfx_driver.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_at86rfx.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="group_common_components_wireless_at86rfxdriver"/>
+		<require idref="common.services.basic.spi_master"/>
+		<require idref="config.common.wireless.at86rf"/>
+		<require idref="avr32.drivers.gpio"/>
+		<device-support value="uc3a3s_a4s"/>
+		<generator value="doxygen-module" default-mcu="at32uc3a3256s"/>
+	</module>
+</asf>

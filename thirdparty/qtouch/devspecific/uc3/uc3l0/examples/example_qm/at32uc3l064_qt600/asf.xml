@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="QMatrix Example Application on QT600" id="avr32.services.qtouch.devspecific.uc3.uc3l0.examples.example_qm.at32uc3l064_qt600">
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x1000"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x0000"/>
+		<config name="config.compiler.iarew32.heap_size" value="0x1000"/>
+		<config name="config.common.services.qtouch.qdebug.qt600.uc3l0" value="yes"/>
+		<require idref="avr32.services.qtouch.devspecific.uc3.uc3l0.examples.example_qm"/>
+		<require idref="board.uc3_l0_qt600"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="ABDACB - Audio Bitstream DAC Example on SAM4L-EK" id="sam.drivers.abdacb.example.sam4l_ek">
+		<info type="description" value="summary">
+		This example shows how to output a audio from the ABDACB.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h" />
+		<build type="include-path" value="." />
+		<device-support value="atsam4lc4c"/>
+		<require idref="sam.drivers.abdacb.example"/>
+		<require idref="board.sam4l_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+	</project>
+</asf>

@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.audio" caption="Audio software components">
+		<info type="description" value="summary">
+		Common header file shared by all audio software components.
+		This file provides a list of possible values given to the audio callback functions used when digital to audio transfers are active.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" subtype="api" value="audio.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+	</module>
+</asf>

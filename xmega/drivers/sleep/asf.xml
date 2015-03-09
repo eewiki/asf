@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.sleep" caption="Sleep Controller driver">
+		<info type="description" value="summary">
+		Driver for the sleep controller. Provides functions to configure the sleep mode used, enable and disable sleep functionality, and enter sleep mode. To enter any of the sleep modes the sleep functionality needs to be enabled.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Power Management" />
+		</info>
+		<build type="header-file" subtype="api" value="sleep.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sleep_group"/>
+		<build type="doxygen-quick-start" value="xmega_sleep_quickstart"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="xmegad"/>
+		<device-support value="xmegae"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

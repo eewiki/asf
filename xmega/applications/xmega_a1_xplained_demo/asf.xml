@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.applications.xmega_a1_xplained_demo" caption="XMEGA-A1 Xplained demo application">
+		<info type="description" value="summary">
+		Demo application for the XMEGA-A1 Xplained: a memory-game with sound effects.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="sound.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<build type="header-file" value="snd_samples.h"/>
+		<build type="header-file" value="get_far.h"/>
+		<build type="header-file" value="sound.h"/>
+		<device-support value="atxmega128a1"/>
+		<require idref="xmega.drivers.dac"/>
+		<require idref="xmega.drivers.ioport"/>
+		<require idref="xmega.drivers.nvm"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.drivers.tc"/>
+		<require idref="xmega.utils"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

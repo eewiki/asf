@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.hmatrixb" caption="HMATRIXB - HSB Bus Matrix">
+		<info type="description" value="summary">
+			The HSB Bus Matrix implements a multi-layer bus structure that enables parallel access paths between multiple High Speed Bus (HSB) masters and slaves in a system, which increases the overall bandwidth.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_hmatrixb_group"/>
+		<build type="c-source" value="hmatrixb.c"/>
+		<build type="header-file" subtype="api" value="hmatrixb.h"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

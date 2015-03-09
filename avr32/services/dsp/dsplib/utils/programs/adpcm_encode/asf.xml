@@ -1,0 +1,10 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.tools.adpcmencode" caption="DSPLib - IMA/DVI ADPCM Encoder Tool">
+		<info type="gui-flag" value="hidden"/>
+		<build type="include-path" value="docsrc"/>
+		<build type="distribute" subtype="file" value="main.c"/>
+		<build type="distribute" subtype="file" value="ADPCM_IMA_DVI.exe"/>
+		<build type="header-file" value="docsrc/documentation.h"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

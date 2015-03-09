@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.ioport" caption="IOPORT - Input/Output Port Controller">
+		<info type="description" value="summary">
+		Driver for controlling the I/O lines.
+		Provides functions for configuring, reading and writing direction and level for the general purpose I/O lines. Deprecated; use common IOPORT service instead.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="I/O"/>
+		</info>
+		<build type="define" name="IOPORT_XMEGA_COMPAT" value=""/>
+		<require idref="common.services.ioport"/>
+		<require idref="xmega.utils"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="xmegad"/>
+		<device-support value="xmegae"/>
+		<build type="doxygen-entry-point" value="ioport_group"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

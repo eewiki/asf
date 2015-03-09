@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.lcdca.example" caption="LCDCA Controller Example">
+		<info type="description" value="summary">
+		This examples illustrates how to use the SAM4L LCD module to write characters, set or clear icons on display.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="c-source" value="lcdca_example.c"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.lcdca"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

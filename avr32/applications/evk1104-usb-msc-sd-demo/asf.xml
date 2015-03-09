@@ -1,0 +1,60 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.evk1104-usb-msc-sd-demo" caption="USB Device MSC on SD card (from ASF V1)">
+		<info type="description" value="summary">
+		This application is aimed to demonstrate the 32-bit AVR UC3 A3 Flash Microcontrollers USB Mass Storage with SD/MMC capabilities.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="avr32_logo.c"/>
+		<build type="header-file" value="avr32_logo.h"/>
+		<build type="c-source" value="device_mass_storage_task.c"/>
+		<build type="header-file" value="device_mass_storage_task.h"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.components.display.et024006dhu"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<build type="c-source" value="main.c"/>
+		<build type="header-file" value="main.h"/>
+		<build type="c-source" value="mmi_task.c"/>
+		<build type="header-file" value="mmi_task.h"/>
+		<build type="c-source" value="ms_key_logo.c"/>
+		<build type="header-file" value="ms_key_logo.h"/>
+		<build type="include-path" value="conf/"/>
+		<build type="header-file" value="conf/conf_access.h"/>
+		<build type="header-file" value="conf/conf_at45dbx.h"/>
+		<build type="header-file" value="conf/conf_ebi.h"/>
+		<build type="header-file" value="conf/conf_et024006dhu.h"/>
+		<build type="header-file" value="conf/conf_explorer.h"/>
+		<build type="header-file" value="conf/conf_sd_mmc_mci.h"/>
+		<build type="header-file" value="conf/conf_et024006dhu.h"/>
+		<build type="header-file" value="conf/conf_usb.h"/>
+		<build type="header-file" value="conf/conf_usart_serial.h"/>
+		<build type="header-file" value="conf/conf_stdio_serial.h"/>
+		<build type="header-file" value="conf/conf_clock.h"/>
+		<build type="include-path" value="enum/device/"/>
+		<build type="c-source" value="enum/device/usb_descriptors.c"/>
+		<build type="header-file" value="enum/device/usb_descriptors.h"/>
+		<build type="c-source" value="enum/device/usb_specific_request.c"/>
+		<build type="header-file" value="enum/device/usb_specific_request.h"/>
+		<require idref="avr32.drivers.usbb._asf_v1"/>
+		<require idref="avr32.drivers.usbb._asf_v1.enum.device"/>
+		<require idref="avr32.services.usb._asf_v1.class.mass_storage.scsi_decoder"/>
+		<require idref="avr32.services.usb._asf_v1.class.mass_storage.host_mem"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<require idref="common.components.memory.data_flash.at45dbx._asf_v1"/>
+		<require idref="avr32.components.memory.sd_mmc.sd_mmc_mci"/>
+		<require idref="avr32.utils.libs.newlib_addons"/>
+		<require idref="avr32.services.fs.fat"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

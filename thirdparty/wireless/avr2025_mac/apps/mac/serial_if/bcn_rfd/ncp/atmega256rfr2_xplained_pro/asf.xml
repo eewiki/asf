@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<project force-caption="true" force-description="true" caption="MAC Serial Interface Beacon RFD ATMEGARFR2-ATmega256RFR2 Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_rfd.ncp.atmega256rfr2_xplained_pro">
+		<info type="description" value="summary">
+		MAC Serial Interface Application - Beacon RFD
+		</info>	
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+
+		<config name="config.compiler.iarew.data_stack_size" value="0x200"/>
+		<config name="config.compiler.iarew.near_heap_size" value="0x40"/>
+
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
+		<config name="config.thirdparty.wireless.addons.sio2host" value="uart"/>
+
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_rfd.ncp"/>
+		<require idref="board.atmega256rfr2_xplained_pro"/>
+		<generator value="avrgcc" />
+		<generator value="iarew"/>
+		<generator value="as5_8" />
+		<generator value="doxygen"/>
+		<device-support value="atmega256rfr2"/>
+	</project>
+</asf>

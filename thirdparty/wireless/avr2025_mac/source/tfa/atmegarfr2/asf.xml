@@ -1,0 +1,8 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.tfa.atmegarfr2" caption="TFA_ATMEGARFR2">
+		<info type="description" value="summary">
+		ATMEGARFR2 Transceiver Feature Access
+		</info>
+		<build type="c-source"      value="src/tfa.c"/>
+	</module>
+</asf>

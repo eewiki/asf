@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.qdec" caption="QDEC - Quadrature Decoder">
+		<info type="description" value="summary">
+		Driver for the QDEC (Quadrature Decoder). The QDEC handles three input channels: two phase signals (QEPA, QEPB) and one index pulse (QEPI). It has a 16-bit position counter and a 16-bit revolution counter and supports 32-bit timer/counter mode.
+		</info>
+		<build type="c-source" value="qdec.c"/>
+		<build type="header-file" subtype="api" value="qdec.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_qdec"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+	</module>
+</asf>

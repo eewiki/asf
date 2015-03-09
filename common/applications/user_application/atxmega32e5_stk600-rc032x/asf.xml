@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project id="common.applications.user_application.stk600-rc032x.atxmega32e5" caption="ATxmega32E5 on STK600 template project" type="template">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<require idref="common.applications.user_application"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<generator value="as5_8_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

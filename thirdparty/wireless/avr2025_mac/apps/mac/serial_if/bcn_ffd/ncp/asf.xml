@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="application" caption="MAC Serial Interface Application - Beacon FFD" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd.ncp">
+		<info type="description" value="summary">
+		MAC Serial Interface  Application - Beacon FFD
+		</info>
+		<build type="doxygen-entry-point" value="group_mac"/>
+		<build type="header-file" value="app_config.h"/>
+		<build type="header-file" value="conf_pal.h"/>
+		<build type="include-path" value="."/>
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd"/>
+		<device-support-alias value="avr2025_mac_pal_support"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

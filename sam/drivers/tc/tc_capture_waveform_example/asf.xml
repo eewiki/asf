@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.tc.tc_capture_waveform_example" caption="TC Capture Waveform Example">
+		<info type="description" value="summary">
+			This example shows how to configure TC in waveform and capture mode. In capture mode, pulse signal (from TIOA1) is set as an input to TIOA2, RA and RB will be loaded when programmed event occurs. When TC interrupt happens, we could read RA and RB value for calculating pulse frequency and pulse number be increased. The current pulse frequency and total pulse number are output on UART.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc_capture_waveform_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.tc"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

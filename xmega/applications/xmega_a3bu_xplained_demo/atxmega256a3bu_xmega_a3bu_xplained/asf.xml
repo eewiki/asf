@@ -1,0 +1,33 @@
+<asf xmlversion="1.0">
+	<project id="xmega.applications.xmega_a3bu_xplained_demo.xmega_a3bu_xplained" caption="Demo application for XMEGA A3BU-Xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_adc.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_st7565r.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_rtc32.h"/>
+		<build type="header-file" value="conf_spinctrl.h"/>
+		<build type="header-file" value="conf_menu.h"/>
+		<build type="header-file" value="conf_application.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<config name="config.gfx_mono.display" value="c12832_a1z"/>
+		<require idref="xmega.applications.xmega_a3bu_xplained_demo"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<build type="define" name="_QTOUCH_" value=""/>
+		<build type="define" name="QT_NUM_CHANNELS" value="4"/>
+		<build type="define" name="QT_DELAY_CYCLES" value="1"/>
+		<build type="define" name="_SNS1_SNSK1_SAME_PORT_" value=""/>
+		<build type="define" name="QTOUCH_STUDIO_MASKS" value="1"/>
+		<build type="define" name="NUMBER_OF_PORTS" value="1"/>
+		<build type="define" name="SNS" value="F"/>
+		<build type="define" name="SNSK" value="F"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

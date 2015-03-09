@@ -1,0 +1,54 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.services.atmel_rf4ce.lib.inc" caption="Common Files used for RF4CE libraries">
+	    <info type="description" value="summary">
+		The RF4CE package can be found at www.atmel.com/RF4CE.
+		</info>
+		<info type="gui-flag" value="hidden"/>		
+		<info type="keyword" value="technology">
+			<keyword value="Wireless" />
+		</info>	
+				
+		<build type="define" name="DEBUG" value ="0"/>
+		<build type="define" name="ZRC_PROFILE" value =""/>
+		<build type="define" name="PB_PAIRING" value=""/>
+		<build type="define" name="ZRC_CMD_DISCOVERY" value =""/>
+		<build type="define" name="VENDOR_DATA" value=""/>
+		<build type="define" name="RF4CE_SECURITY" value =""/>
+		<build type="define" name="MAC_USER_BUILD_CONFIG" value=""/>
+		<build type="define" name="HIGHEST_STACK_LAYER" value="RF4CE"/>
+		<build type="define" name="TAL_TYPE" value="ATMEGARF_TAL_1"/>
+		<build type="define" name="PAL_TYPE" value="ATMEGA128RFA1"/>
+		<build type="define" name="PAL_GENERIC_TYPE" value ="MEGA_RF_"/>
+		
+		<build type="header-file" subtype="api" value="atmega128rfa1.h"/>
+		<build type="header-file" subtype="api" value="avrtypes.h"/>
+		<build type="header-file" subtype="api" value="bmm.h"/>
+		<build type="header-file" subtype="api" value="ieee_const.h"/>
+		<build type="header-file" subtype="api" value="mac_build_config.h"/>
+		<build type="header-file" subtype="api" value="mac_config.h"/>
+		<build type="header-file" subtype="api" value="mac_user_build_config.h"/>
+		<build type="header-file" subtype="api" value="mcu_types.h"/>
+		<build type="header-file" subtype="api" value="nwk_build_config.h"/>
+		<build type="header-file" subtype="api" value="nwk_config.h"/>
+		<build type="header-file" subtype="api" value="nwk_msg_code.h"/>
+		<build type="header-file" subtype="api" value="pal.h"/>
+		<build type="header-file" subtype="api" value="pal_boardtypes.h"/>
+		<build type="header-file" subtype="api" value="pal_boot_flash.h"/>
+		<build type="header-file" subtype="api" value="pal_flash.h"/>
+		<build type="header-file" subtype="api" value="pal_mcu_generic.h"/>
+		<build type="header-file" subtype="api" value="pal_types.h"/>
+		<build type="header-file" subtype="api" value="pb_pairing.h"/>
+		<build type="header-file" subtype="api" value="return_val.h"/>
+		<build type="header-file" subtype="api" value="stack_config.h"/>
+		<build type="header-file" subtype="api" value="tal.h"/>
+		<build type="header-file" subtype="api" value="tal_config.h"/>
+		<build type="header-file" subtype="api" value="tal_types.h"/>
+		<build type="header-file" subtype="api" value="tfa.h"/>
+		<build type="header-file" subtype="api" value="vendor_data.h"/>
+		<build type="include-path" value="."/>
+
+		<build type="header-file" subtype="api" value="../rf4ce.h"/>
+		<build type="header-file" subtype="api" value="../zrc.h"/>
+		<build type="include-path" value="../"/>
+	</module>
+</asf>

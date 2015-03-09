@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.memory.nand_flash.nand_flash_ebi" caption="NAND Flash on EBI">
+		<info type="description" value="summary">
+		Driver for parallel NAND flash connected to the External Bus Interface (EBI). Provides functions for initializing and accessing a NAND flash.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="header-file" value="nf_2KB.h"/>
+		<build type="header-file" value="nf_512B.h"/>
+		<build type="c-source" value="nf.c"/>
+		<build type="header-file" subtype="api" value="nf.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_nf.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_components_memory_nand_flash_nand_flash_ebi"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.ebi.smc"/>
+		<require idref="avr32.drivers.ecchrs"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a3_a4"/>
+	</module>
+</asf>

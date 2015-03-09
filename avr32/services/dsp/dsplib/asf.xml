@@ -1,0 +1,315 @@
+<asf xmlversion="1.0">
+	<!-- DSPLib common files //-->
+	<module type="service" id="avr32.services.dsplib.common" caption="DSPLIB - Common files">
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" subtype="api" value="include/dsp.h"/>
+		<build type="header-file" value="include/dsp_types.h"/>
+		<build type="header-file" value="include/target_optim.h"/>
+		<build type="include-path" value="include"/>
+		<build type="doxygen-image-path" value="docsrc"/>
+		<build type="header-file" value="docsrc/documentation.h"/>
+		<require idref="avr32.services.dsplib.optimization"/>
+		<require idref="avr32.services.dsplib.tools"/>
+		<build type="distribute" subtype="directory" value="utils/programs"/>
+		<build type="distribute" subtype="directory" value="utils/scripts"/>
+		<device-support value="uc3"/>
+	</module>
+
+	<!-- Optimization options //-->
+	<select-by-config id="avr32.services.dsplib.optimization" name="config.avr32.services.dsplib.optimization" caption="DSPLIB - Optimization options" default="speed">
+		<module type="service" id="avr32.services.dsplib.optimization#speed" caption="DSPLIB - Speed">
+			<info type="gui-flag" value="hidden"/>
+			<build type="define" name="DSP_OPTIMIZATION" value="DSP_OPTI_SPEED"/>
+			<device-support value="uc3"/>
+		</module>
+		<module type="service" id="avr32.services.dsplib.optimization#size" caption="DSPLIB - Size">
+			<info type="gui-flag" value="hidden"/>
+			<build type="define" name="DSP_OPTIMIZATION" value="DSP_OPTI_SIZE"/>
+			<device-support value="uc3"/>
+		</module>
+		<module type="service" id="avr32.services.dsplib.optimization#accuracy" caption="DSPLIB - Accuracy">
+			<info type="gui-flag" value="hidden"/>
+			<build type="define" name="DSP_OPTIMIZATION" value="DSP_OPTI_ACCURACY"/>
+			<device-support value="uc3"/>
+		</module>
+		<module type="service" id="avr32.services.dsplib.optimization#accuracy_size" caption="DSPLIB - Accuracy and size">
+			<info type="gui-flag" value="hidden"/>
+			<build type="define" name="DSP_OPTIMIZATION" value="DSP_OPTI_ACC_AND_SIZE"/>
+			<device-support value="uc3"/>
+		</module>
+	</select-by-config>
+
+	<!-- Basic module selection //-->
+	<!-- Operators //-->
+	<select-by-config id="avr32.services.dsplib.operators" name="config.avr32.services.dsplib.optimized" caption="DSPLIB - Operators" default="device_optimized">
+		<module type="service" id="avr32.services.dsplib.operators#device_optimized" caption="DSPLIB - Operators - Device optimized">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides various functions to manipulate 16 or 32-bit fixed-point formatted numbers.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="doxygen-entry-point" value="group_operators"/>
+			<require idref="avr32.services.dsplib.uc3.operators"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.services.dsplib.operators#generic" caption="DSPLIB - Operators - Generic">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides various functions to manipulate 16 or 32-bit fixed-point formatted numbers.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="define" name="FORCE_ALL_GENERICS" value="true"/>
+			<build type="doxygen-entry-point" value="group_operators"/>
+			<require idref="avr32.services.dsplib.generic.operators"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	<!-- Vectors //-->
+	<select-by-config id="avr32.services.dsplib.vectors" name="config.avr32.services.dsplib.optimized" caption="DSPLIB - Vectors" default="device_optimized">
+		<module type="service" id="avr32.services.dsplib.vectors#device_optimized" caption="DSPLIB - Vectors - Device optimized">
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides various functions to manipulate vectors represented with 16 or 32-bit fixed-point formatted numbers.
+			</info>
+			<build type="doxygen-entry-point" value="group_vectors"/>
+			<require idref="avr32.services.dsplib.uc3.vectors"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.services.dsplib.vectors#generic" caption="DSPLIB - Vectors - Generic">
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides various functions to manipulate vectors represented with 16 or 32-bit fixed-point formatted numbers.
+			</info>
+			<build type="define" name="FORCE_ALL_GENERICS" value="true"/>
+			<build type="doxygen-entry-point" value="group_vectors"/>
+			<require idref="avr32.services.dsplib.generic.vectors"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	<!-- Windowing //-->
+	<select-by-config id="avr32.services.dsplib.windowing" name="config.avr32.services.dsplib.optimized" caption="DSPLIB - Windowing" default="device_optimized">
+		<module type="service" id="avr32.services.dsplib.windowing#device_optimized" caption="DSPLIB - Windowing - Device optimized">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides various functions to generate windows using 16 or 32-bit fixed-point formatted numbers.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="doxygen-entry-point" value="group_windowing"/>
+			<require idref="avr32.services.dsplib.uc3.windowing"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.services.dsplib.windowing#generic" caption="DSPLIB - Windowing - Generic">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides various functions to generate windows using 16 or 32-bit fixed-point formatted numbers.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="define" name="FORCE_ALL_GENERICS" value="true"/>
+			<require idref="avr32.services.dsplib.generic.windowing"/>
+			<build type="doxygen-entry-point" value="group_windowing"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	<!-- filters //-->
+	<select-by-config id="avr32.services.dsplib.filters" name="config.avr32.services.dsplib.optimized" caption="DSPLIB - Filters" default="device_optimized">
+		<module type="service" id="avr32.services.dsplib.filters#device_optimized" caption="DSPLIB - Filters - Device optimized">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides various filters to process 16 or 32-bit fixed-point signal.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="doxygen-entry-point" value="group_filters"/>
+			<require idref="avr32.services.dsplib.uc3.filters"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.services.dsplib.filters#generic" caption="DSPLIB - Filters - Generic">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides various filters to process 16 or 32-bit fixed-point signal.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="define" name="FORCE_ALL_GENERICS" value="true"/>
+			<require idref="avr32.services.dsplib.generic.filters"/>
+			<build type="doxygen-entry-point" value="group_filters"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	<!-- Signal Generation //-->
+	<select-by-config id="avr32.services.dsplib.signal_generation" name="config.avr32.services.dsplib.optimized" caption="DSPLIB - Signal generation" default="device_optimized">
+		<module type="service" id="avr32.services.dsplib.signal_generation#device_optimized" caption="DSPLIB - Signal Generation - Device optimized">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides a useful function set to generate different signals represented with 16 or 32-bit fixed-point numbers.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="doxygen-entry-point" value="group_signal_generation"/>
+			<require idref="avr32.services.dsplib.uc3.signal_generation"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.services.dsplib.signal_generation#generic" caption="DSPLIB - Signal Generation - Generic">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides a useful function set to generate different signals represented with 16 or 32-bit fixed-point numbers.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="define" name="FORCE_ALL_GENERICS" value="true"/>
+			<require idref="avr32.services.dsplib.generic.signal_generation"/>
+			<build type="doxygen-entry-point" value="group_signal_generation"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	<!-- Transforms //-->
+	<select-by-config id="avr32.services.dsplib.transforms" name="config.avr32.services.dsplib.optimized" caption="DSPLIB - Transforms" default="device_optimized">
+		<module type="service" id="avr32.services.dsplib.transforms#device_optimized" caption="DSPLIB - Transforms - Device optimized">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides a useful function set to perform DSP transformations on a signal coded with 16 or 32-bit fixed-point numbers.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<require idref="avr32.services.dsplib.uc3.transforms"/>
+			<build type="doxygen-entry-point" value="group_transforms"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.services.dsplib.transforms#generic" caption="DSPLIB - Transforms - Generic">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides a useful function set to perform DSP transformations on a signal coded with 16 or 32-bit fixed-point numbers.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="define" name="FORCE_ALL_GENERICS" value="true"/>
+			<require idref="avr32.services.dsplib.generic.transforms"/>
+			<build type="doxygen-entry-point" value="group_transforms"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	<!-- Advanced module selection //-->
+	<!-- ADPCM //-->
+	<select-by-config id="avr32.services.dsplib.adpcm" name="config.avr32.services.dsplib.optimized" caption="DSPLIB - ADPCM" default="device_optimized">
+		<module type="service" id="avr32.services.dsplib.adpcm#device_optimized" caption="DSPLIB - ADPCM - Device optimized">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides a useful function set to decode and/or encode a buffer using the ADPCM method.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<require idref="avr32.services.dsplib.uc3"/>
+			<require idref="avr32.services.dsplib.generic.adpcm"/>
+			<build type="doxygen-entry-point" value="group_adpcm"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.services.dsplib.adpcm#generic" caption="DSPLIB - ADPCM - Generic">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides a useful function set to decode and/or encode a buffer using the ADPCM method.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="define" name="FORCE_ALL_GENERICS" value="true"/>
+			<require idref="avr32.services.dsplib.generic.adpcm"/>
+			<build type="doxygen-entry-point" value="group_adpcm"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	<!-- Re-sampling //-->
+	<select-by-config id="avr32.services.dsplib.resampling" name="config.avr32.services.dsplib.optimized" caption="DSPLIB - Resampling" default="device_optimized">
+		<module type="service" id="avr32.services.dsplib.resampling#device_optimized" caption="DSPLIB - Re-sampling - Device optimized">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides a useful function set to re-sample a 16-bit fixed-point formatted signal.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="doxygen-entry-point" value="group_resampling"/>
+			<require idref="avr32.services.dsplib.uc3"/>
+			<require idref="avr32.services.dsplib.generic.resampling"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.services.dsplib.resampling#generic" caption="DSPLIB - Re-sampling - Generic">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			This module is part of the DSP library and provides a useful function set to re-sample a 16-bit fixed-point formatted signal.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Digital Signal Processing"/>
+			</info>
+			<build type="define" name="FORCE_ALL_GENERICS" value="true"/>
+			<require idref="avr32.services.dsplib.generic.resampling"/>
+			<build type="doxygen-entry-point" value="group_resampling"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+
+
+	<!-- Use meta module to hide all sub-requirements in ASF Wizard since they make no sense in the GUI -->
+	<module type="meta" id="avr32.services.dsplib.all" caption="DSP - Digital signal processing library - Source">
+		<require idref="avr32.services.dsplib.vectors"/>
+		<require idref="avr32.services.dsplib.operators"/>
+		<require idref="avr32.services.dsplib.windowing"/>
+		<require idref="avr32.services.dsplib.filters"/>
+		<require idref="avr32.services.dsplib.signal_generation"/>
+		<require idref="avr32.services.dsplib.transforms"/>
+		<require idref="avr32.services.dsplib.adpcm"/>
+		<require idref="avr32.services.dsplib.resampling"/>
+	</module>
+
+	<!-- All the modules //-->
+	<module type="service" id="avr32.services.dsplib" caption="DSP - Digital signal processing library - Source">
+		<info type="description" value="summary">
+		The Digital Signal Processing Library provides a complete function set to manipulate both 16 and 32-bit fixed-point numbers.
+
+		This is the source code for the DSP library.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Digital Signal Processing" />
+		</info>		
+		<require idref="avr32.services.dsplib.all"/>
+		<build type="doxygen-entry-point" value="group_dsplib"/>
+		<device-support value="uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

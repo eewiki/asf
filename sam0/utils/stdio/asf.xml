@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.utils.stdio" caption="Standard I/O (stdio) Interface">
+		<info type="description" value="summary">
+		Common standard I/O driver that implements the stdio
+		read and write functions on SAM devices.
+		</info>
+		<device-support value="samd20"/>
+		<require idref="sam0.utils"/>
+		<build type="doxygen-entry-point" value="group_common_utils_stdio"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="read.c"/>
+		<build type="c-source" value="write.c"/>
+	</module>
+</asf>

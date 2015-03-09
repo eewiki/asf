@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="LED Chaser Example for stk600-rc032x with ATxmega32E5" id="common.applications.led_chaser.stk600-rc032x_atxmega32e5">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<require idref="common.applications.led_chaser"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

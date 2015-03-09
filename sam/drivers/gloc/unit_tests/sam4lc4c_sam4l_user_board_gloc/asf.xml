@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<project caption="Set of unit tests for GLOC - Glue Logic Controller on SAM4L User Board" id="sam.drivers.gloc.unit_tests.sam4l_user_board_gloc" type="unit-test">
+		<build type="define" name="__SAM4LC4C__" value=""/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_gloc.h"/>
+		<build type="c-source" value="init.c"/>
+		<device-support value="atsam4lc4c"/>
+		<require idref="sam.drivers.gloc.unit_tests"/>
+		<require idref="board.user_board.sam4lc4c"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.common.boards.user_board.init" value="no"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<build type="macro-config" subtype="script" value="sam4l_user_board_flash.mac" toolchain="iarewarm"/>
+		<build type="macro-config" subtype="script" value="sam4l_user_board_flash.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="aux-script" value="sam4l_user_board_sram.gdb" toolchain="armgcc"/>
+	</project>
+</asf>

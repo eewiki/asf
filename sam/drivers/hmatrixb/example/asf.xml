@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.hmatrixb.example" caption="HMATRIXB Example">
+		<info type="description" value="summary">
+		This example demonstrates the HSB bus matrix provided on SAM microcontrollers.
+		</info>
+		<build type="c-source" value="hmatrixb_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.hmatrixb"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

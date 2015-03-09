@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="USB Host MSC with FatFS for SAM3X-EK" id="common.services.usb.class.msc.host.example2.sam3x_ek">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.host" value="mass_storage"/>
+		<require idref="common.services.usb.class.msc.host.example2"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<require idref="board.sam3x_ek"/>
+		<config name="config.board.sam3x_ek.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<device-support value="atsam3x8h"/>
+	</project>
+</asf>

@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+	<project force-caption="true" force-description="true" caption="RF4CE-ZRC controller serial interface AT86RFRF231-RZ600" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.serial_if.ctr.ncp.at32uc3a3256s_rz600_at86rf231">
+		<info type="description" value="summary">
+		The RF4CE-ZRC controller stack running on the network co-processor and driven by the host application
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="header-file" value="conf_nvm.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="define" name="EXTERN_EEPROM_AVAILABLE" value ="0"/>
+
+
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf231"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.sal" value="at86rf2xx"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.api" value="no" />
+		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<config name="config.common.drivers.nvm.mem_type" value="no_extmem"/>
+
+
+		<require idref="thirdparty.wireless.avr2102_rf4control.apps.zrc.serial_if.ctr.ncp"/>
+		<require idref="board.rz600"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256s"/>
+	</project>
+</asf>

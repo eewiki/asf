@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.avr32.services.qtouch.generic.uc3" name="config.avr32.services.qtouch.generic.uc3" caption="Atmel QTouch Library - AVR UC3" default="qtouch_method">
+		<module type="service" id="config.avr32.services.qtouch.generic.uc3#qtouch_method" caption="Atmel QTouch Library 4.4 for QTouch Method in AVR UC3 devices">
+		<build type="doxygen-entry-point" value="group_avr32_services_qtouch_generic_uc3_qtouch"/>
+		<build type="define" name="_QTOUCH_" value=""/>
+		<require idref="avr32.services.qtouch.generic.uc3.qtouch"/>
+		<build type="module-config" subtype="required-header-file" value="touch_qt_config.h"/>
+		<build type="module-config" subtype="path" value="qtouch/common"/>
+		<build type="header-file" subtype="api" value="qtouch/common/touch_qt_config.h"/>
+		<build type="include-path" value="qtouch/common"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>
+		</module>
+	</select-by-config> 
+</asf>

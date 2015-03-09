@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="maXTouch component USART event example - UC3-L0 XPLAINED" id="common.components.touch.mxt.example_usart.uc3_l0_xplained">
+		<info type="description" value="summary">
+			This example demonstrates the mXT143E Xplained top module on an UC3-L0 Xplained kit
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_mxt.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.touch.mxt.example_usart"/>
+		<config name="config.common.services.basic.twi.mode" value="master"/>
+		<require idref="board.uc3_l0_xplained"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

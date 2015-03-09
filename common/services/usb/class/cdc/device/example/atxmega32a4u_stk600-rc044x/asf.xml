@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device CDC Example for ATxmega32a4u on STK600" id="common.services.usb.class.cdc.device.example.stk600_atxmega32a4u">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.usart"/>
+		<require idref="common.services.usb.class.cdc.device.example"/>
+		<config name="config.common.services.usb.class.device" value="cdc"/>
+		<require idref="board.stk600-rc044x.atxmega32a4u"/>
+		<config name="config.board.stk600-rc044x.led" value="yes"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32a4u"/>
+	</project>
+</asf>

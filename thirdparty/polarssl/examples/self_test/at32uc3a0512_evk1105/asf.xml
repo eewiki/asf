@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="PolarSSL(Cryptographic and SSL/TLS Library) Selftest Example for EVK1105" id="avr32.services.polarssl.selftest.example.evk1105">
+		<require idref="avr32.services.polarssl.selftest.example"/>
+		<require idref="board.evk1105"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_stdio_serial.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

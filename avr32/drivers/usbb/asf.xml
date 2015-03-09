@@ -1,0 +1,112 @@
+<asf xmlversion="1.0">
+	<select-by-config id="avr32.drivers.usbb.device" name="config.avr32.drivers.usbb.device.sleepmgr" caption="USB - Universial Serial Bus driver" default="with_sleepmgr">
+		<info type="description" value="summary">
+		USBB driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+		</info>
+		<module type="driver" id="avr32.drivers.usbb.device#with_sleepmgr" caption="USB - Universial Serial Bus driver (with sleep manager)">
+			<info type="description" value="summary">
+			USBB driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication" />
+			</info>
+			<build type="c-source" value="usbb_device.c"/>
+			<build type="header-file" value="usbb_device.h"/>
+			<build type="header-file" value="usbb_otg.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="driver" id="avr32.drivers.usbb.device#without_sleepmgr" caption="USB - Universial Serial Bus driver (without sleep manager)">
+			<info type="description" value="summary">
+			USBB driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usbb_device.c"/>
+			<build type="header-file" value="usbb_device.h"/>
+			<build type="header-file" value="usbb_otg.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="avr32.drivers.usbb.host" name="config.avr32.drivers.usbb.host.sleepmgr" caption="USB - Universial Serial Bus driver" default="with_sleepmgr">
+		<info type="description" value="summary">
+		USBB driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+		</info>
+		<module type="driver" id="avr32.drivers.usbb.host#with_sleepmgr" caption="USB - Universial Serial Bus driver (with sleep manager)">
+			<info type="description" value="summary">
+			USBB driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+			</info>
+			<build type="c-source" value="usbb_host.c"/>
+			<build type="header-file" value="usbb_host.h"/>
+			<build type="header-file" value="usbb_otg.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="driver" id="avr32.drivers.usbb.host#without_sleepmgr" caption="USB - Universial Serial Bus driver (without sleep manager)">
+			<info type="description" value="summary">
+			USBB driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+			</info>
+			<build type="c-source" value="usbb_host.c"/>
+			<build type="header-file" value="usbb_host.h"/>
+			<build type="header-file" value="usbb_otg.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	<module type="driver" id="avr32.drivers.usbb.headers" caption="USB - Universial Serial Bus interface headers">
+		<info type="description" value="summary">
+		USBB device and host driver headers provided to create USB generators without USB stack.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+		</info>
+		<build type="header-file" value="usbb_device.h"/>
+		<build type="header-file" value="usbb_host.h"/>
+		<build type="header-file" value="usbb_otg.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

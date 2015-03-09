@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.pdc" caption="PDC - Peripheral DMA Controller Example">
+		<info type="description" value="summary">
+			The Peripheral DMA Controller transfers data between on-chip serial peripherals and the on- and/or off-chip memories. The link between the PDC and a serial peripheral is operated by the AHB to ABP bridge.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="DMA Controller" />
+			<keyword value="Memory" />
+		</info>
+		<build type="c-source" value="pdc.c"/>
+		<build type="header-file" subtype="api" value="pdc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_pdc_group"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

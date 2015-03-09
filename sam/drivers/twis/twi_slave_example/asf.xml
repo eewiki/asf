@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.twis.twi_slave_example" caption="TWI SLAVE example">
+		<info type="description" value="summary">
+		The application demonstrates how to use the SAM TWIS.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="twi_slave_example.c"/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.twis"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

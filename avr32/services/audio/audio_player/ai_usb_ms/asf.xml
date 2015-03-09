@@ -1,0 +1,86 @@
+<asf xmlversion="1.0">
+	<select-by-config id="avr32.services.audio.audio_player.ai_usb_ms" name="config.avr32.services.audio.audio_player.ai_usb_ms.mode" caption="USB Audio interface - Mass Storage" default="filterlist">
+		<module type="service" id="avr32.services.audio.audio_player.ai_usb_ms#filterlist" caption="USB Audio interface - Mass Storage">
+			<info type="description" value="summary">
+			USB Audio Interface (AI) Mass Storage. FAT filesystem with list filter.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="ai_usb_ms.c"/>
+			<build type="header-file" value="ai_usb_ms.h"/>
+			<build type="c-source" value="host_mass_storage_task.c"/>
+			<build type="header-file" value="host_mass_storage_task.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_audio_player.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3a3_a4"/>
+			<require idref="avr32.services.audio.audio_mixer"/>
+			<require idref="avr32.services.audio.audio_player"/>
+			<require idref="avr32.services.fs.fat.play_list"/>
+			<require idref="avr32.services.fs.fat.nav_filterlist"/>
+			<require idref="avr32.services.fs.fat.nav_automatic"/>
+			<require idref="avr32.drivers.usbb._asf_v1.enum.host"/>
+			<require idref="avr32.services.usb._asf_v1.class.mass_storage.scsi_decoder"/>
+			<require idref="avr32.services.usb._asf_v1.class.mass_storage.host_mem"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.services.audio.audio_player.ai_usb_ms#filterflat" caption="USB Audio interface - Mass Storage">
+			<info type="description" value="summary">
+			USB Audio Interface (AI) Mass Storage. FAT filesystem with flat filter.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="ai_usb_ms.c"/>
+			<build type="header-file" value="ai_usb_ms.h"/>
+			<build type="c-source" value="host_mass_storage_task.c"/>
+			<build type="header-file" value="host_mass_storage_task.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_buff_player.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3a3_a4"/>
+			<require idref="avr32.services.audio.audio_mixer"/>
+			<require idref="avr32.services.audio.audio_player"/>
+			<require idref="avr32.services.fs.fat.play_list"/>
+			<require idref="avr32.services.fs.fat.nav_filterflat"/>
+			<require idref="avr32.services.fs.fat.nav_automatic"/>
+			<require idref="avr32.drivers.usbb._asf_v1.enum.host"/>
+			<require idref="avr32.services.usb._asf_v1.class.mass_storage.scsi_decoder"/>
+			<require idref="avr32.services.usb._asf_v1.class.mass_storage.host_mem"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+	<module type="service" id="avr32.services.audio.audio_player.ai_usb_ms.mp3" caption="USB Audio interface - Mass Storage MP3">
+		<info type="description" value="summary">
+		USB Audio Interface (AI) Mass Storage. MP3 file format support.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="ai_usb_ms_mp3_support.c"/>
+		<build type="header-file" value="ai_usb_ms_mp3_support.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.services.fs.fat.nav_filterlist"/>
+		<require idref="avr32.services.audio.mp3.id3"/>
+		<require idref="avr32.services.audio.audio_player.ai_usb_ms"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+	<module type="service" id="avr32.services.audio.audio_player.ai_usb_ms.wav" caption="USB Audio interface - Mass Storage WAV">
+		<info type="description" value="summary">
+		USB Audio Interface (AI) Mass Storage. WAV file format support.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="ai_usb_ms_wav_support.c"/>
+		<build type="header-file" value="ai_usb_ms_wav_support.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.services.fs.fat.nav_filterlist"/>
+		<require idref="avr32.services.audio.audio_player.ai_usb_ms"/>
+		<require idref="avr32.services.audio.audio_player.players.wav"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

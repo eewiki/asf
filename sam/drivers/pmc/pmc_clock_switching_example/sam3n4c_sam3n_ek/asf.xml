@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="PMC clock switching for SAM3N" id="sam.drivers.pmc.pmc_clock_switching_example.sam3n_ek">
+		<info type="description" value="summary">
+		The Power Management Controller (PMC) optimizes power consumption by controlling all system and user peripheral clocks. The PMC enables/disables the clock inputs to many of the peripherals and the Cortex-M3 Processor.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_pmc_clock_switching_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.pmc.pmc_clock_switching_example"/>
+		<require idref="board.sam3n_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3n4c"/>
+	</project>
+</asf>

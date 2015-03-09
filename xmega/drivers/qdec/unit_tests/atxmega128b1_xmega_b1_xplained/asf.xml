@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Quadrature Decoder unit tests for XMEGA-B1 Xplained" type="unit-test" id="xmega.drivers.qdec.unit_tests.xmega_b1_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.qdec.unit_tests"/>
+		<require idref="board.xmega_b1_xplained"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128b1"/>
+	</project>
+</asf>

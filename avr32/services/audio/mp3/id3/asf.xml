@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.audio.mp3.id3" caption="MP3 ID3 decoder">
+		<info type="description" value="summary">
+		Driver for reading ID3 information in MP3 files.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="reader_id3.c"/>
+		<build type="header-file" subtype="api" value="reader_id3.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3"/>
+		<require idref="avr32.services.fs.fat.reader_txt"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

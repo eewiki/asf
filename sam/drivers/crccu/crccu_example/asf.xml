@@ -1,0 +1,32 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.drivers.crccu.crccu_example" caption="CRCCU Example">
+		<module type="application" id="sam.drivers.crccu.crccu_example#efc" caption="CRCCU Example">
+			<info type="description" value="summary">
+			This example demonstrates the Cyclic Redundancy Check Calculation Unit (CRCCU) provided on SAM microcontrollers. It shows how to use CRCCU to compute CRC on a memory area.
+			</info>
+			<build type="c-source" value="crccu_example_efc.c"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd8"/>
+			<device-support value="sam4s"/>
+			<require idref="sam.drivers.crccu"/>
+			<require idref="sam.services.flash"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="sam.drivers.crccu.crccu_example#flashcalw" caption="CRCCU Example">
+			<info type="description" value="summary">
+			This example demonstrates the Cyclic Redundancy Check Calculation Unit (CRCCU) provided on SAM microcontrollers. It shows how to use CRCCU to compute CRC on a memory area.
+			</info>
+			<build type="c-source" value="crccu_example_flashcalw.c"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam4l"/>
+			<require idref="sam.drivers.crccu"/>
+			<require idref="sam.drivers.flashcalw"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.dsplib.example.adpcm_streaming" caption="DSPLIB - ADPCM streaming example">
+		<info type="description" value="summary">
+		Example application. It demonstrates how to use the ADPCM decoder with a streaming vector using the DSP library.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Digital Signal Processing"/>
+			<keyword value="Audio"/>
+		</info>
+		<build type="c-source" value="adpcm_example.c"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.flashc"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.pwm"/>
+		<require idref="avr32.services.dsplib.adpcm"/>
+		<device-support value="uc3"/>
+		<build type="doxygen-image-path" value="."/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

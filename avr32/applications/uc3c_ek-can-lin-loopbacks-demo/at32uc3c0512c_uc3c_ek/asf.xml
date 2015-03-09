@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="UC3C CAN and LIN Loopbacks Application for uc3c_ek" id="avr32.applications.can-lin-loopbacks-demo.uc3c_ek">
+		<build type="include-path" value="../conf/"/>
+		<build type="header-file" value="../conf/conf_lin.h"/>
+		<build type="header-file" value="../conf/conf_can.h"/>
+		<require idref="avr32.applications.can-lin-loopbacks-demo"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

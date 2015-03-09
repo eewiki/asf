@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="LED Chaser Example for stk600-ATxmega128A1" id="common.applications.led_chaser.stk600-xmega128a1">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<require idref="common.applications.led_chaser"/>
+		<require idref="board.stk600-rc100x.atxmega128a1"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

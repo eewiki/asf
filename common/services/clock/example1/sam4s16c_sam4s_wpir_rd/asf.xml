@@ -1,0 +1,21 @@
+﻿<asf xmlversion="1.0">
+	<project id="common.services.basic.clock.example1.sam4s16c_sam4s_wpir_rd" caption="Common API for Clocks Control / Example 1 for SAM4S-WPIR-RD">
+		<!-- Files -->
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+
+		<!-- Device support -->
+		<device-support value="atsam4s16c"/>
+
+		<!-- Required modules -->
+		<require idref="board.sam4s_wpir_rd"/>
+		<require idref="common.services.basic.clock.example1"/>
+
+		<!-- Generator options -->
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+	</project>
+</asf>

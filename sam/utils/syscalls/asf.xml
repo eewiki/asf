@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.syscalls" caption="Syscalls for C library">
+		<info type="description" value="summary">
+			Minimal system calls implementation to provide I/O support in C library.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="I/O"/>
+		</info>
+		<build type="c-source" value="gcc/syscalls.c" toolchain="armgcc"/> 
+		<device-support value="sam"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

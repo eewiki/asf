@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.utils.stdio.stdio_serial.stdio_serial_example" caption="Serial Standard I/O (stdio) Example">
+		<info type="description" value="summary">
+			Provide an application example of C-Library Standard I/O serial
+			interface to the USART.
+		</info>
+		<build type="c-source" value="stdio_serial_example.c"/>
+		<build type="doxygen-entry-point" value="group_common_utils_stdio_stdio_serial_stdio_serial_example"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4"/>
+		<device-support value="megarf"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

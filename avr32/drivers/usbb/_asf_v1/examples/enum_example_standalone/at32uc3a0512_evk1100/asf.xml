@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="USBB device enumeration and host example for evk1100 (from ASF V1)" id="avr32.drivers.usbb.example.evk1100">
+		<require idref="avr32.drivers.usbb.example"/>
+		<require idref="board.evk1100"/>
+		<config name="config.board.evk1100.init" value="no"/>
+		<config name="config.board.evk1100.led" value="yes"/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x4000"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x0000"/>
+		<config name="config.compiler.iarew32.heap_size" value="0x6000"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

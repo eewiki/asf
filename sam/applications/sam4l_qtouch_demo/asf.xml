@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.applications.sam4l_qtouch_demo" caption="SAM4L Low Power and QTouch Demo">
+		<info type="description" value="summary">
+		SAM4L is running with either LCD and QTouch library enabled or in low power sleep modes.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="header-file" value="ui.h"/>
+		<build type="c-source" value="app.c"/>
+		<build type="header-file" value="app.h"/>
+		<build type="c-source" value="event.c"/>
+		<build type="header-file" value="event.h"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="qtouch/touch.c"/>
+		<build type="header-file" value="qtouch/QDebugSettings.h"/>
+		<build type="header-file" value="qtouch/touch_config_sam4l.h"/>
+		<build type="include-path" value="qtouch/"/>
+		<require idref="sam.drivers.usart"/>
+		<require idref="sam.drivers.ast"/>
+		<require idref="sam.drivers.eic"/>
+		<require idref="sam.components.display.c42364a"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.utils.stdio"/>
+		<require idref="config.common.services.qtouch.qdebug.qt600.sam4l"/>
+		<require idref="sam.services.qtouch.devspecific.sam.sam4l"/>
+		<device-support value="sam4l"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

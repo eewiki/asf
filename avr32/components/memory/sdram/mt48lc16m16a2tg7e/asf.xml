@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.memory.sdram.mt48lc16m16a2tg7e" caption="SDRAM MT48LC16M16A2TG7E">
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<info type="description" value="summary">
+		This a configuration for the MT48LC16M16A2TG7E SDRAM from Mircon. This configuration will be used by the EBI driver to set up e.g. bus width and timing for the SDRAM controller.
+		</info>
+		<build type="header-file" value="mt48lc16m16a2tg7e.h"/>
+		<build type="include-path" value=".."/>
+		<build type="doxygen-entry-point" value="group_avr32_components_memory_sdram_mt48lc16m16a2tg7e"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3"/>
+		<device-support value="uc3a3s"/>
+		<device-support value="uc3c0"/>
+		<require idref="avr32.drivers.ebi.sdramc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

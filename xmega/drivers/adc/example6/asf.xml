@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.adc.example6" caption="ADC Averaging example">
+		<info type="description" value="summary">
+		12-bit intenal temperature sensor measurement with 1024 hardware averaged samples using XMEGA E ADC.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc_averaging.c"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<device-support value="xmegae"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

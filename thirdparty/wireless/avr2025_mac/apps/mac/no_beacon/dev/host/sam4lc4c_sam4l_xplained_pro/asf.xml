@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<project force-caption="true" force-description="true" caption="MAC NoBeacon Application Device Host-SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.dev.host.sam4lc4c_sam4l_xplained_pro">
+		<info type="description" value="summary">
+		The basic MAC Example Nobeacon Application deploys a nonbeacon-enabled network.
+		</info>	
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_sio2ncp.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.dev.host"/>
+		<require idref="board.sam4l_xplained_pro"/>
+
+        <config name="config.thirdparty.wireless.avr2025_mac" value="api_parser"/>
+		<config name="config.thirdparty.wireless.addons.sio2host" value="uart"/>
+		<config name="config.thirdparty.wireless.addons.sio2ncp" value="uart"/>
+
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

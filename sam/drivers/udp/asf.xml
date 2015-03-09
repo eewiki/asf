@@ -1,0 +1,53 @@
+<asf xmlversion="1.0">
+	<select-by-config id="sam.drivers.udp.device" name="config.sam.drivers.udp.device.sleepmgr" caption="USB - Universial Serial Bus stack" default="with_sleepmgr">
+		<info type="description" value="summary">
+		USB stack for USB device. Provides functions for configuring and managing end-points.
+		</info>
+		<module type="driver" id="sam.drivers.udp.device#with_sleepmgr" caption="USB - Universial Serial Bus Stack (with sleepmgr)">
+			<info type="description" value="summary">
+			USB stack for USB device. Provides functions for configuring and managing end-points.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+			</info>
+			<build type="c-source" value="udp_device.c"/>
+			<build type="header-file" value="udp_device.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.ioport"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="driver" id="sam.drivers.udp.device#without_sleepmgr" caption="USB - Universial Serial Bus stack (without sleepmgr)">
+			<info type="description" value="summary">
+			USB stack for USB device. Provides functions for configuring and managing end-points.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+			</info>
+			<build type="c-source" value="udp_device.c"/>
+			<build type="header-file" value="udp_device.h"/>
+			<build type="include-path" value="."/>
+			<build type="define" name="UDD_NO_SLEEP_MGR" value=""/>
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.ioport"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+	</select-by-config>
+</asf>

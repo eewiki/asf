@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.network.lin" caption="LIN software stack">
+		<info type="description" value="summary">
+		LIN software stack for 32-bit AVR that supports initializing the LIN bus and to transmit/receive  messages.
+		</info>
+		<build type="c-source" value="lin.c"/>
+		<build type="header-file" subtype="api" value="lin.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_lin.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_services_network_lin"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.drivers.pdca"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+	</module>
+</asf>

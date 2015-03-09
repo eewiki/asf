@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.drivers.usbb._asf_v1.enum.device" caption="USB - Universial Serial Bus device enumeration (ver. 1)">
+		<info type="description" value="summary">
+		USB submodule for handling the USB device enumeration process. Required by USB device drivers and class implementations.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="usb_device_task.c"/>
+		<build type="header-file" subtype="api" value="usb_device_task.h"/>
+		<build type="c-source" value="usb_standard_request.c"/>
+		<build type="header-file" value="usb_standard_request.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.usbb._asf_v1.enum"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

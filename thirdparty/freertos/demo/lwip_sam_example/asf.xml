@@ -1,0 +1,72 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.freertos.sam_lwip_dhcp_example" caption="FreeRTOS with lwIP Example">
+		<module type="application" id="common.services.freertos.sam_lwip_dhcp_example#sam3" caption="FreeRTOS with lwIP Example">
+			<info type="description" value="summary">
+			Basic web server and basic TFTP server applicaitons with DHCP enabled through the lwIP TCP/IP stack and FreeRTOS of SAM port.
+			</info>
+			<build type="header-file" value="FreeRTOSConfig.h"/>
+			<build type="header-file" value="lwipopts.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="network/ethernet.c"/>
+			<build type="header-file" value="network/ethernet.h"/>
+			<build type="c-source" value="../lwip_avr32_uc3_example/network/basictftp/BasicTFTP.c"/>
+			<build type="header-file" value="../lwip_avr32_uc3_example/network/basictftp/BasicTFTP.h"/>
+			<build type="c-source" value="../lwip_avr32_uc3_example/network/basicweb/BasicWEB.c"/>
+			<build type="header-file" value="../lwip_avr32_uc3_example/network/basicweb/BasicWEB.h"/>
+			<build type="c-source" value="partest/ParTest.c"/>
+			<build type="c-source" value="../common/minimal/flash.c"/>
+			<build type="header-file" value="../common/include/flash.h"/>
+			<build type="header-file" value="../common/include/partest.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="./network"/>
+			<build type="include-path" value="../common/include"/>
+			<build type="include-path" value="../lwip_avr32_uc3_example/network/basictftp"/>
+			<build type="include-path" value="../lwip_avr32_uc3_example/network/basicweb"/>
+			<device-support value="sam3x"/>
+			<require idref="board.sam3x_ek"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.utils.cmsis.sam3x.source.template"/>
+			<require idref="sam.utils.syscalls"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.os.freertos"/>
+			<require idref="thirdparty.lwip.version"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+		</module>
+		<module type="application" id="common.services.freertos.sam_lwip_dhcp_example#sam4" caption="FreeRTOS with lwIP Example">
+			<info type="description" value="summary">
+			Basic web server and basic TFTP server applicaitons with DHCP enabled through the lwIP TCP/IP stack and FreeRTOS of SAM port.
+			</info>
+			<build type="header-file" value="FreeRTOSConfig.h"/>
+			<build type="header-file" value="lwipopts.h"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="network/ethernet.c"/>
+			<build type="header-file" value="network/ethernet.h"/>
+			<build type="c-source" value="../lwip_avr32_uc3_example/network/basictftp/BasicTFTP.c"/>
+			<build type="header-file" value="../lwip_avr32_uc3_example/network/basictftp/BasicTFTP.h"/>
+			<build type="c-source" value="../lwip_avr32_uc3_example/network/basicweb/BasicWEB.c"/>
+			<build type="header-file" value="../lwip_avr32_uc3_example/network/basicweb/BasicWEB.h"/>
+			<build type="c-source" value="partest/ParTest.c"/>
+			<build type="c-source" value="../common/minimal/flash.c"/>
+			<build type="header-file" value="../common/include/flash.h"/>
+			<build type="header-file" value="../common/include/partest.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="./network"/>
+			<build type="include-path" value="../common/include"/>
+			<build type="include-path" value="../lwip_avr32_uc3_example/network/basictftp"/>
+			<build type="include-path" value="../lwip_avr32_uc3_example/network/basicweb"/>
+			<device-support value="sam4e"/>
+			<require idref="board.sam4e_ek"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.utils.cmsis.sam4e.source.template"/>
+			<require idref="sam.utils.syscalls"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.os.freertos"/>
+			<require idref="thirdparty.lwip.version"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+		</module>
+	</select-by-device>
+</asf>

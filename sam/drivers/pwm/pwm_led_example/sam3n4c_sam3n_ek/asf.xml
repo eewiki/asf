@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="PWM LED example for SAM3N-EK" id="sam.drivers.pwm.pwm_led_example.sam3n_ek">
+		<info type="description" value="summary">
+		This example will show how to use the PWM module to make the LED fade in/out.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.drivers.pwm.pwm_led_example"/>
+		<require idref="board.sam3n_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3n4c"/>
+	</project>
+</asf>

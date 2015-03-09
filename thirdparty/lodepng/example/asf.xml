@@ -1,0 +1,94 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.services.picture.png.example" caption="LodePNG PNG Decoder Example">
+		<module type="application" id="avr32.services.picture.png.example#0" caption="LodePNG PNG Decoder Example">
+			<info type="description" value="summary">
+			Using the LodePNG PNG Decoder and the external SDRAM for buffering, decode a png image pre-stored in internal Flash and display it on the LCD screen.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Graphics"/>
+			</info>
+			<build type="header-file" value="conf_clock.h"/>
+			<build type="header-file" value="conf_ebi.h"/>
+			<build type="header-file" value="conf_et024006dhu.h"/>
+			<build type="c-source" value="lodepng_example.c"/>
+			<build type="header-file" value="pngfile.h"/>
+			<build type="header-file" value="thor1.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3a"/>
+			<require idref="avr32.components.display.et024006dhu"/>
+			<require idref="avr32.components.memory.sdram.mt48lc16m16a2tg7e"/>
+			<require idref="avr32.drivers.cpu.cycle_counter"/>
+			<require idref="avr32.drivers.ebi.sdramc"/>
+			<require idref="avr32.drivers.ebi.smc"/>
+			<require idref="avr32.drivers.flashc"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="avr32.drivers.pwm"/>
+			<require idref="avr32.services.graphics.codec.png.lodepng"/>
+			<require idref="avr32.utils.print_funcs"/>
+			<require idref="common.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="avr32.services.picture.png.example#1" caption="LodePNG PNG Decoder Example">
+			<info type="description" value="summary">
+			Using the LodePNG PNG Decoder and the external SDRAM for buffering, decode a png image pre-stored in internal Flash and display it on the LCD screen.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Graphics"/>
+			</info>
+			<build type="header-file" value="conf_clock.h"/>
+			<build type="header-file" value="conf_ebi.h"/>
+			<build type="header-file" value="conf_et024006dhu.h"/>
+			<build type="c-source" value="lodepng_example.c"/>
+			<build type="header-file" value="pngfile.h"/>
+			<build type="header-file" value="thor1.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3a3"/>
+			<require idref="avr32.components.display.et024006dhu"/>
+			<require idref="avr32.components.memory.sdram.mt48lc16m16a2tg7e"/>
+			<require idref="avr32.drivers.cpu.cycle_counter"/>
+			<require idref="avr32.drivers.ebi.sdramc"/>
+			<require idref="avr32.drivers.ebi.smc"/>
+			<require idref="avr32.drivers.flashc"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="avr32.services.graphics.codec.png.lodepng"/>
+			<require idref="avr32.utils.print_funcs"/>
+			<require idref="common.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="avr32.services.picture.png.example#2" caption="LodePNG PNG Decoder Example">
+			<info type="description" value="summary">
+			Using the LodePNG PNG Decoder and the external SDRAM for buffering, decode a png image pre-stored in internal Flash and display it on the LCD screen.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Graphics"/>
+			</info>
+			<build type="header-file" value="conf_clock.h"/>
+			<build type="header-file" value="conf_ebi.h"/>
+			<build type="header-file" value="conf_et024006dhu.h"/>
+			<build type="c-source" value="lodepng_example.c"/>
+			<build type="header-file" value="pngfile.h"/>
+			<build type="header-file" value="thor1.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.components.display.et024006dhu"/>
+			<require idref="avr32.components.memory.sdram.mt48lc16m16a2tg7e"/>
+			<require idref="avr32.drivers.cpu.cycle_counter"/>
+			<require idref="avr32.drivers.ebi.sdramc"/>
+			<require idref="avr32.drivers.ebi.smc"/>
+			<require idref="avr32.drivers.flashc"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<require idref="avr32.drivers.pm"/>
+			<require idref="avr32.drivers.scif"/>
+			<require idref="avr32.drivers.usart"/>
+			<require idref="avr32.services.graphics.codec.png.lodepng"/>
+			<require idref="avr32.utils.print_funcs"/>
+			<require idref="common.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

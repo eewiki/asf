@@ -1,0 +1,31 @@
+﻿<asf xmlversion="1.0">
+	<module type="component" id="sam.components.pir_sensor.re200b" caption="RE200B PIR sensor">
+		<!-- Summary description -->
+		<info type="description" value="summary">
+			Low-level driver for the RE200B PIR sensor.
+		</info>
+
+		<!-- Keywords -->
+		<info type="keyword" value="technology">
+			<keyword value="Sensors" />
+		</info>
+
+		<!-- Files -->
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="re200b.h"/>
+		<build type="c-source" value="re200b.c"/>
+
+		<!-- Device support -->
+		<device-support value="sam3s"/>
+		<device-support value="sam4s"/>
+
+		<!-- Required modules -->
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.acc"/>
+
+		<!-- Generator options -->
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="re200b_pir_sensor_group"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4s"/>
+	</module>
+</asf>

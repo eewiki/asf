@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="LIN Stack Example for UC3C-EK" id="avr32.services.lin.example.uc3c_ek">
+		<build type="include-path" value="../conf/"/>
+		<build type="header-file" value="../conf/conf_lin.h"/>
+		<require idref="avr32.services.lin.example"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

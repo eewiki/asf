@@ -1,0 +1,193 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.common.services.qtouch.generic.avr8.xmega_a3bu_xplained.method" name="config.common.services.qtouch.generic.avr8.xmega_a3bu_xplained.method" caption="Atmel QTouch Library 4.4 - XMEGA-A3BU Xplained" default="no_method">
+		<module type="service" id="config.common.services.qtouch.generic.avr8.xmega_a3bu_xplained.method#no_method" caption="Atmel QTouch Library 4.4 - XMEGA-A3BU Xplained">
+			<build type="doxygen-entry-point" value="group_common_services_qtouch"/>
+			<device-support value="xmegaa3bu"/>
+		</module>
+		<module type="service" id="config.common.services.qtouch.generic.avr8.xmega_a3bu_xplained.method#qtouch_method" caption="Atmel QTouch Library 4.4 - XMEGA-A3BU Xplained">
+			<info type="description" value="summary">
+			The pre-compiled QTouch Library, common and include files for AVR 8-bit devices.
+			For more information on the QTouch Library, goto www.atmel.com/qtouchlib.
+			For support queries, email touch@atmel.com.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Touch" />
+			</info>
+
+			<require idref="config.common.services.qtouch.generic.avr8.qtouch.common" />
+			<build type="asm-source" value="qtouch/common/qt_asm_xmega.S" toolchain="avrgcc"/>
+			<build type="asm-source" value="qtouch/common/qt_asm_xmega.S" toolchain="iarew"/>
+
+			<build type="library" subtype="user" value="qtouch/lib/gcc/libavrxmega6g1-4qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-8qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-16qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-12qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-4qt-k-1rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-8qt-k-2rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-16qt-k-4rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-12qt-k-3rs.a" toolchain="avrgcc"/>
+
+			<build type="library" subtype="user" value="qtouch/lib/iar/libv5xmg1-4qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-16qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-12qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-8qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-8qt-k-2rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-4qt-k-1rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-16qt-k-4rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-12qt-k-3rs.r90" toolchain="iarew"/>
+			<build type="doxygen-entry-point" value="group_common_services_qtouch"/>
+			<build type="define" name="_QTOUCH_" value =""/>
+			<build type="define" name="QT_NUM_CHANNELS" value="4"/>
+			<build type="define" name="QT_DELAY_CYCLES" value="1"/>
+			<build type="define" name="_SNS1_SNSK1_SAME_PORT_" value=""/>
+			<build type="define" name="QTOUCH_STUDIO_MASKS" value="1" />
+			<build type="define" name="NUMBER_OF_PORTS" value="1"/>
+			<build type="define" name="SNS1" value="F"/>
+			<build type="define" name="SNSK1" value="F"/>
+			<build type="distribute" subtype="license" value="../../license.txt"/>
+
+			<device-support value="xmegaa3bu"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="config.common.services.qtouch.generic.avr8.xmega128a1_qt600.method" name="config.common.services.qtouch.generic.avr8.xmega128a1_qt600.method" caption="Atmel QTouch Library 4.4 - XMEGA128A1-QT600" default="no_method">
+		<module type="service" id="config.common.services.qtouch.generic.avr8.xmega128a1_qt600.method#no_method" caption="Atmel QTouch Library 4.4 - XMEGA128A1 - QT600">
+			<build type="doxygen-entry-point" value="group_common_services_qtouch"/>
+			<device-support value="atxmega128a1"/>
+		</module>
+		<module type="service" id="config.common.services.qtouch.generic.avr8.xmega128a1_qt600.method#qtouch_method" caption="Atmel QTouch Library 4.4 - XMEGA128A1 - QT600">
+			<info type="description" value="summary">
+			The pre-compiled QTouch Library, common and include files for AVR 8-bit devices.
+			For more information on the QTouch Library, goto www.atmel.com/qtouchlib.
+			For support queries, email touch@atmel.com.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+
+			<require idref="config.common.services.qtouch.generic.avr8.qtouch.common" />
+			<build type="asm-source" value="qtouch/common/qt_asm_xmega.S" toolchain="avrgcc"/>
+			<build type="asm-source" value="qtouch/common/qt_asm_xmega.S" toolchain="iarew"/>
+
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega7g1-4qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega7g1-8qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega7g1-16qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega7g1-12qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega7g1-4qt-k-1rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega7g1-8qt-k-2rs.a" toolchain="avrgcc"/>
+			<build type="library"    subtype="user" value="qtouch/lib/gcc/libavrxmega7g1-16qt-k-4rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega7g1-12qt-k-3rs.a" toolchain="avrgcc"/>
+
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv6xmg1-4qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv6xmg1-8qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv6xmg1-16qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv6xmg1-12qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv6xmg1-8qt-k-2rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv6xmg1-4qt-k-1rs.r90" toolchain="iarew"/>
+			<build type="library"    subtype="user" value="qtouch/lib/iar/libv6xmg1-16qt-k-4rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv6xmg1-12qt-k-3rs.r90" toolchain="iarew"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_common_services_qtouch"/>
+			<build type="define" name="_QTOUCH_" value =""/>
+			<build type="define" name="_ROTOR_SLIDER_" value =""/>
+			<build type="define" name="QT_NUM_CHANNELS" value="16"/>
+			<build type="define" name="QT_DELAY_CYCLES" value="1"/>
+			<build type="define" name="SNS1" value="H"/>
+			<build type="define" name="SNSK1" value="F"/>
+			<build type="define" name="SNS2" value="K"/>
+			<build type="define" name="SNSK2" value="J"/>
+			<build type="distribute" subtype="license" value="../../license.txt"/>
+
+			<device-support value="atxmega128a1"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.common.services.qtouch.generic.avr8.mega128rfa1_stk600.method" name="config.common.services.qtouch.generic.avr8.mega128rfa1_stk600.method" caption="Atmel QTouch Library 5.0 - MEGA128RFA1-STK600" default="no_method">
+		<module type="service" id="config.common.services.qtouch.generic.avr8.mega128rfa1_stk600.method#no_method" caption="Atmel QTouch Library 5.0- MEGA128RFA1 - STK600">
+			<build type="doxygen-entry-point" value="group_common_services_qtouch"/>
+			<device-support value="atmega128rfa1"/>
+		</module>
+		<module type="service" id="config.common.services.qtouch.generic.avr8.mega128rfa1_stk600.method#qmatrix_method" caption="Atmel QTouch Library 5.0 - MEGA128RFA1 - STK600">
+			<build type="doxygen-entry-point" value="group_common_services_qtouch"/>
+			<info type="description" value="summary">
+			The pre-compiled QTouch Library, common and include files for AVR 8-bit devices.
+			For more information on the QTouch Library, goto www.atmel.com/qtouchlib.
+			For support queries, email touch@atmel.com.
+			</info>
+
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+			<require idref="config.common.services.qtouch.generic.avr8.qmatrix.common" />
+			<build type="asm-source" value="qmatrix/common/qm_asm_tiny_mega.S" toolchain="avrgcc"/>
+			<build type="asm-source" value="qmatrix/common/qm_asm_tiny_mega.S" toolchain="iarew"/>
+
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_4qm_4x_1y_k_0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_4qm_4x_1y_krs_1rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_8qm_4x_2y_k_0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_8qm_4x_2y_krs_2rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_16qm_4x_4y_k_0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_16qm_4x_4y_krs_2rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_16qm_4x_4y_krs_4rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_16qm_8x_2y_k_0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_16qm_8x_2y_krs_2rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_16qm_8x_2y_krs_4rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_32qm_8x_4y_k_0rs.a" toolchain="avrgcc"/>
+			<build type="library" subtype="user" value="qmatrix/lib/gcc/libm128rfa1_32qm_8x_4y_krs_4rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_64qm_8x_8y_k_0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_64qm_8x_8y_krs_4rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qmatrix/lib/gcc/libm128rfa1_64qm_8x_8y_krs_8rs.a" toolchain="avrgcc"/>
+
+			<build type="include-path" value="."/>
+
+			<device-support value="atmega128rfa1"/>
+		</module>
+
+	</select-by-config>
+	<select-by-config id="config.common.services.qtouch.generic.avr8.xmega_c3_xplained.method" name="config.common.services.qtouch.generic.avr8.xmega_c3_xplained.method" caption="Atmel QTouch Library 4.4 - XMEGA-C3 Xplained" default="no_method">
+		<module type="service" id="config.common.services.qtouch.generic.avr8.xmega_c3_xplained.method#no_method" caption="Atmel QTouch Library 4.4 - XMEGA-C3 Xplained">
+			<build type="doxygen-entry-point" value="group_common_services_qtouch"/>
+			<device-support value="atxmega384c3"/>
+		</module>
+		<module type="service" id="config.common.services.qtouch.generic.avr8.xmega_c3_xplained.method#qtouch_method" caption="Atmel QTouch Library 4.4 - XMEGA-C3 Xplained">
+			<info type="description" value="summary">
+			The pre-compiled QTouch Library, common and include files for AVR 8-bit devices.
+			For more information on the QTouch Library, goto www.atmel.com/qtouchlib.
+			For support queries, email touch@atmel.com.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+
+			<require idref="config.common.services.qtouch.generic.avr8.qtouch.common" />
+			<build type="asm-source" value="qtouch/common/qt_asm_xmega.S" toolchain="avrgcc"/>
+			<build type="asm-source" value="qtouch/common/qt_asm_xmega.S" toolchain="iarew"/>
+
+			<build type="library" subtype="user" value="qtouch/lib/gcc/libavrxmega6g1-4qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-8qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-16qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-12qt-k-0rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-4qt-k-1rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-8qt-k-2rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-16qt-k-4rs.a" toolchain="avrgcc"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/gcc/libavrxmega6g1-12qt-k-3rs.a" toolchain="avrgcc"/>
+
+			<build type="library" subtype="user" value="qtouch/lib/iar/libv5xmg1-4qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-16qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-12qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-8qt-k-0rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-8qt-k-2rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-4qt-k-1rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-16qt-k-4rs.r90" toolchain="iarew"/>
+			<build type="distribute" subtype="file" value="qtouch/lib/iar/libv5xmg1-12qt-k-3rs.r90" toolchain="iarew"/>
+			<build type="doxygen-entry-point" value="group_common_services_qtouch"/>
+			<build type="define" name="_QTOUCH_" value =""/>
+			<build type="define" name="QT_NUM_CHANNELS" value="4"/>
+			<build type="define" name="QT_DELAY_CYCLES" value="1"/>
+			<build type="define" name="_SNS1_SNSK1_SAME_PORT_" value=""/>
+			<build type="define" name="QTOUCH_STUDIO_MASKS" value="1" />
+			<build type="define" name="SNS1" value="F"/>
+			<build type="define" name="SNSK1" value="F"/>
+			<device-support value="atxmega384c3"/>
+		</module>
+	</select-by-config>
+</asf>

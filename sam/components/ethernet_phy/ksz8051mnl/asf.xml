@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.ethernet_phy.ksz8051mnl" caption="Ethernet Physical Transceiver (ksz8051mnl)">
+		<info type="description" value="summary">
+		Driver for ksz8051mnl Ethernet Physical Layer Transceiver device. Provides functions for initializing and controlling the ethernet physical.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication" />
+		</info>
+		<build type="c-source" value="ethernet_phy.c"/>
+		<build type="header-file" subtype="api" value="ethernet_phy.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="ksz8051mnl_ethernet_phy_group"/>
+		<require idref="sam.components.ethernet_phy"/>
+		<require idref="sam.drivers.gmac"/>
+		<device-support value="sam4e"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+	</module>
+</asf>

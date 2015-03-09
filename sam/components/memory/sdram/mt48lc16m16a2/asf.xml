@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.memory.sdram.mt48lc16m16a2" caption="SDRAMC configuration for MT48LC16M16A2">
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<info type="description" value="summary">
+		The SDRAMC configuration for the MT48LC16M16A2 SDRAM from Mircon.
+		</info>	
+		<build type="header-file" subtype="api" value="mt48lc16m16a2.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_sam_components_memory_sdram_mt48lc16m16a2"/>
+		<device-support value="atsam3x8h"/>
+		<require idref="sam.drivers.sdramc"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+	</module>
+</asf>

@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="FLASHCDW Example for uc3l_ek" id="avr32.drivers.flashcdw.example.uc3l_ek">
+		<require idref="avr32.drivers.flashcdw.example"/>
+		<require idref="board.uc3l_ek"/>
+		<config name="config.board.uc3l_ek.init" value="no"/>
+		<build type="linker-config" subtype="script" value="link_uc3l064.lds" toolchain="avr32gcc"/>
+		<build type="linker-config" subtype="script" value="lnkuc3l064.xcl" toolchain="iarew32"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="XMEGA TC45 Example1 for XMEGA-E5 Xplained" id="xmega.drivers.tc45.example1.xmega_e5_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>		
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.tc45.example1"/>
+		<require idref="board.xmega_e5_xplained"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

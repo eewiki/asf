@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="ADC Example for UC3-A3 Xplained" id="avr32.drivers.adc.example.uc3_a3_xplained">
+		<info type="description" value="summary">
+		Initialize the ADC, use the on-board sensors and see the value change on a terminal.
+		</info>
+		<require idref="avr32.drivers.adc.example"/>
+		<require idref="board.uc3_a3_xplained"/>
+		<config name="config.board.uc3_a3_xplained.init" value="no"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_example.h"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

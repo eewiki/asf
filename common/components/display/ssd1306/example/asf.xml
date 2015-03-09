@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.components.display.ssd1306.example" caption="SSD1306 Display Controller Example">
+		<info type="description" value="summary">
+		A simple example for verifying that the SSD1306 low level driver works.
+		</info>
+		<build type="c-source" value="ssd1306_example.c"/>
+		<device-support value="xmega"/>
+		<require idref="common.boards"/>
+		<require idref="common.components.display.ssd1306"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

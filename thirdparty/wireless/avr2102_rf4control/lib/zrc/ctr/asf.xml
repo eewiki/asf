@@ -1,0 +1,54 @@
+<asf xmlversion="1.0">
+	<select-by-device id="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr" caption="AVR2102 - ZRC LIB For Controller">
+        <module type="service" id="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr#1" caption="AVR2102-ZRC LIB For at32uc3a3256s Controller">
+            <info type="description" value="summary">
+            ZRC controller library for UC3A3256S controller
+            </info>
+            <build type="library" subtype="user" value="at32uc3a3256s/iar/librf4ce-zrc-controller.r82" toolchain="iarew32"/>
+            <build type="library" subtype="user" value="at32uc3a3256s/gcc/librf4ce-zrc-controller.a" toolchain="avr32gcc"/>
+            <build type="doxygen-entry-point" value="group_rf4control"/>
+            <require idref="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr.config" />
+            <device-support value="at32uc3a3256s"/>
+        </module>
+        <module type="service" id="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr#2" caption="AVR2102-ZRC LIB For atmega256rfr2 Controller">
+            <info type="description" value="summary">
+            ZRC controller library for MEGA256RFR2 controller
+            </info>
+            <build type="library" subtype="user" value="atmega256rfr2/iar/librf4ce-zrc-controller.r90" toolchain="iarew"/>
+            <build type="library" subtype="user" value="atmega256rfr2/gcc/librf4ce-zrc-controller.a" toolchain="avrgcc"/>
+            <build type="doxygen-entry-point" value="group_rf4control"/>
+            <require idref="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr.config" />
+            <device-support value="atmega256rfr2"/>
+        </module>
+        <module type="service" id="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr#3" caption="AVR2102-ZRC LIB For atxmega256a3bu Controller">
+            <info type="description" value="summary">
+            ZRC controller library for XMEGA256A3BU controller
+            </info>
+            <build type="library" subtype="user" value="atxmega256a3bu/iar/librf4ce-zrc-controller.r90" toolchain="iarew"/>
+            <build type="library" subtype="user" value="atxmega256a3bu/gcc/librf4ce-zrc-controller.a" toolchain="avrgcc"/>
+            <build type="doxygen-entry-point" value="group_rf4control"/>
+            <require idref="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr.config" />
+            <device-support value="atxmega256a3bu"/>
+        </module>
+        <module type="service" id="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr#4" caption="AVR2102-ZRC LIB For atxmega256a3u Controller">
+            <info type="description" value="summary">
+            ZRC controller library for XMEGA256A3U controller
+            </info>
+            <build type="library" subtype="user" value="atxmega256a3u/iar/librf4ce-zrc-controller.r90" toolchain="iarew"/>
+            <build type="library" subtype="user" value="atxmega256a3u/gcc/librf4ce-zrc-controller.a" toolchain="avrgcc"/>
+            <build type="doxygen-entry-point" value="group_rf4control"/>
+            <require idref="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr.config" />
+            <device-support value="atxmega256a3u"/>
+        </module>
+		 <module type="service" id="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr#5" caption="RF4Control ZRC Lib for atxmega256a3u">
+            <info type="description" value="summary">
+            RF4CE network library for XMEGA256A3U controller
+            </info>
+            <build type="library" subtype="user" value="atsam4lc4c/iar/librf4ce-zrc-controller.a" toolchain="iarewarm"/>
+            <build type="library" subtype="user" value="atsam4lc4c/gcc/librf4ce-zrc-controller.a" toolchain="armgcc"/>
+			<build type="doxygen-entry-point" value="group_rf4control"/>
+            <require idref="thirdparty.wireless.avr2102_rf4control.lib.zrc.ctr.config" />
+            <device-support value="atsam4lc4c"/>
+        </module>
+    </select-by-device>
+</asf>

@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.audio.codec.wm8731" caption="WM8731 Audio Codec">
+		<info type="description" value="summary">
+			Audio Codec Software Driver for the WM8731.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Audio" />
+		</info>
+		<build type="c-source" value="wm8731.c"/>
+		<build type="header-file" subtype="api" value="wm8731.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_wm8731.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_components_audio_codec_wm8731_group"/>
+		<build type="doxygen-quick-start" value="sam_wm8731_quickstart"/>
+		<require idref="common.services.basic.twi"/>
+		<device-support value="sam3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+	</module>
+</asf>

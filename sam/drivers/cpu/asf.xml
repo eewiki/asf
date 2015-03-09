@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.cpu" caption="CPU Reset Cause">
+		<info type="description" value="summary">
+		Driver for CPU specific features. It provides functions for MCU Reset Cause.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="CPU" />
+		</info>
+		<build type="header-file" subtype="api" value="sam4l_reset_cause.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_sam4l_drivers_cpu"/>
+		<device-support value="sam4l"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

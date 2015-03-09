@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project id="common.applications.user_application.xplained_pro2.samd20_xplained_pro" caption="SAM D20 Xplained Pro template project" type="template">
+		<device-support value="atsamd20j18"/>
+		<require idref="common.applications.user_application.xplained_pro2"/>
+		<require idref="board.samd20_xplained_pro"/>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<build type="header-file" value="config/conf_clocks.h"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+	</project>
+</asf>

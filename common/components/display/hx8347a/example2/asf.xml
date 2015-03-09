@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.components.display_controller.hx8347a.example2" caption="HX8347A Display Controller Example 2">
+		<info type="description" value="summary">
+		A simple example for verifying that the HX8347A low level driver works
+		</info>
+		<build type="doxygen-entry-point" value="hx8347a_example_group"/>
+		<build type="c-source" value="hx8347a_example2.c"/>
+		<device-support value="xmega"/>
+		<require idref="common.components.display_controller.hx8347a"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

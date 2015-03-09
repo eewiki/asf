@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.network.can.example2" caption="CAN Software Stack Example 2">
+		<info type="description" value="summary">
+		Sending and Receiving  messages on a CAN network using the CAN Software Stack. Requires the use of another CAN device (e.g. the CANVector PC Tool).
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="can_example2.c"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.scif"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.services.network.can"/>
+		<require idref="common.services.basic.clock"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

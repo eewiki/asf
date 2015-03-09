@@ -1,0 +1,32 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.sam.pio.pio_handler" name="config.sam.pio.pio_handler" caption="pio_handler support" default="yes">
+		<module type="meta" id="config.sam.pio.pio_handler#no" caption="pio_handler support disabled">
+		</module>
+		<module type="meta" id="config.sam.pio.pio_handler#yes" caption="pio_handler support enabled">
+			<build type="c-source" value="pio_handler.c"/>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="pio_handler.h"/>
+			<build type="include-path" value="."/>
+		</module>
+	</select-by-config>
+	
+	<module type="driver" id="sam.drivers.pio" caption="PIO - Parallel Input/Output Controller">
+		<info type="description" value="summary">
+		The Parallel Input/Output Controller manages up to 32 fully programmable input/output lines. Each I/O line may be dedicated as a general-purpose I/O or be assigned to a function of an embedded peripheral. This assures effective optimization of the pins of a product.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="I/O" />
+		</info>
+		<build type="c-source" value="pio.c"/>
+		<build type="header-file" subtype="api" value="pio.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_pio_group"/>
+		<build type="doxygen-quick-start" value="sam_pio_quickstart"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<require idref="config.sam.pio.pio_handler"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+</asf>

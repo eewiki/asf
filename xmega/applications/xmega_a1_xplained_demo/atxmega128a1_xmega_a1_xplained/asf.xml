@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project id="xmega.applications.xmega_a1_xplained_demo.atxmega128a1_xmega_a1_xplained" caption="XMEGA-A1 Xplained demo application">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="xmega.applications.xmega_a1_xplained_demo"/>
+		<require idref="board.xmega_a1_xplained"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="iarew"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

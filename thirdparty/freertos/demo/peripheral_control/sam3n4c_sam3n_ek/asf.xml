@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="Peripheral Control FreeRTOS Example for SAM3N-EK" id="common.services.freertos.peripheral_control.sam3n_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="common.services.freertos.peripheral_control"/>
+		<require idref="board.sam3n_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<config name="config.thirdparty.os.freertos.version" value="7.3.0"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x1000"/>
+		<config name="config.common.services.freertos.peripheral_control.usb" value="no"/>
+		<config name="config.common.services.freertos.peripheral_control.twi" value="no"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3n4c"/>
+	</project>
+</asf>

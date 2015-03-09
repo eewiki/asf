@@ -1,0 +1,51 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.can-lin-loopbacks-demo" caption="UC3C CAN and LIN Loopbacks Application">
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<info type="description" value="summary">
+		This application is aimed to demonstrate the 32-bit AVR UC3 C series CAN and LIN capabilities.
+		</info>
+		<build type="c-source" value="background_image.c"/>
+		<build type="header-file" value="background_image.h"/>
+		<build type="c-source" value="can_task.c"/>
+		<build type="header-file" value="can_task.h"/>
+		<build type="c-source" value="controller.c"/>
+		<build type="header-file" value="controller.h"/>
+		<build type="c-source" value="gui.c"/>
+		<build type="header-file" value="gui.h"/>
+		<build type="c-source" value="lin_task.c"/>
+		<build type="header-file" value="lin_task.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="header-file" value="conf/conf_at42qt1060.h"/>
+		<build type="header-file" value="conf/conf_can.h"/>
+		<build type="header-file" value="conf/conf_can_task.h"/>
+		<build type="header-file" value="conf/conf_clock.h"/>
+		<build type="header-file" value="conf/conf_demo.h"/>
+		<build type="header-file" value="conf/conf_ebi.h"/>
+		<build type="header-file" value="conf/conf_et024006dhu.h"/>
+		<build type="header-file" value="conf/conf_lin.h"/>
+		<build type="header-file" value="conf/conf_twim.h"/>
+		<build type="include-path" value="./conf/"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.components.display.et024006dhu"/>
+		<require idref="avr32.components.touch.at42qt1060"/>
+		<require idref="avr32.drivers.adcifa"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.ebi.smc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.scif"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.twim"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="common.services.delay"/>
+		<require idref="avr32.services.network.can"/>
+		<require idref="avr32.services.network.lin"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.utils.libs.dsplib"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

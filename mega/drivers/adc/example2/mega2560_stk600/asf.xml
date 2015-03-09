@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="ADC example 2 for the ATmega2560" id="mega.drivers.adc.example2.mega2560_stk600">
+		<info type="description" value="summary">
+		ATmega2560 ADC example 2
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.stk600-mega.atmega2560"/>
+		<require idref="mega.drivers.adc.example2"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega2560"/>
+	</project>
+</asf>

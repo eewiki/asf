@@ -1,0 +1,8 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.uc3.signal_generation" caption="DSPLib - Signal generation function set">
+		<info type="gui-flag" value="hidden"/>
+		<require idref="avr32.services.dsplib.uc3"/>
+		<require idref="avr32.services.dsplib.generic.signal_generation"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

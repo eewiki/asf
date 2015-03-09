@@ -1,0 +1,79 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="avr32.utils.libs.newlib_addons.common" caption="Newlib addons library">
+		<build type="include-path" value="include/"/>
+		<build type="header-file" subtype="api" value="include/nlao_cpu.h"/>
+		<build type="header-file" subtype="api" value="include/nlao_exceptions.h"/>
+		<build type="header-file" subtype="api" value="include/nlao_interrupts.h"/>
+		<build type="header-file" subtype="api" value="include/nlao_io.h"/>
+		<build type="header-file" subtype="api" value="include/nlao_usart.h"/>
+		<device-support value="uc3" />
+	</module>
+	<select-by-config id="avr32.utils.libs.newlib_addons" name="newlib.optimization" default="speed" caption="Newlib optimization selector">
+		<info type="description" value="summary">
+		Support of newlib features that were deprecated from the AVR GNU Toolchain v2.1.
+		The AVR32 GNU Toolchain v2.1 has removed some newlib addons files that were present in the previous versions: exceptions, interrupts and usart support.
+		To minimize the effect of this feature removal from the toolchain, these files have been added in the ASF as a module named newlib_addons.
+		In turn, this feature will also become deprecated in the ASF: it is thus advised not to use this library.
+
+		A selection between speed or size optimized library can be chosen.
+		</info>
+		<select-by-device id="avr32.utils.libs.newlib_addons#speed" caption="Newlib speed device selector">
+			<module type="library" id="avr32.utils.libs.newlib_addons#speed#ucr1" caption="Newlib speed optimized for ucr1">
+				<info type="description" value="summary">
+				Newlib addons library optimized for speed.
+				</info>
+				<build type="library" subtype="user" value="at32ucr1/libnewlib_addons-at32ucr1-speed_opt.a" toolchain="avr32gcc"/>
+				<require idref="avr32.utils.libs.newlib_addons.common" />
+				<build type="distribute" subtype="license" value="../license.txt" />
+				<device-support value="ucr1" />
+			</module>
+			<module type="library" id="avr32.utils.libs.newlib_addons#speed#ucr2" caption="Newlib speed optimized for ucr2">
+				<info type="description" value="summary">
+				Newlib addons library optimized for speed.
+				</info>
+				<build type="library" subtype="user" value="at32ucr2/libnewlib_addons-at32ucr2-speed_opt.a" toolchain="avr32gcc"/>
+				<require idref="avr32.utils.libs.newlib_addons.common" />
+				<build type="distribute" subtype="license" value="../license.txt" />
+				<device-support value="ucr2" />
+			</module>
+			<module type="library" id="avr32.utils.libs.newlib_addons#speed#ucr3" caption="Newlib speed optimized for ucr3">
+				<info type="description" value="summary">
+				Newlib addons library optimized for speed.
+				</info>
+				<build type="library" subtype="user" value="at32ucr3/libnewlib_addons-at32ucr3-speed_opt.a" toolchain="avr32gcc"/>
+				<require idref="avr32.utils.libs.newlib_addons.common" />
+				<build type="distribute" subtype="license" value="../license.txt" />
+				<device-support value="ucr3" />
+			</module>
+		</select-by-device>
+		<select-by-device id="avr32.utils.libs.newlib_addons#size" caption="Newlib size device selector">
+			<module type="library" id="avr32.utils.libs.newlib_addons#size#ucr1" caption="Newlib size optimized for ucr1">
+				<info type="description" value="summary">
+				Newlib addons library optimized for size.
+				</info>
+				<build type="library" subtype="user" value="at32ucr1/libnewlib_addons-at32ucr1-size_opt.a" toolchain="avr32gcc"/>
+				<require idref="avr32.utils.libs.newlib_addons.common" />
+				<build type="distribute" subtype="license" value="../license.txt" />
+				<device-support value="ucr1" />
+			</module>
+			<module type="library" id="avr32.utils.libs.newlib_addons#size#ucr2" caption="Newlib size optimized for ucr2">
+				<info type="description" value="summary">
+				Newlib addons library optimized for size.
+				</info>
+				<build type="library" subtype="user" value="at32ucr2/libnewlib_addons-at32ucr2-size_opt.a" toolchain="avr32gcc"/>
+				<require idref="avr32.utils.libs.newlib_addons.common" />
+				<build type="distribute" subtype="license" value="../license.txt" />
+				<device-support value="ucr2" />
+			</module>
+			<module type="library" id="avr32.utils.libs.newlib_addons#size#ucr3" caption="Newlib size optimized for ucr3">
+				<info type="description" value="summary">
+				Newlib addons library optimized for size.
+				</info>
+				<build type="library" subtype="user" value="at32ucr3/libnewlib_addons-at32ucr3-size_opt.a" toolchain="avr32gcc"/>
+				<require idref="avr32.utils.libs.newlib_addons.common" />
+				<build type="distribute" subtype="license" value="../license.txt" />
+				<device-support value="ucr3" />
+			</module>
+		</select-by-device>
+	</select-by-config>
+</asf>

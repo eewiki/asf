@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project type="unit-test" caption="AT45DBX DataFlash unit tests for Xplain" id="common.components.memory.data_flash.at45dbx.unit_tests.xplain">
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.data_flash.at45dbx.unit_tests"/>
+		<require idref="board.xplain"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

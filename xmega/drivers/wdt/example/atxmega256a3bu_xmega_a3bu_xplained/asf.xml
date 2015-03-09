@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="WDT Example for XMEGA-A3BU Xplained" id="xmega.drivers.wdt.example.xmega_a3bu_xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="xmega.drivers.wdt.example"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<config name="config.board.xmega_a3bu_xplained.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

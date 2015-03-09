@@ -1,0 +1,68 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.avr32.utils.gccstartup" name="config.avr32.utils.gccstartup" caption="Execution startup routine" default="yes">
+		<module type="meta" id="config.avr32.utils.gccstartup#no" caption="Toolchain execution startup routine, crt0.o">
+			<info type="description" value="summary">
+			Use execution startup routine provided by the
+			toolchain, typically named crt0.o.
+			</info>
+		</module>
+		<module type="meta" id="config.avr32.utils.gccstartup#yes" caption="Execution startup routine, startup_uc3.o">
+			<info type="description" value="summary">
+			Use execution startup routine provided by ASF, named
+			startup_uc3.S.
+			</info>
+			<build type="asm-source" value="startup/startup_uc3.S" toolchain="avr32gcc"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="config.avr32.utils.trampoline" name="config.avr32.utils.trampoline" caption="Perform a jump, trampoline, over the bootloader selection" default="yes">
+		<module type="meta" id="config.avr32.utils.trampoline#no" caption="Do not perform a jump over the bootloader section">
+			<info type="description" value="summary">
+			Do not perform a jump, trampoline, over the bootloader
+			section in the device.
+			</info>
+			<device-support value="uc3" />
+		</module>
+		<module type="meta" id="config.avr32.utils.trampoline#yes" caption="Append a trampoline to perform a jump over the bootloader section">
+			<info type="description" value="summary">
+			Append a trampoline to perform a jump over the
+			bootloader section in the device.
+			</info>
+			<build type="asm-source" value="startup/trampoline_uc3.s82" toolchain="iarew32" />
+			<build type="asm-source" value="startup/trampoline_uc3.S" toolchain="avr32gcc" />
+			<build type="include-path" value="." />
+			<build type="header-file" value="startup/trampoline_uc3.h" />
+			<device-support value="uc3" />
+		</module>
+	</select-by-config>
+	<module type="driver" id="avr32.utils" caption="Compiler abstraction layer and code utilities">
+		<info type="gui-flag" value="hidden"/>
+		<info type="description" value="summary">
+			Compiler abstraction layer and code utilities for 32-bit AVR. This module
+			provides various abstraction layers and utilities to make code compatible
+			between different compilers. It also contains utilities typically used in
+			pre-processing of code.
+		</info>
+		<build type="include-path" value="." />
+		<build type="include-path" value="preprocessor/" />
+		<build type="header-file" subtype="api" value="compiler.h" />
+		<build type="header-file" subtype="api" value="status_codes.h" />
+		<build type="header-file" value="preprocessor/mrepeat.h" />
+		<build type="header-file" value="preprocessor/preprocessor.h" />
+		<build type="header-file" value="preprocessor/stringz.h" />
+		<build type="header-file" value="preprocessor/tpaste.h" />
+		<build type="doxygen-entry-point" value="group_avr32_utils"/>
+		<build type="header-file" value="header_files/uc3d_defines_fix.h" />
+		<build type="header-file" value="header_files/uc3l3_l4_defines_fix.h" />
+		<require idref="avr32.utils.makefile" />
+		<require idref="config.avr32.utils.trampoline"/>
+		<require idref="config.avr32.utils.gccstartup"/>
+		<require idref="common.utils.part_macros" />
+		<require idref="common.utils.interrupt" />
+		<device-support value="uc3a" />
+		<device-support value="uc3a3_a4" />
+		<device-support value="uc3b" />
+		<device-support value="uc3c" />
+		<device-support value="uc3d" />
+		<device-support value="uc3l" />
+	</module>
+</asf>

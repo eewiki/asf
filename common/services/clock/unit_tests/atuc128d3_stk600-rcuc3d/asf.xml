@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project id="common.services.basic.clock.unit_tests.stk600-rcuc3d" caption="Basic clock service unit tests for STK600-RCUC3D" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="common.services.basic.clock.unit_tests"/>
+		<require idref="board.stk600-rcuc3d"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<device-support value="atuc128d3"/>
+	</project>
+</asf>

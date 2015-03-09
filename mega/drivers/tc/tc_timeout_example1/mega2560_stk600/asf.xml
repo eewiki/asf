@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project id="mega.drivers.tc_timeout.example1.mega2560_stk600" caption="Timer/Counter (TC) Timeout Example 1 for ATmega2560 on STK600">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_tc_timeout.h"/>
+		<require idref="mega.drivers.tc_timeout.example1"/>
+		<require idref="board.stk600-mega.atmega2560"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega2560"/>
+	</project>
+</asf>

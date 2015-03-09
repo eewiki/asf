@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.usart" caption="USART - Univ. Syn Async Rec/Trans">
+		<info type="description" value="summary">
+		The Universal Synchronous Asynchronous Receiver Transceiver provides one full duplex universal synchronous asynchronous serial link. 
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="usart.c"/>
+		<build type="header-file" subtype="api" value="usart.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_usart_group"/>
+		<build type="doxygen-quick-start" value="sam_usart_quickstart"/>
+		<device-support value="sam"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

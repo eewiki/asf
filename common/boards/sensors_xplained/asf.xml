@@ -1,0 +1,104 @@
+<asf xmlversion="1.0">
+
+	<module type="component" id="board.sensors_xplained.pressure_1" caption="Sensors - ATAVRSBPR1 Sensor Board">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="description" value="summary">
+		ATAVRSBPR1 Sensors Xplained extension board definitions and runtime initialization support.
+		</info>
+		<build type="define" name="EXT_BOARD" value="SENSORS_XPLAINED_PRESSURE_1"/>
+		<build type="doxygen-entry-point" value="group_common_boards_sensors_xplained"/>
+		<require idref="common.boards.sensors_xplained"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+	</module>
+
+	<module type="component" id="board.sensors_xplained.inertial_1" caption="Sensors - ATAVRSBIN1 Sensor Board">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="description" value="summary">
+		ATAVRSBIN1 Sensors Xplained extension board definitions and runtime initialization support.
+		</info>
+		<build type="define" name="EXT_BOARD" value="SENSORS_XPLAINED_INERTIAL_1"/>
+		<build type="doxygen-entry-point" value="group_common_boards_sensors_xplained"/>
+		<require idref="common.boards.sensors_xplained"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+	</module>
+
+	<module type="component" id="board.sensors_xplained.inertial_2" caption="Sensors - ATAVRSBIN2 Sensor Board">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="description" value="summary">
+		ATAVRSBIN2 Sensors Xplained extension board definitions and runtime initialization support.
+		</info>
+		<build type="define" name="EXT_BOARD" value="SENSORS_XPLAINED_INERTIAL_2"/>
+		<build type="doxygen-entry-point" value="group_common_boards_sensors_xplained"/>
+		<require idref="common.boards.sensors_xplained"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+	</module>
+
+	<module type="component" id="board.sensors_xplained.inertial_a1" caption="Sensors - ATAVRSBINA1 Sensor Board">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="description" value="summary">
+		ATAVRSBINA1 Sensors Xplained extension board definitions and runtime initialization support.
+		</info>
+		<build type="define" name="EXT_BOARD" value="SENSORS_XPLAINED_INERTIAL_A1"/>
+		<build type="doxygen-entry-point" value="group_common_boards_sensors_xplained"/>
+		<require idref="common.boards.sensors_xplained"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+	</module>
+
+	<module type="component" id="board.sensors_xplained.lightprox_1" caption="Sensors - ATAVRSBLP1 Sensor Board">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="description" value="summary">
+		ATAVRSBLP1 Sensors Xplained extension board definitions and runtime initialization support.
+		</info>
+		<build type="define" name="EXT_BOARD" value="SENSORS_XPLAINED_LIGHTPROX_1"/>
+		<build type="doxygen-entry-point" value="group_common_boards_sensors_xplained"/>
+		<require idref="common.boards.sensors_xplained"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+	</module>
+
+	<module type="meta" id="common.boards.sensors_xplained" caption="Sensors - Sensors Xplained Extension Boards">
+		<build type="header-file" value="sensors_xplained.h"/>
+		<build type="c-source" value="sensors_xplained.c"/>
+		<build type="header-file" value="xplained_headers.h"/>
+		<build type="include-path" value=".."/>
+		<require idref="common.boards"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="platform.boards.sensors_xplained"/>
+		<!--<device-support value="mega"/>-->
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<generator value="doxygen-module" default-mcu="atxmega128a1"/>
+	</module>
+
+	<select-by-device id="platform.boards.sensors_xplained" caption="Sensors - Sensors Xplained Platform Drivers">
+		<module type="meta" id="platform.boards.sensors_xplained#xmega" caption="Sensors - Sensors Xplained XMEGA Platform">
+			<info type="description" value="summary">
+			XMEGA board drivers.  Provides functions for configuration
+			and using Sensors Xplained boards on the development platform.
+			</info>
+			<device-support value="xmega"/>
+		</module>
+		<module type="meta" id="platform.boards.sensors_xplained#uc3" caption="Sensors - Sensors Xplained UC3 Platform">
+			<info type="description" value="summary">
+			UC3 board drivers.  Provides functions for configuration
+			and using Sensors Xplained boards on the development platform.
+			</info>
+			<require idref="avr32.drivers.eic"/>
+			<device-support value="uc3"/>
+		</module>
+	</select-by-device>
+</asf>

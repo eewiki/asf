@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="mega.drivers.wdt" caption="Watchdog Timer for megaRF">
+		<info type="description" value="summary">
+		Watchdog Timer Driver implementation for megaRF
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers" />
+			<keyword value="Interrupt" />
+		</info>
+		<build type="c-source" value="wdt_megarf.c"/>
+		<build type="header-file" subtype="api" value="wdt_megarf.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="megarf_wdt_group"/>
+		<build type="doxygen-quick-start" value="megarf_wdt_quickstart"/>		
+		<device-support value="megarf"/>
+		<require idref="mega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+	</module>
+</asf>

@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.components.touch.qt.qt_i2c" caption="QTouch Sensor with I2C interface">
+		<info type="description" value="summary">
+		Component for communicating with QTouch sensor devices with I2C interface, currently supporting the AT42QT2160. It provides functions for initialization and read/write operations at register level, and reading out touch status. Common implementation for UC3, XMEGA and SAM.
+		</info>
+		<build type="c-source" value="qt_i2c.c"/>
+		<build type="header-file" subtype ="api" value="qt_i2c.h"/>
+		<build type="header-file" subtype ="api" value="device_specific/QT2160.h"/>
+		<build type="include-path" value="./"/>
+		<build type="include-path" value="./device_specific"/>
+		<build type="module-config" subtype="required-header-file" value="conf_qt_i2c.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="qt_device_i2c_group"/>
+		<build type="doxygen-quick-start" value="qt_device_i2c_quickstart"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.twi"/>
+		<require idref="common.services.delay" />
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
+	</module>
+</asf>

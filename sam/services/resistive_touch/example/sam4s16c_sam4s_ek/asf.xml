@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="ADS7843 LCD Touch Controller example for SAM4S_EK" id="sam.services.resistive_touch.example.sam4s_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_ili9325.h"/>
+		<build type="header-file" value="conf_aat31xx.h"/>
+		<build type="header-file" value="conf_ads7843.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="resistive_touch_board.h"/>
+		<config name="config.resistive_touch.controller" value="ads7843"/>
+		<require idref="sam.services.resistive_touch.example"/>
+		<require idref="board.sam4s_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4s16c"/>
+	</project>
+</asf>

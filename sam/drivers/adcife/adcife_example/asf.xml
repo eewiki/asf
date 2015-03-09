@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.adcife.adcife_example" caption="ADC Interface Example">
+		<info type="description" value="summary">
+			Initialize the ADCIFE, use the on-board sensors and display the value on a terminal.
+			</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adcife_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.adcife"/>
+		<require idref="sam.drivers.dacc"/>
+		<require idref="sam.drivers.pdca"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

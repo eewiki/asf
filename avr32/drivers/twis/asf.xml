@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.twis" caption="TWI - Two-Wire Slave Interface">
+		<info type="description" value="summary">
+		Driver for the TWIS (Two-Wire Slave Interface). This driver provides access to the main features of the TWIS controller. The TWIS interconnects a TWI slave on a unique two-wire bus. The TWIS is programmable as a slave with sequential or single-byte access. Internal Address access and Ten bit addressing mode is supported.
+		</info>
+		<build type="c-source" value="twis.c"/>
+		<build type="header-file" subtype="api" value="twis.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_twis.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_twis"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<device-support value="uc3d"/>
+		<require idref="avr32.utils"/>
+		<require idref="avr32.drivers.intc"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a3_a4"/>
+	</module>
+</asf>

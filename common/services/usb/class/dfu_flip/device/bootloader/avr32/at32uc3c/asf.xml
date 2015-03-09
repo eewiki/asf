@@ -1,0 +1,32 @@
+<asf xmlversion="1.0">
+	<project caption="AT32UC3C DFU Bootloader" id="common.services.usb.class.dfu_atmel.device.bootloader.avr32.uc3c">
+		<require idref="common.services.usb.class.dfu_atmel.device.bootloader.avr32"/>
+		<config name="config.common.services.usb.class.device" value="dfu_atmel"/>
+		<require idref="board.dummy.at32uc3c0512c"/>
+		<build type="c-source" value="sysclk_auto.c"/>
+		<build type="linker-config" subtype="script" value="./gcc/link_at32uc3c-isp.lds" toolchain="avr32gcc"/>
+		<build type="linker-config" subtype="script" value="./iar/lnkat32uc3c-isp.xcl" toolchain="iarew32"/>
+		<build type="include-path" value="./iar"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3c-isp-1.1.4/at32uc3c-isp-1.1.4.hex"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3c-isp-1.1.4/at32uc3c-isp_cfg-1.1.4.dat"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3c-isp-1.1.4/program_at32uc3c-isp-1.1.4.cmd"/>
+		<build type="distribute" subtype="file" value="./releases/at32uc3c-isp-1.1.4/program_at32uc3c-isp-1.1.4.sh"/>
+		<config name="config.avr32.drivers.usbc.device.sleepmgr" value="without_sleepmgr"/>
+		<config name="config.avr32.utils.trampoline" value="no"/>
+		<config name="config.compiler.avr32gcc.use_startfiles" value="no"/>
+		<config name="config.avr32.utils.gccstartup" value="no"/>
+		<config name="config.utils.interrupt.intc" value="no"/>
+		<config name="config.avr32.drivers.intc.exception" value="no"/>
+		<config name="config.compiler.iarew32.catch_unimplemented_interrupts" value="no"/>
+		<config name="config.compiler.iarew32.catch_unhandled_cpu_exceptions" value="no"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.scif"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.ast"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

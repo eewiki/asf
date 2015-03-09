@@ -1,0 +1,140 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.gfx" caption="GFX Color - Color Graphic Library">
+		<info type="description" value="summary">
+		Graphical library
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="header-file" subtype="api" value="gfx.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="gfx_group"/>
+		<build type="doxygen-quick-start" value="gfx_quickstart"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		<require idref="common.services.gfx.display"/>
+	</module>
+
+	<module type="service" id="common.services.gfx.generic" caption="GFX Color - Graphical Primitives (pixel, line, square, circle)">
+		<info type="gui-flag" value="hidden"/>
+		<info type="description" value="summary">
+		This service provides basic graphical primitives (pixel, line, square, circle) for the graphic service.
+		This is not a standalone module, and is only included by hardware specific modules.
+		</info>
+		<build type="header-file" value="gfx_generic.h"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="gfx_generic.c"/>
+		<build type="doxygen-entry-point" value="gfx_generic_group"/>
+		<build type="doxygen-quick-start" value="gfx_quickstart"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+
+	<module type="service" id="common.services.gfx.font" caption="GFX Color - System Font">
+		<info type="description" value="summary">
+		System font for the graphical library. This driver provides a low-level static system font to use with displays. It is a
+		light weight implementation graphical fonts, with limited flexibility. Excellent for printing system messages and debug
+		output to a display. Is also typically used in less fancy graphical applications, where selections of fonts is not
+		important, but rather low flash and RAM footprint.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="c-source" value="gfx_text.c"/>
+		<build type="c-source" value="sysfont.c"/>
+		<build type="header-file" value="gfx_text.h"/>
+		<build type="header-file" subtype="api" value="sysfont.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_sysfont.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="gfx_sysfont"/>
+		<build type="doxygen-quick-start" value="gfx_quickstart"/>
+		<require idref="common.services.gfx"/>
+		<require idref="common.services.gfx.generic"/>
+		<device-support value="xmega"/>
+		<device-support value="uc3"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+
+	<select-by-config id="common.services.gfx.display" default="ili9341_sdt028atft" name="config.gfx.display" caption="GFX - Display driver">
+		<info type="description" value="summary">
+		Display driver for LCD displays.
+		</info>
+		<module type="service" id="common.services.gfx.display#hx8347a_et024006dhu" caption="GFX - ET024006DHU LCD panel">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			Graphic library configured for the ET024006DHU LCD panel using the HX8347-A display controller. Used on the Display Xplained.
+			</info>
+			<build type="define" name="CONF_GFX_HX8347A_ET024006DHU" value="1"/>
+			<build type="header-file" value="gfx_hx8347a_et024006dhu.h"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="gfx_hx8347a_et024006dhu.c"/>
+			<build type="doxygen-entry-point" value="gfx_hx8347a_et024006dhu_group"/>
+			<require idref="common.components.display_controller.hx8347a"/>
+			<require idref="common.services.gfx.generic"/>
+			<device-support value="xmega"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.gfx.display#ili9341_sdt028atft" caption="GFX - SDT028ATFT LCD panel">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			Graphic library configured for the SDT028ATFT LCD panel using the ILI9341 display controller. Used on the maXTouch Xplained.
+			</info>
+			<build type="define" name="CONF_GFX_ILI9341_SDT028ATFT" value="1"/>
+			<build type="header-file" value="gfx_ili9341_sdt028atft.h"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="gfx_ili9341_sdt028atft.c"/>
+			<build type="doxygen-entry-point" value="gfx_ili9341_sdt028Atft_group"/>
+			<require idref="common.components.display_controller.ili9341"/>
+			<require idref="common.services.gfx.generic"/>
+			<device-support value="xmega"/>
+			<device-support value="uc3"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.gfx.display#hx8347a_et024006dhu_ebi" caption="GFX - ET024006DHU LCD panel (EBI)">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			Graphic library configured for the ET024006DHU LCD panel using the HX8347-A display controller connected via EBI.
+			Used on the EVK1104, EVK1105 and UC3C-EK kits.
+			</info>
+			<build type="define" name="CONF_GFX_HX8347A_ET024006DHU_EBI" value="1"/>
+			<build type="define" name="GFX_INITIALIZED" value="1"/>
+			<build type="header-file" value="gfx_hx8347a_et024006dhu_ebi.h"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="gfx_hx8347a_et024006dhu_ebi.c"/>
+			<build type="doxygen-entry-point" value="gfx_hx8347a_et024006dhu_ebi_group"/>
+			<require idref="avr32.components.display.et024006dhu"/>
+			<require idref="common.services.gfx.generic"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.ioport"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="common.services.gfx.display#ili9325_ftm280c34d" caption="GFX - FTM280C34D LCD panel">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			Graphic library configured for the FTM280C34D LCD panel using the ILI9325 display controller. Used on the SAM4S-EK and SAM4S-EK2.
+			</info>
+			<build type="define" name="CONF_GFX_ILI9325_FTM280C34D" value="1"/>
+			<build type="header-file" value="gfx_ili9325_ftm280c34d.h"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="gfx_ili9325_ftm280c34d.c"/>
+			<build type="doxygen-entry-point" value="gfx_ili9325_ftm280c34d"/>
+			<require idref="sam.components.display.ili9325"/>
+			<require idref="sam.components.display.aat31xx"/>
+			<require idref="common.services.gfx.generic"/>
+			<device-support value="sam"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4s"/>
+		</module>
+	</select-by-config>
+</asf>

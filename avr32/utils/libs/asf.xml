@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<select-by-config id="avr32.utils.libs.avr32gcc.libm" name="config.compiler.avr32gcc.use_libm" default="yes" caption="GCC math library for 32-bit AVR">
+		<info type="description" value="summary">
+			Option for including a version of the GCC math library that is optimized for
+			32-bit AVRs. The math library provides mathematical functions for, e.g., 64-bit
+			arithmetics, geometric functions, logarithmic functions, etc.
+
+
+			If disabled, the standard math library of GCC is used unless an alternate
+			implementation is supplied.
+		</info>
+		<module type="library" id="avr32.utils.libs.avr32gcc.libm#yes" caption="Use 32-bit AVR GCC math library">
+			<info type="description" value="summary">
+				The GCC math library that is optimized for 32-bit AVR.
+			</info>
+			<build type="library" subtype="compiler" value="libm" toolchain="avr32gcc"/>
+			<device-support value="uc3"/>
+		</module>
+		<module type="library" id="avr32.utils.libs.avr32gcc.libm#no" caption="Use standard GCC or custom math library">
+			<info type="description" value="summary">
+				The standard GCC math library, or a user-supplied, alternate implementation.
+			</info>
+			<device-support value="uc3"/>
+		</module>
+	</select-by-config>
+</asf>

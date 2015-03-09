@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="SSD1306 OLED Controller example for SAMD20 Xplained Pro" id="common2.components.display.ssd1306.example.samd20_xplained_pro">
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<require idref="common2.components.display.ssd1306.example"/>
+		<require idref="board.samd20_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamd20j18"/>
+	</project>
+</asf>

@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project id="xmega.drivers.twi.unit_tests2.stk600-rc032x_atxmega32e5" caption="TWI unit tests on Xplain" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<require idref="xmega.drivers.twi.unit_tests2"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<generator value="as5_8"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

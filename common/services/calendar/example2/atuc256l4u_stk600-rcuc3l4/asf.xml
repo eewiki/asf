@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project id="common.services.calendar.example2.stk600-rcuc3l4" caption="Calendar service example 2 for STK600-RCUC3L4">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="common.services.calendar.example2"/>
+		<require idref="board.stk600-rcuc3l4"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<config name="config.board.stk600-rcuc3l4.led" value="yes"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc256l4u"/>
+	</project>
+</asf>

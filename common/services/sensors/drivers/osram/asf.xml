@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="common.services.sensors.drivers.osram" caption="Sensors - Osram Sensor">
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<info type="description" value="summary">
+		Low-level Osram sensor device drivers.
+		</info>
+		<build type="c-source" value="sfh7770.c"/>
+		<build type="header-file" value="sfh7770.h"/>
+		<build type="c-source" value="sfh5712.c"/>
+		<build type="header-file" value="sfh5712.h"/>
+		<device-support value="avr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmega"/>
+	</module>
+</asf>

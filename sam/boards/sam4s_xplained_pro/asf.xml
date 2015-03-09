@@ -1,0 +1,33 @@
+<asf xmlversion="1.0">
+	<board id="board.sam4s_xplained_pro" vendor="Atmel" caption="SAM4S Xplained Pro">
+		<!-- Board name -->
+		<build type="define" name="BOARD" value="SAM4S_XPLAINED_PRO"/>
+
+		<!-- Device support -->
+		<device-support value="atsam4sd32c"/>
+		<build type="define" name="__SAM4SD32C__" value=""/>
+
+		<!-- Source code -->
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="c-source" value="init.c"/>
+		<build type="header-file" value="sam4s_xplained_pro.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+
+		<!-- Debug scripts -->
+		<build type="macro-config" subtype="script" value="debug_scripts/gcc/sam4s_xplained_pro_flash.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/gcc/sam4s_xplained_pro_sram.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/iar/sam4s_xplained_pro_flash.mac" toolchain="iarewarm"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/iar/sam4s_xplained_pro_sram.mac" toolchain="iarewarm"/>
+
+		<!-- Required modules -->
+		<require idref="sam.utils.cmsis.sam4s.source.template"/>
+		<require idref="common.utils"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.ioport"/>
+		<require idref="sam.drivers.wdt"/>
+		<!-- GPIO service is added to make sure SD/MMC driver compiles. See JIRA issue ASFP-3495 -->
+		<require idref="common.services.basic.gpio"/>
+	</board>
+</asf>

@@ -1,0 +1,53 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.applications.low_power">
+		<module type="application" id="sam.applications.low_power#0" caption="Low Power Demo for SAM boards">
+			<!-- Summary Description -->
+			<info type="description" value="summary">
+				This demo shows all the different low power modes with several types of wake-up sources.
+			</info>
+			<!-- Source -->
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<!-- Device support -->
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+
+			<!-- Required modules -->
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.drivers.gpbr"/>
+			<require idref="sam.drivers.supc"/>
+			<require idref="sam.drivers.efc"/>
+			<require idref="sam.drivers.wdt"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="sam.applications.low_power#1" caption="Low Power Demo for SAM boards">
+			<!-- Summary Description -->
+			<info type="description" value="summary">
+				This demo shows all the different low power modes with several types of wake-up sources.
+			</info>
+			<!-- Source -->
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main_sam4l.c"/>
+			<!-- Device support -->
+			<device-support value="sam4l"/>
+			<!-- Required modules -->
+			<require idref="sam.drivers.bpm"/>
+			<require idref="sam.drivers.eic"/>
+			<require idref="sam.drivers.ast"/>
+			<require idref="sam.drivers.usart"/>
+			<require idref="sam.drivers.wdt"/>
+			<require idref="sam.drivers.flashcalw"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.delay"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.utils.interrupt"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

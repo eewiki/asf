@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.components.crypto.sha204.xmega_sha204" caption="ATSHA204 TWI component">
+    <info type="keyword" value="technology">
+         <keyword value="Cryptography"/>
+    </info>
+    <info type="description" value="summary">
+         ATSHA204 TWI Crypto Authentication component.
+    </info>
+	<info type="gui-flag" value="hidden"/>
+    <build type="include-path" value="."/>
+    <build type="include-path" value=".."/>
+    <build type="header-file" subtype="api" value="sha204_timer.h"/>
+	<build type="c-source" value="sha204_timer.c"/>
+    <require idref="xmega.drivers.tc"/>
+    <require idref="xmega.utils"/>
+	<build type="doxygen-entry-point" value="sha204_timer.c"/>
+    <device-support value="xmegaa1"/>
+    <generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+   </module>
+</asf>

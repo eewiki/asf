@@ -1,0 +1,35 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.stk600-rcuc3l3.led" name="config.board.stk600-rcuc3l3.led" caption="STK600-RCUC3L3 LED support" default="yes">
+		<module type="meta" id="config.board.stk600-rcuc3l3.led#no" caption="STK600-RCUC3L3 LED support disabled">
+		</module>
+		<module type="meta" id="config.board.stk600-rcuc3l3.led#yes" caption="STK600-RCUC3L3 LED support enabled">
+			<build type="include-path" value="."/>
+			<require idref="avr32.drivers.gpio"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.stk600-rcuc3l3.init" name="config.board.stk600-rcuc3l3.init" caption="STK600-RCUC3L3 initialization support" default="yes">
+		<module type="meta" id="config.board.stk600-rcuc3l3.init#no" caption="STK600-RCUC3L3 initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.stk600-rcuc3l3.init#yes" caption="STK600-RCUC3L3 initialization support enabled">
+			<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+			<build type="module-config" subtype="path" value="board_config"/>
+			<build type="c-source" value="init.c"/>
+			<require idref="avr32.drivers.gpio"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.stk600-rcuc3l3" vendor="Atmel" caption="STK600-RCUC3L3">
+		<build type="define" name="BOARD" value="STK600_RCUC3L3"/>
+		<build type="header-file" value="stk600_rcuc3l3.h"/>
+		<build type="header-file" subtype="api" value="led.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../.."/>
+		<build type="define" name="__ATUC256L3U__" value="" toolchain="iarew32"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.stk600-rcuc3l3.led"/>
+		<require idref="config.board.stk600-rcuc3l3.init"/>
+		<config name="config.compiler.avr32gcc.programming_clock" value="int"/>
+		<device-support value="atuc256l3u"/>
+	</board>
+</asf>

@@ -1,0 +1,50 @@
+<asf xmlversion="1.0">
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++MODULE+++++++++++++++++++++++++++++++++++++++++++++++. -->
+	<!-- **************************************************************************************************** -->
+	<module type="application" id="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer" caption="Performance Analyzer">
+		<info type="description" value="summary">
+			A Serial interface based application,which communicates with Wireless Analyzer to demonstrate
+			various features and capabilities of the of Atmel Transceivers.
+		</info>
+		<!-- +++++++++++++++++++++++++++++++++++++++++++++++BUILD+++++++++++++++++++++++++++++++++++++++++++++++. -->
+		<build type="c-source" value="src/main.c"/>
+		<build type="c-source" value="src/init_state.c"/>
+		<build type="c-source" value="src/peer_search_initiator.c"/>
+		<build type="c-source" value="src/peer_search_receptor.c"/>
+		<build type="c-source" value="src/per_mode_common_utils.c"/>
+		<build type="c-source" value="src/per_mode_initiator.c"/>
+		<build type="c-source" value="src/per_mode_receptor.c"/>
+		<build type="c-source" value="src/range_measure.c"/>
+		<build type="c-source" value="src/perf_api_serial_handler.c"/>
+		<build type="c-source" value="src/user_interface.c"/>
+		<build type="c-source" value="src/wait_for_event.c"/>
+		<build type="header-file" value="inc/app_config.h"/>
+		<build type="header-file" value="inc/app_frame_format.h"/>
+		<build type="header-file" value="inc/app_init.h"/>
+		<build type="header-file" value="inc/app_peer_search.h"/>
+		<build type="header-file" value="inc/app_per_mode.h"/>
+		<build type="header-file" value="inc/app_range_mode.h"/>
+		<build type="header-file" value="inc/perf_api.h"/>
+		<build type="header-file" value="inc/perf_msg_const.h"/>
+		<build type="header-file" value="inc/perf_api_serial_handler.h"/>
+		<build type="header-file" value="inc/user_interface.h"/>
+		<build type="include-path" value="inc/"/>
+		<build type="header-file" value="conf_common_sw_timer.h"/>
+		<build type="header-file" value="conf_pal.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_perf_analyzer"/>
+		<require idref="thirdparty.wireless.addons.sio2host"/>
+		<device-support-alias value="avr2025_mac_pal_support"/>
+		<build type="distribute" subtype="user-file" value="PerformanceAnalyzerProtocol.pdf"/>
+		<!-- ++++++++++++++++++++++++++++++++++++++++++++++REQUIRE++++++++++++++++++++++++++++++++++++++++++++++. -->
+		<require idref="thirdparty.wireless.avr2025_mac.includes"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.tfa"/>
+		<!-- .................................................................................................... -->
+		<info type="keyword" value="technology">
+			<keyword value="Wireless"/>
+			<keyword value="Communication"/>
+		</info>
+		<!-- **************************************************************************************************** -->
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

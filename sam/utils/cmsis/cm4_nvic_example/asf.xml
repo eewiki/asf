@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.utils.cmsis.cm4_nvic_example" caption="Cortex-M4 CMSIS NVIC Example">
+		<info type="description" value="summary">
+			Basic Cortex-M4 NVIC example.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

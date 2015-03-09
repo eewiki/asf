@@ -1,0 +1,60 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.scope-meter-and-filtering-demo" caption="UC3C Scope Meter And Filtering Application">
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+			<keyword value="Digital Signal Processing"/>
+		</info>
+		<info type="description" value="summary">
+			This application is aimed to demonstrate the 32-bit AVR UC3 C series Filtering Capabilities.
+			</info>
+		<build type="c-source" value="background_image.c"/>
+		<build type="header-file" value="background_image.h"/>
+		<build type="c-source" value="controller.c"/>
+		<build type="header-file" value="controller.h"/>
+		<build type="c-source" value="gui.c"/>
+		<build type="header-file" value="gui.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="sinus.c"/>
+		<build type="header-file" value="sinus.h"/>
+		<build type="c-source" value="adc_task.c"/>
+		<build type="header-file" value="adc_task.h"/>
+		<build type="c-source" value="dac_task.c"/>
+		<build type="header-file" value="dac_task.h"/>
+		<build type="c-source" value="filter_task.c"/>
+		<build type="header-file" value="filter_task.h"/>
+		<build type="c-source" value="noise_task.c"/>
+		<build type="header-file" value="noise_task.h"/>
+		<build type="c-source" value="remote_task.c"/>
+		<build type="header-file" value="remote_task.h"/>
+		<build type="header-file" value="conf/conf_at42qt1060.h"/>
+		<build type="header-file" value="conf/conf_demo.h"/>
+		<build type="header-file" value="conf/conf_ebi.h"/>
+		<build type="header-file" value="conf/conf_et024006dhu.h"/>
+		<build type="header-file" value="conf/conf_clock.h"/>
+		<build type="header-file" value="conf/conf_sleepmgr.h"/>
+		<build type="header-file" value="conf/conf_board.h"/>
+		<build type="header-file" value="conf/conf_twim.h"/>
+		<build type="include-path" value="./conf/"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.components.display.et024006dhu"/>
+		<require idref="avr32.components.touch.at42qt1060"/>
+		<require idref="avr32.drivers.adcifa"/>
+		<require idref="avr32.drivers.dacifb"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.ebi.smc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pevc"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.scif"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.twim"/>
+		<require idref="avr32.drivers.usart"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="avr32.utils.libs.dsplib"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

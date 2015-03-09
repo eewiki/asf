@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.iisc.example1" caption="IISC Example 1">
+		<info type="description" value="summary">
+		Use the IISC to stream 4 RAM buffers in I2S TDM (Two Time-division Multiplexing) mode.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="iisc_example.c"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.iisc"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d3"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

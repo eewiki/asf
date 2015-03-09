@@ -1,0 +1,41 @@
+<asf xmlversion="1.0">
+	<select-by-device id="xmega.drivers.qdec" caption="XMEGA Quadrature Decoder driver">
+		<info type="description" value="summary">
+		Driver for the Quadrature Decoder (QDEC). It provides functions for configuring and using the Quadrature Decoder.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+			<keyword value="Peripheral Event System"/>
+		</info>
+		
+		<module type="driver" id="xmega.drivers.qdec#0" caption="Quadrature Decoder - XMEGA A/B/C/D Implementation">
+			<build type="c-source" value="qdec.c"/>
+			<build type="header-file" subtype="api" value="qdec.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="qdec_group"/>
+			<build type="doxygen-quick-start" value="xmega_qdec_quickstart"/>
+			<device-support value="xmegaa"/>
+			<device-support value="xmegaau"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<device-support value="xmegad"/>
+			<require idref="xmega.utils"/>
+			<require idref="xmega.drivers.tc"/>
+			<require idref="common.services.basic.clock"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>	
+		
+		<module type="driver" id="xmega.drivers.qdec#1" caption="Quadrature Decoder - XMEGA E Implementation">
+			<build type="c-source" value="qdec.c"/>
+			<build type="header-file" subtype="api" value="qdec.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="qdec_group"/>
+			<build type="doxygen-quick-start" value="xmega_qdec_quickstart"/>
+			<device-support value="xmegae"/>
+			<require idref="xmega.utils"/>
+			<require idref="xmega.drivers.tc45"/>
+			<require idref="common.services.basic.clock"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+	</select-by-device>
+</asf>

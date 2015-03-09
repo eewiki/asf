@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.touch.resitive.example" caption="Components Resitive Touch Example">
+		<info type="description" value="summary">
+		Use the Resistive Touch screen interface to draw a pixel each time the screen is touched.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>
+		<build type="header-file" value="conf/conf_ebi.h"/>
+		<build type="header-file" value="conf/conf_et024006dhu.h"/>
+		<build type="header-file" value="conf/conf_rtouch.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="conf"/>
+		<build type="c-source" value="rtouch_calibrate.c"/>
+		<build type="header-file" value="rtouch_calibrate.h"/>
+		<build type="c-source" value="rtouch_example.c"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.components.display.et024006dhu"/>
+		<require idref="avr32.components.touch.resistive_touch"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.stb" caption="STB Component">
+		<info type="description" value="summary">
+		 The STB (Security Toolbox) is a high level security abstraction layer providing an easy-
+	     to-use  crypto  API for direct application access.It is placed on top of the SAL and abstracts and implements 
+		 transceiver or MCU dependent functionality that encrypts or decrypts frames usimg CCM according to 802.15.4/Zigbee.
+		</info>
+		<build type="c-source" value="src/stb.c"/>
+		<build type="c-source" value="src/stb_help.c"/>
+		<build type="c-source" value="src/stb_armcrypto.c"/>
+		<build type="header-file" value="inc/stb.h"/>
+		<build type="header-file" value="inc/stb_internal.h"/>
+		<build type="header-file" value="inc/stb_armcrypto.h"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.stb.inc"/>
+		<build type="doxygen-entry-point" value="group_stb"/>
+		<device-support value="avr"/>
+	</module>
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.stb.inc" caption="STB Includes">
+		<info type="description" value="summary">
+		STB Generic Includes
+		</info>
+		<build type="header-file" value="inc/stb_generic.h"/>
+		<build type="include-path" value="inc/"/>
+		<device-support value="avr"/>
+	</module>
+</asf>

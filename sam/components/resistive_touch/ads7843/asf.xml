@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.resistive_touch.ads7843" caption="Display - ADS7843 Touch Controller">
+		<info type="description" value="summary">
+		Low-level driver for the ADS7843 LCD Touch controller.
+		</info>
+		<build type="c-source" value="ads7843.c"/>
+		<build type="header-file" subtype="api" value="ads7843.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_component_ads7843_group"/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		<build type="module-config" subtype="required-header-file" value="conf_ads7843.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<require idref="common.services.basic.spi_master"/>
+		<require idref="common.services.ioport"/>
+		<require idref="sam.drivers.pio"/>
+	</module>
+</asf>

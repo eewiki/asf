@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.freqm" caption="FREQM - Frequency Meter">
+		<info type="description" value="summary">
+			Drivers for the frequency meter (FREQM). It provides functions for configuring and measuring. The FREQM can be used to accurately measure the frequency of a clock by comparing it to a known reference clock.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks"/>
+		</info>
+		<build type="c-source" value="freqm.c"/>
+		<build type="header-file" subtype="api" value="freqm.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_freqm"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="avr32.utils"/>
+	</module>
+</asf>

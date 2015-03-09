@@ -1,0 +1,29 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.generic.filters" caption="DSPLIB - Generic filter function set">
+		<info type="description" value="summary">
+		Generic implementation of a useful set of functions to handle many kind of fixed-point filter operations.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="dsp16_filt_interpolation.c"/>
+		<build type="c-source" value="dsp16_filt_interpolation_coefsort.c"/>
+		<build type="c-source" value="filt_dsp16_iir.c"/>
+		<build type="c-source" value="filt_dsp16_iirpart.c"/>
+		<build type="c-source" value="filt_dsp16_lms.c"/>
+		<build type="c-source" value="filt_dsp16_lpfirdesign.c"/>
+		<build type="c-source" value="filt_dsp16_nlms.c"/>
+		<build type="c-source" value="filt_dsp32_iir.c"/>
+		<build type="c-source" value="filt_dsp32_iirpart.c"/>
+		<build type="c-source" value="filt_dsp32_lms.c"/>
+		<build type="c-source" value="filt_dsp32_nlms.c"/>
+		<build type="header-file" value="filt_lms.h"/>
+		<build type="header-file" value="filt_nlms.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../../../include"/>
+		<build type="header-file" value="../../../include/dsp_filters.h"/>
+		<!-- Extra dependencies //-->
+		<require idref="avr32.services.dsplib.vectors"/>
+		<require idref="avr32.services.dsplib.common"/>
+		<build type="define" name="DSP_FILTERS" value=""/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

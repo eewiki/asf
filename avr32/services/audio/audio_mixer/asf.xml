@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.audio.audio_mixer" caption="Audio Mixer">
+		<info type="description" value="summary">
+		Audio mixer implementing both buffered and direct output and an abstracted DAC interface.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Audio" />
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="audio_mixer.c"/>
+		<build type="header-file" subtype="api" value="audio_mixer.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_audio_mixer.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_audio_player.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3l"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.components.audio"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

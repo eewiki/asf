@@ -1,0 +1,56 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.generic.vectors" caption="DSPLib - Generic vectors function set">
+		<info type="description" value="summary">
+		Generic implementation of a useful set of functions to manage fixed-point vectors.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="vect_dsp16_neg.c"/>
+		<build type="c-source" value="vect_dsp32_neg.c"/>
+		<build type="c-source" value="vect_dsp32_pow.c"/>
+		<build type="c-source" value="vect_dsp16_pow.c"/>
+		<build type="c-source" value="vect_dsp32_min.c"/>
+		<build type="c-source" value="vect_dsp32_max.c"/>
+		<build type="c-source" value="vect_dsp16_min.c"/>
+		<build type="c-source" value="vect_dsp16_max.c"/>
+		<build type="c-source" value="vect_dsp16_add.c"/>
+		<build type="c-source" value="vect_dsp16_sub.c"/>
+		<build type="c-source" value="vect_dsp32_realadd.c"/>
+		<build type="c-source" value="vect_dsp16_realadd.c"/>
+		<build type="c-source" value="vect_dsp32_intdiv.c"/>
+		<build type="c-source" value="vect_dsp16_intdiv.c"/>
+		<build type="c-source" value="vect_dsp32_add.c"/>
+		<build type="c-source" value="vect_dsp32_realsub.c"/>
+		<build type="c-source" value="vect_dsp16_realsub.c"/>
+		<build type="c-source" value="vect_dsp32_sub.c"/>
+		<build type="c-source" value="vect_dsp32_intmul.c"/>
+		<build type="c-source" value="vect_dsp16_intmul.c"/>
+		<build type="c-source" value="vect_dsp16_dotdiv.c"/>
+		<build type="c-source" value="vect_dsp32_realdiv.c"/>
+		<build type="c-source" value="vect_dsp16_realdiv.c"/>
+		<build type="c-source" value="vect_dsp32_realmul.c"/>
+		<build type="c-source" value="vect_dsp16_realmul.c"/>
+		<build type="c-source" value="vect_dsp16_dotmul.c"/>
+		<build type="c-source" value="vect_dsp16_add_and_saturate.c"/>
+		<build type="c-source" value="vect_dsp32_add_and_saturate.c"/>
+		<build type="c-source" value="vect_dsp32_dotdiv.c"/>
+		<build type="c-source" value="vect_dsp32_complex_add.c"/>
+		<build type="c-source" value="vect_dsp16_complex_add.c"/>
+		<build type="c-source" value="vect_dsp32_complex_sub.c"/>
+		<build type="c-source" value="vect_dsp16_complex_sub.c"/>
+		<build type="c-source" value="vect_dsp32_dotmul.c"/>
+		<build type="c-source" value="vect_dsp16_complex_conj.c"/>
+		<build type="c-source" value="vect_dsp32_complex_abs.c"/>
+		<build type="c-source" value="vect_dsp16_complex_abs.c"/>
+		<build type="c-source" value="vect_dsp16_convpart.c"/>
+		<build type="c-source" value="vect_dsp32_convpart.c"/>
+		<build type="c-source" value="vect_convolution.c"/>
+		<!-- Extra dependencies //-->
+		<require idref="avr32.services.dsplib.operators"/>
+
+		<build type="include-path" value="../../../include"/>
+		<build type="header-file" value="../../../include/dsp_vectors.h"/>
+		<require idref="avr32.services.dsplib.common"/>
+		<build type="define" name="DSP_VECTORS" value=""/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

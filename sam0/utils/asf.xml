@@ -1,0 +1,37 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.utils.common" caption="Common SAM D20 compiler driver">
+		<info type="description" value="summary">
+		Compiler abstraction layer and code utilities for SAMD devices. This module provides various abstraction layers and utilities to make code compatible between different compilers. It also contains utilities typically used while pre-processing code.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="compiler.h"/>
+		<build type="header-file" subtype="api" value="status_codes.h"/>
+		<build type="include-path" value="header_files/"/>
+		<build type="header-file" value="header_files/io.h"/>
+		<build type="doxygen-entry-point" value="group_sam0_utils" />
+		<require idref="sam0.utils.preprocessor"/>
+		<require idref="sam0.utils.makefile"/>
+		<require idref="sam0.utils.syscalls"/>
+		<require idref="common.utils.interrupt" />
+		<require idref="common.utils.part_macros" />
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam0"/>
+	</module>
+
+	<select-by-device id="sam0.utils" caption="SAM D20 compiler driver">
+		<!-- SAMD20 //-->
+		<module type="driver" id="sam0.utils#0" caption="SAM D20 compiler driver">
+			<info type="description" value="summary">
+			Compiler abstraction layer and code utilities for SAMD20 devices. This module provides various abstraction layers and utilities to make code compatible between different compilers. It also contains utilities typically used while pre-processing code.
+			</info>
+			<require idref="sam0.utils.common"/>
+			<require idref="sam0.utils.cmsis.samd20.include"/>
+			<require idref="sam0.utils.cmsis.samd20.include.component"/>
+			<require idref="sam0.utils.cmsis.samd20.include.instance"/>
+			<require idref="sam0.utils.cmsis.samd20.include.pio"/>
+			<require idref="sam0.utils.cmsis.samd20.source.template"/>
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="samd20"/>
+		</module>
+	</select-by-device>
+</asf>

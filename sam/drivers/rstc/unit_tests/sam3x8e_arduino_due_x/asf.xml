@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="RSTC unit Test for Arduino Due/X" id="sam.drivers.rstc.unit_tests.arduino_due_x" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.rstc.unit_tests"/>
+		<require idref="board.arduino_due_x"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<device-support value="atsam3x8e"/>
+	</project>
+</asf>

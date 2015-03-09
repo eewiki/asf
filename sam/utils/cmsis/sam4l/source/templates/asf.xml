@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="driver" caption="SAM4L startup code" id="sam.utils.cmsis.sam4l.source.template">
+		<build type="c-source" value="system_sam4l.c"/>
+		<build type="c-source" value="exceptions.c"/>
+		<build type="header-file" subtype="api" value="exceptions.h"/>
+		<build type="header-file" subtype="api" value="system_sam4l.h"/>
+		<build type="c-source" value="gcc/startup_sam4l.c" toolchain="armgcc"/>
+		<build type="c-source" value="iar/startup_sam4l.c" toolchain="iarewarm"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.utils.cmsis.sam4l.include"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam4l"/>
+	</module>
+</asf>

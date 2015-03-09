@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="build-specific" id="avr32.utils.makefile" caption="Generic Makefile for 32-bit AVR">
+		<info type="description" value="summary">
+		Generic Makefile for 32-bit AVR used by GCC projects. These
+		makefiles are intended to be included from the project specific
+		Makefile and contains common build rules for object files and
+		linking. There is also two makefiles which contains device
+		program targets.
+		</info>
+		<build type="distribute" subtype="file" value="Makefile.avr32.in" toolchain="avr32gcc"/>
+		<build type="distribute" subtype="file" value="Makefile.avr32program.in" toolchain="avr32gcc"/>
+		<build type="distribute" subtype="file" value="Makefile.batchisp.in" toolchain="avr32gcc"/>
+		<device-support value="uc3" />
+	</module>
+</asf>

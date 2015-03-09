@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.audio.audio_player.players.mp3" caption="USB Audio player - MP3">
+		<info type="description" value="summary">
+		USB Audio Player for the MP3 file format. Uses the libmad MP3 decoder.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="mp3_libmad_player.c"/>
+		<build type="header-file" value="mp3_libmad_player.h"/>
+		<require idref="avr32.services.audio.audio_player.players"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.utils.libs.libmad"/>
+		<require idref="avr32.utils.libs.libmad.sources"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

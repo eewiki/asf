@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.services.timeout.example2" caption="Timeout Service Example 2">
+		<info type="description" value="summary">
+		This example shows how to use the \ref tc_timeout_group to implement a software debounce filter on a button input.
+		</info>
+		<!-- Keyword for sorting in example project wizard -->
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<!-- Device support -->
+		<device-support value="xmega"/>
+		<!-- Include paths -->
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<!-- Lists build information and dependencies -->
+		<build type="c-source" value="example2.c"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.services.timeout"/>
+		<require idref="common.services.basic.gpio"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

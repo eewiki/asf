@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="AT45DBX DataFlash example for STK600_RCUC3D" id="common.components.memory.data_flash.at45dbx.example.stk600-rcuc3d">
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_data_flash_example.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.data_flash.at45dbx.example"/>
+		<require idref="board.stk600-rcuc3d"/>
+		<config name="config.board.stk600-rcuc3d.led" value="yes"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc128d3"/>
+	</project>
+</asf>

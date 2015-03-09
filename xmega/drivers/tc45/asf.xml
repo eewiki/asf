@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.tc45" caption="TC4/5 - Timer Counter type 4 /5">
+		<info type="description" value="summary">
+		Driver for the Timer/Counters type 4 or 5 (TC4/5).
+		Provides functions for configuring and using the 16-bit TC4/5.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers" />
+		</info>
+		<build type="c-source" value="tc45.c"/>
+		<build type="header-file" subtype="api" value="tc45.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="tc45_group"/>
+		<build type="doxygen-quick-start" value="xmega_tc45_quickstart"/>
+		<device-support value="xmegae"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegae"/>
+	</module>
+</asf>

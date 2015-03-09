@@ -1,0 +1,51 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam3x.include.instance" caption="SAM3X instance definitions">
+		<info type="description" value="summary">
+			This file defines all structures and symbols for SAM3X peripherals
+		</info>
+		<build type="header-file" value="instance_adc.h"/>
+		<build type="header-file" value="instance_can0.h"/>
+		<build type="header-file" value="instance_can1.h"/>
+		<build type="header-file" value="instance_chipid.h"/>
+		<build type="header-file" value="instance_dacc.h"/>
+		<build type="header-file" value="instance_dmac.h"/>
+		<build type="header-file" value="instance_efc0.h"/>
+		<build type="header-file" value="instance_efc1.h"/>
+		<build type="header-file" value="instance_emac.h"/>
+		<build type="header-file" value="instance_gpbr.h"/>
+		<build type="header-file" value="instance_hsmci.h"/>
+		<build type="header-file" value="instance_matrix.h"/>
+		<build type="header-file" value="instance_pioa.h"/>
+		<build type="header-file" value="instance_piob.h"/>
+		<build type="header-file" value="instance_pioc.h"/>
+		<build type="header-file" value="instance_piod.h"/>
+		<build type="header-file" value="instance_pioe.h"/>
+		<build type="header-file" value="instance_piof.h"/>
+		<build type="header-file" value="instance_pmc.h"/>
+		<build type="header-file" value="instance_pwm.h"/>
+		<build type="header-file" value="instance_rstc.h"/>
+		<build type="header-file" value="instance_rtc.h"/>
+		<build type="header-file" value="instance_rtt.h"/>
+		<build type="header-file" value="instance_sdramc.h"/>
+		<build type="header-file" value="instance_smc.h"/>
+		<build type="header-file" value="instance_spi0.h"/>
+		<build type="header-file" value="instance_spi1.h"/>
+		<build type="header-file" value="instance_ssc.h"/>
+		<build type="header-file" value="instance_supc.h"/>
+		<build type="header-file" value="instance_tc0.h"/>
+		<build type="header-file" value="instance_tc1.h"/>
+		<build type="header-file" value="instance_tc2.h"/>
+		<build type="header-file" value="instance_trng.h"/>
+		<build type="header-file" value="instance_twi0.h"/>
+		<build type="header-file" value="instance_twi1.h"/>
+		<build type="header-file" value="instance_uart.h"/>
+		<build type="header-file" value="instance_uotghs.h"/>
+		<build type="header-file" value="instance_usart0.h"/>
+		<build type="header-file" value="instance_usart1.h"/>
+		<build type="header-file" value="instance_usart2.h"/>
+		<build type="header-file" value="instance_usart3.h"/>
+		<build type="header-file" value="instance_wdt.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam3x"/>
+	</module>
+</asf>

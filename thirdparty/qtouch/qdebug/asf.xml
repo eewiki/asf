@@ -1,0 +1,150 @@
+<asf xmlversion="1.0">
+
+	<select-by-config id="config.common.services.qtouch.qdebug.qt600.uc3l0" name="config.common.services.qtouch.qdebug.qt600.uc3l0" caption="Board QDebug support" default="no">
+		<module type="service" id="config.common.services.qtouch.qdebug.qt600.uc3l0#no" caption="QT600 QDebug disabled">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="uc3l"/>
+		</module>
+
+		<module type="service" id="config.common.services.qtouch.qdebug.qt600.uc3l0#yes" caption="QT600 QDebug enabled">
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" value="QDebug_at32uc3l.h"/>
+			<build type="c-source" value="QDebug_at32uc3l.c"/>
+			<build type="header-file" value="../devspecific/uc3/uc3l0/common/SPI_Master.h"/>
+			<build type="c-source" value="../devspecific/uc3/uc3l0/common/SPI_Master.c"/>
+			<build type="c-source" value="QDebugTransport.c"/>
+			<build type="header-file" value="QDebugTransport.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="../devspecific/uc3/uc3l0/common"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.usart"/>
+			<device-support value="uc3l"/>
+		</module>
+	</select-by-config>
+	
+	<select-by-config id="config.common.services.qtouch.qdebug.qt600.sam4l" name="config.common.services.qtouch.qdebug.qt600.sam4l" caption="Board QDebug support" default="no">
+		<module type="service" id="config.common.services.qtouch.qdebug.qt600.sam4l#no" caption="QT600 QDebug disabled">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="sam4l"/>
+		</module>
+
+		<module type="service" id="config.common.services.qtouch.qdebug.qt600.sam4l#yes" caption="QT600 QDebug enabled">
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" value="QDebug_sam4l.h"/>
+			<build type="c-source" value="QDebug_sam4l.c"/>
+			<build type="header-file" value="../devspecific/sam4/sam4l/common/BitBangSPI_Master.h"/>
+			<build type="c-source" value="../devspecific/sam4/sam4l/common/BitBangSPI_Master.c"/>
+			<build type="c-source" value="QDebugTransport.c"/>
+			<build type="header-file" value="QDebugTransport.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="../devspecific/sam4/sam4l/common"/>
+			<require idref="common.services.delay"/>
+			<require idref="common.services.ioport"/>
+			<require idref="sam.drivers.usart"/>
+			<device-support value="sam4l"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.common.services.qtouch.qdebug.xplained.uc3l0" name="config.common.services.qtouch.qdebug.xplained.uc3l0" caption="Board QDebug support" default="no">
+		<module type="service" id="config.common.services.qtouch.qdebug.xplained.uc3l0#no" caption="Xplained QDebug disabled">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="uc3l"/>
+		</module>
+
+		<module type="service" id="config.common.services.qtouch.qdebug.xplained.uc3l0#yes" caption="Xplained QDebug enabled">
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" value="QDebug_at32uc3l.h"/>
+			<build type="c-source" value="QDebug_at32uc3l.c"/>
+			<build type="header-file" value="../devspecific/uc3/uc3l0/common/SERIAL.h"/>
+			<build type="c-source" value="../devspecific/uc3/uc3l0/common/SERIAL.c"/>
+			<build type="c-source" value="QDebugTransport.c"/>
+			<build type="header-file" value="QDebugTransport.h"/>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="../devspecific/uc3/uc3l0/common"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.usart"/>
+			<device-support value="uc3l"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="common.services.qtouch.qdebug.xmega" name="config.common.services.qtouch.qdebug.xmega" caption="Qtouch QDebug support for XMEGA" default="no">
+		<module type="service" id="common.services.qtouch.qdebug.xmega#no" caption="XMEGA QDebug disabled">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="xmega"/>
+		</module>
+
+		<module type="service" id="common.services.qtouch.qdebug.xmega#yes" caption="XMEGA QDebug enabled">
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" value="QDebug.h"/>
+			<build type="c-source" value="QDebug.c"/>
+			<build type="header-file" value="eeprom_access.h"/>
+			<build type="c-source" value="eeprom_access.c"/>
+			<build type="c-source" value="QDebugTransport.c"/>
+			<build type="header-file" value="QDebugTransport.h"/>
+			<build type="include-path" value="."/>
+			<build type="define" name="_DEBUG_INTERFACE_" value =""/>
+			<device-support value="xmega"/>
+		</module>
+	</select-by-config>
+		
+	<select-by-config id="config.common.services.qtouch.qdebug.qt600.generic" name="config.common.services.qtouch.qdebug.qt600.generic" caption="Board QDebug support" default="no">
+		<module type="meta" id="config.common.services.qtouch.qdebug.qt600.generic#no" caption="QT600 QDebug disabled">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3c"/>
+			<device-support value="sam"/>
+		</module>
+
+		<select-by-device id="config.common.services.qtouch.qdebug.qt600.generic#yes" caption="QT600 QDebug enabled">
+			<module type="meta" id="config.common.services.qtouch.qdebug.qt600.generic#yes#0" caption="QT600 QDebug enabled">
+				<info type="gui-flag" value="hidden"/>
+				<build type="header-file" value="QDebug.h"/>
+				<build type="c-source" value="QDebug.c"/>
+				<build type="header-file" value="../generic/uc3/qtouch/common/BitBangSPI_Master.h"/>
+				<build type="c-source" value="../generic/uc3/qtouch/common/BitBangSPI_Master.c"/>
+				<build type="include-path" value="../generic/uc3/qtouch/common"/>
+				<build type="c-source" value="QDebugTransport.c"/>
+				<build type="header-file" value="QDebugTransport.h"/>
+				<build type="include-path" value="."/>
+				<device-support value="uc3a"/>
+				<device-support value="uc3b"/>
+				<device-support value="uc3c"/>
+				<require idref="avr32.utils"/>
+			</module>
+
+			<module type="meta" id="config.common.services.qtouch.qdebug.qt600.generic#yes#sam" caption="QT600 QDebug enabled">
+				<info type="gui-flag" value="hidden"/>
+				<build type="header-file" subtype="api" value="QDebug.h"/>
+				<build type="c-source" value="QDebug.c"/>
+				<build type="header-file" subtype="api" value="../generic/sam/qtouch/common/BitBangSPI_Master.h"/>
+				<build type="c-source" value="../generic/sam/qtouch/common/BitBangSPI_Master.c"/>
+				<build type="include-path" value="../generic/sam/qtouch/common"/>
+				<build type="c-source" value="QDebugTransport.c"/>
+				<build type="header-file" subtype="api" value="QDebugTransport.h"/>
+				<build type="include-path" value="."/>
+				<device-support value="sam"/>
+			</module>
+		</select-by-device>
+	</select-by-config>
+	
+	<select-by-config id="config.common.services.qtouch.qdebug.stk600.mega" name="config.common.services.qtouch.qdebug.stk600.mega" caption="STK600 Board QDebug support" default="no">
+		<module type="service" id="config.common.services.qtouch.qdebug.stk600.mega#no" caption="STK600 QDebug disabled">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="atmega128rfa1"/>
+		</module>
+		<select-by-device id="config.common.services.qtouch.qdebug.stk600.mega#yes" caption="STK600 QDebug enabled">
+			<module type="service" id="config.common.services.qtouch.qdebug.stk600.mega#yes#0" caption="STK600 QDebug enabled">
+				<info type="gui-flag" value="hidden"/>
+				<build type="header-file" value="QDebug.h"/>
+				<build type="c-source" value="QDebug.c"/>
+				<build type="header-file" value="eeprom_access_mega.h"/>
+				<build type="c-source" value="eeprom_access_mega.c"/>
+				<build type="c-source" value="QDebugTransport.c"/>
+				<build type="header-file" value="QDebugTransport.h"/>
+				<build type="include-path" value="."/>
+				<device-support value="atmega128rfa1"/>
+			</module>
+		</select-by-device>
+	</select-by-config>
+</asf>

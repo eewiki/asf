@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="HMATRIX Example1 for UC3-A3 Xplained" id="avr32.drivers.hmatrix.example.uc3_a3_xplained">
+		<require idref="board.uc3_a3_xplained"/>
+		<require idref="avr32.drivers.hmatrix.example"/>
+		<config name="config.board.uc3_a3_xplained.init" value="no"/>
+		<config name="config.board.uc3_a3_xplained.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

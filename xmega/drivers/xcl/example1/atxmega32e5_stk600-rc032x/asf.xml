@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="XMEGA XCL Example1 for stk600-rc032x with ATxmega32E5" id="xmega.drivers.xcl.example1.stk600-rc032x_atxmega32e5">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_xcl.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.xcl.example1"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

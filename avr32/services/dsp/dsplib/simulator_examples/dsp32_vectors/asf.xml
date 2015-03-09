@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.dsplib.simulator_example.dsp32_vectors" caption="DSPLIB - 32-bit fixed-point vectors example">
+		<info type="description" value="summary">
+		Example application. It demonstrates how to manipulate 32-bit fixed-point vectors using the function set provided in the DSP library.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Digital Signal Processing"/>
+		</info>
+		<build type="c-source" value="vectors_example.c"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_dsplib_simulator_example_dsp32_vectors"/>
+		<device-support value="uc3"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.services.dsplib.vectors"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.components.display.c42048a.example" caption="LCD C42048A Component Glass Example">
+		<info type="description" value="summary">
+		This example illustrates how the C42048A LCD glass component can be used. Using the XMEGA LCD module, the example writes characters,  set or clear icons on the display.
+		</info>
+		<build type="c-source" value="lcd_c42048a_example.c"/>
+		<device-support value="xmegab"/>
+		<require idref="xmega.drivers.lcd"/>
+		<require idref="xmega.components.display.c42048a"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="xmega.drivers.pmic"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

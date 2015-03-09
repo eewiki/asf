@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device HID Mouse for ATxmega256a3bu on STK600" id="common.services.usb.class.hid.device.mouse.example.stk600_atxmega256a3bu">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.device" value="hid_mouse"/>
+		<require idref="common.services.usb.class.hid.device.mouse.example"/>
+		<require idref="board.stk600-rc064x.atxmega256a3bu"/>
+		<config name="config.board.stk600-rc064x.led" value="yes"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.generic.windowing" caption="DSPLib - Generic windowing function set">
+		<info type="description" value="summary">
+		Generic implementation of a useful set of functions to handle many kind of fixed-point window generation.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="win_rectangular.c"/>
+		<build type="c-source" value="win_bartlett.c"/>
+		<build type="c-source" value="win_welch.c"/>
+		<build type="c-source" value="win_hann.c"/>
+		<build type="c-source" value="win_hamming.c"/>
+		<build type="c-source" value="win_blackman.c"/>
+		<build type="c-source" value="win_gauss.c"/>
+		<build type="c-source" value="win_dsp16_kaiser.c"/>
+		<build type="c-source" value="win_dsp32_kaiser.c"/>
+		<build type="header-file" value="win_gauss.h"/>
+		<!-- Extra dependencies //-->
+		<require idref="avr32.services.dsplib.operators"/>
+		<build type="include-path" value="../../../include"/>
+		<build type="header-file" value="../../../include/dsp_windowing.h"/>
+		<require idref="avr32.services.dsplib.common"/>
+		<build type="define" name="DSP_WINDOWING" value=""/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

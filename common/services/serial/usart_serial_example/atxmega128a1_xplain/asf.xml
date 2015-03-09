@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="Shared AVR API for Serial Interfaces / Example for XPLAIN" id="common.services.basic.serial.example.xplain">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.serial.example"/>
+		<require idref="board.xplain"/>
+		<require idref="common.services.basic.clock"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

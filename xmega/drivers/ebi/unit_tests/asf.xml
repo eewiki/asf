@@ -1,0 +1,11 @@
+<asf xmlversion="1.0">
+	<module type="service" id="xmega.drivers.ebi.unit_tests.common" caption="Unit Tests for the XMEGA EBI Driver">
+		<device-support value="xmega"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="common_tests.c"/>
+		<build type="header-file" subtype="api" value="common_tests.h"/>
+		<build type="doxygen-entry-point" value="ebi_tests_group"/>
+		<require idref="common.services.basic.hugemem"/>
+		<require idref="common.utils.unit_test"/>
+	</module>
+</asf>

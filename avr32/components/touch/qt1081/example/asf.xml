@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.touch.qt1081.example" caption="QT1081 Example">
+		<info type="description" value="summary">
+		Use the QT1081 component to detect key touch and light LEDs.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>
+		<build type="c-source" value="qt1081_example.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.components.touch.qt1081"/>
+		<require idref="avr32.drivers.eic"/>
+		<require idref="avr32.drivers.flashc"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

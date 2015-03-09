@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="TC Example 2 for STK600-RCUC3L0" id="avr32.drivers.tc.example2.stk600-rcuc3l0">
+		<require idref="avr32.drivers.tc.example2"/>
+		<require idref="board.stk600-rcuc3l0"/>
+		<config name="config.board.stk600-rcuc3l0.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<project caption="USB Composite Device HID keyboard and MSC for SAM4S Xplained" id="common.services.usb.class.composite.device.example.hidkbd_msc.sam4s_xplained">
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_virtual_mem.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.virtual_mem"/>
+		<require idref="common.services.usb.class.composite.device.example.hidkbd_msc"/>
+		<config name="config.common.services.usb.class.device" value="composite"/>
+		<config name="config.common.services.usb.class.msc.device.composite" value="enable"/>
+		<config name="config.common.services.usb.class.hid.device.keyboard.composite" value="enable"/>
+		<require idref="board.sam4s_xplained"/>
+		<config name="config.board.sam4s_xplained.led" value="yes"/>
+		<require idref="sam.drivers.smc"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam4s16c"/>
+	</project>
+</asf>

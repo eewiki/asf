@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.adcifb" caption="ADCIFB - ADC Interface B">
+		<info type="description" value="summary">
+		Driver for the ADCIFB (Analog-to-Digital Converter Interface B).
+		Provides functions for configuration of conversion parameters (up to 12-bit signed with 16x interpolation at 6 MHz), enabling channels (max. 32, see device datasheet for details) and conversion triggering.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adcifb.c"/>
+		<build type="header-file" subtype="api" value="adcifb.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_adcifb"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3l"/>
+	</module>
+</asf>

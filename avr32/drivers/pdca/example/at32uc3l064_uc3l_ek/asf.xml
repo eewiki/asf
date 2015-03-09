@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="PDCA Example for UC3L-EK" id="avr32.drivers.pdca.example.uc3l_ek">
+		<info type="description" value="summary">
+		Interrupt-based PDCA transfer of an ASCII animation stored in internal flash to a USART output.
+		</info>
+		<require idref="avr32.drivers.pdca.example"/>
+		<require idref="board.uc3l_ek"/>
+		<config name="config.board.uc3l_ek.init" value="no"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

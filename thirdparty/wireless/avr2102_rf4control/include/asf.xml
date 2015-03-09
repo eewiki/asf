@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2102_rf4control.include" caption="RF4CE -Include Files">
+		<info type="description" value="summary">
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="nwk_msg_code.h"/>
+		<build type="header-file" value="rf4ce.h"/>
+		<build type="header-file" value="vendor_data.h"/>
+		<build type="header-file" value="pb_pairing.h"/>
+		<build type="header-file" value="zrc.h"/>
+		<build type="header-file" value="nwk_msg_types.h"/>
+		<build type="header-file" value="nwk_build_config.h"/>
+		<build type="header-file" value="nwk_config.h"/>
+		<build type="header-file" value="mac_user_build_config.h"/>
+		<build type="doxygen-entry-point" value="group_rf4control"/>
+		<require idref="thirdparty.wireless.avr2025_mac.includes"/>
+	</module>
+</asf>

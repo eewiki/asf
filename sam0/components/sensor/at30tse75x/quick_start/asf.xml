@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.components.sensor.at30tse75x.quick_start" caption="Quick Start for the AT30TSE75X Temperature Sensor Component">
+		<info type="description" value="summary">
+		Quick start guide for the AT30TSE75X Temperature sensor.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_at30tse75x.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.components.sensor.at30tse75x"/>
+		<device-support value="samd20"/>
+	</module>
+</asf>

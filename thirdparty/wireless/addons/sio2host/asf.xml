@@ -1,0 +1,57 @@
+<asf xmlversion="1.0">
+	<select-by-config id="thirdparty.wireless.addons.sio2host" name="config.thirdparty.wireless.addons.sio2host" caption="Serial I/O - Host" default="uart">
+		<info type="description" value="summary">
+		The Serial I/O - Host (SIO2HOST) module enable serial io communication  between the device and the Host(To be Used in Host device for 2p approach for to/fro communication with  PC , NCP device  for to/from communication with  Host device and for device in 1p approach for communication with Pc ).
+		</info>
+		<module type="component" id="thirdparty.wireless.addons.sio2host#uart"     caption="Serial I/O - Host using UART">
+			<info type="description" value="summary">
+			Enables Support for  UART communication
+			</info>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<build type="c-source"      value="uart/sio2host.c"/>
+			<build type="header-file"   value="uart/sio2host.h"/>
+			<build type="include-path"  value="uart/"/>
+			<build type="module-config" subtype="required-header-file" value="conf_sio2host.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<device-support value="xmega"/>
+			<device-support value="uc3"/>
+			<device-support value="megarf"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4"/>
+			<build type="doxygen-entry-point" value="group_sio2host_uart"/>
+		</module>
+		<module type="component" id="thirdparty.wireless.addons.sio2host#usb"     caption="Serial I/O - Host using USB">
+			<info type="description" value="summary">
+			Enables Support for  USB communication
+			</info>
+			<require idref="common.utils.stdio.stdio_usb"/>
+			<build type="c-source"      value="usb/sio2host.c"/>
+			<build type="header-file"   value="usb/sio2host.h"/>
+			<build type="include-path"  value="usb/"/>
+			<build type="module-config" subtype="required-header-file" value="conf_sio2host.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+            <device-support value="uc3a"/>
+            <device-support value="uc3a3_a4"/>
+            <device-support value="uc3b"/>
+            <device-support value="uc3c"/>
+            <device-support value="uc3d"/>
+            <device-support value="uc3l3"/>
+            <device-support value="uc3l4"/>
+            <device-support value="xmegaa1u"/>
+            <device-support value="xmegaa3u"/>
+            <device-support value="xmegaa3bu"/>
+            <device-support value="xmegaa4u"/>
+            <device-support value="xmegab"/>
+            <device-support value="xmegac"/>
+            <device-support value="sam3s"/>
+            <device-support value="sam3sd"/>
+            <device-support value="sam3u"/>
+            <device-support value="sam3x"/>
+            <device-support value="sam3a"/>
+            <device-support value="sam4s"/>
+            <device-support value="sam4l"/>
+            <device-support value="sam4e"/>
+			<build type="doxygen-entry-point" value="group_sio2host_usb"/>
+		</module>
+	</select-by-config>
+</asf>

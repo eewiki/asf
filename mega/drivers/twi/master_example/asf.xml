@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.drivers.twi.master_example" caption="TWI MegaRF Master Example">
+		<info type="description" value="summary">
+		TWI as Master for megaRF
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="twi_master_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_twi.h"/>
+		<device-support value="megarf"/>
+		<require idref="mega.drivers.twi"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.delay"/>
+		<build type="doxygen-entry-point" value="megarf_twi_master"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

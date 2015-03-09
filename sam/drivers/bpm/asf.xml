@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.bpm" caption="Power Management">
+		<info type="description" value="summary">
+		Driver for the BPM.
+		Provides functions for the Power Management.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Power Management" />
+		</info>
+		<build type="c-source" value="bpm.c"/>
+		<build type="header-file" subtype="api" value="bpm.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_sam_drivers_bpm"/>
+		<build type="doxygen-quick-start" value="sam_bpm_quickstart"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

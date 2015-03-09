@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="Widget library example 2 for the SAM4S-XPLAINED" id="common.services.wtk.example2.sam4s_xplained">
+		<build type="header-file" value="conf_ili9341.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_mxt.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.compiler.iarew.near_heap_size" value="0x1000"/>
+		<config name="config.gfx.display" value="ili9341_sdt028atft"/>
+		<config name="config.spi_master_type" value="standard_spi"/>
+		<require idref="sam.utils.syscalls"/>
+		<require idref="common.services.wtk.example2"/>
+		<require idref="board.sam4s_xplained"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4s16c"/>
+	</project>
+</asf>

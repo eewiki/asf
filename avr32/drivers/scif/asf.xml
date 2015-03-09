@@ -1,0 +1,63 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.drivers.scif" caption="SCIF - System Control Interface">
+		<info type="description" value="summary">
+		Driver for the SCIF (System Control Interface). The SCIF
+		controls the Oscillators, PLL/DFLL, Generic Clocks, BODs, the
+		voltage regulators and general purpose low power registers.
+		</info>
+		<module type="driver" id="avr32.drivers.scif#0" caption="SCIF System Control Interface - UC3C implementation">
+			<info type="description" value="summary">
+			Driver for the SCIF (System Control Interface). The
+			SCIF controls the Oscillators, PLL, Generic Clocks,
+			BODs, the voltage regulators and general purpose low
+			power registers.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="scif_uc3c.c"/>
+			<build type="header-file" subtype="api" value="scif_uc3c.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_scif"/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+		</module>
+		<module type="driver" id="avr32.drivers.scif#1" caption="SCIF System Control Interface - UC3L implementation">
+			<info type="description" value="summary">
+			Driver for the SCIF (System Control Interface). The
+			SCIF controls the Oscillators, DFLL, Generic Clocks,
+			BODs, voltage regulator, Temperature Sensor and Backup
+			Registers.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="scif_uc3l.c"/>
+			<build type="header-file" subtype="api" value="scif_uc3l.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_scif"/>
+			<device-support value="uc3l"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3l"/>
+		</module>
+		<module type="driver" id="avr32.drivers.scif#2" caption="SCIF System Control Interface - UC3D implementation">
+			<info type="description" value="summary">
+			Driver for the SCIF (System Control Interface). The
+			SCIF controls the Oscillators, PLL, Generic Clocks,
+			BODs, voltage regulator, Temperature Sensor and Backup
+			Registers.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="c-source" value="scif_uc3d.c"/>
+			<build type="header-file" subtype="api" value="scif_uc3d.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_scif"/>
+			<device-support value="uc3d"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3d"/>
+		</module>
+	</select-by-device>
+</asf>

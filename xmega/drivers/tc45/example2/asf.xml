@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.tc45.example2" caption="TC45 Example 2">
+		<info type="description" value="summary">
+		Use the XMEGA TC45 Timer Counter module : uses and configures two TC45 modules. One is configured to generate single slope PWM on LED0. One is used in generate a 50ms overflow interrupt.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="tc45_example2.c"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="xmega.drivers.tc45"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

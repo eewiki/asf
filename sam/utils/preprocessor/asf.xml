@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="driver" caption="Preprocessor Utility Macros" id="sam.utils.preprocessor">
+		<info type="description" value="summary">
+		Preprocessor macros for SAM devices. This module provides various utility macros for use when pre-processing code.
+		</info>
+		<build type="include-path" value="." />
+		<build type="header-file" value="mrepeat.h" />
+		<build type="header-file" value="preprocessor.h" />
+		<build type="header-file" value="stringz.h" />
+		<build type="header-file" value="tpaste.h" />
+		<device-support value="sam"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

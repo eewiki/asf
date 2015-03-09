@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.des" caption="DES - Data Encryption Standard">
+		<info type="description" value="summary">
+		Driver for the DES (Data Encryption Standard) crypto  module. It provides functions for DES, 3DES and CBC DES encryption and decryption.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<build type="asm-source" value="des.s" toolchain="avrgcc"/>
+		<build type="asm-source" value="des.s90" toolchain="iarew"/>
+		<build type="header-file" subtype="api" value="des.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="des_group"/>
+		<build type="doxygen-quick-start" value="xmega_des_quickstart"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

@@ -1,0 +1,67 @@
+<asf xmlversion="1.0">
+	<select-by-config id="avr32.drivers.macb" name="config.avr32.drivers.macb" caption="MACB - Ethernet MAC" default="dummy_phy">
+		<module type="driver" id="avr32.drivers.macb#dummy_phy" caption="MACB - Ethernet MAC">
+			<info type="description" value="summary">
+				The MACB module implements a 10/100 Ethernet MAC compatible with the IEEE 802.3 standard using user Ethernet Physical Layer Transceiver.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="c-source" value="macb.c"/>
+			<build type="header-file" subtype="api" value="macb.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_eth.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_macb"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.components.ethernet_phy.dummy_phy"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="driver" id="avr32.drivers.macb#dp83848" caption="MACB - Ethernet MAC">
+			<info type="description" value="summary">
+				The MACB module implements a 10/100 Ethernet MAC compatible with the IEEE 802.3 standard using DP83848 Ethernet Physical Layer Transceiver.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="c-source" value="macb.c"/>
+			<build type="header-file" subtype="api" value="macb.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_eth.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_macb"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.components.ethernet_phy.dp83848"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="driver" id="avr32.drivers.macb#rtl8201" caption="MACB - Ethernet MAC">
+			<info type="description" value="summary">
+				The MACB module implements a 10/100 Ethernet MAC compatible with the IEEE 802.3 standard using RTL8201 Ethernet Physical Layer Transceiver.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication" />
+			</info>
+			<build type="c-source" value="macb.c"/>
+			<build type="header-file" subtype="api" value="macb.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_eth.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_macb"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.components.ethernet_phy.rtl8201"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+</asf>

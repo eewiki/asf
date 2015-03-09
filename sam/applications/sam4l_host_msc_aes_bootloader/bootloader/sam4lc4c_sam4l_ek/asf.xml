@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4L USB Host MSC Bootloader with AES for SAM4L-EK" id="sam.applications.sam4l_host_msc_boot_aes.sam4l_ek">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_bootloader.h"/>
+		<build type="header-file" value="conf_aesa.h"/>
+		<build type="header-file" value="conf_ast.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_usb_host.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="distribute" subtype="file" value="firmware.bin"/>
+		<config name="config.board.sam4l_ek.led" value="yes"/>
+		<config name="config.board.sam4l_ek.bm" value="no"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<config name="config.common.services.usb.class.host" value="mass_storage"/>
+		<require idref="sam.applications.sam4l_host_msc_boot_aes"/>
+		<require idref="board.sam4l_ek"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.optimization" value="high"/>
+		<config name="config.compiler.armgcc.optimization" value="high"/>
+		<config name="config.compiler.as5_arm.optimization" value="high"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x1000"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

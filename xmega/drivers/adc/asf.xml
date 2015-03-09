@@ -1,0 +1,67 @@
+<asf xmlversion="1.0">
+	<select-by-device id="xmega.drivers.adc" caption="ADC - Analog to Digital Converter">
+		<info type="description" value="summary">
+		Driver for the Analog to Digital Converter (ADC). It provides functions for configuring and using the on-chip ADC.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+
+		<module type="driver" id="xmega.drivers.adc#0" caption="ADC - XMEGA A/AU Implementation">
+			<build type="c-source" value="xmega_aau/adc_aau.c" />
+			<build type="c-source" value="adc.c"/>
+			<build type="header-file" subtype="api" value="adc.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_adc.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="adc_group"/>
+			<build type="doxygen-quick-start" value="adc_quickstart"/>
+			<device-support value="xmegaa"/>
+			<device-support value="xmegaau"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+			<require idref="xmega.drivers.nvm"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.pmic"/>
+			<require idref="xmega.utils"/>
+		</module>
+
+		<module type="driver" id="xmega.drivers.adc#1" caption="ADC - XMEGA B/C/D Implementation">
+			<build type="c-source" value="xmega_bcd/adc_bcd.c" />
+			<build type="c-source" value="adc.c"/>
+			<build type="header-file" subtype="api" value="adc.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_adc.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="adc_group"/>
+			<build type="doxygen-quick-start" value="adc_quickstart"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<device-support value="xmegad"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegab"/>
+			<require idref="xmega.drivers.nvm"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.pmic"/>
+			<require idref="xmega.utils"/>
+		</module>
+
+		<module type="driver" id="xmega.drivers.adc#2" caption="ADC - XMEGA E Implementation">
+			<build type="c-source" value="xmega_e/adc_e.c" />
+			<build type="c-source" value="adc.c"/>
+			<build type="header-file" subtype="api" value="adc.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="module-config" subtype="required-header-file" value="conf_adc.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="adc_group"/>
+			<build type="doxygen-quick-start" value="adc_quickstart"/>
+			<device-support value="xmegae"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegae"/>
+			<require idref="xmega.drivers.nvm"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="xmega.drivers.pmic"/>
+			<require idref="xmega.utils"/>
+		</module>
+	</select-by-device>
+</asf>

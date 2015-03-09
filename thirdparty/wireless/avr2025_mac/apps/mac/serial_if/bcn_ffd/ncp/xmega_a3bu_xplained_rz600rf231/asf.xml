@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<project force-caption="true" force-description="true" caption="MAC Serial Interface Beacon FFD AT86RF231-XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd.ncp.xmega_a3bu_xplained_rz600rf231">
+		<info type="description" value="summary">
+		MAC Serial Interface Application - Beacon FFD
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<config name="config.spi_master_type" value="standard_spi"/>
+
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf231"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
+		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
+
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd.ncp"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

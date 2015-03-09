@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.pevc.example3" caption="PEVC Example 3">
+		<info type="description" value="summary">
+		PEVC example using the "PAD_EVT[15:0] - change on input pins" as an event source and the "PDCA - start of transfer channel 0" as a triggered event that sends a character to a USART output.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Peripheral Event System"/>
+		</info>
+		<build type="header-file" value="conf_at42qt1060.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<build type="c-source" value="pevc_example3.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.components.touch.at42qt1060"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.pevc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.twim"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

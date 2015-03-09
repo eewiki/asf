@@ -1,0 +1,37 @@
+<asf xmlversion="1.0">
+	<select-by-config id="avr32.drivers.usbb._asf_v1.enum" name="config.avr32.drivers.usbb._asf_v1.enum.custom" caption="USB - Universial Serial Bus enumeration (ver. 1)" default="no">
+		<module type="service" id="avr32.drivers.usbb._asf_v1.enum#no" caption="USB - Universial Serial Bus enumeration (ver. 1)">
+			<info type="description" value="summary">
+			USB submodule for handling the USB enumeration process. Required by USB device drivers and class implementations.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="usb_task.c"/>
+			<build type="header-file" subtype="api" value="usb_task.h"/>
+			<build type="include-path" value="."/>
+			<build type="header-file" value="../../../../services/usb/_asf_v1/usb_ids.h"/>
+			<build type="include-path" value="../../../../services/usb/_asf_v1/"/>
+			<require idref="avr32.drivers.usbb._asf_v1"/>
+			<require idref="avr32.drivers.pm"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.drivers.usbb._asf_v1.enum#yes" caption="USB - Universial Serial Bus enumeration (ver. 1)">
+			<info type="description" value="summary">
+			USB submodule for handling the USB enumeration process. Required by USB device drivers and class implementations.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="usb_task.h"/>
+			<build type="include-path" value="."/>
+			<build type="header-file" value="../../../../services/usb/_asf_v1/usb_ids.h"/>
+			<build type="include-path" value="../../../../services/usb/_asf_v1/"/>
+			<require idref="avr32.drivers.usbb._asf_v1"/>
+			<require idref="avr32.drivers.pm"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+</asf>

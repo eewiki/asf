@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="DSPLIB Application for evk1105" id="avr32.applications.uc3.dsplib.demo.evk1105">
+		<require idref="avr32.applications.uc3.dsplib.demo"/>
+		<require idref="board.evk1105"/>
+		<config name="config.board.evk1105.init" value="no"/>
+		<build type="c-source" value="../controller_evk1105.c"/>
+		<require idref="avr32.components.touch.qt1081"/>
+		<config name="config.utils.interrupt.intc" value="force"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

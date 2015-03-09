@@ -1,0 +1,55 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.common.services.freertos.peripheral_control.usb" name="config.common.services.freertos.peripheral_control.usb" caption="FreeRTOS Peripheral Control Example with USB support" default="yes">
+		<module type="meta" id="config.common.services.freertos.peripheral_control.usb#no" caption="FreeRTOS Peripheral Control Example with USB support disabled">
+		</module>
+		<module type="meta" id="config.common.services.freertos.peripheral_control.usb#yes" caption="FreeRTOS Peripheral Control Example with USB support enabled">
+			<build type="c-source" value="./demo-tasks/USB-CDC-CLI-task.c"/>
+			<require idref="common.services.usb.class.cdc.device.single"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="config.common.services.freertos.peripheral_control.twi" name="config.common.services.freertos.peripheral_control.twi" caption="FreeRTOS Peripheral Control Example with TWI support" default="yes">
+		<module type="meta" id="config.common.services.freertos.peripheral_control.twi#no" caption="FreeRTOS Peripheral Control Example with TWI support disabled">
+		</module>
+		<module type="meta" id="config.common.services.freertos.peripheral_control.twi#yes" caption="FreeRTOS Peripheral Control Example with TWI support enabled">
+			<build type="c-source" value="./demo-tasks/TWI-EEPROM-task.c"/>
+			<require idref="common.services.layer.freertos.twi"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="config.common.services.freertos.peripheral_control.spi" name="config.common.services.freertos.peripheral_control.spi" caption="FreeRTOS Peripheral Control Example with SPI support" default="yes">
+		<module type="meta" id="config.common.services.freertos.peripheral_control.spi#no" caption="FreeRTOS Peripheral Control Example with SPI support disabled">
+		</module>
+		<module type="meta" id="config.common.services.freertos.peripheral_control.spi#yes" caption="FreeRTOS Peripheral Control Example with SPI support enabled">
+			<build type="c-source" value="./demo-tasks/SPI-FLASH-task.c"/>
+			<require idref="common.services.layer.freertos.spi"/>
+		</module>
+	</select-by-config>
+	<module type="application" id="common.services.freertos.peripheral_control" caption="FreeRTOS Peripheral Control Example">
+		<info type="description" value="summary">
+			Default FreeRTOS.org demo application creating several tasks to showcase the use of the FreeRTOS API.
+		</info>
+		<build type="header-file" value="demo-tasks.h"/>
+		<build type="header-file" value="FreeRTOSConfig.h"/>
+		<build type="c-source" value="main.c"/>
+		<build type="header-file" value="partest.h"/>
+		<build type="c-source" value="partest.c"/>
+		<build type="c-source" value="run-time-stats-utils.c"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./demo-tasks/"/>
+		<build type="c-source" value="./demo-tasks/CLI-commands.c"/>
+		<build type="c-source" value="./demo-tasks/USART-CLI-task.c"/>
+		<build type="c-source" value="./demo-tasks/USART-echo-tasks.c"/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="thirdparty.os.freertos.version"/>
+		<require idref="common.services.layer.freertos.pdc"/>
+		<require idref="common.services.layer.freertos.usart"/>
+		<require idref="config.common.services.freertos.peripheral_control.usb"/>
+		<require idref="config.common.services.freertos.peripheral_control.twi"/>
+		<require idref="config.common.services.freertos.peripheral_control.spi"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

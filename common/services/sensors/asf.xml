@@ -1,0 +1,84 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="common.services.sensors.core" caption="Sensors - Common Sensor Service">
+		<build type="include-path" value="."/>
+		<build type="include-path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_platform.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_sensors.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="header-file" subtype="api" value="sensor.h"/>
+		<build type="header-file" value="module_config/conf_clock.h"/>
+		<build type="header-file" value="module_config/conf_platform.h"/>
+		<build type="header-file" value="module_config/conf_sensors.h"/>
+		<build type="header-file" value="math/fixed_t.h"/>
+		<build type="header-file" value="math/fixed.h"/>
+		<build type="header-file" value="math/precision.h"/>
+		<build type="header-file" value="physics/constants.h"/>
+		<build type="header-file" value="physics/physics.h"/>
+		<build type="header-file" value="sensor_bus.h"/>
+		<build type="header-file" value="sensor_dev.h"/>
+		<build type="header-file" value="sensor_nvram.h"/>
+		<build type="c-source" value="sensor.c"/>
+		<build type="c-source" value="sensor_bus.c"/>
+		<build type="c-source" value="sensor_nvram.c"/>
+		<build type="c-source" value="sensor_platform.c"/>
+		<build type="c-source" value="physics/physics.c"/>
+		<device-support value="mega"/>
+		<device-support value="uc3"/>
+		<device-support value="xmega"/>
+		<device-support value="sam"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		<info type="keyword" value="technology">
+			<keyword value="Sensors"/>
+		</info>
+	</module>
+
+	<select-by-device id="common.services.sensors"  caption="Sensors - Sensor Device Stack">
+		<info type="description" value="summary">
+		The sensor device service provides high-level interfaces and binary
+		driver libraries for sensor devices on systems built around AVR
+		microcontrollers. Common API for UC3, XMEGA, and AVR MEGA.
+		</info>
+		<module type="service" id="common.services.sensors#xmega" caption="Sensors - Sensor Device Stack - XMEGA implementation">
+			<info type="description" value="summary">
+			The sensor device service provides high-level interfaces and binary
+			driver libraries for sensor devices on systems built around AVR
+			microcontrollers. Common API for UC3, XMEGA, and AVR MEGA.
+			</info>
+			<build type="library" subtype="compiler" value="libm" toolchain="avrgcc"/>
+			<build type="doxygen-entry-point" value="group_common_services_sensors"/>
+			<require idref="common.services.sensors.core"/>
+			<require idref="common.services.sensors.drivers"/>
+			<require idref="common.services.delay"/>
+			<require idref="common.services.basic.twi"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.cpu"/>
+			<require idref="xmega.drivers.ioport"/>
+			<require idref="xmega.drivers.nvm"/>
+			<device-support value="xmega"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+			<info type="keyword" value="technology">
+				<keyword value="Sensors"/>
+			</info>
+		</module>
+		<module type="service" id="common.services.sensors#uc3" caption="Sensors - Sensor Device Stack - UC3 implementation">
+			<info type="description" value="summary">
+			The sensor device service provides high-level interfaces and binary
+			driver libraries for sensor devices on systems built around AVR
+			microcontrollers. Common API for UC3, XMEGA, and AVR MEGA.
+			</info>
+			<build type="library" subtype="compiler" value="libm" toolchain="avr32gcc"/>
+			<build type="doxygen-entry-point" value="group_common_services_sensors"/>
+			<require idref="common.services.sensors.core"/>
+			<require idref="common.services.sensors.drivers"/>
+			<require idref="common.services.delay"/>
+			<require idref="common.services.basic.twi" /> 
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.intc"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+			<info type="keyword" value="technology">
+				<keyword value="Sensors"/>
+			</info>
+		</module>
+	</select-by-device>
+</asf>

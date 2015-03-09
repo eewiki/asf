@@ -1,0 +1,66 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.basic.twi.master.example" caption="Common API for TWI Communications Master Mode Example">
+		<module type="application" id="common.services.basic.twi.master.example#0" caption="Common API for TWI Communications Master Mode Example">
+			<info type="description" value="summary">
+			Provide an application example of TWI Master Mode Basic Services. Perform a write access to the TWI slave and read back the data written.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="twi_master_example.c"/>
+			<require idref="common.services.basic.twi"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.boards"/>
+			<require idref="xmega.utils"/>
+			<device-support value="xmega"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.twi.master.example#1" caption="Common API for TWI Communications Master Mode Example">
+			<info type="description" value="summary">
+			Provide an application example of TWI Master Mode Basic Services. Perform a write access to the TWI slave and read back the data written.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="twi_master_example.c"/>
+			<require idref="common.services.basic.twi"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.boards"/>
+			<require idref="avr32.utils"/>
+			<device-support value="uc3"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.twi.master.example#2" caption="Common API for TWI Communications Master Mode Example">
+			<info type="description" value="summary">
+			Provide an application example of TWI Master Mode Basic Services. Perform a write access to the TWI slave and read back the data written.
+			</info>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_twi_master.h"/>
+			<build type="c-source" value="twi_master_example.c"/>
+			<device-support value="sam"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.twi"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.services.basic.twi.master.example#3" caption="Common API for Controlling a TWI Module / Master Mode Example">
+			<info type="description" value="summary">
+			Provide an application example of TWI Master Mode Basic Services. Perform a write access to the TWI slave and read back the data written.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="twi_master_example.c"/>
+			<require idref="common.services.basic.twi"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.boards"/>
+			<require idref="mega.utils"/>
+			<device-support value="megarf"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

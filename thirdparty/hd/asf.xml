@@ -1,0 +1,9 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="avr32.components.wifi.helper" caption="H&amp;D Wi-Fi WL library helper">
+		<build type="header-file" value="wl_fw.h"/>
+		<build type="include-path" value="."/>
+	</module>
+	<module type="meta" id="avr32.components.wifi.license" caption="H&amp;D Wi-Fi WL library license">
+		<build type="distribute" subtype="license" value="license.txt"/>
+	</module>
+</asf>

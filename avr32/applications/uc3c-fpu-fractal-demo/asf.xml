@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.uc3c-fpu-demo" caption="UC3C Fractal Display using the FPU Application">
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<info type="description" value="summary">
+		This application is aimed to demonstrate the AVR UC3 C series FPU capabilities, using a fractal algorithm.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="header-file" value="conf/conf_demo.h"/>
+		<build type="header-file" value="conf/conf_ebi.h"/>
+		<build type="header-file" value="conf/conf_et024006dhu.h"/>
+		<build type="include-path" value="./conf/"/>
+		<build type="header-file" value="fpu_operators.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.components.display.et024006dhu"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.ebi.smc"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.scif"/>
+		<require idref="avr32.drivers.tc"/>
+		<require idref="avr32.drivers.usart"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

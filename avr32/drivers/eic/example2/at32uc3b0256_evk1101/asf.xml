@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="EIC Example2 for EVK1101" id="avr32.drivers.eic.example2.evk1101">
+		<build type="header-file" value="conf_example2.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.eic.example2"/>
+		<require idref="board.evk1101"/>
+		<config name="config.board.evk1101.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

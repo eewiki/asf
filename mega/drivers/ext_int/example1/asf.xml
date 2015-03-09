@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.drivers.ext_int.example1" caption="External Interrupt Example">
+		<info type="description" value="summary">
+		External interrupt through interrupt PIN for megaRF
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Interrupt"/>
+		</info>
+		<build type="c-source" value="ext_int_example1.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_interrupt.h"/>
+		<device-support value="megarf"/>
+		<require idref="mega.drivers.ext_int"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.gpio"/>
+		<build type="doxygen-entry-point" value="megarf_interrupt_group "/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

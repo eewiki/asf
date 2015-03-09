@@ -1,0 +1,44 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.components.clock_synthesizer.cirrus_logic_cs2200-cp" caption="CS2200 Clock Synthesizer">
+		<module type="component" id="avr32.components.clock_synthesizer.cirrus_logic_cs2200-cp#0" caption="CS2200 Clock Synthesizer">
+			<info type="gui-flag" value="hidden"/>			
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<info type="description" value="summary">
+			Software Driver for the CS2200 Clock Synthesizer chip.
+			The CS2200 is connected to the AVR UC3 through the TWI hardware module.
+			This driver provides functions to initialize, configure and control the CS2200 output clock frequency and behavior (test mode, power down mode).
+			</info>
+			<build type="c-source" value="cs2200.c"/>
+			<build type="header-file" subtype="api" value="cs2200.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_cs2200.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3a"/>
+			<require idref="avr32.drivers.twi"/>
+			<require idref="avr32.drivers.gpio"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="component" id="avr32.components.clock_synthesizer.cirrus_logic_cs2200-cp#1" caption="CS2200 Clock Synthesizer">
+			<info type="gui-flag" value="hidden"/>			
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+			<info type="description" value="summary">
+			Software Driver for the CS2200 Clock Synthesizer chip.
+			The CS2200 is connected to the AVR UC3 through the TWIM hardware module.
+			This driver provides functions to initialize, configure and control the CS2200 output clock frequency and behavior (test mode, power down mode).
+			</info>
+			<build type="c-source" value="cs2200.c"/>
+			<build type="header-file" subtype="api" value="cs2200.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_cs2200.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3a3"/>
+			<require idref="avr32.drivers.twim"/>
+			<require idref="avr32.drivers.gpio"/>
+			<generator value="doxygen-module" default-mcu="at32uc3a364"/>
+		</module>
+	</select-by-device>
+</asf>

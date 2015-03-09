@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="FAT File System Example 1 for EVK1105" id="avr32.services.fs.fat.example.evk1105">
+		<require idref="board.evk1105"/>
+		<config name="config.board.evk1105.init" value="no"/>
+		<config name="config.board.evk1105.led" value="yes"/>
+		<require idref="avr32.services.fs.fat.example"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

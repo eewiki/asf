@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.services.eeprom_emulator" caption="EEPROM Emulator Service">
+		<info type="description" value="summary">
+			EEPROM Emulator service for SAM D20, providing a EEPROM-like safe
+			non-volatile data storage in FLASH memory for user application
+			configuration data.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<info type="appnote" value="AT03265"/>
+		<info type="keyword" value="pdf">
+			<keyword value="EEPROM Emulator"/>
+			<keyword value="EEPROM"/>
+			<keyword value="Memory" />
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the EEPROM on the SAM D20, both the ASF driver and the peripheral itself.
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="eeprom.h"/>
+		<build type="c-source" value="eeprom.c"/>
+		<build type="header-file" value="quick_start/qs_emulator_basic.h"/>
+		<build type="doxygen-example-path" value="quick_start"/>
+		<build type="doxygen-image-path" value="docimg"/>
+		<build type="doxygen-entry-point" value="asfdoc_samd20_eeprom_group"/>
+		<device-support value="samd20"/>
+		<require idref="sam0.utils"/>
+		<require idref="sam0.drivers.nvm"/>
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.gpio.example" caption="GPIO Interrupt Example">
+		<info type="description" value="summary">
+			This example shows how to configure GPIO module to trigger an interrupt and an event.
+			</info>
+		<info type="keyword" value="technology">
+			<keyword value="I/O"/>
+		</info>
+		<build type="c-source" value="gpio_example.c"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.gpio"/>
+		<require idref="sam.drivers.pdca"/>
+		<require idref="sam.drivers.events"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

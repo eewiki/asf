@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.ast" caption="AST - Asynchronous Timer">
+		<info type="description" value="summary">
+		Driver for the AST (Asynchronous Timer).
+		Provides functions for configuring and operating the AST in the calendar or timer/counter modes.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers" />
+		</info>
+		<build type="c-source" value="ast.c"/>
+		<build type="header-file" subtype="api" value="ast.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_ast"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+	</module>
+</asf>

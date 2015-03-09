@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.twi.slave_example" caption="TWI slave Example">
+		<info type="description" value="summary">
+		Using the TWI module in Slave mode, process incoming read and write operations from/to a virtual memory space pre-allocated in internal RAM. To be used with two boards with the corresponding Master example.
+		</info>
+		<build type="header-file" value="conf_twi.h"/>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="twi_slave_example.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.twi"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

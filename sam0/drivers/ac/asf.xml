@@ -1,0 +1,67 @@
+<asf xmlversion="1.0">
+	<select-by-config id="sam0.drivers.ac" name="config.sam0.drivers.ac" caption="AC - Analog Comparator" default="callback">
+		<info type="description" value="summary">
+		  Driver for the SAM D20 Analog Comparator module. Provides a unified
+		  interface for the configuration and management of the device's
+		  hardware analog comparators.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+
+		<module caption="AC - Analog Comparator" id="sam0.drivers.ac#polled" type="driver">
+			<build type="include-path" value="." />
+
+			<build name="AC_CALLBACK_MODE" type="define" value="false" />
+
+			<build subtype="api" type="header-file" value="ac.h" />
+			<build type="c-source" value="ac.c" />
+
+			<build type="header-file" value="quick_start/qs_ac_basic.h" />
+
+			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-entry-point" value="asfdoc_samd20_ac_group" />
+
+			<device-support value="samd20" />
+
+			<require idref="sam0.utils" />
+			<require idref="sam0.drivers.system" />
+
+			<generator default-mcu="unspecified-samd20" value="doxygen-module-v2" />
+		</module>
+		<module caption="AC - Analog Comparator" id="sam0.drivers.ac#callback" type="driver">
+			<info type="appnote" value="AT03242"/>
+			<info type="keyword" value="pdf">
+				<keyword value="AC"/>
+				<keyword value="Analog Comparator"/>
+			</info>
+
+			<info type="description" value="pdf">
+				This document describes how to use the Analog Comparator on the SAM D20, both the ASF driver and the peripheral itself.
+			</info>
+
+			<build type="include-path" value="." />
+
+			<build name="AC_CALLBACK_MODE" type="define" value="true" />
+			<build type="doxygen-enable-section" value="AC_CALLBACK_MODE"/>
+
+			<build subtype="api" type="header-file" value="ac.h" />
+			<build subtype="api" type="header-file" value="ac_callback.h" />
+			<build type="c-source" value="ac_callback.c" />
+			<build type="c-source" value="ac.c" />
+			<build type="header-file" value="quick_start_callback/qs_ac_callback.h" />
+			<build type="header-file" value="quick_start/qs_ac_basic.h" />
+
+			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-example-path" value="quick_start_callback"/>
+			<build type="doxygen-entry-point" value="asfdoc_samd20_ac_group" />
+
+			<device-support value="samd20" />
+
+			<require idref="sam0.utils" />
+			<require idref="sam0.drivers.system" />
+
+			<generator default-mcu="unspecified-samd20" value="doxygen-module-v2" />
+		</module>
+	</select-by-config>
+</asf>

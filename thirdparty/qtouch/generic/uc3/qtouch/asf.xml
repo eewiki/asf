@@ -1,0 +1,97 @@
+<asf xmlversion="1.0">
+   	<select-by-device id="avr32.services.qtouch.generic.uc3.qtouch" caption="Atmel QTouch Library for Atmel UC3 A, UC3 B and UC3 C">
+		<module type="service" id="avr32.services.qtouch.generic.uc3.qtouch#0" caption="Atmel QTouch Library 4.4 for Atmel UC3 A devices">
+			<info type="description" value="summary">
+			This is the Atmel QTouch Library 4.4 for Atmel UC3A that consists of
+			one api header file (touch_api.h) and the required library files.
+			All projects using this library must also provide the required header file(touch_qt_config.h)
+			used to configure the library.
+			For more information on the Atmel QTouch Library, check www.atmel.com/qtouchlib.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="../../include/touch_api.h"/>
+			<build type="include-path" value="../../include"/>
+			<build type="library" subtype="user" value="lib/iar/libuc3a-32qt-k-8rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3a-8qt-k-0rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3a-16qt-k-0rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3a-32qt-k-0rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3a-8qt-k-2rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3a-16qt-k-4rs.r82" toolchain="iarew32"/>
+
+			<build type="library" subtype="user" value="lib/gcc/libuc3a-32qt-k-8rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3a-8qt-k-0rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3a-16qt-k-0rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3a-32qt-k-0rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3a-8qt-k-2rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3a-16qt-k-4rs.a" toolchain="avr32gcc"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<build type="distribute" subtype="license" value="../../../license.txt"/>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+		</module>
+		<module type="service" id="avr32.services.qtouch.generic.uc3.qtouch#1" caption="Atmel QTouch Library 4.4 for Atmel UC3 B devices">
+			<info type="description" value="summary">
+			This is the Atmel QTouch Library 4.4 for Atmel UC3 B that consists of
+			one api header file (touch_api.h) and the required library files.
+			All projects using this library must also provide the required header file(touch_qt_config.h)
+			used to configure the library.
+			For more information on the Atmel QTouch Library, check www.atmel.com/qtouchlib.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="../../include/touch_api.h"/>
+			<build type="include-path" value="../../include"/>
+			<build type="library" subtype="user" value="lib/iar/libuc3b-32qt-k-8rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3b-8qt-k-0rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3b-16qt-k-0rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3b-32qt-k-0rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3b-8qt-k-2rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3b-16qt-k-4rs.r82" toolchain="iarew32"/>
+
+			<build type="library" subtype="user" value="lib/gcc/libuc3b-32qt-k-8rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3b-8qt-k-0rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3b-16qt-k-0rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3b-32qt-k-0rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3b-8qt-k-2rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3b-16qt-k-4rs.a" toolchain="avr32gcc"/>
+
+			<device-support value="uc3b"/>
+			<build type="distribute" subtype="license" value="../../../license.txt"/>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+		</module>
+		<module type="service" id="avr32.services.qtouch.generic.uc3.qtouch#2" caption="Atmel QTouch Library 4.4 for Atmel UC3 C devices">
+			<info type="description" value="summary">
+			This is the Atmel QTouch Library 4.4 for Atmel UC3 C that consists of
+			one api header file(touch_api.h) and the required library files.
+			All projects using this library must also provide the required header file(touch_qt_config.h)
+			used to configure the library.
+			For more information on the Atmel QTouch Library, check www.atmel.com/qtouchlib.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="../../include/touch_api.h"/>
+			<build type="include-path" value="../../include"/>
+			<build type="library" subtype="user" value="lib/iar/libuc3c-32qt-k-8rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3c-8qt-k-0rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3c-16qt-k-0rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3c-8qt-k-2rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3c-16qt-k-4rs.r82" toolchain="iarew32"/>
+			<build type="distribute" subtype="file" value="lib/iar/libuc3c-32qt-k-0rs.r82" toolchain="iarew32"/>
+
+			<build type="library" subtype="user" value="lib/gcc/libuc3c-32qt-k-8rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3c-8qt-k-0rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3c-16qt-k-0rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3c-32qt-k-0rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3c-8qt-k-2rs.a" toolchain="avr32gcc"/>
+			<build type="distribute" subtype="file" value="lib/gcc/libuc3c-16qt-k-4rs.a" toolchain="avr32gcc"/>
+
+			<device-support value="uc3c"/>
+			<build type="distribute" subtype="license" value="../../../license.txt"/>
+			<info type="keyword" value="technology">
+				<keyword value="Touch"/>
+			</info>
+		</module>
+	</select-by-device>
+</asf>

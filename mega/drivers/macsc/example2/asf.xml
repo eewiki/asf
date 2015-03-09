@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.drivers.macsc.example2" caption="MACSC Example 2">
+		<info type="description" value="summary">
+		Configure the megaRF MAC Symbol Counter module for implementing a scheduled sleep-wakeup scheme using the beacon timestamp register and relative compare modes.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+			<keyword value="Wireless"/>
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="macsc_megarf_example2.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="mega"/>
+		<require idref="mega.drivers.macsc"/>
+		<require idref="mega.drivers.sleep"/>
+		<require idref="common.utils"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.ioport"/>
+		<require idref="mega.drivers.usart"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

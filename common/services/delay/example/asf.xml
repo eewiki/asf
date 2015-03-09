@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.delay.example" caption="Common Delay Service Example">
+		<info type="description" value="summary">
+		Initialize the system clock and blink a LED at a constant 1Hz frequency.
+		</info>
+		<build type="c-source" value="delay_example.c"/>
+		<device-support value="uc3"/>
+		<device-support value="sam"/>
+		<device-support value="xmega"/>
+		<require idref="common.services.delay"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

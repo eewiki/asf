@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.lcd.example" caption="LCD Glass Controller Example">
+		<info type="description" value="summary">
+		This examples illustrates how to use the XMEGA LCD module to write characters, set or clear icons on display.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="c-source" value="lcd_example.c"/>
+		<device-support value="xmegab"/>
+		<require idref="xmega.drivers.lcd"/>
+		<require idref="xmega.components.display.c42048a"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="xmega.drivers.pmic"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

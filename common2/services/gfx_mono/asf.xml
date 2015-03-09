@@ -1,0 +1,149 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common2.services.gfx_mono" caption="GFX Monochrome - Monochrome Graphic Library">
+		<info type="description" value="summary">
+		A graphical library optimized for monochrome LCD displays.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="header-file" subtype="api" value="gfx_mono.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="asfdoc_common2_gfx_mono"/>
+		<build type="doxygen-quick-start" value="asfdoc_common2_gfx_mono_quickstart"/>
+		<device-support value="samd20"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+		<require idref="common2.services.gfx_mono.display"/>
+	</module>
+
+	<module type="service" id="common2.services.gfx_mono.generic" caption="GFX Monochrome - Graphical Primitives (pixel, line, square, circle)">
+		<info type="gui-flag" value="hidden"/>
+		<info type="description" value="summary">
+		This service provides basic graphical primitives (pixel, line, square, circle) for monochrome LCD screens. This is not a standalone module, and is only included by hardware specific services.
+		</info>
+		<build type="header-file" value="gfx_mono_generic.h"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="gfx_mono_generic.c"/>
+		<build type="doxygen-entry-point" value="gfx_mono_generic_group"/>
+		<device-support value="samd20"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+	</module>
+
+	<module type="service" id="common2.services.gfx_mono.framebuffer" caption="GFX Monochrome - Framebuffer Device">
+		<info type="gui-flag" value="hidden"/>
+		<info type="description" value="summary">
+		Framebuffer device for the monochrome graphic library. For use with controllers with no readback capability
+		</info>
+		<build type="header-file" value="gfx_mono_framebuffer.h"/>
+		<!-- gfx_mono.h is required, but this module can't require
+				sam0.services.gfx_mono since it will lead to a
+				circular dependency -->
+		<build type="header-file" value="gfx_mono.h"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="gfx_mono_framebuffer.c"/>
+		<build type="doxygen-entry-point" value="gfx_mono_framebuffer_group"/>
+		<device-support value="samd20"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+	</module>
+
+	<module type="service" id="common2.services.gfx_mono.font" caption="GFX Monochrome - System Font">
+		<info type="description" value="summary">
+		System font for the monochrome graphical library. This driver provides a low-level static system font to use with displays. It is a light weight implementation graphical fonts, with limited flexibility. Excellent for printing system messages and debug output to a display. Is also typically used in less fancy graphical applications, where selections of fonts is not important, but rather low flash and RAM footprint.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="c-source" value="gfx_mono_text.c"/>
+		<build type="c-source" value="sysfont.c"/>
+		<build type="header-file" value="gfx_mono_text.h"/>
+		<build type="header-file" subtype="api" value="sysfont.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_sysfont.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="distribute" subtype="file" value="docsrc/gfx_mono_overview.png"/>
+		<build type="doxygen-image-path" value="docsrc"/>
+		<build type="doxygen-entry-point" value="asfdoc_common2_gfx_mono_sysfont"/>
+		<require idref="common2.services.gfx_mono"/>
+		<require idref="common2.services.gfx_mono.generic"/>
+		<device-support value="samd20"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+	</module>
+
+	<module type="service" id="common2.services.gfx_mono.menu" caption="GFX Monochrome - Menu System">
+		<info type="description" value="summary">
+		A simple menu system for the monochrome graphic library.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="header-file" subtype="api" value="gfx_mono_menu.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_menu.h"/>
+		<build type="c-source" value="gfx_mono_menu.c"/>
+		<build type="doxygen-entry-point" value="asfdoc_common2_gfx_mono_menu"/>
+		<require idref="common2.services.gfx_mono"/>
+		<require idref="common2.services.gfx_mono.font"/>
+		<device-support value="samd20"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+	</module>
+
+	<module type="service" id="common2.services.gfx_mono.spinctrl" caption="GFX Monochrome - Spinner/Spin control widget">
+		<info type="description" value="summary">
+		A simple spinner/spin control for the monochrome graphic library.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<build type="header-file" subtype="api" value="gfx_mono_spinctrl.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_spinctrl.h"/>
+		<build type="c-source" value="gfx_mono_spinctrl.c"/>
+		<build type="doxygen-entry-point" value="asfdoc_common2_gfx_mono_spinctrl"/>
+		<require idref="common2.services.gfx_mono"/>
+		<require idref="common2.services.gfx_mono.font"/>
+		<device-support value="samd20"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+	</module>
+
+	<module type="meta" id="common2.services.gfx_mono.tools" caption="GFX Monochrome - Tools">
+		<build type="distribute" subtype="file" value="tools/readme.txt"/>
+		<build type="distribute" subtype="file" value="tools/bitmap.py"/>
+		<build type="distribute" subtype="file" value="tools/dump_display_over_serial.py"/>
+	</module>
+	<select-by-config id="common2.services.gfx_mono.display" default="null" name="common2.services.gfx_mono.display" caption="GFX Monochrome - Display driver">
+		<module type="service" id="common2.services.gfx_mono.display#ug_2832hsweg04" caption="GFX Monochrome - UG-2832HSWEG04 OLED panel support">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			Configure the monochrome graphic library for use with the UG-2832HSWEG04 OLED panel and the SSD1306 OLED controller.
+			Display and driver are present on the SAM D20 Xplained board.
+			</info>
+			<build type="define" name="GFX_MONO_UG_2832HSWEG04" value="1"/>
+			<build type="header-file" value="gfx_mono_ug_2832hsweg04.h"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="gfx_mono_ug_2832hsweg04.c"/>
+			<build type="doxygen-entry-point" value="gfx_mono_ug_2832hsweg04_group"/>
+			<require idref="common2.services.gfx_mono.tools"/>
+			<require idref="common2.components.display.ssd1306"/>
+			<require idref="common2.services.gfx_mono.generic"/>
+			<require idref="common2.services.gfx_mono.framebuffer"/>
+			<device-support value="samd20"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+		</module>
+		<module type="service" id="common2.services.gfx_mono.display#null" caption="GFX Monochrome - NULL display driver">
+			<info type="gui-flag" value="hidden"/>
+			<info type="description" value="summary">
+			Configure the monochrome graphic library for use with a null driver, for boards without display.
+			</info>
+			<build type="header-file" value="gfx_mono_null.h"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="gfx_mono_null.c"/>
+			<build type="doxygen-entry-point" value="gfx_mono_null"/>
+			<require idref="common2.services.gfx_mono.tools"/>
+			<require idref="common2.services.gfx_mono.generic"/>
+			<require idref="common2.services.gfx_mono.framebuffer"/>
+			<device-support value="samd20"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+		</module>
+	</select-by-config>
+</asf>

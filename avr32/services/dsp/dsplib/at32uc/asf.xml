@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.uc3" caption="DSPLib - All UC3-optimized functions">
+		<info type="gui-flag" value="hidden"/>
+		<info type="description" value="summary">
+		UC3-optimized implementation of a useful set of functions for fixed-point digital signal processing.
+		</info>
+		<build type="header-file" value="docsrc/at32uc_benchmark.h"/>
+		<build type="header-file" value="at32uc_optim.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

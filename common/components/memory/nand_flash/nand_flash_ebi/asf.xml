@@ -1,0 +1,189 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.components.memory.nand_flash" caption="NAND Flash on EBI">
+		<info type="description" value="summary">
+		NAND Flash component operation. Provides common APIs for ATMEL devices.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<module type="component" id="common.components.memory.nand_flash#0" caption="NAND Flash on EBI">
+			<info type="description" value="summary">
+			NAND Flash component operation. Provides common APIs for UC3A3/A4 devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Memory"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="nand_flash_common.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_model.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_spare_scheme.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_raw.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_ecc.h"/>
+			<build type="c-source" value="nand_flash_model.c"/>
+			<build type="c-source" value="nand_flash_spare_scheme.c"/>
+			<build type="c-source" value="nand_flash_raw_smc.c"/>
+			<build type="c-source" value="nand_flash_ecc_sw.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_nf.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="common_components_nand_flash_group"/>
+			<build type="doxygen-quick-start" value="common_components_nand_flash_quickstart"/>
+			<device-support value="uc3a3_a4"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.ebi.smc"/>
+			<require idref="avr32.drivers.ecchrs"/>
+			<require idref="common.services.storage.ecc_hamming"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.delay"/>
+		</module>
+		<module type="component" id="common.components.memory.nand_flash#1" caption="NAND Flash on EBI">
+			<info type="description" value="summary">
+			NAND Flash component operation. Provides common APIs for SAM devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Memory"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="nand_flash_common.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_model.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_spare_scheme.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_raw.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_ecc.h"/>
+			<build type="c-source" value="nand_flash_model.c"/>
+			<build type="c-source" value="nand_flash_spare_scheme.c"/>
+			<build type="c-source" value="nand_flash_raw_smc.c"/>
+			<build type="c-source" value="nand_flash_ecc_sw.c"/>
+			<build type="include-path" value="ftl_lib/"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_management.h"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_translation.h"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_mem.h"/>
+			<build type="c-source" value="ftl_lib/nand_flash_mem.c"/>
+			<build type="library" subtype="user" value="ftl_lib/iar/lib_nand_flash_cortexm3.a" toolchain="iarewarm"/>
+			<build type="library" subtype="user" value="ftl_lib/gcc/lib_nand_flash_cortexm3.a" toolchain="armgcc"/>
+			<build type="module-config" subtype="required-header-file" value="conf_nf.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="common_components_nand_flash_group"/>
+			<build type="doxygen-quick-start" value="common_components_nand_flash_quickstart"/>
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd8"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.smc"/>
+			<require idref="sam.drivers.matrix"/>
+			<require idref="common.services.storage.ecc_hamming"/>
+			<require idref="common.services.delay"/>
+			<require idref="common.services.storage.ctrl_access"/>
+		</module>
+		<module type="component" id="common.components.memory.nand_flash#2" caption="NAND Flash on EBI">
+			<info type="description" value="summary">
+			NAND Flash component operation. Provides common APIs for SAM devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Memory"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="nand_flash_common.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_model.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_spare_scheme.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_raw.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_ecc.h"/>
+			<build type="c-source" value="nand_flash_model.c"/>
+			<build type="c-source" value="nand_flash_spare_scheme.c"/>
+			<build type="c-source" value="nand_flash_raw_smc.c"/>
+			<build type="c-source" value="nand_flash_ecc_sw.c"/>
+			<build type="include-path" value="ftl_lib/"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_management.h"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_translation.h"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_mem.h"/>
+			<build type="c-source" value="ftl_lib/nand_flash_mem.c"/>
+			<build type="library" subtype="user" value="ftl_lib/iar/lib_nand_flash_cortexm4.a" toolchain="iarewarm"/>
+			<build type="library" subtype="user" value="ftl_lib/gcc/lib_nand_flash_cortexm4.a" toolchain="armgcc"/>
+			<build type="module-config" subtype="required-header-file" value="conf_nf.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="common_components_nand_flash_group"/>
+			<build type="doxygen-quick-start" value="common_components_nand_flash_quickstart"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.smc"/>
+			<require idref="sam.drivers.matrix"/>
+			<require idref="common.services.storage.ecc_hamming"/>
+			<require idref="common.services.delay"/>
+			<require idref="common.services.storage.ctrl_access"/>
+		</module>
+		<module type="component" id="common.components.memory.nand_flash#3" caption="NAND Flash on EBI">
+			<info type="description" value="summary">
+			NAND Flash component operation. Provides common APIs for SAM devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Memory"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="nand_flash_common.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_model.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_spare_scheme.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_raw.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_ecc.h"/>
+			<build type="c-source" value="nand_flash_model.c"/>
+			<build type="c-source" value="nand_flash_spare_scheme.c"/>
+			<build type="c-source" value="nand_flash_raw_nfc.c"/>
+			<build type="c-source" value="nand_flash_ecc_sw.c"/>
+			<build type="include-path" value="ftl_lib/"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_management.h"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_translation.h"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_mem.h"/>
+			<build type="c-source" value="ftl_lib/nand_flash_mem.c"/>
+			<build type="library" subtype="user" value="ftl_lib/iar/lib_nand_flash_cortexm3.a" toolchain="iarewarm"/>
+			<build type="library" subtype="user" value="ftl_lib/gcc/lib_nand_flash_cortexm3.a" toolchain="armgcc"/>
+			<build type="module-config" subtype="required-header-file" value="conf_nf.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="common_components_nand_flash_group"/>
+			<build type="doxygen-quick-start" value="common_components_nand_flash_quickstart"/>
+			<device-support value="sam3u"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.smc"/>
+			<require idref="sam.drivers.dmac"/>
+			<require idref="common.services.storage.ecc_hamming"/>
+			<require idref="common.services.delay"/>
+			<require idref="common.services.storage.ctrl_access"/>
+		</module>
+		<module type="component" id="common.components.memory.nand_flash#4" caption="NAND Flash on EBI">
+			<info type="description" value="summary">
+			NAND Flash component operation. Provides common APIs for SAM devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Memory"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="nand_flash_common.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_model.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_spare_scheme.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_raw.h"/>
+			<build type="header-file" subtype="api" value="nand_flash_ecc.h"/>
+			<build type="c-source" value="nand_flash_model.c"/>
+			<build type="c-source" value="nand_flash_spare_scheme.c"/>
+			<build type="c-source" value="nand_flash_raw_nfc.c"/>
+			<build type="c-source" value="nand_flash_ecc_sw.c"/>
+			<build type="include-path" value="ftl_lib/"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_management.h"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_translation.h"/>
+			<build type="header-file" subtype="api" value="ftl_lib/nand_flash_mem.h"/>
+			<build type="c-source" value="ftl_lib/nand_flash_mem.c"/>
+			<build type="library" subtype="user" value="ftl_lib/iar/lib_nand_flash_cortexm3.a" toolchain="iarewarm"/>
+			<build type="library" subtype="user" value="ftl_lib/gcc/lib_nand_flash_cortexm3.a" toolchain="armgcc"/>
+			<build type="module-config" subtype="required-header-file" value="conf_nf.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<build type="doxygen-entry-point" value="common_components_nand_flash_group"/>
+			<build type="doxygen-quick-start" value="common_components_nand_flash_quickstart"/>
+			<device-support value="sam3x"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.smc"/>
+			<require idref="sam.drivers.dmac"/>
+			<require idref="common.services.storage.ecc_hamming"/>
+			<require idref="common.services.delay"/>
+			<require idref="common.services.storage.ctrl_access"/>
+		</module>
+	</select-by-device>
+</asf>

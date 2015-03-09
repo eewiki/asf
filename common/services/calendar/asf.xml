@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.calendar" caption="Calendar functionality">
+		<device-support value="avr"/>
+		<info type="description" value="summary">
+		Calendar service
+		Provides functionality to convert UNIX timestamps to dates and back. Also
+		provides functionality for calculating the time difference between dates and
+		converting timestamps to dates with different time zones and back.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="calendar.c"/>
+		<build type="header-file" subtype="api" value="calendar.h"/>
+		<build type="doxygen-entry-point" value="calendar_group"/>
+		<build type="doxygen-quick-start" value="calendar_quickstart"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

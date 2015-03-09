@@ -1,0 +1,35 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.evk1101.led" name="config.board.evk1101.led" caption="EVK1101 LED support" default="yes">
+		<module type="meta" id="config.board.evk1101.led#no" caption="EVK1101 LED support disabled">
+		</module>
+		<module type="meta" id="config.board.evk1101.led#yes" caption="EVK1101 LED support enabled">
+			<build type="c-source" value="led.c"/>
+			<build type="include-path" value="."/>
+			<require idref="avr32.drivers.gpio"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.evk1101.init" name="config.board.evk1101.init" caption="EVK1101 initialization support" default="yes">
+		<module type="meta" id="config.board.evk1101.init#no" caption="EVK1101 initialization support disabled">
+
+		</module>
+		<module type="meta" id="config.board.evk1101.init#yes" caption="EVK1101 initialization support enabled">
+			<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+			<build type="module-config" subtype="path" value="board_config"/>
+			<build type="c-source" value="init.c"/>
+			<require idref="avr32.drivers.gpio"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.evk1101" vendor="Atmel" caption="EVK1101">
+		<build type="define" name="BOARD" value="EVK1101"/>
+		<build type="header-file" value="evk1101.h"/>
+		<build type="header-file" subtype="api" value="led.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<require idref="common.boards"/>
+		<require idref="config.board.evk1101.led"/>
+		<require idref="config.board.evk1101.init"/>
+		<device-support value="at32uc3b0256"/>
+	</board>
+</asf>

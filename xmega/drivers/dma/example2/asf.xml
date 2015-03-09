@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.dma.example2" caption="DMA Example 2">
+		<info type="description" value="summary">
+		Start a DMA transfer between two internal memory areas and upon completion verifies this by comparing those areas.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="DMA Controller"/>
+		</info>
+		<build type="c-source" value="dma_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<require idref="xmega.drivers.dma"/>
+		<require idref="common.services.ioport"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

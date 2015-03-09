@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.rtt.example" caption="RTT Example">
+		<info type="description" value="summary">
+		This example demonstrates the Real-Time Timer (RTT) provided on SAM3 microcontrollers. It enables the user to set an alarm and watch it being triggered when the timer reaches the corresponding value.
+		</info>
+		<build type="c-source" value="rtt_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.rtt"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

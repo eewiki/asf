@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.components.sensors.mcp980x.twi_temp_sensor_example">
+		<module type="application" id="common.components.sensors.mcp980x.twi_temp_sensor_example#sam" caption="TWI Temperature Sensor Example">
+			<info type="description" value="summary">
+			This example program demonstrates how to use MCP980X module to control the MCP9800/1/2/3 and retrieve ambient temperature.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+				<keyword value="Sensors"/>
+			</info>
+			<build type="c-source" value="twi_temp_sensor_example.c"/>
+			<device-support value="sam"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<require idref="common.components.sensors.mcp980x"/>
+			<require idref="common.services.basic.clock"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

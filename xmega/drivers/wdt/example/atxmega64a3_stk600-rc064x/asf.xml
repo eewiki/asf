@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="WDT Example for ATxmega64A3 on STK600-rc064x" id="xmega.drivers.wdt.example.stk600-rc064x_atxmega64a3">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="xmega.drivers.wdt.example"/>
+		<require idref="board.stk600-rc064x.atxmega64a3"/>
+		<config name="config.board.stk600-rc064x.led" value="yes"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega64a3"/>
+	</project>
+</asf>

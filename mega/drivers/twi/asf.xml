@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+		<module type="driver" id="mega.drivers.twi" caption="TWI - Two-wire Master and Slave Interface">
+		    <info type="description" value="summary">
+		      Driver for the Two-Wire Interface (TWI) for megaRF device.
+		      Provides functions for configuring and using the TWI in both master and slave mode.
+		    </info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="twi_megarf.c"/>
+			<build type="header-file" subtype="api" value="twi_megarf.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_twi.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>			
+			<build type="doxygen-entry-point" value="group_megarf_drivers_twi"/>
+			<device-support value="megarf"/>
+			<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+			<require idref="mega.utils"/>
+		</module>
+</asf>

@@ -1,0 +1,60 @@
+<asf xmlversion="1.0">
+	<select-by-config id="avr32.services.audio.audio_player.players.usb" name="config.audio.stream.specific" caption="USB Audio stream player" default="no">
+		<module type="service" id="avr32.services.audio.audio_player.players.usb#no" caption="USB Audio stream player">
+			<info type="description" value="summary">
+			USB Audio streaming player for both USB Device or Host modes.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="usb_stream_player.c"/>
+			<build type="header-file" value="usb_stream_player.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_audio_player.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3a3_a4"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.usbb._asf_v1"/>
+			<require idref="avr32.services.audio.audio_mixer"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.services.audio.audio_player.players.usb#cs2200" caption="USB Audio stream with a clock synthesizer">
+			<info type="description" value="summary">
+			USB Audio streaming player using an external clock synthesizer (CS2200) for audio clock synchronization.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="usb_stream_player_with_cs2200.c"/>
+			<build type="header-file" value="usb_stream_player.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_audio_player.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_cs2200.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3a3_a4"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.usbb._asf_v1"/>
+			<require idref="avr32.services.audio.audio_mixer"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="avr32.services.audio.audio_player.players.usb#resampling" caption="USB Audio stream with software resampling">
+			<info type="description" value="summary">
+			USB Audio streaming player using software resampling for audio clock synchronization.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="usb_stream_player_with_resampling.c"/>
+			<build type="header-file" value="usb_stream_player.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_audio_player.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3b"/>
+			<device-support value="uc3a3_a4"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.usbb._asf_v1"/>
+			<require idref="avr32.services.audio.audio_mixer"/>
+			<require idref="avr32.utils.libs.dsplib"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+</asf>

@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.clock_synthesizer.cs2200.example" caption="Clock Synthesizer CS2200 Example">
+		<info type="description" value="summary">
+		Use the CS2200 to change the main CPU/HSB clock frequency.
+		</info>
+		<build type="header-file" value="conf_cs2200.h"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="main.c"/>
+		<device-support value="uc3a"/>
+		<require idref="avr32.components.clock_synthesizer.cirrus_logic_cs2200-cp"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.basic.twi"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

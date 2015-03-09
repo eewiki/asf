@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="ADC example 3 for the ATmega128RFA1" id="mega.drivers.adc.example3.mega128rfa1_stk600">
+		<info type="description" value="summary">
+		ATmega128RFA1 ADC example 3
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.stk600-mega.atmega128rfa1"/>
+		<require idref="mega.drivers.adc.example3"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8" />
+		<generator value="doxygen"/>
+		<generator value="iarew"/>
+		<device-support value="atmega128rfa1"/>
+	</project>
+</asf>

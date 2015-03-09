@@ -1,0 +1,32 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.rtc" caption="RTC - Real Time Counter">
+		<info type="description" value="summary">
+		Driver for the RTC (16-bit Real Time Counter). Provides functions for timeout (alarm), with optional call-back function. Can be clocked from internal 32KHz RC oscillator, or external 32KHz crystal, or a scaled 1kHz clock derived from the 32KHz clock sources. This module is not available in the XMEGA A3B family, which features the RTC32 (32-bit Real Time Counter) instead.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks"/>
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="rtc.c"/>
+		<build type="header-file" subtype="api" value="rtc.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_rtc.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="rtc_group"/>
+		<build type="doxygen-quick-start" value="xmega_rtc_quickstart"/>
+		<device-support value="xmegaa1"/>
+		<device-support value="xmegaa1u"/>
+		<device-support value="xmegaa3"/>
+		<device-support value="xmegaa3u"/>
+		<device-support value="xmegaa4"/>
+		<device-support value="xmegaa4u"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="xmegad"/>
+		<device-support value="xmegae"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

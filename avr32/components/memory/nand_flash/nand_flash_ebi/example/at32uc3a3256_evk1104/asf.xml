@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Nand Flash on EBI Example for EVK1104" id="avr32.components.memory.nand_flash.nand_flash_ebi.example.evk1104">
+		<build type="include-path" value="../conf/"/>
+		<build type="header-file" value="../conf/conf_board.h"/>
+		<build type="header-file" value="../conf/smc_nf.h"/>
+		<build type="header-file" value="../conf/conf_ebi.h"/>
+		<build type="header-file" value="../conf/conf_nf.h"/>
+		<require idref="avr32.components.memory.nand_flash.nand_flash_ebi.example"/>
+		<require idref="board.evk1104"/>
+		<config name="config.board.evk1104.init" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

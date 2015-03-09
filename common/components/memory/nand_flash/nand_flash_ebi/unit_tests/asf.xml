@@ -1,0 +1,37 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.components.memory.nand_flash.unit_tests" caption="Unit Tests for the SAM NAND Flash Component">
+		<module type="application" id="common.components.memory.nand_flash.unit_tests#0" caption="Unit Tests for the SAM NAND Flash Component">
+			<info type="description" value="summary">
+			Unit test application for the NAND Flash component.
+			</info>
+			<build type="c-source" value="unit_tests.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="common.components.memory.nand_flash"/>
+			<require idref="sam.utils.syscalls"/>
+			<require idref="common.utils.unit_test"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="common.components.memory.nand_flash.unit_tests#1" caption="Unit Tests for the SAM NAND Flash Component">
+			<info type="description" value="summary">
+			Unit test application for the NAND Flash component.
+			</info>
+			<build type="c-source" value="unit_tests.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="uc3a3_a4"/>
+			<require idref="avr32.drivers.gpio"/>
+			<require idref="avr32.drivers.ebi.smc"/>
+			<require idref="avr32.drivers.ecchrs"/>
+			<require idref="common.components.memory.nand_flash"/>
+			<require idref="avr32.utils.print_funcs"/>
+			<require idref="common.utils.unit_test"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

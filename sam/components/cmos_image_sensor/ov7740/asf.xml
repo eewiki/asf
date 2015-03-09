@@ -1,0 +1,32 @@
+﻿<asf xmlversion="1.0">
+	<module type="component" id="sam.components.cmos_image_sensor.ov7740" caption="OV7740 CMOS image sensor">
+		<!-- Summary description -->
+		<info type="description" value="summary">
+			Low-level driver for the OV7740 CMOS image sensor.
+		</info>
+
+		<!-- Keywords -->
+		<info type="keyword" value="technology">
+			<keyword value="Sensors" />
+		</info>
+
+		<!-- Files -->
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="ov7740.h"/>
+		<build type="c-source" value="ov7740.c"/>
+		<build type="c-source" value="ov7740_table_registers.c"/>
+
+		<!-- Device support -->
+		<device-support value="sam3s"/>
+		<device-support value="sam4s"/>
+
+		<!-- Required modules -->
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.twi"/>
+		<require idref="common.services.delay"/>
+
+		<!-- Generator options -->
+		<build type="doxygen-entry-point" value="ov7740_cmos_image_sensor_group"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4s"/>
+	</module>
+</asf>

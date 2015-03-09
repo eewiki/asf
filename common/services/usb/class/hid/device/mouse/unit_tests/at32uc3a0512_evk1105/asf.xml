@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device HID Mouse unit tests for evk1105" id="common.services.usb.class.hid.device.mouse.unit_tests.evk1105" type="unit-test">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.device" value="hid_mouse"/>
+		<require idref="common.services.usb.class.hid.device.mouse.unit_tests"/>
+		<require idref="board.evk1105"/>
+		<config name="config.board.evk1105.led" value="yes"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

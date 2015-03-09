@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="UC3-L0 Xplained demo application" id="avr32.applications.uc3-l0_xplained-demo.at32uc3l064_uc3_l0_xplained">
+		<info type="description" value="summary">
+		Demo application for UC3-L0 that reads temperature and light sensors and transmit the data via UART and a touch slider that changes the color of the RGB LED.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="avr32.applications.uc3-l0_xplained-demo"/>
+		<require idref="board.uc3_l0_xplained"/>
+		<config name="config.common.services.qtouch.qdebug.xplained.uc3l0" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.usb.class.composite.device.example.hids_cdc_msc" caption="USB Composite Device Example HIDs, CDC and MSC">
+		<module type="application" id="common.services.usb.class.composite.device.example.hids_cdc_msc#0" caption="USB Composite Device Example HIDs, CDC and MSC">
+			<info type="description" value="summary">
+			Provide an application example of USB Composite Device with HID mouse, HID keyboard, CDC and Mass Storage interfaces. It relies on native MSC and HID drivers and uses memory, uart and buttons or sensors available on the board as a user interface. 
+			</info>
+			<build type="header-file" value="conf_usb.h"/>
+			<build type="header-file" value="ui.h"/>
+			<build type="header-file" value="uart.h"/>
+			<build type="header-file" value="main.h"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+			<build type="module-config" subtype="path" value="example_config"/>
+			<build type="c-source" value="main.c"/>
+			<build type="c-source" value="uart_sam.c"/>
+			<build type="c-source" value="memories_initialization_sam.c"/>
+			<build type="include-path" value="."/>
+			<require idref="sam.drivers.usart"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.usb.class.device"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<device-support value="sam3s"/>
+			<device-support value="sam3sd"/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

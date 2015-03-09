@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.pm.example2" caption="PM Example 2">
+		<info type="description" value="summary">
+		Configure a PLL (or a DFLL, depending on the device) and use it as the main clock source for the synchronous clocks. Configure a Generic Clock with the PLL (or DFLL) as input. Output the generic clock on a pin.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks"/>
+			<keyword value="Power Management"/>
+		</info>
+		<build type="c-source" value="pm_example2.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pm"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

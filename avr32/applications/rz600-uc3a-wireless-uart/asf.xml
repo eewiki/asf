@@ -1,0 +1,34 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.applications.rz600-uc3a-wireless-uart" caption="Wireless UART">
+		<info type="description" value="summary">
+		Wireless-USB bridge, using the USB CDC class (Virtual Communication Port). This application is used on RZ600 kits with UC3 A3 MCU (USB VCP port). 
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="main.c"/>
+		<build type="header-file" value="main.h"/>
+		<build type="include-path" value="conf/"/>
+		<build type="header-file" value="conf/conf_sleepmgr.h"/>
+		<build type="header-file" value="conf/conf_board.h"/>
+		<build type="header-file" value="conf/conf_clock.h"/>
+		<build type="header-file" value="conf/conf_at86rfx.h"/>
+		<build type="header-file" value="conf/conf_spi_master.h"/>
+		<build type="header-file" value="conf/conf_usb.h"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.flashc"/>
+		<require idref="avr32.drivers.usbb.device"/>
+		<require idref="common.components.wireless.at86rfxdriver"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.usb.class.device"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Wireless"/>
+			<keyword value="Communication"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

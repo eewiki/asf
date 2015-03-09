@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="TWI slave Example for evk1101" id="avr32.drivers.twi.slave_example.evk1101">
+		<require idref="avr32.drivers.twi.slave_example"/>
+		<build type="include-path" value="../"/>
+		<build type="header-file" value="../conf_twi.h"/>
+		<require idref="board.evk1101"/>
+		<config name="config.board.evk1101.init" value="no"/>
+		<config name="config.utils.interrupt.intc" value="force"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

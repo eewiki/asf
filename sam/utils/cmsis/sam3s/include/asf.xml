@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam3s.include" caption="SAM3S part definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM3S 
+		</info>
+		<!--
+		<build type="include-path" value="."/>
+		-->
+		<build type="header-file" value="sam3s1a.h"/>
+		<build type="header-file" value="sam3s1b.h"/>
+		<build type="header-file" value="sam3s1c.h"/>
+		<build type="header-file" value="sam3s2a.h"/>
+		<build type="header-file" value="sam3s2b.h"/>
+		<build type="header-file" value="sam3s2c.h"/>
+		<build type="header-file" value="sam3s4a.h"/>
+		<build type="header-file" value="sam3s4b.h"/>
+		<build type="header-file" value="sam3s4c.h"/>
+		<build type="header-file" value="sam3s.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam3s"/>
+	</module>
+</asf>

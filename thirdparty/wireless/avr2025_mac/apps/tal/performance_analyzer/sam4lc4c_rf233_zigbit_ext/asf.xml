@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<project caption="Performance Analyzer Application  AT86RF233 Zigbit(Carrier)-SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer.sam4lc4c_rf233_zigbit_ext" force-caption="true" force-description="true">
+		<info type="description" value="summary">
+			A Serial interface based application,which communicates with Wireless Analyzer to demonstrate
+			various features and capabilities of the of Atmel Transceivers.
+		</info>
+		<require idref="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+
+		<config name="config.spi_master_type" value="standard_spi"/>
+		<config name="config.thirdparty.wireless.addons.sio2host" value="uart"/>
+		<config name="config.thirdparty.wireless.avr2025_mac.source.tfa" value="at86rf233"/>
+
+		<build type="define"   name="HIGHEST_STACK_LAYER"                 value="TAL"/>
+		<build type="define"   name="HIGH_DATA_RATE_SUPPORT"              value=""/>
+		<build type="define"   name="ENABLE_DEEP_SLEEP"              value=""/>
+
+        <build type="define"   name="FFD"                                 value=""/>
+        <build type="define"   name="ENABLE_TFA"                          value=""/>
+        <build type="define"   name="TRX_REG_RAW_VALUE"                   value=""/>
+		
+		<require idref="board.sam4l_xplained_pro"/>
+		
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

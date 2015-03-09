@@ -1,0 +1,26 @@
+﻿<asf xmlversion="1.0">
+	<project id="sam.drivers.spi.unit_tests.sam4s16c_sam4s_wpir_rd" type="unit-test" caption="SPI unit Test for SAM4S-WPIR-RD">
+		<!-- Files -->
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_test.h"/>
+
+		<!-- Device support -->
+		<device-support value="atsam4s16c"/>
+
+		<!-- Required modules -->
+		<require idref="board.sam4s_wpir_rd"/>
+		<require idref="sam.drivers.spi.unit_tests"/>
+
+		<!-- Generator options -->
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+	</project>
+</asf>

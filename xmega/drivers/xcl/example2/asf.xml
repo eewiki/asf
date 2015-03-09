@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.xcl.example2" caption="XCL Example 2">
+		<info type="description" value="summary">
+		 This example demonstrate how to configure the XCL and its timer in 16bit timer mode. The example also illustrates how to use the XCL Timer related underflow interrupt.
+		 </info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="xcl_example2.c"/>
+		<device-support value="xmegae"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.boards"/>
+		<require idref="xmega.drivers.xcl"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

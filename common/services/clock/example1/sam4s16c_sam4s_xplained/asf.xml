@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Clocks Control / Example 1 for SAM4S Xplained" id="common.services.basic.clock.example1.sam4s_xplained">
+		<info type="description" value="summary">
+			Initialize the system clock and blink a LED at a constant 1Hz frequency.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="common.services.basic.clock.example1"/>
+		<require idref="board.sam4s_xplained"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4s16c"/>
+	</project>
+</asf>

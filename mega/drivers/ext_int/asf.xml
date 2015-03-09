@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="mega.drivers.ext_int" caption="External Interrupt for megaRF">
+		<info type="description" value="summary">
+		External Interrupt Driver implementation for megaRF
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Interrupt"/>
+		</info>	
+		<build type="c-source" value="ext_int_megarf.c"/>
+		<build type="header-file" subtype="api" value="ext_int_megarf.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="megarf_interrupt_group"/>
+		<build type="doxygen-quick-start" value="megarf_interrupt_quickstart"/>		
+		<device-support value="megarf"/>
+		<require idref="mega.utils"/>
+		<require idref="common.services.ioport"/>	
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+	</module>
+</asf>

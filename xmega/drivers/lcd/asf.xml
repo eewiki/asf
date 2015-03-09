@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.lcd" caption="LCD controller driver">
+		<info type="description" value="summary">
+		Driver for the LCD controller.
+		Provides functions for using the on-chip LCD controller.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<build type="c-source" value="lcd.c"/>
+		<build type="header-file" subtype="api" value="lcd.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="lcd_group"/>
+		<build type="doxygen-quick-start" value="lcd_quickstart"/>
+		<device-support value="xmegab"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegab"/>
+	</module>
+</asf>

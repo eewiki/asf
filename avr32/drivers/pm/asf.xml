@@ -1,0 +1,101 @@
+<asf xmlversion="1.0">
+	<select-by-device id="avr32.drivers.pm" caption="PM - Power Manager">
+		<info type="description" value="summary">
+			Driver for the Power Manager (PM) peripheral module, and abstraction layer for
+			control of oscillators and clock domains. For some device families, the
+			abstraction layer depends on the driver for the System Control Interface (SCIF)
+			peripheral module.
+
+
+			The PM controls power-saving features such as sleep modes, the source,
+			prescaling and gating of the synchronous clock domains (CPU, HSB, PBx), and also
+			acts as reset controller. Depending on the device family, the PM may also
+			control asynchronous clock domains (GCLKn, USBB, ABDAC) as well as clock sources,
+			i.e., oscillators and PLLs. In other device families, these functions may be
+			controlled by the SCIF. An abstraction layer is therefore included to give a
+			common API (see power_clocks_lib.h).
+		</info>
+		<module type="driver" id="avr32.drivers.pm#0" caption="PM Power Manager- UC3 A0/A1/A3/A4/B0/B1 implementation">
+			<info type="description" value="summary">
+				Implementation for UC3 A0/A1/A3/A4/B0/B1, using the PM peripheral module.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management" />
+			</info>
+			<build type="c-source" value="pm_conf_clocks.c"/>
+			<build type="c-source" value="pm.c"/>
+			<build type="header-file" value="pm.h"/>
+			<build type="header-file" subtype="api" value="sleep.h"/>
+			<build type="header-file" subtype="api" value="power_clocks_lib.h"/>
+			<build type="c-source" value="power_clocks_lib.c"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_pm"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b"/>
+			<require idref="avr32.drivers.flashc"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="driver" id="avr32.drivers.pm#1" caption="PM Power Manager - UC3 C0/C1/C2 implementation">
+			<info type="description" value="summary">
+				Implementation for UC3 C0/C1/C2, using the PM and SCIF peripheral modules.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management" />
+			</info>
+			<build type="c-source" value="pm_uc3c.c"/>
+			<build type="header-file" value="pm_uc3c.h"/>
+			<build type="header-file" subtype="api" value="power_clocks_lib.h"/>
+			<build type="c-source" value="power_clocks_lib.c"/>
+			<build type="header-file" subtype="api" value="sleep.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_pm"/>
+			<device-support value="uc3c"/>
+			<require idref="avr32.drivers.flashc"/>
+			<require idref="avr32.drivers.scif"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+		</module>
+		<module type="driver" id="avr32.drivers.pm#3" caption="PM Power Manager - UC3 L0 implementation">
+			<info type="description" value="summary">
+				Implementation for UC3 L0, using the PM and SCIF peripheral modules.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management" />
+			</info>
+			<build type="c-source" value="pm_uc3l.c"/>
+			<build type="header-file" value="pm_uc3l.h"/>
+			<build type="header-file" subtype="api" value="power_clocks_lib.h"/>
+			<build type="c-source" value="power_clocks_lib.c"/>
+			<build type="header-file" subtype="api" value="sleep.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_pm"/>
+			<device-support value="uc3l"/>
+			<require idref="avr32.drivers.flashcdw"/>
+			<require idref="avr32.drivers.scif"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3l"/>
+		</module>
+		<module type="driver" id="avr32.drivers.pm#4" caption="PM Power Manager - UC3 D implementation">
+			<info type="description" value="summary">
+				Implementation for UC3 D, using the PM and SCIF peripheral modules.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management" />
+			</info>			
+			<build type="c-source" value="pm_uc3d.c"/>
+			<build type="header-file" value="pm_uc3d.h"/>
+			<build type="header-file" subtype="api" value="power_clocks_lib.h"/>
+			<build type="c-source" value="power_clocks_lib.c"/>
+			<build type="header-file" subtype="api" value="sleep.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="group_avr32_drivers_pm"/>
+			<device-support value="uc3d"/>
+			<require idref="avr32.drivers.flashcdw"/>
+			<require idref="avr32.drivers.scif"/>
+			<require idref="avr32.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3d"/>
+		</module>
+	</select-by-device>
+</asf>

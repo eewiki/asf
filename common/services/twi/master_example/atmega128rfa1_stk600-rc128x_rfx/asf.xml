@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Controlling a TWI Module / Master Mode Example for megaRF STK600" id="common.services.basic.twi.master.example.atmega128rfa1_stk600-rc128x_rfx">
+		<build type="header-file" value="conf_twi.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>		
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.twi.master.example"/>	
+		<require idref="board.stk600-mega.atmega128rfa1"/>
+	    <config name="config.compiler.iarew.data_stack_size" value="0x100"/>
+        <config name="config.compiler.iarew.near_heap_size" value="0x40"/>		
+		<generator value="iarew"/>
+		<generator value="avrgcc" />
+		<generator value="as5_8" />
+		<generator value="doxygen"/>
+		<device-support value="atmega128rfa1"/>
+	</project>
+</asf>

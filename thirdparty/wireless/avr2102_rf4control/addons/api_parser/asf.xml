@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+    <module type="service" id="thirdparty.wireless.avr2102_rf4control.addons.api_parser" caption="AVR2102 - API Parser support for RF4CE ">
+        <info type="description" value="summary">
+            This module is responsible for encoding and decoding the serial bytes to/from NCP into APIs to provide seamless working for application similar to stack running in same processor or on NCP.
+        </info>
+        <build type="c-source" value="api_parser.c"/>
+        <build type="header-file" value="api_parser.h"/>
+        <build type="include-path" value="."/>
+        <build type="doxygen-entry-point" value="group_api_parser_rf4ce"/>
+        <require idref="thirdparty.wireless.avr2102_rf4control.include"/>
+        <require idref="thirdparty.wireless.avr2025_mac.includes"/>
+        <require idref="thirdparty.wireless.avr2025_mac.source.pal.common_sw_timer"/>
+        <require idref="thirdparty.wireless.avr2025_mac.source.pal.inc"/>
+        <device-support-alias value="avr2102_rf4control_api_parser_support"/>
+    </module>	
+    <device-alias-map name="avr2102_rf4control_api_parser_support">
+        <device-support value="sam4l"/>
+    </device-alias-map>
+</asf>

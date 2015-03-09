@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.wdt.quick_start_callback" caption="Quick Start for the SAM D20 WDT Driver (Callback)">
+		<info type="description" value="summary">
+		Quick start guide for the Watchdog driver demonstrating configuration and initialization using callbacks.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="qs_wdt_callback.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.wdt"/>
+		<require idref="sam0.drivers.port"/>
+		<require idref="sam0.drivers.system"/>
+		<device-support value="samd20"/>
+	</module>
+</asf>

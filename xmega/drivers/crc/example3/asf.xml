@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.crc.example3" caption="CRC Example 3">
+		<info type="description" value="summary">
+		An example application performing CRC on a DMA transaction.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="example3.c"/>
+		<device-support value="xmegaa3bu"/>
+		<device-support value="xmegaa3u"/>
+		<device-support value="xmegac"/>
+		<require idref="xmega.drivers.crc"/>
+		<require idref="xmega.drivers.dma"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.boards"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

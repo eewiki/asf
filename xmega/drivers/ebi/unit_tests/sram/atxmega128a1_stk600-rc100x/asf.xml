@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project id="xmega.drivers.ebi.unit_tests.sram.stk600-rc100x" caption="Unit tests for EBI driver with SRAM on STK600" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="xmega.drivers.ebi.unit_tests.sram"/>
+		<require idref="board.stk600-rc100x.atxmega128a1"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

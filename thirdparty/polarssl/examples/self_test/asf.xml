@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.polarssl.selftest.example" caption="PolarSSL(Small Cryptographic and SSL/TLS Library) Selftest Example">
+		<info type="description" value="summary">
+		Self-test demonstration application of the PolarSSL library.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<build type="c-source" value="selftest.c"/>
+		<build type="header-file" value="documentation.h"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.services.crypto.polarssl"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

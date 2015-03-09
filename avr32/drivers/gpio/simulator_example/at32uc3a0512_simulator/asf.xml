@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="GPIO Peripheral Bus Example for AVR Simulator" id="avr32.drivers.gpio.simulator_example.at32uc3a0512">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="include-path" value="."/>
+		<require idref="avr32.drivers.gpio.simulator_example"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="board.avr_simulator_uc3.at32uc3a0512"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

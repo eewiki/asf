@@ -1,0 +1,28 @@
+<asf xmlversion="1.0">
+	<project caption="USB Composite Device CDC serial and MSC for SAM4L-EK" id="common.services.usb.composite.device.example.cdc_msc.sam4l_ek">
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_virtual_mem.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.virtual_mem"/>
+		<require idref="common.services.usb.composite.device.example.cdc_msc"/>
+		<config name="config.common.services.usb.class.device" value="composite"/>
+		<config name="config.common.services.usb.class.cdc.device.composite" value="enable"/>
+		<config name="config.common.services.usb.class.msc.device.composite" value="enable"/>
+		<require idref="board.sam4l_ek"/>
+		<config name="config.board.sam4l_ek.led" value="yes"/>
+		<require idref="sam.drivers.usart"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4lc4c"/>
+	</project>
+</asf>

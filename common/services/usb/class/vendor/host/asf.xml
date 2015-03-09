@@ -1,0 +1,54 @@
+<asf xmlversion="1.0">
+	<select-by-config id="common.services.usb.class.vendor.host.composite" name="config.common.services.usb.class.vendor.host.composite" caption="USB Host Vendor (Multiple classes support)" default="disable">
+		<module type="service" id="common.services.usb.class.vendor.host.composite#enable" caption="USB Host Vendor (Multiple classes support)">
+			<info type="description" value="summary">
+			Provides USB Vendor Interface to run on USB host which support multiple class.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="uhi_vendor.h"/>
+			<build type="c-source" value="uhi_vendor.c"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="uhi_vendor_group"/>
+			<build type="doxygen-quick-start" value="uhi_vendor_quickstart"/>
+			<require idref="common.services.usb.class.vendor.protocol"/>
+			<require idref="common.services.usb.class.composite.host"/>
+			<device-support value="uc3a"/>
+			<device-support value="uc3a3_a4"/>
+			<device-support value="uc3b0"/>
+			<device-support value="uc3c"/>
+			<device-support value="sam3x"/>
+			<device-support value="sam3a"/>
+			<device-support value="sam4l"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+		<module type="service" id="common.services.usb.class.vendor.host.composite#disable" caption="USB Host Vendor disabled">
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="avr"/>
+			<device-support value="sam"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+		</module>
+	</select-by-config>
+
+	<module type="service" id="common.services.usb.class.vendor.host" caption="USB Host Vendor (Single Class support)">
+		<info type="description" value="summary">
+		Provides USB Vendor Interface configurated to run on USB host with a single class support.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" subtype="api" value="uhi_vendor.h"/>
+		<build type="c-source" value="uhi_vendor.c"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_usb_host.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="uhi_vendor_group"/>
+		<require idref="common.services.usb.class.vendor.protocol"/>
+		<require idref="common.services.usb.host"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b0"/>
+		<device-support value="uc3c"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4l"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.pmc.pmc_clock_switching_example" caption="PMC Clock Switching Example">
+		<info type="description" value="summary">
+			The application allows the user to switch the input clock source from SLCK, MAINCK and PLL to generate different MCKs and output the frequence to the PCK.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Power Management"/>
+		</info>
+		<build type="c-source" value="pmc_clock_switching_example.c"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_pmc_clock_switching_example.h"/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

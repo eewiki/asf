@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.flashc" caption="FLASHC - Flash Controller">
+		<info type="description" value="summary">
+		FLASHC interfaces a flash block with the 32-bit internal HSB bus.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory" />
+		</info>
+		<build type="c-source" value="flashc.c"/>
+		<build type="header-file" subtype="api" value="flashc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_flashc"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

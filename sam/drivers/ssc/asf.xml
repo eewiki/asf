@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.ssc" caption="SSC - Synchronous Serial Controller">
+		<info type="description" value="summary">
+			The Synchronous Serial Controller provides a synchronous communication link with external devices. It supports many serial synchronous communication protocols generally used in audio and telecom applications.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="ssc.c"/>
+		<build type="header-file" subtype="api" value="ssc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_ssc_group"/>
+		<device-support value="sam3s"/>
+		<device-support value="sam3sd8"/>
+		<device-support value="sam3u"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam4s"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

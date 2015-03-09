@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project id="common.services.calendar.example1.uc3_l0_xplained" caption="Calendar service example for UC3-L0 Xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="common.services.calendar.example1"/>
+		<require idref="board.uc3_l0_xplained"/>
+		<config name="config.board.uc3_l0_xplained.led" value="yes"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="iarew32"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

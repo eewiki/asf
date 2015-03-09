@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="DSPLIB 16-bit fixed-point FIR filter example" id="avr32.services.dsplib.example.dsp16_fir.evk1101">
+		<require idref="board.evk1101"/>
+		<config name="config.board.evk1101.init" value="no"/>
+		<require idref="avr32.services.dsplib.example.dsp16_fir"/>
+		<require idref="avr32.services.dsplib.modules.debug.evk1101_usart1"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

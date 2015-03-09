@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Chip Reset Cause Access / Example for stk600-rc032x with ATxmega32E5" id="common.services.basic.cpu.example.stk600-rc032x_atxmega32e5">
+		<info type="description" value="summary">
+		This example demonstrates how to use the Common API for Chip Reset Cause Access.
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.cpu.example"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

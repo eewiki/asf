@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.sdramc" caption="SAM SDRAMC Driver">
+		<info type="description" value="summary">
+		SAM SDRAMC driver with the sleep mananger support.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>		
+		<build type="c-source" value="sdramc.c"/>
+		<build type="header-file" subtype="api" value="sdramc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_sdramc_group"/>
+		<build type="doxygen-quick-start" value="sam_sdramc_quickstart"/>
+		<device-support value="atsam3x8h"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

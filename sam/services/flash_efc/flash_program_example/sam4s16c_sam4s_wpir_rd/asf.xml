@@ -1,0 +1,26 @@
+﻿<asf xmlversion="1.0">
+	<project id="sam.services.flash.program_example.sam4s16c_sam4s_wpir_rd" caption="Flash Program Example for SAM4S-WPIR-RD">
+		<!-- Files -->
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_example.h"/>
+
+		<!-- Device support -->
+		<device-support value="atsam4s16c"/>
+
+		<!-- Required modules -->
+		<require idref="board.sam4s_wpir_rd" />
+		<require idref="sam.services.flash.program_example" />
+
+		<!-- Generator options -->
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+	</project>
+</asf>

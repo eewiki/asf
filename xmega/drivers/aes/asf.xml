@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.aes" caption="AES - Advanced Encryption Standard">
+		<info type="description" value="summary">
+		Driver for the AES (Advanced Encryption standard) crypto module. The AES crypto module performs encryption and decryption according to the Advanced Encryption Standard (FIPS-197). The module supports a 128-bit key and datablock.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<build type="c-source" value="aes.c"/>
+		<build type="header-file" subtype="api" value="aes.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="aes_group"/>
+		<build type="doxygen-quick-start" value="xmega_aes_quickstart"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="atxmega384c3"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

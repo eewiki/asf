@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Chip Reset Cause Access / Example for STK600-RC100X" id="common.services.basic.cpu.example.stk600-rc100x.atxmega128a1">
+		<info type="description" value="summary">
+		This example demonstrates how to use the Common API for Chip Reset Cause Access.
+		</info>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.cpu.example"/>
+		<require idref="board.stk600-rc100x.atxmega128a1"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

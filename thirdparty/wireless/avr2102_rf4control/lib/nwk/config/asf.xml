@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.avr2102_rf4control.lib.nwk.config" caption="AVR2102 -NWK LIB Config">
+		<info type="description" value="summary">
+		</info>
+	    <build type="include-path" value="."/>
+		<build type="header-file"   value="node_config.h"/>
+		<build type="doxygen-entry-point" value="nwk_lib"/>
+		<device-support-alias value="avr2102_rf4control_nwk_support"/>
+	</module>
+    <device-alias-map name="avr2102_rf4control_nwk_support">
+        <device-support value="at32uc3a3256s"/>
+        <device-support value="atmega256rfr2"/>
+        <device-support value="atxmega256a3bu"/>
+        <device-support value="atxmega256a3u"/>
+		<device-support value="atsam4lc4c"/>
+		
+    </device-alias-map>
+</asf>

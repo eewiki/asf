@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.uart" caption="UART - Univ. Async Rec/Trans">
+		<info type="description" value="summary">
+			The Universal Asynchronous Receiver Transmitter features a two-pin UART that can be used for communication and trace purposes and offers an ideal medium for in-situ programming solutions.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="uart.c"/>
+		<build type="header-file" subtype="api" value="uart.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		<build type="doxygen-entry-point" value="sam_drivers_uart_group"/>
+	</module>
+</asf>

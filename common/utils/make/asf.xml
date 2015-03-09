@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="build-specific" caption="Generic Makefile for 8-bit AVR" id="common.utils.makefile">
+		<info type="description" value="summary">
+		Generic Makefile for 8-bit AVR used by GCC projects. This
+		makefile is intended to be included from the project specific
+		makefile and contains common build rules for object files and
+		linking.
+		</info>
+		<build type="distribute" subtype="file" value="Makefile.avr.in" toolchain="avrgcc"/>
+		<device-support value="mega" />
+		<device-support value="tiny" />
+		<device-support value="xmega" />
+	</module>
+</asf>

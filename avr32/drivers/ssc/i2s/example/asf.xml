@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.ssc_i2s.example" caption="SSC (Synchronous Serial Controller) in I2S Mode Example">
+		<info type="description" value="summary">
+		Basic example of using the SSC in I2S mode.
+		</info>
+		<build type="c-source" value="ssc_i2s_example.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.ssc.i2s"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

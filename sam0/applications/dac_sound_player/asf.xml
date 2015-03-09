@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.applications.dac_sound_player" caption="Sound Player Example">
+		<info type="description" value="summary">
+		Plays a embedded raw sound recording using the DAC of the SAM D20 devices.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+
+		<build type="c-source" value="dac_sound_player.c"/>
+
+		<build type="header-file" value="data.x"/>
+		<build type="include-path" value="."/>
+
+		<require idref="sam0.drivers.dac"/>
+		<require idref="sam0.drivers.port"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.drivers.events"/>
+		<require idref="sam0.drivers.tc"/>
+
+		<device-support value="samd20"/>
+	</module>
+</asf>

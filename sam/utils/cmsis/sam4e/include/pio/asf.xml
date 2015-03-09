@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4e.include.pio" caption="SAM4E PIO definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4E PIO
+		</info>
+		<build type="header-file" value="sam4e8c.h"/>
+		<build type="header-file" value="sam4e8e.h"/>
+		<build type="header-file" value="sam4e16c.h"/>
+		<build type="header-file" value="sam4e16e.h"/>
+		<device-support value="sam4e"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

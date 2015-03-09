@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+		<module type="service" id="common.services.basic.hugemem" caption="Huge Memory Interface">
+			<info type="description" value="summary">
+			Due to shortcomings of the GCC compiler for 8-bit AVR, custom functions are needed for access to data beyond
+			the 64 kB boundary, i.e., addresses that are larger than 16-bit. This module supplies functions for copying a number of bytes
+			between huge and 64 kB data memory space, and is needed solely for code compatibility across compilers. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Memory" />
+			</info>
+			<build type="header-file" subtype="api" value="hugemem.h"/>
+			<build type="header-file" value="avr8/hugemem.h"/>
+			<build type="header-file" value="generic/hugemem.h"/>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="avr8/avr8_hugemem.c"/>
+			<build type="doxygen-entry-point" value="hugemem_group"/>
+			<device-support value="xmega"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+</asf>

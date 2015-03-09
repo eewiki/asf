@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="ADC Example for EVK1104" id="avr32.drivers.adc.example.evk1104">
+		<info type="description" value="summary">
+		Initialize the ADC, use the on-board sensors and see the value change on a terminal.
+		</info>
+		<require idref="avr32.drivers.adc.example"/>
+		<require idref="board.evk1104"/>
+		<config name="config.board.evk1104.init" value="no"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_example.h"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

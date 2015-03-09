@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="Widget library example for the UC3C-EK" id="common.services.wtk.example1.uc3c_ek">
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_ebi.h"/>
+		<build type="header-file" value="conf_et024006dhu.h"/>
+		<build type="header-file" value="conf_rtouch.h"/>
+		<build type="header-file" value="atmel_logo_small.h"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="touch_interface.c"/>
+		<config name="config.gfx.display" value="hx8347a_et024006dhu_ebi"/>
+		<require idref="avr32.components.touch.resistive_touch"/>
+		<require idref="common.services.wtk.example1"/>
+		<require idref="common.services.delay"/>
+		<require idref="board.uc3c_ek"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

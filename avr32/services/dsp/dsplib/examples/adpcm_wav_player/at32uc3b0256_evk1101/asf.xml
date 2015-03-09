@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="DSPLIB ADPCM WAV player example" id="avr32.services.dsplib.example.adpcm_wav_player.evk1101">
+		<require idref="board.evk1101"/>
+		<config name="config.board.evk1101.init" value="no"/>
+		<require idref="avr32.services.dsplib.example.adpcm_wav_player"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

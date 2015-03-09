@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.components.memory.virtual_mem" caption="Virtual Memory in RAM">
+		<info type="description" value="summary">
+		The component manages a disk on a volatile memory (internal RAM). This can be connected to a File System management or a USB Device Mass Storage Interface via the service Memory Control Access.
+		</info>
+		<build type="c-source" value="virtual_mem.c"/>
+		<build type="header-file" subtype="api" value="virtual_mem.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_virtual_mem.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="define" name="VIRTUAL_MEMORY_ENABLE" value=""/>
+		<build type="doxygen-entry-point" value="group_common_components_memory_virtual_mem"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<device-support value="uc3"/>
+		<device-support value="xmega"/>
+		<device-support value="sam"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

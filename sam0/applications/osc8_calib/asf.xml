@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.applications.osc8_calib" caption="8MHz Oscillator Calibration Application">
+		<info type="description" value="summary">
+		Example application to calibrate the 8MHz internal RC clock source and set up a USART for the Embedded Debugger.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="osc8_calib.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common2.services.delay"/>
+		<require idref="sam0.utils.stdio.stdio_serial"/>
+		<require idref="sam0.drivers.tc"/>
+		<require idref="sam0.drivers.events"/>
+		<require idref="sam0.drivers.port"/>
+		<require idref="sam0.drivers.sercom.usart"/>
+		<device-support value="samd20"/>
+	</module>
+</asf>

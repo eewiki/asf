@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.freq_detect" caption="External oscillator frequency detection">
+		<info type="description" value="summary">
+		A software service to estimate an oscillator frequency using a known oscillator (external or internal) as a reference.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks"/>
+		</info>
+		<build type="c-source" value="freq_detect.c"/>
+		<build type="header-file" subtype="api" value="freq_detect.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_freq_detect.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_services_freq_detect"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3l"/>
+		<device-support value="uc3d"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

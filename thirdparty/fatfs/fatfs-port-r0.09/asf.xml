@@ -1,0 +1,73 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.fs.fatfs-port" caption="Supported ports of FatFS">
+		<info type="description" value="summary">
+		Low level driver for FatFS. The driver is based on the ctrl access module of the specific MCU device.
+		</info>
+		<module type="service" id="common.services.fs.fatfs-port#sam_rtc" caption="Supported ports of FatFS">
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="diskio.c"/>
+			<build type="c-source" value="sam/fattime_rtc.c"/>
+			<build type="include-path" value="sam/"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<build type="include-path" value="../fatfs-r0.09/src"/>
+			<build type="header-file" subtype="api" value="../fatfs-r0.09/src/diskio.h"/>
+			<require idref="common.services.storage.ctrl_access"/>
+			<require idref="sam.drivers.rtc"/>
+			<build type="doxygen-entry-point" value="thirdparty_fatfs_port_group"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="service" id="common.services.fs.fatfs-port#sam_ast" caption="Supported ports of FatFS">
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="diskio.c"/>
+			<build type="c-source" value="sam/fattime_ast.c"/>
+			<build type="include-path" value="sam/"/>
+			<device-support value="sam4l"/>
+			<build type="include-path" value="../fatfs-r0.09/src"/>
+			<build type="header-file" subtype="api" value="../fatfs-r0.09/src/diskio.h"/>
+			<require idref="common.services.storage.ctrl_access"/>
+			<require idref="sam.drivers.ast"/>
+			<build type="doxygen-entry-point" value="thirdparty_fatfs_port_group"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="service" id="common.services.fs.fatfs-port#xmega" caption="Supported ports of FatFS">
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="diskio.c"/>
+			<build type="c-source" value="xmega/fattime.c"/>
+			<build type="include-path" value="xmega/"/>
+			<device-support value="xmegaa1"/>
+			<device-support value="xmegaa1u"/>
+			<device-support value="xmegaa3"/>
+			<device-support value="xmegaa3u"/>
+			<device-support value="xmegaa4"/>
+			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<device-support value="xmegad"/>
+			<device-support value="xmegae"/>
+			<build type="include-path" value="../fatfs-r0.09/src"/>
+			<build type="header-file" subtype="api" value="../fatfs-r0.09/src/diskio.h"/>
+			<require idref="common.services.calendar"/>
+			<require idref="common.services.storage.ctrl_access"/>
+			<require idref="xmega.drivers.rtc"/>
+			<build type="doxygen-entry-point" value="thirdparty_fatfs_port_group"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.fs.fatfs-port#xmega_rtc32" caption="Supported ports of FatFS">
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source" value="diskio.c"/>
+			<build type="c-source" value="xmega/fattime.c"/>
+			<build type="include-path" value="xmega/"/>
+			<device-support value="xmegaa3b"/>
+			<device-support value="xmegaa3bu"/>
+			<build type="include-path" value="../fatfs-r0.09/src"/>
+			<build type="header-file" subtype="api" value="../fatfs-r0.09/src/diskio.h"/>
+			<require idref="common.services.calendar"/>
+			<require idref="common.services.storage.ctrl_access"/>
+			<require idref="xmega.drivers.rtc32"/>
+			<build type="doxygen-entry-point" value="thirdparty_fatfs_port_group"/>
+			<generator value="doxygen-module" default-mcu="atxmega256a3b"/>
+		</module>
+	</select-by-device>
+</asf>

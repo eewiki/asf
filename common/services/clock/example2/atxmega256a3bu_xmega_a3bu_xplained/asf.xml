@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Clocks Control / Example 2 for XMEGA-A3BU XPLAINED" id="common.services.basic.clock.example2.xmega_a3bu_xplained">
+		<info type="description" value="summary">
+		Initialize the system clock and blink a LED at a constant 1Hz frequency.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example2.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.clock.example2"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+		<module type="service" id="thirdparty.services.atmel_rf4ce" caption="AVR477 Atmel RF4CE stack configuration files">
+		<build type="doxygen-entry-point" value="group_common_services_wireless_rf4ce"/>
+			<info type="description" value="summary">
+			The configuration files for the Atmel RF4CE stack.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="Wireless" />
+			</info>
+
+		    <build type="module-config" subtype="required-header-file" value="pal_config.h"/>
+		    <build type="module-config" subtype="path" value="module_config/"/>
+			<build type="module-config" subtype="required-header-file" value="app_config.h"/>
+		    <build type="module-config" subtype="path" value="module_config/"/>
+			<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		    <build type="module-config" subtype="path" value="module_config/"/>
+
+			<build type="doxygen-entry-point" value="group_common_services_wireless_rf4ce"/>
+			<device-support value="atmega128rfa1"/>
+		</module>
+</asf>

@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.display.aat31xx" caption="Display - AAT31XX Backlight Controller">
+		<info type="description" value="summary">
+			Low-level driver for the AAT31XX LCD backlight controller.
+		</info>
+		<build type="c-source" value="aat31xx.c"/>
+		<build type="header-file" subtype="api" value="aat31xx.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam3"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
+		<require idref="common.services.ioport"/>
+		<build type="module-config" subtype="required-header-file" value="conf_aat31xx.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		<build type="doxygen-entry-point" value="aat31xx_display_group"/>
+	</module>
+</asf>

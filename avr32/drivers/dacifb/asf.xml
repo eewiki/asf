@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.dacifb" caption="DACIFB - DAC Interface B">
+		<info type="description" value="summary">
+		Driver for the Digital to Analog Converter (DAC) Interface B. It provides functions for configuring and using the DAC and its channels.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="dacifb.c"/>
+		<build type="header-file" subtype="api" value="dacifb.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_dacifb"/>
+		<device-support value="uc3c"/>
+		<require idref="common.services.delay"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+	</module>
+</asf>

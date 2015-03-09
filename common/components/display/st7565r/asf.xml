@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.components.display.st7565r" caption="ST7565R LCD controller">
+		<info type="description" value="summary">
+		Low-level driver for the ST7565R LCD controller.
+		Note: Controller inside display LCD NHD-C12832A1Z-FSW-FBW (128 x 32, Monochrome).
+		This display is available on XMEGA-A3BU Xplained.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<device-support value="xmega"/>
+		<build type="c-source" value="st7565r.c"/>
+		<build type="header-file" subtype="api" value="st7565r.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_st7565r.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="st7565r_lcd_controller_group"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.spi_master"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

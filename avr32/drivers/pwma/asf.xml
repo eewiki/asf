@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.pwma" caption="PWMA - Pulse Width Modulation A">
+		<info type="description" value="summary">
+		The Pulse Width Modulation A Controller (PWMA) controls several pulse width modulation (PWM) channels.
+		This driver provides an API to get access to the main features of the PWMA controller.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks" />
+		</info>
+		<build type="c-source" value="pwma.c"/>
+		<build type="header-file" subtype="api" value="pwma.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_pwma"/>
+		<device-support value="uc3l"/>
+		<device-support value="uc3d"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3l"/>
+	</module>
+</asf>

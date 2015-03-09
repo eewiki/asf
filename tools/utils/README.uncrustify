@@ -1,0 +1,32 @@
+This is a snapshot of the Uncrustify GIT repository from 29. Nov 2011.
+This includes the changes commited after version 0.59 that is needed
+for the ASF codestyle (Double TAB on continuation).
+The .zip files contains the complete code archive, and can be built on
+linux with the following commands:
+
+$>./configure
+$>make
+
+For windows users there is a precompiled .exe
+
+Any version > 0.59 will supercede the version stored here, as these
+changes will be included.
+
+For latest version of uncrustify, see the project webpage:
+http://uncrustify.sourceforge.net/
+or the GIT repository:
+https://github.com/bengardner/uncrustify/
+
+--------------------------------------------------------------------------
+Usage examples:
+
+----Apply changes to a new file:
+* This will create sourcefile.c.uncrustify with codestyle changes applied.
+
+$ uncrustify -c asf.cfg sourcefile.c
+
+----Replace original file with the uncrustified one:
+* This will replace the original file, and don't do a backup.
+
+$ uncrustify -c asf.cfg --replace sourcefile.c
+

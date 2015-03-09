@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<project caption="AT42QT1060 Example for UC3C_EK" id="avr32.components.touch.at42qt1060.example.uc3c_ek">
+		<require idref="avr32.components.touch.at42qt1060.example"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.rtc32" caption="RTC32 - Real Time Counter 32">
+		<info type="description" value="summary">
+		Driver for the RTC32 (32-bit Real Time Counter). Provides functions for timeout (alarm) of very long duration. Optional call-back function. Requires external 32kHz crystal. Can be used in combination with the RTC battery back-up feature. This module is only available in the XMEGA A3B family.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks"/>
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="rtc32.c"/>
+		<build type="header-file" subtype="api" value="rtc32.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_rtc32.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="rtc32_group"/>
+		<build type="doxygen-quick-start" value="xmega_rtc32_quickstart"/>
+		<device-support value="xmegaa3b"/>
+		<device-support value="xmegaa3bu"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.delay"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="atxmega256a3b"/>
+	</module>
+</asf>

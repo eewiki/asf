@@ -1,0 +1,59 @@
+<asf xmlversion="1.0">
+	<module type="application" caption="AVR477 Target Example" id="thirdparty.services.atmel_rf4ce.examples.avr477_target">
+		<info type="description" value="summary">
+		This AVR477 Target application runs in conjunction with the remote controller application which integrates the RF4CE library and QTouch Library. This demo application (Target) runs on the ATmega128RFA1 MCU on the Sensor Terminal Board,when used along with the QT600. Please refer Application Note AVR477 on ATMEL's website ( www.atmel.com )
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="qdebug_transport.c"/>
+		<build type="c-source" value="twi_master.c"/>
+		<build type="c-source" value="vendor_data.c"/>
+		<build type="header-file" value="app_config.h"/>
+		<build type="header-file" value="qdebug_transport.h"/>
+		<build type="header-file" value="qdebug_settings.h"/>
+		<build type="header-file" value="twi_master.h"/>
+		<build type="include-path" value="."/>
+		<build type="define" name="DEBUG" value="0"/>
+		<build type="define" name="ZRC_PROFILE" value=""/>
+		<build type="define" name="PB_PAIRING" value=""/>
+		<build type="define" name="ZRC_CMD_DISCOVERY" value=""/>
+		<build type="define" name="VENDOR_DATA" value=""/>
+		<build type="define" name="RF4CE_TARGET" value=""/>
+		<build type="define" name="RF4CE_SECURITY" value=""/>
+		<build type="define" name="CHANNEL_AGILITY" value=""/>
+		<build type="define" name="MAC_USER_BUILD_CONFIG" value=""/>
+		<build type="define" name="RELAY_SUPPORT" value=""/>
+		<build type="define" name="HIGHEST_STACK_LAYER" value="RF4CE"/>
+		<build type="define" name="TAL_TYPE" value="ATMEGARF_TAL_1"/>
+		<build type="define" name="PAL_TYPE" value="ATMEGA128RFA1"/>
+		<build type="define" name="PAL_GENERIC_TYPE" value="MEGA_RF_"/>
+		<build type="define" name="BOARD_TYPE" value="RCB_6_3_SENS_TERM_BOARD"/>
+		<build type="define" name="QDEBUG_TWI" value=""/>
+		<build type="define" name="STB_RCB" value=""/>
+		<build type="define" name="_GENERIC_QDEBUG_" value=""/>
+		<build type="include-path" value="."/>
+		<device-support value="atmega128rfa1"/>
+		<require idref="thirdparty.services.atmel_rf4ce"/>
+		<require idref="thirdparty.services.atmel_rf4ce.lib.method"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<project caption="AVR477 Target Example" id="thirdparty.services.atmel_rf4ce.examples.avr477_target.project">
+		<require idref="board.user_board.megarf"/>
+		<require idref="thirdparty.services.atmel_rf4ce"/>
+		<require idref="thirdparty.services.atmel_rf4ce.lib.inc"/>
+		<require idref="thirdparty.services.atmel_rf4ce.examples.avr477_target"/>
+		<config name="thirdparty.services.atmel_rf4ce.lib.method" value="target_method"/>
+		<require idref="common.utils"/>
+		<build type="header-file" value="pal_config.h"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="include-path" value="."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.bootloader=0x1f000"/>
+		<config name="config.compiler.avrgcc.optimization" value="size"/>
+		<build type="build-config" subtype="c-compiler-flags" value="-fshort-enums" toolchain="avrgcc"/>
+		<build type="build-config" subtype="assembler-flags" value="-fshort-enums" toolchain="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="avrgcc"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega128rfa1"/>
+	</project>
+</asf>

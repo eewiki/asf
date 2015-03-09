@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Clocks Control / Example 1 for MEGA RF" id="common.services.basic.clock.example1.atmega128rfa1_stk600">
+		<info type="description" value="summary">
+		Initialize the system clock and Should toggle one pin on the megaRF port B LED at a constant 1Hz frequency.
+		</info>
+		<build type="include-path" value="." />
+		<build type="header-file" value="conf_board.h" />
+		<build type="header-file" value="conf_clock.h" />
+		<require idref="common.services.basic.clock.example1" />
+		<require idref="board.stk600-mega.atmega128rfa1" />
+		<generator value="iarew" />
+		<generator value="avrgcc" />
+		<generator value="as5_8" />
+		<generator value="doxygen" />
+		<device-support value="atmega128rfa1" />
+	</project>
+</asf>

@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Demo application for UC3-A3 Xplained" id="avr32.applications.uc3-a3_xplained_demo">
+		<info type="description" value="summary">
+		Demo application for UC3-A3 that reads the value from a touch slider to set the brightness of a LED using PWM.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="avr32.applications.uc3-a3_xplained_demo_application"/>
+		<require idref="board.uc3_a3_xplained"/>
+		<config name="config.board.uc3_a3_xplained.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

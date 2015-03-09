@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.components.crypto.sha204.example_comm" caption="ATSHA204 Example 1 for Security Xplained">
+		<info type="description" value="summary">
+		Provides an application example of an ATSHA204 component. In an infinite loop, sends a DevRev command to all four ATSHA204 devices 
+        and indicates success or failure for one second using the main board LEDs.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_atsha204.h"/>
+		<build type="c-source" value="sha204_example_comm.c"/>
+		<require idref="common.boards.security_xplained"/>
+		<require idref="common.components.crypto.sha204.example_utilities_led"/>
+		<device-support value="xmegaa1"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

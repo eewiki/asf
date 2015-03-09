@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device Mass Storage for Arduino Due/X" id="common.services.usb.class.msc.device.example.arduino_due_x">
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_virtual_mem.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.virtual_mem"/>
+		<require idref="common.services.usb.class.msc.device.example"/>
+		<config name="config.common.services.usb.class.device" value="mass_storage"/>
+		<require idref="board.arduino_due_x"/>
+		<config name="config.board.arduino_due_x.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.stack_size" value="16K"/>
+		<config name="config.compiler.iarewarm.sys_stack_size" value="16K"/>
+		<device-support value="atsam3x8e"/>
+	</project>
+</asf>

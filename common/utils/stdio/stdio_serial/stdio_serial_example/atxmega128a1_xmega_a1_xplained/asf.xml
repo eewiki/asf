@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="XMEGA-A1 Xplained Serial Standard I/O Example" id="common.utils.stdio.stdio_serial.xmega-a1_stdio-demo">
+		<config name="config.board.xmega_a1_xplained.led" value="yes"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="board.xmega_a1_xplained"/>
+		<require idref="common.utils.stdio.stdio_serial.stdio_serial_example"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.events.example2" caption="Events Example 2">
+		<info type="description" value="summary">
+			This events example using the GPIO pad as an event source and the PDCA as a triggered event that sends a character to a USART output.
+			</info>
+		<info type="keyword" value="technology">
+			<keyword value="Peripheral Event System"/>
+		</info>
+		<build type="c-source" value="events_example2.c"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.events"/>
+		<require idref="sam.drivers.gpio"/>
+		<require idref="sam.drivers.pdca"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

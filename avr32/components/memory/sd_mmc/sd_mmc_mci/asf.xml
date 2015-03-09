@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.memory.sd_mmc.sd_mmc_mci" caption="SD/MMC card access using MCI">
+		<info type="description" value="summary">
+		Driver for SD (Secure Digital) / MMC (MultiMedia Card) access using MCI (Multimedia Card Interface). This driver is used to setup access to SD/MMC memory cards using the MCI interface. DMA is used for data transfers to offload the CPU.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="c-source" value="sd_mmc_mci.c"/>
+		<build type="header-file" subtype="api" value="sd_mmc_mci.h"/>
+		<build type="c-source" value="sd_mmc_mci_mem.c"/>
+		<build type="header-file" subtype="api" value="sd_mmc_mci_mem.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_sd_mmc_mci.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="define" name="SD_MMC_MCI_ENABLE" value=""/>
+		<build type="doxygen-entry-point" value="group_avr32_components_memory_sd_mmc_sd_mmc_mci"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.mci"/>
+		<require idref="common.services.storage.ctrl_access"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a3_a4"/>
+	</module>
+</asf>

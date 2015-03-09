@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.usb.host" caption="USB Host stack core">
+		<info type="description" value="summary">
+		USB host stack core with common API.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="doxygen-entry-point" value="uhc_group"/>
+		<build type="header-file" subtype="api" value="uhd.h"/>
+		<build type="header-file" subtype="api" value="uhc.h"/>
+		<build type="header-file" value="uhi.h"/>
+		<build type="c-source" value="uhc.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b0"/>
+		<device-support value="uc3c"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4l"/>
+		<require idref="common.drivers.usb.host"/>
+		<require idref="common.services.usb.protocol"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

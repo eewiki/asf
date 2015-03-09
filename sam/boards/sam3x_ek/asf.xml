@@ -1,0 +1,43 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.sam3x_ek.led" name="config.board.sam3x_ek.led" caption="SAM3X EK LED support" default="yes">
+		<module type="meta" id="config.board.sam3x_ek.led#no" caption="SAM3X EK LED support disabled">
+		</module>
+		<module type="meta" id="config.board.sam3x_ek.led#yes" caption="SAM3X EK LED support enabled">
+			<build type="c-source" value="led.c"/>
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="sam.drivers.pio"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.sam3x_ek.init" name="config.board.sam3x_ek.init" caption="SAM3X initialization support" default="yes">
+		<module type="meta" id="config.board.sam3x_ek.init#no" caption="SAM3X initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.sam3x_ek.init#yes" caption="SAM3X initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="sam.drivers.pio"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.sam3x_ek" vendor="Atmel" caption="SAM3X-EK">
+		<build type="define" name="BOARD" value="SAM3X_EK"/>
+		<build type="define" name="__SAM3X8H__" value=""/>
+		<build type="header-file" value="sam3x_ek.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/gcc/sam3x_ek_flash.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/gcc/sam3x_ek_sram.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/iar/sam3x_ek_flash.mac" toolchain="iarewarm"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/iar/sam3x_ek_sram.mac" toolchain="iarewarm"/>
+		<require idref="sam.utils.cmsis.sam3x.source.template"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.sam3x_ek.init"/>
+		<require idref="config.board.sam3x_ek.led"/>
+		<device-support value="atsam3x8h"/>
+	</board>
+</asf>

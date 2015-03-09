@@ -1,0 +1,96 @@
+<asf xmlversion="1.0">
+	<project caption="UC3-L0 Xplained with Xplained Inertial Board #1" id="avr32.applications.uc3-l0_avrsbin1_demo">
+		<info type="description" value="summary">
+			Demo application for UC3-L0 Xplained obtains sensor data from an
+			Atmel Sensors Xplained Inertial 1 board (ATAVRSBIN1) then
+			displays accelerometer, gyroscope, and electronic compass data.
+		</info>
+		<config name="config.common.services.basic.twi.mode" value="master"/>
+		<build type="header-file" value="conf/conf_board.h"/>
+		<build type="header-file" value="conf/conf_twim.h"/>
+		<build type="header-file" value="conf/conf_usart_serial.h"/>
+		<build type="include-path" value="./conf"/>
+		<require idref="board.uc3_l0_xplained"/>
+		<require idref="board.sensors_xplained.inertial_1"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="sensors.inertial.demo"/>
+		<build type="define" name="CONF_STDIO_REDIRECT" value=""/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+	<!--
+	<project caption="UC3-L0 Xplained with Xplained Inertial Board #2" id="avr32.applications.uc3-l0_avrsbin2_demo">
+		<info type="description" value="summary">
+			Demo application for UC3-L0 Xplained obtains sensor data from an
+			Atmel Sensors Xplained Inertial 2 board (ATAVRSBIN2) then
+			displays accelerometer, gyroscope, and electronic compass data.
+		</info>
+		<config name="config.common.services.basic.twi.mode" value="master" />
+		<build type="header-file" value="conf/conf_board.h"/>
+		<build type="header-file" value="conf/conf_twim.h"/>
+		<build type="header-file" value="conf/conf_usart_serial.h"/>
+		<build type="include-path" value="./conf"/>
+		<require idref="board.uc3_l0_xplained"/>
+		<require idref="board.sensors_xplained.inertial_2"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="sensors.inertial.demo"/>
+		<build type="define" name="CONF_STDIO_REDIRECT" value=""/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+	</project>
+	-->
+	<project caption="UC3-A3 Xplained with Xplained Inertial Board #1" id="avr32.applications.uc3-a3_avrsbin1_demo">
+		<info type="description" value="summary">
+			Demo application for UC3-A3 Xplained obtains sensor data from an
+			Atmel Sensors Xplained Inertial 1 board (ATAVRSBIN1) then
+			displays accelerometer, gyroscope, and electronic compass data.
+		</info>
+		<config name="config.board.uc3_a3_xplained.led" value="yes"/>
+		<config name="config.common.services.basic.twi.mode" value="master"/>
+		<build type="header-file" value="conf/conf_board.h"/>
+		<build type="header-file" value="conf/conf_twim.h"/>
+		<build type="header-file" value="conf/conf_sleepmgr.h"/>
+		<build type="header-file" value="conf/conf_usb.h"/>
+		<build type="include-path" value="./conf"/>
+		<require idref="board.uc3_a3_xplained"/>
+		<require idref="board.sensors_xplained.inertial_1"/>
+		<require idref="common.utils.stdio.stdio_usb"/>
+		<require idref="sensors.inertial.demo"/>
+		<build type="define" name="CONF_STDIO_REDIRECT" value=""/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+	<!--
+	<project caption="UC3-A3 Xplained with Xplained Inertial Board #2" id="avr32.applications.uc3-a3_avrsbin2_demo">
+		<info type="description" value="summary">
+			Demo application for UC3-A3 Xplained obtains sensor data from an
+			Atmel Sensors Xplained Inertial 2 board (ATAVRSBIN2) then
+			displays accelerometer, gyroscope, and electronic compass data.
+		</info>
+		<config name="config.board.uc3_a3_xplained.led" value="yes"/>
+		<config name="config.common.services.basic.twi.mode" value="master" />
+		<build type="header-file" value="conf/conf_board.h"/>
+		<build type="header-file" value="conf/conf_twim.h"/>
+		<build type="header-file" value="conf/conf_sleepmgr.h"/>
+		<build type="header-file" value="conf/conf_usb.h"/>
+		<build type="include-path" value="./conf"/>
+		<require idref="board.uc3_a3_xplained"/>
+		<require idref="board.sensors_xplained.inertial_2"/>
+		<require idref="common.utils.stdio.stdio_usb"/>
+		<require idref="sensors.inertial.demo"/>
+		<build type="define" name="CONF_STDIO_REDIRECT" value=""/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+	</project>
+	-->
+</asf>

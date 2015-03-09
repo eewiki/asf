@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<project caption="lwIP + FreeRTOS Example for EVK1100" id="common.services.freertos.lwip_example.evk1100">
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="header-file" value="conf_eth.h"/>
+		<require idref="common.services.freertos.lwip_example"/>
+		<require idref="board.evk1100"/>
+		<config name="config.board.evk1100.led" value="yes"/>
+		<config name="config.board.evk1100.init" value="no"/>
+		<config name="config.avr32.drivers.intc.exception" value="no"/>
+		<toolchain-config name="avr32gcc.linker.general.DoNotUseStandardStartFiles" value="False" toolchain="avr32gcc"/>
+		<config name="config.compiler.avr32gcc.use_startfiles" value="yes"/>
+		<config name="config.avr32.utils.gccstartup" value="no"/>
+		<config name="config.services.network.tcpip.lwip-port" value="freertos"/>
+		<config name="config.thirdparty.lwip-port.140" value="freertos"/>
+		<config name="config.thirdparty.lwip.version" value="1.4.0"/>
+		<config name="config.avr32.drivers.macb" value="dp83848"/>
+		<build type="define" name="FREERTOS_USED" value=""/>
+		<build type="define" name="HTTP_USED" value="1"/>
+		<build type="define" name="TFTP_USED" value="1"/>
+		<build type="define" name="SMTP_USED" value="0"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<config name="config.compiler.iarew32.sys_stack_size" value="0x1000"/>
+		<config name="config.compiler.iarew32.app_stack_size" value="0x0000"/>
+		<config name="config.compiler.iarew32.heap_size" value="0x7000"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

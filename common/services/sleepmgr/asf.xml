@@ -1,0 +1,86 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.services.basic.sleepmgr" caption="Sleep manager">
+		<info type="description" value="summary">
+		The sleep manager provides functions for centralized management of sleep modes. Common API for SAM, UC3 and XMEGA.
+		</info>
+		<module type="service" id="common.services.basic.sleepmgr#0" caption="Sleep manager - UC3 implementation">
+			<info type="description" value="summary">
+			The sleep manager provides functions for centralized management of sleep modes. Common API for SAM, UC3 and XMEGA.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management" />
+			</info>
+			<build type="header-file" subtype="api" value="sleepmgr.h"/>
+			<build type="header-file" subtype="api" value="uc3/sleepmgr.h"/>
+			<build type="c-source" value="uc3/sleepmgr.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_sleepmgr.h"/>
+			<build type="include-path" value="."/>
+			<build type="doxygen-entry-point" value="sleepmgr_group"/>
+			<require idref="avr32.drivers.pm"/>
+			<build type="module-config" subtype="path" value="uc3/module_config"/>
+			<device-support value="uc3"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3b"/>
+		</module>
+		<module type="service" id="common.services.basic.sleepmgr#1" caption="Sleep manager - XMEGA A/AU/B/D implementation">
+			<info type="description" value="summary">
+			The sleep manager provides functions for centralized management of sleep modes. Common API for UC3 and XMEGA.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management" />
+			</info>
+			<build type="header-file" subtype="api" value="sleepmgr.h"/>
+			<build type="header-file" subtype="api" value="xmega/sleepmgr.h"/>
+			<build type="c-source" value="xmega/sleepmgr.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_sleepmgr.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="path" value="xmega/module_config"/>
+			<build type="doxygen-entry-point" value="sleepmgr_group"/>
+			<device-support value="xmegaa"/>
+			<device-support value="xmegaau"/>
+			<device-support value="xmegab"/>
+			<device-support value="xmegac"/>
+			<device-support value="xmegad"/>
+			<device-support value="xmegae"/>
+			<require idref="xmega.drivers.sleep"/>
+			<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+		</module>
+		<module type="service" id="common.services.basic.sleepmgr#2" caption="Sleep manager - SAM implementation">
+			<info type="description" value="summary">
+			The sleep manager provides functions for centralized management of sleep modes. Common API for SAM, UC3 and XMEGA.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management" />
+			</info>
+			<build type="header-file" subtype="api" value="sleepmgr.h"/>
+			<build type="header-file" subtype="api" value="sam/sleepmgr.h"/>
+			<build type="c-source" value="sam/sleepmgr.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_sleepmgr.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="path" value="sam/module_config"/>
+			<build type="doxygen-entry-point" value="sleepmgr_group"/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4e"/>
+			<require idref="sam.drivers.pmc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="service" id="common.services.basic.sleepmgr#3" caption="Sleep manager - SAM4L implementation">
+			<info type="description" value="summary">
+			The sleep manager provides functions for centralized management of sleep modes. Common API for SAM, UC3 and XMEGA.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management" />
+			</info>
+			<build type="header-file" subtype="api" value="sleepmgr.h"/>
+			<build type="header-file" subtype="api" value="sam4l/sleepmgr.h"/>
+			<build type="c-source" value="sam4l/sleepmgr.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_sleepmgr.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="path" value="sam4l/module_config"/>
+			<build type="doxygen-entry-point" value="sleepmgr_group"/>
+			<device-support value="sam4l"/>
+			<require idref="sam.drivers.bpm"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+	</select-by-device>
+</asf>

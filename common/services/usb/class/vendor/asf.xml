@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.usb.class.vendor.protocol" caption="USB Vendor Protocol">
+		<info type="description" value="summary">
+		USB Vendor Class definitions.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" subtype="api" value="usb_protocol_vendor.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="xmegaa3u"/>
+		<device-support value="xmegaa3bu"/>
+		<device-support value="xmegaa4u"/>
+		<device-support value="xmegac"/>
+		<device-support value="sam3s"/>
+		<device-support value="sam3sd"/>
+		<device-support value="sam3u"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4l"/>
+		<device-support value="sam4e"/>
+	</module>
+</asf>

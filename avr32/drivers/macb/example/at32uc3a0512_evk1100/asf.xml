@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="MACB Example for EVK1100" id="avr32.drivers.macb.example.evk1100">
+		<info type="description" value="summary">
+		Reply to ping requests on a local network (low-level implementation i.e. not using any TCP/IP stack).
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_eth.h"/>
+		<require idref="avr32.drivers.macb.example"/>
+		<require idref="board.evk1100"/>
+		<config name="config.board.evk1100.init" value="no"/>
+		<config name="config.avr32.drivers.macb" value="dp83848"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

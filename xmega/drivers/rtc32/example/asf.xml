@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.rtc32.example" caption="RTC32 Example">
+		<info type="description" value="summary">
+		Use the XMEGA RTC32 module : initialization, uses the LEDs to show the last two digits from time in binary coded decimal (BCD) and then reschedules the alarm in every third RTC32 clock cycle.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Clocks"/>
+			<keyword value="Timers"/>
+		</info>
+		<build type="c-source" value="rtc32_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="xmegaa3b"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.boards"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.drivers.rtc32"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

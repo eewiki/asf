@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.display.dip204" caption="LCD Display - DIP204B-4ORT01">
+		<info type="description" value="summary">
+		Driver for Ortek DIP204B-4ORT01 LCD module (4*20 characters). Provides functions for initialization, controlling back-light, and writing characters and strings to the display.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<build type="c-source" value="dip204.c"/>
+		<build type="header-file" subtype="api" value="dip204.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_dip204.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_components_display_dip204"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.pwm"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="common.services.delay"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

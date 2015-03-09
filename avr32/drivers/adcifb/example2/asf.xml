@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.drivers.adcifb.example2" caption="ADCIFB Sleepwalking Example">
+		<info type="description" value="summary">
+		This Application demonstrates the use of Sleepwalking feature with ADCIFB module to lower power consumption.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_adcifb_example2_sleepwalking"/>
+		<build type="c-source" value="adcifb_sleepwalking_example.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="uc3l"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.delay"/>
+		<require idref="avr32.drivers.adcifb"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.ast"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.scif"/>
+		<require idref="avr32.utils"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

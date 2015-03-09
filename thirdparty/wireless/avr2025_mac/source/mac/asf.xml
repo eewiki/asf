@@ -1,0 +1,115 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" caption="MAC Callbacks Configuration" default="all">
+		<module type="meta" id="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks#all" caption="Support for all callbacks from MAC">
+			<info type="description" value="summary">
+			All the callbacks from the MAC is included in separate files for ease of implementation.
+			</info>
+            <device-support-alias value="avr2025_mac_pal_support"/>
+            <device-support-alias value="avr2025_mac_pal_soc_support"/>
+			<build type="c-source"      value="src/usr_mcps_data_conf.c"/>
+			<build type="c-source"      value="src/usr_mcps_data_ind.c"/>
+			<build type="c-source"      value="src/usr_mcps_purge_conf.c"/>
+			<build type="c-source"      value="src/usr_mlme_associate_conf.c"/>
+			<build type="c-source"      value="src/usr_mlme_associate_ind.c"/>
+			<build type="c-source"      value="src/usr_mlme_beacon_notify_ind.c"/>
+			<build type="c-source"      value="src/usr_mlme_comm_status_ind.c"/>
+			<build type="c-source"      value="src/usr_mlme_disassociate_conf.c"/>
+			<build type="c-source"      value="src/usr_mlme_disassociate_ind.c"/>
+			<build type="c-source"      value="src/usr_mlme_get_conf.c"/>
+			<build type="c-source"      value="src/usr_mlme_orphan_ind.c"/>
+			<build type="c-source"      value="src/usr_mlme_poll_conf.c"/>
+			<build type="c-source"      value="src/usr_mlme_reset_conf.c"/>
+			<build type="c-source"      value="src/usr_mlme_rx_enable_conf.c"/>
+			<build type="c-source"      value="src/usr_mlme_scan_conf.c"/>
+			<build type="c-source"      value="src/usr_mlme_set_conf.c"/>
+			<build type="c-source"      value="src/usr_mlme_start_conf.c"/>
+			<build type="c-source"      value="src/usr_mlme_sync_loss_ind.c"/>
+		</module>
+		<module type="meta" id="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks#none" caption="All Files are Supported">
+			<info type="description" value="summary">
+			Callbacks are expected to be included in the application itself.
+			</info>
+            <device-support-alias value="avr2025_mac_pal_support"/>
+            <device-support-alias value="avr2025_mac_pal_soc_support"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.thirdparty.wireless.avr2025_mac.source.mac.api" name="config.thirdparty.wireless.avr2025_mac.source.mac.api" caption="MAC API Configuration" default="yes">
+		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.mac.api#yes" caption="MAC Api support enabled">
+			<info type="description" value="summary">
+			MAC API support is enabled only for applications using MAC as the highest stack Layer
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="c-source"      value="src/mac_api.c"/>
+			<build type="c-source"      value="src/mac_callback_wrapper.c"/>
+			<require idref="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks"/>
+            <device-support-alias value="avr2025_mac_pal_spi_support"/>
+            <device-support-alias value="avr2025_mac_pal_soc_support"/>
+		</module>
+		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.mac.api#no" caption="MAC Api support disabled">
+			<info type="description" value="summary">
+			MAC API Support disabled (Disabled if NWK Layer(RF4CE) is included)
+			</info>
+			<info type="gui-flag" value="hidden"/>
+            <device-support-alias value="avr2025_mac_pal_spi_support"/>
+            <device-support-alias value="avr2025_mac_pal_soc_support"/>
+		</module>
+	</select-by-config>
+
+	<module type="component" id="thirdparty.wireless.avr2025_mac.source.mac" caption="IEEE 8012.15.4 MAC">
+		<info type="description" value="summary">
+		This modules includes all the files of the IEEE 802.15.4 MAC Stack
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source"      value="src/mac.c"/>
+		<build type="c-source"      value="src/mac_associate.c"/>
+		<build type="c-source"      value="src/mac_beacon.c"/>
+		<build type="c-source"      value="src/mac_data_ind.c"/>
+		<build type="c-source"      value="src/mac_data_extract_mhr.c"/>
+		<build type="c-source"      value="src/mac_data_req.c"/>
+		<build type="c-source"      value="src/mac_disassociate.c"/>
+		<build type="c-source"      value="src/mac_dispatcher.c"/>
+		<build type="c-source"      value="src/mac_mcps_data.c"/>
+		<build type="c-source"      value="src/mac_misc.c"/>
+		<build type="c-source"      value="src/mac_orphan.c"/>
+		<build type="c-source"      value="src/mac_pib.c"/>
+		<build type="c-source"      value="src/mac_poll.c"/>
+		<build type="c-source"      value="src/mac_process_beacon_frame.c"/>
+		<build type="c-source"      value="src/mac_process_tal_tx_frame_status.c"/>
+		<build type="c-source"      value="src/mac_rx_enable.c"/>
+		<build type="c-source"      value="src/mac_scan.c"/>
+		<build type="c-source"      value="src/mac_security.c"/>
+		<build type="c-source"      value="src/mac_start.c"/>
+		<build type="c-source"      value="src/mac_sync.c"/>
+		<build type="c-source"      value="src/mac_tx_coord_realignment_command.c"/>
+    	<build type="header-file"   value="inc/mac_data_structures.h"/>
+		<build type="header-file"   value="inc/mac_internal.h"/>
+		<build type="header-file"   value="inc/mac_config.h"/>
+
+		<build type="header-file"   value="inc/mac_security.h"/>
+		<build type="include-path"  value="inc/"/>
+		<build type="doxygen-entry-point" value="group_mac"/>
+		<require idref="config.thirdparty.wireless.avr2025_mac.source.mac.api"/>
+		<require idref="thirdparty.wireless.avr2025_mac.includes"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.tal"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.mac.inc"/>
+        <device-support-alias value="avr2025_mac_pal_spi_support"/>
+        <device-support-alias value="avr2025_mac_pal_soc_support"/>
+	</module>
+	
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.mac.inc" caption="MAC Includes">
+		<info type="description" value="summary">
+		This module includes all generic include files of the MAC Layer
+		</info>
+		<build type="header-file"   value="inc/mac.h"/>
+		<build type="header-file"   value="inc/mac_api.h"/>
+		<build type="header-file"   value="inc/mac_config.h"/>
+		<build type="header-file"   value="inc/mac_msg_types.h"/>
+		<build type="header-file"   value="inc/mac_msg_const.h"/>
+		<build type="header-file"	value="inc/mac_msg_type_data_ind.h"/>
+		<build type="include-path"  value="inc/"/>
+		<build type="doxygen-entry-point" value="group_mac"/>
+        <device-support-alias value="avr2025_mac_pal_spi_support"/>
+        <device-support-alias value="avr2025_mac_pal_soc_support"/>
+	</module>
+</asf>

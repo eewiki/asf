@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project type="unit-test" caption="XMEGA NVM unit tests for stk600-rc032x with ATxmega32E5" id="xmega.drivers.nvm.unit_tests.stk600-rc032x_atxmega32e5">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="xmega.drivers.nvm.unit_tests"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="iarew"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

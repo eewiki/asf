@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="DMACA RAM-to-RAM Example 2 for UC3-A3 Xplained" id="avr32.drivers.dmaca.example2.uc3_a3_xplained">
+		<require idref="avr32.drivers.dmaca.example2"/>
+		<require idref="board.uc3_a3_xplained"/>
+		<config name="config.board.uc3_a3_xplained.init" value="no"/>
+		<build type="define" name="DMACA_RAM2RAM_EVAL_CPU_FREQ" value="12000000"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.services.dsplib.simulator_example.dsp32_nlms" caption="DSPLIB - 32-bit fixed-point NLMS filter example">
+		<info type="description" value="summary">
+		Example application. It demonstrates how to perform a 32-bit fixed-point NLMS filter using the DSP library.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Digital Signal Processing"/>
+		</info>
+		<build type="c-source" value="nlms_example.c"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_dsplib_simulator_example_dsp32_nlms"/>
+		<device-support value="uc3"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.services.dsplib.filters"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

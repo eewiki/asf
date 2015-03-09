@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.applications.spi_slave_bootloader" caption="SPI Slave Bootloader">
+		<info type="description" value="summary">
+		SPI Slave Bootloader for SAM D20. An external SPI Master programmer is required.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="spi_slave_bootloader.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.sercom.spi"/>
+		<require idref="sam0.drivers.nvm"/>
+		<device-support value="samd20"/>
+	</module>
+</asf>

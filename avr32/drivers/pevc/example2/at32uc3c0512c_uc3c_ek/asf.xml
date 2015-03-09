@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="PEVC Example 2 for uc3c_ek" id="avr32.drivers.pevc.example2.uc3c_ek">
+		<info type="description" value="summary">
+		PEVC example using "the generic clock GCLK7" as an event source and the "PDCA - start of transfer channel 0" as a triggered event that sends a character to a USART output.
+		</info>
+		<require idref="avr32.drivers.pevc.example2"/>
+		<require idref="board.uc3c_ek"/>
+		<config name="config.board.uc3c_ek.init" value="no"/>
+		<generator value="iarew32"/>
+		<config name="config.compiler.iarew32.catch_unimplemented_interrupts" value="no"/>
+		<config name="config.compiler.iarew32.catch_unhandled_cpu_exceptions" value="no"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3c0512c"/>
+	</project>
+</asf>

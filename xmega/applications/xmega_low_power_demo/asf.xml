@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.applications.low_power_demo_xmega" caption="Low Power Demo for XMEGA Xplained kits">
+		<info type="description" value="summary">
+			This demo sets up for low power consumption and steps through all power modes.
+		</info>
+		<build type="c-source" value="low_power_demo.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_low_power_demo.h"/>
+		<device-support value="xmega"/>
+		<require idref="common.boards"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.delay"/>
+		<require idref="xmega.drivers.wdt"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.utils"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

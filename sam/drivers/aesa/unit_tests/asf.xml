@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.aesa.unit_tests" caption="Set of unit tests for AESA - Advanced Encryption Standard Module">
+		<info type="description" value="summary">
+		Unit test for the AESA (Advanced Encryption Standard) module.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.aesa"/>
+		<require idref="sam.drivers.pdca"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.utils.unit_test"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

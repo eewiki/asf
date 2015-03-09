@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4l.include.pio" caption="SAM4L PIO definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4L PIO
+		</info>
+		<!--
+		<build type="include-path" value="."/>
+		-->
+		<build type="header-file" value="pio_sam4lc2a.h"/>
+		<build type="header-file" value="pio_sam4lc2b.h"/>
+		<build type="header-file" value="pio_sam4lc2c.h"/>
+		<build type="header-file" value="pio_sam4lc4a.h"/>
+		<build type="header-file" value="pio_sam4lc4b.h"/>
+		<build type="header-file" value="pio_sam4lc4c.h"/>
+		<build type="header-file" value="pio_sam4lc8a.h"/>
+		<build type="header-file" value="pio_sam4lc8b.h"/>
+		<build type="header-file" value="pio_sam4lc8c.h"/>
+		<build type="header-file" value="pio_sam4ls2a.h"/>
+		<build type="header-file" value="pio_sam4ls2b.h"/>
+		<build type="header-file" value="pio_sam4ls2c.h"/>
+		<build type="header-file" value="pio_sam4ls4a.h"/>
+		<build type="header-file" value="pio_sam4ls4b.h"/>
+		<build type="header-file" value="pio_sam4ls4c.h"/>
+		<build type="header-file" value="pio_sam4ls8a.h"/>
+		<build type="header-file" value="pio_sam4ls8b.h"/>
+		<build type="header-file" value="pio_sam4ls8c.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam4l"/>
+	</module>
+</asf>

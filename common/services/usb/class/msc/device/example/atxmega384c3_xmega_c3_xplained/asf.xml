@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device Mass Storage for XMEGA-C3 Xplained" id="common.services.usb.class.msc.device.example.xmega_c3_xplained">
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_sd_mmc.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<require idref="common.components.memory.sd_mmc.ctrl_access"/>
+		<config name="config.common.services.usb.class.device" value="mass_storage"/>
+		<require idref="common.services.usb.class.msc.device.example"/>
+		<require idref="board.xmega_c3_xplained"/>
+		<config name="config.board.xmega_c3_xplained.led" value="yes"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega384c3"/>
+	</project>
+</asf>

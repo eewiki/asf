@@ -1,0 +1,16 @@
+<extension-container xmlversion="2.0">
+	<extension uuid="Atmel.ASF" org="Atmel" shortname="ASF" version="3.10.1" fullname="Atmel Software Framework">
+		<author name="Atmel Corp." website="http://www.atmel.com/" email="support@atmel.com"/>
+		<description/>
+		<icon-image path="icon.png"/>
+		<preview-image path="preview.jpg"/>
+		<license caption="ASF license" path="license.txt"/>
+		<release-notes caption="ASF release notes" url="http://www.atmel.com/tools/AVRSOFTWAREFRAMEWORK.aspx"/>
+		<online-help>
+			<index-page caption="ASF help" url="http://asf.atmel.com/docs/"/>
+			<module-help-page scheme="asf-docs" baseurl="http://asf.atmel.com/docs/"/>
+			<module-guide-page scheme="asf-docs" baseurl="http://asf.atmel.com/docs/"/>
+		</online-help>
+		<dependencies/>
+	</extension>
+</extension-container>

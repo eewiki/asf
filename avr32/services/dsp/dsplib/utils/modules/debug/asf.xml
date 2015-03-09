@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.modules.debug.common" caption="DSPLib - Debug module">
+		<info type="description" value="summary">
+		The debug module for the DSPLib provides a useful set of functions to debug fixed-point DSP applications.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="dsp_debug.h"/>
+		<build type="header-file" value="dsp_debug_shared.h"/>
+		<build type="c-source" value="dsp_debug_read.c"/>
+		<build type="c-source" value="dsp_debug_print.c"/>
+		<build type="c-source" value="dsp_debug_printf.c"/>
+		<require idref="avr32.services.dsplib.common"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

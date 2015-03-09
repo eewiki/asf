@@ -1,0 +1,11 @@
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.services.dsplib.uc3.transforms" caption="DSPLib - Transforms function set">
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="trans_dsp16_complex_fft_at32uc.c"/>
+		<build type="c-source" value="trans_dsp16_complex_ifft_at32uc.c"/>
+		<build type="c-source" value="trans_dsp16_real_complex_fft_at32uc.c"/>
+		<require idref="avr32.services.dsplib.generic.transforms"/>
+		<require idref="avr32.services.dsplib.uc3"/>
+		<device-support value="uc3"/>
+	</module>
+</asf>

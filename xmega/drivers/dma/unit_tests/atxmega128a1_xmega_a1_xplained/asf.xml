@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="DMA unit tests for XMEGA A1 Xplained" id="xmega.drivers.dma.unit_tests.xmega_a1_xplained" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="xmega.drivers.dma.unit_tests"/>
+		<require idref="board.xmega_a1_xplained"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_8"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

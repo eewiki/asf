@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="avr32.drivers.usbb.freertos.example" caption="USBB Driver Device and Host Example with FreeRTOS (from ASF V1)">
+		<info type="description" value="summary">
+		Using the USBB module and the deprecated USB software stack from ASF v1, perform a basic USB enumeration in device mode or in reduced-host mode (depending on the USB ID pin). Example using FreeRTOS.
+		</info>
+		<build type="header-file" value="freertos/FreeRTOSConfig.h"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3a3_a4"/>
+		<require idref="common.services.os.freertos"/>
+		<require idref="avr32.drivers.usbb.example"/>
+		<build type="include-path" value="./freertos/"/>
+	</module>
+</asf>

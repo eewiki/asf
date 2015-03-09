@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="avr32.utils.libs.dsplib.common" caption="DSP - Digital signal processing library">
+		<info type="description" value="summary">
+		Digital signal processing library for 32-bit AVR.
+		</info>
+		<device-support value="uc3" />
+		<build type="include-path" value="." />
+		<build type="header-file" subtype="api" value="dsp.h" />
+		<build type="doxygen-image-path" value="docsrc" />
+		<build type="distribute" subtype="directory" value="./docsrc"/>
+		<require idref="avr32.utils" />
+	</module>
+</asf>

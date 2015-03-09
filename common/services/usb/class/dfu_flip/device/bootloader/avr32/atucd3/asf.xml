@@ -1,0 +1,32 @@
+<asf xmlversion="1.0">
+	<project caption="ATUCxxxD3 DFU Bootloader" id="common.services.usb.class.dfu_atmel.device.bootloader.avr32.uc3d">
+		<require idref="common.services.usb.class.dfu_atmel.device.bootloader.avr32"/>
+		<config name="config.common.services.usb.class.device" value="dfu_atmel"/>
+		<require idref="board.dummy.atuc128d3"/>
+		<build type="c-source" value="sysclk_auto.c"/>
+		<build type="linker-config" subtype="script" value="./gcc/link_atucd3-isp.lds" toolchain="avr32gcc"/>
+		<build type="linker-config" subtype="script" value="./iar/lnkatucd3-isp.xcl" toolchain="iarew32"/>
+		<build type="include-path" value="./iar"/>
+		<build type="distribute" subtype="file" value="./releases/atucd3-isp-1.1.3/atucd3-isp-1.1.3.hex"/>
+		<build type="distribute" subtype="file" value="./releases/atucd3-isp-1.1.3/atucd3-isp_cfg-1.1.3.dat"/>
+		<build type="distribute" subtype="file" value="./releases/atucd3-isp-1.1.3/program_atucd3-isp-1.1.3.cmd"/>
+		<build type="distribute" subtype="file" value="./releases/atucd3-isp-1.1.3/program_atucd3-isp-1.1.3.sh"/>
+		<config name="config.avr32.drivers.usbc.device.sleepmgr" value="without_sleepmgr"/>
+		<config name="config.avr32.utils.trampoline" value="no"/>
+		<config name="config.compiler.avr32gcc.use_startfiles" value="no"/>
+		<config name="config.avr32.utils.gccstartup" value="no"/>
+		<config name="config.utils.interrupt.intc" value="no"/>
+		<config name="config.avr32.drivers.intc.exception" value="no"/>
+		<config name="config.compiler.iarew32.catch_unimplemented_interrupts" value="no"/>
+		<config name="config.compiler.iarew32.catch_unhandled_cpu_exceptions" value="no"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.scif"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.ast"/>
+		<require idref="avr32.drivers.gpio"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc128d3"/>
+	</project>
+</asf>

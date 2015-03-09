@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="DAC Sinewave Example on Arduino Due/X" id="sam.drivers.dacc.sinewave_example.arduino_due_x">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_dacc_sinewave_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.dacc.sinewave_example"/>
+		<require idref="sam.utils.cmsis.sam3x.source.template"/>
+		<require idref="board.arduino_due_x"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam3x8e"/>
+	</project>
+</asf>

@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="application" id="mega.drivers.adc.example1" caption="ADC Example 1">
+		<info type="description" value="summary">
+		Read ADC channels using polling.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="adc_example1.c"/>
+		<device-support value="mega"/>
+		<require idref="mega.drivers.adc"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

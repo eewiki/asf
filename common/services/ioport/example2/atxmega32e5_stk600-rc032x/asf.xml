@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Common IOPORT service example 2 for stk600-rc032x with ATxmega32E5" id="common.services.ioport.example2.stk600-rc032x_atxmega32e5">
+		<info type="description" value="summary">
+			Example that reads button 0 (PF0) and outputs it on LED0 (PE0).
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<require idref="common.services.ioport.example2"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

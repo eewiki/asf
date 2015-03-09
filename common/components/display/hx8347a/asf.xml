@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="component" id="common.components.display_controller.hx8347a" caption="LCD - HX8347A Display Controller">
+		<info type="description" value="summary">
+		This is the low level interface driver for HX8347A display controller. This driver is
+		most commonly used in a combination with a display driver.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics"/>
+		</info>
+		<device-support value="xmega"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="hx8347a_group"/>
+		<build type="c-source" value="hx8347a.c"/>
+		<build type="header-file" subtype="api" value="hx8347a.h"/>
+		<build type="header-file" value="hx8347a_regs.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_hx8347a.h"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.services.basic.spi_master"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="Shared AVR API for Controlling a TWI Module / Master Mode Example for STK600_RCUC3D" id="common.services.basic.twi.master.example.stk600-rcuc3d">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_twim.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.twi.master.example"/>
+		<config name="config.common.services.basic.twi.mode" value="master"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="board.stk600-rcuc3d"/>
+		<config name="config.board.stk600-rcuc3d.led" value="yes"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc128d3"/>
+	</project>
+</asf>

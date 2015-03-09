@@ -1,0 +1,35 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.wifi.spbfw_download.example" caption="Components Wifi H&amp;D Example SPBFW_DOWNLOAD">
+		<info type="description" value="summary">
+			H&amp;D Wifi firmware upload for EXTWIFI SPB104 or SPB105.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="flash_fw/flash_fw.c"/>
+		<build type="c-source" value="ports/avr32/board_init.c"/>
+		<build type="header-file" value="ports/avr32/board_init.h"/>
+		<build type="c-source" value="ports/avr32/nvram.c"/>
+		<build type="header-file" value="util/nvram.h"/>
+		<build type="c-source" value="util/printf-stdarg.c"/>
+		<build type="header-file" value="util/printf-stdarg.h"/>
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="flash_fw"/>
+		<build type="include-path" value="ports/avr32"/>
+		<build type="include-path" value="util"/>
+		<require idref="avr32.components.wifi.hd"/>
+		<require idref="avr32.components.wifi.helper"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.spi"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<require idref="common.components.memory.data_flash.at45dbx._asf_v1"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

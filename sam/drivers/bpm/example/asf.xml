@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.bpm.bpm_example" caption="Backup Power Manager (BPM) Example">
+		<info type="description" value="summary">
+			This example shows how to use BPM to change power mode.
+			</info>
+		<info type="keyword" value="technology">
+			<keyword value="Power Management"/>
+		</info>
+		<build type="c-source" value="bpm_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<require idref="sam.drivers.bpm"/>
+		<require idref="sam.drivers.eic"/>
+		<require idref="sam.drivers.ast"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

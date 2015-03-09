@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam.drivers.emac.unit_tests" caption="Unit Tests for the SAM EMAC Driver">
+		<module type="application" id="sam.drivers.emac.unit_tests#0" caption="Unit Tests for the SAM EMAC Driver">
+			<info type="description" value="summary">
+			Unit test application for the EMAC driver.
+			</info>
+			<build type="c-source" value="unit_tests.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+			<build type="header-file" value="mini_ip.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam3x"/>
+			<require idref="sam.utils.cmsis.sam3x.source.template"/>
+			<require idref="sam.components.ethernet_phy.dm9161a"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.emac"/>
+			<require idref="sam.drivers.rstc"/>
+			<require idref="sam.utils.syscalls"/>
+			<require idref="sam.services.flash"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.utils.unit_test"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

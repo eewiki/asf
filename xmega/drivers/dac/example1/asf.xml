@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.drivers.dac.example1" caption="DAC Example 1">
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<info type="description" value="summary">
+			Generates a sine wave using the XMEGA DAC module.
+		</info>
+		<info type="description" value="detailed">
+			This example shows how to output a sine wave on a pin using the XMEGA DAC module.
+			The DAC output is triggered by a timer routed through the Event System.
+		</info>
+		<build type="c-source" value="dac_example1.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_example.h"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegae"/>
+		<require idref="xmega.drivers.dac"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

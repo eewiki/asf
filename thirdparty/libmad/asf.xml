@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<asf xmlversion="1.0">
+	<module type="service" id="avr32.utils.libs.libmad.sources" caption="Libmad MP3 decoder sources">
+		<info type="gui-flag" value="hidden"/>
+		<build type="distribute" subtype="license" value="license.txt" />
+		<info type="description" value="summary">
+		MAD is a high-quality MPEG audio decoder. It currently supports MPEG-1 and the MPEG-2 extension to lower sampling frequencies, as well as the de facto MPEG 2.5 format. All three audio layers: Layer I, Layer II, and Layer III (i.e. MP3), are fully implemented.
+		</info>
+			<info type="keyword" value="technology">
+			<keyword value="Audio" />
+		</info>		
+		<build type="distribute" subtype="file" value="aclocal.m4"/>
+		<build type="distribute" subtype="file" value="bit.c"/>
+		<build type="distribute" subtype="file" value="bit.h"/>
+		<build type="distribute" subtype="file" value="CHANGES"/>
+		<build type="distribute" subtype="file" value="config.guess"/>
+		<build type="distribute" subtype="file" value="config.h.in"/>
+		<build type="distribute" subtype="file" value="config.sub"/>
+		<build type="distribute" subtype="file" value="configure"/>
+		<build type="distribute" subtype="file" value="configure.ac"/>
+		<build type="distribute" subtype="file" value="COPYING"/>
+		<build type="distribute" subtype="file" value="COPYRIGHT"/>
+		<build type="distribute" subtype="file" value="CREDITS"/>
+		<build type="distribute" subtype="file" value="D.dat"/>
+		<build type="distribute" subtype="file" value="dct32_avr32.S"/>
+		<build type="distribute" subtype="file" value="dct32_avr32.s82"/>
+		<build type="distribute" subtype="file" value="decoder.c"/>
+		<build type="distribute" subtype="file" value="decoder.h"/>
+		<build type="distribute" subtype="file" value="depcomp"/>
+		<build type="distribute" subtype="file" value="Dmod.dat"/>
+		<build type="distribute" subtype="file" value="fixed.c"/>
+		<build type="distribute" subtype="file" value="fixed.h"/>
+		<build type="distribute" subtype="file" value="frame.c"/>
+		<build type="distribute" subtype="file" value="frame.h"/>
+		<build type="distribute" subtype="file" value="global.h"/>
+		<build type="distribute" subtype="file" value="huffman.c"/>
+		<build type="distribute" subtype="file" value="huffman.h"/>
+		<build type="distribute" subtype="file" value="imdct_avr32.S"/>
+		<build type="distribute" subtype="file" value="imdct_avr32.s82"/>
+		<build type="distribute" subtype="file" value="imdct_l_arm.S"/>
+		<build type="distribute" subtype="file" value="imdct_s.dat"/>
+		<build type="distribute" subtype="file" value="INSTALL"/>
+		<build type="distribute" subtype="file" value="install-sh"/>
+		<build type="distribute" subtype="file" value="layer3.c"/>
+		<build type="distribute" subtype="file" value="layer3.h"/>
+		<build type="distribute" subtype="file" value="layer3_imdct_s_avr32.s82"/>
+		<build type="distribute" subtype="file" value="layer12.c"/>
+		<build type="distribute" subtype="file" value="layer12.h"/>
+		<build type="distribute" subtype="file" value="libmad.list.in"/>
+		<build type="distribute" subtype="file" value="ltmain.sh"/>
+		<build type="distribute" subtype="file" value="mad.h"/>
+		<build type="distribute" subtype="file" value="mad.h.sed"/>
+		<build type="distribute" subtype="file" value="Makefile.am"/>
+		<build type="distribute" subtype="file" value="Makefile.in"/>
+		<build type="distribute" subtype="file" value="minimad.c"/>
+		<build type="distribute" subtype="file" value="missing"/>
+		<build type="distribute" subtype="file" value="mkinstalldirs"/>
+		<build type="distribute" subtype="file" value="qc_table.dat"/>
+		<build type="distribute" subtype="file" value="README"/>
+		<build type="distribute" subtype="file" value="rq_table.dat"/>
+		<build type="distribute" subtype="file" value="sf_table.dat"/>
+		<build type="distribute" subtype="file" value="stream.c"/>
+		<build type="distribute" subtype="file" value="stream.h"/>
+		<build type="distribute" subtype="file" value="synth.c"/>
+		<build type="distribute" subtype="file" value="synth.h"/>
+		<build type="distribute" subtype="file" value="synth_avr32.s82"/>
+		<build type="distribute" subtype="file" value="synth_avr32.S"/>
+		<build type="distribute" subtype="file" value="timer.c"/>
+		<build type="distribute" subtype="file" value="timer.h"/>
+		<build type="distribute" subtype="file" value="TODO"/>
+		<build type="distribute" subtype="file" value="version.c"/>
+		<build type="distribute" subtype="file" value="version.h"/>
+		<build type="distribute" subtype="file" value="VERSION"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3l"/>
+		<device-support value="uc3a3_a4"/>
+	</module>
+</asf>

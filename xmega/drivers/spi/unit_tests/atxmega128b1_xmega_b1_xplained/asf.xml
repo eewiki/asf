@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project type="unit-test" id="xmega.drivers.spi.unit_tests.xmega_b1_xplained" caption="SPI driver unit tests on XMEGA B1 Xplained">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="xmega.drivers.spi.unit_tests"/>
+		<require idref="board.xmega_b1_xplained"/>
+		<generator value="avrgcc"/>
+		<generator value="iarew"/>
+		<generator value="as5_8"/>
+		<config name="config.compiler.iarew.dlib" value="full"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128b1"/>
+	</project>
+</asf>

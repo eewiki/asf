@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="component" id="sam.components.display.ili9325" caption="Display - ILI9325 LCD Controller">
+		<info type="description" value="summary">
+			Low-level driver for the ILI9325 LCD controller.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<build type="c-source" value="ili9325.c"/>
+		<build type="header-file" subtype="api" value="ili9325.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="ili9325_display_group"/>
+		<require idref="sam.drivers.smc"/>
+		<device-support value="sam"/>
+		<build type="module-config" subtype="required-header-file" value="conf_ili9325.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+	</module>
+</asf>

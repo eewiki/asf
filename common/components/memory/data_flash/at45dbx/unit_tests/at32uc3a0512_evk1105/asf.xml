@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project type="unit-test" caption="AT45DBX DataFlash unit tests for EVK1105" id="common.components.memory.data_flash.at45dbx.unit_tests.evk1105">
+		<build type="header-file" value="conf_at45dbx.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.data_flash.at45dbx.unit_tests"/>
+		<require idref="board.evk1105"/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

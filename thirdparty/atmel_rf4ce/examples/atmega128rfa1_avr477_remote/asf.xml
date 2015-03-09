@@ -1,0 +1,79 @@
+<asf xmlversion="1.0">
+	<module type="application" caption="AVR477 RF4CE Remote Example" id="thirdparty.services.atmel_rf4ce.examples.avr477_remote">
+		<info type="description" value="summary">
+		This demo is an RF4CE remote controller application that integrates the RF4CE library and QTouch Library. This demo application runs on the ATMega128RFA1 based AVR477 remote control board. This application runs in conjunction with the AVR477 Target Application. The Target Application can be run on the ATmega128RFA1 MCU on the Sensor Terminal Board,when used along with the QT600. Please refer Application Note AVR477 on ATMEL's website ( www.atmel.com )
+		</info>
+		<build type="c-source" value="kxtf9_driver.c"/>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="memorymap.c"/>
+		<build type="c-source" value="t10_prox.c"/>
+		<build type="c-source" value="twi_master.c"/>
+		<build type="c-source" value="vendor_data.c"/>
+		<build type="c-source" value="./qdebug_remote/qdebug.c"/>
+		<build type="c-source" value="./qdebug_remote/qdebug_transport.c"/>
+		<build type="header-file" value="app_config.h"/>
+		<build type="header-file" value="kxtf9_driver.h"/>
+		<build type="header-file" value="memorymap.h"/>
+		<build type="header-file" value="qdebug_settings.h"/>
+		<build type="header-file" value="t10_prox.h"/>
+		<build type="header-file" value="twi_master.h"/>
+		<build type="header-file" value="./qdebug_remote/qdebug.h"/>
+		<build type="header-file" value="./qdebug_remote/qdebug_transport.h"/>
+		<build type="define" name="_DEBUG_INTERFACE_" value=""/>
+		<build type="define" name="DEBUG" value="0"/>
+		<build type="define" name="ZRC_PROFILE" value=""/>
+		<build type="define" name="ZRC_BASIC_PRESS_ONLY" value=""/>
+		<build type="define" name="PB_PAIRING" value=""/>
+		<build type="define" name="VENDOR_DATA" value=""/>
+		<build type="define" name="TFA_BAT_MON" value=""/>
+		<build type="define" name="FLASH_SUPPORT" value=""/>
+		<build type="define" name="RF4CE_SECURITY" value=""/>
+		<build type="define" name="MAC_USER_BUILD_CONFIG" value=""/>
+		<build type="define" name="HIGHEST_STACK_LAYER" value="RF4CE"/>
+		<build type="define" name="TAL_TYPE" value="ATMEGARF_TAL_1"/>
+		<build type="define" name="PAL_TYPE" value="ATMEGA128RFA1"/>
+		<build type="define" name="PAL_GENERIC_TYPE" value="MEGA_RF_"/>
+		<build type="define" name="ZRC_CMD_DISCOVERY" value=""/>
+		<build type="define" name="EXTERN_EEPROM_AVAILABLE" value="1"/>
+		<build type="define" name="BOARD_TYPE" value="RCB_6_3_PLAIN"/>
+		<build type="define" name="_PROX_" value=""/>
+		<build type="define" name="_ACCELERO_" value=""/>
+		<build type="define" name="_ENABLE_SLEEP_ " value=""/>
+		<build type="define" name="_ENABLE_WARM_RESET_ " value=""/>
+		<build type="define" name="_GENERIC_QDEBUG_" value=""/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./qdebug_remote/"/>
+		<device-support value="atmega128rfa1"/>
+		<require idref="thirdparty.services.atmel_rf4ce"/>
+		<require idref="thirdparty.services.atmel_rf4ce.lib.method"/>
+		<require idref="config.common.services.qtouch.generic.avr8.mega128rfa1_stk600.method"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	<project caption="AVR477 Remote Example" id="thirdparty.services.atmel_rf4ce.examples.avr477_remote.project">
+		<require idref="config.common.services.qtouch.generic.avr8.qmatrix.common"/>
+		<require idref="thirdparty.services.atmel_rf4ce"/>
+		<require idref="thirdparty.services.atmel_rf4ce.lib.inc"/>
+		<require idref="board.user_board.megarf"/>
+		<config name="config.common.services.qtouch.generic.avr8.mega128rfa1_stk600.method" value="qmatrix_method"/>
+		<require idref="thirdparty.services.atmel_rf4ce.examples.avr477_remote"/>
+		<config name="thirdparty.services.atmel_rf4ce.lib.method" value="remote_method"/>
+		<require idref="config.common.services.qtouch.qdebug.stk600.mega"/>
+		<require idref="common.utils"/>
+		<build type="header-file" value="touch_config.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="touch_config.h"/>
+		<build type="module-config" subtype="path" value="./"/>
+		<build type="header-file" value="pal_config.h"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="include-path" value="."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.bootloader=0x1f000"/>
+		<config name="config.compiler.avrgcc.optimization" value="size"/>
+		<build type="build-config" subtype="c-compiler-flags" value="-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums" toolchain="avrgcc"/>
+		<build type="build-config" subtype="assembler-flags" value="-funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums" toolchain="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="avrgcc"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega128rfa1"/>
+	</project>
+</asf>

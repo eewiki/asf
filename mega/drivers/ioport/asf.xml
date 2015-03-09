@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="mega.drivers.ioport" caption="IOPORT - Input/Output Port Controller">
+		<info type="description" value="summary">
+			Driver for controlling the I/O lines.
+			Provides functions for configuring, reading and writing direction and level for the general purpose I/O lines. Deprecated; use common IOPORT service instead.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="I/O"/>
+		</info>
+		<require idref="common.services.ioport"/>
+		<require idref="mega.utils"/>
+		<device-support value="mega"/>
+		<build type="doxygen-entry-point" value="port_driver_group"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+	</module>
+</asf>

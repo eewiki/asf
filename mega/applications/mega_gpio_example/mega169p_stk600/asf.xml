@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="GPIO example for the ATmega169P" id="mega.applications.mega_gpio_example.mega169p_stk600">
+		<info type="description" value="summary">
+		ATmega169P STK600 GPIO example
+		</info>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="include-path" value="."/>
+		<require idref="board.stk600-mega.atmega169p"/>
+		<require idref="mega.applications.mega_gpio_example"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega169p"/>
+	</project>
+</asf>

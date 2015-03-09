@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4S-EK2 Common Delay Service Example" id="common.services.delay.example.sam4s_ek2">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.delay.example"/>
+		<require idref="board.sam4s_ek2"/>
+		<config name="config.board.sam4s_ek2.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>

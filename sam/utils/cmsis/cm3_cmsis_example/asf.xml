@@ -1,0 +1,10 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.utils.cmsis.cm3_cmsis_example" caption="Cortex-M3 CMSIS Example">
+		<info type="description" value="summary">
+			Basic Cortex-M3 LED blink CMSIS example.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<device-support value="sam3"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,11 @@
+<asf xmlversion="1.0">
+	<project caption="WDT4 Example for STK600_RCUC3D" id="avr32.drivers.wdt4.example.stk600-rcuc3d">
+		<require idref="avr32.drivers.wdt4.example"/>
+		<require idref="board.stk600-rcuc3d"/>
+		<config name="config.board.stk600-rcuc3d.init" value="no"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="atuc128d3"/>
+	</project>
+</asf>

@@ -1,0 +1,118 @@
+<asf xmlversion="1.0">
+	<select-by-config id="sam.drivers.usbc.device" name="config.sam.drivers.usbc.device.sleepmgr" caption="USB - Universial Serial Bus driver" default="with_sleepmgr">
+		<info type="description" value="summary">
+		USBC driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+		</info>
+		<module type="driver" id="sam.drivers.usbc.device#with_sleepmgr" caption="USB - Universial Serial Bus driver (with sleep manager)">
+			<info type="description" value="summary">
+			USBC driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication" />
+			</info>
+			<build type="c-source" value="usbc_device.c"/>
+			<build type="header-file" value="usbc_device.h"/>
+			<build type="header-file" value="usbc_otg.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam4l"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.ioport"/>
+			<require idref="sam.drivers.gpio"/>
+			<require idref="sam.drivers.eic"/>
+			<require idref="sam.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+		<module type="driver" id="sam.drivers.usbc.device#without_sleepmgr" caption="USB - Universial Serial Bus driver (without sleep manager)">
+			<info type="description" value="summary">
+			USBC driver for the USB device mode. Provides functions for configuring and using the USB device functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usbc_device.c"/>
+			<build type="header-file" value="usbc_device.h"/>
+			<build type="header-file" value="usbc_otg.h"/>
+			<build type="include-path" value="."/>
+			<build type="define" name="UDD_NO_SLEEP_MGR" value=""/>
+			<device-support value="sam4l"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.ioport"/>
+			<require idref="sam.drivers.gpio"/>
+			<require idref="sam.drivers.eic"/>
+			<require idref="sam.utils"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+	</select-by-config>
+	<select-by-config id="sam.drivers.usbc.host" name="config.sam.drivers.usbc.host.sleepmgr" caption="USB - Universial Serial Bus driver" default="with_sleepmgr">
+		<info type="description" value="summary">
+		USBC driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+		</info>
+		<module type="driver" id="sam.drivers.usbc.host#with_sleepmgr" caption="USB - Universial Serial Bus driver (with sleepmgr)">
+			<info type="description" value="summary">
+			USBC driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usbc_host.c"/>
+			<build type="header-file" value="usbc_host.h"/>
+			<build type="header-file" value="usbc_otg.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam4l"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.ioport"/>
+			<require idref="sam.drivers.gpio"/>
+			<require idref="sam.drivers.eic"/>
+			<require idref="sam.utils"/>
+			<require idref="sam.utils.syscalls"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+		<module type="driver" id="sam.drivers.usbc.host#without_sleepmgr" caption="USB - Universial Serial Bus driver (without sleep manager)">
+			<info type="description" value="summary">
+			USBC driver for the USB host mode. Provides functions for configuring and using the USB host functionality.
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication"/>
+			</info>
+			<build type="c-source" value="usbc_host.c"/>
+			<build type="header-file" value="usbc_host.h"/>
+			<build type="header-file" value="usbc_otg.h"/>
+			<build type="include-path" value="."/>
+			<build type="define" name="UDD_NO_SLEEP_MGR" value=""/>
+			<device-support value="sam4l"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.ioport"/>
+			<require idref="sam.drivers.gpio"/>
+			<require idref="sam.drivers.eic"/>
+			<require idref="sam.utils"/>
+			<require idref="sam.utils.syscalls"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+		</module>
+	</select-by-config>
+	<module type="driver" id="sam.drivers.usbc.headers" caption="USB - Universial Serial Bus interface headers">
+		<info type="description" value="summary">
+		USBC device and host driver headers provided to create USB generators without USB stack.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<info type="keyword" value="technology">
+			<keyword value="USB"/>
+		</info>
+		<build type="header-file" value="usbc_device.h"/>
+		<build type="header-file" value="usbc_host.h"/>
+		<build type="header-file" value="usbc_otg.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

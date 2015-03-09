@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<module type="application" id="avr32.components.memory.sdmmc.spi.example" caption="SD/MMC using SPI Example">
+		<info type="description" value="summary">
+		Read and write data to an external SD or MMC card through the SPI Interface.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<build type="header-file" value="conf/conf_access.h"/>
+		<build type="header-file" value="conf/conf_sd_mmc_spi.h"/>
+		<build type="include-path" value="conf"/>
+		<build type="header-file" value="dummy.h"/>
+		<build type="c-source" value="sd_mmc_spi_example.c"/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<require idref="avr32.components.memory.sd_mmc.sd_mmc_spi"/>
+		<require idref="avr32.drivers.pdca"/>
+		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.drivers.intc"/>
+		<require idref="avr32.utils.print_funcs"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

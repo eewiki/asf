@@ -1,0 +1,36 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.xmega_a1_xplained.led" name="config.board.xmega_a1_xplained.led" caption="XMEGA-A1 Xplained LED support" default="yes">
+		<module type="meta" id="config.board.xmega_a1_xplained.led#no" caption="XMEGA-A1 Xplained LED support disabled">
+		</module>
+		<module type="meta" id="config.board.xmega_a1_xplained.led#yes" caption="XMEGA-A1 Xplained LED support enabled">
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.xmega_a1_xplained.init" name="config.board.xmega_a1_xplained.init" caption="XMEGA-A1 Xplained initialization support" default="yes">
+		<module type="meta" id="config.board.xmega_a1_xplained.init#no" caption="XMEGA-A1 Xplained initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.xmega_a1_xplained.init#yes" caption="XMEGA-A1 Xplained initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="xmega.drivers.ioport"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.xmega_a1_xplained" vendor="Atmel" caption="XMEGA-A1 Xplained">
+		<build type="define" name="BOARD" value="XMEGA_A1_XPLAINED"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="header-file" value="xmega_a1_xplained.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="linker-config" subtype="flags" value="--section-start=.BOOT=0x20000" toolchain="avrgcc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.xmega_a1_xplained.led"/>
+		<require idref="config.board.xmega_a1_xplained.init"/>
+		<device-support value="atxmega128a1"/>
+	</board>
+</asf>

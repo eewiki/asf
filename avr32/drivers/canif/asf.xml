@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="avr32.drivers.canif" caption="CANIF - Control Area Network Interface">
+		<info type="description" value="summary">
+		CANIF is a 32-bit interface for CAN channels.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication" />
+		</info>
+		<build type="c-source" value="canif.c"/>
+		<build type="header-file" subtype="api" value="canif.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_can.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_drivers_canif"/>
+		<device-support value="uc3c"/>
+		<require idref="avr32.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3c"/>
+	</module>
+</asf>

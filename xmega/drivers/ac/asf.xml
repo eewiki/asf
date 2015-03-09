@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.ac" caption="AC - Analog Comparator">
+		<info type="description" value="summary">
+		Driver for the Analog Comparator (AC). It provides functions for configuring and using the on-chip AC.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Analog Conversion"/>
+		</info>
+		<build type="c-source" value="ac.c"/>
+		<build type="header-file" subtype="api" value="ac.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="analog_comparator_group"/>
+		<build type="doxygen-quick-start" value="xmega_ac_quickstart"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="xmegad"/>
+		<device-support value="xmegae"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

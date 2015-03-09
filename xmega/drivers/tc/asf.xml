@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="xmega.drivers.tc" caption="TC - Timer Counter">
+		<info type="description" value="summary">
+		Driver for the Timer/Counters (TC).
+		Provides functions for configuring and using the 16-bit TC.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Timers" />
+		</info>
+		<build type="c-source" value="tc.c"/>
+		<build type="header-file" subtype="api" value="tc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="tc_group"/>
+		<build type="doxygen-quick-start" value="xmega_tc_quickstart"/>
+		<device-support value="xmegaa"/>
+		<device-support value="xmegaau"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="xmegad"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
+	</module>
+</asf>

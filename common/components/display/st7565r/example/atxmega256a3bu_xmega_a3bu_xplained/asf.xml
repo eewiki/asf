@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="ST7565R LCD Controller example for A3BU-Xplained" id="common.components.display.st7565r.example.a3bu_xplained">
+		<build type="header-file" value="conf_st7565r.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.spi_master_type" value="usart_spi"/>
+		<require idref="common.components.display.st7565r.example"/>
+		<require idref="board.xmega_a3bu_xplained"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

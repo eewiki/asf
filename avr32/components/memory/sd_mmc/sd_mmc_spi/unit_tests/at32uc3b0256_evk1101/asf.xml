@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project type="unit-test" caption="SD/MMC using SPI Unit Tests for EVK1101" id="avr32.components.memory.sdmmc.spi.unit_tests.evk1101">
+		<require idref="board.evk1101"/>
+		<require idref="avr32.components.memory.sdmmc.spi.unit_tests"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_sd_mmc_spi.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.compiler.iarew32.dlib" value="full"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3b0256"/>
+	</project>
+</asf>

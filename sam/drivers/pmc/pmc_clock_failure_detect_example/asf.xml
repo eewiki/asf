@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.pmc.pmc_clock_failure_detect_example" caption="PMC Clock Failure Detection Example">
+		<info type="description" value="summary">
+		This example shows how to use the Clock Failure Detection feature of the SAM MCUs when the external oscillator fails.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Power Management"/>
+		</info>
+		<build type="c-source" value="pmc_clock_failure_detect_example.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="sam.utils.syscalls"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

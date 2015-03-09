@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="avr32.services.qtouch.devspecific.uc3.uc3l0" caption="QTouch Library for AVR UC3 L0">
+		<info type="description" value="summary">
+		This is the QTouch Library for ARV UC3 L0 devices that consists in
+		one api header file(touch_api_at32uc3l.h) and one pre-compiled library(libuc3l-qtouch-gnu.a).
+		All projects using this library must also provide the required header file(touch_config_at32uc3l.h)
+		used to configure the library.
+		For more information on the Qtouch Library, check www.atmel.com/qtouchlib.
+		</info>
+		<build type="header-file" subtype="api" value="include/touch_api_at32uc3l.h"/>
+		<build type="include-path" value="include"/>
+		<build type="library" subtype="user" value="lib/gcc/libuc3l-qtouch-gnu.a" toolchain="avr32gcc"/>
+		<build type="library" subtype="user" value="lib/iar/libuc3l-qtouch-iar.r82" toolchain="iarew32"/>
+		<build type="module-config" subtype="required-header-file" value="touch_config_at32uc3l.h"/>
+		<build type="doxygen-entry-point" value="group_avr32_services_qtouch_devspecific_uc3_uc3l0"/>
+		<device-support value="uc3l0"/>
+		<build type="distribute" subtype="license" value="../../../license.txt"/>
+		<info type="keyword" value="technology">
+			<keyword value="Touch"/>
+		</info>
+	</module>
+</asf>

@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="Drivers TC Example for Simulator XMEGA A1" id="xmega.drivers.tc.example1.simulator_example1.xmega_a1_simulator">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.tc.simulator_example1"/>
+		<require idref="board.simulator.xmega_a1"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega128a1"/>
+	</project>
+</asf>

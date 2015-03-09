@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="DSPLIB 16-bit fixed-point complex FFT example" id="avr32.services.dsplib.example.dsp16_complex_fft.evk1100">
+		<require idref="board.evk1100"/>
+		<config name="config.board.evk1100.init" value="no"/>
+		<require idref="avr32.services.dsplib.example.dsp16_complex_fft"/>
+		<require idref="avr32.services.dsplib.modules.debug.evk1100_usart1"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a0512"/>
+	</project>
+</asf>

@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.sdramc.unit_tests" caption="Unit Tests for the SAM SDRAMC Driver">
+		<info type="description" value="summary">
+		Unit test for SAM SDRAMC driver. Micron MT48LC16M16A2 SDRAM is used.
+		</info>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="atsam3x8h"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.sdramc"/>
+		<require idref="sam.components.memory.sdram.mt48lc16m16a2"/>
+		<require idref="sam.utils.syscalls"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.utils.unit_test"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.lcdca" caption="LCDCA controller driver">
+		<info type="description" value="summary">
+		Driver for the LCDCA controller.
+		Provides functions for using the on-chip LCDCA controller.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<build type="c-source" value="lcdca.c"/>
+		<build type="header-file" subtype="api" value="lcdca.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_lcdca.h"/>
+		<build type="doxygen-entry-point" value="group_sam_drivers_lcdca"/>
+		<build type="doxygen-quick-start" value="sam_drivers_lcdca_quick_start"/>
+		<device-support value="sam4l"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<require idref="sam.drivers.pdca"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
+	</module>
+</asf>

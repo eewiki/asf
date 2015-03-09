@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="EVK1104 USB MSC on SD card Application" id="avr32.applications.evk1104-usb-msc-sd-demo.example">
+		<require idref="avr32.applications.evk1104-usb-msc-sd-demo"/>
+		<require idref="board.evk1104"/>
+		<config name="config.board.evk1104.init" value="no"/>
+		<config name="config.board.evk1104.led" value="yes"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3a3256"/>
+	</project>
+</asf>

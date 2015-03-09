@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project id="common.services.calendar.unit_tests.stk600-rcuc3l4" caption="Calendar driver unit tests on STK600-RCUC3L4" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<require idref="common.services.calendar.unit_tests"/>
+		<require idref="board.stk600-rcuc3l4"/>
+		<generator value="avr32gcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_32"/>
+		<device-support value="atuc256l4u"/>
+	</project>
+</asf>

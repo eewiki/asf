@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<board id="board.atmega256rfr2_xplained_pro" vendor="Atmel" caption="ATmega256RFR2 Xplained Pro">
+		<build type="define" name="BOARD" value="ATMEGA256RFR2_XPLAINED_PRO"/>
+		<build type="header-file" value="atmega256rfr2_xplained_pro.h"/>
+		<build type="header-file" value="led.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="c-source" value="init.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.boards"/>
+		<device-support value="atmega256rfr2"/>
+	</board>
+</asf>

@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="MEGARF SPI as Slave Example for stk600-rc044x" id="mega.drivers.spi.example.stk600-rc128x_rfx_atmega128rfa1">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_usart_spi.h"/>		
+		<build type="header-file" value="conf_spi_slave_example.h"/>
+		<build type="include-path" value="." />
+		<require idref="mega.drivers.spi.example"/>
+		<require idref="board.stk600-mega.atmega128rfa1"/>
+		<config name="config.spi_master_type" value="usart_spi"/>		
+		<config name="config.compiler.iarew.data_stack_size" value="0x100"/>
+		<config name="config.compiler.iarew.near_heap_size" value="0x40"/>
+		<generator value="avrgcc" />
+		<generator value="iarew"/>
+		<generator value="as5_8" />
+		<generator value="doxygen"/>
+		<device-support value="atmega128rfa1"/>
+	</project>
+</asf>

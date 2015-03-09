@@ -1,0 +1,10 @@
+<asf xmlversion="1.0">
+	<board id="board.xmega128a1_qt600" vendor="Atmel" caption="QT600">
+		<build type="header-file" value="atxmega128a1_qt600.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="define" name="BOARD" value="ATXMEGA128A1_QT600"/>
+		<require idref="common.boards"/>
+		<device-support value="atxmega128a1"/>
+	</board>
+</asf>

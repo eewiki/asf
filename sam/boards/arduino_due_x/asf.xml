@@ -1,0 +1,43 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.arduino_due_x.led" name="config.board.arduino_due_x.led" caption="Arduino Due/X LED support" default="no">
+		<module type="meta" id="config.board.arduino_due_x.led#no" caption="Arduino Due/X LED support disabled">
+		</module>
+		<module type="meta" id="config.board.arduino_due_x.led#yes" caption="Arduino Due/X LED support enabled">
+			<build type="c-source" value="led.c"/>
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="sam.drivers.pio"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.arduino_due_x.init" name="config.board.arduino_due_x.init" caption="Arduino Due/X initialization support" default="yes">
+		<module type="meta" id="config.board.arduino_due_x.init#no" caption="Arduino Due/X initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.arduino_due_x.init#yes" caption="Arduino Due/X initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.services.ioport"/>
+			<require idref="sam.drivers.pio"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.arduino_due_x" vendor="Arduino" caption="Arduino Due/X">
+		<build type="define" name="BOARD" value="ARDUINO_DUE_X"/>
+		<build type="define" name="__SAM3X8E__" value=""/>
+		<build type="header-file" value="arduino_due_x.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/gcc/arduino_due_x_flash.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/gcc/arduino_due_x_sram.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/iar/arduino_due_x_flash.mac" toolchain="iarewarm"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/iar/arduino_due_x_sram.mac" toolchain="iarewarm"/>
+		<require idref="sam.utils.cmsis.sam3x.source.template"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.arduino_due_x.init"/>
+		<require idref="config.board.arduino_due_x.led"/>
+		<device-support value="atsam3x8e"/>
+	</board>
+</asf>

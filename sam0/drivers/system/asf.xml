@@ -1,0 +1,41 @@
+﻿<asf xmlversion="1.0">
+	<module type="driver" id="sam0.drivers.system" caption="SYSTEM - Core System Driver">
+		<info type="description" value="summary">
+			Driver for the SAM D20 core system modules. Provides a unified
+			interface for the configuration and management of the core device
+			functionality required for a functional system.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="I/O" />
+			<keyword value="CPU" />
+			<keyword value="Clocks" />
+		</info>
+
+		<info type="appnote" value="AT03260"/>
+		<info type="keyword" value="pdf">
+			<keyword value="SYSTEM"/>
+			<keyword value="I/O"/>
+			<keyword value="CPU"/>
+			<keyword value="Clocks"/>
+		</info>
+
+		<info type="description" value="pdf">
+			This document describes how to use the core system modules on the SAM D20, both the ASF driver and the peripheral itself.
+		</info>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" subtype="api" value="system.h"/>
+		<build type="c-source" value="system.c"/>
+
+		<build type="doxygen-entry-point" value="asfdoc_samd20_system_group"/>
+
+		<require idref="sam0.drivers.system.clock"/>
+		<require idref="sam0.drivers.system.pinmux"/>
+		<require idref="sam0.drivers.system.interrupt"/>
+		<require idref="sam0.utils"/>
+
+		<device-support value="samd20"/>
+
+		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

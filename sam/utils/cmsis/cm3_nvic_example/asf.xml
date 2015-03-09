@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.utils.cmsis.cm3_nvic_example" caption="Cortex-M3 CMSIS NVIC Example">
+		<info type="description" value="summary">
+			Basic Cortex-M3 NVIC example.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam3"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="sam.drivers.pio"/>
+		<require idref="sam.drivers.uart"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,75 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.usb.device" caption="USB Device Stack Core (Common API)">
+		<info type="description" value="summary">
+		USB Device stack core. Common API.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="doxygen-entry-point" value="udc_group"/>
+		<build type="header-file" subtype="api" value="udd.h"/>
+		<build type="header-file" subtype="api" value="udc.h"/>
+		<build type="header-file" value="udc_desc.h"/>
+		<build type="header-file" value="udi.h"/>
+		<build type="c-source" value="udc.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l3"/>
+		<device-support value="uc3l4"/>
+		<device-support value="xmegaa1u"/>
+		<device-support value="xmegaa3u"/>
+		<device-support value="xmegaa3bu"/>
+		<device-support value="xmegaa4u"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="sam3s"/>
+		<device-support value="sam3sd"/>
+		<device-support value="sam3u"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4l"/>
+		<device-support value="sam4e"/>
+		<require idref="common.drivers.usb.device"/>
+		<require idref="common.services.usb.protocol"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+	<module type="service" id="common.services.usb.device.dfu_optimization" caption="USB Device Stack Core optimized for DFU interface">
+		<info type="description" value="summary">
+		USB Device stack core optimized for DFU interface. Common API.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="header-file" subtype="api" value="udd.h"/>
+		<build type="header-file" subtype="api" value="udc.h"/>
+		<build type="header-file" value="udc_desc.h"/>
+		<build type="header-file" value="udi.h"/>
+		<build type="c-source" value="udc_dfu_small.c"/>
+		<build type="include-path" value="."/>
+		<device-support value="uc3a"/>
+		<device-support value="uc3a3_a4"/>
+		<device-support value="uc3b"/>
+		<device-support value="uc3c"/>
+		<device-support value="uc3d"/>
+		<device-support value="uc3l3"/>
+		<device-support value="uc3l4"/>
+		<device-support value="xmegaa1u"/>
+		<device-support value="xmegaa3u"/>
+		<device-support value="xmegaa3bu"/>
+		<device-support value="xmegaa4u"/>
+		<device-support value="xmegab"/>
+		<device-support value="xmegac"/>
+		<device-support value="sam3s"/>
+		<device-support value="sam3sd"/>
+		<device-support value="sam3u"/>
+		<device-support value="sam3x"/>
+		<device-support value="sam3a"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4l"/>
+		<device-support value="sam4e"/>
+		<require idref="common.drivers.usb.device"/>
+		<require idref="common.services.usb.protocol"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="common.components.memory.serial_flash.at25dfx" caption="AT25DFx SerialFlash">
+		<info type="description" value="summary">
+		Driver for the AT25DFx series SPI SerialFlash memories. It provides functions for initialization and data access operations.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Memory"/>
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="at25dfx.c"/>
+		<build type="header-file" subtype="api" value="at25dfx.h"/>
+		<build type="c-source" value="at25dfx_hal_spi.c"/>
+		<build type="header-file" subtype="api" value="at25dfx_hal_spi.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_at25dfx.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="at25dfx_group"/>
+		<build type="doxygen-quick-start" value="at25dfx_quickstart"/>
+		<require idref="common.services.basic.spi_master"/>
+		<device-support value="sam"/>
+		<device-support value="uc3"/>
+		<device-support value="xmega"/>	
+		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		
+	</module>
+</asf>

@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="common.components.crypto.sha204.example_utilities_led" caption="ATSHA204 Example LED Utilities for Security Xplained">
+		<info type="description" value="summary">
+		Provides LED utilities for examples of an ATSHA204 component 
+		by providing the display of a hexadecimal number on the main board.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Cryptography"/>
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="sha204_example_led.c"/>
+		<build type="header-file" value="sha204_example_led.h"/>
+		<require idref="common.boards"/>
+		<require idref="common.components.crypto.sha204.xmega_sha204"/>
+		<device-support value="xmega"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

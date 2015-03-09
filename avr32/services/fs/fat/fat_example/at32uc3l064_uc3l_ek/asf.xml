@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project caption="FAT File System Example 1 for UC3L-EK" id="avr32.services.fs.fat.example.uc3l_ek">
+		<require idref="board.uc3l_ek"/>
+		<config name="config.board.uc3l_ek.init" value="no"/>
+		<config name="config.board.uc3l_ek.led" value="yes"/>
+		<require idref="avr32.services.fs.fat.example"/>
+		<generator value="iarew32"/>
+		<generator value="avr32gcc"/>
+		<generator value="as5_32"/>
+		<generator value="doxygen"/>
+		<device-support value="at32uc3l064"/>
+	</project>
+</asf>

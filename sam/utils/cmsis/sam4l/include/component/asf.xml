@@ -1,0 +1,47 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4l.include.component" caption="SAM4L component definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4L peripherals
+		</info>
+		<!--
+		<build type="include-path" value="."/>
+		-->
+		<build type="header-file" value="component_abdacb.h"/>
+		<build type="header-file" value="component_acifc.h"/>
+		<build type="header-file" value="component_adcife.h"/>
+		<build type="header-file" value="component_aesa.h"/>
+		<build type="header-file" value="component_ast.h"/>
+		<build type="header-file" value="component_bpm.h"/>
+		<build type="header-file" value="component_bscif.h"/>
+		<build type="header-file" value="component_catb.h"/>
+		<build type="header-file" value="component_chipid.h"/>
+		<build type="header-file" value="component_crccu.h"/>
+		<build type="header-file" value="component_dacc.h"/>
+		<build type="header-file" value="component_eic.h"/>
+		<build type="header-file" value="component_flashcalw.h"/>
+		<build type="header-file" value="component_freqm.h"/>
+		<build type="header-file" value="component_gloc.h"/>
+		<build type="header-file" value="component_gpio.h"/>
+		<build type="header-file" value="component_hcache.h"/>
+		<build type="header-file" value="component_hmatrixb.h"/>
+		<build type="header-file" value="component_iisc.h"/>
+		<build type="header-file" value="component_lcdca.h"/>
+		<build type="header-file" value="component_parc.h"/>
+		<build type="header-file" value="component_pdca.h"/>
+		<build type="header-file" value="component_pevc.h"/>
+		<build type="header-file" value="component_picouart.h"/>
+		<build type="header-file" value="component_pm.h"/>
+		<build type="header-file" value="component_scif.h"/>
+		<build type="header-file" value="component_smap.h"/>
+		<build type="header-file" value="component_spi.h"/>
+		<build type="header-file" value="component_tc.h"/>
+		<build type="header-file" value="component_trng.h"/>
+		<build type="header-file" value="component_twim.h"/>
+		<build type="header-file" value="component_twis.h"/>
+		<build type="header-file" value="component_usart.h"/>
+		<build type="header-file" value="component_usbc.h"/>
+		<build type="header-file" value="component_wdt.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam4l"/>
+	</module>
+</asf>

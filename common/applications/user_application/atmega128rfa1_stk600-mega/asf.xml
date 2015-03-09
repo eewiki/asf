@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project id="common.applications.user_application.stk600-mega.atmega128rfa1" caption="ATmega128RFA1 on STK600 template project" type="template">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<require idref="common.applications.user_application"/>
+		<require idref="config.common.services.qtouch.generic.avr8.qmatrix.examples.example_qm_mega_stk600.atmega128rfa1_stk600.include"/>
+		<require idref="board.stk600-mega.atmega128rfa1"/>
+		<generator value="as5_8_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega128rfa1"/>
+	</project>
+</asf>

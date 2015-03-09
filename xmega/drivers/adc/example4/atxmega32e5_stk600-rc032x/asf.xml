@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="ADC Calibration example for stk600-rc032x with ATxmega32E5" id="xmega.drivers.adc.example4.xmega32e5_stk600">
+		<build type="header-file" value="conf_adc.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="xmega.drivers.adc.example4"/>
+		<require idref="board.stk600-rc032x.atxmega32e5"/>
+		<generator value="iarew"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atxmega32e5"/>
+	</project>
+</asf>

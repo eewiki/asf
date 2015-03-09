@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<module type="component" id="avr32.components.display.et024006dhu" caption="LCD Display - ET024006DHU">
+		<info type="description" value="summary">
+		The ET024006DHU is a RGB LCD display from EDT and it offers a resolution of 240x320 pixels. The driver uses the display in a 16-bit mode however each pixel has a resolution of 18 bits (6 bits for each color). In 16-bit mode red and blue have 5-bit while green has 6-bit resolution.
+		The display offers a parallel and a serial interface currenlty only the parallel mode is implemented in the driver.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Graphics" />
+		</info>
+		<build type="c-source" value="et024006dhu.c"/>
+		<build type="header-file" value="et024006dhu.h"/>
+		<build type="header-file" value="smc_et024006dhu.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_et024006dhu.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_avr32_components_display_et024006dhu"/>
+		<device-support value="uc3a0"/>
+		<device-support value="uc3a3"/>
+		<device-support value="uc3a3s"/>
+		<device-support value="uc3c0"/>
+		<require idref="avr32.drivers.gpio"/>
+		<require idref="avr32.drivers.cpu.cycle_counter"/>
+		<require idref="avr32.drivers.ebi.smc"/>
+		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+</asf>

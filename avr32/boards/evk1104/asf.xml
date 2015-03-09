@@ -1,0 +1,47 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.evk1104.led" name="config.board.evk1104.led" caption="EVK1104 LED support" default="yes">
+		<module type="meta" id="config.board.evk1104.led#no" caption="EVK1104 LED support disabled">
+
+		</module>
+		<module type="meta" id="config.board.evk1104.led#yes" caption="EVK1104 LED support enabled">
+			<build type="c-source" value="led.c"/>
+			<build type="include-path" value="."/>
+			<require idref="avr32.drivers.gpio"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.evk1104.init" name="config.board.evk1104.init" caption="EVK1104 initialization support" default="yes">
+		<module type="meta" id="config.board.evk1104.init#no" caption="EVK1104 initialization support disabled">
+
+		</module>
+		<module type="meta" id="config.board.evk1104.init#yes" caption="EVK1104 initialization support enabled">
+			<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+			<build type="module-config" subtype="path" value="board_config"/>
+			<build type="c-source" value="init.c"/>
+			<require idref="avr32.drivers.gpio"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.evk1104" vendor="Atmel" caption="EVK1104">
+		<build type="define" name="BOARD" value="EVK1104"/>
+		<build type="header-file" value="evk1104.h"/>
+		<build type="header-file" subtype="api" value="led.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<require idref="common.boards"/>
+		<require idref="config.board.evk1104.led"/>
+		<require idref="config.board.evk1104.init"/>
+		<device-support value="at32uc3a3256"/>
+	</board>
+	<board id="board.evk1104s" vendor="Atmel" caption="EVK1104S">
+		<build type="define" name="BOARD" value="EVK1104"/>
+		<build type="header-file" value="evk1104.h"/>
+		<build type="header-file" subtype="api" value="led.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<require idref="common.boards"/>
+		<require idref="config.board.evk1104.led"/>
+		<require idref="config.board.evk1104.init"/>
+		<device-support value="at32uc3a3256s"/>
+	</board>
+</asf>

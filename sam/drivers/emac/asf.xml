@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.emac" caption="Ethernet MAC (EMAC)">
+		<info type="description" value="summary">
+		Provides the interface to configure and use the EMAC peripheral.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>		
+		<build type="c-source" value="emac.c"/>
+		<build type="header-file" subtype="api" value="emac.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_eth.h"/>		
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="doxygen-entry-point" value="emac_group"/>
+		<build type="doxygen-quick-start" value="emac_quickstart"/>
+		<device-support value="sam3x"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam3x"/>
+	</module>
+</asf>

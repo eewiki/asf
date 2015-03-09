@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="Getting Started for SAM4S_EK2" id="sam.applications.getting-started.sam4s_ek2">
+		<info type="description" value="summary">
+		This demonstration program makes two LEDs on the board blinking at a fixed rate.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="include-path" value="."/>
+		<require idref="sam.applications.getting-started"/>
+		<require idref="board.sam4s_ek2"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>
