@@ -23,9 +23,6 @@ typedef enum {			/* Operating modes for buffer controllers */
 
 /* Values of global_state field (jdapi.c has some dependencies on ordering!) */
 #define CSTATE_START	100	/* after create_compress */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #define CSTATE_SCANNING	101	/* start_compress done, write_scanlines OK */
 #define CSTATE_RAW_OK	102	/* start_compress done, write_raw_data OK */
 #define CSTATE_WRCOEFS	103	/* jpeg_write_coefficients done */

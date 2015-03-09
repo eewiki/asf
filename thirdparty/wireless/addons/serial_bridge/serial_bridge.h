@@ -3,7 +3,7 @@
  *
  * \brief  Serial Bridge Application
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,7 +42,7 @@
 
 /**
  * \page license License
- * Copyright(c) 2014, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
@@ -51,9 +51,6 @@
  * \mainpage Serial Bridge Application
  */
 /* === INCLUDES ============================================================ */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "sio2host.h"
 #include "sio2ncp.h"

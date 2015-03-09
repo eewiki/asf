@@ -3,7 +3,7 @@
  *
  * \brief SAM ADC Quick Start
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -143,6 +143,6 @@
  *  -# Enter an infinite loop once the conversion is complete.
  *     \snippet qs_adc_callback.c inf_loop
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

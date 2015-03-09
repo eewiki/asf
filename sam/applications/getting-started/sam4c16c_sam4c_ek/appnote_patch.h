@@ -3,7 +3,7 @@
  *
  * \brief Getting Started with SAM4C
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -190,7 +190,7 @@ As shown in the code above, MCK (\c CPCLK_SRC_MCK) is selected as the source of
 coprocessor clock (\c CONFIG_CPCLK_SOURCE). And the prescaler
 (\c CONFIG_CPCLK_PRES) is defined as 1.
 */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

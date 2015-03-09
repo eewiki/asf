@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.sercom.i2c.slave_for_unit_test" caption="slave code for unit_test for the SAM0 SERCOM I2C Driver">
+		<info type="description" value="summary">
+		unit_test slave code for the SERCOM I2C interface module.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="slave_for_unit_test.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.sercom.i2c.slave"/>
+		<device-support value="sam0"/>
+	</module>
+</asf>

@@ -1,0 +1,76 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.components.wifi.winc1500.firmware_update_project">
+		<module type="application" id="common.components.wifi.winc1500.firmware_update_project#0" caption="WINC1500 Firmware Update Project (v18.0.3)">
+			<!-- Summary Description -->
+			<info type="description" value="summary">
+				This project contains necessary tools and documentation to perform a firmware udpate and root certificate update of the WINC1500 Wi-Fi module.
+			</info>
+
+			<!-- Source -->
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<build type="distribute" subtype="file" value="samd21_xplained_pro_certificate_update.bat"/>
+			<build type="distribute" subtype="file" value="samd21_xplained_pro_firmware_update.bat"/>
+			<build type="distribute" subtype="file" value="samw25_xplained_pro_certificate_update.bat"/>
+			<build type="distribute" subtype="file" value="samw25_xplained_pro_firmware_update.bat"/>
+			<build type="include-path" value="doc"/>
+			<build type="distribute" subtype="file" value="doc/Atmel-AN004-Firmware-Update-Procedure-for-WINC1500-WiFi-Module-using-a-SAM-Xplained-Pro.pdf"/>
+
+			<build type="include-path" value="firmware"/>
+			<build type="distribute" subtype="file" value="firmware/download_all.bat"/>
+			<build type="distribute" subtype="file" value="firmware/download_all_sb.bat"/>
+			<build type="distribute" subtype="file" value="firmware/download_crt_sb.bat"/>
+
+			<build type="include-path" value="firmware/firmware"/>
+			<build type="distribute" subtype="file" value="firmware/firmware/m2m_aio.bin"/>
+
+			<build type="include-path" value="firmware/ota_firmware"/>
+			<build type="distribute" subtype="file" value="firmware/ota_firmware/m2m_ota.bin"/>
+
+			<build type="include-path" value="firmware/programmer_firmware"/>
+			<build type="include-path" value="firmware/programmer_firmware/release"/>
+			<build type="distribute" subtype="file" value="firmware/programmer_firmware/release/programmer_firmware.bin"/>
+
+			<build type="include-path" value="firmware/Tools"/>
+			<build type="include-path" value="firmware/Tools/gain_builder"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/gain_builder/m2m_gain_setting.csv"/>
+
+			<build type="include-path" value="firmware/Tools/gain_builder/debug_uart"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/gain_builder/debug_uart/gain_build_and_download.bat"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/gain_builder/debug_uart/gain_build_and_download_samd21.bat"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/gain_builder/debug_uart/gain_build_and_download_samw25.bat"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/gain_builder/debug_uart/gain_builder.exe"/>
+
+			<build type="include-path" value="firmware/Tools/gain_builder/gain_sheets"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/gain_builder/gain_sheets/samd21_gain_setting.csv"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/gain_builder/gain_sheets/samw25_gain_setting.csv"/>
+
+			<build type="include-path" value="firmware/Tools/image_downloader"/>
+			<build type="include-path" value="firmware/Tools/image_downloader/debug_uart"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/image_downloader/debug_uart/image_downloader.exe"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/image_downloader/debug_uart/run_image_downloader.bat"/>
+
+			<build type="include-path" value="firmware/Tools/root_certificate_downloader"/>
+			<build type="include-path" value="firmware/Tools/root_certificate_downloader/crt"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/root_certificate_downloader/crt/FreeRadius_Root.cer"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/root_certificate_downloader/crt/NMA_Root.cer"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/root_certificate_downloader/crt/PROWL_Root.cer"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/root_certificate_downloader/crt/Radius_Root.cer"/>
+
+			<build type="include-path" value="firmware/Tools/root_certificate_downloader/debug_uart"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/root_certificate_downloader/debug_uart/root_certificate_downloader.exe"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/root_certificate_downloader/debug_uart/RootCertDownload.bat"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/root_certificate_downloader/debug_uart/RootCertDownload_NoWait.bat"/>
+
+			<build type="include-path" value="firmware/Tools/serial_bridge"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/serial_bridge/samd21_xplained_pro_serial_bridge.elf"/>
+			<build type="distribute" subtype="file" value="firmware/Tools/serial_bridge/samw25_xplained_pro_serial_bridge.elf"/>
+
+			<!-- Device support -->
+			<device-support value="samd21"/>
+
+			<!-- Required modules -->
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

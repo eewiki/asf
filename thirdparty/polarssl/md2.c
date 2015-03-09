@@ -28,9 +28,6 @@
  *  http://www.ietf.org/rfc/rfc1115.txt
  *  http://www.ietf.org/rfc/rfc1319.txt
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "polarssl/config.h"
 

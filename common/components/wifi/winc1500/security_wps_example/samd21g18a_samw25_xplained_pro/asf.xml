@@ -1,0 +1,30 @@
+<asf xmlversion="1.0">
+	<project caption="WINC1500 Connecting a Secured AP Using WPS Example for SAMW25 XPlained Pro" id="common.components.wifi.winc1500.security_wps_example.samw25_xplained_pro">
+		<!-- Summary Description -->
+		<info type="description" value="summary">
+			This example demonstrates the use of the WINC1500 with the SAMW25 Xplained Pro board to connect to AP with WPS Security.
+		</info>
+
+		<!-- Source -->
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+		<build type="header-file" value="conf_winc.h"/>
+
+		<!-- Device support -->
+		<device-support value="atsamd21g18a"/>
+
+		<!-- Required modules -->
+		<require idref="common.components.wifi.winc1500.security_wps_example"/>
+		<require idref="board.samw25_xplained_pro"/>
+
+		<!-- Generators -->
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+	</project>
+</asf>

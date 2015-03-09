@@ -4,7 +4,7 @@
  * \brief  Common utilities for both Initiator and Receptor in PER Measurement
  * mode - Performance Analyzer application
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,15 +42,12 @@
  */
 
 /*
- * Copyright(c) 2013-2014, Atmel Corporation All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 
 /* === INCLUDES ============================================================ */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #include <stdio.h>
 #include "tfa.h"
 #include "tal.h"

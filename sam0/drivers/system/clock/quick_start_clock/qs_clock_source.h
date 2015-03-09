@@ -3,7 +3,7 @@
  *
  * \brief SAM System Clock Driver Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -127,6 +127,6 @@
  *    clock generator.
  *    \snippet qs_clock_source.c set_sys_clk_src
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

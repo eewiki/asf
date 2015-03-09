@@ -5,7 +5,7 @@
 ******************************************************************************/
 
 /*  License
-*   Copyright (c) 2010-2014, Atmel Corporation All rights reserved.
+ * Copyright (c) 2010-2015 Atmel Corporation. All rights reserved.
 *   
 *   Redistribution and use in source and binary forms, with or without
 *   modification, are permitted provided that the following conditions are met:
@@ -33,9 +33,6 @@
 */
 
 /*============================ INCLUDES ======================================*/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 //#ifdef _DEBUG_INTERFACE_
 //#include "touch_api.h"
 //#include "qdebug.h"

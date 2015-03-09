@@ -53,9 +53,6 @@
  *
  * $Id: chpms.h,v 1.5 2007/12/19 20:47:23 fbernon Exp $
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef CHPMS_H
 #define CHPMS_H

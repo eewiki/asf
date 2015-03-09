@@ -30,9 +30,6 @@
 * 98-05-29 Guy Lancaster <glanca@gesn.com>, Global Election Systems Inc.
 *   Extracted from avos.
 *****************************************************************************/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef RANDM_H
 #define RANDM_H

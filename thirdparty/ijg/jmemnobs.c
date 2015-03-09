@@ -14,9 +14,6 @@
  * to process big images.
  * Note that the max_memory_to_use option is ignored by this implementation.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

@@ -82,9 +82,6 @@ Changes from V4.1.1
 	+ The second set of tasks were created the wrong way around.  This has been
 	  corrected.
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 
 #include <stdlib.h>

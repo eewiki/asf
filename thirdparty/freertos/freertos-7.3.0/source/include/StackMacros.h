@@ -65,9 +65,6 @@
     provide a safety engineered and independently SIL3 certified version under 
     the SafeRTOS brand: http://www.SafeRTOS.com.
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef STACK_MACROS_H
 #define STACK_MACROS_H

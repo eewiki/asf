@@ -6,7 +6,7 @@
  * This file includes the appropriate board header file according to the
  * defined board (parameter BOARD).
  *
- * Copyright (c) 2009-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,7 +43,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -86,17 +86,17 @@ extern "C" {
 #define XMEGA_B1_XPLAINED          18  //!< ATxmega128B1 Xplained board.
 #define XMEGA_A1_XPLAINED          19  //!< ATxmega128A1 Xplain-A1 board.
 #define XMEGA_A1U_XPLAINED_PRO     20  //!< ATxmega128A1U XMEGA-A1U Xplained Pro board.
-#define STK600_RCUC3L4             21  //!< ATUCL4 STK600 board
-#define UC3_L0_XPLAINED_BC         22  //!< ATUC3L0 UC3-L0 Xplained board controller board
-#define MEGA1284P_XPLAINED_BC      23  //!< ATmega1284P-Xplained board controller board
+#define STK600_RCUC3L4             21  //!< ATUCL4 STK600 board.
+#define UC3_L0_XPLAINED_BC         22  //!< ATUC3L0 UC3-L0 Xplained board controller board.
+#define MEGA1284P_XPLAINED_BC      23  //!< ATmega1284P-Xplained board controller board.
 #define STK600_RC044X              24  //!< STK600 with RC044X routing card board.
 #define STK600_RCUC3B0             25  //!< STK600 RCUC3B0 board.
 #define UC3_L0_QT600               26  //!< QT600 UC3L0 MCU board.
 #define XMEGA_A3BU_XPLAINED        27  //!< ATxmega256A3BU Xplained board.
 #define STK600_RC064X_LCDX         28  //!< XMEGAB3 STK600 RC064X LCDX board.
 #define STK600_RC100X_LCDX         29  //!< XMEGAB1 STK600 RC100X LCDX board.
-#define UC3B_BOARD_CONTROLLER      30  //!< AT32UC3B1 board controller for Atmel boards
-#define RZ600                      31  //!< AT32UC3A RZ600 MCU board
+#define UC3B_BOARD_CONTROLLER      30  //!< AT32UC3B1 board controller for Atmel boards.
+#define RZ600                      31  //!< AT32UC3A RZ600 MCU board.
 #define SAM3S_EK                   32  //!< SAM3S-EK board.
 #define SAM3U_EK                   33  //!< SAM3U-EK board.
 #define SAM3X_EK                   34  //!< SAM3X-EK board.
@@ -109,7 +109,7 @@ extern "C" {
 #define SAM4S_XPLAINED             41  //!< SAM4S Xplained board.
 #define ATXMEGA128A1_QT600         42  //!< QT600 ATXMEGA128A1 MCU board.
 #define ARDUINO_DUE_X              43  //!< Arduino Due/X board.
-#define STK600_RCUC3L3             44  //!< ATUCL3 STK600 board
+#define STK600_RCUC3L3             44  //!< ATUCL3 STK600 board.
 #define SAM4L_EK                   45  //!< SAM4L-EK board.
 #define STK600_MEGA_RF             46  //!< STK600 MEGA RF EVK board.
 #define XMEGA_C3_XPLAINED          47  //!< ATxmega384C3 Xplained board.
@@ -120,15 +120,15 @@ extern "C" {
 #define ATMEGA256RFR2_XPLAINED_PRO 52  //!< ATmega256RFR2 Xplained Pro board.
 #define SAM4S_XPLAINED_PRO         53  //!< SAM4S Xplained Pro board.
 #define SAM4L_XPLAINED_PRO         54  //!< SAM4L Xplained Pro board.
-#define ATMEGA256RFR2_ZIGBIT       55  //!< ATmega256RFR2 zigbit
-#define XMEGA_RF233_ZIGBIT         56  //!< ATxmega256A3U with AT86RF233 Zigbit
-#define XMEGA_RF212B_ZIGBIT        57  //!< ATxmega256A3U with AT86RF212B Zigbit
+#define ATMEGA256RFR2_ZIGBIT       55  //!< ATmega256RFR2 zigbit.
+#define XMEGA_RF233_ZIGBIT         56  //!< ATxmega256A3U with AT86RF233 Zigbit.
+#define XMEGA_RF212B_ZIGBIT        57  //!< ATxmega256A3U with AT86RF212B Zigbit.
 #define SAM4S_WPIR_RD              58  //!< SAM4S-WPIR-RD board.
-#define SAMD20_XPLAINED_PRO        59  //!< SAM D20 Xplained Pro board
+#define SAMD20_XPLAINED_PRO        59  //!< SAM D20 Xplained Pro board.
 #define SAM4L8_XPLAINED_PRO        60  //!< SAM4L8 Xplained Pro board.
 #define SAM4N_XPLAINED_PRO         61  //!< SAM4N Xplained Pro board.
 #define XMEGA_A3_REB_CBB           62  //!< XMEGA REB Controller Base board.
-#define ATMEGARFX_RCB              63  //!< RFR2 & RFA1 RCB
+#define ATMEGARFX_RCB              63  //!< RFR2 & RFA1 RCB.
 #define SAM4C_EK                   64  //!< SAM4C-EK board.
 #define RCB256RFR2_XPRO            65  //!< RFR2 RCB Xplained Pro board.
 #define SAMG53_XPLAINED_PRO        66  //!< SAMG53 Xplained Pro board.
@@ -142,10 +142,12 @@ extern "C" {
 #define SAMD11_XPLAINED_PRO        74  //!< SAM D11 Xplained Pro board.
 #define SAMG55_XPLAINED_PRO        75  //!< SAMG55 Xplained Pro board.
 #define SAML21_XPLAINED_PRO        76  //!< SAM L21 Xplained Pro board.
-#define SIMULATOR_XMEGA_A1         97  //!< Simulator for XMEGA A1 devices
+#define SAMD10_XPLAINED_MINI       77  //!< SAM D10 Xplained Mini board.
+#define SAMW25_XPLAINED_PRO        79  //!< SAMW25 Xplained Pro board.
+#define SIMULATOR_XMEGA_A1         97  //!< Simulator for XMEGA A1 devices.
 #define AVR_SIMULATOR_UC3          98  //!< Simulator for the AVR UC3 device family.
 #define USER_BOARD                 99  //!< User-reserved board (if any).
-#define DUMMY_BOARD               100  //!< Dummy board to support board-independent applications (e.g. bootloader)
+#define DUMMY_BOARD               100  //!< Dummy board to support board-independent applications (e.g. bootloader).
 //! @}
 
 /*! \name Extension Boards
@@ -272,8 +274,12 @@ extern "C" {
 #  include "samd11_xplained_pro/samd11_xplained_pro.h"
 #elif BOARD == SAML21_XPLAINED_PRO
 #  include "saml21_xplained_pro/saml21_xplained_pro.h"
+#elif BOARD == SAMD10_XPLAINED_MINI
+#  include "samd10_xplained_mini/samd10_xplained_mini.h"
 #elif BOARD == SAM4N_XPLAINED_PRO
 #  include "sam4n_xplained_pro/sam4n_xplained_pro.h"
+#elif BOARD == SAMW25_XPLAINED_PRO
+#  include "samw25_xplained_pro/samw25_xplained_pro.h"
 #elif BOARD == MEGA1284P_XPLAINED_BC
 #  include "mega1284p_xplained_bc/mega1284p_xplained_bc.h"
 #elif BOARD == UC3_L0_QT600

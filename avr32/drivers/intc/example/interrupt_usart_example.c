@@ -3,7 +3,7 @@
  *
  * \brief Example of an interrupt-driven USART communication.
  *
- * Copyright (c) 2009-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -105,7 +105,7 @@
  *     - 1 stop bit,
  *     - no flow control.
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

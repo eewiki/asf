@@ -3,7 +3,7 @@
  *
  * \brief gcc starttup file for SAML21
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -260,6 +260,9 @@ void Reset_Handler(void)
 
         /* Initialize the C library */
         __libc_init_array();
+
+        /* Overwriting the default value of the NVMCTRL.CTRLB.MANW bit (errata reference 13134) */
+        NVMCTRL->CTRLB.bit.MANW = 1;
 
         /* Branch to main function */
         main();

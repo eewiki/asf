@@ -3,7 +3,7 @@
  *
  * \brief SAM NVM Unit test
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -101,7 +101,7 @@
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -176,6 +176,9 @@ static void run_nvm_init_test(const struct test_case *test)
 
 	/* Set wait state to 1 */
 	config.wait_states = 1;
+
+	/* Enable automatic page write mode */
+	config.manual_page_write = false;
 
 	/* Set the NVM configuration */
 	status = nvm_set_config(&config);

@@ -3,7 +3,7 @@
  *
  * \brief XMEGA-A3BU Xplained demo application
  *
- * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -69,7 +69,7 @@
  * - timezone.c handle timezones stored in EEPROM and selecting a new one
  * - cdc.c USB CDC class abstraction used for keyboard input
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
  

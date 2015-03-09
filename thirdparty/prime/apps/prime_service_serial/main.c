@@ -3,7 +3,7 @@
  *
  * \brief Example application for ATMEL PRIME v1.3 Service Node
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -87,9 +87,6 @@
  */
 
 /* Kernel includes. */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #include "FreeRTOS.h"
 #include "task.h"
 

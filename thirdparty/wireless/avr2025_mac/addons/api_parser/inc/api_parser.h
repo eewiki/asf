@@ -4,7 +4,7 @@
  * @brief This header defines protoypes and definitions for api parser
  * functionalities
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,7 +42,7 @@
  */
 
 /*
- * Copyright (c) 2014, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
@@ -73,9 +73,6 @@
  * running in same processor or on NCP.This
  * module is used for \ref twopapp .
  * @{
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include "return_val.h"

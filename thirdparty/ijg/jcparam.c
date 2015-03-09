@@ -9,9 +9,6 @@
  * Applications do not have to use this file, but those that don't use it
  * must know a lot more about the innards of the JPEG code.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

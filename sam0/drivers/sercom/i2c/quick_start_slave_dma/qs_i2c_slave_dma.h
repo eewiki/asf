@@ -3,7 +3,7 @@
  *
  * \brief SAM SERCOM I2C Slave with DMA Quick Start Guide
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -154,6 +154,6 @@
  *    \snippet qs_i2c_slave_dma.c clear_status
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

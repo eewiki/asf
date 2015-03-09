@@ -4,7 +4,7 @@
  *
  * \brief Documentation of the Fixed point DSP Library
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -122,7 +122,7 @@
  * \ingroup group_dsplib
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

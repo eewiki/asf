@@ -20,9 +20,6 @@
 
 
 /* Short forms of external names for systems with brain-damaged linkers. */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifdef NEED_SHORT_EXTERNAL_NAMES
 #define jpeg_get_small		jGetSmall

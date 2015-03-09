@@ -1,6 +1,6 @@
 /**
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -54,6 +54,6 @@
  * \section information Information
  * All the files related to this module are located under /avr32/services/dsp/dsplib/utils/scripts/resampling_coefficients_generation\n
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

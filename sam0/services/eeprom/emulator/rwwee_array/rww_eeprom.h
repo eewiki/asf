@@ -3,7 +3,7 @@
  *
  * \brief SAM Read While Write EEPROM Emulator
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef RWW_EEPROM_H_INCLUDED
@@ -59,6 +59,7 @@
  *
  * The following devices can use this module:
  *  - Atmel | SMART SAM L21
+ *  - Atmel | SMART SAM D21
  *
  * The outline of this documentation is as follows:
  *  - \ref asfdoc_sam0_rww_eeprom_prerequisites

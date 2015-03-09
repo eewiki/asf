@@ -28,9 +28,6 @@
  *
  *  http://info.isl.ntt.co.jp/crypt/eng/camellia/dl/01espec.pdf
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "polarssl/config.h"
 

@@ -4,7 +4,7 @@
  * \brief Metering Application Emulator (APPEMU) for ATMEL PRIME v.1.3 Service
  * Node
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -88,9 +88,6 @@
  */
 
 /* Atmel library includes. */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #include "asf.h"
 
 /* AppEmu includes */

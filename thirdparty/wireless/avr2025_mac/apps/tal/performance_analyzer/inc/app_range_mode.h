@@ -3,7 +3,7 @@
  *
  * \brief Range Measurement mode related prototypes and defines
  * - Performance Analyzer application
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -41,14 +41,11 @@
  */
 
 /*
- * Copyright (c) 2014, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 /* Prevent double inclusion */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef APP_RANGE_MODE_H
 #define APP_RANGE_MODE_H
 

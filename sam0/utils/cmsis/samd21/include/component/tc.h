@@ -3,7 +3,7 @@
  *
  * \brief Component description for TC
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -54,7 +54,7 @@
 /*@{*/
 
 #define TC_U2212
-#define REV_TC                      0x121
+#define REV_TC                      0x131
 
 /* -------- TC_CTRLA : (TC Offset: 0x00) (R/W 16) Control A -------- */
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))

@@ -21,9 +21,6 @@
  * Van Jacobson (van@helios.ee.lbl.gov), Dec 31, 1989:
  * - Initial distribution.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef VJ_H
 #define VJ_H

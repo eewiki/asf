@@ -18,9 +18,6 @@
  *
  * $Id: version.h,v 1.26 2004/01/23 09:41:33 rob Exp $
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 # ifndef LIBMAD_VERSION_H
 # define LIBMAD_VERSION_H

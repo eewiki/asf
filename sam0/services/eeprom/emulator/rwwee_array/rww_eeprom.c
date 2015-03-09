@@ -3,7 +3,7 @@
  *
  * \brief SAM Read While Write EEPROM Emulator
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include "rww_eeprom.h"
@@ -485,7 +485,9 @@ static enum status_code _rww_eeprom_emulator_move_data_to_spare(
 		_eeprom_instance.page_map[page_trans[c].logical_page] = new_page;
 		_eeprom_instance.cache_active = true;
 	}
-
+#ifdef SAMD21_64K
+	rww_eeprom_emulator_commit_page_buffer();
+#endif
 	/* Erase the row that was moved and set it as the new spare row */
 	_rww_eeprom_emulator_nvm_erase_row(row_number);
 

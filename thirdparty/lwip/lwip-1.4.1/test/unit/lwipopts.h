@@ -29,9 +29,6 @@
  * Author: Simon Goldschmidt
  *
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef __LWIPOPTS_H__
 #define __LWIPOPTS_H__
 

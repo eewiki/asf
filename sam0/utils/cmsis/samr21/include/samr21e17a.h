@@ -3,7 +3,7 @@
  *
  * \brief Header file for SAMR21E17A
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -39,9 +39,6 @@
  *
  * \asf_license_stop
  *
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #ifndef _SAMR21E17A_
@@ -185,6 +182,7 @@ typedef struct _DeviceVectors
   void* pfnDAC_Handler;                   /* 25 Digital Analog Converter */
   void* pfnPTC_Handler;                   /* 26 Peripheral Touch Controller */
   void* pfnI2S_Handler;                   /* 27 Inter-IC Sound Interface */
+  void* pfnReserved28;
 } DeviceVectors;
 
 /* Cortex-M0+ processor handlers */

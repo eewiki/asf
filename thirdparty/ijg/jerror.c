@@ -19,9 +19,6 @@
  */
 
 /* this is not a core library module, so it doesn't define JPEG_INTERNALS */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #include "jinclude.h"
 #include "jpeglib.h"
 #include "jversion.h"

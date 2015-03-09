@@ -11,13 +11,9 @@
 		</info>
 
 		<info type="gui-flag" value="move-to-root"/>
-
 		<build type="c-source" value="led_toggle.c"/>
-
 		<build type="include-path" value="."/>
-
 		<require idref="sam0.drivers.port"/>
-		<require idref="sam0.drivers.extint"/>
 		<require idref="sam0.drivers.system"/>
 
 		<device-support value="sam0"/>

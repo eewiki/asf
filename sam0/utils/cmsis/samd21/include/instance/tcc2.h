@@ -3,7 +3,7 @@
  *
  * \brief Instance description for TCC2
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -108,6 +108,7 @@
 #define TCC2_DTI                    0        // Dead-Time-Insertion feature implemented
 #define TCC2_EXT                    0        // Coding of implemented extended features
 #define TCC2_GCLK_ID                27       // Index of Generic Clock
+#define TCC2_MASTER                 0       
 #define TCC2_OTMX                   0        // Output Matrix feature implemented
 #define TCC2_OW_NUM                 2        // Number of Output Waveforms
 #define TCC2_PG                     0        // Pattern Generation feature implemented

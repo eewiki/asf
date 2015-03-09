@@ -4,7 +4,7 @@
  * \brief Example to illustrate the Sleepwalking feature with the ADCIFB module
  *        in AT32UC3L series
  *
- * Copyright (C) 2011-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,7 +43,7 @@
  */
 
 /* Include Files */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <stdint.h>

@@ -1,8 +1,5 @@
 /** @file
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef __LWIP_DHCP_H__
 #define __LWIP_DHCP_H__

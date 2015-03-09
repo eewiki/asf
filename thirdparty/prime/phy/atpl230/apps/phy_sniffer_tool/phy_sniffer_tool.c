@@ -3,7 +3,7 @@
  *
  * \brief ATMEL PLC Phy Sniffer Example
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -66,9 +66,6 @@
  */
 
 /* Atmel boards includes. */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #include "board.h"
 
 /* Atmel library includes. */

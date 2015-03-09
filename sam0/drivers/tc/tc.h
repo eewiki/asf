@@ -3,7 +3,7 @@
  *
  * \brief SAM TC - Timer Counter Driver
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -131,6 +131,10 @@
  *  </tr>
  *  <tr>
  *    <td>FEATURE_TC_IO_CAPTURE</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ *  <tr>
+ *    <td>FEATURE_TC_GENERATE_DMA_TRIGGER</td>
  *    <td>SAML21</td>
  *  </tr>
  * </table>
@@ -469,6 +473,8 @@
 #  define FEATURE_TC_READ_SYNC
 /** IO pin edge capture*/
 #  define FEATURE_TC_IO_CAPTURE
+/** Generate DMA triggers*/
+#  define FEATURE_TC_GENERATE_DMA_TRIGGER
 #endif
 /*@}*/
 
@@ -495,7 +501,7 @@
 #endif
 
 /** TC Instance MAX ID Number. */
-#if SAMD20E || SAMD21G || SAMD21E || SAMR21
+#if SAMD20E || SAMD20G || SAMD21E || SAMD21G || SAMR21
 #define TC_INST_MAX_ID  5
 #elif SAML21
 #define TC_INST_MAX_ID  4
@@ -1290,7 +1296,7 @@ static inline void tc_stop_counter(
 	}
 
 	/* Write command to execute */
-	tc_module->CTRLBSET.reg = TC_CTRLBSET_CMD(2);
+	tc_module->CTRLBSET.reg = TC_CTRLBSET_CMD(TC_CTRLBSET_CMD_STOP_Val);
 }
 
 /**
@@ -1322,7 +1328,7 @@ static inline void tc_start_counter(
 	}
 
 	/* Write command to execute */
-	tc_module->CTRLBSET.reg = TC_CTRLBSET_CMD(1);
+	tc_module->CTRLBSET.reg = TC_CTRLBSET_CMD(TC_CTRLBSET_CMD_RETRIGGER_Val);
 }
 
 /** @} */
@@ -1362,7 +1368,7 @@ static inline void tc_update_double_buffer(
 	}
 
 	/* Write command to execute */
-	tc_module->CTRLBSET.reg = TC_CTRLBSET_CMD(3);
+	tc_module->CTRLBSET.reg = TC_CTRLBSET_CMD(TC_CTRLBSET_CMD_UPDATE_Val);
 }
 /** @} */
 #endif
@@ -1402,7 +1408,47 @@ static inline void tc_sync_read_count(
 	}
 
 	/* Write command to execute */
-	tc_module->CTRLBSET.reg = TC_CTRLBSET_CMD(4);
+	tc_module->CTRLBSET.reg = TC_CTRLBSET_CMD(TC_CTRLBSET_CMD_READSYNC_Val);
+}
+/** @} */
+#endif
+
+#ifdef FEATURE_TC_GENERATE_DMA_TRIGGER
+/**
+ * \name Generate TC DMA Triggers command
+ * @{
+ */
+
+/**
+ * \brief TC DMA Trigger.
+ *
+ * TC DMA trigger command.
+ *
+ * \param[in]  module_inst   Pointer to the software module instance struct
+ */
+static inline void tc_dma_trigger_command(
+		const struct tc_module *const module_inst)
+{
+	/* Sanity check arguments */
+	Assert(module_inst);
+	Assert(module_inst->hw);
+
+	/* Get a pointer to the module's hardware instance */
+	TcCount8 *const tc_module = &(module_inst->hw->COUNT8);
+
+	while (tc_is_syncing(module_inst)) {
+		/* Wait for sync */
+	}
+
+	/* Make certain that there are no conflicting commands in the register */
+	tc_module->CTRLBCLR.reg = TC_CTRLBCLR_CMD_NONE;
+
+	while (tc_is_syncing(module_inst)) {
+		/* Wait for sync */
+	}
+
+	/* Write command to execute */
+	tc_module->CTRLBSET.reg = TC_CTRLBSET_CMD(TC_CTRLBSET_CMD_DMATRG_Val);
 }
 /** @} */
 #endif

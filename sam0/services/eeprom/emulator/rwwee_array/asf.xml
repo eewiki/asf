@@ -28,6 +28,10 @@
 		<build type="doxygen-entry-point" value="asfdoc_sam0_rww_eeprom_group"/>
 		<build type="doxygen-quick-start" value="asfdoc_sam0_rww_eeprom_exqsg"/>
 		<device-support value="saml21"/>
+		<device-support value="samd21jxxb"/>
+		<device-support value="samd21gxxb"/>
+		<device-support value="samd21exxb"/>
+		<device-support value="samd21exxl"/>
 		<require idref="sam0.utils"/>
 		<require idref="sam0.drivers.nvm"/>
 		<generator value="doxygen-module-v2" default-mcu="unspecified-saml21"/>

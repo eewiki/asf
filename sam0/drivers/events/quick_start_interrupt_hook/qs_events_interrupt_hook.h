@@ -3,7 +3,7 @@
  *
  * \brief SAM Event System Driver Quick Start
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -175,6 +175,6 @@
  * -# Start the timer/counter.
  * \snippet qs_events_interrupt_hook.c main_2
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

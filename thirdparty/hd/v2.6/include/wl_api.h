@@ -128,9 +128,6 @@ a new hardware platform.
  * For further information, visit
  * <A href="http://www.hd-wireless.se/">H&D Wireless</A>.\n
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef WL_API_H
 #define WL_API_H

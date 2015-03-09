@@ -8,9 +8,6 @@
 /* #undef EXPERIMENTAL */
 
 /* Define to 1 if you have the <assert.h> header file. */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #define HAVE_ASSERT_H 1
 
 /* Define to 1 if you have the <dlfcn.h> header file. */

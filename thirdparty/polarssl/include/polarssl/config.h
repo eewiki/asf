@@ -22,9 +22,6 @@
  * or disable features selectively, and reduce the global
  * memory footprint.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef POLARSSL_CONFIG_H
 #define POLARSSL_CONFIG_H
 

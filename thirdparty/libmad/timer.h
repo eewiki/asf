@@ -18,9 +18,6 @@
  *
  * $Id: timer.h,v 1.16 2004/01/23 09:41:33 rob Exp $
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 # ifndef LIBMAD_TIMER_H
 # define LIBMAD_TIMER_H

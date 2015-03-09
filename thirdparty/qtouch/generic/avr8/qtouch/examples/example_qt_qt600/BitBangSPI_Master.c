@@ -10,7 +10,7 @@
  * - Support: http://www.atmel.com/design-support/
  *
  *
- * Copyright (c) 2010-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -48,9 +48,6 @@
  *
  ******************************************************************************/
 /*============================ INCLUDES ======================================*/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifdef _DEBUG_INTERFACE_
 #include <avr/io.h>
 #include "BitBangSPI_Master.h"

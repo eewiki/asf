@@ -3,7 +3,7 @@
  *
  * \brief USB device driver for Human Interface Device (HID) generic interface.
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -108,7 +108,7 @@ typedef struct {
 
 
 /** By default no string associated to this interface. */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef UDI_HID_GENERIC_STRING_ID

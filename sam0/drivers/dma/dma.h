@@ -3,7 +3,7 @@
  *
  * \brief SAM Direct Memory Access Controller Driver
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef DMA_H_INCLUDED
@@ -510,7 +510,7 @@ struct dma_resource_config {
 /** Forward definition of the DMA resource. */
 struct dma_resource;
 /** Type definition for a DMA resource callback function. */
-typedef void (*dma_callback_t)(const struct dma_resource *const resource);
+typedef void (*dma_callback_t)(struct dma_resource *const resource);
 
 /** Structure for DMA transfer resource. */
 struct dma_resource {

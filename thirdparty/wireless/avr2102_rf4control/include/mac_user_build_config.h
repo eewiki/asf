@@ -3,7 +3,7 @@
  *
  * @brief This header file declares macros for various build configurations
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,9 +42,6 @@
  */
 
 /* Prevent double inclusion */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef MAC_USER_BUILD_CONFIG_H
 #define MAC_USER_BUILD_CONFIG_H
 

@@ -3,7 +3,7 @@
  *
  * \brief SAM BOD Driver Quick Start
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -87,6 +87,6 @@
  *    voltage level.
  *    \snippet qs_bod_basic_use.c main_loop
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

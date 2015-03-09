@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -38,9 +38,6 @@
  * \asf_license_stop
  *
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "samr21.h"
 
@@ -68,7 +65,7 @@ void Dummy_Handler(void);
 #pragma weak EIC_Handler              = Dummy_Handler
 #pragma weak NVMCTRL_Handler          = Dummy_Handler
 #pragma weak DMAC_Handler             = Dummy_Handler
-#ifdef       USB_IRQn
+#ifdef       ID_USB
 #pragma weak USB_Handler              = Dummy_Handler
 #endif
 #pragma weak EVSYS_Handler            = Dummy_Handler
@@ -76,10 +73,10 @@ void Dummy_Handler(void);
 #pragma weak SERCOM1_Handler          = Dummy_Handler
 #pragma weak SERCOM2_Handler          = Dummy_Handler
 #pragma weak SERCOM3_Handler          = Dummy_Handler
-#ifdef       SERCOM4_IRQn
+#ifdef       ID_SERCOM4
 #pragma weak SERCOM4_Handler          = Dummy_Handler
 #endif
-#ifdef       SERCOM5_IRQn
+#ifdef       ID_SERCOM5
 #pragma weak SERCOM5_Handler          = Dummy_Handler
 #endif
 #pragma weak TCC0_Handler             = Dummy_Handler
@@ -88,22 +85,22 @@ void Dummy_Handler(void);
 #pragma weak TC3_Handler              = Dummy_Handler
 #pragma weak TC4_Handler              = Dummy_Handler
 #pragma weak TC5_Handler              = Dummy_Handler
-#ifdef       TC6_IRQn
+#ifdef       ID_TC6
 #pragma weak TC6_Handler              = Dummy_Handler
 #endif
-#ifdef       TC7_IRQn
+#ifdef       ID_TC7
 #pragma weak TC7_Handler              = Dummy_Handler
 #endif
-#ifdef       ADC_IRQn
+#ifdef       ID_ADC
 #pragma weak ADC_Handler              = Dummy_Handler
 #endif
-#ifdef       AC_IRQn
+#ifdef       ID_AC
 #pragma weak AC_Handler               = Dummy_Handler
 #endif
-#ifdef       DAC_IRQn
+#ifdef       ID_DAC
 #pragma weak DAC_Handler              = Dummy_Handler
 #endif
-#ifdef       PTC_IRQn
+#ifdef       ID_PTC
 #pragma weak PTC_Handler              = Dummy_Handler
 #endif
 #pragma weak I2S_Handler              = Dummy_Handler
@@ -144,7 +141,7 @@ const DeviceVectors __vector_table[] = {
         (void*) EIC_Handler,            /*  4 External Interrupt Controller */
         (void*) NVMCTRL_Handler,        /*  5 Non-Volatile Memory Controller */
         (void*) DMAC_Handler,           /*  6 Direct Memory Access Controller */
-#ifdef USB_IRQn
+#ifdef ID_USB
         (void*) USB_Handler,            /*  7 Universal Serial Bus */
 #else
         (void*) (0UL), /* Reserved*/
@@ -154,12 +151,12 @@ const DeviceVectors __vector_table[] = {
         (void*) SERCOM1_Handler,        /* 10 Serial Communication Interface 1 */
         (void*) SERCOM2_Handler,        /* 11 Serial Communication Interface 2 */
         (void*) SERCOM3_Handler,        /* 12 Serial Communication Interface 3 */
-#ifdef SERCOM4_IRQn
+#ifdef ID_SERCOM4
         (void*) SERCOM4_Handler,        /* 13 Serial Communication Interface 4 */
 #else
         (void*) (0UL), /* Reserved*/
 #endif
-#ifdef SERCOM5_IRQn
+#ifdef ID_SERCOM5
         (void*) SERCOM5_Handler,        /* 14 Serial Communication Interface 5 */
 #else
         (void*) (0UL), /* Reserved*/
@@ -170,37 +167,38 @@ const DeviceVectors __vector_table[] = {
         (void*) TC3_Handler,            /* 18 Basic Timer Counter 0 */
         (void*) TC4_Handler,            /* 19 Basic Timer Counter 1 */
         (void*) TC5_Handler,            /* 20 Basic Timer Counter 2 */
-#ifdef TC6_IRQn
+#ifdef ID_TC6
         (void*) TC6_Handler,            /* 21 Basic Timer Counter 3 */
 #else
         (void*) (0UL), /* Reserved*/
 #endif
-#ifdef TC7_IRQn
+#ifdef ID_TC7
         (void*) TC7_Handler,            /* 22 Basic Timer Counter 4 */
 #else
         (void*) (0UL), /* Reserved*/
 #endif
-#ifdef ADC_IRQn
+#ifdef ID_ADC
         (void*) ADC_Handler,            /* 23 Analog Digital Converter */
 #else
         (void*) (0UL), /* Reserved*/
 #endif
-#ifdef AC_IRQn
+#ifdef ID_AC
         (void*) AC_Handler,             /* 24 Analog Comparators */
 #else
         (void*) (0UL), /* Reserved*/
 #endif
-#ifdef DAC_IRQn
+#ifdef ID_DAC
         (void*) DAC_Handler,            /* 25 Digital Analog Converter */
 #else
         (void*) (0UL), /* Reserved*/
 #endif
-#ifdef PTC_IRQn
+#ifdef ID_PTC
         (void*) PTC_Handler,            /* 26 Peripheral Touch Controller */
 #else
         (void*) (0UL), /* Reserved*/
 #endif
-        (void*) I2S_Handler             /* 27 Inter-IC Sound Interface */
+        (void*) I2S_Handler,            /* 27 Inter-IC Sound Interface */
+        (void*) (0UL), /* Reserved */
 };
 
 /**------------------------------------------------------------------------------
@@ -222,6 +220,9 @@ int __low_level_init(void)
  *------------------------------------------------------------------------------*/
 void Reset_Handler(void)
 {
+        /* Overwriting the default value of the NVMCTRL.CTRLB.MANW bit (errata reference 13134) */
+        NVMCTRL->CTRLB.bit.MANW = 1;
+
         __iar_program_start();
 }
 

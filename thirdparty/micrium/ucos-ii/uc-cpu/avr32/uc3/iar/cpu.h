@@ -41,9 +41,6 @@
 *                                               MODULE
 *********************************************************************************************************
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef  CPU_CFG_MODULE_PRESENT
 #define  CPU_CFG_MODULE_PRESENT

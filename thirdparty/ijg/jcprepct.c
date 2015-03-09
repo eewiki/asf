@@ -13,9 +13,6 @@
  * as required by the downsampler.  See the comments at the head of
  * jcsample.c for the downsampler's needs.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

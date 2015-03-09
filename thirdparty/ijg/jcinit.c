@@ -14,9 +14,6 @@
  * For a transcoding-only application, we want to be able to use jcmaster.c
  * without linking in the whole library.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

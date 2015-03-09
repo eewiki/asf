@@ -56,9 +56,6 @@
  * Tests the behaviour when data is peeked from a queue when there are
  * multiple tasks blocked on the queue.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 
 #include <stdlib.h>

@@ -7,9 +7,6 @@
  *
  * This file contains software version identification.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 
 #define JVERSION	"6b  27-Mar-1998"

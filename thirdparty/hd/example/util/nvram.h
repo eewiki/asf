@@ -1,7 +1,4 @@
 #ifndef NVRAM_H
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #define NVRAM_H
 
 #include <stdint.h>

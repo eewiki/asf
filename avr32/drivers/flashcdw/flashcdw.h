@@ -3,7 +3,7 @@
  *
  * \brief FLASHCDW driver for AVR32 UC3.
  *
- * Copyright (c) 2009-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

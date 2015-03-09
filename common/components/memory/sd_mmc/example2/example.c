@@ -3,7 +3,7 @@
  *
  * \brief SD/MMC card example with FatFs
  *
- * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -69,7 +69,7 @@
 	Please plug an SD, MMC or SDIO card in slot.
 \endcode
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

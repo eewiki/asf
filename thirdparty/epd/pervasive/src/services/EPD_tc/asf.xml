@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.epd.pervasive.src.services.epd_tc" caption="E-Paper Display Service">
+		<info type="description" value="summary">
+		Thirdparty driver and service layer for Pervasive E-Paper Displays.
+		</info>
+		<build type="c-source" value="EPD_hw_timer.c"/>
+		<build type="header-file" value="EPD_hw_timer.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_EPD_hw_timer.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<device-support value="megarf"/>
+	</module>
+</asf>

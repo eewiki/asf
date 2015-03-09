@@ -35,9 +35,6 @@
  * Author: Adam Dunkels <adam@sics.se>
  *
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef __LWIPOPTS_H__
 #define __LWIPOPTS_H__
 #include <stdint.h>

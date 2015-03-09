@@ -3,7 +3,7 @@
  *
  * \brief SAM USART Unit test
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -109,7 +109,7 @@
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -145,7 +145,7 @@ volatile bool transfer_complete;
  *
  * * \param module USART module causing the interrupt (not used)
  */
-static void usart_callback(const struct usart_module *const module)
+static void usart_callback(struct usart_module *const module)
 {
 	transfer_complete = true;
 }

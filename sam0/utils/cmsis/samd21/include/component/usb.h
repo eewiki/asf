@@ -3,7 +3,7 @@
  *
  * \brief Component description for USB
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -54,7 +54,7 @@
 /*@{*/
 
 #define USB_U2222
-#define REV_USB                     0x101
+#define REV_USB                     0x103
 
 /* -------- USB_CTRLA : (USB Offset: 0x000) (R/W  8) Control A -------- */
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -239,8 +239,8 @@ typedef union {
 #define USB_HOST_CTRLB_SPDCONF_Pos  2            /**< \brief (USB_HOST_CTRLB) Speed Configuration for Host */
 #define USB_HOST_CTRLB_SPDCONF_Msk  (0x3ul << USB_HOST_CTRLB_SPDCONF_Pos)
 #define USB_HOST_CTRLB_SPDCONF(value) ((USB_HOST_CTRLB_SPDCONF_Msk & ((value) << USB_HOST_CTRLB_SPDCONF_Pos)))
-#define   USB_HOST_CTRLB_SPDCONF_NORMAL_Val 0x0ul  /**< \brief (USB_HOST_CTRLB) Normal mode:the host starts in full-speed mode and performs a high-speed reset to switch to the high speed mode if the downstream peripheral is high-speed capable. */
-#define   USB_HOST_CTRLB_SPDCONF_FS_Val   0x3ul  /**< \brief (USB_HOST_CTRLB) Full-speed:the host remains in full-speed mode whatever is the peripheral speed capability. Relevant in UTMI mode only. */
+#define   USB_HOST_CTRLB_SPDCONF_NORMAL_Val 0x0ul  /**< \brief (USB_HOST_CTRLB) Normal mode: the host starts in full-speed mode and performs a high-speed reset to switch to the high speed mode if the downstream peripheral is high-speed capable. */
+#define   USB_HOST_CTRLB_SPDCONF_FS_Val   0x3ul  /**< \brief (USB_HOST_CTRLB) Full-speed: the host remains in full-speed mode whatever is the peripheral speed capability. Relevant in UTMI mode only. */
 #define USB_HOST_CTRLB_SPDCONF_NORMAL (USB_HOST_CTRLB_SPDCONF_NORMAL_Val << USB_HOST_CTRLB_SPDCONF_Pos)
 #define USB_HOST_CTRLB_SPDCONF_FS   (USB_HOST_CTRLB_SPDCONF_FS_Val << USB_HOST_CTRLB_SPDCONF_Pos)
 #define USB_HOST_CTRLB_TSTJ_Pos     5            /**< \brief (USB_HOST_CTRLB) Test mode J */
@@ -1305,7 +1305,7 @@ typedef union {
     uint8_t  TRFAIL:1;         /*!< bit:      2  Error Flow Interrupt Disable       */
     uint8_t  PERR:1;           /*!< bit:      3  Pipe Error Interrupt Disable       */
     uint8_t  TXSTP:1;          /*!< bit:      4  Transmit  Setup Interrupt Disable  */
-    uint8_t  STALL:1;          /*!< bit:      5  Stall Inetrrupt Disable            */
+    uint8_t  STALL:1;          /*!< bit:      5  Stall Interrupt Disable            */
     uint8_t  :2;               /*!< bit:  6.. 7  Reserved                           */
   } bit;                       /*!< Structure used for bit  access                  */
   struct {
@@ -1332,7 +1332,7 @@ typedef union {
 #define USB_HOST_PINTENCLR_PERR     (0x1ul << USB_HOST_PINTENCLR_PERR_Pos)
 #define USB_HOST_PINTENCLR_TXSTP_Pos 4            /**< \brief (USB_HOST_PINTENCLR) Transmit  Setup Interrupt Disable */
 #define USB_HOST_PINTENCLR_TXSTP    (0x1ul << USB_HOST_PINTENCLR_TXSTP_Pos)
-#define USB_HOST_PINTENCLR_STALL_Pos 5            /**< \brief (USB_HOST_PINTENCLR) Stall Inetrrupt Disable */
+#define USB_HOST_PINTENCLR_STALL_Pos 5            /**< \brief (USB_HOST_PINTENCLR) Stall Interrupt Disable */
 #define USB_HOST_PINTENCLR_STALL    (0x1ul << USB_HOST_PINTENCLR_STALL_Pos)
 #define USB_HOST_PINTENCLR_MASK     0x3Ful       /**< \brief (USB_HOST_PINTENCLR) MASK Register */
 

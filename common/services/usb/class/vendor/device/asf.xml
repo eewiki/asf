@@ -21,9 +21,12 @@
 			<device-support value="uc3b"/>
 			<device-support value="uc3c"/>
 			<device-support value="uc3d"/>
+			<device-support value="uc3l3"/>
+			<device-support value="uc3l4"/>	
 			<device-support value="xmegaa3u"/>
 			<device-support value="xmegaa3bu"/>
 			<device-support value="xmegaa4u"/>
+			<device-support value="xmegab"/>
 			<device-support value="xmegac"/>
 			<device-support value="sam3s"/>
 			<device-support value="sam3sd"/>
@@ -33,6 +36,7 @@
 			<device-support value="sam4s"/>
 			<device-support value="sam4l"/>
 			<device-support value="sam4e"/>
+			<device-support value="sam4c32e"/>
 			<device-support value="samg55"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>
@@ -68,9 +72,12 @@
 		<device-support value="uc3b"/>
 		<device-support value="uc3c"/>
 		<device-support value="uc3d"/>
+		<device-support value="uc3l3"/>
+		<device-support value="uc3l4"/>
 		<device-support value="xmegaa3u"/>
 		<device-support value="xmegaa3bu"/>
 		<device-support value="xmegaa4u"/>
+		<device-support value="xmegab"/>
 		<device-support value="xmegac"/>
 		<device-support value="sam3s"/>
 		<device-support value="sam3sd"/>
@@ -80,6 +87,7 @@
 		<device-support value="sam4s"/>
 		<device-support value="sam4l"/>
 		<device-support value="sam4e"/>
+		<device-support value="sam4c32e"/>
 		<device-support value="samd21"/>
 		<device-support value="samr21"/>
 		<device-support value="saml21"/>

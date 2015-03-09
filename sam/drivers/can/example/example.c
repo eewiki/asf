@@ -3,7 +3,7 @@
  *
  * \brief CAN example for SAM.
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -83,7 +83,7 @@
  *  -# Press 't' key in the terminal window to confgure another board to
  *     send CAN message. The message will be displayed on the terminal window.
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

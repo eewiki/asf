@@ -8,7 +8,7 @@
  *
  * To use this board define BOARD=XMEGA_E5_XPLAINED.
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -45,7 +45,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef _XMEGA_E5_XPLAINED_H_

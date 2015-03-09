@@ -3,7 +3,7 @@
  *
  * \brief SAM TCC - Timer Counter for Control Applications Driver
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -664,6 +664,15 @@
  *   </tr>
  * </table>
  *
+ * <table>
+ *  <tr>
+ *    <td>FEATURE_TCC_GENERATE_DMA_TRIGGER</td>
+ *    <td>SAML21</td>
+ *  </tr>
+ * </table>
+ * \note The specific features are only available in the driver when the
+ * selected device supports those features.
+ *
  * \subsubsection asfdoc_sam0_tcc_special_considerations_tcc_d11 SAM D10/D11 TCC Feature List
  * For SAM D10/D11, the TCC features are:
  * \anchor asfdoc_sam0_tcc_features_d11
@@ -743,6 +752,16 @@
 #if TCC_ASYNC == true
 #  include <system_interrupt.h>
 #endif
+
+/**
+ * Define port features set according to different device family
+ * @{
+*/
+#if (SAML21) || defined(__DOXYGEN__)
+/** Generate DMA triggers*/
+#  define FEATURE_TCC_GENERATE_DMA_TRIGGER
+#endif
+/*@}*/
 
 #ifdef __cplusplus
 extern "C" {
@@ -1940,6 +1959,46 @@ static inline void tcc_restart_counter(
 }
 
 /** @} */
+
+#ifdef FEATURE_TCC_GENERATE_DMA_TRIGGER
+/**
+ * \name Generate TCC DMA Triggers command
+ * @{
+ */
+
+/**
+ * \brief TCC DMA Trigger.
+ *
+ * TCC DMA trigger command.
+ *
+ * \param[in]  module_inst   Pointer to the software module instance struct
+ */
+static inline void tcc_dma_trigger_command(
+		const struct tcc_module *const module_inst)
+{
+	/* Sanity check arguments */
+	Assert(module_inst);
+	Assert(module_inst->hw);
+
+	/* Get a pointer to the module's hardware instance */
+	Tcc *const tcc_module = module_inst->hw;
+
+	while (tcc_module->SYNCBUSY.bit.CTRLB) {
+			/* Wait for sync */
+	}
+
+	/* Make certain that there are no conflicting commands in the register */
+	tcc_module->CTRLBCLR.reg = TCC_CTRLBCLR_CMD_NONE;
+
+	while (tcc_module->SYNCBUSY.bit.CTRLB) {
+			/* Wait for sync */
+	}
+
+	/* Write command to execute */
+	tcc_module->CTRLBSET.reg = TCC_CTRLBSET_CMD_DMATRG;
+}
+/** @} */
+#endif
 
 /**
  * \name Get/Set Compare/Capture Register

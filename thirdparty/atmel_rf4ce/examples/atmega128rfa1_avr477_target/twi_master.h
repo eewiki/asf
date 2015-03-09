@@ -1,9 +1,6 @@
 /****************************************************************************
   TWI Status/Control register definitions
 ****************************************************************************/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #define TWI_BUFFER_SIZE 	275   // Set this to the largest message size that will be sent including address byte.
 
 /*! Baud register setting calculation. Formula described in datasheet. */

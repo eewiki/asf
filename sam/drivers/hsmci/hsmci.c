@@ -3,7 +3,7 @@
  *
  * \brief SAM HSMCI driver
  *
- * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -98,9 +98,9 @@
 #endif
 
 #if (SAM3S || SAM4S || SAM4E)
-  // PDC is used for transferts
+  // PDC is used for transfer
 #elif (SAM3U || SAM3XA)
-  // DMA is used for transferts
+  // DMA is used for transfer
 #  include "dmac.h"
 #  define DMA_HW_ID_HSMCI    0
 #  ifndef CONF_HSMCI_DMA_CHANNEL
@@ -154,11 +154,41 @@ static void hsmci_reset(void)
  */
 static void hsmci_set_speed(uint32_t speed, uint32_t mck)
 {
-	uint32_t clkdiv;
-	uint32_t rest;
+#if (SAM4E)
+	uint32_t clkdiv = 0;
+	uint32_t clkodd = 0;
+	// clock divider, represent (((clkdiv << 1) + clkodd) + 2)
+	uint32_t div = 0;
+
+	// Speed = MCK clock / (((clkdiv << 1) + clkodd) + 2)
+	if ((speed * 2) < mck) {
+		div = (mck / speed) - 2;
+		if (mck % speed) {
+			// Ensure that the card speed not be higher than expected.
+			div++;
+		}
+		clkdiv = div >> 1;
+		// clkodd is the last significant bit of the clock divider (div).
+		clkodd = div % 2;
+	} else {
+		clkdiv = 0;
+		clkodd = 0;
+	}
+
+	HSMCI->HSMCI_MR &= ~HSMCI_MR_CLKDIV_Msk;
+	HSMCI->HSMCI_MR |= HSMCI_MR_CLKDIV(clkdiv);
+	if (clkodd) {
+		HSMCI->HSMCI_MR |= HSMCI_MR_CLKODD;
+	}
+	else {
+		HSMCI->HSMCI_MR &= ~HSMCI_MR_CLKODD;
+	}
+#else
+	uint32_t clkdiv = 0;
+	uint32_t rest = 0;
 
 	// Speed = MCK clock / (2 * (CLKDIV + 1))
-	if (speed > 0) {
+	if ((speed * 2) < mck) {
 		clkdiv = mck / (2 * speed);
 		rest = mck % (2 * speed);
 		if (rest > 0) {
@@ -173,6 +203,8 @@ static void hsmci_set_speed(uint32_t speed, uint32_t mck)
 	}
 	HSMCI->HSMCI_MR &= ~HSMCI_MR_CLKDIV_Msk;
 	HSMCI->HSMCI_MR |= HSMCI_MR_CLKDIV(clkdiv);
+#endif
+
 }
 
 /** \brief Wait the end of busy signal on data line
@@ -181,7 +213,7 @@ static void hsmci_set_speed(uint32_t speed, uint32_t mck)
  */
 static bool hsmci_wait_busy(void)
 {
-	uint32_t busy_wait = 1000000;
+	uint32_t busy_wait = 0xFFFFFFFF;
 	uint32_t sr;
 
 	do {
@@ -198,7 +230,7 @@ static bool hsmci_wait_busy(void)
 
 /** \brief Send a command
  *
- * \param cmdr       CMDR resgister bit to use for this command
+ * \param cmdr       CMDR register bit to use for this command
  * \param cmd        Command definition
  * \param arg        Argument of the command
  *
@@ -748,12 +780,12 @@ bool hsmci_start_read_blocks(void *dest, uint16_t nb_block)
 		HSMCI->HSMCI_MR &= ~HSMCI_MR_FBYTE;
 	}
 
-	// Configure PDC transfert
+	// Configure PDC transfer
 	HSMCI->HSMCI_RPR = (uint32_t)dest;
 	HSMCI->HSMCI_RCR = (HSMCI->HSMCI_MR & HSMCI_MR_FBYTE) ?
 			nb_data : nb_data / 4;
 	HSMCI->HSMCI_RNCR = 0;
-	// Start transfert
+	// Start transfer
 	HSMCI->HSMCI_PTCR = HSMCI_PTCR_RXTEN;
 	hsmci_transfert_pos += nb_data;
 	return true;
@@ -762,7 +794,7 @@ bool hsmci_start_read_blocks(void *dest, uint16_t nb_block)
 bool hsmci_wait_end_of_read_blocks(void)
 {
 	uint32_t sr;
-	// Wait end of transfert
+	// Wait end of transfer
 	// Note: no need of timeout, because it is include in HSMCI, see DTOE bit.
 	do {
 		sr = HSMCI->HSMCI_SR;
@@ -810,12 +842,12 @@ bool hsmci_start_write_blocks(const void *src, uint16_t nb_block)
 		HSMCI->HSMCI_MR &= ~HSMCI_MR_FBYTE;
 	}
 
-	// Configure PDC transfert
+	// Configure PDC transfer
 	HSMCI->HSMCI_TPR = (uint32_t)src;
 	HSMCI->HSMCI_TCR = (HSMCI->HSMCI_MR & HSMCI_MR_FBYTE) ?
 			nb_data : nb_data / 4;
 	HSMCI->HSMCI_TNCR = 0;
-	// Start transfert
+	// Start transfer
 	HSMCI->HSMCI_PTCR = HSMCI_PTCR_TXTEN;
 	hsmci_transfert_pos += nb_data;
 	return true;
@@ -825,7 +857,7 @@ bool hsmci_wait_end_of_write_blocks(void)
 {
 	uint32_t sr;
 
-	// Wait end of transfert
+	// Wait end of transfer
 	// Note: no need of timeout, because it is include in HSMCI, see DTOE bit.
 	do {
 		sr = HSMCI->HSMCI_SR;

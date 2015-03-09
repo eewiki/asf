@@ -6,9 +6,6 @@
   on the next line, as well as in programs that use this malloc.
   ========================================================================
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "dlmalloc.h"
 

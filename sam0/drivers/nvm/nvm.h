@@ -3,7 +3,7 @@
  *
  * \brief SAM Non-Volatile Memory driver
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef NVM_H_INCLUDED
@@ -49,7 +49,7 @@
 /**
  * \defgroup asfdoc_sam0_nvm_group SAM Non-Volatile Memory Driver (NVM)
  *
- * This driver for Atmel庐 | SMART SAM devices provides an interface for the configuration
+ * This driver for Atmel® | SMART SAM devices provides an interface for the configuration
  * and management of non-volatile memories within the device, for partitioning,
  * erasing, reading, and writing of data.
  *
@@ -90,7 +90,7 @@
  *  </tr>
  *  <tr>
  *    <td>FEATURE_NVM_RWWEE</td>
- *    <td>SAML21</td>
+ *    <td>SAML21, SAMD21-64K</td>
  *  </tr>
  * </table>
  * \note The specific features are only available in the driver when the
@@ -211,8 +211,7 @@
  *
  * Writing to the NVM memory must be performed by the \ref nvm_write_buffer()
  * function - additionally, a manual page program command must be issued if
- * the NVM controller is configured in manual page writing mode, or a buffer of
- * data less than a full page is passed to the buffer write function.
+ * the NVM controller is configured in manual page writing mode.
  *
  * Before a page can be updated, the associated NVM memory row must be erased
  * first via the \ref nvm_erase_row() function. Writing to a non-erased page
@@ -267,11 +266,22 @@
 extern "C" {
 #endif
 
+/* Define SAMD21-64K devices */
+#if defined(SAMD21E15L) || defined(SAMD21E16L) || defined(__SAMD21E15L__) || defined(__SAMD21E16L__) \
+	|| defined(SAMD21E15B) || defined(SAMD21E16B) || defined(__SAMD21E15B__) || defined(__SAMD21E16B__) \
+	|| defined(SAMD21E15BU) || defined(SAMD21E16BU) || defined(__SAMD21E15BU__) || defined(__SAMD21E16BU__) \
+	|| defined(SAMD21G15B) || defined(SAMD21G16B) || defined(__SAMD21G15B__) || defined(__SAMD21G16B__) \
+	|| defined(SAMD21J15B) || defined(SAMD21J16B) || defined(__SAMD21J15B__) || defined(__SAMD21J16B__)
+
+#  define SAMD21_64K
+
+#endif
+
 /**
  * Define NVM features set according to different device family
  * @{
 */
-#if (SAML21) || defined(__DOXYGEN__)
+#if (SAML21) || defined(SAMD21_64K) || defined(__DOXYGEN__)
 /** Read while write EEPROM emulation feature*/
 #  define FEATURE_NVM_RWWEE
 #endif
@@ -634,7 +644,7 @@ struct nvm_fusebits {
  *
  * The default configuration is as follows:
  *  \li Power reduction mode enabled after sleep until first NVM access
- *  \li Automatic page commit when full pages are written to
+ *  \li Automatic page write mode disabled
  *  \li Number of FLASH wait states left unchanged
  *
  * \param[out] config  Configuration structure to initialize to default values
@@ -648,7 +658,7 @@ static inline void nvm_get_config_defaults(
 
 	/* Write the default configuration for the NVM configuration */
 	config->sleep_power_mode  = NVM_SLEEP_POWER_MODE_WAKEONACCESS;
-	config->manual_page_write = false;
+	config->manual_page_write = true;
 	config->wait_states       = NVMCTRL->CTRLB.bit.RWS;
 	config->disable_cache     = false;
 	config->cache_readmode    = NVM_CACHE_READMODE_NO_MISS_PENALTY;

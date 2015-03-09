@@ -10,7 +10,6 @@
 			<device-support value="samd21"/>
 			<require idref="sam0.drivers.system"/>
 			<require idref="sam0.drivers.extint"/>
-			<require idref="sam0.drivers.nvm"/>
 			<require idref="sam0.drivers.dma"/>
 			<require idref="sam0.drivers.sercom.usart"/>
 			<require idref="sam0.utils.stdio.stdio_serial"/>

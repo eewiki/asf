@@ -3,7 +3,7 @@
  *
  * \brief SAM L21 ADC functionality
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef ADC_FEATURE_H_INCLUDED
@@ -62,7 +62,7 @@ extern struct adc_module *_adc_instances[ADC_INST_NUM];
 struct adc_module;
 
 /** Type of the callback functions. */
-typedef void (*adc_callback_t)(const struct adc_module *const module);
+typedef void (*adc_callback_t)(struct adc_module *const module);
 
 /**
  * \brief ADC callback enum.

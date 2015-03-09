@@ -440,9 +440,6 @@ DEFAULT_MMAP_THRESHOLD       default: 256K
 */
 
 /* No abort() function*/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #define ABORT
 /* No failure action */
 #define MALLOC_FAILURE_ACTION

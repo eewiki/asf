@@ -3,7 +3,7 @@
  *
  * \brief SAM PINMUX Driver Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -91,6 +91,6 @@
  * -# Adjust the configuration of the pin to enable on-demand sampling mode.
  *    \snippet qs_pinmux_basic.c pinmux_change_input_sampling
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.rtc.unit_test_calendar" caption="Unit Tests for the SAM RTC calendar Driver">
+		<info type="description" value="summary">
+		Unit test for the RTC calendar module testing all functionality against hardware.
+		</info>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<build type="include-path" value="."/>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="unit_test.c"/>
+		<require idref="sam0.drivers.rtc"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.drivers.port"/>
+		<require idref="common2.services.delay"/>
+		<require idref="common.utils.unit_test"/>
+		<device-support value="sam0"/>
+	</module>
+</asf>

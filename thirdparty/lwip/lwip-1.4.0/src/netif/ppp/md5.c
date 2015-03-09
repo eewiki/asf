@@ -30,9 +30,6 @@
  ** documentation and/or software.                                    **
  ***********************************************************************
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "lwip/opt.h"
 

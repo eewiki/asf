@@ -3,7 +3,7 @@
  *
  * \brief Getting Started with SAM4C
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -528,6 +528,6 @@ is chosen here.
 <td>Initial release</td>
 </tr>
 </table>
-*/ /**
+*//*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

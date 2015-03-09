@@ -29,9 +29,6 @@
  *  http://www.stillhq.com/extracted/gnupg-api/mpi/
  *  http://math.libtomcrypt.com/files/tommath.pdf
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "polarssl/config.h"
 

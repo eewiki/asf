@@ -3,7 +3,7 @@
  *
  * \brief SAM System Interrupt Driver Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -100,6 +100,6 @@
  *    can trigger their respective handler functions.
  *    \snippet qs_system_interrupt.c global_int_enable
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

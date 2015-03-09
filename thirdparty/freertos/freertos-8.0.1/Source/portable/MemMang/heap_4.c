@@ -71,9 +71,6 @@
  * See heap_1.c, heap_2.c and heap_3.c for alternative implementations, and the
  * memory management pages of http://www.FreeRTOS.org for more information.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #include <stdlib.h>
 
 /* Defining MPU_WRAPPERS_INCLUDED_FROM_API_FILE prevents task.h from redefining

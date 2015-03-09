@@ -3,9 +3,6 @@
 /*                                                                        */
 /* CP950 (Traditional Chinese Big5)                                       */
 /*------------------------------------------------------------------------*/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "../ff.h"
 

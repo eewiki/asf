@@ -3,7 +3,7 @@
  *
  * \brief SAM D20 Clock configuration
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <clock.h>
@@ -134,10 +134,10 @@
 #  define CONF_CLOCK_GCLK_2_OUTPUT_ENABLE         false
 
 /* Configure GCLK generator 3 */
-#  define CONF_CLOCK_GCLK_3_ENABLE                false
+#  define CONF_CLOCK_GCLK_3_ENABLE                true
 #  define CONF_CLOCK_GCLK_3_RUN_IN_STANDBY        false
 #  define CONF_CLOCK_GCLK_3_CLOCK_SOURCE          SYSTEM_CLOCK_SOURCE_OSC8M
-#  define CONF_CLOCK_GCLK_3_PRESCALER             1
+#  define CONF_CLOCK_GCLK_3_PRESCALER             128
 #  define CONF_CLOCK_GCLK_3_OUTPUT_ENABLE         false
 
 /* Configure GCLK generator 4 */

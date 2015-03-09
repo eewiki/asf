@@ -42,9 +42,6 @@
  * search-and-replace for the word "ethernetif" to replace it with
  * something that better describes your network interface.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "lwip/opt.h"
 

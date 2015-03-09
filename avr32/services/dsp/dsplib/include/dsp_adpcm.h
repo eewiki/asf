@@ -4,7 +4,7 @@
  *
  * \brief This module provides a useful set of IMA/DVI ADPCM coding and decoding functions.
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -52,7 +52,7 @@
  * <hr />
  * \endhtmlonly
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

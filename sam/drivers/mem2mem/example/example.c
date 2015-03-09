@@ -3,7 +3,7 @@
  *
  * \brief Memory-to-memory transfer example for SAM.
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -98,7 +98,7 @@
  * Support and FAQ: http://www.atmel.com/design-support/
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

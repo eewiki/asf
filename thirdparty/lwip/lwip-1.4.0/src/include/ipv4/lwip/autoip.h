@@ -40,9 +40,6 @@
  * Please coordinate changes and requests with Dominik Spies
  * <kontakt@dspies.de>
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
  
 #ifndef __LWIP_AUTOIP_H__
 #define __LWIP_AUTOIP_H__

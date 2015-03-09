@@ -3,7 +3,7 @@
  *
  * \brief Terminal Target application.
  *
- * Copyright (C) 2011-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \page License
  *
@@ -32,7 +32,7 @@
  *   THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 /*
- * Copyright (c) 2012-2014, Atmel Corporation All rights reserved.
+ * Copyright (c) 2012-2015 Atmel Corporation. All rights reserved.
  */
 /**
  * \mainpage
@@ -92,9 +92,6 @@
 
 
 /* === INCLUDES ============================================================ */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include <stddef.h>
 #include <stdint.h>

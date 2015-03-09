@@ -34,9 +34,6 @@
  * Dynroot intended to support form fields where a whole-URL
  *   match is not possible.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef __FS_H__
 #define __FS_H__
 

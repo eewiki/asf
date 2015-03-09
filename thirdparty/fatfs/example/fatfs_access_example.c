@@ -3,7 +3,7 @@
  *
  * \brief FatFS example.
  *
- * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -104,9 +104,6 @@
  *  -# The application will output the converted value to hyperterminal and
  * display a menu for users to set different modes.
  *
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include <asf.h>

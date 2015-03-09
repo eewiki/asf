@@ -3,7 +3,7 @@
  *
  * \brief SAM Non Volatile Memory Driver Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -77,9 +77,15 @@
  *    \note This should always be performed before using the configuration
  *          struct to ensure that all values are initialized to known default
  *          settings.
+ * -# Enable automatic page write mode, The new data will be write to NVM automatic.
+ *    \snippet qs_nvm_basic.c setup_3
+ *    \note If automatic page write mode is disabled, the data will not write to NVM
+ *    		until the nvm write command was been invoked. For safe use NVM module,
+ *    		disable automatic page write mode and use write command to commit data is
+ *    		recommended.
  *
  * -# Configure NVM controller with the created configuration struct settings.
- *    \snippet qs_nvm_basic.c setup_3
+ *    \snippet qs_nvm_basic.c setup_4
  *
  * \section asfdoc_sam0_nvm_basic_use_case_main Use Case
  *
@@ -109,7 +115,7 @@
  * -# Read back the written page of page from the NVM into the buffer.
  *    \snippet qs_nvm_basic.c main_6
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

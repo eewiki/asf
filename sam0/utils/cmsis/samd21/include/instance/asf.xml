@@ -4,6 +4,7 @@
 		SAMD21 PIO instance definitions.
 		</info>
 		<build type="header-file" value="ac.h"/>
+		<build type="header-file" value="ac1.h"/>
 		<build type="header-file" value="adc.h"/>
 		<build type="header-file" value="dac.h"/>
 		<build type="header-file" value="dmac.h"/>

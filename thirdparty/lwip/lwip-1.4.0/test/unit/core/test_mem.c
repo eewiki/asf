@@ -1,7 +1,4 @@
 #include "test_mem.h"
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "lwip/mem.h"
 #include "lwip/stats.h"

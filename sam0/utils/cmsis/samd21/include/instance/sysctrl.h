@@ -3,7 +3,7 @@
  *
  * \brief Instance description for SYSCTRL
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -114,10 +114,10 @@
 #define SYSCTRL_FDPLL_VERSION       0x111   
 #define SYSCTRL_OSCULP32K_VERSION   0x111   
 #define SYSCTRL_OSC8M_VERSION       0x120   
-#define SYSCTRL_OSC32K_VERSION      0x1101  
-#define SYSCTRL_VREF_VERSION        0x200   
+#define SYSCTRL_OSC32K_VERSION      0x112   
+#define SYSCTRL_VREF_VERSION        0x201   
 #define SYSCTRL_VREG_VERSION        0x201   
-#define SYSCTRL_XOSC_VERSION        0x1111  
-#define SYSCTRL_XOSC32K_VERSION     0x1111  
+#define SYSCTRL_XOSC_VERSION        0x114   
+#define SYSCTRL_XOSC32K_VERSION     0x113   
 
 #endif /* _SAMD21_SYSCTRL_INSTANCE_ */

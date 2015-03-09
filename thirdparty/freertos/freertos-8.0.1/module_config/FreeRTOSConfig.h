@@ -1,7 +1,4 @@
 #ifndef FREERTOS_CONFIG_H
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #define FREERTOS_CONFIG_H
 
 /* For documentation for all the configuration symbols, go to:

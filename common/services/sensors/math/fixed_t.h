@@ -13,7 +13,7 @@
  * Arithmetic functions that do not require the \a Q parameter assume that
  * both operands have the same \a Q format (the same number of fractional bits).
  *
- * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -50,7 +50,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

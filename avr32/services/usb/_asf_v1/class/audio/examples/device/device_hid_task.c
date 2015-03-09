@@ -6,7 +6,7 @@
  *
  * This file manages the USB device HID task.
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -47,7 +47,7 @@
 
 // Put following MACRO in comment if you need debug info in this module
 //#define UART_voUart0PrintString(...) /* NO DEBUG INFO ON UART */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

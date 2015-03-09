@@ -4,7 +4,7 @@
  * @brief This module includes the Buffer and timer configuration for RF4Control
  * stack.
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,9 +43,6 @@
  */
 
 /* Prevent double inclusion */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef NWK_CONFIG_H
 #define NWK_CONFIG_H
 

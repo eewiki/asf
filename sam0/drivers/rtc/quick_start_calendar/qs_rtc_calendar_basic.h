@@ -3,7 +3,7 @@
  *
  * \brief SAM RTC Calendar Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -107,6 +107,6 @@
  * -# Clear the alarm match, so that future alarms may occur.
  *    \snippet qs_rtc_calendar_basic.c clear_alarm_match
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

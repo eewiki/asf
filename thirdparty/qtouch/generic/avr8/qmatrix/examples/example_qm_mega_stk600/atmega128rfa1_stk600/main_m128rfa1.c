@@ -3,7 +3,7 @@
  *
  * \brief QMatrix Example for ATMega128RFA1 on STK600 board.
  *
- * Copyright (C) 2011-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \page License
  *
@@ -39,9 +39,6 @@
 /*----------------------------------------------------------------------------
                                 include files
 ----------------------------------------------------------------------------*/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include <avr/io.h>
 #include <avr/interrupt.h>

@@ -50,9 +50,6 @@
     http://www.OpenRTOS.com - Commercial support, development, porting,
     licensing and training services.
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef CRFLASH_LED_H
 #define CRFLASH_LED_H

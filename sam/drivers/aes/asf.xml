@@ -22,8 +22,8 @@
 		<build type="header-file" subtype="api" value="aes.h"/>
 		<build type="include-path" value="."/>
 		
-		<build type="doxygen-entry-point" value="group_sam_drivers_aes"/>
-		<build type="doxygen-quick-start" value="sam_aes_quick_start"/>
+		<build type="doxygen-entry-point" value="asfdoc_sam_drivers_aes_group"/>
+		<build type="doxygen-quick-start" value="asfdoc_sam_drivers_aes_qsg"/>
 		
 		<build type="doxygen-example-path" value="example"/>
 		<build type="header-file" value="example/aes_example.h"/>

@@ -9,9 +9,6 @@
  * If the include'r doesn't require any special treatment of each of the types
  * above, then will declare #2 & #3 to be just standard mempools.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef LWIP_MALLOC_MEMPOOL
 /* This treats "malloc pools" just like any other pool.
    The pools are a little bigger to provide 'size' as the amount of user data. */

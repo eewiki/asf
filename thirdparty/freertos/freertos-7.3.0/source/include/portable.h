@@ -69,9 +69,6 @@
 /*-----------------------------------------------------------
  * Portable layer API.  Each function must be defined for each port.
  *----------------------------------------------------------*/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef PORTABLE_H
 #define PORTABLE_H

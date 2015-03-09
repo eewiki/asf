@@ -3,7 +3,7 @@
  *
  * @brief Low-level crypto API for an AES unit implemented in AT86RF2xx
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -47,15 +47,12 @@
  */
 
 /*
- * Copyright (c) 2013-2014, Atmel Corporation All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 
 /* === Includes ============================================================ */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "trx_access.h"
 #include "sal_types.h"

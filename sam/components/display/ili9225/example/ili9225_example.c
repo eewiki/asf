@@ -3,7 +3,7 @@
  *
  * \brief lcd controller ili9225 example.
  *
- * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -65,7 +65,7 @@
  * -# Some text, image and basic shapes should be displayed on the LCD.
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

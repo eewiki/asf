@@ -3,7 +3,7 @@
  *
  * \brief SAM0 USB Host Mass Storage Bootloader Application with CRC Check.
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -468,6 +468,7 @@ static void bootloader_system_init(void)
 
 	/* Initialize the NVM */
 	nvm_get_config_defaults(&nvm_cfg);
+	nvm_cfg.manual_page_write = false;
 	nvm_set_config(&nvm_cfg);
 
 	/* Initialize the sleep manager */

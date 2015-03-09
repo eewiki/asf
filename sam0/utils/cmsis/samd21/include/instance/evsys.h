@@ -3,7 +3,7 @@
  *
  * \brief Instance description for EVSYS
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -86,9 +86,9 @@
 #define EVSYS_GCLK_ID_LSB           7
 #define EVSYS_GCLK_ID_MSB           18
 #define EVSYS_GCLK_ID_SIZE          12
-#define EVSYS_GENERATORS            73       // Total Number of Event Generators
+#define EVSYS_GENERATORS            76       // Total Number of Event Generators
 #define EVSYS_GENERATORS_BITS       7        // Number of bits to select Event Generator
-#define EVSYS_USERS                 29       // Total Number of Event Users
+#define EVSYS_USERS                 31       // Total Number of Event Users
 #define EVSYS_USERS_BITS            5        // Number of bits to select Event User
 
 // GENERATORS
@@ -165,6 +165,9 @@
 #define EVSYS_ID_GEN_DAC_EMPTY      71
 #define EVSYS_ID_GEN_PTC_EOC        72
 #define EVSYS_ID_GEN_PTC_WCOMP      73
+#define EVSYS_ID_GEN_AC1_COMP_0     74
+#define EVSYS_ID_GEN_AC1_COMP_1     75
+#define EVSYS_ID_GEN_AC1_WIN_0      76
 
 // USERS
 #define EVSYS_ID_USER_DMAC_CH_0     0
@@ -196,5 +199,7 @@
 #define EVSYS_ID_USER_AC_SOC_1      26
 #define EVSYS_ID_USER_DAC_START     27
 #define EVSYS_ID_USER_PTC_STCONV    28
+#define EVSYS_ID_USER_AC1_SOC_0     29
+#define EVSYS_ID_USER_AC1_SOC_1     30
 
 #endif /* _SAMD21_EVSYS_INSTANCE_ */

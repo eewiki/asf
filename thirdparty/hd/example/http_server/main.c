@@ -124,9 +124,6 @@
  * For further information, visit
  * <A href="http://www.hd-wireless.se/">H&D Wireless</A>.\n
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include <compiler.h>
 #include "board.h"

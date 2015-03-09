@@ -80,9 +80,6 @@ Changes from V2.0.0
 	+ Delay periods are now specified using variables and constants of
 	  portTickType rather than unsigned long.
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include <stdlib.h>
 

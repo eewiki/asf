@@ -5,7 +5,7 @@
  * \brief Joystick communication header file, containing the structure
  *        definition.
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -47,7 +47,7 @@
 /* This file simulate an audio player interface */
 /* Its main goal is to give an example of using */
 /* the audio interface.                         */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

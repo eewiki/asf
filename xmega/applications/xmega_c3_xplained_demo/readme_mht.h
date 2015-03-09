@@ -1,5 +1,5 @@
 "MIME-Version: 1.0\r\n"
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 "Content-Type: multipart\/related; boundary=\"----=_NextPart_01CDCEDF.69C9E3C0\"\r\n"

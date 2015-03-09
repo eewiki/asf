@@ -3,7 +3,7 @@
  *
  * \brief SAM D20 I2C Slave Driver
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -345,15 +345,15 @@ enum status_code i2c_slave_write_packet_wait(
 
 	/* Check direction */
 	if (!(i2c_hw->STATUS.reg & SERCOM_I2CS_STATUS_DIR)) {
-		/* Write request from master, send NACK and return */
-		i2c_hw->CTRLB.reg |= SERCOM_I2CS_CTRLB_ACKACT;
-		i2c_hw->CTRLB.reg |= SERCOM_I2CS_CTRLB_CMD(0x3);
+		/* Write request from master, send NACK and return, workaround 13574*/
+		_i2c_slave_set_ctrlb_ackact(module, false);
+		_i2c_slave_set_ctrlb_cmd3(module);
 		return STATUS_ERR_BAD_FORMAT;
 	}
 
-	/* Read request from master, ACK address */
-	i2c_hw->CTRLB.reg &= ~SERCOM_I2CS_CTRLB_ACKACT;
-	i2c_hw->CTRLB.reg |= SERCOM_I2CS_CTRLB_CMD(0x3);
+	/* Read request from master, ACK address, workaround 13574 */
+	_i2c_slave_set_ctrlb_ackact(module, true);
+	_i2c_slave_set_ctrlb_cmd3(module);
 
 	uint16_t i = 0;
 
@@ -463,15 +463,15 @@ enum status_code i2c_slave_read_packet_wait(
 	}
 	/* Check direction */
 	if ((i2c_hw->STATUS.reg & SERCOM_I2CS_STATUS_DIR)) {
-		/* Read request from master, send NACK and return */
-		i2c_hw->CTRLB.reg |= SERCOM_I2CS_CTRLB_ACKACT;
-		i2c_hw->CTRLB.reg |= SERCOM_I2CS_CTRLB_CMD(0x3);
+		/* Read request from master, send NACK and return, workaround 13574 */
+		_i2c_slave_set_ctrlb_ackact(module, false);
+		_i2c_slave_set_ctrlb_cmd3(module);
 		return STATUS_ERR_BAD_FORMAT;
 	}
 
-	/* Write request from master, ACK address */
-	i2c_hw->CTRLB.reg &= ~SERCOM_I2CS_CTRLB_ACKACT;
-	i2c_hw->CTRLB.reg |= SERCOM_I2CS_CTRLB_CMD(0x3);
+	/* Write request from master, ACK address, workaround 13574 */
+	_i2c_slave_set_ctrlb_ackact(module, true);
+	_i2c_slave_set_ctrlb_cmd3(module);
 
 	uint16_t i = 0;
 	while (length--) {
@@ -502,7 +502,7 @@ enum status_code i2c_slave_read_packet_wait(
 
 	if (i2c_hw->INTFLAG.reg & SERCOM_I2CS_INTFLAG_DRDY) {
 		/* Buffer is full, send NACK */
-		i2c_hw->CTRLB.reg |= SERCOM_I2CS_CTRLB_ACKACT;
+		_i2c_slave_set_ctrlb_ackact(module, false);
 		i2c_hw->CTRLB.reg |= SERCOM_I2CS_CTRLB_CMD(0x2);
 	}
 	if (i2c_hw->INTFLAG.reg & SERCOM_I2CS_INTFLAG_PREC) {

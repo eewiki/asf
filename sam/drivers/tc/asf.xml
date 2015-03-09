@@ -11,7 +11,7 @@
 		<build type="include-path" value="."/>
 		<device-support value="sam"/>
 		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
-		<build type="doxygen-entry-point" value="sam_drivers_tc_group"/>
+		<build type="doxygen-entry-point" value="asfdoc_sam_drivers_tc_group"/>
 	</module>
 	<module type="driver" id="sam.drivers.tc.appnote" caption="TC - Timer Counter">
 		<info type="description" value="summary">

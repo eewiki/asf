@@ -13,9 +13,6 @@
 / * Redistributions of source code must retain the above copyright notice.
 /
 /----------------------------------------------------------------------------*/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef _FATFS
 #define _FATFS	6502	/* Revision ID */

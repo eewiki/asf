@@ -64,9 +64,6 @@
  
 /** \example arm_sin_cos_example_f32.c 
   */  
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #include <asf.h>
 #include <math.h>     
 #include "arm_math.h"

@@ -75,9 +75,6 @@
  */
 
 /* Scheduler includes. */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #include "FreeRTOS.h"
 #include "croutine.h"
 #include "queue.h"

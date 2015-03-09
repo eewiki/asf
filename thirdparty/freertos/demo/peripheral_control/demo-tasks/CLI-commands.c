@@ -5,7 +5,7 @@
  * \brief FreeRTOS+CLI command examples
  *
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -44,9 +44,6 @@
  */
 
 /* FreeRTOS includes. */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #include "FreeRTOS.h"
 #include "task.h"
 

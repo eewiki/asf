@@ -4,7 +4,7 @@
  *
  * \brief AES example for SAM.
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -41,7 +41,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -176,7 +176,7 @@ static void ecb_mode_test_dma(void)
 
 }
 
-static void transfer_tx_rx_done( const struct dma_resource* const resource )
+static void transfer_tx_rx_done(struct dma_resource* const resource )
 {
 	state = true;
 }

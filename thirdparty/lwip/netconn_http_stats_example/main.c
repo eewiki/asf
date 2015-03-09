@@ -3,7 +3,7 @@
  *
  * \brief HTTP Netconn Example.
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -84,9 +84,6 @@
  *
  * The web page is periodically refreshed to keep the board status up-to-date.
  *
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include "task_defs.h"

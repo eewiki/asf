@@ -19,7 +19,7 @@
  * - Support: http://www.atmel.com/design-support/
  *
  *
- * Copyright (c) 2010-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -61,9 +61,6 @@
 /*----------------------------------------------------------------------------
                             compiler information
 ----------------------------------------------------------------------------*/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #if !((defined(__GNUC__) && defined(__AVR32__)) || (defined(__ICCAVR32__) || defined(__AAVR32__)))
 #error 'This compiler is not supported at the moment.'
 #endif

@@ -3,7 +3,7 @@
  *
  * \brief AFEC temperature sensor example for SAM.
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -86,7 +86,7 @@
  * -# The application will output current Celsius temperature on the terminal.
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

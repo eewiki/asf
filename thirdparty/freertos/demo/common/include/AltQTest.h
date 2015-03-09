@@ -50,9 +50,6 @@
     http://www.OpenRTOS.com - Commercial support, development, porting,
     licensing and training services.
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef FAST_GEN_Q_TEST_H
 #define FAST_GEN_Q_TEST_H

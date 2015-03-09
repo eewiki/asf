@@ -4,7 +4,7 @@
  *
  * \brief This module provides a useful set of signal re-sampling functions.
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -46,7 +46,7 @@
  *  \ingroup group_advanced
  *  All the signal re-sampling functions implemented in the DSP advanced library.
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

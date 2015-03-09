@@ -3,7 +3,7 @@
  *
  * \brief SAM RTC Driver (Count Mode)
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -692,6 +692,13 @@ struct rtc_count_config {
 	 *  needed for reading. */
 	bool continuously_update;
 #endif
+#if (SAML21)
+		/** Enable count read synchronization. The COUNT value requires
+		 * synchronization when reading. Disabling the synchronization 
+		 * will prevent the COUNT value from displaying the current value. */
+		bool enable_read_sync;
+#endif
+
 	/** Array of Compare values. Not all Compare values are available in 32-bit
 	 *  mode. */
 	uint32_t compare_values[RTC_NUM_OF_COMP16];
@@ -716,6 +723,7 @@ struct rtc_count_config {
  *  - Continuously sync count register off
  *  - No event source on
  *  - All compare values equal 0
+ *  - Count read synchronization is disabled for SAML21
  *
  *  \param[out] config  Configuration structure to be initialized to default
  *                      values.
@@ -733,6 +741,9 @@ static inline void rtc_count_get_config_defaults(
 
 #ifdef FEATURE_RTC_CONTINUOUSLY_UPDATED
 	config->continuously_update = false;
+#endif
+#if (SAML21)
+	config->enable_read_sync = false;
 #endif
 
 	for (uint8_t i = 0; i < RTC_NUM_OF_COMP16; i++) {

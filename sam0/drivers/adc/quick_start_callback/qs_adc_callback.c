@@ -3,7 +3,7 @@
  *
  * \brief SAM ADC Quick Start
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <asf.h>
@@ -48,7 +48,7 @@
 void configure_adc(void);
 void configure_adc_callbacks(void);
 void adc_complete_callback(
-		const struct adc_module *const module);
+		struct adc_module *const module);
 
 //! [result_buffer]
 #define ADC_SAMPLES 128
@@ -63,7 +63,7 @@ struct adc_module adc_instance;
 volatile bool adc_read_done = false;
 
 void adc_complete_callback(
-		const struct adc_module *const module)
+		struct adc_module *const module)
 {
 	adc_read_done = true;
 }

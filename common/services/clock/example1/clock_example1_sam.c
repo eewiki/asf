@@ -3,7 +3,7 @@
  *
  * \brief Clock system example 1.
  *
- * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -80,7 +80,7 @@
  * Support and FAQ: http://www.atmel.com/design-support/
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

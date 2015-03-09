@@ -3,7 +3,7 @@
  *
  * \brief Serial Mode management
  *
- * Copyright (c) 2010 - 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef SERIAL_H_INCLUDED
@@ -138,12 +138,16 @@
  *
  * \subsection serial_basic_use_case_setup_code Example code
  * The following configuration must be added to the project (typically to a 
- * conf_serial.h file, but it can also be added to your main application file.)
+ * conf_uart_serial.h file, but it can also be added to your main application file.)
+ *
+ * \note The following takes SAM3X configuration for example, other devices have similar
+ * configuration, but their parameters may be different, refer to corresponding header files.
+ *
  * \code
 	#define USART_SERIAL                     &USARTD0
 	#define USART_SERIAL_BAUDRATE            9600
-	#define USART_SERIAL_CHAR_LENGTH         USART_CHSIZE_8BIT_gc
-	#define USART_SERIAL_PARITY              USART_PMODE_DISABLED_gc
+	#define USART_SERIAL_CHAR_LENGTH         US_MR_CHRL_8_BIT
+	#define USART_SERIAL_PARITY              US_MR_PAR_NO
 	#define USART_SERIAL_STOP_BIT            false
 \endcode
  *
@@ -215,12 +219,16 @@
  *
  * \subsection serial_use_case_1_setup_code Example code
  * The following configuration must be added to the project (typically to a 
- * conf_serial.h file, but it can also be added to your main application file.):
+ * conf_uart_serial.h file, but it can also be added to your main application file.):
+ *
+ * \note The following takes SAM3X configuration for example, other devices have similar
+ * configuration, but their parameters may be different, refer to corresponding header files.
+ *
  * \code
 	#define USART_SERIAL                     &USARTD0
 	#define USART_SERIAL_BAUDRATE            9600
-	#define USART_SERIAL_CHAR_LENGTH         USART_CHSIZE_8BIT_gc
-	#define USART_SERIAL_PARITY              USART_PMODE_DISABLED_gc
+	#define USART_SERIAL_CHAR_LENGTH         US_MR_CHRL_8_BIT
+	#define USART_SERIAL_PARITY              US_MR_PAR_NO
 	#define USART_SERIAL_STOP_BIT            false
 \endcode
  *

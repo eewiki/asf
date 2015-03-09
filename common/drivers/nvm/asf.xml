@@ -123,6 +123,7 @@
 				</info>
 				<build type="doxygen-entry-point" value="nvm_group"/>
 				<build type="doxygen-quick-start" value="common_nvm_quickstart"/>
+				<build type="header-file" subtype="api" value="common_nvm.h"/>
 				<require idref="thirdparty.wireless.avr2025_mac.source.pal.common.drivers.nvm"/>
 				<require idref="sam0.drivers.nvm"/>
 				<device-support value="samr21"/>

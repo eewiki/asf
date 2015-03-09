@@ -33,9 +33,6 @@
  *  http://www.itu.int/ITU-T/studygroups/com17/languages/X.680-0207.pdf
  *  http://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "polarssl/config.h"
 

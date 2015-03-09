@@ -3,7 +3,7 @@
  *
  * \brief Non volatile memories management for SAM devices
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -39,9 +39,6 @@
  *
  * \asf_license_stop
  *
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include "nvm.h"
 #include "common_nvm.h"
@@ -226,6 +223,9 @@ status_code_t nvm_init(mem_type_t mem)
 		struct nvm_config config;
 		/* Get the default configuration */
 		nvm_get_config_defaults(&config);
+
+		/* Enable automatic page write mode */
+		config.manual_page_write = false;
 
 		/* Set wait state to 1 */
 		config.wait_states = 2;

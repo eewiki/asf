@@ -3,7 +3,7 @@
  *
  * \brief SAM Serial Peripheral Interface Driver
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include "spi_interrupt.h"
@@ -256,7 +256,7 @@ void spi_unregister_callback(
  * Sets up the driver to write to the SPI from a given buffer. If registered
  * and enabled, a callback function will be called when the write is finished.
  *
- * \param[in]  module   Pointer to USART software instance struct
+ * \param[in]  module   Pointer to SPI software instance struct
  * \param[out] tx_data  Pointer to data buffer to receive
  * \param[in]  length   Data buffer length
  *

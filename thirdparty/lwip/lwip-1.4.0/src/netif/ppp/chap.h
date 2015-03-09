@@ -64,9 +64,6 @@
  *
  * $Id: chap.h,v 1.6 2010/01/24 13:19:34 goldsimon Exp $
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef CHAP_H
 #define CHAP_H

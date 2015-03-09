@@ -28,9 +28,6 @@
  *  http://www.via.com.tw/en/downloads/whitepapers/initiatives/padlock/
  *  programming_guide.pdf
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "polarssl/config.h"
 

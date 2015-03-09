@@ -84,9 +84,6 @@
  */
 
 /* Scheduler include files. */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #include <stdlib.h>
 #include "FreeRTOS.h"
 #include "task.h"

@@ -3,7 +3,7 @@
  *
  * \brief Clock system example 3
  *
- * Copyright (c) 2010 - 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -109,7 +109,7 @@
  * This is the frequency to set the PLL to output once the example application
  * reaches step 4 in the clock setting sequence.
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 //@}

@@ -14,34 +14,29 @@
 			<device-support value="sam"/>
 			<require idref="common.services.os.freertos"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
-			<build type="doxygen-entry-point" value="group_common_services_os_freertos"/>
 		</module>
 		<module type="service" id="thirdparty.os.freertos.version#7.3.0" caption="FreeRTOS - Kernel 7.3.0">
 			<device-support value="sam"/>
 			<require idref="common.services.os.freertos.v7_3_0"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>
-			<build type="doxygen-entry-point" value="group_common_services_os_freertos"/>
 		</module>
 		<module type="service" id="thirdparty.os.freertos.version#7.4.2" caption="FreeRTOS - Kernel 7.4.2">
 			<info type="gui-flag" value="hidden"/>
 			<device-support value="sam0"/>
 			<require idref="thirdparty.os.freertos-7_4_2"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
-			<build type="doxygen-entry-point" value="group_common_services_os_freertos"/>
 		</module>
 		<module type="service" id="thirdparty.os.freertos.version#7.5.2" caption="FreeRTOS - Kernel 7.5.2">
 			<info type="gui-flag" value="hidden"/>
 			<device-support value="sam0"/>
 			<require idref="thirdparty.os.freertos-7_5_2"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
-			<build type="doxygen-entry-point" value="group_common_services_os_freertos"/>
 		</module>
 		<module type="service" id="thirdparty.os.freertos.version#8.0.1" caption="FreeRTOS - Kernel 8.0.1">
 			<device-support value="sam0"/>
 			<device-support value="samg"/>
 			<require idref="thirdparty.os.freertos-8_0_1"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
-			<build type="doxygen-entry-point" value="group_common_services_os_freertos"/>
 		</module>
 	</select-by-config>
 </asf>

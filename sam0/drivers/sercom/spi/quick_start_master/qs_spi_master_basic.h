@@ -3,7 +3,7 @@
  *
  * \brief SAM SPI Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -125,9 +125,11 @@
  *    \snippet qs_spi_master_basic.c write
  * -# Deselect slave.
  *    \snippet qs_spi_master_basic.c deselect_slave
+ * -# Light up.
+ *    \snippet qs_spi_master_basic.c light_up
  * -# Infinite loop.
  *    \snippet qs_spi_master_basic.c inf_loop
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

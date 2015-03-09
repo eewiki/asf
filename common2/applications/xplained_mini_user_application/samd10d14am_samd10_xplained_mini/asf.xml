@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project id="common.applications.user_application.xplained_mini2.samd10_xplained_mini" caption="SAM D10 Xplained Mini template project" type="template">
+		<device-support value="atsamd10d14am"/>
+		<require idref="common.applications.user_application.xplained_mini2"/>
+		<require idref="board.samd10_xplained_mini"/>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<build type="header-file" value="config/conf_clocks.h"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen-v2"/>
+	</project>
+</asf>

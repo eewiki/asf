@@ -3,7 +3,7 @@
  *
  * \brief PLC Bootloader application for ATMEL PRIME Service Node
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -59,9 +59,6 @@
  *  This application will check the firmware that must be used and will
  *	initialize the board with it.
  *
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include "string.h"

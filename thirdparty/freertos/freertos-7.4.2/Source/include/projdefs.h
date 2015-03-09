@@ -71,9 +71,6 @@
     engineered and independently SIL3 certified version for use in safety and 
     mission critical applications that require provable dependability.
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef PROJDEFS_H
 #define PROJDEFS_H

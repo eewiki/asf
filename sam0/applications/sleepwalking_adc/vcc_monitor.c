@@ -3,7 +3,7 @@
  *
  * \brief SAM ADC Sleepwalking Example
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -116,7 +116,7 @@
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -134,7 +134,7 @@ volatile bool low_voltage = false;
 /* ADC Window callback; called whenever the supply voltage drops
  * below ~0.5 Volts */
 static void adc_window_callback(
-	const struct adc_module *const module)
+	struct adc_module *const module)
 {
 	/* Signal the application that the voltage has gone below the
 	threshold */

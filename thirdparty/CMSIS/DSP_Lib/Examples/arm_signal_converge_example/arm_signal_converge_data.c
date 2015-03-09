@@ -1,7 +1,4 @@
 #include "arm_math.h"
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 /* ----------------------------------------------------------------------
 ** Test input data for Floating point LMS Norm FIR filter

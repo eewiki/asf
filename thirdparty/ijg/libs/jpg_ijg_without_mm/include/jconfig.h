@@ -1,9 +1,6 @@
 /* jconfig.h.  Generated automatically by configure.  */
 /* jconfig.cfg --- source file edited by configure script */
 /* see jconfig.doc for explanations */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define HAVE_PROTOTYPES
 #define HAVE_UNSIGNED_CHAR

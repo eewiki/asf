@@ -3,7 +3,7 @@
  *
  * \brief USB Device Controller (UDC)
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -129,7 +129,7 @@ usb_iface_desc_t UDC_DESC_STORAGE *udc_get_interface_desc(void);
  * @}
  * \endif
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

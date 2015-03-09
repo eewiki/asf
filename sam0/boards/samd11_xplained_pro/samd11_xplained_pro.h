@@ -3,7 +3,7 @@
  *
  * \brief SAM D11 Xplained Pro board definition
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -282,25 +282,6 @@ void system_board_init(void);
 #define EXT3_SPI_SERCOM_PINMUX_PAD3  -1 /* Not available on this board */
 #define EXT3_SPI_SERCOM_DMAC_ID_TX   -1 /* Not available on this board */
 #define EXT3_SPI_SERCOM_DMAC_ID_RX   -1 /* Not available on this board */
-/** @} */
-
-/**
- * \brief Turns off the specified LEDs.
- *
- * \param led_gpio LED to turn off (LEDx_GPIO).
- *
- * \note The pins of the specified LEDs are set to GPIO output mode.
- */
-#define LED_Off(led_gpio)     port_pin_set_output_level(led_gpio,true)
-
-/**
- * \brief Turns on the specified LEDs.
- *
- * \param led_gpio LED to turn on (LEDx_GPIO).
- *
- * \note The pins of the specified LEDs are set to GPIO output mode.
- */
-#define LED_On(led_gpio)      port_pin_set_output_level(led_gpio,false)
 /** @} */
 
 /** \name Embedded debugger CDC Gateway USART interface definitions

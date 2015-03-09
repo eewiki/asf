@@ -3,7 +3,7 @@
  *
  * \brief SAM RTC Count Quick Start
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -126,6 +126,6 @@
  * -# Perform the desired user action for each RTC overflow:
  *    \snippet qs_rtc_count_callback.c overflow_act
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

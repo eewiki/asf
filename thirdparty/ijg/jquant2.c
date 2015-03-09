@@ -16,9 +16,6 @@
  * way to compute intercolor distances; it's unclear that ordered dither's
  * fundamental assumptions even hold with an irregularly spaced color map.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

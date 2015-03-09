@@ -1,7 +1,4 @@
 #include "arm_math.h"
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 /* ----------------------------------------------------------------------
 Test Input signal contains 10KHz signal + Uniformly distributed white noise

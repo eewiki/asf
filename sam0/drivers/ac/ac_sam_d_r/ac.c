@@ -3,7 +3,7 @@
  *
  * \brief SAM Analog Comparator Driver
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include "ac.h"
@@ -55,15 +55,6 @@ static enum status_code _ac_set_config(
 	Assert(config);
 
 	Ac *const ac_module = module_inst->hw;
-
-	/* Set up GCLK */
-	struct system_gclk_chan_config gclk_chan_conf;
-	system_gclk_chan_get_config_defaults(&gclk_chan_conf);
-	gclk_chan_conf.source_generator = config->source_generator;
-	system_gclk_chan_set_config(AC_GCLK_ID_DIG, &gclk_chan_conf);
-	system_gclk_chan_set_config(AC_GCLK_ID_ANA, &gclk_chan_conf);
-	system_gclk_chan_enable(AC_GCLK_ID_DIG);
-	system_gclk_chan_enable(AC_GCLK_ID_ANA);
 
 	/* Use a temporary register for computing the control bits */
 	uint32_t ctrla_temp = 0;
@@ -141,8 +132,32 @@ enum status_code ac_init(
 	/* Initialize device instance */
 	module_inst->hw = hw;
 
-	/* Turn on the digital interface clock */
-	system_apb_clock_set_mask(SYSTEM_CLOCK_APB_APBC, PM_APBCMASK_AC);
+	/* Turn on the digital interface clock and GCLK */
+	struct system_gclk_chan_config gclk_chan_conf;
+	system_gclk_chan_get_config_defaults(&gclk_chan_conf);
+
+	if (hw == AC) {
+		system_apb_clock_set_mask(SYSTEM_CLOCK_APB_APBC, PM_APBCMASK_AC);
+		gclk_chan_conf.source_generator = config->dig_source_generator;
+		system_gclk_chan_set_config(AC_GCLK_ID_DIG, &gclk_chan_conf);
+		system_gclk_chan_enable(AC_GCLK_ID_DIG);
+		gclk_chan_conf.source_generator = config->ana_source_generator;
+		system_gclk_chan_set_config(AC_GCLK_ID_ANA, &gclk_chan_conf);
+		system_gclk_chan_enable(AC_GCLK_ID_ANA);
+	}
+#if (AC_INST_NUM == 2)
+	else if (hw == AC1) {
+		system_apb_clock_set_mask(SYSTEM_CLOCK_APB_APBC, PM_APBCMASK_AC1);
+		gclk_chan_conf.source_generator = config->dig_source_generator;
+		system_gclk_chan_set_config(AC1_GCLK_ID_DIG, &gclk_chan_conf);
+		system_gclk_chan_enable(AC1_GCLK_ID_DIG);
+		gclk_chan_conf.source_generator = config->ana_source_generator;
+		system_gclk_chan_set_config(AC1_GCLK_ID_ANA, &gclk_chan_conf);
+		system_gclk_chan_enable(AC1_GCLK_ID_ANA);
+	}
+#elif (AC_INST_NUM >= 3)
+#  error This driver is not support more than three AC instances.
+#endif
 
 #if AC_CALLBACK_MODE == true
 	/* Initialize parameters */

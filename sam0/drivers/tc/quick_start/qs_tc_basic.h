@@ -3,7 +3,7 @@
  *
  * \brief SAM TC Driver Quick Start
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -130,6 +130,6 @@
  * -# Enter an infinite loop while the PWM wave is generated via the TC module.
  *    \snippet qs_tc_basic.c main_loop
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

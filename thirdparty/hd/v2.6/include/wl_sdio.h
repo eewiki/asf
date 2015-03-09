@@ -5,9 +5,6 @@
  *
  *  You should have received a copy of the license along with this library.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef WL_SDIO_H
 #define WL_SDIO_H

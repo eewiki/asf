@@ -54,9 +54,6 @@
  * This is an arch independent SLIP netif. The specific serial hooks must be
  * provided by another file. They are sio_open, sio_read/sio_tryread and sio_send
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "netif/slipif.h"
 #include "lwip/opt.h"

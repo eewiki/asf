@@ -3,7 +3,7 @@
  *
  * \brief SAM SPI Unit test
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -119,7 +119,7 @@
  * For further information, visit
  * <a href="http://www.atmel.com">http://www.atmel.com</a>.
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -162,7 +162,7 @@ volatile bool spi_init_success = false;
  *
  * \param module SPI module causing the interrupt (not used)
  */
-static void user_spi_callback(const struct spi_module *const module)
+static void user_spi_callback(struct spi_module *const module)
 {
 	transfer_complete = true;
 }

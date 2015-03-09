@@ -3,7 +3,7 @@
  *
  * \brief SAM TCC - Timer Counter for Control Applications Callback Driver Quick Start (with Recoverable Fault)
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -38,7 +38,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

@@ -3,7 +3,7 @@
  *
  * \brief SAM I2S - Inter-IC Sound Controller Driver Quick Start
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -143,6 +143,6 @@
  * -# Enter an infinite loop to output data sequence via the I2S Serializer.
  *  \snippet qs_i2s_basic.c main_loop
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

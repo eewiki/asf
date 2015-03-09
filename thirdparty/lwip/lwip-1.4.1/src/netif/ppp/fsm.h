@@ -50,9 +50,6 @@
  *
  * $Id: fsm.h,v 1.5 2009/12/31 17:08:08 goldsimon Exp $
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef FSM_H
 #define FSM_H

@@ -4,7 +4,7 @@
  * \brief Version file of SAM4CMP Bootloader application for ATMEL PRIME
  *        Service Node
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,9 +40,6 @@
  *
  * \asf_license_stop
  *
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #define PRBO_VERSION "ATMBOOTSAM4C16CI0100"

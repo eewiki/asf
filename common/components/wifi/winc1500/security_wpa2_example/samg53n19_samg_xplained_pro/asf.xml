@@ -1,0 +1,29 @@
+<asf xmlversion="1.0">
+	<project caption="WINC1500 Connecting a WPA/WPA2 Secured AP Example for SAMG53 XPlained Pro" id="common.components.wifi.winc1500.security_enterprise_network_example.samg53_xplained_pro">
+		<!-- Summary Description -->
+		<info type="description" value="summary">
+			This example demonstrates the use of the WINC1500 with the SAMG53 Xplained Pro board to connect to a secured WPA/WPA2 (enterprise) network.
+		</info>
+
+		<!-- Source -->
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_winc.h"/>
+
+		<!-- Device support -->
+		<device-support value="atsamg53n19"/>
+
+		<!-- Required modules -->
+		<require idref="common.components.wifi.winc1500.security_enterprise_network_example"/>
+		<require idref="board.samg53_xplained_pro"/>
+
+		<!-- Generators -->
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+	</project>
+</asf>

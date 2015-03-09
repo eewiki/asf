@@ -63,9 +63,6 @@
  * calculation producing an unexpected result could be a symptom of a corruption in
  * the context of a task.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include <stdlib.h>
 #include <math.h>

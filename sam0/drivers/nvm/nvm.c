@@ -3,7 +3,7 @@
  *
  * \brief SAM Non Volatile Memory driver
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include "nvm.h"
@@ -267,6 +267,9 @@ enum status_code nvm_execute_command(
  * Writes from a buffer to a given page in the NVM memory, retaining any
  * unmodified data already stored in the page.
  *
+ * \note If manual write mode is enable, write command must be executed after
+ * this function, otherwise the data will not write to NVM from page buffer. 
+ *
  * \warning This routine is unsafe if data integrity is critical; a system reset
  *          during the update process will result in up to one row of data being
  *          lost. If corruption must be avoided in all circumstances (including
@@ -376,6 +379,13 @@ enum status_code nvm_update_buffer(
  *       row should be erased (via \ref nvm_erase_row()) before attempting to
  *       write new data to the page.
  *
+ * \note For SAMD21 RWW devices, see \c SAMD21_64K, command \c NVM_COMMAND_RWWEE_WRITE_PAGE
+ * must be executed before any other commands after writing a page,
+ * refer to errata 13588.
+ *
+ * \note If manual write mode is enable, write command must be executed after
+ * this function, otherwise the data will not write to NVM from page buffer. 
+ *
  * \return Status of the attempt to write a page.
  *
  * \retval STATUS_OK               Requested NVM memory page was successfully
@@ -459,9 +469,10 @@ enum status_code nvm_write_buffer(
 		NVM_MEMORY[nvm_address++] = data;
 	}
 
-	/* Perform a manual NVM write when the length of data to be programmed is
-	 * less than page size */
-	if (length < NVMCTRL_PAGE_SIZE) {
+	/* If automatic page write mode is enable, then perform a manual NVM
+	 * write when the length of data to be programmed is less than page size
+	 */
+	if ((_nvm_dev.manual_page_write == false) && (length < NVMCTRL_PAGE_SIZE)) {
 #ifdef FEATURE_NVM_RWWEE
 	 return ((is_rww_eeprom) ? 
 				(nvm_execute_command(NVM_COMMAND_RWWEE_WRITE_PAGE,destination_address, 0)):
@@ -613,6 +624,13 @@ enum status_code nvm_erase_row(
 
 	/* Set address and command */
 	nvm_module->ADDR.reg  = (uintptr_t)&NVM_MEMORY[row_address / 4];
+
+#ifdef SAMD21_64K
+	if (is_rww_eeprom) {
+		NVM_MEMORY[row_address / 2] = 0x0;
+	}
+#endif
+
 #ifdef FEATURE_NVM_RWWEE
 	nvm_module->CTRLA.reg = ((is_rww_eeprom) ? 
 								(NVM_COMMAND_RWWEE_ERASE_ROW | NVMCTRL_CTRLA_CMDEX_KEY):
@@ -620,6 +638,10 @@ enum status_code nvm_erase_row(
 #else
 	nvm_module->CTRLA.reg = NVM_COMMAND_ERASE_ROW | NVMCTRL_CTRLA_CMDEX_KEY;
 #endif
+
+	while (!nvm_is_ready()) {
+	}
+
 	return STATUS_OK;
 }
 
@@ -758,6 +780,18 @@ static void _nvm_translate_raw_fusebits_to_struct (
 	fusebits->bod33_action = (enum nvm_bod33_action)
 			((raw_user_row[0] & FUSES_BOD33_ACTION_Msk)
 			>> FUSES_BOD33_ACTION_Pos);
+#elif (SAMD20) || (SAMD21) || (SAMR21)
+	fusebits->bod33_level = (uint8_t)
+			((raw_user_row[0] & FUSES_BOD33USERLEVEL_Msk)
+			>> FUSES_BOD33USERLEVEL_Pos);
+
+	fusebits->bod33_enable = (bool)
+			((raw_user_row[0] & FUSES_BOD33_EN_Msk)
+			>> FUSES_BOD33_EN_Pos);
+
+	fusebits->bod33_action = (enum nvm_bod33_action)
+			((raw_user_row[0] & FUSES_BOD33_ACTION_Msk)
+			>> FUSES_BOD33_ACTION_Pos);
 #else
 	fusebits->bod33_level = (uint8_t)
 				((raw_user_row[0] & SYSCTRL_FUSES_BOD33USERLEVEL_Msk)
@@ -770,8 +804,8 @@ static void _nvm_translate_raw_fusebits_to_struct (
 	fusebits->bod33_action = (enum nvm_bod33_action)
 			((raw_user_row[0] & SYSCTRL_FUSES_BOD33_ACTION_Msk)
 			>> SYSCTRL_FUSES_BOD33_ACTION_Pos);
-
 #endif
+
 	fusebits->wdt_enable = (bool)
 			((raw_user_row[0] & WDT_FUSES_ENABLE_Msk) >> WDT_FUSES_ENABLE_Pos);
 

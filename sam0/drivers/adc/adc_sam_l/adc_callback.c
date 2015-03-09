@@ -3,7 +3,7 @@
  *
  * \brief SAM Peripheral Analog-to-Digital Converter Driver
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include "adc_callback.h"
@@ -207,7 +207,7 @@ enum status_code adc_read_buffer_job(
  * Gets the status of an ongoing or the last job.
  *
  * \param [in]  module_inst Pointer to the ADC software instance struct
- * \param [in]  type        Type of job to abort
+ * \param [in]  type        Type of to get status
  *
  * \return Status of the job.
  */

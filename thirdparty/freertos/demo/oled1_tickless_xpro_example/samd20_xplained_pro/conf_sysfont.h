@@ -3,7 +3,7 @@
  *
  * \brief Default configurations for sysfont
  *
- * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -39,9 +39,6 @@
  *
  * \asf_license_stop
  *
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef CONF_SYSFONT_H
 #define CONF_SYSFONT_H

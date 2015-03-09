@@ -18,9 +18,6 @@
  */
 
 /* If you happen not to want the image transform support, disable it here */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef TRANSFORMS_SUPPORTED
 #define TRANSFORMS_SUPPORTED 1		/* 0 disables transform code */
 #endif

@@ -27,9 +27,6 @@
  *
  *  http://groups.google.com/group/sci.crypt/msg/10a300c9d21afca0
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "polarssl/config.h"
 

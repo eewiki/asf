@@ -18,9 +18,6 @@
 /* Include auto-config file to find out which system include files we need. */
 
 #include "jconfig.h"		/* auto configuration options */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #define JCONFIG_INCLUDED	/* so that jpeglib.h doesn't do it again */
 
 /*

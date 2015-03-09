@@ -1,7 +1,4 @@
 #ifndef __NETIF_NRWLANIF_H__
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #define __NETIF_NRWLANIF_H__
 
 #include "lwip/netif.h"

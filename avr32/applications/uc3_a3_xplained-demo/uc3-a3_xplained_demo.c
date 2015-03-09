@@ -3,7 +3,7 @@
  *
  * \brief UC3-A3 Xplained Demo Application
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -55,7 +55,7 @@
  * For further information, visit
  * <A href="http://www.atmel.com/products/avr/">Atmel AVR UC3</A>.\n
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

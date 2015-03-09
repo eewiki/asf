@@ -3,7 +3,7 @@
  *
  * @brief This header file declares the interface for the RF4Control stack.
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,9 +42,6 @@
  */
 
 /* Prevent double inclusion */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef RF4CE_H
 #define RF4CE_H
 

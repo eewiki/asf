@@ -21,9 +21,6 @@
  */
 
 #define BITS_IN_JSAMPLE  8	/* use 8 or 12 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 
 /*

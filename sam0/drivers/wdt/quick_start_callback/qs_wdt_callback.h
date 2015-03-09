@@ -3,7 +3,7 @@
  *
  * \brief SAM Watchdog Driver Callback Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -106,6 +106,6 @@
  * -# Enter an infinite loop to hold the main program logic.
  *    \snippet qs_wdt_callback.c main_3
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

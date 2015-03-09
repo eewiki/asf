@@ -38,9 +38,6 @@
 
 /* This is the part of the API that is linked with
    the application */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "lwip/opt.h"
 

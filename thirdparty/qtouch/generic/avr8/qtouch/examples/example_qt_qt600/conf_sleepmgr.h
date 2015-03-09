@@ -3,7 +3,7 @@
  *
  * \brief Sleep manager configuration
  *
- * Copyright (C) 2011-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \page License
  *
@@ -34,9 +34,6 @@
  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
  * DAMAGE.
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef CONF_SLEEPMGR_H
 #define CONF_SLEEPMGR_H

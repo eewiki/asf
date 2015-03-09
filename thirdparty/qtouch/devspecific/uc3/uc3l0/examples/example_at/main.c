@@ -4,7 +4,7 @@
  * \brief Autonomous QTouch Example with CAT module using SleepWalking feature
  *        in AT32UC3L series.
  *
- * Copyright (C) 2011-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,9 +43,6 @@
  ******************************************************************************/
 
 /*! Compiler information */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #if !((defined(__GNUC__) && defined(__AVR32__)) || (defined(__ICCAVR32__)\
 	|| defined(__AAVR32__)))
 #error 'This compiler is not supported at the moment.'

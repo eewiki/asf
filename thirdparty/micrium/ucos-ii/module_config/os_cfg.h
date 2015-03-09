@@ -21,9 +21,6 @@
 * licensing fee.
 *********************************************************************************************************
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef OS_CFG_H
 #define OS_CFG_H

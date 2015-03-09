@@ -3,7 +3,7 @@
  *
  * \brief SAM D21/R21/L21 Quick Start Guide for Using SPI driver with DMA
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -235,6 +235,6 @@
  * -# Enter endless loop.
  *    \snippet qs_spi_dma_use.c endless_loop
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

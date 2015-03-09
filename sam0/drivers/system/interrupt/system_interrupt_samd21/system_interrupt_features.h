@@ -3,7 +3,7 @@
  *
  * \brief SAM D21 System Interrupt Driver
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -76,7 +76,9 @@
  * \brief Table of possible system interrupt/exception vector numbers.
  *
  * Table of all possible interrupt and exception vector indexes within the
- * SAMD21 device.
+ * SAMD21 device. Check peripherals configuration in SAMD21 datasheet for
+ * available vector index for specific device.
+ *
  */
 #if defined(__DOXYGEN__)
 /** \note The actual enumeration name is "system_interrupt_vector". */
@@ -109,8 +111,10 @@ enum system_interrupt_vector {
 	SYSTEM_INTERRUPT_MODULE_NVMCTRL    = NVMCTRL_IRQn,
 	/** Interrupt vector index for a Direct Memory Access interrupt. */
 	SYSTEM_INTERRUPT_MODULE_DMA        = DMAC_IRQn,
+#if defined(__DOXYGEN__) || defined(ID_USB)
 	/** Interrupt vector index for a Universal Serial Bus interrupt. */
 	SYSTEM_INTERRUPT_MODULE_USB        = USB_IRQn,
+#endif
 	/** Interrupt vector index for an Event System interrupt. */
 	SYSTEM_INTERRUPT_MODULE_EVSYS      = EVSYS_IRQn,
 #if defined(__DOXYGEN__)
@@ -148,24 +152,42 @@ enum system_interrupt_vector {
 	SYSTEM_INTERRUPT_MODULE_TC3        = TC3_IRQn,
 	SYSTEM_INTERRUPT_MODULE_TC4        = TC4_IRQn,
 	SYSTEM_INTERRUPT_MODULE_TC5        = TC5_IRQn,
-#  if (SAMD21J)
+#  if defined(ID_TC6)
 	SYSTEM_INTERRUPT_MODULE_TC6        = TC6_IRQn,
+#  endif
+#  if defined(ID_TC7)
 	SYSTEM_INTERRUPT_MODULE_TC7        = TC7_IRQn,
 #  endif
 #endif
 
-	/** Interrupt vector index for an Analog Comparator peripheral interrupt. */
-	SYSTEM_INTERRUPT_MODULE_AC         = AC_IRQn,
+#if defined(__DOXYGEN__) || defined(ID_ADC)
 	/** Interrupt vector index for an Analog-to-Digital peripheral interrupt. */
 	SYSTEM_INTERRUPT_MODULE_ADC        = ADC_IRQn,
+#endif
+
+#if defined(__DOXYGEN__) || defined(ID_AC)
+	/** Interrupt vector index for an Analog Comparator peripheral interrupt. */
+	SYSTEM_INTERRUPT_MODULE_AC         = AC_IRQn,
+#endif
+
+#if defined(__DOXYGEN__) || defined(ID_DAC)
 	/** Interrupt vector index for a Digital-to-Analog peripheral interrupt. */
 	SYSTEM_INTERRUPT_MODULE_DAC        = DAC_IRQn,
+#endif
+#if defined(__DOXYGEN__) || defined(ID_PTC)
 	/** Interrupt vector index for a Peripheral Touch Controller peripheral
 	 *  interrupt. */
 	SYSTEM_INTERRUPT_MODULE_PTC        = PTC_IRQn,
+#endif
+#if defined(__DOXYGEN__) || defined(ID_I2S)
 	/** Interrupt vector index for a Inter-IC Sound Interface peripheral
 	 *  interrupt. */
 	SYSTEM_INTERRUPT_MODULE_I2S        = I2S_IRQn,
+#endif
+#if defined(__DOXYGEN__) || defined(ID_AC1)
+	/** Interrupt vector index for an Analog Comparator 1 peripheral interrupt. */
+	SYSTEM_INTERRUPT_MODULE_AC1        = AC1_IRQn,
+#endif
 };
 
 /** @} */

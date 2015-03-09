@@ -1,6 +1,6 @@
 /**
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -61,6 +61,6 @@
  * If you want to change the parameters of the serial port, you just have to modify the constants \b RS232_PORT,
  * \b RS232_BAUD_RATE, \b RS232_BYTE_SIZE, \b RS232_PARITY and \b RS232_STOP_BIT defined at the beginning of the "main.c" file.
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

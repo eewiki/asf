@@ -3,7 +3,7 @@
  *
  * \brief ASF Programmers Manual Revision History
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -64,6 +64,6 @@
  *  </tr>
  * </table>
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="E-Paper Display Example for Mega-RFR2 XPRO" id="thirdparty.epd.pervasive.example.mega_rfr2_xplained_pro">
+		<build type="header-file" value="conf_EPD.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_EPD_hw_timer.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.thirdparty.epd.epd_type" value="144"/>
+		<require idref="thirdparty.epd.pervasive.example"/>
+		<require idref="board.atmega256rfr2_xplained_pro"/>
+		<generator value="avrgcc"/>
+		<generator value="as5_8"/>
+		<generator value="doxygen"/>
+		<device-support value="atmega256rfr2"/>
+	</project>
+</asf>

@@ -3,7 +3,7 @@
  *
  * \brief SAM USART Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -111,6 +111,6 @@
  * -# Echo the received variable back to the USART via a blocking write.
  *    \snippet qs_usart_basic_use.c main_write
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

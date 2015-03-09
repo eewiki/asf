@@ -3,7 +3,7 @@
  *
  * \brief Sensor platform unit test
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \page License
  *
@@ -65,7 +65,7 @@
  *  the Inertial One board using the Sensor Platform library.
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

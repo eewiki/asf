@@ -1,0 +1,56 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.thirdparty.epd.epd_type" name="config.thirdparty.epd.epd_type" caption="EPD Display Type" default="144">
+		<module type="meta" id="config.thirdparty.epd.epd_type#144" caption="EPD 1.44 Inch Display support enabled">
+			<info type="description" value="summary">
+			Display driver and service layer support for E-Paper Display of size 1.44 Inch.
+			</info>
+			<build type="define" name="USE_EPD_Type" value="USE_EPD144"/>
+		</module>
+
+		<module type="meta" id="config.thirdparty.epd.epd_type#200" caption="EPD 2.0 Inch Display support enabled">
+			<info type="description" value="summary">
+			Display driver and service layer support for E-Paper Display of size 2.0 Inch.
+			</info>
+			<build type="define" name="USE_EPD_Type" value="USE_EPD200"/>
+		</module>
+		
+		<module type="meta" id="config.thirdparty.epd.epd_type#270" caption="EPD 2.70 Inch Display support enabled">
+			<info type="description" value="summary">
+			Display driver and service layer support for E-Paper Display of size 2.70 Inch.
+			</info>
+			<build type="define" name="USE_EPD_Type" value="USE_EPD270"/>
+		</module>
+	</select-by-config>
+	<module type="component" id="thirdparty.epd.pervasive" caption="E-Paper Display Service">
+		<info type="description" value="summary">
+		Thirdparty driver and service layer for Pervasive E-Paper Displays.
+		</info>
+		<build type="c-source" value="src/image_data.c"/>
+		<build type="header-file" value="src/image_data.h"/>
+		<build type="c-source" value="src/Pervasive_Displays_small_EPD/EPD_controller.c"/>
+		<build type="header-file" value="src/Pervasive_Displays_small_EPD/inc/EPD_COG_process.h"/>
+		<build type="header-file" value="src/Pervasive_Displays_small_EPD/inc/EPD_controller.h"/>
+		<build type="header-file" value="src/Pervasive_Displays_small_EPD/inc/Pervasive_Displays_small_EPD.h"/>
+		<build type="c-source" value="src/Pervasive_Displays_small_EPD/COG/EPD_COG.c"/>
+		<build type="c-source" value="src/Pervasive_Displays_small_EPD/mega/EPD_hardware_driver.c"/>
+		<build type="c-source" value="src/Pervasive_Displays_small_EPD/mega/EPD_hardware_gpio.c"/>
+		<build type="header-file" value="src/Pervasive_Displays_small_EPD/mega/EPD_hardware_gpio.h"/>
+		<build type="header-file" value="src/Pervasive_Displays_small_EPD/mega/EPD_hardware_driver.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="./src"/>
+		<build type="include-path" value="./src/Pervasive_Displays_small_EPD/inc"/>
+		<build type="include-path" value="./src/Pervasive_Displays_small_EPD/mega"/>
+		<build type="include-path" value="./src/services"/>
+		<build type="include-path" value="./src/services/EPD_tc"/>
+		<build type="module-config" subtype="required-header-file" value="conf_EPD.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<require idref="config.thirdparty.epd.epd_type"/>
+		<require idref="common.services.ioport"/>
+		<require idref="common.services.basic.spi_master"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="thirdparty.wireless.services.mega.drivers.tc"/>
+		<require idref="thirdparty.epd.pervasive.src.services.epd_tc"/>
+		<device-support value="megarf"/>
+	</module>
+</asf>

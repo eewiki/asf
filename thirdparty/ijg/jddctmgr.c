@@ -14,9 +14,6 @@
  * dequantization as well as the IDCT proper.  This module sets up the
  * dequantization multiplier table needed by the IDCT routine.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

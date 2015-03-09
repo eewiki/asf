@@ -4,7 +4,7 @@
  * \brief XMEGA-C3 Xplained board configuration template
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

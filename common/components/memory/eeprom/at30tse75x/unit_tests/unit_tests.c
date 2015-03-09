@@ -3,7 +3,7 @@
  *
  * \brief AT30TS(E)75x Unit Tests.
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -96,7 +96,7 @@
  * \def CONF_TEST_STOPBITS
  * \brief Stopbit configuration of USART
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 //@}

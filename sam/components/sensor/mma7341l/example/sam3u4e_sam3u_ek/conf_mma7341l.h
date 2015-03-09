@@ -3,7 +3,7 @@
  *
  * \brief MMA7341L configuration.
  *
- * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,7 +42,7 @@
  */
 
 /* Configuration of the mma7341 accelerometer driver */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

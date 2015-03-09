@@ -45,9 +45,6 @@
 
 /* @todo Check the use of '(struct udp_pcb).chksum_len_rx'!
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "lwip/opt.h"
 

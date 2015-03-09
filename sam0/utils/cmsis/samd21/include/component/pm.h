@@ -3,7 +3,7 @@
  *
  * \brief Component description for PM
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -54,7 +54,7 @@
 /*@{*/
 
 #define PM_U2206
-#define REV_PM                      0x201
+#define REV_PM                      0x211
 
 /* -------- PM_CTRL : (PM Offset: 0x00) (R/W  8) Control -------- */
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -92,6 +92,24 @@ typedef union {
 #define PM_SLEEP_IDLE_AHB           (PM_SLEEP_IDLE_AHB_Val         << PM_SLEEP_IDLE_Pos)
 #define PM_SLEEP_IDLE_APB           (PM_SLEEP_IDLE_APB_Val         << PM_SLEEP_IDLE_Pos)
 #define PM_SLEEP_MASK               0x03ul       /**< \brief (PM_SLEEP) MASK Register */
+
+/* -------- PM_EXTCTRL : (PM Offset: 0x02) (R/W  8) External Reset Controller -------- */
+#if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
+typedef union {
+  struct {
+    uint8_t  SETDIS:1;         /*!< bit:      0  External Reset Disable             */
+    uint8_t  :7;               /*!< bit:  1.. 7  Reserved                           */
+  } bit;                       /*!< Structure used for bit  access                  */
+  uint8_t reg;                 /*!< Type      used for register access              */
+} PM_EXTCTRL_Type;
+#endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
+
+#define PM_EXTCTRL_OFFSET           0x02         /**< \brief (PM_EXTCTRL offset) External Reset Controller */
+#define PM_EXTCTRL_RESETVALUE       0x00ul       /**< \brief (PM_EXTCTRL reset_value) External Reset Controller */
+
+#define PM_EXTCTRL_SETDIS_Pos       0            /**< \brief (PM_EXTCTRL) External Reset Disable */
+#define PM_EXTCTRL_SETDIS           (0x1ul << PM_EXTCTRL_SETDIS_Pos)
+#define PM_EXTCTRL_MASK             0x01ul       /**< \brief (PM_EXTCTRL) MASK Register */
 
 /* -------- PM_CPUSEL : (PM Offset: 0x08) (R/W  8) CPU Clock Select -------- */
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -366,7 +384,9 @@ typedef union {
     uint32_t DAC_:1;           /*!< bit:     18  DAC APB Clock Enable               */
     uint32_t PTC_:1;           /*!< bit:     19  PTC APB Clock Enable               */
     uint32_t I2S_:1;           /*!< bit:     20  I2S APB Clock Enable               */
-    uint32_t :11;              /*!< bit: 21..31  Reserved                           */
+    uint32_t AC1_:1;           /*!< bit:     21  AC1 APB Clock Enable               */
+    uint32_t LINCTRL_:1;       /*!< bit:     22  LINCTRL APB Clock Enable           */
+    uint32_t :9;               /*!< bit: 23..31  Reserved                           */
   } bit;                       /*!< Structure used for bit  access                  */
   uint32_t reg;                /*!< Type      used for register access              */
 } PM_APBCMASK_Type;
@@ -417,7 +437,11 @@ typedef union {
 #define PM_APBCMASK_PTC             (0x1ul << PM_APBCMASK_PTC_Pos)
 #define PM_APBCMASK_I2S_Pos         20           /**< \brief (PM_APBCMASK) I2S APB Clock Enable */
 #define PM_APBCMASK_I2S             (0x1ul << PM_APBCMASK_I2S_Pos)
-#define PM_APBCMASK_MASK            0x001FFFFFul /**< \brief (PM_APBCMASK) MASK Register */
+#define PM_APBCMASK_AC1_Pos         21           /**< \brief (PM_APBCMASK) AC1 APB Clock Enable */
+#define PM_APBCMASK_AC1             (0x1ul << PM_APBCMASK_AC1_Pos)
+#define PM_APBCMASK_LINCTRL_Pos     22           /**< \brief (PM_APBCMASK) LINCTRL APB Clock Enable */
+#define PM_APBCMASK_LINCTRL         (0x1ul << PM_APBCMASK_LINCTRL_Pos)
+#define PM_APBCMASK_MASK            0x007FFFFFul /**< \brief (PM_APBCMASK) MASK Register */
 
 /* -------- PM_INTENCLR : (PM Offset: 0x34) (R/W  8) Interrupt Enable Clear -------- */
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -512,7 +536,8 @@ typedef union {
 typedef struct {
   __IO PM_CTRL_Type              CTRL;        /**< \brief Offset: 0x00 (R/W  8) Control */
   __IO PM_SLEEP_Type             SLEEP;       /**< \brief Offset: 0x01 (R/W  8) Sleep Mode */
-       RoReg8                    Reserved1[0x6];
+  __IO PM_EXTCTRL_Type           EXTCTRL;     /**< \brief Offset: 0x02 (R/W  8) External Reset Controller */
+       RoReg8                    Reserved1[0x5];
   __IO PM_CPUSEL_Type            CPUSEL;      /**< \brief Offset: 0x08 (R/W  8) CPU Clock Select */
   __IO PM_APBASEL_Type           APBASEL;     /**< \brief Offset: 0x09 (R/W  8) APBA Clock Select */
   __IO PM_APBBSEL_Type           APBBSEL;     /**< \brief Offset: 0x0A (R/W  8) APBB Clock Select */

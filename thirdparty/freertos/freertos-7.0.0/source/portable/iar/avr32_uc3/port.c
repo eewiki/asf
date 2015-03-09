@@ -59,9 +59,6 @@
     http://www.OpenRTOS.com - Commercial support, development, porting,
     licensing and training services.
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include <gpio.h> // Have to include gpio.h before FreeRTOS.h as long as FreeRTOS
                   // redefines the inline keyword to empty.

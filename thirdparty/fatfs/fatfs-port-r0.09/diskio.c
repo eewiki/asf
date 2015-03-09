@@ -3,7 +3,7 @@
  *
  * \brief Implementation of low level disk I/O module skeleton for FatFS.
  *
- * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,9 +42,6 @@
  */
 /// @cond 0
 /**INDENT-OFF**/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifdef __cplusplus
 extern "C" {
 #endif

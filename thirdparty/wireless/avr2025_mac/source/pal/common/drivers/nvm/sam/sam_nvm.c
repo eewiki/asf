@@ -3,7 +3,7 @@
  *
  * \brief Non volatile memories management for SAM devices
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -39,9 +39,6 @@
  *
  * \asf_license_stop
  *
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include "common_nvm.h"
 #include "conf_board.h"
@@ -154,15 +151,12 @@ status_code_t nvm_write_char(mem_type_t mem, uint32_t address, uint8_t data)
 
 #if defined(USE_EXTMEM) && defined(CONF_BOARD_AT45DBX)
 	case AT45DBX:
-		if (!at45dbx_write_byte_open() address) {
+		if (!at45dbx_write_byte_open(address)) {
 			return ERR_BAD_ADDRESS;
 		}
 
 		at45dbx_write_byte(data);
 		at45dbx_write_close();
-		at45dbx_read_byte_open(address);
-		read = at45dbx_read_byte();
-		at45dbx_read_close();
 		break;
 #endif
 

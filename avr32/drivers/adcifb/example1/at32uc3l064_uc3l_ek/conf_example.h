@@ -3,7 +3,7 @@
  *
  * \brief ADCIFB channel configuration
  *
- * Copyright (c) 2010-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -44,7 +44,7 @@
 /** \name ADCIFB channel configuration
  * @{
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #define EXAMPLE_ADCIFB_PIN            AT32UC3L_EK_VBAT_PIN

@@ -11,9 +11,6 @@
  * currently does not allow multiple-scan files to be written with output
  * suspension.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

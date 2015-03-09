@@ -13,9 +13,6 @@
  * into local working storage, and update them back to the permanent
  * storage only upon successful completion of an MCU.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

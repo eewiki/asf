@@ -4,7 +4,7 @@
  * @brief This file defines all message structures for the MAC.
  *
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,15 +43,12 @@
  */
 
 /*
- * Copyright (c) 2014, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 
 /* Prevent double inclusion */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef MAC_MSG_TYPES_H
 #define MAC_MSG_TYPES_H
 

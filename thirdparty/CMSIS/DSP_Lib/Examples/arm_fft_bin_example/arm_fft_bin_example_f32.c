@@ -77,9 +77,6 @@
  
 /** \example arm_fft_bin_example_f32.c 
   */  
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #include <asf.h>
 #include "arm_math.h" 
  

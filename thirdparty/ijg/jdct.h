@@ -25,9 +25,6 @@
  * work in floating-point ones.
  * Quantization of the output coefficients is done by jcdctmgr.c.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #if BITS_IN_JSAMPLE == 8
 typedef int DCTELEM;		/* 16 or 32 bits is fine */

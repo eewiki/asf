@@ -3,7 +3,7 @@
  *
  * \brief SAM Peripheral Digital-to-Analog Converter Driver
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include "dac.h"
@@ -196,22 +196,6 @@ enum status_code dac_init(
 	gclk_chan_conf.source_generator = config->clock_source;
 	system_gclk_chan_set_config(DAC_GCLK_ID, &gclk_chan_conf);
 	system_gclk_chan_enable(DAC_GCLK_ID);
-
-	/* MUX the DAC VOUT pin */
-	struct system_pinmux_config pin_conf;
-	system_pinmux_get_config_defaults(&pin_conf);
-
-	/* Set up the DAC VOUT0 pin */
-	pin_conf.mux_position = MUX_PA02B_DAC_VOUT0;
-	pin_conf.direction    = SYSTEM_PINMUX_PIN_DIR_OUTPUT;
-	pin_conf.input_pull   = SYSTEM_PINMUX_PIN_PULL_NONE;
-	system_pinmux_pin_set_config(PIN_PA02B_DAC_VOUT0, &pin_conf);
-
-	/* Set up the DAC VOUT1 pin */
-	pin_conf.mux_position = MUX_PA05B_DAC_VOUT1;
-	pin_conf.direction    = SYSTEM_PINMUX_PIN_DIR_OUTPUT;
-	pin_conf.input_pull   = SYSTEM_PINMUX_PIN_PULL_NONE;
-	system_pinmux_pin_set_config(PIN_PA05B_DAC_VOUT1, &pin_conf);
 
 	/* Write configuration to module */
 	_dac_set_config(module_inst, config);
@@ -466,6 +450,24 @@ void dac_chan_set_config(
 	Assert(module_inst);
 	Assert(module_inst->hw);
 	Assert(config);
+
+	/* MUX the DAC VOUT pin */
+	struct system_pinmux_config pin_conf;
+	system_pinmux_get_config_defaults(&pin_conf);
+
+	pin_conf.direction    = SYSTEM_PINMUX_PIN_DIR_INPUT;
+	pin_conf.input_pull   = SYSTEM_PINMUX_PIN_PULL_NONE;
+
+	if(channel == DAC_CHANNEL_0) {
+		/* Set up the DAC VOUT0 pin */
+		pin_conf.mux_position = MUX_PA02B_DAC_VOUT0;
+		system_pinmux_pin_set_config(PIN_PA02B_DAC_VOUT0, &pin_conf);
+	}
+	else if(channel == DAC_CHANNEL_1) {
+		/* Set up the DAC VOUT1 pin */
+		pin_conf.mux_position = MUX_PA05B_DAC_VOUT1;
+		system_pinmux_pin_set_config(PIN_PA05B_DAC_VOUT1, &pin_conf);
+	}
 
 	Dac *const dac_module = module_inst->hw;
 

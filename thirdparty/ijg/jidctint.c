@@ -24,9 +24,6 @@
  * multiplication; this allows a very simple and accurate implementation in
  * scaled fixed-point arithmetic, with a minimal number of shifts.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

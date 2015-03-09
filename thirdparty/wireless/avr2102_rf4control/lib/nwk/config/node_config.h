@@ -5,7 +5,7 @@
  *        in the example application of the coordinator in addition to the
  *        underlaying stack.
  *
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -44,15 +44,12 @@
  */
 
 /*
- * Copyright (c) 2014, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 
 /* Prevent double inclusion */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #ifndef NODE_CONFIG_H
 #define NODE_CONFIG_H
 

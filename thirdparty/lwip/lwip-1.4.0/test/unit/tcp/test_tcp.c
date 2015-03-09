@@ -1,7 +1,4 @@
 #include "test_tcp.h"
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "lwip/tcp_impl.h"
 #include "lwip/stats.h"

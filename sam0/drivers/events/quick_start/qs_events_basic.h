@@ -3,7 +3,7 @@
  *
  * \brief SAM Event System Driver Quick Start
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -122,6 +122,6 @@
  * -# Perform a software event trigger on the configured event channel.
  *    \snippet qs_events_basic.c main_2
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

@@ -3,7 +3,7 @@
  *
  * \brief AVR XMEGA USART example 4
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -83,7 +83,7 @@
  * For further information, visit
  * <A href="http://www.atmel.com/avr">Atmel AVR</A>.\n
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <conf_usart_example.h>

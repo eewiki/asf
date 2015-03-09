@@ -3,7 +3,7 @@
  *
  * \brief Qtouch example for SAM.
  *
- * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -89,9 +89,6 @@
  *  -# The application will output the Qtouch value when touching the slider or the key
  * on the EK boards.
  *
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include "asf.h"

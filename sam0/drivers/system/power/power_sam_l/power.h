@@ -3,7 +3,7 @@
  *
  * \brief SAM L21 Power functionality
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef POWER_H_INCLUDED
@@ -84,8 +84,6 @@ enum system_sleepmode {
 enum system_performance_level {
 	/** Performance level 0. */
 	SYSTEM_PERFORMANCE_LEVEL_0  = PM_PLCFG_PLSEL_PL0,
-	/** Performance level 1. */
-	SYSTEM_PERFORMANCE_LEVEL_1  = PM_PLCFG_PLSEL_PL1,
 	/** Performance level 2. */
 	SYSTEM_PERFORMANCE_LEVEL_2  = PM_PLCFG_PLSEL_PL2,
 };
@@ -156,6 +154,20 @@ enum system_voltage_regulator_sel {
 	SYSTEM_VOLTAGE_REGULATOR_LDO    = SUPC_VREG_SEL_LDO_Val,
 	/** The voltage regulator in active mode is a buck converter. */
 	SYSTEM_VOLTAGE_REGULATOR_BUCK   = SUPC_VREG_SEL_BUCK_Val,
+};
+
+/**
+ * \brief Low power efficiency.
+ *
+ * Low power mode efficiency.
+ */
+enum system_voltage_regulator_low_power_efficiency {
+	/** The voltage regulator in Low power mode has the default efficiency and
+		support the whole VDD range (1,62V to 3,6V). */
+	SYSTEM_VOLTAGE_REGULATOR_LOW_POWER_EFFICIENCY_DEFAULT,
+	/** The voltage regulator in Low power mode has the highest efficiency and
+		support the limited VDD range (2,5V to 3,6V). */
+	SYSTEM_VOLTAGE_REGULATOR_LOW_POWER_EFFICIENCY_HIGHTEST,
 };
 
 /**
@@ -265,6 +277,8 @@ struct system_voltage_regulator_config {
 	bool run_in_standby;
 	/** Voltage Regulator Selection. */
 	enum system_voltage_regulator_sel  regulator_sel;
+	/** Low power efficiency. */
+	enum system_voltage_regulator_low_power_efficiency low_power_efficiency;
 };
 
 /**
@@ -294,13 +308,6 @@ struct system_battery_backup_power_switch_config {
 	enum system_battery_power_switch battery_power_switch;
 };
 
-/** Performance level 0 maximum frequency */
-#define	SYSTEM_PERFORMANCE_LEVEL_0_MAX_FREQ    15000000UL
-/** Performance level 1 maximum frequency */
-#define	SYSTEM_PERFORMANCE_LEVEL_1_MAX_FREQ    30000000UL
-/** Performance level 2 maximum frequency */
-#define	SYSTEM_PERFORMANCE_LEVEL_2_MAX_FREQ    48000000UL
-
 /**
  * \name Voltage Regulator
  * @{
@@ -314,6 +321,7 @@ struct system_battery_backup_power_switch_config {
  *   - Voltage scaling voltage step is 2*min_step
  *   - The voltage regulator is in low power mode in Standby sleep mode
  *   - The voltage regulator in active mode is a LDO voltage regulator
+ *   - The voltage regulator in Low power mode has the default efficiency
  *
  * \param[out] config  Configuration structure to fill with default values
  */
@@ -325,6 +333,7 @@ static inline void system_voltage_regulator_get_config_defaults(
 	config->voltage_scale_step   = 0;
 	config->run_in_standby       = false;
 	config->regulator_sel        = SYSTEM_VOLTAGE_REGULATOR_LDO;
+	config->low_power_efficiency = SYSTEM_VOLTAGE_REGULATOR_LOW_POWER_EFFICIENCY_DEFAULT;
 }
 
 /**
@@ -343,6 +352,7 @@ static inline void system_voltage_regulator_set_config(
 	SUPC->VREG.bit.VSVSTEP  = config->voltage_scale_step;
 	SUPC->VREG.bit.RUNSTDBY = config->run_in_standby;
 	SUPC->VREG.bit.SEL      = config->regulator_sel;
+	SUPC->VREG.bit.LPEFF    = config->low_power_efficiency;
 	while(!(SUPC->STATUS.reg & SUPC_STATUS_VREGRDY)) {
 		;
 	}
@@ -731,20 +741,9 @@ static inline void system_sleep(void)
 static inline enum status_code system_switch_performance_level(
 					const enum system_performance_level performance_level)
 {
-	/* Check the maximum frequency */
-	uint32_t system_performance_level_max_freq[3] = {
-		SYSTEM_PERFORMANCE_LEVEL_0_MAX_FREQ,
-		SYSTEM_PERFORMANCE_LEVEL_1_MAX_FREQ,
-		SYSTEM_PERFORMANCE_LEVEL_2_MAX_FREQ
-	};
 
 	if (performance_level == (enum system_performance_level)PM->PLCFG.reg) {
 		return STATUS_OK;
-	}
-
-	if (system_cpu_clock_get_hz() >
-			system_performance_level_max_freq[performance_level]) {
-		return STATUS_ERR_INVALID_ARG;
 	}
 
 	/* Clear performance level status */
@@ -811,8 +810,8 @@ static inline void system_clear_performance_level_status(void)
  *   - Retention back biasing mode for HMCRAMCHS
  *   - Power domains PD0/PD1/PD2 are not linked
  *   - Automatic VREG switching is used
- *   - Dynamic groovyBaby_0 for power domain 1 is disable
- *   - Dynamic groovyBaby_0 for power domain 0 is disable
+ *   - Dynamic power gating for power domain 1 is disabled
+ *   - Dynamic power gating for power domain 0 is disabled
  *   - All power domains switching are handled by hardware
  *
  * \param[out] config  Configuration structure to fill with default values

@@ -4,7 +4,7 @@
  * \brief Chip-specific system clock manager configuration
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #ifndef CONF_CLOCK_H_INCLUDED

@@ -4,7 +4,7 @@
  *
  * \brief FreeRTOS Serial Port management example for AVR32 UC3.
  *
- * Copyright (c) 2009 - 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -46,9 +46,6 @@
 /*
   BASIC INTERRUPT DRIVEN SERIAL PORT DRIVER FOR USART.
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include <avr32/io.h>
 #include "board.h"

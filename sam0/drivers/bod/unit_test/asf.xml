@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam0.drivers.bod.unit_test" caption="unit test for the SAM0 BOD Driver">
+		<info type="description" value="summary">
+		Unit testfor the bod33 detect module demonstrating module configuration.
+		</info>
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="c-source" value="unit_test.c"/>
+		<build type="include-path" value="."/>
+		<require idref="sam0.drivers.bod"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="common.utils.unit_test"/>
+		<device-support value="samd21"/>
+	</module>
+</asf>

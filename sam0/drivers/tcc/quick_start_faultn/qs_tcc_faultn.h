@@ -3,7 +3,7 @@
  *
  * \brief SAM TCC - Timer Counter for Control Applications Callback Driver Quick Start (with Recoverable Fault)
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -255,7 +255,7 @@
  * -# Enter an infinite loop while the PWM wave is generated via the TCC module.
  *  \snippet qs_tcc_callback.c main_loop
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

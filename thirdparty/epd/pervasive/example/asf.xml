@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="application" id="thirdparty.epd.pervasive.example" caption="Example for EPD display using Mega-RFR2 XPRO">
+		<info type="description" value="summary">
+		Demo for Pervasive E-Paper display using Mega-RFR2 XPRO.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="EPD_demo.c"/>
+		<build type="header-file" value="EPD_demo.h"/>
+		<require idref="common.boards"/>
+		<require idref="thirdparty.epd.pervasive"/>
+		<device-support value="megarf"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

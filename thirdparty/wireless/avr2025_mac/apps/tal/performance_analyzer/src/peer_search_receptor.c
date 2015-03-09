@@ -3,7 +3,7 @@
  *
  * \brief Receptor functionalities in Peer Search Process - Performance Analyzer
  *  application
- * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -41,14 +41,11 @@
  */
 
 /*
- * Copyright (c) 2014, Atmel Corporation All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
 /* === INCLUDES ============================================================ */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include <stdlib.h>
 #include "tal.h"

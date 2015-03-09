@@ -1,18 +1,30 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam0.utils.cmsis.samd21.include.pio" caption="SAMD21 PIO definitions">
 		<info type="description" value="summary">
-		SAMD20 PIO component definitions.
+		SAMD21 PIO component definitions.
 		</info>
 		<build type="header-file" value="samd21e15a.h"/>
+		<build type="header-file" value="samd21e15b.h"/>
+		<build type="header-file" value="samd21e15bu.h"/>
+		<build type="header-file" value="samd21e15l.h"/>
 		<build type="header-file" value="samd21e16a.h"/>
+		<build type="header-file" value="samd21e16b.h"/>
+		<build type="header-file" value="samd21e16bu.h"/>
+		<build type="header-file" value="samd21e16l.h"/>
 		<build type="header-file" value="samd21e17a.h"/>
 		<build type="header-file" value="samd21e18a.h"/>
 		<build type="header-file" value="samd21g15a.h"/>
+		<build type="header-file" value="samd21g15b.h"/>
 		<build type="header-file" value="samd21g16a.h"/>
+		<build type="header-file" value="samd21g16b.h"/>
 		<build type="header-file" value="samd21g17a.h"/>
+		<build type="header-file" value="samd21g17au.h"/>
 		<build type="header-file" value="samd21g18a.h"/>
+		<build type="header-file" value="samd21g18au.h"/>
 		<build type="header-file" value="samd21j15a.h"/>
+		<build type="header-file" value="samd21j15b.h"/>
 		<build type="header-file" value="samd21j16a.h"/>
+		<build type="header-file" value="samd21j16b.h"/>
 		<build type="header-file" value="samd21j17a.h"/>
 		<build type="header-file" value="samd21j18a.h"/>
 		<info type="gui-flag" value="hidden"/>

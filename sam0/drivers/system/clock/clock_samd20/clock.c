@@ -3,7 +3,7 @@
  *
  * \brief SAM D20 Clock Driver
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <clock.h>
@@ -760,7 +760,7 @@ void system_clock_init(void)
 	/* OSCK32K */
 #if CONF_CLOCK_OSC32K_ENABLE == true
 	SYSCTRL->OSC32K.bit.CALIB =
-			(*(uint32_t *)SYSCTRL_FUSES_OSC32KCAL_ADDR >> SYSCTRL_FUSES_OSC32KCAL_Pos);
+			(*(uint32_t *)FUSES_OSC32KCAL_ADDR >> FUSES_OSC32KCAL_Pos);
 
 	struct system_clock_source_osc32k_config osc32k_conf;
 	system_clock_source_osc32k_get_config_defaults(&osc32k_conf);
@@ -842,7 +842,7 @@ void system_clock_init(void)
 
 	/* Configure all GCLK generators except for the main generator, which
 	 * is configured later after all other clock systems are set up */
-	MREPEAT(8, _CONF_CLOCK_GCLK_CONFIG_NONMAIN, ~);
+	MREPEAT(GCLK_GEN_NUM, _CONF_CLOCK_GCLK_CONFIG_NONMAIN, ~);
 
 #  if CONF_CLOCK_DFLL_ENABLE == true
 	/* Enable DFLL reference clock if in closed loop mode */

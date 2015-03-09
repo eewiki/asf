@@ -62,9 +62,6 @@
  * See heap_2.c and heap_1.c for alternative implementations, and the memory
  * management pages of http://www.FreeRTOS.org for more information.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include <stdlib.h>
 

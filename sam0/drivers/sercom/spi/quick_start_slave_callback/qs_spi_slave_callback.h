@@ -3,7 +3,7 @@
  *
  * \brief SAM SPI Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -125,21 +125,24 @@
  * Add the following to your user application \c main().
  * \snippet qs_spi_slave_callback.c main_use_case
  * \subsection asfdoc_sam0_sercom_spi_slave_callback_usecase_workflow Workflow
- * -# Initiate a write buffer job.
- *    \snippet qs_spi_slave_callback.c write
+ * -# Initiate a read buffer job.
+ *    \snippet qs_spi_slave_callback.c read
  * -# Wait for the transfer to be complete.
  *    \snippet qs_spi_slave_callback.c transf_complete
- * -# Infinite loop.
+ * -# Compare the received data with the transmitted data from SPI master.
+ *    \snippet qs_spi_slave_basic.c compare
+ * -# Infinite loop. If the data is matched, LED0 will flash slowly. Otherwise, 
+ *    LED will flash quickly.
  *    \snippet qs_spi_slave_callback.c inf_loop
  *
  * \section asfdoc_sam0_sercom_spi_slave_callback_use_callback Callback
- * When the buffer is successfully transmitted to the master, the callback
+ * When the buffer is successfully transmitted from the master, the callback
  * function will be called.
  * \subsection asfdoc_sam0_sercom_spi_slave_callback_use_callback_workflow Workflow
  * -# Let the application know that the buffer is transmitted by setting the
  *    global variable to true.
  *    \snippet qs_spi_slave_callback.c callback_var
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<board id="board.samd10_xplained_mini" vendor="Atmel" caption="SAM D10 Xplained Mini">
+		<build type="define" name="BOARD" value="SAMD10_XPLAINED_MINI"/>
+		<build type="define" name="__SAMD10D14AM__" value=""/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<require idref="sam0.utils.cmsis.samd10.source.template"/>
+		<require idref="common.utils"/>
+		<require idref="common.boards"/>
+		<require idref="sam0.drivers.port"/>
+		<device-support value="atsamd10d14am"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/gcc/samd10_xplained_mini_flash.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/gcc/samd10_xplained_mini_sram.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/iar/samd10_xplained_mini_flash.mac" toolchain="iarewarm"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/iar/samd10_xplained_mini_sram.mac" toolchain="iarewarm"/>
+		<build type="header-file" value="samd10_xplained_mini.h"/>
+		<build type="c-source" value="board_init.c"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+	</board>
+</asf>

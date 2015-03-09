@@ -3,7 +3,7 @@
  *
  * \brief Arduino Due/X Board Definition.
  *
- * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -492,7 +492,7 @@
 /* ------------------------------------------------------------------------ */
 /*! UART pins (UTXD0 and URXD0) definitions, PA8,9. (labeled RX0->0 and TX0->1)*/
 #define PINS_UART        (PIO_PA8A_URXD | PIO_PA9A_UTXD)
-#define PINS_UART_FLAGS  (PIO_PERIPH_A | PIO_DEFAULT)
+#define PINS_UART_FLAGS  (PIO_PERIPH_A | PIO_DEFAULT | PIO_PULLUP)
 
 #define PINS_UART_MASK (PIO_PA8A_URXD | PIO_PA9A_UTXD)
 #define PINS_UART_PIO  PIOA

@@ -19,9 +19,6 @@
 * licensing fee.
 *********************************************************************************************************
 */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef   OS_uCOS_II_H
 #define   OS_uCOS_II_H

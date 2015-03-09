@@ -3,7 +3,7 @@
  *
  * \brief SAM SERCOM I2C Slave Driver
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -453,6 +453,94 @@ static void _i2c_slave_wait_for_sync(
 		/* Wait for I2C module to sync */
 	}
 }
+#endif
+
+#if (SAMD20)
+/**
+ * \internal Workaround for SAMD20 Revision D, Errata 13574
+ *
+ *
+ * \param[in,out] module  Pointer to software module structure
+ * \param[in] send_ack True send ACK, false send NACK
+ */
+static inline void _i2c_slave_set_ctrlb_ackact(
+		struct i2c_slave_module *const module,
+		bool send_ack)
+{
+	Assert(module);
+	Assert(module->hw->I2CS);
+
+	SercomI2cs *const i2c_hw = &(module->hw->I2CS);
+	uint32_t ctrlb_val = i2c_hw->CTRLB.reg;
+
+	/* Get MCU revision */
+	uint32_t rev = system_get_device_id();
+
+	rev &= DSU_DID_REVISION_Msk;
+	rev = rev >> DSU_DID_REVISION_Pos;
+
+	/* Errata 13574 exist at Revision D (3)*/
+	if (rev != 3) {
+		if (send_ack == true) {
+			i2c_hw->CTRLB.reg &= ~SERCOM_I2CS_CTRLB_ACKACT;
+		}
+		else {
+			i2c_hw->CTRLB.reg |= SERCOM_I2CS_CTRLB_ACKACT;
+		}
+		return;
+	}
+
+	system_interrupt_enter_critical_section();
+	i2c_hw->STATUS.reg = 0;
+	i2c_hw->CTRLB.reg = 0;
+
+	if (send_ack == true) {
+		ctrlb_val &= ~SERCOM_I2CS_CTRLB_ACKACT;
+	}
+	else {
+		ctrlb_val |= SERCOM_I2CS_CTRLB_ACKACT;
+	}
+
+	i2c_hw->CTRLB.reg = ctrlb_val;
+	system_interrupt_leave_critical_section();
+
+	return;
+}
+
+/**
+ * \internal Workaround for SAMD20 Revision D, Errata 13574
+ *
+ *
+ * \param[in,out] module  Pointer to software module structure
+ */
+static inline void _i2c_slave_set_ctrlb_cmd3(
+		struct i2c_slave_module *const module)
+{
+	Assert(module);
+	Assert(module->hw->I2CS);
+
+	SercomI2cs *const i2c_hw = &(module->hw->I2CS);
+
+	/* Get MCU revision */
+	uint32_t rev = system_get_device_id();
+
+	rev &= DSU_DID_REVISION_Msk;
+	rev = rev >> DSU_DID_REVISION_Pos;
+
+	/* Errata 13574 exist at Revision D (3)*/
+	if (rev != 3) {
+		i2c_hw->CTRLB.reg = SERCOM_I2CS_CTRLB_CMD(0x3);
+		return;
+	}
+
+	if (i2c_hw->INTFLAG.bit.PREC) {
+		i2c_hw->INTFLAG.reg = SERCOM_I2CS_INTFLAG_PREC;
+	}
+	i2c_hw->INTFLAG.reg = SERCOM_I2CS_INTFLAG_AMATCH;
+
+	return;
+}
+
 #endif
 
 /**

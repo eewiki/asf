@@ -3,7 +3,7 @@
  *
  * \brief SAM RWW EEPROM Emulator Service Quick Start
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -72,6 +72,8 @@
  *    erase/re-try initialization.
  *    \snippet qs_emulator_basic.c check_re-init
  *
+ * Config BOD to give an early warning ,so that we could prevent data loss.
+ * \snippet qs_emulator_basic.c setup_bod
  *
  * \section asfdoc_sam0_rww_eeprom_basic_use_case_main Use Case
  *
@@ -91,7 +93,12 @@
  *    internal emulator write cache afterwards to ensure it is immediately
  *    written to physical non-volatile memory.
  *    \snippet qs_emulator_basic.c write_page
+ * -# Modify data and write back to logical EEPROM page zero.
+ *    The data is not committed and should call \c rww_eeprom_emulator_commit_page_buffer
+ *    to ensure that any outstanding cache data is fully written to prevent data loss
+ *    when detecting a BOD early warning.
+ *    \snippet qs_emulator_basic.c write_page_not_commit
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

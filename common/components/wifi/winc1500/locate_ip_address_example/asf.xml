@@ -1,0 +1,38 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.components.wifi.winc1500.locate_ip_address_example">
+		<module type="application" id="common.components.wifi.winc1500.locate_ip_address_example#0" caption="WINC1500 Locate IP Address Example">
+			<!-- Summary Description -->
+			<info type="description" value="summary">
+				This example demonstrates the use of the WINC1500 with the SAMD21 Xplained Pro board to get GPS position from the network provider IP address using a thirdparty HTTP server.
+			</info>
+
+			<!-- Source -->
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main_samd21.c"/>
+			<build type="header-file" value="main.h"/>
+			<build type="include-path" value="iot"/>
+			<build type="include-path" value="iot/http"/>
+			<build type="c-source" value="iot/json.c"/>
+			<build type="header-file" value="iot/json.h"/>
+			<build type="c-source" value="iot/stream_writer.c"/>
+			<build type="header-file" value="iot/stream_writer.h"/>
+			<build type="c-source" value="iot/sw_timer.c"/>
+			<build type="header-file" value="iot/sw_timer.h"/>
+			<build type="header-file" value="iot/http/http_client.h"/>
+			<build type="header-file" value="iot/http/http_entity.h"/>
+			<build type="header-file" value="iot/http/http_header.h"/>
+			<build type="library" subtype="user" value="iot/http/libHTTP_CLIENT.a"/>
+
+			<!-- Device support -->
+			<device-support value="samd21"/>
+
+			<!-- Required modules -->
+			<require idref="common.components.wifi.winc1500"/>
+			<require idref="sam0.drivers.tcc"/>
+			<require idref="sam0.utils"/>
+			<require idref="sam0.utils.stdio"/>
+			<require idref="sam0.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

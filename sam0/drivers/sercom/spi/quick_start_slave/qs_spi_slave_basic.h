@@ -3,7 +3,7 @@
  *
  * \brief SAM SPI Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -112,12 +112,14 @@
  * Add the following to your user application \c main().
  * \snippet qs_spi_slave_basic.c main_use_case
  * \subsection asfdoc_sam0_sercom_spi_slave_basic_use_case_workflow Workflow
- * -# Write buffer to SPI master. Placed in a loop to retry in case of a
- *    timeout before a master initiates a transaction.
- *    \snippet qs_spi_slave_basic.c write
- * -# Infinite loop.
+ * -# Read data from SPI master.
+ *    \snippet qs_spi_slave_basic.c read
+ * -# Compare the received data with the transmitted data from SPI master.
+ *    \snippet qs_spi_slave_basic.c compare
+ * -# Infinite loop. If the data is matched, LED0 will flash slowly. Otherwise, 
+ *    LED will flash quickly.
  *    \snippet qs_spi_slave_basic.c inf_loop
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

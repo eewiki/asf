@@ -9,9 +9,6 @@
  * This controller is the top level of the JPEG compressor proper.
  * The coefficient buffer lies between forward-DCT and entropy encoding steps.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

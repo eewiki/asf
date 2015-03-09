@@ -330,7 +330,7 @@
 				<keyword value="Communication" />
 			</info>
 			<require idref="common.services.usb.class.vendor.device.single"/>
-			<build type="doxygen-entry-point" value="udi_vendor_group_desc"/>
+			<build type="doxygen-entry-point" value="udi_vendor_group"/>
 			<build type="doxygen-quick-start" value="udi_vendor_quickstart"/>
 			<device-support value="uc3a"/>
 			<device-support value="uc3a3_a4"/>

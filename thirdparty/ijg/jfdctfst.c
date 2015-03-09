@@ -29,9 +29,6 @@
  * precise the scaled value, so this implementation does worse with high-
  * quality-setting files than with low-quality ones.
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #define JPEG_INTERNALS
 #include "jinclude.h"

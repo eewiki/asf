@@ -3,7 +3,7 @@
  *
  * \brief LWMesh Stack Unit Test.
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -44,9 +44,6 @@
 /*! \mainpage
  * \section intro Introduction
  * This is the unit test application for the \ref group_lwmesh "LWMesh Stack".
- */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
 #include <stdint.h>

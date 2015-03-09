@@ -1,7 +1,4 @@
 #ifndef __LWIP_CHECK_H__
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 #define __LWIP_CHECK_H__
 
 /* Common header file for lwIP unit tests using the check framework */

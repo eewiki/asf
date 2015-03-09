@@ -20,9 +20,6 @@
 * Version 1.0.0 2010/09/20  
 *    Production release and review comments incorporated. 
 * -------------------------------------------------------------------- */ 
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
  
 #ifndef _ARM_COMMON_TABLES_H 
 #define _ARM_COMMON_TABLES_H 

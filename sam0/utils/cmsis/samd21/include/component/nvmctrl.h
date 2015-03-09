@@ -3,7 +3,7 @@
  *
  * \brief Component description for NVMCTRL
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -54,7 +54,7 @@
 /*@{*/
 
 #define NVMCTRL_U2207
-#define REV_NVMCTRL                 0x106
+#define REV_NVMCTRL                 0x201
 
 /* -------- NVMCTRL_CTRLA : (NVMCTRL Offset: 0x00) (R/W 16) Control A -------- */
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -80,19 +80,23 @@ typedef union {
 #define   NVMCTRL_CTRLA_CMD_WAP_Val       0x6ul  /**< \brief (NVMCTRL_CTRLA) Write Auxiliary Page - Writes the contents of the page buffer to the page addressed by the ADDR register. This command can be given only when the security bit is not set and only to the user configuration row. */
 #define   NVMCTRL_CTRLA_CMD_SF_Val        0xAul  /**< \brief (NVMCTRL_CTRLA) Security Flow Command */
 #define   NVMCTRL_CTRLA_CMD_WL_Val        0xFul  /**< \brief (NVMCTRL_CTRLA) Write lockbits */
+#define   NVMCTRL_CTRLA_CMD_RWWEEER_Val   0x1Aul  /**< \brief (NVMCTRL_CTRLA) RWW EEPROM area Erase Row - Erases the row addressed by the ADDR register. */
+#define   NVMCTRL_CTRLA_CMD_RWWEEWP_Val   0x1Cul  /**< \brief (NVMCTRL_CTRLA) RWW EEPROM Write Page - Writes the contents of the page buffer to the page addressed by the ADDR register. */
 #define   NVMCTRL_CTRLA_CMD_LR_Val        0x40ul  /**< \brief (NVMCTRL_CTRLA) Lock Region - Locks the region containing the address location in the ADDR register. */
 #define   NVMCTRL_CTRLA_CMD_UR_Val        0x41ul  /**< \brief (NVMCTRL_CTRLA) Unlock Region - Unlocks the region containing the address location in the ADDR register. */
 #define   NVMCTRL_CTRLA_CMD_SPRM_Val      0x42ul  /**< \brief (NVMCTRL_CTRLA) Sets the power reduction mode. */
 #define   NVMCTRL_CTRLA_CMD_CPRM_Val      0x43ul  /**< \brief (NVMCTRL_CTRLA) Clears the power reduction mode. */
 #define   NVMCTRL_CTRLA_CMD_PBC_Val       0x44ul  /**< \brief (NVMCTRL_CTRLA) Page Buffer Clear - Clears the page buffer. */
 #define   NVMCTRL_CTRLA_CMD_SSB_Val       0x45ul  /**< \brief (NVMCTRL_CTRLA) Set Security Bit - Sets the security bit by writing 0x00 to the first byte in the lockbit row. */
-#define   NVMCTRL_CTRLA_CMD_INVALL_Val    0x46ul  /**< \brief (NVMCTRL_CTRLA) Invalidates all cache lines. */
+#define   NVMCTRL_CTRLA_CMD_INVALL_Val    0x46ul  /**< \brief (NVMCTRL_CTRLA) Invalidate all cache lines. */
 #define NVMCTRL_CTRLA_CMD_ER        (NVMCTRL_CTRLA_CMD_ER_Val      << NVMCTRL_CTRLA_CMD_Pos)
 #define NVMCTRL_CTRLA_CMD_WP        (NVMCTRL_CTRLA_CMD_WP_Val      << NVMCTRL_CTRLA_CMD_Pos)
 #define NVMCTRL_CTRLA_CMD_EAR       (NVMCTRL_CTRLA_CMD_EAR_Val     << NVMCTRL_CTRLA_CMD_Pos)
 #define NVMCTRL_CTRLA_CMD_WAP       (NVMCTRL_CTRLA_CMD_WAP_Val     << NVMCTRL_CTRLA_CMD_Pos)
 #define NVMCTRL_CTRLA_CMD_SF        (NVMCTRL_CTRLA_CMD_SF_Val      << NVMCTRL_CTRLA_CMD_Pos)
 #define NVMCTRL_CTRLA_CMD_WL        (NVMCTRL_CTRLA_CMD_WL_Val      << NVMCTRL_CTRLA_CMD_Pos)
+#define NVMCTRL_CTRLA_CMD_RWWEEER   (NVMCTRL_CTRLA_CMD_RWWEEER_Val << NVMCTRL_CTRLA_CMD_Pos)
+#define NVMCTRL_CTRLA_CMD_RWWEEWP   (NVMCTRL_CTRLA_CMD_RWWEEWP_Val << NVMCTRL_CTRLA_CMD_Pos)
 #define NVMCTRL_CTRLA_CMD_LR        (NVMCTRL_CTRLA_CMD_LR_Val      << NVMCTRL_CTRLA_CMD_Pos)
 #define NVMCTRL_CTRLA_CMD_UR        (NVMCTRL_CTRLA_CMD_UR_Val      << NVMCTRL_CTRLA_CMD_Pos)
 #define NVMCTRL_CTRLA_CMD_SPRM      (NVMCTRL_CTRLA_CMD_SPRM_Val    << NVMCTRL_CTRLA_CMD_Pos)
@@ -167,7 +171,8 @@ typedef union {
   struct {
     uint32_t NVMP:16;          /*!< bit:  0..15  NVM Pages                          */
     uint32_t PSZ:3;            /*!< bit: 16..18  Page Size                          */
-    uint32_t :13;              /*!< bit: 19..31  Reserved                           */
+    uint32_t :1;               /*!< bit:     19  Reserved                           */
+    uint32_t RWWEEP:12;        /*!< bit: 20..31  RWW EEPROM Pages                   */
   } bit;                       /*!< Structure used for bit  access                  */
   uint32_t reg;                /*!< Type      used for register access              */
 } NVMCTRL_PARAM_Type;
@@ -198,7 +203,10 @@ typedef union {
 #define NVMCTRL_PARAM_PSZ_256       (NVMCTRL_PARAM_PSZ_256_Val     << NVMCTRL_PARAM_PSZ_Pos)
 #define NVMCTRL_PARAM_PSZ_512       (NVMCTRL_PARAM_PSZ_512_Val     << NVMCTRL_PARAM_PSZ_Pos)
 #define NVMCTRL_PARAM_PSZ_1024      (NVMCTRL_PARAM_PSZ_1024_Val    << NVMCTRL_PARAM_PSZ_Pos)
-#define NVMCTRL_PARAM_MASK          0x0007FFFFul /**< \brief (NVMCTRL_PARAM) MASK Register */
+#define NVMCTRL_PARAM_RWWEEP_Pos    20           /**< \brief (NVMCTRL_PARAM) RWW EEPROM Pages */
+#define NVMCTRL_PARAM_RWWEEP_Msk    (0xFFFul << NVMCTRL_PARAM_RWWEEP_Pos)
+#define NVMCTRL_PARAM_RWWEEP(value) ((NVMCTRL_PARAM_RWWEEP_Msk & ((value) << NVMCTRL_PARAM_RWWEEP_Pos)))
+#define NVMCTRL_PARAM_MASK          0xFFF7FFFFul /**< \brief (NVMCTRL_PARAM) MASK Register */
 
 /* -------- NVMCTRL_INTENCLR : (NVMCTRL Offset: 0x0C) (R/W  8) Interrupt Enable Clear -------- */
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -467,7 +475,7 @@ typedef struct {
 #define NVMCTRL_FUSES_EEPROM_SIZE_Msk (0x7ul << NVMCTRL_FUSES_EEPROM_SIZE_Pos)
 #define NVMCTRL_FUSES_EEPROM_SIZE(value) ((NVMCTRL_FUSES_EEPROM_SIZE_Msk & ((value) << NVMCTRL_FUSES_EEPROM_SIZE_Pos)))
 
-/* Compabible definition for previous driver (begin 1) */
+/* Compatible definition for previous driver (begin 1) */
 #define NVMCTRL_FUSES_HOT_ADC_VAL_ADDR (NVMCTRL_TEMP_LOG + 4)
 #define NVMCTRL_FUSES_HOT_ADC_VAL_Pos 20           /**< \brief (NVMCTRL_TEMP_LOG) 12-bit ADC conversion at hot temperature */
 #define NVMCTRL_FUSES_HOT_ADC_VAL_Msk (0xFFFu << NVMCTRL_FUSES_HOT_ADC_VAL_Pos)
@@ -487,11 +495,11 @@ typedef struct {
 #define NVMCTRL_FUSES_HOT_TEMP_VAL_INT_Pos 12           /**< \brief (NVMCTRL_TEMP_LOG) Integer part of hot temperature in oC */
 #define NVMCTRL_FUSES_HOT_TEMP_VAL_INT_Msk (0xFFu << NVMCTRL_FUSES_HOT_TEMP_VAL_INT_Pos)
 #define NVMCTRL_FUSES_HOT_TEMP_VAL_INT(value) ((NVMCTRL_FUSES_HOT_TEMP_VAL_INT_Msk & ((value) << NVMCTRL_FUSES_HOT_TEMP_VAL_INT_Pos)))
-/* Compabible definition for previous driver (end 1) */
+/* Compatible definition for previous driver (end 1) */
 
 #define NVMCTRL_FUSES_NVMP_ADDR     NVMCTRL_OTP1
 #define NVMCTRL_FUSES_NVMP_Pos      16           /**< \brief (NVMCTRL_OTP1) Number of NVM Pages */
-#define NVMCTRL_FUSES_NVMP_Msk      (0xFFFFul << NVMCTRL_FUSES_NVMP_Pos)
+#define NVMCTRL_FUSES_NVMP_Msk      (0x1FFFul << NVMCTRL_FUSES_NVMP_Pos)
 #define NVMCTRL_FUSES_NVMP(value)   ((NVMCTRL_FUSES_NVMP_Msk & ((value) << NVMCTRL_FUSES_NVMP_Pos)))
 
 #define NVMCTRL_FUSES_NVM_LOCK_ADDR NVMCTRL_OTP1
@@ -509,7 +517,12 @@ typedef struct {
 #define NVMCTRL_FUSES_REGION_LOCKS_Msk (0xFFFFul << NVMCTRL_FUSES_REGION_LOCKS_Pos)
 #define NVMCTRL_FUSES_REGION_LOCKS(value) ((NVMCTRL_FUSES_REGION_LOCKS_Msk & ((value) << NVMCTRL_FUSES_REGION_LOCKS_Pos)))
 
-/* Compabible definition for previous driver (begin 2) */
+#define NVMCTRL_FUSES_RWWEEP_ADDR   (NVMCTRL_OTP1 + 4)
+#define NVMCTRL_FUSES_RWWEEP_Pos    0            /**< \brief (NVMCTRL_OTP1) RWW EEPROM */
+#define NVMCTRL_FUSES_RWWEEP_Msk    (0xFFul << NVMCTRL_FUSES_RWWEEP_Pos)
+#define NVMCTRL_FUSES_RWWEEP(value) ((NVMCTRL_FUSES_RWWEEP_Msk & ((value) << NVMCTRL_FUSES_RWWEEP_Pos)))
+
+/* Compatible definition for previous driver (begin 2) */
 #define NVMCTRL_FUSES_ROOM_ADC_VAL_ADDR (NVMCTRL_TEMP_LOG + 4)
 #define NVMCTRL_FUSES_ROOM_ADC_VAL_Pos 8            /**< \brief (NVMCTRL_TEMP_LOG) 12-bit ADC conversion at room temperature */
 #define NVMCTRL_FUSES_ROOM_ADC_VAL_Msk (0xFFFu << NVMCTRL_FUSES_ROOM_ADC_VAL_Pos)
@@ -557,7 +570,7 @@ typedef struct {
 #define SYSCTRL_FUSES_OSC32K_CAL_Pos 6            /**< \brief (NVMCTRL_OTP4) OSC32K Calibration */
 #define SYSCTRL_FUSES_OSC32K_CAL_Msk (0x7Fu << SYSCTRL_FUSES_OSC32K_CAL_Pos)
 #define SYSCTRL_FUSES_OSC32K_CAL(value) ((SYSCTRL_FUSES_OSC32K_CAL_Msk & ((value) << SYSCTRL_FUSES_OSC32K_CAL_Pos)))
-/* Compabible definition for previous driver (end 2) */
+/* Compatible definition for previous driver (end 2) */
 
 #define USB_FUSES_TRANSN_ADDR       (NVMCTRL_OTP4 + 4)
 #define USB_FUSES_TRANSN_Pos        13           /**< \brief (NVMCTRL_OTP4) USB pad Transn calibration */

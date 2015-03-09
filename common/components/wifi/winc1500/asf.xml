@@ -1,0 +1,234 @@
+<asf xmlversion="1.0">
+	<select-by-device id="common.components.wifi.winc1500" caption="WINC1500 (Wi-Fi) Host Driver v18.0">
+		<info type="description" value="summary">
+			The Atmel SmartConnect WINC1500 is an IEEE 802.11 b/g/n IoT network controller SoC. It offers the ideal add-on to existing MCU solutions, making it easy to bring Wi-Fi and Network capabilities through UART or SPI-to-Wi-Fi interfaces into your designs. The WINC1500 connects to any Atmel AVR or Atmel | SMART MCU, and has minimal resource requirements.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Wireless"/>
+		</info>
+		<module type="service" id="common.components.wifi.winc1500#0" caption="WINC1500 (Wi-Fi) Host Driver v18.0 - SAM4S implementation">
+			<info type="description" value="summary">
+				The Atmel SmartConnect WINC1500 is an IEEE 802.11 b/g/n IoT network controller SoC. It offers the ideal add-on to existing MCU solutions, making it easy to bring Wi-Fi and Network capabilities through UART or SPI-to-Wi-Fi interfaces into your designs. The WINC1500 connects to any Atmel AVR or Atmel | SMART MCU, and has minimal resource requirements.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Wireless"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="bsp"/>
+			<build type="include-path" value="bsp/include"/>
+			<build type="header-file" value="bsp/include/nm_bsp.h"/>
+			<build type="header-file" value="bsp/include/nm_bsp_sam4s.h"/>
+			<build type="include-path" value="bsp/source"/>
+			<build type="c-source" value="bsp/source/nm_bsp_sam4s.c"/>
+
+			<build type="include-path" value="bus_wrapper"/>
+			<build type="include-path" value="bus_wrapper/include"/>
+			<build type="header-file" value="bus_wrapper/include/nm_bus_wrapper.h"/>
+			<build type="include-path" value="bus_wrapper/source"/>
+			<build type="c-source" value="bus_wrapper/source/nm_bus_wrapper_sam4s.c"/>
+
+			<build type="include-path" value="common"/>
+			<build type="include-path" value="common/include"/>
+			<build type="header-file" value="common/include/nm_common.h"/>
+			<build type="include-path" value="common/source"/>
+			<build type="c-source" value="common/source/nm_common.c"/>
+
+			<build type="include-path" value="driver"/>
+			<build type="include-path" value="driver/include"/>
+			<build type="header-file" value="driver/include/m2m_ota.h"/>
+			<build type="header-file" value="driver/include/m2m_periph.h"/>
+			<build type="header-file" value="driver/include/m2m_types.h"/>
+			<build type="header-file" value="driver/include/m2m_wifi.h"/>
+			<build type="include-path" value="driver/source"/>
+			<build type="c-source" value="driver/source/m2m_hif.c"/>
+			<build type="header-file" value="driver/source/m2m_hif.h"/>
+			<build type="c-source" value="driver/source/m2m_hif_crt.c"/>
+			<build type="c-source" value="driver/source/m2m_ota.c"/>
+			<build type="c-source" value="driver/source/m2m_periph.c"/>
+			<build type="c-source" value="driver/source/m2m_wifi.c"/>
+			<build type="c-source" value="driver/source/nmasic.c"/>
+			<build type="header-file" value="driver/source/nmasic.h"/>
+			<build type="c-source" value="driver/source/nmbus.c"/>
+			<build type="header-file" value="driver/source/nmbus.h"/>
+			<build type="c-source" value="driver/source/nmdrv_crt.c"/>
+			<build type="c-source" value="driver/source/nmdrv.c"/>
+			<build type="header-file" value="driver/source/nmdrv.h"/>
+			<build type="c-source" value="driver/source/nmi2c.c"/>
+			<build type="header-file" value="driver/source/nmi2c.h"/>
+			<build type="c-source" value="driver/source/nmspi.c"/>
+			<build type="header-file" value="driver/source/nmspi.h"/>
+			<build type="c-source" value="driver/source/nmuart.c"/>
+			<build type="header-file" value="driver/source/nmuart.h"/>
+
+			<build type="include-path" value="socket"/>
+			<build type="include-path" value="socket/include"/>
+			<build type="header-file" value="socket/include/socket.h"/>
+			<build type="include-path" value="socket/source"/>
+			<build type="c-source" value="socket/source/socket.c"/>
+			<build type="header-file" value="socket/source/socket_internal.h"/>
+
+			<build type="module-config" subtype="required-header-file" value="conf_winc.h"/>
+			<build type="module-config" subtype="path" value="module_config/sam4s"/>
+			<build type="doxygen-entry-point" value="winc1500_group"/>
+			<build type="doxygen-quick-start" value="winc1500_quickstart"/>
+			<device-support value="sam4s"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.pdc"/>
+			<require idref="sam.drivers.spi"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.delay"/>
+
+			<generator value="doxygen-module" default-mcu="unspecified-sam4s"/>
+		</module>
+		<module type="service" id="common.components.wifi.winc1500#1" caption="WINC1500 (Wi-Fi) Host Driver v18.0 - SAMG53 implementation">
+			<info type="description" value="summary">
+				The Atmel SmartConnect WINC1500 is an IEEE 802.11 b/g/n IoT network controller SoC. It offers the ideal add-on to existing MCU solutions, making it easy to bring Wi-Fi and Network capabilities through UART or SPI-to-Wi-Fi interfaces into your designs. The WINC1500 connects to any Atmel AVR or Atmel | SMART MCU, and has minimal resource requirements.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Wireless"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="bsp"/>
+			<build type="include-path" value="bsp/include"/>
+			<build type="header-file" value="bsp/include/nm_bsp.h"/>
+			<build type="header-file" value="bsp/include/nm_bsp_samg53.h"/>
+			<build type="include-path" value="bsp/source"/>
+			<build type="c-source" value="bsp/source/nm_bsp_samg53.c"/>
+
+			<build type="include-path" value="bus_wrapper"/>
+			<build type="include-path" value="bus_wrapper/include"/>
+			<build type="header-file" value="bus_wrapper/include/nm_bus_wrapper.h"/>
+			<build type="include-path" value="bus_wrapper/source"/>
+			<build type="c-source" value="bus_wrapper/source/nm_bus_wrapper_samg53.c"/>
+
+			<build type="include-path" value="common"/>
+			<build type="include-path" value="common/include"/>
+			<build type="header-file" value="common/include/nm_common.h"/>
+			<build type="include-path" value="common/source"/>
+			<build type="c-source" value="common/source/nm_common.c"/>
+
+			<build type="include-path" value="driver"/>
+			<build type="include-path" value="driver/include"/>
+			<build type="header-file" value="driver/include/m2m_ota.h"/>
+			<build type="header-file" value="driver/include/m2m_periph.h"/>
+			<build type="header-file" value="driver/include/m2m_types.h"/>
+			<build type="header-file" value="driver/include/m2m_wifi.h"/>
+			<build type="include-path" value="driver/source"/>
+			<build type="c-source" value="driver/source/m2m_hif.c"/>
+			<build type="header-file" value="driver/source/m2m_hif.h"/>
+			<build type="c-source" value="driver/source/m2m_hif_crt.c"/>
+			<build type="c-source" value="driver/source/m2m_ota.c"/>
+			<build type="c-source" value="driver/source/m2m_periph.c"/>
+			<build type="c-source" value="driver/source/m2m_wifi.c"/>
+			<build type="c-source" value="driver/source/nmasic.c"/>
+			<build type="header-file" value="driver/source/nmasic.h"/>
+			<build type="c-source" value="driver/source/nmbus.c"/>
+			<build type="header-file" value="driver/source/nmbus.h"/>
+			<build type="c-source" value="driver/source/nmdrv_crt.c"/>
+			<build type="c-source" value="driver/source/nmdrv.c"/>
+			<build type="header-file" value="driver/source/nmdrv.h"/>
+			<build type="c-source" value="driver/source/nmi2c.c"/>
+			<build type="header-file" value="driver/source/nmi2c.h"/>
+			<build type="c-source" value="driver/source/nmspi.c"/>
+			<build type="header-file" value="driver/source/nmspi.h"/>
+			<build type="c-source" value="driver/source/nmuart.c"/>
+			<build type="header-file" value="driver/source/nmuart.h"/>
+
+			<build type="include-path" value="socket"/>
+			<build type="include-path" value="socket/include"/>
+			<build type="header-file" value="socket/include/socket.h"/>
+			<build type="include-path" value="socket/source"/>
+			<build type="c-source" value="socket/source/socket.c"/>
+			<build type="header-file" value="socket/source/socket_internal.h"/>
+
+			<build type="module-config" subtype="required-header-file" value="conf_winc.h"/>
+			<build type="module-config" subtype="path" value="module_config/samg53"/>
+			<build type="doxygen-entry-point" value="winc1500_group"/>
+			<build type="doxygen-quick-start" value="winc1500_quickstart"/>
+			<device-support value="samg53"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.pdc"/>
+			<require idref="sam.drivers.spi"/>
+			<require idref="common.services.ioport"/>
+			<require idref="common.services.delay"/>
+
+			<generator value="doxygen-module" default-mcu="unspecified-samg53"/>
+		</module>
+		<module type="service" id="common.components.wifi.winc1500#2" caption="WINC1500 (Wi-Fi) Host Driver v18.0 - SAMD21/SAMW25 implementation">
+			<info type="description" value="summary">
+				The Atmel SmartConnect WINC1500 is an IEEE 802.11 b/g/n IoT network controller SoC. It offers the ideal add-on to existing MCU solutions, making it easy to bring Wi-Fi and Network capabilities through UART or SPI-to-Wi-Fi interfaces into your designs. The WINC1500 connects to any Atmel AVR or Atmel | SMART MCU, and has minimal resource requirements.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Wireless"/>
+			</info>
+			<build type="include-path" value="."/>
+			<build type="include-path" value="bsp"/>
+			<build type="include-path" value="bsp/include"/>
+			<build type="header-file" value="bsp/include/nm_bsp.h"/>
+			<build type="header-file" value="bsp/include/nm_bsp_samd21.h"/>
+			<build type="include-path" value="bsp/source"/>
+			<build type="c-source" value="bsp/source/nm_bsp_samd21.c"/>
+
+			<build type="include-path" value="bus_wrapper"/>
+			<build type="include-path" value="bus_wrapper/include"/>
+			<build type="header-file" value="bus_wrapper/include/nm_bus_wrapper.h"/>
+			<build type="include-path" value="bus_wrapper/source"/>
+			<build type="c-source" value="bus_wrapper/source/nm_bus_wrapper_samd21.c"/>
+
+			<build type="include-path" value="common"/>
+			<build type="include-path" value="common/include"/>
+			<build type="header-file" value="common/include/nm_common.h"/>
+			<build type="include-path" value="common/source"/>
+			<build type="c-source" value="common/source/nm_common.c"/>
+
+			<build type="include-path" value="driver"/>
+			<build type="include-path" value="driver/include"/>
+			<build type="header-file" value="driver/include/m2m_ota.h"/>
+			<build type="header-file" value="driver/include/m2m_periph.h"/>
+			<build type="header-file" value="driver/include/m2m_types.h"/>
+			<build type="header-file" value="driver/include/m2m_wifi.h"/>
+			<build type="include-path" value="driver/source"/>
+			<build type="c-source" value="driver/source/m2m_hif.c"/>
+			<build type="header-file" value="driver/source/m2m_hif.h"/>
+			<build type="c-source" value="driver/source/m2m_hif_crt.c"/>
+			<build type="c-source" value="driver/source/m2m_ota.c"/>
+			<build type="c-source" value="driver/source/m2m_periph.c"/>
+			<build type="c-source" value="driver/source/m2m_wifi.c"/>
+			<build type="c-source" value="driver/source/nmasic.c"/>
+			<build type="header-file" value="driver/source/nmasic.h"/>
+			<build type="c-source" value="driver/source/nmbus.c"/>
+			<build type="header-file" value="driver/source/nmbus.h"/>
+			<build type="c-source" value="driver/source/nmdrv_crt.c"/>
+			<build type="c-source" value="driver/source/nmdrv.c"/>
+			<build type="header-file" value="driver/source/nmdrv.h"/>
+			<build type="c-source" value="driver/source/nmi2c.c"/>
+			<build type="header-file" value="driver/source/nmi2c.h"/>
+			<build type="c-source" value="driver/source/nmspi.c"/>
+			<build type="header-file" value="driver/source/nmspi.h"/>
+			<build type="c-source" value="driver/source/nmuart.c"/>
+			<build type="header-file" value="driver/source/nmuart.h"/>
+
+			<build type="include-path" value="socket"/>
+			<build type="include-path" value="socket/include"/>
+			<build type="header-file" value="socket/include/socket.h"/>
+			<build type="include-path" value="socket/source"/>
+			<build type="c-source" value="socket/source/socket.c"/>
+			<build type="header-file" value="socket/source/socket_internal.h"/>
+
+			<build type="module-config" subtype="required-header-file" value="conf_winc.h"/>
+			<build type="module-config" subtype="path" value="module_config/samd21"/>
+			<build type="doxygen-entry-point" value="winc1500_group"/>
+			<build type="doxygen-quick-start" value="winc1500_quickstart"/>
+			<device-support value="samd21"/>
+			<require idref="sam0.drivers.port"/>
+			<require idref="sam0.drivers.sercom.spi"/>
+			<require idref="common2.services.delay"/>
+			<require idref="sam0.drivers.extint"/>
+			<require idref="sam0.drivers.system"/>
+
+			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
+		</module>
+	</select-by-device>
+</asf>

@@ -30,9 +30,6 @@
 * 98-06-03 Guy Lancaster <lancasterg@acm.org>, Global Election Systems Inc.
 *   Extracted from avos.
 *****************************************************************************/
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #include "lwip/opt.h"
 

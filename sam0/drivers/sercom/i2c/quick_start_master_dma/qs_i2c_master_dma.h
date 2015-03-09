@@ -3,7 +3,7 @@
  *
  * \brief SAM SERCOM I2C Master Driver with DMA Quick Start Guide
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -165,6 +165,6 @@
  * -# Enter an infinite loop once transfer complete.
  *    \snippet qs_i2c_master_dma.c inf_loop
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

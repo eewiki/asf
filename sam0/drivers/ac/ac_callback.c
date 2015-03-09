@@ -3,7 +3,7 @@
  *
  * \brief SAM AC - Analog Comparator Callback Driver
  *
- * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -116,15 +116,19 @@ void AC_Handler(void)
 {
 	_ac_interrupt_handler(0);
 }
-#elif (AC_INST_NUM > 1)
-#  define _AC_INTERRUPT_HANDLER(n, unused) \
-		void AC##n##_Handler(void) \
-		{ \
-			_ac_interrupt_handler(n); \
-		}
+#elif (AC_INST_NUM == 2)
+void AC_Handler(void)
+{
+	_ac_interrupt_handler(0);
+}
 
-MREPEAT(AC_INST_NUM, _AC_INTERRUPT_HANDLER, ~)
-#endif /* (AC_INST_NUM > 1) */
+void AC1_Handler(void)
+{
+	_ac_interrupt_handler(1);
+}
+#else
+#  error This driver is not support more than three AC instances.
+#endif
 
 /**
  * \brief Interrupt Handler for AC module.

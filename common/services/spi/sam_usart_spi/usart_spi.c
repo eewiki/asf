@@ -3,7 +3,7 @@
  *
  * \brief SAM USART in SPI mode driver functions.
  *
- * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -189,10 +189,12 @@ uint32_t usart_spi_write_packet(Usart *p_usart, const uint8_t *data, size_t len)
  */
 void usart_spi_read_single(Usart *p_usart, uint8_t *data)
 {
+	uint32_t temp_data = 0;
 	/* Dummy write one data to slave in order to read data. */
 	usart_putchar(p_usart, CONFIG_USART_SPI_DUMMY);
 
-	usart_getchar(p_usart, (uint32_t*)data);
+	usart_getchar(p_usart, &temp_data);
+	*data = (uint8_t)temp_data;
 }
 
 /**

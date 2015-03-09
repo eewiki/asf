@@ -4,7 +4,7 @@
  *
  * \brief _ET024006DHU_C_ file for ET024006DHU TFT display driver.
  *
- * Copyright (c) 2009-2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,7 +43,7 @@
  ******************************************************************************/
 
 /*============================ INCLUDES ======================================*/
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 

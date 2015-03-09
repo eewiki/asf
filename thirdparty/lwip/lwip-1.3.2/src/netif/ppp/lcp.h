@@ -50,9 +50,6 @@
  *
  * $Id: lcp.h 18307 2010-01-13 16:05:25Z xleprevo $
  */
- /**
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
 
 #ifndef LCP_H
 #define LCP_H

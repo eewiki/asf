@@ -3,7 +3,7 @@
  *
  * \brief Component description for DMAC
  *
- * Copyright (c) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
@@ -54,7 +54,7 @@
 /*@{*/
 
 #define DMAC_U2223
-#define REV_DMAC                    0x100
+#define REV_DMAC                    0x110
 
 /* -------- DMAC_CTRL : (DMAC Offset: 0x00) (R/W 16) Control -------- */
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
@@ -121,9 +121,9 @@ typedef union {
 #define DMAC_CRCCTRL_CRCBEATSIZE_Pos 0            /**< \brief (DMAC_CRCCTRL) CRC Beat Size */
 #define DMAC_CRCCTRL_CRCBEATSIZE_Msk (0x3ul << DMAC_CRCCTRL_CRCBEATSIZE_Pos)
 #define DMAC_CRCCTRL_CRCBEATSIZE(value) ((DMAC_CRCCTRL_CRCBEATSIZE_Msk & ((value) << DMAC_CRCCTRL_CRCBEATSIZE_Pos)))
-#define   DMAC_CRCCTRL_CRCBEATSIZE_BYTE_Val 0x0ul  /**< \brief (DMAC_CRCCTRL) 8-bit bus transfer */
-#define   DMAC_CRCCTRL_CRCBEATSIZE_HWORD_Val 0x1ul  /**< \brief (DMAC_CRCCTRL) 16-bit bus transfer */
-#define   DMAC_CRCCTRL_CRCBEATSIZE_WORD_Val 0x2ul  /**< \brief (DMAC_CRCCTRL) 32-bit bus transfer */
+#define   DMAC_CRCCTRL_CRCBEATSIZE_BYTE_Val 0x0ul  /**< \brief (DMAC_CRCCTRL) Byte bus access */
+#define   DMAC_CRCCTRL_CRCBEATSIZE_HWORD_Val 0x1ul  /**< \brief (DMAC_CRCCTRL) Half-word bus access */
+#define   DMAC_CRCCTRL_CRCBEATSIZE_WORD_Val 0x2ul  /**< \brief (DMAC_CRCCTRL) Word bus access */
 #define DMAC_CRCCTRL_CRCBEATSIZE_BYTE (DMAC_CRCCTRL_CRCBEATSIZE_BYTE_Val << DMAC_CRCCTRL_CRCBEATSIZE_Pos)
 #define DMAC_CRCCTRL_CRCBEATSIZE_HWORD (DMAC_CRCCTRL_CRCBEATSIZE_HWORD_Val << DMAC_CRCCTRL_CRCBEATSIZE_Pos)
 #define DMAC_CRCCTRL_CRCBEATSIZE_WORD (DMAC_CRCCTRL_CRCBEATSIZE_WORD_Val << DMAC_CRCCTRL_CRCBEATSIZE_Pos)
@@ -716,7 +716,7 @@ typedef union {
     uint32_t EVOE:1;           /*!< bit:      4  Channel Event Output Enable        */
     uint32_t LVL:2;            /*!< bit:  5.. 6  Channel Arbitration Level          */
     uint32_t :1;               /*!< bit:      7  Reserved                           */
-    uint32_t TRIGSRC:6;        /*!< bit:  8..13  Trigger Source                     */
+    uint32_t TRIGSRC:6;        /*!< bit:  8..13  Peripheral Trigger Source          */
     uint32_t :8;               /*!< bit: 14..21  Reserved                           */
     uint32_t TRIGACT:2;        /*!< bit: 22..23  Trigger Action                     */
     uint32_t CMD:2;            /*!< bit: 24..25  Software Command                   */
@@ -761,7 +761,7 @@ typedef union {
 #define DMAC_CHCTRLB_LVL_LVL1       (DMAC_CHCTRLB_LVL_LVL1_Val     << DMAC_CHCTRLB_LVL_Pos)
 #define DMAC_CHCTRLB_LVL_LVL2       (DMAC_CHCTRLB_LVL_LVL2_Val     << DMAC_CHCTRLB_LVL_Pos)
 #define DMAC_CHCTRLB_LVL_LVL3       (DMAC_CHCTRLB_LVL_LVL3_Val     << DMAC_CHCTRLB_LVL_Pos)
-#define DMAC_CHCTRLB_TRIGSRC_Pos    8            /**< \brief (DMAC_CHCTRLB) Trigger Source */
+#define DMAC_CHCTRLB_TRIGSRC_Pos    8            /**< \brief (DMAC_CHCTRLB) Peripheral Trigger Source */
 #define DMAC_CHCTRLB_TRIGSRC_Msk    (0x3Ful << DMAC_CHCTRLB_TRIGSRC_Pos)
 #define DMAC_CHCTRLB_TRIGSRC(value) ((DMAC_CHCTRLB_TRIGSRC_Msk & ((value) << DMAC_CHCTRLB_TRIGSRC_Pos)))
 #define   DMAC_CHCTRLB_TRIGSRC_DISABLE_Val 0x0ul  /**< \brief (DMAC_CHCTRLB) Only software/event triggers */
@@ -790,8 +790,8 @@ typedef union {
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
 typedef union {
   struct {
-    uint8_t  TERR:1;           /*!< bit:      0  Channel Transfer Error Interrupt Enable */
-    uint8_t  TCMPL:1;          /*!< bit:      1  Channel Transfer Complete Interrupt Enable */
+    uint8_t  TERR:1;           /*!< bit:      0  Transfer Error Interrupt Enable    */
+    uint8_t  TCMPL:1;          /*!< bit:      1  Transfer Complete Interrupt Enable */
     uint8_t  SUSP:1;           /*!< bit:      2  Channel Suspend Interrupt Enable   */
     uint8_t  :5;               /*!< bit:  3.. 7  Reserved                           */
   } bit;                       /*!< Structure used for bit  access                  */
@@ -802,9 +802,9 @@ typedef union {
 #define DMAC_CHINTENCLR_OFFSET      0x4C         /**< \brief (DMAC_CHINTENCLR offset) Channel Interrupt Enable Clear */
 #define DMAC_CHINTENCLR_RESETVALUE  0x00ul       /**< \brief (DMAC_CHINTENCLR reset_value) Channel Interrupt Enable Clear */
 
-#define DMAC_CHINTENCLR_TERR_Pos    0            /**< \brief (DMAC_CHINTENCLR) Channel Transfer Error Interrupt Enable */
+#define DMAC_CHINTENCLR_TERR_Pos    0            /**< \brief (DMAC_CHINTENCLR) Transfer Error Interrupt Enable */
 #define DMAC_CHINTENCLR_TERR        (0x1ul << DMAC_CHINTENCLR_TERR_Pos)
-#define DMAC_CHINTENCLR_TCMPL_Pos   1            /**< \brief (DMAC_CHINTENCLR) Channel Transfer Complete Interrupt Enable */
+#define DMAC_CHINTENCLR_TCMPL_Pos   1            /**< \brief (DMAC_CHINTENCLR) Transfer Complete Interrupt Enable */
 #define DMAC_CHINTENCLR_TCMPL       (0x1ul << DMAC_CHINTENCLR_TCMPL_Pos)
 #define DMAC_CHINTENCLR_SUSP_Pos    2            /**< \brief (DMAC_CHINTENCLR) Channel Suspend Interrupt Enable */
 #define DMAC_CHINTENCLR_SUSP        (0x1ul << DMAC_CHINTENCLR_SUSP_Pos)
@@ -814,8 +814,8 @@ typedef union {
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
 typedef union {
   struct {
-    uint8_t  TERR:1;           /*!< bit:      0  Channel Transfer Error Interrupt Enable */
-    uint8_t  TCMPL:1;          /*!< bit:      1  Channel Transfer Complete Interrupt Enable */
+    uint8_t  TERR:1;           /*!< bit:      0  Transfer Error Interrupt Enable    */
+    uint8_t  TCMPL:1;          /*!< bit:      1  Transfer Complete Interrupt Enable */
     uint8_t  SUSP:1;           /*!< bit:      2  Channel Suspend Interrupt Enable   */
     uint8_t  :5;               /*!< bit:  3.. 7  Reserved                           */
   } bit;                       /*!< Structure used for bit  access                  */
@@ -826,9 +826,9 @@ typedef union {
 #define DMAC_CHINTENSET_OFFSET      0x4D         /**< \brief (DMAC_CHINTENSET offset) Channel Interrupt Enable Set */
 #define DMAC_CHINTENSET_RESETVALUE  0x00ul       /**< \brief (DMAC_CHINTENSET reset_value) Channel Interrupt Enable Set */
 
-#define DMAC_CHINTENSET_TERR_Pos    0            /**< \brief (DMAC_CHINTENSET) Channel Transfer Error Interrupt Enable */
+#define DMAC_CHINTENSET_TERR_Pos    0            /**< \brief (DMAC_CHINTENSET) Transfer Error Interrupt Enable */
 #define DMAC_CHINTENSET_TERR        (0x1ul << DMAC_CHINTENSET_TERR_Pos)
-#define DMAC_CHINTENSET_TCMPL_Pos   1            /**< \brief (DMAC_CHINTENSET) Channel Transfer Complete Interrupt Enable */
+#define DMAC_CHINTENSET_TCMPL_Pos   1            /**< \brief (DMAC_CHINTENSET) Transfer Complete Interrupt Enable */
 #define DMAC_CHINTENSET_TCMPL       (0x1ul << DMAC_CHINTENSET_TCMPL_Pos)
 #define DMAC_CHINTENSET_SUSP_Pos    2            /**< \brief (DMAC_CHINTENSET) Channel Suspend Interrupt Enable */
 #define DMAC_CHINTENSET_SUSP        (0x1ul << DMAC_CHINTENSET_SUSP_Pos)
@@ -838,8 +838,8 @@ typedef union {
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
 typedef union {
   struct {
-    uint8_t  TERR:1;           /*!< bit:      0  Channel Transfer Error             */
-    uint8_t  TCMPL:1;          /*!< bit:      1  Channel Transfer Complete          */
+    uint8_t  TERR:1;           /*!< bit:      0  Transfer Error                     */
+    uint8_t  TCMPL:1;          /*!< bit:      1  Transfer Complete                  */
     uint8_t  SUSP:1;           /*!< bit:      2  Channel Suspend                    */
     uint8_t  :5;               /*!< bit:  3.. 7  Reserved                           */
   } bit;                       /*!< Structure used for bit  access                  */
@@ -850,9 +850,9 @@ typedef union {
 #define DMAC_CHINTFLAG_OFFSET       0x4E         /**< \brief (DMAC_CHINTFLAG offset) Channel Interrupt Flag Status and Clear */
 #define DMAC_CHINTFLAG_RESETVALUE   0x00ul       /**< \brief (DMAC_CHINTFLAG reset_value) Channel Interrupt Flag Status and Clear */
 
-#define DMAC_CHINTFLAG_TERR_Pos     0            /**< \brief (DMAC_CHINTFLAG) Channel Transfer Error */
+#define DMAC_CHINTFLAG_TERR_Pos     0            /**< \brief (DMAC_CHINTFLAG) Transfer Error */
 #define DMAC_CHINTFLAG_TERR         (0x1ul << DMAC_CHINTFLAG_TERR_Pos)
-#define DMAC_CHINTFLAG_TCMPL_Pos    1            /**< \brief (DMAC_CHINTFLAG) Channel Transfer Complete */
+#define DMAC_CHINTFLAG_TCMPL_Pos    1            /**< \brief (DMAC_CHINTFLAG) Transfer Complete */
 #define DMAC_CHINTFLAG_TCMPL        (0x1ul << DMAC_CHINTFLAG_TCMPL_Pos)
 #define DMAC_CHINTFLAG_SUSP_Pos     2            /**< \brief (DMAC_CHINTFLAG) Channel Suspend */
 #define DMAC_CHINTFLAG_SUSP         (0x1ul << DMAC_CHINTFLAG_SUSP_Pos)
@@ -864,7 +864,7 @@ typedef union {
   struct {
     uint8_t  PEND:1;           /*!< bit:      0  Channel Pending                    */
     uint8_t  BUSY:1;           /*!< bit:      1  Channel Busy                       */
-    uint8_t  FERR:1;           /*!< bit:      2  Channel Fetch Error                */
+    uint8_t  FERR:1;           /*!< bit:      2  Fetch Error                        */
     uint8_t  :5;               /*!< bit:  3.. 7  Reserved                           */
   } bit;                       /*!< Structure used for bit  access                  */
   uint8_t reg;                 /*!< Type      used for register access              */
@@ -878,7 +878,7 @@ typedef union {
 #define DMAC_CHSTATUS_PEND          (0x1ul << DMAC_CHSTATUS_PEND_Pos)
 #define DMAC_CHSTATUS_BUSY_Pos      1            /**< \brief (DMAC_CHSTATUS) Channel Busy */
 #define DMAC_CHSTATUS_BUSY          (0x1ul << DMAC_CHSTATUS_BUSY_Pos)
-#define DMAC_CHSTATUS_FERR_Pos      2            /**< \brief (DMAC_CHSTATUS) Channel Fetch Error */
+#define DMAC_CHSTATUS_FERR_Pos      2            /**< \brief (DMAC_CHSTATUS) Fetch Error */
 #define DMAC_CHSTATUS_FERR          (0x1ul << DMAC_CHSTATUS_FERR_Pos)
 #define DMAC_CHSTATUS_MASK          0x07ul       /**< \brief (DMAC_CHSTATUS) MASK Register */
 
@@ -901,7 +901,6 @@ typedef union {
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 
 #define DMAC_BTCTRL_OFFSET          0x00         /**< \brief (DMAC_BTCTRL offset) Block Transfer Control */
-#define DMAC_BTCTRL_RESETVALUE      0x0000ul     /**< \brief (DMAC_BTCTRL reset_value) Block Transfer Control */
 
 #define DMAC_BTCTRL_VALID_Pos       0            /**< \brief (DMAC_BTCTRL) Descriptor Valid */
 #define DMAC_BTCTRL_VALID           (0x1ul << DMAC_BTCTRL_VALID_Pos)
@@ -917,8 +916,8 @@ typedef union {
 #define DMAC_BTCTRL_BLOCKACT_Pos    3            /**< \brief (DMAC_BTCTRL) Block Action */
 #define DMAC_BTCTRL_BLOCKACT_Msk    (0x3ul << DMAC_BTCTRL_BLOCKACT_Pos)
 #define DMAC_BTCTRL_BLOCKACT(value) ((DMAC_BTCTRL_BLOCKACT_Msk & ((value) << DMAC_BTCTRL_BLOCKACT_Pos)))
-#define   DMAC_BTCTRL_BLOCKACT_NOACT_Val  0x0ul  /**< \brief (DMAC_BTCTRL) Channel will be disabled if it is the last block transfer in the transaction */
-#define   DMAC_BTCTRL_BLOCKACT_INT_Val    0x1ul  /**< \brief (DMAC_BTCTRL) Channel will be disabled if it is the last block transfer in the transaction and block interrupt */
+#define   DMAC_BTCTRL_BLOCKACT_NOACT_Val  0x0ul  /**< \brief (DMAC_BTCTRL) No action */
+#define   DMAC_BTCTRL_BLOCKACT_INT_Val    0x1ul  /**< \brief (DMAC_BTCTRL) Channel in normal operation and block interrupt */
 #define   DMAC_BTCTRL_BLOCKACT_SUSPEND_Val 0x2ul  /**< \brief (DMAC_BTCTRL) Channel suspend operation is completed */
 #define   DMAC_BTCTRL_BLOCKACT_BOTH_Val   0x3ul  /**< \brief (DMAC_BTCTRL) Both channel suspend operation and block interrupt */
 #define DMAC_BTCTRL_BLOCKACT_NOACT  (DMAC_BTCTRL_BLOCKACT_NOACT_Val << DMAC_BTCTRL_BLOCKACT_Pos)
@@ -928,9 +927,9 @@ typedef union {
 #define DMAC_BTCTRL_BEATSIZE_Pos    8            /**< \brief (DMAC_BTCTRL) Beat Size */
 #define DMAC_BTCTRL_BEATSIZE_Msk    (0x3ul << DMAC_BTCTRL_BEATSIZE_Pos)
 #define DMAC_BTCTRL_BEATSIZE(value) ((DMAC_BTCTRL_BEATSIZE_Msk & ((value) << DMAC_BTCTRL_BEATSIZE_Pos)))
-#define   DMAC_BTCTRL_BEATSIZE_BYTE_Val   0x0ul  /**< \brief (DMAC_BTCTRL) 8-bit bus transfer */
-#define   DMAC_BTCTRL_BEATSIZE_HWORD_Val  0x1ul  /**< \brief (DMAC_BTCTRL) 16-bit bus transfer */
-#define   DMAC_BTCTRL_BEATSIZE_WORD_Val   0x2ul  /**< \brief (DMAC_BTCTRL) 32-bit bus transfer */
+#define   DMAC_BTCTRL_BEATSIZE_BYTE_Val   0x0ul  /**< \brief (DMAC_BTCTRL) 8-bit access */
+#define   DMAC_BTCTRL_BEATSIZE_HWORD_Val  0x1ul  /**< \brief (DMAC_BTCTRL) 16-bit access */
+#define   DMAC_BTCTRL_BEATSIZE_WORD_Val   0x2ul  /**< \brief (DMAC_BTCTRL) 32-bit access */
 #define DMAC_BTCTRL_BEATSIZE_BYTE   (DMAC_BTCTRL_BEATSIZE_BYTE_Val << DMAC_BTCTRL_BEATSIZE_Pos)
 #define DMAC_BTCTRL_BEATSIZE_HWORD  (DMAC_BTCTRL_BEATSIZE_HWORD_Val << DMAC_BTCTRL_BEATSIZE_Pos)
 #define DMAC_BTCTRL_BEATSIZE_WORD   (DMAC_BTCTRL_BEATSIZE_WORD_Val << DMAC_BTCTRL_BEATSIZE_Pos)
@@ -947,14 +946,14 @@ typedef union {
 #define DMAC_BTCTRL_STEPSIZE_Pos    13           /**< \brief (DMAC_BTCTRL) Address Increment Step Size */
 #define DMAC_BTCTRL_STEPSIZE_Msk    (0x7ul << DMAC_BTCTRL_STEPSIZE_Pos)
 #define DMAC_BTCTRL_STEPSIZE(value) ((DMAC_BTCTRL_STEPSIZE_Msk & ((value) << DMAC_BTCTRL_STEPSIZE_Pos)))
-#define   DMAC_BTCTRL_STEPSIZE_X1_Val     0x0ul  /**< \brief (DMAC_BTCTRL) Next ADDR = ADDR + (BEATSIZE+1) * 1 */
-#define   DMAC_BTCTRL_STEPSIZE_X2_Val     0x1ul  /**< \brief (DMAC_BTCTRL) Next ADDR = ADDR + (BEATSIZE+1) * 2 */
-#define   DMAC_BTCTRL_STEPSIZE_X4_Val     0x2ul  /**< \brief (DMAC_BTCTRL) Next ADDR = ADDR + (BEATSIZE+1) * 4 */
-#define   DMAC_BTCTRL_STEPSIZE_X8_Val     0x3ul  /**< \brief (DMAC_BTCTRL) Next ADDR = ADDR + (BEATSIZE+1) * 8 */
-#define   DMAC_BTCTRL_STEPSIZE_X16_Val    0x4ul  /**< \brief (DMAC_BTCTRL) Next ADDR = ADDR + (BEATSIZE+1) * 16 */
-#define   DMAC_BTCTRL_STEPSIZE_X32_Val    0x5ul  /**< \brief (DMAC_BTCTRL) Next ADDR = ADDR + (BEATSIZE+1) * 32 */
-#define   DMAC_BTCTRL_STEPSIZE_X64_Val    0x6ul  /**< \brief (DMAC_BTCTRL) Next ADDR = ADDR + (BEATSIZE+1) * 64 */
-#define   DMAC_BTCTRL_STEPSIZE_X128_Val   0x7ul  /**< \brief (DMAC_BTCTRL) Next ADDR = ADDR + (BEATSIZE+1) * 128 */
+#define   DMAC_BTCTRL_STEPSIZE_X1_Val     0x0ul  /**< \brief (DMAC_BTCTRL) Next ADDR <- ADDR + BEATSIZE * 1 */
+#define   DMAC_BTCTRL_STEPSIZE_X2_Val     0x1ul  /**< \brief (DMAC_BTCTRL) Next ADDR <- ADDR + BEATSIZE * 2 */
+#define   DMAC_BTCTRL_STEPSIZE_X4_Val     0x2ul  /**< \brief (DMAC_BTCTRL) Next ADDR <- ADDR + BEATSIZE * 4 */
+#define   DMAC_BTCTRL_STEPSIZE_X8_Val     0x3ul  /**< \brief (DMAC_BTCTRL) Next ADDR <- ADDR + BEATSIZE * 8 */
+#define   DMAC_BTCTRL_STEPSIZE_X16_Val    0x4ul  /**< \brief (DMAC_BTCTRL) Next ADDR <- ADDR + BEATSIZE * 16 */
+#define   DMAC_BTCTRL_STEPSIZE_X32_Val    0x5ul  /**< \brief (DMAC_BTCTRL) Next ADDR <- ADDR + BEATSIZE * 32 */
+#define   DMAC_BTCTRL_STEPSIZE_X64_Val    0x6ul  /**< \brief (DMAC_BTCTRL) Next ADDR <- ADDR + BEATSIZE * 64 */
+#define   DMAC_BTCTRL_STEPSIZE_X128_Val   0x7ul  /**< \brief (DMAC_BTCTRL) Next ADDR <- ADDR + BEATSIZE * 128 */
 #define DMAC_BTCTRL_STEPSIZE_X1     (DMAC_BTCTRL_STEPSIZE_X1_Val   << DMAC_BTCTRL_STEPSIZE_Pos)
 #define DMAC_BTCTRL_STEPSIZE_X2     (DMAC_BTCTRL_STEPSIZE_X2_Val   << DMAC_BTCTRL_STEPSIZE_Pos)
 #define DMAC_BTCTRL_STEPSIZE_X4     (DMAC_BTCTRL_STEPSIZE_X4_Val   << DMAC_BTCTRL_STEPSIZE_Pos)
@@ -982,7 +981,7 @@ typedef union {
 #define DMAC_BTCNT_BTCNT(value)     ((DMAC_BTCNT_BTCNT_Msk & ((value) << DMAC_BTCNT_BTCNT_Pos)))
 #define DMAC_BTCNT_MASK             0xFFFFul     /**< \brief (DMAC_BTCNT) MASK Register */
 
-/* -------- DMAC_SRCADDR : (DMAC Offset: 0x04) (R/W 32) Block Transfer Source Address -------- */
+/* -------- DMAC_SRCADDR : (DMAC Offset: 0x04) (R/W 32) Transfer Source Address -------- */
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
 typedef union {
   struct {
@@ -992,14 +991,14 @@ typedef union {
 } DMAC_SRCADDR_Type;
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 
-#define DMAC_SRCADDR_OFFSET         0x04         /**< \brief (DMAC_SRCADDR offset) Block Transfer Source Address */
+#define DMAC_SRCADDR_OFFSET         0x04         /**< \brief (DMAC_SRCADDR offset) Transfer Source Address */
 
 #define DMAC_SRCADDR_SRCADDR_Pos    0            /**< \brief (DMAC_SRCADDR) Transfer Source Address */
 #define DMAC_SRCADDR_SRCADDR_Msk    (0xFFFFFFFFul << DMAC_SRCADDR_SRCADDR_Pos)
 #define DMAC_SRCADDR_SRCADDR(value) ((DMAC_SRCADDR_SRCADDR_Msk & ((value) << DMAC_SRCADDR_SRCADDR_Pos)))
 #define DMAC_SRCADDR_MASK           0xFFFFFFFFul /**< \brief (DMAC_SRCADDR) MASK Register */
 
-/* -------- DMAC_DSTADDR : (DMAC Offset: 0x08) (R/W 32) Block Transfer Destination Address -------- */
+/* -------- DMAC_DSTADDR : (DMAC Offset: 0x08) (R/W 32) Transfer Destination Address -------- */
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
 typedef union {
   struct {
@@ -1009,7 +1008,7 @@ typedef union {
 } DMAC_DSTADDR_Type;
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 
-#define DMAC_DSTADDR_OFFSET         0x08         /**< \brief (DMAC_DSTADDR offset) Block Transfer Destination Address */
+#define DMAC_DSTADDR_OFFSET         0x08         /**< \brief (DMAC_DSTADDR offset) Transfer Destination Address */
 
 #define DMAC_DSTADDR_DSTADDR_Pos    0            /**< \brief (DMAC_DSTADDR) Transfer Destination Address */
 #define DMAC_DSTADDR_DSTADDR_Msk    (0xFFFFFFFFul << DMAC_DSTADDR_DSTADDR_Pos)
@@ -1073,8 +1072,8 @@ typedef struct {
 typedef struct {
   __IO DMAC_BTCTRL_Type          BTCTRL;      /**< \brief Offset: 0x00 (R/W 16) Block Transfer Control */
   __IO DMAC_BTCNT_Type           BTCNT;       /**< \brief Offset: 0x02 (R/W 16) Block Transfer Count */
-  __IO DMAC_SRCADDR_Type         SRCADDR;     /**< \brief Offset: 0x04 (R/W 32) Block Transfer Source Address */
-  __IO DMAC_DSTADDR_Type         DSTADDR;     /**< \brief Offset: 0x08 (R/W 32) Block Transfer Destination Address */
+  __IO DMAC_SRCADDR_Type         SRCADDR;     /**< \brief Offset: 0x04 (R/W 32) Transfer Source Address */
+  __IO DMAC_DSTADDR_Type         DSTADDR;     /**< \brief Offset: 0x08 (R/W 32) Transfer Destination Address */
   __IO DMAC_DESCADDR_Type        DESCADDR;    /**< \brief Offset: 0x0C (R/W 32) Next Descriptor Address */
 } DmacDescriptor
 #ifdef __GNUC__

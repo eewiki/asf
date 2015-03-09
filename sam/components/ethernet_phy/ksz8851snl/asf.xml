@@ -12,8 +12,6 @@
 		<build type="include-path" value="."/>
 		<build type="module-config" subtype="required-header-file" value="conf_eth.h"/>
 		<build type="module-config" subtype="path" value="module_config"/>
-		<build type="doxygen-entry-point" value="emac_group"/>
-		<build type="doxygen-quick-start" value="emac_quickstart"/>
 		<require idref="sam.drivers.pmc"/>
 		<require idref="sam.drivers.pdc"/>
 		<require idref="common.services.delay"/>

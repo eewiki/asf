@@ -3,7 +3,7 @@
  *
  * \brief SAM Analog Comparator Driver Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -167,6 +167,6 @@
  * -# Trigger the next conversion on the Analog Comparator channel.
  *    \snippet qs_ac_callback.c main_8
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

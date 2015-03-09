@@ -3,7 +3,7 @@
  *
  * \brief SAM SPI Quick Start
  *
- * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2012-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -149,6 +149,6 @@
  *    global variable to true.
  *    \snippet qs_spi_master_callback.c callback_var
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */

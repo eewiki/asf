@@ -3,7 +3,7 @@
  *
  * \brief SAM L21 Clock configuration
  *
- * Copyright (C) 2014 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2014-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,7 +40,7 @@
  * \asf_license_stop
  *
  */
- /**
+/*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <clock.h>
@@ -125,13 +125,13 @@
 
 
 #  define CONF_CLOCK_DPLL_REFERENCE_FREQUENCY     32768
-#  define CONF_CLOCK_DPLL_REFEREMCE_DIVIDER       1
+#  define CONF_CLOCK_DPLL_REFERENCE_DIVIDER       1
 #  define CONF_CLOCK_DPLL_OUTPUT_FREQUENCY        48000000
 
 /* DPLL GCLK reference configuration */
 #  define CONF_CLOCK_DPLL_REFERENCE_GCLK_GENERATOR GCLK_GENERATOR_1
-/* DPLL GCLK 32K reference configuration */
-#  define CONF_CLOCK_DPLL_REFERENCE_GCLK_32K_GENERATOR GCLK_GENERATOR_1
+/* DPLL GCLK lock timer configuration */
+#  define CONF_CLOCK_DPLL_LOCK_GCLK_GENERATOR     GCLK_GENERATOR_1
 
 /* Set this to true to configure the GCLK when running clocks_init. If set to
  * false, none of the GCLK generators will be configured in clocks_init(). */

@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<project caption="WINC1500 Firmware Update Project (v18.0.3) for SAMW25 XPlained Pro" id="common.components.wifi.winc1500.firmware_update_project.samw25_xplained_pro">
+		<!-- Summary Description -->
+		<info type="description" value="summary">
+			This project contains necessary tools and documentation to perform a firmware udpate and root certificate update of the WINC1500 Wi-Fi module.
+		</info>
+
+		<!-- Source -->
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+
+		<!-- Device support -->
+		<device-support value="atsamd21g18a"/>
+
+		<!-- Required modules -->
+		<require idref="common.components.wifi.winc1500.firmware_update_project"/>
+		<require idref="board.samw25_xplained_pro"/>
+
+		<!-- Generators -->
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+	</project>
+</asf>
