@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 Watchdog Driver Quick Start
+ * \brief SAM Watchdog Driver Quick Start
  *
  * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *

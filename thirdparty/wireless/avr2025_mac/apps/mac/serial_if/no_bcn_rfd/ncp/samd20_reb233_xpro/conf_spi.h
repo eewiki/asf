@@ -41,7 +41,6 @@
  *
  */
 
-
 #ifndef CONF_SPI_H_INCLUDED
 #  define CONF_SPI_H_INCLUDED
 
@@ -50,4 +49,3 @@
 #  define CONF_SPI_TIMEOUT           10000
 
 #endif /* CONF_SPI_H_INCLUDED */
-

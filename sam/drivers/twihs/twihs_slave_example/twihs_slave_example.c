@@ -3,7 +3,7 @@
  *
  * \brief TWIHS Slave Example for SAM.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -50,11 +50,14 @@
  *
  * \section Requirements
  *
- * This package can be used with SAMG53 Xplained Pro.
+ * This package can be used with the following setup:
+ *  - SAMG53 Xplained Pro kit
  *
- * In addition, another device will be needed to act as the TWIHS master.
- * -# Connect TWD0 (SDA) for the 2 boards.
- * -# Connect TWCK0 (SCL) for the 2 boards.
+ * In addition, another device will be needed to act as the TWI master. The
+ * twi_eeprom_example can be used for that, in which case a second kit
+ * supported by that project is needed.
+ * -# Connect TWD (SDA) for the 2 boards.
+ * -# Connect TWCK (SCL) for the 2 boards.
  * -# Connect GND for the 2 boards.
  * -# Make sure there is a pull up resistor on TWD and TWCK.
  *
@@ -66,8 +69,7 @@
  * \section exampledescription Description of the Example
  * After launching the program, the device will act as a simple TWI-enabled
  * serial memory containing 512 bytes. This enables this project to be used
- * with a twi master example. The twim_example on SAM4L can be used for the
- * high speed TWI transmission with this example.
+ * with the twi_eeprom_example project as the master.
  *
  * To write in the memory, the TWIHS master must address the device first, then
  * send two bytes containing the memory address to access. Additional bytes are
@@ -102,8 +104,6 @@ extern "C" {
 #endif
 /**INDENT-ON**/
 /// @endcond
-
-#define CONSOLE_BAUD_RATE   115200
 
 /** Device address of slave */
 #define SLAVE_ADDRESS       0x40

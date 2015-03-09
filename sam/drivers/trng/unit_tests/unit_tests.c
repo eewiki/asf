@@ -3,7 +3,7 @@
  *
  * \brief Unit tests for TRNG driver.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -75,6 +75,8 @@
  * - sam3x8h_sam3x_ek
  * - sam4c16c_sam4c_ek
  * - sam4cp16b_sam4cp16bmb
+ * - sam4cmp16c_sam4cmp_db
+ * - sam4cms16c_sam4cms_db
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers

@@ -8,7 +8,7 @@
  *
  * To use this board define BOARD=XMEGA_RF212B_ZIGBIT
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -49,6 +49,7 @@
 #define _XMEGA_RF212B_ZIGBIT_H_
 
 #include <compiler.h>
+# include "conf_board.h"
 
 #define MCU_SOC_NAME        "ATxmega256A3U"
 

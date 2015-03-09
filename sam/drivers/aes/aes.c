@@ -6,7 +6,7 @@
  *
  * This file defines a useful set of functions for the AES on SAM devices.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -172,7 +172,7 @@ void aes_set_config(Aes *const p_aes, struct aes_config *const p_cfg)
 		ul_mode |= AES_MR_LOD;
 	}
 
-	#if SAM4C || SAM4CP
+	#if SAM4C || SAM4CP || SAM4CM
 	if ((p_cfg->opmode == AES_GCM_MODE) && (p_cfg->gtag_en == true)) {
 		ul_mode |= AES_MR_GTAGEN;
 	}
@@ -180,7 +180,7 @@ void aes_set_config(Aes *const p_aes, struct aes_config *const p_cfg)
 
 	ul_mode |= AES_MR_PROCDLY(p_cfg->processing_delay);
 
-	#if SAM4C || SAM4CP
+	#if SAM4C || SAM4CP || SAM4CM
 	ul_mode |= AES_MR_CKEY_PASSWD;
 	#else
 	ul_mode |= AES_MR_CKEY(0xE);
@@ -280,7 +280,7 @@ void aes_read_output_data(Aes *const p_aes,
 	}
 }
 
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP || SAM4CM
 
 /**
  * \brief Get AES PDC base address.
@@ -321,7 +321,7 @@ void aes_set_callback(Aes *const p_aes,
 		aes_callback_pointer[1] = callback;
 	}
 
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP || SAM4CM
 	else if (source == AES_INTERRUPT_END_OF_RECEIVE_BUFFER) {
 		aes_callback_pointer[2] = callback;
 	} else if (source == AES_INTERRUPT_END_OF_TRANSMIT_BUFFER) {
@@ -356,7 +356,7 @@ void AES_Handler(void)
 		}
 	}
 
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP || SAM4CM
 	if ((status & AES_ISR_ENDRX) && (mask & AES_IMR_ENDRX)) {
 		if (aes_callback_pointer[2]) {
 			aes_callback_pointer[2]();

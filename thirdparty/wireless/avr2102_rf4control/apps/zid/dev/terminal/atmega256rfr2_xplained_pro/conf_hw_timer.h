@@ -43,13 +43,10 @@
 #ifndef CONF_HW_TIMER_H_INCLUDED
 #define CONF_HW_TIMER_H_INCLUDED
 
-
-
 /*! \name Configuration
  */
-//! @{
+/* ! @{ */
 #define TIMER     (&TCCR1A)
-//! @}
-
+/* ! @} */
 
 #endif /* CONF_HW_TIMER_H_INCLUDED */

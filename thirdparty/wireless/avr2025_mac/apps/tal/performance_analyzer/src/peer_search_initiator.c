@@ -4,7 +4,7 @@
  * \brief Initiator/Transmitter functionalities in Peer Search Process -
  * Performance Analyzer application
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -163,12 +163,12 @@ void peer_search_initiator_init(void *arg)
 	} while (!node_info.peer_short_addr);
 
 #ifdef EXT_RF_FRONT_END_CTRL
-    /* Disable RF front end control during peer search process*/
-    tal_ext_pa_ctrl(PA_EXT_DISABLE);
-    /* Make sure that Tx power is at max, when PA_EXT is disabled */
-    tal_set_tx_pwr(REGISTER_VALUE, 0x00);
+	/* Disable RF front end control during peer search process*/
+	tal_ext_pa_ctrl(PA_EXT_DISABLE);
+	/* Make sure that Tx power is at max, when PA_EXT is disabled */
+	tal_set_tx_pwr(REGISTER_VALUE, 0x00);
 #endif
-    
+
 	/* Reduce the TX power level to minium,if configuration mode is enabled
 	**/
 	if (true == node_info.configure_mode) {
@@ -607,7 +607,7 @@ static void peer_rsp_rcvd_exit()
 		/* set the TX power to default level */
 		uint8_t config_tx_pwr = TAL_TRANSMIT_POWER_DEFAULT;
 		node_info.configure_mode = false;
-        pib_value_temp.pib_value_8bit = config_tx_pwr;
+		pib_value_temp.pib_value_8bit = config_tx_pwr;
 		tal_pib_set(phyTransmitPower, &pib_value_temp);
 	}
 }

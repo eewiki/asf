@@ -13,6 +13,9 @@
 		<build type="header-file" value="conf_hw_timer.h"/>
 		<build type="header-file" value="conf_usb.h"/>
 		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_trx_access.h"/>
+
+		<build type="define"   name="HIGH_DATA_RATE_SUPPORT"              value=""/>
 
 		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
 		<config name="config.thirdparty.wireless.avr2025_mac.source.tfa" value="at86rf231"/>
@@ -24,12 +27,6 @@
 		<generator value="doxygen"/>
 		<device-support value="at32uc3a3256s"/>
 
-		<build type="define"   name="HIGHEST_STACK_LAYER"                 value="TAL"/>
-		<build type="define"   name="HIGH_DATA_RATE_SUPPORT"              value=""/>
-
-        <build type="define"   name="FFD"                                 value=""/>
-        <build type="define"   name="ENABLE_TFA"                          value=""/>
-        <build type="define"   name="TRX_REG_RAW_VALUE"                   value=""/>
 
 	</project>
 </asf>

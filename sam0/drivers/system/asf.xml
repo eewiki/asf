@@ -1,7 +1,7 @@
 ﻿<asf xmlversion="1.0">
 	<module type="driver" id="sam0.drivers.system" caption="SYSTEM - Core System Driver">
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21 core system modules. Provides a unified
+			Driver for the SAM D20/D21/R21 core system modules. Provides a unified
 			interface for the configuration and management of the core device
 			functionality required for a functional system.
 		</info>
@@ -22,7 +22,7 @@
 
 		<info type="description" value="pdf">
 			This document describes how to use the core system modules on the
-			SAM D20/D21, both the ASF driver and the peripheral itself.
+			SAM D20/D21/R21, both the ASF driver and the peripheral itself.
 		</info>
 
 		<build type="include-path" value="."/>
@@ -39,6 +39,7 @@
 
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 
 		<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 	</module>

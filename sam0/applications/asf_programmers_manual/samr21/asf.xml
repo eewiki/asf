@@ -1,0 +1,54 @@
+<asf xmlversion="1.0">
+	<project caption="ASF Manual (SAM R21)" force-caption="true" id="sam0.applications.asf_programmers_manual.atsamr21">
+		<require idref="sam0.applications.asf_programmers_manual"/>
+
+		<generator value="doxygen-v2"/>
+
+		<info type="appnote" value="AT08456"/>
+
+		<info type="description" value="pdf">
+		This application note describes the Atmel Software Framework low level
+		module driver APIs for the Atmel SAM R21 series of devices.
+		</info>
+		<info type="keyword" value="pdf">
+			<keyword value="ASF"/>
+			<keyword value="API"/>
+			<keyword value="Reference"/>
+			<keyword value="Manual"/>
+			<keyword value="Driver"/>
+			<keyword value="Service"/>
+			<keyword value="Quick Start"/>
+		</info>
+
+		<config name="config.compiler.doxygen-v2.document_type" value="asf_manual"/>
+
+		<build type="include-path" value="."/>
+		<build type="header-file" value="revhistory.h"/>
+		<build type="doxygen-enable-section" value="DAC_DMA_USE_MODE_SELECTION"/>
+
+		<require idref="sam0.drivers.ac"/>
+		<require idref="sam0.drivers.adc"/>
+		<require idref="sam0.drivers.bod"/>
+		<require idref="sam0.drivers.dma"/>
+		<require idref="sam0.drivers.events"/>
+		<require idref="sam0.drivers.extint"/>
+		<require idref="sam0.drivers.nvm"/>
+		<require idref="sam0.drivers.pac"/>
+		<require idref="sam0.drivers.port"/>
+		<require idref="sam0.drivers.rtc"/>
+		<require idref="sam0.drivers.rtc.calendar_appnote"/>
+		<require idref="sam0.drivers.sercom.usart"/>
+		<require idref="sam0.drivers.sercom.i2c.master.appnote"/>
+		<require idref="sam0.drivers.sercom.i2c.slave.appnote"/>
+		<require idref="sam0.drivers.sercom.spi"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.drivers.tc"/>
+		<require idref="sam0.drivers.tcc"/>
+		<require idref="sam0.drivers.wdt"/>
+		<require idref="sam0.drivers.usb"/>
+
+		<require idref="sam0.services.eeprom_emulator"/>
+
+		<device-support value="unspecified-samr21"/>
+	</project>
+</asf>

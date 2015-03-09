@@ -13,6 +13,7 @@
 		<device-support value="sam4n"/>
 		<device-support value="sam4c"/>
 		<device-support value="samg"/>
+		<device-support value="sam4cm"/>
 		<device-support value="sam4cp"/>
 		<require idref="sam.utils"/>
 		<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>

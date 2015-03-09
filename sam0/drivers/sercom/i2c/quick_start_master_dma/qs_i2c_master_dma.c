@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 I2C Master with DMA Quick Start Guide
+ * \brief SAM SERCOM I2C Master with DMA Quick Start Guide
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *

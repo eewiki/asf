@@ -40,23 +40,29 @@
  * \asf_license_stop
  *
  */
+
 /*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
+
 /**
  * \mainpage
  * \section preface Preface
- * This application demonstrates the use of  AVR477 remote control as ZID class device,
- * Which pairs with the ZID HID PC adaptor and controls the PC applications like Windows Media player.
+ * This application demonstrates the use of  AVR477 remote control as ZID class
+ *device,
+ * Which pairs with the ZID HID PC adaptor and controls the PC applications like
+ *Windows Media player.
  * \section main_files Application Files
  * - main.c                     Application main file.
  * - vendor_data.c              Vendor Specific API functions
  * \section intro Application Introduction
- *  HID QTOUCH Remote is the demo application which can act as a media player remote when paired up with ZID USB HID PC adaptor.
- *  On Power up,Remote will initiate push button pairing procedure and pairs with an adaptor if it is found.After pairing it can be 
- *  used as a media player remote,The demo application 
+ *  HID QTOUCH Remote is the demo application which can act as a media player
+ *remote when paired up with ZID USB HID PC adaptor.
+ *  On Power up,Remote will initiate push button pairing procedure and pairs
+ *with an adaptor if it is found.After pairing it can be
+ *  used as a media player remote,The demo application
  *  shows the following Commands,
  *  1. Opening the media player
  *  2. Play
@@ -78,7 +84,7 @@
  * \section references References
  * 1)  IEEE Std 802.15.4-2006 Part 15.4: Wireless Medium Access Control (MAC)
  *     and Physical Layer (PHY) Specifications for Low-Rate Wireless Personal
- *Area
+ * Area
  *     Networks (WPANs).\n\n
  * 2)  AVR Wireless Support <A href="http://avr@atmel.com">avr@atmel.com</A>.\n
  *
@@ -86,7 +92,6 @@
  * For further information,visit
  * <A href="http://www.atmel.com/avr">www.atmel.com</A>.\n
  */
-
 
 /* === INCLUDES ============================================================ */
 #include <asf.h>
@@ -101,23 +106,20 @@
 #include "zid_device.h"
 #include "Avr477QTouch.h"
 
-
 #define BUTTON_0 0
 #define BUTTON_1 1
 #define BUTTON_2 2
 
 /* === TYPES =============================================================== */
 /* ZID States for Tracking */
-typedef enum node_status_tag
-{
-    IDLE,
-    WARM_START,
-    COLD_START,
-    CONFIGURING_ATTRIBUTES,
-    CONNECTING,
-    TRANSMITTING
+typedef enum node_status_tag {
+	IDLE,
+	WARM_START,
+	COLD_START,
+	CONFIGURING_ATTRIBUTES,
+	CONNECTING,
+	TRANSMITTING
 } SHORTENUM node_status_t;
-
 
 /* === MACROS ============================================================== */
 
@@ -154,17 +156,20 @@ typedef enum node_status_tag
 #define  LAST_BUTTON_INDEX (0xFF)
 
 /* Key mapping for media control */
-uint16_t key_mapping_media[] = {BUTTON_STOP, BUTTON_PREVIOUS, BUTTON_NEXT, BUTTON_MPLAYER, \
-                                BUTTON_VOLUME_P, BUTTON_PLAY, BUTTON_PAUSE, BUTTON_VOLUME_N, \
-                                BUTTON_MUTE, LAST_BUTTON_INDEX, LAST_BUTTON_INDEX, LAST_BUTTON_INDEX};
+uint16_t key_mapping_media[]
+	= {BUTTON_STOP, BUTTON_PREVIOUS, BUTTON_NEXT, BUTTON_MPLAYER, \
+	   BUTTON_VOLUME_P, BUTTON_PLAY, BUTTON_PAUSE,
+	   BUTTON_VOLUME_N, \
+	   BUTTON_MUTE, LAST_BUTTON_INDEX,
+	   LAST_BUTTON_INDEX, LAST_BUTTON_INDEX};
 
 /* Default mode for the key remote controller board is media player control */
 uint8_t button_mode = BUTTON_MEDIA_MODE;
 
-#define INTER_FRAME_DURATION_US     200000 // 200 ms
+#define INTER_FRAME_DURATION_US     200000 /* 200 ms */
 #define TX_OPTIONS  (TXO_UNICAST | TXO_DST_ADDR_NET | \
-                     TXO_ACK_REQ | TXO_SEC_REQ | TXO_MULTI_CH | \
-                     TXO_CH_NOT_SPEC | TXO_VEND_NOT_SPEC)
+	TXO_ACK_REQ | TXO_SEC_REQ | TXO_MULTI_CH | \
+	TXO_CH_NOT_SPEC | TXO_VEND_NOT_SPEC)
 
 /* === GLOBALS ============================================================= */
 uint8_t b_event = 0xFF;
@@ -177,7 +182,8 @@ uint8_t b_state = 0xFF;
 #define VENDOR_STRING_LEN_SIZE (7)
 #define APP_USER_STRING_SIZE   (15)
 FLASH_DECLARE(uint16_t VendorIdentifier) = (uint16_t)NWKC_VENDOR_IDENTIFIER;
-FLASH_DECLARE(uint8_t vendor_string[VENDOR_STRING_LEN_SIZE]) = NWKC_VENDOR_STRING;
+FLASH_DECLARE(uint8_t vendor_string[VENDOR_STRING_LEN_SIZE])
+	= NWKC_VENDOR_STRING;
 FLASH_DECLARE(uint8_t app_user_string[APP_USER_STRING_SIZE]) = APP_USER_STRING;
 
 /* ZID Node Status */
@@ -191,11 +197,13 @@ static zid_indication_callback_t zid_ind;
 #endif
 /* Initial value for ZID Report and attribute index */
 static uint8_t report_id = 0;
-static uint8_t set_attribute_index= 0;
+static uint8_t set_attribute_index = 0;
 static void app_alert(void);
+
 /* === PROTOTYPES ========================================================== */
 static void app_task(void);
 static void indicate_fault_behavior(void);
+
 #ifdef RF4CE_CALLBACK_PARAM
 static void nlme_reset_confirm(nwk_enum_t Status);
 static void nlme_start_confirm(nwk_enum_t Status);
@@ -203,17 +211,22 @@ static void app_nlme_rx_enable_confirm(nwk_enum_t Status);
 static void zid_connect_confirm(nwk_enum_t Status, uint8_t PairingRef);
 static void zid_report_data_confirm(nwk_enum_t Status, uint8_t PairingRef);
 static void zid_data_confirm(nwk_enum_t Status, uint8_t PairingRef);
-static void zid_report_data_indication(uint8_t PairingRef, uint8_t num_report_records,
-                                                zid_report_data_record_t *zid_report_data_record_ptr, uint8_t RxLinkQuality, uint8_t RxFlags);
-static void zid_get_report_indication(uint8_t PairingRef,zid_report_types_t zid_report_type, zid_report_desc_t zid_report_desc,
-                                                uint8_t RxLinkQuality, uint8_t RxFlags);
+static void zid_report_data_indication(uint8_t PairingRef,
+		uint8_t num_report_records,
+		zid_report_data_record_t *zid_report_data_record_ptr,
+		uint8_t RxLinkQuality, uint8_t RxFlags);
+static void zid_get_report_indication(uint8_t PairingRef,
+		zid_report_types_t zid_report_type,
+		zid_report_desc_t zid_report_desc,
+		uint8_t RxLinkQuality, uint8_t RxFlags);
 
-static void zid_set_attribute_confirm(nwk_enum_t status,uint8_t PairingRef, zid_attribute_t ZIDAttribute, uint8_t ZIDAttributeIndex);
+static void zid_set_attribute_confirm(nwk_enum_t status, uint8_t PairingRef,
+		zid_attribute_t ZIDAttribute,
+		uint8_t ZIDAttributeIndex);
 
 #endif
 
 /* === IMPLEMENTATION ====================================================== */
-
 
 /**
  * Main function, initialization and main message loop
@@ -221,247 +234,225 @@ static void zid_set_attribute_confirm(nwk_enum_t status,uint8_t PairingRef, zid_
  */
 int main(void)
 {
-    irq_initialize_vectors();
+	irq_initialize_vectors();
 
-    /* Initialize the board.*/	
-    board_init();     
+	/* Initialize the board.*/
+	board_init();
 
-    /* Initialize the Software timer */
-    sw_timer_init();      
-       
-    /* Initialize the RF4CE Network */    
-    if (nwk_init()!= NWK_SUCCESS)
-    {
-        app_alert();
-    }
+	/* Initialize the Software timer */
+	sw_timer_init();
+
+	/* Initialize the RF4CE Network */
+	if (nwk_init() != NWK_SUCCESS) {
+		app_alert();
+	}
 
 #ifdef RF4CE_CALLBACK_PARAM
 	/* Register the ZID Callback indication */
-    zid_ind.zid_report_data_indication_cb = zid_report_data_indication;
-    zid_ind.zid_get_report_indication_cb = zid_get_report_indication;
-    register_zid_indication_callback(&zid_ind);
+	zid_ind.zid_report_data_indication_cb = zid_report_data_indication;
+	zid_ind.zid_get_report_indication_cb = zid_get_report_indication;
+	register_zid_indication_callback(&zid_ind);
 #endif
-    /*
-     * The stack is initialized above,
-     * hence the global interrupts are enabled here.
-     */
-    
-    BSP_InitQTouch(appButtonsInd);
-    
-#ifdef QDEBUG 
-    while(1)
-    {
-      //If Touch Detected return will be true else false
-      if(Touch_measurement(&b_event, &b_state))
-      {
-        LED_Toggle(LED0);
-      }      
-    }
-#endif 
-     cpu_irq_enable();
 
-    
-    if(b_event)
-    {
-        /* Force push button pairing */
-        /* Cold start */
-        LED_On(ZID_APP_LED);
-        node_status = COLD_START;
-        nlme_reset_request(true
-#ifdef RF4CE_CALLBACK_PARAM
-                          ,(FUNC_PTR)nlme_reset_confirm
-#endif
-                           );
-    }
-    else
-    {
-        /* Warm start */
-        node_status = WARM_START;
-        nlme_reset_request(false
-#ifdef RF4CE_CALLBACK_PARAM
-                          ,(FUNC_PTR)nlme_reset_confirm
-#endif
-                           );
-    }
+	/*
+	 * The stack is initialized above,
+	 * hence the global interrupts are enabled here.
+	 */
 
-    /* Endless while loop */
-    while (1)
-    {
-        app_task(); /* Application task */
-        nwk_task(); /* RF4CE network layer task */
-    }
+	BSP_InitQTouch(appButtonsInd);
+
+#ifdef QDEBUG
+	while (1) {
+		/* If Touch Detected return will be true else false */
+		if (Touch_measurement(&b_event, &b_state)) {
+			LED_Toggle(LED0);
+		}
+	}
+#endif
+	cpu_irq_enable();
+
+	if (b_event) {
+		/* Force push button pairing */
+		/* Cold start */
+		LED_On(ZID_APP_LED);
+		node_status = COLD_START;
+		nlme_reset_request(true
+#ifdef RF4CE_CALLBACK_PARAM
+				, (FUNC_PTR)nlme_reset_confirm
+#endif
+				);
+	} else {
+		/* Warm start */
+		node_status = WARM_START;
+		nlme_reset_request(false
+#ifdef RF4CE_CALLBACK_PARAM
+				, (FUNC_PTR)nlme_reset_confirm
+#endif
+				);
+	}
+
+	/* Endless while loop */
+	while (1) {
+		app_task(); /* Application task */
+		nwk_task(); /* RF4CE network layer task */
+	}
 }
 
-
 /**
- * @brief nlme_reset_confirm The NLME-RESET.confirm primitive allows the NLME 
- * to notify the application of the status of its request to reset the NWK layer.
+ * @brief nlme_reset_confirm The NLME-RESET.confirm primitive allows the NLME
+ * to notify the application of the status of its request to reset the NWK
+ *layer.
  *
- * @param Status  status from the network layer corresponds to the nlme_reset_req
+ * @param Status  status from the network layer corresponds to the
+ *nlme_reset_req
  */
 #ifdef RF4CE_CALLBACK_PARAM
 static
 #endif
 void nlme_reset_confirm(nwk_enum_t Status)
 {
-    if (Status != NWK_SUCCESS)
-    {
-		if(node_status == COLD_START)
-		{
-			while (1)
-			{
-			  indicate_fault_behavior();
+	if (Status != NWK_SUCCESS) {
+		if (node_status == COLD_START) {
+			while (1) {
+				indicate_fault_behavior();
 			}
-		}
-		else
-		{
-		  indicate_fault_behavior();
-		  /* Reset the network and start again */
-		  /* Warm start */
+		} else {
+			indicate_fault_behavior();
+			/* Reset the network and start again */
+			/* Warm start */
 			node_status = WARM_START;
 			nlme_reset_request(false
 #ifdef RF4CE_CALLBACK_PARAM
-                          ,(FUNC_PTR)nlme_reset_confirm
+					, (FUNC_PTR)nlme_reset_confirm
 #endif
-                           );
+					);
 		}
-    }
+	}
 
-    if (node_status == COLD_START)
-    {
+	if (node_status == COLD_START) {
 		/* cold start procedure starts here */
-        pairing_ref = 0xFF;
-        nlme_start_request(
+		pairing_ref = 0xFF;
+		nlme_start_request(
 #ifdef RF4CE_CALLBACK_PARAM
-                           (FUNC_PTR)nlme_start_confirm
+				(FUNC_PTR)nlme_start_confirm
 #endif
 
-                           );
-    }
-    else    /* warm start procedure starts here */
-    {
-        pairing_ref = 0;
-        /* Set power save mode: sleep */
-        nlme_rx_enable_request(0/*nwkcMinActivePeriod*/
+				);
+	} else { /* warm start procedure starts here */
+		pairing_ref = 0;
+		/* Set power save mode: sleep */
+		nlme_rx_enable_request(0 /*nwkcMinActivePeriod*/
 #ifdef RF4CE_CALLBACK_PARAM
-                           ,(FUNC_PTR)app_nlme_rx_enable_confirm
+				, (FUNC_PTR)app_nlme_rx_enable_confirm
 #endif
 
-                           );
-    }
+				);
+	}
 }
 
- /**
- * @brief nlme_start_confirm The NLME-START.confirm primitive allows the NLME 
+/**
+ * @brief nlme_start_confirm The NLME-START.confirm primitive allows the NLME
  * to notify the application of the status of its request to start a network.
  *
- * @param Status  status from the network layer corresponds to the nlme_start_req
+ * @param Status  status from the network layer corresponds to the
+ *nlme_start_req
  */
 #ifdef RF4CE_CALLBACK_PARAM
 static
 #endif
 void nlme_start_confirm(nwk_enum_t Status)
 {
-    if (Status != NWK_SUCCESS)
-    {
-		if(node_status == COLD_START)
-		{
+	if (Status != NWK_SUCCESS) {
+		if (node_status == COLD_START) {
 			app_alert();
-		}
-		else
-		{
-		  indicate_fault_behavior();
-		  /* Reset the network and start again */
-		  /* Warm start */
+		} else {
+			indicate_fault_behavior();
+			/* Reset the network and start again */
+			/* Warm start */
 			node_status = WARM_START;
 			nlme_reset_request(false
 #ifdef RF4CE_CALLBACK_PARAM
-                          ,(FUNC_PTR)nlme_reset_confirm
+					, (FUNC_PTR)nlme_reset_confirm
 #endif
-                           );
+					);
 		}
-    }
+	}
 
-    if(node_status == COLD_START)
-    {
-        uint8_t value = ZID_ATTRIBUTE_REQ_SIZE;
-        zid_set_attribute_request(0xFF, aplHIDNumStdDescComps, 0, &value
+	if (node_status == COLD_START) {
+		uint8_t value = ZID_ATTRIBUTE_REQ_SIZE;
+		zid_set_attribute_request(0xFF, aplHIDNumStdDescComps, 0, &value
 #ifdef RF4CE_CALLBACK_PARAM
-                               , (FUNC_PTR)zid_set_attribute_confirm
+				, (FUNC_PTR)zid_set_attribute_confirm
 #endif
-                              );
-        node_status = CONFIGURING_ATTRIBUTES;
-    }
-
+				);
+		node_status = CONFIGURING_ATTRIBUTES;
+	}
 }
 
- /**
- * @brief zid_set_attribute_confirm ZID Set attribute confirm callback allows to 
+/**
+ * @brief zid_set_attribute_confirm ZID Set attribute confirm callback allows to
  *        check whether attributes are sent to the ZID Adaptor.
  *
- * @param Status  status from the network layer corresponds to the zid_set_attribute_request
+ * @param Status  status from the network layer corresponds to the
+ *zid_set_attribute_request
  * @param PairingRef current pairing ref
  * @param ZIDAttribute attribute name
  * @param ZIDAttributeIndex attribute index
  */
-static void zid_set_attribute_confirm(nwk_enum_t status,uint8_t PairingRef, zid_attribute_t ZIDAttribute, uint8_t ZIDAttributeIndex)
+static void zid_set_attribute_confirm(nwk_enum_t status, uint8_t PairingRef,
+		zid_attribute_t ZIDAttribute,
+		uint8_t ZIDAttributeIndex)
 {
-   if(status == NWK_SUCCESS)
-   {
-       if(ZIDAttribute == aplHIDStdDescCompsList)
-       {
-          if(ZIDAttributeIndex >= (ZID_ATTRIBUTE_REQ_SIZE - 1))
-          {
-              set_attribute_index = 0;
-              LED_Off(ZID_APP_LED);
-              
+	if (status == NWK_SUCCESS) {
+		if (ZIDAttribute == aplHIDStdDescCompsList) {
+			if (ZIDAttributeIndex >= (ZID_ATTRIBUTE_REQ_SIZE - 1)) {
+				set_attribute_index = 0;
+				LED_Off(ZID_APP_LED);
 
-              node_status = CONNECTING;
+				node_status = CONNECTING;
 
-              dev_type_t OrgDevTypeList[1];;
-              profile_id_t OrgProfileIdList[1];
-              profile_id_t DiscProfileIdList[1];
+				dev_type_t OrgDevTypeList[1];
+				profile_id_t OrgProfileIdList[1];
+				profile_id_t DiscProfileIdList[1];
 
-              OrgDevTypeList[0] = DEV_TYPE_REMOTE_CONTROL;
-              OrgProfileIdList[0] = PROFILE_ID_ZID;
-              DiscProfileIdList[0] = PROFILE_ID_ZID;
+				OrgDevTypeList[0] = DEV_TYPE_REMOTE_CONTROL;
+				OrgProfileIdList[0] = PROFILE_ID_ZID;
+				DiscProfileIdList[0] = PROFILE_ID_ZID;
 
-              zid_org_connect_request(APP_CAPABILITIES, OrgDevTypeList, OrgProfileIdList,
-                                   DEV_TYPE_WILDCARD, NUM_SUPPORTED_PROFILES, DiscProfileIdList
+				zid_org_connect_request(APP_CAPABILITIES,
+						OrgDevTypeList,
+						OrgProfileIdList,
+						DEV_TYPE_WILDCARD,
+						NUM_SUPPORTED_PROFILES, DiscProfileIdList
 #ifdef RF4CE_CALLBACK_PARAM
-                                    ,(FUNC_PTR)zid_connect_confirm
+						, (FUNC_PTR)zid_connect_confirm
 #endif
-                                     );
-          }
-          else
-          {
-              set_attribute_index++;
-          }
-       }
-   }
-   else
-   {
-        if(node_status == COLD_START)
-		{
-			app_alert();
+						);
+			} else {
+				set_attribute_index++;
+			}
 		}
-		else
-		{
-		  indicate_fault_behavior();
-		  /* Reset the network and start again */
-		  /* Warm start */
+	} else {
+		if (node_status == COLD_START) {
+			app_alert();
+		} else {
+			indicate_fault_behavior();
+			/* Reset the network and start again */
+			/* Warm start */
 			node_status = WARM_START;
 			nlme_reset_request(false
 #ifdef RF4CE_CALLBACK_PARAM
-                          ,(FUNC_PTR)nlme_reset_confirm
+					, (FUNC_PTR)nlme_reset_confirm
 #endif
-                           );
+					);
 		}
-   }
-   PairingRef = PairingRef;
-   ZIDAttribute = ZIDAttribute;
-   ZIDAttributeIndex =ZIDAttributeIndex;
+	}
+
+	PairingRef = PairingRef;
+	ZIDAttribute = ZIDAttribute;
+	ZIDAttributeIndex = ZIDAttributeIndex;
 }
+
 /**
  * @brief Push button pairing confirm; target and controller use
  *
@@ -477,48 +468,42 @@ static
 #endif
 void zid_connect_confirm(nwk_enum_t Status, uint8_t PairingRef)
 {
-    if (Status != NWK_SUCCESS)
-    {
-        if(node_status == COLD_START)
-		{
+	if (Status != NWK_SUCCESS) {
+		if (node_status == COLD_START) {
 			app_alert();
-		}
-		else
-		{
-		  indicate_fault_behavior();
-		  /* Reset the network and start again */
-		  /* Warm start */
+		} else {
+			indicate_fault_behavior();
+			/* Reset the network and start again */
+			/* Warm start */
 			node_status = WARM_START;
 			nlme_reset_request(false
 #ifdef RF4CE_CALLBACK_PARAM
-                          ,(FUNC_PTR)nlme_reset_confirm
+					, (FUNC_PTR)nlme_reset_confirm
 #endif
-                           );
+					);
 		}
-    }
+	}
 
-    pairing_ref = PairingRef;
+	pairing_ref = PairingRef;
 
-    /* Set power save mode */
+	/* Set power save mode */
 
-    if (node_status == CONNECTING)
-    {
-        node_status = IDLE;
-        zid_state = ZID_STATE_IDLE;
+	if (node_status == CONNECTING) {
+		node_status = IDLE;
+		zid_state = ZID_STATE_IDLE;
 
-        /* LED handling */
-        LED_On(ZID_APP_LED);
-        delay_ms(1000);
-        LED_Off(ZID_APP_LED);
-    }
-
+		/* LED handling */
+		LED_On(ZID_APP_LED);
+		delay_ms(1000);
+		LED_Off(ZID_APP_LED);
+	}
 }
 
 /**
  * @brief heart beat confirm; target and controller use
  *
  * The heart beat confirm is a callback that provides the status of the
- * ZID Adaptor. HID class device can periodically check in with the HID 
+ * ZID Adaptor. HID class device can periodically check in with the HID
  * adaptor to give it the opportunity to send a message back
  *
  * @param Status        Status of the heartbeat command
@@ -526,17 +511,17 @@ void zid_connect_confirm(nwk_enum_t Status, uint8_t PairingRef)
  */
 void zid_heartbeat_confirm(nwk_enum_t Status, uint8_t PairingRef)
 {
-    /* Keep compiler happy. */
-    Status = Status;
-    PairingRef = PairingRef;
+	/* Keep compiler happy. */
+	Status = Status;
+	PairingRef = PairingRef;
 }
 
 /**
- * @brief ZID Report Data indication used to know if the adaptor sends 
+ * @brief ZID Report Data indication used to know if the adaptor sends
  *        any output report to the ZID Device.
  *
  * @param PairingRef    PairingRef contains assigned pairing reference.
- * @param num_report_records total no of reports in the report data 
+ * @param num_report_records total no of reports in the report data
  * @param zid_report_data_record_ptr pointer to the report data
  * @param RxLinkQuality Link Quality of the received report
  * @param RxFlags Flags for the Received frame
@@ -545,17 +530,18 @@ void zid_heartbeat_confirm(nwk_enum_t Status, uint8_t PairingRef)
 static
 #endif
 void zid_report_data_indication(uint8_t PairingRef, uint8_t num_report_records,
-                                                zid_report_data_record_t *zid_report_data_record_ptr, 
-												uint8_t RxLinkQuality, uint8_t RxFlags)
+		zid_report_data_record_t *zid_report_data_record_ptr,
+		uint8_t RxLinkQuality, uint8_t RxFlags)
 {
-    PairingRef = PairingRef;
-    num_report_records = num_report_records;
-    zid_report_data_record_ptr = zid_report_data_record_ptr;
-    RxLinkQuality = RxLinkQuality;
-    RxFlags = RxFlags;
+	PairingRef = PairingRef;
+	num_report_records = num_report_records;
+	zid_report_data_record_ptr = zid_report_data_record_ptr;
+	RxLinkQuality = RxLinkQuality;
+	RxFlags = RxFlags;
 }
+
 /**
- * @brief The NLME-RX-ENABLE.confirm primitive reports the results of 
+ * @brief The NLME-RX-ENABLE.confirm primitive reports the results of
  *        the attempt to enable or disable the receiver.
  *
  * @param Status Status of the nlme_rx_enable_req
@@ -565,140 +551,136 @@ static
 #endif
 void app_nlme_rx_enable_confirm(nwk_enum_t Status)
 {
-    if (Status != NWK_SUCCESS)
-    {
-        if(node_status == COLD_START)
-		{
-			while (1)
-			{
-			  indicate_fault_behavior();
+	if (Status != NWK_SUCCESS) {
+		if (node_status == COLD_START) {
+			while (1) {
+				indicate_fault_behavior();
 			}
-		}
-		else
-		{
-		  indicate_fault_behavior();
-		  /* Reset the network and start again */
-		  /* Warm start */
+		} else {
+			indicate_fault_behavior();
+			/* Reset the network and start again */
+			/* Warm start */
 			node_status = WARM_START;
 			nlme_reset_request(false
 #ifdef RF4CE_CALLBACK_PARAM
-                          ,(FUNC_PTR)nlme_reset_confirm
+					, (FUNC_PTR)nlme_reset_confirm
 #endif
-                           );
+					);
 		}
-    }
+	}
 
-    if (node_status == COLD_START)
-    {
-        node_status = IDLE;
+	if (node_status == COLD_START) {
+		node_status = IDLE;
 
-        /* LED handling */
-        LED_On(ZID_APP_LED);
-        delay_ms(1000);
-        LED_Off(ZID_APP_LED);
-    }
-    else if (node_status == WARM_START)
-    {
-        node_status = IDLE;		
-         LED_On(ZID_APP_LED);
-         delay_ms(250);
-         LED_Off(ZID_APP_LED);
-    }
+		/* LED handling */
+		LED_On(ZID_APP_LED);
+		delay_ms(1000);
+		LED_Off(ZID_APP_LED);
+	} else if (node_status == WARM_START) {
+		node_status = IDLE;
+		LED_On(ZID_APP_LED);
+		delay_ms(250);
+		LED_Off(ZID_APP_LED);
+	}
 }
-
-
-
 
 /**
  * @brief Application task and state machine
  */
 static void app_task(void)
 {
-    switch (node_status)
-    {
-        case IDLE:
-            {                
-                static uint32_t current_time;
-                static uint32_t previous_button_time;
-                uint8_t num_records = 1;
-                           
-                if (Touch_measurement(&b_event, &b_state))
-                {                  
+	switch (node_status) {
+	case IDLE:
+	{
+		static uint32_t current_time;
+		static uint32_t previous_button_time;
+		uint8_t num_records = 1;
 
-                    current_time= sw_timer_get_time();
-                    if ((current_time - previous_button_time) < INTER_FRAME_DURATION_US)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        /* Store current time */
-                        previous_button_time = current_time;
-                    }              
+		if (Touch_measurement(&b_event, &b_state)) {
+			current_time = sw_timer_get_time();
+			if ((current_time - previous_button_time) <
+					INTER_FRAME_DURATION_US) {
+				return;
+			} else {
+				/* Store current time */
+				previous_button_time = current_time;
+			}
 
-                    
-                    if(key_mapping_media[b_state] != LAST_BUTTON_INDEX)
-                    {
-                      zid_report_data_record_t zid_report_data[2];
-                      uint8_t report_data_buffer[80];
-                      uint8_t *msg_ptr = &report_data_buffer[0];
+			if (key_mapping_media[b_state] != LAST_BUTTON_INDEX) {
+				zid_report_data_record_t zid_report_data[2];
+				uint8_t report_data_buffer[80];
+				uint8_t *msg_ptr = &report_data_buffer[0];
 
-                      zid_report_data[0].report_type = INPUT;
-                      zid_report_data[0].report_desc_identifier = KEYBOARD;
-                      zid_report_data[0].report_data = (void *)msg_ptr;
-                      
-                      keyboard_input_desc_t *keyboard_input_desc;
-                      keyboard_input_desc = (keyboard_input_desc_t *)msg_ptr;
+				zid_report_data[0].report_type = INPUT;
+				zid_report_data[0].report_desc_identifier
+					= KEYBOARD;
+				zid_report_data[0].report_data
+					= (void *)msg_ptr;
 
-                      keyboard_input_desc->modifier_keys = 0x00;
-                      keyboard_input_desc->key_code[0] = 0x00;
-                      keyboard_input_desc->key_code[1] = 0x00;
-                      keyboard_input_desc->key_code[2] = 0x00;
-                      keyboard_input_desc->key_code[3] = 0x00;
-                      keyboard_input_desc->key_code[4] = (uint8_t)key_mapping_media[b_state];
-                      keyboard_input_desc->key_code[5] = (uint8_t)(key_mapping_media[b_state] >> 8);
-                      num_records = 1;
-                      
-                      if (zid_report_data_request(pairing_ref,num_records, zid_report_data, TX_OPTIONS
+				keyboard_input_desc_t *keyboard_input_desc;
+				keyboard_input_desc
+					= (keyboard_input_desc_t *)msg_ptr;
+
+				keyboard_input_desc->modifier_keys = 0x00;
+				keyboard_input_desc->key_code[0] = 0x00;
+				keyboard_input_desc->key_code[1] = 0x00;
+				keyboard_input_desc->key_code[2] = 0x00;
+				keyboard_input_desc->key_code[3] = 0x00;
+				keyboard_input_desc->key_code[4]
+					= (uint8_t)key_mapping_media
+						[b_state];
+				keyboard_input_desc->key_code[5]
+					= (uint8_t)(key_mapping_media
+						[b_state] >> 8);
+				num_records = 1;
+
+				if (zid_report_data_request(pairing_ref,
+						num_records,
+						zid_report_data,
+						TX_OPTIONS
   #ifdef RF4CE_CALLBACK_PARAM
-                                                ,(FUNC_PTR)zid_report_data_confirm
+						, (FUNC_PTR)
+						zid_report_data_confirm
   #endif
-                        ))
+						)) {
+					node_status = TRANSMITTING;
+				}
+			}
+		} else {
+			if (nwk_stack_idle()) {
+				/* Set MCU to sleep */
+				/* Configure the wakeup source and sleep */
+				/* MCU is awake again */
+			}
+		}
+	}
+	break;
 
-                      {
-                          node_status = TRANSMITTING;
-                      }
-                    }
-                }
-                else
-                {
-                    if (nwk_stack_idle())
-                    {
-                        /* Set MCU to sleep */
-                        /* Configure the wakeup source and sleep */
-                        /* MCU is awake again */
-                    }
-                }
-            }
-            break;
-        case CONFIGURING_ATTRIBUTES:
-          {
-			   /* Configure the attributes */
-               uint8_t value[ZID_ATTRIBUTE_REQ_SIZE]= {MOUSE,KEYBOARD,CONTACT_DATA,TAP_GESTURE,SCROLL_GESTURE,PINCH_GESTURE,ROTATE_GESTURE,SYNC,TOUCH_SENSOR_PROPERTIES,TAP_SUPPORT_PROPERTIES};
-               zid_set_attribute_request(0xFF, aplHIDStdDescCompsList, set_attribute_index, &value[set_attribute_index]
+	case CONFIGURING_ATTRIBUTES:
+	{
+		/* Configure the attributes */
+		uint8_t value[ZID_ATTRIBUTE_REQ_SIZE]
+			= {MOUSE, KEYBOARD, CONTACT_DATA,
+			   TAP_GESTURE, SCROLL_GESTURE,
+			   PINCH_GESTURE, ROTATE_GESTURE,
+			   SYNC, TOUCH_SENSOR_PROPERTIES,
+			   TAP_SUPPORT_PROPERTIES};
+		zid_set_attribute_request(0xFF, aplHIDStdDescCompsList,
+				set_attribute_index,
+				&value[set_attribute_index]
 #ifdef RF4CE_CALLBACK_PARAM
-                               , (FUNC_PTR) zid_set_attribute_confirm
+				, (FUNC_PTR)zid_set_attribute_confirm
 #endif
-                              );
-          }
+				);
+	}
 
-        default:
-            break;
-    }
+	default:
+		break;
+	}
 }
 
 /**
- * @brief zid_report_data_confirm is call back of zid_report_data_request 
+ * @brief zid_report_data_confirm is call back of zid_report_data_request
  *        which gives the status of the report data request
  *
  * @param Status Status of the zid_report_data_request
@@ -709,32 +691,26 @@ static
 #endif
 void zid_report_data_confirm(nwk_enum_t Status, uint8_t PairingRef)
 {
-    node_status = IDLE;
+	node_status = IDLE;
 
-    if(report_id < 2)
-    {
-      report_id++;
-    }
-    else
-    {
-       report_id = 0;
-    }
+	if (report_id < 2) {
+		report_id++;
+	} else {
+		report_id = 0;
+	}
 
-    if (Status == NWK_SUCCESS)
-    {
-        LED_Off(ZID_APP_LED);
-    }
-    else
-    {
-        indicate_fault_behavior();
-    }
+	if (Status == NWK_SUCCESS) {
+		LED_Off(ZID_APP_LED);
+	} else {
+		indicate_fault_behavior();
+	}
 
-    /* Keep compiler happy. */
-    PairingRef = PairingRef;
+	/* Keep compiler happy. */
+	PairingRef = PairingRef;
 }
 
 /**
- * @brief zid_data_confirm is call back of zid_data_request 
+ * @brief zid_data_confirm is call back of zid_data_request
  *        which gives the status of the data request
  *
  * @param Status Status of the zid_data_request
@@ -745,26 +721,24 @@ static
 #endif
 void zid_data_confirm(nwk_enum_t Status, uint8_t PairingRef)
 {
-    node_status = IDLE;
+	node_status = IDLE;
 
-    if (Status == NWK_SUCCESS)
-    {
-        LED_Off(ZID_APP_LED);
-    }
-    else
-    {
-        indicate_fault_behavior();
-    }
+	if (Status == NWK_SUCCESS) {
+		LED_Off(ZID_APP_LED);
+	} else {
+		indicate_fault_behavior();
+	}
 
-    /* Keep compiler happy. */
-    PairingRef = PairingRef;
+	/* Keep compiler happy. */
+	PairingRef = PairingRef;
 }
 
 /**
  * @brief zid_data_confirm is call back to the application layer.
- *        HID adaptor shall create a get report command frame and transmit 
- *        it to the appropriate HID class device. On receipt of the 
- *        corresponding report data  command frame, the HID adaptor shall pass the
+ *        HID adaptor shall create a get report command frame and transmit
+ *        it to the appropriate HID class device. On receipt of the
+ *        corresponding report data  command frame, the HID adaptor shall pass
+ *the
  *        report to the HID class driver.
  *
  * @param zid_report_type Report type
@@ -773,42 +747,42 @@ void zid_data_confirm(nwk_enum_t Status, uint8_t PairingRef)
  * @param RxLinkQuality Received frame link quality
  * @param RxFlags Received frame RxFlags
  */
-static void zid_get_report_indication(uint8_t PairingRef, zid_report_types_t zid_report_type, zid_report_desc_t zid_report_desc,
-                                                uint8_t RxLinkQuality, uint8_t RxFlags)
+static void zid_get_report_indication(uint8_t PairingRef,
+		zid_report_types_t zid_report_type,
+		zid_report_desc_t zid_report_desc,
+		uint8_t RxLinkQuality, uint8_t RxFlags)
 {
-    PairingRef = PairingRef;
-    RxLinkQuality = RxLinkQuality;
-    zid_report_type = zid_report_type;
-    zid_report_desc = zid_report_desc;
-    RxFlags = RxFlags;
-    /* zid_report_data_request should be used to respond to this indication */
-    /* num_report_data_records will be one */
-    mouse_desc_t mouse_desc;
-    zid_report_data_record_t zid_report_data;
-    zid_report_data.report_type = INPUT;
-    zid_report_data.report_desc_identifier = MOUSE;
-    zid_report_data.report_data = (void *)&mouse_desc;
-    mouse_desc.button0 = true;
-    mouse_desc.button1 = true;
-    mouse_desc.button2 = true;
-    mouse_desc.x_coordinate = 0x11;
-    mouse_desc.y_coordinate = 0x22;
-    if(node_status == IDLE)
-    {
-        if (zid_report_data_request(pairing_ref,1, &zid_report_data, TX_OPTIONS
+	PairingRef = PairingRef;
+	RxLinkQuality = RxLinkQuality;
+	zid_report_type = zid_report_type;
+	zid_report_desc = zid_report_desc;
+	RxFlags = RxFlags;
+	/* zid_report_data_request should be used to respond to this indication
+	 **/
+	/* num_report_data_records will be one */
+	mouse_desc_t mouse_desc;
+	zid_report_data_record_t zid_report_data;
+	zid_report_data.report_type = INPUT;
+	zid_report_data.report_desc_identifier = MOUSE;
+	zid_report_data.report_data = (void *)&mouse_desc;
+	mouse_desc.button0 = true;
+	mouse_desc.button1 = true;
+	mouse_desc.button2 = true;
+	mouse_desc.x_coordinate = 0x11;
+	mouse_desc.y_coordinate = 0x22;
+	if (node_status == IDLE) {
+		if (zid_report_data_request(pairing_ref, 1, &zid_report_data,
+				TX_OPTIONS
 #ifdef RF4CE_CALLBACK_PARAM
-                                              ,(FUNC_PTR)zid_data_confirm
+				, (FUNC_PTR)zid_data_confirm
 #endif
-                                      ))
-
-        {
-                        node_status = TRANSMITTING;
-        }
-
-    }
+				)) {
+			node_status = TRANSMITTING;
+		}
+	}
 }
- 
- /**
+
+/**
  * @brief nlde_data_confirm The NLDE-DATA.confirm primitive is generated by the
  *        NWK layer entity in response to an NLDE-DATA.request primitive.
  *
@@ -816,64 +790,63 @@ static void zid_get_report_indication(uint8_t PairingRef, zid_report_types_t zid
  * @param PairingRef PairingRef for the current transaction
  * @param ProfileId ProfileId used for the current transaction
  */
-void nlde_data_confirm(nwk_enum_t Status, uint8_t PairingRef, profile_id_t ProfileId)
+void nlde_data_confirm(nwk_enum_t Status, uint8_t PairingRef,
+		profile_id_t ProfileId)
 {
-    node_status = IDLE;
+	node_status = IDLE;
 
-    if (Status == NWK_SUCCESS)
-    {
-         LED_Off(ZID_APP_LED);
-    }
-    else
-    {
-        indicate_fault_behavior();
-    }
+	if (Status == NWK_SUCCESS) {
+		LED_Off(ZID_APP_LED);
+	} else {
+		indicate_fault_behavior();
+	}
 
-    /* Keep compiler happy. */
-    PairingRef = PairingRef;
-    ProfileId = ProfileId;
+	/* Keep compiler happy. */
+	PairingRef = PairingRef;
+	ProfileId = ProfileId;
 }
 
- /**
+/**
  * @brief nlde_data_confirm The NLDE-DATA.confirm primitive is generated by the
  *        NWK layer entity in response to an NLDE-DATA.request primitive.
  *
  * @param PairingRef PairingRef for the current transaction
  * @param payload_length payload length
  * @param payload payload to check the adaptor compatibility
- * @return bool true or false 
+ * @return bool true or false
  */
-bool check_zid_adaptor_compatibility(uint8_t PairingRef,uint8_t payload_length, uint8_t *payload)
+bool check_zid_adaptor_compatibility(uint8_t PairingRef, uint8_t payload_length,
+		uint8_t *payload)
 {
-    /* 
-     * Application need to find out the compatibility with the adaptor
-     * It needs to extract the adaptor attributes from the following payloas
-     * Payload format is as per the GET_ATTRIBUTES_RESPONSE packet format excluding the header
-     * payload[0] = attr_id...........
-     *
-     */
-    PairingRef = PairingRef;
-    payload_length = payload_length;
-    payload = payload;
-    return true;
-
+	/*
+	 * Application need to find out the compatibility with the adaptor
+	 * It needs to extract the adaptor attributes from the following payloas
+	 * Payload format is as per the GET_ATTRIBUTES_RESPONSE packet format
+	 *excluding the header
+	 * payload[0] = attr_id...........
+	 *
+	 */
+	PairingRef = PairingRef;
+	payload_length = payload_length;
+	payload = payload;
+	return true;
 }
+
 /* --- Helper functions ---------------------------------------------------- */
+
 /**
  * @brief Indicating malfunction
  */
 static void indicate_fault_behavior(void)
 {
-    uint8_t i;
+	uint8_t i;
 
-    for (i = 0; i < 10; i++)
-    {
-          LED_On(ZID_APP_LED);
-          delay_ms(250);
-          LED_Off(ZID_APP_LED);
-		  delay_ms(250);
-        
-    }
+	for (i = 0; i < 10; i++) {
+		LED_On(ZID_APP_LED);
+		delay_ms(250);
+		LED_Off(ZID_APP_LED);
+		delay_ms(250);
+	}
 }
 
 /**
@@ -881,10 +854,10 @@ static void indicate_fault_behavior(void)
  */
 void vendor_app_alive_req(void)
 {
-    /* Variant to demonstrate FOTA featue */
-    LED_On(ZID_APP_LED);
-    delay_ms(500);
-    LED_Off(ZID_APP_LED);
+	/* Variant to demonstrate FOTA featue */
+	LED_On(ZID_APP_LED);
+	delay_ms(500);
+	LED_Off(ZID_APP_LED);
 	delay_ms(500);
 }
 
@@ -893,8 +866,7 @@ void vendor_app_alive_req(void)
  */
 static void app_alert(void)
 {
-    while (1)
-    {
+	while (1) {
 		#if LED_COUNT > 0
 		LED_Toggle(LED0);
 		#endif
@@ -927,8 +899,7 @@ static void app_alert(void)
 		LED_Toggle(LED7);
 		#endif
 		delay_ms(300);
-    }
+	}
 }
-
 
 /* EOF */

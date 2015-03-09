@@ -3,7 +3,7 @@
  *
  * @brief File contains TAL configuration parameters.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,7 +42,7 @@
  */
 
 /*
- * Copyright (c) 2013, Atmel Corporation All rights reserved.
+ * Copyright (c) 2013-2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
@@ -57,16 +57,17 @@
 
 /* === EXTERNALS =========================================================== */
 
-
 /* === MACROS ============================================================== */
 
-#define TAL_RADIO_WAKEUP_TIME_SYM       (TAL_CONVERT_US_TO_SYMBOLS(SLEEP_TO_TRX_OFF_TYP_US))
+#define TAL_RADIO_WAKEUP_TIME_SYM       (TAL_CONVERT_US_TO_SYMBOLS( \
+	SLEEP_TO_TRX_OFF_TYP_US))
 
 #ifndef ANTENNA_DEFAULT
 #define ANTENNA_DEFAULT                 (ANT_CTRL_2)
 #endif
 
 #ifdef ENABLE_FTN_PLL_CALIBRATION
+
 /*
  * PLL calibration and filter tuning timer timeout in minutes
  */
@@ -75,7 +76,8 @@
 /*
  * PLL calibration and filter tuning timer timeout in us,
  */
-#define TAL_CALIBRATION_TIMEOUT_US          ((TAL_CALIBRATION_TIMEOUT_MIN) * (60UL) * (1000UL) * (1000UL))
+#define TAL_CALIBRATION_TIMEOUT_US          ((TAL_CALIBRATION_TIMEOUT_MIN) * \
+	(60UL) * (1000UL) * (1000UL))
 #endif  /* ENABLE_FTN_PLL_CALIBRATION */
 
 /* === TYPES =============================================================== */
@@ -85,6 +87,5 @@
 #endif  /* ENABLE_QUEUE_CAPACITY */
 
 /* === PROTOTYPES ========================================================== */
-
 
 #endif /* TAL_CONFIG_H */

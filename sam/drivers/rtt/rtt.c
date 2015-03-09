@@ -3,7 +3,7 @@
  *
  * \brief Real-time Timer (RTT) driver for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -63,10 +63,10 @@ extern "C" {
  */
 
 /*
- * In SAM4 series chip, the bit RTC1HZ and RTTDIS in RTT_MR are write only.
+ * In follow series chip, the bit RTC1HZ and RTTDIS in RTT_MR are write only.
  * So we use a variable to record status of these bits.
  */
-#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG || SAM4CP)
+#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG51 || SAM4CP || SAM4CM)
 static uint32_t g_wobits_in_rtt_mr = 0;
 #endif
 
@@ -84,7 +84,7 @@ static uint32_t g_wobits_in_rtt_mr = 0;
  */
 uint32_t rtt_init(Rtt *p_rtt, uint16_t us_prescaler)
 {
-#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG || SAM4CP)
+#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG51 || SAM4CP || SAM4CM)
 	p_rtt->RTT_MR = (us_prescaler | RTT_MR_RTTRST | g_wobits_in_rtt_mr);
 #else
 	p_rtt->RTT_MR = (us_prescaler | RTT_MR_RTTRST);
@@ -92,7 +92,7 @@ uint32_t rtt_init(Rtt *p_rtt, uint16_t us_prescaler)
 	return 0;
 }
 
-#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG || SAM4CP)
+#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG51 || SAM4CP || SAM4CM)
 /**
  * \brief Select RTT counter source.
  *
@@ -130,6 +130,29 @@ void rtt_disable(Rtt *p_rtt)
 	g_wobits_in_rtt_mr |= RTT_MR_RTTDIS;
 	p_rtt->RTT_MR |= g_wobits_in_rtt_mr;
 }
+#elif (SAMG53 || SAMG54)
+void rtt_sel_source(Rtt *p_rtt, bool is_rtc_sel)
+{
+	if(is_rtc_sel) {
+		p_rtt->RTT_MR |= RTT_MR_RTC1HZ;
+	} else {
+		p_rtt->RTT_MR &= ~RTT_MR_RTC1HZ;
+	}
+}
+
+void rtt_enable(Rtt *p_rtt)
+{
+	p_rtt->RTT_MR &= ~RTT_MR_RTTDIS;
+}
+/**
+ * \brief Disable RTT.
+ *
+ * \param p_rtt Pointer to an RTT instance.
+ */
+void rtt_disable(Rtt *p_rtt)
+{
+	p_rtt->RTT_MR |= RTT_MR_RTTDIS;
+}
 #endif
 
 /**
@@ -144,7 +167,7 @@ void rtt_enable_interrupt(Rtt *p_rtt, uint32_t ul_sources)
 
 	temp = p_rtt->RTT_MR;
 	temp |= ul_sources;
-#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG || SAM4CP)
+#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG51 || SAM4CP || SAM4CM)
 	temp |= g_wobits_in_rtt_mr;
 #endif
 	p_rtt->RTT_MR = temp;
@@ -162,7 +185,7 @@ void rtt_disable_interrupt(Rtt *p_rtt, uint32_t ul_sources)
 
 	temp = p_rtt->RTT_MR;
 	temp &= (~ul_sources);
-#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG || SAM4CP)
+#if (SAM4N || SAM4S || SAM4E || SAM4C || SAMG51 || SAM4CP || SAM4CM)
 	temp |= g_wobits_in_rtt_mr;
 #endif
 	p_rtt->RTT_MR = temp;

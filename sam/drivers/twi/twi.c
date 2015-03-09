@@ -3,7 +3,7 @@
  *
  * \brief Two-Wire Interface (TWI) driver for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -82,10 +82,8 @@ extern "C" {
 
 #if SAM4E
 #define TWI_WP_KEY_VALUE TWI_WPROT_MODE_SECURITY_CODE((uint32_t)0x545749)
-#elif (SAM4C || SAM4CP)
+#elif (SAM4C || SAM4CP || SAMG || SAM4CM)
 #define TWI_WP_KEY_VALUE TWI_WPMR_WPKEY_PASSWD
-#elif SAMG
-#define TWI_WP_KEY_VALUE TWI_WPROT_MODE_WPKEY_PASSWD
 #endif
 
 /**
@@ -618,7 +616,7 @@ Pdc *twi_get_pdc_base(Twi *p_twi)
 	return p_pdc_base;
 }
 
-#if (SAM4E || SAM4C || SAMG || SAM4CP)
+#if (SAM4E || SAM4C || SAMG || SAM4CP || SAM4CM)
 /**
  * \brief Enables/Disables write protection mode.
  *
@@ -627,7 +625,7 @@ Pdc *twi_get_pdc_base(Twi *p_twi)
  */
 void twi_set_write_protection(Twi *p_twi, bool flag)
 {
-#if (SAM4E || SAMG)
+#if (SAM4E)
 	p_twi->TWI_WPROT_MODE = TWI_WP_KEY_VALUE |
 		(flag ? TWI_WPROT_MODE_WPROT : 0);
 #else
@@ -643,7 +641,7 @@ void twi_set_write_protection(Twi *p_twi, bool flag)
  */
 void twi_read_write_protection_status(Twi *p_twi, uint32_t *p_status)
 {
-#if (SAM4E || SAMG)
+#if (SAM4E)
 	*p_status = p_twi->TWI_WPROT_STATUS;
 #else
 	*p_status = p_twi->TWI_WPSR;

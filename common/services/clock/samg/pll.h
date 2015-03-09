@@ -3,7 +3,7 @@
  *
  * \brief Chip-specific PLL definitions.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -60,7 +60,13 @@ extern "C" {
  */
 
 #define PLL_OUTPUT_MIN_HZ   24000000
+#if (SAMG51 || SAMG53)
 #define PLL_OUTPUT_MAX_HZ   48000000
+#endif
+
+#if (SAMG54)
+#define PLL_OUTPUT_MAX_HZ   96000000
+#endif
 
 #define PLL_INPUT_HZ    32000
 
@@ -100,8 +106,8 @@ static inline void pll_config_init(struct pll_config *p_cfg,
 	vco_hz = osc_get_rate(e_src) / ul_div;
 
 	vco_hz *= ul_mul;
-	Assert(vco_hz >= PLL_OUTPUT_MIN_HZ);
-	Assert(vco_hz <= PLL_OUTPUT_MAX_HZ);
+	Assert(vco_hz >= (PLL_OUTPUT_MIN_HZ - (PLL_OUTPUT_MIN_HZ >> 6)));
+	Assert(vco_hz <= (PLL_OUTPUT_MAX_HZ + (PLL_OUTPUT_MAX_HZ >> 6)));
 
 	/* PMC hardware will automatically make it mul+1 */
 	p_cfg->ctrl = CKGR_PLLAR_MULA(ul_mul - 1) | CKGR_PLLAR_PLLAEN(ul_div) | CKGR_PLLAR_PLLACOUNT(PLL_COUNT);

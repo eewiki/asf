@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 TCC - Timer Counter for Control Applications Callback Driver Quick Start (with Recoverable Fault)
+ * \brief SAM D21/R21 TCC - Timer Counter for Control Applications Callback Driver Quick Start (with Recoverable Fault)
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -71,7 +71,9 @@ static void tcc_callback_to_change_duty_cycle(
 	delay = 10;
 	i = (i + 0x0800) & 0xFFFF;
 	tcc_set_compare_value(module_inst,
-			TCC_MATCH_CAPTURE_CHANNEL_0 + CONF_PWM_CHANNEL, i + 1);
+			(enum tcc_match_capture_channel)
+					(TCC_MATCH_CAPTURE_CHANNEL_0 + CONF_PWM_CHANNEL),
+			i + 1);
 }
 //! [callback_funcs]
 
@@ -130,12 +132,12 @@ static void configure_tcc_callbacks(void)
 	tcc_register_callback(
 			&tcc_instance,
 			tcc_callback_to_change_duty_cycle,
-			TCC_CALLBACK_CHANNEL_0 + CONF_PWM_CHANNEL);
+			(enum tcc_callback)(TCC_CALLBACK_CHANNEL_0 + CONF_PWM_CHANNEL));
 	//! [setup_register_callback]
 
 	//! [setup_enable_callback]
 	tcc_enable_callback(&tcc_instance,
-			TCC_CALLBACK_CHANNEL_0 + CONF_PWM_CHANNEL);
+			(enum tcc_callback)(TCC_CALLBACK_CHANNEL_0 + CONF_PWM_CHANNEL));
 	//! [setup_enable_callback]
 }
 //! [setup]

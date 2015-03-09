@@ -41,7 +41,7 @@
  */
 
 #ifndef CONF_SIO2HOST_H_INCLUDED
-#define CONF_SIO2HOST_H_INCLUDED 
+#define CONF_SIO2HOST_H_INCLUDED
  #define SERIAL_RX_BUF_SIZE_HOST    156
 
 #warning \
@@ -91,7 +91,7 @@
 
 /* ! \name Configuration for SAM4L */
 /* ! @{ */
-#if (SAM && !SAMD20)
+#if (SAM && !(SAMD || SAMR21))
 #define USART_HOST                 USART0
 /* / ** Baudrate setting * / */
 #define USART_HOST_BAUDRATE        9600
@@ -113,15 +113,15 @@
 
 /* ! \name Configuration for SAMD20 */
 /* ! @{ */
-#if (SAMD20)
+#if (SAMD || SAMR21)
 #define USART_HOST                 SERCOM0
 /** Baudrate setting */
 #define USART_HOST_BAUDRATE        9600
 
-#define USART_HOST_RX_ISR_ENABLE()  _sercom_set_handler(0, USART_HOST_ISR_VECT);\
-USART_HOST->USART.INTENSET.reg = SERCOM_USART_INTFLAG_RXC;\
-system_interrupt_enable(SYSTEM_INTERRUPT_MODULE_SERCOM0);
-#endif /* SAMD20 */
+#define USART_HOST_RX_ISR_ENABLE()  _sercom_set_handler(0, USART_HOST_ISR_VECT); \
+	USART_HOST->USART.INTENSET.reg = SERCOM_USART_INTFLAG_RXC; \
+	system_interrupt_enable(SYSTEM_INTERRUPT_MODULE_SERCOM0);
+#endif /* SAMD || SAMR21 */
 
 /* ! @} */
 #endif /* CONF_SIO2HOST_H_INCLUDED */

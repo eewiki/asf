@@ -63,30 +63,31 @@
 #include "tal_internal.h"
 #endif
 
-#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006) || (defined GTS_SUPPORT))
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006) || \
+	(defined GTS_SUPPORT))
 #include "mac_msg_types.h"
 #endif
 
 /* === Macros =============================================================== */
 
 #ifdef GTS_DEBUG
-// #define DEBUG_PIN1 IOPORT_CREATE_PIN(PORTE, 6)
-// #define DEBUG_PIN2 IOPORT_CREATE_PIN(PORTD, 4)
-// #define DEBUG_PIN3 IOPORT_CREATE_PIN(PORTD, 1)
-// #define DEBUG_PIN4 IOPORT_CREATE_PIN(PORTD, 0)
-// #define DEBUG_PIN5 IOPORT_CREATE_PIN(PORTD, 6)
-// #define DEBUG_PIN6 IOPORT_CREATE_PIN(PORTB, 2)
-// #define DEBUG_PIN7 IOPORT_CREATE_PIN(PORTB, 3)
-// #define DEBUG_PIN8 IOPORT_CREATE_PIN(PORTB, 1)
-// #define DEBUG_PIN9 IOPORT_CREATE_PIN(PORTE, 5)
-// #define DEBUG_PIN10 IOPORT_CREATE_PIN(PORTG, 0)
-// #define DEBUG_PIN11 IOPORT_CREATE_PIN(PORTD, 7)
-// #define DEBUG_PIN12 IOPORT_CREATE_PIN(PORTG, 2)
-// #define DEBUG_PIN13 IOPORT_CREATE_PIN(PORTE, 7)
-// #define DEBUG_PIN14 IOPORT_CREATE_PIN(PORTD, 5)
-// #define DEBUG_PIN15 IOPORT_CREATE_PIN(PORTE, 2)//
-// #define DEBUG_PIN16 IOPORT_CREATE_PIN(PORTE, 3)//
-// #define DEBUG_PIN17 IOPORT_CREATE_PIN(PORTB, 7)
+/* #define DEBUG_PIN1 IOPORT_CREATE_PIN(PORTE, 6) */
+/* #define DEBUG_PIN2 IOPORT_CREATE_PIN(PORTD, 4) */
+/* #define DEBUG_PIN3 IOPORT_CREATE_PIN(PORTD, 1) */
+/* #define DEBUG_PIN4 IOPORT_CREATE_PIN(PORTD, 0) */
+/* #define DEBUG_PIN5 IOPORT_CREATE_PIN(PORTD, 6) */
+/* #define DEBUG_PIN6 IOPORT_CREATE_PIN(PORTB, 2) */
+/* #define DEBUG_PIN7 IOPORT_CREATE_PIN(PORTB, 3) */
+/* #define DEBUG_PIN8 IOPORT_CREATE_PIN(PORTB, 1) */
+/* #define DEBUG_PIN9 IOPORT_CREATE_PIN(PORTE, 5) */
+/* #define DEBUG_PIN10 IOPORT_CREATE_PIN(PORTG, 0) */
+/* #define DEBUG_PIN11 IOPORT_CREATE_PIN(PORTD, 7) */
+/* #define DEBUG_PIN12 IOPORT_CREATE_PIN(PORTG, 2) */
+/* #define DEBUG_PIN13 IOPORT_CREATE_PIN(PORTE, 7) */
+/* #define DEBUG_PIN14 IOPORT_CREATE_PIN(PORTD, 5) */
+/* #define DEBUG_PIN15 IOPORT_CREATE_PIN(PORTE, 2)// */
+/* #define DEBUG_PIN16 IOPORT_CREATE_PIN(PORTE, 3)// */
+/* #define DEBUG_PIN17 IOPORT_CREATE_PIN(PORTB, 7) */
 
 #define DEBUG_PIN1 EXT1_PIN_3
 #define DEBUG_PIN2 EXT1_PIN_4
@@ -102,8 +103,8 @@
 #define DEBUG_PIN12 EXT1_PIN_14
 #define DEBUG_PIN13 EXT1_PIN_15
 #define DEBUG_PIN14 EXT1_PIN_16
-#define DEBUG_PIN15 EXT1_PIN_17//
-#define DEBUG_PIN16 EXT1_PIN_18//
+#define DEBUG_PIN15 EXT1_PIN_17 /*  */
+#define DEBUG_PIN16 EXT1_PIN_18 /*  */
 #define DEBUG_PIN17 EXT3_PIN_5
 
 #define GTS_DEBUG_SLOT_PIN  0
@@ -177,7 +178,7 @@
 #define PANC_SLOT            (1)
 
 /* !!! Warning !!!
- Do not change the index, mapping for update is done based on this...*/
+ * Do not change the index, mapping for update is done based on this...*/
 #define DEV_TX_SLOT_INDEX    (GTS_TX_SLOT)
 #define DEV_RX_SLOT_INDEX    (GTS_RX_SLOT)
 #define PAN_TX_SLOT_INDEX    ((PANC_SLOT << 1) | GTS_TX_SLOT)
@@ -227,8 +228,9 @@ typedef enum mac_superframe_state_tag {
 	 */
 	MAC_ACTIVE_CAP = 0,
 #ifdef GTS_SUPPORT
+
 	/* Warning!!! Do not change the order
-	   of below GTS state definitions */
+	 * of below GTS state definitions */
 #ifdef FFD
 	MAC_ACTIVE_CFP_GTS1,
 	MAC_ACTIVE_CFP_GTS2,
@@ -272,7 +274,7 @@ typedef enum mac_poll_state_tag {
 
 	/**
 	 * Implicit poll ongoing (more pending data detected, either in beacon
-	 *or
+	 * or
 	 * data frame),
 	 * awaiting data response, */
 	MAC_POLL_IMPLICIT
@@ -311,12 +313,11 @@ typedef enum mac_sync_state_tag {
 
 	/**
 	 * Track beacons continuously before beeing associated in order to
-	 *obtain
+	 * obtain
 	 * synchronization with desired network
 	 */
 	MAC_SYNC_BEFORE_ASSOC
 } SHORTENUM mac_sync_state_t;
-
 
 /**
  * MAC sleep state type.
@@ -348,7 +349,7 @@ typedef struct mac_pib_tag {
 
 	/**
 	 * Holds the maximum time (in superframe periods) that a indirect
-	 *transaction
+	 * transaction
 	 * is stored by a PAN coordinator.
 	 */
 	uint16_t mac_TransactionPersistenceTime;
@@ -356,9 +357,9 @@ typedef struct mac_pib_tag {
 
 	/**
 	 * Holds the 16 bit short address of the coordinator with which the
-	 *device is
+	 * device is
 	 * associated. A value of 0xfffe indicates that the coordinator is only
-	 *using
+	 * using
 	 * its 64 bit extended address. A value of 0xffff indicates that this
 	 * value is unknown.
 	 */
@@ -368,15 +369,15 @@ typedef struct mac_pib_tag {
 
 	/**
 	 * The maximum number of CAP symbols in a beaconenabled PAN, or symbols
-	 *in a
+	 * in a
 	 * nonbeacon-enabled PAN, to wait either for a frame intended as a
-	 *response to
+	 * response to
 	 * a data request frame or for a broadcast frame following a beacon with
-	 *the
+	 * the
 	 * Frame Pending subfield set to one.
 	 * This attribute, which shall only be set by the next higher layer, is
 	 * dependent upon macMinBE, macMaxBE, macMaxCSMABackoffs and the number
-	 *of
+	 * of
 	 * symbols per octet. See 7.4.2 for the formula relating the attributes.
 	 * Maximum values:
 	 * O-QPSK (2.4 GHz and 900 MHz for Channel page 2): 25766
@@ -387,7 +388,7 @@ typedef struct mac_pib_tag {
 	 * macMaxCSMABackoffs = 5
 	 *
 	 * This PIB attribute is only used if basic indirect data transmission
-	 *is used
+	 * is used
 	 * or if beacon enabled network is enabled.
 	 */
 	uint16_t mac_MaxFrameTotalWaitTime;
@@ -395,7 +396,7 @@ typedef struct mac_pib_tag {
 
 	/**
 	 * The maximum time, in multiples of aBaseSuperframeDuration, a device
-	 *shall
+	 * shall
 	 * wait for a response command frame to be available following a request
 	 * command frame.
 	 */
@@ -405,7 +406,7 @@ typedef struct mac_pib_tag {
 
 	/**
 	 * Holds the value which states whether a coordinator is currently
-	 *allowing
+	 * allowing
 	 * association. A value of true indicates that association is permitted.
 	 */
 	uint8_t mac_AssociationPermit;
@@ -432,9 +433,9 @@ typedef struct mac_pib_tag {
 
 	/**
 	 * Indication of whether the device is associated to the PAN through the
-	 *PAN
+	 * PAN
 	 * coordinator. A value of TRUE indicates the device has associated
-	 *through the
+	 * through the
 	 * PAN coordinator. Otherwise, the value is set to FALSE.
 	 */
 	uint8_t mac_AssociatedPANCoord;
@@ -442,18 +443,18 @@ typedef struct mac_pib_tag {
 
 	/**
 	 * Holds the value which states whether a device automatically sends a
-	 *data
+	 * data
 	 * request command if its address is listed in the beacon frame. A value
-	 *of true
+	 * of true
 	 * indicates that the data request command is automatically sent.
 	 */
 	uint8_t mac_AutoRequest;
 
 	/**
 	 * Holds the value which states the number of backoff periods during
-	 *which the
+	 * which the
 	 * receiver is enabled following a beacon in battery life extension
-	 *mode.
+	 * mode.
 	 * This value is dependent on the currently selected logical channel.
 	 */
 	uint8_t mac_BattLifeExtPeriods;
@@ -465,16 +466,16 @@ typedef struct mac_pib_tag {
 
 	/**
 	 * Holds the value which states whether the MAC sublayer is to enable
-	 *its
+	 * its
 	 * receiver during idle periods.
 	 */
 	bool mac_RxOnWhenIdle;
 
 	/**
 	 * Indication of whether the MAC sublayer has security enabled. A value
-	 *of
+	 * of
 	 * TRUE indicates that security is enabled, while a value of FALSE
-	 *indicates
+	 * indicates
 	 * that security is disabled.
 	 */
 	bool mac_SecurityEnabled;
@@ -484,21 +485,21 @@ typedef struct mac_pib_tag {
 
 	/**
 	 * Holds the private MAC PIB attribute to generate a frame with an
-	 *illegale
+	 * illegale
 	 * frame type.
 	 */
 	uint8_t privateIllegalFrameType;
 
 	/**
 	 * Holds the private MAC PIB attribute which suppresses the initiation
-	 *of a
+	 * of a
 	 * data request frame after association request.
 	 */
 	uint8_t privateNoDataAfterAssocReq;
 
 	/**
 	 * Holds the private MAC PIB attribute to pretend virtual Beacon-enabled
-	 *PANs.
+	 * PANs.
 	 */
 	uint8_t privateVirtualPANs;
 #endif /* TEST_HARNESS */
@@ -510,7 +511,6 @@ __PACK__RST_DATA__
 /* Global data variables */
 extern uint8_t *mac_conf_buf_ptr;
 
- 
 #ifdef BEACON_SUPPORT
 extern uint8_t mac_final_cap_slot;
 extern bool mac_bc_data_indicated;
@@ -704,7 +704,6 @@ void mac_process_orphan_notification(buffer_t *buf_ptr);
 
 void mac_process_tal_data_ind(uint8_t *msg);
 
-
 void mac_sleep_trans(void);
 
 #if ((MAC_SCAN_ACTIVE_REQUEST_CONFIRM == 1) || \
@@ -773,7 +772,6 @@ void mac_t_tracking_beacons_cb(void *callback_parameter);
 
 void dispatch_event(uint8_t *event);
 
-
 retval_t set_tal_pib_internal(uint8_t attribute, pib_value_t *attribute_value);
 
 #if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
@@ -787,11 +785,13 @@ retval_t mac_unsecure(parse_t *mac_parse_data_buf, uint8_t *mpdu,
 #endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 #ifdef GTS_SUPPORT
-void mac_gen_mlme_gts_conf(buffer_t *buf_ptr, uint8_t status, gts_char_t gts_char);
+void mac_gen_mlme_gts_conf(buffer_t *buf_ptr, uint8_t status,
+		gts_char_t gts_char);
 void mac_process_gts_request(buffer_t *gts_req);
 uint8_t mac_add_gts_info(uint8_t *frame_ptr);
 void mac_gts_table_update(void);
-void mac_parse_bcn_gts_info(uint8_t gts_count, uint8_t gts_dir, mac_gts_list_t *gts_list_ptr);
+void mac_parse_bcn_gts_info(uint8_t gts_count, uint8_t gts_dir,
+		mac_gts_list_t *gts_list_ptr);
 void handle_gts_data_req(mcps_data_req_t *data_req, uint8_t *msg);
 void reset_gts_globals(void);
 void mac_t_gts_cb(void *callback_parameter);
@@ -801,6 +801,7 @@ void handle_gts_data_tx_end(void);
 void flush_gts_queues(void);
 void reset_gts_expiry(mac_pan_gts_mgmt_t *mac_pan_gts_entry);
 void handle_gts_sync_loss(void);
+
 #endif /* GTS_SUPPORT */
 #if (MAC_INDIRECT_DATA_FFD == 1)
 

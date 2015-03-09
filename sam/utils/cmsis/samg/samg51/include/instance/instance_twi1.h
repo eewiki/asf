@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -56,8 +56,8 @@
   #define REG_TWI1_IMR                   (0x4001C02CU) /**< \brief (TWI1) Interrupt Mask Register */
   #define REG_TWI1_RHR                   (0x4001C030U) /**< \brief (TWI1) Receive Holding Register */
   #define REG_TWI1_THR                   (0x4001C034U) /**< \brief (TWI1) Transmit Holding Register */
-  #define REG_TWI1_WPMR                  (0x4001C0E4U) /**< \brief (TWI1) Protection Mode Register */
-  #define REG_TWI1_WPSR                  (0x4001C0E8U) /**< \brief (TWI1) Protection Status Register */
+  #define REG_TWI1_WPMR                  (0x4001C0E4U) /**< \brief (TWI1) Write Protection Mode Register */
+  #define REG_TWI1_WPSR                  (0x4001C0E8U) /**< \brief (TWI1) Write Protection Status Register */
   #define REG_TWI1_RPR                   (0x4001C100U) /**< \brief (TWI1) Receive Pointer Register */
   #define REG_TWI1_RCR                   (0x4001C104U) /**< \brief (TWI1) Receive Counter Register */
   #define REG_TWI1_TPR                   (0x4001C108U) /**< \brief (TWI1) Transmit Pointer Register */
@@ -80,8 +80,8 @@
   #define REG_TWI1_IMR  (*(__I  uint32_t*)0x4001C02CU) /**< \brief (TWI1) Interrupt Mask Register */
   #define REG_TWI1_RHR  (*(__I  uint32_t*)0x4001C030U) /**< \brief (TWI1) Receive Holding Register */
   #define REG_TWI1_THR  (*(__O  uint32_t*)0x4001C034U) /**< \brief (TWI1) Transmit Holding Register */
-  #define REG_TWI1_WPMR (*(__IO uint32_t*)0x4001C0E4U) /**< \brief (TWI1) Protection Mode Register */
-  #define REG_TWI1_WPSR (*(__I  uint32_t*)0x4001C0E8U) /**< \brief (TWI1) Protection Status Register */
+  #define REG_TWI1_WPMR (*(__IO uint32_t*)0x4001C0E4U) /**< \brief (TWI1) Write Protection Mode Register */
+  #define REG_TWI1_WPSR (*(__I  uint32_t*)0x4001C0E8U) /**< \brief (TWI1) Write Protection Status Register */
   #define REG_TWI1_RPR  (*(__IO uint32_t*)0x4001C100U) /**< \brief (TWI1) Receive Pointer Register */
   #define REG_TWI1_RCR  (*(__IO uint32_t*)0x4001C104U) /**< \brief (TWI1) Receive Counter Register */
   #define REG_TWI1_TPR  (*(__IO uint32_t*)0x4001C108U) /**< \brief (TWI1) Transmit Pointer Register */

@@ -1,9 +1,9 @@
 /**
- * @file 
+ * @file
  *
- * @brief 
+ * @brief
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -52,7 +52,8 @@
 
 /* === MACROS ============================================================== */
 
-#define TAL_RADIO_WAKEUP_TIME_SYM       (TAL_CONVERT_US_TO_SYMBOLS(SLEEP_TO_TRX_OFF_TYP_US))
+#define TAL_RADIO_WAKEUP_TIME_SYM       (TAL_CONVERT_US_TO_SYMBOLS( \
+	SLEEP_TO_TRX_OFF_TYP_US))
 #define TAL_FIRST_TIMER_ID              (0)
 
 #ifndef ANTENNA_DEFAULT
@@ -60,6 +61,7 @@
 #endif
 
 #ifdef ENABLE_FTN_PLL_CALIBRATION
+
 /*
  * PLL calibration and filter tuning timer timeout in minutes
  */
@@ -68,37 +70,35 @@
 /*
  * PLL calibration and filter tuning timer timeout in us,
  */
-#define TAL_CALIBRATION_TIMEOUT_US          ((TAL_CALIBRATION_TIMEOUT_MIN) * (60UL) * (1000UL) * (1000UL))
+#define TAL_CALIBRATION_TIMEOUT_US          ((TAL_CALIBRATION_TIMEOUT_MIN) * \
+	(60UL) * (1000UL) * (1000UL))
 #endif  /* ENABLE_FTN_PLL_CALIBRATION */
 
 /* === TYPES =============================================================== */
 
 /* Timer ID's used by TAL */
 #ifdef BEACON_SUPPORT
-// Beacon Support
+/* Beacon Support */
 #ifdef ENABLE_FTN_PLL_CALIBRATION
-typedef enum tal_timer_id_tag
-{
-    TAL_CSMA_CCA                    = (TAL_FIRST_TIMER_ID),
-    TAL_CSMA_BEACON_LOSS_TIMER      = (TAL_FIRST_TIMER_ID + 1),
-    TAL_CALIBRATION                 = (TAL_FIRST_TIMER_ID + 2)
+typedef enum tal_timer_id_tag {
+	TAL_CSMA_CCA                    = (TAL_FIRST_TIMER_ID),
+	TAL_CSMA_BEACON_LOSS_TIMER      = (TAL_FIRST_TIMER_ID + 1),
+	TAL_CALIBRATION                 = (TAL_FIRST_TIMER_ID + 2)
 } SHORTENUM tal_timer_id_t;
 
 #define NUMBER_OF_TAL_TIMERS        (3)
 #else
-typedef enum tal_timer_id_tag
-{
-    TAL_CSMA_CCA                    = (TAL_FIRST_TIMER_ID),
-    TAL_CSMA_BEACON_LOSS_TIMER      = (TAL_FIRST_TIMER_ID + 1)
+typedef enum tal_timer_id_tag {
+	TAL_CSMA_CCA                    = (TAL_FIRST_TIMER_ID),
+	TAL_CSMA_BEACON_LOSS_TIMER      = (TAL_FIRST_TIMER_ID + 1)
 } SHORTENUM tal_timer_id_t;
 
 #define NUMBER_OF_TAL_TIMERS        (2)
 #endif  /* ENABLE_FTN_PLL_CALIBRATION */
 #else /* No BEACON_SUPPORT */
 #ifdef ENABLE_FTN_PLL_CALIBRATION
-typedef enum tal_timer_id_tag
-{
-    TAL_CALIBRATION                 = (TAL_FIRST_TIMER_ID)
+typedef enum tal_timer_id_tag {
+	TAL_CALIBRATION                 = (TAL_FIRST_TIMER_ID)
 } SHORTENUM tal_timer_id_t;
 
 #define NUMBER_OF_TAL_TIMERS        (1)
@@ -108,7 +108,13 @@ typedef enum tal_timer_id_tag
 #endif  /* BEACON_SUPPORT */
 
 #if (NUMBER_OF_TAL_TIMERS > 0)
-#define TAL_LAST_TIMER_ID    (TAL_FIRST_TIMER_ID + NUMBER_OF_TAL_TIMERS - 1) // -1: timer id starts with 0
+#define TAL_LAST_TIMER_ID    (TAL_FIRST_TIMER_ID + NUMBER_OF_TAL_TIMERS - 1) /*
+	                                                                      * -1:
+	                                                                      * timer
+	                                                                      * id
+	                                                                      * starts
+	                                                                      * with
+	                                                                      * 0 */
 #else
 #define TAL_LAST_TIMER_ID    (TAL_FIRST_TIMER_ID)
 #endif
@@ -118,6 +124,5 @@ typedef enum tal_timer_id_tag
 #endif  /* ENABLE_QUEUE_CAPACITY */
 
 /* === PROTOTYPES ========================================================== */
-
 
 #endif /* TAL_CONFIG_H */

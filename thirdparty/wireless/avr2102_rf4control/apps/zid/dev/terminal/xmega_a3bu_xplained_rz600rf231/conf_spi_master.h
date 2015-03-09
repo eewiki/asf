@@ -40,6 +40,7 @@
  * \asf_license_stop
  *
  */
+
 /*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
@@ -48,7 +49,6 @@
 #ifndef CONF_SPI_MASTER_H_INCLUDED
 #define CONF_SPI_MASTER_H_INCLUDED
 
-
-#define AT86RFX_SPI_BAUDRATE		3000000
+#define AT86RFX_SPI_BAUDRATE            3000000
 
 #endif /* CONF_SPI_MASTER_H_INCLUDED */

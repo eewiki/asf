@@ -67,140 +67,142 @@ NwkIb_t nwkIb;
 /*- Implementations --------------------------------------------------------*/
 
 /*************************************************************************//**
-  @brief Initializes all network layer modules
+*  @brief Initializes all network layer modules
 *****************************************************************************/
 void NWK_Init(void)
 {
-  nwkIb.nwkSeqNum = 0;
-  nwkIb.macSeqNum = 0;
-  nwkIb.addr = 0;
-  nwkIb.lock = 0;
+	nwkIb.nwkSeqNum = 0;
+	nwkIb.macSeqNum = 0;
+	nwkIb.addr = 0;
+	nwkIb.lock = 0;
 
-  for (uint8_t i = 0; i < NWK_ENDPOINTS_AMOUNT; i++)
-    nwkIb.endpoint[i] = NULL;
+	for (uint8_t i = 0; i < NWK_ENDPOINTS_AMOUNT; i++) {
+		nwkIb.endpoint[i] = NULL;
+	}
 
-  nwkTxInit();
-  nwkRxInit();
-  nwkFrameInit();
-  nwkDataReqInit();
+	nwkTxInit();
+	nwkRxInit();
+	nwkFrameInit();
+	nwkDataReqInit();
 
 #ifdef NWK_ENABLE_ROUTING
-  nwkRouteInit();
+	nwkRouteInit();
 #endif
 
 #ifdef NWK_ENABLE_SECURITY
-  nwkSecurityInit();
+	nwkSecurityInit();
 #endif
 
 #ifdef NWK_ENABLE_MULTICAST
-  nwkGroupInit();
+	nwkGroupInit();
 #endif
 
 #ifdef NWK_ENABLE_ROUTE_DISCOVERY
-  nwkRouteDiscoveryInit();
+	nwkRouteDiscoveryInit();
 #endif
 }
 
 /*************************************************************************//**
-  @brief Sets network address of the node
-  @param[in] addr Adddress to set
+*  @brief Sets network address of the node
+*  @param[in] addr Adddress to set
 *****************************************************************************/
 void NWK_SetAddr(uint16_t addr)
 {
-  nwkIb.addr = addr;
-  PHY_SetShortAddr(addr);
+	nwkIb.addr = addr;
+	PHY_SetShortAddr(addr);
 }
 
 /*************************************************************************//**
-  @brief Sets network identifier (PAN) of the node
-  @param[in] panId PAN ID to set
+*  @brief Sets network identifier (PAN) of the node
+*  @param[in] panId PAN ID to set
 *****************************************************************************/
 void NWK_SetPanId(uint16_t panId)
 {
-  nwkIb.panId = panId;
-  PHY_SetPanId(panId);
+	nwkIb.panId = panId;
+	PHY_SetPanId(panId);
 }
 
 /*************************************************************************//**
-  @brief Registers callback @a ind for the endpoint @a endpoint
-  @param[in] id Endpoint index (1-15)
-  @param[in] handler Pointer to the callback function
+*  @brief Registers callback @a ind for the endpoint @a endpoint
+*  @param[in] id Endpoint index (1-15)
+*  @param[in] handler Pointer to the callback function
 *****************************************************************************/
 void NWK_OpenEndpoint(uint8_t id, bool (*handler)(NWK_DataInd_t *ind))
 {
-  nwkIb.endpoint[id] = handler;
+	nwkIb.endpoint[id] = handler;
 }
 
 /*************************************************************************//**
-  @brief Checks if network layer is ready for sleep
-  @return @c true if network layer is ready for sleep or @c false otherwise
+*  @brief Checks if network layer is ready for sleep
+*  @return @c true if network layer is ready for sleep or @c false otherwise
 *****************************************************************************/
 bool NWK_Busy(void)
 {
-  return nwkIb.lock > 0;
+	return nwkIb.lock > 0;
 }
 
 /*************************************************************************//**
-  @brief Increases the lock counter and sets a busy state
+*  @brief Increases the lock counter and sets a busy state
 *****************************************************************************/
 void NWK_Lock(void)
 {
-  nwkIb.lock++;
+	nwkIb.lock++;
 }
 
 /*************************************************************************//**
-  @brief Decreases the lock counter and sets a free state if counter reaches 0
+*  @brief Decreases the lock counter and sets a free state if counter reaches 0
 *****************************************************************************/
 void NWK_Unlock(void)
 {
-  nwkIb.lock--;
+	nwkIb.lock--;
 }
 
 /*************************************************************************//**
-  @brief Puts network layer to a sleeping state
+*  @brief Puts network layer to a sleeping state
 *****************************************************************************/
 void NWK_SleepReq(void)
 {
-  PHY_Sleep();
+	PHY_Sleep();
 }
 
 /*************************************************************************//**
-  @brief Puts network layer to an active state
+*  @brief Puts network layer to an active state
 *****************************************************************************/
 void NWK_WakeupReq(void)
 {
-  PHY_Wakeup();
+	PHY_Wakeup();
 }
 
 /*************************************************************************//**
-  @brief Calculates linearized value for the given value of the LQI
-  @param[in] lqi LQI value as provided by the transceiver
-  @return linearized value directly proportional to the probability of delivery
+*  @brief Calculates linearized value for the given value of the LQI
+*  @param[in] lqi LQI value as provided by the transceiver
+*  @return linearized value directly proportional to the probability of delivery
 *****************************************************************************/
 uint8_t NWK_LinearizeLqi(uint8_t lqi)
 {
-  const uint8_t val[] = { 3, 8, 26, 64, 128, 190, 230, 247, 252 };
-  uint8_t cl = 25;
+	const uint8_t val[] = { 3, 8, 26, 64, 128, 190, 230, 247, 252 };
+	uint8_t cl = 25;
 
-  for (uint8_t i = 0; i < sizeof(val); i++)
-  {
-    if (lqi < cl)
-      return val[i];
-    cl += 25;
-  }
+	for (uint8_t i = 0; i < sizeof(val); i++) {
+		if (lqi < cl) {
+			return val[i];
+		}
 
-  return 255;
+		cl += 25;
+	}
+
+	return 255;
 }
 
 /*************************************************************************//**
-  @brief Network layer task handler
+*  @brief Network layer task handler
 *****************************************************************************/
 void NWK_TaskHandler(void)
 {
-  nwkRxTaskHandler();
-  nwkTxTaskHandler();
-  nwkDataReqTaskHandler();
+	nwkRxTaskHandler();
+	nwkTxTaskHandler();
+	nwkDataReqTaskHandler();
 #ifdef NWK_ENABLE_SECURITY
-  nwkSecurityTaskHandler();
+	nwkSecurityTaskHandler();
 #endif
 }

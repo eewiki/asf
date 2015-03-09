@@ -11,11 +11,10 @@
 		<build type="header-file"   value="inc/sysEncrypt.h"/>
 		<build type="header-file"   value="inc/sysTimer.h"/>
 		<build type="header-file"   value="inc/sysConfig.h"/>
-		<build type="header-file"   value="inc/sysTypes.h"/>
 		<build type="include-path"  value="inc/"/>
 		<require idref="thirdparty.wireless.common_services.trx_access"/>
 		<require idref="thirdparty.wireless.common_services.common_hw_timer"/>
-		<require idref="thirdparty.wireless.common_services.sleep_mgr"/>		
+        <require idref="thirdparty.wireless.common_services.sal"/>
 		<build type="doxygen-entry-point" value="group_lwmesh_sys"/>
 		<device-support-alias value="avr2130_lwmesh_support"/>
 	</module>
@@ -26,15 +25,18 @@
 	<device-support value="atmega2564rfr2"/>
 	<device-support value="atmega128rfa1"/>
 	<device-support value="atxmega256a3bu"/>
-	<device-support value="samd20"/>
-	<device-support value="sam4l"/>
+	<device-support value="sam0"/>
+	<device-support value="sam4e"/>
+	<device-support value="sam4s"/>	<device-support value="sam4l"/>
 </device-alias-map>	
 
 <device-alias-map name="avr2130_lwmesh_spi_support">
 	<device-support value="atxmega256a3u"/>
 	<device-support value="atxmega256a3bu"/>
-	<device-support value="samd20"/>
+	<device-support value="sam0"/>
 	<device-support value="sam4l"/>
+	<device-support value="sam4e"/>
+	<device-support value="sam4s"/>	
 </device-alias-map>	
 	
 </asf>

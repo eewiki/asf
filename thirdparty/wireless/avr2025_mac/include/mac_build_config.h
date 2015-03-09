@@ -4,7 +4,7 @@
  *
  * @brief This header file declares macros for various build configurations
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -163,7 +163,7 @@
 /**
  * FEATURE SET FOR BUILD WITH PURE NONBEACON ONLY NETWORK SUPPORT
  */
-#define MAC_GTS_REQUEST                        (0) 
+#define MAC_GTS_REQUEST                        (0)
 
 #endif /* BEACON_SUPPORT / No BEACON_SUPPORT */
 
@@ -240,7 +240,7 @@ extern "C" {
 
 /*
  * 2) If Association Response is used, also Indirect Data Tx Support is
- *required.
+ * required.
  */
 #if ((MAC_ASSOCIATION_INDICATION_RESPONSE == 1) && (MAC_INDIRECT_DATA_FFD == 0))
 #error  ("MAC_INDIRECT_DATA_FFD needs to be set to 1 in	\
@@ -266,7 +266,7 @@ extern "C" {
 
 /*
  * 5) If Disassociation is used as FFD (allow tx of indirect disassociation
- *frames),
+ * frames),
  *    also Indirect Data Rx Support is required.
  */
 #if ((MAC_DISASSOCIATION_FFD_SUPPORT == 1) && (MAC_INDIRECT_DATA_FFD == 0))
@@ -284,7 +284,7 @@ extern "C" {
 
 /*
  * 7) If Indirect Data Tx Support is used, also Indirect Data Rx Support is
- *required.
+ * required.
  */
 #if ((MAC_INDIRECT_DATA_FFD == 1) && (MAC_INDIRECT_DATA_BASIC == 0))
 #error  ("MAC_INDIRECT_DATA_BASIC needs to be set to 1 in \
@@ -293,7 +293,7 @@ extern "C" {
 
 /*
  * 8) If Disassociation is used as FFD (allow tx of indirect disassociation
- *frames),
+ * frames),
  *    also Disassociation as basic feature is required.
  */
 #if ((MAC_DISASSOCIATION_FFD_SUPPORT == 1) && (MAC_INDIRECT_DATA_BASIC == 0))
@@ -351,7 +351,8 @@ extern "C" {
 #endif
 
 #if (defined GTS_SUPPORT) && (!defined BEACON_SUPPORT)
-#error "GTS can be used along with Beacon mode only. Add BEACON_SUPPORT symbol..."
+#error \
+	"GTS can be used along with Beacon mode only. Add BEACON_SUPPORT symbol..."
 #endif /* (defined GTS_SUPPORT) && (!defined BEACON_SUPPORT) */
 
 #endif  /* BUILD_CONFIG_H */

@@ -146,8 +146,8 @@ static void configure_tc_trigger(void)
 	ioport_set_pin_mode(PIN_TC0_TIOA0, PIN_TC0_TIOA0_MUX);
 	ioport_disable_pin(PIN_TC0_TIOA0);
 
-	/* Configure TC for a 10Hz frequency and trigger on RC compare. */
-	tc_find_mck_divisor(10, ul_sysclk, &ul_div, &ul_tc_clks, ul_sysclk);
+	/* Configure TC for a 1Hz frequency and trigger on RC compare. */
+	tc_find_mck_divisor(1, ul_sysclk, &ul_div, &ul_tc_clks, ul_sysclk);
 	tc_init(TC0, 0, ul_tc_clks | TC_CMR_CPCTRG | TC_CMR_WAVE |
 			TC_CMR_ACPA_CLEAR | TC_CMR_ACPC_SET);
 	TC0->TC_CHANNEL[0].TC_RA = (ul_sysclk / ul_div) / 2;
@@ -163,9 +163,7 @@ static void configure_tc_trigger(void)
 static void display_menu(void)
 {
 	printf("\n\r-- press a key to select the resolution mode--\n\r"
-#if (SAM4N)
 	"-- a: Normal Resolution Mode, 8-bit --\n\r"
-#endif
 	"-- b: Normal Resolution Mode, 10-bit --\n\r"
 	"-- c: Enhanced Resolution Mode, 11-bit --\n\r"
 	"-- d: Enhanced Resolution Mode, 12-bit --\n\r");
@@ -186,7 +184,6 @@ static void set_adc_resolution(void)
 		}
 
 		switch (uc_key) {
-#if (SAM4N)
 		case 'a':
 			g_max_digital = MAX_DIGITAL_8_Bit;
 			adc_set_resolution(ADC, ADC_8_BITS);
@@ -194,7 +191,6 @@ static void set_adc_resolution(void)
 			uc_done = 1;
 			puts(" Quit Configuration \n\r");
 			break;
-#endif
 		case 'b':
 			g_max_digital = MAX_DIGITAL_10_BIT;
 			adc_set_resolution(ADC, ADC_10_BITS);

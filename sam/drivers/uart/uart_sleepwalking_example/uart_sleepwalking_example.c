@@ -141,15 +141,25 @@ static void uart_sleepwalking_test_active(void)
  */
 static void uart_sleepwalking_test_wait(void)
 {
+	uint16_t divisor = 0;
+
 	enum sleepmgr_mode current_sleep_mode = SLEEPMGR_WAIT;
 
-	puts("Test in wait mode, press any key to wake up.\r");
+	puts("Test in wait mode, press number '0' to '9' to wake up.\r");
 
 	/* Wait for the puts operation to finish. */
 	delay_ms(50);
 
+	/* The sleep manage will set the clock to 24MRC in wait mode,
+	 * reconfig the divisor */
+	divisor = OSC_MAINCK_24M_RC_HZ / CONF_UART_BAUDRATE / UART_MCK_DIV;
+	uart_set_clock_divisor(CONSOLE_UART, divisor);
+
+	/* Wait for the clock stable. */
+	delay_ms(5);
+
 	/* Set the wakeup condition */
-	uart_set_sleepwalking(CONSOLE_UART, 0x00, true, false, 0xFF);
+	uart_set_sleepwalking(CONSOLE_UART, '0', true, true, '9');
 
 	/* Enable the sleepwalking in PMC */
 	pmc_enable_sleepwalking(CONSOLE_UART_ID);
@@ -158,6 +168,13 @@ static void uart_sleepwalking_test_wait(void)
 	sleepmgr_init();
 	sleepmgr_lock_mode(current_sleep_mode);
 	sleepmgr_enter_sleep();
+
+	/* Config the divisor to the original setting */
+	divisor = (sysclk_get_peripheral_hz() / CONF_UART_BAUDRATE) / UART_MCK_DIV;
+	uart_set_clock_divisor(CONSOLE_UART, divisor);
+
+	/* Wait for the clock stable. */
+	delay_ms(5);
 
 	puts("A character is received, system wake up.\r\n\r");
 

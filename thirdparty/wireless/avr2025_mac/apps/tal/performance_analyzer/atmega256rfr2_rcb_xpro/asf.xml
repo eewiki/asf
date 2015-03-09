@@ -16,13 +16,8 @@
 		<require idref="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer"/>
 		<require idref="board.atmega256rfr2_rcb_xpro"/>
 		
-		<build type="define"   name="HIGHEST_STACK_LAYER"                 value="TAL"/>
-		<build type="define"   name="HIGH_DATA_RATE_SUPPORT"              value=""/>
-        <build type="define"   name="FFD"                                 value=""/>
-        <build type="define"   name="ENABLE_TFA"                          value=""/>
-        <build type="define"   name="TRX_REG_RAW_VALUE"                   value=""/>
 		<build type="define"   name="ANTENNA_DIVERSITY"                   value="1"/>
-		
+		<build type="define"   name="HIGH_DATA_RATE_SUPPORT"              value=""/>		
 		<generator value="avrgcc" />
 		<generator value="iarew"/>
 		<generator value="as5_8" />

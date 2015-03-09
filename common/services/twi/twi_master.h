@@ -47,7 +47,7 @@
 
 #if (SAM4L)
 # include "sam_twim/twi_master.h"
-#elif (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP)
+#elif (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP || SAM4CM)
 # include "sam_twi/twi_master.h"
 #elif XMEGA
 # include "xmega_twi/twi_master.h"

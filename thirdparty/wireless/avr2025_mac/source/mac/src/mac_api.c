@@ -4,7 +4,7 @@
  * @brief This file contains MAC API functions.
  *
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -127,7 +127,7 @@ retval_t wpan_init(void)
 
 bool wpan_task(void)
 {
-	bool event_processed; 	
+	bool event_processed;
 	uint8_t *event = NULL;
 
 	/* mac_task returns true if a request was processed completely */
@@ -158,15 +158,15 @@ bool wpan_task(void)
 
 #if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 bool wpan_mcps_data_req(uint8_t SrcAddrMode,
-                        wpan_addr_spec_t *DstAddrSpec,
-                        uint8_t msduLength,
-                        uint8_t *msdu,
-                        uint8_t msduHandle,
-                        uint8_t TxOptions,
-                        uint8_t SecurityLevel,
-                        uint8_t *KeySource,
-                        uint8_t KeyIdMode,
-                        uint8_t KeyIndex)
+		wpan_addr_spec_t *DstAddrSpec,
+		uint8_t msduLength,
+		uint8_t *msdu,
+		uint8_t msduHandle,
+		uint8_t TxOptions,
+		uint8_t SecurityLevel,
+		uint8_t *KeySource,
+		uint8_t KeyIdMode,
+		uint8_t KeyIndex)
 #else   /* No MAC_SECURITY */
 bool wpan_mcps_data_req(uint8_t SrcAddrMode,
 		wpan_addr_spec_t *DstAddrSpec,
@@ -194,8 +194,8 @@ bool wpan_mcps_data_req(uint8_t SrcAddrMode,
 	}
 
 	/* Get the buffer body from buffer header */
-	
-	mcps_data_req =  (mcps_data_req_t *)BMM_BUFFER_POINTER(buffer_header); 
+
+	mcps_data_req =  (mcps_data_req_t *)BMM_BUFFER_POINTER(buffer_header);
 
 	/* Construct mcps_data_req_t message */
 	mcps_data_req->cmdcode = MCPS_DATA_REQUEST;
@@ -227,10 +227,10 @@ bool wpan_mcps_data_req(uint8_t SrcAddrMode,
 	mcps_data_req->msduHandle = msduHandle;
 	mcps_data_req->TxOptions = TxOptions;
 #if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
-    mcps_data_req->SecurityLevel = SecurityLevel;
-    mcps_data_req->KeySource = KeySource;
-    mcps_data_req->KeyIdMode = KeyIdMode;
-    mcps_data_req->KeyIndex = KeyIndex;
+	mcps_data_req->SecurityLevel = SecurityLevel;
+	mcps_data_req->KeySource = KeySource;
+	mcps_data_req->KeyIdMode = KeyIdMode;
+	mcps_data_req->KeyIndex = KeyIndex;
 #endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 	mcps_data_req->msduLength = msduLength;
@@ -298,7 +298,7 @@ bool wpan_mcps_purge_req(uint8_t msduHandle)
 }
 
 #endif /* ((MAC_PURGE_REQUEST_CONFIRM == 1) && (MAC_INDIRECT_DATA_BASIC == 1))
-        **/
+       **/
 
 #if (MAC_ASSOCIATION_REQUEST_CONFIRM == 1)
 bool wpan_mlme_associate_req(uint8_t LogicalChannel,
@@ -584,7 +584,7 @@ bool wpan_mlme_get_req(uint8_t PIBAttribute)
 	mlme_get_req->cmdcode = MLME_GET_REQUEST;
 	mlme_get_req->PIBAttribute = PIBAttribute;
 #if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
-    mlme_get_req->PIBAttributeIndex = PIBAttributeIndex;
+	mlme_get_req->PIBAttributeIndex = PIBAttributeIndex;
 #endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 #ifdef ENABLE_QUEUE_CAPACITY
@@ -606,15 +606,13 @@ bool wpan_mlme_get_req(uint8_t PIBAttribute)
 
 #endif  /* (MAC_GET_SUPPORT == 1) */
 
-
-
 #if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 bool wpan_mlme_set_req(uint8_t PIBAttribute,
 		uint8_t PIBAttributeIndex,
 		void *PIBAttributeValue)
 #else
 bool wpan_mlme_set_req(uint8_t PIBAttribute,
-                       void *PIBAttributeValue)
+		void *PIBAttributeValue)
 #endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 {
 	buffer_t *buffer_header;
@@ -644,7 +642,7 @@ bool wpan_mlme_set_req(uint8_t PIBAttribute,
 	/* Attribute and attribute value length */
 	mlme_set_req->PIBAttribute = PIBAttribute;
 #if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
-    mlme_set_req->PIBAttributeIndex = PIBAttributeIndex;
+	mlme_set_req->PIBAttributeIndex = PIBAttributeIndex;
 #endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 	/* Attribute value */
@@ -656,7 +654,8 @@ bool wpan_mlme_set_req(uint8_t PIBAttribute,
 			(macBeaconTxTime == PIBAttribute)
 #if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 			||
-			(macFrameCounter == PIBAttribute) || (macDeviceTableEntries == PIBAttribute)			
+			(macFrameCounter == PIBAttribute) ||
+			(macDeviceTableEntries == PIBAttribute)
 #endif
 			) {
 		memcpy_be((void *)&(mlme_set_req->PIBAttributeValue),
@@ -793,15 +792,15 @@ bool wpan_mlme_start_req(uint16_t PANId,
 		bool BatteryLifeExtension,
 		bool CoordRealignment
 #ifdef MAC_SECURITY_BEACON
-		,uint8_t CoordRealignSecurityLevel,
+		, uint8_t CoordRealignSecurityLevel,
 		uint8_t CoordRealignKeyIdMode,
 		uint8_t *CoordRealignKeySource,
 		uint8_t CoordRealignKeyIndex,
 		uint8_t BeaconSecurityLevel,
 		uint8_t BeaconKeyIdMode,
 		uint8_t *BeaconKeySource,
-		uint8_t BeaconKeyIndex	
-#endif			
+		uint8_t BeaconKeyIndex
+#endif
 		)
 {
 	buffer_t *buffer_header;
@@ -833,7 +832,7 @@ bool wpan_mlme_start_req(uint16_t PANId,
 	mlme_start_req->BatteryLifeExtension = BatteryLifeExtension;
 	mlme_start_req->CoordRealignment = CoordRealignment;
 	mlme_start_req->ChannelPage = ChannelPage;
-	
+
 #ifdef MAC_SECURITY_BEACON
 	mlme_start_req->CoordRealignSecurityLevel = CoordRealignSecurityLevel;
 	mlme_start_req->CoordRealignKeyIdMode = CoordRealignKeyIdMode;
@@ -962,7 +961,6 @@ bool wpan_mlme_poll_req(wpan_addr_spec_t *CoordAddrSpec)
 
 #endif /* (MAC_INDIRECT_DATA_BASIC == 1) */
 
-
 #if (MAC_GTS_REQUEST == 1)
 bool wpan_mlme_gts_req(uint16_t DevShortAddr, gts_char_t GtsChar)
 {
@@ -996,11 +994,14 @@ bool wpan_mlme_gts_req(uint16_t DevShortAddr, gts_char_t GtsChar)
 		bmm_buffer_free(buffer_header);
 		return false;
 	}
+
 #else
 	qmm_queue_append(&nhle_mac_q, buffer_header);
 #endif  /* ENABLE_QUEUE_CAPACITY */
 	return true;
+
 #endif /* GTS_SUPPORT */
 }
+
 #endif /* MAC_GTS_REQUEST */
 /* EOF */

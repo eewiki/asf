@@ -1,22 +1,16 @@
 <asf xmlversion="1.0">
-	<!-- +++++++++++++++++++++++++++++++++++++++++++++++MODULE+++++++++++++++++++++++++++++++++++++++++++++++. -->
+
 	<!-- **************************************************************************************************** -->
 	<module type="application" id="thirdparty.wireless.avr2130_lwmesh.apps.wsndemo" caption="WSN Demo">
 		<info type="description" value="summary">
 		The WSNDemo application implements a typical wireless sensor network scenario, in which one central node collects the data from a network of sensors and passes this data over a serial connection for further processing. In the case of the WSNDemo this processing is performed by the WSNMonitor PC application
 		</info>
-		<!-- +++++++++++++++++++++++++++++++++++++++++++++++BUILD+++++++++++++++++++++++++++++++++++++++++++++++. -->
-		<build type="c-source" value="wsndemo.c"/>
-		<build type="header-file"   value="config.h"/>
-		<require idref="thirdparty.wireless.addons.sio2host"/>
-		<build type="include-path"  value="./"/>
-		<build type="header-file" value="conf_trx_access.h"/>
-		<build type="include-path" value="."/>
+
+	    <require idref="thirdparty.wireless.avr2130_lwmesh.apps.wsndemo_module"/>
 		<build type="doxygen-entry-point" value="group_wsndemo"/>
+		<build type="c-source" value="main.c"/>
+		
 		<device-support-alias value="avr2130_lwmesh_support"/>
-		<!-- ++++++++++++++++++++++++++++++++++++++++++++++REQUIRE++++++++++++++++++++++++++++++++++++++++++++++. -->
-		<require idref="thirdparty.wireless.avr2130_lwmesh"/>
-		<build type="distribute" subtype="user-file" value="wsnmonitor_setup.exe"/>		
 		<!-- .................................................................................................... -->
 		<info type="keyword" value="technology">
 			<keyword value="Wireless"/>
@@ -25,4 +19,29 @@
 		<!-- **************************************************************************************************** -->
 		<info type="gui-flag" value="move-to-root"/>
 	</module>
+	
+	<module type="component" id="thirdparty.wireless.avr2130_lwmesh.apps.wsndemo_module" caption="LWMesh-WSNDemo Application">
+		<info type="description" value="summary">
+		The LWMEsh based WSNDemo application implements a typical wireless sensor network scenario, in which one central node collects the data from a network of sensors and passes this data over a serial connection for further processing. In the case of the WSNDemo this processing is performed by the WSNMonitor PC application
+		</info>
+		<!-- +++++++++++++++++++++++++++++++++++++++++++++++BUILD+++++++++++++++++++++++++++++++++++++++++++++++. -->
+		<build type="c-source" value="wsndemo.c"/>
+		<build type="c-source" value="commands.c"/>
+		<build type="header-file"   value="config.h"/>
+		<build type="header-file"   value="commands.h"/>
+		<build type="header-file"   value="wsndemo.h"/>		
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_wsndemo"/>
+		<build type="distribute" subtype="user-file" value="wsnmonitor_setup.exe"/>				
+		<device-support-alias value="avr2130_lwmesh_support"/>
+		<!-- ++++++++++++++++++++++++++++++++++++++++++++++REQUIRE++++++++++++++++++++++++++++++++++++++++++++++. -->
+		<require idref="thirdparty.wireless.common_services.sleep_mgr"/>
+		<require idref="thirdparty.wireless.addons.sio2host"/>				
+		<require idref="thirdparty.wireless.avr2130_lwmesh"/>		
+		<!-- .................................................................................................... -->
+		<info type="keyword" value="technology">
+			<keyword value="Wireless"/>
+			<keyword value="Communication"/>
+		</info>
+	</module>	
 </asf>

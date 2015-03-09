@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 I2C Slave Bootloader
+ * \brief SAM D20/D21/R21 I2C Slave Bootloader
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -42,7 +42,7 @@
  */
 
 /**
- * \mainpage SAM D20/D21 I2C Slave Bootloader
+ * \mainpage SAM D20/D21/R21 I2C Slave Bootloader
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -55,7 +55,7 @@
  */
 
 /**
- * \page appdoc_main SAM D20/D21 I2C Slave Bootloader
+ * \page appdoc_main SAM D20/D21/R21 I2C Slave Bootloader
  *
  * Overview:
  * - \ref appdoc_sam0_i2c_slave_bootloader_features
@@ -84,7 +84,7 @@
  * application flash section without the need of an external programmer, are of
  * great use in situations where the application has to be updated on the field.
  * The boot loader may use various interfaces like SPI, UART, TWI, Ethernet etc.
- * This application implements a I2C Slave bootloader for SAM D20/D21.
+ * This application implements a I2C Slave bootloader for SAM D20/D21/R21.
  *
  * \section appdoc_sam0_i2c_slave_bootloader_mem_org Program Memory Organization
  * This bootloader implementation consumes around 8000 bytes (approximately),
@@ -97,9 +97,11 @@
  * There are no prerequisites for this implementation
  *
  * \section appdoc_sam0_i2c_slave_bootloader_hw Hardware Setup
- * SAM D20/D21 in SAM D20/D21 Xplained Pro kit is used as the I2C Slave.
- * I2C master should be connected to PIN17 (PA14 - SDA) and PIN15 (PA15 - SCL)
+ * SAM D20/D21/R21 in SAM D20/D21/R21 Xplained Pro kit is used as the I2C Slave.
+ * I2C master should be connected to PIN11 (PA08 - SDA) and PIN12 (PA09 - SCL)
  * on External header 1 (EXT1) of SAM D20/D21 Xplained Pro.
+ * I2C master should be connected to PIN11 (PA16 - SDA) and PIN12 (PA17 - SCL)
+ * on External header 1 (EXT1) of SAM R21 Xplained Pro.
  * SW0 will be configured as BOOT_LOAD_PIN and LED0 will be used to
  * display the bootloader status. LED0 will be ON when the device is in
  * bootloader mode.

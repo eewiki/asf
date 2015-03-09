@@ -3,7 +3,7 @@
  *
  * \brief Supply Controller (SUPC) driver for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -63,7 +63,7 @@ extern "C" {
 #define SUPC_MR_KEY_PASSWD    SUPC_MR_KEY(0xA5U)
 #endif
 
-#if (SAM4C || SAM4CP)
+#if (SAM4C || SAM4CP || SAM4CM)
 /** Power Mode */
 enum slcdc_power_mode {
 	/** The internal supply source and the external supply source are both deselected. */
@@ -97,12 +97,16 @@ void supc_set_wakeup_inputs(Supc *p_supc, uint32_t ul_inputs,
 		uint32_t ul_transition);
 #endif
 uint32_t supc_get_status(Supc *p_supc);
-#if (SAM4C || SAM4CP)
+#if (SAM4C || SAM4CP || SAM4CM)
 void supc_enable_backup_power_on_reset(Supc *p_supc);
 void supc_disable_backup_power_on_reset(Supc *p_supc);
 enum slcdc_power_mode supc_get_slcd_power_mode(Supc *p_supc);
 void supc_set_slcd_power_mode(Supc *p_supc, enum slcdc_power_mode mode);
 void supc_set_slcd_vol(Supc *p_supc, uint32_t vol);
+#endif
+#if SAMG54
+void supc_set_regulator_trim_factory(Supc *p_supc);
+void supc_set_regulator_trim_user(Supc *p_supc, uint32_t value);
 #endif
 
 /// @cond 0

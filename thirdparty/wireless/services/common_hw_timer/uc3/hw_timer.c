@@ -169,7 +169,8 @@ uint8_t tmr_init(void)
 
 		.wavsel   = TC_WAVEFORM_SEL_UP_MODE,  /* Waveform selection: Up
 		                                       * mode without automatic
-		                                       * trigger on RC compare. */
+		                                       * trigger on RC compare.
+		                                       **/
 		.enetrg   = false,                    /* External event trigger
 		                                       * enable. */
 		.eevt     = TC_EXT_EVENT_SEL_TIOB_INPUT, /* External event
@@ -181,7 +182,8 @@ uint8_t tmr_init(void)
 		.cpcstop  = false,                    /* Counter clock stopped
 		                                       * with RC compare. */
 
-		.burst    = TC_BURST_NOT_GATED,       /* Burst signal selection. */
+		.burst    = TC_BURST_NOT_GATED,       /* Burst signal selection.
+		                                       **/
 		.clki     = TC_CLOCK_RISING_EDGE,     /* Clock inversion. */
 		.tcclks   = TC_CLOCK_SOURCE_TC2       /* Internal source clock
 		                                       * 3, connected to fPBA /
@@ -191,8 +193,9 @@ uint8_t tmr_init(void)
 	sysclk_enable_peripheral_clock(TIMER);
 	/* Initialize the timer/counter. */
 	tc_init_waveform(TIMER, &waveform_opt);
+
 	/* calculate how faster the timer with current clk freq compared to
-	 *timer with 1Mhz */
+	 * timer with 1Mhz */
 	timer_multiplier = sysclk_get_peripheral_bus_hz(TIMER) / DEF_1MHZ;
 	/* */
 	timer_multiplier = timer_multiplier >> 1;

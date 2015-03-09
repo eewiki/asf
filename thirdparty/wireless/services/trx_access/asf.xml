@@ -16,15 +16,14 @@
             <require idref="common.utils"/>
             <device-support-alias value="trx_access_spi_common_support"/>
 		</module>
+		
 
 		<module type="meta" id="thirdparty.wireless.common_services.trx_access#2"     caption="TRX access for SoC not Required">
             <info type="description" value="summary">
            The TRX Access Layer does not provide files for trx access for SOC's .It  includes  Other Basic ASF Drivers Required by Wireless Stack.
             </info>
 			<info type="gui-flag" value="hidden"/>
-            <require idref="common.services.delay"/>
-			<build type="module-config" subtype="required-header-file" value="conf_trx_access.h"/>
-			<build type="module-config" subtype="path" value="module_config"/>			
+			<require idref="common.services.delay"/>			
             <device-support-alias value="trx_access_soc_support"/>
 		</module>
 
@@ -46,8 +45,25 @@
             <require idref="sam0.utils"/>
             <device-support-alias value="trx_access_spi_sam0_support"/>
 		</module>
-    </select-by-device>
 
+        <module type="meta" id="thirdparty.wireless.common_services.trx_access#4"     caption=" SPI access for external transceivers">
+            <info type="description" value="summary">
+            The TRX Access Layer provides api's for communication between the transceiver and the ASF SPI Drivers and includes the Basic ASF Drivers Required by Wireless Stack.
+            </info>
+			<info type="gui-flag" value="hidden"/>
+            <build type="header-file"   value="trx_access.h"/>
+            <build type="c-source"      value="trx_access.c"/>
+			<build type="include-path"  value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_trx_access.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+            <require idref="common.services.delay"/>
+            <require idref="common.services.basic.spi_master"/>
+            <require idref="common.services.ioport"/>
+            <require idref="common.utils"/>
+			<require idref="sam.drivers.pio"/>
+            <device-support value="sam4e"/>
+		</module>		
+    </select-by-device>
 
 
     <device-alias-map name="trx_access_spi_common_support">
@@ -56,9 +72,10 @@
         <device-support value="atxmega256a3"/>
         <device-support value="uc3a3_a4"/>
 		<device-support value="sam4l"/>
+		<device-support value="sam4s"/>
     </device-alias-map>
 	<device-alias-map name="trx_access_spi_sam0_support">
-        <device-support value="samd20"/>
+        <device-support value="sam0"/>
     </device-alias-map>
     <device-alias-map name="trx_access_soc_support">
         <device-support value="atmega128rfa1"/>

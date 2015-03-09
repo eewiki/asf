@@ -114,7 +114,7 @@ enum aes_cfb_size {
 typedef enum aes_interrupt_source {
 	AES_INTERRUPT_DATA_READY = AES_IER_DATRDY,
 	AES_INTERRUPT_UNSPECIFIED_REGISTER_ACCESS = AES_IER_URAD,
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP || SAM4CM
 	AES_INTERRUPT_END_OF_RECEIVE_BUFFER = AES_IER_ENDRX,
 	AES_INTERRUPT_END_OF_TRANSMIT_BUFFER = AES_IER_ENDTX,
 	AES_INTERRUPT_RECEIVE_BUFFER_FULL = AES_IER_RXBUFF,
@@ -124,7 +124,7 @@ typedef enum aes_interrupt_source {
 
 #if SAM4E
 #define AES_INTERRUPT_SOURCE_NUM 2
-#elif SAM4C || SAM4CP
+#elif SAM4C || SAM4CP || SAM4CM
 #define AES_INTERRUPT_SOURCE_NUM 6
 #endif
 
@@ -255,7 +255,7 @@ void aes_write_input_data(Aes *const p_aes,
 void aes_read_output_data(Aes *const p_aes,
 		uint32_t *p_output_data_buffer);
 
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP || SAM4CM
 Pdc *aes_get_pdc_base(Aes *p_aes);
 
 /**

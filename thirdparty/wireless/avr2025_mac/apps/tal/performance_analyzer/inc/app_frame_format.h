@@ -4,7 +4,7 @@
  * \brief Defines various structure definitions, used to communicate with
  * Peer node over the air - Performance Analyzer application
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -142,7 +142,7 @@ typedef struct {
 
 /**
  * \brief Antenna Diversity set request frame structure to change the peer
- *node's
+ * node's
  * antenna diversity settings
  *
  */

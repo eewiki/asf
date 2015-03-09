@@ -10,6 +10,7 @@
 		<build type="c-source" value="example_spinctrl.c"/>
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 		<require idref="common2.services.gfx_mono.display"/>
 		<require idref="common2.services.gfx_mono.font"/>
 		<require idref="common2.services.gfx_mono.spinctrl"/>

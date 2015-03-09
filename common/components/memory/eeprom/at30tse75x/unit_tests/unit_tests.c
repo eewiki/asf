@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief AT30TSE75x Unit Tests.
+ * \brief AT30TS(E)75x Unit Tests.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -45,11 +45,11 @@
  * \mainpage
  *
  * \section intro Introduction
- * This is the unit test application for the AT30TSE75x driver.
+ * This is the unit test application for the AT30TS(E)75x driver.
  * It consists of test cases for the following functionality:
- * - AT30TSE75x data write
- * - AT30TSE75x data read
- * - AT30TSE75x temperature read
+ * - AT30TS(E)75x data write (if has EEPROM)
+ * - AT30TS(E)75x data read (if has EEPROM)
+ * - AT30TS(E)75x temperature read
  *
  * \section files Main Files
  * - \ref unit_tests.c
@@ -62,6 +62,8 @@
  * This example has been tested with the following setup:
  * - sam4n16c_sam4n_xplained_pro with I/O1 XPRO board connected to EXT1
  * - sam4c16c_sam4c_ek
+ * - sam4cmp_db
+ * - sam4cms_db
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers
@@ -101,14 +103,6 @@
 #include <string.h>
 #include "conf_test.h"
 
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-extern "C" {
-#endif
-/**INDENT-ON**/
-/// @endcond
-
 #define NB_PAGE 16
 #define NB_BYTE 16
 
@@ -117,7 +111,7 @@ uint8_t rx[NB_BYTE], tx[NB_BYTE];
 
 #if BOARD_USING_AT30TSE != AT30TS75
 /**
- * \brief AT30TSE75x write EEPROM test.
+ * \brief AT30TS(E)75x write EEPROM test.
  *
  * \param test Current test case.
  */
@@ -127,12 +121,12 @@ static void run_test_write_data(const struct test_case *test)
 	test_assert_true(test,
 			at30tse_eeprom_write(tx, NB_BYTE, 0,
 			(int)temp % NB_PAGE) == TWI_SUCCESS,
-			"Error: AT30TSE75x write failed\n\r");
+			"Error: AT30TS(E)75x write failed\n\r");
 	delay_ms(5);
 }
 
 /**
- * \brief AT30TSE75x read and comparison EEPROM test.
+ * \brief AT30TS(E)75x read and comparison EEPROM test.
  *
  * \param test Current test case.
  */
@@ -142,15 +136,15 @@ static void run_test_read_compare_data(const struct test_case *test)
 	test_assert_true(test,
 			at30tse_eeprom_read(rx, NB_BYTE, 0,
 			(int)temp % NB_PAGE) == TWI_SUCCESS,
-			"Error: AT30TSE75x read failed\n\r");
+			"Error: AT30TS(E)75x read failed\n\r");
 	test_assert_true(test,
 			!memcmp(tx, rx, NB_BYTE),
-			"Error: AT30TSE75x comparison failed\n\r");
+			"Error: AT30TS(E)75x comparison failed\n\r");
 }
 #endif
 
 /**
- * \brief AT30TSE75x read temperature test.
+ * \brief AT30TS(E)75x read temperature test.
  *
  * \param test Current test case.
  */
@@ -158,11 +152,11 @@ static void run_test_read_temperature(const struct test_case *test)
 {
 	test_assert_true(test,
 			(at30tse_read_temperature(&temp) == TWI_SUCCESS),
-			"Error: AT30TSE75x read temperature failed\n\r");
+			"Error: AT30TS(E)75x read temperature failed\n\r");
 }
 
 /**
- * \brief Application entry point for AT30TSE75x unit tests.
+ * \brief Application entry point for AT30TS(E)75x unit tests.
  *
  * \return Unused (ANSI-C compatibility).
  */
@@ -177,7 +171,7 @@ int main(void)
 
 	sysclk_init();
 	board_init();
-	/* Initialize AT30TSE75x */
+	/* Initialize AT30TS(E)75x */
 	at30tse_init();
 
 	stdio_serial_init(CONF_TEST_USART, &usart_serial_options);
@@ -214,11 +208,3 @@ int main(void)
 		/* Busy-wait forever */
 	}
 }
-
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-}
-#endif
-/**INDENT-ON**/
-/// @endcond

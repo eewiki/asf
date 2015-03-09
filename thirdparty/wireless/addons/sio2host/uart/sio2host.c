@@ -52,7 +52,7 @@
 /* === PROTOTYPES ========================================================== */
 
 /* === GLOBALS ========================================================== */
-#if SAMD20
+#if SAMD || SAMR21
 static struct usart_module cdc_uart_module;
 #else
 static usart_serial_options_t usart_serial_options = {
@@ -62,6 +62,7 @@ static usart_serial_options_t usart_serial_options = {
 	.stopbits     = USART_HOST_STOP_BITS
 };
 #endif
+
 /**
  * Receive buffer
  * The buffer size is defined in sio2host.h
@@ -87,19 +88,22 @@ static uint8_t serial_rx_count;
 
 void sio2host_init(void)
 {
-#if SAMD20
+#if SAMD || SAMR21
 	struct usart_config cdc_uart_config;
-    /* Configure USART for unit test output */
-    usart_get_config_defaults(&cdc_uart_config);
-    cdc_uart_config.mux_setting     = EDBG_CDC_SERCOM_MUX_SETTING; 
-    cdc_uart_config.pinmux_pad3     = EDBG_CDC_SERCOM_PINMUX_PAD3; 
-    cdc_uart_config.pinmux_pad2     = EDBG_CDC_SERCOM_PINMUX_PAD2; 
-    cdc_uart_config.baudrate        = USART_HOST_BAUDRATE;
-    stdio_serial_init(&cdc_uart_module, USART_HOST,&cdc_uart_config);
-    usart_enable(&cdc_uart_module);
-    /* Enable transceivers */
-    usart_enable_transceiver(&cdc_uart_module, USART_TRANSCEIVER_TX);
-    usart_enable_transceiver(&cdc_uart_module, USART_TRANSCEIVER_RX);
+	/* Configure USART for unit test output */
+	usart_get_config_defaults(&cdc_uart_config);
+	cdc_uart_config.mux_setting = EDBG_CDC_SERCOM_MUX_SETTING;
+
+	cdc_uart_config.pinmux_pad0 = EDBG_CDC_SERCOM_PINMUX_PAD0;
+	cdc_uart_config.pinmux_pad1 = EDBG_CDC_SERCOM_PINMUX_PAD1;
+	cdc_uart_config.pinmux_pad2 = EDBG_CDC_SERCOM_PINMUX_PAD2;
+	cdc_uart_config.pinmux_pad3 = EDBG_CDC_SERCOM_PINMUX_PAD3;
+	cdc_uart_config.baudrate    = USART_HOST_BAUDRATE;
+	stdio_serial_init(&cdc_uart_module, USART_HOST, &cdc_uart_config);
+	usart_enable(&cdc_uart_module);
+	/* Enable transceivers */
+	usart_enable_transceiver(&cdc_uart_module, USART_TRANSCEIVER_TX);
+	usart_enable_transceiver(&cdc_uart_module, USART_TRANSCEIVER_RX);
 #else
 	stdio_serial_init(USART_HOST, &usart_serial_options);
 #endif
@@ -108,17 +112,21 @@ void sio2host_init(void)
 
 uint8_t sio2host_tx(uint8_t *data, uint8_t length)
 {
-#if SAMD20
+#if SAMD || SAMR21
 	status_code_genare_t status;
 #else
 	status_code_t status;
-#endif /* SAMD20 */
+#endif /* SAMD || SAMR21 */
 
 	do {
-#if SAMD20
-status = usart_serial_write_packet(&cdc_uart_module,(const uint8_t *)data,length);
-#else 
-status = usart_serial_write_packet(USART_HOST,(const uint8_t *)data,length);
+#if SAMD || SAMR21
+		status
+			= usart_serial_write_packet(&cdc_uart_module,
+				(const uint8_t *)data, length);
+#else
+		status = usart_serial_write_packet(USART_HOST,
+				(const uint8_t *)data,
+				length);
 #endif
 	} while (status != STATUS_OK);
 	return length;
@@ -141,7 +149,7 @@ uint8_t sio2host_rx(uint8_t *data, uint8_t max_length)
 
 		/*
 		 * This is a buffer overflow case. But still only the number of
-		 *bytes equivalent to
+		 * bytes equivalent to
 		 * full buffer size are useful.
 		 */
 		serial_rx_count = SERIAL_RX_BUF_SIZE_HOST;
@@ -150,7 +158,7 @@ uint8_t sio2host_rx(uint8_t *data, uint8_t max_length)
 		if (SERIAL_RX_BUF_SIZE_HOST <= max_length) {
 			/*
 			 * Requested receive length (max_length) is more than
-			 *the
+			 * the
 			 * max size of receive buffer, but at max the full
 			 * buffer can be read.
 			 */
@@ -161,9 +169,9 @@ uint8_t sio2host_rx(uint8_t *data, uint8_t max_length)
 		if (max_length > serial_rx_count) {
 			/*
 			 * Requested receive length (max_length) is more than
-			 *the data
+			 * the data
 			 * present in receive buffer. Hence only the number of
-			 *bytes
+			 * bytes
 			 * present in receive buffer are read.
 			 */
 			max_length = serial_rx_count;
@@ -195,7 +203,7 @@ uint8_t sio2host_getchar(void)
 
 void sio2host_putchar(uint8_t ch)
 {
-    sio2host_tx(&ch,1);
+	sio2host_tx(&ch, 1);
 }
 
 int sio2host_getchar_nowait(void)
@@ -209,16 +217,16 @@ int sio2host_getchar_nowait(void)
 	}
 }
 
-#if SAMD20
+#if SAMD || SAMR21
 void USART_HOST_ISR_VECT(uint8_t instance)
-#else 
+#else
 USART_HOST_ISR_VECT()
 #endif
 {
 	uint8_t temp;
-#if SAMD20
- 	usart_serial_read_packet(&cdc_uart_module, &temp, 1);
-#else 
+#if SAMD || SAMR21
+	usart_serial_read_packet(&cdc_uart_module, &temp, 1);
+#else
 	usart_serial_read_packet(USART_HOST, &temp, 1);
 #endif
 
@@ -226,14 +234,14 @@ USART_HOST_ISR_VECT()
 	cpu_irq_disable();
 
 	/* The number of data in the receive buffer is incremented and the
-	 *buffer is updated. */
+	 * buffer is updated. */
 	serial_rx_count++;
 
 	serial_rx_buf[serial_rx_buf_tail] = temp;
 
 	if ((SERIAL_RX_BUF_SIZE_HOST - 1) == serial_rx_buf_tail) {
 		/* Reached the end of buffer, revert back to beginning of
-		 *buffer. */
+		 * buffer. */
 		serial_rx_buf_tail = 0x00;
 	} else {
 		serial_rx_buf_tail++;

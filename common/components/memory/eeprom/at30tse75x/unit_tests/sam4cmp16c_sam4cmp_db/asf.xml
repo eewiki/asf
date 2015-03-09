@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="AT30TSE unit tests for SAM4CMP-DB" id="common.components.memory.eeprom.at30tse75x.unit_tests.sam4cmp_db" type="unit-test">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="common.components.memory.eeprom.at30tse75x.unit_tests"/>
+		<require idref="board.sam4cmp_db"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4cmp16c_0"/>
+	</project>
+</asf>

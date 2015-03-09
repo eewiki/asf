@@ -3,7 +3,7 @@
  *
  * @brief Stack configuration parameters
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -51,6 +51,8 @@
 #ifndef STACK_CONFIG_H
 #define STACK_CONFIG_H
 
+#include "compiler.h"
+
 /**
  * \ingroup group_inc
  * \defgroup group_stack Common Stack Definitions
@@ -92,7 +94,7 @@
  +          +
  +   PAL    +
  +          +
- ++----------+
+ +++----------+
  */
 /* Reduce the header file dependency by using hard-coded values */
 #define LARGE_BUFFER_SIZE               (160)
@@ -105,11 +107,11 @@
  +          +
  +   TAL    +
  +          +
- ++----------+
+ +++----------+
  +          +
  +   PAL    +
  +          +
- ++----------+
+ +++----------+
  */
 
 /**
@@ -166,15 +168,15 @@
  +          +    +          +
  +   MAC    +    +   RTB    +
  +          +    +          +
- ++----------+    +----------+
+ +++----------+    +----------+
  +          +    +          +
  +   TAL    + or +   TAL    +
  +          +    +          +
- ++----------+    +----------+
+ +++----------+    +----------+
  +          +    +          +
  +   PAL    +    +   PAL    +
  +          +    +          +
- ++----------+    +----------+
+ +++----------+    +----------+
  */
 
 /**

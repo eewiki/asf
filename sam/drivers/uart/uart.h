@@ -54,6 +54,13 @@ extern "C" {
 /**INDENT-ON**/
 /// @endcond
 
+/* UART internal div factor for sampling */
+#define UART_MCK_DIV             16
+/* Div factor to get the maximum baud rate */
+#define UART_MCK_DIV_MIN_FACTOR  1
+/* Div factor to get the minimum baud rate */
+#define UART_MCK_DIV_MAX_FACTOR  65535
+
 /*! \brief Option list for UART peripheral initialization */
 typedef struct sam_uart_opt {
 	/** MCK for UART */
@@ -78,6 +85,7 @@ void uart_enable_interrupt(Uart *p_uart, uint32_t ul_sources);
 void uart_disable_interrupt(Uart *p_uart, uint32_t ul_sources);
 uint32_t uart_get_interrupt_mask(Uart *p_uart);
 uint32_t uart_get_status(Uart *p_uart);
+void uart_reset_status(Uart *p_uart);
 uint32_t uart_is_tx_ready(Uart *p_uart);
 uint32_t uart_is_tx_empty(Uart *p_uart);
 uint32_t uart_is_rx_ready(Uart *p_uart);
@@ -85,16 +93,17 @@ uint32_t uart_is_rx_buf_end(Uart *p_uart);
 uint32_t uart_is_tx_buf_end(Uart *p_uart);
 uint32_t uart_is_rx_buf_full(Uart *p_uart);
 uint32_t uart_is_tx_buf_empty(Uart *p_uart);
+void uart_set_clock_divisor(Uart *p_uart, uint16_t us_divisor);
 uint32_t uart_write(Uart *p_uart, const uint8_t uc_data);
 uint32_t uart_read(Uart *p_uart, uint8_t *puc_data);
 Pdc *uart_get_pdc_base(Uart *p_uart);
-#if (SAMG53)
+#if (SAMG53 || SAMG54)
 void uart_set_sleepwalking(Uart *p_uart, uint8_t ul_low_value,
 		bool cmpmode, bool cmppar, uint8_t ul_high_value);
 void uart_set_write_protection(Uart *p_uart, bool flag);
 #endif
 
-#if (SAM4C || SAM4CP)
+#if (SAM4C || SAM4CP || SAM4CM)
 enum uart_optical_duty_cycle {
 	UART_MOD_CLK_DUTY_50_00 = UART_MR_OPT_DUTY_DUTY_50,
 	UART_MOD_CLK_DUTY_43_75 = UART_MR_OPT_DUTY_DUTY_43P75,

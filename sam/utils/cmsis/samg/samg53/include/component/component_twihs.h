@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -286,14 +286,14 @@ typedef struct {
 #define TWIHS_SWMR_DATAM_Msk (0xffu << TWIHS_SWMR_DATAM_Pos) /**< \brief (TWIHS_SWMR) Data Match */
 #define TWIHS_SWMR_DATAM(value) ((TWIHS_SWMR_DATAM_Msk & ((value) << TWIHS_SWMR_DATAM_Pos)))
 /* -------- TWIHS_WPMR : (TWIHS Offset: 0xE4) Protection Mode Register -------- */
-#define TWIHS_WPMR_WPEN (0x1u << 0) /**< \brief (TWIHS_WPMR) Write Protection Bit */
+#define TWIHS_WPMR_WPEN (0x1u << 0) /**< \brief (TWIHS_WPMR) Write Protection Enable */
 #define TWIHS_WPMR_WPKEY_Pos 8
-#define TWIHS_WPMR_WPKEY_Msk (0xffffffu << TWIHS_WPMR_WPKEY_Pos) /**< \brief (TWIHS_WPMR) Write Protect Key */
+#define TWIHS_WPMR_WPKEY_Msk (0xffffffu << TWIHS_WPMR_WPKEY_Pos) /**< \brief (TWIHS_WPMR) Write Protection Key */
 #define   TWIHS_WPMR_WPKEY_PASSWD (0x545749u << 8) /**< \brief (TWIHS_WPMR) Writing any other value in this field aborts the write operation of the WPEN bit.Always reads as 0 */
 /* -------- TWIHS_WPSR : (TWIHS Offset: 0xE8) Protection Status Register -------- */
 #define TWIHS_WPSR_WPVS (0x1u << 0) /**< \brief (TWIHS_WPSR) Write Protect Violation Status */
 #define TWIHS_WPSR_WPVSRC_Pos 8
-#define TWIHS_WPSR_WPVSRC_Msk (0xffffffu << TWIHS_WPSR_WPVSRC_Pos) /**< \brief (TWIHS_WPSR) Write Protect Violation Source */
+#define TWIHS_WPSR_WPVSRC_Msk (0xffffffu << TWIHS_WPSR_WPVSRC_Pos) /**< \brief (TWIHS_WPSR) Write Protection Violation Source */
 /* -------- TWIHS_RPR : (TWIHS Offset: 0x100) Receive Pointer Register -------- */
 #define TWIHS_RPR_RXPTR_Pos 0
 #define TWIHS_RPR_RXPTR_Msk (0xffffffffu << TWIHS_RPR_RXPTR_Pos) /**< \brief (TWIHS_RPR) Receive Pointer Register */

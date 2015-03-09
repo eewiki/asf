@@ -3,7 +3,7 @@
  *
  * \brief This file contains the QTouch Libary configuration options for
  *        AVR 8-bit QMatrix method Capacitive Touch acquisition.
- *  
+ *
  * - Compiler:           IAR EWAVR and GNU GCC for AVR.
  * - Supported devices:  Atmel AVR 8-bit.
  * - Userguide:          QTouch Library User Guide - doc8207.pdf.
@@ -44,8 +44,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * \asf_license_stop
- */ 
- /*
+ */
+
+/*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
@@ -58,24 +59,23 @@
 
 #ifdef _QMATRIX_
 
-
 /**
-  * Warning: Please donot edit below this line.
-  */
+ * Warning: Please donot edit below this line.
+ */
 
-//! In case of Xmega devices, the mask is used instead of the pin number.
+/* ! In case of Xmega devices, the mask is used instead of the pin number. */
 #ifdef _ATXMEGA_
-#define SMP_BIT (1 <<SMP_PIN)
+#define SMP_BIT (1 << SMP_PIN)
 #else
 #define SMP_BIT SMP_PIN
 #endif
 
 /**
-  * Setting dwell time in cycles, and an empirical discharge delay to give c.50%
-  * duty cycle x pulses for the longer pulses. For the shorter ones, the spread
-  * spectrum calculations mean that we can't get the pulse low time down short
-  * enough for 50%.
-  */
+ * Setting dwell time in cycles, and an empirical discharge delay to give c.50%
+ * duty cycle x pulses for the longer pulses. For the shorter ones, the spread
+ * spectrum calculations mean that we can't get the pulse low time down short
+ * enough for 50%.
+ */
 #if (QT_DELAY_CYCLES == 1u)
 
 #define DWELL_TIME_CYCLES 1
@@ -101,7 +101,6 @@
 #define DWELL_TIME_CYCLES 5
 #define DELAY_X_DISCHARGE 0
 
-
 #elif (QT_DELAY_CYCLES == 10u)
 
 #define DWELL_TIME_CYCLES 10
@@ -121,26 +120,27 @@
 #error No burst dwell time specified or dwell time specified is wrong
 #endif
 
-#if (DWELL_TIME_CYCLES < 1u )
+#if (DWELL_TIME_CYCLES < 1u)
 #error Dwell time must be at least 1 cycle.
 #endif
 
 /**
-  * Set actual delay time in capacitive charge loop based on dwell time. The -1 is because
-  * the following instruction in the charge transfer routine takes one cycle.
-  */
-#define DELAY_DWELL_TIME        (DWELL_TIME_CYCLES -1)
-#define DELAY_PRECHARGE_TIME    (DWELL_TIME_CYCLES -1)
-#define CLAMP_TO_DISCHARGE_TIME (DWELL_TIME_CYCLES -1)
+ * Set actual delay time in capacitive charge loop based on dwell time. The -1
+ *is because
+ * the following instruction in the charge transfer routine takes one cycle.
+ */
+#define DELAY_DWELL_TIME        (DWELL_TIME_CYCLES - 1)
+#define DELAY_PRECHARGE_TIME    (DWELL_TIME_CYCLES - 1)
+#define CLAMP_TO_DISCHARGE_TIME (DWELL_TIME_CYCLES - 1)
 
-//! Defines for IAR compiler and GNU compiler usage.
+/* ! Defines for IAR compiler and GNU compiler usage. */
 #if (defined(__IAR_SYSTEMS_ASM__) || defined(__ASSEMBLER__))
 
-//! Defines specific for IAR compiler and usage.
+/* ! Defines specific for IAR compiler and usage. */
 #if defined(__IAR_SYSTEMS_ASM__)
 
 #include <ioavr.h>
-//! Registers used in the assembler files.
+/* ! Registers used in the assembler files. */
 #define p_1 r16
 #define p_2 r17
 #define p_3 r18
@@ -156,11 +156,11 @@
 #define FILE_FOOTER END
 #define FILE_SEGMENT RSEG CODE
 #define GLOBAL_FUNCTION PUBLIC
-//! defines specific for GNU compiler and usage.
+/* ! defines specific for GNU compiler and usage. */
 #elif defined(__ASSEMBLER__)
 #define __SFR_OFFSET 0
 #include <avr/io.h>
-//! Registers used in the assembler files.
+/* ! Registers used in the assembler files. */
 #define p_1 r24
 #define p_2 r22
 #define p_3 r20
@@ -177,81 +177,81 @@
 #define FILE_SEGMENT
 #define GLOBAL_FUNCTION .global
 
-#endif //! IAR or GCC assembler.
+#endif /* ! IAR or GCC assembler. */
 
 /**
-  * Macro to build register writes for controlling ports. The intermediate
-  * JOIN macro is required for correct expansion of the args.
-  */
+ * Macro to build register writes for controlling ports. The intermediate
+ * JOIN macro is required for correct expansion of the args.
+ */
 #define JOIN( x, y ) x ## y
 #define JOIN1( A, B, C ) A ## B ## C
 
 /**
-  * Macro to build register writes for controlling ports. The intermediate
-  * JOIN macro is required for correct expansion of the args.
-  */
+ * Macro to build register writes for controlling ports. The intermediate
+ * JOIN macro is required for correct expansion of the args.
+ */
 #define REG( REGISTER, SIDE ) JOIN( REGISTER, SIDE )
-#define CONCAT( A,B, C ) JOIN1( A,B,C )
+#define CONCAT( A, B, C ) JOIN1( A, B, C )
 #define sreg_save r2
-#define _00011001_	nop
+#define _00011001_      nop
 
-#if (NUM_X_PORTS>=1)
-#define _01101001_	brne _111_
-#define _01101010_	brne _222_
-#define _01101011_	brne _333_
-#define _01101100_	brne _444_
-#define _01101101_	brne _555_
-#define _10001110_	rjmp .
-#define _10100001_	_111_: dec r19
-#define _10100010_	_222_: dec r19
-#define _10100011_	_333_: dec r19
-#define _10100100_	_444_: dec r19
-#define _10100101_	_555_: dec r19
-#define _11100001_	ldi r19, (CLAMP_TO_DISCHARGE_TIME/3)
-#define _11100010_	ldi r19, (DELAY_PRECHARGE_TIME/3)
-#define _11100011_	ldi r19, (DELAY_DWELL_TIME/3)
-#define _11100100_	ldi r19, (DELAY_X_DISCHARGE/3)
-#define _11100101_	ldi r19, (CLAMP_TO_DISCHARGE_TIME/3)
-#endif //! NUM_X_PORTS==1.
+#if (NUM_X_PORTS >= 1)
+#define _01101001_      brne _111_
+#define _01101010_      brne _222_
+#define _01101011_      brne _333_
+#define _01101100_      brne _444_
+#define _01101101_      brne _555_
+#define _10001110_      rjmp.
+#define _10100001_      _111_ : dec r19
+#define _10100010_      _222_ : dec r19
+#define _10100011_      _333_ : dec r19
+#define _10100100_      _444_ : dec r19
+#define _10100101_      _555_ : dec r19
+#define _11100001_      ldi r19, (CLAMP_TO_DISCHARGE_TIME / 3)
+#define _11100010_      ldi r19, (DELAY_PRECHARGE_TIME / 3)
+#define _11100011_      ldi r19, (DELAY_DWELL_TIME / 3)
+#define _11100100_      ldi r19, (DELAY_X_DISCHARGE / 3)
+#define _11100101_      ldi r19, (CLAMP_TO_DISCHARGE_TIME / 3)
+#endif /* ! NUM_X_PORTS==1. */
 
-#if (NUM_X_PORTS>=2)
-#define _1001101001_	brne _666_
-#define _1001101010_	brne _777_
-#define _1001101011_	brne _888_
-#define _1001101100_	brne _999_
-#define _1001101101_	brne _AAA_
-#define _1010001110_	rjmp .
-#define _1010100001_	_666_: dec r19
-#define _1010100010_	_777_: dec r19
-#define _1010100011_	_888_: dec r19
-#define _1010100100_	_999_: dec r19
-#define _1010100101_	_AAA_: dec r19
-#define _1011100001_	ldi r19, (CLAMP_TO_DISCHARGE_TIME/3)
-#define _1011100010_	ldi r19, (DELAY_PRECHARGE_TIME/3)
-#define _1011100011_	ldi r19, (DELAY_DWELL_TIME/3)
-#define _1011100100_	ldi r19, (DELAY_X_DISCHARGE/3)
-#define _1011100101_	ldi r19, (CLAMP_TO_DISCHARGE_TIME/3)
-#endif //! NUM_X_PORTS==2.
+#if (NUM_X_PORTS >= 2)
+#define _1001101001_    brne _666_
+#define _1001101010_    brne _777_
+#define _1001101011_    brne _888_
+#define _1001101100_    brne _999_
+#define _1001101101_    brne _AAA_
+#define _1010001110_    rjmp.
+#define _1010100001_    _666_ : dec r19
+#define _1010100010_    _777_ : dec r19
+#define _1010100011_    _888_ : dec r19
+#define _1010100100_    _999_ : dec r19
+#define _1010100101_    _AAA_ : dec r19
+#define _1011100001_    ldi r19, (CLAMP_TO_DISCHARGE_TIME / 3)
+#define _1011100010_    ldi r19, (DELAY_PRECHARGE_TIME / 3)
+#define _1011100011_    ldi r19, (DELAY_DWELL_TIME / 3)
+#define _1011100100_    ldi r19, (DELAY_X_DISCHARGE / 3)
+#define _1011100101_    ldi r19, (CLAMP_TO_DISCHARGE_TIME / 3)
+#endif /* ! NUM_X_PORTS==2. */
 
-#if (NUM_X_PORTS==3)
-#define _1101101001_	brne _BBB_
-#define _1101101010_	brne _CCC_
-#define _1101101011_	brne _DDD_
-#define _1101101100_	brne _EEE_
-#define _1101101101_	brne _FFF_
-#define _1110001110_	rjmp .
-#define _1110100001_	_BBB_: dec r19
-#define _1110100010_	_CCC_: dec r19
-#define _1110100011_	_DDD_: dec r19
-#define _1110100100_	_EEE_: dec r19
-#define _1110100101_	_FFF_: dec r19
-#define _1111100001_	ldi r19, (CLAMP_TO_DISCHARGE_TIME/3)
-#define _1111100010_	ldi r19, (DELAY_PRECHARGE_TIME/3)
-#define _1111100011_	ldi r19, (DELAY_DWELL_TIME/3)
-#define _1111100100_	ldi r19, (DELAY_X_DISCHARGE/3)
-#define _1111100101_	ldi r19, (CLAMP_TO_DISCHARGE_TIME/3)
-#endif //! NUM_X_PORTS==3.
+#if (NUM_X_PORTS == 3)
+#define _1101101001_    brne _BBB_
+#define _1101101010_    brne _CCC_
+#define _1101101011_    brne _DDD_
+#define _1101101100_    brne _EEE_
+#define _1101101101_    brne _FFF_
+#define _1110001110_    rjmp.
+#define _1110100001_    _BBB_ : dec r19
+#define _1110100010_    _CCC_ : dec r19
+#define _1110100011_    _DDD_ : dec r19
+#define _1110100100_    _EEE_ : dec r19
+#define _1110100101_    _FFF_ : dec r19
+#define _1111100001_    ldi r19, (CLAMP_TO_DISCHARGE_TIME / 3)
+#define _1111100010_    ldi r19, (DELAY_PRECHARGE_TIME / 3)
+#define _1111100011_    ldi r19, (DELAY_DWELL_TIME / 3)
+#define _1111100100_    ldi r19, (DELAY_X_DISCHARGE / 3)
+#define _1111100101_    ldi r19, (CLAMP_TO_DISCHARGE_TIME / 3)
+#endif /* ! NUM_X_PORTS==3. */
 
-#endif //! IAR and GCC.
-#endif //! Acquisition method: QMATRIX or QTOUCH.
-#endif //! _QM_ASM_AVR_H_.
+#endif /* ! IAR and GCC. */
+#endif /* ! Acquisition method: QMATRIX or QTOUCH. */
+#endif /* ! _QM_ASM_AVR_H_. */

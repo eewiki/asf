@@ -54,37 +54,42 @@
 #include "phy.h"
 #include "nwk.h"
 
- /**
-  * \defgroup group_lwmesh Light Weight Mesh  v2.0
-  *      Lightweight Mesh software stack is an easy to use proprietary low power wireless mesh network protocol. 
-  * 
-  */
-  
+/**
+ * \defgroup group_lwmesh Light Weight Mesh  v2.0
+ *      Lightweight Mesh software stack is an easy to use proprietary low power
+ *wireless mesh network protocol.
+ *
+ */
+
 /**
  * \ingroup group_lwmesh
- * \defgroup group_phy PHY 
- * Radio physical layer (PHY) provides functions for radio transceiver access. 
- * Some of them are accessible only by the network layer (request to send data, data indication); 
- * some of them can be used from the application (channel selection, random number generation, energy detection, etc.)
+ * \defgroup group_phy PHY
+ * Radio physical layer (PHY) provides functions for radio transceiver access.
+ * Some of them are accessible only by the network layer (request to send data,
+ *data indication);
+ * some of them can be used from the application (channel selection, random
+ *number generation, energy detection, etc.)
  *
  *
- */  
+ */
 
 /**
  * \ingroup group_lwmesh
  * \defgroup group_lwmesh_nwk Network layer(NWK)
- *  Network layer (NWK) provides core stack functionality and provides two routing algorithms,1.Native routing and 2.AODV routing.
- * 
- */ 
+ *  Network layer (NWK) provides core stack functionality and provides two
+ *routing algorithms,1.Native routing and 2.AODV routing.
+ *
+ */
 
 /**
  * \ingroup group_lwmesh
  * \defgroup group_lwmesh_sys LWMesh System Services
- * System services provide common functions for all layers, which are necessary for normal stack operation. 
- * System services include basic types and definitions, software timers, default configuration parameters, encryption module access, etc.
+ * System services provide common functions for all layers, which are necessary
+ *for normal stack operation.
+ * System services include basic types and definitions, software timers, default
+ *configuration parameters, encryption module access, etc.
  * @{
  */
-
 
 /*- Prototypes -------------------------------------------------------------*/
 
@@ -92,4 +97,4 @@ void SYS_Init(void);
 void SYS_TaskHandler(void);
 
 /** @} */
-#endif // _SYS_H_
+#endif /* _SYS_H_ */

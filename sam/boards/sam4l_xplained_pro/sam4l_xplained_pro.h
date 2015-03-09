@@ -3,7 +3,7 @@
  *
  * \brief SAM4L Xplained Pro board definition
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -201,6 +201,18 @@
 
 //! Number of on-board LEDs
 #define LED_COUNT                 1
+
+/**
+ * \name LCD Backlight
+ */
+//@{
+#define LCD_BL                        PC05
+#define LCD_BL_GPIO                   PIN_PC05
+#define LCD_BL_GPIO_MASK              GPIO_PC05
+
+#define LCD_BL_ACTIVE_LEVEL             IOPORT_PIN_LEVEL_HIGH
+#define LCD_BL_INACTIVE_LEVEL           IOPORT_PIN_LEVEL_LOW
+//@}
 
 /**
  * \name Button #0 definitions
@@ -611,9 +623,14 @@
 #define AT86RFX_IRQ_PIN              EXT1_PIN_9
 #define AT86RFX_SLP_PIN              EXT1_PIN_10
 #define AT86RFX_SPI_CS               0
+#define AT86RFX_SPI_CS_PIN           EXT1_PIN_15
+#define AT86RFX_SPI_CS_FLAGS         MUX_PC03A_SPI_NPCS0
 #define AT86RFX_SPI_MOSI             EXT1_PIN_16
 #define AT86RFX_SPI_MISO             EXT1_PIN_17
 #define AT86RFX_SPI_SCK              EXT1_PIN_18
+#define AT86RFX_SPI_MOSI_FLAGS       MUX_PA22A_SPI_MOSI
+#define AT86RFX_SPI_MISO_FLAGS       MUX_PA21A_SPI_MISO
+#define AT86RFX_SPI_SCK_FLAGS        MUX_PC30B_SPI_SCK
 #define AT86RFX_CSD     		     EXT1_PIN_5
 #define AT86RFX_CPS 	             EXT1_PIN_8
 

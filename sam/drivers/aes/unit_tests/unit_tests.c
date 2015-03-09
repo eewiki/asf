@@ -3,7 +3,7 @@
  *
  * \brief Unit tests for AES driver.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -355,7 +355,7 @@ static void run_ecb_mode_test_dma(const struct test_case *test)
 
 #endif
 
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP || SAM4CM
 /* PDC data packet for transfer */
 pdc_packet_t g_pdc_tx_packet;
 pdc_packet_t g_pdc_rx_packet;
@@ -869,7 +869,7 @@ int main(void)
 #if SAM4E
 	DEFINE_TEST_CASE(ecb_mode_test_dma, NULL, run_ecb_mode_test_dma, NULL,
 			"SAM AES ECB mode encryption and decryption with DMA test.");
-#elif SAM4C || SAM4CP
+#elif SAM4C || SAM4CP || SAM4CM
 	DEFINE_TEST_CASE(ecb_mode_test_pdc, NULL, run_ecb_mode_test_pdc, NULL,
 			"SAM AES ECB mode encryption and decryption with pdc test.");
 #endif
@@ -883,7 +883,7 @@ int main(void)
 		&ctr_mode_test,
 #if SAM4E
 		&ecb_mode_test_dma,
-#elif SAM4C || SAM4CP
+#elif SAM4C || SAM4CP || SAM4CM
 		&ecb_mode_test_pdc,
 #endif
 	};

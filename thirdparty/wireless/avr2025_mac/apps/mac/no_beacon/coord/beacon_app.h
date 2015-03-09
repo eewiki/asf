@@ -5,7 +5,7 @@
  *        in the example application of the coordinator in addition to the
  *        underlaying stack.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -52,7 +52,6 @@
 #ifndef BEACON_APP_H
 #define BEACON_APP_H
 
-
 /* === Includes ============================================================= */
 
 /* === TYPES =============================================================== */
@@ -61,8 +60,8 @@
  *  extended address of a device.
  */
 typedef struct associated_device_tag {
-    uint16_t short_addr;
-	uint64_t ieee_addr;		
+	uint16_t short_addr;
+	uint64_t ieee_addr;
 } associated_device_t;
 
 /**
@@ -103,17 +102,17 @@ typedef enum coord_state_tag {
 #define KEY_INDEX_4                     (4)
 
 /*Look up Data Size is 9 octets */
-#define LOOKUP_DATA_SIZE_1              (1) 
+#define LOOKUP_DATA_SIZE_1              (1)
 
 /* Type of frame */
 #define FRAME_TYPE_BEACON               (0)
 #define FRAME_TYPE_DATA                 (1)
 
 /* CommandFrameIdentifier is n/a */
-#define CMD_FRAME_ID_NA                 (0) 
+#define CMD_FRAME_ID_NA                 (0)
 
 /* Default Minimum Security Level for ZIP */
-#define ZIP_SEC_MIN                     (0x05)  
+#define ZIP_SEC_MIN                     (0x05)
 
 /* Override the  minimum security level */
 #define DEV_OVERRIDE_SEC_MIN            (1)
@@ -128,7 +127,7 @@ typedef enum coord_state_tag {
 #define INDEX_3                         (3)
 
 /* Device Descriptor Handle Index 0 */
-#define DEV_DESC_HANDLE_IDX_0			(0x00)
+#define DEV_DESC_HANDLE_IDX_0                   (0x00)
 
 /* key device desc is invalid */
 #define EMPTY_DEV_HANDLE                (0xFF)
@@ -140,7 +139,7 @@ typedef enum coord_state_tag {
 #define NO_SECURITY                     (0)
 
 /* Security PIB Initialize Macro */
-#define SEC_PIB_INIT					(1)
+#define SEC_PIB_INIT                                    (1)
 
 /* Security Default Device Table Entries */
 #define DEFAULT_MAC_DEV_TABLE_ENTRIES (0x04)
@@ -156,7 +155,6 @@ typedef enum coord_state_tag {
 /* === Externals ============================================================ */
 
 /* === Prototypes =========================================================== */
-
 
 #ifdef __cplusplus
 extern "C" {

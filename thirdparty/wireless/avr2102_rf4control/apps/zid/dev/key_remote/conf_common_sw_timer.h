@@ -38,8 +38,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * \asf_license_stop
- */ 
- /*
+ */
+
+/*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
@@ -52,8 +53,8 @@
 
 /*! \name Configuration
  */
-//! @{
+/* ! @{ */
 #define TOTAL_NUMBER_OF_SW_TIMERS     (TOTAL_NUMBER_OF_TIMERS)
-//! @}
+/* ! @} */
 
 #endif /* CONF_COMMON_SW_TIMER_H_INCLUDED */

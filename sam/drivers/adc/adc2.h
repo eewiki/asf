@@ -64,17 +64,10 @@
 
 /** Definitions for ADC resolution */
 enum adc_resolution {
-#if (SAM4N)
 	ADC_8_BITS = ADC_MR_LOWRES_BITS_8,        /* ADC 8-bit resolution */
 	ADC_10_BITS = ADC_MR_LOWRES_BITS_10,      /* ADC 10-bit resolution */
 	ADC_11_BITS = ADC_EMR_OSR_OSR4,           /* ADC 11-bit resolution */
 	ADC_12_BITS = ADC_EMR_OSR_OSR16           /* ADC 12-bit resolution */
-#endif
-#if (SAMG)
-	ADC_10_BITS = ADC_MR_LOWRES_BITS_12,      /* ADC 10-bit resolution */
-	ADC_11_BITS = ADC_EMR_OSR_OSR4,           /* ADC 11-bit resolution */
-	ADC_12_BITS = ADC_EMR_OSR_OSR16           /* ADC 12-bit resolution */
-#endif
 };
 
 /** Definitions for ADC power mode */
@@ -97,6 +90,12 @@ enum adc_trigger {
 	ADC_TRIG_TIO_CH_1 = ADC_MR_TRGSEL_ADC_TRIG2 | ADC_MR_TRGEN,
 	/* TIO Output of the Timer Counter Channel 2 */
 	ADC_TRIG_TIO_CH_2 = ADC_MR_TRGSEL_ADC_TRIG3 | ADC_MR_TRGEN,
+#if (SAMG)
+	/* RTCOUT0 */
+	ADC_TRIG_RTC_0 = ADC_MR_TRGSEL_ADC_TRIG4 | ADC_MR_TRGEN,
+	/* RTTINC */
+	ADC_TRIG_RTT = ADC_MR_TRGSEL_ADC_TRIG5 | ADC_MR_TRGEN,
+#endif
 	/* Freerun mode conversion. */
 	ADC_TRIG_FREERUN = 0xFF
 };

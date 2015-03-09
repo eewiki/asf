@@ -3,7 +3,7 @@
  *
  * @brief This file contains the Queue Management Module definitions.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -102,7 +102,7 @@ typedef struct
 
 	/**
 	 * Maximum number of buffers that can be accomodated in the current
-	 *queue
+	 * queue
 	 * Note: This is only required if the queue capacity shall be different
 	 * from 255.
 	 */

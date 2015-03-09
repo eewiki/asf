@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="ZRC Target terminal target application AT86RF233 Zigbit(Carrier)-SAM4L XPLAINED Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.terminal_tgt.sam4lc4c_rf233_zigbit_ext">
+	<project force-caption="true" force-description="true" caption="RF4CE-ZRC Terminal target application AT86RF233 Zigbit(Carrier)-SAM4L XPLAINED Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.terminal_tgt.sam4lc4c_rf233_zigbit_ext">
 		<info type="description" value="summary">
 		Terminal target application for RF4CE-ZRC target-controller setup
 		</info>

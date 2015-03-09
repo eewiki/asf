@@ -3,7 +3,7 @@
  *
  * @brief This module runs the MAC scheduler.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -80,7 +80,6 @@
 
 /* === Macros =============================================================== */
 
-
 /* === Globals ============================================================== */
 #define MAC_GUARD_TIME_US 1000
 #define READY_TO_SLEEP    1
@@ -113,6 +112,7 @@ mac_poll_state_t mac_poll_state;
 mac_radio_sleep_state_t mac_radio_sleep_state;
 
 #ifdef BEACON_SUPPORT
+
 /**
  * Final Cap Slot of current Superframe
  */
@@ -150,10 +150,11 @@ uint64_t mac_last_src_addr;
 /**
  * Holds the contents of the beacon payload.
  */
-uint8_t mac_beacon_payload[aMaxBeaconPayloadLength] ;
+uint8_t mac_beacon_payload[aMaxBeaconPayloadLength];
 #endif  /* (MAC_START_REQUEST_CONFIRM == 1) */
 
 #if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
+
 /**
  * Holds the values of all security related PIB attributes.
  */
@@ -165,7 +166,6 @@ mac_sec_pib_t mac_sec_pib;
  * confirmation in scan, poll and association.
  */
 uint8_t *mac_conf_buf_ptr;
- 
 
 #if (MAC_SCAN_SUPPORT == 1)
 
@@ -252,13 +252,13 @@ mac_pib_t mac_pib;
  */
 bool mac_task(void)
 {
-	uint8_t *event = NULL;		
+	uint8_t *event = NULL;
 	bool processed_event = false;
 
 	if (!mac_busy) {
 		/* Check whether queue is empty */
 		if (nhle_mac_q.size != 0) {
-           event = (uint8_t *)qmm_queue_remove(&nhle_mac_q, NULL);
+			event = (uint8_t *)qmm_queue_remove(&nhle_mac_q, NULL);
 
 			/* If an event has been detected, handle it. */
 			if (NULL != event) {
@@ -275,7 +275,6 @@ bool mac_task(void)
 	 */
 	/* Check whether queue is empty */
 	if (tal_mac_q.size != 0) {
-		
 		event = (uint8_t *)qmm_queue_remove(&tal_mac_q, NULL);
 
 		/* If an event has been detected, handle it. */
@@ -291,50 +290,46 @@ bool mac_task(void)
 /**
  * @brief Checks if the mac stack is ready to sleep
  *
- * Checks if the mac stack is in inactive state for beacon support 
+ * Checks if the mac stack is in inactive state for beacon support
  *
  * or idle in case of no beacon support.
  *
- * @return  32bit time duration in microseconds for which the mac is ready to sleep
+ * @return  32bit time duration in microseconds for which the mac is ready to
+ *sleep
  *
  * For No beacon support 1 if stack is idle,0 if it is busy
  */
 
 uint32_t mac_ready_to_sleep(void)
 {
-	uint32_t sleep_time =0;
+	uint32_t sleep_time = 0;
 #ifdef BEACON_SUPPORT
-    uint32_t rem_time =0;
-    if(MAC_INACTIVE == mac_superframe_state)
-	{
+	uint32_t rem_time = 0;
+	if (MAC_INACTIVE == mac_superframe_state) {
 		#ifdef FFD
-		if((MAC_PAN_COORD_STARTED == mac_state) ||
-		(MAC_COORDINATOR == mac_state)) 
-		{   
-			
-			rem_time=sw_timer_get_residual_time(T_Beacon_Preparation);
-			if(rem_time >= MAC_GUARD_TIME_US)
-			{   
-				
+		if ((MAC_PAN_COORD_STARTED == mac_state) ||
+				(MAC_COORDINATOR == mac_state)) {
+			rem_time = sw_timer_get_residual_time(
+					T_Beacon_Preparation);
+			if (rem_time >= MAC_GUARD_TIME_US) {
 				sleep_time = rem_time - MAC_GUARD_TIME_US;
 				return sleep_time;
 			}
 		}
+
 		#endif
-		if(MAC_ASSOCIATED == mac_state)
-		{
-			rem_time=sw_timer_get_residual_time(T_Beacon_Tracking_Period);
-			if(rem_time >=MAC_GUARD_TIME_US)
-			{
+		if (MAC_ASSOCIATED == mac_state) {
+			rem_time = sw_timer_get_residual_time(
+					T_Beacon_Tracking_Period);
+			if (rem_time >= MAC_GUARD_TIME_US) {
 				sleep_time = rem_time - MAC_GUARD_TIME_US;
 				return sleep_time;
 			}
 		}
-		
-	}	
+	}
 
 #else
-if (mac_busy ||
+	if (mac_busy ||
 			(mac_nhle_q.size != 0) ||
 			(nhle_mac_q.size != 0) ||
 			(tal_mac_q.size != 0) ||
@@ -352,6 +347,7 @@ if (mac_busy ||
 	} else {
 		sleep_time = READY_TO_SLEEP;
 	}
+
 #endif
 	return sleep_time;
 }

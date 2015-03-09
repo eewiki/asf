@@ -3,7 +3,7 @@
  *
  * \brief Common SD/MMC stack
  *
- * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -41,7 +41,6 @@
  *
  */
 
-#include <asf.h>
 #include <string.h>
 #include "conf_board.h"
 #include "board.h"
@@ -49,6 +48,14 @@
 #include "sd_mmc_protocol.h"
 #include "sd_mmc.h"
 #include "delay.h"
+#include "ioport.h"
+
+#ifdef FREERTOS_USED
+#include "FreeRTOS.h"
+#include "task.h"
+#include "portmacro.h"
+#include "projdefs.h"
+#endif
 
 /**
  * \ingroup sd_mmc_stack

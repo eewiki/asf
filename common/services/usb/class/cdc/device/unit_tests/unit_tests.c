@@ -89,7 +89,7 @@ static bool main_b_suspend_event = false;
 static bool main_b_sof_event = false;
 static bool main_b_cdc_configurated = false;
 static bool main_b_cdc_enumerated = false;
-#if SAMD21
+#if SAMD21 || SAMR21
 /* Structure for UART module connected to EDBG (used for unit test output) */
 static struct usart_module cdc_uart_module;
 #endif
@@ -151,7 +151,7 @@ static void run_usb_sof_test(const struct test_case *test)
  */
 int main(void)
 {
-#if !SAMD21
+#if !SAMD21 && !SAMR21
 	const usart_serial_options_t usart_serial_options = {
 		.baudrate   = CONF_TEST_BAUDRATE,
 		.charlength = CONF_TEST_CHARLENGTH,
@@ -165,7 +165,7 @@ int main(void)
 	irq_initialize_vectors();
 	cpu_irq_enable();
 
-#if !SAMD21
+#if !SAMD21 && !SAMR21
 	sysclk_init();
 	board_init();
 #else
@@ -174,7 +174,7 @@ int main(void)
 	// Initialize the sleep manager
 	sleepmgr_init();
 
-#if !SAMD21
+#if !SAMD21 && !SAMR21
 	stdio_serial_init(CONF_TEST_USART, &usart_serial_options);
 #else
 	/* Configure USART for unit test output */

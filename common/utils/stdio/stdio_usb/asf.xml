@@ -28,6 +28,8 @@
 			<device-support value="sam4s"/>
 			<device-support value="sam4l"/>
 			<device-support value="sam4e"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>
 		<module type="service" id="common.utils.stdio.stdio_usb.composite#disable" caption="USB Device CDC Standard I/O (stdio) disabled">
@@ -67,6 +69,8 @@
 		<device-support value="sam4s"/>
 		<device-support value="sam4l"/>
 		<device-support value="sam4e"/>
+		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 	</module>
 
 	<select-by-device id="common.utils.stdio.stdio_usb.common" caption="USB Device CDC Standard I/O (stdio)">
@@ -124,7 +128,27 @@
 			<device-support value="sam4s"/>
 			<device-support value="sam4l"/>
 			<device-support value="sam4e"/>
-			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
+		</module>
+		<module type="component" id="common.utils.stdio.stdio_usb.common#sam0" caption="USB Device CDC Standard I/O (stdio) - SAM0 implementation">
+			<info type="description" value="summary">
+			Standard I/O (stdio) management component that implements a stdio
+			USB CDC interface on SAM0 devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="USB"/>
+				<keyword value="Communication" />
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="include-path" value="."/>
+			<build type="header-file" subtype="api" value="stdio_usb.h"/>
+			<build type="c-source" value="stdio_usb.c"/>
+			<build type="doxygen-entry-point" value="group_common_utils_stdio_stdio_usb"/>
+			<require idref="sam0.utils.stdio"/>
+			<require idref="sam0.utils.syscalls"/>
+			<device-support value="samd21"/>
+			<device-support value="samr21"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samd21"/>
 		</module>
 	</select-by-device>
 </asf>

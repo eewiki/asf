@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4 DSP class marks Example on ATPL230AMB" id="sam.utils.cmsis.dsp_lib.examples.arm_class_marks_example.atpl230amb">
+		<require idref="sam.utils.cmsis.dsp_lib.examples.arm_class_marks_example"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="board.atpl230amb"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>

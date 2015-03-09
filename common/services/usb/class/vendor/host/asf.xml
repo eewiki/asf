@@ -20,13 +20,14 @@
 			<device-support value="sam3a"/>
 			<device-support value="sam4l"/>
 			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>
 		<module type="service" id="common.services.usb.class.vendor.host.composite#disable" caption="USB Host Vendor disabled">
 			<info type="gui-flag" value="hidden"/>
 			<device-support value="avr"/>
 			<device-support value="sam"/>
-			<device-support value="samd21"/>
+			<device-support value="sam0"/>
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>
 	</select-by-config>
@@ -52,6 +53,7 @@
 		<device-support value="sam3a"/>
 		<device-support value="sam4l"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 	</module>
 </asf>

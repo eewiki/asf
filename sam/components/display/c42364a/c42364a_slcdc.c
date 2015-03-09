@@ -3,7 +3,7 @@
  *
  * \brief Management of C42364A LCD Glass component.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -300,7 +300,7 @@ void c42364a_show_text(const uint8_t *data)
 
 void c42364a_clear_text(void)
 {
-	c42364a_write_alphanum_packet("     ");
+	c42364a_write_alphanum_packet((const uint8_t*)"     ");
 }
 
 void c42364a_clear_icon(uint8_t icon_com, uint8_t icon_seg)
@@ -396,7 +396,7 @@ void c42364a_show_numeric_dec(int32_t value)
 
 void c42364a_clear_numeric_dec(void)
 {
-	c42364a_write_num_packet("    ");
+	c42364a_write_num_packet((const uint8_t*)"    ");
 }
 
 void c42364a_show_battery(enum c42364a_battery_value val)

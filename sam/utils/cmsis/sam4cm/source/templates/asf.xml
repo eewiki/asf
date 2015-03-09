@@ -1,0 +1,10 @@
+<asf xmlversion="1.0">
+	<module type="driver" caption="SAM4CM startup code" id="sam.utils.cmsis.sam4cm.source.template">
+		<build type="c-source" value="system_sam4cm.c"/>
+		<build type="c-source" value="gcc/startup_sam4cm.c" toolchain="armgcc"/>
+		<build type="c-source" value="iar/startup_sam4cm.c" toolchain="iarewarm"/>
+		<build type="include-path" value="."/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="sam4cm"/>
+	</module>
+</asf>

@@ -552,6 +552,8 @@
 			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
 			<device-support value="samg"/>
 			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.efc"/>
+			<require idref="sam.drivers.supc"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samg53"/>
 		</module>
 		<module type="service" id="common.services.basic.clock#22" caption="System Clock Control - SAM4CP implementation">
@@ -578,6 +580,31 @@
 			<device-support value="sam4cp"/>
 			<require idref="sam.drivers.pmc"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+		</module>
+		<module type="service" id="common.services.basic.clock#23" caption="System Clock Control - SAM4CM implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="sam4cm/genclk.h"/>
+			<build type="header-file" value="sam4cm/osc.h"/>
+			<build type="header-file" value="sam4cm/pll.h"/>
+			<build type="c-source" value="sam4cm/sysclk.c"/>
+			<build type="header-file" value="sam4cm/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="sam4cm/module_config"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="sam4cm"/>
+			<require idref="sam.drivers.pmc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-sam4cm"/>
 		</module>
 	</select-by-device>
 </asf>

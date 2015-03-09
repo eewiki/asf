@@ -3,7 +3,7 @@
  *
  * @brief Handles Serial Interface Functionalities
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -41,7 +41,7 @@
  */
 
 /*
- * Copyright (c) 2013, Atmel Corporation All rights reserved.
+ * Copyright (c) 2013-2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
@@ -94,15 +94,15 @@ static uint8_t head = 0, buf_count = 0;
 extern mac_sec_pib_t mac_sec_pib;
 uint8_t key_source_8[8] = {0};
 uint8_t key_source_4[4] = {0};
-#endif	
+#endif
 
 #if (defined BEACON_SUPPORT) || (defined ENABLE_TSTAMP)
-//extern uint32_t tal_rx_timestamp;
+/* extern uint32_t tal_rx_timestamp; */
 #endif  /* #if (defined BEACON_SUPPORT) || (defined ENABLE_TSTAMP) */
 
 /*
  * \brief This function does the initialization of the Serial handler state
- *Machine.
+ * Machine.
  */
 void serial_interface_init(void)
 {
@@ -113,7 +113,7 @@ void serial_interface_init(void)
 /**
  * \brief get the new buffer for next transmission through serial
  *
- **\return unsigned integer pointer to buf
+ ****\return unsigned integer pointer to buf
  */
 static uint8_t *get_next_tx_buffer(void)
 {
@@ -250,12 +250,12 @@ void usr_mcps_data_ind(wpan_addr_spec_t *SrcAddrSpec,
 	*msg_buf++ = Timestamp >> 24;
     #endif  /* ENABLE_TSTAMP */
 #if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
-    /* Add size of SecurityLevel parameter. */
-    *msg_ptr_to_size += 3;
+	/* Add size of SecurityLevel parameter. */
+	*msg_ptr_to_size += 3;
 
-    *msg_buf++ = SecurityLevel,
-    *msg_buf++ = KeyIdMode;
-    *msg_buf++ = KeyIndex;
+	*msg_buf++ = SecurityLevel,
+	*msg_buf++ = KeyIdMode;
+	*msg_buf++ = KeyIndex;
 #endif  /* MAC_SECURITY_ZIP */
 	*msg_buf++ = msduLength;
 
@@ -274,7 +274,7 @@ void usr_mcps_data_ind(wpan_addr_spec_t *SrcAddrSpec,
 
 /*
  * Callback function that must be implemented by application (NHLE) for MAC
- *service
+ * service
  * MCPS-PURGE.confirm.
  *
  * @param msduHandle           Handle (id) of MSDU to be purged.
@@ -338,7 +338,7 @@ void usr_mlme_associate_conf(uint16_t AssocShortAddress,
  * @brief Callback function usr_mlme_associate_ind
  *
  * @param DeviceAddress         Extended address of device requesting
- *association
+ * association
  * @param CapabilityInformation Capabilities of device requesting association
  */
 void usr_mlme_associate_ind(uint64_t DeviceAddress,
@@ -367,7 +367,7 @@ void usr_mlme_associate_ind(uint64_t DeviceAddress,
  * @param PANDescriptor  Pointer to PAN descriptor for received beacon.
  * @param PendAddrSpec   Pending address specification in received beacon.
  * @param AddrList       List of addresses of devices the coordinator has
- *pending data.
+ * pending data.
  * @param sduLength      Length of beacon payload.
  * @param sdu            Pointer to beacon payload.
  *
@@ -585,11 +585,11 @@ void usr_mlme_disassociate_ind(uint64_t DeviceAddress,
  * @return void
  */
 void usr_mlme_get_conf(uint8_t status,
-uint8_t PIBAttribute,
+		uint8_t PIBAttribute,
 #if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
-uint8_t PIBAttributeIndex,
+		uint8_t PIBAttributeIndex,
 #endif  /* ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006)) */
-void *PIBAttributeValue)
+		void *PIBAttributeValue)
 {
 	uint8_t *msg_buf;
 	uint8_t pib_attribute_octet_no;
@@ -605,10 +605,10 @@ void *PIBAttributeValue)
 	*msg_buf++ = MLME_GET_CONFIRM;
 	*msg_buf++ = status;
 	*msg_buf++ = PIBAttribute;
-	
-#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))	
+
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	*msg_buf++ = PIBAttributeIndex;
-#endif	
+#endif
 
 	/* Get size of PIB attribute to be set */
 	pib_attribute_octet_no = mac_get_pib_attribute_size(PIBAttribute);
@@ -635,7 +635,7 @@ void *PIBAttributeValue)
 #endif
 
 	msg_buf += pib_attribute_octet_no;
-	*msg_ptr_to_size += pib_attribute_octet_no;    
+	*msg_ptr_to_size += pib_attribute_octet_no;
 	*msg_buf = EOT;
 }
 
@@ -670,7 +670,7 @@ void usr_mlme_orphan_ind(uint64_t OrphanAddress)
 
 /*
  * Callback function that must be implemented by application (NHLE) for MAC
- *service
+ * service
  * MLME-POLL.confirm.
  *
  * @param status           Result of requested poll operation.
@@ -710,6 +710,7 @@ void usr_mlme_reset_conf(uint8_t status)
 }
 
 #if (defined MAC_SECURITY_ZIP || defined MAC_SECURITY_2006)
+
 /**
  * @brief Handle fake frame interrupt
  *
@@ -718,62 +719,72 @@ void usr_mlme_reset_conf(uint8_t status)
  */
 static inline void handle_fake_frame_irq(uint8_t *fake_frame)
 {
-    uint8_t ed_value;
-    /* Actual frame length of received frame. */
-    uint8_t phy_frame_len;
-    /* Extended frame length appended by LQI and ED. */
-    uint8_t ext_frame_length;
-    frame_info_t *receive_frame;
-    uint8_t *frame_ptr;
+	uint8_t ed_value;
+	/* Actual frame length of received frame. */
+	uint8_t phy_frame_len;
+	/* Extended frame length appended by LQI and ED. */
+	uint8_t ext_frame_length;
+	frame_info_t *receive_frame;
+	uint8_t *frame_ptr;
 
-    receive_frame = (frame_info_t *)BMM_BUFFER_POINTER(tal_rx_buffer);
+	receive_frame = (frame_info_t *)BMM_BUFFER_POINTER(tal_rx_buffer);
 
-    /* Get ED value; needed to normalize LQI. */
-    ed_value = pal_trx_reg_read(RG_PHY_ED_LEVEL);
+	/* Get ED value; needed to normalize LQI. */
+	ed_value = trx_reg_read(RG_PHY_ED_LEVEL);
 
-    /* Get frame length from transceiver. */
-    //pal_trx_frame_read(&phy_frame_len, LENGTH_FIELD_LEN);
-    phy_frame_len = 0x2C;
+	/* Get frame length from transceiver. */
+	/* trx_frame_read(&phy_frame_len, LENGTH_FIELD_LEN); */
+	phy_frame_len = 0x2C;
 
-    /*
-     * The PHY header is also included in the frame (length field), hence the frame length
-     * is incremented.
-     * In addition to that, the LQI and ED value are uploaded, too.
-     */
-    ext_frame_length = phy_frame_len + LENGTH_FIELD_LEN + LQI_LEN + ED_VAL_LEN;
+	/*
+	 * The PHY header is also included in the frame (length field), hence
+	 * the frame length
+	 * is incremented.
+	 * In addition to that, the LQI and ED value are uploaded, too.
+	 */
+	ext_frame_length = phy_frame_len + LENGTH_FIELD_LEN + LQI_LEN +
+			ED_VAL_LEN;
 
-    /* Update payload pointer to store received frame. */
-    frame_ptr = (uint8_t *)receive_frame + LARGE_BUFFER_SIZE - ext_frame_length;
+	/* Update payload pointer to store received frame. */
+	frame_ptr = (uint8_t *)receive_frame + LARGE_BUFFER_SIZE -
+			ext_frame_length;
 
-    /*
-     * Note: The following code is different from single chip
-     * transceivers, since reading the frame via SPI contains the length field
-     * in the first octet.
-     */
-    // pal_trx_frame_read(frame_ptr, LENGTH_FIELD_LEN + phy_frame_len + LQI_LEN);
-    memcpy(frame_ptr, fake_frame, LENGTH_FIELD_LEN + phy_frame_len + LQI_LEN);
+	/*
+	 * Note: The following code is different from single chip
+	 * transceivers, since reading the frame via SPI contains the length
+	 * field
+	 * in the first octet.
+	 */
 
-    receive_frame->mpdu = frame_ptr;
-    /* Add ED value at the end of the frame buffer. */
-    receive_frame->mpdu[phy_frame_len + LQI_LEN + ED_VAL_LEN] = ed_value;
+	/* trx_frame_read(frame_ptr, LENGTH_FIELD_LEN + phy_frame_len +
+	 * LQI_LEN); */
+	memcpy(frame_ptr, fake_frame, LENGTH_FIELD_LEN + phy_frame_len +
+			LQI_LEN);
+
+	receive_frame->mpdu = frame_ptr;
+	/* Add ED value at the end of the frame buffer. */
+	receive_frame->mpdu[phy_frame_len + LQI_LEN + ED_VAL_LEN] = ed_value;
 
 #if (defined BEACON_SUPPORT) || (defined ENABLE_TSTAMP)
-    /*
-     * Store the timestamp.
-     * The time stamping is only required for beaconing networks
-     * or if time stamping is explicitly enabled.
-     */
-    //receive_frame->time_stamp = tal_rx_timestamp;
+
+	/*
+	 * Store the timestamp.
+	 * The time stamping is only required for beaconing networks
+	 * or if time stamping is explicitly enabled.
+	 */
+	/* receive_frame->time_stamp = tal_rx_timestamp; */
 #endif  /* #if (defined BEACON_SUPPORT) || (defined ENABLE_TSTAMP) */
 
-    /* Append received frame to incoming_frame_queue and get new rx buffer. */
-    qmm_queue_append(&tal_incoming_frame_queue, tal_rx_buffer);
+	/* Append received frame to incoming_frame_queue and get new rx buffer.
+	**/
+	qmm_queue_append(&tal_incoming_frame_queue, tal_rx_buffer);
 
-    /* The previous buffer is eaten up and a new buffer is not assigned yet. */
-    tal_rx_buffer = bmm_buffer_alloc(LARGE_BUFFER_SIZE);
+	/* The previous buffer is eaten up and a new buffer is not assigned yet.
+	**/
+	tal_rx_buffer = bmm_buffer_alloc(LARGE_BUFFER_SIZE);
 }
-#endif
 
+#endif
 
 #if (MAC_RX_ENABLE_SUPPORT == 1)
 
@@ -855,13 +866,13 @@ void usr_mlme_scan_conf(uint8_t status,
 			for (uint8_t i = 0; i < ResultListSize; i++) {
 				/*
 				 * Since the wpan_desc_ptr_t might have various
-				 *sizes depending
+				 * sizes depending
 				 * on the platform type (8 bit vs. 32 bit), but
-				 *the test
+				 * the test
 				 * harness requires strict 8 bit oriented
-				 *structure layouts,
+				 * structure layouts,
 				 * the wpan descriptor cannot be copied via
-				 *memcpy here.
+				 * memcpy here.
 				 */
 				*msg_buf++
 					= wpan_desc_ptr->CoordAddrSpec.AddrMode;
@@ -927,12 +938,12 @@ void usr_mlme_scan_conf(uint8_t status,
  */
 #if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 void usr_mlme_set_conf(uint8_t status,
-						uint8_t PIBAttribute,
-						uint8_t PIBAttributeIndex)
+		uint8_t PIBAttribute,
+		uint8_t PIBAttributeIndex)
 
 #else
 void usr_mlme_set_conf(uint8_t status,
-                        uint8_t PIBAttribute)
+		uint8_t PIBAttribute)
 #endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 {
 	uint8_t *msg_buf;
@@ -943,9 +954,9 @@ void usr_mlme_set_conf(uint8_t status,
 	*msg_buf++ = MLME_SET_CONFIRM;
 	*msg_buf++ = status;
 	*msg_buf++ = PIBAttribute;
-#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))	
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	*msg_buf++ = PIBAttributeIndex;
-#endif	
+#endif
 	*msg_buf = EOT;
 }
 
@@ -1021,7 +1032,7 @@ void usr_mlme_gts_conf(gts_char_t GtsChar, uint8_t status)
 	*msg_buf++ = MLME_GTS_CONF_LEN + MAC_PID_LEN;
 	*msg_buf++ = MAC_PID;
 	*msg_buf++ = MLME_GTS_CONFIRM;
-	*msg_buf++ = *((uint8_t*)&GtsChar);
+	*msg_buf++ = *((uint8_t *)&GtsChar);
 	*msg_buf++ = status;
 	*msg_buf = EOT;
 }
@@ -1041,14 +1052,16 @@ void usr_mlme_gts_ind(uint16_t DeviceAddr, gts_char_t GtsChar)
 	*msg_buf++ = DeviceAddr;
 	*msg_buf++ = DeviceAddr >> 8;
 #endif
-	*msg_buf++ = *((uint8_t*)&GtsChar);
+	*msg_buf++ = *((uint8_t *)&GtsChar);
 	*msg_buf = EOT;
 }
+
 #endif /* (MAC_GTS_REQUEST == 1) */
 #endif /* GTS_SUPPORT */
+
 /**
  * \brief Parses the Received Data in the Buffer and Process the Commands
- *accordingly.
+ * accordingly.
  */
 static void handle_incoming_msg(void)
 {
@@ -1059,36 +1072,36 @@ static void handle_incoming_msg(void)
 		switch (sio_rx_buf[2]) { /* message type */
 		case MCPS_DATA_REQUEST:
 		{
-                /* Order of reception:
-                   With MAC_SECURITY_ZIP:
-                       size;
-					   ProtocolId;
-                       cmdCode;
-                       SrcAddrMode;
-                       DstAddrMode;
-                       DstPANId;
-                       DstAddr;
-                       msduHandle;
-                       TxOptions;
-                       SecurityLevel;
-                       KeyIdMode;
-                       KeyIndex;
-                       msduLength;
-                       msdu*;
-					   
-					    Without MAC_SECURITY:
-					    size;
-						ProtocolId;
-					    cmdCode;
-					    SrcAddrMode;
-					    DstAddrMode;
-					    DstPANId;
-					    DstAddr;
-					    msduHandle;
-					    TxOptions;
-					    msduLength;
-					    msdu*;
-					    */
+			/* Order of reception:
+			 * With MAC_SECURITY_ZIP:
+			 *     size;
+			 *                         ProtocolId;
+			 *     cmdCode;
+			 *     SrcAddrMode;
+			 *     DstAddrMode;
+			 *     DstPANId;
+			 *     DstAddr;
+			 *     msduHandle;
+			 *     TxOptions;
+			 *     SecurityLevel;
+			 *     KeyIdMode;
+			 *     KeyIndex;
+			 *     msduLength;
+			 *     msdu*;
+			 *
+			 *                          Without MAC_SECURITY:
+			 *                          size;
+			 *                              ProtocolId;
+			 *                          cmdCode;
+			 *                          SrcAddrMode;
+			 *                          DstAddrMode;
+			 *                          DstPANId;
+			 *                          DstAddr;
+			 *                          msduHandle;
+			 *                          TxOptions;
+			 *                          msduLength;
+			 *                          msdu*;
+			 */
 
 			uint8_t src_addr_mode = sio_rx_buf[3];
 			wpan_addr_spec_t dst_addr;
@@ -1102,46 +1115,53 @@ static void handle_incoming_msg(void)
 					sizeof(uint64_t));
 			uint8_t msdu_handle = sio_rx_buf[15];
 			uint8_t tx_options = sio_rx_buf[16];
-			
+
 #if (defined MAC_SECURITY_ZIP || defined MAC_SECURITY_2006)
-                uint8_t security_level = sio_rx_buf[17];
-                uint8_t key_id_mode = sio_rx_buf[18];
-                uint8_t *key_source = NULL;
+			uint8_t security_level = sio_rx_buf[17];
+			uint8_t key_id_mode = sio_rx_buf[18];
+			uint8_t *key_source = NULL;
 
-                if (key_id_mode == 3)
-                {
-                    memcpy(key_source_8, &dst_addr.Addr.long_address, 8);
-                    key_source = key_source_8;
+			if (key_id_mode == 3) {
+				memcpy(key_source_8,
+						&dst_addr.Addr.long_address, 8);
+				key_source = key_source_8;
+			} else if (key_id_mode == 2) {
+				key_source_4[0] = (uint8_t)dst_addr.PANId;
+				key_source_4[1]
+					= (uint8_t)(dst_addr.PANId >> 8);
 
-                }
-                else if (key_id_mode == 2)
-                {
-                    key_source_4[0] = (uint8_t)dst_addr.PANId;
-                    key_source_4[1] = (uint8_t)(dst_addr.PANId >> 8);
-                    //                    key_source_4[2] = (uint8_t)(mac_sec_pib.PANCoordShortAddress);
-                    //                    key_source_4[3] = (uint8_t)(mac_sec_pib.PANCoordShortAddress >> 8);
-                    key_source_4[2] = (uint8_t)(mac_pib.mac_CoordShortAddress);
-                    key_source_4[3] = (uint8_t)(mac_pib.mac_CoordShortAddress >> 8);
-                    key_source = key_source_4;
+				/*                    key_source_4[2] =
+				 * (uint8_t)(mac_sec_pib.PANCoordShortAddress);
+				 **/
 
-                }
+				/*                    key_source_4[3] =
+				 * (uint8_t)(mac_sec_pib.PANCoordShortAddress >>
+				 * 8); */
+				key_source_4[2]
+					= (uint8_t)(mac_pib.
+						mac_CoordShortAddress);
+				key_source_4[3]
+					= (uint8_t)(mac_pib.
+						mac_CoordShortAddress
+						>> 8);
+				key_source = key_source_4;
+			}
 
-                uint8_t key_index = sio_rx_buf[19];
+			uint8_t key_index = sio_rx_buf[19];
 
-                uint8_t msdu_length = sio_rx_buf[20];
-                uint8_t *msdu = &sio_rx_buf[22];
+			uint8_t msdu_length = sio_rx_buf[20];
+			uint8_t *msdu = &sio_rx_buf[22];
 
-
-                ret_val = wpan_mcps_data_req(src_addr_mode,
-                                             &dst_addr,
-                                             msdu_length,
-                                             msdu,
-                                             msdu_handle,
-                                             tx_options,
-                                             security_level,
-                                             key_source,
-                                             key_id_mode,
-                                             key_index);
+			ret_val = wpan_mcps_data_req(src_addr_mode,
+					&dst_addr,
+					msdu_length,
+					msdu,
+					msdu_handle,
+					tx_options,
+					security_level,
+					key_source,
+					key_id_mode,
+					key_index);
 #else   /* No MAC_SECURITY */
 			uint8_t msdu_length = sio_rx_buf[17];
 			uint8_t *msdu = &sio_rx_buf[19];
@@ -1155,18 +1175,18 @@ static void handle_incoming_msg(void)
 			 *                       uint8_t TxOptions);
 			 */
 			ret_val = wpan_mcps_data_req(src_addr_mode,
-											&dst_addr,
-											msdu_length,
-											msdu,
-											msdu_handle,
-											tx_options);
-#endif  /* MAC_SECURITY */				
+					&dst_addr,
+					msdu_length,
+					msdu,
+					msdu_handle,
+					tx_options);
+#endif  /* MAC_SECURITY */
 
 			/*
 			 * No Assert for MCPS-DATA request, since a too large
-			 *payload
+			 * payload
 			 * will also return true, but this is correct behavior
-			 *in the
+			 * in the
 			 * test case then.
 			 */
 		}
@@ -1195,7 +1215,7 @@ static void handle_incoming_msg(void)
 		}
 		break;
 #endif  /* ((MAC_PURGE_REQUEST_CONFIRM == 1) && (MAC_INDIRECT_DATA_BASIC == 1))
-				 **/
+				**/
 
 #if (MAC_ASSOCIATION_REQUEST_CONFIRM == 1)
 		case MLME_ASSOCIATE_REQUEST:
@@ -1358,12 +1378,12 @@ static void handle_incoming_msg(void)
 			 * bool wpan_mlme_get_req(uint8_t PIBAttribute);
 			 */
 
-			
-			
 #if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
-      ret_val = wpan_mlme_get_req(sio_rx_buf[3], sio_rx_buf[4]);			
+			ret_val
+				= wpan_mlme_get_req(sio_rx_buf[3],
+					sio_rx_buf[4]);
 #else
-      ret_val = wpan_mlme_get_req(sio_rx_buf[3]);			
+			ret_val = wpan_mlme_get_req(sio_rx_buf[3]);
 #endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 			if (ret_val == false) {
@@ -1558,13 +1578,25 @@ static void handle_incoming_msg(void)
 					);
 
 			ret_val = wpan_mlme_scan_req(sio_rx_buf[3],          /*
-					                                      * ScanType */
+					                                      *
+					                                      *
+					                                      *ScanType
+					                                      **/
 					scan_channels,                       /*
-					                                      * ScanChannels */
+					                                      *
+					                                      *
+					                                      *ScanChannels
+					                                      **/
 					sio_rx_buf[8],                       /*
-					                                      * ScanDuration */
+					                                      *
+					                                      *
+					                                      *ScanDuration
+					                                      **/
 					sio_rx_buf[9]);                      /*
-					                                      * ChannelPage */
+					                                      *
+					                                      *
+					                                      *ChannelPage
+					                                      **/
 			if (ret_val == false) {
 				Assert(
 						"Test harness: Scan Request not successful" ==
@@ -1588,14 +1620,14 @@ static void handle_incoming_msg(void)
 			 *                      uint8_t *PIBAttributeValue);
 			 */
 #if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
-			ret_val = wpan_mlme_set_req(sio_rx_buf[3], sio_rx_buf[4],
-			&sio_rx_buf[6]);
+			ret_val = wpan_mlme_set_req(sio_rx_buf[3],
+					sio_rx_buf[4],
+					&sio_rx_buf[6]);
 
 #else
 			ret_val = wpan_mlme_set_req(sio_rx_buf[3],
-			&sio_rx_buf[5]);
+					&sio_rx_buf[5]);
 #endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006)  */
-
 
 			if (ret_val == false) {
 				Assert(
@@ -1679,24 +1711,25 @@ static void handle_incoming_msg(void)
 #endif /* (MAC_SYNC_REQUEST == 1) */
 
 #if (defined MAC_SECURITY_ZIP || defined MAC_SECURITY_2006)
-        case MAC_INC_FRAME:
-            //mac_process_tal_data_ind(&sio_rx_buf[3]);
+		case MAC_INC_FRAME:
+			/* mac_process_tal_data_ind(&sio_rx_buf[3]); */
 
-            handle_fake_frame_irq(&sio_rx_buf[4]);
-            break;
-#endif		
-	
+			handle_fake_frame_irq(&sio_rx_buf[4]);
+			break;
+#endif
+
 #ifdef GTS_SUPPORT
 #if (MAC_GTS_REQUEST == 1)
 		case MLME_GTS_REQUEST:
 		{
 			uint16_t DevAddr = ((uint16_t)sio_rx_buf[3] |
-						((uint16_t)sio_rx_buf[4] << 8));
+					((uint16_t)sio_rx_buf[4] << 8));
+
 			/* Order of reception:
 			 * size;
 			 * ProtocolId,
 			 * cmdCode;
-			 
+			 *
 			 */
 
 			/*
@@ -1704,12 +1737,16 @@ static void handle_incoming_msg(void)
 			 *                       uint8_t ChannelPage,
 			 *                       bool TrackBeacon);
 			 */
-			ret_val = wpan_mlme_gts_req(DevAddr, *((gts_char_t*)&sio_rx_buf[5]));
+			ret_val
+				= wpan_mlme_gts_req(DevAddr,
+					*((gts_char_t *)&sio_rx_buf[
+						5]));
 			if (ret_val == false) {
 				Assert(
 						"Test harness: GTS Request not successful" ==
 						0);
 			}
+
 			break;
 		}
 #endif /* (MAC_GTS_REQUEST == 1) */
@@ -1772,7 +1809,7 @@ static inline void process_incoming_sio_data(void)
 		}
 
 		/* Make rx buffer ready for next reception before handling
-		 *received data. */
+		 * received data. */
 		sio_rx_ptr = sio_rx_buf;
 		sio_rx_state = UART_RX_STATE_SOT;
 		break;
@@ -1799,7 +1836,7 @@ void serial_data_handler(void)
 		                                                   * USB and
 		                                                   * UART ? */
 	} else { /* Data has been received, process the data */
-		/* Process each single byte */
+		 /* Process each single byte */
 		process_incoming_sio_data();
 		data_length--;
 		rx_index++;

@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="Network serial interface AT86RF212B Zigbit(Carrier)-SAM4L XPLAINED Pro" id="thirdparty.wireless.avr2102_rf4control.apps.nwk.serial_if.ncp.sam4lc4c_rf212b_zigbit_ext">
+	<project force-caption="true" force-description="true" caption="RF4CE Network serial interface AT86RF212B Zigbit(Carrier)-SAM4L XPLAINED Pro" id="thirdparty.wireless.avr2102_rf4control.apps.nwk.serial_if.ncp.sam4lc4c_rf212b_zigbit_ext">
 		<info type="description" value="summary">
 		The RF4CE network stack running on the network co-processor and driven by the host application
 		</info>

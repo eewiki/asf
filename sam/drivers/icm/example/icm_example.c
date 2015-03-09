@@ -3,7 +3,7 @@
  *
  * \brief ICM example for SAM.
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -255,10 +255,10 @@ int main(void)
 	reg_descriptor_sec.tran_size = 0;
 	reg_descriptor_sec.next_addr = 0;
 
-	/* Set region descriptor start addres */
+	/* Set region descriptor start address */
 	icm_set_reg_des_addr(ICM, (uint32_t)&reg_descriptor[0]);
 
-	/* Set hash area start addres */
+	/* Set hash area start address */
 	icm_set_hash_area_addr(ICM, (uint32_t)output_sha);
 
 	/* Enable ICM */

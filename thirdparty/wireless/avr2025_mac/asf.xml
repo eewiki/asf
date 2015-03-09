@@ -1,9 +1,9 @@
 <asf xmlversion="1.0">
-	<select-by-config id="thirdparty.wireless.avr2025_mac" name="config.thirdparty.wireless.avr2025_mac" caption="AVR2025 - IEEE 802.15.4 MAC v3.1.0" default="source">
+	<select-by-config id="thirdparty.wireless.avr2025_mac" name="config.thirdparty.wireless.avr2025_mac" caption="AVR2025 - IEEE 802.15.4 MAC v3.1.1" default="source">
 	<info type="description" value="summary">
 			This module is included only for MAC applications or if the Highest Stack Layer is MAC.The IEEE standard 802.15.4 MAC Layer defines the protocol and compatible interconnection for data communication devices using low data rate, low power and low complexity, short-range radio frequency (RF) transmissions in a wireless personal area network (WPAN).The "source" option is selected  if the whole MAC Stack needs to be added for the application and "api-parser" is selected for MAC applications for Host device in 2p approach .
 			</info>
-        <module type="component" id="thirdparty.wireless.avr2025_mac#source" caption="AVR2025 - IEEE 802.15.4 MAC Stack v3.1.0">
+        <module type="component" id="thirdparty.wireless.avr2025_mac#source" caption="AVR2025 - IEEE 802.15.4 MAC Stack v3.1.1">
 			<info type="description" value="summary">
 			This module is used by default in a single processor approach and by NCP(Network Co-Processor) for a two processor approach.This module includes the whole IEEE 802.15.4 MAC Stack including the MAC ,TAL and PAL Layer source code and should be included only for MAC applications or if the Highest Stack Layer is MAC.The "AVR2025-TAL" module need not be added if this module is included since it pulls that module automaticlly,If TFA features needs to be added ,the "AVR2025-TFA" module needs to be added and the same transceiver selected in this module should be selected .For applications requiring Serial I/O communication the "Serial I/o-Host" or "Serial I/O-NCP" module should be included along with his module.
 			</info>

@@ -1,0 +1,21 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device PHDC for SAM R21 Xplained Pro" id="common.services.usb.class.phdc.device.example.samr21_xplained_pro">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.device" value="phdc"/>
+		<require idref="common.services.usb.class.phdc.device.example"/>
+		<require idref="board.samr21_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsamr21g18a"/>
+	</project>
+</asf>

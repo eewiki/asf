@@ -2,7 +2,7 @@
  * @file pb_pairing.h
  *
  * @brief Declarations of API functions to access push button pairing
- *functionality
+ * functionality
  *
  * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -112,7 +112,7 @@ FUNC_PTR confirm_cb
  * @param OrgVendorString   Vendor string of the device requesting the pair
  * @param OrgUserString     User string of the device requesting the pair
  * @param KeyExTransferCount Key exchange transfer count of the incoming pair
- *request
+ * request
  *
  * @return true if pairing is granted; else false
  *

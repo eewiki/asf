@@ -63,7 +63,9 @@
  * device, e.g., the file system can be created in the internal RAM, NAND Flash 
  * and DataFlash (an AT45DBX needs to be connected) on SAM3X-EK/SAM3N-EK/
  * SAM3S-EK/SAM3U-EK/SAM4E-EK/SAM4S-EK/SAM4S-Xplained/ATxmega128A1-Xplained/
- * ATxmegaA3BU-Xplained/SAM4N-Xplained-Pro.
+ * ATxmegaA3BU-Xplained/SAM4N-Xplained-Pro/SAM4CMP16C-SAM4CMP-DB/
+ * SAM4CMS16C-SAM4CMS-DB. The file system is created in the
+ * Micro SD/MMC on IO1 extension board connected to SAM D/R Xplained Pro.
  *
  *  \section Description
  *
@@ -84,7 +86,7 @@
  *  -# Build the program and download it into the evaluation board.
  *  -# On the computer, open and configure a terminal application
  *     (e.g., HyperTerminal on Microsoft Windows) with these settings:
- *    - 115200 bauds
+ *    - 115200 bauds (or 38400 bauds on SAM D/R Xplained Pro)
  *    - 8 bits of data
  *    - No parity
  *    - 1 stop bit
@@ -123,6 +125,11 @@
 	"-- Compiled: "__DATE__ " "__TIME__ " --"STRING_EOL
 #define MENU_HEADER "\n\r" \
 	"---------------------------------------------------------\n\r"
+
+#if SAMD20 || SAMD21 || SAMR21
+/* Structure for UART module connected to EDBG (used for unit test output) */
+struct usart_module cdc_uart_module;
+#endif
 
 /* Read/write buffer */
 static uint8_t data_buffer[DATA_SIZE];
@@ -196,7 +203,7 @@ static uint8_t run_fatfs_test(uint32_t disk_dev_num)
 	uint32_t i;
 	UINT byte_to_read;
 	UINT byte_read;
-#if _FS_TINY == 0
+#if _FS_READONLY == 0
 	UINT byte_written;
 #endif
 
@@ -244,7 +251,7 @@ static uint8_t run_fatfs_test(uint32_t disk_dev_num)
 	}
 
 	if (res == FR_NO_FILESYSTEM) {
-#if _FS_TINY == 0
+#if _FS_READONLY == 0
 		/* Format disk */
 		printf("-I- Format disk %d\n\r", (int)disk_dev_num);
 		puts("-I- Please wait a moment during formatting...\r");
@@ -261,12 +268,12 @@ static uint8_t run_fatfs_test(uint32_t disk_dev_num)
 		puts("-I- Please run Full version FAT FS test first\r");
 		return 0;
 #endif
-	} else {
+	} else if (FR_OK != res) {
 		printf("-E- f_opendir pb: 0x%X\n\r", res);
 		return 0;
 	}
 
-#if _FS_TINY == 0
+#if _FS_READONLY == 0
 	/* Create a new file */
 	printf("-I- Create a file : \"%s\"\n\r", file_name);
 	res = f_open(&file_object, (char const *)file_name,
@@ -356,27 +363,40 @@ static uint8_t run_fatfs_test(uint32_t disk_dev_num)
 int main(void)
 {
 	uint32_t disk_dev_num;
-
+#if SAMD20 || SAMD21 || SAMR21
+	system_init();
+	struct usart_config usart_conf;
+	usart_get_config_defaults(&usart_conf);
+	usart_conf.mux_setting = CONF_STDIO_MUX_SETTING;
+	usart_conf.pinmux_pad0 = CONF_STDIO_PINMUX_PAD0;
+	usart_conf.pinmux_pad1 = CONF_STDIO_PINMUX_PAD1;
+	usart_conf.pinmux_pad2 = CONF_STDIO_PINMUX_PAD2;
+	usart_conf.pinmux_pad3 = CONF_STDIO_PINMUX_PAD3;
+	usart_conf.baudrate    = CONF_STDIO_BAUDRATE;
+	stdio_serial_init(&cdc_uart_module, CONF_STDIO_USART, &usart_conf);
+	usart_enable(&cdc_uart_module);
+#else
 	const usart_serial_options_t usart_serial_options = {
 		.baudrate   = CONF_TEST_BAUDRATE,
 		.paritytype = CONF_TEST_PARITY,
-#if !SAM
+#  if !SAM
 		.charlength = CONF_TEST_CHARLENGTH,
 		.stopbits   = CONF_TEST_STOPBITS,
-#endif
+#  endif
 	};
 	/* Initialize the system */
 	sysclk_init();
 	board_init();
 
-#if XMEGA
+#  if XMEGA
 	rtc_init();
-#endif
+#  endif
 
-#if SAM
+#  if SAM
 	sysclk_enable_peripheral_clock(CONSOLE_UART_ID);
-#endif
+#  endif
 	stdio_serial_init(CONF_TEST_USART, &usart_serial_options);
+#endif
 
 	/* Intialize the memory device */
 	memories_initialization();

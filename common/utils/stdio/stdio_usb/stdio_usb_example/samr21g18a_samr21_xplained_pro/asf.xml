@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<project caption="USB Standard I/O Example for SAM R21 Xplained Pro" id="common.utils.stdio.stdio_usb.example.samr21_xpro">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.utils.stdio.stdio_usb.example"/>
+		<config name="config.common.services.usb.class.device" value="cdc_stdio"/>
+		<require idref="board.samr21_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsamr21g18a"/>
+	</project>
+</asf>

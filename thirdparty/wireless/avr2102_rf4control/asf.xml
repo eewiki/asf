@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<select-by-config id="thirdparty.wireless.avr2102_rf4control" name="config.thirdparty.wireless.avr2102_rf4control" caption="AVR2102 - RF4Control v2.0.0" default="source">
+	<select-by-config id="thirdparty.wireless.avr2102_rf4control" name="config.thirdparty.wireless.avr2102_rf4control" caption="AVR2102 - RF4Control v2.0.1" default="source">
 		<info type="description" value="summary">
 			This module is included only for RF4Control applications or if the Highest Stack Layer is RF4CE. The RF4Control stack is a ZigBee® RF4CE Certified Platform implementing the ZigBee 
             RF4CE standard.The "source" option is selected  if the  RF4Control source needs to be added for  application and "api-parser" is selected for RF4control applications for Host device in 2p approach .
@@ -10,7 +10,7 @@
             </info>
             <require idref="thirdparty.wireless.avr2025_mac.source.mac"/>
 			<require idref="thirdparty.wireless.avr2025_mac.source.pal"/>
-		    <require idref="thirdparty.wireless.avr2025_mac.source.sal"/>
+		    <require idref="thirdparty.wireless.common_services.sal"/>
 		    <require idref="thirdparty.wireless.avr2025_mac.source.stb"/>
             <require idref="thirdparty.wireless.avr2102_rf4control.include"/>
 			<build type="doxygen-entry-point" value="group_rf4control"/>

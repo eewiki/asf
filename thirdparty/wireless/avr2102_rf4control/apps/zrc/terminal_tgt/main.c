@@ -52,26 +52,27 @@
  * - vendor_data.c               Vendor Specific API functions
  * \section intro Application Introduction
  * Terminal Target Example Application will act as target for the RF4CE ZRC
- *button controller application. Terminal Target stack will respond for the user
- *input via serial interface.
+ * button controller application. Terminal Target stack will respond for the
+ *user
+ * input via serial interface.
  * The user options will be printed on the serial console. Where as the user
- *will choose the options like cold start, warm start, reset(NIB will be reset
- *to default values and stored in EEPROM),
+ * will choose the options like cold start, warm start, reset(NIB will be reset
+ * to default values and stored in EEPROM),
  * start network and push button pairing, channel agility, vendor data support,
- *unpair, print the pairing table, setting the base channel on the target
- *device, toggle the standby mode on the target device.
+ * unpair, print the pairing table, setting the base channel on the target
+ * device, toggle the standby mode on the target device.
  *
  * options are user selectable via serial console, response will be printed on
- *the serial console after processing the requests.
+ * the serial console after processing the requests.
  *
  * Push button pairing procedure can be triggered at target side either by using
  *"All-in-one start" option or "Reset"->"Start"->"Pairing" sequence and make
- *sure that the PBP is triggered at the controller side also.
+ * sure that the PBP is triggered at the controller side also.
  * The status of the push button pairing proceure will be displayed on the
- *terminal.Then it displays ZRC commands received from the controller.
+ * terminal.Then it displays ZRC commands received from the controller.
  *
  * Terminal target can be used with the single button controller node and button
- *controller nodes.
+ * controller nodes.
  * \section api_modules Application Dependent Modules
  * - \ref group_rf4control
  * - \subpage api
@@ -82,7 +83,7 @@
  * \section references References
  * 1)  IEEE Std 802.15.4-2006 Part 15.4: Wireless Medium Access Control (MAC)
  *     and Physical Layer (PHY) Specifications for Low-Rate Wireless Personal
- *Area
+ * Area
  *     Networks (WPANs).\n\n
  * 2)  AVR Wireless Support <A href="http://avr@atmel.com">avr@atmel.com</A>.\n
  *
@@ -93,16 +94,18 @@
 
 /* === INCLUDES ============================================================ */
 
-
 #include <ctype.h>
 #include "conf_board.h"
 #include <asf.h>
 #include "app_config.h"
+#if (!defined SAMD20) || (!defined SAMD21) || (!defined SAMR21)
 #include "led.h"
+#endif
 #include "delay.h"
 #include "vendor_data.h"
 #include "pb_pairing.h"
 #include "common_sw_timer.h"
+#include "sio2host.h"
 
 /* === TYPES =============================================================== */
 
@@ -226,22 +229,27 @@ static void app_alert(void);
  */
 int main(void)
 {
-    irq_initialize_vectors();
+	irq_initialize_vectors();
+#if SAMD21 || SAMD20 || SAMR21
+	system_init();
+	delay_init();
+#else
 	sysclk_init();
 
-    /* Initialize the board.
-     * The board-specific conf_board.h file contains the configuration of
-     * the board initialization.
-     */
-    board_init();
+	/* Initialize the board.
+	 * The board-specific conf_board.h file contains the configuration of
+	 * the board initialization.
+	 */
+	board_init();
+#endif
 
-    sw_timer_init();
+	sw_timer_init();
 
-    if (nwk_init()!= NWK_SUCCESS) {
-        app_alert();
-    }
+	if (nwk_init() != NWK_SUCCESS) {
+		app_alert();
+	}
 
-    zrc_ind.vendor_data_ind_cb = vendor_data_ind;
+	zrc_ind.vendor_data_ind_cb = vendor_data_ind;
 
 #ifdef ZRC_CMD_DISCOVERY
 	zrc_ind.zrc_cmd_disc_indication_cb =  zrc_cmd_disc_indication;
@@ -261,14 +269,15 @@ int main(void)
 
 	/*
 	 * The stack is initialized above, hence the global interrupts are
-	 *enabled
+	 * enabled
 	 * here.
 	 */
 	cpu_irq_enable();
 
 #ifdef SIO_HUB
+
 	/* Initialize the serial interface used for communication with terminal
-	 *program. */
+	 * program. */
 
 	sio2host_init();
 #endif
@@ -493,7 +502,6 @@ static void print_main_menu(void)
  */
 static void print_node_status(void)
 {
-		
 	printf("Node status: ");
 
 	switch (node_status) {
@@ -539,7 +547,7 @@ static void print_node_status(void)
 	}
 	printf("  No.of paired devices: %d", number_of_paired_dev);
 	printf("\r\n");
-	nlme_get_request(nwkBaseChannel,0,(FUNC_PTR)nlme_get_confirm);
+	nlme_get_request(nwkBaseChannel, 0, (FUNC_PTR)nlme_get_confirm);
 	printf("Channel agility (periodic mode) ");
 	if (ch_ag_enabled) {
 		printf("enabled\r\n");
@@ -552,7 +560,7 @@ static void print_node_status(void)
  * @brief Print the pairing table to the terminal program
  *
  * @param start_from_scratch    Whether pairing table has to printed from
- *scratch.
+ * scratch.
  * @param table_entry           Table entry
  * @param index                 Index of the table entry to be printed.
  */
@@ -790,7 +798,7 @@ bool pbp_allow_pairing(nwk_enum_t Status, uint64_t SrcIEEEAddr,
 
 /**
  * @brief The command discovery confirm for the previous command discovery
- *request.
+ * request.
  *        request command was receiced.
  *
  * @param Status           nwk status
@@ -816,7 +824,7 @@ static void zrc_cmd_disc_confirm(nwk_enum_t Status, uint8_t PairingRef,
 
 /**
  * @brief The command discovery indication callback indicates that a command
- *discovery
+ * discovery
  *        request command was receiced.
  *
  * @param PairingRef          Pairing Ref for the source.
@@ -844,7 +852,7 @@ static void zrc_cmd_disc_indication(uint8_t PairingRef)
  */
 static void nlme_get_confirm(nwk_enum_t Status, nib_attribute_t NIBAttribute,
 		uint8_t NIBAttributeIndex, void *NIBAttributeValue)
-{   
+{
 	uint8_t channel;
 	if (Status == NWK_SUCCESS) {
 		switch (NIBAttribute) {
@@ -899,9 +907,10 @@ static void nlme_get_confirm(nwk_enum_t Status, nib_attribute_t NIBAttribute,
 			node_status = IDLE;
 			print_sub_mode_ch_ag_setup();
 			break;
+
 		case nwkBaseChannel:
-		    channel = *((uint8_t *)NIBAttributeValue);
-		    printf("channel %u\r\n",channel);
+			channel = *((uint8_t *)NIBAttributeValue);
+			/* printf("channel %u\r\n",channel); */
 			break;
 
 		default:
@@ -987,7 +996,7 @@ static void nlme_set_confirm(nwk_enum_t Status, nib_attribute_t NIBAttribute,
 
 /**
  * @brief Notify the application of the status of its request to start a
- *network.
+ * network.
  *
  * The NLME-START.confirm primitive allows the NLME to notify the application of
  * the status of its request to start a network.
@@ -1033,11 +1042,11 @@ static void nlme_start_confirm(nwk_enum_t Status)
  * @brief Notify the application of the removal of link by another device.
  *
  * The NLME-UNPAIR.indication primitive allows the NLME to notify the
- *application
+ * application
  * of the removal of a pairing link by another device.
  *
  * @param PairingRef       Pairing Ref for which entry is removed from pairing
- *table.
+ * table.
  */
 static void nlme_unpair_indication(uint8_t PairingRef)
 {
@@ -1050,12 +1059,12 @@ static void nlme_unpair_indication(uint8_t PairingRef)
  * @brief Notify the application for the previous unpair request.
  *
  * The NLME-UNPAIR.confirm primitive allows the NLME to notify the application
- *of
+ * of
  * the status of its request to remove a pair with another device.
  *
  * @param Status           nwk status
  * @param PairingRef       Pairing Ref for which entry is removed from pairing
- *table.
+ * table.
  */
 static void nlme_unpair_confirm(uint8_t Status, uint8_t PairingRef)
 {
@@ -1076,7 +1085,7 @@ static void nlme_unpair_confirm(uint8_t Status, uint8_t PairingRef)
 
 /**
  * @brief Confirms the previous channel agility request, i.e.
- *nwk_ch_agility_req()
+ * nwk_ch_agility_req()
  *
  * @param Status           nwk status
  * @param ChannelChanged   whether channel is changed.
@@ -1123,10 +1132,10 @@ static void print_ch_change_submenu(void)
 	uint8_t i;
 	uint8_t input;
 
-#if (RF_BAND == BAND_900)
-	printf("Enter new base channel (1, 4, or 7): \r\n");
-#else
+#if (RF_BAND == BAND_2400)
 	printf("Enter new base channel (15, 20, or 25): \r\n");
+#else
+	printf("Enter new base channel (1, 4, or 7): \r\n");
 #endif
 
 	for (i = 0; i < 3; i++) {
@@ -1139,10 +1148,10 @@ static void print_ch_change_submenu(void)
 	}
 	channel = atol(input_char);
 
-#if (RF_BAND == BAND_900)
-	if ((channel == 1) || (channel == 4) || (channel == 7))
-#else
+#if (RF_BAND == BAND_2400)
 	if ((channel == 15) || (channel == 20) || (channel == 25))
+#else
+	if ((channel == 1) || (channel == 4) || (channel == 7))
 #endif
 	{
 		nlme_set_request(nwkBaseChannel, 0, &channel,
@@ -1341,7 +1350,7 @@ static void print_sub_mode_ch_ag_setup(void)
 
 /**
  * @brief This function is used to print the vendor data submenu on the
- *hyperterminal.
+ * hyperterminal.
  *
  * @param Vcmd Vendor command id to be requested.
  *
@@ -1463,7 +1472,7 @@ void vendor_data_confirm(nwk_enum_t Status, uint8_t PairingRef,
 
 /**
  * @brief This function is used to print the status in text on the
- *hyperterminal.
+ * hyperterminal.
  *
  * @param status    nwk status (constants defined by nwk layer)
  *

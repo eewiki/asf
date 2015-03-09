@@ -59,6 +59,19 @@
 #define IER_ERROR_INTERRUPTS    (TWI_IER_NACK | TWI_IER_ARBLST | TWI_IER_OVRE)
 
 /* Work out how many TWI ports with PDC supported are present. */
+#if (SAMG)
+#if defined(PDC_TWI4)
+	#define MAX_TWIS                                (4)
+#elif defined(PDC_TWI3)
+	#define MAX_TWIS                                (3)
+#elif defined(PDC_TWI2)
+	#define MAX_TWIS                                (2)
+#elif defined(PDC_TWI1)
+	#define MAX_TWIS                                (1)
+#else
+	#error No TWI peripherals with PDC support defined
+#endif
+#else
 #if defined(PDC_TWI4)
 	#define MAX_TWIS                                (5)
 #elif defined(PDC_TWI3)
@@ -73,6 +86,7 @@
 	#define MAX_TWIS                                (1)
 #else
 	#error No TWI peripherals with PDC support defined
+#endif
 #endif
 
 /* A common interrupt handler definition used by all the TWI peripherals. */
@@ -101,6 +115,20 @@ static const freertos_dma_event_control_t null_dma_control = {NULL, NULL};
 static const freertos_pdc_peripheral_parameters_t all_twi_definitions[MAX_TWIS] = {
 	/* Chips with a single TWI port might define TWI only.  Chips with multiple
 	TWI	ports defined the first TWI peripheral as TWI0. */
+#if (SAMG)
+#if MAX_TWIS > 0
+	{TWI1, PDC_TWI1, ID_TWI1, TWI1_IRQn},
+#endif
+#if MAX_TWIS > 1
+	{TWI2, PDC_TWI2, ID_TWI2, TWI2_IRQn},
+#endif
+#if MAX_TWIS > 2
+	{TWI3, PDC_TWI3, ID_TWI3, TWI3_IRQn},
+#endif
+#if MAX_TWIS > 3
+	{TWI4, PDC_TWI4, ID_TWI4, TWI4_IRQn},
+#endif
+#else
 #if defined(TWI)
 	{TWI, PDC_TWI, ID_TWI, TWI_IRQn},
 #else
@@ -118,6 +146,7 @@ static const freertos_pdc_peripheral_parameters_t all_twi_definitions[MAX_TWIS] 
 #endif
 #if MAX_TWIS > 4
 	{TWI4, PDC_TWI4, ID_TWI4, TWI4_IRQn},
+#endif
 #endif
 };
 
@@ -363,7 +392,7 @@ status_code_t freertos_twi_write_packet_async(freertos_twi_if p_twi,
 								IER_ERROR_INTERRUPTS);
 						/* Release semaphore */
 						xSemaphoreGive(tx_dma_control[twi_index].peripheral_access_mutex);
-						return TWI_RECEIVE_NACK;
+						return ERR_BUSY;
 					}
 					if (status & TWI_SR_TXRDY) {
 						break;
@@ -569,7 +598,7 @@ status_code_t freertos_twi_read_packet_async(freertos_twi_if p_twi,
 								IER_ERROR_INTERRUPTS);
 						/* Release semaphore */
 						xSemaphoreGive(tx_dma_control[twi_index].peripheral_access_mutex);
-						return TWI_RECEIVE_NACK;
+						return ERR_BUSY;
 					}
 					/* Last byte ? */
 					if (cnt == 1 && !stop_sent) {
@@ -649,6 +678,7 @@ static void local_twi_handler(const portBASE_TYPE twi_index)
 	portBASE_TYPE higher_priority_task_woken = pdFALSE;
 	uint32_t twi_status;
 	Twi *twi_port;
+	bool transfer_timeout = false;
 
 	twi_port = all_twi_definitions[twi_index].peripheral_base_address;
 
@@ -672,7 +702,7 @@ static void local_twi_handler(const portBASE_TYPE twi_index)
 			}
 			/* Check timeout condition. */
 			if (++timeout_counter >= TWI_TIMEOUT_COUNTER) {
-				status = ERR_TIMEOUT;
+				transfer_timeout = true;
 				break;
 			}
 		}
@@ -688,7 +718,7 @@ static void local_twi_handler(const portBASE_TYPE twi_index)
 			}
 			/* Check timeout condition. */
 			if (++timeout_counter >= TWI_TIMEOUT_COUNTER) {
-				status = ERR_TIMEOUT;
+				transfer_timeout = true;
 				break;
 			}
 		}
@@ -761,7 +791,7 @@ static void local_twi_handler(const portBASE_TYPE twi_index)
 				}
 				/* Check timeout condition. */
 				if (++timeout_counter >= TWI_TIMEOUT_COUNTER) {
-					status = ERR_TIMEOUT;
+					transfer_timeout = true;
 					break;
 				}
 			}
@@ -787,7 +817,7 @@ static void local_twi_handler(const portBASE_TYPE twi_index)
 		}
 	}
 
-	if ((twi_status & SR_ERROR_INTERRUPTS) != 0) {
+	if (((twi_status & SR_ERROR_INTERRUPTS) != 0) || (transfer_timeout == true)) {
 		/* An error occurred in either a transmission or reception.  Abort.
 		Stop the transmission, disable interrupts used by the peripheral, and
 		ensure the peripheral access mutex is made available to tasks.  As this
@@ -823,6 +853,7 @@ static void local_twi_handler(const portBASE_TYPE twi_index)
  * Individual interrupt handlers follow from here.  Each individual interrupt
  * handler calls the common interrupt handler.
  */
+#if (!SAMG)
 #ifdef TWI
 
 void TWI_Handler(void)
@@ -840,6 +871,7 @@ void TWI0_Handler(void)
 }
 
 #endif /* TWI0 */
+#endif
 
 #ifdef TWI1
 

@@ -1,7 +1,7 @@
 /*
  * \file
  *
- * \brief SAM D20/D21 Event System Controller Driver
+ * \brief SAM D20/D21/R21 Event System Controller Driver
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -46,7 +46,7 @@
 /**
  * \internal Internal module structure to manage necassery globals
  *
- * 
+ *
  */
 struct _events_module {
 	/* Allocated channels bitmask where 1 means allocated */

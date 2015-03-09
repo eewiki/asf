@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<module type="driver" caption="SAMG53 startup code" id="sam.utils.cmsis.samg54.source.template">
+		<build type="c-source" value="system_samg54.c"/>
+		<build type="header-file" value="system_samg54.h"/>
+		<build type="c-source" value="exceptions.c"/>
+		<build type="header-file" subtype="api" value="exceptions.h"/>
+		<build type="c-source" value="gcc/startup_samg54.c" toolchain="armgcc"/>
+		<build type="c-source" value="iar/startup_samg54.c" toolchain="iarewarm"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value="../../include"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samg54"/>
+	</module>
+</asf>

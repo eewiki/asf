@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="Drivers RTC Example for SAM4CMS-DB" id="sam.drivers.rtc.example.sam4cms_db">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.rtc.example"/>
+		<require idref="board.sam4cms_db"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4cms16c_0"/>
+	</project>
+</asf>

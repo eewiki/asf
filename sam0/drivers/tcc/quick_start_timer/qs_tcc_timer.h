@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 TCC - Timer Counter for Control Applications Driver Quick Start
+ * \brief SAM TCC - Timer Counter for Control Applications Driver Quick Start
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -45,7 +45,7 @@
  * \page asfdoc_sam0_tcc_timer_use_case Quick Start Guide for TCC - Timer
  *
  * The supported board list:
- *    - SAM D21 Xplained Pro
+ *    - SAM D21/R21 Xplained Pro
  *
  * In this use case, the TCC will be used as a timer, to generate overflow and
  * compare match callbacks. In the callbacks the on-board LED is toggled.

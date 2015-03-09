@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/21 Event System Driver Quick Start
+ * \brief SAM D20/D21/R21 Event System Driver Quick Start
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -85,7 +85,7 @@
  *  \snippet qs_events_interrupt_hook.c setup_2
  *  \br
  *
- * -# Adjust the configuration structure 
+ * -# Adjust the configuration structure
  *      \li Use EXAMPLE_EVENT_GENRATOR as event generator
  *      \li Detect events on rising edge
  *      \li Use the synchronous event path
@@ -138,10 +138,10 @@
  * -# Add the newly created hook to the interrupt hook queue and enable the event detected interrupt
  * \snippet qs_events_interrupt_hook.c setup_13
  *
- * -# Example interrupt hook code. If the hook was triggered by a event detected interrupt on the 
- *    event channel this code will toggle the led on the Xplained PRO board and increase the value 
- *    of the event_count variable. The interrupt then acknowledged. 
- * 
+ * -# Example interrupt hook code. If the hook was triggered by a event detected interrupt on the
+ *    event channel this code will toggle the led on the Xplained PRO board and increase the value
+ *    of the event_count variable. The interrupt then acknowledged.
+ *
  * \snippet qs_events_interrupt_hook.c setup_14
  *
  * \section asfdoc_sam0_events_interrupt_hook_main Use Case

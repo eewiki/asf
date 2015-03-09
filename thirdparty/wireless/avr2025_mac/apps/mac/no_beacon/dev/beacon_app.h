@@ -5,7 +5,7 @@
  *        in the example application of the coordinator in addition to the
  *        underlaying stack.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -52,7 +52,6 @@
 #ifndef BEACON_APP_H
 #define BEACON_APP_H
 
-
 /* === Includes ============================================================= */
 
 /* === TYPES =============================================================== */
@@ -91,23 +90,24 @@ app_state_t;
 #define KEY_INDEX_2                     (2)
 #define KEY_INDEX_3                     (3)
 #define KEY_INDEX_4                     (4)
-#define LOOKUP_DATA_SIZE_1              (1) // Size is 9 octets
+#define LOOKUP_DATA_SIZE_1              (1) /* Size is 9 octets */
 #define FRAME_TYPE_BEACON               (0)
 #define FRAME_TYPE_DATA                 (1)
-#define CMD_FRAME_ID_NA                 (0) // CommandFrameIdentifier is n/a
-#define ZIP_SEC_MIN                     (0x05) // SecurityMinimum for ZIP is 5  
-#define DEV_OVERRIDE_SEC_MIN            (1) // DeviceOverrideSecurityMinimum: True
-#define ZIP_KEY_ID_MODE                 (1) // ZIP uses KeyIdMode 1
+#define CMD_FRAME_ID_NA                 (0) /* CommandFrameIdentifier is n/a */
+#define ZIP_SEC_MIN                     (0x05) /* SecurityMinimum for ZIP is 5 */
+#define DEV_OVERRIDE_SEC_MIN            (1) /* DeviceOverrideSecurityMinimum:
+	                                     * True */
+#define ZIP_KEY_ID_MODE                 (1) /* ZIP uses KeyIdMode 1 */
 
 #define INDEX_0                         (0)
 #define INDEX_1                         (1)
 #define INDEX_2                         (2)
 #define INDEX_3                         (3)
-#define DEV_DESC_HANDLE_IDX_0			(0x00)
-#define EMPTY_DEV_HANDLE                (0xFF) // key device desc is invalid
+#define DEV_DESC_HANDLE_IDX_0                   (0x00)
+#define EMPTY_DEV_HANDLE                (0xFF) /* key device desc is invalid */
 #define KEY_INFO_FRAME                  (0xDE)
 #define NO_SECURITY                     (0)
-#define SEC_PIB_INIT					(1)
+#define SEC_PIB_INIT                                    (1)
 
 /* Security Default Device Table Entries */
 #define DEFAULT_MAC_DEV_TABLE_ENTRIES (0x04)
@@ -122,7 +122,6 @@ app_state_t;
 /* === Externals ============================================================ */
 
 /* === Prototypes =========================================================== */
-
 
 #ifdef __cplusplus
 extern "C" {

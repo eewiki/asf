@@ -4,7 +4,7 @@
  * \brief Handles Serial I/O  Functionalities
  *
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -46,7 +46,7 @@
 #include "asf.h"
 #include "sio2ncp.h"
 #include "conf_sio2ncp.h"
-#if SAMD20
+#if SAMD || SAMR21
 #include "stdio_serial.h"
 #endif
 /* === TYPES =============================================================== */
@@ -56,7 +56,7 @@
 /* === PROTOTYPES ========================================================== */
 
 /* === GLOBALS ========================================================== */
-#if SAMD20
+#if SAMD || SAMR21
 static struct usart_module uart_module;
 #else
 static usart_serial_options_t usart_serial_options = {
@@ -66,6 +66,7 @@ static usart_serial_options_t usart_serial_options = {
 	.stopbits     = USART_NCP_STOP_BITS
 };
 #endif
+
 /**
  * Receive buffer
  * The buffer size is defined in sio2ncp.h
@@ -91,38 +92,42 @@ static uint8_t serial_rx_count;
 
 void sio2ncp_init(void)
 {
-#if SAMD20
+#if SAMD || SAMR21
 	SIO2NCP_USART_INIT();
-	stdio_serial_init(&uart_module, USART_NCP,&uart_config);	
-    usart_enable(&uart_module);
-    /* Enable transceivers */
-    usart_enable_transceiver(&uart_module, USART_TRANSCEIVER_TX);
-    usart_enable_transceiver(&uart_module, USART_TRANSCEIVER_RX);
+	stdio_serial_init(&uart_module, USART_NCP, &uart_config);
+	usart_enable(&uart_module);
+	/* Enable transceivers */
+	usart_enable_transceiver(&uart_module, USART_TRANSCEIVER_TX);
+	usart_enable_transceiver(&uart_module, USART_TRANSCEIVER_RX);
 #else
 	usart_serial_init(USART_NCP, &usart_serial_options);
 #endif
 
 #if (BOARD == SAM4L_XPLAINED_PRO)
-ioport_set_pin_dir(NCP_RESET_GPIO, IOPORT_DIR_OUTPUT);
-ioport_set_pin_level(NCP_RESET_GPIO, IOPORT_PIN_LEVEL_HIGH);
+	ioport_set_pin_dir(NCP_RESET_GPIO, IOPORT_DIR_OUTPUT);
+	ioport_set_pin_level(NCP_RESET_GPIO, IOPORT_PIN_LEVEL_HIGH);
 #endif /* (BOARD == SAM4L_XPLAINED_PRO) */
-	USART_NCP_RX_ISR_ENABLE();	
-	
+	USART_NCP_RX_ISR_ENABLE();
 }
 
 uint8_t sio2ncp_tx(uint8_t *data, uint8_t length)
 {
-#if SAMD20
+#if SAMD || SAMR21
 	status_code_genare_t status;
 #else
 	status_code_t status;
-#endif /* SAMD20 */
+#endif /* SAMD || SAMR21 */
 
 	do {
-#if SAMD20
-status = usart_serial_write_packet(&uart_module,(const uint8_t *)data,length);
-#else 
-status = usart_serial_write_packet(USART_NCP,(const uint8_t *)data,length);
+#if SAMD || SAMR21
+		status
+			= usart_serial_write_packet(&uart_module,
+				(const uint8_t *)data,
+				length);
+#else
+		status = usart_serial_write_packet(USART_NCP,
+				(const uint8_t *)data,
+				length);
 #endif
 	} while (status != STATUS_OK);
 	return length;
@@ -145,7 +150,7 @@ uint8_t sio2ncp_rx(uint8_t *data, uint8_t max_length)
 
 		/*
 		 * This is a buffer overflow case. But still only the number of
-		 *bytes equivalent to
+		 * bytes equivalent to
 		 * full buffer size are useful.
 		 */
 		serial_rx_count = SERIAL_RX_BUF_SIZE_NCP;
@@ -154,7 +159,7 @@ uint8_t sio2ncp_rx(uint8_t *data, uint8_t max_length)
 		if (SERIAL_RX_BUF_SIZE_NCP <= max_length) {
 			/*
 			 * Requested receive length (max_length) is more than
-			 *the
+			 * the
 			 * max size of receive buffer, but at max the full
 			 * buffer can be read.
 			 */
@@ -165,9 +170,9 @@ uint8_t sio2ncp_rx(uint8_t *data, uint8_t max_length)
 		if (max_length > serial_rx_count) {
 			/*
 			 * Requested receive length (max_length) is more than
-			 *the data
+			 * the data
 			 * present in receive buffer. Hence only the number of
-			 *bytes
+			 * bytes
 			 * present in receive buffer are read.
 			 */
 			max_length = serial_rx_count;
@@ -208,16 +213,16 @@ int sio2ncp_getchar_nowait(void)
 	}
 }
 
-#if SAMD20
+#if SAMD || SAMR21
 void USART_NCP_ISR_VECT(uint8_t instance)
-#else 
+#else
 USART_NCP_ISR_VECT()
 #endif
 {
 	uint8_t temp;
-#if SAMD20
- 	usart_serial_read_packet(&uart_module, &temp, 1);
-#else 
+#if SAMD || SAMR21
+	usart_serial_read_packet(&uart_module, &temp, 1);
+#else
 	usart_serial_read_packet(USART_NCP, &temp, 1);
 #endif
 
@@ -225,14 +230,14 @@ USART_NCP_ISR_VECT()
 	cpu_irq_disable();
 
 	/* The number of data in the receive buffer is incremented and the
-	 *buffer is updated. */
+	 * buffer is updated. */
 	serial_rx_count++;
 
 	serial_rx_buf[serial_rx_buf_tail] = temp;
 
 	if ((SERIAL_RX_BUF_SIZE_NCP - 1) == serial_rx_buf_tail) {
 		/* Reached the end of buffer, revert back to beginning of
-		 *buffer. */
+		 * buffer. */
 		serial_rx_buf_tail = 0x00;
 	} else {
 		serial_rx_buf_tail++;

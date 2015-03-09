@@ -6,6 +6,7 @@
 		</info>
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 		<require idref="sam0.utils"/>
 		<build type="doxygen-entry-point" value="group_common_utils_stdio"/>
 		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>

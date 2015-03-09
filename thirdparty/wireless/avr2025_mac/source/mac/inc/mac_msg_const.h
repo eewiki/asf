@@ -3,7 +3,7 @@
  *
  * @brief This file defines all message constants.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -55,7 +55,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-//#include "stack_config.h"
+/* #include "stack_config.h" */
 /* === Macros =============================================================== */
 
 /**
@@ -114,9 +114,10 @@ enum msg_code {
 	MLME_RESET_CONFIRM                  = (0x20),
 	MLME_RX_ENABLE_CONFIRM              = (0x21),
 	MLME_START_CONFIRM                  = (0x22),
-    MLME_POLL_CONFIRM                   = (0x23),
-    MAC_INC_FRAME                       = (0x24)
-}SHORTENUM;
+	MLME_POLL_CONFIRM                   = (0x23),
+	MAC_INC_FRAME                       = (0x24)
+}
+SHORTENUM;
 
 /**
  * Bump this when extending the list!

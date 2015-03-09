@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device HID Mouse unit tests for SAM R21 Xplained Pro" id="common.services.usb.class.hid.device.mouse.unit_tests.samr21_xpro" type="unit-test">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.usb.class.hid.device.mouse.unit_tests"/>
+		<config name="config.common.services.usb.class.device" value="hid_mouse"/>
+		<require idref="sam0.drivers.extint"/>
+		<require idref="board.samr21_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsamr21g18a"/>
+	</project>
+</asf>

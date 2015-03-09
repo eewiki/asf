@@ -48,11 +48,12 @@
 
 /*- Includes ---------------------------------------------------------------*/
 #include <stdlib.h>
-#include "sysTypes.h"
+#include "compiler.h"
 #include "common_hw_timer.h"
 #include "sysTimer.h"
 
 volatile uint8_t SysTimerIrqCount;
+
 /*****************************************************************************
 *****************************************************************************/
 static void placeTimer(SYS_Timer_t *timer);
@@ -66,128 +67,130 @@ static SYS_Timer_t *timers;
 *****************************************************************************/
 void SYS_TimerInit(void)
 {
-  SysTimerIrqCount = 0;
-  set_common_tc_expiry_callback(SYS_HwExpiry_Cb);
-  common_tc_init();
-  common_tc_delay(SYS_TIMER_INTERVAL*MS);
-  timers = NULL;
+	SysTimerIrqCount = 0;
+	set_common_tc_expiry_callback(SYS_HwExpiry_Cb);
+	common_tc_init();
+	common_tc_delay(SYS_TIMER_INTERVAL * MS);
+	timers = NULL;
 }
 
 /*************************************************************************//**
 *****************************************************************************/
 void SYS_TimerStart(SYS_Timer_t *timer)
 {
-  if (!SYS_TimerStarted(timer))
-    placeTimer(timer);
+	if (!SYS_TimerStarted(timer)) {
+		placeTimer(timer);
+	}
 }
 
 /*************************************************************************//**
 *****************************************************************************/
 void SYS_TimerStop(SYS_Timer_t *timer)
 {
-  SYS_Timer_t *prev = NULL;
+	SYS_Timer_t *prev = NULL;
 
-  for (SYS_Timer_t *t = timers; t; t = t->next)
-  {
-    if (t == timer)
-    {
-      if (prev)
-        prev->next = t->next;
-      else
-        timers = t->next;
+	for (SYS_Timer_t *t = timers; t; t = t->next) {
+		if (t == timer) {
+			if (prev) {
+				prev->next = t->next;
+			} else {
+				timers = t->next;
+			}
 
-      if (t->next)
-        t->next->timeout += timer->timeout;
+			if (t->next) {
+				t->next->timeout += timer->timeout;
+			}
 
-      break;
-    }
-    prev = t;
-  }
+			break;
+		}
+
+		prev = t;
+	}
 }
 
 /*************************************************************************//**
 *****************************************************************************/
 bool SYS_TimerStarted(SYS_Timer_t *timer)
 {
-  for (SYS_Timer_t *t = timers; t; t = t->next)
-    if (t == timer)
-      return true;
-  return false;
+	for (SYS_Timer_t *t = timers; t; t = t->next) {
+		if (t == timer) {
+			return true;
+		}
+	}
+	return false;
 }
 
 /*************************************************************************//**
 *****************************************************************************/
 void SYS_TimerTaskHandler(void)
 {
-  uint32_t elapsed;
-  uint8_t cnt;
+	uint32_t elapsed;
+	uint8_t cnt;
+	irqflags_t flags;
 
-  if (0 == SysTimerIrqCount)
-    return;
+	if (0 == SysTimerIrqCount) {
+		return;
+	}
 
-  ATOMIC_SECTION_ENTER
-    cnt = SysTimerIrqCount;
-    SysTimerIrqCount = 0;
-  ATOMIC_SECTION_LEAVE
+	/* Enter a critical section */
+	flags = cpu_irq_save();
+	cnt = SysTimerIrqCount;
+	SysTimerIrqCount = 0;
+	/* Leave the critical section */
+	cpu_irq_restore(flags);
 
-  elapsed = cnt * SYS_TIMER_INTERVAL;
+	elapsed = cnt * SYS_TIMER_INTERVAL;
 
-  while (timers && (timers->timeout <= elapsed))
-  {
-    SYS_Timer_t *timer = timers;
+	while (timers && (timers->timeout <= elapsed)) {
+		SYS_Timer_t *timer = timers;
 
-    elapsed -= timers->timeout;
-    timers = timers->next;
-    if (SYS_TIMER_PERIODIC_MODE == timer->mode)
-      placeTimer(timer);
-    timer->handler(timer);
-  }
+		elapsed -= timers->timeout;
+		timers = timers->next;
+		if (SYS_TIMER_PERIODIC_MODE == timer->mode) {
+			placeTimer(timer);
+		}
 
-  if (timers)
-    timers->timeout -= elapsed;
+		timer->handler(timer);
+	}
+
+	if (timers) {
+		timers->timeout -= elapsed;
+	}
 }
 
 /*************************************************************************//**
 *****************************************************************************/
 static void placeTimer(SYS_Timer_t *timer)
 {
-  if (timers)
-  {
-    SYS_Timer_t *prev = NULL;
-    uint32_t timeout = timer->interval;
+	if (timers) {
+		SYS_Timer_t *prev = NULL;
+		uint32_t timeout = timer->interval;
 
-    for (SYS_Timer_t *t = timers; t; t = t->next)
-    {
-      if (timeout < t->timeout)
-      {
-         t->timeout -= timeout;
-         break;
-      }
-      else
-        timeout -= t->timeout;
+		for (SYS_Timer_t *t = timers; t; t = t->next) {
+			if (timeout < t->timeout) {
+				t->timeout -= timeout;
+				break;
+			} else {
+				timeout -= t->timeout;
+			}
 
-      prev = t;
-    }
+			prev = t;
+		}
 
-    timer->timeout = timeout;
+		timer->timeout = timeout;
 
-    if (prev)
-    {
-      timer->next = prev->next;
-      prev->next = timer;
-    }
-    else
-    {
-      timer->next = timers;
-      timers = timer;
-    }
-  }
-  else
-  {
-    timer->next = NULL;
-    timer->timeout = timer->interval;
-    timers = timer;
-  }
+		if (prev) {
+			timer->next = prev->next;
+			prev->next = timer;
+		} else {
+			timer->next = timers;
+			timers = timer;
+		}
+	} else {
+		timer->next = NULL;
+		timer->timeout = timer->interval;
+		timers = timer;
+	}
 }
 
 /*****************************************************************************
@@ -195,5 +198,5 @@ static void placeTimer(SYS_Timer_t *timer)
 void SYS_HwExpiry_Cb(void)
 {
 	SysTimerIrqCount++;
-	common_tc_delay(SYS_TIMER_INTERVAL*MS);
+	common_tc_delay(SYS_TIMER_INTERVAL * MS);
 }

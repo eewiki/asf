@@ -53,4 +53,8 @@
 #define PWM_OUT_MUX     EXT1_PWM_0_MUX
 //! [definition_pwm]
 
+//! [definition_dma]
+#define M2M_DMAC_TRIGGER_ID TC6_DMAC_ID_MC_0
+//! [definition_dma]
+
 #endif /* CONF_QUICK_START_H_INCLUDED */

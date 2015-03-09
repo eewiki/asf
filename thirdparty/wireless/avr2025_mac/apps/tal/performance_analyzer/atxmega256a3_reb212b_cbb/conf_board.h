@@ -3,7 +3,7 @@
  *
  * \brief Board configuration
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -46,8 +46,6 @@
 #define CONF_BOARD_ENABLE_USARTD0
 #define CONF_BOARD_AT86RFX
 
-#define IC_TYPE             (0x00)
 #define BOARD_NAME          "REB212BSMA-EK"
-
 
 #endif /* CONF_BOARD_H_INCLUDED */

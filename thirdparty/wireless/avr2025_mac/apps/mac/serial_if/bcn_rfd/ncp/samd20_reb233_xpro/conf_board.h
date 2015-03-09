@@ -3,7 +3,7 @@
  *
  * \brief Board configuration
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -45,7 +45,6 @@
 
 #define CONF_BOARD_AT86RFX
 
-
-#define AT86RFX_SPI_BAUDRATE		 4000000UL
-//# include "conf_usb.h"
+#define AT86RFX_SPI_BAUDRATE             4000000UL
+/* # include "conf_usb.h" */
 #endif /* CONF_BOARD_H_INCLUDED */

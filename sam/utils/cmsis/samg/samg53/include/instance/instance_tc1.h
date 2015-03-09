@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -79,8 +79,7 @@
   #define REG_TC1_IMR2                   (0x400140ACU) /**< \brief (TC1) Interrupt Mask Register (channel = 2) */
   #define REG_TC1_BCR                    (0x400140C0U) /**< \brief (TC1) Block Control Register */
   #define REG_TC1_BMR                    (0x400140C4U) /**< \brief (TC1) Block Mode Register */
-  #define REG_TC1_FMR                    (0x400140D8U) /**< \brief (TC1) Fault Mode Register */
-  #define REG_TC1_WPMR                   (0x400140E4U) /**< \brief (TC1) Write Protect Mode Register */
+  #define REG_TC1_WPMR                   (0x400140E4U) /**< \brief (TC1) Write Protection Mode Register */
 #else
   #define REG_TC1_CCR0  (*(__O  uint32_t*)0x40014000U) /**< \brief (TC1) Channel Control Register (channel = 0) */
   #define REG_TC1_CMR0  (*(__IO uint32_t*)0x40014004U) /**< \brief (TC1) Channel Mode Register (channel = 0) */
@@ -117,8 +116,7 @@
   #define REG_TC1_IMR2  (*(__I  uint32_t*)0x400140ACU) /**< \brief (TC1) Interrupt Mask Register (channel = 2) */
   #define REG_TC1_BCR   (*(__O  uint32_t*)0x400140C0U) /**< \brief (TC1) Block Control Register */
   #define REG_TC1_BMR   (*(__IO uint32_t*)0x400140C4U) /**< \brief (TC1) Block Mode Register */
-  #define REG_TC1_FMR   (*(__IO uint32_t*)0x400140D8U) /**< \brief (TC1) Fault Mode Register */
-  #define REG_TC1_WPMR  (*(__IO uint32_t*)0x400140E4U) /**< \brief (TC1) Write Protect Mode Register */
+  #define REG_TC1_WPMR  (*(__IO uint32_t*)0x400140E4U) /**< \brief (TC1) Write Protection Mode Register */
 #endif /* (defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 
 #endif /* _SAMG53_TC1_INSTANCE_ */

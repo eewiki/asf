@@ -3,7 +3,7 @@
  *
  * @brief Declarations for security tool box
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -92,14 +92,14 @@ typedef enum {
 	SECURITY_06_LEVEL,
 	/** Security Level 7 */
 	SECURITY_07_LEVEL
-}SHORTENUM security_level_t;
+} SHORTENUM security_level_t;
 
 /** Macros for MIC Calculation and Security */
-#define ENCRYPTION_NOT_REQD	(0x00)
-#define ENCRYPTION_REQD		(0x01)
-#define PLAINTEXT_FLAG		(0x01)
-#define LEN_FIELD			(0x01)
-#define ADATA				(0x40)
+#define ENCRYPTION_NOT_REQD     (0x00)
+#define ENCRYPTION_REQD         (0x01)
+#define PLAINTEXT_FLAG          (0x01)
+#define LEN_FIELD                       (0x01)
+#define ADATA                           (0x40)
 
 #define LEN_MIC_00                      (0x00)
 #define LEN_MIC_32                      (0x04)
@@ -164,7 +164,7 @@ uint8_t aes_dir);
 #endif
 
 #endif /* #if defined(STB_ON_SAL) || defined(STB_ARMCRYPTO) ||
-        *defined(__DOXYGEN__) */
+        * defined(__DOXYGEN__) */
 
 #endif /* STB_GENERIC_H */
 /* EOF */

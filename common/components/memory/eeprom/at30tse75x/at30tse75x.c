@@ -3,7 +3,7 @@
  *
  * \brief AT30TSE75X driver.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -171,7 +171,7 @@ uint8_t at30tse_eeprom_read(uint8_t *data, uint8_t length,
 		/* Data buffer */
 		.buffer = data,
 		.length = length,
-		/* 
+		/*
 		 * Chip addr
 		 * TWI addr + 2 upper bytes of page addr.
 		 */

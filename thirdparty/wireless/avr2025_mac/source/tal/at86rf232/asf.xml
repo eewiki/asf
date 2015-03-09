@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.tal.at86rf232" caption="COMPONENT - TAL_AT86RF232">
 		<info type="description" value="summary">
-		AT86RF231 Transceiver Abstraction Layer
+		AT86RF232 Transceiver Abstraction Layer
 		</info>
 		<build type="c-source"      value="src/tal.c"/>
 		<build type="c-source"      value="src/tal_ed.c"/>

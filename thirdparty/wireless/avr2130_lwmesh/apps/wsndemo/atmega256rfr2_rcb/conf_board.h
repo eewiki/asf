@@ -43,8 +43,7 @@
 #ifndef CONF_BOARD_H
 #define CONF_BOARD_H
 
-//Enable UART support without BB board
+/* Enable UART support without BB board */
 #define BREAKOUT_BOARD
-
 
 #endif /* CONF_BOARD_H */

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -63,8 +63,8 @@ typedef struct {
   __IO uint32_t PDMIC_DSPR0;   /**< \brief (Pdmic Offset: 0x58) DSP Configuration Register 0 */
   __IO uint32_t PDMIC_DSPR1;   /**< \brief (Pdmic Offset: 0x5C) DSP Configuration Register 1 */
   __I  uint32_t Reserved3[33];
-  __IO uint32_t PDMIC_WPMR;    /**< \brief (Pdmic Offset: 0xE4) Write Protect Mode Register */
-  __I  uint32_t PDMIC_WPSR;    /**< \brief (Pdmic Offset: 0xE8) Write Protect Status Register */
+  __IO uint32_t PDMIC_WPMR;    /**< \brief (Pdmic Offset: 0xE4) Write Protection Mode Register */
+  __I  uint32_t PDMIC_WPSR;    /**< \brief (Pdmic Offset: 0xE8) Write Protection Status Register */
   __I  uint32_t Reserved4[5];
   __IO uint32_t PDMIC_RPR;     /**< \brief (Pdmic Offset: 0x100) Receive Pointer Register */
   __IO uint32_t PDMIC_RCR;     /**< \brief (Pdmic Offset: 0x104) Receive Counter Register */
@@ -129,15 +129,15 @@ typedef struct {
 #define PDMIC_DSPR1_OFFSET_Pos 16
 #define PDMIC_DSPR1_OFFSET_Msk (0xffffu << PDMIC_DSPR1_OFFSET_Pos) /**< \brief (PDMIC_DSPR1) Offset Correction */
 #define PDMIC_DSPR1_OFFSET(value) ((PDMIC_DSPR1_OFFSET_Msk & ((value) << PDMIC_DSPR1_OFFSET_Pos)))
-/* -------- PDMIC_WPMR : (PDMIC Offset: 0xE4) Write Protect Mode Register -------- */
-#define PDMIC_WPMR_WPEN (0x1u << 0) /**< \brief (PDMIC_WPMR) Write Protect Enable */
+/* -------- PDMIC_WPMR : (PDMIC Offset: 0xE4) Write Protection Mode Register -------- */
+#define PDMIC_WPMR_WPEN (0x1u << 0) /**< \brief (PDMIC_WPMR) Write Protection Enable */
 #define PDMIC_WPMR_WPKEY_Pos 8
 #define PDMIC_WPMR_WPKEY_Msk (0xffffffu << PDMIC_WPMR_WPKEY_Pos) /**< \brief (PDMIC_WPMR) Write Protect KEY */
-#define   PDMIC_WPMR_WPKEY_PASSWD (0x414443u << 8) /**< \brief (PDMIC_WPMR) Writing any other value in this field aborts the write operation of the WPEN bit */
-/* -------- PDMIC_WPSR : (PDMIC Offset: 0xE8) Write Protect Status Register -------- */
-#define PDMIC_WPSR_WPVS (0x1u << 0) /**< \brief (PDMIC_WPSR) Write Protect Violation Status */
+#define   PDMIC_WPMR_WPKEY_PASSWD (0x414443u << 8) /**< \brief (PDMIC_WPMR) Writing any other value in this field aborts the write operation of the WPEN bit.Always reads as 0. */
+/* -------- PDMIC_WPSR : (PDMIC Offset: 0xE8) Write Protection Status Register -------- */
+#define PDMIC_WPSR_WPVS (0x1u << 0) /**< \brief (PDMIC_WPSR) Write Protection Violation Status */
 #define PDMIC_WPSR_WPVSRC_Pos 8
-#define PDMIC_WPSR_WPVSRC_Msk (0xffffu << PDMIC_WPSR_WPVSRC_Pos) /**< \brief (PDMIC_WPSR) Write Protect Violation Source */
+#define PDMIC_WPSR_WPVSRC_Msk (0xffffu << PDMIC_WPSR_WPVSRC_Pos) /**< \brief (PDMIC_WPSR) Write Protection Violation Source */
 /* -------- PDMIC_RPR : (PDMIC Offset: 0x100) Receive Pointer Register -------- */
 #define PDMIC_RPR_RXPTR_Pos 0
 #define PDMIC_RPR_RXPTR_Msk (0xffffffffu << PDMIC_RPR_RXPTR_Pos) /**< \brief (PDMIC_RPR) Receive Pointer Register */

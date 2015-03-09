@@ -5,7 +5,7 @@
  *
  * -Performance Analyzer application
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -56,7 +56,7 @@
  * \defgroup group_per_mode  Packet error rate measurement
  *  Handles the functionalities of Packet Error Rate Measurement(PER) Mode,
  *  User can set and get various paramters of Transceiver like Channel,Antenna
- *Diversity,CSMA
+ * Diversity,CSMA
  *  and do the Packet Error Rate Measurement.
  */
 
@@ -78,7 +78,7 @@
  * \ingroup group_per_mode
  * \defgroup group_per_mode_utils  PER mode Common Utilities
  * This module handles the PER mode Common utilities used by Initiator and
- *Receptor.
+ * Receptor.
  *
  */
 
@@ -121,6 +121,7 @@
 #define ENABLE_RX_SAFE_MODE                      (0xA0)
 #define DISABLE_RX_SAFE_MODE                     (0x60)
 #endif
+
 /**
  * \addtogroup group_per_mode
  * \{
@@ -280,7 +281,7 @@ void per_mode_initiator_ed_end_cb(uint8_t energy_level);
 
 /**
  * \brief Initialize the application in PER Measurement mode as Receptor
- **\param parameter Pointer to the paramter to be carried, if any.
+ ***\param parameter Pointer to the paramter to be carried, if any.
  */
 void per_mode_receptor_init(void *parameter);
 
@@ -320,9 +321,9 @@ void app_reset(void);
 
 /**
  * \brief Timer Callback function  if marker response command is transmitted on
- *air
+ * air
  *  This is used to blink the LED and thus identify that the transmission is
- *done
+ * done
  * \param parameter pass parameters to timer handler
  */
 void marker_tx_timer_handler_cb(void *parameter);
@@ -330,7 +331,7 @@ void marker_tx_timer_handler_cb(void *parameter);
 /**
  * \brief Timer Callback function  if marker command is received on air
  * This is used to blink the LED and thus identify that the marker frame is
- *received
+ * received
  * \param parameter pass parameters to timer handler
  */
 void marker_rsp_timer_handler_cb(void *parameter);
@@ -345,6 +346,7 @@ void marker_rsp_timer_handler_cb(void *parameter);
  * \param prev_chnl Previous Channel
  */
 void limit_tx_power_in_ch26(uint8_t curr_chnl, uint8_t prev_chnl);
+
 #endif
 
 /* ! \} */

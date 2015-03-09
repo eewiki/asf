@@ -123,7 +123,7 @@ void system_board_init(void)
 			IOPORT_MODE_MUX_B);
 #endif
 
-#if defined(CONF_BOARD_SPI)
+#if defined(CONF_BOARD_SPI) || defined(CONF_BOARD_SD_MMC_SPI)
 	ioport_set_pin_peripheral_mode(SPI_MISO_GPIO, SPI_MISO_FLAGS);
 	ioport_set_pin_peripheral_mode(SPI_MOSI_GPIO, SPI_MOSI_FLAGS);
 	ioport_set_pin_peripheral_mode(SPI_SPCK_GPIO, SPI_SPCK_FLAGS);
@@ -147,7 +147,7 @@ void system_board_init(void)
 	ioport_set_pin_peripheral_mode(TWI1_CLK_GPIO, TWI1_CLK_FLAGS);
 #endif
 
-#ifdef CONF_BOARD_TWI2
+#if defined(CONF_BOARD_TWI2) || defined(CONF_BOARD_AT30TSE)
 	ioport_set_pin_peripheral_mode(TWI2_DATA_GPIO, TWI2_DATA_FLAGS);
 	ioport_set_pin_peripheral_mode(TWI2_CLK_GPIO, TWI2_CLK_FLAGS);
 #endif

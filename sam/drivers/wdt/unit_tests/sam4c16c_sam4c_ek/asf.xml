@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="WDT unit Test for SAM4S" id="sam.drivers.wdt.unit_tests.sam4c_ek" type="unit-test">
+	<project caption="WDT unit Test for SAM4C" id="sam.drivers.wdt.unit_tests.sam4c_ek" type="unit-test">
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_clock.h"/>

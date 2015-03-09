@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -51,7 +51,9 @@
   #define REG_MATRIX_PRAS1                  (0x400E0288U) /**< \brief (MATRIX) Priority Register A for Slave 1 */
   #define REG_MATRIX_PRAS2                  (0x400E0290U) /**< \brief (MATRIX) Priority Register A for Slave 2 */
   #define REG_MATRIX_PRAS3                  (0x400E0298U) /**< \brief (MATRIX) Priority Register A for Slave 3 */
-  #define REG_CCFG_SYSIO                    (0x400E0314U) /**< \brief (MATRIX) System I/O Configuration register */
+  #define REG_CCFG_SYSIO                    (0x400E0314U) /**< \brief (MATRIX) System I/O Configuration Register */
+  #define REG_MATRIX_WPMR                   (0x400E03E4U) /**< \brief (MATRIX) Write Protection Mode Register */
+  #define REG_MATRIX_WPSR                   (0x400E03E8U) /**< \brief (MATRIX) Write Protection Status Register */
 #else
   #define REG_MATRIX_MCFG  (*(__IO uint32_t*)0x400E0200U) /**< \brief (MATRIX) Master Configuration Register */
   #define REG_MATRIX_SCFG  (*(__IO uint32_t*)0x400E0240U) /**< \brief (MATRIX) Slave Configuration Register */
@@ -59,7 +61,9 @@
   #define REG_MATRIX_PRAS1 (*(__IO uint32_t*)0x400E0288U) /**< \brief (MATRIX) Priority Register A for Slave 1 */
   #define REG_MATRIX_PRAS2 (*(__IO uint32_t*)0x400E0290U) /**< \brief (MATRIX) Priority Register A for Slave 2 */
   #define REG_MATRIX_PRAS3 (*(__IO uint32_t*)0x400E0298U) /**< \brief (MATRIX) Priority Register A for Slave 3 */
-  #define REG_CCFG_SYSIO   (*(__IO uint32_t*)0x400E0314U) /**< \brief (MATRIX) System I/O Configuration register */
+  #define REG_CCFG_SYSIO   (*(__IO uint32_t*)0x400E0314U) /**< \brief (MATRIX) System I/O Configuration Register */
+  #define REG_MATRIX_WPMR  (*(__IO uint32_t*)0x400E03E4U) /**< \brief (MATRIX) Write Protection Mode Register */
+  #define REG_MATRIX_WPSR  (*(__I  uint32_t*)0x400E03E8U) /**< \brief (MATRIX) Write Protection Status Register */
 #endif /* (defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 
 #endif /* _SAMG51_MATRIX_INSTANCE_ */

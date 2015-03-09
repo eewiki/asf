@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<project caption="Quick Start for the SAM R21 ADC Driver (Polled)" id="sam0.drivers.adc.quick_start.samr21_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<require idref="board.samr21_xplained_pro"/>
+		<require idref="sam0.drivers.adc.quick_start"/>
+		<config name="config.sam0.drivers.adc" value="polled"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsamr21g18a"/>
+	</project>
+</asf>

@@ -3,7 +3,7 @@
  *
  * \brief Chip-specific system clock manager configuration
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,33 +43,31 @@
 #ifndef CONF_CLOCK_H_INCLUDED
 #define CONF_CLOCK_H_INCLUDED
 
-//! Configuration using On-Chip RC oscillator at 48MHz
-//! The RC oscillator is calibrated via USB Start Of Frame
-//! Clk USB     = 48MHz (used by USB)
-//! Clk sys     = 48MHz
-//! Clk cpu/per = 24MHz
-
+/* ! Configuration using On-Chip RC oscillator at 48MHz */
+/* ! The RC oscillator is calibrated via USB Start Of Frame */
+/* ! Clk USB     = 48MHz (used by USB) */
+/* ! Clk sys     = 48MHz */
+/* ! Clk cpu/per = 24MHz */
 
 #define CONFIG_SYSCLK_SOURCE     SYSCLK_SRC_RC32MHZ
 #define CONFIG_SYSCLK_PSADIV     SYSCLK_PSADIV_2
 #define CONFIG_SYSCLK_PSBCDIV    SYSCLK_PSBCDIV_1_1
 
 /*
-//! Use external board OSC (8MHz)
-//! Clk pll     = 48MHz (used by USB)
-//! Clk sys     = 48MHz
-//! Clk cpu/per = 12MHz
-
-#define CONFIG_PLL0_SOURCE       PLL_SRC_XOSC
-#define CONFIG_PLL0_MUL          6
-#define CONFIG_PLL0_DIV          1
-
-#define CONFIG_USBCLK_SOURCE     USBCLK_SRC_PLL
-
-#define CONFIG_SYSCLK_SOURCE     SYSCLK_SRC_PLL
-#define CONFIG_SYSCLK_PSADIV     SYSCLK_PSADIV_2
-#define CONFIG_SYSCLK_PSBCDIV    SYSCLK_PSBCDIV_1_2
-*/
-
+ * //! Use external board OSC (8MHz)
+ * //! Clk pll     = 48MHz (used by USB)
+ * //! Clk sys     = 48MHz
+ * //! Clk cpu/per = 12MHz
+ *
+ * #define CONFIG_PLL0_SOURCE       PLL_SRC_XOSC
+ * #define CONFIG_PLL0_MUL          6
+ * #define CONFIG_PLL0_DIV          1
+ *
+ * #define CONFIG_USBCLK_SOURCE     USBCLK_SRC_PLL
+ *
+ * #define CONFIG_SYSCLK_SOURCE     SYSCLK_SRC_PLL
+ * #define CONFIG_SYSCLK_PSADIV     SYSCLK_PSADIV_2
+ * #define CONFIG_SYSCLK_PSBCDIV    SYSCLK_PSBCDIV_1_2
+ */
 
 #endif /* CONF_CLOCK_H_INCLUDED */

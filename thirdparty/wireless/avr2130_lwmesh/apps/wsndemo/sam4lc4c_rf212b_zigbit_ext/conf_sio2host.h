@@ -47,7 +47,7 @@
 /** USART Interface */
 #define USART_HOST                 USART1
 /** Baudrate setting */
-#define USART_HOST_BAUDRATE        9600
+#define USART_HOST_BAUDRATE        38400
 /** Character length setting */
 #define USART_HOST_CHAR_LENGTH     US_MR_CHRL_8_BIT
 /** Parity setting */

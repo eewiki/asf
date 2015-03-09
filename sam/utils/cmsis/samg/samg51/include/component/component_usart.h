@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -58,8 +58,8 @@ typedef struct {
   __O  uint32_t US_IDR;        /**< \brief (Usart Offset: 0x000C) Interrupt Disable Register */
   __I  uint32_t US_IMR;        /**< \brief (Usart Offset: 0x0010) Interrupt Mask Register */
   __I  uint32_t US_CSR;        /**< \brief (Usart Offset: 0x0014) Channel Status Register */
-  __I  uint32_t US_RHR;        /**< \brief (Usart Offset: 0x0018) Receiver Holding Register */
-  __O  uint32_t US_THR;        /**< \brief (Usart Offset: 0x001C) Transmitter Holding Register */
+  __I  uint32_t US_RHR;        /**< \brief (Usart Offset: 0x0018) Receive Holding Register */
+  __O  uint32_t US_THR;        /**< \brief (Usart Offset: 0x001C) Transmit Holding Register */
   __IO uint32_t US_BRGR;       /**< \brief (Usart Offset: 0x0020) Baud Rate Generator Register */
   __IO uint32_t US_RTOR;       /**< \brief (Usart Offset: 0x0024) Receiver Time-out Register */
   __IO uint32_t US_TTGR;       /**< \brief (Usart Offset: 0x0028) Transmitter Timeguard Register */
@@ -69,8 +69,8 @@ typedef struct {
   __I  uint32_t Reserved2[1];
   __IO uint32_t US_IF;         /**< \brief (Usart Offset: 0x004C) IrDA Filter Register */
   __I  uint32_t Reserved3[37];
-  __IO uint32_t US_WPMR;       /**< \brief (Usart Offset: 0x00E4) Write Protect Mode Register */
-  __I  uint32_t US_WPSR;       /**< \brief (Usart Offset: 0x00E8) Write Protect Status Register */
+  __IO uint32_t US_WPMR;       /**< \brief (Usart Offset: 0x00E4) Write Protection Mode Register */
+  __I  uint32_t US_WPSR;       /**< \brief (Usart Offset: 0x00E8) Write Protection Status Register */
   __I  uint32_t Reserved4[5];
   __IO uint32_t US_RPR;        /**< \brief (Usart Offset: 0x100) Receive Pointer Register */
   __IO uint32_t US_RCR;        /**< \brief (Usart Offset: 0x104) Receive Counter Register */
@@ -106,45 +106,45 @@ typedef struct {
 /* -------- US_MR : (USART Offset: 0x0004) Mode Register -------- */
 #define US_MR_USART_MODE_Pos 0
 #define US_MR_USART_MODE_Msk (0xfu << US_MR_USART_MODE_Pos) /**< \brief (US_MR) USART Mode of Operation */
-#define US_MR_USART_MODE_NORMAL (0x0u << 0) /**< \brief (US_MR) Normal mode */
-#define US_MR_USART_MODE_RS485 (0x1u << 0) /**< \brief (US_MR) RS485 */
-#define US_MR_USART_MODE_HW_HANDSHAKING (0x2u << 0) /**< \brief (US_MR) Hardware Handshaking */
-#define US_MR_USART_MODE_IS07816_T_0 (0x4u << 0) /**< \brief (US_MR) IS07816 Protocol: T = 0 */
-#define US_MR_USART_MODE_IS07816_T_1 (0x6u << 0) /**< \brief (US_MR) IS07816 Protocol: T = 1 */
-#define US_MR_USART_MODE_IRDA (0x8u << 0) /**< \brief (US_MR) IrDA */
-#define US_MR_USART_MODE_SPI_MASTER (0xEu << 0) /**< \brief (US_MR) SPI Master */
-#define US_MR_USART_MODE_SPI_SLAVE (0xFu << 0) /**< \brief (US_MR) SPI Slave */
+#define   US_MR_USART_MODE_NORMAL (0x0u << 0) /**< \brief (US_MR) Normal mode */
+#define   US_MR_USART_MODE_RS485 (0x1u << 0) /**< \brief (US_MR) RS485 */
+#define   US_MR_USART_MODE_HW_HANDSHAKING (0x2u << 0) /**< \brief (US_MR) Hardware Handshaking */
+#define   US_MR_USART_MODE_IS07816_T_0 (0x4u << 0) /**< \brief (US_MR) IS07816 Protocol: T = 0 */
+#define   US_MR_USART_MODE_IS07816_T_1 (0x6u << 0) /**< \brief (US_MR) IS07816 Protocol: T = 1 */
+#define   US_MR_USART_MODE_IRDA (0x8u << 0) /**< \brief (US_MR) IrDA */
+#define   US_MR_USART_MODE_SPI_MASTER (0xEu << 0) /**< \brief (US_MR) SPI master */
+#define   US_MR_USART_MODE_SPI_SLAVE (0xFu << 0) /**< \brief (US_MR) SPI Slave */
 #define US_MR_USCLKS_Pos 4
 #define US_MR_USCLKS_Msk (0x3u << US_MR_USCLKS_Pos) /**< \brief (US_MR) Clock Selection */
-#define US_MR_USCLKS_MCK (0x0u << 4) /**< \brief (US_MR) Master Clock MCK is selected */
-#define US_MR_USCLKS_DIV (0x1u << 4) /**< \brief (US_MR) Internal Clock Divided MCK/DIV (DIV=8) is selected */
-#define US_MR_USCLKS_SCK (0x3u << 4) /**< \brief (US_MR) Serial Clock SLK is selected */
+#define   US_MR_USCLKS_MCK (0x0u << 4) /**< \brief (US_MR) master Clock MCK is selected */
+#define   US_MR_USCLKS_DIV (0x1u << 4) /**< \brief (US_MR) Internal Clock Divided MCK/DIV (DIV=8) is selected */
+#define   US_MR_USCLKS_SCK (0x3u << 4) /**< \brief (US_MR) Serial Clock SLK is selected */
 #define US_MR_CHRL_Pos 6
-#define US_MR_CHRL_Msk (0x3u << US_MR_CHRL_Pos) /**< \brief (US_MR) Character Length. */
-#define US_MR_CHRL_5_BIT (0x0u << 6) /**< \brief (US_MR) Character length is 5 bits */
-#define US_MR_CHRL_6_BIT (0x1u << 6) /**< \brief (US_MR) Character length is 6 bits */
-#define US_MR_CHRL_7_BIT (0x2u << 6) /**< \brief (US_MR) Character length is 7 bits */
-#define US_MR_CHRL_8_BIT (0x3u << 6) /**< \brief (US_MR) Character length is 8 bits */
+#define US_MR_CHRL_Msk (0x3u << US_MR_CHRL_Pos) /**< \brief (US_MR) Character Length */
+#define   US_MR_CHRL_5_BIT (0x0u << 6) /**< \brief (US_MR) Character length is 5 bits */
+#define   US_MR_CHRL_6_BIT (0x1u << 6) /**< \brief (US_MR) Character length is 6 bits */
+#define   US_MR_CHRL_7_BIT (0x2u << 6) /**< \brief (US_MR) Character length is 7 bits */
+#define   US_MR_CHRL_8_BIT (0x3u << 6) /**< \brief (US_MR) Character length is 8 bits */
 #define US_MR_SYNC (0x1u << 8) /**< \brief (US_MR) Synchronous Mode Select */
 #define US_MR_PAR_Pos 9
 #define US_MR_PAR_Msk (0x7u << US_MR_PAR_Pos) /**< \brief (US_MR) Parity Type */
-#define US_MR_PAR_EVEN (0x0u << 9) /**< \brief (US_MR) Even parity */
-#define US_MR_PAR_ODD (0x1u << 9) /**< \brief (US_MR) Odd parity */
-#define US_MR_PAR_SPACE (0x2u << 9) /**< \brief (US_MR) Parity forced to 0 (Space) */
-#define US_MR_PAR_MARK (0x3u << 9) /**< \brief (US_MR) Parity forced to 1 (Mark) */
-#define US_MR_PAR_NO (0x4u << 9) /**< \brief (US_MR) No parity */
-#define US_MR_PAR_MULTIDROP (0x6u << 9) /**< \brief (US_MR) Multidrop mode */
+#define   US_MR_PAR_EVEN (0x0u << 9) /**< \brief (US_MR) Even parity */
+#define   US_MR_PAR_ODD (0x1u << 9) /**< \brief (US_MR) Odd parity */
+#define   US_MR_PAR_SPACE (0x2u << 9) /**< \brief (US_MR) Parity forced to 0 (Space) */
+#define   US_MR_PAR_MARK (0x3u << 9) /**< \brief (US_MR) Parity forced to 1 (Mark) */
+#define   US_MR_PAR_NO (0x4u << 9) /**< \brief (US_MR) No parity */
+#define   US_MR_PAR_MULTIDROP (0x6u << 9) /**< \brief (US_MR) Multidrop mode */
 #define US_MR_NBSTOP_Pos 12
 #define US_MR_NBSTOP_Msk (0x3u << US_MR_NBSTOP_Pos) /**< \brief (US_MR) Number of Stop Bits */
-#define US_MR_NBSTOP_1_BIT (0x0u << 12) /**< \brief (US_MR) 1 stop bit */
-#define US_MR_NBSTOP_1_5_BIT (0x1u << 12) /**< \brief (US_MR) 1.5 stop bit (SYNC = 0) or reserved (SYNC = 1) */
-#define US_MR_NBSTOP_2_BIT (0x2u << 12) /**< \brief (US_MR) 2 stop bits */
+#define   US_MR_NBSTOP_1_BIT (0x0u << 12) /**< \brief (US_MR) 1 stop bit */
+#define   US_MR_NBSTOP_1_5_BIT (0x1u << 12) /**< \brief (US_MR) 1.5 stop bit (SYNC = 0) or reserved (SYNC = 1) */
+#define   US_MR_NBSTOP_2_BIT (0x2u << 12) /**< \brief (US_MR) 2 stop bits */
 #define US_MR_CHMODE_Pos 14
 #define US_MR_CHMODE_Msk (0x3u << US_MR_CHMODE_Pos) /**< \brief (US_MR) Channel Mode */
-#define US_MR_CHMODE_NORMAL (0x0u << 14) /**< \brief (US_MR) Normal Mode */
-#define US_MR_CHMODE_AUTOMATIC (0x1u << 14) /**< \brief (US_MR) Automatic Echo. Receiver input is connected to the TXD pin. */
-#define US_MR_CHMODE_LOCAL_LOOPBACK (0x2u << 14) /**< \brief (US_MR) Local Loopback. Transmitter output is connected to the Receiver Input. */
-#define US_MR_CHMODE_REMOTE_LOOPBACK (0x3u << 14) /**< \brief (US_MR) Remote Loopback. RXD pin is internally connected to the TXD pin. */
+#define   US_MR_CHMODE_NORMAL (0x0u << 14) /**< \brief (US_MR) Normal mode */
+#define   US_MR_CHMODE_AUTOMATIC (0x1u << 14) /**< \brief (US_MR) Automatic Echo. Receiver input is connected to the TXD pin. */
+#define   US_MR_CHMODE_LOCAL_LOOPBACK (0x2u << 14) /**< \brief (US_MR) Local Loopback. Transmitter output is connected to the Receiver Input. */
+#define   US_MR_CHMODE_REMOTE_LOOPBACK (0x3u << 14) /**< \brief (US_MR) Remote Loopback. RXD pin is internally connected to the TXD pin. */
 #define US_MR_MSBF (0x1u << 16) /**< \brief (US_MR) Bit Order */
 #define US_MR_MODE9 (0x1u << 17) /**< \brief (US_MR) 9-bit Character Length */
 #define US_MR_CLKO (0x1u << 18) /**< \brief (US_MR) Clock Output Select */
@@ -228,11 +228,11 @@ typedef struct {
 #define US_CSR_CTSIC (0x1u << 19) /**< \brief (US_CSR) Clear to Send Input Change Flag */
 #define US_CSR_CTS (0x1u << 23) /**< \brief (US_CSR) Image of CTS Input */
 #define US_CSR_UNRE (0x1u << 10) /**< \brief (US_CSR) Underrun Error */
-/* -------- US_RHR : (USART Offset: 0x0018) Receiver Holding Register -------- */
+/* -------- US_RHR : (USART Offset: 0x0018) Receive Holding Register -------- */
 #define US_RHR_RXCHR_Pos 0
 #define US_RHR_RXCHR_Msk (0x1ffu << US_RHR_RXCHR_Pos) /**< \brief (US_RHR) Received Character */
 #define US_RHR_RXSYNH (0x1u << 15) /**< \brief (US_RHR) Received Sync */
-/* -------- US_THR : (USART Offset: 0x001C) Transmitter Holding Register -------- */
+/* -------- US_THR : (USART Offset: 0x001C) Transmit Holding Register -------- */
 #define US_THR_TXCHR_Pos 0
 #define US_THR_TXCHR_Msk (0x1ffu << US_THR_TXCHR_Pos) /**< \brief (US_THR) Character to be Transmitted */
 #define US_THR_TXCHR(value) ((US_THR_TXCHR_Msk & ((value) << US_THR_TXCHR_Pos)))
@@ -254,7 +254,7 @@ typedef struct {
 #define US_TTGR_TG(value) ((US_TTGR_TG_Msk & ((value) << US_TTGR_TG_Pos)))
 /* -------- US_FIDI : (USART Offset: 0x0040) FI DI Ratio Register -------- */
 #define US_FIDI_FI_DI_RATIO_Pos 0
-#define US_FIDI_FI_DI_RATIO_Msk (0xffffu << US_FIDI_FI_DI_RATIO_Pos) /**< \brief (US_FIDI) FI Over DI Ratio Value */
+#define US_FIDI_FI_DI_RATIO_Msk (0x7ffu << US_FIDI_FI_DI_RATIO_Pos) /**< \brief (US_FIDI) FI Over DI Ratio Value */
 #define US_FIDI_FI_DI_RATIO(value) ((US_FIDI_FI_DI_RATIO_Msk & ((value) << US_FIDI_FI_DI_RATIO_Pos)))
 /* -------- US_NER : (USART Offset: 0x0044) Number of Errors Register -------- */
 #define US_NER_NB_ERRORS_Pos 0
@@ -263,16 +263,15 @@ typedef struct {
 #define US_IF_IRDA_FILTER_Pos 0
 #define US_IF_IRDA_FILTER_Msk (0xffu << US_IF_IRDA_FILTER_Pos) /**< \brief (US_IF) IrDA Filter */
 #define US_IF_IRDA_FILTER(value) ((US_IF_IRDA_FILTER_Msk & ((value) << US_IF_IRDA_FILTER_Pos)))
-/* -------- US_WPMR : (USART Offset: 0x00E4) Write Protect Mode Register -------- */
-#define US_WPMR_WPEN (0x1u << 0) /**< \brief (US_WPMR) Write Protect Enable */
+/* -------- US_WPMR : (USART Offset: 0x00E4) Write Protection Mode Register -------- */
+#define US_WPMR_WPEN (0x1u << 0) /**< \brief (US_WPMR) Write Protection Enable */
 #define US_WPMR_WPKEY_Pos 8
-#define US_WPMR_WPKEY_Msk (0xffffffu << US_WPMR_WPKEY_Pos) /**< \brief (US_WPMR) Write Protect KEY. */
-#define US_WPMR_WPKEY(value) ((US_WPMR_WPKEY_Msk & ((value) << US_WPMR_WPKEY_Pos)))
-#define US_WPMR_WPKEY_PASSWD (0x555341u << 8) /**< \brief (US_WPMR) Writing any other value in this field aborts the write operation of the WPEN bit. Always reads as 0. */
-/* -------- US_WPSR : (USART Offset: 0x00E8) Write Protect Status Register -------- */
-#define US_WPSR_WPVS (0x1u << 0) /**< \brief (US_WPSR) Write Protect Violation Status */
+#define US_WPMR_WPKEY_Msk (0xffffffu << US_WPMR_WPKEY_Pos) /**< \brief (US_WPMR) Write Protection Key */
+#define   US_WPMR_WPKEY_PASSWD (0x555341u << 8) /**< \brief (US_WPMR) Writing any other value in this field aborts the write operation of the WPEN bit. Always reads as 0. */
+/* -------- US_WPSR : (USART Offset: 0x00E8) Write Protection Status Register -------- */
+#define US_WPSR_WPVS (0x1u << 0) /**< \brief (US_WPSR) Write Protection Violation Status */
 #define US_WPSR_WPVSRC_Pos 8
-#define US_WPSR_WPVSRC_Msk (0xffffu << US_WPSR_WPVSRC_Pos) /**< \brief (US_WPSR) Write Protect Violation Source */
+#define US_WPSR_WPVSRC_Msk (0xffffu << US_WPSR_WPVSRC_Pos) /**< \brief (US_WPSR) Write Protection Violation Source */
 /* -------- US_RPR : (USART Offset: 0x100) Receive Pointer Register -------- */
 #define US_RPR_RXPTR_Pos 0
 #define US_RPR_RXPTR_Msk (0xffffffffu << US_RPR_RXPTR_Pos) /**< \brief (US_RPR) Receive Pointer Register */

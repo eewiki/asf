@@ -52,5 +52,26 @@
 			<require idref="common.utils.stdio.stdio_serial"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
+		<module type="application" id="sam.applications.low_power#2" caption="Low Power Demo for SAM4CP boards">
+			<!-- Summary Description -->
+			<info type="description" value="summary">
+				This demo shows all the different low power modes with several types of wake-up sources.
+			</info>
+			<!-- Source -->
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main_sam4cp.c"/>
+			<!-- Device support -->
+			<device-support value="sam4cp"/>
+			<!-- Required modules -->
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="sam.drivers.gpbr"/>
+			<require idref="sam.drivers.supc"/>
+			<require idref="sam.drivers.efc"/>
+			<require idref="sam.drivers.wdt"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
 	</select-by-device>
 </asf>

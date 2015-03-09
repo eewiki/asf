@@ -49,6 +49,7 @@
 			<build type="c-source" value="unit_tests.c"/>
 			<build type="include-path" value="."/>
 			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 			<require idref="common.utils.unit_test"/>
 			<require idref="common.services.basic.sleepmgr"/>
 			<require idref="common.services.usb.class.device"/>

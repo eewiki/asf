@@ -1,0 +1,24 @@
+<asf xmlversion="1.0">
+	<project caption="AT25DFx example for SAM4CMP_DB" id="common.components.memory.serial_flash.at25dfx.at25dfx_example.sam4cmp_db">
+		<info type="description" value="summary">
+		Provide an application example using the Atmel SerialFlash AT25DFx component. The SerialFlash requires an SPI bus as a low level communication interface.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_at25dfx.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.components.memory.serial_flash.at25dfx.at25dfx_example"/>
+		<require idref="board.sam4cmp_db"/>
+		<config name="config.board.sam4cmp_db.init" value="yes"/>
+		<config name="config.board.sam4cmp_db.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<device-support value="atsam4cmp16c_0"/>
+	</project>
+</asf>

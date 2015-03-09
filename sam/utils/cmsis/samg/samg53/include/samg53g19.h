@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -263,7 +263,7 @@ void WKUP15_Handler     ( void );
  */
 
 #define __CM4_REV              0x0001 /**< SAMG53G19 core revision number ([15:8] revision number, [7:0] patch number) */
-#define __MPU_PRESENT          1      /**< SAMG53G19 does not provide a MPU */
+#define __MPU_PRESENT          1      /**< SAMG53G19 does provide a MPU */
 #define __FPU_PRESENT          1      /**< SAMG53G19 does provide a FPU */
 #define __NVIC_PRIO_BITS       4      /**< SAMG53G19 uses 4 Bits for the Priority Levels */
 #define __Vendor_SysTickConfig 0      /**< Set to 1 if different SysTick Config is used */
@@ -522,23 +522,16 @@ void WKUP15_Handler     ( void );
 #define CHIP_FREQ_MAINCK_RC_24MHZ       (24000000UL)
 #define CHIP_FREQ_CPU_MAX               (48000000UL)
 #define CHIP_FREQ_XTAL_32K              (32768UL)
-#define CHIP_FREQ_XTAL_12M              (12000000UL)
+
 
 /* Embedded Flash Write Wait State */
 #define CHIP_FLASH_WRITE_WAIT_STATE     (6U)
 
 /* Embedded Flash Read Wait State (VDDIO set at 1.62V, Max value) */
-#define CHIP_FREQ_FWS_0                 (12500000UL)  /**< \brief Maximum operating frequency when FWS is 0 */
+#define CHIP_FREQ_FWS_0                 (12000000UL)  /**< \brief Maximum operating frequency when FWS is 0 */
 #define CHIP_FREQ_FWS_1                 (25000000UL)  /**< \brief Maximum operating frequency when FWS is 1 */
 #define CHIP_FREQ_FWS_2                 (38000000UL)  /**< \brief Maximum operating frequency when FWS is 2 */
 #define CHIP_FREQ_FWS_3                 (48000000UL)  /**< \brief Maximum operating frequency when FWS is 3 */
-
-#define EFC0 EFC
-#define USART0 USART
-#define PDC_USART0 PDC_USART
-#define ID_USART0 ID_USART
-#define USART0_IRQn USART_IRQn
-#define USART0_Handler USART_Handler
 
 #ifdef __cplusplus
 }

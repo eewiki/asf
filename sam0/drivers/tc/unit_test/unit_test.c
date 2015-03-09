@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 TC Unit test
+ * \brief SAM D20/D21/R21 TC Unit test
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -42,7 +42,7 @@
  */
 
 /**
- * \mainpage SAM D20/D21 TC Unit Test
+ * \mainpage SAM D20/D21/R21 TC Unit Test
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -58,7 +58,7 @@
  */
 
 /**
- * \page appdoc_main SAM D20/D21 TC Unit Test
+ * \page appdoc_main SAM D20/D21/R21 TC Unit Test
  *
  * Overview:
  * - \ref appdoc_sam0_tc_unit_test_intro
@@ -71,15 +71,16 @@
  * \copydetails appdoc_preface
  *
  * The following kit is required for carrying out the test:
- *      - SAM D20/D21 Xplained Pro board
+ *      - SAM D20/D21/R21 Xplained Pro board
  *
  * \section appdoc_sam0_tc_unit_test_setup Setup
  * The following connections has to be made using wires:
  *  - \b SAM D20 Xplained Pro:EXTINT 0 (PA16, EXT2 pin 17) <-----> TC0 WO1 (PA05, EXT1 pin 15)
  *  - \b SAM D21 Xplained Pro:EXTINT 0 (PA16, EXT2 pin 17) <-----> TC4 WO1 (PB09, EXT1 pin 13)
+ *  - \b SAM R21 Xplained Pro:EXTINT 0 (PA16, EXT1 pin 11) <-----> TC4 WO1 (PA23, EXT1 pin 10)
  *
  * To run the test:
- *  - Connect the SAM D20/D21 Xplained Pro board to the computer using a
+ *  - Connect the SAM D20/D21/R21 Xplained Pro board to the computer using a
  *    micro USB cable.
  *  - Open the virtual COM port in a terminal application.
  *    \note The USB composite firmware running on the Embedded Debugger (EDBG)
@@ -181,7 +182,7 @@ static void run_reset_32bit_master_test(const struct test_case *test)
 	tc_reset(&tc_test0_module);
 	tc_get_config_defaults(&tc_test0_config);
 	tc_test0_config.counter_size = TC_COUNTER_SIZE_32BIT;
-	
+
 	tc_init(&tc_test0_module, CONF_TEST_TC0, &tc_test0_config);
 	tc_enable(&tc_test0_module);
 
@@ -217,7 +218,7 @@ static void run_reset_32bit_master_test(const struct test_case *test)
 		/* Synchronize enable */
 	}
 
-   
+
 	tc_init(&tc_test1_module, CONF_TEST_TC1, &tc_test1_config);
 	tc_enable(&tc_test1_module);
 
@@ -254,7 +255,7 @@ static void run_basic_functionality_test(const struct test_case *test)
 	/* Setup TC0 */
 	tc_reset(&tc_test0_module);
 	tc_get_config_defaults(&tc_test0_config);
-	
+
 	tc_init(&tc_test0_module, CONF_TEST_TC0, &tc_test0_config);
 	tc_enable(&tc_test0_module);
 
@@ -318,7 +319,7 @@ static void run_callback_test(const struct test_case *test)
 		[TC_COMPARE_CAPTURE_CHANNEL_0]                    = 0x03FF;
 	tc_test0_config.counter_16_bit.compare_capture_channel\
 		[TC_COMPARE_CAPTURE_CHANNEL_1]                    = 0x03FA;
-		
+
 
 	tc_init(&tc_test0_module, CONF_TEST_TC0, &tc_test0_config);
 
@@ -362,8 +363,9 @@ static void run_callback_test(const struct test_case *test)
  * \internal
  * \brief Test capture and compare
  *
- * This test uses TC0 as a PWM generator (compare function). TC1 will be set to
- * capture the signal from TC0 to test the capture functionality.
+ * This test uses TC module 0 as a PWM generator (compare function).
+ * TC module 1 will be set to capture the signal from TC module 0 to test the capture
+ * functionality.
  *
  * \param test Current test case.
  */
@@ -396,7 +398,7 @@ static void run_16bit_capture_and_compare_test(const struct test_case *test)
 	tc_test0_config.pwm_channel[TC_COMPARE_CAPTURE_CHANNEL_1].pin_out = CONF_TEST_PIN_OUT;
 	tc_test0_config.pwm_channel[TC_COMPARE_CAPTURE_CHANNEL_1].pin_mux = CONF_TEST_PIN_MUX;
 	tc_init(&tc_test0_module, CONF_TEST_TC0, &tc_test0_config);
-	
+
 	tc_register_callback(&tc_test0_module, tc_callback_function, TC_CALLBACK_CC_CHANNEL0);
 	tc_enable_callback(&tc_test0_module, TC_CALLBACK_CC_CHANNEL0);
 
@@ -406,7 +408,7 @@ static void run_16bit_capture_and_compare_test(const struct test_case *test)
 	tc_test1_config.clock_prescaler              = TC_CLOCK_PRESCALER_DIV1;
 	tc_test1_config.enable_capture_on_channel[CONF_CAPTURE_CHAN_0] = true;
 	tc_test1_config.enable_capture_on_channel[CONF_CAPTURE_CHAN_1] = true;
-	
+
 	tc_init(&tc_test1_module, CONF_TEST_TC1, &tc_test1_config);
 
 	struct tc_events tc_events = { .on_event_perform_action = true,
@@ -442,35 +444,35 @@ static void run_16bit_capture_and_compare_test(const struct test_case *test)
 
 	/* Configure user */
 	events_attach_user(&event_res, CONF_EVENT_USED_ID);
-	
+
 	/* Enable TC modules */
 	tc_enable(&tc_test1_module);
 	tc_enable(&tc_test0_module);
 
 	uint16_t period_after_capture = 0;
 	uint16_t pulse_width_after_capture = 0;
-	uint32_t capture_frequency = 0; 
+	uint32_t capture_frequency = 0;
 	uint32_t capture_duty = 0;
-	
-	
+
+
 	while (callback_function_entered < 4) {
 		period_after_capture = tc_get_capture_value(&tc_test1_module,
 				TC_COMPARE_CAPTURE_CHANNEL_0);
 		pulse_width_after_capture = tc_get_capture_value(&tc_test1_module,
 				TC_COMPARE_CAPTURE_CHANNEL_1);
 	}
-	
+
 	if(period_after_capture != 0) {
 		capture_frequency = system_clock_source_get_hz(SYSTEM_CLOCK_SOURCE_OSC8M)/ period_after_capture;
 		capture_duty = (uint32_t)(pulse_width_after_capture) * 100 / period_after_capture;
-	} 
-	
+	}
+
 	test_assert_true(test,
 			(capture_frequency <= (frequency_output * (100 + CONF_TEST_TOLERANCE) / 100)) && \
 			(capture_frequency >= (frequency_output * (100 - CONF_TEST_TOLERANCE) / 100)) && \
 			(capture_duty <= (duty_output * (100 + CONF_TEST_TOLERANCE) / 100)) && \
 			(capture_duty >= (duty_output * (100 - CONF_TEST_TOLERANCE) / 100)) \
-			,"The result of Capture is wrong, captured frequency: %ldHz, captured duty: %ld%%", 
+			,"The result of Capture is wrong, captured frequency: %ldHz, captured duty: %ld%%",
 			capture_frequency,
 			capture_duty
 			);
@@ -543,7 +545,7 @@ int main(void)
 
 	/* Define the test suite */
 	DEFINE_TEST_SUITE(tc_suite, tc_tests,
-			"SAM D20/D21 TC driver test suite");
+			"SAM D20/D21/R21 TC driver test suite");
 
 	/* Run all tests in the suite*/
 	test_suite_run(&tc_suite);

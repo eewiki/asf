@@ -3,7 +3,7 @@
  *
  * \brief Commonly used includes, types and macros.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -308,7 +308,6 @@ typedef uint8_t                 U8 ;  //!< 8-bit unsigned integer.
 typedef uint16_t                U16;  //!< 16-bit unsigned integer.
 typedef uint32_t                U32;  //!< 32-bit unsigned integer.
 typedef unsigned long long int  U64;  //!< 64-bit unsigned integer.
-
 
 /*! \brief Toggles the endianism of \a u16 (by swapping its bytes).
  *

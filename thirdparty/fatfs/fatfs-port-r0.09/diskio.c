@@ -60,7 +60,7 @@ extern "C" {
 # include <rtc.h>
 #endif
 
-#if (SAMD20 || SAMD21)
+#if (SAMD20 || SAMD21 || SAMR21)
 # include <rtc_calendar.h>
 struct rtc_module rtc_instance;
 
@@ -127,7 +127,7 @@ DSTATUS disk_initialize(BYTE drv)
 	rtc_set_hour_mode(RTC, 0);
 #endif
 
-#if (SAMD20 || SAMD21)
+#if (SAMD20 || SAMD21 || SAMR21)
 	configure_rtc_calendar();
 #endif
 

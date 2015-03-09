@@ -1,0 +1,13 @@
+<asf xmlversion="1.0">
+	<project id="common.applications.user_application.atpl230amb" caption="ATPL230AMB template project" type="template">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="config"/>
+		<build type="header-file" value="config/conf_board.h"/>
+		<build type="header-file" value="config/conf_clock.h"/>
+		<require idref="common.applications.user_application"/>
+		<require idref="board.atpl230amb"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>

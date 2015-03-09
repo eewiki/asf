@@ -1,0 +1,40 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.atpl230amb.led" name="config.board.atpl230amb.led" caption="ATPL230AMB LED support" default="yes">
+		<module type="meta" id="config.board.atpl230amb.led#no" caption="ATPL230AMB LED support disabled">
+		</module>
+		<module type="meta" id="config.board.atpl230amb.led#yes" caption="ATPL230AMB LED support enabled">
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.basic.gpio"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.atpl230amb.init" name="config.board.atpl230amb.init" caption="ATPL230AMB initialization support" default="yes">
+		<module type="meta" id="config.board.atpl230amb.init#no" caption="ATPL230AMB initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.atpl230amb.init#yes" caption="ATPL230AMB initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.ioport"/>
+		</module>
+	</select-by-config>
+
+	<board id="board.atpl230amb" vendor="Atmel" caption="ATPL230AMB">
+		<build type="define" name="BOARD" value="ATPL230AMB"/>
+		<build type="define" name="__SAM4SD32C__" value=""/>
+		<build type="header-file" value="atpl230amb.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/gcc/atpl230amb_flash.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/gcc/atpl230amb_sram.gdb" toolchain="armgcc"/>
+		<build type="macro-config" subtype="script" value="debug_scripts/iar/atpl230amb_flash.mac" toolchain="iarewarm"/>
+		<build type="macro-config" subtype="aux-script" value="debug_scripts/iar/atpl230amb_sram.mac" toolchain="iarewarm"/>
+		<require idref="sam.utils.cmsis.sam4s.source.template"/>
+		<require idref="sam.drivers.supc"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.atpl230amb.init"/>
+		<require idref="config.board.atpl230amb.led"/>
+		<device-support value="atsam4sd32c"/>
+	</board>
+</asf>

@@ -50,5 +50,15 @@
             <build type="doxygen-entry-point" value="group_rf4control_NWK"/>
             <device-support value="atsam4lc4c"/>
         </module>
+		<module type="service" id="thirdparty.wireless.avr2102_rf4control.lib.nwk#6" caption="RF4Control NWK Lib for atsamr21g18a">
+            <info type="description" value="summary">
+            RF4CE network library for ATSAMR21G18A controller
+            </info>
+            <build type="library" subtype="user" value="atsamr21g18a/iar/librf4ce-nwk.a" toolchain="iarewarm"/>
+            <build type="library" subtype="user" value="atsamr21g18a/gcc/librf4ce-nwk.a" toolchain="armgcc"/>
+			 <build type="doxygen-entry-point" value="group_rf4control_NWK"/>
+            <require idref="thirdparty.wireless.avr2102_rf4control.lib.nwk.config" />
+            <device-support value="atsamr21g18a"/>
+        </module>
     </select-by-device>
 </asf>

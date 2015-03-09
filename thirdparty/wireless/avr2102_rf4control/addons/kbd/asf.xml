@@ -26,5 +26,18 @@
 			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
 		</module>
 	</select-by-config>
+	<module type="service" id="thirdparty.common.services.usb.class.hid.device.keyboard.include" caption="USB Device HID Multimedia Keyboard Protocol IDs">
+			<info type="keyword" value="technology">
+			<keyword value="USB"/>
+			<keyword value="Communication" />
+			</info>
+			<info type="gui-flag" value="hidden"/>
+			<build type="header-file" subtype="api" value="usb_hid.h"/>
+			<build type="include-path" value="."/>
+			<device-support value="avr"/>
+			<device-support value="sam"/>
+			<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
+	</module>
+			
 	
 </asf>

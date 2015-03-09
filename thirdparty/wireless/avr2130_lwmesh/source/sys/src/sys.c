@@ -50,9 +50,12 @@
 #include "sysConfig.h"
 #include "phy.h"
 #include "nwk.h"
-#include "sleep_mgr.h"
+#if SYS_SECURITY_MODE == 0
+#include "sal.h"
+#endif
 #include "sys.h"
 #include "sysTimer.h"
+#include "asf.h"
 
 /*- Implementations --------------------------------------------------------*/
 
@@ -60,28 +63,19 @@
 *****************************************************************************/
 void SYS_Init(void)
 {
-  irq_initialize_vectors();
-#if SAMD20
-  system_init();
-  delay_init();
-#else
-  sysclk_init();
-  board_init();    
-#endif  	
-  SYS_TimerInit();  
-  PHY_Init();
-  NWK_Init();
-  sm_init();     
-  cpu_irq_enable();
+	SYS_TimerInit();
+#if SYS_SECURITY_MODE == 0
+	sal_init();
+#endif
+	PHY_Init();
+	NWK_Init();
 }
 
 /*************************************************************************//**
 *****************************************************************************/
 void SYS_TaskHandler(void)
 {
-  PHY_TaskHandler();
-  NWK_TaskHandler();
-  SYS_TimerTaskHandler();
-  
+	PHY_TaskHandler();
+	NWK_TaskHandler();
+	SYS_TimerTaskHandler();
 }
-

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 TCC Driver Double Buffering Quick Start
+ * \brief SAM TCC Driver Double Buffering Quick Start
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -45,7 +45,7 @@
  * \page asfdoc_sam0_tcc_buffering_use_case Quick Start Guide for TCC - Double Buffering & Circular
  *
  * The supported board list:
- *    - SAM D21 Xplained Pro
+ *    - SAM D21/R21 Xplained Pro
  *
  * In this use case, the TCC will be used to generate a PWM signal. Here
  * the pulse width alters in one quarter and three quarter of the period.
@@ -56,6 +56,7 @@
  * <table>
  *  <tr><th> Board        </td><th> Pin  </td><th> Connect to </td></tr>
  *  <tr><td> SAMD21 Xpro  </td><td> PB30 </td><td> LED0       </td></tr>
+ *  <tr><td> SAMR21 Xpro  </td><td> PA19 </td><td> LED0       </td></tr>
  * </table>
  *
  * The TCC module will be set up as follows:

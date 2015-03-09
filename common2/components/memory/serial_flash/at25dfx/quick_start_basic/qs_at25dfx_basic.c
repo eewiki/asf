@@ -97,6 +97,10 @@ int main(void)
 //! [init_calls]
 
 //! [use_code]
+//! [wake_chip]
+	at25dfx_chip_wake(&at25dfx_chip);
+//! [wake_chip]
+	
 //! [check_presence]
 	if (at25dfx_chip_check_presence(&at25dfx_chip) != STATUS_OK) {
 		// Handle missing or non-responsive device

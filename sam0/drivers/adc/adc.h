@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 Peripheral Analog-to-Digital Converter Driver
+ * \brief SAM D20/D21/R21 Peripheral Analog-to-Digital Converter Driver
  *
  * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
@@ -45,9 +45,9 @@
 #define ADC_H_INCLUDED
 
 /**
- * \defgroup asfdoc_sam0_adc_group SAM D20/D21 Analog to Digital Converter Driver (ADC)
+ * \defgroup asfdoc_sam0_adc_group SAM D20/D21/R21 Analog to Digital Converter Driver (ADC)
  *
- * This driver for SAM D20/D21 devices provides an interface for the configuration
+ * This driver for SAM D20/D21/R21 devices provides an interface for the configuration
  * and management of the device's Analog to Digital Converter functionality, for
  * the conversion of analog voltages into a corresponding digital form.
  * The following driver API modes are covered by this manual:
@@ -359,7 +359,7 @@
  * conversion is completed.
  *
  * \note The connection of events between modules requires the use of the
- *       \ref asfdoc_sam0_events_group "SAM D20/D21 Event System Driver (EVENTS)"
+ *       \ref asfdoc_sam0_events_group "SAM D20/D21/R21 Event System Driver (EVENTS)"
  *       to route output event of one module to the the input event of another.
  *       For more information on event routing, refer to the event driver
  *       documentation.
@@ -983,7 +983,11 @@ static inline void adc_get_config_defaults(struct adc_config *const config)
 	config->window.window_upper_value     = 0;
 	config->window.window_lower_value     = 0;
 	config->gain_factor                   = ADC_GAIN_FACTOR_1X;
+#if SAMR21
+	config->positive_input                = ADC_POSITIVE_INPUT_PIN6 ;
+#else
 	config->positive_input                = ADC_POSITIVE_INPUT_PIN0 ;
+#endif
 	config->negative_input                = ADC_NEGATIVE_INPUT_GND ;
 	config->accumulate_samples            = ADC_ACCUMULATE_DISABLE;
 	config->divide_result                 = ADC_DIVIDE_RESULT_DISABLE;
@@ -1111,8 +1115,8 @@ static inline void adc_clear_status(
  *
  * \return Synchronization status of the underlying hardware module(s).
  *
- * \retval true if the module has completed synchronization
- * \retval false if the module synchronization is ongoing
+ * \retval true if the module synchronization is ongoing
+ * \retval false if the module has completed synchronization
  */
 static inline bool adc_is_syncing(
 	struct adc_module *const module_inst)
@@ -1150,7 +1154,7 @@ static inline enum status_code adc_enable(
 	}
 
 	/* Make sure bandgap is enabled if requested by the config */
-	if (module_inst == ADC_REFERENCE_INT1V) {
+	if (module_inst->reference == ADC_REFERENCE_INT1V) {
 		system_voltage_reference_enable(SYSTEM_VOLTAGE_REFERENCE_BANDGAP);
 	}
 
@@ -1714,6 +1718,9 @@ static inline void adc_disable_interrupt(struct adc_module *const module_inst,
  *		<th>Changelog</th>
  *	</tr>
  *	<tr>
+ *		<td>Added support for SAMR21.</td>
+ *	</tr>
+ *	<tr>
  *		<td>Added support for SAMD21 and new DMA quick start guide.</td>
  *	</tr>
  *	<tr>
@@ -1748,6 +1755,11 @@ static inline void adc_disable_interrupt(struct adc_module *const module_inst,
  *		<th>Doc. Rev.</td>
  *		<th>Date</td>
  *		<th>Comments</td>
+ *	</tr>
+ *	<tr>
+ *		<td>D</td>
+ *		<td>03/2014</td>
+ *		<td>Added support for SAMR21.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

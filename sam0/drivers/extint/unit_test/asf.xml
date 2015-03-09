@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.extint.unit_test" caption="Unit Tests for the SAM D20/D21 EXTINT Driver">
+	<module type="application" id="sam0.drivers.extint.unit_test" caption="Unit Tests for the SAM D20/D21/R21 EXTINT Driver">
 		<info type="description" value="summary">
 		Unit test for the external interrupt module testing all functionality against hardware.
 		</info>
@@ -15,5 +15,6 @@
 		<require idref="common2.services.delay"/>
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 	</module>
 </asf>

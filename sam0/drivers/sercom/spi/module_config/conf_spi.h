@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 SPI configuration
+ * \brief SAM D20/D21/R21 SPI configuration
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -46,7 +46,7 @@
 #  define CONF_SPI_H_INCLUDED
 
 #  define CONF_SPI_MASTER_ENABLE     true
-#  define CONF_SPI_SLAVE_ENABLE     true
+#  define CONF_SPI_SLAVE_ENABLE      true
 #  define CONF_SPI_TIMEOUT           10000
 
 #endif /* CONF_SPI_H_INCLUDED */

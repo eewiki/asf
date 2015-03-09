@@ -272,7 +272,7 @@ uint32_t supc_get_status(Supc *p_supc)
 	return p_supc->SUPC_SR;
 }
 
-#if (SAM4C || SAM4CP)
+#if (SAM4C || SAM4CP || SAM4CM)
 /**
  * \brief Enable Backup Area Power-On Reset.
  *
@@ -352,6 +352,36 @@ void supc_set_slcd_vol(Supc *p_supc, uint32_t vol)
 	p_supc->SUPC_MR = tmp;
 
 }
+#endif
+
+#if SAMG54
+/**
+ * \brief Set the internal voltage regulator to use factory trim value.
+ *
+ * \param p_supc Pointer to a SUPC instance.
+ */
+void supc_set_regulator_trim_factory(Supc *p_supc)
+{
+	uint32_t ul_mr = p_supc->SUPC_MR &
+			(~(SUPC_MR_VRVDD_Msk | SUPC_MR_VDDSEL_USER_VRVDD));
+	p_supc->SUPC_MR = SUPC_MR_KEY_PASSWD | ul_mr;
+}
+
+/**
+ * \brief Set the internal voltage regulator trim value.
+ *
+ * \param p_supc Pointer to a SUPC instance.
+ * \param value the trim value.
+ *
+ * \note For the trim value in 96M PLL, please read the value in flash unique identifier area.
+ */
+void supc_set_regulator_trim_user(Supc *p_supc, uint32_t value)
+{
+	uint32_t ul_mr = p_supc->SUPC_MR & (~SUPC_MR_VRVDD_Msk);
+	p_supc->SUPC_MR = SUPC_MR_KEY_PASSWD | ul_mr | SUPC_MR_VDDSEL_USER_VRVDD
+		 | SUPC_MR_VRVDD(value);
+}
+
 #endif
 
 //@}

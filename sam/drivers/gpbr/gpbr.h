@@ -3,7 +3,7 @@
  *
  * \brief General Purpose Backup Registers (GPBR) driver for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -65,7 +65,7 @@ typedef enum gpbr_num_type {
 	GPBR5,
 	GPBR6,
 	GPBR7,
-#if (SAM4C || SAM4CP)
+#if (SAM4C || SAM4CP || SAM4CM)
 	GPBR8,
 	GPBR9,
 	GPBR10,

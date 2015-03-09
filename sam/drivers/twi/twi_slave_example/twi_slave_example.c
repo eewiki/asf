@@ -3,7 +3,7 @@
  *
  * \brief TWI SLAVE Example for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -54,9 +54,9 @@
  *
  * In addition, another device will be needed to act as the TWI master. The
  * twi_eeprom_example can be used for that, in which case a second kit
- * supported by that project is needed (on SAM4S evaluation kits, TWI1 is used).
- * -# Connect TWD0 (SDA) for the 2 boards.
- * -# Connect TWCK0 (SCL) for the 2 boards.
+ * supported by that project is needed.
+ * -# Connect TWD (SDA) for the 2 boards.
+ * -# Connect TWCK (SCL) for the 2 boards.
  * -# Connect GND for the 2 boards.
  * -# Make sure there is a pull up resistor on TWD and TWCK.
  *

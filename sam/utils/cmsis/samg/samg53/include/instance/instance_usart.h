@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -50,16 +50,16 @@
   #define REG_USART_IDR                   (0x4002400CU) /**< \brief (USART) Interrupt Disable Register */
   #define REG_USART_IMR                   (0x40024010U) /**< \brief (USART) Interrupt Mask Register */
   #define REG_USART_CSR                   (0x40024014U) /**< \brief (USART) Channel Status Register */
-  #define REG_USART_RHR                   (0x40024018U) /**< \brief (USART) Receiver Holding Register */
-  #define REG_USART_THR                   (0x4002401CU) /**< \brief (USART) Transmitter Holding Register */
+  #define REG_USART_RHR                   (0x40024018U) /**< \brief (USART) Receive Holding Register */
+  #define REG_USART_THR                   (0x4002401CU) /**< \brief (USART) Transmit Holding Register */
   #define REG_USART_BRGR                  (0x40024020U) /**< \brief (USART) Baud Rate Generator Register */
   #define REG_USART_RTOR                  (0x40024024U) /**< \brief (USART) Receiver Time-out Register */
   #define REG_USART_TTGR                  (0x40024028U) /**< \brief (USART) Transmitter Timeguard Register */
   #define REG_USART_FIDI                  (0x40024040U) /**< \brief (USART) FI DI Ratio Register */
   #define REG_USART_NER                   (0x40024044U) /**< \brief (USART) Number of Errors Register */
   #define REG_USART_IF                    (0x4002404CU) /**< \brief (USART) IrDA Filter Register */
-  #define REG_USART_WPMR                  (0x400240E4U) /**< \brief (USART) Write Protect Mode Register */
-  #define REG_USART_WPSR                  (0x400240E8U) /**< \brief (USART) Write Protect Status Register */
+  #define REG_USART_WPMR                  (0x400240E4U) /**< \brief (USART) Write Protection Mode Register */
+  #define REG_USART_WPSR                  (0x400240E8U) /**< \brief (USART) Write Protection Status Register */
   #define REG_USART_RPR                   (0x40024100U) /**< \brief (USART) Receive Pointer Register */
   #define REG_USART_RCR                   (0x40024104U) /**< \brief (USART) Receive Counter Register */
   #define REG_USART_TPR                   (0x40024108U) /**< \brief (USART) Transmit Pointer Register */
@@ -77,16 +77,16 @@
   #define REG_USART_IDR  (*(__O  uint32_t*)0x4002400CU) /**< \brief (USART) Interrupt Disable Register */
   #define REG_USART_IMR  (*(__I  uint32_t*)0x40024010U) /**< \brief (USART) Interrupt Mask Register */
   #define REG_USART_CSR  (*(__I  uint32_t*)0x40024014U) /**< \brief (USART) Channel Status Register */
-  #define REG_USART_RHR  (*(__I  uint32_t*)0x40024018U) /**< \brief (USART) Receiver Holding Register */
-  #define REG_USART_THR  (*(__O  uint32_t*)0x4002401CU) /**< \brief (USART) Transmitter Holding Register */
+  #define REG_USART_RHR  (*(__I  uint32_t*)0x40024018U) /**< \brief (USART) Receive Holding Register */
+  #define REG_USART_THR  (*(__O  uint32_t*)0x4002401CU) /**< \brief (USART) Transmit Holding Register */
   #define REG_USART_BRGR (*(__IO uint32_t*)0x40024020U) /**< \brief (USART) Baud Rate Generator Register */
   #define REG_USART_RTOR (*(__IO uint32_t*)0x40024024U) /**< \brief (USART) Receiver Time-out Register */
   #define REG_USART_TTGR (*(__IO uint32_t*)0x40024028U) /**< \brief (USART) Transmitter Timeguard Register */
   #define REG_USART_FIDI (*(__IO uint32_t*)0x40024040U) /**< \brief (USART) FI DI Ratio Register */
   #define REG_USART_NER  (*(__I  uint32_t*)0x40024044U) /**< \brief (USART) Number of Errors Register */
   #define REG_USART_IF   (*(__IO uint32_t*)0x4002404CU) /**< \brief (USART) IrDA Filter Register */
-  #define REG_USART_WPMR (*(__IO uint32_t*)0x400240E4U) /**< \brief (USART) Write Protect Mode Register */
-  #define REG_USART_WPSR (*(__I  uint32_t*)0x400240E8U) /**< \brief (USART) Write Protect Status Register */
+  #define REG_USART_WPMR (*(__IO uint32_t*)0x400240E4U) /**< \brief (USART) Write Protection Mode Register */
+  #define REG_USART_WPSR (*(__I  uint32_t*)0x400240E8U) /**< \brief (USART) Write Protection Status Register */
   #define REG_USART_RPR  (*(__IO uint32_t*)0x40024100U) /**< \brief (USART) Receive Pointer Register */
   #define REG_USART_RCR  (*(__IO uint32_t*)0x40024104U) /**< \brief (USART) Receive Counter Register */
   #define REG_USART_TPR  (*(__IO uint32_t*)0x40024108U) /**< \brief (USART) Transmit Pointer Register */

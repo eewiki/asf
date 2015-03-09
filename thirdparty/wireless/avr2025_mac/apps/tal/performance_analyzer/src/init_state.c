@@ -4,7 +4,7 @@
  * \brief Initilization functions and utilities -
  * Performance Analyzer application
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -106,7 +106,8 @@ void init_state_init(void *arg)
 
 #if (TAL_TYPE == AT86RF233) && (ANTENNA_DIVERSITY == 1)
 	/* In order to demonstrate RPC the antenna diversity is disabled. */
-	tal_ant_div_config(ANT_DIVERSITY_DISABLE, ANT_CTRL_1); /* Enable A1/X2 */
+	tal_ant_div_config(ANT_DIVERSITY_DISABLE, ANT_CTRL_1); /* Enable A1/X2
+	                                                        **/
 #endif
 
 	/* Keep compiler happy */
@@ -141,25 +142,31 @@ static void configuration_mode_selection(void)
 
 static void app_timers_init(void)
 {
-if(STATUS_OK != (status_code_genare_t)sw_timer_get_id(&T_APP_TIMER))
-{
-        app_alert();
-}
-if(STATUS_OK != (status_code_genare_t)sw_timer_get_id(&APP_TIMER_TO_TX))
-{
-        app_alert();
-}
-if(STATUS_OK != (status_code_genare_t)sw_timer_get_id(&APP_TIMER_TO_TX_LED_OFF))
-{
-        app_alert();
-}
-if(STATUS_OK != (status_code_genare_t)sw_timer_get_id(&APP_TIMER_TO_RX_LED_OFF))
-{
-        app_alert();
-}
+	if (STATUS_OK != (status_code_genare_t)sw_timer_get_id(&T_APP_TIMER)) {
+		app_alert();
+	}
 
-	if (STATUS_OK != (status_code_genare_t)sw_timer_get_id(&T_APP_TIMER_RANGE)) {
+	if (STATUS_OK !=
+			(status_code_genare_t)sw_timer_get_id(&APP_TIMER_TO_TX))
+	{
+		app_alert();
+	}
+
+	if (STATUS_OK !=
+			(status_code_genare_t)sw_timer_get_id(&
+			APP_TIMER_TO_TX_LED_OFF)) {
+		app_alert();
+	}
+
+	if (STATUS_OK !=
+			(status_code_genare_t)sw_timer_get_id(&
+			APP_TIMER_TO_RX_LED_OFF)) {
+		app_alert();
+	}
+
+	if (STATUS_OK !=
+			(status_code_genare_t)sw_timer_get_id(&T_APP_TIMER_RANGE))
+	{
 		app_alert();
 	}
 }
-

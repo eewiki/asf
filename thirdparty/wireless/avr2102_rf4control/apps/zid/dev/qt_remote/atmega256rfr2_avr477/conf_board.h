@@ -38,8 +38,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * \asf_license_stop
- */ 
- /*
+ */
+
+/*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
@@ -50,6 +51,6 @@
 #define CONF_BOARD_ENABLE_USARTA1
 
 /* Taking the battery voltage for TFA */
-#define GET_BATTERY_VOLTAGE()    tfa_get_batmon_voltage()  
+#define GET_BATTERY_VOLTAGE()    tfa_get_batmon_voltage()
 
 #endif /* CONF_BOARD_H */

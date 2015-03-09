@@ -10,7 +10,6 @@
 		<device-support value="sam"/>
 		<require idref="sam.drivers.rtc"/>
 		<require idref="sam.drivers.uart"/>
-		<require idref="common.services.basic.gpio"/>
 		<require idref="common.services.basic.clock"/>
 		<require idref="common.utils.stdio.stdio_serial"/>
 		<info type="gui-flag" value="move-to-root"/>

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief Tic Tac Toe application for SAM D20/D21 Xplained Pro with OLED1 Xplained Pro
+ * \brief Tic Tac Toe application for SAM D20/D21/R21 Xplained Pro with OLED1 Xplained Pro
  *
  * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -45,17 +45,17 @@
 #include <stdio.h>
 
 /**
- * \mainpage SAM D20/D21 Tic-Tac-Toe Example
+ * \mainpage SAM D20/D21/R21 Tic-Tac-Toe Example
  * See \ref appdoc_sam0_tictactoe_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
  * \page appdoc_preface Overview
  * This application demonstrates the use of the OLED1 Xplained Pro extension
- * board for the SAM D20/D21 Xplained Pro with a Tic-tac-toe game.
+ * board for the SAM D20/D21/R21 Xplained Pro with a Tic-tac-toe game.
  */
 
  /**
- * \page appdoc_sam0_tictactoe_main SAM D20/D21 Tic-Tac-Toe Example
+ * \page appdoc_sam0_tictactoe_main SAM D20/D21/R21 Tic-Tac-Toe Example
  * Overview:
  * - \ref appdoc_sam0_tictactoe_intro
  * - \ref appdoc_sam0_tictactoe_setup
@@ -64,15 +64,17 @@
  *
  * \section  appdoc_sam0_tictactoe_intro Introduction
  * This application demonstrates the use of the OLED1 Xplained Pro extension
- * board for the SAM D20/D21 Xplained Pro with a tic-tac-toe game.
+ * board for the SAM D20/D21/R21 Xplained Pro with a tic-tac-toe game.
  *
  * The game is controlled with the three mechanical buttons on the OLED1
  * Xplained Pro. The goal is to get three circles in a horizontal, diagonal or
- * vertical row, before the opponent (SAM D20/D21) gets three crosses in a row.
+ * vertical row, before the opponent (SAM D20/D21/R21) gets three crosses
+ * in a row.
  *
  * \section appdoc_sam0_tictactoe_setup Hardware Setup
  * The OLED1 Xplained Pro extension board must be connected to extension
- * header 3 on the SAM D20/D21 Xplained Pro.
+ * header 3 on the SAM D20/D21 Xplained Pro, and extension header 1 on the SAM
+ * R21 Xplained Pro.
  * To use another extension header, edit the configuration in:
  * - \ref conf_board.h
  * - \ref conf_ssd1306.h

@@ -63,9 +63,12 @@
 #include "status_codes.h"
 
 /** Enable TWIM Low Power Transfer in default */
-#define TWIM_LOW_POWER_ENABLE 1
+#define TWIM_LOW_POWER_ENABLE    1
 
-/* @{ */
+/**
+ * \name TWI transfer speed definitions
+ *  @{
+ */
 /** TWI Standard Mode */
 #define TWI_STD_MODE_SPEED         ( 100000 /* kbit/s */)
 /** TWI Fast Mode */

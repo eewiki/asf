@@ -51,16 +51,14 @@
 
 /*- Includes ---------------------------------------------------------------*/
 #include <stdint.h>
-#include "sysTypes.h"
 #include "nwkRx.h"
 #include "nwkFrame.h"
 
 /*- Types ------------------------------------------------------------------*/
-enum
-{
-  NWK_TX_CONTROL_BROADCAST_PAN_ID = 1 << 0,
-  NWK_TX_CONTROL_ROUTING          = 1 << 1,
-  NWK_TX_CONTROL_DIRECT_LINK      = 1 << 2,
+enum {
+	NWK_TX_CONTROL_BROADCAST_PAN_ID = 1 << 0,
+	NWK_TX_CONTROL_ROUTING          = 1 << 1,
+	NWK_TX_CONTROL_DIRECT_LINK      = 1 << 2,
 };
 
 /*- Prototypes -------------------------------------------------------------*/
@@ -72,4 +70,4 @@ void nwkTxConfirm(NwkFrame_t *frame, uint8_t status);
 void nwkTxEncryptConf(NwkFrame_t *frame);
 void nwkTxTaskHandler(void);
 
-#endif // _NWK_TX_H_
+#endif /* _NWK_TX_H_ */

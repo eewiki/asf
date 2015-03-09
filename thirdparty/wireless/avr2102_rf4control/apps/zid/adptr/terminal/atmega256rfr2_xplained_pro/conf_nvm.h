@@ -40,14 +40,10 @@
  * \asf_license_stop
  *
  */
- 
+
 #ifndef CONF_NVM_H_INCLUDED
 #define CONF_NVM_H_INCLUDED
 
-
-
 #define INT_FLASH_END   (0x003FFFF)
 
-
-
-#endif //CONF_NVM_H_INCLUDED
+#endif /* CONF_NVM_H_INCLUDED */

@@ -42,7 +42,8 @@
  * \asf_license_stop
  *
  */
-  /*
+
+/*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
@@ -57,9 +58,9 @@
 void board_init(void)
 {
 	/* On board LED initialization */
-	ioport_configure_pin(LED_ON_BOARD,	
-	IOPORT_DIR_OUTPUT |  IOPORT_INIT_HIGH);
-        
-    ioport_configure_pin(LED_ON_BOARD1,	
-	IOPORT_DIR_OUTPUT |  IOPORT_INIT_HIGH);
+	ioport_configure_pin(LED_ON_BOARD,
+			IOPORT_DIR_OUTPUT |  IOPORT_INIT_HIGH);
+
+	ioport_configure_pin(LED_ON_BOARD1,
+			IOPORT_DIR_OUTPUT |  IOPORT_INIT_HIGH);
 }

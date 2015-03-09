@@ -3,7 +3,7 @@
  *
  * \brief API function protypes - Performance Analyzer application
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -120,7 +120,7 @@ void stop_range_test(void);
 
 /**
  * \brief Function to send  the Received Range Test Response frame to the Host
- *application
+ * application
  * \param frame Pointer to the actual frame Received
  * \param lqi_h LQI of the received response calculated at host
  * \param ed_h ED value  of the received response calculated at host
@@ -164,7 +164,7 @@ void start_cw_transmission(uint8_t tx_mode);
 void stop_cw_transmission(uint8_t tx_mode);
 
 #endif /*#if ((TAL_TYPE != AT86RF230B) || ((TAL_TYPE == AT86RF230B) && (defined
-        *CW_SUPPORTED))) */
+        * CW_SUPPORTED))) */
 
 /**
  * \brief Read transceiver register
@@ -225,7 +225,7 @@ uint8_t get_param_length(uint8_t parameter_type);
 
 /**
  * \name Functions for User Confirm/Indication  Messages generated in response
- *to the Request Primitives
+ * to the Request Primitives
  * \{
  */
 
@@ -257,7 +257,7 @@ void usr_perf_start_confirm(uint8_t status,
  * Function to generate Per Test Start confirmation frame that must be sent to
  * host application via serial interface.
  * Called by Performance application as confirmation for per_test_start_req
- *request
+ * request
  * \param status      Result for requested per_test_start_req
  *
  * \return void
@@ -268,7 +268,7 @@ void usr_per_test_start_confirm(uint8_t status);
  * Function to generate Range Test Start confirmation frame that must be sent to
  * host application via serial interface.
  * Called by Performance application as confirmation for range_test_start_req
- *request
+ * request
  * \param status      Result for requested range_test_start_req
  *
  * \return void
@@ -279,7 +279,7 @@ void usr_range_test_start_confirm(uint8_t status);
  * Function to generate Range Test Stop confirmation frame that must be sent to
  * host application via serial interface.
  * Called by Performance application as confirmation for range_test_start_req
- *request
+ * request
  * \param status      Result for requested range_test_stop_req
  *
  * \return void
@@ -297,7 +297,7 @@ void usr_range_test_beacon_tx(uint8_t *frame);
  * host application via serial interface.
  * Called by Performance application as Indication afetr completion of PER test
  * \param status                Result for PER test intiated by
- *per_test_start_req
+ * per_test_start_req
  * \param avg_rssi              Average RSSI meausred for PER Test
  * \param avg_lqi               Average LQI meausred for PER Test
  * \param frames_transmitted    No.of transmitted pkts in the PER Test
@@ -324,14 +324,14 @@ void usr_per_test_end_indication(uint8_t status,
 
 /**
  * Function to generate ED scan confirm test End Indication frame that must be
- *sent to
+ * sent to
  * host application via serial interface.
  * Called by Performance application as Indication before starting the ED scan
  * \param status                Confirmation to the ED scan req
  * \param scan_time_min         Approx time to be taken for ed can if timme is
- *more than a minute
+ * more than a minute
  * \param scan_time_sec         Approx time to be taken for ed can if timme is
- *less than a minute
+ * less than a minute
  *
  * \return void
  */
@@ -342,7 +342,7 @@ void usr_ed_scan_start_confirm(uint8_t status, uint8_t scan_time_min,
  * Function to generate ED scan Indication frame that must be sent to
  * host application via serial interface.
  * Called by Performance application as Indication after completion of the ED
- *scan
+ * scan
  * \param no_of_channels  No. of channels scanned
  * \param ed_scan_result  List of Energy values along with the channel numbers
  *
@@ -355,7 +355,7 @@ void usr_ed_scan_end_indication(uint8_t no_of_channels,
  * Function to generate Sensor data confirm frame that must be sent to
  * host application via serial interface.
  * Called by Performance application as confirmation after getting the sensor
- *data
+ * data
  * \param status           Result for the Sensor data get req
  * \param bat_voltage      Battery voltage vlaue
  * \param temperature      temperature value
@@ -483,7 +483,7 @@ void usr_register_dump_confirm(uint8_t status, uint16_t start_reg_addr,
  * Function to generate Disconnect Confirm frame that must be sent to
  * host application via serial interface.
  * Called by Performance application as confirmation after disconnecting from
- *the
+ * the
  * peer node, if exists
  * \param status           Result for the Peer Disconnect Req
  *

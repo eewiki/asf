@@ -12,8 +12,7 @@
 			<build type="c-source" value="sam0/systick_counter.c"/>
 			<build type="define" name="SYSTICK_MODE" value=""/>
 			<require idref="sam0.drivers.system"/>
-			<device-support value="samd20"/>
-			<device-support value="samd21"/>
+			<device-support value="sam0"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 		</module>
 		<module type="service" id="common2.services.delay#cycle" caption="Delay routines">
@@ -28,8 +27,7 @@
 			<build type="c-source" value="sam0/cycle_counter.c"/>
 			<build type="define" name="CYCLE_MODE" value=""/>
 			<require idref="sam0.drivers.system"/>
-			<device-support value="samd20"/>
-			<device-support value="samd21"/>
+			<device-support value="sam0"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 		</module>
 	</select-by-config>

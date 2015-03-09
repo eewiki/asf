@@ -101,7 +101,7 @@
 #define MATRIX_SLAVE_NUM    10
 #elif (SAM4E)
 #define MATRIX_SLAVE_NUM    6
-#elif (SAM4C || SAM4CP)
+#elif (SAM4C || SAM4CP || SAM4CM)
 #define MATRIX_SLAVE_NUM    8
 #else
 #warning "Not define matrix slave number, set 1 for default."
@@ -146,7 +146,11 @@ static uint32_t toggle_led_test(uint32_t ul_dly_ticks)
 	ul_cur_ticks = g_ul_ms_ticks;
 	do {
 		ul_cnt++;
+	#if SAM4CM
+		ioport_toggle_pin_level(LED4_GPIO);
+	#else
 		ioport_toggle_pin_level(LED0_GPIO);
+	#endif
 	} while ((g_ul_ms_ticks - ul_cur_ticks) < ul_dly_ticks);
 
 	return ul_cnt;
@@ -193,7 +197,7 @@ int main(void)
 	/* First, test with Round-Robin arbitration without default master */
 	puts("-- Test1: configure Round-Robin arbitration without default master. --\r");
 	for (ul_slave_id = 0; ul_slave_id < MATRIX_SLAVE_NUM; ul_slave_id++) {
-#if (!SAM4E) && (!SAM4C) && (!SAM4CP)
+#if (!SAM4E) && (!SAM4C) && (!SAM4CP) && (!SAM4CM)
 		matrix_set_slave_arbitration_type(ul_slave_id,
 				MATRIX_ARBT_ROUND_ROBIN);
 #endif
@@ -206,7 +210,7 @@ int main(void)
 	/* Second, test with Round-Robin arbitration with last access master */
 	puts("-- Test2: configure Round-Robin arbitration with last access master. --\r");
 	for (ul_slave_id = 0; ul_slave_id < MATRIX_SLAVE_NUM; ul_slave_id++) {
-#if (!SAM4E) && (!SAM4C) && (!SAM4CP)
+#if (!SAM4E) && (!SAM4C) && (!SAM4CP) && (!SAM4CM)
 		matrix_set_slave_arbitration_type(ul_slave_id,
 				MATRIX_ARBT_ROUND_ROBIN);
 #endif

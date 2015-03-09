@@ -3,7 +3,7 @@
  *
  * \brief Sleep mode access
  *
- * Copyright (c) 2012 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -45,7 +45,8 @@
 #include "sleep.h"
 
 /* SAM3 and SAM4 series */
-#if (SAM3S || SAM3N || SAM3XA || SAM3U || SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP)
+#if (SAM3S || SAM3N || SAM3XA || SAM3U || SAM4S || SAM4E || SAM4N || SAM4C || \
+		SAM4CM || SAMG || SAM4CP)
 # include "pmc.h"
 # include "board.h"
 
@@ -87,7 +88,7 @@ __always_inline static void pmc_save_clock_settings(
 		*p_pll0_setting = PMC->CKGR_PLLAR;
 	}
 	if (p_pll1_setting) {
-#if (SAM3S || SAM4S || SAM4C || SAM4CP)
+#if (SAM3S || SAM4S || SAM4C || SAM4CM || SAM4CP)
 		*p_pll1_setting = PMC->CKGR_PLLBR;
 #elif (SAM3U || SAM3XA)
 		*p_pll1_setting = PMC->CKGR_UCKR;
@@ -124,7 +125,7 @@ __always_inline static void pmc_save_clock_settings(
 	}
 	/* Disable PLLs */
 	pmc_disable_pllack();
-#if (SAM3S || SAM4S || SAM4C || SAM4CP)
+#if (SAM3S || SAM4S || SAM4C || SAM4CM || SAM4CP)
 	pmc_disable_pllbck();
 #elif (SAM3U || SAM3XA)
 	pmc_disable_upll_clock();
@@ -135,14 +136,28 @@ __always_inline static void pmc_save_clock_settings(
 	while (!(PMC->PMC_SR & PMC_SR_MOSCRCS));
 
 	/* Switch mainck to FAST RC */
+#if SAMG
+	/**
+	 * For the sleepwalking feature, we need an accurate RC clock. Only 24M and
+	 * 16M are trimmed in production. Here we select the 24M.
+	 * And so wait state need to be 1.
+	 */
+	EFC0->EEFC_FMR = (fmr & (~EEFC_FMR_FWS_Msk)) | EEFC_FMR_FWS(1);
+
+	PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCSEL) | CKGR_MOR_MOSCRCF_24_MHz |
+			CKGR_MOR_KEY_PASSWD;
+#else
 	PMC->CKGR_MOR = (PMC->CKGR_MOR & ~CKGR_MOR_MOSCSEL) |
 			CKGR_MOR_KEY_PASSWD;
+#endif
 	while (!(PMC->PMC_SR & PMC_SR_MOSCSELS));
 
+#if (!SAMG)
 	/* FWS update */
 	EFC0->EEFC_FMR = fmr & (~EEFC_FMR_FWS_Msk);
 #if defined(EFC1)
 	EFC1->EEFC_FMR = fmr1 & (~EEFC_FMR_FWS_Msk);
+#endif
 #endif
 
 	/* Disable XTALs */
@@ -198,14 +213,14 @@ __always_inline static void pmc_restore_clock_setting(
 	}
 
 	if (pll0_setting & CKGR_PLLAR_MULA_Msk) {
-#if (SAM4C || SAMG || SAM4CP)
+#if (SAM4C || SAM4CM || SAMG || SAM4CP)
 		PMC->CKGR_PLLAR = pll0_setting;
 #else
 		PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | pll0_setting;
 #endif
 		pll_sr |= PMC_SR_LOCKA;
 	}
-#if (SAM3S || SAM4S || SAM4C || SAM4CP)
+#if (SAM3S || SAM4S || SAM4C || SAM4CM || SAM4CP)
 	if (pll1_setting & CKGR_PLLBR_MULB_Msk) {
 		PMC->CKGR_PLLBR = pll1_setting;
 		pll_sr |= PMC_SR_LOCKB;
@@ -223,7 +238,7 @@ __always_inline static void pmc_restore_clock_setting(
 	case PMC_MCKR_CSS_PLLA_CLK:
 		while (!(PMC->PMC_SR & PMC_SR_LOCKA));
 		break;
-#if (SAM3S || SAM4S || SAM4C || SAM4CP)
+#if (SAM3S || SAM4S || SAM4C || SAM4CM || SAM4CP)
 	case PMC_MCKR_CSS_PLLB_CLK:
 		while (!(PMC->PMC_SR & PMC_SR_LOCKB));
 		break;
@@ -267,7 +282,7 @@ void pmc_sleep(int sleep_mode)
 #if (!SAMG)
 	case SAM_PM_SMODE_SLEEP_WFI:
 	case SAM_PM_SMODE_SLEEP_WFE:
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CM || SAM4CP)
 		SCB->SCR &= (uint32_t)~SCR_SLEEPDEEP;
 		cpu_irq_enable();
 		__WFI();
@@ -291,7 +306,7 @@ void pmc_sleep(int sleep_mode)
 #if defined(EFC1)
 		uint32_t fmr1;
 #endif
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CM || SAM4CP)
 		(sleep_mode == SAM_PM_SMODE_WAIT_FAST) ?
 				pmc_set_flash_in_wait_mode(PMC_FSMR_FLPM_FLASH_STANDBY) :
 				pmc_set_flash_in_wait_mode(PMC_FSMR_FLPM_FLASH_DEEP_POWERDOWN);
@@ -299,7 +314,7 @@ void pmc_sleep(int sleep_mode)
 		cpu_irq_disable();
 		b_is_sleep_clock_used = true;
 
-#if (SAM4C || SAM4CP)
+#if (SAM4C || SAM4CM || SAM4CP)
 		/* Backup the sub-system 1 status and stop sub-system 1 */
 		uint32_t cpclk_backup = PMC->PMC_SCSR &
 				(PMC_SCSR_CPCK | PMC_SCSR_CPBMCK);
@@ -323,7 +338,7 @@ void pmc_sleep(int sleep_mode)
 #endif
 				);
 
-#if (SAM4C || SAM4CP)
+#if (SAM4C || SAM4CM || SAM4CP)
 		/* Restore the sub-system 1 */
 		PMC->PMC_SCER = cpclk_backup | PMC_SCER_CPKEY_PASSWD;
 #endif
@@ -339,7 +354,7 @@ void pmc_sleep(int sleep_mode)
 #if (!SAMG)
 	case SAM_PM_SMODE_BACKUP:
 		SCB->SCR |= SCR_SLEEPDEEP;
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CM || SAM4CP)
 		SUPC->SUPC_CR = SUPC_CR_KEY_PASSWD | SUPC_CR_VROFF_STOP_VREG;
 		cpu_irq_enable();
 		__WFI() ;

@@ -3,7 +3,7 @@
  *
  * @brief MAC Example Beacon Application - Coordinator
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -44,34 +44,34 @@
  * \mainpage
  * \section preface Preface
  * This is the reference manual for the IEEE 802.15.4 MAC Beacon Application -
- *Coordinator
+ * Coordinator
  * \section main_files Application Files
  *      - main.c                 Application main file.
  * \section intro Application Introduction
  * The basic MAC Example Beacon Application deploys a beacon-enabled network
- *with star topology.
+ * with star topology.
  * The coordinator starts a PAN at channel DEFAULT_CHANNEL with the PAN ID
- *DEFAULT_PAN_ID.
+ * DEFAULT_PAN_ID.
  *
  * The coordinator starts a beaconing network and transmits user data within
- *beacon payload of transmitted beacon frames.
+ * beacon payload of transmitted beacon frames.
  * The device scans for this network,sync up with the coordinator and associates
- *to the coordinator.The devices receive
+ * to the coordinator.The devices receive
  * these beacon frames, extract the receveived user data from the coordinator
  *,print the received data on the hyper
  * terminal and also sends the extracted beacon payload back to the coordinator.
  * The coordinator also transmits broadcast data frames periodically.The devices
- *receive these broadcast data frames
+ * receive these broadcast data frames
  * and increase a counter.
  * The coordinator also puts the data in the indirect queue periodically and
- *transmits data frames based on the
+ * transmits data frames based on the
  * periodic poll request from the device.
  * The results of the proper data transmission/reception are printed to a
- *terminal program via Serial I/O (UART or USB).
+ * terminal program via Serial I/O (UART or USB).
  * For demonstration purposes the coordinator's configuration is limited to
- *associate maximum of 100 devices.
+ * associate maximum of 100 devices.
  * \note For Two Processor Approach the Application needs to be flashed in the
- *Host board(eg.SAM4L-Xplained Pro) and the Serial-if application(Beacon FFD)
+ * Host board(eg.SAM4L-Xplained Pro) and the Serial-if application(Beacon FFD)
  *(MAC Stack)
  * needs to be flashed in the NCP(Network CoProcessor) board.
  * \section api_modules Application Dependent Modules
@@ -83,7 +83,7 @@
  * \section references References
  * 1)  IEEE Std 802.15.4-2006 Part 15.4: Wireless Medium Access Control (MAC)
  *     and Physical Layer (PHY) Specifications for Low-Rate Wireless Personal
- *Area
+ * Area
  *     Networks (WPANs).\n\n
  * 2)  AVR Wireless Support <A href="http://avr@atmel.com">avr@atmel.com</A>.\n
  *
@@ -104,7 +104,6 @@
 #include <asf.h>
 #include "beacon_app.h"
 
-
 /* === MACROS ============================================================== */
 
 #define CHANNEL_OFFSET                  (0)
@@ -114,33 +113,32 @@
 /** Defines the default Super frame Order. */
 #define DEFAULT_SO                      (4)
 
-/** Coord Realignment is not used by default in this application. */ 
-#define DEFAULT_COORDREALIGNMENT		(false)
+/** Coord Realignment is not used by default in this application. */
+#define DEFAULT_COORDREALIGNMENT                (false)
 
 /** Defines the default Coord Realign SecurityLevel */
-#define DEFAULT_COORDREALIGN_SEC_LVL	(0x00)
+#define DEFAULT_COORDREALIGN_SEC_LVL    (0x00)
 
 /** Defines the default Coord Realign KeyIdMode */
 #define DEFAULT_COORDREALIGN_KEYID_MODE (0x00)
- 
+
 /** Defines the default Coord Realign KeySource */
 #define DEFAULT_COORDREALIGN_KEY_SRC    (NULL)
- 
+
 /** Defines the default Coord Realign KeyIndex */
 #define DEFAULT_COORDREALIGN_KEY_INDEX  (0x00)
- 
+
 /** Defines the default Beacon Security Level */
-#define DEFAULT_BEACON_SEC_LVL			(0x05)
- 
+#define DEFAULT_BEACON_SEC_LVL                  (0x05)
+
 /** Defines the default Beacon KeyIdMode */
-#define DEFAULT_BEACON_KEYID_MODE		(0x01)
+#define DEFAULT_BEACON_KEYID_MODE               (0x01)
 
 /** Defines the default Beacon KeySource */
-#define DEFAULT_BEACON_KEY_SRC			(default_key_source)
-   
-/** Defines the default Beacon KeyIndex */
-#define DEFAULT_BEACON_KEY_INDEX		(0x00)
+#define DEFAULT_BEACON_KEY_SRC                  (default_key_source)
 
+/** Defines the default Beacon KeyIndex */
+#define DEFAULT_BEACON_KEY_INDEX                (0x00)
 
 /**
  * Defines the time in ms to initiate an update of the beacon payload.
@@ -175,7 +173,6 @@
 #define LED_DATA                        (LED0)
 #endif
 
-
 /* === GLOBALS ============================================================= */
 extern uint8_t default_key_source[8];
 /** This array stores all device related information. */
@@ -183,10 +180,11 @@ associated_device_t device_list[MAX_NUMBER_OF_DEVICES];
 /** Stores the number of associated devices. */
 uint16_t no_of_assoc_devices;
 
-
 /** This array stores the current beacon payload. */
 uint8_t beacon_payload[] = {"Atmel beacon demo 0"};
-static uint8_t broadcast_payload[] ={"Broadcast Data"};
+#ifdef GPIO_PUSH_BUTTON_0
+static uint8_t broadcast_payload[] = {"Broadcast Data"};
+#endif
 #ifdef GTS_SUPPORT
 static uint8_t gts_payload[] = {"GTS Data from coordinator"};
 #endif /* GTS_SUPPORT */
@@ -215,7 +213,7 @@ static wpan_addr_spec_t dst_addr;
 #ifdef MAC_SECURITY_ZIP
 /** Store the recently associated device number */
 uint16_t recent_assoc_dev_no = 0xFFFF;
-#endif	
+#endif
 
 /* === PROTOTYPES ========================================================== */
 
@@ -241,6 +239,7 @@ static void bc_data_cb(void *parameter);
  *                  to indicated LED to be switched off)
  */
 static void indirect_data_cb(void *parameter);
+
 /**
  * @brief Callback function for initiation of gts data transmission
  *
@@ -249,6 +248,7 @@ static void indirect_data_cb(void *parameter);
  *                  to indicated LED to be switched off)
  */
 static void gts_data_cb(void *parameter);
+
 /**
  * @brief Callback function for updating the beacon payload
  *
@@ -262,7 +262,7 @@ static void bcn_payload_update_cb(void *parameter);
 static void app_alert(void);
 
 /** This function shows the stack and application
- *  capabilities on terminal if SIO_HUB switch 
+ *  capabilities on terminal if SIO_HUB switch
  *  is enabled.
  */
 static void print_stack_app_build_features(void);
@@ -276,9 +276,9 @@ static void print_stack_app_build_features(void);
  * (@ref wpan_mlme_reset_req()), and implements a the main loop.
  */
 int main(void)
-{	
+{
 	irq_initialize_vectors();
-	#if SAMD20
+	#if SAMD || SAMR21
 	system_init();
 	delay_init();
 	#else
@@ -291,7 +291,7 @@ int main(void)
 	board_init();
 	#endif
 	#ifdef SIO_HUB
-		sio2host_init();
+	sio2host_init();
 	#endif
 	sw_timer_init();
 
@@ -307,8 +307,9 @@ int main(void)
 	cpu_irq_enable();
 
 #ifdef SIO_HUB
+
 	/* Initialize the serial interface used for communication with terminal
-	 *program. */
+	 * program. */
 
 	/* To make sure the Hyper Terminal Connected to the system*/
 	sio2host_getchar();
@@ -324,6 +325,7 @@ int main(void)
 	#ifdef GTS_SUPPORT
 	sw_timer_get_id(&APP_TIMER_GTS_DATA);
     #endif
+
 	/*
 	 * Reset the MAC layer to the default values.
 	 * This request will cause a mlme reset confirm message ->
@@ -345,11 +347,11 @@ int main(void)
 				dst_addr.Addr.short_address = BROADCAST;
 				wpan_mcps_data_req(FCF_SHORT_ADDR, &dst_addr,
 						sizeof(broadcast_payload),
-						(uint8_t *)&broadcast_payload, 1,
+						(uint8_t *)&broadcast_payload,
+						1,
 						WPAN_TXOPT_OFF);
 			}
 		}
-
 #endif /* GPIO_PUSH_BUTTON_0 */
 	}
 }
@@ -400,8 +402,7 @@ void usr_mcps_data_conf(uint8_t msduHandle,
 		 */
 		printf("Transaction expired\r\n");
 #endif
-	}
-	else if (status == MAC_NO_ACK) {
+	} else if (status == MAC_NO_ACK) {
 #ifdef SIO_HUB
 
 		/*
@@ -410,9 +411,7 @@ void usr_mcps_data_conf(uint8_t msduHandle,
 		 */
 		printf("Frame Transmitted MAC No Ack\r\n");
 #endif
-	}
-	else if (status == MAC_CHANNEL_ACCESS_FAILURE) 
-	{
+	} else if (status == MAC_CHANNEL_ACCESS_FAILURE) {
 #ifdef SIO_HUB
 
 		/*
@@ -422,8 +421,7 @@ void usr_mcps_data_conf(uint8_t msduHandle,
 		printf("MAC Channel Access Failure\r\n");
 #endif
 	}
-	
-	
+
 	/* Keep compiler happy. */
 	msduHandle = msduHandle;
 #ifdef ENABLE_TSTAMP
@@ -447,27 +445,27 @@ void usr_mcps_data_conf(uint8_t msduHandle,
 const char Display_Rx_Frame_Address[] = "Rx frame from Device Addr%x: ";
 #endif
 
-void usr_mcps_data_ind(wpan_addr_spec_t * SrcAddrSpec,
-wpan_addr_spec_t * DstAddrSpec,
-uint8_t msduLength,
-uint8_t * msdu,
-uint8_t mpduLinkQuality,
-uint8_t DSN,
+void usr_mcps_data_ind(wpan_addr_spec_t *SrcAddrSpec,
+		wpan_addr_spec_t *DstAddrSpec,
+		uint8_t msduLength,
+		uint8_t *msdu,
+		uint8_t mpduLinkQuality,
+		uint8_t DSN,
 #if defined(ENABLE_TSTAMP) || defined(__DOXYGEN__)
-uint32_t Timestamp
+		uint32_t Timestamp
 #endif  /* ENABLE_TSTAMP */
 #if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
-,uint8_t SecurityLevel,
-uint8_t KeyIdMode,
-uint8_t KeyIndex
+		, uint8_t SecurityLevel,
+		uint8_t KeyIdMode,
+		uint8_t KeyIndex
 #endif
-)
+		)
 {
 #ifdef SIO_HUB
 	printf(Display_Rx_Frame_Address, LE16_TO_CPU_ENDIAN(
-	        SrcAddrSpec->Addr.short_address));
-     
-	for (uint8_t i = 0; i < msduLength; i++) {		
+			SrcAddrSpec->Addr.short_address));
+
+	for (uint8_t i = 0; i < msduLength; i++) {
 		printf("%c", msdu[i]);
 	}
 	printf("\r\n");
@@ -502,7 +500,7 @@ void usr_mcps_purge_conf(uint8_t msduHandle,
 }
 
 #endif  /* ((MAC_PURGE_REQUEST_CONFIRM == 1) && (MAC_INDIRECT_DATA_BASIC == 1))
-         **/
+        **/
 
 #if (MAC_ASSOCIATION_REQUEST_CONFIRM == 1)
 
@@ -524,23 +522,25 @@ void usr_mlme_associate_conf(uint16_t AssocShortAddress,
 
 #endif  /* (MAC_ASSOCIATION_REQUEST_CONFIRM == 1) */
 #ifdef GTS_SUPPORT
-void usr_mlme_gts_conf(gts_char_t GtsChar, 
-        uint8_t status)
-{   
+void usr_mlme_gts_conf(gts_char_t GtsChar,
+		uint8_t status)
+{
 	status = status;
 }
+
 #endif
 #ifdef GTS_SUPPORT
 void usr_mlme_gts_ind(uint16_t DeviceAddr, gts_char_t GtsChar)
-{  
+{
 	sw_timer_start(APP_TIMER_GTS_DATA,
-					((uint32_t)APP_GTS_DATA_DURATION_MS * 1000),
-					SW_TIMEOUT_RELATIVE,
-					(FUNC_PTR)gts_data_cb,
-					NULL);
-	DeviceAddr =DeviceAddr;
+			((uint32_t)APP_GTS_DATA_DURATION_MS * 1000),
+			SW_TIMEOUT_RELATIVE,
+			(FUNC_PTR)gts_data_cb,
+			NULL);
+	DeviceAddr = DeviceAddr;
 	GtsChar = GtsChar;
 }
+
 #endif
 #if (MAC_ASSOCIATION_INDICATION_RESPONSE == 1)
 
@@ -548,7 +548,7 @@ void usr_mlme_gts_ind(uint16_t DeviceAddr, gts_char_t GtsChar)
  * @brief Callback function usr_mlme_associate_ind
  *
  * @param DeviceAddress         Extended address of device requesting
- *association
+ * association
  * @param CapabilityInformation Capabilities of device requesting association
  */
 void usr_mlme_associate_ind(uint64_t DeviceAddress,
@@ -561,7 +561,7 @@ void usr_mlme_associate_ind(uint64_t DeviceAddress,
 	 *                                    uint8_t status);
 	 *
 	 * This response leads to comm status indication ->
-	 *usr_mlme_comm_status_ind
+	 * usr_mlme_comm_status_ind
 	 * Get the next available short address for this device.
 	 */
 	uint16_t associate_short_addr = macShortAddress_def;
@@ -591,7 +591,7 @@ void usr_mlme_associate_ind(uint64_t DeviceAddress,
  * @param PANDescriptor  Pointer to PAN descriptor for received beacon.
  * @param PendAddrSpec   Pending address specification in received beacon.
  * @param AddrList       List of addresses of devices the coordinator has
- *pending data.
+ * pending data.
  * @param sduLength      Length of beacon payload.
  * @param sdu            Pointer to beacon payload.
  *
@@ -624,13 +624,14 @@ void usr_mlme_comm_status_ind(wpan_addr_spec_t *SrcAddrSpec,
 		uint8_t status)
 {
 	if (status == MAC_SUCCESS) {
-#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)	
-		 recent_assoc_dev_no++;
-        wpan_mlme_set_req(macDeviceTableEntries,
-                          NO_PIB_INDEX,
-                          &no_of_assoc_devices);
-		 wpan_mlme_get_req(macKeyTable, recent_assoc_dev_no);
-#endif		 
+#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
+		recent_assoc_dev_no++;
+		wpan_mlme_set_req(macDeviceTableEntries,
+				NO_PIB_INDEX,
+				&no_of_assoc_devices);
+		wpan_mlme_get_req(macKeyTable, recent_assoc_dev_no);
+#endif
+
 		/*
 		 * Now the association of the device has been successful and its
 		 * information, like address, could  be stored.
@@ -645,7 +646,6 @@ void usr_mlme_comm_status_ind(wpan_addr_spec_t *SrcAddrSpec,
 				SW_TIMEOUT_RELATIVE,
 				(FUNC_PTR)indirect_data_cb,
 				NULL);
- 
 	} else {
 	}
 
@@ -710,30 +710,31 @@ void usr_mlme_disassociate_ind(uint64_t DeviceAddress,
  */
 void usr_mlme_get_conf(uint8_t status,
 		uint8_t PIBAttribute,
-#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)		
+#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
 		uint8_t PIBAttributeIndex,
-#endif		
+#endif
 		void *PIBAttributeValue)
 {
 #if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
-	 mac_key_table_t *key_table = (mac_key_table_t *)PIBAttributeValue;
+	mac_key_table_t *key_table = (mac_key_table_t *)PIBAttributeValue;
 #endif
 	if ((status == MAC_SUCCESS) && (PIBAttribute == phyCurrentPage)) {
-        #ifdef HIGH_DATA_RATE_SUPPORT
+	#ifdef HIGH_DATA_RATE_SUPPORT
 		current_channel_page = 17;
-        #else
+	#else
 		current_channel_page = *(uint8_t *)PIBAttributeValue;
-        #endif
-		wpan_mlme_get_req(phyChannelsSupported 
-#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)		
-		,0
-#endif		
-		);
+	#endif
+		wpan_mlme_get_req(phyChannelsSupported
+#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
+				, 0
+#endif
+				);
 	} else if ((status == MAC_SUCCESS) &&
 			(PIBAttribute == phyChannelsSupported)) {
 		uint8_t index;
 
-		channels_supported = convert_byte_array_to_32_bit(PIBAttributeValue);
+		channels_supported = convert_byte_array_to_32_bit(
+				PIBAttributeValue);
 
 		for (index = 0; index < 32; index++) {
 			if (channels_supported & (1 << index)) {
@@ -741,45 +742,50 @@ void usr_mlme_get_conf(uint8_t status,
 				break;
 			}
 		}
-				/*
+
+		/*
 		 * Set the short address of this node.
 		 * Use: bool wpan_mlme_set_req(uint8_t PIBAttribute,
 		 *                             void *PIBAttributeValue);
 		 *
 		 * This request leads to a set confirm message ->
-		 *usr_mlme_set_conf
+		 * usr_mlme_set_conf
 		 */
-				
-/* MAC Short Address will be set after setting the Security PIB's */	
+
+		/* MAC Short Address will be set after setting the Security
+		 * PIB's */
 #if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
 		/* Set security PIB attributes now. */
 		wpan_mlme_set_req(macDefaultKeySource,
-						NO_PIB_INDEX,
-						&default_key_source);
-#else			
+				NO_PIB_INDEX,
+				&default_key_source);
+#else
 		uint8_t short_addr[2];
 
 		short_addr[0] = (uint8_t)COORD_SHORT_ADDR;  /* low byte */
-		short_addr[1] = (uint8_t)(COORD_SHORT_ADDR >> 8); /* high byte */
+		short_addr[1] = (uint8_t)(COORD_SHORT_ADDR >> 8); /* high byte
+		                                                  **/
 
 		wpan_mlme_set_req(macShortAddress, short_addr);
 #endif /* (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006) */
-
 	}
+
 #ifdef MAC_SECURITY_ZIP
-    else if((status == MAC_SUCCESS) &&
-        (PIBAttribute == macKeyTable))
-	{
-		for (uint8_t j = 0; j < key_table->KeyDeviceListEntries; j++)
-		{
-			if (EMPTY_DEV_HANDLE == (key_table->KeyDeviceList[j].DeviceDescriptorHandle))
-			{
-				key_table->KeyDeviceList[j].DeviceDescriptorHandle = recent_assoc_dev_no;
+	else if ((status == MAC_SUCCESS) &&
+			(PIBAttribute == macKeyTable)) {
+		for (uint8_t j = 0; j < key_table->KeyDeviceListEntries; j++) {
+			if (EMPTY_DEV_HANDLE ==
+					(key_table->KeyDeviceList[j].
+					DeviceDescriptorHandle)) {
+				key_table->KeyDeviceList[j].
+				DeviceDescriptorHandle
+					= recent_assoc_dev_no;
 				key_table->KeyDeviceList[j].UniqueDevice = true;
 				break;
 			}
 		}
-		wpan_mlme_set_req(macKeyTable, PIBAttributeIndex, (uint8_t *)PIBAttributeValue);
+		wpan_mlme_set_req(macKeyTable, PIBAttributeIndex,
+				(uint8_t *)PIBAttributeValue);
 	}
 #endif /* (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006) */
 }
@@ -806,7 +812,7 @@ void usr_mlme_orphan_ind(uint64_t OrphanAddress)
 
 /*
  * Callback function that must be implemented by application (NHLE) for MAC
- *service
+ * service
  * MLME-POLL.confirm.
  *
  * @param status           Result of requested poll operation.
@@ -829,10 +835,10 @@ void usr_mlme_reset_conf(uint8_t status)
 {
 	if (status == MAC_SUCCESS) {
 		wpan_mlme_get_req(phyCurrentPage
-#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)		
-		,0
-#endif		
-		);
+#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
+				, 0
+#endif
+				);
 	} else {
 		/* Something went wrong; restart. */
 		wpan_mlme_reset_req(true);
@@ -898,17 +904,17 @@ void usr_mlme_scan_conf(uint8_t status,
 			DEFAULT_SO,
 			true, false,
 			DEFAULT_COORDREALIGNMENT
-			
+
 #ifdef MAC_SECURITY_BEACON
-		   ,DEFAULT_COORDREALIGN_SEC_LVL,
+			, DEFAULT_COORDREALIGN_SEC_LVL,
 			DEFAULT_COORDREALIGN_KEYID_MODE,
 			DEFAULT_COORDREALIGN_KEY_SRC,
 			DEFAULT_COORDREALIGN_KEY_INDEX,
 			DEFAULT_BEACON_SEC_LVL,
 			DEFAULT_BEACON_KEYID_MODE,
 			DEFAULT_BEACON_KEY_SRC,
-			DEFAULT_BEACON_KEY_INDEX		
-#endif			
+			DEFAULT_BEACON_KEY_INDEX
+#endif
 			);
 
 	/* Keep compiler happy. */
@@ -922,7 +928,6 @@ void usr_mlme_scan_conf(uint8_t status,
 
 #endif
 
-
 #ifndef MAC_SECURITY_ZIP
 void usr_mlme_set_conf(uint8_t status,
 		uint8_t PIBAttribute)
@@ -934,12 +939,12 @@ void usr_mlme_set_conf(uint8_t status,
 		 *                             void *PIBAttributeValue);
 		 *
 		 * This request leads to a set confirm message ->
-		 *usr_mlme_set_conf
+		 * usr_mlme_set_conf
 		 */
 		uint8_t association_permit = true;
 
 		wpan_mlme_set_req(macAssociationPermit,
-		&association_permit);
+				&association_permit);
 	} else if ((status == MAC_SUCCESS) &&
 			(PIBAttribute == macAssociationPermit)) {
 		/*
@@ -948,18 +953,18 @@ void usr_mlme_set_conf(uint8_t status,
 		 *                             void *PIBAttributeValue);
 		 *
 		 * This request leads to a set confirm message ->
-		 *usr_mlme_set_conf
+		 * usr_mlme_set_conf
 		 */
 		bool rx_on_when_idle = false;
 
-		wpan_mlme_set_req(macRxOnWhenIdle, 
-		&rx_on_when_idle);
+		wpan_mlme_set_req(macRxOnWhenIdle,
+				&rx_on_when_idle);
 	} else if ((status == MAC_SUCCESS) &&
 			(PIBAttribute == macRxOnWhenIdle)) {
 		/* Set the beacon payload length. */
 		uint8_t beacon_payload_len = BEACON_PAYLOAD_LEN;
 		wpan_mlme_set_req(macBeaconPayloadLength,
-		&beacon_payload_len);
+				&beacon_payload_len);
 	} else if ((status == MAC_SUCCESS) &&
 			(PIBAttribute == macBeaconPayloadLength)) {
 		/*
@@ -967,13 +972,13 @@ void usr_mlme_set_conf(uint8_t status,
 		 * set the actual beacon payload.
 		 */
 		wpan_mlme_set_req(macBeaconPayload,
-		&beacon_payload);
+				&beacon_payload);
 	} else if ((status == MAC_SUCCESS) &&
 			(PIBAttribute == macBeaconPayload)) {
 		if (COORD_STARTING == coord_state) {
 			/*
 			 * Initiate an active scan over all channels to
-			 *determine
+			 * determine
 			 * which channel to use.
 			 * Use: bool wpan_mlme_scan_req(uint8_t ScanType,
 			 *                              uint32_t ScanChannels,
@@ -981,13 +986,13 @@ void usr_mlme_set_conf(uint8_t status,
 			 *                              uint8_t ChannelPage);
 			 *
 			 * This request leads to a scan confirm message ->
-			 *usr_mlme_scan_conf
+			 * usr_mlme_scan_conf
 			 * Scan for about 50 ms on each channel -> ScanDuration
 			 *= 1
 			 * Scan for about 1/2 second on each channel ->
-			 *ScanDuration = 5
+			 * ScanDuration = 5
 			 * Scan for about 1 second on each channel ->
-			 *ScanDuration = 6
+			 * ScanDuration = 6
 			 */
 			wpan_mlme_scan_req(MLME_SCAN_TYPE_ACTIVE,
 					SCAN_CHANNEL(current_channel),
@@ -1001,6 +1006,7 @@ void usr_mlme_set_conf(uint8_t status,
 		wpan_mlme_reset_req(true);
 	}
 }
+
 #endif
 
 /*
@@ -1029,7 +1035,7 @@ void usr_mlme_start_conf(uint8_t status)
 		 * Now that the network has been started successfully,
 		 * the timer for broadcast data transmission is started.
 		 * This is independent from the actual number of associated
-		 *nodes.
+		 * nodes.
 		 */
 
 		/* Start timer to initiate broadcast data transmission. */
@@ -1114,13 +1120,15 @@ static bool assign_new_short_addr(uint64_t addr64, uint16_t *addr16)
 					i + 0x0001);                    /* get
 			                                                 * next
 			                                                 * short
-			                                                 * address */
+			                                                 *
+			                                                 *
+			                                                 *address
+			                                                 **/
 			device_list[i].ieee_addr = addr64; /* store extended
 			                                    * address */
 			no_of_assoc_devices++;
 #ifdef SIO_HUB
 			printf(Display_Associated_Device, (i + 1));
-			
 #endif
 
 			return true;
@@ -1183,7 +1191,7 @@ const char Display_Broadcast_Tx_Count[] = "Broadcast frame Tx count:  %lu\r\n";
 static void bc_data_cb(void *parameter)
 {
 	/* Store the current MSDU handle to be used for a broadcast data frame.
-	 **/
+	**/
 	static uint8_t curr_msdu_handle_temp;
 	uint8_t src_addr_mode;
 	wpan_addr_spec_t dst_addr;
@@ -1197,7 +1205,7 @@ static void bc_data_cb(void *parameter)
 	 *
 	 * Since this is a beacon-enabled network,
 	 * this request will just queue this frame into the broadcast data
-	 *queue.
+	 * queue.
 	 *
 	 * Once this the next beacon frame is about to be transmitted,
 	 * the broadcast data frame will be announced by setting
@@ -1219,7 +1227,6 @@ static void bc_data_cb(void *parameter)
 
 #ifdef SIO_HUB
 	printf(Display_Broadcast_Tx_Count, tx_cnt);
-	
 #endif
 
 	/* The transmission is direct, but without acknowledgment. */
@@ -1229,12 +1236,12 @@ static void bc_data_cb(void *parameter)
 			&payload,
 			curr_msdu_handle_temp,
 			WPAN_TXOPT_OFF
-#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)			
-			,0,NULL,0,0
-#endif			
+#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
+			, 0, NULL, 0, 0
+#endif
 			)
 			) {
-//		LED_On(LED_DATA);
+		/*		LED_On(LED_DATA); */
 	} else {
 		/*
 		 * Data could not be queued into the broadcast queue.
@@ -1293,18 +1300,18 @@ static void indirect_data_cb(void *parameter)
 		printf(Display_MSDU_Handle, curr_msdu_handle);
 #endif
 
- 	 	if (!wpan_mcps_data_req(src_addr_mode,
+		if (!wpan_mcps_data_req(src_addr_mode,
 				&dst_addr,
-				strlen(payload),  /* One octet */ 	 		 
-				(uint8_t*)payload,
+				strlen(payload),  /* One octet */
+				(uint8_t *)payload,
 				curr_msdu_handle,
 				WPAN_TXOPT_INDIRECT_ACK
-#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)				
-				,ZIP_SEC_MIN,NULL,ZIP_KEY_ID_MODE,device_list[cur_device].short_addr
-#endif					
+#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
+				, ZIP_SEC_MIN, NULL, ZIP_KEY_ID_MODE,
+				device_list[cur_device].short_addr
+#endif
 				)
-				)
-				 {
+				) {
 		}
 	}
 
@@ -1317,11 +1324,13 @@ static void indirect_data_cb(void *parameter)
 
 	parameter = parameter; /* Keep compiler happy. */
 }
+
 #ifdef GTS_SUPPORT
 
 #ifdef SIO_HUB
 const char Display_GTS_Data[] = "GTS data for device %" PRIu8 " ";
 #endif
+
 /*
  * @brief Callback function for initiation of gts data transmission
  *
@@ -1353,7 +1362,7 @@ static void gts_data_cb(void *parameter)
 		dst_addr.Addr.short_address
 			= device_list[cur_device].short_addr;
 
-		//payload = (uint8_t)rand(); /* Any dummy data */
+		/* payload = (uint8_t)rand(); / * Any dummy data * / */
 		gts_msdu_handle++; /* Increment handle */
 
 #ifdef SIO_HUB
@@ -1366,7 +1375,8 @@ static void gts_data_cb(void *parameter)
 				gts_msdu_handle,
 				WPAN_TXOPT_GTS_ACK
 #ifdef MAC_SECURITY_ZIP
-				,ZIP_SEC_MIN,NULL,ZIP_KEY_ID_MODE,device_list[cur_device].short_addr
+				, ZIP_SEC_MIN, NULL, ZIP_KEY_ID_MODE,
+				device_list[cur_device].short_addr
 #endif /*  */
 				)) {
 			/*
@@ -1375,18 +1385,19 @@ static void gts_data_cb(void *parameter)
 			 */
 		}
 	}
-    
+
 	/* Start timer to initiate indirect data transmission. */
 	sw_timer_start(APP_TIMER_GTS_DATA,
 			((uint32_t)APP_GTS_DATA_DURATION_MS * 1000),
 			SW_TIMEOUT_RELATIVE,
 			(FUNC_PTR)gts_data_cb,
 			NULL);
-	
 
 	parameter = parameter; /* Keep compiler happy. */
 }
+
 #endif
+
 /*
  * @brief Callback function for updating the beacon payload
  *
@@ -1414,11 +1425,11 @@ static void bcn_payload_update_cb(void *parameter)
 	bcn_payload_cnt %= 10;
 	/* Create printable character. */
 	beacon_payload[BEACON_PAYLOAD_LEN - 1] = bcn_payload_cnt + 0x30;
-	wpan_mlme_set_req(macBeaconPayload, 
+	wpan_mlme_set_req(macBeaconPayload,
 #if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
-	 0,
-#endif	 
-	 &beacon_payload);
+			0,
+#endif
+			&beacon_payload);
 
 	/* Restart timer for updating beacon payload. */
 	sw_timer_start(APP_TIMER_BCN_PAYLOAD_UPDATE,
@@ -1431,10 +1442,10 @@ static void bcn_payload_update_cb(void *parameter)
 }
 
 /*
- * @brief This function will show up the application 
+ * @brief This function will show up the application
  *        and stack build features and available in the firmware
  * @param void
- *                  
+ *
  */
 static void print_stack_app_build_features(void)
 {
@@ -1444,11 +1455,11 @@ static void print_stack_app_build_features(void)
 	printf("\r\n Security Tool Box On SAL : Disabled");
 #endif
 
-#ifdef MAC_SECURITY_ZIP 
+#ifdef MAC_SECURITY_ZIP
 	printf("\r\n MAC Data & Security Module : Enabled");
 #else
 	printf("\r\n MAC Data & Security Module : Disabled");
-#endif	
+#endif
 
 #ifdef MAC_SECURITY_BEACON
 	printf("\r\n MAC Beacon Security : Enabled");
@@ -1462,7 +1473,7 @@ static void print_stack_app_build_features(void)
 	printf("\r\n High Data Rate Support : Disabled");
 #endif
 
-#ifdef GTS_SUPPORT 
+#ifdef GTS_SUPPORT
 	printf("\r\n MAC GTS Support : Enabled");
 #else
 	printf("\r\n MAC GTS Support : Disabled");

@@ -3,7 +3,7 @@
  *
  * @brief This file contains TAL API function declarations
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -41,7 +41,7 @@
  */
 
 /*
- * Copyright (c) 2013, Atmel Corporation All rights reserved.
+ * Copyright (c) 2013-2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
@@ -67,9 +67,9 @@
 /**
  * \defgroup group_tal  Transceiver Abstraction Layer
  * The Transceiver Abstraction Layer (TAL) implements the transceiver specific
- *functionalities and
+ * functionalities and
  * provides interfaces to the upper layers (like IEEE 802.15.4 MAC )and  uses
- *the services of PAL.
+ * the services of PAL.
  *
  */
 
@@ -108,7 +108,7 @@ typedef struct tal_pib_tag {
 	/**
 	 * Maximum number of symbols in a frame:
 	 * = phySHRDuration + ceiling([aMaxPHYPacketSize + 1] x
-	 *phySymbolsPerOctet)
+	 * phySymbolsPerOctet)
 	 */
 	uint16_t MaxFrameDuration;
 
@@ -130,7 +130,7 @@ typedef struct tal_pib_tag {
 
 	/**
 	 * The minimum value of the backoff exponent BE in the CSMA-CA
-	 *algorithm.
+	 * algorithm.
 	 */
 	uint8_t MinBE;
 
@@ -170,7 +170,7 @@ typedef struct tal_pib_tag {
 
 	/**
 	 * Duration of the synchronization header (SHR) in symbols for the
-	 *current PHY.
+	 * current PHY.
 	 */
 	uint8_t SHRDuration;
 
@@ -181,7 +181,7 @@ typedef struct tal_pib_tag {
 
 	/**
 	 * The maximum value of the backoff exponent BE in the CSMA-CA
-	 *algorithm.
+	 * algorithm.
 	 */
 	uint8_t MaxBE;
 
@@ -292,7 +292,7 @@ typedef struct
 	uint16_t persistence_time;
 	/** Indirect frame transmission ongoing */
 	bool indirect_in_transit;
-#ifdef MAC_SECURITY_ZIP	
+#ifdef MAC_SECURITY_ZIP
 	/** MAC Payload Pointer */
 	uint8_t *mac_payload;
 #endif
@@ -428,7 +428,7 @@ __PACK__RST_DATA__
 
 /**
  * Number of symbols forming the synchronization header (SHR) for the current
- *PHY.
+ * PHY.
  * This value is the base for the PHY PIB attribute phySHRDuration.
  */
 #define NO_OF_SYMBOLS_PREAMBLE_SFD          (NO_SYMBOLS_PREAMBLE + \
@@ -520,7 +520,7 @@ __PACK__RST_DATA__
  * is in one of the PLL states. See also datasheet, section "Register access".
  */
 #define CONF_REG_WRITE()   do {	\
-		pal_trx_reg_write(RG_PART_NUM, PART_NUM); \
+		trx_reg_write(RG_PART_NUM, PART_NUM); \
 } \
 	while (0)
 #endif /* TAL_TYPE == ATMEGA128RFA1 */
@@ -687,7 +687,7 @@ void tal_tx_beacon(frame_info_t *tx_frame);
  *                 to frame array to be transmitted
  * \param csma_mode Indicates mode of csma-ca to be performed for this frame
  * \param perform_frame_retry Indicates whether to retries are to be performed
- *for
+ * for
  *                            this frame
  *
  * \return MAC_SUCCESS  if the TAL has accepted the data from the MAC for frame

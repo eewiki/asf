@@ -44,5 +44,4 @@
 #ifndef _CONF_USART_SERIAL_H_
 #define _CONF_USART_SERIAL_H_
 
-
-#endif // _CONF_USB_H_
+#endif /* _CONF_USB_H_ */

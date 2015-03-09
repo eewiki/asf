@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 Clock Driver
+ * \brief SAM D20/D21/R21 Clock Driver
  *
  * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
@@ -48,9 +48,9 @@ extern "C" {
 #endif
 
 /**
- * \defgroup asfdoc_sam0_system_clock_group SAM D20/D21 System Clock Management Driver (SYSTEM CLOCK)
+ * \defgroup asfdoc_sam0_system_clock_group SAM D20/D21/R21 System Clock Management Driver (SYSTEM CLOCK)
  *
- * This driver for SAM D20/D21 devices provides an interface for the configuration
+ * This driver for SAM D20/D21/R21 devices provides an interface for the configuration
  * and management of the device's clocking related functions. This includes
  * the various clock sources, bus clocks and generic clocks within the device,
  * with functions to manage the enabling, disabling, source selection and
@@ -77,7 +77,7 @@ extern "C" {
  *
  *
  * \section asfdoc_sam0_system_clock_module_overview Module Overview
- * The SAM D20/D21 devices contain a sophisticated clocking system, which is designed
+ * The SAM D20/D21/R21 devices contain a sophisticated clocking system, which is designed
  * to give the maximum flexibility to the user application. This system allows
  * a system designer to tune the performance and power consumption of the device
  * in a dynamic manner, to achieve the best trade-off between the two for a
@@ -94,14 +94,14 @@ extern "C" {
  *	</tr>
  *	<tr>
  *		<td>FEATURE_SYSTEM_CLOCK_DPLL</td>
- *		<td>SAMD21</td>
+ *		<td>SAMD21, SAMR21</td>
  *	</tr>
  * </table>
  * \note The specific features are only available in the driver when the
  * selected device supports those features.
  *
  * \subsection asfdoc_sam0_system_clock_module_overview_clock_sources Clock Sources
- * The SAM D20/D21 devices have a number of master clock source modules, each of
+ * The SAM D20/D21/R21 devices have a number of master clock source modules, each of
  * which being capable of producing a stabilized output frequency which can then
  * be fed into the various peripherals and modules within the device.
  *
@@ -153,7 +153,7 @@ extern "C" {
  * module, but will reduce the overall device power consumption.
  *
  * \subsection asfdoc_sam0_system_clock_module_overview_gclk Generic Clocks
- * Within the SAM D20/D21 devices are a number of Generic Clocks; these are used to
+ * Within the SAM D20/D21/R21 devices are a number of Generic Clocks; these are used to
  * provide clocks to the various peripheral clock domains in the device in a
  * standardized manner. One or more master source clocks can be selected as the
  * input clock to a Generic Clock Generator, which can prescale down the input
@@ -263,7 +263,7 @@ extern "C" {
  * Define system clock features set according to different device family.
  * @{
  */
-#if (SAMD21) || defined(__DOXYGEN__)
+#if (SAMD21) || (SAMR21) || defined(__DOXYGEN__)
 /** Digital Phase Locked Loop (DPLL) feature support */
 #  define FEATURE_SYSTEM_CLOCK_DPLL
 #endif
@@ -894,6 +894,7 @@ uint32_t system_clock_source_get_hz(
  * @{
  */
 
+#ifdef FEATURE_SYSTEM_CLOCK_FAILURE_DETECT
 /**
  * \brief Enable or disable the main clock failure detection.
  *
@@ -924,6 +925,7 @@ static inline void system_main_clock_set_failure_detect(
 		PM->CTRL.reg &= ~PM_CTRL_CFDEN;
 	}
 }
+#endif
 
 /**
  * \brief Set main CPU clock divider.
@@ -1475,6 +1477,11 @@ static inline void system_flash_set_waitstates(uint8_t wait_states)
  *		<th>Doc. Rev.</td>
  *		<th>Date</td>
  *		<th>Comments</td>
+ *	</tr>
+ *	<tr>
+ *		<td>D</td>
+ *		<td>02/2014</td>
+ *		<td>Added support for SAMR21.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

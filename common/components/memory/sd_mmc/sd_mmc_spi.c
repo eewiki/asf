@@ -40,13 +40,15 @@
  * \asf_license_stop
  *
  */
-
-#include <asf.h>
+#include <compiler.h>
+#include <status_codes.h>
+#include <board.h>
 #include <string.h>
 #include "conf_board.h"
 #include "conf_sd_mmc.h"
 #include "sd_mmc_protocol.h"
 #include "sd_mmc_spi.h"
+#include "sd_mmc.h"
 #include "ioport.h"
 
 #ifdef SD_MMC_SPI_MODE

@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam0.drivers.port" caption="PORT - GPIO Pin Control">
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21 PORT module. Provides a unified interface for
+			Driver for the SAM D20/D21/R21 PORT module. Provides a unified interface for
 			the configuration and management of the physical device GPIO pins,
 			including input/output state control.
 		</info>
@@ -35,7 +35,8 @@
 
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
-
+		<device-support value="samr21"/>
+		
 		<require idref="sam0.utils"/>
 		<require idref="sam0.drivers.system.pinmux"/>
 

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -505,7 +505,7 @@ void WKUP15_Handler     ( void );
 /* ************************************************************************** */
 
 #define CHIP_JTAGID (0x05B3C03FUL)
-#define CHIP_CIDR   (0x247E0AE0UL)
+#define CHIP_CIDR   (0x247E0AE8UL)
 #define CHIP_EXID   (0x0UL)
 #define NB_CH_ADC   (8UL)
 
@@ -522,23 +522,16 @@ void WKUP15_Handler     ( void );
 #define CHIP_FREQ_MAINCK_RC_24MHZ       (24000000UL)
 #define CHIP_FREQ_CPU_MAX               (48000000UL)
 #define CHIP_FREQ_XTAL_32K              (32768UL)
-#define CHIP_FREQ_XTAL_12M              (12000000UL)
+
 
 /* Embedded Flash Write Wait State */
 #define CHIP_FLASH_WRITE_WAIT_STATE     (6U)
 
 /* Embedded Flash Read Wait State (VDDIO set at 1.62V, Max value) */
-#define CHIP_FREQ_FWS_0                 (12500000UL)  /**< \brief Maximum operating frequency when FWS is 0 */
+#define CHIP_FREQ_FWS_0                 (12000000UL)  /**< \brief Maximum operating frequency when FWS is 0 */
 #define CHIP_FREQ_FWS_1                 (25000000UL)  /**< \brief Maximum operating frequency when FWS is 1 */
 #define CHIP_FREQ_FWS_2                 (38000000UL)  /**< \brief Maximum operating frequency when FWS is 2 */
 #define CHIP_FREQ_FWS_3                 (48000000UL)  /**< \brief Maximum operating frequency when FWS is 3 */
-
-#define EFC0 EFC
-#define USART0 USART
-#define PDC_USART0 PDC_USART
-#define ID_USART0 ID_USART
-#define USART0_IRQn USART_IRQn
-#define USART0_Handler USART_Handler
 
 #ifdef __cplusplus
 }

@@ -159,14 +159,25 @@ void vPortSVCHandler( void )
 
 void vPortStartFirstTask( void )
 {
+	/* The MSP stack is not reset as, unlike on M3/4 parts, there is no vector
+	table offset register that can be used to locate the initial stack value.
+	Not all M0 parts have the application vector table at address 0. */
 	__asm volatile(
-					" movs r0, #0x00 	\n" /* Locate the top of stack. */
-					" ldr r0, [r0] 		\n"
-					" msr msp, r0		\n" /* Set the msp back to the start of the stack. */
-					" cpsie i			\n" /* Globally enable interrupts. */
-					" svc 0				\n" /* System call to start first task. */
-					" nop				\n"
-				);
+	"	ldr	r2, pxCurrentTCBConst3	\n" /* Obtain location of pxCurrentTCB. */
+	"	ldr r3, [r2]				\n"
+	"	ldr r0, [r3]				\n" /* The first item in pxCurrentTCB is the task top of stack. */
+	"	add r0, #32					\n" /* Discard everything up to r0. */
+	"	msr psp, r0					\n" /* This is now the new top of stack to use in the task. */
+	"	movs r0, #2					\n" /* Switch to the psp stack. */
+	"	msr CONTROL, r0				\n"
+	"	pop {r0-r5}					\n" /* Pop the registers that are saved automatically. */
+	"	mov lr, r5					\n" /* lr is now in r5. */
+	"	cpsie i						\n" /* The first task has its context and interrupts can be enabled. */
+	"	pop {pc}					\n" /* Finally, pop the PC to jump to the user defined task code. */
+	"								\n"
+	"	.align 2					\n"
+	"pxCurrentTCBConst3: .word pxCurrentTCB	  "
+				  );
 }
 /*-----------------------------------------------------------*/
 

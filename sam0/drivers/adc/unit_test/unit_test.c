@@ -428,8 +428,6 @@ static void setup_adc_average_mode_test(const struct test_case *test)
 	config.reference          = ADC_REFERENCE_INT1V;
 	config.clock_source       = GCLK_GENERATOR_3;
 	config.gain_factor        = ADC_GAIN_FACTOR_1X;
-	config.resolution         = ADC_RESOLUTION_16BIT;
-	config.accumulate_samples = ADC_ACCUMULATE_SAMPLES_16;
 
 	/* Re-initialize & enable ADC */
 	status = adc_init(&adc_inst, ADC, &config);
@@ -462,13 +460,6 @@ static void run_adc_average_mode_test(const struct test_case *test)
 	adc_start_conversion(&adc_inst);
 	while (adc_read(&adc_inst, &adc_result) != STATUS_OK) {
 	}
-#if (SAMD20)
-	/*
-	 * Errata 10530 for SAMD20: The automatic right shift of the result
-	 * when accumulating/averaging ADC samples does not work.
-	 */
-	adc_result = adc_result >> 4;
-#endif
 
 	/* Test result */
 	test_assert_true(test,

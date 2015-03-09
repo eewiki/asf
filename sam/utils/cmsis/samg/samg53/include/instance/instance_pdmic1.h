@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -53,8 +53,8 @@
   #define REG_PDMIC1_ISR                    (0x40030024U) /**< \brief (PDMIC1) Interrupt Status Register */
   #define REG_PDMIC1_DSPR0                  (0x40030058U) /**< \brief (PDMIC1) DSP Configuration Register 0 */
   #define REG_PDMIC1_DSPR1                  (0x4003005CU) /**< \brief (PDMIC1) DSP Configuration Register 1 */
-  #define REG_PDMIC1_WPMR                   (0x400300E4U) /**< \brief (PDMIC1) Write Protect Mode Register */
-  #define REG_PDMIC1_WPSR                   (0x400300E8U) /**< \brief (PDMIC1) Write Protect Status Register */
+  #define REG_PDMIC1_WPMR                   (0x400300E4U) /**< \brief (PDMIC1) Write Protection Mode Register */
+  #define REG_PDMIC1_WPSR                   (0x400300E8U) /**< \brief (PDMIC1) Write Protection Status Register */
   #define REG_PDMIC1_RPR                    (0x40030100U) /**< \brief (PDMIC1) Receive Pointer Register */
   #define REG_PDMIC1_RCR                    (0x40030104U) /**< \brief (PDMIC1) Receive Counter Register */
   #define REG_PDMIC1_RNPR                   (0x40030110U) /**< \brief (PDMIC1) Receive Next Pointer Register */
@@ -71,8 +71,8 @@
   #define REG_PDMIC1_ISR   (*(__I  uint32_t*)0x40030024U) /**< \brief (PDMIC1) Interrupt Status Register */
   #define REG_PDMIC1_DSPR0 (*(__IO uint32_t*)0x40030058U) /**< \brief (PDMIC1) DSP Configuration Register 0 */
   #define REG_PDMIC1_DSPR1 (*(__IO uint32_t*)0x4003005CU) /**< \brief (PDMIC1) DSP Configuration Register 1 */
-  #define REG_PDMIC1_WPMR  (*(__IO uint32_t*)0x400300E4U) /**< \brief (PDMIC1) Write Protect Mode Register */
-  #define REG_PDMIC1_WPSR  (*(__I  uint32_t*)0x400300E8U) /**< \brief (PDMIC1) Write Protect Status Register */
+  #define REG_PDMIC1_WPMR  (*(__IO uint32_t*)0x400300E4U) /**< \brief (PDMIC1) Write Protection Mode Register */
+  #define REG_PDMIC1_WPSR  (*(__I  uint32_t*)0x400300E8U) /**< \brief (PDMIC1) Write Protection Status Register */
   #define REG_PDMIC1_RPR   (*(__IO uint32_t*)0x40030100U) /**< \brief (PDMIC1) Receive Pointer Register */
   #define REG_PDMIC1_RCR   (*(__IO uint32_t*)0x40030104U) /**< \brief (PDMIC1) Receive Counter Register */
   #define REG_PDMIC1_RNPR  (*(__IO uint32_t*)0x40030110U) /**< \brief (PDMIC1) Receive Next Pointer Register */

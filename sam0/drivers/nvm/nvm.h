@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 Non-Volatile Memory driver
+ * \brief SAM D20/D21/R21 Non-Volatile Memory driver
  *
  * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
@@ -44,9 +44,9 @@
 #define NVM_H_INCLUDED
 
 /**
- * \defgroup asfdoc_sam0_nvm_group SAM D20/D21 Non-Volatile Memory Driver (NVM)
+ * \defgroup asfdoc_sam0_nvm_group SAM D20/D21/R21 Non-Volatile Memory Driver (NVM)
  *
- * This driver for SAM D20/D21 devices provides an interface for the configuration
+ * This driver for SAM D20/D21/R21 devices provides an interface for the configuration
  * and management of non-volatile memories within the device, for partitioning,
  * erasing, reading and writing of data.
  *
@@ -75,7 +75,7 @@
  * erased and reconfigured in a standardized manner.
  *
  * \subsection asfdoc_sam0_nvm_module_overview_regions Memory Regions
- * The NVM memory space of the SAM D20/D21 devices is divided into two sections:
+ * The NVM memory space of the SAM D20/D21/R21 devices is divided into two sections:
  * a Main Array section, and an Auxiliary space section. The Main Array space
  * can be configured to have an (emulated) EEPROM and/or boot loader section.
  * The memory layout with the EEPROM and bootloader partitions is shown in
@@ -754,6 +754,11 @@ static inline enum nvm_error nvm_get_error(void)
  *		<th>Doc. Rev.</td>
  *		<th>Date</td>
  *		<th>Comments</td>
+ *	</tr>
+ *	<tr>
+ *		<td>D</td>
+ *		<td>03/2014</td>
+ *		<td>Added support for SAMR21.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

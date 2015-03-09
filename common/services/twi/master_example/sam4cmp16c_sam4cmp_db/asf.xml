@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Controlling a TWI Module / Master Mode Example for SAM4CMP-DB" id="common.services.basic.twi.master.example.sam4cmp_db">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_twi_master.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.twi.master.example"/>
+		<require idref="board.sam4cmp_db"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4cmp16c_0"/>
+	</project>
+</asf>

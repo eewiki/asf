@@ -3,7 +3,7 @@
  *
  * \brief TWIHS Slave Mode management
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -54,14 +54,14 @@
 
 /**
  *
- * \defgroup twi_group Two Wire-interface High Speed(TWIHS)
+ * \defgroup twihs_group Two Wire-interface High Speed(TWIHS)
  *
- * This is the common API for TWIHs. Additional features are available
+ * This is the common API for TWIHS. Additional features are available
  * in the documentation of the specific modules.
  *
- * \section twi_group_platform Platform Dependencies
+ * \section twihs_group_platform Platform Dependencies
  *
- * The twi API is partially chip- or platform-specific. While all
+ * The twihs API is partially chip- or platform-specific. While all
  * platforms provide mostly the same functionality, there are some
  * variations around how different bus types and clock tree structures
  * are handled.

@@ -3,7 +3,7 @@
  *
  * @brief Encodes mac api's to comman byte stream
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -50,7 +50,7 @@
  * \ingroup group_mac_api_parser
  * \defgroup group_mac_api_encoder MAC API Encoder
  * The API Encoder Module Encodes the MAC Api's into appropriate command byte
- *stream
+ * stream
  * @{
  */
 #include <string.h>
@@ -197,7 +197,7 @@ bool wpan_mcps_purge_req(const uint8_t msduHandle)
 }
 
 #endif  /* ((MAC_PURGE_REQUEST_CONFIRM == 1) && (MAC_INDIRECT_DATA_BASIC == 1))
-         **/
+        **/
 
 #if (MAC_ASSOCIATION_REQUEST_CONFIRM == 1) || defined(DOXYGEN)
 bool wpan_mlme_associate_req(uint8_t LogicalChannel,
@@ -421,6 +421,7 @@ bool wpan_mlme_rx_enable_req(bool DeferPermit,
 	sio2ncp_tx(tx_buffer, length);
 	return true;
 }
+
 #endif  /* (MAC_RX_ENABLE_SUPPORT == 1) */
 
 #if ((MAC_SCAN_ED_REQUEST_CONFIRM == 1)      ||	\
@@ -506,6 +507,7 @@ bool wpan_mlme_sync_req(uint8_t LogicalChannel,
 	sio2ncp_tx(tx_buffer, length);
 	return true;
 }
+
 #endif /* (MAC_SYNC_REQUEST == 1) */
 
 #ifdef GTS_SUPPORT
@@ -518,7 +520,7 @@ bool wpan_mlme_gts_req(uint16_t DevShortAddr, gts_char_t GtsChar)
 	*tx_buff_ptr++ = MLME_GTS_REQUEST;
 	*tx_buff_ptr++ = (uint8_t)DevShortAddr;
 	*tx_buff_ptr++ = (uint8_t)DevShortAddr >> 8;
-	*tx_buff_ptr++ = *((uint8_t*)&GtsChar);
+	*tx_buff_ptr++ = *((uint8_t *)&GtsChar);
 	*tx_buff_ptr++ = EOT;
 
 	length = tx_buff_ptr - (uint8_t *)&tx_buffer[0];
@@ -526,9 +528,9 @@ bool wpan_mlme_gts_req(uint16_t DevShortAddr, gts_char_t GtsChar)
 	sio2ncp_tx(tx_buffer, length);
 	return true;
 }
+
 #endif /* (MAC_GTS_REQUEST == 1) */
 #endif /* GTS_SUPPORT */
-
 
 uint8_t mac_get_pib_attribute_size(uint8_t pib_attribute_id)
 {
@@ -542,7 +544,6 @@ uint8_t mac_get_pib_attribute_size(uint8_t pib_attribute_id)
 	if (macBeaconPayload == pib_attribute_id) {
 		return (*(rcv_frame_ptr + 4));
 	}
-
 #endif  /* (MAC_START_REQUEST_CONFIRM == 1) */
 
 	if (MAX_PHY_PIB_ATTRIBUTE_ID >= pib_attribute_id) {

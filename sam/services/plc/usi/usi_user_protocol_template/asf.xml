@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.services.plc.usi.user_protocol_template" caption="Template of a user-defined protocol for PLC USI service">
+		<info type="description" value="summary">
+		Illustrates how to provide USI with support for a user-defined protocol.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="PLC"/>
+		</info>
+		<build type="c-source" value="usi_user_protocol_template.c"/>
+		<device-support value="sam4cp"/>
+		<device-support value="sam4s"/>
+		<require idref="sam.services.plc.usi"/>
+		<require idref="sam.drivers.pmc"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

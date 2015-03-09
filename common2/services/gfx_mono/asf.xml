@@ -10,8 +10,7 @@
 		<build type="include-path" value="."/>
 		<build type="doxygen-entry-point" value="asfdoc_common2_gfx_mono"/>
 		<build type="doxygen-quick-start" value="asfdoc_common2_gfx_mono_quickstart"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
+		<device-support value="sam0"/>
 		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 		<require idref="common2.services.gfx_mono.display"/>
 	</module>
@@ -25,8 +24,7 @@
 		<build type="include-path" value="."/>
 		<build type="c-source" value="gfx_mono_generic.c"/>
 		<build type="doxygen-entry-point" value="gfx_mono_generic_group"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
+		<device-support value="sam0"/>
 		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 	</module>
 
@@ -43,8 +41,7 @@
 		<build type="include-path" value="."/>
 		<build type="c-source" value="gfx_mono_framebuffer.c"/>
 		<build type="doxygen-entry-point" value="gfx_mono_framebuffer_group"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
+		<device-support value="sam0"/>
 		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 	</module>
 
@@ -67,8 +64,7 @@
 		<build type="doxygen-entry-point" value="asfdoc_common2_gfx_mono_sysfont"/>
 		<require idref="common2.services.gfx_mono"/>
 		<require idref="common2.services.gfx_mono.generic"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
+		<device-support value="sam0"/>
 		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 	</module>
 
@@ -87,8 +83,7 @@
 		<build type="doxygen-entry-point" value="asfdoc_common2_gfx_mono_menu"/>
 		<require idref="common2.services.gfx_mono"/>
 		<require idref="common2.services.gfx_mono.font"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
+		<device-support value="sam0"/>
 		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 	</module>
 
@@ -107,8 +102,7 @@
 		<build type="doxygen-entry-point" value="asfdoc_common2_gfx_mono_spinctrl"/>
 		<require idref="common2.services.gfx_mono"/>
 		<require idref="common2.services.gfx_mono.font"/>
-		<device-support value="samd20"/>
-		<device-support value="samd21"/>
+		<device-support value="sam0"/>
 		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 	</module>
 
@@ -133,8 +127,7 @@
 			<require idref="common2.components.display.ssd1306"/>
 			<require idref="common2.services.gfx_mono.generic"/>
 			<require idref="common2.services.gfx_mono.framebuffer"/>
-			<device-support value="samd20"/>
-			<device-support value="samd21"/>
+			<device-support value="sam0"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 		</module>
 		<module type="service" id="common2.services.gfx_mono.display#null" caption="GFX Monochrome - NULL display driver">
@@ -149,8 +142,7 @@
 			<require idref="common2.services.gfx_mono.tools"/>
 			<require idref="common2.services.gfx_mono.generic"/>
 			<require idref="common2.services.gfx_mono.framebuffer"/>
-			<device-support value="samd20"/>
-			<device-support value="samd21"/>
+			<device-support value="sam0"/>
 			<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
 		</module>
 	</select-by-config>

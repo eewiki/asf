@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.sercom.spi_master_vec.quick_start" caption="Quick Start for the SAM D20/D21 SERCOM SPI Master Driver with Vectored I/O">
+	<module type="application" id="sam0.drivers.sercom.spi_master_vec.quick_start" caption="Quick Start for the SAM D20/D21/R21 SERCOM SPI Master Driver with Vectored I/O">
 		<info type="description" value="summary">
 		Quick start guide demonstrating usage of the SERCOM SPI master driver with vectored I/O.
 		</info>
@@ -10,5 +10,6 @@
 		<require idref="sam0.drivers.sercom.spi_master_vec"/>
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 	</module>
 </asf>

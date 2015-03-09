@@ -118,14 +118,6 @@
 #include "conf_board.h"
 #include "conf_clock.h"
 
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-extern "C" {
-#endif
-/**INDENT-ON**/
-/// @endcond
-
 #define STRING_EOL    "\r"
 #define STRING_HEADER "--TC capture waveform Example --\r\n" \
 		"-- "BOARD_NAME " --\r\n" \
@@ -382,11 +374,3 @@ int main(void)
 		}
 	}
 }
-
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-}
-#endif
-/**INDENT-ON**/
-/// @endcond

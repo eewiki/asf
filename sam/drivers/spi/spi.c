@@ -3,7 +3,7 @@
  *
  * \brief Serial Peripheral Interface (SPI) driver for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -69,7 +69,7 @@ void spi_enable_clock(Spi *p_spi)
 #if (SAM4S || SAM3S || SAM3N || SAM3U || SAM4E || SAM4N || SAMG)
 	UNUSED(p_spi);
 	sysclk_enable_peripheral_clock(ID_SPI);
-#elif (SAM3XA || SAM4C || SAM4CP)
+#elif (SAM3XA || SAM4C || SAM4CP || SAM4CM)
 	if (p_spi == SPI0) {
 		sysclk_enable_peripheral_clock(ID_SPI0);
 	}
@@ -93,7 +93,7 @@ void spi_disable_clock(Spi *p_spi)
 #if (SAM4S || SAM3S || SAM3N || SAM3U || SAM4E || SAM4N || SAMG)
 	UNUSED(p_spi);
 	sysclk_disable_peripheral_clock(ID_SPI);
-#elif (SAM3XA || SAM4C || SAM4CP)
+#elif (SAM3XA || SAM4C || SAM4CP || SAM4CM)
 	if (p_spi == SPI0) {
 		sysclk_disable_peripheral_clock(ID_SPI0);
 	}

@@ -3,7 +3,7 @@
  *
  * \brief SLCDC example for SAM.
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -45,7 +45,7 @@
  * \mainpage
  * \section intro Introduction
  * This example demonstrates how to use SLCDC driver to address an external
- * LCD segment (C42364A). The LCD still display in steady state after core
+ * LCD segment. The LCD still display in steady state after core
  * entering backup mode.
  *
  * \section files Main Files
@@ -100,6 +100,10 @@
 /* The LCD segment map number */
 #define LCD_SEGMAP_NUM_0     0x9F73FFF8
 #define LCD_SEGMAP_NUM_1     0x0FDFC
+#elif SAM4CM
+/* The LCD segment map number */
+#define LCD_SEGMAP_NUM_0     0x7F0056F8
+#define LCD_SEGMAP_NUM_1     0x00001
 #endif
 /**
  *  Configure serial console.
@@ -145,7 +149,7 @@ int main(void)
 	printf("-- %s\n\r", BOARD_NAME);
 	printf("-- Compiled: %s %s --\n\r", __DATE__, __TIME__);
 
-#if !SAM4CP
+#if SAM4C
 	/* Turn on the backlight. */
 	ioport_set_pin_level(LCD_BL_GPIO, LCD_BL_ACTIVE_LEVEL);
 #endif
@@ -170,7 +174,7 @@ int main(void)
 		while (1) {
 		}
 	}
-	/*LCD seg 17, 20~22, and 24 ~49 mapped on SEGx I/O pin */
+	/*LCD seg mapped on SEGx I/O pin */
 	slcdc_set_segmap0(SLCDC, LCD_SEGMAP_NUM_0);
 	slcdc_set_segmap1(SLCDC, LCD_SEGMAP_NUM_1);
 

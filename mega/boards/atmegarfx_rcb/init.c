@@ -73,7 +73,14 @@ void board_init(void)
 	ioport_set_pin_dir(IOPORT_CREATE_PIN(PORTG , 2),IOPORT_DIR_INPUT);
 	ioport_set_pin_mode(IOPORT_CREATE_PIN(PORTG , 2), IOPORT_MODE_PULLUP);	
 
-    LATCH_INIT();    
+    LATCH_INIT();   
+	/* Init ADC for the Accelerometer */
+	 adc_init();
+
+	// LATCH_INIT();
+	 /* Enable Accelerometer by enabling the PWR pin in the Latch */
+	 acc_init();
+ 
 	update_latch_status();   
 
     /* Apply latch pulse to set LED status */

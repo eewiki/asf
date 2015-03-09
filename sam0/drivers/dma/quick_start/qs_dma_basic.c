@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 Direct Memory Access Controller(DMAC) Driver Quick Start
+ * \brief SAM D21/R21 Direct Memory Access Controller(DMAC) Driver Quick Start
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *

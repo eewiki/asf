@@ -64,6 +64,12 @@
 #define TIMER                (TC0)
 #define TIMER_CHANNEL_ID     (0)
 #endif /* SAM4L */
+
+#if (SAM4S || SAM4E)
+#define TIMER                (TC0)
+#define TIMER_CHANNEL_ID     0
+#define ID_TC                (ID_TC0)
+#endif /* SAM4S */
 /* ! @} */
 
 /* ! \name Configuration for MEGARF */
@@ -72,11 +78,16 @@
 #define TIMER     (&TCCR1A)
 #endif /* MEGA_RF */
 /* ! @} */
-//! \name Configuration for SAMD20
-//! @{
+/* ! \name Configuration for SAMD20 */
+/* ! @{ */
 #if (SAMD20)
 #define TIMER     (TC0)
-#endif /* SAMD20 */
-//! @}
+#endif /* SAMD */
+
+#if (SAMD21 || SAMR21)
+#define TIMER                (TC3)
+#define TIMER_CHANNEL_ID     0
+#endif
+/* ! @} */
 
 #endif /* CONF_HW_TIMER_H_INCLUDED */

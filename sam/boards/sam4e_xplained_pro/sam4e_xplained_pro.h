@@ -107,6 +107,7 @@
 #define LED0_FLAGS           (0)
 #define LED0_ACTIVE_LEVEL    (IOPORT_PIN_LEVEL_LOW)
 #define LED0_INACTIVE_LEVEL  (IOPORT_PIN_LEVEL_HIGH)
+#define	LED_COUNT			 (1)
 //@}
 
 //! \name SW0 definitions
@@ -184,6 +185,7 @@
 #define BUTTON_0_ACTIVE           SW0_ACTIVE
 #define BUTTON_0_INACTIVE         SW0_INACTIVE
 #define BUTTON_0_SUPC_INPUT       SW0_SUPC_INPUT
+#define GPIO_PUSH_BUTTON_0        BUTTON_0_PIN
 
 #define PUSHBUTTON_1_NAME        "SW0"
 #define PUSHBUTTON_1_WKUP_LINE   (2)
@@ -664,6 +666,54 @@
 /** CAN1 PIN TX. */
 #define PIN_CAN1_TX_IDX           PIO_PC15_IDX
 #define PIN_CAN1_TX_FLAGS         IOPORT_MODE_MUX_C
+
+
+/*! \name Connections of the AT86RFX transceiver
+ */
+//! @{
+
+
+
+#define AT86RFX_SPI                  SPI
+#define AT86RFX_RST_PIN              IOPORT_CREATE_PIN(PIOA, 15)
+#define AT86RFX_IRQ_PIN              IOPORT_CREATE_PIN(PIOA, 11)
+#define AT86RFX_SLP_PIN              IOPORT_CREATE_PIN(PIOD, 25)
+#define AT86RFX_SPI_CS               1
+#define AT86RFX_SPI_CS_PIN           SPI_NPCS1_PB14_GPIO
+#define AT86RFX_SPI_CS_FLAGS         SPI_NPCS1_PB14_FLAGS
+#define AT86RFX_SPI_MOSI             IOPORT_CREATE_PIN(PIOA, 13)
+#define AT86RFX_SPI_MISO             IOPORT_CREATE_PIN(PIOA, 12)
+#define AT86RFX_SPI_SCK              IOPORT_CREATE_PIN(PIOA, 14)
+
+void at86rfx_isr(void);
+#define AT86RFX_INTC_INIT()         ioport_set_pin_dir(AT86RFX_IRQ_PIN, IOPORT_DIR_INPUT);\
+									ioport_set_pin_sense_mode(AT86RFX_IRQ_PIN, IOPORT_SENSE_RISING);\
+									pmc_enable_periph_clk(ID_PIOA);\
+									pio_set_debounce_filter(PIOA, PIO_PA11, 10);\
+									pio_handler_set(PIOA, ID_PIOA, PIO_PA11, PIO_IT_HIGH_LEVEL, at86rfx_isr);\
+									NVIC_EnableIRQ((IRQn_Type) ID_PIOA);\
+									pio_enable_interrupt(PIOA, PIO_PA11);									
+
+#define AT86RFX_ISR()               void at86rfx_isr(void)
+
+/** Enables the transceiver main interrupt. */
+#define ENABLE_TRX_IRQ()            pio_enable_pin_interrupt(AT86RFX_IRQ_PIN)
+
+/** Disables the transceiver main interrupt. */
+#define DISABLE_TRX_IRQ()           pio_disable_pin_interrupt(AT86RFX_IRQ_PIN)
+
+/** Clears the transceiver main interrupt. */
+#define CLEAR_TRX_IRQ()             NVIC_ClearPendingIRQ(PIOA_IRQn);
+/*
+ * This macro saves the trx interrupt status and disables the trx interrupt.
+ */
+#define ENTER_TRX_REGION()          pio_disable_pin_interrupt(AT86RFX_IRQ_PIN);
+/*
+ *  This macro restores the transceiver interrupt status
+ */
+#define LEAVE_TRX_REGION()         pio_enable_pin_interrupt(AT86RFX_IRQ_PIN)
+
+//@}
 
 /*----------------------------------------------------------------------------*/
 #endif  /* _SAM4E_XPRO_H_ */

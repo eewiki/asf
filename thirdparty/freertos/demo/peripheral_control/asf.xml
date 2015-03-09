@@ -36,6 +36,7 @@
 		<build type="include-path" value="."/>
 		<build type="include-path" value="./demo-tasks/"/>
 		<build type="c-source" value="./demo-tasks/CLI-commands.c"/>
+		<build type="c-source" value="./demo-tasks/UART-CLI-task.c"/>
 		<build type="c-source" value="./demo-tasks/USART-CLI-task.c"/>
 		<build type="c-source" value="./demo-tasks/USART-echo-tasks.c"/>
 		<device-support value="sam"/>
@@ -46,6 +47,7 @@
 		<require idref="common.services.basic.sleepmgr"/>
 		<require idref="thirdparty.os.freertos.version"/>
 		<require idref="common.services.layer.freertos.pdc"/>
+		<require idref="common.services.layer.freertos.uart"/>
 		<require idref="common.services.layer.freertos.usart"/>
 		<require idref="config.common.services.freertos.peripheral_control.usb"/>
 		<require idref="config.common.services.freertos.peripheral_control.twi"/>

@@ -138,8 +138,9 @@ uint8_t tmr_init(void)
 	tc_enable_cc_channels(TIMER, TC_CCAEN);
 
 	tc_set_cca_interrupt_level(TIMER, TC_INT_LVL_OFF);
+
 	/* calculate how faster the timer with current clk freq compared to
-	 *timer with 1Mhz */
+	 * timer with 1Mhz */
 	timer_multiplier = sysclk_get_peripheral_bus_hz(TIMER) / DEF_1MHZ;
 
 	return timer_multiplier;

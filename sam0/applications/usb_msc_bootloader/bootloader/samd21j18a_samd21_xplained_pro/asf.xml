@@ -1,0 +1,36 @@
+<asf xmlversion="1.0">
+	<project caption="USB Host MSC Bootloader with FatFS for SAMD21 Xplained Pro" id="sam0.applications.usb_bootloader.samd21_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_bootloader.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_usb_host.h"/>
+		<build type="header-file" value="conf_dma.h"/>
+		<build type="distribute" subtype="file" value="firmware.bin"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<config name="config.common.services.usb.class.host" value="mass_storage"/>
+		<config name="config.sam0.drivers.rtc" value="calendar_polled"/>
+		<config name="config.common2.services.delay" value="cycle"/>
+		<require idref="sam0.applications.usb_bootloader"/>
+		<require idref="board.samd21_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.optimization" value="high"/>
+		<config name="config.compiler.armgcc.optimization" value="high"/>
+		<config name="config.compiler.as5_arm.optimization" value="high"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x1000"/>
+		<build type="linker-config" subtype="script" value="linker_scripts/gcc/flash.ld" toolchain="armgcc"/>
+		<build type="linker-config" subtype="script" value="linker_scripts/iar/flash.icf" toolchain="iarewarm"/>
+		<device-support value="atsamd21j18a"/>
+	</project>
+</asf>

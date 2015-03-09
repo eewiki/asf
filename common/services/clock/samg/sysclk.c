@@ -3,7 +3,7 @@
  *
  * \brief Chip-specific system clock management functions.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,6 +42,8 @@
  */
 
 #include <sysclk.h>
+#include <supc.h>
+#include <efc.h>
 
 /// @cond 0
 /**INDENT-OFF**/
@@ -112,6 +114,11 @@ void sysclk_set_source(uint32_t ul_src)
 
 void sysclk_init(void)
 {
+#if SAMG54
+	uint32_t unique_id[32];
+	uint32_t trim_value;
+#endif
+
 	/* Set a flash wait state depending on the new cpu frequency */
 	system_init_flash(sysclk_get_cpu_hz());
 
@@ -176,6 +183,23 @@ void sysclk_init(void)
 
 	/* Update the SystemFrequency variable */
 	SystemCoreClockUpdate();
+
+#if SAMG54
+	/* Set the trim value when system run near 96M */
+	if ((SystemCoreClock <= (CHIP_FREQ_CPU_MAX + (CHIP_FREQ_CPU_MAX >> 3))) &&
+		(SystemCoreClock >= (CHIP_FREQ_CPU_MAX - (CHIP_FREQ_CPU_MAX >> 3)))) {
+		/* Get the trim value from unique ID area */
+		efc_perform_read_sequence(EFC, EFC_FCMD_STUI, EFC_FCMD_SPUI,
+				unique_id, 32);
+#ifdef BOARD_VDDIO_18
+		trim_value = unique_id[0x10] & 0x000000FF;
+		supc_set_regulator_trim_user(SUPC, trim_value);
+#else
+		trim_value = unique_id[0x14] & 0x000000FF;
+		supc_set_regulator_trim_user(SUPC, trim_value);
+#endif
+	}
+#endif
 
 #if (defined CONFIG_SYSCLK_DEFAULT_RETURNS_SLOW_OSC)
 	/* Signal that the internal frequencies are setup */

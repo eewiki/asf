@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 SERCOM Module Pinout Definitions
+ * \brief SAM D20/D21/R21 SERCOM Module Pinout Definitions
  *
  * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *

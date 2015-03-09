@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -82,19 +82,22 @@ typedef struct {
 #define UART_CR_TXDIS (0x1u << 7) /**< \brief (UART_CR) Transmitter Disable */
 #define UART_CR_RSTSTA (0x1u << 8) /**< \brief (UART_CR) Reset Status Bits */
 /* -------- UART_MR : (UART Offset: 0x0004) Mode Register -------- */
+#define UART_MR_FILTER (0x1u << 4) /**< \brief (UART_MR) Receiver Digital Filter */
+#define   UART_MR_FILTER_DISABLED (0x0u << 4) /**< \brief (UART_MR) UART does not filter the receive line. */
+#define   UART_MR_FILTER_ENABLED (0x1u << 4) /**< \brief (UART_MR) UART filters the receive line using a three-sample filter (16x-bit clock) (2 over 3 majority). */
 #define UART_MR_PAR_Pos 9
 #define UART_MR_PAR_Msk (0x7u << UART_MR_PAR_Pos) /**< \brief (UART_MR) Parity Type */
-#define UART_MR_PAR_EVEN (0x0u << 9) /**< \brief (UART_MR) Even Parity */
-#define UART_MR_PAR_ODD (0x1u << 9) /**< \brief (UART_MR) Odd Parity */
-#define UART_MR_PAR_SPACE (0x2u << 9) /**< \brief (UART_MR) Space: parity forced to 0 */
-#define UART_MR_PAR_MARK (0x3u << 9) /**< \brief (UART_MR) Mark: parity forced to 1 */
-#define UART_MR_PAR_NO (0x4u << 9) /**< \brief (UART_MR) No Parity */
+#define   UART_MR_PAR_EVEN (0x0u << 9) /**< \brief (UART_MR) Even Parity */
+#define   UART_MR_PAR_ODD (0x1u << 9) /**< \brief (UART_MR) Odd Parity */
+#define   UART_MR_PAR_SPACE (0x2u << 9) /**< \brief (UART_MR) Space: parity forced to 0 */
+#define   UART_MR_PAR_MARK (0x3u << 9) /**< \brief (UART_MR) Mark: parity forced to 1 */
+#define   UART_MR_PAR_NO (0x4u << 9) /**< \brief (UART_MR) No parity */
 #define UART_MR_CHMODE_Pos 14
 #define UART_MR_CHMODE_Msk (0x3u << UART_MR_CHMODE_Pos) /**< \brief (UART_MR) Channel Mode */
-#define UART_MR_CHMODE_NORMAL (0x0u << 14) /**< \brief (UART_MR) Normal Mode */
-#define UART_MR_CHMODE_AUTOMATIC (0x1u << 14) /**< \brief (UART_MR) Automatic Echo */
-#define UART_MR_CHMODE_LOCAL_LOOPBACK (0x2u << 14) /**< \brief (UART_MR) Local Loopback */
-#define UART_MR_CHMODE_REMOTE_LOOPBACK (0x3u << 14) /**< \brief (UART_MR) Remote Loopback */
+#define   UART_MR_CHMODE_NORMAL (0x0u << 14) /**< \brief (UART_MR) Normal mode */
+#define   UART_MR_CHMODE_AUTOMATIC (0x1u << 14) /**< \brief (UART_MR) Automatic echo */
+#define   UART_MR_CHMODE_LOCAL_LOOPBACK (0x2u << 14) /**< \brief (UART_MR) Local loopback */
+#define   UART_MR_CHMODE_REMOTE_LOOPBACK (0x3u << 14) /**< \brief (UART_MR) Remote loopback */
 /* -------- UART_IER : (UART Offset: 0x0008) Interrupt Enable Register -------- */
 #define UART_IER_RXRDY (0x1u << 0) /**< \brief (UART_IER) Enable RXRDY Interrupt */
 #define UART_IER_TXRDY (0x1u << 1) /**< \brief (UART_IER) Enable TXRDY Interrupt */

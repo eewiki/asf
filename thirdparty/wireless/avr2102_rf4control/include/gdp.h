@@ -7,6 +7,7 @@
  * @author    Atmel Corporation: http://www.atmel.com
  * @author    Support email: avr@atmel.com
  */
+
 /*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
@@ -19,13 +20,11 @@
 #ifndef GDP_H
 #define GDP_H
 
-
 /* === Includes ============================================================= */
 
 #include "rf4ce.h"
 #include "nwk_internal.h"
 #include "gdp_config.h"
-
 
 /* === Macros =============================================================== */
 
@@ -33,16 +32,16 @@
 
 #define GDP_PENDING_DATA_BIT 0x80
 
-#define GDP_CONF_TX_OPTIONS  (TXO_UNICAST | TXO_DST_ADDR_IEEE | \
-                         TXO_ACK_REQ | TXO_SEC_REQ | TXO_MULTI_CH | \
-                         TXO_CH_NOT_SPEC | TXO_VEND_NOT_SPEC)
+#define GDP_CONF_TX_OPTIONS  (TXO_UNICAST | TXO_DST_ADDR_IEEE |	\
+	TXO_ACK_REQ | TXO_SEC_REQ | TXO_MULTI_CH | \
+	TXO_CH_NOT_SPEC | TXO_VEND_NOT_SPEC)
 
 #ifdef ZID_PROFILE
 #define PROFILE_ID PROFILE_ID_ZID
 #endif
 
 /** The maximum time a device shall wait for a response command frame following
-    a request command frame. */
+ *  a request command frame. */
 #define aplcMaxResponseWaitTime     200 /* ms as per GDP*/
 #define aplcMaxResponseWaitTime_us  (aplcMaxResponseWaitTime * 1000UL)
 
@@ -55,14 +54,13 @@
  *
  * @ingroup apiRF4CONTROL_ZID_CONSTANTS
  */
-typedef enum gdp_cmd_code_tag
-{
-    GENERIC_RESPONSE          = 0x00,
-    CONFIGURATION_COMPLETE,
-    HEART_BEAT,
-    GET_ATTRIBUTES,
-    GET_ATTRIBUTES_RESPONSE,
-    PUSH_ATTRIBUTES
+typedef enum gdp_cmd_code_tag {
+	GENERIC_RESPONSE          = 0x00,
+	CONFIGURATION_COMPLETE,
+	HEART_BEAT,
+	GET_ATTRIBUTES,
+	GET_ATTRIBUTES_RESPONSE,
+	PUSH_ATTRIBUTES
 } SHORTENUM gdp_cmd_code_t;
 
 /**
@@ -70,93 +68,76 @@ typedef enum gdp_cmd_code_tag
  *
  * @ingroup apiRF4CONTROL_ZID_CONSTANTS
  */
-typedef enum gdp_response_code_tag
-{
-    GDP_SUCCESSFUL     = 0x00,
-    GDP_UNSUPPORTED_REQUEST,
-    GDP_INVALID_PARAMETER,
-    GDP_CONFIGURATION_FAILURE
+typedef enum gdp_response_code_tag {
+	GDP_SUCCESSFUL     = 0x00,
+	GDP_UNSUPPORTED_REQUEST,
+	GDP_INVALID_PARAMETER,
+	GDP_CONFIGURATION_FAILURE
 #ifdef ZID_PROFILE
-      ,
-    ZID_INVALID_REPORT_ID = 0x40,
-    ZID_MISSING_FRAGMENT   = 0x41
+	,
+	ZID_INVALID_REPORT_ID = 0x40,
+	ZID_MISSING_FRAGMENT   = 0x41
 #endif
 } SHORTENUM gdp_response_code_t;
 
-typedef enum gdp_attribute_status_tag
-{
-    GDP_ATTRIBUTE_SUCCESS     = 0x00,
-    GDP_UNSUPPORTED_ATTRIBUTE,
-    GDP_ILLEGAL_REQUEST
+typedef enum gdp_attribute_status_tag {
+	GDP_ATTRIBUTE_SUCCESS     = 0x00,
+	GDP_UNSUPPORTED_ATTRIBUTE,
+	GDP_ILLEGAL_REQUEST
 } SHORTENUM gdp_attribute_status_t;
 
-typedef enum gdp_state_tag
-{
-    GDP_STATE_IDLE,
-    GDP_SENDING_HEARTBEAT,
-    GDP_SENDING_GET_ATTRIBUTES_RESPONSE,
-    GDP_SENDING_GENERIC_RESPONSE,
-    GDP_WAITING_FOR_ATTRIBUTE_RESPONSE,
-    GDP_WAITING_FOR_GENERIC_RESPONSE
+typedef enum gdp_state_tag {
+	GDP_STATE_IDLE,
+	GDP_SENDING_HEARTBEAT,
+	GDP_SENDING_GET_ATTRIBUTES_RESPONSE,
+	GDP_SENDING_GENERIC_RESPONSE,
+	GDP_WAITING_FOR_ATTRIBUTE_RESPONSE,
+	GDP_WAITING_FOR_GENERIC_RESPONSE
 } SHORTENUM gdp_state_t;
 
-typedef struct gdp_msg_struct_tag
-{
-    gdp_cmd_code_t msg_code;
+typedef struct gdp_msg_struct_tag {
+	gdp_cmd_code_t msg_code;
 	uint8_t PairingRef;
 	bool pendingData;
 	void *msg_ptr;
-}gdp_msg_struct_t;
+} gdp_msg_struct_t;
 
-typedef struct gdp_get_attr_req_ind_tag
-{
-    uint8_t num_of_attr;
-    uint8_t *attr_list;
+typedef struct gdp_get_attr_req_ind_tag {
+	uint8_t num_of_attr;
+	uint8_t *attr_list;
+} gdp_get_attr_req_ind_t;
 
-}gdp_get_attr_req_ind_t;
-
-typedef struct gdp_get_attrrsp_req_ind_tag
-{
-    uint8_t payload_length;
+typedef struct gdp_get_attrrsp_req_ind_tag {
+	uint8_t payload_length;
 	uint8_t *payload;
+} gdp_get_attrrsp_req_ind_t;
 
-}gdp_get_attrrsp_req_ind_t;
-
-
-typedef struct gdp_push_attr_req_ind_tag
-{
-    uint8_t payload_length;
+typedef struct gdp_push_attr_req_ind_tag {
+	uint8_t payload_length;
 	uint8_t *payload;
+} gdp_push_attr_req_ind_t;
 
-}gdp_push_attr_req_ind_t;
+typedef struct gdp_generic_response_req_ind_tag {
+	gdp_response_code_t Status;
+} gdp_generic_response_req_ind_t;
 
-typedef struct gdp_generic_response_req_ind_tag
-{
-    gdp_response_code_t Status;
-}gdp_generic_response_req_ind_t;
-
-typedef struct gdp_conf_complete_req_ind_tag
-{
-   gdp_response_code_t Status;
-
-}gdp_conf_complete_req_ind_t;
-
-
+typedef struct gdp_conf_complete_req_ind_tag {
+	gdp_response_code_t Status;
+} gdp_conf_complete_req_ind_t;
 
 #if (defined RF4CE_CALLBACK_PARAM) || (defined DOXYGEN)
 
-typedef void (*gdp_heartbeat_confirm_cb_t)(nwk_enum_t Status, uint8_t PairingRef);
+typedef void (*gdp_heartbeat_confirm_cb_t)(nwk_enum_t Status,
+		uint8_t PairingRef);
 
 /**
-  * struct for zrc indication callback.
-  * App should use this struct to register indication callback functions
-  *
-  * @ingroup apiRF4Control_ZRC_API
-  */
+ * struct for zrc indication callback.
+ * App should use this struct to register indication callback functions
+ *
+ * @ingroup apiRF4Control_ZRC_API
+ */
 
 #endif /* (defined RF4CE_CALLBACK_PARAM) || (defined DOXYGEN) */
-
-
 
 /* === Externals ============================================================ */
 
@@ -165,40 +146,45 @@ typedef void (*gdp_heartbeat_confirm_cb_t)(nwk_enum_t Status, uint8_t PairingRef
 void gdp_init(void);
 
 bool gdp_request(gdp_msg_struct_t *gdp_msg);
-void gdp_indication(gdp_msg_struct_t *gdp_msg,uint8_t rxlinkquality,uint8_t rxflags);
-void gdp_confirm(uint8_t PairingRef,nwk_enum_t status);
+void gdp_indication(gdp_msg_struct_t *gdp_msg, uint8_t rxlinkquality,
+		uint8_t rxflags);
+void gdp_confirm(uint8_t PairingRef, nwk_enum_t status);
 
 #if 0
-void gdp_get_attribute_ind(uint8_t PairingRef,uint8_t num_attr, uint8_t *attr_list);
-void gdp_get_attributes_response_ind(nwk_enum_t nwk_status,uint8_t PairingRef,uint8_t *nsdu);
-void gdp_get_attributes_response_confirm(nwk_enum_t nwk_status,uint8_t PairingRef);
+void gdp_get_attribute_ind(uint8_t PairingRef, uint8_t num_attr,
+		uint8_t *attr_list);
+void gdp_get_attributes_response_ind(nwk_enum_t nwk_status, uint8_t PairingRef,
+		uint8_t *nsdu);
+void gdp_get_attributes_response_confirm(nwk_enum_t nwk_status,
+		uint8_t PairingRef);
 bool gdp_heartbeat_request(uint8_t PairingRef);
-//void gdp_get_attribute(uint8_t attribute_id,uint8_t *length, uint8_t *value);
+
+/* void gdp_get_attribute(uint8_t attribute_id,uint8_t *length, uint8_t *value); */
 void gdp_heartbeat_confirm(nwk_enum_t Status, uint8_t PairingRef);
 void gdp_heartbeat_indication(uint8_t PairingRef);
-void gdp_generic_response_indication(nwk_enum_t Status,uint8_t PairingRef,uint8_t response, bool pending_data);
-void gdp_generic_response_confirm(nwk_enum_t Status,uint8_t PairingRef);
+void gdp_generic_response_indication(nwk_enum_t Status, uint8_t PairingRef,
+		uint8_t response, bool pending_data);
+void gdp_generic_response_confirm(nwk_enum_t Status, uint8_t PairingRef);
+
 #if (GDP_CONF_COMPLETE_IND == 1)
-void gdp_conf_complete_indication(uint8_t PairingRef,uint8_t status);
+void gdp_conf_complete_indication(uint8_t PairingRef, uint8_t status);
+
 #endif
 
-
-void gdp_push_attributes_indication(uint8_t PairingRef,uint8_t nsduLength,uint8_t *nsdu);
-
+void gdp_push_attributes_indication(uint8_t PairingRef, uint8_t nsduLength,
+		uint8_t *nsdu);
 
 #endif
 
 #ifndef RF4CE_CALLBACK_PARAM
 
 void gdp_data_indication(uint8_t PairingRef, uint8_t nsduLength, uint8_t *nsdu,
-                         uint8_t RxLinkQuality, uint8_t RxFlags);
-
-
-
+		uint8_t RxLinkQuality, uint8_t RxFlags);
 
 void gdp_data_confirm(nwk_enum_t Status, uint8_t PairingRef);
 
 #endif /* #if (!defined RF4CE_CALLBACK_PARAM) */
+
 /**
  * @brief Registering zrc indication callback
  *

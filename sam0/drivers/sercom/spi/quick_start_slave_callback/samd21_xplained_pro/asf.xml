@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="Quick Start for the SAM D20/D21 SERCOM SPI Driver (Slave Callback)" id="sam0.drivers.sercom.spi.quick_start_slave_callback.samd21_xplained_pro">
+	<project caption="Quick Start for the SAM D20/D21/R21 SERCOM SPI Driver (Slave Callback)" id="sam0.drivers.sercom.spi.quick_start_slave_callback.samd21_xplained_pro">
 		<info type="gui-flag" value="move-to-root"/>
 		<require idref="board.samd21_xplained_pro"/>
 		<require idref="sam0.drivers.sercom.spi.quick_start_slave_callback"/>

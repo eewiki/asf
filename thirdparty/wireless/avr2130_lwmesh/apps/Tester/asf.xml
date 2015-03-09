@@ -1,0 +1,40 @@
+<asf xmlversion="1.0">
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++MODULE+++++++++++++++++++++++++++++++++++++++++++++++. -->
+	<!-- **************************************************************************************************** -->
+	<module type="application" id="thirdparty.wireless.avr2130_lwmesh.apps.tester" caption="LWMesh Tester Application">
+		<info type="description" value="summary">
+             The LWMesh Tester app is designed to be used as a generic network processor and also performs automated testing for the stack.
+		</info>
+		<!-- +++++++++++++++++++++++++++++++++++++++++++++++BUILD+++++++++++++++++++++++++++++++++++++++++++++++. -->		
+		<build type="c-source" value="commands.c"/>
+		<build type="c-source" value="events.c"/>
+		<build type="c-source" value="filter.c"/>
+		<build type="c-source" value="tester.c"/>
+		<build type="c-source" value="time.c"/>
+		
+		<build type="header-file"   value="config.h"/>
+		<build type="header-file"   value="commands.h"/>
+		<build type="header-file"   value="config_gen.h"/>
+		<build type="header-file"   value="events.h"/>
+		<build type="header-file"   value="filter.h"/>
+		<build type="header-file"   value="tester.h"/>
+		<build type="header-file"   value="time.h"/>
+		<build type="header-file"   value="conf_trx_access.h"/>	
+
+		<build type="include-path" value="."/>
+		
+		<build type="doxygen-entry-point" value="group_tester"/>
+		
+		<device-support-alias value="avr2130_lwmesh_support"/>
+		<!-- ++++++++++++++++++++++++++++++++++++++++++++++REQUIRE++++++++++++++++++++++++++++++++++++++++++++++. -->
+		<require idref="thirdparty.wireless.avr2130_lwmesh"/>
+		<require idref="thirdparty.wireless.addons.sio2host"/>
+		<!-- .................................................................................................... -->
+		<info type="keyword" value="technology">
+			<keyword value="Wireless"/>
+			<keyword value="Communication"/>
+		</info>
+		<!-- **************************************************************************************************** -->
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

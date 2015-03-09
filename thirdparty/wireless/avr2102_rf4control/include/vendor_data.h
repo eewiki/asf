@@ -2,7 +2,7 @@
  * @file vendor_data.h
  *
  * @brief Declarations of API functions to access vendor specific data
- *functionality
+ * functionality
  *
  * Copyright (c) 2014 Atmel Corporation. All rights reserved.
  *
@@ -137,7 +137,7 @@ bool vendor_data_request(uint8_t PairingRef, profile_id_t ProfileId,
  * @brief Vendor data alive request
  *
  * Hook for the application indicating that an alive request command was
- *received.
+ * received.
  *
  * @ingroup group_RF4CONTROL_ZRC_API
  */

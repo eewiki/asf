@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 Timer/Counter Driver with DMA Quickstart
+ * \brief SAM D21/R21 Timer/Counter Driver with DMA Quickstart
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -130,7 +130,7 @@ void configure_dma_resource(struct dma_resource *resource)
 
 //! [dma_setup_2]
 	dma_get_config_defaults(&config);
-	config.peripheral_trigger = TC6_DMAC_ID_MC_0;
+	config.peripheral_trigger = M2M_DMAC_TRIGGER_ID;
 //! [dma_setup_2]
 
 //! [dma_setup_3]

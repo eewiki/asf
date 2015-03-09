@@ -1,9 +1,10 @@
 /**
  * @file tal_internal.h
  *
- * @brief This header file contains types and variable definition that are used within the TAL only.
+ * @brief This header file contains types and variable definition that are used
+ *within the TAL only.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,7 +43,7 @@
  */
 
 /*
- * Copyright (c) 2013, Atmel Corporation All rights reserved.
+ * Copyright (c) 2013-2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
@@ -66,26 +67,30 @@
 #endif
 #include "mac_build_config.h"
 
-
 /**
  * \ingroup group_tal
  * \defgroup group_tal_rfa1 ATMEGARFA1 Transceiver Abstraction Layer
  * The ATmega128RFA1 is a low-power CMOS 8-bit microcontroller based on the AVR
- * enhanced RISC architecture combined with a high data rate transceiver for the 2.4 GHz
- *  ISM band. It is derived from the ATmega1281 microcontroller and the AT86RF231 radio transceiver.
- * The Transceiver Abstraction Layer (TAL) implements the transceiver specific functionalities and
- * provides interfaces to the upper layers (like IEEE 802.15.4 MAC )and  uses the services of PAL.
- * \a Refer <A href="http://www.atmel.com/Images/doc8266.pdf">ATMEGARFA1 Data Sheet </A> \b for \b detailed \b information .
+ * enhanced RISC architecture combined with a high data rate transceiver for the
+ *2.4 GHz
+ *  ISM band. It is derived from the ATmega1281 microcontroller and the
+ *AT86RF231 radio transceiver.
+ * The Transceiver Abstraction Layer (TAL) implements the transceiver specific
+ *functionalities and
+ * provides interfaces to the upper layers (like IEEE 802.15.4 MAC )and  uses
+ *the services of PAL.
+ * \a Refer <A href="http://www.atmel.com/Images/doc8266.pdf">ATMEGARFA1 Data
+ *Sheet </A> \b for \b detailed \b information .
  */
 
- 
- /**
+/**
  * \ingroup group_tal_rfa1
  * \defgroup group_tal_state_machine_rfa1 TAL State Machine
- * The different operating states of the Transceiver are controlled by the TAL state machine.
+ * The different operating states of the Transceiver are controlled by the TAL
+ *state machine.
  *
  */
- 
+
 /**
  * \ingroup group_tal_rfa1
  * \defgroup group_tal_init_rfa1  TAL Initialization and reset
@@ -93,14 +98,12 @@
  *
  */
 
-
 /**
  * \ingroup group_tal_rfa1
  * \defgroup group_tal_ed_rfa1   TAL Energy Detection
  * Performs the ED scan functionalities.
  *
  */
-
 
 /**
  * \ingroup group_tal_rfa1
@@ -112,7 +115,8 @@
 /**
  * \ingroup group_tal_rfa1
  * \defgroup group_tal_pib_rfa1   TAL PIB Storage
- * The PIB(Pan Information Base) attributes related to the TAL are Stored and handled  by the TAL PIB storage.
+ * The PIB(Pan Information Base) attributes related to the TAL are Stored and
+ *handled  by the TAL PIB storage.
  *
  */
 
@@ -124,13 +128,13 @@
  */
 
 /**
-* \ingroup group_tal_tx_rfa1
-* \defgroup group_tal_tx_csma_rfa1   TAL CSMA/CA Module
-* Performs channel access mechanism for frame transmission
-* For Detailed information refer  CSMA-CA algorithm section of IEEE Std 802.15.4-2006
-*
-*/
-
+ * \ingroup group_tal_tx_rfa1
+ * \defgroup group_tal_tx_csma_rfa1   TAL CSMA/CA Module
+ * Performs channel access mechanism for frame transmission
+ * For Detailed information refer  CSMA-CA algorithm section of IEEE Std
+ *802.15.4-2006
+ *
+ */
 
 /**
  * \ingroup group_tal_rfa1
@@ -138,88 +142,79 @@
  * The Frame Reception Unit reads/uploads the incoming frames .
  *
  */
- 
-
-
-
 
 /* === TYPES =============================================================== */
 
 /** TAL states */
 #if ((defined BEACON_SUPPORT) && (MAC_SCAN_ED_REQUEST_CONFIRM == 1))
-typedef enum tal_state_tag
-{
-    TAL_IDLE           = 0,
-    TAL_TX_AUTO        = 1,
-    TAL_TX_DONE        = 2,
-    TAL_SLOTTED_CSMA   = 3,
-    TAL_ED_RUNNING     = 4,
-    TAL_ED_DONE        = 5
+typedef enum tal_state_tag {
+	TAL_IDLE           = 0,
+	TAL_TX_AUTO        = 1,
+	TAL_TX_DONE        = 2,
+	TAL_SLOTTED_CSMA   = 3,
+	TAL_ED_RUNNING     = 4,
+	TAL_ED_DONE        = 5
 } SHORTENUM tal_state_t;
 #endif
 
 #if ((!defined BEACON_SUPPORT) && (MAC_SCAN_ED_REQUEST_CONFIRM == 1))
-typedef enum tal_state_tag
-{
-    TAL_IDLE           = 0,
-    TAL_TX_AUTO        = 1,
-    TAL_TX_DONE        = 2,
-    TAL_ED_RUNNING     = 4,
-    TAL_ED_DONE        = 5
+typedef enum tal_state_tag {
+	TAL_IDLE           = 0,
+	TAL_TX_AUTO        = 1,
+	TAL_TX_DONE        = 2,
+	TAL_ED_RUNNING     = 4,
+	TAL_ED_DONE        = 5
 } SHORTENUM tal_state_t;
 #endif
 
 #if ((defined BEACON_SUPPORT) && (MAC_SCAN_ED_REQUEST_CONFIRM == 0))
-typedef enum tal_state_tag
-{
-    TAL_IDLE           = 0,
-    TAL_TX_AUTO        = 1,
-    TAL_TX_DONE        = 2,
-    TAL_SLOTTED_CSMA   = 3
+typedef enum tal_state_tag {
+	TAL_IDLE           = 0,
+	TAL_TX_AUTO        = 1,
+	TAL_TX_DONE        = 2,
+	TAL_SLOTTED_CSMA   = 3
 } SHORTENUM tal_state_t;
 #endif
 
 #if ((!defined BEACON_SUPPORT) && (MAC_SCAN_ED_REQUEST_CONFIRM == 0))
-typedef enum tal_state_tag
-{
-    TAL_IDLE           = 0,
-    TAL_TX_AUTO        = 1,
-    TAL_TX_DONE        = 2
+typedef enum tal_state_tag {
+	TAL_IDLE           = 0,
+	TAL_TX_AUTO        = 1,
+	TAL_TX_DONE        = 2
 } SHORTENUM tal_state_t;
 #endif
 
 /** Transceiver interrupt reasons */
-typedef enum trx_irq_reason_tag
-{
-    /** No interrupt is indicated by IRQ_STATUS register */
-    TRX_NO_IRQ                      = (0x00),
+typedef enum trx_irq_reason_tag {
+	/** No interrupt is indicated by IRQ_STATUS register */
+	TRX_NO_IRQ                      = (0x00),
 
-    /** PLL goes to lock-state. */
-    TRX_IRQ_PLL_LOCK                = (0x01),
+	/** PLL goes to lock-state. */
+	TRX_IRQ_PLL_LOCK                = (0x01),
 
-    /** Signals an unlocked PLL */
-    TRX_IRQ_PLL_UNLOCK              = (0x02),
+	/** Signals an unlocked PLL */
+	TRX_IRQ_PLL_UNLOCK              = (0x02),
 
-    /** Signals begin of a receiving frame */
-    TRX_IRQ_RX_START                = (0x04),
+	/** Signals begin of a receiving frame */
+	TRX_IRQ_RX_START                = (0x04),
 
-    /** Signals completion of a frame reception. */
-    TRX_IRQ_RX_END                  = (0x08),
+	/** Signals completion of a frame reception. */
+	TRX_IRQ_RX_END                  = (0x08),
 
-    /** Signals the end of a CCA or ED measurement. */
-    TRX_IRQ_CCA_ED_READY            = (0x10),
+	/** Signals the end of a CCA or ED measurement. */
+	TRX_IRQ_CCA_ED_READY            = (0x10),
 
-    /** Signals an address match. */
-    TRX_IRQ_AMI                     = (0x20),
+	/** Signals an address match. */
+	TRX_IRQ_AMI                     = (0x20),
 
-    /** Signals the completion of a frame transmission. */
-    TRX_IRQ_TX_END                  = (0x40),
+	/** Signals the completion of a frame transmission. */
+	TRX_IRQ_TX_END                  = (0x40),
 
-    /**
-     * Indicates that the radio transceiver reached TRX_OFF state
-     * after P_ON, RESET, or SLEEP states.
-     */
-    TRX_IRQ_AWAKE                   = (0x80)
+	/**
+	 * Indicates that the radio transceiver reached TRX_OFF state
+	 * after P_ON, RESET, or SLEEP states.
+	 */
+	TRX_IRQ_AWAKE                   = (0x80)
 } trx_irq_reason_t;
 
 /* === EXTERNALS =========================================================== */
@@ -253,6 +248,7 @@ extern bool tal_beacon_transmission;
 /* === MACROS ============================================================== */
 
 #ifndef _BV
+
 /**
  * Bit value -- compute the bitmask for a bit position
  */
@@ -263,20 +259,21 @@ extern bool tal_beacon_transmission;
  * Conversion of number of PSDU octets to duration in microseconds
  */
 #ifdef HIGH_DATA_RATE_SUPPORT
-#define TAL_PSDU_US_PER_OCTET(octets)                                               \
-    (                                                                                   \
-            tal_pib.CurrentPage == 0 ? ((uint16_t)(octets) * 32) :                          \
-            (                                                                            \
-                    tal_pib.CurrentPage == 2 ? ((uint16_t)(octets) * 16) :                    \
-                    (                                                                       \
-                            tal_pib.CurrentPage == 16 ? ((uint16_t)(octets) * 8) : ((uint16_t)(octets) * 4)  \
-                    )                                                                       \
-            )                                                                            \
-    )
+#define TAL_PSDU_US_PER_OCTET(octets) \
+	( \
+		tal_pib.CurrentPage == 0 ? ((uint16_t)(octets) * 32) : \
+		( \
+			tal_pib.CurrentPage == 2 ? ((uint16_t)(octets) * 16) : \
+			( \
+				tal_pib.CurrentPage == \
+				16 ? ((uint16_t)(octets) * \
+				8) : ((uint16_t)(octets) * 4) \
+			) \
+		) \
+	)
 #else   /* #ifdef not HIGH_DATA_RATE_SUPPORT */
 #define TAL_PSDU_US_PER_OCTET(octets)       ((uint16_t)(octets) * 32)
 #endif
-
 
 /*
  * Debug synonyms
@@ -329,7 +326,8 @@ extern bool tal_beacon_transmission;
 #define PIN_NO_ACK_END()
 #endif
 
-#define TRX_IRQ_DEFAULT         (TRX_IRQ_RX_START | TRX_IRQ_RX_END | TRX_IRQ_TX_END)
+#define TRX_IRQ_DEFAULT         (TRX_IRQ_RX_START | TRX_IRQ_RX_END | \
+	TRX_IRQ_TX_END)
 #define TRX_IRQ_AWAKE_ONLY      (TRX_IRQ_AWAKE)
 #define TRX_IRQ_CCA_ED_ONLY     (TRX_IRQ_CCA_ED_READY)
 #define TRX_IRQ_NONE            (0)
@@ -349,19 +347,23 @@ extern bool tal_beacon_transmission;
  * \ingroup group_tal_state_machine_rfa1
  */
 tal_trx_status_t set_trx_state(trx_cmd_t trx_cmd);
+
 #ifdef ENABLE_FTN_PLL_CALIBRATION
+
 /**
  * \brief PLL calibration and filter tuning timer callback
  *
  * \param parameter Unused callback parameter
  */
 void calibration_timer_handler_cb(void *parameter);
+
 #endif  /* ENABLE_FTN_PLL_CALIBRATION */
 
 /*
  * Prototypes from tal_ed.c
  */
 #if (MAC_SCAN_ED_REQUEST_CONFIRM == 1)
+
 /**
  * \brief Scan done
  *
@@ -371,8 +373,8 @@ void calibration_timer_handler_cb(void *parameter);
  * \ingroup group_tal_ed_rfa1
  */
 void ed_scan_done(void);
-#endif /* (MAC_SCAN_ED_REQUEST_CONFIRM == 1) */
 
+#endif /* (MAC_SCAN_ED_REQUEST_CONFIRM == 1) */
 
 /**
  * \name Transceiver Access Macros
@@ -389,8 +391,8 @@ void ed_scan_done(void);
  * \param data Data to be written to trx register
  * \ingroup group_pal_trx
  */
-#define pal_trx_reg_write(addr, data) \
-    (*(volatile uint8_t *)(addr)) = (data)
+#define trx_reg_write(addr, data) \
+	(*(volatile uint8_t *)(addr)) = (data)
 
 /**
  * \brief Reads current value from a transceiver register
@@ -402,8 +404,8 @@ void ed_scan_done(void);
  * \ingroup group_pal_trx
  * \return value of the register read
  */
-#define pal_trx_reg_read(addr) \
-    (*(volatile uint8_t *)(addr))
+#define trx_reg_read(addr) \
+	(*(volatile uint8_t *)(addr))
 
 /**
  * \brief Reads frame buffer of the transceiver
@@ -413,10 +415,10 @@ void ed_scan_done(void);
  * \param[out] data Pointer to the location to store frame
  * \param[in] length Number of bytes to be read from the frame
  * buffer.
-  * \ingroup group_pal_trx
+ * \ingroup group_pal_trx
  */
-#define pal_trx_frame_read(data, length) \
-    memcpy((data), (void *)&TRXFBST, (length))
+#define trx_frame_read(data, length) \
+	memcpy((data), (void *)&TRXFBST, (length))
 
 /**
  * \brief Writes data into frame buffer of the transceiver
@@ -425,60 +427,70 @@ void ed_scan_done(void);
  *
  * \param[in] data Pointer to data to be written into frame buffer
  * \param[in] length Number of bytes to be written into frame buffer
-  * \ingroup group_pal_trx
+ * \ingroup group_pal_trx
  */
-#define pal_trx_frame_write(data, length) \
-    memcpy((void *)&TRXFBST, (data), (length))
+#define trx_frame_write(data, length) \
+	memcpy((void *)&TRXFBST, (data), (length))
 
 #ifndef DOXYGEN
-#define _pal_trx_bit_read(addr, mask, pos) \
-    (((*(volatile uint8_t *)(addr)) & (mask)) >> (pos))
+#define _trx_bit_read(addr, mask, pos) \
+	(((*(volatile uint8_t *)(addr)) & (mask)) >> (pos))
 #endif
+
 /**
  * \brief Subregister read
  *
  * \param   arg Subregister
  *
  * \return  Value of the read subregister
-  * \ingroup group_pal_trx
+ * \ingroup group_pal_trx
  */
-#define pal_trx_bit_read(arg) \
-    _pal_trx_bit_read(arg)
+#define trx_bit_read(arg) \
+	_trx_bit_read(arg)
 
 #ifndef DOXYGEN
-#define _pal_trx_bit_write(addr, mask, pos, val) do {   \
-        (*(volatile uint8_t *)(addr)) =                 \
-                                                        ((*(volatile uint8_t *)(addr)) & ~(mask)) | \
-                                                        (((val) << (pos)) & (mask));                \
-    } while (0)
+#define _trx_bit_write(addr, mask, pos, val) do { \
+		(*(volatile uint8_t *)(addr)) \
+			= ((*(volatile uint8_t *)(addr)) & ~(mask)) | \
+				(((val) << (pos)) & (mask)); \
+} \
+	while (0)
 #endif
-
 
 /**
  * \brief Subregister write
  *
  * \param[in]   arg1  Subregister
  * \param[out]  val  Data, which is muxed into the register
-  * \ingroup group_pal_trx
+ * \ingroup group_pal_trx
  */
-#define pal_trx_bit_write(arg1, val) \
-    _pal_trx_bit_write(arg1, val)
+#define trx_bit_write(arg1, val) \
+	_trx_bit_write(arg1, val)
 
-//! @}
+/* ! @} */
 
 /**
  * \name Transceiver Access  Macros
  * @{
  */
+
 /*
  * Set TRX GPIO pins.
  */
-#define PAL_RST_HIGH()                      (TRXPR |= _BV(TRXRST))  /**< Set Reset Bit. */
-#define PAL_RST_LOW()                       (TRXPR &= ~_BV(TRXRST)) /**< Clear Reset Bit. */
-#define PAL_SLP_TR_HIGH()                   (TRXPR |= _BV(SLPTR))   /**< Set Sleep/TR Bit. */
-#define PAL_SLP_TR_LOW()                    (TRXPR &= ~_BV(SLPTR))  /**< Clear Sleep/TR Bit. */
+#define TRX_RST_HIGH()                      (TRXPR |= _BV(TRXRST))  /**< Set
+	                                                             *Reset Bit.
+	                                                             **/
+#define TRX_RST_LOW()                       (TRXPR &= ~_BV(TRXRST)) /**< Clear
+	                                                             *Reset Bit.
+	                                                             **/
+#define TRX_SLP_TR_HIGH()                   (TRXPR |= _BV(SLPTR))   /**< Set
+	                                                             *Sleep/TR
+	                                                             *Bit. */
+#define TRX_SLP_TR_LOW()                    (TRXPR &= ~_BV(SLPTR))  /**< Clear
+	                                                             *Sleep/TR
+	                                                             *Bit. */
 
-//! @}
+/* ! @} */
 
 /**
  * \name Transceiver IRQ Macros
@@ -516,8 +528,6 @@ void ed_scan_done(void);
  * AES_STATE, which has to be done in the AES
  * application.
  */
-//! @}
-
-
+/* ! @} */
 
 #endif /* TAL_INTERNAL_H */

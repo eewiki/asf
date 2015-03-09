@@ -78,9 +78,7 @@
 	-- xxxxxx-xx
 	-- Compiled: xxx xx xxxx xx:xx:xx --
 \endcode
- * -# Press the push button on board.
- *    \code
-	Press xxx to simulate a deadlock loop.
+ * -# After XX seconds the system enters in a deadlock loop.
 \endcode
  */
 
@@ -89,16 +87,8 @@
 #include "led.h"
 #include <stdio.h>
 
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-extern "C" {
-#endif
-/**INDENT-ON**/
-/// @endcond
-
-/** Reset counter 30 seconds */
-#define RST_MS_COUNTER                    30000
+/** Reset counter 10 seconds */
+#define RST_MS_COUNTER                    10000
 /** Watchdog period 3000ms */
 #define WDT_PERIOD                        3000
 /** LED blink time 300ms */
@@ -177,7 +167,7 @@ int main(void)
 {
 	uint32_t wdt_mode, timeout_value;
 
-	/* Initilize the system */
+	/* Initialize the system */
 	sysclk_init();
 	board_init();
 
@@ -221,7 +211,7 @@ int main(void)
 	NVIC_SetPriority(WDT_IRQn, 0);
 	NVIC_EnableIRQ(WDT_IRQn);
 
-	printf("After %u seconds the system enters in a deadlock loop.\n\r", ul_rst_counter/1000);
+	printf("After %u seconds the system enters in a deadlock loop.\n\r", (int)ul_rst_counter/1000);
 
 	while (1) {
 
@@ -230,7 +220,11 @@ int main(void)
 
 			/* Toggle LED at the given period. */
 			if ((g_ul_ms_ticks % BLINK_PERIOD) == 0) {
+#if (SAM4CM)
+				LED_Toggle(LED4);
+#else
 				LED_Toggle(LED0);
+#endif
 			}
 
 			/* Restart watchdog at the given period. */
@@ -247,11 +241,3 @@ int main(void)
 		}
 	}
 }
-
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-}
-#endif
-/**INDENT-ON**/
-/// @endcond

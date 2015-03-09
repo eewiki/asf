@@ -3,7 +3,7 @@
  *
  * \brief Unit tests for at24cxx driver.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -74,6 +74,8 @@
  * This example has been tested with the following setup:
  * - sam3x8h_sam3x_ek
  * - sam4c16c_sam4c_ek
+ * - sam4cmp16c_sam4cmp_db
+ * - sam4cms16c_sam4cms_db
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers
@@ -127,7 +129,11 @@ static uint8_t test_data_rx[TEST_DATA_LENGTH];
 /* Memory Pattern */
 #define MEMORY_PATTERN  TEST_DATA
 /* EEPROM Page Size */
+#if SAM4CM
+#define PAGE_SIZE  64UL
+#else
 #define PAGE_SIZE  128UL
+#endif
 /* EEPROM Page Address */
 #define PAGE_ADDR  511UL
 uint8_t page_read_buf[PAGE_SIZE];

@@ -7,6 +7,7 @@
 		<build type="header-file" subtype="api" value="pdm.h"/>
 		<build type="include-path" value="."/>
 		<device-support value="samg53"/>
+		<device-support value="samg54"/>
 		<require idref="common.services.basic.clock"/>
 		<generator value="doxygen-module" default-mcu="unspecified-samg53"/>
 		<build type="doxygen-entry-point" value="sam_drivers_pdm_group"/>

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 External Interrupt Driver
+ * \brief SAM D20/D21/R21 External Interrupt Driver
  *
  * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
@@ -44,7 +44,6 @@
 #define EXTINT_CALLBACK_H_INCLUDED
 
 #include <compiler.h>
-#include "extint.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -56,16 +55,9 @@ extern "C" {
  * @{
  */
 
-#ifndef EIC_NUMBER_OF_INTERRUPTS
-#  define EIC_NUMBER_OF_INTERRUPTS 16
-#endif
-
 /** \name Callback configuration and initialization
  * @{
  */
-
-/** Type definition for an EXTINT module callback function. */
-typedef void (*extint_callback_t)(void);
 
 /** Enum for the possible callback types for the EXTINT module. */
 enum extint_callback_type

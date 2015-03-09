@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="SPI Example for SAMG53 Xplained Pro" id="sam.drivers.spi.example.samg53n19_samg_xplained_pro">
+	<project caption="SPI Example for SAMG53 Xplained Pro" id="sam.drivers.spi.example.samg53_xplained_pro">
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_clock.h"/>

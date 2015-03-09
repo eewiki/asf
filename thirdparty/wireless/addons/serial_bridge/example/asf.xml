@@ -8,7 +8,7 @@
 		<build type="c-source" value="main.c"/>
 		<require idref="thirdparty.wireless.addons.serial_bridge"/>
 		<device-support value="sam4l"/>
-		<device-support value="samd20"/>
+		<device-support value="sam0"/>
 		<device-support value="atmega256rfr2"/>
 		<info type="keyword" value="technology">
 			<keyword value="Wireless"/>

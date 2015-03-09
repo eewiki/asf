@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type ="service" caption="PLC PHY Sniffer Interface Module" id="thirdparty.prime.phy.atpl230.addons.sniffer_if">
+		<info type="description" value="summary">
+		Serial Interface Module acts as a interface for  converting stream of command bytes to corresponding PRIME Phy Sniffer API.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="PLC"/>
+		</info>
+		<require idref="thirdparty.prime.phy.atpl230"/>
+		<require idref="sam.services.plc.usi"/>
+		<build type="c-source" value="sniffer_if.c"/>
+		<build type="header-file" subtype="api" value="sniffer_if.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sniffer_plc_group"/>
+		<device-support value="atsam4cp16b_0"/>
+		<device-support value="atsam4sd32c"/>
+	</module>
+</asf>

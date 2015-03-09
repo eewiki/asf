@@ -505,7 +505,7 @@ void spi_set_baudrate_div(Spi *p_spi, uint32_t ul_pcs_ch,
 void spi_set_transfer_delay(Spi *p_spi, uint32_t ul_pcs_ch, uint8_t uc_dlybs,
 		uint8_t uc_dlybct);
 
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP || SAM4CM)
 /**
  * \brief Get PDC registers base address.
  *

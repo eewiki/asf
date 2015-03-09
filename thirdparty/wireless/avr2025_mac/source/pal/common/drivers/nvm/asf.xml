@@ -32,5 +32,21 @@
         <build type="module-config" subtype="path" value="sam/module_config"/>
         <device-support value="sam4l"/>
 	</module>
+	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.pal.common.drivers.nvm#3" caption="NVM - Non volatile memory access">
+        <info type="description" value="summary">
+        Driver for NVM access. Provides functions for initializing, reading, writing, erasing NVM and getting configuration parameters. Common API.
+        </info>
+        <info type="keyword" value="technology">
+            <keyword value="Memory"/>
+        </info>
+        <build type="doxygen-entry-point" value="nvm_group"/>
+        <build type="doxygen-quick-start" value="nvm_quickstart"/>
+        <build type="header-file" subtype="api" value="common_nvm.h"/>
+        <build type="c-source" value="sam0/sam_nvm.c"/>
+        <build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_nvm.h"/>
+        <build type="module-config" subtype="path" value="sam0/module_config"/>
+       	<device-support value="samr21"/>
+	</module>
 	</select-by-device>	
 </asf>

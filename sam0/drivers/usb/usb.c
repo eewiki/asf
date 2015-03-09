@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAMD21 USB Driver.
+ * \brief SAM USB Driver.
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -67,6 +67,7 @@
  */
 #define  USB_EP_DIR_OUT       0x00
 
+#if SAMD21
 /**
  * \name Macros for USB device those are not realized in head file
  *
@@ -98,6 +99,7 @@
 #define USB_DEVICE_EPSTATUSCLR_STALLRQ0     USB_DEVICE_EPSTATUSCLR_STALLRQ(1)
 #define USB_DEVICE_EPSTATUSCLR_STALLRQ1     USB_DEVICE_EPSTATUSCLR_STALLRQ(2)
 /** @} */
+#endif
 
 /**
  * \name USB SRAM data containing pipe descriptor table

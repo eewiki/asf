@@ -113,7 +113,7 @@ static uint8_t zid_connect_conf_rcvd = false;
 static uint8_t zid_connect_conf_status = FAILURE;
 static void run_zid_rec_connect_test(const struct test_case *test);
 static void nlme_reset_confirm(nwk_enum_t Status);
-static void zid_connect_confirm(nwk_enum_t Status,uint8_t PairingRef);
+static void zid_connect_confirm(nwk_enum_t Status, uint8_t PairingRef);
 static void nlme_start_confirm(nwk_enum_t Status);
 
 /**
@@ -153,37 +153,40 @@ static void run_nlme_reset_test(const struct test_case *test)
 	test_assert_true(test, nlme_reset_conf_status == NWK_SUCCESS,
 			"NWK Reset request failed");
 }
+
 static void run_nlme_start_test(const struct test_case *test)
 {
 	nlme_start_request(
 	#ifdef RF4CE_CALLBACK_PARAM
-	(FUNC_PTR)nlme_start_confirm
+			(FUNC_PTR)nlme_start_confirm
 	#endif
-	);
+			);
 	while (!nlme_start_conf_rcvd) {
 		nwk_task();
 	}
 	test_assert_true(test, nlme_start_conf_status == NWK_SUCCESS,
-	"NWK Start request failed");
+			"NWK Start request failed");
 }
+
 static void run_zid_rec_connect_test(const struct test_case *test)
 {
-  dev_type_t RecDevTypeList[DEVICE_TYPE_LIST_SIZE];
-  profile_id_t RecProfileIdList[PROFILE_ID_LIST_SIZE];
+	dev_type_t RecDevTypeList[DEVICE_TYPE_LIST_SIZE];
+	profile_id_t RecProfileIdList[PROFILE_ID_LIST_SIZE];
 
-  RecDevTypeList[0] = (dev_type_t)SUPPORTED_DEV_TYPE_0;
-  RecProfileIdList[0] = SUPPORTED_PROFILE_ID_0;
-  
-  zid_rec_connect_request(APP_CAPABILITIES, RecDevTypeList, RecProfileIdList
+	RecDevTypeList[0] = (dev_type_t)SUPPORTED_DEV_TYPE_0;
+	RecProfileIdList[0] = SUPPORTED_PROFILE_ID_0;
+
+	zid_rec_connect_request(APP_CAPABILITIES, RecDevTypeList, RecProfileIdList
   #ifdef RF4CE_CALLBACK_PARAM
-  , (FUNC_PTR)zid_connect_confirm
+			, (FUNC_PTR)zid_connect_confirm
   #endif
-  );
-  while (!zid_connect_conf_rcvd) {
-	  nwk_task();
-  }
-  test_assert_true(test, zid_connect_conf_status  == NWK_DISCOVERY_TIMEOUT,
-  "Push button pairing test failed");
+			);
+	while (!zid_connect_conf_rcvd) {
+		nwk_task();
+	}
+	test_assert_true(test,
+			zid_connect_conf_status  == NWK_DISCOVERY_TIMEOUT,
+			"Push button pairing test failed");
 }
 
 static void nlme_reset_confirm(nwk_enum_t Status)
@@ -191,38 +194,35 @@ static void nlme_reset_confirm(nwk_enum_t Status)
 	nlme_reset_conf_rcvd = true;
 	nlme_reset_conf_status = Status;
 }
+
 static void nlme_start_confirm(nwk_enum_t Status)
 {
 	nlme_start_conf_rcvd = true;
 	nlme_start_conf_status = Status;
 }
-static void zid_connect_confirm(nwk_enum_t Status,uint8_t PairingRef)
+
+static void zid_connect_confirm(nwk_enum_t Status, uint8_t PairingRef)
 {
 	zid_connect_conf_rcvd = true;
 	zid_connect_conf_status = Status;
 }
 
-
-
 void main_cdc_set_dtr(bool b_enable)
 {
 	if (b_enable) {
-		
 		DEFINE_TEST_CASE(nlme_reset_test, NULL, run_nlme_reset_test,
 				NULL, "NWK Reset request");
 		DEFINE_TEST_CASE(nlme_start_test, NULL, run_nlme_start_test,
-		NULL, "NWK Start request");
-		DEFINE_TEST_CASE(zid_rec_connect_test, NULL, run_zid_rec_connect_test,
-		NULL, "Push button pairing Request");
-		
-        
+				NULL, "NWK Start request");
+		DEFINE_TEST_CASE(zid_rec_connect_test, NULL,
+				run_zid_rec_connect_test,
+				NULL, "Push button pairing Request");
 
 		/* Put test case addresses in an array. */
 		DEFINE_TEST_ARRAY(nwk_tests) = {
 			&nlme_reset_test,
 			&nlme_start_test,
 			&zid_rec_connect_test
-			
 		};
 
 		/* Define the test suite. */

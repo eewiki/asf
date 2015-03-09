@@ -6,6 +6,7 @@
 		</info>
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 		<build type="header-file" subtype="api" value="stdio_serial.h"/>
 		<build type="include-path" value="."/>
 		<build type="doxygen-entry-point" value="group_common_utils_stdio_stdio_serial"/>

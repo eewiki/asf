@@ -51,10 +51,11 @@
 
 #define MCU_SOC_NAME        "ATSAMD20J18"
 
-#define AT86RFX_SPI_BAUDRATE		 4000000UL 
+#define AT86RFX_SPI_BAUDRATE             4000000UL
 #ifdef EXT_RF_FRONT_END_CTRL /*For External PA for 233FEM*/
 
 #define EXT_PA_SE2431L
+
 /*
  * Value of an external LNA gain.
  * If no external LNA is available, the value is 0.
@@ -65,6 +66,7 @@
 
 #ifdef CUSTOM_DEFAULT_TX_PWR /*For External PA for 233FEM*/
 #define MAX_PWR_DBM  0X15
+
 /*
  * Default value of transmit power of transceiver: Preset
  *    - definition according to IEEE802.15.4 PHY PIB attribute phyTransmitPower
@@ -72,6 +74,6 @@
  */
 #define TAL_TRANSMIT_POWER_DEFAULT      (TX_PWR_TOLERANCE | MAX_PWR_DBM)
 #endif
-//4MHz Baudrate will be used to reduce the no.of Invalid Frames
-//# include "conf_usb.h"
+/* 4MHz Baudrate will be used to reduce the no.of Invalid Frames */
+/* # include "conf_usb.h" */
 #endif /* CONF_BOARD_H_INCLUDED */

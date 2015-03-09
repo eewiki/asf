@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -54,7 +54,7 @@
   #define REG_UART1_THR                   (0x400E081CU) /**< \brief (UART1) Transmit Holding Register */
   #define REG_UART1_BRGR                  (0x400E0820U) /**< \brief (UART1) Baud Rate Generator Register */
   #define REG_UART1_CMPR                  (0x400E0824U) /**< \brief (UART1) Comparison Register */
-  #define REG_UART1_WPMR                  (0x400E08E4U) /**< \brief (UART1) Write Protect Mode register */
+  #define REG_UART1_WPMR                  (0x400E08E4U) /**< \brief (UART1) Write Protection Mode Register */
   #define REG_UART1_RPR                   (0x400E0900U) /**< \brief (UART1) Receive Pointer Register */
   #define REG_UART1_RCR                   (0x400E0904U) /**< \brief (UART1) Receive Counter Register */
   #define REG_UART1_TPR                   (0x400E0908U) /**< \brief (UART1) Transmit Pointer Register */
@@ -76,7 +76,7 @@
   #define REG_UART1_THR  (*(__O  uint32_t*)0x400E081CU) /**< \brief (UART1) Transmit Holding Register */
   #define REG_UART1_BRGR (*(__IO uint32_t*)0x400E0820U) /**< \brief (UART1) Baud Rate Generator Register */
   #define REG_UART1_CMPR (*(__IO uint32_t*)0x400E0824U) /**< \brief (UART1) Comparison Register */
-  #define REG_UART1_WPMR (*(__IO uint32_t*)0x400E08E4U) /**< \brief (UART1) Write Protect Mode register */
+  #define REG_UART1_WPMR (*(__IO uint32_t*)0x400E08E4U) /**< \brief (UART1) Write Protection Mode Register */
   #define REG_UART1_RPR  (*(__IO uint32_t*)0x400E0900U) /**< \brief (UART1) Receive Pointer Register */
   #define REG_UART1_RCR  (*(__IO uint32_t*)0x400E0904U) /**< \brief (UART1) Receive Counter Register */
   #define REG_UART1_TPR  (*(__IO uint32_t*)0x400E0908U) /**< \brief (UART1) Transmit Pointer Register */

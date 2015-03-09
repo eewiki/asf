@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 RTC Driver (Count Mode)
+ * \brief SAM D20/D21/R21 RTC Driver (Count Mode)
  *
  * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
@@ -45,9 +45,9 @@
 #define RTC_COUNT_H_INCLUDED
 
 /**
- * \defgroup asfdoc_sam0_rtc_count_group SAM D20/D21 RTC Count Driver (RTC COUNT)
+ * \defgroup asfdoc_sam0_rtc_count_group SAM D20/D21/R21 RTC Count Driver (RTC COUNT)
  *
- * This driver for SAM D20/D21 devices provides an interface for the configuration
+ * This driver for SAM D20/D21/R21 devices provides an interface for the configuration
  * and management of the device's Real Time Clock functionality in Count
  * operating mode, for the configuration and retrieval of the current RTC
  * counter value. The following driver API modes are covered by this
@@ -78,7 +78,7 @@
  *
  * \section asfdoc_sam0_rtc_count_module_overview Module Overview
  *
- * The RTC module in the SAM D20/D21 devices is a 32-bit counter, with a 10-bit
+ * The RTC module in the SAM D20/D21/R21 devices is a 32-bit counter, with a 10-bit
  * programmable prescaler. Typically, the RTC clock is run continuously,
  * including in the device's low-power sleep modes, to track the current time
  * and date information. The RTC can be used as a source to wake up the system
@@ -163,7 +163,7 @@
  * </table>
  *
  * \note The connection of events between modules requires the use of the
- *       \ref asfdoc_sam0_events_group "SAM D20/D21 Event System Driver (EVENTS)"
+ *       \ref asfdoc_sam0_events_group "SAM D20/D21/R21 Event System Driver (EVENTS)"
  *       to route output event of one module to the the input event of another.
  *       For more information on event routing, refer to the event driver
  *       documentation.
@@ -898,6 +898,11 @@ static inline void rtc_count_disable_events(
  *		<th>Doc. Rev.</td>
  *		<th>Date</td>
  *		<th>Comments</td>
+ *	</tr>
+ *	<tr>
+ *		<td>D</td>
+ *		<td>03/2014</td>
+ *		<td>Added support for SAMR21.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

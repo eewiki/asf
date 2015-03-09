@@ -52,7 +52,7 @@
  *
  * \section Requirements
  *
- * This package can be used with SAMD21 xplained pro.
+ * This package can be used with SAM D21/R21 xplained pro.
  *
  * \section Description
  *
@@ -76,7 +76,7 @@
  *     -- xxxxxx-xx
  *     -- Compiled: xxx xx xxxx xx:xx:xx --
  *    \endcode
- * -# Pressing and release button SW0 should make LED0 on and off 
+ * -# Pressing and release button SW0 should make LED0 on and off
  *    blinking.
  *
  */
@@ -167,13 +167,13 @@ static void configure_extint(void)
  */
 static void tc_callback_to_counter(
 		struct tc_module *const module_inst)
-{	
+{
 	static uint32_t count = 0;
 	count ++;
 	if(count%800 == 0){
 		printf("The output is triggered by TC counter\r\n");
 	}
-	
+
 	tc_set_count_value(module_inst,TC_COUNT_VALUE);
 }
 
@@ -210,7 +210,7 @@ static void configure_tc_callbacks(void)
 int main(void)
 {
 	struct port_config pin;
-	
+
 	system_init();
 
 	/*Configure UART console.*/
@@ -221,13 +221,13 @@ int main(void)
 
 	/*Configures the External Interrupt callback*/
 	configure_eic_callback();
-	
+
 	/*Configures  TC driver*/
 	configure_tc();
 
 	/*Configures TC callback*/
-	configure_tc_callbacks();	
-	
+	configure_tc_callbacks();
+
 	/*Initialize the delay driver*/
 	delay_init();
 
@@ -243,14 +243,14 @@ int main(void)
 	port_get_config_defaults(&pin);
 	pin.direction = PORT_PIN_DIR_OUTPUT;
 	port_pin_set_config(LED0_PIN, &pin);
-	
+
 	port_pin_set_output_level(LED0_PIN, LED0_INACTIVE);
-	
+
 	for (int i = 0; i < 3; i++) {
 		port_pin_toggle_output_level(LED0_PIN);
 		delay_s(1);
 	}
-	
+
 	for (int i = 0; i < 20; i++) {
 		port_pin_toggle_output_level(LED0_PIN);
 		delay_ms(100);

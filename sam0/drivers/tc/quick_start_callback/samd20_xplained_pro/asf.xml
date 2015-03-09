@@ -4,7 +4,6 @@
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_clocks.h"/>
 		<build type="header-file" value="conf_board.h"/>
-		<build type="header-file" value="conf_quick_start_callback.h"/>
 		<require idref="board.samd20_xplained_pro"/>
 		<require idref="sam0.drivers.tc.quick_start_callback"/>
 		<config name="config.sam0.drivers.tc" value="callback"/>

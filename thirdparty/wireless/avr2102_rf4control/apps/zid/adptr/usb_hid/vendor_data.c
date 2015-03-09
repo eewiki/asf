@@ -40,6 +40,7 @@
  * \asf_license_stop
  *
  */
+
 /*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
@@ -56,149 +57,144 @@
 #include "zrc.h"
 #include "vendor_data.h"
 
-
-
 /* === MACROS ============================================================== */
-
 
 /* === EXTERNALS =========================================================== */
 
 FLASH_EXTERN(uint16_t VendorIdentifier);
 #ifdef RF4CE_TARGET
-extern void vendor_data_confirm(nwk_enum_t Status, uint8_t PairingRef, profile_id_t ProfileId
-                                , uint8_t Handle
-                               );
+extern void vendor_data_confirm(nwk_enum_t Status, uint8_t PairingRef,
+		profile_id_t ProfileId,
+		uint8_t Handle
+		);
+
 #else /* RF4CE_TARGET */
 extern void nlme_rx_enable_confirm(nwk_enum_t Status);
-static void vendor_data_confirm(nwk_enum_t Status, uint8_t PairingRef, profile_id_t ProfileId
-                                , uint8_t Handle
-                               );
+static void vendor_data_confirm(nwk_enum_t Status, uint8_t PairingRef,
+		profile_id_t ProfileId,
+		uint8_t Handle
+		);
 void vendor_data_ind(uint8_t PairingRef, uint16_t VendorId,
-                     uint8_t nsduLength, uint8_t *nsdu, uint8_t RxLinkQuality,
-                     uint8_t RxFlags);
+		uint8_t nsduLength, uint8_t *nsdu, uint8_t RxLinkQuality,
+		uint8_t RxFlags);
+
 #endif /* RF4CE_TARGET */
 
 /* === IMPLEMENTATION ====================================================== */
 
 bool vendor_data_request(uint8_t PairingRef, profile_id_t ProfileId,
-                         uint16_t VendorId, uint8_t nsduLength, uint8_t *nsdu,
-                         uint8_t TxOptions)
+		uint16_t VendorId, uint8_t nsduLength, uint8_t *nsdu,
+		uint8_t TxOptions)
 {
-    /* Keep compiler happy */
-    ProfileId = ProfileId;
+	/* Keep compiler happy */
+	ProfileId = ProfileId;
 
-
-    return nlde_data_request(PairingRef, PROFILE_ID_ZRC, VendorId,
-                             nsduLength, nsdu, TxOptions
-                             , 1
-                             , (FUNC_PTR) vendor_data_confirm
-                            );
+	return nlde_data_request(PairingRef, PROFILE_ID_ZRC, VendorId,
+			nsduLength, nsdu, TxOptions,
+			1,
+			(FUNC_PTR)vendor_data_confirm
+			);
 }
-
 
 #ifndef RF4CE_TARGET
 void vendor_data_ind(uint8_t PairingRef, uint16_t VendorId,
-                     uint8_t nsduLength, uint8_t *nsdu, uint8_t RxLinkQuality,
-                     uint8_t RxFlags)
+		uint8_t nsduLength, uint8_t *nsdu, uint8_t RxLinkQuality,
+		uint8_t RxFlags)
 {
-    /* Check if vendor id matches.
-       Handle here only vendor data from same vendor */
-    uint16_t v_id = PGM_READ_WORD(&VendorIdentifier);
-    if ((VendorId == v_id) && (RxFlags & RX_FLAG_WITH_SEC))
-    {
-        switch (nsdu[0])    // vendor-specific command id
-        {
+	/* Check if vendor id matches.
+	 * Handle here only vendor data from same vendor */
+	uint16_t v_id = PGM_READ_WORD(&VendorIdentifier);
+	if ((VendorId == v_id) && (RxFlags & RX_FLAG_WITH_SEC)) {
+		switch (nsdu[0]) { /* vendor-specific command id */
+		case BATTERY_STATUS_REQ:
+		{
+			uint16_t voltage = get_batmon_voltage();
+			nsdu[0] = BATTERY_STATUS_RESP;
+			nsdu[1] = (uint8_t)voltage; /* LSB */
+			nsdu[2] = (uint8_t)(voltage >> 8); /* MSB */
+			nsduLength = 3;
+		}
+		break;
 
-            case BATTERY_STATUS_REQ:
-                {
-                    uint16_t voltage = get_batmon_voltage();
-                    nsdu[0] = BATTERY_STATUS_RESP;
-                    nsdu[1] = (uint8_t)voltage;    // LSB
-                    nsdu[2] = (uint8_t)(voltage >> 8);    // MSB
-                    nsduLength = 3;
-                }
-                break;
+		case ALIVE_REQ: /* Alive request */
+			vendor_app_alive_req();
+			/* Send alive response */
+			nsdu[0] = ALIVE_RESP;
+			nsduLength = 1;
+			break;
 
-            case ALIVE_REQ:  /* Alive request */
-                vendor_app_alive_req();
-                /* Send alive response */
-                nsdu[0] = ALIVE_RESP;
-                nsduLength = 1;
-                break;
+		case FW_VERSION_REQ:
+		{
+			/* Send alive response */
+			nsdu[0] = FW_VERSION_RESP;
+			nsdu[1] = FW_VERSION_MAJOR; /* major version number */
+			nsdu[2] = FW_VERSION_MINOR; /* minor version number */
+			nsdu[3] = FW_VERSION_REV; /* revision version number */
+			nsduLength = 4;
+		}
+		break;
 
-            case FW_VERSION_REQ:
-                {
-                    /* Send alive response */
-                    nsdu[0] = FW_VERSION_RESP;
-                    nsdu[1] = FW_VERSION_MAJOR;    // major version number
-                    nsdu[2] = FW_VERSION_MINOR;    // minor version number
-                    nsdu[3] = FW_VERSION_REV;    // revision version number
-                    nsduLength = 4;
-                }
-                break;
+		case RX_ON_REQ:
+		{
+			uint32_t duration = 0;
 
-            case RX_ON_REQ:
-                {
-                    uint32_t duration = 0;
+			memcpy(&duration, &nsdu[1], 3);
+			if (!nlme_rx_enable_request(duration,
+					(FUNC_PTR)nlme_rx_enable_confirm
+					)) {
+				/*
+				 * RX enable could not been added to the queue.
+				 * Therefore do not send response message.
+				 */
+				return;
+			}
 
-                    memcpy(&duration, &nsdu[1], 3);
-                    if (!nlme_rx_enable_request(duration
-                                                , (FUNC_PTR) nlme_rx_enable_confirm
-                                               ))
-                    {
-                        /*
-                         * RX enable could not been added to the queue.
-                         * Therefore do not send response message.
-                         */
-                        return;
-                    }
-                    /* Send response */
-                    nsdu[0] = RX_ON_RESP;
-                    nsduLength = 1;
-                }
-                break;
+			/* Send response */
+			nsdu[0] = RX_ON_RESP;
+			nsduLength = 1;
+		}
+		break;
 
+		default:
+		{
+			/* Send response */
+			nsdu[0] = FW_DATA_RESP;
+			nsdu[1] = VD_NOT_SUPPORTED_ATTRIBUTE;
+			nsduLength = 2;
+		}
+		break;
+		}
 
-            default:
-                {
-                    /* Send response */
-                    nsdu[0] = FW_DATA_RESP;
-                    nsdu[1] = VD_NOT_SUPPORTED_ATTRIBUTE;
-                    nsduLength = 2;
-                }
-                break;
-        }
+		/* Transmit response message */
 
-        /* Transmit response message */
-
-        nlde_data_request(PairingRef, PROFILE_ID_ZRC, VendorId,
-                          nsduLength, nsdu,
-                          TXO_UNICAST | TXO_DST_ADDR_NET | TXO_ACK_REQ | TXO_SEC_REQ | TXO_MULTI_CH | TXO_CH_NOT_SPEC | TXO_VEND_SPEC
-                          , 1
-                          , (FUNC_PTR) vendor_data_confirm
-                         );
-        /* Keep compiler happy */
-        RxLinkQuality = RxLinkQuality;
-        RxFlags = RxFlags;
-    }
-
+		nlde_data_request(PairingRef, PROFILE_ID_ZRC, VendorId,
+				nsduLength, nsdu,
+				TXO_UNICAST | TXO_DST_ADDR_NET | TXO_ACK_REQ | TXO_SEC_REQ | TXO_MULTI_CH | TXO_CH_NOT_SPEC | TXO_VEND_SPEC,
+				1,
+				(FUNC_PTR)vendor_data_confirm
+				);
+		/* Keep compiler happy */
+		RxLinkQuality = RxLinkQuality;
+		RxFlags = RxFlags;
+	}
 }
+
 #endif  /* #ifndef RF4CE_TARGET */
 
-
 #ifndef RF4CE_TARGET
-static void vendor_data_confirm(nwk_enum_t Status, uint8_t PairingRef, profile_id_t ProfileId
-                         , uint8_t Handle
-                        )
+static void vendor_data_confirm(nwk_enum_t Status, uint8_t PairingRef,
+		profile_id_t ProfileId,
+		uint8_t Handle
+		)
 {
-    /* Keep compiler happy */
-    Status = Status;
-    PairingRef = PairingRef;
+	/* Keep compiler happy */
+	Status = Status;
+	PairingRef = PairingRef;
 
-    Handle = Handle;
-    ProfileId = ProfileId;
-
+	Handle = Handle;
+	ProfileId = ProfileId;
 }
+
 #endif
 
 #endif  /* #ifdef VENDOR_DATA */

@@ -33,6 +33,7 @@
 		<device-support value="sam4l"/>
 		<device-support value="sam4e"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 		<require idref="common.drivers.usb.device"/>
 		<require idref="common.services.usb.protocol"/>
 		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>
@@ -70,6 +71,7 @@
 		<device-support value="sam4l"/>
 		<device-support value="sam4e"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 		<require idref="common.drivers.usb.device"/>
 		<require idref="common.services.usb.protocol"/>
 		<generator value="doxygen-module" default-mcu="unspecified-uc3a"/>

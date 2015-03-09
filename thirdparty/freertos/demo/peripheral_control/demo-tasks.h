@@ -4,7 +4,7 @@
  *
  * \brief Generic FreeRTOS peripheral control functions
  *
- * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -48,6 +48,13 @@
 #include "conf_example.h"
 
 void vRegisterCLICommands(void);
+
+#if (defined confINCLUDE_UART_CLI)
+#include "uart.h"
+void create_uart_cli_task(Uart *uart_base, uint16_t stack_depth_words,
+		unsigned portBASE_TYPE task_priority);
+void uart_cli_output(const uint8_t *message_string);
+#endif
 
 #if (defined confINCLUDE_USART_ECHO_TASKS) || (defined confINCLUDE_USART_CLI)
 #include "usart.h"

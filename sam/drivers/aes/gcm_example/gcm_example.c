@@ -7,7 +7,7 @@
  * This file defines a useful set of functions for the AES-GCM mode on SAM
  *devices.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -66,6 +66,7 @@
  * tested with the following setup:<BR>
  * - SAM4C evaluation kit.
  * - SAM4CP evaluation kit.
+ * - SAM4CMx demo board.
  *
  * \section setupinfo Setup Information
  * <BR>CPU speed: <i> 120 MHz </i>

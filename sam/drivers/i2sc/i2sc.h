@@ -329,7 +329,7 @@ Pdc *i2s_get_pdc_base(struct i2s_dev_inst *const dev_inst);
 #endif
 
 /**
- * \page sam_i2sc_quick_start Quick Start Guide for the SAMG53 I2S driver
+ * \page sam_i2sc_quick_start Quick Start Guide for the SAMG53/SAMG54 I2S driver
  *
  * This is the quickstart guide for the \ref group_sam_drivers_i2sc
  * "SAMG53 Inter-IC Sound Controller driver", with step-by-step instructions

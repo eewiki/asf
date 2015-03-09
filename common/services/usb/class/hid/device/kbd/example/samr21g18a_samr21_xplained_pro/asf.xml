@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="USB Device HID Keyboard for SAM R21 Xplained Pro" id="common.services.usb.class.hid.device.keyboard.example.samr21_xpro">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="c-source" value="ui.c"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.usb.class.device" value="hid_keyboard"/>
+		<require idref="common.services.usb.class.hid.device.keyboard.example"/>
+		<require idref="sam0.drivers.extint"/>
+		<require idref="board.samr21_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsamr21g18a"/>
+	</project>
+</asf>

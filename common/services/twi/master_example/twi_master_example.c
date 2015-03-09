@@ -4,7 +4,7 @@
  *
  * \brief Example of usage of the TWI Master Mode Basic Services.
  *
- * Copyright (c) 2009-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -164,6 +164,8 @@ int main(void)
   // Initialize the platform LED's.
 #if defined(sam4cek)
   LED_Off(LED0);
+#elif defined(sam4cmpdb) || defined(sam4cmsdb)
+  LED_Off(LED4);
 #else
   LED_Off(LED0_GPIO);
 #endif
@@ -173,7 +175,7 @@ int main(void)
  * The SAM3X_EK, SAM3X Arduino board and SAM4C_EK use two bytes length internal
  * address EEPROM.
  */
-#if defined(sam3xek) || defined(arduinoduex) || defined(sam4cek)
+#if defined(sam3xek) || defined(arduinoduex) || defined(sam4cek) || defined(sam4cmpdb) || defined(sam4cmsdb)
     .addr[0]      = EEPROM_MEM_ADDR >> 8, // TWI slave memory address data MSB
     .addr[1]      = EEPROM_MEM_ADDR,      // TWI slave memory address data LSB
     .addr_length  = sizeof (uint16_t),    // TWI slave memory address data size
@@ -192,7 +194,7 @@ int main(void)
   uint8_t data_received[PATTERN_TEST_LENGTH] = {0};
 
   twi_package_t packet_received = {
-#if defined(sam3xek) || defined(arduinoduex) || defined(sam4cek)
+#if defined(sam3xek) || defined(arduinoduex) || defined(sam4cek) || defined(sam4cmpdb) || defined(sam4cmsdb)
     .addr[0]      = EEPROM_MEM_ADDR >> 8, // TWI slave memory address data MSB
     .addr[1]      = EEPROM_MEM_ADDR,      // TWI slave memory address data LSB
     .addr_length  = sizeof (uint16_t),    // TWI slave memory address data size
@@ -220,6 +222,8 @@ int main(void)
   //test PASS
 #if SAM4C
   LED_On(LED0);
+#elif defined(sam4cmpdb) || defined(sam4cmsdb)
+  LED_On(LED4);
 #else
   LED_On(LED0_GPIO);
 #endif

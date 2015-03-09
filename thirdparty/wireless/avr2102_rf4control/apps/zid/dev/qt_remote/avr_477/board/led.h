@@ -45,6 +45,7 @@
  * \asf_license_stop
  *
  */
+
 /*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
@@ -56,14 +57,13 @@
 
 #include "gpio.h"
 
- 
 /*! \brief Turns off the specified LEDs.
  *
  * \param led_gpio LED to turn off (LEDx_GPIO).
  *
  * \note The pins of the specified LEDs are set to GPIO output mode.
  */
-#define LED_Off(led_gpio)     //ioport_set_value(led_gpio, 1)
+#define LED_Off(led_gpio)     /* ioport_set_value(led_gpio, 1) */
 
 /*! \brief Turns on the specified LEDs.
  *
@@ -71,7 +71,7 @@
  *
  * \note The pins of the specified LEDs are set to GPIO output mode.
  */
-#define LED_On(led_gpio)      //ioport_set_value(led_gpio, 0)
+#define LED_On(led_gpio)      /* ioport_set_value(led_gpio, 0) */
 
 /*! \brief Toggles the specified LEDs.
  *
@@ -79,6 +79,6 @@
  *
  * \note The pins of the specified LEDs are set to GPIO output mode.
  */
-#define LED_Toggle(led_gpio)  //ioport_toggle_pin(led_gpio)
+#define LED_Toggle(led_gpio)  /* ioport_toggle_pin(led_gpio) */
 
 #endif /* _LED_H_ */

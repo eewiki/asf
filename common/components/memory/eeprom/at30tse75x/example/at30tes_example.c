@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief AT30TSE75x Temperature Sensor Example.
+ * \brief AT30TS(E)75x Temperature Sensor Example.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,22 +42,25 @@
  */
 
 /**
- * \mainpage AT30TSE75x Temperature Sensor Example
+ * \mainpage AT30TS(E)75x Temperature Sensor Example
  *
  * \section Purpose
  *
- * The application demonstrates how to access AT30TSE75x temperature sensor.
+ * The application demonstrates how to access AT30TS(E)75x temperature sensor.
  *
  * \section Requirements
  *
- * This package can be used with SAM4N Xplained Pro with I01 Xplained Pro
- * attached on EXT1.
+ * This package can be used with:
+ * - SAM Xplained Pro with I01 Xplained Pro attached on EXT1.
+ * - SAM4C_EK
+ * - SAM4CMP-DB and SAM4CMS-DB
  *
  * \section Description
- * There are 2 stages in the example. In 1st stage, some patterns are
- * written to the specified memory address of the EEPROM in AT30TSE75x. Then
- * the memory is read and checked. In 2nd stage, the temperature sampled by
- * AT30TSE75x is read every second.
+ * There are 2 stages in the example.
+ * - In 1st stage, some patterns are written to the specified memory address of
+ * the EEPROM in AT30TSE75x. Then the memory is read and checked (note this
+ * stage is only for the device which has EEPROM).
+ * - In 2nd stage, the temperature sampled by AT30TS(E)75x is read every second.
  *
  * \section compinfo Compilation Info
  * This software was written for the GNU GCC and IAR EWARM.
@@ -74,17 +77,8 @@
 #include <stdio.h>
 #include <string.h>
 
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-extern "C" {
-#endif
-/**INDENT-ON**/
-/// @endcond
-
-
 #define STRING_EOL    "\r"
-#define STRING_HEADER "-- AT30TSE75x Temperature Sensor Example --\r\n" \
+#define STRING_HEADER "-- AT30TS(E)75x Temperature Sensor Example --\r\n" \
 		"-- "BOARD_NAME" --\r\n" \
 		"-- Compiled: "__DATE__" "__TIME__" --"STRING_EOL
 
@@ -109,7 +103,7 @@ static void configure_console(void)
 }
 
 /**
- * \brief Application entry point for AT30TSE75x Component Example.
+ * \brief Application entry point for AT30TS(E)75x Component Example.
  *
  * \return Unused (ANSI-C compatibility).
  */
@@ -131,7 +125,7 @@ int main(void)
 
 	memset(tx, 0xFF, NB_BYTE);
 
-	/* Initialize AT30TSE75x */
+	/* Initialize AT30TS(E)75x */
 	at30tse_init();
 
 #if BOARD_USING_AT30TSE != AT30TS75
@@ -173,11 +167,3 @@ int main(void)
 		delay_ms(1000);
 	}
 }
-
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-}
-#endif
-/**INDENT-ON**/
-/// @endcond

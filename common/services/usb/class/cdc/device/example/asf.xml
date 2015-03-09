@@ -91,7 +91,7 @@
 			<build type="c-source" value="uart_samd.c"/>
 			<build type="include-path" value="."/>
 			<require idref="sam0.drivers.sercom.usart"/>
-			<require idref="sam0.drivers.system"/> 
+			<require idref="sam0.drivers.system"/>
 			<require idref="common.services.basic.sleepmgr"/>
 			<require idref="common.services.usb.class.device"/>
 			<info type="keyword" value="technology">
@@ -99,6 +99,7 @@
 				<keyword value="Communication"/>
 			</info>
 			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
 	</select-by-device>

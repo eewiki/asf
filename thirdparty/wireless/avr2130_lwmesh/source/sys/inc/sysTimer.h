@@ -59,26 +59,24 @@
  * @{
  */
 
- #define SYS_TIMER_INTERVAL      10ul // ms
+ #define SYS_TIMER_INTERVAL      10ul /* ms */
  #define MS 1000
- 
+
 /*- Types ------------------------------------------------------------------*/
-typedef enum SYS_TimerMode_t
-{
-  SYS_TIMER_INTERVAL_MODE,
-  SYS_TIMER_PERIODIC_MODE,
+typedef enum SYS_TimerMode_t {
+	SYS_TIMER_INTERVAL_MODE,
+	SYS_TIMER_PERIODIC_MODE,
 } SYS_TimerMode_t;
 
-typedef struct SYS_Timer_t
-{
-  // Internal data
-  struct SYS_Timer_t   *next;
-  uint32_t             timeout;
+typedef struct SYS_Timer_t {
+	/* Internal data */
+	struct SYS_Timer_t *next;
+	uint32_t timeout;
 
-  // Timer parameters
-  uint32_t             interval;
-  SYS_TimerMode_t      mode;
-  void                 (*handler)(struct SYS_Timer_t *timer);
+	/* Timer parameters */
+	uint32_t interval;
+	SYS_TimerMode_t mode;
+	void (*handler)(struct SYS_Timer_t *timer);
 } SYS_Timer_t;
 
 /*- Prototypes -------------------------------------------------------------*/
@@ -90,4 +88,4 @@ void SYS_TimerTaskHandler(void);
 void SYS_HwExpiry_Cb(void);
 
 /** @} */
-#endif // _SYS_TIMER_H_
+#endif /* _SYS_TIMER_H_ */

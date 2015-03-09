@@ -95,7 +95,7 @@ extern "C" {
 #define PMC_PCK_1               1 /* PCK1 ID */
 #define PMC_PCK_2               2 /* PCK2 ID */
 
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CM || SAMG || SAM4CP)
 /** Flash state in Wait Mode */
 #define PMC_WAIT_MODE_FLASH_STANDBY         PMC_FSMR_FLPM_FLASH_STANDBY
 #define PMC_WAIT_MODE_FLASH_DEEP_POWERDOWN  PMC_FSMR_FLPM_FLASH_DEEP_POWERDOWN
@@ -120,13 +120,13 @@ void pmc_mck_set_source(uint32_t ul_source);
 uint32_t pmc_switch_mck_to_sclk(uint32_t ul_pres);
 uint32_t pmc_switch_mck_to_mainck(uint32_t ul_pres);
 uint32_t pmc_switch_mck_to_pllack(uint32_t ul_pres);
-#if (SAM3S || SAM4S || SAM4C || SAM4CP)
+#if (SAM3S || SAM4S || SAM4C || SAM4CM || SAM4CP)
 uint32_t pmc_switch_mck_to_pllbck(uint32_t ul_pres);
 #endif
 #if (SAM3XA || SAM3U)
 uint32_t pmc_switch_mck_to_upllck(uint32_t ul_pres);
 #endif
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CM || SAMG || SAM4CP)
 void pmc_set_flash_in_wait_mode(uint32_t ul_flash_state);
 #endif
 
@@ -177,7 +177,7 @@ void pmc_enable_pllack(uint32_t mula, uint32_t pllacount, uint32_t diva);
 void pmc_disable_pllack(void);
 uint32_t pmc_is_locked_pllack(void);
 
-#if (SAM3S || SAM4S || SAM4C || SAM4CP)
+#if (SAM3S || SAM4S || SAM4C || SAM4CM || SAM4CP)
 void pmc_enable_pllbck(uint32_t mulb, uint32_t pllbcount, uint32_t divb);
 void pmc_disable_pllbck(void);
 uint32_t pmc_is_locked_pllbck(void);
@@ -218,7 +218,7 @@ void pmc_pck_set_source(uint32_t ul_id, uint32_t ul_source);
 uint32_t pmc_switch_pck_to_sclk(uint32_t ul_id, uint32_t ul_pres);
 uint32_t pmc_switch_pck_to_mainck(uint32_t ul_id, uint32_t ul_pres);
 uint32_t pmc_switch_pck_to_pllack(uint32_t ul_id, uint32_t ul_pres);
-#if (SAM4C || SAM4CP)
+#if (SAM4C || SAM4CM || SAM4CP)
 void pmc_enable_cpck(void);
 void pmc_disable_cpck(void);
 bool pmc_is_cpck_enabled(void);
@@ -228,7 +228,7 @@ bool pmc_is_cpbmck_enabled(void);
 void pmc_cpck_set_prescaler(uint32_t ul_pres);
 void pmc_cpck_set_source(uint32_t ul_source);
 #endif
-#if (SAM3S || SAM4S || SAM4C || SAM4CP)
+#if (SAM3S || SAM4S || SAM4C || SAM4CM || SAM4CP)
 uint32_t pmc_switch_pck_to_pllbck(uint32_t ul_id, uint32_t ul_pres);
 #endif
 #if (SAM3XA || SAM3U)
@@ -287,7 +287,7 @@ uint32_t pmc_get_status(void);
 
 void pmc_set_fast_startup_input(uint32_t ul_inputs);
 void pmc_clr_fast_startup_input(uint32_t ul_inputs);
-#if (SAM4C || SAM4CP)
+#if (SAM4C || SAM4CM || SAM4CP)
 void pmc_cp_set_fast_startup_input(uint32_t ul_inputs);
 void pmc_cp_clr_fast_startup_input(uint32_t ul_inputs);
 #endif
@@ -311,7 +311,7 @@ void pmc_disable_clock_failure_detector(void);
 
 //@}
 
-#if (SAM4N || SAM4C || SAM4CP)
+#if (SAM4N || SAM4C || SAM4CM || SAM4CP)
 /**
  * \name Slow Crystal Oscillator Frequency Monitoring
  *
@@ -335,7 +335,7 @@ uint32_t pmc_get_writeprotect_status(void);
 
 //@}
 
-#if (SAMG53)
+#if (SAMG53 || SAMG54)
 /**
  * \name Sleepwalking configuration
  *

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -80,7 +80,7 @@
   #define REG_TC0_IMR2                   (0x400100ACU) /**< \brief (TC0) Interrupt Mask Register (channel = 2) */
   #define REG_TC0_BCR                    (0x400100C0U) /**< \brief (TC0) Block Control Register */
   #define REG_TC0_BMR                    (0x400100C4U) /**< \brief (TC0) Block Mode Register */
-  #define REG_TC0_WPMR                   (0x400100E4U) /**< \brief (TC0) Write Protect Mode Register */
+  #define REG_TC0_WPMR                   (0x400100E4U) /**< \brief (TC0) Write Protection Mode Register */
   #define REG_TC0_RPR2                   (0x40010180U) /**< \brief (TC0) Receive Pointer Register (pdc = 2) */
   #define REG_TC0_RCR2                   (0x40010184U) /**< \brief (TC0) Receive Counter Register (pdc = 2) */
   #define REG_TC0_RNPR2                  (0x40010190U) /**< \brief (TC0) Receive Next Pointer Register (pdc = 2) */
@@ -123,7 +123,7 @@
   #define REG_TC0_IMR2  (*(__I  uint32_t*)0x400100ACU) /**< \brief (TC0) Interrupt Mask Register (channel = 2) */
   #define REG_TC0_BCR   (*(__O  uint32_t*)0x400100C0U) /**< \brief (TC0) Block Control Register */
   #define REG_TC0_BMR   (*(__IO uint32_t*)0x400100C4U) /**< \brief (TC0) Block Mode Register */
-  #define REG_TC0_WPMR  (*(__IO uint32_t*)0x400100E4U) /**< \brief (TC0) Write Protect Mode Register */
+  #define REG_TC0_WPMR  (*(__IO uint32_t*)0x400100E4U) /**< \brief (TC0) Write Protection Mode Register */
   #define REG_TC0_RPR2  (*(__IO uint32_t*)0x40010180U) /**< \brief (TC0) Receive Pointer Register (pdc = 2) */
   #define REG_TC0_RCR2  (*(__IO uint32_t*)0x40010184U) /**< \brief (TC0) Receive Counter Register (pdc = 2) */
   #define REG_TC0_RNPR2 (*(__IO uint32_t*)0x40010190U) /**< \brief (TC0) Receive Next Pointer Register (pdc = 2) */

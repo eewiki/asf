@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.tcc.quick_start_timer" caption="Quick Start for the SAM D21 TCC Driver (Timer)">
+	<module type="application" id="sam0.drivers.tcc.quick_start_timer" caption="Quick Start for the SAM TCC Driver (Timer)">
 		<info type="description" value="summary">
 		Quick start guide for the Timer/Counter for Control Applications module demonstrating module configuration and basic use.
 		</info>
@@ -8,5 +8,6 @@
 		<build type="include-path" value="."/>
 		<require idref="sam0.drivers.tcc"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 	</module>
 </asf>

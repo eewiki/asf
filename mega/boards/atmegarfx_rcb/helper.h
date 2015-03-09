@@ -54,13 +54,38 @@
 #include "led.h"
 
 
+#ifdef ADC_ACCELEROMETER
+/* Enumerations used to identify ADC Channels */
+typedef enum adc_channel_tag
+{
+	X_AXIS,
+	Y_AXIS,
+	Z_AXIS,
+	ADC_REF
+} SHORTENUM adc_channel_t;
 
+/* Enumerations states for enabling or disabling the Accelerometer */
+typedef enum acc_status_tag
+{
+	ACC_OFF,
+	ACC_ON
+} SHORTENUM acc_status_t;
+
+#endif
 #ifdef KEY_RC_BOARD
 #define button_id_t             uint32_t
 void pulse_latch(void);
 void set_button_pins_for_normal_mode(void);
 void led_ctrl(led_id_t led_no, led_action_t led_setting);
-button_id_t pal_button_scan(void);
+#ifdef ADC_ACCELEROMETER
+void adc_init(void);
+void acc_init(void);
+void acc_disable(void);
+uint16_t adc_read(adc_channel_t channel);
+void read_acc(uint16_t *x, uint16_t *y, uint16_t *z, uint16_t *ref);
+
+#endif
+button_id_t button_scan(void);
 void update_latch_status(void);
 #else /* KEY_RC_BOARD */
 
@@ -75,8 +100,6 @@ typedef struct
     uint16_t addr;
     uint8_t val;
 } mem_test_t;
-
-
 
 
 #define NUM_CHECK 10

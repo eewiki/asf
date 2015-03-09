@@ -64,6 +64,7 @@
  * tested with the following setup:<BR>
  * - SAM4E evaluation kit.
  * - SAM4C evaluation kit.
+ * - SAM4CMP and SAM4CMS demo board
  *
  * \section setupinfo Setup Information
  * <BR>CPU speed: <i> 120 MHz </i>
@@ -83,7 +84,7 @@
 #include <asf.h>
 
 /** Define CMCC Base */
-#if SAM4C
+#if SAM4C || SAM4CM
 #define CMCC_BASE    CMCC0
 #else
 #define CMCC_BASE    CMCC

@@ -1,5 +1,6 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="ZID HID Class Device application" id="thirdparty.wireless.avr2102_rf4control.apps.zid.dev.qt_remote.atmega256rfr2_avr477">
+	<project force-caption="true" force-description="true" caption="RF4CE-ZID Qtouch Remote(Class Device) application ATMEGA256RFR2_AVR477" 
+	id="thirdparty.wireless.avr2102_rf4control.apps.zid.dev.qt_remote.atmega256rfr2_avr477">
 		<info type="description" value="summary">
 		HID Class Device application for RF4CE-ZID class-device setup
 		</info>

@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<project caption="Watchdog Timer Example on SAM4CP16BMB" id="sam.drivers.wdt.example.sam4cp16bmb">
 		<info type="description" value="summary">
-		Basic example of watchdog timer on SAM4C-EK.
+		Basic example of watchdog timer on SAM4CP16BMB.
 		</info>
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_board.h"/>

@@ -1,0 +1,27 @@
+<asf xmlversion="1.0">
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++MODULE+++++++++++++++++++++++++++++++++++++++++++++++. -->
+	<!-- **************************************************************************************************** -->
+	<module type="application" id="thirdparty.wireless.avr2130_lwmesh.apps.peer2peer" caption="LWMesh Peer2Peer Application">
+		<info type="description" value="summary">
+
+		</info>
+		<!-- +++++++++++++++++++++++++++++++++++++++++++++++BUILD+++++++++++++++++++++++++++++++++++++++++++++++. -->
+		<build type="c-source" value="Peer2Peer.c"/>
+		<build type="header-file"   value="config.h"/>
+		<require idref="thirdparty.wireless.addons.sio2host"/>
+		<build type="include-path"  value="./"/>
+		<build type="header-file" value="conf_trx_access.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_peer2peer"/>
+		<device-support-alias value="avr2130_lwmesh_support"/>
+		<!-- ++++++++++++++++++++++++++++++++++++++++++++++REQUIRE++++++++++++++++++++++++++++++++++++++++++++++. -->
+		<require idref="thirdparty.wireless.avr2130_lwmesh"/>
+		<!-- .................................................................................................... -->
+		<info type="keyword" value="technology">
+			<keyword value="Wireless"/>
+			<keyword value="Communication"/>
+		</info>
+		<!-- **************************************************************************************************** -->
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

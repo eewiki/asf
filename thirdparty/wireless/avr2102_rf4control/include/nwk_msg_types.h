@@ -52,10 +52,12 @@
 #include "rf4ce.h"
 #include "nwk_config.h"
 
-
 /* === Macros =============================================================== */
 
 /* === Types ================================================================ */
+
+/* Start pack the data  types, which is unaligned in some of ARM architecture */
+__PACK__DATA__
 
 /**
  * \addtogroup group_rf4control_ds
@@ -481,5 +483,8 @@ typedef struct nwk_ch_agility_conf_tag {
 	bool ChannelChanged ALIGN8BIT;
 	uint8_t LogicalChannel ALIGN8BIT;
 } nwk_ch_agility_conf_t;
+
+__PACK__RST_DATA__
+/* Packing  of the data types ends here */
 
 #endif /* NWK_MSG_TYPES_H */

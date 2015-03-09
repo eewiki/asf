@@ -1,7 +1,7 @@
-﻿/**
+/**
  * @file sleep_mgr.c
  *
- * @brief 
+ * @brief
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -45,13 +45,12 @@
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
- 
+
 #include "sleep_mgr.h"
 #include "sleepmgr.h"
 #include "conf_sleepmgr.h"
 #include "ast.h"
 #include "osc.h"
-
 
 uint32_t ast_alarm, ast_counter;
 
@@ -61,11 +60,11 @@ uint32_t ast_alarm, ast_counter;
 static void ast_alarm_callback(void)
 {
 	ast_disable_interrupt(AST, AST_INTERRUPT_ALARM);
-	
+
 	/* After wake up, clear the Alarm0. */
 	ast_clear_interrupt_flag(AST, AST_INTERRUPT_ALARM);
-
 }
+
 /* Configures the AST for Sleep Timers */
 static void config_ast(void)
 {
@@ -81,7 +80,7 @@ static void config_ast(void)
 	ast_enable(AST);
 
 	ast_conf.mode = AST_COUNTER_MODE;
-	ast_conf.osc_type = AST_OSC_32KHZ; //OSC Type iSs OSC32 or RC32
+	ast_conf.osc_type = AST_OSC_32KHZ; /* OSC Type iSs OSC32 or RC32 */
 	ast_conf.psel = AST_PSEL_32KHZ_1HZ;
 	ast_conf.counter = 0;
 
@@ -90,7 +89,6 @@ static void config_ast(void)
 	 * Initialize the AST.
 	 */
 	ast_set_config(AST, &ast_conf);
-	
 
 	/* First clear alarm status. */
 	ast_clear_interrupt_flag(AST, AST_INTERRUPT_ALARM);
@@ -100,29 +98,28 @@ static void config_ast(void)
 
 	/* Set callback for alarm0. */
 	ast_set_callback(AST, AST_INTERRUPT_ALARM, ast_alarm_callback,
-		AST_ALARM_IRQn, 1);
+			AST_ALARM_IRQn, 1);
 
 	/* Disable first interrupt for alarm0. */
 	ast_disable_interrupt(AST, AST_INTERRUPT_ALARM);
-
 }
 
 /**
- * \brief This function Initializes the Sleep functions 
-*/
+ * \brief This function Initializes the Sleep functions
+ */
 void sm_init(void)
 {
-	// Set the sleep mode to initially lock.
+	/* Set the sleep mode to initially lock. */
 	enum sleepmgr_mode mode = SLEEPMGR_RET;
-	
-	bpm_set_clk32_source(BPM,BPM_CLK32_SOURCE_RC32K);
-	
+
+	bpm_set_clk32_source(BPM, BPM_CLK32_SOURCE_RC32K);
+
 	config_ast();
-	
+
 	/* AST can wakeup the device */
 	bpm_enable_wakeup_source(BPM, (1 << BPM_BKUPWEN_AST));
 
-	// Initialize the sleep manager, lock initial mode.
+	/* Initialize the sleep manager, lock initial mode. */
 	sleepmgr_init();
 	sleepmgr_lock_mode(mode);
 }
@@ -132,12 +129,10 @@ void sm_init(void)
  */
 void sm_sleep(uint32_t interval)
 {
-
 	ast_counter = ast_read_counter_value(AST);
-	ast_alarm = ast_counter + interval; 
+	ast_alarm = ast_counter + interval;
 	ast_write_alarm0_value(AST, ast_alarm);
 
 	ast_enable_interrupt(AST, AST_INTERRUPT_ALARM);
 	sleepmgr_enter_sleep();
-	
 }

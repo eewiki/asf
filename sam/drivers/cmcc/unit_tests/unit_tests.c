@@ -62,6 +62,8 @@
  * This example has been tested with the following setup:
  * - sam4e16e_sam4e_ek
  * - sam4c16c_sam4c_ek
+ * - sam4cmp16c_sam4cmp_db
+ * - sam4cms16c_sam4cms_db
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers
@@ -73,7 +75,7 @@
  */
 
 /** Define CMCC Base */
-#if SAM4C
+#if SAM4C || SAM4CM
 #define CMCC_BASE    CMCC0
 #else
 #define CMCC_BASE    CMCC

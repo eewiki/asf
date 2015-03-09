@@ -3,7 +3,7 @@
  *
  * \brief SAM4L Xplained Pro board initialization
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -91,6 +91,12 @@ void board_init(void)
 	/* Push button as input: already done, it's the default pin state */
 #endif
 
+#if (defined CONF_BOARD_BL)
+	// Configure LCD backlight
+	ioport_set_pin_dir(LCD_BL_GPIO, IOPORT_DIR_OUTPUT);
+	ioport_set_pin_level(LCD_BL_GPIO, LCD_BL_INACTIVE_LEVEL);
+#endif
+
 #if defined (CONF_BOARD_COM_PORT)
 	ioport_set_pin_peripheral_mode(COM_PORT_RX_PIN, COM_PORT_RX_MUX);
 	ioport_set_pin_peripheral_mode(COM_PORT_TX_PIN, COM_PORT_TX_MUX);
@@ -131,11 +137,11 @@ void board_init(void)
 #endif
 
 #ifdef CONF_BOARD_AT86RFX
-	ioport_set_pin_peripheral_mode(AT86RFX_SPI_MISO, MUX_PA21A_SPI_MISO);
-	ioport_set_pin_peripheral_mode(AT86RFX_SPI_MOSI, MUX_PA22A_SPI_MOSI);
-	ioport_set_pin_peripheral_mode(AT86RFX_SPI_SCK, MUX_PC30B_SPI_SCK);
+	ioport_set_pin_peripheral_mode(AT86RFX_SPI_MISO, AT86RFX_SPI_MISO_FLAGS);
+	ioport_set_pin_peripheral_mode(AT86RFX_SPI_MOSI, AT86RFX_SPI_MOSI_FLAGS);
+	ioport_set_pin_peripheral_mode(AT86RFX_SPI_SCK, AT86RFX_SPI_SCK_FLAGS);
 
-	ioport_set_pin_peripheral_mode(EXT1_PIN_15, MUX_PC03A_SPI_NPCS0);
+	ioport_set_pin_peripheral_mode(AT86RFX_SPI_CS_PIN, AT86RFX_SPI_CS_FLAGS);
 
 	/* Initialize TRX_RST and SLP_TR as GPIO. */
 	ioport_set_pin_dir(AT86RFX_RST_PIN, IOPORT_DIR_OUTPUT);

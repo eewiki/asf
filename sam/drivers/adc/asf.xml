@@ -16,6 +16,7 @@
 			<device-support value="sam3"/>
 			<device-support value="sam4s"/>
 			<device-support value="sam4c"/>
+			<device-support value="sam4cm"/>
 			<device-support value="sam4cp"/>
 			<require idref="sam.utils"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam3s"/>
@@ -33,8 +34,7 @@
 			<build type="doxygen-entry-point" value="sam_drivers_adc2_group"/>
 			<build type="doxygen-quick-start" value="sam_adc2_quickstart"/>
 			<device-support value="sam4n"/>
-			<device-support value="samg51"/>
-			<device-support value="samg53"/>
+			<device-support value="samg"/>
 			<require idref="sam.utils"/>
 			<require idref="common.services.basic.sleepmgr"/>
 			<require idref="common.services.basic.clock"/>

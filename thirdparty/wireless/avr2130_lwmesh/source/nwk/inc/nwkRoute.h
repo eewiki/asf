@@ -51,7 +51,6 @@
 
 /*- Includes ---------------------------------------------------------------*/
 #include <stdint.h>
-#include "sysTypes.h"
 #include "nwkRx.h"
 #include "nwkFrame.h"
 
@@ -62,16 +61,15 @@
 #ifdef NWK_ENABLE_ROUTING
 
 /*- Types ------------------------------------------------------------------*/
-typedef struct NWK_RouteTableEntry_t
-{
-  uint8_t  fixed     : 1;
-  uint8_t  multicast : 1;
-  uint8_t  reserved  : 2;
-  uint8_t  score     : 4;
-  uint16_t dstAddr;
-  uint16_t nextHopAddr;
-  uint8_t  rank;
-  uint8_t  lqi;
+typedef struct NWK_RouteTableEntry_t {
+	uint8_t fixed     : 1;
+	uint8_t multicast : 1;
+	uint8_t reserved  : 2;
+	uint8_t score     : 4;
+	uint16_t dstAddr;
+	uint16_t nextHopAddr;
+	uint8_t rank;
+	uint8_t lqi;
 } NWK_RouteTableEntry_t;
 
 /*- Prototypes -------------------------------------------------------------*/
@@ -88,8 +86,9 @@ void nwkRouteFrameSent(NwkFrame_t *frame);
 void nwkRoutePrepareTx(NwkFrame_t *frame);
 void nwkRouteFrame(NwkFrame_t *frame);
 bool nwkRouteErrorReceived(NWK_DataInd_t *ind);
-void nwkRouteUpdateEntry(uint16_t dst, uint8_t multicast, uint16_t nextHop, uint8_t lqi);
+void nwkRouteUpdateEntry(uint16_t dst, uint8_t multicast, uint16_t nextHop,
+		uint8_t lqi);
 
-#endif // NWK_ENABLE_ROUTING
+#endif /* NWK_ENABLE_ROUTING */
 
-#endif // _NWK_ROUTE_H_
+#endif /* _NWK_ROUTE_H_ */

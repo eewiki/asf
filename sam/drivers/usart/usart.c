@@ -4,7 +4,7 @@
  * \brief Universal Synchronous Asynchronous Receiver Transmitter (USART) driver
  * for SAM.
  *
- * Copyright (c) 2011-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -1553,10 +1553,18 @@ Pdc *usart_get_pdc_base(Usart *p_usart)
 
 	p_pdc_base = (Pdc *)NULL;
 
+#ifdef PDC_USART
+	if (p_usart == USART) {
+		p_pdc_base = PDC_USART;
+		return p_pdc_base;
+	}
+#endif
+#ifdef PDC_USART0
 	if (p_usart == USART0) {
 		p_pdc_base = PDC_USART0;
 		return p_pdc_base;
 	}
+#endif
 #ifdef PDC_USART1
 	else if (p_usart == USART1) {
 		p_pdc_base = PDC_USART1;
@@ -1632,7 +1640,7 @@ uint8_t usart_get_error_number(Usart *p_usart)
 	return (p_usart->US_NER & US_NER_NB_ERRORS_Msk);
 }
 
-#if (SAM3S || SAM4S || SAM3U || SAM3XA || SAM4L || SAM4E || SAM4C || SAM4CP)
+#if (SAM3S || SAM4S || SAM3U || SAM3XA || SAM4L || SAM4E || SAM4C || SAM4CP || SAM4CM)
 
 /**
  * \brief Configure the transmitter preamble length when the Manchester

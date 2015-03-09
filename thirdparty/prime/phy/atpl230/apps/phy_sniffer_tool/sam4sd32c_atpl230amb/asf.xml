@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="PLC Phy Sniffer Example on ATPL230AMB" id="thirdparty.prime.phy.atpl230.apps.phy_sniffer_tool.atpl230amb">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>	
+		<build type="header-file" value="conf_buart_if.h"/>		
+		<build type="header-file" value="conf_busart_if.h"/>	
+		<build type="header-file" value="conf_usi.h"/>
+		<build type="header-file" value="conf_phy.h"/>		
+		<require idref="thirdparty.prime.phy.atpl230.apps.phy_sniffer_tool"/>
+		<require idref="board.atpl230amb"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>

@@ -14,6 +14,7 @@
         <device-support value="atxmega256a3bu"/>
         <device-support value="atxmega256a3u"/>
 		<device-support value="atsam4lc4c"/>
+		<device-support value="atsamr21g18a"/>
 		
     </device-alias-map>
 </asf>

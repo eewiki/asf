@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="CMCC Example for SAM4CMS-DB" id="sam.drivers.cmcc.example.sam4cms_db">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.cmcc.example"/>
+		<require idref="board.sam4cms_db" />
+		<generator value="iarewarm" />
+		<generator value="armgcc" />
+		<generator value="doxygen" />
+		<generator value="as5_arm"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.as5_arm.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.debugger_flash_loader_file" value="$TOOLKIT_DIR$\config\flashloader\Atmel\sam4cms16c\sam4cms16c-flash-cached.board"/>
+		<build type="linker-config" subtype="script" value="linker_scripts/gcc/flash.ld" toolchain="armgcc"/>
+		<build type="linker-config" subtype="script" value="linker_scripts/iar/flash.icf" toolchain="iarewarm"/>
+		<device-support value="atsam4cms16c_0"/>
+	</project>
+</asf>

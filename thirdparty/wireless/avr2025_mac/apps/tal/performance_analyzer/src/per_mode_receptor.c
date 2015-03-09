@@ -4,7 +4,7 @@
  * \brief Receptor functionalities in PER Measurement mode - Performance
  * Analyzer
  * application
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -59,10 +59,9 @@
 #include "app_frame_format.h"
 #include "app_per_mode.h"
 #include "conf_board.h"
-#if !SAMD20
+#if !(SAMD || SAMR21)
 #include "led.h"
 #endif
-
 
 /**
  * \addtogroup group_per_mode_receptor
@@ -130,23 +129,22 @@ static uint8_t marker_seq_num = 0;
  */
 void per_mode_receptor_init(void *parameter)
 {
-  
 #ifdef EXT_RF_FRONT_END_CTRL
-pib_value_t pib_value;
-#endif  
+	pib_value_t pib_value;
+#endif
 	/* PER TEST Receptor sequence number */
 	seq_num_receptor = rand();
 
 	printf("\r\n Starting PER Measurement mode as Reflector");
 
 #ifdef EXT_RF_FRONT_END_CTRL
-    /* Enable RF front end control in PER Measurement mode*/
-    pal_trx_bit_write(SR_PA_EXT_EN, PA_EXT_ENABLE);
-    /* set the TX power to default level */
+	/* Enable RF front end control in PER Measurement mode*/
+	trx_bit_write(SR_PA_EXT_EN, PA_EXT_ENABLE);
+	/* set the TX power to default level */
 	pib_value.pib_value_8bit = TAL_TRANSMIT_POWER_DEFAULT;
-    tal_pib_set(phyTransmitPower,&pib_value);
+	tal_pib_set(phyTransmitPower, &pib_value);
 #endif
-    
+
 	/* keep the compiler happy */
 	parameter = parameter;
 }
@@ -259,7 +257,7 @@ void per_mode_receptor_rx_cb(frame_info_t *mac_frame_info)
 		memcpy(&dest_addr, &mac_frame_info->mpdu[PL_POS_DST_ADDR_START],
 				SHORT_ADDR_LEN);
 		tal_pib_get(macShortAddress, (uint8_t *)&my_addr_temp);
-        
+
 		my_addr = (uint16_t)my_addr_temp;
 		/* Check the destination address of the packet is my address  */
 		if (dest_addr != (uint16_t)my_addr) {
@@ -275,10 +273,10 @@ void per_mode_receptor_rx_cb(frame_info_t *mac_frame_info)
 				 * test packet */
 				return;
 			}
+
 			frames_with_wrong_crc++;
 		}
 	}
-
 #endif /* #ifdef CRC_SETTING_ON_REMOTE_NODE */
 
 	switch ((msg->cmd_id)) {
@@ -299,7 +297,6 @@ void per_mode_receptor_rx_cb(frame_info_t *mac_frame_info)
 
 	case PER_TEST_PKT:
 	{
-
 		static uint8_t cur_seq_no, prev_seq_no;
 
 		/* if PER test frames received then increment number_rx_frames
@@ -377,7 +374,6 @@ void per_mode_receptor_rx_cb(frame_info_t *mac_frame_info)
 						"\r\nNumber of received frames with wrong CRC = %" PRIu32,
 						frames_with_wrong_crc);
 			}
-
 #endif /* #ifdef CRC_SETTING_ON_REMOTE_NODE */
 
 			number_rx_frames = 0;
@@ -638,24 +634,25 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
 	case CHANNEL: /* Parameter = channel */
 	{
 #ifdef EXT_RF_FRONT_END_CTRL
-                uint8_t chn_before_set;
-                tal_pib_get(phyCurrentChannel, &chn_before_set);
-#endif      
+		uint8_t chn_before_set;
+		tal_pib_get(phyCurrentChannel, &chn_before_set);
+#endif
 		param_val = msg->payload.set_parm_req_data.param_value;
 
 #if (TAL_TYPE == AT86RF233)
 		tal_set_frequency_regs(CC_BAND_0, CC_NUMBER_0);
 #endif
-        pib_value.pib_value_8bit = param_val;
+		pib_value.pib_value_8bit = param_val;
 		/* set the channel on receptor with the received value */
 		tal_pib_set(phyCurrentChannel, &pib_value);
 
 		printf("\r\n Channel changed to %d", param_val);
 #ifdef EXT_RF_FRONT_END_CTRL
-                /* Limit the tx power below the default power for ch26 to meet
-                   FCC Compliance */
-                limit_tx_power_in_ch26(param_val, chn_before_set);
-#endif        
+
+		/* Limit the tx power below the default power for ch26 to meet
+		 * FCC Compliance */
+		limit_tx_power_in_ch26(param_val, chn_before_set);
+#endif
 	}
 	break;
 
@@ -681,14 +678,13 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
 		printf("\r\n Frequency changed to %0.1fMHz", (double)frequency);
 	}
 	break;
-
 #endif
 	case CHANNEL_PAGE:
 	{
 		param_val = msg->payload.set_parm_req_data.param_value;
 		pib_value.pib_value_8bit = param_val;
 		retval_t status  = tal_pib_set(phyCurrentPage,
-				 &pib_value);
+				&pib_value);
 		if (status == MAC_SUCCESS) {
 			printf("\r\n Channel page changed to %d", param_val);
 		} else {
@@ -716,7 +712,7 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
 
 		tal_rpc_mode_config(DISABLE_ALL_RPC_MODES);
 #endif
-        pib_value.pib_value_8bit = temp_var;
+		pib_value.pib_value_8bit = temp_var;
 		tal_pib_set(phyTransmitPower, &pib_value);
 #if (TAL_TYPE == AT86RF233)
 		/* Restore RPC settings. */
@@ -744,7 +740,6 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
 					"\r\n Tx Power set to %d dBm (TX_PWR=0x%x) on the node",
 					(int8_t)param_val, tx_pwr_reg);
 		}
-
 #endif /* (TAL_TYPE != AT86RF233) */
 
 #else               /* In case of AT86Rf212 */
@@ -803,7 +798,6 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
 		}
 	}
 	break;
-
 #endif /* End of (TAL_TYPE != AT86RF212) */
 	default:
 		printf(" \r\nUnsupported Parameter");
@@ -820,6 +814,7 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
  */
 static void identify_timer_handler_cb(void *parameter)
 {
+#if (LED_COUNT > 0)
 	static uint8_t led_count;
 	parameter = parameter;
 	/* LED Blinking sequence is completed */
@@ -828,7 +823,7 @@ static void identify_timer_handler_cb(void *parameter)
 		app_led_event(LED_EVENT_PEER_SEARCH_DONE);
 	} else { /* Blink count is not completed  */
 		 /* For every timeout switch off and on all LEDs alternatively
-		  **/
+		 **/
 		if (led_count & 0x01) {
 			led_count++;
 			app_led_event(LED_EVENT_ALL_OFF);
@@ -844,7 +839,7 @@ static void identify_timer_handler_cb(void *parameter)
 				(FUNC_PTR)identify_timer_handler_cb,
 				NULL);
 	}
-
+#endif
 	return;
 }
 
@@ -857,6 +852,7 @@ static void identify_timer_handler_cb(void *parameter)
  */
 void marker_tx_timer_handler_cb(void *parameter)
 {
+#if (LED_COUNT > 0)
 	static uint8_t led_count;
 	parameter = parameter;
 	/* LED Blinking sequence is completed */
@@ -865,7 +861,7 @@ void marker_tx_timer_handler_cb(void *parameter)
 		app_led_event(LED_EVENT_PEER_SEARCH_DONE);
 	} else { /* Blink count is not completed  */
 		 /* For every timeout switch off and on all LEDs alternatively
-		  **/
+		 **/
 		if (led_count & 0x01) {
 			led_count++;
 			LED_Off(TX_LED);
@@ -881,7 +877,7 @@ void marker_tx_timer_handler_cb(void *parameter)
 				(FUNC_PTR)marker_tx_timer_handler_cb,
 				NULL);
 	}
-
+#endif
 	return;
 }
 
@@ -893,6 +889,7 @@ void marker_tx_timer_handler_cb(void *parameter)
  */
 void marker_rsp_timer_handler_cb(void *parameter)
 {
+#if (LED_COUNT > 0)
 	static uint8_t led_count;
 	parameter = parameter;
 	/* LED Blinking sequence is completed */
@@ -901,7 +898,7 @@ void marker_rsp_timer_handler_cb(void *parameter)
 		app_led_event(LED_EVENT_PEER_SEARCH_DONE);
 	} else { /* Blink count is not completed  */
 		 /* For every timeout switch off and on all LEDs alternatively
-		  **/
+		 **/
 		if (led_count & 0x01) {
 			led_count++;
 			LED_Off(RX_LED);
@@ -917,7 +914,7 @@ void marker_rsp_timer_handler_cb(void *parameter)
 				(FUNC_PTR)marker_rsp_timer_handler_cb,
 				NULL);
 	}
-
+#endif
 	return;
 }
 

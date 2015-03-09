@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 LED Toggle Example
+ * \brief SAM D20/D21/R21 LED Toggle Example
  *
  * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
@@ -42,7 +42,7 @@
  */
 
 /**
- * \mainpage SAM D20/D21 LED Toggle Example
+ * \mainpage SAM D20/D21/R21 LED Toggle Example
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -53,7 +53,7 @@
  */
 
 /**
- * \page appdoc_main SAM D20/D21 LED Toggle Example
+ * \page appdoc_main SAM D20/D21/R21 LED Toggle Example
  *
  * Overview:
  * - \ref appdoc_sam0_led_toggle_app_intro

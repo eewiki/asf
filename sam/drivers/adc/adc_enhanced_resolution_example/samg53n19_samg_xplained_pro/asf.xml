@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="ADC Enhanced Resolution Example on SAMG53 Xplained Pro" id="sam.drivers.adc.adc_enhanced_resolution_example.samg53n19_samg_xplained_pro">
+	<project caption="ADC Enhanced Resolution Example on SAMG53 Xplained Pro" id="sam.drivers.adc.adc_enhanced_resolution_example.samg53_xplained_pro">
 		<info type="description" value="summary">
 		Enhanced resolution example of ADC on SAMG53 Xplained Pro.
 		</info>

@@ -68,7 +68,7 @@
 #endif  /* ENABLE_RTB */
 
 /**
- * \defgroup group_mac  IEEE 802.15.4 MAC v3.1.0
+ * \defgroup group_mac  IEEE 802.15.4 MAC v3.1.1
  * The IEEE standard 802.15.4 MAC Layer defines the protocol and compatible
  * interconnection for data communication devices using low data rate, low
  * power and low complexity, short-range radio frequency (RF) transmissions in a
@@ -229,7 +229,7 @@ void mcps_data_request(uint8_t *msg);
  * @param m Pointer to message structure
  */
 
- void mcps_data_conf(uint8_t *m);
+void mcps_data_conf(uint8_t *m);
 
 /**
  * @brief Wrapper function for messages of type mcps_data_ind_t
@@ -275,7 +275,7 @@ void mcps_purge_request(uint8_t *msg);
 void mcps_purge_conf(uint8_t *m);
 
 #endif  /* ((MAC_PURGE_REQUEST_CONFIRM == 1) && (MAC_INDIRECT_DATA_BASIC == 1))
-         **/
+        **/
 
 #if (MAC_GET_SUPPORT == 1)
 
@@ -302,7 +302,6 @@ void mlme_get_request(uint8_t *m);
  */
 void mlme_get_conf(uint8_t *m);
 
-
 #endif  /* (MAC_GET_SUPPORT == 1) */
 
 /**
@@ -315,7 +314,6 @@ void mlme_get_conf(uint8_t *m);
  * @param m Pointer to the MLME_RESET.request given by the NHLE
  */
 void mlme_reset_request(uint8_t *m);
-
 
 #if ((MAC_SCAN_ED_REQUEST_CONFIRM == 1) || (MAC_SCAN_ACTIVE_REQUEST_CONFIRM == \
 	1)  || \
@@ -423,7 +421,7 @@ void mlme_reset_request(uint8_t *m);
  * The results of an orphan scan are reported to the next higher layer through
  * the MLME-SCAN.confirm primitive. If successful, the MLME-SCAN.confirm
  * primitive will contain a status of MAC_SUCCESS. If the device did not receive
- *a
+ * a
  * coordinator realignment command, MLME-SCAN.confirm primitive will contain
  * a status of NO_BEACON. In either case, the PANDescriptorList and
  * EnergyDetectList parameters of the MLMESCAN.confirm primitive are null.
@@ -437,7 +435,6 @@ void mlme_reset_request(uint8_t *m);
  */
 
 void mlme_scan_request(uint8_t *m);
-
 
 /**
  * @brief Wrapper function for messages of type mlme_scan_conf_t
@@ -461,7 +458,6 @@ void mlme_scan_conf(uint8_t *m);
  * @param m Pointer to MLME_START.request message issued by the NHLE
  */
 void mlme_start_request(uint8_t *m);
-
 
 /**
  * @brief Wrapper function for messages of type mlme_start_conf_t
@@ -490,8 +486,6 @@ void mlme_start_conf(uint8_t *m);
 
 void mlme_associate_request(uint8_t *m);
 
-
-
 /**
  * @brief Wrapper function for messages of type mlme_associate_conf_t
  *
@@ -501,7 +495,6 @@ void mlme_associate_request(uint8_t *m);
  * @param m Pointer to message structure
  */
 void mlme_associate_conf(uint8_t *m);
-
 
 #endif  /* (MAC_ASSOCIATION_REQUEST_CONFIRM == 1) */
 #if (MAC_ASSOCIATION_INDICATION_RESPONSE == 1)
@@ -543,7 +536,6 @@ void mlme_associate_ind(uint8_t *m);
  * @param m Pointer to the MLME-DISASSOCIATION.Request message passed by NHLE
  */
 void mlme_disassociate_request(uint8_t *m);
-
 
 /**
  * @brief Wrapper function for messages of type mlme_disassociate_conf_t
@@ -592,7 +584,6 @@ void mlme_orphan_response(uint8_t *m);
  * @param m Pointer to message structure
  */
 void mlme_orphan_ind(uint8_t *m);
- 
 
 #endif /* (MAC_ORPHAN_INDICATION_RESPONSE == 1) */
 #if (MAC_INDIRECT_DATA_BASIC == 1)
@@ -638,7 +629,6 @@ void mlme_poll_conf(uint8_t *m);
  */
 void mlme_rx_enable_request(uint8_t *m);
 
-
 /**
  * @brief Wrapper function for messages of type mlme_rx_enable_conf_t
  *
@@ -673,7 +663,6 @@ void mlme_rx_enable_conf(uint8_t *m);
  */
 void mlme_sync_request(uint8_t *m);
 
-
 #if (MAC_BEACON_NOTIFY_INDICATION == 1)
 
 /**
@@ -686,7 +675,6 @@ void mlme_sync_request(uint8_t *m);
  */
 
 void mlme_beacon_notify_ind(uint8_t *m);
-
 
 #endif  /* (MAC_BEACON_NOTIFY_INDICATION == 1) */
 #if ((MAC_ORPHAN_INDICATION_RESPONSE == 1) || \
@@ -702,7 +690,6 @@ void mlme_beacon_notify_ind(uint8_t *m);
  */
 void mlme_comm_status_ind(uint8_t *m);
 
-
 #endif  /* ((MAC_ORPHAN_INDICATION_RESPONSE == 1) ||
          *(MAC_ASSOCIATION_INDICATION_RESPONSE == 1)) */
 
@@ -716,7 +703,6 @@ void mlme_comm_status_ind(uint8_t *m);
  */
 void mlme_reset_conf(uint8_t *m);
 
-
 /**
  * @brief Wrapper function for messages of type mlme_sync_loss_ind_t
  *
@@ -727,11 +713,11 @@ void mlme_reset_conf(uint8_t *m);
  */
 void mlme_sync_loss_ind(uint8_t *m);
 
-
 #ifdef GTS_SUPPORT
 void mlme_gts_request(uint8_t *m);
 void mlme_gts_conf(uint8_t *m);
 void mlme_gts_ind(uint8_t *m);
+
 #endif /* GTS_SUPPORT */
 
 #if (HIGHEST_STACK_LAYER == MAC)
@@ -747,7 +733,6 @@ void mlme_gts_ind(uint8_t *m);
  */
 void mlme_set_request(uint8_t *m);
 
-
 /**
  * @brief Wrapper function for messages of type mlme_set_conf_t
  *
@@ -756,7 +741,7 @@ void mlme_set_request(uint8_t *m);
  * \ingroup group_mac_conf_int
  * @param m Pointer to message structure
  */
- 
+
 void mlme_set_conf(uint8_t *m);
 
 #endif  /* (HIGHEST_STACK_LAYER == MAC) */
@@ -784,7 +769,7 @@ void mlme_set_conf(uint8_t *m);
  * @param set_trx_to_sleep Set TRX back to sleep after this PIB access if it was
  *        before starting this TRX access. Otherwise the transceiver state will
  *        remain as it is, i.e. in case the transceiver was woken up, it will
- *stay
+ * stay
  *        awake.
  *        The default value for just changing one variable is true, i.e. the
  *        transceiver will be put back to sleep if it has been woken up.
@@ -806,15 +791,18 @@ retval_t mlme_set(uint8_t attribute, pib_value_t *attribute_value,
 #endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006)  */
 
 #if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
+
 /**
  * \ingroup group_mac_gen_int
  */
-retval_t mlme_get(uint8_t attribute, pib_value_t *attribute_value, 
+retval_t mlme_get(uint8_t attribute, pib_value_t *attribute_value,
 		uint8_t attribute_index);
+
 #else
 retval_t mlme_get(uint8_t attribute, pib_value_t *attribute_value);
 
 #endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006)  */
+
 /**
  * @brief Initializes the MAC sublayer
  *
@@ -840,7 +828,7 @@ bool mac_task(void);
  *        of the received frame
  *
  * @param frame_ptr Pointer to first octet of Addressing fields of received
- *frame
+ * frame
  *        (See IEEE 802.15.4-2006 Figure 41)
  *
  * \ingroup group_mac_gen_int

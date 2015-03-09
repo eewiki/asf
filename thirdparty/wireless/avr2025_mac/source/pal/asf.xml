@@ -7,8 +7,6 @@
 			<info type="gui-flag" value="hidden"/>
             <build type="c-source"      value="pal.c"/>
             <build type="header-file"   value="pal.h"/>
-            <build type="header-file"   value="pal_ext_trx.h"/>
-            <build type="c-source"      value="pal_ext_trx.c"/>
             <build type="doxygen-entry-point" value="group_pal"/>
 			
             <require idref="thirdparty.wireless.avr2025_mac.source.pal.common_sw_timer"/>
@@ -26,8 +24,8 @@
             <build type="header-file"   value="pal.h"/>
             <build type="doxygen-entry-point" value="group_pal"/>
             <require idref="thirdparty.wireless.avr2025_mac.source.pal.common_sw_timer"/>
+			<require idref="common.services.delay"/>
             <require idref="thirdparty.wireless.avr2025_mac.source.pal.inc"/>
-            <require idref="thirdparty.wireless.common_services.trx_access"/>
             <device-support-alias value="avr2025_mac_pal_soc_support"/>
 		</module>
 
@@ -40,8 +38,6 @@
             <build type="include-path"  value="."/>
             <build type="c-source"      value="pal.c"/>
             <build type="header-file"   subtype="api" value="pal.h"/>
-            <build type="header-file"   value="pal_ext_trx.h"/>
-            <build type="c-source"      value="pal_ext_trx.c"/>
             <build type="doxygen-entry-point" value="group_pal"/>
 
 
@@ -68,7 +64,9 @@
         <device-support value="atxmega256a3"/>
         <device-support value="uc3a3_a4"/>
         <device-support value="sam4l"/>
-		<device-support value="samd20"/>
+        <device-support value="sam4s"/>
+        <device-support value="sam4e"/>
+		<device-support value="sam0"/>
         <device-support value="atmega256rfr2"/>
         <device-support value="atmega2564rfr2"/>
         <device-support value="atmega128rfa1"/>
@@ -79,7 +77,9 @@
         <device-support value="atxmega256a3"/>
         <device-support value="uc3a3_a4"/>
 		<device-support value="sam4l"/>
-        <device-support value="samd20"/>
+		<device-support value="sam4e"/>
+		<device-support value="sam4s"/>
+        <device-support value="sam0"/>
     </device-alias-map>
     <device-alias-map name="avr2025_mac_pal_spi_common_support">
         <device-support value="atxmega256a3u"/>
@@ -87,9 +87,11 @@
         <device-support value="atxmega256a3"/>
         <device-support value="uc3a3_a4"/>
 		<device-support value="sam4l"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam4e"/>
     </device-alias-map>
 	<device-alias-map name="avr2025_mac_pal_spi_sam0_support">
-        <device-support value="samd20"/>
+        <device-support value="sam0"/>
     </device-alias-map>
     <device-alias-map name="avr2025_mac_pal_soc_support">
         <device-support value="atmega128rfa1"/>

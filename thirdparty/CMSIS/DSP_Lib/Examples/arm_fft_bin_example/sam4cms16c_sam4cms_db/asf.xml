@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="SAM4 DSP FFT bin Example on SAM4CMS-DB" id="sam.utils.cmsis.dsp_lib.examples.arm_fft_bin_example.sam4cms_db">
+		<require idref="sam.utils.cmsis.dsp_lib.examples.arm_fft_bin_example"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="board.sam4cms_db"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4cms16c_0"/>
+	</project>
+</asf>

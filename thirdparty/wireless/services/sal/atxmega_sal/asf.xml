@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="meta" id="thirdparty.wireless.common_services.sal.atxmega_sal" caption="SAL for Xmega">
+		<info type="description" value="summary">
+		The AES Engine of  XMEGA is used for performing SAL operations
+		</info>
+
+		<build type="c-source"  value="src/sal.c"/>
+		<build type="doxygen-entry-point" value="sal_group"/>
+		<build type="define" name="SAL_TYPE" value ="ATXMEGA_SAL"/>
+		<device-support value="xmega"/>
+	</module>
+</asf>

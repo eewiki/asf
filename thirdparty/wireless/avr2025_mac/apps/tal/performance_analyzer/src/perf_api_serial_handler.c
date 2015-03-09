@@ -3,7 +3,7 @@
  *
  * \brief SIO service implementation - Performance Analyzer application
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -300,7 +300,7 @@ static inline void process_incoming_sio_data(void)
 /**
  * \brief get the new buffer for next transmission through serial
  *
- ***\return unsigned integer pointer to buf
+ ****\return unsigned integer pointer to buf
  */
 static uint8_t *get_next_tx_buffer(void)
 {
@@ -375,7 +375,9 @@ static inline void handle_incoming_msg(void)
 		if (WAIT_FOR_EVENT == node_info.main_state) {
 			if (START_MODE_PER == sio_rx_buf[START_MODE_POS]) { /*
 					                                     *
+					                                     *
 					                                     *PER
+					                                     *
 					                                     *
 					                                     *mode
 					                                     **/
@@ -385,9 +387,12 @@ static inline void handle_incoming_msg(void)
 			} else if (START_MODE_SINGLE_NODE ==
 					sio_rx_buf[START_MODE_POS]) {               /*
 					                                             *
+					                                             *
 					                                             *Single
 					                                             *
+					                                             *
 					                                             *Node
+					                                             *
 					                                             *
 					                                             *tests
 					                                             **/
@@ -456,7 +461,8 @@ static inline void handle_incoming_msg(void)
 			/* Send the confirmation with status as Failure
 			 * with error code as the reason for failure
 			 */
-			param_value_temp.param_value_8bit = sio_rx_buf[PARAM_VALUE_POS];
+			param_value_temp.param_value_8bit
+				= sio_rx_buf[PARAM_VALUE_POS];
 			usr_perf_set_confirm(error_code,
 					sio_rx_buf[PARAM_TYPE_POS],
 					&param_value_temp);
@@ -469,29 +475,32 @@ static inline void handle_incoming_msg(void)
 		if ((PER_TEST_INITIATOR == node_info.main_state) ||
 				(SINGLE_NODE_TESTS == node_info.main_state)
 				) {
-			MEMCPY_ENDIAN(&param_value_temp, &sio_rx_buf[PARAM_VALUE_POS], 
-			       get_param_length(sio_rx_buf[PARAM_TYPE_POS]));
-				   			
+			MEMCPY_ENDIAN(&param_value_temp,
+					&sio_rx_buf[PARAM_VALUE_POS],
+					get_param_length(sio_rx_buf[
+						PARAM_TYPE_POS]));
+
 			perf_set_req(sio_rx_buf[PARAM_TYPE_POS],
 					&param_value_temp
-						);                /*
-				                                                   *parameter
-				                                                   *
-				                                                   *type
-				                                                   *
-				                                                   *followed
-				                                                   *
-				                                                   *by
-				                                                   *
-				                                                   *parameter
-				                                                   *
-				                                                   *value
-				                                                   **/
+					);                        /*
+				                                   * parameter
+				                                   *
+				                                   * type
+				                                   *
+				                                   * followed
+				                                   *
+				                                   * by
+				                                   *
+				                                   * parameter
+				                                   *
+				                                   * value
+				                                   **/
 		} else {
 			/* Send the confirmation with status as INVALID_CMD as
 			 * this command is not allowed in this state
 			 */
-			param_value_temp.param_value_8bit = sio_rx_buf[PARAM_VALUE_POS]; 
+			param_value_temp.param_value_8bit
+				= sio_rx_buf[PARAM_VALUE_POS];
 			usr_perf_set_confirm(INVALID_CMD,
 					sio_rx_buf[PARAM_TYPE_POS],
 					&param_value_temp);
@@ -661,6 +670,7 @@ static inline void handle_incoming_msg(void)
 				) {
 			if (START_CWT == sio_rx_buf[START_STOP_POS]) { /*
 					                                *
+					                                *
 					                                *Start_Stop
 					                                * mode,
 					                                * Start
@@ -671,30 +681,40 @@ static inline void handle_incoming_msg(void)
 					                                **/
 				start_cw_transmission(sio_rx_buf[TX_MODE_POS]); /*
 					                                         *
+					                                         *
 					                                         *tx_mode,
+					                                         *
 					                                         *
 					                                         *CW
 					                                         *=
 					                                         *
+					                                         *
 					                                         *0x00
+					                                         *
 					                                         *
 					                                         *PRBS
 					                                         *=
+					                                         *
 					                                         *
 					                                         *0x01
 					                                         **/
 			} else if (STOP_CWT == sio_rx_buf[START_STOP_POS]) {
 				stop_cw_transmission(sio_rx_buf[TX_MODE_POS]); /*
 					                                        *
+					                                        *
 					                                        *tx_mode,
+					                                        *
 					                                        *
 					                                        *CW
 					                                        *=
 					                                        *
+					                                        *
 					                                        *0x00
+					                                        *
 					                                        *
 					                                        *PRBS
 					                                        *=
+					                                        *
 					                                        *
 					                                        *0x01
 					                                        **/
@@ -950,6 +970,7 @@ static inline void handle_incoming_msg(void)
 
 			start_ed_scan(sio_rx_buf[SCAN_DURATION_POS],
 					rcvd_channel_mask);                         /*
+				                                                     *
 				                                                     *
 				                                                     *scan_duration
 				                                                     **/
@@ -1216,7 +1237,7 @@ void usr_perf_start_confirm(uint8_t status,
 	*msg_buf++ = trx_config_params->tx_power_reg;
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /* Tx Power in reg support is given
-	                                   * for RF212 and 212B transceivers */
+	                                    * for RF212 and 212B transceivers */
 #endif
 	*msg_buf++ = (uint8_t)trx_config_params->csma_enabled;
 	*msg_buf++ = (uint8_t)trx_config_params->retry_enabled;
@@ -1226,7 +1247,7 @@ void usr_perf_start_confirm(uint8_t status,
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /*Filled with 0xff to indicate this
 	                                    * parameter is not available for
-	                                    *this
+	                                    * this
 	                                    * transceiver */
 #endif
 
@@ -1235,7 +1256,7 @@ void usr_perf_start_confirm(uint8_t status,
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /*Filled with 0xff to indicate this
 	                                    * parameter is not available for
-	                                    *this
+	                                    * this
 	                                    * transceiver */
 #endif
 
@@ -1513,7 +1534,8 @@ void usr_range_test_stop_confirm(uint8_t status)
  * \param param_value   Pointer to the value of the parameter that has been set
  * \return void
  */
-void usr_perf_set_confirm(uint8_t status, uint8_t param_type,param_value_t *param_value)
+void usr_perf_set_confirm(uint8_t status, uint8_t param_type,
+		param_value_t *param_value)
 {
 	uint8_t *msg_buf;
 	uint8_t param_len;
@@ -2091,7 +2113,7 @@ void usr_set_default_config_confirm(uint8_t status,
 	*msg_buf++ = default_trx_config_params->tx_power_reg;
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /* Tx Power in reg support is given
-	                                   * for RF212 and 212B transceivers */
+	                                    * for RF212 and 212B transceivers */
 #endif
 	*msg_buf++ = (uint8_t)default_trx_config_params->csma_enabled;
 	*msg_buf++ = (uint8_t)default_trx_config_params->retry_enabled;
@@ -2101,7 +2123,7 @@ void usr_set_default_config_confirm(uint8_t status,
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /*Filled with 0xff to indicate this
 	                                    * parameter is not available for
-	                                    *this
+	                                    * this
 	                                    * transceiver */
 #endif
 
@@ -2110,7 +2132,7 @@ void usr_set_default_config_confirm(uint8_t status,
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /*Filled with 0xff to indicate this
 	                                    * parameter is not available for
-	                                    *this
+	                                    * this
 	                                    * transceiver */
 #endif
 
@@ -2285,7 +2307,7 @@ void usr_get_current_config_confirm(uint8_t status,
 	*msg_buf++ = curr_trx_conf_params->tx_power_reg;
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /* Tx Power in reg support is given
-	                                   * for RF212 and 212B transceivers */
+	                                    * for RF212 and 212B transceivers */
 #endif
 	*msg_buf++ = (uint8_t)curr_trx_conf_params->csma_enabled;
 	*msg_buf++ = (uint8_t)curr_trx_conf_params->retry_enabled;
@@ -2295,7 +2317,7 @@ void usr_get_current_config_confirm(uint8_t status,
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /*Filled with 0xff to indicate this
 	                                    * parameter is not available for
-	                                    *this
+	                                    * this
 	                                    * transceiver */
 #endif
 
@@ -2304,7 +2326,7 @@ void usr_get_current_config_confirm(uint8_t status,
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /*Filled with 0xff to indicate this
 	                                    * parameter is not available for
-	                                    *this
+	                                    * this
 	                                    * transceiver */
 #endif
 

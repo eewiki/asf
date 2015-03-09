@@ -1,0 +1,45 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.utils.cmsis.samr21.include.instance" caption="SAMR21 instance definitions">
+		<info type="description" value="summary">
+		SAMR21 PIO instance definitions.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="instance_ac.h"/>
+		<build type="header-file" value="instance_adc.h"/>
+		<build type="header-file" value="instance_dac.h"/>
+		<build type="header-file" value="instance_dmac.h"/>
+		<build type="header-file" value="instance_dsu.h"/>
+		<build type="header-file" value="instance_eic.h"/>
+		<build type="header-file" value="instance_evsys.h"/>
+		<build type="header-file" value="instance_gclk.h"/>
+		<build type="header-file" value="instance_i2s.h"/>
+		<build type="header-file" value="instance_mtb.h"/>
+		<build type="header-file" value="instance_nvmctrl.h"/>
+		<build type="header-file" value="instance_pac0.h"/>
+		<build type="header-file" value="instance_pac1.h"/>
+		<build type="header-file" value="instance_pac2.h"/>
+		<build type="header-file" value="instance_pm.h"/>
+		<build type="header-file" value="instance_port.h"/>
+		<build type="header-file" value="instance_rfctrl.h"/>
+		<build type="header-file" value="instance_rtc.h"/>
+		<build type="header-file" value="instance_sercom0.h"/>
+		<build type="header-file" value="instance_sercom1.h"/>
+		<build type="header-file" value="instance_sercom2.h"/>
+		<build type="header-file" value="instance_sercom3.h"/>
+		<build type="header-file" value="instance_sercom4.h"/>
+		<build type="header-file" value="instance_sercom5.h"/>
+		<build type="header-file" value="instance_sysctrl.h"/>
+		<build type="header-file" value="instance_tc3.h"/>
+		<build type="header-file" value="instance_tc4.h"/>
+		<build type="header-file" value="instance_tc5.h"/>
+		<build type="header-file" value="instance_tc6.h"/>
+		<build type="header-file" value="instance_tc7.h"/>
+		<build type="header-file" value="instance_tcc0.h"/>
+		<build type="header-file" value="instance_tcc1.h"/>
+		<build type="header-file" value="instance_tcc2.h"/>
+		<build type="header-file" value="instance_usb.h"/>
+		<build type="header-file" value="instance_wdt.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samr21"/>
+	</module>
+</asf>

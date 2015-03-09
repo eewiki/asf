@@ -38,8 +38,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * \asf_license_stop
- */ 
- /*
+ */
+
+/*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
@@ -62,13 +63,13 @@
 
 /* === Macros =============================================================== */
 
-
 /* === Types ================================================================ */
 
 /** Defines the number of timers used by the application. */
 #define NUMBER_OF_APP_TIMERS        (1)
 
-/** Defines the total number of timers used by the application and the layers below. */
+/** Defines the total number of timers used by the application and the layers
+ *below. */
 #define TOTAL_NUMBER_OF_TIMERS      (NUMBER_OF_APP_TIMERS + TOTAL_STACK_TIMERS)
 
 /** Defines the number of additional large buffers used by the application */
@@ -76,26 +77,31 @@
 
 /** Defines the number of additional small buffers used by the application */
 #define NUMBER_OF_SMALL_APP_BUFS    (0)
+
 /**
  *  Defines the total number of large buffers used by the application and the
  *  layers below.
  */
-#define TOTAL_NUMBER_OF_LARGE_BUFS  (NUMBER_OF_LARGE_APP_BUFS + NUMBER_OF_LARGE_STACK_BUFS)
+#define TOTAL_NUMBER_OF_LARGE_BUFS  (NUMBER_OF_LARGE_APP_BUFS +	\
+	NUMBER_OF_LARGE_STACK_BUFS)
 
 /**
  *  Defines the total number of small buffers used by the application and the
  *  layers below.
  */
-#define TOTAL_NUMBER_OF_SMALL_BUFS  (NUMBER_OF_SMALL_APP_BUFS + NUMBER_OF_SMALL_STACK_BUFS)
+#define TOTAL_NUMBER_OF_SMALL_BUFS  (NUMBER_OF_SMALL_APP_BUFS +	\
+	NUMBER_OF_SMALL_STACK_BUFS)
 
-#define TOTAL_NUMBER_OF_BUFS        (TOTAL_NUMBER_OF_LARGE_BUFS + TOTAL_NUMBER_OF_SMALL_BUFS)
-
+#define TOTAL_NUMBER_OF_BUFS        (TOTAL_NUMBER_OF_LARGE_BUFS + \
+	TOTAL_NUMBER_OF_SMALL_BUFS)
 
 /* Offset of IEEE address storage location within EEPROM */
 #define EE_IEEE_ADDR                (0)
 
 /* Configure RF4CE node capabilities */
-/* The capabilities of this node. Implementation specific according to the format
+
+/* The capabilities of this node. Implementation specific according to the
+ * format
  * illustrated in Figure 26.
  * Implementation specific
  * NodeTypeTarget
@@ -122,9 +128,12 @@
 #define SUPPORTED_PROFILE_ID_5      PROFILE_ID_ZID
 #define SUPPORTED_PROFILE_ID_6      PROFILE_ID_ZID
 #if (USER_STRING_AVAILABLE == true)
-#define APP_CAPABILITIES                (0x01 | (NUM_SUPPORTED_DEV_TYPES << 1) | (NUM_SUPPORTED_PROFILES << 4))
+#define APP_CAPABILITIES                (0x01 |	\
+	(NUM_SUPPORTED_DEV_TYPES << \
+	1) | (NUM_SUPPORTED_PROFILES << 4))
 #else
-#define APP_CAPABILITIES                ((NUM_SUPPORTED_DEV_TYPES << 1) | (NUM_SUPPORTED_PROFILES << 4))
+#define APP_CAPABILITIES                ((NUM_SUPPORTED_DEV_TYPES << \
+	1) | (NUM_SUPPORTED_PROFILES << 4))
 #endif
 
 /* Implementation specific ZID constant defines */
@@ -135,7 +144,6 @@
 #define APL_HID_NUM_DESCRIPTORS             HID_NUM_DESCRIPTORS
 
 /* === Externals ============================================================ */
-
 
 /* === Prototypes =========================================================== */
 

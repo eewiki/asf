@@ -5,7 +5,7 @@
  * @brief Wrapper code for MAC callback functions.
  *
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -68,7 +68,6 @@
 #include "mac_internal.h"
 #include "mac.h"
 #include "mac_build_config.h"
-
 
 /* === Macros ============================================================== */
 
@@ -184,7 +183,7 @@ void mcps_purge_conf(uint8_t *m)
 }
 
 #endif /* ((MAC_PURGE_REQUEST_CONFIRM == 1) && (MAC_INDIRECT_DATA_BASIC == 1))
-        **/
+       **/
 
 #if (MAC_ASSOCIATION_REQUEST_CONFIRM == 1)
 
@@ -226,15 +225,15 @@ void mlme_associate_ind(uint8_t *m)
 	/* Get the buffer body from buffer header */
 	pmsg = (mlme_associate_ind_t *)BMM_BUFFER_POINTER((buffer_t *)m);
 
-#if (defined __SAMD20J18__) || (defined __SAM4LC4C__)	
-    uint64_t device_addr_temp = 0;
-    memcpy((uint8_t *)&device_addr_temp, (uint8_t *)&pmsg->DeviceAddress, sizeof(device_addr_temp));
+#if  SAMD || SAMR21 || SAM4L || SAM4S || SAM4E
+	uint64_t device_addr_temp = 0;
+	memcpy((uint8_t *)&device_addr_temp, (uint8_t *)&pmsg->DeviceAddress,
+			sizeof(device_addr_temp));
 	usr_mlme_associate_ind(device_addr_temp, pmsg->CapabilityInformation);
-#else			
+#else
 	usr_mlme_associate_ind(pmsg->DeviceAddress,
-			            pmsg->CapabilityInformation);			
-#endif			
-			
+			pmsg->CapabilityInformation);
+#endif
 
 	/* Free the buffer */
 	bmm_buffer_free((buffer_t *)m);
@@ -622,5 +621,6 @@ void mlme_gts_ind(uint8_t *m)
 	/* Free the buffer */
 	bmm_buffer_free((buffer_t *)m);
 }
+
 #endif /* GTS_SUPPORT */
 /* EOF */

@@ -55,9 +55,6 @@
 
 #ifdef SENSOR_TERMINAL_BOARD
 
-
-
-
 /*
  * USB transmit buffer size
  */
@@ -68,19 +65,19 @@
  */
 #define USB_RX_BUF_SIZE             (100)
 
-
 /* Max bytes transmitted over USB at one instance;
  * Used for FTDI only; FTDI's tx buffer size is 384 bytes,
  * but an uint8_t variable is used. Therefore, the value is reduced to 255.
  */
 #define MAX_BYTES_FOR_USB_TX    (255)
+
 /* === PROTOTYPES ============================================================
- **/
+**/
 
 /**
  * \brief Initializes the Serial IO Module of the Host Device
  * \return STATUS_OK for successful initialization and FAILURE incase the IO is
- *not initialized
+ * not initialized
  */
 void sio2host_init(void);
 
@@ -104,12 +101,10 @@ uint8_t sio2host_tx(uint8_t *data, uint8_t length);
  */
 uint8_t sio2host_rx(uint8_t *data, uint8_t max_length);
 
-
-
 /**
  * \brief This function performs a non-blocking character receive functionality
  * \return '-1' if no data is recieved or returns the data if a character is
- *received
+ * received
  */
 
 int sio2host_getchar_nowait(void);
@@ -120,14 +115,14 @@ int sio2host_getchar_nowait(void);
  */
 uint8_t sio2host_getchar(void);
 
-    /**
-     * \brief Services data transmission or reception on USB
-     *
-     * This function polls for usb for completion of reception or transmission of
-     * a byte on USB.
-     */
-    void usb_handler(void);
-    
-#endif //#ifdef SENSOR_TERMINAL_BOARD    
+/**
+ * \brief Services data transmission or reception on USB
+ *
+ * This function polls for usb for completion of reception or transmission of
+ * a byte on USB.
+ */
+void usb_handler(void);
+
+#endif /* #ifdef SENSOR_TERMINAL_BOARD */
 /* ! @} */
 #endif /* SIO2HOST_H */

@@ -3,7 +3,7 @@
  *
  * \brief PMC Clock Switching example for SAM.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -105,14 +105,6 @@
 
 /** User push button activated flag */
 static volatile uint8_t gs_uc_wait_button = 0;
-
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-extern "C" {
-#endif
-/**INDENT-ON**/
-/// @endcond
 
 /** PMC External Xtal 12Mhz */
 #define PMC_CLOCK_SWITCHING_EXAMPLE_BAUDRATE (2400)
@@ -247,7 +239,7 @@ static void config_uart_and_pck(uint32_t ul_clock_source,
 		pmc_switch_pck_to_pllack(GCLK_ID, ul_prescaler);
 		break;
 
-#if (SAM3S || SAM4S || SAM4C) 
+#if (SAM3S || SAM4S || SAM4C)
 	case PMC_PCK_CSS_PLLB_CLK:
 		pmc_switch_pck_to_pllbck(GCLK_ID, ul_prescaler);
 		break;
@@ -259,26 +251,6 @@ static void config_uart_and_pck(uint32_t ul_clock_source,
 
 	/* Enable the PCK again */
 	pmc_enable_pck(GCLK_ID);
-}
-
-/**
- * \brief Delay for a few ticks. Wait for the given number of milliseconds.
- *
- * \note The system tick is not used here because the system tick interrupt might
- * introduce instability to the system during clock switching.
- *
- * \param ul_dly_ticks  Delay to wait for, in milliseconds.
- */
-static void delay_ticks(uint32_t ul_dly_ticks)
-{
-	/* SAM3U has a faster speed, needs more time to make the clock stable */
-#if SAM3U
-	ul_dly_ticks *= 2;
-#endif
-
-	/* the systick is not used for it is an output of the mck */
-	while (ul_dly_ticks--) {
-	}
 }
 
 /**
@@ -306,15 +278,19 @@ int main(void)
 	configure_buttons();
 
 	puts("-I- Press Button "BUTTON_NAME" to continue.\r\n");
-	delay_ticks(5000);
+	/* Wait for UART transmit done */
+	while (!uart_is_tx_empty(CONF_UART)) {
+	};
 	for (gs_uc_wait_button = 1; gs_uc_wait_button;) {
 	}
 
 	puts("\n\r-I- Switch 8Mhz fast RC oscillator to be the source of the main clock \n\r"
 			"-I- The master clock is main clock divided by 2\n\r"
-			"-I- From now on, the UART baud rate is 2400bps. So please change the terminial setting before the next clock switch\r\n"
+			"-I- From now on, the UART baud rate is 2400bps. So please change the terminal setting before the next clock switch\r\n"
 			"-I- Press Button "BUTTON_NAME" to switch next clock configuration... \r\n");
-	delay_ticks(20000);
+	/* Wait for UART transmit done */
+	while (!uart_is_tx_empty(CONF_UART)) {
+	};
 
 	/* First switch to slow clock */
 	pmc_switch_mck_to_sclk(PMC_MCKR_PRES_CLK_1);
@@ -340,7 +316,9 @@ int main(void)
 	puts("\n\r-I- Switch the XTAL 32K crystal oscillator to be the source of the slow clock\n\r"
 			"-I- The master clock is slow clock\n\r"
 			"-I- Press Button "BUTTON_NAME" to switch next clock configuration after it has been measured.\r\n");
-	delay_ticks(8000);
+	/* Wait for UART transmit done */
+	while (!uart_is_tx_empty(CONF_UART)) {
+	};
 
 	/* Enable the External 32K oscillator */
 	pmc_switch_sclk_to_32kxtal(PMC_OSC_XTAL);
@@ -382,7 +360,9 @@ int main(void)
 	puts("-I- Switch to 8.192Mhz PLLA clock as the source of the master clock \n\r"
 			"-I- The master clock is PLLA clock divided by 2 \n\r"
 			"-I- Press Button "BUTTON_NAME" to switch next clock configuration... \r\n");
-	delay_ticks(8000);
+	/* Wait for UART transmit done */
+	while (!uart_is_tx_empty(CONF_UART)) {
+	};
 
 	/* Enable the PLLA clock, the mainck equals 32.768K * 250 = 8.192Mhz */
 	pmc_enable_pllack((250 - 1), 0x3f, 1);
@@ -390,7 +370,9 @@ int main(void)
 	puts("-I- Switch to 128Mhz PLLA clock as the source of the master clock \n\r"
 			"-I- The master clock is PLLA clock divided by 2 \n\r"
 			"-I- Press Button "BUTTON_NAME" to switch next clock configuration... \r\n");
-	delay_ticks(8000);
+	/* Wait for UART transmit done */
+	while (!uart_is_tx_empty(CONF_UART)) {
+	};
 
 	/* Enable the PLLA clock, the mainck equals 12Mhz * (32-1+1) / 3 = 128Mhz */
 	pmc_enable_pllack((32 - 1), 0x3f, 3);
@@ -401,7 +383,9 @@ int main(void)
 	pmc_switch_mck_to_mainck(PMC_MCKR_PRES_CLK_2);
 
 	/* Delay for a while */
-	delay_ticks(10000);
+	/* Wait for UART transmit done */
+	while (!uart_is_tx_empty(CONF_UART)) {
+	};
 
 	/* Then program the CSS field. */
 	pmc_switch_mck_to_pllack(PMC_MCKR_PRES_CLK_2);
@@ -418,13 +402,17 @@ int main(void)
 	puts("\n\r-I- Switch the XTAL 32K crystal oscillator to be the source of the slow clock\n\r"
 			"-I- The master clock is slow clock\n\r"
 			"-I- Press Button "BUTTON_NAME" to switch next clock configuration...\r\n");
-	delay_ticks(5000);
+	/* Wait for UART transmit done */
+	while (!uart_is_tx_empty(CONF_UART)) {
+	};
 
 	/* Switch slow clck to extern 32k xtal */
 	pmc_switch_sclk_to_32kxtal(PMC_OSC_XTAL);
 
 	/* Delay for a while to make sure the clock is stable */
-	delay_ticks(10000);
+	/* Wait for UART transmit done */
+	while (!uart_is_tx_empty(CONF_UART)) {
+	};
 
 	/* If a new value for CSS field corresponds to Main Clock or Slow Clock,
 	 * program the CSS field first.
@@ -475,8 +463,10 @@ int main(void)
 	}
 
 	puts("-I- Switch to 96Mhz PLLB clock as the source of the master clock\n\r"
-			"-I- The master clock is PLLB clock divided by 2 \r\n");
-	delay_ticks(5000);
+			"-I- The master clock is PLLB clock divided by 2 \r");
+	/* Wait for UART transmit done */
+	while (!uart_is_tx_empty(CONF_UART)) {
+	};
 
 #if SAM4C
 	/* Enable the PLLB clock, the mainck equals (8Mhz * (11+1) / 1) = 96Mhz
@@ -501,7 +491,7 @@ int main(void)
 	/* The clock source for the UART is the PCK, so the uart needs
 	 * re-configuration.
 	 */
-#if SAM4C	 
+#if SAM4C
 	config_uart_and_pck(PMC_PCK_CSS_PLLB_CLK, PMC_PCK_PRES_CLK_2,
 			(BOARD_FREQ_MAINCK_XTAL * 12 / 2));
 #else
@@ -513,47 +503,12 @@ int main(void)
 
 	for (gs_uc_wait_button = 1; gs_uc_wait_button;) {
 	}
-
-	puts("-I- Switch 8Mhz fast RC oscillator to be the source of the main clock\n\r"
-			"-I- The master clock is main clock \r\n");
-	delay_ticks(1000);
-
-	/* Switch the mainck clock to the Fast RC, parameter '1' stands for 8Mhz */
-	pmc_switch_mainck_to_fastrc(CKGR_MOR_MOSCRCF_8_MHz);
-
-	/* If a new value for CSS field corresponds to Main Clock or Slow Clock,
-	 * program the CSS field first.
-	 */
-	pmc_switch_mck_to_mainck(PMC_MCKR_PRES_CLK_2);
-	/* Delay for a while */
-	delay_ticks(1000);
-	/* Then program the PRES field. */
-	pmc_switch_mck_to_mainck(PMC_MCKR_PRES_CLK_1);
-
-	/* Delay for a while */
-	delay_ticks(1000);
-
-	/* The clock source for the UART is the PCK, so the uart needs
-	 * re-configuration.
-	 */
-	config_uart_and_pck(PMC_PCK_CSS_MAIN_CLK, PMC_PCK_PRES_CLK_1,
-			CHIP_FREQ_MAINCK_RC_8MHZ);
-	for (gs_uc_wait_button = 1; gs_uc_wait_button;) {
-	}
-
-	puts("\r\n\n\r-I- Done.\r");
-
-    /* Delay for a while */
-	delay_ticks(1000);
+	puts("\r\n\r\n-I- Done.\r\n");
+	/* Wait for UART transmit done */
+	while (!uart_is_tx_empty(CONF_UART)) {
+	};
 
 	while (1) {
 	}
 }
 
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-}
-#endif
-/**INDENT-ON**/
-/// @endcond

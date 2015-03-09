@@ -68,6 +68,6 @@ void nwkSecurityInit(void);
 void nwkSecurityProcess(NwkFrame_t *frame, bool encrypt);
 void nwkSecurityTaskHandler(void);
 
-#endif // NWK_ENABLE_SECURITY
+#endif /* NWK_ENABLE_SECURITY */
 
-#endif // _NWK_SECURITY_H_
+#endif /* _NWK_SECURITY_H_ */

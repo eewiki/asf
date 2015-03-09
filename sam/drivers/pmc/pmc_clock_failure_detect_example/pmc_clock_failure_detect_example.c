@@ -3,7 +3,7 @@
  *
  * \brief PMC Clock Failure Detection Example
  *
- * Copyright (c) 2012 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -89,6 +89,8 @@ void PMC_Handler(void)
 		/* A clock failure has been detected. */
 #if (SAM4E || SAM4N || SAM4C)
 		LED_On(LED0);
+#elif (SAM4CM)
+		LED_On(LED4);
 #else
 		LED_On(EXAMPLE_LED);
 #endif
@@ -136,6 +138,8 @@ int main(void)
 	/* Turn off the LED. */
 #if (SAM4E || SAM4N || SAM4C)
 		LED_Off(LED0);
+#elif (SAM4CM)
+		LED_Off(LED4);
 #else
 		LED_Off(EXAMPLE_LED);
 #endif

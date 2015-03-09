@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -62,7 +62,7 @@ typedef struct {
   __IO uint32_t UART_BRGR;     /**< \brief (Uart Offset: 0x0020) Baud Rate Generator Register */
   __IO uint32_t UART_CMPR;     /**< \brief (Uart Offset: 0x0024) Comparison Register */
   __I  uint32_t Reserved1[47];
-  __IO uint32_t UART_WPMR;     /**< \brief (Uart Offset: 0x00E4) Write Protect Mode register */
+  __IO uint32_t UART_WPMR;     /**< \brief (Uart Offset: 0x00E4) Write Protection Mode Register */
   __I  uint32_t Reserved2[6];
   __IO uint32_t UART_RPR;      /**< \brief (Uart Offset: 0x100) Receive Pointer Register */
   __IO uint32_t UART_RCR;      /**< \brief (Uart Offset: 0x104) Receive Counter Register */
@@ -86,19 +86,22 @@ typedef struct {
 #define UART_CR_RSTSTA (0x1u << 8) /**< \brief (UART_CR) Reset Status Bits */
 #define UART_CR_REQCLR (0x1u << 12) /**< \brief (UART_CR) Request Clear */
 /* -------- UART_MR : (UART Offset: 0x0004) Mode Register -------- */
+#define UART_MR_FILTER (0x1u << 4) /**< \brief (UART_MR) Receiver Digital Filter */
+#define   UART_MR_FILTER_DISABLED (0x0u << 4) /**< \brief (UART_MR) UART does not filter the receive line. */
+#define   UART_MR_FILTER_ENABLED (0x1u << 4) /**< \brief (UART_MR) UART filters the receive line using a three-sample filter (16x-bit clock) (2 over 3 majority). */
 #define UART_MR_PAR_Pos 9
 #define UART_MR_PAR_Msk (0x7u << UART_MR_PAR_Pos) /**< \brief (UART_MR) Parity Type */
 #define   UART_MR_PAR_EVEN (0x0u << 9) /**< \brief (UART_MR) Even Parity */
 #define   UART_MR_PAR_ODD (0x1u << 9) /**< \brief (UART_MR) Odd Parity */
 #define   UART_MR_PAR_SPACE (0x2u << 9) /**< \brief (UART_MR) Space: parity forced to 0 */
 #define   UART_MR_PAR_MARK (0x3u << 9) /**< \brief (UART_MR) Mark: parity forced to 1 */
-#define   UART_MR_PAR_NO (0x4u << 9) /**< \brief (UART_MR) No Parity */
+#define   UART_MR_PAR_NO (0x4u << 9) /**< \brief (UART_MR) No parity */
 #define UART_MR_CHMODE_Pos 14
 #define UART_MR_CHMODE_Msk (0x3u << UART_MR_CHMODE_Pos) /**< \brief (UART_MR) Channel Mode */
-#define   UART_MR_CHMODE_NORMAL (0x0u << 14) /**< \brief (UART_MR) Normal Mode */
-#define   UART_MR_CHMODE_AUTOMATIC (0x1u << 14) /**< \brief (UART_MR) Automatic Echo */
-#define   UART_MR_CHMODE_LOCAL_LOOPBACK (0x2u << 14) /**< \brief (UART_MR) Local Loopback */
-#define   UART_MR_CHMODE_REMOTE_LOOPBACK (0x3u << 14) /**< \brief (UART_MR) Remote Loopback */
+#define   UART_MR_CHMODE_NORMAL (0x0u << 14) /**< \brief (UART_MR) Normal mode */
+#define   UART_MR_CHMODE_AUTOMATIC (0x1u << 14) /**< \brief (UART_MR) Automatic echo */
+#define   UART_MR_CHMODE_LOCAL_LOOPBACK (0x2u << 14) /**< \brief (UART_MR) Local loopback */
+#define   UART_MR_CHMODE_REMOTE_LOOPBACK (0x3u << 14) /**< \brief (UART_MR) Remote loopback */
 /* -------- UART_IER : (UART Offset: 0x0008) Interrupt Enable Register -------- */
 #define UART_IER_RXRDY (0x1u << 0) /**< \brief (UART_IER) Enable RXRDY Interrupt */
 #define UART_IER_TXRDY (0x1u << 1) /**< \brief (UART_IER) Enable TXRDY Interrupt */
@@ -169,10 +172,10 @@ typedef struct {
 #define UART_CMPR_VAL2_Pos 16
 #define UART_CMPR_VAL2_Msk (0xffu << UART_CMPR_VAL2_Pos) /**< \brief (UART_CMPR) Second Comparison Value for Received Character */
 #define UART_CMPR_VAL2(value) ((UART_CMPR_VAL2_Msk & ((value) << UART_CMPR_VAL2_Pos)))
-/* -------- UART_WPMR : (UART Offset: 0x00E4) Write Protect Mode register -------- */
-#define UART_WPMR_WPEN (0x1u << 0) /**< \brief (UART_WPMR) Write Protect Enable */
+/* -------- UART_WPMR : (UART Offset: 0x00E4) Write Protection Mode Register -------- */
+#define UART_WPMR_WPEN (0x1u << 0) /**< \brief (UART_WPMR) Write Protection Enable */
 #define UART_WPMR_WPKEY_Pos 8
-#define UART_WPMR_WPKEY_Msk (0xffffffu << UART_WPMR_WPKEY_Pos) /**< \brief (UART_WPMR) Write Protect Key */
+#define UART_WPMR_WPKEY_Msk (0xffffffu << UART_WPMR_WPKEY_Pos) /**< \brief (UART_WPMR) Write Protection Key */
 #define   UART_WPMR_WPKEY_PASSWD (0x554152u << 8) /**< \brief (UART_WPMR) Writing any other value in this field aborts the write operation.Always reads as 0. */
 /* -------- UART_RPR : (UART Offset: 0x100) Receive Pointer Register -------- */
 #define UART_RPR_RXPTR_Pos 0

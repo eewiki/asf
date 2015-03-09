@@ -1,0 +1,32 @@
+<asf xmlversion="1.0">
+	<project caption="FatFS unit tests for SAMR21 Xplained Pro" id="common.services.fs.fatfs.unit_tests.samr21_xplained_pro" type="unit-test">
+		<info type="description" value="summary">
+		Unit tests for FatFS, it will make the FAT file system, create a file, write some data and read the data from the file.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+		<build type="header-file" value="conf_sd_mmc.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="header-file" value="conf_test.h"/>
+		<require idref="common.services.fs.fatfs.unit_tests"/>
+		<require idref="common2.components.memory.sd_mmc.ctrl_access"/>
+		<require idref="board.samr21_xplained_pro"/>
+		<config name="config.common2.components.memory.sd_mmc" value="spi"/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<config name="config.common2.services.delay" value="cycle"/>
+		<config name="config.sam0.drivers.rtc" value="calendar_polled"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.iarewarm.dlib" value="full"/>
+		<toolchain-config name="armgcc.linker.miscellaneous.LinkerFlags" value="-Wl,--defsym,__stack_size__=0x2000" toolchain="armgcc"/>
+		<config name="config.compiler.armgcc.stack_size" value="0x2000"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.create_aux" value="no"/>
+		<device-support value="atsamr21g18a"/>
+	</project>
+</asf>

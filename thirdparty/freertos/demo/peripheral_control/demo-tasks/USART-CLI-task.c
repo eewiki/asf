@@ -4,7 +4,7 @@
  *
  * \brief FreeRTOS+CLI task implementation example
  *
- * Copyright (c) 2012-2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2012-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -56,7 +56,7 @@
 #include "FreeRTOS_CLI.h"
 
 /* Atmel library includes. */
-#include <freertos_uart_serial.h>
+#include <freertos_usart_serial.h>
 
 /* Demo includes. */
 #include "demo-tasks.h"

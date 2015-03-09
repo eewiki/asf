@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.port.quick_start" caption="Quick Start for the SAM D20/D21 PORT Driver (Polled)">
+	<module type="application" id="sam0.drivers.port.quick_start" caption="Quick Start for the SAM D20/D21/R21 PORT Driver (Polled)">
 		<info type="description" value="summary">
 		Quick start guide for the PORT driver demonstrating configuration and initialization.
 		</info>
@@ -10,5 +10,6 @@
 		<require idref="sam0.drivers.system"/>
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 	</module>
 </asf>

@@ -1,7 +1,7 @@
 /*
  * @file sleep_mgr.h
  *
- * @brief 
+ * @brief
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -51,14 +51,14 @@
 
 # include "compiler.h"
 
-
 /**
- * \brief This function Initializes the Sleep functions 
-*/
+ * \brief This function Initializes the Sleep functions
+ */
 void sm_init(void);
+
 /**
  *  \brief This function puts the transceiver and device to sleep
-*/
+ */
 void sm_sleep(uint32_t interval);
 
-#endif 
+#endif

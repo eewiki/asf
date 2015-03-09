@@ -11,7 +11,7 @@
 		<build type="header-file" value="mac_build_config.h"/>
 		<build type="header-file" value="tal_build_config.h"/>
 		<build type="doxygen-entry-point" value="common_includes_group"/>
-		<build type="distribute" subtype="user-file" value="../doc/AVR2025_User_Guide_v3.1.0.pdf"/>		
+		<build type="distribute" subtype="user-file" value="../doc/AVR2025_User_Guide_v3.1.1.pdf"/>		
 		<device-support-alias value="avr2025_mac_pal_support"/>
 		<info type="keyword" value="technology">
 			<keyword value="Wireless"/>

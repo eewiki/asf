@@ -3,7 +3,7 @@
  *
  * \brief ADC Controller driver.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -477,40 +477,29 @@ void adc_configure_sequence(Adc *const adc,
 	adc->ADC_SEQR2 = 0;
 #endif
 #if (SAMG)
-	adc->ADC_SEQR[0] = 0;
-	adc->ADC_SEQR[1] = 0;
+	adc->ADC_SEQR1 = 0;
 #endif
 
 	if (uc_num < ADC_SEQ1_CHANNEL_NUM) {
 		for (uc_counter = 0; uc_counter < uc_num; uc_counter++) {
-#if (SAM4N)
+#if (SAM4N || SAMG)
 			adc->ADC_SEQR1
-#endif
-#if (SAMG)
-			adc->ADC_SEQR[0]
 #endif
 				|= ch_list[uc_counter] << (4 * uc_counter);
 		}
 	} else {
 		for (uc_counter = 0; uc_counter < ADC_SEQ1_CHANNEL_NUM;
 				uc_counter++) {
-#if (SAM4N)
+#if (SAM4N || SAMG)
 			adc->ADC_SEQR1
-#endif
-#if (SAMG)
-			adc->ADC_SEQR[0]
 #endif
 				|= ch_list[uc_counter] << (4 * uc_counter);
 		}
 		for (uc_counter = 0; uc_counter < uc_num - ADC_SEQ1_CHANNEL_NUM;
 				uc_counter++) {
 #if (SAM4N)
-			adc->ADC_SEQR2
+			adc->ADC_SEQR2 |= ch_list[uc_counter] << (4 * uc_counter);
 #endif
-#if (SAMG)
-			adc->ADC_SEQR[1]
-#endif
-				|= ch_list[uc_counter] << (4 * uc_counter);
 		}
 	}
 }

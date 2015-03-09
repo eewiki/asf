@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam0.drivers.wdt.unit_test" caption="Unit Tests for the SAM D20/D21 WDT Driver">
+	<module type="application" id="sam0.drivers.wdt.unit_test" caption="Unit Tests for the SAM WDT Driver">
 		<info type="description" value="summary">
 		Unit test for the Watchdog driver
 		</info>
@@ -14,5 +14,6 @@
 		<require idref="common2.services.delay"/>
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 	</module>
 </asf>

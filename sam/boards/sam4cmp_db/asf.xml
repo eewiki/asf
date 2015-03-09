@@ -1,0 +1,54 @@
+<asf xmlversion="1.0">
+	<select-by-config id="config.board.sam4cmp_db.led" name="config.board.sam4cmp_db.led" caption="SAM4CMP Demo Board LED support" default="yes">
+		<module type="meta" id="config.board.sam4cmp_db.led#no" caption="SAM4CMP Demo Board LED support disabled">
+		</module>
+		<module type="meta" id="config.board.sam4cmp_db.led#yes" caption="SAM4CMP Demo Board LED support enabled">
+			<build type="header-file" subtype="api" value="led.h"/>
+			<build type="include-path" value="."/>
+			<require idref="common.services.ioport"/>
+		</module>
+	</select-by-config>
+
+	<select-by-config id="config.board.sam4cmp_db.init" name="config.board.sam4cmp_db.init" caption="SAM4CMP Demo Board initialization support" default="yes">
+		<module type="meta" id="config.board.sam4cmp_db.init#no" caption="SAM4CMP Demo Board initialization support disabled">
+		</module>
+		<module type="meta" id="config.board.sam4cmp_db.init#yes" caption="SAM4CMP Demo Board initialization support enabled">
+			<build type="c-source" value="init.c"/>
+			<require idref="common.services.ioport"/>
+		</module>
+	</select-by-config>
+
+	<select-by-device id="config.board.sam4cmp_db.macro_files" caption="SAM4CMP Demo Board debug macro">
+		<module type="meta" id="config.board.sam4cmp_db.macro_files#0" caption="SAM4CMP Demo Board debug macro for core 0">
+			<device-support value="atsam4cmp16c_0"/>
+			<build type="define" name="__SAM4CMP16C_0__" value=""/>
+			<build type="macro-config" subtype="script" value="debug_scripts/gcc/sam4cmp_db_flash_0.gdb" toolchain="armgcc"/>
+			<build type="macro-config" subtype="aux-script" value="debug_scripts/gcc/sam4cmp_db_sram_0.gdb" toolchain="armgcc"/>
+			<build type="macro-config" subtype="script" value="debug_scripts/iar/sam4cmp_db_flash_0.mac" toolchain="iarewarm"/>
+			<build type="macro-config" subtype="aux-script" value="debug_scripts/iar/sam4cmp_db_sram_0.mac" toolchain="iarewarm"/>
+		</module>
+		<module type="meta" id="config.board.sam4cmp_db.macro_files#1" caption="SAM4CMP Demo Board debug macro for core 1">
+			<device-support value="atsam4cmp16c_1"/>
+			<build type="define" name="__SAM4CMP16C_1__" value=""/>
+			<build type="macro-config" subtype="script" value="debug_scripts/gcc/sam4cmp_db_sram_1.gdb" toolchain="armgcc"/>
+			<build type="macro-config" subtype="aux-script" value="debug_scripts/gcc/sam4cmp_db_sram_1.gdb" toolchain="armgcc"/>
+			<build type="macro-config" subtype="script" value="debug_scripts/iar/sam4cmp_db_sram_1.mac" toolchain="iarewarm"/>
+			<build type="macro-config" subtype="aux-script" value="debug_scripts/iar/sam4cmp_db_sram_1.mac" toolchain="iarewarm"/>
+		</module>
+	</select-by-device>
+
+	<board id="board.sam4cmp_db" vendor="Atmel" caption="SAM4CMP-DB">
+		<build type="define" name="BOARD" value="SAM4CMP_DB"/>
+		<build type="header-file" value="sam4cmp_db.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="module-config" subtype="required-header-file" value="conf_board.h"/>
+		<build type="module-config" subtype="path" value="board_config"/>
+		<require idref="sam.utils.cmsis.sam4cm.source.template"/>
+		<require idref="common.boards"/>
+		<require idref="config.board.sam4cmp_db.init"/>
+		<require idref="config.board.sam4cmp_db.led"/>
+		<require idref="config.board.sam4cmp_db.macro_files"/>
+		<device-support value="sam4cmp16"/>
+	</board>
+</asf>

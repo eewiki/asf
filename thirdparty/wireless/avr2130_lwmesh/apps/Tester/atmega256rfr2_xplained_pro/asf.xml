@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<project caption="LWMesh-Tester Application:ATmega256RFR2 Xplained Pro" id="thirdparty.wireless.avr2130_lwmesh.apps.tester.atmega256rfr2_xplained_pro" force-caption="true" force-description="true">
+		<info type="description" value="summary">
+		The LWMesh Tester app is designed to be used as a generic network processor and also performs automated testing for the stack.
+		</info>		
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_usart_serial.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		
+		<config name="config.thirdparty.wireless.addons.sio2host" value="uart"/>
+		<build type="include-path" value="."/>
+		<require idref="thirdparty.wireless.avr2130_lwmesh.apps.tester"/>
+		<require idref="board.atmega256rfr2_xplained_pro"/>		
+		<generator value="avrgcc" />
+		<generator value="iarew"/>
+		<generator value="as5_8" />
+		<generator value="doxygen"/>  
+		<device-support value="atmega256rfr2"/>
+	</project>
+</asf>

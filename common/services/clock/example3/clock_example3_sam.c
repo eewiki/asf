@@ -3,7 +3,7 @@
  *
  * \brief Clock system example 3.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -83,14 +83,6 @@
 
 /* Global ul_ms_ticks in milliseconds since start of application */
 volatile uint32_t ul_ms_ticks = 0;
-
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-extern "C" {
-#endif
-/**INDENT-ON**/
-/// @endcond
 
 /** Programmable Clock ID for the example by default */
 #ifndef GCLK_ID
@@ -229,10 +221,3 @@ int main(void)
 	}
 }
 
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-}
-#endif
-/**INDENT-ON**/
-/// @endcond

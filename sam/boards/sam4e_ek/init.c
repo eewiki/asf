@@ -217,7 +217,7 @@ void board_init(void)
 #  endif
 #endif
 
-#ifdef CONF_BOARD_ILI9325
+#if defined(CONF_BOARD_ILI9325) || defined(CONF_BOARD_ILI93XX)
 	/* Configure LCD EBI pins */
 	ioport_set_pin_peripheral_mode(PIN_EBI_DATA_BUS_D0,PIN_EBI_DATA_BUS_FLAGS);
 	ioport_set_pin_peripheral_mode(PIN_EBI_DATA_BUS_D1,PIN_EBI_DATA_BUS_FLAGS);

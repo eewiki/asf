@@ -40,18 +40,15 @@
  * \asf_license_stop
  *
  */
+
 /*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
- */ 
+ */
 #ifndef CONF_NVM_H_INCLUDED
 #define CONF_NVM_H_INCLUDED
 
-
-
 #define INT_FLASH_END   (0x003FFFF)
 
-
-
-#endif //CONF_NVM_H_INCLUDED
+#endif /* CONF_NVM_H_INCLUDED */

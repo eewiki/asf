@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 TCC - Timer Counter for Control Applications Driver Quick Start
+ * \brief SAM TCC - Timer Counter for Control Applications Driver Quick Start
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *

@@ -40,6 +40,7 @@
  * \asf_license_stop
  *
  */
+
 /*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
@@ -47,7 +48,6 @@
  */
 #ifndef CONF_BOARD_H
 #define CONF_BOARD_H
-
 
 #define CONF_BOARD_AT86RFX
 

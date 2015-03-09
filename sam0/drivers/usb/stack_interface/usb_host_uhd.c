@@ -106,8 +106,8 @@ static void _uhd_pipe_finish_job(uint8_t pipe, uhd_trans_status_t status);
 #  error The High speed mode is not supported on this part, please remove USB_HOST_HS_SUPPORT in conf_usb_host.h
 #endif
 
-#if !(SAMD21)
-# error The current USB Host Driver supports only SAMD21
+#if (!(SAMD21) && !(SAMR21))
+# error The current USB Host Driver supports only SAMD21/R21
 #endif
 
 #ifdef USB_HOST_LPM_SUPPORT
@@ -786,7 +786,8 @@ static void _uhd_vbus_handler(void)
 			EXTINT_CALLBACK_TYPE_DETECT);
 	if (is_usb_vbus_high()) {
 		UHC_VBUS_CHANGE(true);
-	} else {
+	}
+	if (!is_usb_vbus_high()) {
 		uhd_sleep_mode(UHD_STATE_NO_VBUS);
 		UHC_VBUS_CHANGE(false);
 	}

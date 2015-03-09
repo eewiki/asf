@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 Quick Start Guide for Using SPI driver with DMA
+ * \brief SAM D21/R21 Quick Start Guide for Using SPI driver with DMA
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -44,11 +44,13 @@
 /**
  * \page asfdoc_sam0_sercom_spi_dma_use_case Quick Start Guide for Using DMA with SERCOM SPI
  *
- * The supported device list:
- *    - SAMD21
+ * The supported board list:
+ *    - SAMD21 Xplained Pro
+ *    - SAMR21 Xplained Pro
  *
  * This quick start will transmit a buffer data from master to slave through DMA.
- * In this use case the SPI master will be configured with the following settings:
+ * In this use case the SPI master will be configured with the following
+ * settings on SAMD21 Xplained Pro:
  * - Master Mode enabled
  * - MSB of the data is transmitted first
  * - Transfer mode 0
@@ -71,21 +73,43 @@
  *   - MISO on pad 2, extension header 1, pin 16
  *   - MOSI on pad 0, extension header 1, pin 17
  *   - SCK on pad 3, extension header 1, pin 18
- *   - SS on pad 1, extension header 1, pin
+ *   - SS on pad 1, extension header 1, pin 15
  * - 8-bit character size
  * - Not enabled in sleep mode
  * - GLCK generator 0
+ *
+ * Note that the pinouts on other boards may different, see next sector for
+ * details.
  *
  * \section asfdoc_sam0_sercom_spi_dma_use_case_setup Setup
  *
  * \subsection asfdoc_sam0_sercom_spi_dma_use_case_prereq Prerequisites
  * The following connections has to be made using wires:
+ * - SAM D21 Xplained Pro
  *  - \b SS_0:  EXT1 PIN15 (PA05) <--> EXT2 PIN15 (PA17)
  *  - \b DO/DI: EXT1 PIN16 (PA06) <--> EXT2 PIN17 (PA16)
  *  - \b DI/DO: EXT1 PIN17 (PA04) <--> EXT2 PIN16 (PA18)
  *  - \b SCK:   EXT1 PIN18 (PA07) <--> EXT2 PIN18 (PA19)
+ * - SAM R21 Xplained Pro
+ *  - \b SS_0:  EXT1 PIN15 (PB03) <--> EXT1 PIN10 (PA23)
+ *  - \b DO/DI: EXT1 PIN16 (PB22) <--> EXT1 PIN9  (PA22)
+ *  - \b DI/DO: EXT1 PIN17 (PB02) <--> EXT1 PIN7  (PA18)
+ *  - \b SCK:   EXT1 PIN18 (PB23) <--> EXT1 PIN8  (PA19)
  *
  * \subsection asfdoc_sam0_spi_dma_use_case_setup_code Code
+ *
+ * Add to the main application source file, before user definitions and
+ * functions according to your board:
+ *
+ * For SAMD21 Xplained Pro
+ * \snippet samd21_xplained_pro/conf_quick_start.h definition_master
+ * \snippet samd21_xplained_pro/conf_quick_start.h definition_slave
+ * \snippet samd21_xplained_pro/conf_quick_start.h definition_peripheral_trigger
+ * For SAMR21 Xplained Pro
+ * \snippet samr21_xplained_pro/conf_quick_start.h definition_master
+ * \snippet samr21_xplained_pro/conf_quick_start.h definition_slave
+ * \snippet samr21_xplained_pro/conf_quick_start.h definition_peripheral_trigger
+
  * Add to the main application source file, outside of any functions:
  * \snippet qs_spi_dma_use.c buf_length
  * \snippet qs_spi_dma_use.c spi_baudrate

@@ -54,14 +54,13 @@
 #include "compiler.h"
 #include "status_codes.h"
 
-
 /* === PROTOTYPES ============================================================
- **/
+**/
 
 /**
  * \brief Initializes the Serial IO Module
  * \return STATUS_OK for successful initialization and FAILURE incase the IO is
- *not initialized
+ * not initialized
  */
 void sio2host_init(void);
 
@@ -100,12 +99,13 @@ void sio2host_putchar(uint8_t);
 /**
  * \brief This function performs a non-blocking character receive functionality
  * \return '-1' if no data is recieved or returns the data if a character is
- *received
+ * received
  */
 int sio2host_getchar_nowait(void);
 
-#if SAMD20
+#if SAMD || SAMR21
 void USART_HOST_ISR_VECT(uint8_t instance);
+
 #endif
 
 #endif /* SIO2HOST_H */

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 Sercom Usart driver with DMA quick start
+ * \brief SAM D21/R21 Sercom Usart driver with DMA quick start
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -89,7 +89,7 @@ static void configure_dma_resource_rx(struct dma_resource *resource)
 //! [setup_rx_2]
 
 //! [setup_rx_3]
-	config.peripheral_trigger = SERCOM3_DMAC_ID_RX;
+	config.peripheral_trigger = EDBG_CDC_SERCOM_DMAC_ID_RX;
 	config.trigger_action = DMA_TRIGGER_ACTON_BEAT;
 //! [setup_rx_3]
 
@@ -138,7 +138,7 @@ static void configure_dma_resource_tx(struct dma_resource *resource)
 //! [setup_tx_2]
 
 //! [setup_tx_3]
-	config.peripheral_trigger = SERCOM3_DMAC_ID_TX;
+	config.peripheral_trigger = EDBG_CDC_SERCOM_DMAC_ID_TX;
 	config.trigger_action = DMA_TRIGGER_ACTON_BEAT;
 //! [setup_tx_3]
 

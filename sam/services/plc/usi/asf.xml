@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<module type="service" id="sam.services.plc.usi" caption="PLC Universal Serial Interface">
+		<info type="description" value="summary">
+		Driver for PLC Universal Serial Interface (USI) service. Provides functions for sending and receiving data through the serial interface.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="PLC"/>
+		</info>
+		<build type="header-file" subtype="api" value="usi.h"/>
+		<build type="c-source" value="usi.c"/>
+ 		<build type="module-config" subtype="required-header-file" value="conf_usi.h"/>
+		<build type="module-config" subtype="path" value="module_config"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="usi_plc_group"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="sam.services.plc.pcrc"/>
+		<require idref="sam.services.plc.buart_if"/>
+		<require idref="sam.services.plc.busart_if"/>
+		<device-support value="sam4cp"/>
+		<device-support value="sam4s"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+	</module>		
+</asf>

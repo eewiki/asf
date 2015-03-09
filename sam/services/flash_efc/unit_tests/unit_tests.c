@@ -85,6 +85,8 @@
  * - sam4n16c_sam4n_xplained_pro
  * - sam4c16c_sam4c_ek
  * - sam4cp16b_sam4cp16bmb
+ * - sam4cmp16c_sam4cmp_db
+ * - sam4cms16c_sam4cms_db
  *
  * \section compinfo Compilation info
  * This software was written for the GNU GCC and IAR for ARM. Other compilers
@@ -188,7 +190,7 @@ static void run_flash_configure_test(const struct test_case *test)
 		test_assert_true(test, ul_tmp_ws == 4,
 				"Test flash configure:adaptively set wait state error!");
 	}
-#elif (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
+#elif (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP || SAM4CM)
 	} else if (ul_mck < CHIP_FREQ_FWS_3) {
 		ul_tmp_ws =  flash_get_wait_state(IFLASH_ADDR);
 		test_assert_true(test, ul_tmp_ws == 3,
@@ -314,7 +316,7 @@ static void run_flash_write_test(const struct test_case *test)
 		ul_page_buffer[ul_idx] = 1 << (ul_idx % 32);
 	}
 
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP || SAM4CM)
 	/* Write the test page */
 	flash_erase_sector(ul_test_page_addr);
 
@@ -351,7 +353,7 @@ static void run_flash_lock_test(const struct test_case *test)
 	volatile uint32_t ul_locked_region_num;
 	volatile uint32_t lockerror = 0;
 	uint32_t ul_test_page_addr = TEST_PAGE_ADDRESS;
-#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP || SAM4CM)
 	flash_erase_sector(ul_test_page_addr);
 #endif
 	uint32_t ul_page_buffer[IFLASH_PAGE_SIZE / sizeof(uint32_t)];
@@ -387,7 +389,7 @@ static void run_flash_lock_test(const struct test_case *test)
 	lockerror = flash_write(ul_test_page_addr, (void *)ul_page_buffer,
 			IFLASH_PAGE_SIZE, 0);
 
-#if (SAM3SD8 || SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP)
+#if (SAM3SD8 || SAM4S || SAM4E || SAM4N || SAM4C || SAM4CP || SAM4CM)
 	/* SAM3SD8, SAM4S, SAM4E, SAM4N, SAM4C and SAM4CP have a bigger page region which
 	 * requires special attention.
 	 */

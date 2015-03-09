@@ -1,7 +1,7 @@
 /**
  * @file common_hw_timer.h
  *
- * @brief 
+ * @brief
  *
  *  Copyright (c) 2014 Atmel Corporation. All rights reserved.
  *
@@ -37,7 +37,7 @@
  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 /* Prevent double inclusion */
 #ifndef COMMON_HW_TIMER_H
 #define COMMON_HW_TIMER_H
@@ -48,11 +48,12 @@
 /**
  * \ingroup group_pal_common_sw_timer
  * \defgroup group_pal_common_hw_timer
- * Implements a common api interface for accessing timer drivers of all architectures
+ * Implements a common api interface for accessing timer drivers of all
+ *architectures
  * @{
  */
- 
-#define DEF_1MHZ	(1000000)
+
+#define DEF_1MHZ        (1000000)
 #define TIMER_PERIOD  UINT16_MAX
 
 /*! \brief  To initialize common hw timer
@@ -60,12 +61,13 @@
 void common_tc_init(void);
 void hw_overflow_cb(void);
 void hw_expiry_cb(void);
+
 /*! \brief  To read current count of the timer after issuing common tc delay
  */
 uint16_t common_tc_read_count(void);
 
 /*! \brief  To create a non blocking delay
- *  \param  value delay in us 
+ *  \param  value delay in us
  */
 void common_tc_delay(uint16_t value);
 
@@ -77,7 +79,7 @@ void common_tc_compare_stop(void);
  */
 void common_tc_overflow_stop(void);
 
-/*! \brief  To disable timer 
+/*! \brief  To disable timer
  */
 void common_tc_stop(void);
 
@@ -97,6 +99,6 @@ void tmr_ovf_callback(void);
  */
 void tmr_cca_callback(void);
 
-//! @}
+/* ! @} */
 #endif /* COMMON_HW_TIMER_H */
 /* EOF */

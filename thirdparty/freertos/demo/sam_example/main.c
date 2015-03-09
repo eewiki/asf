@@ -164,7 +164,11 @@ static void task_led(void *pvParameters)
 {
 	UNUSED(pvParameters);
 	for (;;) {
+	#if SAM4CM
+		LED_Toggle(LED4);
+	#else
 		LED_Toggle(LED0);
+	#endif
 		vTaskDelay(1000);
 	}
 }

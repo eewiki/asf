@@ -3,7 +3,7 @@
  *
  * \brief SAM3X-EK Board Definition.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -153,8 +153,8 @@
 #define PIN_EBI_NRD            PIO_PA29_IDX
 #define PIN_EBI_NRD_FLAGS      (PIO_PERIPH_B | PIO_PULLUP)
 #define PIN_EBI_NRD_MASK       (1 << 29)
-#define PIN_EBI_NRD_PIO        PIOB
-#define PIN_EBI_NRD_ID         ID_PIOB
+#define PIN_EBI_NRD_PIO        PIOA
+#define PIN_EBI_NRD_ID         ID_PIOA
 #define PIN_EBI_NRD_TYPE       PIO_PERIPH_B
 #define PIN_EBI_NRD_ATTR       PIO_PULLUP
 /*! EBI NWE pin */

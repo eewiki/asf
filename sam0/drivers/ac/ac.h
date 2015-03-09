@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 Analog Comparator Driver
+ * \brief SAM D20/D21/R21 Analog Comparator Driver
  *
  * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
@@ -44,9 +44,9 @@
 #define AC_H_INCLUDED
 
 /**
- * \defgroup asfdoc_sam0_ac_group SAM D20/D21 Analog Comparator Driver (AC)
+ * \defgroup asfdoc_sam0_ac_group SAM D20/D21/R21 Analog Comparator Driver (AC)
  *
- * This driver for SAM D20/D21 devices provides an interface for the configuration
+ * This driver for SAM D20/D21/R21 devices provides an interface for the configuration
  * and management of the device's Analog Comparator functionality, for the
  * comparison of analog voltages against a known reference voltage to determine
  * its relative level. The following driver API modes are covered by this
@@ -165,7 +165,7 @@
  * another without requiring software intervention.
  *
  * \note The connection of events between modules requires the use of the
- *       \ref asfdoc_sam0_events_group "SAM D20/D21 Event System Driver (EVENTS)"
+ *       \ref asfdoc_sam0_events_group "SAM D20/D21/R21 Event System Driver (EVENTS)"
  *       to route output event of one module to the the input event of another.
  *       For more information on event routing, refer to the event driver
  *       documentation.
@@ -1261,6 +1261,11 @@ static inline void ac_win_clear_status(
  *		<th>Doc. Rev.</td>
  *		<th>Date</td>
  *		<th>Comments</td>
+ *	</tr>
+ *	<tr>
+ *		<td>D</td>
+ *		<td>03/2014</td>
+ *		<td>Added support for SAMR21.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

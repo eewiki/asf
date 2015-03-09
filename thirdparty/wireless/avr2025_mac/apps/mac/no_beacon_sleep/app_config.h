@@ -5,7 +5,7 @@
  *        in the example application of no beacon sleep in addition to the
  *        underlaying stack.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -78,7 +78,7 @@
 #define APP_LAST_TIMER_ID           (LAST_STACK_TIMER_ID + NUMBER_OF_APP_TIMERS)
 
 /** Defines the total number of timers used by the application and the layers
- *below. */
+ * below. */
 #define TOTAL_NUMBER_OF_TIMERS      (NUMBER_OF_APP_TIMERS + \
 	NUMBER_OF_TOTAL_STACK_TIMERS)
 
@@ -109,6 +109,7 @@
 #define EE_IEEE_ADDR                (0)
 
 #ifdef MAC_SECURITY_ZIP
+
 /**
  * The maximum number of entries supported in the macKeyTable.
  * This value is implementation specific.
@@ -124,6 +125,7 @@
 #else
 #define MAC_ZIP_MAX_DEV_TABLE_ENTRIES           (3)
 #endif  /* (MAC_START_REQUEST_CONFIRM == 1) */
+
 /**
  * The maximum number of entries supported in the macSecurityLevelTable.
  * This value is implementation specific.

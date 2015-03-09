@@ -3,7 +3,7 @@
  *
  * @brief High-level security tool box
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -42,7 +42,7 @@
  */
 
 /*
- * Copyright (c) 2013, Atmel Corporation All rights reserved.
+ * Copyright (c) 2013-2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
  */
@@ -56,6 +56,7 @@
 #include "tal.h"
 #include "ieee_const.h"
 #include "stb.h"
+#include "sal.h"
 #include "stb_internal.h"
 
 /* === Macros ============================================================== */
@@ -68,7 +69,12 @@
 static bool key_change = true;
 static uint8_t last_key[AES_BLOCKSIZE];
 static bool stb_restart_required = false;
+#if (SAL_TYPE != ATXMEGA_SAL)
+/* State of trx before AES use; use to re-store trx state. */
+static tal_trx_status_t prev_trx_status;
 
+extern tal_trx_status_t tal_trx_status;
+#endif
 /* === Implementation ====================================================== */
 
 /**
@@ -132,63 +138,68 @@ stb_ccm_t stb_ccm_secure(uint8_t *buffer,
 		uint8_t aes_dir)
 {
 	uint8_t nonce_0; /* nonce[0] for MIC computation. */
-	uint8_t mic_len = 0 ;
+	uint8_t mic_len = 0;
 	uint8_t enc_flag = ENCRYPTION_NOT_REQD;
 
 	if (stb_restart_required) {
+#if (SAL_TYPE != ATXMEGA_SAL)
+		prev_trx_status = tal_trx_status;
+		if (tal_trx_status == TRX_SLEEP) {
+			tal_trx_wakeup();
+		}
+#endif
 		sal_aes_restart();
 		stb_restart_required = false;
 	}
 
-  switch(sec_level)
-  {
-	  case SECURITY_00_LEVEL:
-	  /* No MIC & No Encryption at Security Level -0 */
-	  mic_len = LEN_MIC_00;
-	  break;
-	  
-	  case SECURITY_01_LEVEL:
-	  /* MIC-32 & No Encryption at Security Level -1 */
-	  mic_len = LEN_MIC_32;
-	  break;
-	  
-	  case SECURITY_02_LEVEL:
-	  /* MIC-64 & No Encryption at Security Level -2 */
-	  mic_len = LEN_MIC_64;
-	  break;
-	  
-	  case SECURITY_03_LEVEL:
-	  /* MIC-128 & No Encryption at Security Level -3 */
-	  mic_len = LEN_MIC_128;
-	  break;
-	  
-	  case SECURITY_04_LEVEL:
-	  /* No MIC & Encryption at Security Level -4 */
-	  mic_len = LEN_MIC_00;
-	  enc_flag = ENCRYPTION_REQD;
-	  break;
-	  
-	  case SECURITY_05_LEVEL:
-	  /* MIC-32 & Encryption at Security Level -5 */
-	  mic_len = LEN_MIC_32;
-	  enc_flag = ENCRYPTION_REQD;
-	  break;
-	  
-	  case SECURITY_06_LEVEL:
-	  /* MIC-64 & Encryption at Security Level -6 */
-	  mic_len = LEN_MIC_64;
-	  enc_flag = ENCRYPTION_REQD;
-	  break;
-	  
-	  case SECURITY_07_LEVEL:
-	  /* MIC-128 & Encryption at Security Level -7 */
-	  mic_len = LEN_MIC_128;
-	  enc_flag = ENCRYPTION_REQD;
-	  break;
-	  
-	  default:
-	  break;
-  }
+	switch (sec_level) {
+	case SECURITY_00_LEVEL:
+		/* No MIC & No Encryption at Security Level -0 */
+		mic_len = LEN_MIC_00;
+		break;
+
+	case SECURITY_01_LEVEL:
+		/* MIC-32 & No Encryption at Security Level -1 */
+		mic_len = LEN_MIC_32;
+		break;
+
+	case SECURITY_02_LEVEL:
+		/* MIC-64 & No Encryption at Security Level -2 */
+		mic_len = LEN_MIC_64;
+		break;
+
+	case SECURITY_03_LEVEL:
+		/* MIC-128 & No Encryption at Security Level -3 */
+		mic_len = LEN_MIC_128;
+		break;
+
+	case SECURITY_04_LEVEL:
+		/* No MIC & Encryption at Security Level -4 */
+		mic_len = LEN_MIC_00;
+		enc_flag = ENCRYPTION_REQD;
+		break;
+
+	case SECURITY_05_LEVEL:
+		/* MIC-32 & Encryption at Security Level -5 */
+		mic_len = LEN_MIC_32;
+		enc_flag = ENCRYPTION_REQD;
+		break;
+
+	case SECURITY_06_LEVEL:
+		/* MIC-64 & Encryption at Security Level -6 */
+		mic_len = LEN_MIC_64;
+		enc_flag = ENCRYPTION_REQD;
+		break;
+
+	case SECURITY_07_LEVEL:
+		/* MIC-128 & Encryption at Security Level -7 */
+		mic_len = LEN_MIC_128;
+		enc_flag = ENCRYPTION_REQD;
+		break;
+
+	default:
+		break;
+	}
 
 	/* Test on correct parameters. */
 
@@ -197,34 +208,35 @@ stb_ccm_t stb_ccm_secure(uint8_t *buffer,
 			(nonce == NULL) ||
 			((uint16_t)pld_len + (uint16_t)hdr_len +
 			(uint16_t)mic_len > aMaxPHYPacketSize)
-			)			
-	{
+			) {
+#if (SAL_TYPE != ATXMEGA_SAL)
+		TRX_SLEEP();
 		sal_aes_clean_up();
+#endif
 		return (STB_CCM_ILLPARM);
 	}
 
-	if (key_change && (key == NULL)) 
-	{
+	if (key_change && (key == NULL)) {
+#if (SAL_TYPE != ATXMEGA_SAL)
+		TRX_SLEEP();
 		sal_aes_clean_up();
+#endif
 		/* Initial call, but no key given. */
-		return (STB_CCM_KEYMISS); 
+		return (STB_CCM_KEYMISS);
 	}
 
 	/* Setup key if necessary. */
 
-	if (!key_change && key != NULL) 
-	{ /* There was some previous key. */
+	if (!key_change && key != NULL) { /* There was some previous key. */
 		uint8_t i;
 
 		/* Test on changed key. */
-		for (i = AES_BLOCKSIZE; i--; /* */) 
-		{
+		for (i = AES_BLOCKSIZE; i--; /* */) {
 			key_change |= (last_key[i] ^ key[i]);
 		}
 	}
 
-	if (key_change) 
-	{
+	if (key_change) {
 		/*
 		 * Key must be non-NULL because of test above, and
 		 * ECB encryption is always the initial encryption mode.
@@ -237,78 +249,70 @@ stb_ccm_t stb_ccm_secure(uint8_t *buffer,
 	/* Prepare nonce. */
 	nonce[0] = LEN_FIELD; /* Always 2 bytes for length field. */
 
-	if (mic_len > 0) 
-	{
+	if (mic_len > 0) {
 		nonce[0] |= (uint8_t)(((mic_len - 2) >> 1) << 3);
 	}
 
-	if (hdr_len) 
-	{
+	if (hdr_len) {
 		nonce[0] |= ADATA;
 	}
 
 	nonce_0 = nonce[0];
 	nonce[AES_BLOCKSIZE - 2] = 0;
 
-	if (aes_dir == AES_DIR_ENCRYPT) 
-	{
+	if (aes_dir == AES_DIR_ENCRYPT) {
 		/* Authenticate. */
-		if (mic_len > 0) 
-		{
+		if (mic_len > 0) {
 			nonce[AES_BLOCKSIZE - 1] = pld_len;
 
-			if (ENCRYPTION_REQD == enc_flag)
-			{
+			if (ENCRYPTION_REQD == enc_flag) {
 				compute_mic(buffer,
-				buffer + hdr_len + pld_len,
-				nonce,
-				hdr_len,
-				pld_len);
-			}		
+						buffer + hdr_len + pld_len,
+						nonce,
+						hdr_len,
+						pld_len);
+			}
 		}
 
 		nonce[0] = PLAINTEXT_FLAG;
 		encrypt_pldmic(buffer + hdr_len, nonce, mic_len,
 				pld_len);
-	} 
-	else 
-	{
+	} else {
 		/* Decrypt payload and MIC. */
-		if (enc_flag == ENCRYPTION_REQD) 
-		{
+		if (enc_flag == ENCRYPTION_REQD) {
 			nonce[0] = PLAINTEXT_FLAG;
 			encrypt_pldmic(buffer + hdr_len, nonce, mic_len,
 					pld_len);
 		}
 
 		/* Check MIC. */
-		if (mic_len > 0) 
-		{
-		    /* maximal MIC size */
-			uint8_t rcvd_mic[AES_BLOCKSIZE]; 
+		if (mic_len > 0) {
+			/* maximal MIC size */
+			uint8_t rcvd_mic[AES_BLOCKSIZE];
 
 			nonce[0] = nonce_0;
 			nonce[AES_BLOCKSIZE - 1] = pld_len;
 
-			if (ENCRYPTION_REQD == enc_flag)
-			{
+			if (ENCRYPTION_REQD == enc_flag) {
 				compute_mic(buffer,
-				rcvd_mic,
-				nonce,
-				hdr_len,
-				pld_len);
-			}					
+						rcvd_mic,
+						nonce,
+						hdr_len,
+						pld_len);
+			}
 
 			buffer += hdr_len + pld_len;
 
-			if (memcmp(buffer, rcvd_mic, mic_len)) 
-			{
+			if (memcmp(buffer, rcvd_mic, mic_len)) {
 				return STB_CCM_MICERR;
 			}
 		}
 	}
 
+#if (SAL_TYPE != ATXMEGA_SAL)
+	TRX_SLEEP();
 	sal_aes_clean_up();
+#endif
 	return (STB_CCM_OK);
 }
 

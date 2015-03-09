@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="service" id="sam.services.plc.pcrc" caption="PLC PRIME CRC calculation service">
+		<info type="description" value="summary">
+		Service to calculate different CRCs as specified in the PRIME PLC standard.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="PLC"/>
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="pcrc.c"/>
+		<build type="header-file" subtype="api" value="pcrc.h"/>
+		<build type="doxygen-entry-point" value="pcrc_plc_group"/>
+		<device-support value="sam4cp"/>
+		<device-support value="sam4s"/>
+		<generator value="doxygen-module" default-mcu="unspecified-sam4cp"/>
+	</module>		
+</asf>

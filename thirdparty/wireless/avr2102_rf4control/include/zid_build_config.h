@@ -7,6 +7,7 @@
  * @author    Atmel Corporation: http://www.atmel.com
  * @author    Support email: avr@atmel.com
  */
+
 /*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
@@ -21,18 +22,18 @@
 
 /* === Macros =============================================================== */
 
-
 /* NWK primitive configuration */
 
 #ifdef ZID_USER_BUILD_CONFIG
 #include "zid_user_build_config.h"
 #else   /* Include all ZID primitives */
 /* ZID primitive configuration */
-#define ZID_SET									(1)
-#define ZID_GET									(1)
+#define ZID_SET                                                                 ( \
+		1)
+#define ZID_GET                                                                 ( \
+		1)
 
 #endif
-
 
 /* === Types ================================================================ */
 
@@ -48,8 +49,5 @@ extern "C" {
 } /* extern "C" */
 #endif
 
-
-
 #endif  /* ZID_BUILD_CONFIG_H */
 /* EOF */
-

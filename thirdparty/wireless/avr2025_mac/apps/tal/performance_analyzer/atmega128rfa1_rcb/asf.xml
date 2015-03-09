@@ -9,16 +9,15 @@
 		<build type="header-file" value="conf_clock.h"/>
 		<build type="header-file" value="conf_sio2host.h"/>
 		<build type="header-file" value="conf_hw_timer.h"/>
+		
 
 		<config name="config.thirdparty.wireless.addons.sio2host" value="usb-ftdi"/>
 		
 		<require idref="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer"/>
 		<require idref="board.atmegarfx_rcb"/>
-		<build type="define"   name="HIGHEST_STACK_LAYER"                 value="TAL"/>
+		
 		<build type="define"   name="HIGH_DATA_RATE_SUPPORT"              value=""/>
-        <build type="define"   name="FFD"                                 value=""/>
-        <build type="define"   name="ENABLE_TFA"                          value=""/>
-        <build type="define"   name="TRX_REG_RAW_VALUE"                   value=""/>
+		
 		<generator value="avrgcc" />
 		<generator value="iarew"/>
 		<generator value="as5_8" />

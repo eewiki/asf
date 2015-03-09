@@ -57,6 +57,10 @@
  * set to 3300 mv in order to provide reliable temperature information. Please
  * refer to the board schematics for ADVREF jumper configuration.
  *
+ * \note For SAM4CMP-DB and SAM4CMS-DB (Rev B), the ADVREF is not connected to
+ * 3300mv by default, so need to solder DNP component to get this example
+ * work correctly.
+ *
  * \section Description
  *
  * The adc_temp_sensor is aimed to demonstrate the temperature sensor feature
@@ -104,13 +108,13 @@
 /** Reference voltage for ADC,in mv. */
 #define VOLT_REF        (3300)
 
-#if SAM3S || SAM4S || SAM3XA || SAM3N || SAM4C
+#if SAM3S || SAM4S || SAM3XA || SAM3N || SAM4C || SAM4CM
 /* Tracking Time*/
 #define TRACKING_TIME    1
 /* Transfer Period */
 #define TRANSFER_PERIOD  1
 /* Startup Time*/
-#if SAM4C
+#if SAM4C || SAM4CM
 #define STARTUP_TIME ADC_STARTUP_TIME_10
 #else
 #define STARTUP_TIME ADC_STARTUP_TIME_4
@@ -134,7 +138,7 @@
 #if SAM3S || SAM3XA || SAM4S
 /** The maximal digital value */
 #define MAX_DIGITAL     (4095)
-#elif SAM3N || SAM4C
+#elif SAM3N || SAM4C || SAM4CM
 #define MAX_DIGITAL     (1023)
 #elif SAM3U
 #ifdef ADC_12B
@@ -337,7 +341,7 @@ int main(void)
 	 *     Settling Time = 3 / 6.4MHz = 469 ns
 	 */
 	adc_configure_timing(ADC, TRACKING_TIME
-#if !SAM4C
+#if !SAM4C && !SAM4CM
 			, ADC_SETTLING_TIME_3, TRANSFER_PERIOD
 #endif
 	);

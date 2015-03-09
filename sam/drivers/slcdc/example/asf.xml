@@ -1,13 +1,14 @@
 <asf xmlversion="1.0">
 	<module type="application" id="sam.drivers.slcdc.example" caption="SLCDC Example">
 		<info type="description" value="summary">
-		This examples demonstrates how to use SLCDC driver to address an external LCD segment (C42364A). The LCD still display in steady state after core entering backup mode.
+		This examples demonstrates how to use SLCDC driver to address an external LCD segment. The LCD still display in steady state after core entering backup mode.
 		</info>
 		<info type="keyword" value="technology">
 			<keyword value="Graphics"/>
 		</info>
 		<build type="c-source" value="slcdc_example.c"/>
 		<device-support value="sam4c"/>
+		<device-support value="sam4cm"/>
 		<device-support value="sam4cp"/>
 		<require idref="sam.drivers.slcdc"/>
 		<require idref="sam.drivers.supc"/>

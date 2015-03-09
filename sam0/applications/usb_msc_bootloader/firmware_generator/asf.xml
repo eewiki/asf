@@ -1,0 +1,23 @@
+<asf xmlversion="1.0">
+	<select-by-device id="sam0.applications.usb_fw_gen" caption="USB Host MSC Firmware Generator Example">
+		<module type="application" id="sam0.applications.usb_fw_gen#0" caption="SAM D21 USB MSC Firmware Generator Example">
+			<info type="description" value="summary">
+			Generates the output binary to use with the USB Host MSC Bootloader application for SAM D21.
+			</info>
+			<build type="include-path" value="."/>
+			<build type="c-source" value="main.c"/>
+			<build type="header-file" value="main.h"/>
+			<device-support value="samd21"/>
+			<require idref="sam0.drivers.system"/>
+			<require idref="sam0.drivers.extint"/>
+			<require idref="sam0.drivers.nvm"/>
+			<require idref="sam0.drivers.dma"/>
+			<require idref="sam0.drivers.sercom.usart"/>
+			<require idref="sam0.utils.stdio.stdio_serial"/>
+			<require idref="common.services.fs.fatfs"/>
+			<require idref="common.services.usb.class.host"/>
+			<require idref="common2.services.delay"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
+</asf>

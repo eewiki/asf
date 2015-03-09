@@ -1,0 +1,25 @@
+<asf xmlversion="1.0">
+	<project caption="FatFS example for SAM4CMS_DB" id="common.services.fs.fatfs.access_example.sam4cms_db">
+		<info type="description" value="summary">
+		FatFS example for SAM4CMS-DB, the file system will be created on the internal RAM.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_access.h"/>
+		<build type="header-file" value="conf_virtual_mem.h"/>
+		<build type="header-file" value="conf_fatfs.h"/>
+		<build type="include-path" value="."/>
+		<config name="config.common.services.fs.fatfs.codepage" value="sbcs"/>
+		<require idref="common.services.fs.fatfs.access_example"/>
+		<require idref="common.components.memory.virtual_mem"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="board.sam4cms_db"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<device-support value="atsam4cms16c_0"/>
+	</project>
+</asf>

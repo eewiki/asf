@@ -75,21 +75,7 @@
 #ifdef KEY_RC_BOARD
 
 
-/* Enumerations used to identify ADC Channels */
-typedef enum adc_channel_tag
-{
-	X_AXIS,
-	Y_AXIS,
-	Z_AXIS,
-	ADC_REF
-} SHORTENUM adc_channel_t;
 
-/* Enumerations states for enabling or disabling the Accelerometer */
-typedef enum acc_status_tag
-{
-	ACC_OFF,
-	ACC_ON
-} SHORTENUM acc_status_t;
 
 
 
@@ -157,7 +143,10 @@ typedef enum acc_status_tag
 #define BUTTON_PIN_6                    IOPORT_CREATE_PIN(PORTB, 6)
 #define BUTTON_PIN_7                    IOPORT_CREATE_PIN(PORTD, 5)
 #define BUTTON_PIN_8                    IOPORT_CREATE_PIN(PORTD, 7)
-
+/*
+ * PINs where Accelerometer power is connected
+ */
+#define ACC_PWR                         (PB5)
 /*
  * PINs where LEDs are connected
  */

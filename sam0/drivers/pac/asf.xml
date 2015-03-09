@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="driver" id="sam0.drivers.pac" caption="PAC - Peripheral Access Controller">
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21 Peripheral Access Controller. Provides a
+			Driver for the SAM D20/D21/R21 Peripheral Access Controller. Provides a
 			unified interface for the locking and unlocking of peripherals on
 			the device peripheral busses, to protect them against inadvertent
 			writes due to application errors.
@@ -21,7 +21,7 @@
 
 		<info type="description" value="pdf">
 			This document describes how to use the Peripheral Access Controller
-			on the SAM D20/D21, both the ASF driver and the peripheral itself.
+			on the SAM D20/D21/R21, both the ASF driver and the peripheral itself.
 		</info>
 
 		<build type="include-path" value="."/>
@@ -37,6 +37,7 @@
 
 		<device-support value="samd20"/>
 		<device-support value="samd21"/>
+		<device-support value="samr21"/>
 
 		<require idref="sam0.utils"/>
 		<require idref="sam0.drivers.system"/>

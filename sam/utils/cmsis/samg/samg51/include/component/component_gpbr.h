@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -44,9 +44,9 @@
 #define _SAMG51_GPBR_COMPONENT_
 
 /* ============================================================================= */
-/**  SOFTWARE API DEFINITION FOR General Purpose Backup Register */
+/**  SOFTWARE API DEFINITION FOR General Purpose Backup Registers */
 /* ============================================================================= */
-/** \addtogroup SAMG51_GPBR General Purpose Backup Register */
+/** \addtogroup SAMG51_GPBR General Purpose Backup Registers */
 /*@{*/
 
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))

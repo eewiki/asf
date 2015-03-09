@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.sercom.usart" name="config.sam0.drivers.sercom.usart" caption="SERCOM USART - Serial Communications" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21 SERCOM USART module. Provides a unified
+			Driver for the SAM D20/D21/R21 SERCOM USART module. Provides a unified
 			interface for the configuration and management of the SERCOM module
 			in USART mode.
 		</info>
@@ -32,6 +32,7 @@
 
 			<device-support value="samd20"/>
 			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>
@@ -53,7 +54,7 @@
 
 			<info type="description" value="pdf">
 				This document describes how to use the Universal
-				Synchronous/Asynchronous Receiver/Transmitter on the SAM D20/D21,
+				Synchronous/Asynchronous Receiver/Transmitter on the SAM D20/D21/R21,
 				both the ASF driver and the peripheral itself.
 			</info>
 
@@ -83,6 +84,7 @@
 
 			<device-support value="samd20"/>
 			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>

@@ -3,7 +3,7 @@
  *
  * @brief
  *
-
+ *
  *  Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
@@ -44,7 +44,7 @@
 #include "tc.h"
 #include "tc_interrupt.h"
 #include "hw_timer.h"
-#if SAMD20
+#if SAMD || SAMR21
 #include "clock.h"
 #include <system_interrupt.h>
 #else
@@ -61,17 +61,20 @@ extern bool sys_sleep;
 #if 0
 void common_tc_delay(uint16_t value)
 {
-	value=value;
+	value = value;
 }
 
 void common_tc_compare_stop(void)
-{}
+{
+}
 
 uint16_t common_tc_read_count(void)
 {
 	return ((uint16_t)tc_get_count_value(&module_inst));
 }
+
 #endif
+
 /*! \brief  read the actual timer count from register
  */
 uint16_t tmr_read_count(void)
@@ -118,7 +121,8 @@ void tmr_stop(void)
  */
 void tmr_write_cmpreg(uint16_t compare_value)
 {
-	tc_set_compare_value(&module_inst, TC_COMPARE_CAPTURE_CHANNEL_0, (uint32_t)compare_value);
+	tc_set_compare_value(&module_inst, TC_COMPARE_CAPTURE_CHANNEL_0,
+			(uint32_t)compare_value);
 }
 
 /*! \brief  to save current interrupts status
@@ -140,6 +144,7 @@ static void tc_ovf_callback(struct tc_module *const module_instance)
 {
 	tmr_ovf_callback();
 }
+
 /*! \brief  hw timer compare callback
  */
 static void tc_cca_callback(struct tc_module *const module_instance)
@@ -154,31 +159,32 @@ uint8_t tmr_init(void)
 	uint8_t timer_multiplier;
 	tc_get_config_defaults(&timer_config);
 	#ifdef ENABLE_SLEEP
-	if(sys_sleep == true)
-	{
+	if (sys_sleep == true) {
 		timer_config.clock_source = GCLK_GENERATOR_1;
 		timer_config.clock_prescaler = TC_CLOCK_PRESCALER_DIV2;
-		timer_config.run_in_standby=true;
+		timer_config.run_in_standby = true;
 	}
+
 	#endif
 	timer_config.counter_16_bit.compare_capture_channel[0] = TIMER_PERIOD;
 	tc_init(&module_inst, TIMER, &timer_config);
-	tc_register_callback(&module_inst, tc_ovf_callback, TC_CALLBACK_OVERFLOW);
-	tc_register_callback(&module_inst, tc_cca_callback, TC_CALLBACK_CC_CHANNEL0);
+	tc_register_callback(&module_inst, tc_ovf_callback,
+			TC_CALLBACK_OVERFLOW);
+	tc_register_callback(&module_inst, tc_cca_callback,
+			TC_CALLBACK_CC_CHANNEL0);
 	tc_enable_callback(&module_inst, TC_CALLBACK_OVERFLOW);
 	tc_enable_callback(&module_inst, TC_CALLBACK_CC_CHANNEL0);
 
 	tc_enable(&module_inst);
-	/* calculate how faster the timer with current clk freq compared to timer with 1Mhz */
+	/* calculate how faster the timer with current clk freq compared to
+	 *timer with 1Mhz */
 	#ifdef ENABLE_SLEEP
-	if(sys_sleep ==true)
-	{
+	if (sys_sleep == true) {
 		timer_multiplier = system_gclk_gen_get_hz(1) / 2000000;
+	} else {
+		timer_multiplier = system_gclk_gen_get_hz(0) / DEF_1MHZ;
 	}
-	else
-	{
-	timer_multiplier = system_gclk_gen_get_hz(0) / DEF_1MHZ;
-	}
+
     #else
 	timer_multiplier = system_gclk_gen_get_hz(0) / DEF_1MHZ;
 	#endif

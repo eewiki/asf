@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 TCC - Timer Counter for Control Applications Callback Driver Quick Start
+ * \brief SAM D21/R21 TCC - Timer Counter for Control Applications Callback Driver Quick Start
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -44,8 +44,8 @@
 /**
  * \page asfdoc_sam0_tcc_callback_use_case Quick Start Guide for TCC - Callback
  *
- * The supported board list:
- *    - SAM D21 Xplained Pro
+ * The supported kit list:
+ *    - SAM D21/R21 Xplained Pro
  *
  * In this use case, the TCC will be used to generate a PWM signal, with a
  * varying duty cycle. Here the pulse width is increased each time the timer
@@ -57,6 +57,7 @@
  * <table>
  *  <tr><th> Board        </td><th> Pin  </td><th> Connect to </td></tr>
  *  <tr><td> SAMD21 Xpro  </td><td> PB30 </td><td> LED0       </td></tr>
+ *  <tr><td> SAMR21 Xpro  </td><td> PA19 </td><td> LED0       </td></tr>
  * </table>
  *
  * The TCC module will be set up as follows:

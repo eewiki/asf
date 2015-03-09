@@ -62,7 +62,7 @@
 #endif
 
 #ifndef NWK_DUPLICATE_REJECTION_TTL
-#define NWK_DUPLICATE_REJECTION_TTL              1000 // ms
+#define NWK_DUPLICATE_REJECTION_TTL              1000 /* ms */
 #endif
 
 #ifndef NWK_ROUTE_TABLE_SIZE
@@ -74,7 +74,7 @@
 #endif
 
 #ifndef NWK_ACK_WAIT_TIME
-#define NWK_ACK_WAIT_TIME                        1000 // ms
+#define NWK_ACK_WAIT_TIME                        1000 /* ms */
 #endif
 
 #ifndef NWK_GROUPS_AMOUNT
@@ -86,22 +86,19 @@
 #endif
 
 #ifndef NWK_ROUTE_DISCOVERY_TIMEOUT
-#define NWK_ROUTE_DISCOVERY_TIMEOUT              1000 // ms
+#define NWK_ROUTE_DISCOVERY_TIMEOUT              1000 /* ms */
 #endif
 
-//#define NWK_ENABLE_ROUTING
-//#define NWK_ENABLE_SECURITY
-//#define NWK_ENABLE_MULTICAST
-//#define NWK_ENABLE_ROUTE_DISCOVERY
-//#define NWK_ENABLE_SECURE_COMMANDS
+/* #define NWK_ENABLE_ROUTING */
+/* #define NWK_ENABLE_SECURITY */
+/* #define NWK_ENABLE_MULTICAST */
+/* #define NWK_ENABLE_ROUTE_DISCOVERY */
+/* #define NWK_ENABLE_SECURE_COMMANDS */
 
 #ifndef SYS_SECURITY_MODE
-#define SYS_SECURITY_MODE                        0
+#define SYS_SECURITY_MODE                        1
 #endif
 
 /*- Sanity checks ----------------------------------------------------------*/
-#if defined(NWK_ENABLE_SECURITY) && (SYS_SECURITY_MODE == 0)
-  #define PHY_ENABLE_AES_MODULE
-#endif
 
-#endif // _SYS_CONFIG_H_
+#endif /* _SYS_CONFIG_H_ */

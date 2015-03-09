@@ -3,7 +3,7 @@
  *
  * \brief Default configuration of C42364A LCD Segment Map.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -165,6 +165,10 @@
 #define C42364A_ICON_ERROR          1, 4
 #define C42364A_ICON_CHINESE        2, 4
 #define C42364A_ICON_ARM            3, 4
+#define C42364A_ICON_DOT_1          0, 46
+#define C42364A_ICON_DOT_2          3, 17
+#define C42364A_ICON_DOT_3          3, 15
+#define C42364A_ICON_DOT_4          3, 9
 #define C42364A_ICON_BAT_LEVEL_1    0, 37
 #define C42364A_ICON_BAT_LEVEL_2    0, 27
 #define C42364A_ICON_BAT_LEVEL_3    0, 42

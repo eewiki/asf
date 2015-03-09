@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.sercom.i2c.master" name="config.sam0.drivers.sercom.i2c.master" caption="SERCOM I2C - Master Mode I2C" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21 SERCOM I2C module in Master Mode. Provides a
+			Driver for the SAM D20/D21/R21 SERCOM I2C module in Master Mode. Provides a
 			unified interface for the configuration and management of the
 			SERCOM module in I2C mode.
 		</info>
@@ -48,7 +48,7 @@
 
 	<select-by-config id="sam0.drivers.sercom.i2c.slave" name="config.sam0.drivers.sercom.i2c.slave" caption="SERCOM I2C - Slave Mode I2C" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20/D21 SERCOM I2C module in Slave Mode. Provides a
+			Driver for the SAM D20/D21/R21 SERCOM I2C module in Slave Mode. Provides a
 			unified interface for the configuration and management of the
 			SERCOM module in I2C mode.
 		</info>
@@ -102,13 +102,14 @@
 			<build type="c-source" value="i2c_samd20/i2c_master.c"/>
 			<device-support value="samd20"/>
 		</module>
-		<module type="meta" id="sam0.drivers.sercom.i2c.master.polled.src_code#samd21" caption="meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.master.polled.src_code#samd21_r21" caption="meta">
 			<build type="include-path" value="." />
-			<build type="include-path" value="i2c_samd21/" />
+			<build type="include-path" value="i2c_samd21_r21/" />
 			<build type="header-file" subtype="api" value="i2c_master.h"/>
 			<build type="header-file" subtype="api" value="i2c_common.h"/>
-			<build type="c-source" value="i2c_samd21/i2c_master.c"/>
+			<build type="c-source" value="i2c_samd21_r21/i2c_master.c"/>
 			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 		</module>
 	</select-by-device>
 
@@ -123,15 +124,16 @@
 			<build type="c-source" value="i2c_samd20/i2c_master_interrupt.c"/>
 			<device-support value="samd20"/>
 		</module>
-		<module type="meta" id="sam0.drivers.sercom.i2c.master.callback.src_code#samd21" caption="meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.master.callback.src_code#samd21_r21" caption="meta">
 			<build type="include-path" value="." />
-			<build type="include-path" value="i2c_samd21/" />
+			<build type="include-path" value="i2c_samd21_r21/" />
 			<build type="header-file" subtype="api" value="i2c_master.h"/>
 			<build type="header-file" subtype="api" value="i2c_master_interrupt.h"/>
 			<build type="header-file" subtype="api" value="i2c_common.h"/>
-			<build type="c-source" value="i2c_samd21/i2c_master.c"/>
-			<build type="c-source" value="i2c_samd21/i2c_master_interrupt.c"/>
+			<build type="c-source" value="i2c_samd21_r21/i2c_master.c"/>
+			<build type="c-source" value="i2c_samd21_r21/i2c_master_interrupt.c"/>
 			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 		</module>
 	</select-by-device>
 
@@ -144,13 +146,14 @@
 			<build type="c-source" value="i2c_samd20/i2c_slave.c"/>
 			<device-support value="samd20"/>
 		</module>
-		<module type="meta" id="sam0.drivers.sercom.i2c.slave.polled.src_code#samd21" caption="meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.slave.polled.src_code#samd21_r21" caption="meta">
 			<build type="include-path" value="." />
-			<build type="include-path" value="i2c_samd21/" />
+			<build type="include-path" value="i2c_samd21_r21/" />
 			<build type="header-file" subtype="api" value="i2c_slave.h"/>
 			<build type="header-file" subtype="api" value="i2c_common.h"/>
-			<build type="c-source" value="i2c_samd21/i2c_slave.c"/>
+			<build type="c-source" value="i2c_samd21_r21/i2c_slave.c"/>
 			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 		</module>
 	</select-by-device>
 
@@ -165,15 +168,16 @@
 			<build type="c-source" value="i2c_samd20/i2c_slave_interrupt.c"/>
 			<device-support value="samd20"/>
 		</module>
-		<module type="meta" id="sam0.drivers.sercom.i2c.slave.callback.src_code#samd21" caption="meta">
+		<module type="meta" id="sam0.drivers.sercom.i2c.slave.callback.src_code#samd21_r21" caption="meta">
 			<build type="include-path" value="." />
-			<build type="include-path" value="i2c_samd21/" />
+			<build type="include-path" value="i2c_samd21_r21/" />
 			<build type="header-file" subtype="api" value="i2c_slave.h"/>
 			<build type="header-file" subtype="api" value="i2c_slave_interrupt.h"/>
 			<build type="header-file" subtype="api" value="i2c_common.h"/>
-			<build type="c-source" value="i2c_samd21/i2c_slave.c"/>
-			<build type="c-source" value="i2c_samd21/i2c_slave_interrupt.c"/>
+			<build type="c-source" value="i2c_samd21_r21/i2c_slave.c"/>
+			<build type="c-source" value="i2c_samd21_r21/i2c_slave_interrupt.c"/>
 			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 		</module>
 	</select-by-device>
 
@@ -197,19 +201,19 @@
 
 		<info type="description" value="pdf">
 			This document describes how to use the I2C in master mode on the
-			SAM D20/D21, both the ASF driver and the peripheral itself.
+			SAM D20/D21/R21, both the ASF driver and the peripheral itself.
 		</info>
 
 		<build type="include-path" value="." />
 		<build type="include-path" value="i2c_samd20/" />
-		<build type="include-path" value="i2c_samd21/" />
+		<build type="include-path" value="i2c_samd21_r21/" />
 		<build type="header-file" subtype="api" value="i2c_master.h"/>
 		<build type="header-file" subtype="api" value="i2c_master_interrupt.h"/>
 		<build type="header-file" subtype="api" value="i2c_common.h"/>
 		<build type="c-source" value="i2c_samd20/i2c_master.c"/>
 		<build type="c-source" value="i2c_samd20/i2c_master_interrupt.c"/>
-		<build type="c-source" value="i2c_samd21/i2c_master.c"/>
-		<build type="c-source" value="i2c_samd21/i2c_master_interrupt.c"/>
+		<build type="c-source" value="i2c_samd21_r21/i2c_master.c"/>
+		<build type="c-source" value="i2c_samd21_r21/i2c_master_interrupt.c"/>
 
 		<build type="doxygen-enable-section" value="I2C_MASTER_MODE"/>
 		<build type="doxygen-enable-section" value="I2C_MASTER_CALLBACK_MODE"/>
@@ -256,19 +260,19 @@
 
 		<info type="description" value="pdf">
 			This document describes how to use the I2C in slave mode on the
-			SAM D20/D21, both the ASF driver and the peripheral itself.
+			SAM D20/D21/R21, both the ASF driver and the peripheral itself.
 		</info>
 
 		<build type="include-path" value="." />
 		<build type="include-path" value="i2c_samd20/" />
-		<build type="include-path" value="i2c_samd21/" />
+		<build type="include-path" value="i2c_samd21_r21/" />
 		<build type="header-file" subtype="api" value="i2c_slave.h"/>
 		<build type="header-file" subtype="api" value="i2c_slave_interrupt.h"/>
 		<build type="header-file" subtype="api" value="i2c_common.h"/>
 		<build type="c-source" value="i2c_samd20/i2c_slave.c"/>
 		<build type="c-source" value="i2c_samd20/i2c_slave_interrupt.c"/>
-		<build type="c-source" value="i2c_samd21/i2c_slave.c"/>
-		<build type="c-source" value="i2c_samd21/i2c_slave_interrupt.c"/>
+		<build type="c-source" value="i2c_samd21_r21/i2c_slave.c"/>
+		<build type="c-source" value="i2c_samd21_r21/i2c_slave_interrupt.c"/>
 
 		<build type="doxygen-enable-section" value="I2C_SLAVE_MODE"/>
 		<build type="doxygen-enable-section" value="I2C_SLAVE_CALLBACK_MODE"/>

@@ -1,0 +1,36 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.sam4cm.include.component" caption="SAM4CM component definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAM4CM peripherals
+		</info>
+		<build type="header-file" value="adc.h"/>
+		<build type="header-file" value="aes.h"/>
+		<build type="header-file" value="chipid.h"/>
+		<build type="header-file" value="cmcc.h"/>
+		<build type="header-file" value="efc.h"/>
+		<build type="header-file" value="gpbr.h"/>
+		<build type="header-file" value="icm.h"/>
+		<build type="header-file" value="ipc.h"/>
+		<build type="header-file" value="matrix.h"/>
+		<build type="header-file" value="pdc.h"/>
+		<build type="header-file" value="pio.h"/>
+		<build type="header-file" value="pmc.h"/>
+		<build type="header-file" value="pwm.h"/>
+		<build type="header-file" value="rstc.h"/>
+		<build type="header-file" value="rswdt.h"/>
+		<build type="header-file" value="rtc.h"/>
+		<build type="header-file" value="rtt.h"/>
+		<build type="header-file" value="slcdc.h"/>
+		<build type="header-file" value="smc.h"/>
+		<build type="header-file" value="spi.h"/>
+		<build type="header-file" value="supc.h"/>
+		<build type="header-file" value="tc.h"/>
+		<build type="header-file" value="trng.h"/>
+		<build type="header-file" value="twi.h"/>
+		<build type="header-file" value="uart.h"/>
+		<build type="header-file" value="usart.h"/>
+		<build type="header-file" value="wdt.h"/>
+		<device-support value="sam4cm"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

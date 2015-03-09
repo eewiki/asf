@@ -58,10 +58,10 @@
  * \defgroup group_lwmesh_sys_timer LWMesh System Services - Security
  * @{
  */
- 
+
 /*- Prototypes -------------------------------------------------------------*/
 void SYS_EncryptReq(uint32_t *text, uint32_t *key);
 void SYS_EncryptConf(void);
 
 /** @} */
-#endif // _SYS_ENCRYPT_H_
+#endif /* _SYS_ENCRYPT_H_ */

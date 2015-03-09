@@ -38,8 +38,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * \asf_license_stop
- */ 
- /*
+ */
+
+/*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
@@ -50,19 +51,16 @@
 #define CONF_BOARD_ENABLE_USARTA1
 
 /* Taking the battery voltage for TFA */
-#define GET_BATTERY_VOLTAGE()    tfa_get_batmon_voltage()  
+#define GET_BATTERY_VOLTAGE()    tfa_get_batmon_voltage()
 
 /**
  * @brief Button action
  */
-typedef enum button_state_tag
-{
-    /** Button is pressed. */
-    BUTTON_PRESSED,
-    /** Button is released. */
-    BUTTON_OFF
+typedef enum button_state_tag {
+	/** Button is pressed. */
+	BUTTON_PRESSED,
+	/** Button is released. */
+	BUTTON_OFF
 } SHORTENUM button_state_t;
-
-
 
 #endif /* CONF_BOARD_H */

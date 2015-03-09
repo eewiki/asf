@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 Timer/Counter Driver for Control Applications Double Buffering Quickstart
+ * \brief SAM Timer/Counter Driver for Control Applications Double Buffering Quickstart
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -80,8 +80,10 @@ static void configure_tcc(void)
 	//! [setup_set_config]
 
 	//! [setup_set_buffering]
-	tcc_set_compare_value(&tcc_instance, CONF_PWM_CHANNEL, 8000*3/4);
-	tcc_enable_circular_buffer_compare(&tcc_instance, CONF_PWM_CHANNEL);
+	tcc_set_compare_value(&tcc_instance,
+			(enum tcc_match_capture_channel)CONF_PWM_CHANNEL, 8000*3/4);
+	tcc_enable_circular_buffer_compare(&tcc_instance,
+			(enum tcc_match_capture_channel)CONF_PWM_CHANNEL);
 	//! [setup_set_buffering]
 
 	//! [setup_enable]

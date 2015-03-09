@@ -3,7 +3,7 @@
  *
  * \brief SAM4CP16BMB Board configuration.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -51,7 +51,7 @@
 //#define CONF_BOARD_KEEP_WATCHDOG_AT_INIT
 
 /* Configure Slow Clock as External Crystal */
-//#define CONF_BOARD_32K_XTAL
+//#define CONF_BOARD_32K_XTAL 
 
 /* Configure UART0 pins */
 //#define CONF_BOARD_UART0

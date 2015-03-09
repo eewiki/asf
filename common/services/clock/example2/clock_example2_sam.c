@@ -3,7 +3,7 @@
  *
  * \brief Clock system example 2.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -83,14 +83,6 @@
 #include "conf_board.h"
 #include "conf_example2.h"
 
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-extern "C" {
-#endif
-/**INDENT-ON**/
-/// @endcond
-
 /** Programmable Clock ID for the example by default */
 #ifndef GCLK_ID
 #define GCLK_ID         GENCLK_PCK_0
@@ -124,10 +116,3 @@ int main(void)
 	}
 }
 
-/// @cond 0
-/**INDENT-OFF**/
-#ifdef __cplusplus
-}
-#endif
-/**INDENT-ON**/
-/// @endcond

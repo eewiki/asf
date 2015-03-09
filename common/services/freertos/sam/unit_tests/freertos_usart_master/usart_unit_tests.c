@@ -3,7 +3,7 @@
  *
  * \brief Unit tests for FreeRTOS USART Interface Layer.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -54,7 +54,7 @@
 #include <conf_example.h>
 #include "FreeRTOS.h"
 #include "task.h"
-#include "freertos_uart_serial.h"
+#include "freertos_usart_serial.h"
 
 /**
  * \mainpage

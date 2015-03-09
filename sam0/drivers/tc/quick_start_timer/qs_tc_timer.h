@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 TC - Timer Counter Driver Quick Start
+ * \brief SAM TC - Timer Counter Driver Quick Start
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *

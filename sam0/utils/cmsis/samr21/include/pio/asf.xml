@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam0.utils.cmsis.samr21.include.pio" caption="SAMR21 PIO definitions">
+		<info type="description" value="summary">
+		SAMR21 PIO component definitions.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="pio_samr21e16a.h"/>
+		<build type="header-file" value="pio_samr21e17a.h"/>
+		<build type="header-file" value="pio_samr21e18a.h"/>
+		<build type="header-file" value="pio_samr21g16a.h"/>
+		<build type="header-file" value="pio_samr21g17a.h"/>
+		<build type="header-file" value="pio_samr21g18a.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samr21"/>
+	</module>
+</asf>

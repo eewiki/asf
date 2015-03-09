@@ -19,10 +19,9 @@
 				<device-support value="megarf"/>
 				<device-support value="sam3"/>
 				<device-support value="sam4"/>
-				<device-support value="samg"/>
 				<build type="doxygen-entry-point" value="group_sio2host_uart"/>
 			</module>
-			<module type="component" id="thirdparty.wireless.addons.sio2host#uart#samd20"     caption="Serial I/O - Host using UART">
+			<module type="component" id="thirdparty.wireless.addons.sio2host#uart#sam0"     caption="Serial I/O - Host using UART">
 				<info type="description" value="summary">
 				Enables Support for  UART communication
 				</info>
@@ -32,7 +31,7 @@
 				<build type="include-path"  value="uart/"/>
 				<build type="module-config" subtype="required-header-file" value="conf_sio2host.h"/>
 				<build type="module-config" subtype="path" value="module_config"/>
-				<device-support value="samd20"/>
+				<device-support value="sam0"/>
 				<build type="doxygen-entry-point" value="group_sio2host_uart"/>
 			</module>
 		</select-by-device>

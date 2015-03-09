@@ -52,7 +52,6 @@
 #  define CONF_CLOCK_APBA_DIVIDER                 SYSTEM_MAIN_CLOCK_DIV_1
 #  define CONF_CLOCK_APBB_DIVIDER                 SYSTEM_MAIN_CLOCK_DIV_1
 
-
 /* SYSTEM_CLOCK_SOURCE_OSC8M configuration - Internal 8MHz oscillator */
 #  define CONF_CLOCK_OSC8M_PRESCALER              SYSTEM_OSC8M_DIV_1
 #  define CONF_CLOCK_OSC8M_ON_DEMAND              false
@@ -67,7 +66,8 @@
 #  define CONF_CLOCK_XOSC_ON_DEMAND               true
 #  define CONF_CLOCK_XOSC_RUN_IN_STANDBY          false
 
-/* SYSTEM_CLOCK_SOURCE_XOSC32K configuration - External 32KHz crystal/clock oscillator */
+/* SYSTEM_CLOCK_SOURCE_XOSC32K configuration - External 32KHz crystal/clock
+ *oscillator */
 #  define CONF_CLOCK_XOSC32K_ENABLE               false
 #  define CONF_CLOCK_XOSC32K_EXTERNAL_CRYSTAL     SYSTEM_CLOCK_EXTERNAL_CRYSTAL
 #  define CONF_CLOCK_XOSC32K_STARTUP_TIME         SYSTEM_XOSC32K_STARTUP_65536
@@ -87,7 +87,8 @@
 
 /* SYSTEM_CLOCK_SOURCE_DFLL configuration - Digital Frequency Locked Loop */
 #  define CONF_CLOCK_DFLL_ENABLE                  true
-#  define CONF_CLOCK_DFLL_LOOP_MODE               SYSTEM_CLOCK_DFLL_LOOP_MODE_CLOSED
+#  define CONF_CLOCK_DFLL_LOOP_MODE \
+	SYSTEM_CLOCK_DFLL_LOOP_MODE_CLOSED
 #  define CONF_CLOCK_DFLL_ON_DEMAND               false
 #  define CONF_CLOCK_DFLL_RUN_IN_STANDBY          true
 
@@ -104,7 +105,6 @@
 #  define CONF_CLOCK_DFLL_ENABLE_CHILL_CYCLE      true
 #  define CONF_CLOCK_DFLL_MAX_COARSE_STEP_SIZE    (0x1f / 4)
 #  define CONF_CLOCK_DFLL_MAX_FINE_STEP_SIZE      (0xff / 4)
-
 
 /* Set this to true to configure the GCLK when running clocks_init. If set to
  * false, none of the GCLK generators will be configured in clocks_init(). */
@@ -167,4 +167,3 @@
 #  define CONF_CLOCK_GCLK_7_OUTPUT_ENABLE         false
 
 #endif /* CONF_CLOCKS_H_INCLUDED */
-

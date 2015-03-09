@@ -1,0 +1,29 @@
+<asf xmlversion="1.0">
+	<project caption="LWMesh-Tester Application:AT86RF233-SAMD20 Xplained Pro" id="thirdparty.wireless.avr2130_lwmesh.apps.tester.samd20_xplained_pro_rf233" force-caption="true" force-description="true">
+		<info type="description" value="summary">
+		The LWMesh Tester app is designed to be used as a generic network processor and also performs automated testing for the stack.
+		</info>		
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_extint.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+
+		<config name="config.sam0.drivers.sercom.spi" value="polled"/>
+		<config name="config.sam0.drivers.sercom.usart" value="polled"/>
+		<require idref="board.samd20_xplained_pro"/>
+		<config name="config.thirdparty.wireless.avr2130_lwmesh.source.phy.ext" value="at86rf233"/>		
+
+		<require idref="thirdparty.wireless.avr2130_lwmesh.apps.tester"/>
+
+		<config name="config.compiler.armgcc.optimization" value="high" />
+		<generator value="iarewarm"/>
+		<generator value="armgcc" />
+		<generator value="as5_arm" />
+		<generator value="doxygen"/>
+		<device-support value="atsamd20j18"/>
+	</project>
+</asf>

@@ -89,7 +89,7 @@
 		<require idref="config.thirdparty.wireless.avr2025_mac.source.mac.api"/>
 		<require idref="thirdparty.wireless.avr2025_mac.includes"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.tal"/>
-		<require idref="thirdparty.wireless.avr2025_mac.source.sal"/>
+		<require idref="thirdparty.wireless.common_services.sal"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.stb"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.mac.inc"/>
 		<device-support-alias value="avr2025_mac_pal_support"/>

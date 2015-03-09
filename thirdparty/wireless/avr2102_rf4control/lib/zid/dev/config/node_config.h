@@ -9,6 +9,7 @@
  * @author    Atmel Corporation: http://www.atmel.com
  * @author    Support email: avr@atmel.com
  */
+
 /*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
@@ -26,16 +27,15 @@
 
 /* === Macros =============================================================== */
 
-
-
 /* === Types ================================================================ */
-
 
 /* Offset of IEEE address storage location within EEPROM */
 #define EE_IEEE_ADDR                (0)
 
 /* Configure RF4CE node capabilities */
-/* The capabilities of this node. Implementation specific according to the format
+
+/* The capabilities of this node. Implementation specific according to the
+ * format
  * illustrated in Figure 26.
  * Implementation specific
  * NodeTypeTarget
@@ -48,16 +48,15 @@
  * ChannelNormalizationCapableFalse    */
 #ifdef RF4CE_SECURITY
 #define NWKC_NODE_CAPABILITIES   (NodeTypeController | PowerSourceMainsFalse \
-                                  | SecurityCapableTrue | ChannelNormalizationCapableTrue)
+	| SecurityCapableTrue | ChannelNormalizationCapableTrue)
 #else
 #define NWKC_NODE_CAPABILITIES   (NodeTypeController | PowerSourceMainsFalse \
-                                  | SecurityCapableFalse | ChannelNormalizationCapableTrue)
+	| SecurityCapableFalse | ChannelNormalizationCapableTrue)
 #endif
 
 #define NWKC_MAX_PAIRING_TABLE_ENTRIES    (5)
 #define NWKC_VENDOR_IDENTIFIER           (0x1014)
 #define NWKC_VENDOR_STRING               "ATMEL  "          /* 7 characters ! */
-
 
 /* Implementation specific ZRC constant defines */
 
@@ -70,9 +69,9 @@
 #define APL_ZID_PROFILE_VERSION             aplZIDProfileVersion_def
 #define APL_KEY_EXCHANGE_TRANSFER_COUNT     aplcKeyExchangeTransferCount_def
 #define APL_DEVICE_IDLE_RATE                aplDeviceIdleRate_def
-//#define APL_INT_PIPE_MAX_SAFE_TXS           aplcMinIntPipeMaxSafeTxs
+/* #define APL_INT_PIPE_MAX_SAFE_TXS           aplcMinIntPipeMaxSafeTxs */
 #define APL_INT_PIPE_UNSAFE_TXS_WINDOW      aplcMinIntPipeUnsafeTxWindowTime
-#define APL_REPORT_REPEAT_INTERVAL          (aplcMaxReportRepeatInterval/2)
+#define APL_REPORT_REPEAT_INTERVAL          (aplcMaxReportRepeatInterval / 2)
 #define APL_HEARTBEAT_INTERVAL              HEARTBEAT_INTERVAL_DEF
 #define APL_HID_PARSER_VERSION              HID_PARSER_VERSION
 #define APL_HID_DEVICE_SUB_CLASS            HID_DEVICE_SUB_CLASS
@@ -92,21 +91,21 @@
 #define APL_HID_NUM_NULL_REPORTS            HID_NUM_NULL_REPORTS
 
 /* Set storage location/addresss of flash memory;
-   ensure that NIB storage location, firmware image and bootloader area do not
-   overlap; check if nib is sufficient while changing pairing table size. */
-#define NIB_SIZE                    (6*1024) /*for ZID and NWK nib *//* bytes */
+ * ensure that NIB storage location, firmware image and bootloader area do not
+ * overlap; check if nib is sufficient while changing pairing table size. */
+#define NIB_SIZE                    (6 * 1024) /*for ZID and NWK nib *//* bytes
+	                                        **/
+
 /* Fixed size of the boot loader area.
-   If the boot loader area size is changed,
-   the linker information needs to be updated as well. */
+ * If the boot loader area size is changed,
+ * the linker information needs to be updated as well. */
 #define BOOT_LOADER_SIZE            4096 /* bytes */
 #if (PAL_TYPE == ATMEGA128RFA1)
 #define PAGE_SIZE 256
 #endif
 #define NIB_FLASH_ADDR              (FLASHEND - BOOT_LOADER_SIZE - NIB_SIZE + 1)
 
-
 /* === Externals ============================================================ */
-
 
 /* === Prototypes =========================================================== */
 

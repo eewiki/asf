@@ -38,8 +38,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * \asf_license_stop
- */ 
- /*
+ */
+
+/*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
@@ -48,21 +49,21 @@
 #define _BUTTONS_EXTENSION_H
 
 /******************************************************************************
-                    Includes section
-#include <stdint.h>
-                      
+*                   Includes section
+* #include <stdint.h>
+*
 ******************************************************************************/
-
 
 /******************************************************************************
-                    Types section
+*                   Types section
 ******************************************************************************/
-
 
 /******************************************************************************
-                    Prototypes section
+*                   Prototypes section
 ******************************************************************************/
+
 /**************************************************************************//**
-
-#endif // _BUTTONS_EXTENSION_H
+ *
+ * #endif // _BUTTONS_EXTENSION_H
+ *
 

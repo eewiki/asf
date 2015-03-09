@@ -1,16 +1,18 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="Single button controller application ATmegarfr2-ATmega256RFR2 Xplained Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.ncp.atmega256rfr2_xplained_pro">
+	<project force-caption="true" force-description="true" caption="RF4CE Single button controller application ATmegarfr2-ATmega256RFR2 Xplained Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.ncp.atmega256rfr2_xplained_pro">
 		<info type="description" value="summary">
 		The RF4CE-ZRC single button controller application where the application and the stack running on the same node
 		</info>
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_interrupt.h"/>
 		<build type="header-file" value="conf_clock.h"/>
 		<build type="header-file" value="conf_sio2host.h"/>
 		<build type="header-file" value="conf_usart_serial.h"/>
         <build type="header-file" value="conf_nvm.h"/>
 		<build type="header-file" value="conf_flash.h"/>
 		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
 		<build type="define" name="TFA_BAT_MON" value =""/>
 
 		<config name="config.compiler.iarew.data_stack_size" value="0x200"/>
@@ -27,6 +29,8 @@
 		<require idref="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.ncp"/>
 		<require idref="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.tfa"/>
+		<require idref="thirdparty.wireless.common_services.sleep_mgr"/>
+		<require idref="mega.drivers.ext_int"/>
 		<require idref="board.atmega256rfr2_xplained_pro"/>
 		<generator value="iarew"/>
 		<generator value="avrgcc"/>

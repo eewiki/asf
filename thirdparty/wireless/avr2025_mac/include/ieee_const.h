@@ -2,9 +2,9 @@
  * @file ieee_const.h
  *
  * @brief This header holds all IEEE 802.15.4-2006 constants and attribute
- *identifiers
+ * identifiers
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -56,7 +56,7 @@
  *
  * \defgroup group_inc Common WL Definitions
  * All General Definitions  used by the Wireless Stack applications are defined
- *in this module.
+ * in this module.
  *
  */
 
@@ -636,7 +636,7 @@
  * - @em Type: Integer
  * - @em Range: See equation (14)
  * - @em Default: Dependent on currently selected PHY, indicated by
- *phyCurrentPage
+ * phyCurrentPage
  */
 #define macMaxFrameTotalWaitTime        (0x58)
 
@@ -720,7 +720,7 @@
  * - @em Type: Integer
  * - @em Range: See Table 3 in Clause 6 (40 symbols)
  * - @em Default: Dependent on currently selected PHY, indicated by
- *phyCurrentPage
+ * phyCurrentPage
  */
 #define macMinLIFSPeriod                (0x5E)
 
@@ -735,7 +735,7 @@
  * - @em Type: Integer
  * - @em Range: See Table 3 in Clause 6 (12 symbols)
  * - @em Default: Dependent on currently selected PHY, indicated by
- *phyCurrentPage
+ * phyCurrentPage
  */
 #define macMinSIFSPeriod                (0x5F)
 
@@ -872,48 +872,48 @@ typedef enum phy_enum_tag {
 
 	/**
 	 * A SET/GET request was issued with a parameter in the primitive that
-	 *is out
+	 * is out
 	 * of the valid range.
 	 */
 	PHY_INVALID_PARAMETER                 = (0x05),
 
 	/**
 	 * The transceiver is in or is to be configured into the receiver
-	 *enabled
+	 * enabled
 	 * state.
 	 */
 	PHY_RX_ON                             = (0x06),
 
 	/**
 	 * A SET/GET, an ED operation, or a transceiver state change was
-	 *successful.
+	 * successful.
 	 */
 	PHY_SUCCESS                           = (0x07),
 
 	/**
 	 * The transceiver is in or is to be configured into the transceiver
-	 *disabled
+	 * disabled
 	 * state.
 	 */
 	PHY_TRX_OFF                           = (0x08),
 
 	/**
 	 * The transceiver is in or is to be configured into the transmitter
-	 *enabled
+	 * enabled
 	 * state.
 	 */
 	PHY_TX_ON                             = (0x09),
 
 	/**
 	 * A SET/GET request was issued with the identifier of an attribute that
-	 *is not
+	 * is not
 	 * supported.
 	 */
 	PHY_UNSUPPORTED_ATTRIBUTE             = (0x0A),
 
 	/**
 	 * A SET/GET request was issued with the identifier of an attribute that
-	 *is
+	 * is
 	 * read-only.
 	 */
 	PHY_READ_ONLY                         = (0x0B)
@@ -1211,13 +1211,13 @@ typedef enum phy_enum_tag {
 
 /**
  * Octet start position of Destination PAN-Id field within payload array of
- *frame_info_t.
+ * frame_info_t.
  */
 #define PL_POS_DST_PAN_ID_START             (4)
 
 /**
  * Octet start position of Destination Address field within payload array of
- *frame_info_t.
+ * frame_info_t.
  */
 #define PL_POS_DST_ADDR_START               (6)
 
@@ -1296,7 +1296,6 @@ typedef enum phy_enum_tag {
 #define GTS_DEALLOCATE                      (0)
 
 #endif /* GTS_SUPPORT */
-
 
 /**
  * Maximum length of the key id field

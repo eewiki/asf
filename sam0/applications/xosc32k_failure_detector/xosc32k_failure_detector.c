@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 XOSC32K Runtime Failure Detector Application
+ * \brief SAM D20/D21/R21 XOSC32K Runtime Failure Detector Application
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -41,7 +41,7 @@
  */
 
 /**
- * \mainpage SAM D20/D21 XOSC32K Runtime Failure Detector Application
+ * \mainpage SAM D20/D21/R21 XOSC32K Runtime Failure Detector Application
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -53,7 +53,7 @@
  */
 
 /**
- * \page appdoc_main SAM D20/D21 XOSC32K Runtime Failure Detector
+ * \page appdoc_main SAM D20/D21/R21 XOSC32K Runtime Failure Detector
  *
  * Overview:
  * - \ref appdoc_sam0_xosc32k_fail_detect_intro
@@ -64,7 +64,7 @@
  * \section appdoc_sam0_xosc32k_fail_detect_intro Introduction
  * This application demonstrates a runtime XOSC32K (external 32KHz crystal
  * oscillator) failure detector, using hardware timer peripherals and the
- * SAM D20/D21 event system.
+ * SAM D20/D21/R21 event system.
  *
  * A pair of timers are linked together; one with a clock source from the
  * XOSC32K 32.768KHz external clock, and another from the OSC32K 32.768KHz
@@ -83,7 +83,7 @@
  * the external reference availability.
  *
  * \section appdoc_sam0_xosc32k_fail_detect_usageinfo Usage
- * Connect an oscilloscope to PA28 of the SAM D20/D21 Xplained Pro. Run the
+ * Connect an oscilloscope to PA28 of the SAM D20/D21/R21 Xplained Pro. Run the
  * example application, and press and hold the board button to turn off the
  * external XOSC32K crystal clock source to observe the fail-over to the
  * internal clock source. Releasing the button will re-enable the external

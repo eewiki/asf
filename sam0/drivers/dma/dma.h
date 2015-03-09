@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 Direct Memory Access Controller Driver
+ * \brief SAM D21/R21 Direct Memory Access Controller Driver
  *
  * Copyright (C) 2014 Atmel Corporation. All rights reserved.
  *
@@ -48,9 +48,9 @@ extern "C" {
 #endif
 
 /**
- * \defgroup asfdoc_sam0_dma_group SAM D21 Direct Memory Access Controller Driver (DMAC)
+ * \defgroup asfdoc_sam0_dma_group SAM D21/R21 Direct Memory Access Controller Driver (DMAC)
  *
- * This driver for SAM D21 devices provides an interface for the configuration
+ * This driver for SAM D21/R21 devices provides an interface for the configuration
  * and management of the Direct Memory Access Controller(DMAC) module within
  * the device. The DMAC can transfer data between memories and peripherals, and
  * thus off-load these tasks from the CPU. The module supports peripheral to
@@ -77,7 +77,7 @@ extern "C" {
  *
  * \section asfdoc_sam0_dma_module_overview Module Overview
  *
- * SAM D21 devices with DMAC enables high data transfer rates with minimum
+ * SAM D21/R21 devices with DMAC enables high data transfer rates with minimum
  * CPU intervention and frees up CPU time. With access to all peripherals,
  * the DMAC can handle automatic transfer of data to/from modules.
  * It supports static and incremental addressing for both source and
@@ -94,7 +94,7 @@ extern "C" {
  * operation can be suspended at any time by software, by events
  * from event system, or after selectable descriptor execution. The operation
  * can be resumed by software or by events from event system.
- * The DMAC driver for SAM D21 supports four types of transfers such as
+ * The DMAC driver for SAM D21/R21 supports four types of transfers such as
  * peripheral to peripheral, peripheral to memory, memory to peripheral and
  * memory to memory.
  *
@@ -111,7 +111,7 @@ extern "C" {
  * The implementation of the DMA driver is based on the idea that DMA channel
  * is a finite resource of entities with the same abilities. A DMA channel resource
  * is able to move a defined set of data from a source address to destination
- * address triggered by a transfer trigger. On the SAM D21 devices there are 12
+ * address triggered by a transfer trigger. On the SAM D21/R21 devices there are 12
  * DMA resources available for allocation. Each of these DMA resources can trigger
  * interrupt callback routines and peripheral events.
  * The other main features are
@@ -169,7 +169,7 @@ extern "C" {
  *    <tr>
  *     <td > Burst </td>
  *     <td> It is a transfer of n-beats (n=1,4,8,16).
- *          For the DMAC module in SAM D21, the burst size is one beat.
+ *          For the DMAC module in SAM D21/R21, the burst size is one beat.
  *          Arbitration takes place each time a burst transfer is completed
  *     </td>
  *    </tr>
@@ -182,7 +182,7 @@ extern "C" {
  *   </table>
  *
  * \subsection asfdoc_sam0_dma_module_overview_dma_channels DMA Channels
- * The DMAC in each device consists of several DMA channels, which 
+ * The DMAC in each device consists of several DMA channels, which
  * along with the transfer descriptors defines the data transfer properties.
  * - The transfer control descriptor defines the source and destination
  * addresses, source and destination address increment settings, the
@@ -239,7 +239,7 @@ extern "C" {
  * DMA transfer. Three types of callbacks are supported by the DMA driver:
  * transfer complete, channel suspend and transfer error. Each of these callback
  * types can be registered and enabled for each channel independently through
- * the DMA driver API. 
+ * the DMA driver API.
  *
  * The DMAC module can also generate events on transfer complete. Event
  * generation is enabled through the DMA channel, event channel configuration
@@ -315,8 +315,8 @@ enum dma_event_input_action {
 };
 
 /**
- * Address increment step size. These bits select the address increment step 
- * size. The setting apply to source or destination address, depending on 
+ * Address increment step size. These bits select the address increment step
+ * size. The setting apply to source or destination address, depending on
  * STEPSEL setting.
  */
 enum dma_address_increment_stepsize {
@@ -349,7 +349,7 @@ enum dma_step_selection {
 	DMA_STEPSEL_SRC,
 };
 
-/** The basic transfer unit in DMAC is a beat, which is defined as a 
+/** The basic transfer unit in DMAC is a beat, which is defined as a
  *  single bus access. Its size is configurable and applies to both read
  *  and write */
 enum dma_beat_size {
@@ -370,10 +370,10 @@ enum dma_block_action {
 	/** Channel in normal operation and sets transfer complete interrupt flag
 	 *  after block transfer */
 	DMA_BLOCK_ACTION_INT,
-	/** Trigger channel suspend after block transfer and sets channel 
+	/** Trigger channel suspend after block transfer and sets channel
 	 *  suspend interrupt flag once the channel is suspended */
 	DMA_BLOCK_ACTION_SUSPEND,
-	/** Sets transfer complete interrupt flag after a block transfer and 
+	/** Sets transfer complete interrupt flag after a block transfer and
 	 *  trigger channel suspend. The channel suspend interrupt flag will be set
 	 *  once the channel is suspended*/
 	DMA_BLOCK_ACTION_BOTH,
@@ -566,7 +566,7 @@ static inline void dma_disable_callback(struct dma_resource *resource,
  * - Callback for transfer complete
  * - Callback for transfer error
  * - Callback for channel suspend
- *  
+ *
  * \param[in] resource Pointer to the DMA resource
  * \param[in] callback Pointer to the callback function
  * \param[in] type Callback function type
@@ -588,7 +588,7 @@ static inline void dma_register_callback(struct dma_resource *resource,
  * - Callback for transfer error
  * - Callback for channel suspend
  *
- * The application can unregister any of the callback functions which 
+ * The application can unregister any of the callback functions which
  * are already registered and are no longer needed.
  *
  * \param[in] resource Pointer to the DMA resource
@@ -766,7 +766,7 @@ enum status_code dma_add_descriptor(struct dma_resource *resource,
  *   </tr>
  * </table>
  */
- 
+
  /**
  * \page asfdoc_sam0_dma_exqsg Examples for DMAC Driver
  *
@@ -791,6 +791,11 @@ enum status_code dma_add_descriptor(struct dma_resource *resource,
  *        <th>Doc. Rev.</td>
  *        <th>Date</td>
  *        <th>Comments</td>
+ *    </tr>
+ *    <tr>
+ *        <td>B</td>
+ *        <td>03/2014</td>
+ *        <td>Add SAMR21 support</td>
  *    </tr>
  *    <tr>
  *        <td>A</td>

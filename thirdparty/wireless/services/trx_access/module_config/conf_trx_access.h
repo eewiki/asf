@@ -187,7 +187,56 @@
 
 #endif /* SAM4L */
 
-#if (SAMD20)
+#if (SAM4S || SAM4E)
+#include <pio.h>
+# include "pio_handler.h"
+
+#define AT86RFX_SPI                  SPI
+#define AT86RFX_RST_PIN              IOPORT_CREATE_PIN(PIOA, 23)
+#define AT86RFX_IRQ_PIN              IOPORT_CREATE_PIN(PIOA, 1)
+#define AT86RFX_SLP_PIN              IOPORT_CREATE_PIN(PIOA, 6)
+#define AT86RFX_SPI_CS               0
+#define AT86RFX_SPI_MOSI             IOPORT_CREATE_PIN(PIOA, 13)
+#define AT86RFX_SPI_MISO             IOPORT_CREATE_PIN(PIOA, 12)
+#define AT86RFX_SPI_SCK              IOPORT_CREATE_PIN(PIOA, 14)
+#define AT86RFX_CSD                          IOPORT_CREATE_PIN(PIOA, 24)
+#define AT86RFX_CPS                  IOPORT_CREATE_PIN(PIOA, 19)
+
+#define AT86RFX_INTC_INIT()         ioport_set_pin_dir(AT86RFX_IRQ_PIN,	\
+		IOPORT_DIR_INPUT); \
+	ioport_set_pin_sense_mode(AT86RFX_IRQ_PIN, IOPORT_SENSE_RISING); \
+	pmc_enable_periph_clk(ID_PIOA);	\
+	pio_set_debounce_filter(PIOA, PIO_PA1, 10); \
+	pio_handler_set(PIOA, ID_PIOA, PIO_PA1, PIO_IT_HIGH_LEVEL, at86rfx_isr); \
+	NVIC_EnableIRQ((IRQn_Type)ID_PIOA); \
+	pio_enable_interrupt(PIOA, PIO_PA1);
+
+#define AT86RFX_ISR()               void at86rfx_isr(void)
+
+/** Enables the transceiver main interrupt. */
+#define ENABLE_TRX_IRQ()            pio_enable_pin_interrupt(AT86RFX_IRQ_PIN)
+
+/** Disables the transceiver main interrupt. */
+#define DISABLE_TRX_IRQ()           pio_disable_pin_interrupt(AT86RFX_IRQ_PIN)
+
+/** Clears the transceiver main interrupt. */
+#define CLEAR_TRX_IRQ()             NVIC_ClearPendingIRQ(PIOA_IRQn);
+
+/*
+ * This macro saves the trx interrupt status and disables the trx interrupt.
+ */
+#define ENTER_TRX_REGION()          pio_disable_pin_interrupt(AT86RFX_IRQ_PIN);
+
+/*
+ *  This macro restores the transceiver interrupt status
+ */
+#define LEAVE_TRX_REGION()         pio_enable_pin_interrupt(AT86RFX_IRQ_PIN)
+
+#define AT86RFX_SPI_BAUDRATE         (3000000)
+
+#endif
+
+#if (SAMD || SAMR21)
 
 #define AT86RFX_SPI                  SERCOM0
 #define AT86RFX_RST_PIN              PIN_PA23
@@ -198,51 +247,57 @@
 #define AT86RFX_SPI_MOSI             PIN_PA16
 #define AT86RFX_SPI_MISO             PIN_PA18
 #define AT86RFX_SPI_SCK              PIN_PA17
-#define AT86RFX_CSD     		     PIN_PA23
-#define AT86RFX_CPS 	             PIN_PA23
+#define AT86RFX_CSD                          PIN_PA23
+#define AT86RFX_CPS                  PIN_PA23
 #define LED0 LED0_PIN
 
 #define AT86RFX_SPI_CONFIG(config) \
-        config.mux_setting = SPI_SIGNAL_MUX_SETTING_A; \
-        config.mode_specific.master.baudrate = AT86RFX_SPI_BAUDRATE; \
-        config.pinmux_pad0 = PINMUX_UNUSED; \
-        config.pinmux_pad1 = PINMUX_UNUSED; \
-        config.pinmux_pad2 = PINMUX_UNUSED; \
-        config.pinmux_pad3 = PINMUX_UNUSED;
+	config.mux_setting = SPI_SIGNAL_MUX_SETTING_A; \
+	config.mode_specific.master.baudrate = AT86RFX_SPI_BAUDRATE; \
+	config.pinmux_pad0 = PINMUX_UNUSED; \
+	config.pinmux_pad1 = PINMUX_UNUSED; \
+	config.pinmux_pad2 = PINMUX_UNUSED; \
+	config.pinmux_pad3 = PINMUX_UNUSED;
 
 #define AT86RFX_IRQ_CHAN             6
 #define AT86RFX_INTC_INIT()           struct extint_chan_conf eint_chan_conf; \
-									extint_chan_get_config_defaults(&eint_chan_conf); \
-									eint_chan_conf.gpio_pin = AT86RFX_IRQ_PIN; \
-									eint_chan_conf.gpio_pin_mux = PINMUX_PA22A_EIC_EXTINT6; \
-									eint_chan_conf.gpio_pin_pull      = EXTINT_PULL_NONE; \
-									eint_chan_conf.wake_if_sleeping    = true; \
-									eint_chan_conf.filter_input_signal = false; \
-									eint_chan_conf.detection_criteria  = EXTINT_DETECT_RISING; \
-									extint_chan_set_config(AT86RFX_IRQ_CHAN, &eint_chan_conf); \
-									extint_register_callback(AT86RFX_ISR, AT86RFX_IRQ_CHAN, EXTINT_CALLBACK_TYPE_DETECT);
-                                                
+	extint_chan_get_config_defaults(&eint_chan_conf); \
+	eint_chan_conf.gpio_pin = AT86RFX_IRQ_PIN; \
+	eint_chan_conf.gpio_pin_mux = PINMUX_PA22A_EIC_EXTINT6;	\
+	eint_chan_conf.gpio_pin_pull      = EXTINT_PULL_NONE; \
+	eint_chan_conf.wake_if_sleeping    = true; \
+	eint_chan_conf.filter_input_signal = false; \
+	eint_chan_conf.detection_criteria  = EXTINT_DETECT_RISING; \
+	extint_chan_set_config(AT86RFX_IRQ_CHAN, &eint_chan_conf); \
+	extint_register_callback(AT86RFX_ISR, AT86RFX_IRQ_CHAN,	\
+		EXTINT_CALLBACK_TYPE_DETECT);
 
 /** Enables the transceiver main interrupt. */
-#define ENABLE_TRX_IRQ()                extint_chan_enable_callback(AT86RFX_IRQ_CHAN, EXTINT_CALLBACK_TYPE_DETECT)
+#define ENABLE_TRX_IRQ()                extint_chan_enable_callback( \
+		AT86RFX_IRQ_CHAN, EXTINT_CALLBACK_TYPE_DETECT)
 
 /** Disables the transceiver main interrupt. */
-#define DISABLE_TRX_IRQ()               extint_chan_disable_callback(AT86RFX_IRQ_CHAN, EXTINT_CALLBACK_TYPE_DETECT)
+#define DISABLE_TRX_IRQ()               extint_chan_disable_callback( \
+		AT86RFX_IRQ_CHAN, EXTINT_CALLBACK_TYPE_DETECT)
 
 /** Clears the transceiver main interrupt. */
-#define CLEAR_TRX_IRQ()                 extint_chan_clear_detected(AT86RFX_IRQ_CHAN);
+#define CLEAR_TRX_IRQ()                 extint_chan_clear_detected( \
+		AT86RFX_IRQ_CHAN);
 
 /*
  * This macro saves the trx interrupt status and disables the trx interrupt.
  */
-#define ENTER_TRX_REGION()   { extint_chan_disable_callback(AT86RFX_IRQ_CHAN, EXTINT_CALLBACK_TYPE_DETECT)
+#define ENTER_TRX_REGION()   { extint_chan_disable_callback(AT86RFX_IRQ_CHAN, \
+					       EXTINT_CALLBACK_TYPE_DETECT)
 
 /*
  *  This macro restores the transceiver interrupt status
  */
-#define LEAVE_TRX_REGION()   extint_chan_enable_callback(AT86RFX_IRQ_CHAN, EXTINT_CALLBACK_TYPE_DETECT); }
+#define LEAVE_TRX_REGION()   extint_chan_enable_callback(AT86RFX_IRQ_CHAN, \
+		EXTINT_CALLBACK_TYPE_DETECT); \
+	}
 
 #define AT86RFX_SPI_BAUDRATE         (4000000)
 
-#endif /* SAMD20 */
+#endif /* SAMD || SAMR21 */
 #endif /* CONF_TRX_ACCESS_H_INCLUDED */

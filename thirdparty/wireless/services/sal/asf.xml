@@ -1,0 +1,60 @@
+<asf xmlversion="1.0">
+	<select-by-device id="config.thirdparty.wireless.common_services.sal" caption="SAL Configuration">
+		<module type="driver" id="config.thirdparty.wireless.common_services.sal#atxmega_sal"     caption="xmega sal support enabled">
+			<info type="description" value="summary">
+			The AES Engine of  XMEGA is used for performing SAL operations
+			</info>
+			<info type="gui-flag" value="hidden"/>
+      <require idref="thirdparty.wireless.common_services.sal.atxmega_sal"/>
+			<device-support value="xmega"/>		
+		</module>
+		<module type="driver" id="config.thirdparty.wireless.common_services.sal#at86rf2xx"     caption="at86rf2xx sal support enabled">
+			<info type="description" value="summary">
+			The AES engine available in the AT86RFXX transceiver is used to perform Security functions
+			</info>
+			<info type="gui-flag" value="hidden"/>      
+			<require idref="thirdparty.wireless.common_services.sal.at86rf2xx"/>
+			<device-support value="uc3"/>
+			<device-support value="sam4l"/>
+			<device-support value="sam0"/>
+			<device-support value="sam4e"/>
+			<device-support value="sam4s"/>		</module>
+		<module type="driver" id="config.thirdparty.wireless.common_services.sal#atmegarf_sal"     caption="atmegarf_sal  support enabled">
+			<info type="description" value="summary">
+			The AES engine available in the ATmegarf transceiver is used to perform Security functions
+			</info>
+			<info type="gui-flag" value="hidden"/>      
+			<require idref="thirdparty.wireless.common_services.sal.atmegarf_sal"/>
+			<device-support value="megarf"/>
+		</module>
+	</select-by-device>
+	<module type="driver" id="thirdparty.wireless.common_services.sal" caption="SAL">
+		<info type="description" value="summary">
+		The SAL (Security Abstraction Layer) provides an API that allows access to low level 
+		AES engine functions abstraction to encrypt and  decrypt frames.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="include-path"  value="inc/"/>
+		<build type="header-file"   value="inc/sal.h"/>
+		<require idref="thirdparty.wireless.common_services.sal.inc"/>
+		<require idref="config.thirdparty.wireless.common_services.sal"/>
+		<device-support value="xmega"/>
+    <device-support value="uc3"/>
+    <device-support value="megarf"/>
+		<device-support value="sam4l"/>
+		<device-support value="sam4e"/>
+		<device-support value="sam4s"/>
+		<device-support value="sam0"/>
+	</module>
+	<module type="meta" id="thirdparty.wireless.common_services.sal.inc" caption="SAL">
+		<info type="description" value="summary">
+		Generic SAL Includes
+		</info>
+		<build type="header-file"   value="inc/sal_generic.h"/>
+		<build type="header-file"   value="inc/sal_types.h"/>
+    <build type="header-file"   value="inc/sal.h"/>
+		<build type="include-path"  value="inc/"/>
+		<build type="doxygen-entry-point" value="sal_group"/>
+
+	</module>
+</asf>

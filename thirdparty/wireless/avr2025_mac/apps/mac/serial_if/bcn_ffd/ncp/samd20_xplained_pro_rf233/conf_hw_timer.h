@@ -3,7 +3,7 @@
  *
  * \brief USART Serial configuration
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,13 +43,10 @@
 #ifndef CONF_HW_TIMER_H_INCLUDED
 #define CONF_HW_TIMER_H_INCLUDED
 
-
-
 /*! \name Configuration
  */
-//! @{
+/* ! @{ */
 #define TIMER     TC0
-//! @}
-
+/* ! @} */
 
 #endif /* CONF_HW_TIMER_H_INCLUDED */

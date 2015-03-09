@@ -6,7 +6,7 @@
  *
  * This file defines a useful set of functions for the AES on SAM devices.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -71,6 +71,7 @@
  * - SAM4E evaluation kit.
  * - SAM4C evaluation kit.
  * - SAM4CP evaluation kit.
+ * - SAM4CMx demo board
  *
  * \section setupinfo Setup Information
  * <BR>CPU speed: <i> 120 MHz </i>
@@ -402,7 +403,7 @@ static void ecb_mode_test_dma(void)
 
 #endif
 
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP || SAM4CM
 /* PDC data packet for transfer */
 pdc_packet_t g_pdc_tx_packet;
 pdc_packet_t g_pdc_rx_packet;
@@ -1083,7 +1084,7 @@ int main(void)
 			break;
 
 		case 'p':
-			#if SAM4C || SAM4CP
+			#if SAM4C || SAM4CP || SAM4CM
 			printf(
 					"ECB mode encryption and decryption test with PDC.\r\n");
 			ecb_mode_test_pdc();

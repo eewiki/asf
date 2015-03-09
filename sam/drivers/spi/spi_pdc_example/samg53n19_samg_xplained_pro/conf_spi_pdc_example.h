@@ -3,7 +3,7 @@
  *
  * \brief SPI PDC example configuration.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,7 +43,7 @@
 
 /**
  * \defgroup spi_example_pin_defs
- *  - <b> STK600 SAMG53 -- STK600 SAMG53 </b>
+ *  - <b> SAMG53 XPRO -- SAMG53 XPRO </b>
  *  - VCC -- VCC
  *  - NPCS0(PA11) -- NPCS0(PA11)
  *  - MISO(PA12) -- MISO(PA12)

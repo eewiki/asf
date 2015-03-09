@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -78,9 +78,9 @@ typedef struct {
 /* -------- MEM2MEM_MR : (MEM2MEM Offset: 0x04) Memory to Memory Mode Register -------- */
 #define MEM2MEM_MR_TSIZE_Pos 0
 #define MEM2MEM_MR_TSIZE_Msk (0x3u << MEM2MEM_MR_TSIZE_Pos) /**< \brief (MEM2MEM_MR) Transfer Size */
-#define MEM2MEM_MR_TSIZE_T_8BIT (0x0u << 0) /**< \brief (MEM2MEM_MR) The buffer size is defined in byte. */
-#define MEM2MEM_MR_TSIZE_T_16BIT (0x1u << 0) /**< \brief (MEM2MEM_MR) The buffer size is defined in half-word (16-bit). */
-#define MEM2MEM_MR_TSIZE_T_32BIT (0x2u << 0) /**< \brief (MEM2MEM_MR) The buffer size is defined in word (32-bit). Default value. */
+#define   MEM2MEM_MR_TSIZE_T_8BIT (0x0u << 0) /**< \brief (MEM2MEM_MR) The buffer size is defined in byte. */
+#define   MEM2MEM_MR_TSIZE_T_16BIT (0x1u << 0) /**< \brief (MEM2MEM_MR) The buffer size is defined in half-word (16-bit). */
+#define   MEM2MEM_MR_TSIZE_T_32BIT (0x2u << 0) /**< \brief (MEM2MEM_MR) The buffer size is defined in word (32-bit). Default value. */
 /* -------- MEM2MEM_IER : (MEM2MEM Offset: 0x08) Memory to Memory Interrupt Enable Register -------- */
 #define MEM2MEM_IER_RXEND (0x1u << 0) /**< \brief (MEM2MEM_IER) End of Transfer Interrupt Enable */
 #define MEM2MEM_IER_RXBUFF (0x1u << 1) /**< \brief (MEM2MEM_IER) Buffer Full Interrupt Enable */

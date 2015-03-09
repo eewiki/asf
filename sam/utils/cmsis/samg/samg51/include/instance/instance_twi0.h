@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -59,7 +59,6 @@
   #define REG_TWI0_SMBTR                  (0x40018038U) /**< \brief (TWI0) SMBus Timing Register */
   #define REG_TWI0_ACR                    (0x40018040U) /**< \brief (TWI0) Alternative Command Register */
   #define REG_TWI0_FILTR                  (0x40018044U) /**< \brief (TWI0) Filter Register */
-  #define REG_TWI0_SWMR                   (0x4001804CU) /**< \brief (TWI0) SleepWalking Matching Register */
   #define REG_TWI0_WPMR                   (0x400180E4U) /**< \brief (TWI0) Protection Mode Register */
   #define REG_TWI0_WPSR                   (0x400180E8U) /**< \brief (TWI0) Protection Status Register */
   #define REG_TWI0_RPR                    (0x40018100U) /**< \brief (TWI0) Receive Pointer Register */
@@ -87,7 +86,6 @@
   #define REG_TWI0_SMBTR (*(__IO uint32_t*)0x40018038U) /**< \brief (TWI0) SMBus Timing Register */
   #define REG_TWI0_ACR   (*(__IO uint32_t*)0x40018040U) /**< \brief (TWI0) Alternative Command Register */
   #define REG_TWI0_FILTR (*(__IO uint32_t*)0x40018044U) /**< \brief (TWI0) Filter Register */
-  #define REG_TWI0_SWMR  (*(__IO uint32_t*)0x4001804CU) /**< \brief (TWI0) SleepWalking Matching Register */
   #define REG_TWI0_WPMR  (*(__IO uint32_t*)0x400180E4U) /**< \brief (TWI0) Protection Mode Register */
   #define REG_TWI0_WPSR  (*(__I  uint32_t*)0x400180E8U) /**< \brief (TWI0) Protection Status Register */
   #define REG_TWI0_RPR   (*(__IO uint32_t*)0x40018100U) /**< \brief (TWI0) Receive Pointer Register */

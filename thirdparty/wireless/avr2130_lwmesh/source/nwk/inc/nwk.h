@@ -58,14 +58,14 @@
 #include "nwkSecurity.h"
 #include "nwkDataReq.h"
 
- 
- /**
+/**
  * \ingroup group_lwmesh_nwk
  * @{
  */
- 
+
 /*- Definitions ------------------------------------------------------------*/
-#define NWK_MAX_PAYLOAD_SIZE            (127 - 16/*NwkFrameHeader_t*/ - 2/*crc*/)
+#define NWK_MAX_PAYLOAD_SIZE            (127 - 16 /*NwkFrameHeader_t*/ - \
+	2 /*crc*/)
 
 #define NWK_BROADCAST_PANID             0xffff
 #define NWK_BROADCAST_ADDR              0xffff
@@ -73,30 +73,28 @@
 #define NWK_ENDPOINTS_AMOUNT            16
 
 /*- Types ------------------------------------------------------------------*/
-typedef enum
-{
-  NWK_SUCCESS_STATUS                      = 0x00,
-  NWK_ERROR_STATUS                        = 0x01,
-  NWK_OUT_OF_MEMORY_STATUS                = 0x02,
+typedef enum {
+	NWK_SUCCESS_STATUS                      = 0x00,
+	NWK_ERROR_STATUS                        = 0x01,
+	NWK_OUT_OF_MEMORY_STATUS                = 0x02,
 
-  NWK_NO_ACK_STATUS                       = 0x10,
-  NWK_NO_ROUTE_STATUS                     = 0x11,
+	NWK_NO_ACK_STATUS                       = 0x10,
+	NWK_NO_ROUTE_STATUS                     = 0x11,
 
-  NWK_PHY_CHANNEL_ACCESS_FAILURE_STATUS   = 0x20,
-  NWK_PHY_NO_ACK_STATUS                   = 0x21,
+	NWK_PHY_CHANNEL_ACCESS_FAILURE_STATUS   = 0x20,
+	NWK_PHY_NO_ACK_STATUS                   = 0x21,
 } NWK_Status_t;
 
-typedef struct NwkIb_t
-{
-  uint16_t     addr;
-  uint16_t     panId;
-  uint8_t      nwkSeqNum;
-  uint8_t      macSeqNum;
-  bool         (*endpoint[NWK_ENDPOINTS_AMOUNT])(NWK_DataInd_t *ind);
+typedef struct NwkIb_t {
+	uint16_t addr;
+	uint16_t panId;
+	uint8_t nwkSeqNum;
+	uint8_t macSeqNum;
+	bool(*endpoint[NWK_ENDPOINTS_AMOUNT]) (NWK_DataInd_t * ind);
 #ifdef NWK_ENABLE_SECURITY
-  uint32_t     key[4];
+	uint32_t key[4];
 #endif
-  uint16_t     lock;
+	uint16_t lock;
 } NwkIb_t;
 
 /*- Variables --------------------------------------------------------------*/
@@ -115,5 +113,6 @@ void NWK_WakeupReq(void);
 void NWK_TaskHandler(void);
 
 uint8_t NWK_LinearizeLqi(uint8_t lqi);
+
 /**  @} */
-#endif // _NWK_H_
+#endif /* _NWK_H_ */

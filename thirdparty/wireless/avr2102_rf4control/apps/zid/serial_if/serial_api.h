@@ -39,6 +39,7 @@
  *
  * \asf_license_stop
  */
+
 /*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
@@ -65,6 +66,7 @@ extern "C" {
 
 void serial_interface_init(void);
 void serial_data_handler(void);
+
 /* Protocol Identifier of the RF4Control */
 #define RF4CONTROL_PID                         (2)
 

@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="Basic FreeRTOS Example for ATPL230AMB" id="common.services.freertos.sam_example.atpl230amb">
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="common.services.freertos.sam_example"/>
+		<require idref="board.atpl230amb"/>
+		<config name="config.board.atpl230amb.led" value="yes"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<config name="config.compiler.iarewarm.heap_size" value="0x1000"/>
+		<config name="config.compiler.armgcc.optimization" value="high"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4sd32c"/>
+	</project>
+</asf>

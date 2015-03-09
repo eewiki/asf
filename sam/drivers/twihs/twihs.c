@@ -3,7 +3,7 @@
  *
  * \brief Two-Wire Interface (TWIHS) driver for SAM.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -657,7 +657,7 @@ void twihs_mask_slave_addr(Twihs *p_twihs, uint32_t ul_mask)
 	p_twihs->TWIHS_SMR |= TWIHS_SMR_MASK(ul_mask);
 }
 
-#if (SAMG)
+#if (SAMG53 || SAMG54)
 /**
  * \brief Set sleepwalking match mode.
  *

@@ -1,0 +1,26 @@
+<asf xmlversion="1.0">
+	<project caption="LWMesh-Peer2Peer Application:AT86RF212-AtXmega256A3BU Xplained" id="thirdparty.wireless.avr2130_lwmesh.apps.peer2peer.atxmega256a3bu_xplained_rf212" force-caption="true" force-description="true">
+		<info type="description" value="summary">
+		The LWMesh Peer2Peer application performs a Wireless UART functionality using two nodes with preconfigured addresses.
+		</info>		
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_spi_master.h"/>
+		<build type="header-file" value="conf_hw_timer.h"/>
+		<build type="header-file" value="conf_usb.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
+
+		<config name="config.spi_master_type" value="standard_spi"/>
+		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
+	<config name="config.thirdparty.wireless.avr2130_lwmesh.source.phy.ext" value="at86rf212"/>		
+		<build type="include-path" value="."/>
+		<require idref="thirdparty.wireless.avr2130_lwmesh.apps.peer2peer"/>
+		<require idref="board.xmega_a3bu_xplained"/>	
+		<generator value="avrgcc" />
+		<generator value="iarew"/>
+		<generator value="as5_8" />
+		<generator value="doxygen"/>  
+		<device-support value="atxmega256a3bu"/>
+	</project>
+</asf>

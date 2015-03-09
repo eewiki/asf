@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -60,12 +60,13 @@
   #define REG_PMC_IDR                     (0x400E0464U) /**< \brief (PMC) Interrupt Disable Register */
   #define REG_PMC_SR                      (0x400E0468U) /**< \brief (PMC) Status Register */
   #define REG_PMC_IMR                     (0x400E046CU) /**< \brief (PMC) Interrupt Mask Register */
-  #define REG_PMC_FSMR                    (0x400E0470U) /**< \brief (PMC) Fast Start-up Mode Register */
-  #define REG_PMC_FSPR                    (0x400E0474U) /**< \brief (PMC) Fast Start-up Polarity Register */
+  #define REG_PMC_FSMR                    (0x400E0470U) /**< \brief (PMC) Fast Startup Mode Register */
+  #define REG_PMC_FSPR                    (0x400E0474U) /**< \brief (PMC) Fast Startup Polarity Register */
   #define REG_PMC_FOCR                    (0x400E0478U) /**< \brief (PMC) Fault Output Clear Register */
-  #define REG_PMC_WPMR                    (0x400E04E4U) /**< \brief (PMC) Write Protect Mode Register */
-  #define REG_PMC_WPSR                    (0x400E04E8U) /**< \brief (PMC) Write Protect Status Register */
+  #define REG_PMC_WPMR                    (0x400E04E4U) /**< \brief (PMC) Write Protection Mode Register */
+  #define REG_PMC_WPSR                    (0x400E04E8U) /**< \brief (PMC) Write Protection Status Register */
   #define REG_PMC_OCR                     (0x400E0510U) /**< \brief (PMC) Oscillator Calibration Register */
+  #define REG_PMC_PMMR                    (0x400E0530U) /**< \brief (PMC) PLL Maximum Multiplier Value Register */
 #else
   #define REG_PMC_SCER   (*(__O  uint32_t*)0x400E0400U) /**< \brief (PMC) System Clock Enable Register */
   #define REG_PMC_SCDR   (*(__O  uint32_t*)0x400E0404U) /**< \brief (PMC) System Clock Disable Register */
@@ -82,12 +83,13 @@
   #define REG_PMC_IDR    (*(__O  uint32_t*)0x400E0464U) /**< \brief (PMC) Interrupt Disable Register */
   #define REG_PMC_SR     (*(__I  uint32_t*)0x400E0468U) /**< \brief (PMC) Status Register */
   #define REG_PMC_IMR    (*(__I  uint32_t*)0x400E046CU) /**< \brief (PMC) Interrupt Mask Register */
-  #define REG_PMC_FSMR   (*(__IO uint32_t*)0x400E0470U) /**< \brief (PMC) Fast Start-up Mode Register */
-  #define REG_PMC_FSPR   (*(__IO uint32_t*)0x400E0474U) /**< \brief (PMC) Fast Start-up Polarity Register */
+  #define REG_PMC_FSMR   (*(__IO uint32_t*)0x400E0470U) /**< \brief (PMC) Fast Startup Mode Register */
+  #define REG_PMC_FSPR   (*(__IO uint32_t*)0x400E0474U) /**< \brief (PMC) Fast Startup Polarity Register */
   #define REG_PMC_FOCR   (*(__O  uint32_t*)0x400E0478U) /**< \brief (PMC) Fault Output Clear Register */
-  #define REG_PMC_WPMR   (*(__IO uint32_t*)0x400E04E4U) /**< \brief (PMC) Write Protect Mode Register */
-  #define REG_PMC_WPSR   (*(__I  uint32_t*)0x400E04E8U) /**< \brief (PMC) Write Protect Status Register */
+  #define REG_PMC_WPMR   (*(__IO uint32_t*)0x400E04E4U) /**< \brief (PMC) Write Protection Mode Register */
+  #define REG_PMC_WPSR   (*(__I  uint32_t*)0x400E04E8U) /**< \brief (PMC) Write Protection Status Register */
   #define REG_PMC_OCR    (*(__IO uint32_t*)0x400E0510U) /**< \brief (PMC) Oscillator Calibration Register */
+  #define REG_PMC_PMMR   (*(__IO uint32_t*)0x400E0530U) /**< \brief (PMC) PLL Maximum Multiplier Value Register */
 #endif /* (defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 
 #endif /* _SAMG51_PMC_INSTANCE_ */

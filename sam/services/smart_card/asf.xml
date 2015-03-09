@@ -39,6 +39,7 @@
 			<device-support value="sam4e"/>
 			<device-support value="sam4n"/>
 			<device-support value="sam4c"/>
+			<device-support value="sam4cm"/>
 			<require idref="sam.drivers.usart"/>
 			<require idref="common.services.ioport"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam4e"/>

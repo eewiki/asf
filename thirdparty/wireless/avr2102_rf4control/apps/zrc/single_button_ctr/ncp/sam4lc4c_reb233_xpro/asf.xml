@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="Single Button controller application AT86RF233 REB-SAM4L Xplained Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.ncp.sam4lc4c_reb233_xpro">
+	<project force-caption="true" force-description="true" caption="RF4CE Single Button controller application AT86RF233 REB-SAM4L Xplained Pro" id="thirdparty.wireless.avr2102_rf4control.apps.zrc.single_button_ctr.ncp.sam4lc4c_reb233_xpro">
 		<info type="description" value="summary">
 		he RF4CE-ZRC controller stack running on the network co-processor and driven by the host application
 		</info>

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 I2C Slave Interrupt Driver
+ * \brief SAM SERCOM I2C Slave Interrupt Driver
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *

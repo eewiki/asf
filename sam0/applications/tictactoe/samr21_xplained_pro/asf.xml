@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<project caption="Tic-Tac-Toe Application" id="sam0.applications.tictactoe.samr21_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<require idref="board.samr21_xplained_pro"/>
+		<require idref="sam0.applications.tictactoe"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_ssd1306.h"/>
+		<build type="header-file" value="conf_sysfont.h"/>
+		<build type="header-file" value="conf_spi.h"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen-v2"/>
+		<device-support value="atsamr21g18a"/>
+
+		<config name="common2.services.gfx_mono.display" value="ug_2832hsweg04"/>
+		<config name="config.sam0.drivers.sercom.spi" value="polled"/>
+
+	</project>
+</asf>

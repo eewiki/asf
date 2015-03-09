@@ -15,13 +15,8 @@
 		
 		<require idref="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer"/>
 		<require idref="board.atmega256rfr2_zigbit"/>
-		
-		<build type="define"   name="HIGHEST_STACK_LAYER"                 value="TAL"/>
-		<build type="define"   name="HIGH_DATA_RATE_SUPPORT"              value=""/>
-        <build type="define"   name="FFD"                                 value=""/>
-        <build type="define"   name="ENABLE_TFA"                          value=""/>
-        <build type="define"   name="TRX_REG_RAW_VALUE"                   value=""/>
-		
+    	
+		<build type="define"   name="HIGH_DATA_RATE_SUPPORT"              value=""/>		
 		<generator value="avrgcc" />
 		<generator value="iarew"/>
 		<generator value="as5_8" />

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 Peripheral Analog-to-Digital Converter Driver
+ * \brief SAM D20/D21/R21 Peripheral Analog-to-Digital Converter Driver
  *
  * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
@@ -42,6 +42,11 @@
  */
 
 #include "adc.h"
+
+#if SAMD20
+/* The Die revision D number */
+#define REVISON_D_NUM    3
+#endif
 
 /**
 * \internal Configure MUX settings for the analog pins
@@ -91,6 +96,28 @@ static inline void _adc_configure_ain_pin(uint32_t pin)
 			PIN_PB06B_ADC_AIN14, PIN_PB07B_ADC_AIN15,
 			PIN_PA08B_ADC_AIN16, PIN_PA09B_ADC_AIN17,
 			PIN_PA10B_ADC_AIN18, PIN_PA11B_ADC_AIN19,
+#elif SAMR21E
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_PA06B_ADC_AIN6,  PIN_PA07B_ADC_AIN7,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_PA08B_ADC_AIN16, PIN_PA09B_ADC_AIN17,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+#elif SAMR21G
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_PA04B_ADC_AIN4,  PIN_PA05B_ADC_AIN5,
+			PIN_PA06B_ADC_AIN6,  PIN_PA07B_ADC_AIN7,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_PB02B_ADC_AIN10, PIN_PB03B_ADC_AIN11,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_PA08B_ADC_AIN16, PIN_PA09B_ADC_AIN17,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
 #else
 #  error ADC pin mappings are not defined for this device.
 #endif
@@ -133,6 +160,9 @@ static enum status_code _adc_set_config(
 	uint8_t adjres = 0;
 	uint32_t resolution = ADC_RESOLUTION_16BIT;
 	enum adc_accumulate_samples accumulate = ADC_ACCUMULATE_DISABLE;
+#if SAMD20
+	uint8_t revision_num = ((REG_DSU_DID & DSU_DID_DIE_Msk) >> DSU_DID_DIE_Pos);
+#endif
 
 	/* Get the hardware module pointer */
 	Adc *const adc_module = module_inst->hw;
@@ -196,10 +226,36 @@ static enum status_code _adc_set_config(
 		/* 16-bit result register */
 		resolution = ADC_RESOLUTION_16BIT;
 		break;
-
+#if SAMD20
+	/* Please see $35.1.8 for ADC errata of SAM D20.
+	   The revisions before D have this issue.*/
 	case ADC_RESOLUTION_15BIT:
 		/* Increase resolution by 3 bit */
-		adjres = ADC_DIVIDE_RESULT_8;
+		if(revision_num < REVISON_D_NUM) {
+			adjres = ADC_DIVIDE_RESULT_8;
+		} else {
+			adjres = ADC_DIVIDE_RESULT_2;
+		}
+		accumulate = ADC_ACCUMULATE_SAMPLES_64;
+		/* 16-bit result register */
+		resolution = ADC_RESOLUTION_16BIT;
+		break;
+
+	case ADC_RESOLUTION_16BIT:
+		if(revision_num < REVISON_D_NUM) {
+			/* Increase resolution by 4 bit */
+			adjres = ADC_DIVIDE_RESULT_16;
+		} else {
+			adjres = ADC_DIVIDE_RESULT_DISABLE;
+		}
+		accumulate = ADC_ACCUMULATE_SAMPLES_256;
+		/* 16-bit result register */
+		resolution = ADC_RESOLUTION_16BIT;
+		break;
+#else
+	case ADC_RESOLUTION_15BIT:
+		/* Increase resolution by 3 bit */
+		adjres = ADC_DIVIDE_RESULT_2;
 		accumulate = ADC_ACCUMULATE_SAMPLES_64;
 		/* 16-bit result register */
 		resolution = ADC_RESOLUTION_16BIT;
@@ -207,10 +263,12 @@ static enum status_code _adc_set_config(
 
 	case ADC_RESOLUTION_16BIT:
 		/* Increase resolution by 4 bit */
-		adjres = ADC_DIVIDE_RESULT_16;
+		adjres = ADC_DIVIDE_RESULT_DISABLE;
 		accumulate = ADC_ACCUMULATE_SAMPLES_256;
+		/* 16-bit result register */
+		resolution = ADC_RESOLUTION_16BIT;
 		break;
-
+#endif
 	case ADC_RESOLUTION_8BIT:
 		/* 8-bit result register */
 		resolution = ADC_RESOLUTION_8BIT;

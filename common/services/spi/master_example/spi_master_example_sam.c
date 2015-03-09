@@ -3,7 +3,7 @@
  *
  * \brief Example of usage of the SPI Master Mode Basic Services.
  *
- * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2011 - 2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -140,10 +140,14 @@ int main(void)
 	spi_enable(SPI_EXAMPLE);
 
 	if (spi_at25df_mem_check() == false) {
+	#if !SAM4CM
 		ioport_set_pin_level(SPI_EXAMPLE_LED_PIN_EXAMPLE_1, IOPORT_PIN_LEVEL_LOW);
+	#endif
 		ioport_set_pin_level(SPI_EXAMPLE_LED_PIN_EXAMPLE_2, IOPORT_PIN_LEVEL_HIGH);
 	} else {
+	#if !SAM4CM
 		ioport_set_pin_level(SPI_EXAMPLE_LED_PIN_EXAMPLE_1, IOPORT_PIN_LEVEL_LOW);
+	#endif
 		ioport_set_pin_level(SPI_EXAMPLE_LED_PIN_EXAMPLE_2, IOPORT_PIN_LEVEL_LOW);
 	}
 	while (1) {

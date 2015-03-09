@@ -3,7 +3,7 @@
  *
  * \brief Board configuration
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -48,6 +48,7 @@
 #ifdef EXT_RF_FRONT_END_CTRL /*For External PA for 233FEM*/
 
 #define EXT_PA_SE2431L
+
 /*
  * Value of an external LNA gain.
  * If no external LNA is available, the value is 0.
@@ -57,6 +58,7 @@
 #endif
 
 #ifdef CUSTOM_DEFAULT_TX_PWR /*For External PA for 233FEM*/
+
 /*
  * Default value of transmit power of transceiver: Preset
  *    - definition acct. IEEE802.15.4 PHY PIB attribute phyTransmitPower
@@ -65,6 +67,6 @@
 #define TAL_TRANSMIT_POWER_DEFAULT      (TX_PWR_TOLERANCE | 0x14)
 #endif
 
-#define AT86RFX_SPI_BAUDRATE		 4000000UL
-//# include "conf_usb.h"
+#define AT86RFX_SPI_BAUDRATE             4000000UL
+/* # include "conf_usb.h" */
 #endif /* CONF_BOARD_H_INCLUDED */

@@ -115,6 +115,8 @@
 *
 * \subsection asfdoc_common2_at25dfx_basic_use_case_flow Workflow
 *
+* -# Wakeup serialFlash.
+*    \snippet qs_at25dfx_basic.c wake_chip
 * -# Check that the SerialFlash is present.
 *    \snippet qs_at25dfx_basic.c check_presence
 * -# Read out the first \ref AT25DFX_BUFFER_SIZE bytes, starting at the very

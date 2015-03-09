@@ -44,7 +44,7 @@
 #define _USART_SERIAL_H_
 
 #include "compiler.h"
-#if !(SAMD20 || SAMD21)
+#if !(SAMD20 || SAMD21 || SAMR21)
 # include "sysclk.h"
 #endif
 #include "status_codes.h"

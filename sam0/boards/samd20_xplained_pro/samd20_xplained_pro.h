@@ -110,6 +110,7 @@ void system_board_init(void);
 #define LED_0_PIN                 LED0_PIN
 #define LED_0_ACTIVE              LED0_ACTIVE
 #define LED_0_INACTIVE            LED0_INACTIVE
+#define LED0_GPIO 				  LED0_PIN
 /** @} */
 
 /** Number of on-board LEDs */

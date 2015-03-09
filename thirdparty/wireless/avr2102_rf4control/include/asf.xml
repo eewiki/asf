@@ -20,7 +20,7 @@
 		<build type="header-file" value="zid.h"/>
 		<build type="header-file" value="nwk_internal.h"/>
 		<build type="doxygen-entry-point" value="group_rf4control"/>
-		<build type="distribute" subtype="user-file" value="../doc/AVR2102_User_Guide_v_2_0_0.pdf"/>
+		<build type="distribute" subtype="user-file" value="../doc/AVR2102_User_Guide_v_2_0_1.pdf"/>
 		<require idref="thirdparty.wireless.avr2025_mac.includes"/>
 	</module>
 </asf>

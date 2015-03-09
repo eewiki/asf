@@ -40,6 +40,7 @@
  * \asf_license_stop
  *
  */
+
 /**
  * \mainpage
  * \section preface Preface
@@ -48,23 +49,23 @@
  * - main.c                      Application main file.
  * \section intro Application Introduction
  * RF4Control ZID Serial Interface Application running on the network
- *co-processor can be driven by the host controller which is running the main
- *application. Both controller use a serial interface to communicate.
+ * co-processor can be driven by the host controller which is running the main
+ * application. Both controller use a serial interface to communicate.
  *
  * The host controller can be implemented as a standalone microcontroller, or it
- *can also be a personal computer.
+ * can also be a personal computer.
  *
  * The network co-processor receives the commands from the host, such as
- *reset/pairing/data requests. The network co-processor will send the response
- *to the host controller after processing the request and also
+ * reset/pairing/data requests. The network co-processor will send the response
+ * to the host controller after processing the request and also
  * indicates the data received from the paired RF4Control nodes.
  *
  * Interface between the host controller and the RF4CE client can be any
- *interface. like UART, USB, TWI, Proprietary interface
+ * interface. like UART, USB, TWI, Proprietary interface
  *
  * In this application serial interface is used for communication, whereas
- *serial_data_handler api will handle all the incoming bytes from the serial
- *interface.
+ * serial_data_handler api will handle all the incoming bytes from the serial
+ * interface.
  * \section api_modules Application Dependent Modules
  * - \ref group_rf4control
  * - \subpage api
@@ -75,7 +76,7 @@
  * \section references References
  * 1)  IEEE Std 802.15.4-2006 Part 15.4: Wireless Medium Access Control (MAC)
  *     and Physical Layer (PHY) Specifications for Low-Rate Wireless Personal
- *Area
+ * Area
  *     Networks (WPANs).\n\n
  * 2)  AVR Wireless Support <A href="http://avr@atmel.com">avr@atmel.com</A>.\n
  *
@@ -107,7 +108,6 @@
 /* === Globals ============================================================= */
 extern void zid_indication_callback_init(void);
 
-
 /* Write application specific values into flash memory */
 FLASH_DECLARE(uint16_t VendorIdentifier) = (uint16_t)NWKC_VENDOR_IDENTIFIER;
 FLASH_DECLARE(uint8_t vendor_string[7]) = NWKC_VENDOR_STRING;
@@ -117,6 +117,7 @@ FLASH_DECLARE(uint8_t supported_cec_cmds[32]) = SUPPORTED_CEC_CMDS;
 #endif
 /* === Prototypes ========================================================== */
 static void app_alert(void);
+
 /* === Implementation ====================================================== */
 
 /* === EXTERNALS =========================================================== */
@@ -126,9 +127,9 @@ static void app_alert(void);
  *
  * @return error code
  */
-int main (void)
+int main(void)
 {
-    irq_initialize_vectors();
+	irq_initialize_vectors();
 
 	/* Initialize the board.
 	 * The board-specific conf_board.h file contains the configuration of
@@ -138,69 +139,69 @@ int main (void)
 	sysclk_init();
 
 	sw_timer_init();
-        
-    if (nwk_init() != NWK_SUCCESS)
-    {
-        app_alert();
-    }
 
-    zid_indication_callback_init();
+	if (nwk_init() != NWK_SUCCESS) {
+		app_alert();
+	}
 
-    cpu_irq_enable();
+	zid_indication_callback_init();
 
-    /*
-     * The global interrupt has to be enabled here as TAL uses the timer
-     * delay which in turn requires interrupt to be enabled
-     */
-   
-    serial_interface_init();
+	cpu_irq_enable();
 
-    /* Loop forever, the interrupts are doing the rest */
-    while (1)
-    {
-        nwk_task();
-        serial_data_handler();
-    }
-    /* No return statement here, because this code is unreachable */
+	/*
+	 * The global interrupt has to be enabled here as TAL uses the timer
+	 * delay which in turn requires interrupt to be enabled
+	 */
+
+	serial_interface_init();
+
+	/* Loop forever, the interrupts are doing the rest */
+	while (1) {
+		nwk_task();
+		serial_data_handler();
+	}
+	/* No return statement here, because this code is unreachable */
 }
 
 #ifdef PBP_REC
-bool pbp_allow_pairing(nwk_enum_t Status, uint64_t SrcIEEEAddr, uint16_t OrgVendorId,
-                       uint8_t OrgVendorString[7], uint8_t OrgUserString[15],
-                       uint8_t KeyExTransferCount)
+bool pbp_allow_pairing(nwk_enum_t Status, uint64_t SrcIEEEAddr,
+		uint16_t OrgVendorId,
+		uint8_t OrgVendorString[7], uint8_t OrgUserString[15],
+		uint8_t KeyExTransferCount)
 {
-    /* Keep compiler happy */
-    Status = Status;
-    SrcIEEEAddr = SrcIEEEAddr;
-    OrgVendorId = OrgVendorId;
-    OrgVendorString[0] = OrgVendorString[0];
-    OrgUserString[0] = OrgUserString[0];
-    KeyExTransferCount = KeyExTransferCount;
+	/* Keep compiler happy */
+	Status = Status;
+	SrcIEEEAddr = SrcIEEEAddr;
+	OrgVendorId = OrgVendorId;
+	OrgVendorString[0] = OrgVendorString[0];
+	OrgUserString[0] = OrgUserString[0];
+	KeyExTransferCount = KeyExTransferCount;
 
-    return true;
+	return true;
 }
+
 #endif
 
 #ifdef ZID_DEVICE
-bool check_zid_adaptor_compatibility(uint8_t PairingRef,uint8_t payload_length,uint8_t *payload)
+bool check_zid_adaptor_compatibility(uint8_t PairingRef, uint8_t payload_length,
+		uint8_t *payload)
 {
-    // Application need to find out the compatibility with the adaptor
-    // It needs to extract the adaptor attributes from the following payloas
-    // Payload format is as per the GET_ATTRIBUTES_RESPONSE packet format excluding the header
-    // payload[0] = attr_id...........
-    PairingRef = PairingRef;
-    payload_length = payload_length;
-    payload = payload;
-    return true;
-
+	/* Application need to find out the compatibility with the adaptor */
+	/* It needs to extract the adaptor attributes from the following payloas */
+	/* Payload format is as per the GET_ATTRIBUTES_RESPONSE packet format
+	 * excluding the header */
+	/* payload[0] = attr_id........... */
+	PairingRef = PairingRef;
+	payload_length = payload_length;
+	payload = payload;
+	return true;
 }
+
 #endif
 
 static void app_alert(void)
 {
-    while (1)
-    {
-     
+	while (1) {
 		#if LED_COUNT > 0
 		LED_Toggle(LED0);
 		#endif

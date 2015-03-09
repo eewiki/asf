@@ -1,7 +1,7 @@
 /*
  * \file
  *
- * \brief SAM D20/D21 ADC Sleepwalking Example
+ * \brief SAM D20/D21/R21 ADC Sleepwalking Example
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -42,7 +42,7 @@
  */
 
 /**
- * \mainpage SAM D20/D21 ADC Sleepwalking Example
+ * \mainpage SAM D20/D21/R21 ADC Sleepwalking Example
  * See \ref appdoc_main "here" for project documentation.
  * \copydetails appdoc_preface
  *
@@ -55,7 +55,7 @@
  */
 
 /**
- * \page appdoc_main SAM D20/D21 ADC Sleepwalking Example
+ * \page appdoc_main SAM D20/D21/R21 ADC Sleepwalking Example
  *
  * Overview:
  * - \ref appdoc_sam0_adc_sleepwalking_intro
@@ -72,9 +72,10 @@
  *
  * \section appdoc_sam0_adc_sleepwalking_setup Hardware Setup
  * This application use AIN0 as ADC input channel.
- * When the measured voltage is lower than 0.5V, then the device will start toggling
- * the led pin to signal that the low voltage condition has happened.
- * Connect the PA02(EXT3 pin3) to GND in board to trigger it.
+ * When the measured voltage is lower than 0.5V, then the device will start
+ * toggling the led pin to signal that the low voltage condition has happened.
+ * Connect the PA02(EXT3 pin3) to GND in SAM D20/D21 Xplained Pro to trigger it.
+ * Connect the PA06(EXT1 pin3) to GND in SAM R21 Xplained Pro to trigger it.
  *
  * If debugging it is also possible to start a debug session and place a
  * breakpoint in the window callback that will trigger whenever the voltage

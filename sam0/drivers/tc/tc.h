@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 TC - Timer Counter Driver
+ * \brief SAM D20/D21/R21 TC - Timer Counter Driver
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -45,9 +45,9 @@
 #define TC_H_INCLUDED
 
 /**
- * \defgroup asfdoc_sam0_tc_group SAM D20/D21 Timer/Counter Driver (TC)
+ * \defgroup asfdoc_sam0_tc_group SAM D20/D21/R21 Timer/Counter Driver (TC)
  *
- * This driver for SAM D20/D21 devices provides an interface for the configuration
+ * This driver for SAM D20/D21/R21 devices provides an interface for the configuration
  * and management of the timer modules within the device, for waveform
  * generation and timing operations. The following driver API modes are covered
  * by this manual:
@@ -84,7 +84,7 @@
  * periodic operations. TC modules can be configured to use an 8-, 16-, or
  * 32-bit counter size.
  *
- * This TC module for the SAM D20/D21 is capable of the following functions:
+ * This TC module for the SAM D20/D21/R21 is capable of the following functions:
  *
  * - Generation of PWM signals
  * - Generation of timestamps for events
@@ -115,7 +115,7 @@
  * signal generation.
  *
  * \note The connection of events between modules requires the use of the
- *       \ref asfdoc_sam0_events_group "SAM D20/D21 Event System Driver (EVENTS)"
+ *       \ref asfdoc_sam0_events_group "SAM D20/D21/R21 Event System Driver (EVENTS)"
  *       to route output event of one module to the the input event of another.
  *       For more information on event routing, refer to the event driver
  *       documentation.
@@ -200,7 +200,7 @@
  * more information.
  *
  * \subsubsection asfdoc_sam0_tc_module_overview_clock_prescaler Prescaler
- * Each TC module in the SAM D20/D21 has its own individual clock prescaler, which
+ * Each TC module in the SAM D20/D21/R21 has its own individual clock prescaler, which
  * can be used to divide the input clock frequency used in the counter. This
  * prescaler only scales the clock used to provide clock pulses for the counter
  * to count, and does not affect the digital register interface portion of
@@ -382,9 +382,9 @@
  * \section asfdoc_sam0_tc_special_considerations Special Considerations
  *
  * The number of capture compare registers in each TC module is dependent on
- * the specific SAM D20/D21 device being used, and in some cases the counter size.
+ * the specific SAM D20/D21/R21 device being used, and in some cases the counter size.
  *
- * The maximum amount of capture compare registers available in any SAM D20/D21
+ * The maximum amount of capture compare registers available in any SAM D20/D21/R21
  * device is two when running in 32-bit mode and four in 8-, and 16-bit modes.
  *
  *
@@ -415,7 +415,7 @@
 #if SAMD20
 #  define TC_INSTANCE_OFFSET 0
 #endif
-#if SAMD21
+#if SAMD21 || SAMR21
 #  define TC_INSTANCE_OFFSET 3
 #endif
 
@@ -427,7 +427,7 @@
 #endif
 
 /** TC Instance MAX ID Number */
-#if SAMD20E || SAMD21G || SAMD21E
+#if SAMD20E || SAMD21G || SAMD21E || SAMR21
 #define TC_INST_MAX_ID  5
 #else
 #define TC_INST_MAX_ID  7
@@ -1378,6 +1378,9 @@ static inline void tc_clear_status(
  *	<tr>
  *		<th>Changelog</th>
  *	</tr>
+ *  <tr>
+ *    <td>Added support for SAMR21.</td>
+ *  </tr>
  *	<tr>
  *    <td>Added support for SAMD21 and do some modifications as below:
  *          \li Clean up in the configuration structure, the counter size
@@ -1418,6 +1421,11 @@ static inline void tc_clear_status(
  *		<th>Doc. Rev.</td>
  *		<th>Date</td>
  *		<th>Comments</td>
+ *	</tr>
+ *	<tr>
+ *		<td>E</td>
+ *		<td>03/2014</td>
+ *		<td>Added support for SAMR21.</td>
  *	</tr>
  *	<tr>
  *		<td>D</td>

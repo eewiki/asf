@@ -1,0 +1,10 @@
+<asf xmlversion="1.0">
+	<board id="board.dummy.atsamr21g18a" caption="Unknown Board">
+		<build type="define" name="BOARD" value="DUMMY_BOARD"/>
+		<build type="header-file" value="dummy_board.h"/>
+		<build type="include-path" value="."/>
+		<build type="include-path" value=".."/>
+		<require idref="common.boards"/>
+		<device-support value="atsamr21g18a"/>
+	</board>
+</asf>

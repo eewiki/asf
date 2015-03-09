@@ -1,7 +1,8 @@
 <asf xmlversion="1.0">
+
 	<select-by-config id="sam0.drivers.tcc" name="config.sam0.drivers.tcc" caption="TCC - Timer Counter for Control Applications" default="callback">
 		<info type="description" value="summary">
-		  Driver for the SAM D21 Timer/Counter for Control Applications module.
+		  Driver for the SAM D21/R21 Timer/Counter for Control Applications module.
 		  Provides a unified interface for the configuration and management of
 		  the device's hardware timers.
 		</info>
@@ -11,9 +12,9 @@
 				<keyword value="Timers" />
 			</info>
 
-			<build type="include-path" value="." />
-
 			<build name="TCC_ASYNC" type="define" value="false" />
+
+			<build type="include-path" value="." />
 
 			<build subtype="api" type="header-file" value="tcc.h" />
 			<build type="c-source" value="tcc.c" />
@@ -26,7 +27,6 @@
 			<build type="doxygen-example-path" value="quick_start_buffering"/>
 
 			<build type="doxygen-example-path" value="quick_start_dma"/>
-			<build type="doxygen-example-path" value="quick_start_dma/samd21_xplained_pro"/>
 
 			<build type="doxygen-image-path" value="docimg" />
 
@@ -34,6 +34,7 @@
 			<build type="doxygen-quick-start" value="asfdoc_sam0_tcc_exqsg"/>
 
 			<device-support value="samd21" />
+			<device-support value="samr21" />
 
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />
@@ -57,14 +58,14 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the Timer Counter for Control Applications on the SAM D21,
-				both the ASF driver and the peripheral itself.
+				This document describes how to use the Timer Counter for Control Applications on the
+				SAM D21/R21, both the ASF driver and the peripheral itself.
 			</info>
-
-			<build type="include-path" value="." />
 
 			<build name="TCC_ASYNC" type="define" value="true" />
 			<build type="doxygen-enable-section" value="TCC_CALLBACK_MODE"/>
+
+			<build type="include-path" value="." />
 
 			<build subtype="api" type="header-file" value="tcc.h" />
 			<build subtype="api" type="header-file" value="tcc_callback.h" />
@@ -85,11 +86,8 @@
 			<build type="doxygen-example-path" value="quick_start_callback"/>
 
 			<build type="doxygen-example-path" value="quick_start_faultx"/>
-			<build type="doxygen-example-path" value="quick_start_faultx/samd21_xplained_pro"/>
 			<build type="doxygen-example-path" value="quick_start_faultn"/>
-			<build type="doxygen-example-path" value="quick_start_faultn/samd21_xplained_pro"/>
 			<build type="doxygen-example-path" value="quick_start_dma"/>
-			<build type="doxygen-example-path" value="quick_start_dma/samd21_xplained_pro"/>
 
 			<build type="doxygen-image-path" value="docimg" />
 
@@ -97,6 +95,7 @@
 			<build type="doxygen-quick-start" value="asfdoc_sam0_tcc_exqsg"/>
 
 			<device-support value="samd21" />
+			<device-support value="samr21" />
 
 			<require idref="sam0.utils" />
 			<require idref="sam0.drivers.system" />
@@ -104,5 +103,6 @@
 
 			<generator default-mcu="unspecified-samd21" value="doxygen-module-v2" />
 		</module>
+
 	</select-by-config>
 </asf>

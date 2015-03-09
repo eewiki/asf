@@ -40,7 +40,7 @@
 		<build type="define" name="ENABLE_STACK_NVM" value =""/>
 		<require idref="thirdparty.wireless.avr2102_rf4control.include"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.pal"/>
-		<require idref="thirdparty.wireless.avr2025_mac.source.sal"/>
+		<require idref="thirdparty.wireless.common_services.sal"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.stb"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.mac"/>
 		<require idref="thirdparty.wireless.avr2102_rf4control.lib.zid.aptr"/>

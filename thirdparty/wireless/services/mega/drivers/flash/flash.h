@@ -85,7 +85,7 @@
 
 /**
  * @brief Writes data to flash location : Performs all activities like filling
- *the page buffer,erasing the
+ * the page buffer,erasing the
  * flash page and pushing the data to the appropriate page address
  *
  * @param flash_addr    Flash address to be written

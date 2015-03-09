@@ -2,7 +2,7 @@
 	<select-by-device id="common.services.usb.class.composite.device.example.hidms_msc" caption="USB Composite Device Example HID mouse and MSC">
 		<module type="application" id="common.services.usb.class.composite.device.example.hidms_msc#0" caption="USB Composite Device Example HID mouse and MSC">
 			<info type="description" value="summary">
-			Provide an application example of USB Composite Device with HID mouse and Mass Storage interfaces. It relies on native MSC and HID drivers and uses memory and buttons or sensors available on the board as a user interface. 
+			Provide an application example of USB Composite Device with HID mouse and Mass Storage interfaces. It relies on native MSC and HID drivers and uses memory and buttons or sensors available on the board as a user interface.
 			</info>
 			<build type="header-file" value="conf_usb.h"/>
 			<build type="header-file" value="ui.h"/>
@@ -22,7 +22,7 @@
 		</module>
 		<module type="application" id="common.services.usb.class.composite.device.example.hidms_msc#1" caption="USB Composite Device Example HID mouse and MSC">
 			<info type="description" value="summary">
-			Provide an application example of USB Composite Device with HID mouse and Mass Storage interfaces. It relies on native MSC and HID drivers and uses memory and buttons or sensors available on the board as a user interface. 
+			Provide an application example of USB Composite Device with HID mouse and Mass Storage interfaces. It relies on native MSC and HID drivers and uses memory and buttons or sensors available on the board as a user interface.
 			</info>
 			<build type="header-file" value="conf_usb.h"/>
 			<build type="header-file" value="ui.h"/>
@@ -46,7 +46,7 @@
 		</module>
 		<module type="application" id="common.services.usb.class.composite.device.example.hidms_msc#2" caption="USB Composite Device Example HID mouse and MSC">
 			<info type="description" value="summary">
-			Provide an application example of USB Composite Device with HID mouse and Mass Storage interfaces. It relies on native MSC and HID drivers and uses memory and buttons or sensors available on the board as a user interface. 
+			Provide an application example of USB Composite Device with HID mouse and Mass Storage interfaces. It relies on native MSC and HID drivers and uses memory and buttons or sensors available on the board as a user interface.
 			</info>
 			<build type="header-file" value="conf_usb.h"/>
 			<build type="header-file" value="ui.h"/>
@@ -73,7 +73,7 @@
 		</module>
 		<module type="application" id="common.services.usb.class.composite.device.example.hidms_msc#3" caption="USB Composite Device Example HID mouse and MSC">
 			<info type="description" value="summary">
-			Provide an application example of USB Composite Device with HID mouse and Mass Storage interfaces. It relies on native MSC and HID drivers and uses memory and buttons or sensors available on the board as a user interface. 
+			Provide an application example of USB Composite Device with HID mouse and Mass Storage interfaces. It relies on native MSC and HID drivers and uses memory and buttons or sensors available on the board as a user interface.
 			</info>
 			<build type="header-file" value="conf_usb.h"/>
 			<build type="header-file" value="ui.h"/>
@@ -88,6 +88,7 @@
 				<keyword value="Communication"/>
 			</info>
 			<device-support value="samd21"/>
+			<device-support value="samr21"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
 	</select-by-device>

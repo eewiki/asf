@@ -38,8 +38,9 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * \asf_license_stop
- */ 
- /*
+ */
+
+/*
  * Copyright (c) 2014, Atmel Corporation All rights reserved.
  *
  * Licensed under Atmel's Limited License Agreement --> EULA.txt
@@ -48,13 +49,10 @@
 #ifndef CONF_HW_TIMER_H_INCLUDED
 #define CONF_HW_TIMER_H_INCLUDED
 
-
-
 /*! \name Configuration
  */
-//! @{
+/* ! @{ */
 #define TIMER     (&TCCR1A)
-//! @}
-
+/* ! @} */
 
 #endif /* CONF_HW_TIMER_H_INCLUDED */

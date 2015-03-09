@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 RTC Driver (Calendar Mode)
+ * \brief SAM D20/D21/R21 RTC Driver (Calendar Mode)
  *
  * Copyright (C) 2012-2014 Atmel Corporation. All rights reserved.
  *
@@ -44,9 +44,9 @@
 #define RTC_CALENDAR_H_INCLUDED
 
 /**
- * \defgroup asfdoc_sam0_rtc_calendar_group SAM D20/D21 RTC Calendar Driver (RTC CAL)
+ * \defgroup asfdoc_sam0_rtc_calendar_group SAM D20/D21/R21 RTC Calendar Driver (RTC CAL)
  *
- * This driver for SAM D20/D21 devices provides an interface for the configuration
+ * This driver for SAM D20/D21/R21 devices provides an interface for the configuration
  * and management of the device's Real Time Clock functionality in Calendar
  * operating mode, for the configuration and retrieval of the current time and
  * date as maintained by the RTC module. The following driver API modes are
@@ -77,7 +77,7 @@
  *
  * \section asfdoc_sam0_rtc_calendar_module_overview Module Overview
  *
- * The RTC module in the SAM D20/D21 devices is a 32-bit counter, with a 10-bit
+ * The RTC module in the SAM D20/D21/R21 devices is a 32-bit counter, with a 10-bit
  * programmable prescaler. Typically, the RTC clock is run continuously,
  * including in the device's low-power sleep modes, to track the current time
  * and date information. The RTC can be used as a source to wake up the system
@@ -159,7 +159,7 @@
  * </table>
  *
  * \note The connection of events between modules requires the use of the
- *       \ref asfdoc_sam0_events_group "SAM D20/D21 Event System Driver (EVENTS)"
+ *       \ref asfdoc_sam0_events_group "SAM D20/D21/R21 Event System Driver (EVENTS)"
  *       to route output event of one module to the the input event of another.
  *       For more information on event routing, refer to the event driver
  *       documentation.
@@ -1028,6 +1028,11 @@ static inline void rtc_calendar_disable_events(
  *		<th>Doc. Rev.</td>
  *		<th>Date</td>
  *		<th>Comments</td>
+ *	</tr>
+ *	<tr>
+ *		<td>D</td>
+ *		<td>03/2014</td>
+ *		<td>Added support for SAMR21.</td>
  *	</tr>
  *	<tr>
  *		<td>C</td>

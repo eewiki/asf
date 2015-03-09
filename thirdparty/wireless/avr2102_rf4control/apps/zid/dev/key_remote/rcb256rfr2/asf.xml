@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="ZID HID Class Device application" id="thirdparty.wireless.avr2102_rf4control.apps.zid.dev.key_remote.rcb256rfr2">
+	<project force-caption="true" force-description="true" caption="Rf4CE-ZID Remote(Class Device)application-KEY_REMOTE.RCB256RFR2" id="thirdparty.wireless.avr2102_rf4control.apps.zid.dev.key_remote.rcb256rfr2">
 		<info type="description" value="summary">
 		RF4CE ZID HID Class Device application
 		</info>
@@ -10,7 +10,8 @@
 		<build type="header-file" value="conf_flash.h"/>
 		<build type="header-file" value="conf_hw_timer.h"/>
 		<build type="define" name="EXTERN_EEPROM_AVAILABLE" value ="0"/>
-	
+		<build type="define" name="ADC_ACCELEROMETER" value ="0"/>
+		<require idref="board.atmegarfx_rcb"/>
 		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.api" value="no" />
 		<config name="config.common.drivers.nvm.mem_type" value="no_extmem"/>
 

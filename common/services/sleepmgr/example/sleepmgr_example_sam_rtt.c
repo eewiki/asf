@@ -3,7 +3,7 @@
  *
  * \brief Sleep manager example for SAM series
  *
- * Copyright (C) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *

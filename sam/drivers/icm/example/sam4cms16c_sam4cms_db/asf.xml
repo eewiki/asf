@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="ICM Example for SAM4CMS_DB" id="sam.drivers.icm.example.sam4cms_db">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.icm.example"/>
+		<require idref="board.sam4cms_db"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="doxygen"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsam4cms16c_0"/>
+	</project>
+</asf>

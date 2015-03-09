@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="thirdparty.wireless.avr2130_lwmesh.unit_tests" caption="Unit Tests for LWMesh">
+		<info type="description" value="summary">
+		Unit Tests for LWMesh ensure the good functionality of this module by testing the basic functionality of the stack.
+		</info>
+		<info type="gui-flag" value="hidden"/>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="header-file" value="unit_tests.h"/>
+		<build type="header-file" value="config.h"/>
+		<build type="header-file" value="conf_trx_access.h"/>
+		<build type="include-path" value="."/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<require idref="thirdparty.wireless.avr2130_lwmesh"/>
+		<require idref="common.utils.unit_test"/>
+		<device-support value="xmega"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

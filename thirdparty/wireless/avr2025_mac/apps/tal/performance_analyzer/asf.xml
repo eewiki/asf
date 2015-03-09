@@ -6,8 +6,18 @@
 			A Serial interface based application,which communicates with Wireless Analyzer to demonstrate
 			various features and capabilities of the of Atmel Transceivers.
 		</info>
-		<!-- +++++++++++++++++++++++++++++++++++++++++++++++BUILD+++++++++++++++++++++++++++++++++++++++++++++++. -->
-		<build type="c-source" value="src/main.c"/>
+		<build type="c-source" value="main.c"/>
+		<require idref="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer.component"/>
+		<device-support-alias value="avr2025_mac_pal_support"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+	
+	<module type="component" id="thirdparty.wireless.avr2025_mac.apps.tal.performance_analyzer.component" caption="Performance Analyzer Application">
+		<info type="description" value="summary">
+			A Serial interface based application,which communicates with Wireless Analyzer to demonstrate
+			various features and capabilities of the of Atmel Transceivers.
+		</info>	
+		<build type="c-source" value="src/performance_main.c"/>
 		<build type="c-source" value="src/init_state.c"/>
 		<build type="c-source" value="src/peer_search_initiator.c"/>
 		<build type="c-source" value="src/peer_search_receptor.c"/>
@@ -27,24 +37,27 @@
 		<build type="header-file" value="inc/perf_api.h"/>
 		<build type="header-file" value="inc/perf_msg_const.h"/>
 		<build type="header-file" value="inc/perf_api_serial_handler.h"/>
+		<build type="header-file" value="inc/performance_main.h"/>
 		<build type="header-file" value="inc/user_interface.h"/>
 		<build type="include-path" value="inc/"/>
 		<build type="header-file" value="conf_common_sw_timer.h"/>
-		<build type="header-file" value="conf_trx_access.h"/>
 		<build type="include-path" value="."/>
-		<build type="doxygen-entry-point" value="group_perf_analyzer"/>
-		<require idref="thirdparty.wireless.addons.sio2host"/>
-		<device-support-alias value="avr2025_mac_pal_support"/>
-		<build type="distribute" subtype="user-file" value="PerformanceAnalyzerProtocol.pdf"/>
-		<!-- ++++++++++++++++++++++++++++++++++++++++++++++REQUIRE++++++++++++++++++++++++++++++++++++++++++++++. -->
+		
 		<require idref="thirdparty.wireless.avr2025_mac.includes"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.tfa"/>
-		<!-- .................................................................................................... -->
+		<require idref="thirdparty.wireless.addons.sio2host"/>
+		
+        <build type="define"   name="FFD" value=""/>
+		<build type="define"   name="HIGHEST_STACK_LAYER" value="TAL"/>
+		<build type="define"   name="TRX_REG_RAW_VALUE"                   value=""/>
+		
+		<build type="doxygen-entry-point" value="group_perf_analyzer"/>		
+		<device-support-alias value="avr2025_mac_pal_support"/>
+		<build type="distribute" subtype="user-file" value="PerformanceAnalyzerProtocol.pdf"/>
+		
 		<info type="keyword" value="technology">
 			<keyword value="Wireless"/>
 			<keyword value="Communication"/>
 		</info>
-		<!-- **************************************************************************************************** -->
-		<info type="gui-flag" value="move-to-root"/>
 	</module>
 </asf>

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D21 TCC - Timer Counter for Control Applications Driver
+ * \brief SAM D21/R21 TCC - Timer Counter for Control Applications Driver
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -45,9 +45,9 @@
 #define TCC_H_INCLUDED
 
 /**
- * \defgroup asfdoc_sam0_tcc_group SAM D21 Timer Counter for Control Applications Driver (TCC)
+ * \defgroup asfdoc_sam0_tcc_group SAM D21/R21 Timer Counter for Control Applications Driver (TCC)
  *
- * This driver for SAM D21 devices provides an interface for the configuration
+ * This driver for SAM D21/R21 devices provides an interface for the configuration
  * and management of the TCC module within the device, for waveform
  * generation and timing operations. It also provides extended options for
  * control applications.
@@ -89,7 +89,7 @@
  * Please refer \ref asfdoc_sam0_tcc_special_considerations_tcc_d21 for details
  * on TCC instances.
  *
- * The TCC module for the SAM D21 includes the following functions:
+ * The TCC module for the SAM D21/R21 includes the following functions:
  *
  * - Generation of PWM signals
  * - Generation of timestamps for events
@@ -183,7 +183,7 @@
  * etc. - see the \ref asfdoc_sam0_system_clock_group "Generic Clock driver" for
  * more information.
  *
- * Each TCC module in the SAM D21 has its own individual clock prescaler, which
+ * Each TCC module in the SAM D21/R21 has its own individual clock prescaler, which
  * can be used to divide the input clock frequency used by the counter. This
  * prescaler only scales the clock used to provide clock pulses for the counter
  * to count, and does not affect the digital register interface portion of
@@ -601,11 +601,11 @@
  * channels, number of outputs, are dependent on the TCC module instance being
  * used.
  *
- * \subsubsection asfdoc_sam0_tcc_special_considerations_tcc_d21 SAM D21 TCC Feature List
- * For SAM D21, the TCC features are as follow:
+ * \subsubsection asfdoc_sam0_tcc_special_considerations_tcc_d21 SAM D21/R21 TCC Feature List
+ * For SAM D21/R21, the TCC features are as follow:
  * \anchor asfdoc_sam0_tcc_features_d21
  * <table>
- *   <caption>TCC module features for SAM D21</caption>
+ *   <caption>TCC module features for SAM D21/R21</caption>
  *   <tr>
  *     <th>TCC#</th>
  *     <th>Match/Capture Channels</th>
@@ -2320,6 +2320,11 @@ enum status_code tcc_set_double_buffer_compare_values(
  *      <th>Doc. Rev.</td>
  *      <th>Date</td>
  *      <th>Comments</td>
+ *  </tr>
+ *  <tr>
+ *      <td>D</td>
+ *      <td>03/2014</td>
+ *      <td>Added SAM R21 support</td>
  *  </tr>
  *  <tr>
  *      <td>C</td>

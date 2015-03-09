@@ -55,7 +55,7 @@ extern "C" {
 /// @endcond
 
 /* The max ADC clock freq definition*/
-#if !SAM4C && !SAM4CP
+#if !SAM4C && !SAM4CP && !SAM4CM
 #define ADC_FREQ_MAX   20000000
 #else
 #define ADC_FREQ_MAX   16000000
@@ -84,7 +84,7 @@ enum adc_resolution_t {
 	ADC_10_BITS = ADC12B_MR_LOWRES_BITS_10, /* ADC 10-bit resolution */
 	ADC_12_BITS = ADC12B_MR_LOWRES_BITS_12  /* ADC 12-bit resolution */
 };
-#elif SAM4C || SAM4CP
+#elif SAM4C || SAM4CP || SAM4CM
 enum adc_resolution_t {
 	ADC_8_BITS  = ADC_MR_LOWRES_BITS_8,  /* ADC 8-bit resolution */
 	ADC_10_BITS = ADC_MR_LOWRES_BITS_10, /* ADC 10-bit resolution */
@@ -105,7 +105,7 @@ enum adc_trigger_t {
 	ADC_TRIG_TIO_CH_1 = ADC_MR_TRGSEL_ADC_TRIG2 | ADC_MR_TRGEN,
 	/* TIO Output of the Timer Counter Channel 2 */
 	ADC_TRIG_TIO_CH_2 = ADC_MR_TRGSEL_ADC_TRIG3 | ADC_MR_TRGEN,
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP || SAM4CM
 	/* TIO Output of the Timer Counter Channel 3 */
 	ADC_TRIG_TIO_CH_3 = ADC_MR_TRGSEL_ADC_TRIG3 | ADC_MR_TRGEN,
 	/* TIO Output of the Timer Counter Channel 4 */
@@ -143,7 +143,7 @@ enum adc12b_trigger_t {
 };
 #endif
 
-#if SAM3S || SAM4S ||  SAM3N || SAM3XA || SAM4C || SAM4CP
+#if SAM3S || SAM4S ||  SAM3N || SAM3XA || SAM4C || SAM4CP || SAM4CM
 /* Definitions for ADC channel number */
 enum adc_channel_num_t {
 	ADC_CHANNEL_0  = 0,
@@ -153,7 +153,7 @@ enum adc_channel_num_t {
 	ADC_CHANNEL_4  = 4,
 	ADC_CHANNEL_5  = 5,
 	ADC_CHANNEL_6  = 6,
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP || SAM4CM
 	ADC_TEMPERATURE_SENSOR = 7,
 #else
 	ADC_CHANNEL_7  = 7,
@@ -180,7 +180,7 @@ enum adc_channel_num_t {
 	ADC_CHANNEL_7  = 7,
 };
 #endif
-#if !SAM4C && !SAM4CP
+#if !SAM4C && !SAM4CP && !SAM4CM
 /* Definitions for ADC gain value */
 enum adc_gainvalue_t {
 	ADC_GAINVALUE_0 = 0,
@@ -199,7 +199,7 @@ enum adc_settling_time_t {
 };
 #endif
 
-#if SAM3S || SAM4S ||  SAM3N || SAM3XA || SAM4C || SAM4CP
+#if SAM3S || SAM4S ||  SAM3N || SAM3XA || SAM4C || SAM4CP || SAM4CM
 /** Definitions for ADC Start Up Time */
 enum adc_startup_time {
 	ADC_STARTUP_TIME_0 = ADC_MR_STARTUP_SUT0,
@@ -221,7 +221,7 @@ enum adc_startup_time {
 };
 #endif
 
-#if SAM3S || SAM4S ||  SAM3N || SAM3XA || SAM4C || SAM4CP
+#if SAM3S || SAM4S ||  SAM3N || SAM3XA || SAM4C || SAM4CP || SAM4CM
 uint32_t adc_init(Adc *p_adc, const uint32_t ul_mck,
 		const uint32_t ul_adc_clock, const enum adc_startup_time startup);
 void adc_configure_trigger(Adc *p_adc, const enum adc_trigger_t trigger,
@@ -234,7 +234,7 @@ enum adc_channel_num_t adc_get_tag(const Adc *p_adc);
 void adc_start_sequencer(Adc *p_adc);
 void adc_stop_sequencer(Adc *p_adc);
 void adc_set_comparison_mode(Adc *p_adc, const uint8_t uc_mode);
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP || SAM4CM
 void adc_set_comparison_filter(Adc *p_adc, uint8_t filter);
 #endif
 uint32_t adc_get_comparison_mode(const Adc *p_adc);
@@ -256,7 +256,7 @@ void adc_configure_power_save(Adc *p_adc, const uint8_t uc_sleep);
 #if SAM3S8 || SAM4S || SAM3N || SAM3SD8
 void adc_configure_power_save(Adc *p_adc, const uint8_t uc_sleep,
 		const uint8_t uc_fwup);
-#elif SAM3U || SAM4C || SAM4CP
+#elif SAM3U || SAM4C || SAM4CP || SAM4CM
 void adc_configure_power_save(Adc *p_adc, const uint8_t uc_sleep);
 #endif
 void adc_set_resolution(Adc *p_adc, const enum adc_resolution_t resolution);
@@ -288,16 +288,16 @@ void adc_disable_channel_input_offset(Adc *p_adc, const enum adc_channel_num_t c
 void adc_set_channel_input_gain(Adc *p_adc, const enum adc_channel_num_t channel,
 		const enum adc_gainvalue_t uc_gain);
 void adc_set_bias_current(Adc *p_adc, const uint8_t uc_ibctl);
-#elif SAM3N || SAM4C || SAM4CP
+#elif SAM3N || SAM4C || SAM4CP || SAM4CM
 void adc_configure_timing(Adc *p_adc, const uint8_t uc_tracking);
 #elif SAM3U
 void adc_configure_timing(Adc *p_adc, const uint32_t ul_sh);
 #endif
 
-#if SAM3S || SAM4S || SAM3XA || SAM4C || SAM4CP
+#if SAM3S || SAM4S || SAM3XA || SAM4C || SAM4CP || SAM4CM
 void adc_enable_ts(Adc *p_adc);
 void adc_disable_ts(Adc *p_adc);
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP || SAM4CM
 /** Definitions for Temperature Comparison Mode */
 enum adc_temp_cmp_mode {
 	ADC_TEMP_CMP_MODE_0 = ADC_TEMPMR_TEMPCMPMOD_LOW,
@@ -314,7 +314,7 @@ void adc_configure_ts_comparison(Adc *p_adc, enum adc_temp_cmp_mode mode,
 void adc_set_calibmode(Adc *p_adc);
 #endif
 
-#if SAM4C || SAM4CP
+#if SAM4C || SAM4CP | SAM4CM
 void adc_set_averaging_trigger(Adc *p_adc, bool multi);
 enum adc_internal_ref_voltage {
 	ADC_INTERNAL_REF_2426MV = 0,

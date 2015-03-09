@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project caption="WsnDemo Application AT86RF231-AtXmega256A3BU Xplained" id="thirdparty.wireless.avr2130_lwmesh.apps.wsndemo.atxmega256a3bu_xplained_rf231" force-caption="true" force-description="true">
+	<project caption="LWMesh-WsnDemo Application:AT86RF231-AtXmega256A3BU Xplained" id="thirdparty.wireless.avr2130_lwmesh.apps.wsndemo.atxmega256a3bu_xplained_rf231" force-caption="true" force-description="true">
 		<info type="description" value="summary">
 		The WSNDemo application implements a typical wireless sensor network scenario, in which one central node collects the data from a network of sensors and passes this data over a serial connection for further processing. In the case of the WSNDemo this processing is performed by the WSNMonitor PC application
 		</info>		
@@ -10,6 +10,7 @@
 		<build type="header-file" value="conf_hw_timer.h"/>
 		<build type="header-file" value="conf_usb.h"/>
 		<build type="header-file" value="conf_sio2host.h"/>
+		<build type="header-file" value="conf_trx_access.h"/>		
 
 		<config name="config.spi_master_type" value="standard_spi"/>
 		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>

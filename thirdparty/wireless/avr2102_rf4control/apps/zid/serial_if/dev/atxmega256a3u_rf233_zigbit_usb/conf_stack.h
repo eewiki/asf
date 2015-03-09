@@ -42,6 +42,4 @@
 #ifndef CONF_STACK_H_INCLUDED
 #define CONF_STACK_H_INCLUDED
 
-
-
 #endif /* CONF_BOARD_H_INCLUDED */

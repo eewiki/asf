@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -43,9 +43,9 @@
 #define _SAMG53_I2SC_COMPONENT_
 
 /* ============================================================================= */
-/**  SOFTWARE API DEFINITION FOR Intellectual Property Block */
+/**  SOFTWARE API DEFINITION FOR Inter-IC Sound Controller */
 /* ============================================================================= */
-/** \addtogroup SAMG53_I2SC Intellectual Property Block */
+/** \addtogroup SAMG53_I2SC Inter-IC Sound Controller */
 /*@{*/
 
 #if !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))

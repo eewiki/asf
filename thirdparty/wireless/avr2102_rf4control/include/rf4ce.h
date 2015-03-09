@@ -55,9 +55,9 @@
 #include "nwk_build_config.h"
 
 /**
- * \defgroup group_rf4control RF4Control v2.0.0
+ * \defgroup group_rf4control RF4Control v2.0.1
  * The RF4Control stack is a ZigBee® RF4CE Certified Platform implementing the
- *ZigBee
+ * ZigBee
  * RF4CE standard.
  *
  *
@@ -205,11 +205,13 @@
 /* Additional constants */
 
 /** Calculate the maximum data frame payload that is allowed:
- *  12 = FCF + frame counter + profile id + vendor id + MIC */
+*  12 = FCF + frame counter + profile id + vendor id + MIC */
 #define MAX_SAFE_DATA_FRAME_PAYLOAD     (aMaxMACSafePayloadSize - 12)
 
 #define ALIGN8BIT
 /* === Types ================================================================ */
+
+__PACK__DATA__
 
 /**
  * NWK enumerations as defined by
@@ -237,7 +239,7 @@ typedef enum nwk_enum_tag {
 
 	/** A pairing request was denied by the recipient node or an attempt to
 	 * update a security link key was not possible due to one or more nodes
-	 *not
+	 * not
 	 * supporting security. */
 	NWK_NOT_PERMITTED           = 0xb4,
 
@@ -333,14 +335,14 @@ typedef enum nwk_enum_tag {
 
 	/** A request to send data was unsuccessful because neither the source
 	 *  address parameters nor the destination address parameters were
-	 *present.
+	 * present.
 	 */
 	NWK_MAC_INVALID_ADDRESS        = 0xF5
 } SHORTENUM nwk_enum_t;
 
 /**
  * Elements of the NodeDesc type as defined by
- *094945r00ZB_RF4CE-Specification.pdf
+ * 094945r00ZB_RF4CE-Specification.pdf
  *
  * @ingroup group_RF4CONTROL_NWK_CONSTANTS
  */
@@ -381,7 +383,7 @@ typedef struct NodeDesc_tag {
 
 /**
  * Network Information Base attributes as defined by
- *094945r00ZB_RF4CE-Specification.pdf
+ * 094945r00ZB_RF4CE-Specification.pdf
  *
  * @ingroup group_RF4CONTROL_NWK_CONSTANTS
  */
@@ -390,11 +392,13 @@ typedef enum nib_attribute_tag {
 	nwkActivePeriod                     = 0x60,
 	/** The logical channel that was chosen when the RC PAN was formed. */
 	nwkBaseChannel                      = 0x61,
+
 	/** The LQI threshold below which discovery requests will be rejected.
-	 **/
+	**/
 	nwkDiscoveryLQIThreshold            = 0x62,
+
 	/** The interval at which discovery attempts are made on all channels.
-	 **/
+	**/
 	nwkDiscoveryRepetitionInterval      = 0x63,
 
 	/** The duty cycle of a device in MAC symbols. A value of 0x000000
@@ -408,7 +412,7 @@ typedef enum nib_attribute_tag {
 	/** Indicates whether the NLME indicates the reception of discovery
 	 * request
 	 * command frames to the application. TRUE indicates that the NLME
-	 *notifies
+	 * notifies
 	 * the application. */
 	nwkIndicateDiscoveryRequests        = 0x66,
 
@@ -441,6 +445,7 @@ typedef enum nib_attribute_tag {
 	/** The maximum time in MAC symbols, a device shall wait for a response
 	 * command frame following a request command frame. */
 	nwkResponseWaitTime                 = 0x6d,
+
 	/** A measure of the duration of a scanning operation, according to
 	 *[R1]. */
 	nwkScanDuration                     = 0x6e,
@@ -460,8 +465,9 @@ typedef enum nib_attribute_tag {
 	/** Target Short address (read-only) */
 	nwkPrivateShortAddress              = 0x75,
 	/** Private NIB */
+
 	/** Maximum number of allowed pairing table entries (set only); used for
-	 *testing */
+	 * testing */
 	nwkPrivateMaxPairingTableEntries    = 0x76,
 	/** Channel agility feature enabled - read-only */
 	nwkPrivateChAgEnabled               = 0x77,
@@ -471,8 +477,9 @@ typedef enum nib_attribute_tag {
 	nwkPrivateChAgEdThreshold           = 0x79
 #ifdef ZRC_PROFILE
 	,
+
 	/** The interval in ms at which user command repeat frames will be
-	 *transmitted. */
+	 * transmitted. */
 	aplKeyRepeatInterval                = 0x80,
 
 	/** The duration that a recipient of a user control repeated command
@@ -493,7 +500,7 @@ typedef enum nib_attribute_tag {
 
 /**
  * Structure implementing the pairing table entry as defined by
- *094945r00ZB_RF4CE-Specification.pdf
+ * 094945r00ZB_RF4CE-Specification.pdf
  *
  * @ingroup group_RF4CONTROL_NWK_CONSTANTS
  */
@@ -520,7 +527,7 @@ typedef struct pairing_table_tag {
 
 /**
  * Enumeration identifiying the address mode as defined by
- *094945r00ZB_RF4CE-Specification.pdf
+ * 094945r00ZB_RF4CE-Specification.pdf
  *
  * @ingroup group_RF4CONTROL_NWK_CONSTANTS
  */
@@ -590,9 +597,11 @@ typedef enum profile_id_tag {
 	PROFILE_ID_WILDCARD         = 0xFF
 } SHORTENUM profile_id_t;
 
+__PACK__RST_DATA__
+
 /**
  * @brief Confirms the previous channel agility request, i.e.
- *nwk_ch_agility_req()
+ * nwk_ch_agility_req()
  *
  * @param Status Result of last request
  *               NWK_SUCCESS Channel agility request is performed successfully.
@@ -604,7 +613,6 @@ typedef enum profile_id_tag {
  * @see nwk_ch_agility_request
  * @ingroup group_RF4CONTROL_NWK_API
  */
-
 #if (defined CHANNEL_AGILITY) || (defined DOXYGEN) || (defined RF4CE_PLATFORM)
 typedef void (*nwk_ch_agility_confirm_cb_t)(
 	nwk_enum_t Status, bool ChannelChanged, uint8_t LogicalChannel);
@@ -650,7 +658,7 @@ typedef void (*nlme_update_key_confirm_cb_t)(nwk_enum_t Status,
  * @brief NLME-UNPAIR.confirm primitive API
  *
  * The NLME-UNPAIR.confirm primitive allows the NLME to notify the application
- *of
+ * of
  * the status of its request to remove a pair with another device.
  *
  * @param Status        The status of the unpair attempt.
@@ -680,7 +688,7 @@ typedef void (*nlme_start_confirm_cb_t)(nwk_enum_t Status);
  * @brief NLME-SET.confirm primitive API
  *
  * The NLME-SET.confirm primitive allows the NLME to notify the application of
- *the
+ * the
  * status of its request to change the value of a NIB attribute.
  *
  * @param Status            The status of the request to set PIB attribute
@@ -729,7 +737,7 @@ typedef void (*nlme_reset_confirm_cb_t)(nwk_enum_t Status);
  * @brief NLME-PAIR.confirm primitive API
  *
  * The NLME-PAIR.confirm primitive allows the NLME to notify the application of
- *the
+ * the
  * status of its request to pair with another device.
  *
  * @param Status                The status of the pair attempt.
@@ -763,7 +771,7 @@ typedef void (*nlme_pair_confirm_cb_t)(nwk_enum_t Status, uint8_t PairingRef,
  * @brief NLME-GET.confirm primitive API
  *
  * The NLME-GET.confirm primitive allows the NLME to notify the application of
- *the
+ * the
  * status of its request for the value of a NIB attribute.
  *
  * @param Status            The status of the request for NIB attribute
@@ -793,7 +801,7 @@ typedef void (*nlme_discovery_confirm_cb_t)(nwk_enum_t Status, uint8_t NumNodes,
  *
  * The NLME-AUTO-DISCOVERY.confirm primitive allows the NLME to notify the
  * application of the status of its request to enter auto discovery response
- *mode.
+ * mode.
  *
  * @param Status        Status of the completed auto-discovery procedure
  * @param SrcIEEEAddr   Source IEEE address from which the discovery request
@@ -829,7 +837,7 @@ typedef void (*nlde_data_confirm_cb_t)(nwk_enum_t Status, uint8_t PairingRef,
  * @brief NLME-PAIR.indication primitive API
  *
  * The NLME-PAIR.indication primitive allows the NLME to notify the application
- *of
+ * of
  * the reception of a pairing request command.
  *
  * @param Status                The status of the provisional pairing.
@@ -873,7 +881,7 @@ typedef void (*nlme_pair_indication_cb_t)(nwk_enum_t Status, uint16_t SrcPANId,
  * @brief NLME-UNPAIR.indication primitive API
  *
  * The NLME-UNPAIR.indication primitive allows the NLME to notify the
- *application
+ * application
  * of the removal of a pairing link by another device.
  *
  * @param PairingRef    The pairing table reference that has been removed from
@@ -1038,7 +1046,7 @@ extern "C" {
  * @brief NLDE-DATA.request primitive API
  *
  * The NLDE-DATA.request primitive requests the transfer of a data APDU (i.e.
- *NSDU)
+ * NSDU)
  * from a local application entity to a peer application entity.
  *
  * @param PairingRef    Pairing reference used for the data transmission
@@ -1051,7 +1059,7 @@ extern "C" {
  * @param confirm_cb    Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlde_data_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1068,7 +1076,7 @@ bool nlde_data_request(uint8_t PairingRef, profile_id_t ProfileId,
  *
  * The NLME-AUTO-DISCOVERY.request primitive allows the application to request
  * the NLME automatically handles the receipt of discovery request command
- *frames.
+ * frames.
  *
  * @param RecAppCapabilities    Recipient application capabilities
  * @param RecDevTypeList        Recipient device type list
@@ -1077,7 +1085,7 @@ bool nlde_data_request(uint8_t PairingRef, profile_id_t ProfileId,
  * @param confirm_cb            Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_auto_discovery_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1121,7 +1129,7 @@ FUNC_PTR confirm_cb
  * @param confirm_cb                Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_discovery_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1159,7 +1167,7 @@ FUNC_PTR confirm_cb
  *                              NLME-DISCOVERY.indication primitive.
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_discovery_indication
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1175,7 +1183,7 @@ profile_id_t RecProfileIdList[7], uint8_t DiscReqLQI);
  * @brief NLME-GET.request primitive API
  *
  * The NLME-GET.request primitive allows the application to request the value of
- *a
+ * a
  * NIB attribute from the NLME.
  *
  * @param NIBAttribute      The identifier of the NIB attribute to read.
@@ -1184,7 +1192,7 @@ profile_id_t RecProfileIdList[7], uint8_t DiscReqLQI);
  * @param confirm_cb        Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_get_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1200,9 +1208,9 @@ bool nlme_get_request(nib_attribute_t NIBAttribute, uint8_t NIBAttributeIndex,
  * @brief NLME-PAIR.request primitive API
  *
  * The NLME-PAIR.request primitive allows the application to request the NLME
- *pair
+ * pair
  * with another device. This primitive would normally be issued following a
- *discovery
+ * discovery
  * operation via the NLME-DISCOVERY.request primitive.
  *
  * @param LogicalChannel        The logical channel of the device with which to
@@ -1223,7 +1231,7 @@ bool nlme_get_request(nib_attribute_t NIBAttribute, uint8_t NIBAttributeIndex,
  * @param confirm_cb            Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_pair_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1241,7 +1249,7 @@ FUNC_PTR confirm_cb
  * @brief NLME-PAIR.response primitive API
  *
  * The NLME-PAIR.response primitive allows the application to request that the
- *NLME
+ * NLME
  * respond to a pairing request command.
  *
  * @param Status                The status of the pairing request.
@@ -1259,7 +1267,7 @@ FUNC_PTR confirm_cb
  *                              if the pair was accepted.
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_pair_indication
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1275,7 +1283,7 @@ profile_id_t RecProfileIdList[7], uint8_t ProvPairingRef);
  * @brief NLME-RESET.request primitive API
  *
  * The NLME-RESET.request primitive allows the application entity to request a
- *reset
+ * reset
  * of the NWK layer.
  *
  * @param SetDefaultNIB If TRUE, the NWK layer is reset and all NIB attributes
@@ -1286,7 +1294,7 @@ profile_id_t RecProfileIdList[7], uint8_t ProvPairingRef);
  * @param confirm_cb    Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_reset_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1299,9 +1307,9 @@ bool nlme_reset_request(bool SetDefaultNIB,
  * @brief NLME-RX-ENABLE.request primitive API
  *
  * The NLME-RX-ENABLE.request primitive allows the application to request that
- *the
+ * the
  * receiver is either enabled (for a finite period or until further notice) or
- *disabled.
+ * disabled.
  *
  * @param RxOnDuration  The number of MAC symbols for which the receiver is to
  *                      be enabled. To activate power saving mode, this value
@@ -1315,7 +1323,7 @@ bool nlme_reset_request(bool SetDefaultNIB,
  * @param confirm_cb    Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_rx_enable_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1328,7 +1336,7 @@ bool nlme_rx_enable_request(uint32_t RxOnDuration,
  * @brief NLME-SET.request primitive API
  *
  * The NLME-SET.request primitive allows the application to request the NLME
- *change
+ * change
  * the value of a NIB attribute.
  *
  * @param NIBAttribute      The identifier of the NIB attribute to write.
@@ -1338,7 +1346,7 @@ bool nlme_rx_enable_request(uint32_t RxOnDuration,
  * @param confirm_cb        Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_set_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1360,7 +1368,7 @@ bool nlme_set_request(nib_attribute_t NIBAttribute, uint8_t NIBAttributeIndex,
  * @param confirm_cb        Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_start_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1379,7 +1387,7 @@ bool nlme_start_request(FUNC_PTR confirm_cb);
  * @param confirm_cb    Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_unpair_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1396,14 +1404,14 @@ bool nlme_unpair_request(uint8_t PairingRef,
  *
  * The NLME-UNPAIR.response primitive allows the application to notify the NLME
  * that the pairing link indicated via the NLME-UNPAIR.indication primitive can
- *be
+ * be
  * removed from the pairing table.
  *
  * @param PairingRef    The reference into the local pairing table of the entry
  *                      that is to be removed.
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_unpair_indication
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1426,7 +1434,7 @@ bool nlme_unpair_response(uint8_t PairingRef);
  * @param confirm_cb    Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nlme_update_key_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1443,18 +1451,18 @@ FUNC_PTR confirm_cb
  * The function configures the channel agility mode.
  * Parameters of the channel agility feature, like ScanInterval, EdThreshold,
  * IndicationCountThreshold and AutoChannelMode, can be set via
- *NLME-SET.request.
+ * NLME-SET.request.
  * If power save mode is enabled, the channel agility mode is suspended until
  * power save mode is left again.
  *
  * @param AgilityMode   Channel agility mode: AG_ONE_SHOT - scans once
  *                                            AG_PERIODIC - starts periodic
- *scanning
+ * scanning
  *                                            AG_STOP - stops periodic scanning
  * @param confirm_cb    Call back pointer for the confirmation
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @see nwk_ch_agility_confirm
  * @ingroup group_RF4CONTROL_NWK_API
@@ -1486,7 +1494,7 @@ nwk_enum_t nwk_init(void);
  * It needs to called frequently.
  *
  * @return true if request has been added to NHLE-NWK queue successfully; else
- *false
+ * false
  *
  * @ingroup group_RF4CONTROL_GENERIC_API
  */

@@ -4,7 +4,7 @@
  * @brief This file implements the MLME-START.request
  * (MAC layer management entity) entry points.
  *
- * Copyright (c) 2013 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013-2014 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -81,7 +81,6 @@ mlme_start_req_t msr_params;    /* Intermediate start parameters */
 static mlme_start_req_t msr_params;    /* Intermediate start parameters */
 #endif
 
-
 /* === Prototypes =========================================================== */
 
 /* === Implementation ======================================================= */
@@ -128,7 +127,7 @@ static bool check_start_parameter(mlme_start_req_t *msg)
 	/*
 	 * In a build without beacon support the beacon order and/or
 	 * superframe order needs to be 15, since only a nonbeacon-enabled
-	 *network
+	 * network
 	 * can be created.
 	 * The following code is valid for starting a new network as well as for
 	 * for a coordinator realignment attempt.
@@ -138,7 +137,6 @@ static bool check_start_parameter(mlme_start_req_t *msg)
 		/* This is not allowed in a build without beacon support. */
 		return param_validation_status;
 	}
-
 #endif
 
 	/*
@@ -160,9 +158,9 @@ static bool check_start_parameter(mlme_start_req_t *msg)
 				) {
 			/*
 			 * We are neigher the requested to be the PAN
-			 *Coordinator,
+			 * Coordinator,
 			 * nor are we associated, so Realignment is not allowed
-			 *at
+			 * at
 			 * this stage.
 			 */
 			param_validation_status = false;
@@ -196,7 +194,7 @@ void mlme_start_request(uint8_t *m)
 	if (BROADCAST == tal_pib.ShortAddress) {
 		/*
 		 * The device is void of short address. This device cannot start
-		 *a
+		 * a
 		 * network, hence a confirmation is given back.
 		 */
 		gen_mlme_start_conf((buffer_t *)m, MAC_NO_SHORT_ADDRESS);
@@ -207,7 +205,7 @@ void mlme_start_request(uint8_t *m)
 	if (!check_start_parameter(msg)) {
 		/*
 		 * The MLME_START.request parameters are invalid, hence
-		 *confirmation
+		 * confirmation
 		 * is given to NHLE.
 		 */
 		gen_mlme_start_conf((buffer_t *)m, MAC_INVALID_PARAMETER);
@@ -216,7 +214,7 @@ void mlme_start_request(uint8_t *m)
 	{
 		/*
 		 * All the start parameters are valid, hence MLME_START.request
-		 *can
+		 * can
 		 * proceed.
 		 */
 		set_tal_pib_internal(mac_i_pan_coordinator,
@@ -224,7 +222,7 @@ void mlme_start_request(uint8_t *m)
 
 		if (msr_params.CoordRealignment) {
 			/* First inform our devices of the configuration change
-			 **/
+			**/
 			if (!mac_tx_coord_realignment_command(
 					COORDINATORREALIGNMENT,
 					(buffer_t *)m,
@@ -233,7 +231,7 @@ void mlme_start_request(uint8_t *m)
 					msr_params.ChannelPage)) {
 				/*
 				 * The coordinator realignment command was
-				 *unsuccessful,
+				 * unsuccessful,
 				 * hence the confiramtion is given to NHLE.
 				 */
 				gen_mlme_start_conf((buffer_t *)m,
@@ -248,7 +246,7 @@ void mlme_start_request(uint8_t *m)
 					(void *)&(msg->BeaconOrder));
 
 			/* If macBeaconOrder is equal to 15, set also
-			 *macSuperframeOrder to 15. */
+			 * macSuperframeOrder to 15. */
 			if (msg->BeaconOrder == NON_BEACON_NWK) {
 				msg->SuperframeOrder = NON_BEACON_NWK;
 			}
@@ -260,7 +258,7 @@ void mlme_start_request(uint8_t *m)
 
 			/*
 			 * Symbol times are calculated according to the new BO
-			 *and SO
+			 * and SO
 			 * values.
 			 */
 			if (tal_pib.BeaconOrder < NON_BEACON_NWK) {
@@ -268,14 +266,13 @@ void mlme_start_request(uint8_t *m)
 						(void *)&(msr_params.
 						BatteryLifeExtension));
 			}
-
 #endif /* BEACON_SUPPORT */
 
 			/* Wake up radio first */
 			mac_trx_wakeup();
 
 			/* MLME_START.request parameters other than BO and SO
-			 *are set at TAL */
+			 * are set at TAL */
 			set_tal_pib_internal(macPANId,
 					(void *)&(msr_params.PANId));
 
@@ -306,13 +303,12 @@ void mlme_start_request(uint8_t *m)
 
 				/*
 				 * In case we have a beaconing network, the
-				 *beacon timer needs
+				 * beacon timer needs
 				 * to be started now.
 				 */
 				if (tal_pib.BeaconOrder != NON_BEACON_NWK) {
 					mac_start_beacon_timer();
 				}
-
 #endif  /* BEACON_SUPPORT */
 			} else {
 				/* Start of network failed. */
@@ -371,7 +367,7 @@ void mac_coord_realignment_command_tx_success(uint8_t tx_status,
 
 			/*
 			 * Store current beacon order in order to be able to
-			 *detect
+			 * detect
 			 * switching from nonbeacon to beacon network.
 			 */
 			uint8_t cur_beacon_order = tal_pib.BeaconOrder;
@@ -383,9 +379,9 @@ void mac_coord_realignment_command_tx_success(uint8_t tx_status,
 
 			/*
 			 * New symbol times for beacon time (in sysbols) and
-			 *inactive time are
+			 * inactive time are
 			 * calculated according to the new superframe
-			 *configuration.
+			 * configuration.
 			 */
 			if (msr_params.BeaconOrder < NON_BEACON_NWK) {
 				set_tal_pib_internal(macBattLifeExt,
@@ -398,18 +394,18 @@ void mac_coord_realignment_command_tx_success(uint8_t tx_status,
 					NON_BEACON_NWK)) {
 				/*
 				 * This is a transition from a beacon enabled
-				 *network to
+				 * network to
 				 * a nonbeacon enabled network.
 				 * In this case the broadcast data queue will
-				 *never be served.
+				 * never be served.
 				 *
 				 * Therefore the broadcast queue needs to be
-				 *emptied.
+				 * emptied.
 				 * The standard does not define what to do now.
 				 * The current implementation will try to send
-				 *all pending broadcast
+				 * all pending broadcast
 				 * data frames immediately, thus giving the
-				 *receiving nodes a chance
+				 * receiving nodes a chance
 				 * receive them.
 				 */
 				while (broadcast_q.size > 0) {
@@ -422,14 +418,13 @@ void mac_coord_realignment_command_tx_success(uint8_t tx_status,
 					NON_BEACON_NWK)) {
 				/*
 				 * This is a transition from a nonbeacon enabled
-				 *network to
+				 * network to
 				 * a beacon enabled network, hence the beacon
-				 *timer will be
+				 * timer will be
 				 * started.
 				 */
 				mac_start_beacon_timer();
 			}
-
 #endif  /* BEACON_SUPPORT */
 		}
 	}

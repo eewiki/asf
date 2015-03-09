@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief SAM D20/D21 TC - Timer Counter Driver
+ * \brief SAM D20/D21/R21 TC - Timer Counter Driver
  *
  * Copyright (C) 2013-2014 Atmel Corporation. All rights reserved.
  *
@@ -303,14 +303,14 @@ enum status_code tc_init(
 				/* Wait for sync */
 			}
 
-			hw->COUNT8.CC[0].reg = 
+			hw->COUNT8.CC[0].reg =
 					config->counter_8_bit.compare_capture_channel[0];
 
 			while (tc_is_syncing(module_inst)) {
 				/* Wait for sync */
 			}
 
-			hw->COUNT8.CC[1].reg = 
+			hw->COUNT8.CC[1].reg =
 					config->counter_8_bit.compare_capture_channel[1];
 
 			return STATUS_OK;
@@ -327,14 +327,14 @@ enum status_code tc_init(
 				/* Wait for sync */
 			}
 
-			hw->COUNT16.CC[0].reg = 
+			hw->COUNT16.CC[0].reg =
 					config->counter_16_bit.compare_capture_channel[0];
 
 			while (tc_is_syncing(module_inst)) {
 				/* Wait for sync */
 			}
 
-			hw->COUNT16.CC[1].reg = 
+			hw->COUNT16.CC[1].reg =
 					config->counter_16_bit.compare_capture_channel[1];
 
 			return STATUS_OK;
@@ -351,14 +351,14 @@ enum status_code tc_init(
 				/* Wait for sync */
 			}
 
-			hw->COUNT32.CC[0].reg = 
+			hw->COUNT32.CC[0].reg =
 					config->counter_32_bit.compare_capture_channel[0];
 
 			while (tc_is_syncing(module_inst)) {
 				/* Wait for sync */
 			}
 
-			hw->COUNT32.CC[1].reg = 
+			hw->COUNT32.CC[1].reg =
 					config->counter_32_bit.compare_capture_channel[1];
 
 			return STATUS_OK;
