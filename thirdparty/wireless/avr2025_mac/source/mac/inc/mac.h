@@ -187,12 +187,6 @@
 #define FCF_GET_DEST_ADDR_MODE(x) \
 	(((x) >> FCF_DEST_ADDR_OFFSET) & FCF_ADDR_MASK)
 
-/*
- * PIB attribute without relevant index, i.e. PIB attribute not
- * contained in 802.15.4-2006 table 88.
- */
-#define NO_PIB_INDEX                    (0)
-
 /* === Types ================================================================ */
 
 /* === Externals ============================================================ */
@@ -234,7 +228,8 @@ void mcps_data_request(uint8_t *msg);
  * \ingroup group_mac_conf_int
  * @param m Pointer to message structure
  */
-void mcps_data_conf(uint8_t *m);
+
+ void mcps_data_conf(uint8_t *m);
 
 /**
  * @brief Wrapper function for messages of type mcps_data_ind_t
@@ -244,6 +239,7 @@ void mcps_data_conf(uint8_t *m);
  * \ingroup group_mac_ind_int
  * @param m Pointer to message structure
  */
+
 void mcps_data_ind(uint8_t *m);
 
 #if ((MAC_PURGE_REQUEST_CONFIRM == 1) && (MAC_INDIRECT_DATA_BASIC == 1))
@@ -294,7 +290,7 @@ void mcps_purge_conf(uint8_t *m);
  * @param m Pointer to the request structure
  */
 
-void mlme_get_request(uint8_t *msg);
+void mlme_get_request(uint8_t *m);
 
 /**
  * @brief Wrapper function for messages of type mlme_get_conf_t
@@ -305,6 +301,7 @@ void mlme_get_request(uint8_t *msg);
  * @param m Pointer to message structure
  */
 void mlme_get_conf(uint8_t *m);
+
 
 #endif  /* (MAC_GET_SUPPORT == 1) */
 
@@ -317,7 +314,8 @@ void mlme_get_conf(uint8_t *m);
  * \ingroup group_mac_req_int
  * @param m Pointer to the MLME_RESET.request given by the NHLE
  */
-void mlme_reset_request(uint8_t *msg);
+void mlme_reset_request(uint8_t *m);
+
 
 #if ((MAC_SCAN_ED_REQUEST_CONFIRM == 1) || (MAC_SCAN_ACTIVE_REQUEST_CONFIRM == \
 	1)  || \
@@ -438,7 +436,8 @@ void mlme_reset_request(uint8_t *msg);
  * @param m The MLME_SCAN.request message
  */
 
-void mlme_scan_request(uint8_t *msg);
+void mlme_scan_request(uint8_t *m);
+
 
 /**
  * @brief Wrapper function for messages of type mlme_scan_conf_t
@@ -461,7 +460,8 @@ void mlme_scan_conf(uint8_t *m);
  * \ingroup group_mac_req_int
  * @param m Pointer to MLME_START.request message issued by the NHLE
  */
-void mlme_start_request(uint8_t *msg);
+void mlme_start_request(uint8_t *m);
+
 
 /**
  * @brief Wrapper function for messages of type mlme_start_conf_t
@@ -487,7 +487,10 @@ void mlme_start_conf(uint8_t *m);
  * \ingroup group_mac_req_int
  * @param m Pointer to MLME association request parameters
  */
+
 void mlme_associate_request(uint8_t *m);
+
+
 
 /**
  * @brief Wrapper function for messages of type mlme_associate_conf_t
@@ -498,6 +501,7 @@ void mlme_associate_request(uint8_t *m);
  * @param m Pointer to message structure
  */
 void mlme_associate_conf(uint8_t *m);
+
 
 #endif  /* (MAC_ASSOCIATION_REQUEST_CONFIRM == 1) */
 #if (MAC_ASSOCIATION_INDICATION_RESPONSE == 1)
@@ -539,6 +543,7 @@ void mlme_associate_ind(uint8_t *m);
  * @param m Pointer to the MLME-DISASSOCIATION.Request message passed by NHLE
  */
 void mlme_disassociate_request(uint8_t *m);
+
 
 /**
  * @brief Wrapper function for messages of type mlme_disassociate_conf_t
@@ -587,6 +592,7 @@ void mlme_orphan_response(uint8_t *m);
  * @param m Pointer to message structure
  */
 void mlme_orphan_ind(uint8_t *m);
+ 
 
 #endif /* (MAC_ORPHAN_INDICATION_RESPONSE == 1) */
 #if (MAC_INDIRECT_DATA_BASIC == 1)
@@ -632,6 +638,7 @@ void mlme_poll_conf(uint8_t *m);
  */
 void mlme_rx_enable_request(uint8_t *m);
 
+
 /**
  * @brief Wrapper function for messages of type mlme_rx_enable_conf_t
  *
@@ -666,6 +673,7 @@ void mlme_rx_enable_conf(uint8_t *m);
  */
 void mlme_sync_request(uint8_t *m);
 
+
 #if (MAC_BEACON_NOTIFY_INDICATION == 1)
 
 /**
@@ -678,6 +686,7 @@ void mlme_sync_request(uint8_t *m);
  */
 
 void mlme_beacon_notify_ind(uint8_t *m);
+
 
 #endif  /* (MAC_BEACON_NOTIFY_INDICATION == 1) */
 #if ((MAC_ORPHAN_INDICATION_RESPONSE == 1) || \
@@ -693,6 +702,7 @@ void mlme_beacon_notify_ind(uint8_t *m);
  */
 void mlme_comm_status_ind(uint8_t *m);
 
+
 #endif  /* ((MAC_ORPHAN_INDICATION_RESPONSE == 1) ||
          *(MAC_ASSOCIATION_INDICATION_RESPONSE == 1)) */
 
@@ -706,6 +716,7 @@ void mlme_comm_status_ind(uint8_t *m);
  */
 void mlme_reset_conf(uint8_t *m);
 
+
 /**
  * @brief Wrapper function for messages of type mlme_sync_loss_ind_t
  *
@@ -715,6 +726,13 @@ void mlme_reset_conf(uint8_t *m);
  * @param m Pointer to message structure
  */
 void mlme_sync_loss_ind(uint8_t *m);
+
+
+#ifdef GTS_SUPPORT
+void mlme_gts_request(uint8_t *m);
+void mlme_gts_conf(uint8_t *m);
+void mlme_gts_ind(uint8_t *m);
+#endif /* GTS_SUPPORT */
 
 #if (HIGHEST_STACK_LAYER == MAC)
 
@@ -727,7 +745,8 @@ void mlme_sync_loss_ind(uint8_t *m);
  * \ingroup group_mac_req_int
  * @param m Pointer to the request structure
  */
-void mlme_set_request(uint8_t *msg);
+void mlme_set_request(uint8_t *m);
+
 
 /**
  * @brief Wrapper function for messages of type mlme_set_conf_t
@@ -737,10 +756,11 @@ void mlme_set_request(uint8_t *msg);
  * \ingroup group_mac_conf_int
  * @param m Pointer to message structure
  */
+ 
 void mlme_set_conf(uint8_t *m);
 
 #endif  /* (HIGHEST_STACK_LAYER == MAC) */
-#ifdef MAC_SECURITY_ZIP
+#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
 
 /**
  * @brief Setting of MAC PIB attributes via functional access
@@ -783,13 +803,18 @@ retval_t mlme_set(uint8_t attribute, uint8_t attribute_index,
 retval_t mlme_set(uint8_t attribute, pib_value_t *attribute_value,
 		bool set_trx_to_sleep);
 
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006)  */
 
+#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
 /**
  * \ingroup group_mac_gen_int
  */
+retval_t mlme_get(uint8_t attribute, pib_value_t *attribute_value, 
+		uint8_t attribute_index);
+#else
 retval_t mlme_get(uint8_t attribute, pib_value_t *attribute_value);
 
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006)  */
 /**
  * @brief Initializes the MAC sublayer
  *

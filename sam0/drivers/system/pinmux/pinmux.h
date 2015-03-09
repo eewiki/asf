@@ -287,6 +287,12 @@ struct system_pinmux_config {
 
 	/** Logic level pull of the input buffer. */
 	enum system_pinmux_pin_pull input_pull;
+
+	/** Enable lowest possible powerstate on the pin
+	 *
+	 *  \note All other configurations will be ignored, the pin will be disabled
+	 */
+	bool powersave;
 };
 
 /** \name Configuration and initialization
@@ -317,6 +323,7 @@ static inline void system_pinmux_get_config_defaults(
 	config->mux_position = SYSTEM_PINMUX_GPIO;
 	config->direction    = SYSTEM_PINMUX_PIN_DIR_INPUT;
 	config->input_pull   = SYSTEM_PINMUX_PIN_PULL_UP;
+	config->powersave    = false;
 }
 
 void system_pinmux_pin_set_config(

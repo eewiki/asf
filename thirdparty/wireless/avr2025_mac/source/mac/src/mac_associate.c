@@ -133,7 +133,7 @@ void mlme_associate_request(uint8_t *m)
 
 	/*
 	 * Store the buffer which was received from the NHLE as it will be
-	 *reused
+	 * reused
 	 * while sending MLME association confirmation to the NHLE.
 	 */
 	mac_conf_buf_ptr = m;
@@ -581,7 +581,9 @@ void mac_process_associate_response(buffer_t *assoc_resp)
 		Assert(MAC_SUCCESS == set_status);
 #endif
 		mac_pib.mac_CoordShortAddress = macCoordShortAddress_def;
-		mac_pib.mac_CoordExtendedAddress = CLEAR_ADDR_64;
+		memset((uint8_t *)&mac_pib.mac_CoordExtendedAddress, 0, 
+		        sizeof(mac_pib.mac_CoordExtendedAddress));
+		//mac_pib.mac_CoordExtendedAddress = CLEAR_ADDR_64;
 
 		short_addr = INVALID_SHORT_ADDRESS;
 	}
@@ -703,9 +705,12 @@ void mac_t_assocresponsetime_cb(void *callback_parameter)
 
 #if (_DEBUG_ > 0)
 	Assert(MAC_SUCCESS == set_status);
+	set_status = set_status;
 #endif
 	mac_pib.mac_CoordShortAddress = macCoordShortAddress_def;
-	mac_pib.mac_CoordExtendedAddress = CLEAR_ADDR_64;
+	memset((uint8_t *)&mac_pib.mac_CoordExtendedAddress, 0,
+			sizeof(mac_pib.mac_CoordExtendedAddress));
+	//mac_pib.mac_CoordExtendedAddress = CLEAR_ADDR_64;
 
 	/* Set radio to sleep if allowed */
 	mac_sleep_trans();

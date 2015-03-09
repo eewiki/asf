@@ -592,7 +592,7 @@ static void configure_console(void)
 
 
 /**
- * \brief Application entry point for spi_slave example.
+ * \brief Application entry point for SPI example.
  *
  * \return Unused (ANSI-C compatibility).
  */

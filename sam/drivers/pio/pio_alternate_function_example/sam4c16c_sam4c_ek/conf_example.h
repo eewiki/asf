@@ -54,7 +54,7 @@
 #define PUSH_BUTTON_ATTR         (PIO_PULLUP | PIO_DEBOUNCE | PIO_IT_RISE_EDGE)
 
 /** The erase pin mask value in the PIO mode and erase mode. */
-#define PIN_PIO_MODE_MSK         CCFG_SYSIO_SYSIO9
+#define PIN_PIO_MODE_MSK         MATRIX_SYSIO_SYSIO9
 #define PIN_ERASE_MODE_MSK       (0)
 
 /** Last page start address. */

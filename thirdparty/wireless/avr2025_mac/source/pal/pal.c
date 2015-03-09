@@ -1,8 +1,7 @@
-/*
+ /*
  * @file pal.c
  *
- * @brief Performs interface functionalities between the TAL layer and ASF
- *drivers
+ * @brief Performs interface functionalities between the TAL layer and ASF drivers
  *  Copyright (c) 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
@@ -37,7 +36,6 @@
  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
 /*
  * Copyright (c) 2013, Atmel Corporation All rights reserved.
  *
@@ -46,12 +44,17 @@
 
 #include "pal.h"
 #include "delay.h"
+#if SAMD20
+#include "port.h"
+#else
 #include "ioport.h"
+#endif
 
 bool pal_calibrate_rc_osc(void)
 {
-	return (true);
+    return (true);
 }
+
 
 retval_t pal_init(void)
 {
@@ -62,37 +65,36 @@ retval_t pal_init(void)
 }
 
 #ifdef ENABLE_STACK_NVM
-retval_t pal_ps_get(ps_type_t mem_type, uint16_t offset, uint16_t length,
-		void *value)
+retval_t pal_ps_get(ps_type_t mem_type, uint16_t offset, uint16_t length, void *value)
 {
-	nvm_read(INT_FLASH,
-			(uint32_t)offset + INT_FLASH_END - STACK_FLASH_SIZE + 1,
-			value,
-			length);
-	return MAC_SUCCESS;
+    nvm_read(INT_FLASH,(uint32_t)offset + INT_FLASH_END - STACK_FLASH_SIZE + 1, value,length);
+    return MAC_SUCCESS;
 }
 
 retval_t pal_ps_set(uint16_t offset, uint16_t length, void *value)
 {
-	nvm_write(INT_FLASH,
-			(uint32_t)offset + INT_FLASH_END - STACK_FLASH_SIZE + 1,
-			value, length);
-	return MAC_SUCCESS;
+    nvm_write(INT_FLASH,(uint32_t)offset + INT_FLASH_END - STACK_FLASH_SIZE + 1, value,length);
+    return MAC_SUCCESS;
 }
-
 #endif
+
 
 retval_t pal_timer_stop(uint8_t timer_id)
 {
-	status_code_t status;
+	uint8_t status;
 
 	status = sw_timer_stop(timer_id);
 
-	if (STATUS_OK == status) {
+	if(STATUS_OK == (status_code_genare_t)status)
+	{
 		return MAC_SUCCESS;
-	} else if (ERR_TIMER_NOT_RUNNING == status) {
+	}
+	else if(ERR_TIMER_NOT_RUNNING == (status_code_t)status)
+	{
 		return PAL_TMR_NOT_RUNNING;
-	} else {
+	}
+	else
+	{
 		return PAL_TMR_INVALID_ID;
 	}
 }
@@ -109,48 +111,52 @@ void pal_timer_source_select(source_type_t source)
 	/*    } */
 }
 
-retval_t pal_timer_get_id(uint8_t *timer_id)
+retval_t pal_timer_get_id(uint8_t* timer_id)
 {
-	status_code_t status;
+	status_code_genare_t status;
 	status = sw_timer_get_id(timer_id);
 
-	if (STATUS_OK == status) {
+	if(STATUS_OK == status)
+	{
 		return MAC_SUCCESS;
 	}
-
 	return PAL_TMR_INVALID_ID;
 }
 
 retval_t pal_timer_start(uint8_t timer_id,
-		uint32_t timer_count,
-		timeout_type_t timeout_type,
-		FUNC_PTR timer_cb,
-		void *param_cb)
+						 uint32_t timer_count,
+						 timeout_type_t timeout_type,
+						 FUNC_PTR timer_cb,
+						 void *param_cb)
 {
-	status_code_t status;
-	status = sw_timer_start(timer_id, timer_count,
-			(sw_timeout_type_t)timeout_type,
-			timer_cb, param_cb);
+	uint8_t status;
+	status = sw_timer_start(timer_id, timer_count, 
+							(sw_timeout_type_t)timeout_type,
+							timer_cb, param_cb);
 
-	if (ERR_TIMER_ALREADY_RUNNING == status) {
-		/*
-		 * Timer is already running if the callback function of the
-		 * corresponding timer index in the timer array is not NULL.
-		 */
-		return PAL_TMR_ALREADY_RUNNING;
+	if(ERR_TIMER_ALREADY_RUNNING == (status_code_t)status)
+	{
+        /*
+         * Timer is already running if the callback function of the
+         * corresponding timer index in the timer array is not NULL.
+         */
+        return PAL_TMR_ALREADY_RUNNING;
 	}
 
-	if (STATUS_OK == status) {
-		return MAC_SUCCESS;
-	}
+    if (STATUS_OK == (status_code_genare_t)status)
+    {
+	    return MAC_SUCCESS;
+    }
 
 	return MAC_INVALID_PARAMETER;
 }
+
 
 bool pal_is_timer_running(uint8_t timer_id)
 {
 	return sw_timer_is_running(timer_id);
 }
+
 
 /**
  * @brief Services timer and sio handler
@@ -159,15 +165,16 @@ bool pal_is_timer_running(uint8_t timer_id)
  */
 void pal_task(void)
 {
-	sw_timer_service();
+    sw_timer_service();
 }
+
 
 void pal_trx_read_timestamp(uint32_t *timestamp)
 {
-	*timestamp  = sw_timer_get_time();
+    *timestamp  = sw_timer_get_time();
 }
 
 void pal_get_current_time(uint32_t *timer_count)
 {
-	*timer_count = sw_timer_get_time();
+    *timer_count = sw_timer_get_time();
 }

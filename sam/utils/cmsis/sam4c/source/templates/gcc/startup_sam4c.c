@@ -82,10 +82,18 @@ void RTC_Handler    ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void RTT_Handler    ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void WDT_Handler    ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void PMC_Handler    ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
+#ifdef _SAM4C_EFC_INSTANCE_
 void EFC_Handler    ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
+#else
+void EFC0_Handler   ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
+void EFC1_Handler   ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
+#endif
 void UART0_Handler  ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void PIOA_Handler   ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void PIOB_Handler   ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
+#ifdef _SAM4C_PIOD_INSTANCE_
+void PIOD_Handler   ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
+#endif /* _SAM4C_PIOD_INSTANCE_ */
 void USART0_Handler ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void USART1_Handler ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void USART2_Handler ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
@@ -94,6 +102,9 @@ void USART4_Handler ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void TWI0_Handler   ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void TWI1_Handler   ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void SPI0_Handler   ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
+#ifdef _SAM4C_UOTGHS_INSTANCE_
+void UOTGHS_Handler ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
+#endif
 void TC0_Handler    ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void TC1_Handler    ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
 void TC2_Handler    ( void ) __attribute__ ((weak, alias("Dummy_Handler")));
@@ -144,14 +155,24 @@ const DeviceVectors exception_table = {
 	.pfnRTT_Handler    = (void*) RTT_Handler,    /* 3  Real Time Timer */
 	.pfnWDT_Handler    = (void*) WDT_Handler,    /* 4  Watchdog Timer */
 	.pfnPMC_Handler    = (void*) PMC_Handler,    /* 5  Power Management Controller */
+#ifdef _SAM4C_EFC_INSTANCE_
 	.pfnEFC_Handler    = (void*) EFC_Handler,    /* 6  Enhanced Embedded Flash Controller */
 	.pvReserved7       = (void*) (0UL),          /* 7  Reserved */
+#else
+	.pfnEFC0_Handler   = (void*) EFC0_Handler,   /* 6  Enhanced Embedded Flash Controller 0 */
+	.pfnEFC1_Handler   = (void*) EFC1_Handler,   /* 7  Enhanced Embedded Flash Controller 1 */
+#endif
 	.pfnUART0_Handler  = (void*) UART0_Handler,  /* 8  UART 0 */
 	.pvReserved9       = (void*) (0UL),          /* 9  Reserved */
 	.pvReserved10      = (void*) (0UL),          /* 10 Reserved */
 	.pfnPIOA_Handler   = (void*) PIOA_Handler,   /* 11 Parallel I/O Controller A */
 	.pfnPIOB_Handler   = (void*) PIOB_Handler,   /* 12 Parallel I/O Controller B */
-	.pvReserved13      = (void*) (0UL),          /* 13 Reserved */
+#ifdef _SAM4C_PIOD_INSTANCE_
+        .pfnPIOD_Handler   = (void*) PIOD_Handler,   /* 13 Parallel I/O Controller D */
+#else
+        .pvReserved13      = (void*) (0UL),          /* 13 Reserved */
+#endif /* _SAM4C_PIOD_INSTANCE_ */
+
 	.pfnUSART0_Handler = (void*) USART0_Handler, /* 14 USART 0 */
 	.pfnUSART1_Handler = (void*) USART1_Handler, /* 15 USART 1 */
 	.pfnUSART2_Handler = (void*) USART2_Handler, /* 16 USART 2 */
@@ -160,7 +181,11 @@ const DeviceVectors exception_table = {
 	.pfnTWI0_Handler   = (void*) TWI0_Handler,   /* 19 Two Wire Interface 0 */
 	.pfnTWI1_Handler   = (void*) TWI1_Handler,   /* 20 Two Wire Interface 1 */
 	.pfnSPI0_Handler   = (void*) SPI0_Handler,   /* 21 Serial Peripheral Interface 0 */
+#ifdef _SAM4C_UOTGHS_INSTANCE_
+	.pfnUOTGHS_Handler = (void*) UOTGHS_Handler, /* 22 USB Host / Device Full/Low Speed Port */
+#else
 	.pvReserved22      = (void*) (0UL),          /* 22 Reserved */
+#endif	
 	.pfnTC0_Handler    = (void*) TC0_Handler,    /* 23 Timer/Counter 0 */
 	.pfnTC1_Handler    = (void*) TC1_Handler,    /* 24 Timer/Counter 1 */
 	.pfnTC2_Handler    = (void*) TC2_Handler,    /* 25 Timer/Counter 2 */

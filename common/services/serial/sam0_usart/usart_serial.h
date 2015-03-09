@@ -54,7 +54,9 @@
 
 typedef Sercom * usart_inst_t;
 
-/** \brief Initializes the USART in master mode.
+//struct usart_module usart;
+
+/*! \brief Initializes the Usart in master mode.
  *
  * \param[in,out] module  Software instance of the USART to initialize.
  * \param[in]     hw      Base address of the hardware USART.

@@ -16,7 +16,6 @@
    		<config name="config.spi_master_type" value="standard_spi"/>
 		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf231"/>
 		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
-		<config name="config.thirdparty.wireless.avr2025_mac.source.sal" value="atxmega_sal"/>
 		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.api" value="no" />
 		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
 		<config name="config.common.services.usb.class.device" value="cdc"/>

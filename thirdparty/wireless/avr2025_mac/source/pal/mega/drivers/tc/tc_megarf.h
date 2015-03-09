@@ -487,7 +487,7 @@ static inline uint16_t tc_read_count(volatile void *tc)
 		return TCNT5;
 	}
 
-	return NULL;
+	return 0;
 }
 
 /**

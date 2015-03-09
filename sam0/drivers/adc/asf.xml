@@ -6,12 +6,12 @@
 			including the channel input selections, windowd detections, channel
 			conversions and event generation.
 		</info>
-		<info type="keyword" value="technology">
-			<keyword value="Analog Conversion"/>
-		</info>
 
+		<module type="driver" id="sam0.drivers.adc#polled" caption="ADC - Analog-to-Digital Converter (Polled APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>
 
-		<module type="driver" id="sam0.drivers.adc#polled" caption="ADC - Analog-to-Digital Converter (Polled Mode)">
 			<build type="c-source" value="adc.c"/>
 			<build type="header-file" subtype="api" value="adc.h"/>
 			<build type="include-path" value="."/>
@@ -20,6 +20,7 @@
 
 			<build type="doxygen-example-path" value ="quick_start"/>
 			<build type="doxygen-entry-point" value="asfdoc_samd20_adc_group"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_adc_exqsg"/>
 
 			<build type="define" name="ADC_CALLBACK_MODE" value="false"/>
 
@@ -30,7 +31,12 @@
 
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>
-		<module type="driver" id="sam0.drivers.adc#callback" caption="ADC - Analog-to-Digital Converter (Callback Mode)">
+
+		<module type="driver" id="sam0.drivers.adc#callback" caption="ADC - Analog-to-Digital Converter (Callback APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>
+
 			<info type="appnote" value="AT03243"/>
 			<info type="keyword" value="pdf">
 				<keyword value="ADC"/>
@@ -40,7 +46,9 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the Analog to Digital Converter on the SAM D20, both the ASF driver and the peripheral itself.
+				This document describes how to use the Analog-to-Digital
+				Converter on the SAM D20, both the ASF driver and the
+				peripheral itself.
 			</info>
 
 			<build type="c-source" value="adc_callback.c"/>
@@ -56,6 +64,7 @@
 			<build type="doxygen-example-path" value="quick_start_callback"/>
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-entry-point" value="asfdoc_samd20_adc_group"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_adc_exqsg"/>
 
 			<build type="define" name="ADC_CALLBACK_MODE" value="true"/>
 			<build type="doxygen-enable-section" value="ADC_CALLBACK_MODE"/>

@@ -570,8 +570,6 @@ struct system_clock_source_osc32k_config {
 struct system_clock_source_dfll_config {
 	/** Loop mode */
 	enum system_clock_dfll_loop_mode loop_mode;
-	/** Keep the DFLL enabled in standby sleep mode */
-	bool run_in_standby;
 	/** Run On Demand. If this is set the DFLL won't run
 	 * until requested by a peripheral */
 	bool on_demand;
@@ -780,7 +778,6 @@ static inline void system_clock_source_dfll_get_config_defaults(
 	config->chill_cycle     = SYSTEM_CLOCK_DFLL_CHILL_CYCLE_ENABLE;
 	config->wakeup_lock     = SYSTEM_CLOCK_DFLL_WAKEUP_LOCK_KEEP;
 	config->stable_tracking = SYSTEM_CLOCK_DFLL_STABLE_TRACKING_TRACK_AFTER_LOCK;
-	config->run_in_standby  = false;
 	config->on_demand       = true;
 
 	/* Open loop mode calibration value */

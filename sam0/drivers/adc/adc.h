@@ -98,6 +98,9 @@
  * incoming event from another peripheral in the device, and both internal and
  * external reference voltages can be selected.
  *
+ * \note Internal references will be enabled by the driver, but not disabled.
+ *       Any reference not used by the application should be disabled by the application.
+ *
  * A simplified block diagram of the ADC can be seen in
  * \ref asfdoc_samd20_adc_module_block_diagram "the figure below".
  *
@@ -948,6 +951,8 @@ struct adc_module {
 #if !defined(__DOXYGEN__)
 	/** Pointer to ADC hardware module */
 	Adc *hw;
+	/** Keep reference configuration so we know when enable is called */
+	enum adc_reference reference;
 #  if ADC_CALLBACK_MODE == true
 	/** Array to store callback functions */
 	adc_callback_t callback[ADC_CALLBACK_N];
@@ -1176,7 +1181,8 @@ static inline bool adc_is_syncing(
 /**
  * \brief Enables the ADC module
  *
- * Enables an ADC module that has previously been configured.
+ * Enables an ADC module that has previously been configured. If any internal reference
+ * is selected it will be enabled.
  *
  * \param[in] module_inst  Pointer to the ADC software instance struct
  */
@@ -1190,6 +1196,11 @@ static inline enum status_code adc_enable(
 
 	while (adc_is_syncing(module_inst)) {
 		/* Wait for synchronization */
+	}
+
+	/* Make sure bandgap is enabled if requested by the config */
+	if (module_inst == ADC_REFERENCE_INT1V) {
+		system_voltage_reference_enable(SYSTEM_VOLTAGE_REFERENCE_BANDGAP);
 	}
 
 #if ADC_CALLBACK_MODE == true

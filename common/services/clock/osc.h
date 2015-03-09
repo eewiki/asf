@@ -64,6 +64,8 @@
 # include "sam4l/osc.h"
 #elif SAM4N
 # include "sam4n/osc.h"
+#elif SAMG
+# include "samg/osc.h"
 #elif (UC3A0 || UC3A1)
 # include "uc3a0_a1/osc.h"
 #elif UC3A3

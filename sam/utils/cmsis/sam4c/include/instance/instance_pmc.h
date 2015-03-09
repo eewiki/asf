@@ -54,6 +54,7 @@
   #define REG_CKGR_PLLAR                  (0x400E0428U) /**< \brief (PMC) PLLA Register */
   #define REG_CKGR_PLLBR                  (0x400E042CU) /**< \brief (PMC) PLLB Register */
   #define REG_PMC_MCKR                    (0x400E0430U) /**< \brief (PMC) Master Clock Register */
+  #define REG_PMC_USB                     (0x400E0438U) /**< \brief (PMC) USB Clock Register */
   #define REG_PMC_PCK                     (0x400E0440U) /**< \brief (PMC) Programmable Clock 0 Register */
   #define REG_PMC_IER                     (0x400E0460U) /**< \brief (PMC) Interrupt Enable Register */
   #define REG_PMC_IDR                     (0x400E0464U) /**< \brief (PMC) Interrupt Disable Register */
@@ -82,6 +83,7 @@
   #define REG_CKGR_PLLAR (*(__IO uint32_t*)0x400E0428U) /**< \brief (PMC) PLLA Register */
   #define REG_CKGR_PLLBR (*(__IO uint32_t*)0x400E042CU) /**< \brief (PMC) PLLB Register */
   #define REG_PMC_MCKR   (*(__IO uint32_t*)0x400E0430U) /**< \brief (PMC) Master Clock Register */
+  #define REG_PMC_USB    (*(__IO uint32_t*)0x400E0438U) /**< \brief (PMC) USB Clock Register */
   #define REG_PMC_PCK    (*(__IO uint32_t*)0x400E0440U) /**< \brief (PMC) Programmable Clock 0 Register */
   #define REG_PMC_IER    (*(__O  uint32_t*)0x400E0460U) /**< \brief (PMC) Interrupt Enable Register */
   #define REG_PMC_IDR    (*(__O  uint32_t*)0x400E0464U) /**< \brief (PMC) Interrupt Disable Register */

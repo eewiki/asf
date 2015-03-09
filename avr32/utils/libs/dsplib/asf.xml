@@ -1,12 +1,12 @@
 <asf xmlversion="1.0">
-	<select-by-config id="avr32.utils.libs.dsplib" name="dsplib.optimization" default="speed">
+	<select-by-config id="avr32.utils.libs.dsplib" name="dsplib.optimization" default="speed" caption="DSPLib - Digital Signal Processing library">
 		<info type="description" value="summary">
 		The Digital Signal Processing Library provides a complete function set to manipulate both 16 and 32-bit fixed-point numbers.
 
 		This is the precompiled DSP library.
 		</info>
 		<select-by-device id="avr32.utils.libs.dsplib#accandsize">
-			<module type="library" id="avr32.utils.libs.dsplib#accandsize#ucr1" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#accandsize#ucr1" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library accuracy and
 				speed optimized for 32-bit AVR core revision 1.
@@ -19,7 +19,7 @@
 				<build type="library" subtype="user" value="at32ucr1/iar/libdsp-at32ucr1-dspaccandsize_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#accandsize#ucr2" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#accandsize#ucr2" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library accuracy and
 				speed optimized for 32-bit AVR core revision 2.
@@ -32,7 +32,7 @@
 				<build type="library" subtype="user" value="at32ucr2/iar/libdsp-at32ucr2-dspaccandsize_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#accandsize#ucr3" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#accandsize#ucr3" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library accuracy and
 				speed optimized for 32-bit AVR core revision 3.
@@ -45,7 +45,7 @@
 				<build type="library" subtype="user" value="at32ucr3/iar/libdsp-at32ucr3-dspaccandsize_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#accandsize#ucr3fp" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#accandsize#ucr3fp" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library accuracy and
 				speed optimized for 32-bit AVR core revision 3 with Floating Point Instructions.
@@ -60,7 +60,7 @@
 			</module>
 		</select-by-device>
 		<select-by-device id="avr32.utils.libs.dsplib#accuracy">
-			<module type="library" id="avr32.utils.libs.dsplib#accuracy#ucr1" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#accuracy#ucr1" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library accuracy
 				optimized for 32-bit AVR core revision 1.
@@ -73,7 +73,7 @@
 				<build type="library" subtype="user" value="at32ucr1/iar/libdsp-at32ucr1-dspaccuracy_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#accuracy#ucr2" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#accuracy#ucr2" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library accuracy
 				optimized for 32-bit AVR core revision 2.
@@ -86,7 +86,7 @@
 				<build type="library" subtype="user" value="at32ucr2/iar/libdsp-at32ucr2-dspaccuracy_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#accuracy#ucr3" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#accuracy#ucr3" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library accuracy
 				optimized for 32-bit AVR core revision 3.
@@ -99,7 +99,7 @@
 				<build type="library" subtype="user" value="at32ucr3/iar/libdsp-at32ucr3-dspaccuracy_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#accuracy#ucr3fp" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#accuracy#ucr3fp" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library accuracy
 				optimized for 32-bit AVR core revision 3 with Floating Point Instructions.
@@ -114,7 +114,7 @@
 			</module>
 		</select-by-device>
 		<select-by-device id="avr32.utils.libs.dsplib#size">
-			<module type="library" id="avr32.utils.libs.dsplib#size#ucr1" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#size#ucr1" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library size
 				optimized for 32-bit AVR core revision 1.
@@ -127,7 +127,7 @@
 				<build type="library" subtype="user" value="at32ucr1/iar/libdsp-at32ucr1-dspsize_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#size#ucr2" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#size#ucr2" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library size
 				optimized for 32-bit AVR core revision 2.
@@ -140,7 +140,7 @@
 				<build type="library" subtype="user" value="at32ucr2/iar/libdsp-at32ucr2-dspsize_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#size#ucr3" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#size#ucr3" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library size
 				optimized for 32-bit AVR core revision 3.
@@ -153,7 +153,7 @@
 				<build type="library" subtype="user" value="at32ucr3/iar/libdsp-at32ucr3-dspsize_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#size#ucr3fp" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#size#ucr3fp" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library size
 				optimized for 32-bit AVR core revision 3 with Floating Point Instructions.
@@ -168,7 +168,7 @@
 			</module>
 		</select-by-device>
 		<select-by-device id="avr32.utils.libs.dsplib#speed">
-			<module type="library" id="avr32.utils.libs.dsplib#speed#ucr1" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#speed#ucr1" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library speed
 				optimized for 32-bit AVR core revision 1.
@@ -181,7 +181,7 @@
 				<build type="library" subtype="user" value="at32ucr1/iar/libdsp-at32ucr1-dspspeed_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#speed#ucr2" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#speed#ucr2" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library speed
 				optimized for 32-bit AVR core revision 2.
@@ -194,7 +194,7 @@
 				<build type="library" subtype="user" value="at32ucr2/iar/libdsp-at32ucr2-dspspeed_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#speed#ucr3" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#speed#ucr3" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library speed
 				optimized for 32-bit AVR core revision 3.
@@ -207,7 +207,7 @@
 				<build type="library" subtype="user" value="at32ucr3/iar/libdsp-at32ucr3-dspspeed_opt.r82" toolchain="iarew32" />
 				<require idref="avr32.utils.libs.dsplib.common" />
 			</module>
-			<module type="library" id="avr32.utils.libs.dsplib#speed#ucr3fp" caption="DSPLib - Digital signal processing library">
+			<module type="library" id="avr32.utils.libs.dsplib#speed#ucr3fp" caption="DSPLib - Digital Signal Processing library">
 				<info type="description" value="summary">
 				Digital signal processing library speed
 				optimized for 32-bit AVR core revision 3 with Floating Point Instructions.

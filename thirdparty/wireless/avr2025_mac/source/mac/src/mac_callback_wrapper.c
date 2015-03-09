@@ -69,6 +69,7 @@
 #include "mac.h"
 #include "mac_build_config.h"
 
+
 /* === Macros ============================================================== */
 
 /* === Globals ============================================================= */
@@ -96,6 +97,7 @@ void mcps_data_ind(uint8_t *m)
 	/* Source address spec */
 	src_addr.AddrMode = pmsg->SrcAddrMode;
 	src_addr.PANId = pmsg->SrcPANId;
+	src_addr.Addr.long_address = pmsg->SrcAddr;
 	ADDR_COPY_DST_SRC_64(src_addr.Addr.long_address, pmsg->SrcAddr);
 
 	/* Destination address spec */
@@ -104,7 +106,7 @@ void mcps_data_ind(uint8_t *m)
 	ADDR_COPY_DST_SRC_64(dst_addr.Addr.long_address, pmsg->DstAddr);
 
 	/* Callback function */
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	usr_mcps_data_ind(&src_addr,
 			&dst_addr,
 			pmsg->msduLength,
@@ -222,10 +224,17 @@ void mlme_associate_ind(uint8_t *m)
 	mlme_associate_ind_t *pmsg;
 
 	/* Get the buffer body from buffer header */
-	pmsg = (mlme_associate_ind_t *)BMM_BUFFER_POINTER(((buffer_t *)m));
+	pmsg = (mlme_associate_ind_t *)BMM_BUFFER_POINTER((buffer_t *)m);
 
+#if (defined __SAMD20J18__) || (defined __SAM4LC4C__)	
+    uint64_t device_addr_temp = 0;
+    memcpy((uint8_t *)&device_addr_temp, (uint8_t *)&pmsg->DeviceAddress, sizeof(device_addr_temp));
+	usr_mlme_associate_ind(device_addr_temp, pmsg->CapabilityInformation);
+#else			
 	usr_mlme_associate_ind(pmsg->DeviceAddress,
-			pmsg->CapabilityInformation);
+			            pmsg->CapabilityInformation);			
+#endif			
+			
 
 	/* Free the buffer */
 	bmm_buffer_free((buffer_t *)m);
@@ -378,9 +387,9 @@ void mlme_get_conf(uint8_t *m)
 	/* Callback function */
 	usr_mlme_get_conf(pmsg->status,
 			pmsg->PIBAttribute,
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 			pmsg->PIBAttributeIndex,
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 			&pmsg->PIBAttributeValue);
 
 	/* Free the buffer */
@@ -526,12 +535,12 @@ void mlme_set_conf(uint8_t *m)
 	/* Get the buffer body from buffer header */
 	pmsg = (mlme_set_conf_t *)BMM_BUFFER_POINTER(((buffer_t *)m));
 
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	usr_mlme_set_conf(pmsg->status, pmsg->PIBAttribute,
 			pmsg->PIBAttributeIndex);
 #else
 	usr_mlme_set_conf(pmsg->status, pmsg->PIBAttribute);
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 	/* Free the buffer */
 	bmm_buffer_free((buffer_t *)m);
@@ -587,4 +596,31 @@ void mlme_sync_loss_ind(uint8_t *m)
 
 #endif /* (MAC_SYNC_LOSS_INDICATION == 1) */
 
+#ifdef GTS_SUPPORT
+void mlme_gts_conf(uint8_t *m)
+{
+	mlme_gts_conf_t *pmsg;
+
+	/* Get the buffer body from buffer header */
+	pmsg = (mlme_gts_conf_t *)BMM_BUFFER_POINTER(((buffer_t *)m));
+
+	usr_mlme_gts_conf(pmsg->GtsChar, pmsg->status);
+
+	/* Free the buffer */
+	bmm_buffer_free((buffer_t *)m);
+}
+
+void mlme_gts_ind(uint8_t *m)
+{
+	mlme_gts_ind_t *pmsg;
+
+	/* Get the buffer body from buffer header */
+	pmsg = (mlme_gts_ind_t *)BMM_BUFFER_POINTER(((buffer_t *)m));
+
+	usr_mlme_gts_ind(pmsg->DeviceAddr, pmsg->GtsChar);
+
+	/* Free the buffer */
+	bmm_buffer_free((buffer_t *)m);
+}
+#endif /* GTS_SUPPORT */
 /* EOF */

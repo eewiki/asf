@@ -53,7 +53,6 @@ uint8_t tmr_init(void);
 void tmr_disable_cc_interrupt(void);
 void tmr_enable_cc_interrupt(void);
 void tmr_disable_ovf_interrupt(void);
-void tmr_stop(void);
 
 #endif /* HW_TIMER_H */
 /* EOF */

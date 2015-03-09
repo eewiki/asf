@@ -1,5 +1,8 @@
 <asf xmlversion="1.0">
 	<project caption="CPU Cycle Counter Example for UC3-A3 Xplained" id="avr32.drivers.cpu.cc.example.uc3_a3_xplained">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
 		<require idref="avr32.drivers.cpu.cc.example"/>
 		<require idref="board.uc3_a3_xplained"/>
 		<config name="config.board.uc3_a3_xplained.init" value="no"/>
@@ -9,5 +12,6 @@
 		<generator value="as5_32"/>
 		<generator value="doxygen"/>
 		<device-support value="at32uc3a3256"/>
-	</project>
+		</project>
 </asf>
+

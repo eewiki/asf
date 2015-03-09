@@ -141,23 +141,25 @@ static void configuration_mode_selection(void)
 
 static void app_timers_init(void)
 {
-	if (STATUS_OK != sw_timer_get_id(&T_APP_TIMER)) {
-		app_alert();
-	}
+if(STATUS_OK != (status_code_genare_t)sw_timer_get_id(&T_APP_TIMER))
+{
+        app_alert();
+}
+if(STATUS_OK != (status_code_genare_t)sw_timer_get_id(&APP_TIMER_TO_TX))
+{
+        app_alert();
+}
+if(STATUS_OK != (status_code_genare_t)sw_timer_get_id(&APP_TIMER_TO_TX_LED_OFF))
+{
+        app_alert();
+}
+if(STATUS_OK != (status_code_genare_t)sw_timer_get_id(&APP_TIMER_TO_RX_LED_OFF))
+{
+        app_alert();
+}
 
-	if (STATUS_OK != sw_timer_get_id(&APP_TIMER_TO_TX)) {
-		app_alert();
-	}
-
-	if (STATUS_OK != sw_timer_get_id(&APP_TIMER_TO_TX_LED_OFF)) {
-		app_alert();
-	}
-
-	if (STATUS_OK != sw_timer_get_id(&APP_TIMER_TO_RX_LED_OFF)) {
-		app_alert();
-	}
-
-	if (STATUS_OK != sw_timer_get_id(&T_APP_TIMER_RANGE)) {
+	if (STATUS_OK != (status_code_genare_t)sw_timer_get_id(&T_APP_TIMER_RANGE)) {
 		app_alert();
 	}
 }
+

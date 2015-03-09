@@ -124,7 +124,7 @@ void wait_for_event_task(void)
  *
  * \param frame Pointer to received frame
  */
-void wait_for_event_rx_cb(frame_info_t *frame_info)
+void wait_for_event_rx_cb(frame_info_t *mac_frame_info)
 {
 	app_payload_t *msg;
 	peer_search_receptor_arg_t peer_info;
@@ -134,17 +134,17 @@ void wait_for_event_rx_cb(frame_info_t *frame_info)
 			+ sizeof(peer_req_t));
 
 	/* Frame received on air: Processing the same */
-	if (*(frame_info->mpdu) == expected_frame_size) {
+	if (*(mac_frame_info->mpdu) == expected_frame_size) {
 		/* Point to the message : 1 =>size is first byte and 2=>FCS*/
-		msg = (app_payload_t *)(frame_info->mpdu + LENGTH_FIELD_LEN
+		msg = (app_payload_t *)(mac_frame_info->mpdu + LENGTH_FIELD_LEN
 				+ FRAME_OVERHEAD_SRC_IEEE_ADDR - FCS_LEN);
 
 		/* Is this a peer request cmd */
 		if ((msg->cmd_id) == PEER_REQUEST) {
-			uint8_t frame_len = frame_info->mpdu[0];
+			uint8_t frame_len = mac_frame_info->mpdu[0];
 			uint8_t ed_val
-				= frame_info->mpdu[frame_len + LQI_LEN +
-					ED_VAL_LEN];
+				= mac_frame_info->mpdu[frame_len +
+					LQI_LEN + ED_VAL_LEN];
 
 			/* Check the threshold if the configuarion mode is
 			 * enabled, not otherwise */
@@ -156,7 +156,7 @@ void wait_for_event_rx_cb(frame_info_t *frame_info)
 					= (msg->payload.peer_req_data.
 						nwk_addr);
 				memcpy(&(peer_info.peer_ieee_addr),
-						(frame_info->mpdu +
+						(mac_frame_info->mpdu +
 						LENGTH_FIELD_LEN +
 						OFFSET_FOR_SRC_IEEE_ADDR),
 						sizeof(peer_info.peer_ieee_addr));
@@ -210,19 +210,23 @@ void wait_for_event_rx_cb(frame_info_t *frame_info)
 static void configure_pibs(void)
 {
 	uint16_t temp_word;
+	pib_value_t pib_value;
 	uint8_t temp_byte;
 
 	/* Set Default address. */
 	temp_word = CCPU_ENDIAN_TO_LE16(DEFAULT_ADDR);
-	tal_pib_set(macShortAddress, (pib_value_t *)&temp_word);
+	pib_value.pib_value_16bit = temp_word;
+	tal_pib_set(macShortAddress, &pib_value);
 
 	/* Set PAN ID. */
 	temp_word = CCPU_ENDIAN_TO_LE16(SRC_PAN_ID);
-	tal_pib_set(macPANId, (pib_value_t *)&temp_word);
+	pib_value.pib_value_16bit = temp_word;
+	tal_pib_set(macPANId, &pib_value);
 
 	/* Set channel. */
 	temp_byte = (uint8_t)DEFAULT_CHANNEL;
-	tal_pib_set(phyCurrentChannel, (pib_value_t *)&temp_byte);
+	pib_value.pib_value_8bit = temp_byte;
+	tal_pib_set(phyCurrentChannel, &pib_value);
 
 	/* Set IEEE address - To make sure that trx registers written properly
 	**/

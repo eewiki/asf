@@ -108,6 +108,7 @@ typedef enum IRQn
   SLCDC_IRQn           = 32, /**< 32 SAM4C8C Segment LCD Controller (SLCDC) */
   TRNG_IRQn            = 33, /**< 33 SAM4C8C True Random Generator (TRNG) */
   ICM_IRQn             = 34, /**< 34 SAM4C8C Integrity Check Module (ICM) */
+  CPKCC_IRQn           = 35, /**< 35 SAM4C8C Public Key Cryptography Controller (CPKCC) */
   AES_IRQn             = 36, /**< 36 SAM4C8C Advanced Enhanced Standard (AES) */
   PIOC_IRQn            = 37, /**< 37 SAM4C8C Parallel I/O Controller C (PIOC) */
   UART1_IRQn           = 38, /**< 38 SAM4C8C UART 1 (UART1) */
@@ -377,12 +378,14 @@ void WDT_Handler        ( void );
 #define ID_SLCDC  (32) /**< \brief Segment LCD Controller (SLCDC) */
 #define ID_TRNG   (33) /**< \brief True Random Generator (TRNG) */
 #define ID_ICM    (34) /**< \brief Integrity Check Module (ICM) */
+#define ID_CPKCC  (35) /**< \brief Public Key Cryptography Controller (CPKCC) */
 #define ID_AES    (36) /**< \brief Advanced Enhanced Standard (AES) */
 #define ID_PIOC   (37) /**< \brief Parallel I/O Controller C (PIOC) */
 #define ID_UART1  (38) /**< \brief UART 1 (UART1) */
 #define ID_IPC1   (39) /**< \brief Interprocessor communication 1 (IPC1) */
 #define ID_SPI1   (40) /**< \brief Serial Peripheral Interface 1 (SPI1) */
 #define ID_PWM    (41) /**< \brief Pulse Width Modulation (PWM) */
+#define ID_SRAM   (42) /**< \brief SRAM1, SRAM2 (SRAM) */
 #define ID_SMC1   (43) /**< \brief Static Memory Controller 1 (SMC1) */
 
 #define ID_PERIPH_COUNT (44) /**< \brief Number of peripheral IDs */
@@ -542,32 +545,34 @@ void WDT_Handler        ( void );
 #define CHIP_JTAGID (0x05B3403FUL)
 #define CHIP_CIDR   (0xA64C0AE0UL)
 #define CHIP_EXID   (0x0UL)
+#define NB_CH_ADC   (8UL)
 
 /* ************************************************************************** */
 /*   ELECTRICAL DEFINITIONS FOR SAM4C8C */
 /* ************************************************************************** */
 
 /* Device characteristics */
-#define CHIP_FREQ_SLCK_RC_MIN           (21000UL)
+#define CHIP_FREQ_SLCK_RC_MIN           (26000UL)
 #define CHIP_FREQ_SLCK_RC               (32000UL)
-#define CHIP_FREQ_SLCK_RC_MAX           (44000UL)
+#define CHIP_FREQ_SLCK_RC_MAX           (39000UL)
 #define CHIP_FREQ_MAINCK_RC_4MHZ        (4000000UL)
 #define CHIP_FREQ_MAINCK_RC_8MHZ        (8000000UL)
 #define CHIP_FREQ_MAINCK_RC_12MHZ       (12000000UL)
-#define CHIP_FREQ_CPU_MAX               (100000000UL)
+#define CHIP_FREQ_CPU_MAX               (120000000UL)
 #define CHIP_FREQ_XTAL_32K              (32768UL)
-#define CHIP_FREQ_XTAL_8M               (8000000UL)
-#define CHIP_FREQ_XTAL_12M              (12000000UL)
+#define CHIP_FREQ_PLLA_TYPICAL          (8192000UL) /* PLL A typical frequency output, if MULA+1=250 and based on External 32K oscillator */
+#define CHIP_FREQ_PLLA_TYPICAL_MULA     (249UL) /* PLL A typical MULA */
 
 /* Embedded Flash Write Wait State */
 #define CHIP_FLASH_WRITE_WAIT_STATE     (6U)
 
-/* Embedded Flash Read Wait State (VDDCORE set at 1.20V, VDDIO set at 2.7V to 3.6V) */
-#define CHIP_FREQ_FWS_0                 (21000000UL) /**< \brief Maximum operating frequency when FWS is 0 */
-#define CHIP_FREQ_FWS_1                 (42000000UL) /**< \brief Maximum operating frequency when FWS is 1 */
-#define CHIP_FREQ_FWS_2                 (63000000UL) /**< \brief Maximum operating frequency when FWS is 2 */
-#define CHIP_FREQ_FWS_3                 (85000000UL) /**< \brief Maximum operating frequency when FWS is 3 */
+/* Embedded Flash Read Wait State (VDDCORE set at 1.20V / VDDIO set between 2.7V to 3.6V / @ 85°C) */
+#define CHIP_FREQ_FWS_0                 (21000000UL)  /**< \brief Maximum operating frequency when FWS is 0 */
+#define CHIP_FREQ_FWS_1                 (42000000UL)  /**< \brief Maximum operating frequency when FWS is 1 */
+#define CHIP_FREQ_FWS_2                 (63000000UL)  /**< \brief Maximum operating frequency when FWS is 2 */
+#define CHIP_FREQ_FWS_3                 (85000000UL)  /**< \brief Maximum operating frequency when FWS is 3 */
 #define CHIP_FREQ_FWS_4                 (106000000UL) /**< \brief Maximum operating frequency when FWS is 4 */
+#define CHIP_FREQ_FWS_5                 (121000000UL) /**< \brief Maximum operating frequency when FWS is 5 */
 
 #ifdef __cplusplus
 }
@@ -575,4 +580,4 @@ void WDT_Handler        ( void );
 
 /*@}*/
 
-#endif /* _SAM4C8C_ */
+#endif /* _SAM4C8C_1_ */

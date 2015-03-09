@@ -3,6 +3,12 @@
 		<info type="description" value="summary">
 		SPI Master Bootloader for SAM D20. AT45DBX dataflash component is used as SPI slave.
 		</info>
+
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+			<keyword value="Memory"/>
+		</info>
+
 		<info type="gui-flag" value="move-to-root"/>
 		<build type="c-source" value="spi_master_bootloader.c"/>
 		<build type="include-path" value="."/>

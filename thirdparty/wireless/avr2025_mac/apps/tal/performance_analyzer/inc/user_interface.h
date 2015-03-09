@@ -114,7 +114,7 @@ typedef enum {
  *
  */
 typedef struct {
-	char *item_desc;
+	const char *item_desc;
 	void (*additional_print_func)(void);
 } print_event_msg_t;
 

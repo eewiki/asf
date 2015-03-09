@@ -3,9 +3,13 @@
 		<info type="description" value="summary">
 		Hardware based XOSC32K external 32KHz crystal oscillator runtime failure detector SAM D20 devices.
 		</info>
+
 		<info type="keyword" value="technology">
 			<keyword value="Clocks"/>
+			<keyword value="Peripheral Event System"/>
+			<keyword value="Timers"/>
 		</info>
+
 		<info type="gui-flag" value="move-to-root"/>
 
 		<build type="c-source" value="xosc32k_failure_detector.c"/>

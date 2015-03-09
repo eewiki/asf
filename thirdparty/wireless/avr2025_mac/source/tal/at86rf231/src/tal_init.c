@@ -52,6 +52,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
 #include "pal.h"
 #include "return_val.h"
 #include "tal.h"
@@ -204,9 +205,10 @@ retval_t tal_init(void)
 	 * rare case that such an address is randomly
 	 * generated again, we must repeat this.
 	 */
+	uint64_t invalid_ieee_address;
+	memset((uint8_t *)&invalid_ieee_address, 0xFF, sizeof(invalid_ieee_address));
 	while ((tal_pib.IeeeAddress == 0x0000000000000000) ||
-			(tal_pib.IeeeAddress == 0xFFFFFFFFFFFFFFFF)
-			) {
+	(tal_pib.IeeeAddress == invalid_ieee_address)){
 		/*
 		 * In case no valid IEEE address is available, a random
 		 * IEEE address will be generated to be able to run the
@@ -504,14 +506,6 @@ static retval_t trx_reset(void)
 {
 	tal_trx_status_t trx_status;
 	uint8_t poll_counter = 0;
-#if (EXTERN_EEPROM_AVAILABLE == 1)
-	uint8_t xtal_trim_value;
-#endif
-
-	/* Get trim value for 16 MHz xtal; needs to be done before reset */
-#if (EXTERN_EEPROM_AVAILABLE == 1)
-	pal_ps_get(EXTERN_EEPROM, EE_XTAL_TRIM_ADDR, 1, &xtal_trim_value);
-#endif
 
 	/* trx might sleep, so wake it up */
 	PAL_SLP_TR_LOW();
@@ -544,14 +538,6 @@ static retval_t trx_reset(void)
 
 	tal_trx_status = TRX_OFF;
 
-	/* Write 16MHz xtal trim value to trx. */
-	/* It's only necessary if it differs from the reset value. */
-#if (EXTERN_EEPROM_AVAILABLE == 1)
-	if (xtal_trim_value != 0x00) {
-		pal_trx_bit_write(SR_XTAL_TRIM, xtal_trim_value);
-	}
-
-#endif
 
 #ifdef STB_ON_SAL
 #if (SAL_TYPE == AT86RF2xx)

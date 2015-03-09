@@ -76,12 +76,15 @@
 
 static void mac_process_tal_tx_status(retval_t tx_status, frame_info_t *frame);
 
-#if (MAC_INDIRECT_DATA_FFD == 1)
+#if (MAC_INDIRECT_DATA_FFD == 1) || (defined GTS_SUPPORT)
 static uint8_t find_buffer_cb(void *buf, void *address);
+#endif /* (MAC_INDIRECT_DATA_FFD == 1) || (defined GTS_SUPPORT) */
+#if (MAC_INDIRECT_DATA_FFD == 1)
 static void remove_frame_from_indirect_q(frame_info_t *f_ptr);
-
 #endif /* (MAC_INDIRECT_DATA_FFD == 1) */
-
+#ifdef GTS_SUPPORT
+static void remove_frame_from_gts_q(frame_info_t *f_ptr);
+#endif /* GTS_SUPPORT */
 /* === Implementation ====================================================== */
 
 /*
@@ -121,6 +124,28 @@ static void mac_process_tal_tx_status(retval_t tx_status, frame_info_t *frame)
 			}
 		} else /* Not indirect */
 #endif /* (MAC_INDIRECT_DATA_FFD == 1) */
+#ifdef GTS_SUPPORT
+		if (frame->gts_queue) {
+			if ((tx_status == MAC_SUCCESS) ||
+			(tx_status == TAL_FRAME_PENDING)) {
+				
+				handle_gts_data_tx_end();
+				remove_frame_from_gts_q(frame);
+
+				buffer_t *mcps_buf = frame->buffer_header;
+
+				/* Create the MCPS DATA confirmation message */
+				mac_gen_mcps_data_conf((buffer_t *)mcps_buf,
+				(uint8_t)tx_status,
+#ifdef ENABLE_TSTAMP
+				frame->msduHandle,
+				frame->time_stamp);
+#else
+				frame->msduHandle);
+#endif  /* ENABLE_TSTAMP */
+			}
+		} else
+#endif
 		{
 			buffer_t *mcps_buf = frame->buffer_header;
 
@@ -498,6 +523,20 @@ void tal_tx_frame_done_cb(retval_t status, frame_info_t *frame)
 	}
 }
 
+#ifdef GTS_SUPPORT
+static void remove_frame_from_gts_q(frame_info_t *f_ptr)
+{
+	search_t find_buf;
+
+	find_buf.criteria_func = find_buffer_cb;
+
+	/* Update the address to be searched */
+	find_buf.handle = (void *)f_ptr->buffer_header;
+
+	qmm_queue_remove(f_ptr->gts_queue, &find_buf);
+}
+#endif
+
 #if (MAC_INDIRECT_DATA_FFD == 1)
 
 /**
@@ -520,8 +559,7 @@ static void remove_frame_from_indirect_q(frame_info_t *f_ptr)
 
 #endif /* (MAC_INDIRECT_DATA_FFD == 1) */
 
-#if (MAC_INDIRECT_DATA_FFD == 1)
-
+#if (MAC_INDIRECT_DATA_FFD == 1) || (defined GTS_SUPPORT)
 /**
  * @brief Checks whether the indirect data frame address matches
  * with the address passed.
@@ -534,7 +572,7 @@ static void remove_frame_from_indirect_q(frame_info_t *f_ptr)
 
 static uint8_t find_buffer_cb(void *buf, void *buffer)
 {
-	uint8_t *buf_body = BMM_BUFFER_POINTER((buffer_t *)buffer);
+	uint8_t *buf_body = (uint8_t *)BMM_BUFFER_POINTER((buffer_t *)buffer);
 	if (buf == buf_body) {
 		return 1;
 	}
@@ -542,6 +580,5 @@ static uint8_t find_buffer_cb(void *buf, void *buffer)
 	return 0;
 }
 
-#endif /* (MAC_INDIRECT_DATA_FFD == 1) */
-
+#endif /*(MAC_INDIRECT_DATA_FFD == 1 || defined GTS_SUPPORT)*/
 /* EOF */

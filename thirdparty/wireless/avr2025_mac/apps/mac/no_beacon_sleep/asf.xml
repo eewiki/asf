@@ -13,6 +13,7 @@
 		<build type="define" name="FFD" value=""/>
 		<build type="define" name="ENABLE_TSTAMP" value=""/>
 		<require idref="thirdparty.wireless.avr2025_mac"/>
+		<require idref="common.services.delay"/>
 		<require idref="common.services.basic.sleepmgr"/>
 		<device-support-alias value="avr2025_mac_pal_spi_support"/>
 		<info type="gui-flag" value="move-to-root"/>

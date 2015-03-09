@@ -1,0 +1,15 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.pdm" caption="PDMIC - Pulse Density Modulation Interface Controller">
+		<info type="description" value="summary">
+			The Pulse Density Modulation Interface Controller (PDMIC) is a PDM interface controller and decoder that is compatible with mono/stereo PDM format. It integrates a clock generator driving the PDM microphones and embeds filters which decimate the incoming bitstream to obtain most common audio rates.
+		</info>
+		<build type="c-source" value="pdm.c"/>
+		<build type="header-file" subtype="api" value="pdm.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="samg53"/>
+		<require idref="common.services.basic.clock"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samg53"/>
+		<build type="doxygen-entry-point" value="sam_drivers_pdm_group"/>
+		<build type="doxygen-quick-start" value="sam_pdm_quickstart"/>
+	</module>
+</asf>

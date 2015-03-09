@@ -5,6 +5,7 @@
 			for the configuration and routing of physical device I/O pins to
 			peripherals within the device.
 		</info>
+
 		<info type="keyword" value="technology">
 			<keyword value="I/O"/>
 		</info>
@@ -18,7 +19,8 @@
 		</info>
 
 		<info type="description" value="pdf">
-			This document describes how to use the Pin Multiplexer on the SAM D20, both the ASF driver and the peripheral itself.
+			This document describes how to use the Pin Multiplexer on the
+			SAM D20, both the ASF driver and the peripheral itself.
 		</info>
 
 		<build type="include-path" value="."/>
@@ -27,6 +29,7 @@
 
 		<build type="doxygen-entry-point" value="asfdoc_samd20_system_pinmux_group"/>
 		<build type="doxygen-example-path" value="quick_start"/>
+		<build type="doxygen-quick-start" value="asfdoc_samd20_system_pinmux_exqsg"/>
 
 		<build type="header-file" value="quick_start/qs_pinmux_basic.h"/>
 

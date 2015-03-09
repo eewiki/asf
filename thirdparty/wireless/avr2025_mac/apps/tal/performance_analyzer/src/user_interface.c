@@ -48,7 +48,9 @@
  */
 /* === INCLUDES ============================================================ */
 #include "tal.h"
+#if !SAMD20
 # include "led.h"
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 # include "app_init.h"
@@ -200,7 +202,16 @@ bool app_debounce_button(void)
  */
 bool button_pressed(void)
 {
-  
+#if SAMD20
+	if(port_pin_get_input_level(SW0_PIN))
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+#endif
 #ifdef SENSOR_TERMINAL_BOARD
 
   	if (stb_button_read()) {
@@ -209,8 +220,7 @@ bool button_pressed(void)
 		return false;
 	}
 
-#elif defined GPIO_PUSH_BUTTON_0
-	/*Read the current state of the button*/
+#elif defined GPIO_PUSH_BUTTON_0	/*Read the current state of the button*/
 	if (ioport_get_pin_level(GPIO_PUSH_BUTTON_0)) {
 		return false;
 	} else {

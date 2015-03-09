@@ -70,10 +70,18 @@ void Dummy_Handler(void);
 #pragma weak RTT_Handler=Dummy_Handler
 #pragma weak WDT_Handler=Dummy_Handler
 #pragma weak PMC_Handler=Dummy_Handler
+#ifdef _SAM4C_EFC_INSTANCE_
 #pragma weak EFC_Handler=Dummy_Handler
+#else
+#pragma weak EFC0_Handler=Dummy_Handler
+#pragma weak EFC1_Handler=Dummy_Handler
+#endif
 #pragma weak UART0_Handler=Dummy_Handler
 #pragma weak PIOA_Handler=Dummy_Handler
 #pragma weak PIOB_Handler=Dummy_Handler
+#ifdef _SAM4C_PIOD_INSTANCE_
+#pragma weak PIOD_Handler=Dummy_Handler
+#endif
 #pragma weak USART0_Handler=Dummy_Handler
 #pragma weak USART1_Handler=Dummy_Handler
 #pragma weak USART2_Handler=Dummy_Handler
@@ -82,6 +90,9 @@ void Dummy_Handler(void);
 #pragma weak TWI0_Handler=Dummy_Handler
 #pragma weak TWI1_Handler=Dummy_Handler
 #pragma weak SPI0_Handler=Dummy_Handler
+#ifdef _SAM4C_UOTGHS_INSTANCE_
+#pragma weak UOTGHS_Handler=Dummy_Handler
+#endif
 #pragma weak TC0_Handler=Dummy_Handler
 #pragma weak TC1_Handler=Dummy_Handler
 #pragma weak TC2_Handler=Dummy_Handler
@@ -139,14 +150,24 @@ const DeviceVectors __vector_table = {
 	(void*) RTT_Handler,    /* 3  Real Time Timer */
 	(void*) WDT_Handler,    /* 4  Watchdog Timer */
 	(void*) PMC_Handler,    /* 5  Power Management Controller */
+#ifdef _SAM4C_EFC_INSTANCE_
 	(void*) EFC_Handler,    /* 6  Enhanced Embedded Flash Controller */
 	(void*) (0UL),          /* 7  Reserved */
+#else
+	(void*) EFC0_Handler,    /* 6  Enhanced Embedded Flash Controller */
+	(void*) EFC1_Handler,    /* 7  Enhanced Embedded Flash Controller */
+#endif
 	(void*) UART0_Handler,  /* 8  UART 0 */
 	(void*) (0UL),          /* 9  Reserved */
 	(void*) (0UL),          /* 10 Reserved */
 	(void*) PIOA_Handler,   /* 11 Parallel I/O Controller A */
 	(void*) PIOB_Handler,   /* 12 Parallel I/O Controller B */
+#ifdef _SAM4C_PIOD_INSTANCE_
+    (void*) PIOD_Handler,   /* 13 Parallel I/O Controller D */
+#else
 	(void*) (0UL),          /* 13 Reserved */
+#endif
+
 	(void*) USART0_Handler, /* 14 USART 0 */
 	(void*) USART1_Handler, /* 15 USART 1 */
 	(void*) USART2_Handler, /* 16 USART 2 */
@@ -155,7 +176,12 @@ const DeviceVectors __vector_table = {
 	(void*) TWI0_Handler,   /* 19 Two Wire Interface 0 */
 	(void*) TWI1_Handler,   /* 20 Two Wire Interface 1 */
 	(void*) SPI0_Handler,   /* 21 Serial Peripheral Interface 0 */
+#ifdef _SAM4C_UOTGHS_INSTANCE_
+	(void*) UOTGHS_Handler,   /* 22 Serial Peripheral Interface 0 */
+#else
 	(void*) (0UL),          /* 22 Reserved */
+#endif
+	
 	(void*) TC0_Handler,    /* 23 Timer/Counter 0 */
 	(void*) TC1_Handler,    /* 24 Timer/Counter 1 */
 	(void*) TC2_Handler,    /* 25 Timer/Counter 2 */

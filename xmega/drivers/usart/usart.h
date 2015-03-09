@@ -6,7 +6,7 @@
  * This file contains basic functions for the AVR XMEGA USART, with support for all
  * modes, settings and clock speeds.
  *
- * Copyright (c) 2009-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009-2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -108,7 +108,7 @@ static PROGMEM_DECLARE(uint16_t, baudctrl_32mhz[]) = {
 	0xC5AC, // Baud: 38400
 	0x6EA8, // Baud: 57600
 };
-//! @}
+
 
 //! Input parameters when initializing RS232 and similar modes.
 typedef struct usart_rs232_options {

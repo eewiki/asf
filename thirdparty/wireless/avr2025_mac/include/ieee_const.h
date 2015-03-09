@@ -708,6 +708,12 @@
 #define macSecurityEnabled_def          (false)
 #endif  /* No MAC_SECURITY */
 
+/*
+ * PIB attribute without relevant index, i.e. PIB attribute not
+ * contained in 802.15.4-2006 table 88.
+ */
+#define NO_PIB_INDEX                    (0)
+
 /**
  * The minimum number of symbols forming a LIFS period.
  *
@@ -954,28 +960,40 @@ typedef enum phy_enum_tag {
 #define MLME_SCAN_TYPE_ORPHAN           (0x03)
 
 /**
- * Value for TxOptions parameter im @ref wpan_mcps_data_req().
+ * Value for TxOptions parameter in @ref wpan_mcps_data_req().
  * @ingroup apiConst
  */
 #define WPAN_TXOPT_OFF                  (0x00)
 
 /**
- * Value for TxOptions parameter im @ref wpan_mcps_data_req().
+ * Value for TxOptions parameter in @ref wpan_mcps_data_req().
  * @ingroup apiConst
  */
 #define WPAN_TXOPT_ACK                  (0x01)
 
 /**
- * Value for TxOptions parameter im @ref wpan_mcps_data_req().
+ * Value for TxOptions parameter in @ref wpan_mcps_data_req().
  * @ingroup apiConst
  */
 #define WPAN_TXOPT_INDIRECT             (0x04)
 
 /**
- * Value for TxOptions parameter im @ref wpan_mcps_data_req().
+ * Value for TxOptions parameter in @ref wpan_mcps_data_req().
  * @ingroup apiConst
  */
 #define WPAN_TXOPT_INDIRECT_ACK         (0x05)
+
+/**
+ * Value for TxOptions parameter in @ref wpan_mcps_data_req().
+ * @ingroup apiConst
+ */
+#define WPAN_TXOPT_GTS                  (0x02)
+
+/**
+ * Value for TxOptions parameter in @ref wpan_mcps_data_req().
+ * @ingroup apiConst
+ */
+#define WPAN_TXOPT_GTS_ACK              (0x03)
 
 /* Various constants */
 
@@ -1252,6 +1270,33 @@ typedef enum phy_enum_tag {
  * Length (in octets) of ACK payload
  */
 #define ACK_PAYLOAD_LEN                     (0x03)
+
+#ifdef GTS_SUPPORT
+
+#define GTS_SLOT_LENGTH_1                   (0x01)
+#define GTS_SLOT_LENGTH_2                   (0x02)
+#define GTS_SLOT_LENGTH_3                   (0x03)
+#define GTS_SLOT_LENGTH_4                   (0x04)
+#define GTS_SLOT_LENGTH_5                   (0x05)
+#define GTS_SLOT_LENGTH_6                   (0x06)
+#define GTS_SLOT_LENGTH_7                   (0x07)
+#define GTS_SLOT_LENGTH_8                   (0x08)
+#define GTS_SLOT_LENGTH_9                   (0x09)
+#define GTS_SLOT_LENGTH_10                  (0x0A)
+#define GTS_SLOT_LENGTH_11                  (0x0B)
+#define GTS_SLOT_LENGTH_12                  (0x0C)
+#define GTS_SLOT_LENGTH_13                  (0x0D)
+#define GTS_SLOT_LENGTH_14                  (0x0E)
+#define GTS_SLOT_LENGTH_15                  (0x0F)
+
+#define GTS_RX_SLOT                         (1)
+#define GTS_TX_SLOT                         (0)
+
+#define GTS_ALLOCATE                        (1)
+#define GTS_DEALLOCATE                      (0)
+
+#endif /* GTS_SUPPORT */
+
 
 /**
  * Maximum length of the key id field

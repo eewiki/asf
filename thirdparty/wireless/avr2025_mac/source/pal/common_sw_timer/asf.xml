@@ -14,6 +14,7 @@
         <device-support-alias value="uc3_hw_timer_support"/>
         <device-support-alias value="sam_hw_timer_support"/>
         <device-support-alias value="megarfa1_hw_timer_support"/>
-        <device-support-alias value="megarfr2_hw_timer_support"/>
+	    <device-support-alias value="sam0_hw_timer_support"/>
+        <device-support-alias value="megarfr2_hw_timer_support"/>        
 	</module>
 </asf>

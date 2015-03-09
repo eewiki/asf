@@ -51,8 +51,6 @@ tmr_callback_t tmr_callback;
 /* === Prototypes =========================================================== */
 extern void sysclk_enable_peripheral_clock(const volatile void *module);
 extern uint32_t sysclk_get_peripheral_bus_hz(const volatile void *module);
-extern void tmr_cca_callback(void);
-extern void tmr_ovf_callback(void);
 static void configure_NVIC(Tc *cmn_hw_timer, uint8_t cmn_hw_timer_ch);
 static void tc_callback(void);
 

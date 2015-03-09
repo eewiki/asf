@@ -1,5 +1,8 @@
 <asf xmlversion="1.0">
 	<project caption="CPU Cycle Counter Example for EVK1100" id="avr32.drivers.cpu.cc.example.evk1100">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
 		<require idref="avr32.drivers.cpu.cc.example"/>
 		<require idref="board.evk1100"/>
 		<config name="config.board.evk1100.init" value="no"/>

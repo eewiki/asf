@@ -1,0 +1,31 @@
+<asf xmlversion="1.0">
+	<module type="application" id="common.services.freertos.oled1_tickless_xpro_example" caption="FreeRTOS tickless demo with using OLED1 Xplained Pro">
+		<info type="description" value="summary">
+			Simple FreeRTOS demo application which demonstrates tasks, queues and semaphores, using lowpower tickless features of FreeRTOS.
+			This demo requires the OLED1 Xplained Pro.
+		</info>
+		<build type="c-source" value="main.c"/>
+		<build type="c-source" value="tickless.c"/>
+		<build type="c-source" value="demotasks.c"/>
+		<build type="header-file" value="demotasks.h"/>
+		<build type="header-file" value="documentation.h"/>
+		<build type="module-config" subtype="required-header-file" value="conf_demo.h"/>
+		<device-support value="sam0"/>
+		<info type="gui-flag" value="move-to-root"/>
+		<require idref="common.services.freertos.oled1_xpro_example.user_io"/>
+		<require idref="common2.services.gfx_mono"/>
+		<require idref="common2.services.gfx_mono.font"/>
+		<require idref="sam0.drivers.system"/>
+		<require idref="sam0.drivers.sercom.usart"/>
+		<require idref="sam0.drivers.tc"/>
+		<require idref="thirdparty.os.freertos-7_5_2"/>
+	</module>
+	<module type="driver" id="common.services.freertos.oled1_tickless_xpro_example.user_io" caption="User I/O driver for FreeRTOS demo">
+		<build type="header-file" subtype="api" value="cdc.h"/>
+		<build type="header-file" subtype="api" value="oled1.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="sam0"/>
+		<info type="gui-flag" value="hidden"/>
+		<require idref="sam0.drivers.port"/>
+	</module>
+</asf>

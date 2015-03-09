@@ -56,8 +56,8 @@
  *
  * \section Description
  *
- * When launched, this program displays a timer count and a menu on the terminal,
- * enabling the user to choose between several options.
+ * When launched, this program displays a timer count and a menu on the
+ * terminal, enabling the user to choose between several options.
  *
  * \section Usage
  *

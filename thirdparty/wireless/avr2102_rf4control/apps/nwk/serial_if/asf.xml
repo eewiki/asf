@@ -3,7 +3,6 @@
 		<info type="description" value="summary">
 		Serial interface application for RF4CE network stack
 		</info>
-		<build type="include-path" value="."/>
 		<build type="c-source" value="main.c"/>
 		<require idref="thirdparty.wireless.avr2102_rf4control.addons.serial_interface"/>
 		<require idref="thirdparty.wireless.avr2102_rf4control.include"/>

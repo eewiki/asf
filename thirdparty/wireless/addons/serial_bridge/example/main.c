@@ -67,7 +67,9 @@
 #include <stdlib.h>
 #include "serial_bridge.h"
 #include "asf.h"
-
+#if SAMD20
+#include "system.h"
+#endif
 /* === PROTOTYPES
  *=============================================================== */
 
@@ -84,12 +86,18 @@ int main(void)
 {
 	irq_initialize_vectors();
 
+#if SAMD20
+	system_init();
+	delay_init();
+#else
+	sysclk_init();
+
 	/* Initialize the board.
 	 * The board-specific conf_board.h file contains the configuration of
 	 * the board initialization.
 	 */
-	sysclk_init();
-	board_init();
+	board_init();    
+#endif
 
 	cpu_irq_enable();
 

@@ -62,6 +62,7 @@
 #include "return_val.h"
 #include "tal_types.h"
 #include "mac_build_config.h"
+#include "qmm.h"
 
 /**
  * \defgroup group_tal  Transceiver Abstraction Layer
@@ -73,7 +74,7 @@
  */
 
 /* === EXTERNALS =========================================================== */
-
+__PACK__DATA__
 /* Structure implementing the PIB values stored in TAL */
 typedef struct tal_pib_tag {
 	/**
@@ -232,6 +233,8 @@ typedef enum {
 	/* Command Frame Identifier for Coordinator Realignment */
 	COORDINATORREALIGNMENT,
 
+	GTSREQUEST,
+
 	/*
 	 * These are not MAC command frames but listed here as they are needed
 	 * in the msgtype field
@@ -289,11 +292,19 @@ typedef struct
 	uint16_t persistence_time;
 	/** Indirect frame transmission ongoing */
 	bool indirect_in_transit;
+#ifdef MAC_SECURITY_ZIP	
+	/** MAC Payload Pointer */
+	uint8_t *mac_payload;
+#endif
+
+#ifdef GTS_SUPPORT
+	queue_t *gts_queue;
+#endif /* GTS_SUPPORT */
 #if (defined BEACON_SUPPORT) || (defined ENABLE_TSTAMP)
 
 	/** Timestamp information of frame
-	 * The timestamping is only required for beaconing networks
-	 * or if timestamping is explicitly enabled.
+	 * The time stamping is only required for beaconing networks
+	 * or if time stamping is explicitly enabled.
 	 */
 	uint32_t time_stamp;
 #endif  /* #if (defined BEACON_SUPPORT) || (defined ENABLE_TSTAMP) */
@@ -321,7 +332,7 @@ typedef enum csma_mode_tag {
 	CSMA_UNSLOTTED,
 	CSMA_SLOTTED
 } csma_mode_t;
-
+__PACK__RST_DATA__
 /* === MACROS ============================================================== */
 
 /* RF bands: */
@@ -529,17 +540,6 @@ extern "C" {
 #endif
 
 /**
- * \brief TAL task handling
- *
- * This function
- * - Checks and allocates the receive buffer.
- * - Processes the TAL incoming frame queue.
- * - Implements the TAL state machine.
- * \ingroup group_tal_state_machine
- */
-void tal_task(void);
-
-/**
  * \brief Initializes the TAL
  *
  * This function is called to initialize the TAL. The transceiver is
@@ -733,23 +733,6 @@ retval_t tal_trx_sleep(sleep_mode_t mode);
  * \ingroup group_tal_pm
  */
 retval_t tal_trx_wakeup(void);
-
-/**
- * \brief Generates a 16-bit random number used as initial seed for srand()
- *
- * This function generates a 16-bit random number by means of using the
- * Random Number Generator from the transceiver.
- * The Random Number Generator generates 2-bit random values. These 2-bit
- * random values are concatenated to the required 16-bit random seed.
- * The generated random 16-bit number is feed into function srand()
- * as initial seed.
- * The transceiver state is initally set to RX_ON.
- * After the completion of the random seed generation, the
- * trancseiver is set to TRX_OFF.
- *
- * \ingroup group_tal_init
- */
-void tal_generate_rand_seed(void);
 
 /**
  * \brief Adds two time values

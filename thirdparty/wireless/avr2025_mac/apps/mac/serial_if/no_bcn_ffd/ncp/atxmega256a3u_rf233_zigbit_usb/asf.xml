@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC Serial Interface NoBeacon FFD AT86RF233-XMEGA-A3U AT86RF233 Zigbit(USB)" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.no_bcn_ffd.ncp.atxmega256a3u_rf233_zigbit_usb">
+	<project force-caption="true" force-description="true" caption="MAC Serial Interface NoBeacon FFD AT86RF233-XMEGA-A3U AT86RF233 Zigbit(USB)" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_ffd.ncp.atxmega256a3u_rf233_zigbit_usb">
 		<info type="description" value="summary">
 		MAC Serial Interface  Application - NoBeacon FFD
 		</info>
@@ -17,7 +17,7 @@
 		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
 		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
 
-		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.no_bcn_ffd.ncp"/>
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_ffd.ncp"/>
 		<require idref="board.xmega_rf233_zigbit"/>
 		<generator value="iarew"/>
 		<generator value="avrgcc"/>

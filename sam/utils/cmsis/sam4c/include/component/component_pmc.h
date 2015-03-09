@@ -63,9 +63,11 @@ typedef struct {
   __IO uint32_t CKGR_PLLAR;    /**< \brief (Pmc Offset: 0x0028) PLLA Register */
   __IO uint32_t CKGR_PLLBR;    /**< \brief (Pmc Offset: 0x002C) PLLB Register */
   __IO uint32_t PMC_MCKR;      /**< \brief (Pmc Offset: 0x0030) Master Clock Register */
-  __I  uint32_t Reserved3[3];
+  __I  uint32_t Reserved3[1];
+  __IO uint32_t PMC_USB;       /**< \brief (Pmc Offset: 0x0038) USB Clock Register */
+  __I  uint32_t Reserved4[1];
   __IO uint32_t PMC_PCK[3];    /**< \brief (Pmc Offset: 0x0040) Programmable Clock 0 Register */
-  __I  uint32_t Reserved4[5];
+  __I  uint32_t Reserved5[5];
   __O  uint32_t PMC_IER;       /**< \brief (Pmc Offset: 0x0060) Interrupt Enable Register */
   __O  uint32_t PMC_IDR;       /**< \brief (Pmc Offset: 0x0064) Interrupt Disable Register */
   __I  uint32_t PMC_SR;        /**< \brief (Pmc Offset: 0x0068) Status Register */
@@ -74,20 +76,21 @@ typedef struct {
   __IO uint32_t PMC_FSPR;      /**< \brief (Pmc Offset: 0x0074) Fast Start-up Polarity Register */
   __O  uint32_t PMC_FOCR;      /**< \brief (Pmc Offset: 0x0078) Fault Output Clear Register */
   __IO uint32_t PMC_CPFSMR;    /**< \brief (Pmc Offset: 0x007C) Coprocessor Fast Start-up Mode Register */
-  __I  uint32_t Reserved5[25];
+  __I  uint32_t Reserved6[25];
   __IO uint32_t PMC_WPMR;      /**< \brief (Pmc Offset: 0x00E4) Write Protect Mode Register */
   __I  uint32_t PMC_WPSR;      /**< \brief (Pmc Offset: 0x00E8) Write Protect Status Register */
-  __I  uint32_t Reserved6[5];
+  __I  uint32_t Reserved7[5];
   __O  uint32_t PMC_PCER1;     /**< \brief (Pmc Offset: 0x0100) Peripheral Clock Enable Register 1 */
   __O  uint32_t PMC_PCDR1;     /**< \brief (Pmc Offset: 0x0104) Peripheral Clock Disable Register 1 */
   __I  uint32_t PMC_PCSR1;     /**< \brief (Pmc Offset: 0x0108) Peripheral Clock Status Register 1 */
-  __I  uint32_t Reserved7[1];
+  __I  uint32_t Reserved8[1];
   __IO uint32_t PMC_OCR;       /**< \brief (Pmc Offset: 0x0110) Oscillator Calibration Register */
-  __I  uint32_t Reserved8[7];
+  __I  uint32_t Reserved9[7];
   __IO uint32_t PMC_PMMR;      /**< \brief (Pmc Offset: 0x130) PLL Maximum Multiplier Value Register */
 } Pmc;
 #endif /* !(defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 /* -------- PMC_SCER : (PMC Offset: 0x0000) System Clock Enable Register -------- */
+#define PMC_SCER_UHDP (0x1u << 7) /**< \brief (PMC_SCER) USB Host/Device Port Clock Enable */
 #define PMC_SCER_PCK0 (0x1u << 8) /**< \brief (PMC_SCER) Programmable Clock 0 Output Enable */
 #define PMC_SCER_PCK1 (0x1u << 9) /**< \brief (PMC_SCER) Programmable Clock 1 Output Enable */
 #define PMC_SCER_PCK2 (0x1u << 10) /**< \brief (PMC_SCER) Programmable Clock 2 Output Enable */
@@ -97,6 +100,7 @@ typedef struct {
 #define PMC_SCER_CPKEY_Msk (0xfu << PMC_SCER_CPKEY_Pos) /**< \brief (PMC_SCER) Coprocessor Clocks Enable Key */
 #define   PMC_SCER_CPKEY_PASSWD (0xAu << 20) /**< \brief (PMC_SCER) This field must be written to 0xA in order to validate CPCK field. */
 /* -------- PMC_SCDR : (PMC Offset: 0x0004) System Clock Disable Register -------- */
+#define PMC_SCDR_UHDP (0x1u << 7) /**< \brief (PMC_SCDR) USB Host/Device Port Clock Disable */
 #define PMC_SCDR_PCK0 (0x1u << 8) /**< \brief (PMC_SCDR) Programmable Clock 0 Output Disable */
 #define PMC_SCDR_PCK1 (0x1u << 9) /**< \brief (PMC_SCDR) Programmable Clock 1 Output Disable */
 #define PMC_SCDR_PCK2 (0x1u << 10) /**< \brief (PMC_SCDR) Programmable Clock 2 Output Disable */
@@ -106,6 +110,7 @@ typedef struct {
 #define PMC_SCDR_CPKEY_Msk (0xfu << PMC_SCDR_CPKEY_Pos) /**< \brief (PMC_SCDR) Coprocessor Clocks Disable Key */
 #define   PMC_SCDR_CPKEY_PASSWD (0xAu << 20) /**< \brief (PMC_SCDR) This field must be written to 0xA in order to validate CPCK field. */
 /* -------- PMC_SCSR : (PMC Offset: 0x0008) System Clock Status Register -------- */
+#define PMC_SCSR_UHDP (0x1u << 7) /**< \brief (PMC_SCSR) USB Host/Device Port Clock Status */
 #define PMC_SCSR_PCK0 (0x1u << 8) /**< \brief (PMC_SCSR) Programmable Clock 0 Output Status */
 #define PMC_SCSR_PCK1 (0x1u << 9) /**< \brief (PMC_SCSR) Programmable Clock 1 Output Status */
 #define PMC_SCSR_PCK2 (0x1u << 10) /**< \brief (PMC_SCSR) Programmable Clock 2 Output Status */
@@ -126,6 +131,7 @@ typedef struct {
 #define PMC_PCER0_PID19 (0x1u << 19) /**< \brief (PMC_PCER0) Peripheral Clock 19 Enable */
 #define PMC_PCER0_PID20 (0x1u << 20) /**< \brief (PMC_PCER0) Peripheral Clock 20 Enable */
 #define PMC_PCER0_PID21 (0x1u << 21) /**< \brief (PMC_PCER0) Peripheral Clock 21 Enable */
+#define PMC_PCER0_PID22 (0x1u << 22) /**< \brief (PMC_PCER0) Peripheral Clock 22 Enable */
 #define PMC_PCER0_PID23 (0x1u << 23) /**< \brief (PMC_PCER0) Peripheral Clock 23 Enable */
 #define PMC_PCER0_PID24 (0x1u << 24) /**< \brief (PMC_PCER0) Peripheral Clock 24 Enable */
 #define PMC_PCER0_PID25 (0x1u << 25) /**< \brief (PMC_PCER0) Peripheral Clock 25 Enable */
@@ -149,6 +155,7 @@ typedef struct {
 #define PMC_PCDR0_PID19 (0x1u << 19) /**< \brief (PMC_PCDR0) Peripheral Clock 19 Disable */
 #define PMC_PCDR0_PID20 (0x1u << 20) /**< \brief (PMC_PCDR0) Peripheral Clock 20 Disable */
 #define PMC_PCDR0_PID21 (0x1u << 21) /**< \brief (PMC_PCDR0) Peripheral Clock 21 Disable */
+#define PMC_PCDR0_PID22 (0x1u << 22) /**< \brief (PMC_PCDR0) Peripheral Clock 22 Disable */
 #define PMC_PCDR0_PID23 (0x1u << 23) /**< \brief (PMC_PCDR0) Peripheral Clock 23 Disable */
 #define PMC_PCDR0_PID24 (0x1u << 24) /**< \brief (PMC_PCDR0) Peripheral Clock 24 Disable */
 #define PMC_PCDR0_PID25 (0x1u << 25) /**< \brief (PMC_PCDR0) Peripheral Clock 25 Disable */
@@ -172,6 +179,7 @@ typedef struct {
 #define PMC_PCSR0_PID19 (0x1u << 19) /**< \brief (PMC_PCSR0) Peripheral Clock 19 Status */
 #define PMC_PCSR0_PID20 (0x1u << 20) /**< \brief (PMC_PCSR0) Peripheral Clock 20 Status */
 #define PMC_PCSR0_PID21 (0x1u << 21) /**< \brief (PMC_PCSR0) Peripheral Clock 21 Status */
+#define PMC_PCSR0_PID22 (0x1u << 22) /**< \brief (PMC_PCSR0) Peripheral Clock 22 Status */
 #define PMC_PCSR0_PID23 (0x1u << 23) /**< \brief (PMC_PCSR0) Peripheral Clock 23 Status */
 #define PMC_PCSR0_PID24 (0x1u << 24) /**< \brief (PMC_PCSR0) Peripheral Clock 24 Status */
 #define PMC_PCSR0_PID25 (0x1u << 25) /**< \brief (PMC_PCSR0) Peripheral Clock 25 Status */
@@ -257,6 +265,11 @@ typedef struct {
 #define PMC_MCKR_CPPRES_Pos 20
 #define PMC_MCKR_CPPRES_Msk (0xfu << PMC_MCKR_CPPRES_Pos) /**< \brief (PMC_MCKR) Coprocessor Programmable Clock Prescaler */
 #define PMC_MCKR_CPPRES(value) ((PMC_MCKR_CPPRES_Msk & ((value) << PMC_MCKR_CPPRES_Pos)))
+/* -------- PMC_USB : (PMC Offset: 0x0038) USB Clock Register -------- */
+#define PMC_USB_ONE (0x1u << 0) /**< \brief (PMC_USB) Must Be Set to 1 */
+#define PMC_USB_USBDIV_Pos 8
+#define PMC_USB_USBDIV_Msk (0xfu << PMC_USB_USBDIV_Pos) /**< \brief (PMC_USB) Divider for USB Clock */
+#define PMC_USB_USBDIV(value) ((PMC_USB_USBDIV_Msk & ((value) << PMC_USB_USBDIV_Pos)))
 /* -------- PMC_PCK[3] : (PMC Offset: 0x0040) Programmable Clock 0 Register -------- */
 #define PMC_PCK_CSS_Pos 0
 #define PMC_PCK_CSS_Msk (0x7u << PMC_PCK_CSS_Pos) /**< \brief (PMC_PCK[3]) Master Clock Source Selection */
@@ -344,6 +357,9 @@ typedef struct {
 #define PMC_FSMR_FSTT15 (0x1u << 15) /**< \brief (PMC_FSMR) Fast Start-up Input Enable 15 */
 #define PMC_FSMR_RTTAL (0x1u << 16) /**< \brief (PMC_FSMR) RTT Alarm Enable */
 #define PMC_FSMR_RTCAL (0x1u << 17) /**< \brief (PMC_FSMR) RTC Alarm Enable */
+#define PMC_FSMR_USBAL (0x1u << 18) /**< \brief (PMC_FSMR) USB Alarm Enable */
+
+#define PMC_FSMR_LPM (0x1u << 20) /**< \brief (PMC_FSMR) Low Power Mode */
 #define PMC_FSMR_FLPM_Pos 21
 #define PMC_FSMR_FLPM_Msk (0x3u << PMC_FSMR_FLPM_Pos) /**< \brief (PMC_FSMR) Flash Low Power Mode */
 #define   PMC_FSMR_FLPM_FLASH_STANDBY (0x0u << 21) /**< \brief (PMC_FSMR) Flash is in Standby Mode when system enters Wait Mode */

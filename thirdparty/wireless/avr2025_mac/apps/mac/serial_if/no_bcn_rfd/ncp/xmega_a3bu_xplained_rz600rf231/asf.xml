@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC Serial Interface NoBeacon RFD AT86RF231-XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.no_bcn_rfd.ncp.xmega_a3bu_xplained_rz600rf231">
+	<project force-caption="true" force-description="true" caption="MAC Serial Interface NoBeacon RFD AT86RF231-XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_rfd.ncp.xmega_a3bu_xplained_rz600rf231">
 		<info type="description" value="summary">
 		MAC Serial Interface  Application - NoBeacon RFD
 		</info>
@@ -17,7 +17,7 @@
 		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
 		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
 
-		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.no_bcn_rfd.ncp"/>
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_rfd.ncp"/>
 		<require idref="board.xmega_a3bu_xplained"/>
 		<generator value="iarew"/>
 		<generator value="avrgcc"/>

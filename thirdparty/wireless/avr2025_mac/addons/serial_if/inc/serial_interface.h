@@ -1,7 +1,7 @@
 /**
  * @file serial_interface.h
  *
- * @brief This header defines protoypes and definitions for serial interface
+ * @brief This header defines prototypes and definitions for serial interface
  *functionalities
  *
  * Copyright (c) 2013 Atmel Corporation. All rights reserved.

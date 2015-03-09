@@ -17,6 +17,7 @@
 		<require idref="board.samd20_xplained_pro"/>
 		<require idref="common.services.freertos.oled1_xpro_example"/>
 		<generator value="as5_arm"/>
+		<generator value="iarewarm"/>
 		<generator value="doxygen-v2"/>
 	</project>
 </asf>

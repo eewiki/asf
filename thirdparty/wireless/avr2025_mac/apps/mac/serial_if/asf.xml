@@ -9,7 +9,6 @@
 
 		<require idref="thirdparty.wireless.avr2025_mac.addons.serial_if"/>
 		<require idref="thirdparty.wireless.avr2025_mac"/>
-        <require idref="common.services.delay"/>
         <device-support-alias value="avr2025_mac_pal_support"/>
 		<device-support-alias value="avr2025_mac_api_parser_support"/>
 	</module>

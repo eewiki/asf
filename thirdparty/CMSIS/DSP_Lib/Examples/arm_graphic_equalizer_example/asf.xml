@@ -9,6 +9,7 @@
 		<build type="include-path" value="."/>
 		<require idref="sam.utils.cmsis.dsp_lib.examples.common"/>
 		<device-support value="sam4"/>
+		<device-support value="samg"/>
 		<require idref="thirdparty.cmsis.license"/>
 		<info type="gui-flag" value="move-to-root"/>
 	</module>

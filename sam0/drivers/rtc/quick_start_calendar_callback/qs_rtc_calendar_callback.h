@@ -52,6 +52,15 @@
  * The Generic Clock Generator for the RTC should be configured and enabled; if
  * you are using the System Clock driver, this may be done via \c conf_clocks.h.
  *
+ * \subsection asfdoc_samd20_rtc_calendar_callback_use_case_setup_clocks Clocks and Oscillators
+ * The \c conf_clock.h file needs to be changed with the following values to
+ * configure the clocks and oscillators for the module.
+ *
+ * The following oscillator settings are needed:
+ * \snippet conf_clocks.h oscillator_settings
+ * The following generic clock settings are needed:
+ * \snippet conf_clocks.h gclk_settings
+ *
  * \section asfdoc_samd20_rtc_calendar_callback_use_case_setup Setup
  *
  * \subsection asfdoc_samd20_rtc_calendar_callback_use_case_setup_code Code

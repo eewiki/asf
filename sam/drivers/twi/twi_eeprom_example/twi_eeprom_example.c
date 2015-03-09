@@ -51,7 +51,10 @@
  *
  * \section Requirements
  *
- * This package can be used with SAM3X evaluation kits and SAM4N Xplained Pro.
+ * This package can be used with the following setup:
+ *  - SAM3X evaluation kit
+ *  - SAMG53 Xplained Pro kit
+ *  - SAM4N Xplained Pro kit
  *
  * \section files Main files:
  *  - twi.c SAM Two-Wire Interface driver implementation.
@@ -125,6 +128,16 @@ extern "C" {
 /** The address for simulated TWI EEPROM application */
 #undef  AT24C_ADDRESS
 #define AT24C_ADDRESS          0x40
+#endif
+
+#if SAMG
+/** TWI ID for simulated EEPROM application to use */
+#define BOARD_ID_TWI_EEPROM         ID_TWI2
+/** TWI Base for simulated TWI EEPROM application to use */
+#define BOARD_BASE_TWI_EEPROM       TWI2
+/** The address for simulated TWI EEPROM application */
+#undef  AT24C_ADDRESS
+#define AT24C_ADDRESS        0x40
 #endif
 
 static const uint8_t test_data_tx[] = {

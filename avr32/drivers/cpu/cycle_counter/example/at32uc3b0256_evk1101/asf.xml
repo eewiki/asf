@@ -1,5 +1,8 @@
 <asf xmlversion="1.0">
 	<project caption="CPU Cycle Counter Example for EVK1101" id="avr32.drivers.cpu.cc.example.evk1101">
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="include-path" value="."/>
 		<require idref="avr32.drivers.cpu.cc.example"/>
 		<require idref="board.evk1101"/>
 		<config name="config.board.evk1101.init" value="no"/>
@@ -9,5 +12,5 @@
 		<generator value="as5_32"/>
 		<generator value="doxygen"/>
 		<device-support value="at32uc3b0256"/>
-	</project>
+		</project>
 </asf>

@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.twihs" caption="TWI - Two-wire Interface High Speed">
+		<info type="description" value="summary">
+		The Two-wire Interface (TWIHS) interconnects components on a unique two-wire bus, made up of one clock line and one data line with speeds of up to 400 Kbits per second and 3.4 Mbit/s for slave, based on a byte-oriented transfer format. It can be used with any Atmel Two-wire Interface bus Serial EEPROM and I2C compatible device such as Real Time Clock (RTC), Dot Matrix/Graphic LCD Controllers and Temperature Sensor, to name but a few. The TWIHS is programmable as a master or a slave with sequential or single-byte access. Multiple master capability is supported.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+		</info>
+		<build type="c-source" value="twihs.c"/>
+		<build type="header-file" subtype="api" value="twihs.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="sam_drivers_twihs_group"/>
+		<device-support value="samg"/>
+		<require idref="sam.utils"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samg53"/>
+	</module>
+</asf>

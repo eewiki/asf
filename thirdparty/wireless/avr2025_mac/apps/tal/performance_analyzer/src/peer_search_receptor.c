@@ -120,6 +120,7 @@ static peer_state_function_t const peer_search_receptor_state_table[
  */
 void peer_search_receptor_init(void *arg)
 {
+	pib_value_t pib_value;
 	peer_search_receptor_arg_t *arg_ptr = (peer_search_receptor_arg_t *)arg;
 
 	/* Change LED pattern */
@@ -135,7 +136,8 @@ void peer_search_receptor_init(void *arg)
 	} while (!node_info.peer_short_addr);
 
 	/* Set my address which my peer send me */
-	tal_pib_set(macShortAddress, (pib_value_t *)&(arg_ptr->my_short_addr));
+	pib_value.pib_value_16bit = arg_ptr->my_short_addr;
+	tal_pib_set(macShortAddress, &pib_value);
     
 #ifdef EXT_RF_FRONT_END_CTRL
     /* Disable RF front end control during peer search process*/
@@ -341,19 +343,18 @@ static void wait_for_conf_init(void *arg)
  * \param status    Status of the transmission procedure
  * \param frame     Pointer to the transmitted frame structure
  */
-static void wait_for_conf_rx_cb(frame_info_t *frame_info)
+static void wait_for_conf_rx_cb(frame_info_t *mac_frame_info)
 {
 	app_payload_t *msg;
 
-	if (*(frame_info->mpdu) == (FRAME_OVERHEAD
+	if (*(mac_frame_info->mpdu) == (FRAME_OVERHEAD
 			+ ((sizeof(app_payload_t)
 			- sizeof(general_pkt_t))
 			+ sizeof(peer_conf_t)))) {
 		/* Point to the message : 1 =>size is first byte and 2=>FCS*/
 		msg
-			= (app_payload_t *)(frame_info->mpdu + 1 +
-				FRAME_OVERHEAD -
-				2);
+			= (app_payload_t *)(mac_frame_info->mpdu + 1 +
+				FRAME_OVERHEAD - 2);
 		if ((msg->cmd_id) == PEER_CONFIRM) {
 			if (node_info.peer_short_addr ==
 					(msg->payload.peer_conf_data.nwk_addr))
@@ -362,9 +363,8 @@ static void wait_for_conf_rx_cb(frame_info_t *frame_info)
 				app_led_event(LED_EVENT_PEER_SEARCH_DONE);
 				switch (node_info.main_state) {
 				case PEER_SEARCH_RANGE_RX:
-
 					/* Peer success - set the board to
-					 * RANGE_TEST_TX_OFF state */
+					 *RANGE_TEST_TX_OFF state */
 					set_main_state(RANGE_TEST_TX_OFF, 0);
 					break;
 

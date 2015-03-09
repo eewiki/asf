@@ -84,15 +84,14 @@
 #endif
 
 /* === Globals ============================================================= */
-
 /**
  * Common Buffer pool holding the buffer user area
  */
 #if (TOTAL_NUMBER_OF_SMALL_BUFS > 0)
-static uint8_t buf_pool[(TOTAL_NUMBER_OF_LARGE_BUFS * LARGE_BUFFER_SIZE) +
-(TOTAL_NUMBER_OF_SMALL_BUFS * SMALL_BUFFER_SIZE)];
+static uint8_t buf_pool[(((TOTAL_NUMBER_OF_LARGE_BUFS * LARGE_BUFFER_SIZE) +
+(TOTAL_NUMBER_OF_SMALL_BUFS * SMALL_BUFFER_SIZE)))];
 #else
-static uint8_t buf_pool[(TOTAL_NUMBER_OF_LARGE_BUFS * LARGE_BUFFER_SIZE)];
+static uint8_t buf_pool[((TOTAL_NUMBER_OF_LARGE_BUFS * LARGE_BUFFER_SIZE))];
 #endif
 
 /*

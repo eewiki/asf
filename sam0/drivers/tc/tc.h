@@ -1361,7 +1361,7 @@ static inline void tc_clear_status(
  * applications for \ref asfdoc_samd20_tc_group. QSGs are simple examples with
  * step-by-step instructions to configure and use this driver in a selection of
  * use cases. Note that QSGs can be compiled as a standalone application or be
- * added to the user application.
+ * added to the user application for SAMD20.
  *
  *  - \subpage asfdoc_samd20_tc_basic_use_case
  * \if TC_CALLBACK_MODE

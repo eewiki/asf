@@ -113,6 +113,41 @@ enum status_code {
 
 	STATUS_ERR_PIN_MUX_INVALID        = STATUS_CATEGORY_IO     | 0x00,
 };
+typedef enum status_code status_code_genare_t;
+
+/**
+  Status codes used by MAC stack.
+ */
+enum status_code_wireless {
+	//STATUS_OK               =  0, //!< Success
+	ERR_IO_ERROR            =  -1, //!< I/O error
+	ERR_FLUSHED             =  -2, //!< Request flushed from queue
+	ERR_TIMEOUT             =  -3, //!< Operation timed out
+	ERR_BAD_DATA            =  -4, //!< Data integrity check failed
+	ERR_PROTOCOL            =  -5, //!< Protocol error
+	ERR_UNSUPPORTED_DEV     =  -6, //!< Unsupported device
+	ERR_NO_MEMORY           =  -7, //!< Insufficient memory
+	ERR_INVALID_ARG         =  -8, //!< Invalid argument
+	ERR_BAD_ADDRESS         =  -9, //!< Bad address
+	ERR_BUSY                =  -10, //!< Resource is busy
+	ERR_BAD_FORMAT          =  -11, //!< Data format not recognized
+	ERR_NO_TIMER            =  -12, //!< No timer available
+	ERR_TIMER_ALREADY_RUNNING   =  -13, //!< Timer already running
+	ERR_TIMER_NOT_RUNNING   =  -14, //!< Timer not running
+
+	/**
+	 * \brief Operation in progress
+	 *
+	 * This status code is for driver-internal use when an operation
+	 * is currently being performed.
+	 *
+	 * \note Drivers should never return this status code to any
+	 * callers. It is strictly for internal use.
+	 */
+	OPERATION_IN_PROGRESS	= -128,
+};
+
+typedef enum status_code_wireless status_code_t;
 
 /** @} */
 

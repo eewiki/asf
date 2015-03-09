@@ -11,14 +11,12 @@
         <build type="header-file" value="conf_nvm.h"/>
 		<build type="header-file" value="conf_flash.h"/>
 		<build type="header-file" value="conf_hw_timer.h"/>
-		<build type="define" name="EXTERN_EEPROM_AVAILABLE" value ="0"/>
 		<build type="define" name="TFA_BAT_MON" value =""/>
 
 		<config name="config.compiler.iarew.data_stack_size" value="0x200"/>
 		<config name="config.compiler.iarew.near_heap_size" value="0x40"/>
 		
 		
-		<config name="config.thirdparty.wireless.avr2025_mac.source.sal" value="atmegarf_sal"/>
 		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.api" value="no" />
 		<config name="config.thirdparty.wireless.addons.sio2host" value="uart"/>
 		<config name="config.common.drivers.nvm.mem_type" value="no_extmem"/>

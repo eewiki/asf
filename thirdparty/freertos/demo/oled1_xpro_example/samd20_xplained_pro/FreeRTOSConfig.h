@@ -6,11 +6,12 @@
  */
 
 #if defined (__GNUC__) || defined (__ICCARM__)
-#include <stdint.h>
+#  include <gclk.h>
+#  include <stdint.h>
 void assert_triggered( const char * file, uint32_t line );
 #endif
 
-#include <gclk.h>
+
 
 #define configUSE_PREEMPTION                    1
 #define configUSE_IDLE_HOOK                     0

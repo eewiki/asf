@@ -470,7 +470,7 @@ static void app_task(void)
 			}
 
 			LED_On(LED0);
-			zrc_cmd_code_t user_cmd;
+			zrc_cmd_code_t user_cmd = USER_CONTROL_IDLE;
 			uint8_t cmd;
 
 			if (FUNCTION1_KEY == key_no) {

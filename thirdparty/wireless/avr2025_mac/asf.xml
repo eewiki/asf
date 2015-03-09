@@ -8,8 +8,7 @@
 			This module is used by default in a single processor approach and by NCP(Network Co-Processor) for a two processor approach.This module includes the whole IEEE 802.15.4 MAC Stack including the MAC ,TAL and PAL Layer source code and should be included only for MAC applications or if the Highest Stack Layer is MAC.The "AVR2025-TAL" module need not be added if this module is included since it pulls that module automaticlly,If TFA features needs to be added ,the "AVR2025-TFA" module needs to be added and the same transceiver selected in this module should be selected .For applications requiring Serial I/O communication the "Serial I/o-Host" or "Serial I/O-NCP" module should be included along with his module.
 			</info>
 			<require idref="thirdparty.wireless.avr2025_mac.source.mac"/>
-            <device-support-alias value="avr2025_mac_pal_spi_support"/>
-            <device-support-alias value="avr2025_mac_pal_soc_support"/>
+            <device-support-alias value="avr2025_mac_pal_support"/>
 			<build type="doxygen-entry-point" value="group_mac"/>
             <info type="keyword" value="technology">
                 <keyword value="Wireless"/>

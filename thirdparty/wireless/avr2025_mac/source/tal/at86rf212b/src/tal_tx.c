@@ -132,6 +132,7 @@ retval_t tal_tx_frame(frame_info_t *tx_frame, csma_mode_t csma_mode,
 
 	/* Set pointer to actual mpdu to be downloaded to the transceiver. */
 	tal_frame_to_tx = tx_frame->mpdu;
+	last_frame_length = tal_frame_to_tx[0] - 1;
 
 	/*
 	 * In case the frame is too large, return immediately indicating
@@ -357,11 +358,13 @@ void send_frame(csma_mode_t csma_mode, bool tx_retries)
 					macMinLIFSPeriod_def)
 					- TRX_IRQ_DELAY_US -
 					PRE_TX_DURATION_US);
+			last_frame_length = 0;
 		} else {
 			pal_timer_delay(TAL_CONVERT_SYMBOLS_TO_US(
 					macMinSIFSPeriod_def)
 					- TRX_IRQ_DELAY_US -
 					PRE_TX_DURATION_US);
+			last_frame_length = 0;
 		}
 	}
 

@@ -66,7 +66,7 @@
  */
 void spi_enable_clock(Spi *p_spi)
 {
-#if (SAM4S || SAM3S || SAM3N || SAM3U || SAM4E || SAM4N)
+#if (SAM4S || SAM3S || SAM3N || SAM3U || SAM4E || SAM4N || SAMG)
 	UNUSED(p_spi);
 	sysclk_enable_peripheral_clock(ID_SPI);
 #elif (SAM3XA || SAM4C)
@@ -90,7 +90,7 @@ void spi_enable_clock(Spi *p_spi)
  */
 void spi_disable_clock(Spi *p_spi)
 {
-#if (SAM4S || SAM3S || SAM3N || SAM3U || SAM4E || SAM4N)
+#if (SAM4S || SAM3S || SAM3N || SAM3U || SAM4E || SAM4N || SAMG)
 	UNUSED(p_spi);
 	sysclk_disable_peripheral_clock(ID_SPI);
 #elif (SAM3XA || SAM4C)

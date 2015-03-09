@@ -5,6 +5,7 @@
 			interface for the configuration and management of the various clocks
 			in the device, including the bus and generic peripheral clocks.
 		</info>
+
 		<info type="keyword" value="technology">
 			<keyword value="Clocks" />
 		</info>
@@ -19,7 +20,8 @@
 		</info>
 
 		<info type="description" value="pdf">
-			This document describes how to use the Clock and Generic Clock on the SAM D20, both the ASF driver and the peripheral itself.
+			This document describes how to use the Clock and Generic Clock on
+			the SAM D20, both the ASF driver and the peripheral itself.
 		</info>
 
 		<device-support value="samd20"/>
@@ -27,6 +29,7 @@
 		<build type="doxygen-entry-point" value="asfdoc_samd20_system_clock_group"/>
 		<build type="doxygen-example-path" value="quick_start_gclk"/>
 		<build type="doxygen-example-path" value="quick_start_clock"/>
+		<build type="doxygen-quick-start" value="asfdoc_samd20_system_clock_exqsg"/>
 
 		<build type="include-path" value="."/>
 

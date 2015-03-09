@@ -52,8 +52,8 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdbool.h>
-#include "return_val.h"
 #include "pal.h"
+#include "return_val.h"
 #include "bmm.h"
 #include "qmm.h"
 #include "tal.h"
@@ -66,9 +66,9 @@
 #include "mac_internal.h"
 #include "mac.h"
 #include "mac_build_config.h"
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 #include "mac_security.h"
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 #ifdef TEST_HARNESS
 #include "private_const.h"
 #endif /* TEST_HARNESS */
@@ -134,37 +134,33 @@ static FLASH_DECLARE(uint8_t mac_pib_size[]) = {
 #define MIN_MAC_PIB_ATTRIBUTE_ID            (macAckWaitDuration)
 #define MAX_MAC_PIB_ATTRIBUTE_ID            (macMinSIFSPeriod)
 
-#ifdef MAC_SECURITY_ZIP
+
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 /* Size constants for MAC Security PIB attributes */
-static FLASH_DECLARE(uint8_t mac_sec_pib_size[]) = {
-	sizeof(mac_key_table_t),    /* 0x71: macKeyTable */
-	sizeof(uint8_t),            /* 0x72: macKeyTableEntries */
-	/* Since the structure is not packed, we need to use the hardcode value
-	 **/
-	17,                         /* 0x73: macDeviceTable */
-	sizeof(uint8_t),            /* 0x74: macDeviceTableEntries */
-	sizeof(mac_sec_lvl_table_t), /* 0x75: macSecurityLevelTable */
-	sizeof(uint8_t),            /* 0x76: macSecurityLevelTableEntries */
-	sizeof(uint32_t),           /* 0x77: macFrameCounter */
-	sizeof(uint8_t),            /* 0x78: macAutoRequestSecurityLevel    //
-	                             * Not used in ZIP */
-	sizeof(uint8_t),            /* 0x79: macAutoRequestKeyIdMode        //
-	                             * Not used in ZIP */
-	sizeof(uint8_t),            /* 0x7A: macAutoRequestKeySource        //
-	                             * Not used in ZIP */
-	sizeof(uint8_t),            /* 0x7B: macAutoRequestKeyIndex         //
-	                             * Not used in ZIP */
-	(8 * sizeof(uint8_t)),      /* 0x7C: macDefaultKeySource - 8 octets */
-	sizeof(uint16_t),           /* 0x7D: macPANCoordExtendedAddress     //
-	                             * Not used in ZIP */
-	sizeof(uint16_t)            /* 0x7E: macPANCoordShortAddress        //
-	                             * Not used in ZIP */
+static FLASH_DECLARE(uint8_t mac_sec_pib_size[]) =
+{
+    sizeof(mac_key_table_t),        // 0x71: macKeyTable
+    sizeof(uint8_t),                // 0x72: macKeyTableEntries
+    /* Since the structure is not packed, we need to use the hardcode value */
+    17,                             // 0x73: macDeviceTable
+    sizeof(uint16_t),                // 0x74: macDeviceTableEntries
+    sizeof(mac_sec_lvl_table_t),    // 0x75: macSecurityLevelTable
+    sizeof(uint8_t),                // 0x76: macSecurityLevelTableEntries
+    sizeof(uint32_t),               // 0x77: macFrameCounter
+    sizeof(uint8_t),                // 0x78: macAutoRequestSecurityLevel    // Not used in ZIP
+    sizeof(uint8_t),                // 0x79: macAutoRequestKeyIdMode        // Not used in ZIP
+    sizeof(uint8_t),                // 0x7A: macAutoRequestKeySource        // Not used in ZIP
+    sizeof(uint8_t),                // 0x7B: macAutoRequestKeyIndex         // Not used in ZIP
+    (8 * sizeof(uint8_t)),          // 0x7C: macDefaultKeySource - 8 octets
+    (8 * sizeof(uint8_t)),          // 0x7D: macPANCoordExtendedAddress     // Not used in ZIP
+    sizeof(uint16_t)                // 0x7E: macPANCoordShortAddress        // Not used in ZIP
 };
 
 /* Update this one the arry mac_pib_size is updated. */
 #define MIN_MAC_SEC_PIB_ATTRIBUTE_ID        (macKeyTable)
 #define MAX_MAC_SEC_PIB_ATTRIBUTE_ID        (macPANCoordShortAddress)
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
+
 
 /* Size constants for Private PIB attributes */
 static FLASH_DECLARE(uint8_t private_pib_size[]) = {
@@ -210,30 +206,34 @@ void mlme_get_request(uint8_t *m)
 	/* Use the mlme get request buffer for mlme get confirmation */
 	mlme_get_conf_t *mgc = (mlme_get_conf_t *)BMM_BUFFER_POINTER(
 			(buffer_t *)m);
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	uint8_t attribute_index = ((mlme_get_req_t *)mgc)->PIBAttributeIndex;
-#endif /* MAC_SECURITY_ZIP */
+#endif /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 	/* Do actual PIB attribute reading */
 	{
 		pib_value_t *attribute_value = &mgc->PIBAttributeValue;
 		uint8_t status = MAC_SUCCESS;
 
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
+		status = mlme_get(((mlme_get_req_t *)mgc)->PIBAttribute,
+				attribute_value, attribute_index);
+		mgc->PIBAttributeIndex = attribute_index;
+#else
 		status = mlme_get(((mlme_get_req_t *)mgc)->PIBAttribute,
 				attribute_value);
+#endif /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 		mgc->PIBAttribute = ((mlme_get_req_t *)mgc)->PIBAttribute;
-#ifdef MAC_SECURITY_ZIP
-		mgc->PIBAttributeIndex = attribute_index;
-#endif  /* MAC_SECURITY_ZIP */
 		mgc->cmdcode      = MLME_GET_CONFIRM;
 		mgc->status       = status;
 	}
 
-	/* Append the mlme get confirmation to MAC-NHLE queue */
-	qmm_queue_append(&mac_nhle_q, (buffer_t *)m);
+    /* Append the mlme get confirmation to MAC-NHLE queue */
+    qmm_queue_append(&mac_nhle_q, (buffer_t *)m);
 }
-
 #endif  /* (MAC_GET_SUPPORT == 1) */
+
+
 
 /**
  * @brief Setting of MAC PIB attributes via functional access
@@ -256,8 +256,7 @@ void mlme_get_request(uint8_t *m)
  * @param attribute_value Attribute value to be set
  * @param set_trx_to_sleep Set TRX back to sleep after this PIB access if it was
  *        before starting this TRX access. Otherwise the transceiver state will
- *        remain as it is, i.e. in case the transceiver was woken up, it will
- *stay
+ *        remain as it is, i.e. in case the transceiver was woken up, it will stay
  *        awake.
  *        The default value for just changing one variable is true, i.e. the
  *        transceiver will be put back to sleep if it has been woken up.
@@ -267,7 +266,7 @@ void mlme_get_request(uint8_t *m)
  *         MAC_SUCCESS if the attempt to set the PIB attribute was successful
  *         TAL_BUSY if the TAL is not in an idle state to change PIB attributes
  */
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 retval_t mlme_set(uint8_t attribute, uint8_t attribute_index,
 		pib_value_t *attribute_value, bool set_trx_to_sleep)
 #else
@@ -325,6 +324,13 @@ retval_t mlme_set(uint8_t attribute, pib_value_t *attribute_value,
 		status = MAC_INVALID_PARAMETER;
 		break;
 #endif  /* (MAC_BEACON_NOTIFY_INDICATION == 1) */
+
+#ifdef GTS_SUPPORT
+	case macGTSPermit:
+		mac_pib.mac_GTSPermit
+			= attribute_value->pib_value_8bit;
+		break;
+#endif /* GTS_SUPPORT */
 
 	case macBattLifeExtPeriods:
 		mac_pib.mac_BattLifeExtPeriods
@@ -487,124 +493,132 @@ retval_t mlme_set(uint8_t attribute, pib_value_t *attribute_value,
 		status = MAC_UNSUPPORTED_ATTRIBUTE;
 		break;
 
-#ifdef MAC_SECURITY_ZIP
-	case macSecurityEnabled:
-		mac_pib.mac_SecurityEnabled = attribute_value->pib_value_8bit;
-		break;
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
+        case macSecurityEnabled:
+            mac_pib.mac_SecurityEnabled = attribute_value->pib_value_8bit;
+            break;
 
-	case macKeyTable:
-		if (attribute_index >= mac_sec_pib.KeyTableEntries) {
-			status = MAC_INVALID_INDEX;
-		} else {
-			memcpy(&mac_sec_pib.KeyTable[attribute_index],
-					attribute_value,
-					sizeof(mac_key_table_t));
-		}
+        case macKeyTable:
+            if (attribute_index >= mac_sec_pib.KeyTableEntries)
+            {
+                status = MAC_INVALID_INDEX;
+            }
+            else
+            {
+                memcpy(&mac_sec_pib.KeyTable[attribute_index],
+                       attribute_value,
+                       sizeof(mac_key_table_t));
+            }
+            break;
 
-		break;
+        case macKeyTableEntries:
+            if (attribute_value->pib_value_8bit > MAC_ZIP_MAX_KEY_TABLE_ENTRIES)
+            {
+                status = MAC_INVALID_PARAMETER;
+            }
+            else
+            {
+            mac_sec_pib.KeyTableEntries = attribute_value->pib_value_8bit;
+            }
+            break;
 
-	case macKeyTableEntries:
-		if (attribute_value->pib_value_8bit >
-				MAC_ZIP_MAX_KEY_TABLE_ENTRIES) {
-			status = MAC_INVALID_PARAMETER;
-		} else {
-			mac_sec_pib.KeyTableEntries
-				= attribute_value->pib_value_8bit;
-		}
+        case macDeviceTable:
+            if (attribute_index >= mac_sec_pib.DeviceTableEntries)
+            {
+                status = MAC_INVALID_INDEX;
+            }
+            else
+            {
+                uint8_t *attribute_temp_ptr = (uint8_t *)attribute_value;
+                /*
+                 * Since the members of the mac_dev_table_t structure do contain padding bytes,
+                 * each member needs to be filled in separately.
+                 */
+                /* PAN-Id */
+				memcpy((uint8_t *)&mac_sec_pib.DeviceTable[attribute_index].DeviceDescriptor[0].PANId,
+				                 attribute_temp_ptr, sizeof(uint16_t));
+                /* ADDR_COPY_DST_SRC_16(mac_sec_pib.DeviceTable[attribute_index].DeviceDescriptor[0].PANId,
+                                     *(uint16_t *)attribute_temp_ptr); */
+                attribute_temp_ptr += sizeof(uint16_t);
 
-		break;
+                /* Short Address */
+				memcpy((uint8_t *)&mac_sec_pib.DeviceTable[attribute_index].DeviceDescriptor[0].ShortAddress,
+				                   attribute_temp_ptr, sizeof(uint16_t));
+                /*ADDR_COPY_DST_SRC_16(mac_sec_pib.DeviceTable[attribute_index].DeviceDescriptor[0].ShortAddress,
+                                     *(uint16_t *)attribute_temp_ptr);*/
+                attribute_temp_ptr += sizeof(uint16_t);
 
-	case macDeviceTable:
-		if (attribute_index >= mac_sec_pib.DeviceTableEntries) {
-			status = MAC_INVALID_INDEX;
-		} else {
-			uint8_t *attribute_temp_ptr
-				= (uint8_t *)attribute_value;
+                /* Extended Address */
+				memcpy((uint8_t *)&mac_sec_pib.DeviceTable[attribute_index].DeviceDescriptor[0].ExtAddress,
+				                   attribute_temp_ptr, sizeof(uint64_t));
+                /*ADDR_COPY_DST_SRC_64(mac_sec_pib.DeviceTable[attribute_index].DeviceDescriptor[0].ExtAddress,
+                                     *(uint64_t *)attribute_temp_ptr);*/
+                attribute_temp_ptr += sizeof(uint64_t);
 
-			/*
-			 * Since the members of the mac_dev_table_t structure do
-			 *contain padding bytes,
-			 * each member needs to be filled in separately.
-			 */
-			/* PAN-Id */
-			ADDR_COPY_DST_SRC_16(mac_sec_pib.DeviceTable[
-						attribute_index].DeviceDescriptor[
-						0].PANId,
-					*(uint16_t *)attribute_temp_ptr);
-			attribute_temp_ptr += sizeof(uint16_t);
+                /* Extended Address */
+                memcpy(&mac_sec_pib.DeviceTable[attribute_index].DeviceDescriptor[0].FrameCounter,
+                       attribute_temp_ptr,
+                       sizeof(uint32_t));
+                attribute_temp_ptr += sizeof(uint32_t);
 
-			/* Short Address */
-			ADDR_COPY_DST_SRC_16(mac_sec_pib.DeviceTable[
-						attribute_index].DeviceDescriptor[
-						0].ShortAddress,
-					*(uint16_t *)attribute_temp_ptr);
-			attribute_temp_ptr += sizeof(uint16_t);
+                /* Exempt */
+                mac_sec_pib.DeviceTable[attribute_index].DeviceDescriptor[0].Exempt = *attribute_temp_ptr;
+            }
+            break;
 
-			/* Extended Address */
-			ADDR_COPY_DST_SRC_64(mac_sec_pib.DeviceTable[
-						attribute_index].DeviceDescriptor[
-						0].ExtAddress,
-					*(uint64_t *)attribute_temp_ptr);
-			attribute_temp_ptr += sizeof(uint64_t);
+        case macDeviceTableEntries:
+            if (attribute_value->pib_value_16bit > MAC_ZIP_MAX_DEV_TABLE_ENTRIES)
+            {
+                status = MAC_INVALID_PARAMETER;
+            }
+            else
+            {
+            mac_sec_pib.DeviceTableEntries = attribute_value->pib_value_16bit;
+            }
+            break;
 
-			/* Extended Address */
-			memcpy(
-					&mac_sec_pib.DeviceTable[attribute_index].DeviceDescriptor[
-						0].FrameCounter,
-					attribute_temp_ptr,
-					sizeof(uint32_t));
-			attribute_temp_ptr += sizeof(uint32_t);
+        case macSecurityLevelTable:
+            if (attribute_index >= mac_sec_pib.SecurityLevelTableEntries)
+            {
+                status = MAC_INVALID_INDEX;
+            }
+            else
+            {
+                memcpy(&mac_sec_pib.SecurityLevelTable[attribute_index],
+                       attribute_value,
+                       sizeof(mac_sec_lvl_table_t));
+            }
+            break;
 
-			/* Exempt */
-			mac_sec_pib.DeviceTable[attribute_index].
-			DeviceDescriptor[0].Exempt
-				= *attribute_temp_ptr;
-		}
+        case macSecurityLevelTableEntries:
+            if (attribute_value->pib_value_8bit > MAC_ZIP_MAX_SEC_LVL_TABLE_ENTRIES)
+            {
+                status = MAC_INVALID_PARAMETER;
+            }
+            else
+            {
+            mac_sec_pib.SecurityLevelTableEntries = attribute_value->pib_value_8bit;
+            }
+            break;
 
-		break;
+        case macFrameCounter:
+            mac_sec_pib.FrameCounter = attribute_value->pib_value_32bit;
+            break;
 
-	case macDeviceTableEntries:
-		if (attribute_value->pib_value_8bit >
-				MAC_ZIP_MAX_DEV_TABLE_ENTRIES) {
-			status = MAC_INVALID_PARAMETER;
-		} else {
-			mac_sec_pib.DeviceTableEntries
-				= attribute_value->pib_value_8bit;
-		}
+        case macDefaultKeySource:
+            /* Key Source length is 8 octets. */
+            memcpy(mac_sec_pib.DefaultKeySource, attribute_value, 8);
+            break;
 
-		break;
+        case macPANCoordExtendedAddress:
+            memcpy(mac_sec_pib.PANCoordExtendedAddress, attribute_value, 8);
+            break;
 
-	case macSecurityLevelTable:
-		if (attribute_index >= mac_sec_pib.SecurityLevelTableEntries) {
-			status = MAC_INVALID_INDEX;
-		} else {
-			memcpy(&mac_sec_pib.SecurityLevelTable[attribute_index],
-					attribute_value,
-					sizeof(mac_sec_lvl_table_t));
-		}
+        case macPANCoordShortAddress:
+            mac_sec_pib.PANCoordShortAddress = attribute_value->pib_value_16bit;
+            break;
 
-		break;
-
-	case macSecurityLevelTableEntries:
-		if (attribute_value->pib_value_8bit >
-				MAC_ZIP_MAX_SEC_LVL_TABLE_ENTRIES) {
-			status = MAC_INVALID_PARAMETER;
-		} else {
-			mac_sec_pib.SecurityLevelTableEntries
-				= attribute_value->pib_value_8bit;
-		}
-
-		break;
-
-	case macFrameCounter:
-		mac_sec_pib.FrameCounter = attribute_value->pib_value_32bit;
-		break;
-
-	case macDefaultKeySource:
-		/* Key Source length is 8 octets. */
-		memcpy(mac_sec_pib.DefaultKeySource, attribute_value, 8);
-		break;
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 #ifdef TEST_HARNESS
 	case macPrivateIllegalFrameType:
@@ -639,7 +653,12 @@ retval_t mlme_set(uint8_t attribute, pib_value_t *attribute_value,
 	return status;
 }
 
+#if (defined MAC_SECURITY_ZIP) || (defined MAC_SECURITY_2006)
+retval_t mlme_get(uint8_t attribute, pib_value_t *attribute_value, 
+		uint8_t attribute_index)
+#else
 retval_t mlme_get(uint8_t attribute, pib_value_t *attribute_value)
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006)  */
 {
 	/*
 	 * Variables indicates whether the transceiver has been woken up for
@@ -835,7 +854,7 @@ retval_t mlme_get(uint8_t attribute, pib_value_t *attribute_value)
 		status = MAC_UNSUPPORTED_ATTRIBUTE;
 		break;
 
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	case macKeyTable:
 		if (attribute_index >= mac_sec_pib.KeyTableEntries) {
 			status = MAC_INVALID_INDEX;
@@ -902,8 +921,7 @@ retval_t mlme_get(uint8_t attribute, pib_value_t *attribute_value)
 		break;
 
 	case macDeviceTableEntries:
-		attribute_value->pib_value_8bit
-			= mac_sec_pib.DeviceTableEntries;
+	  MEMCPY_ENDIAN(&attribute_value->pib_value_16bit, &mac_sec_pib.DeviceTableEntries, 2);
 		break;
 
 	case macSecurityLevelTable:
@@ -933,7 +951,7 @@ retval_t mlme_get(uint8_t attribute, pib_value_t *attribute_value)
 		/* Key Source length is 8 octets. */
 		memcpy(attribute_value, mac_sec_pib.DefaultKeySource, 8);
 		break;
-#endif  /* MAC_SECURITY_ZIP */
+#endif /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 #ifdef TEST_HARNESS
 
@@ -966,7 +984,6 @@ retval_t mlme_get(uint8_t attribute, pib_value_t *attribute_value)
 	}
 	return status;
 }
-
 #if (HIGHEST_STACK_LAYER == MAC)
 
 /**
@@ -987,21 +1004,21 @@ void mlme_set_request(uint8_t *m)
 		pib_value_t *attribute_value = &msr->PIBAttributeValue;
 		retval_t status = MAC_SUCCESS;
 		mlme_set_conf_t *msc;
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 
 		/*
 		 * Store attribute index in local var, because
 		 * it will be overwritten later.
 		 */
 		uint8_t attribute_index = msr->PIBAttributeIndex;
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 		/*
 		 * Call internal PIB attribute handling function. Always force
 		 * the trx back to sleep when using request primitives via the
 		 * MLME queue.
 		 */
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 		status = mlme_set(msr->PIBAttribute, msr->PIBAttributeIndex,
 				attribute_value, true);
 #else
@@ -1118,14 +1135,14 @@ uint8_t mac_get_pib_attribute_size(uint8_t pib_attribute_id)
 		       MIN_MAC_PIB_ATTRIBUTE_ID]));
 	}
 
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	if (MIN_MAC_SEC_PIB_ATTRIBUTE_ID <= pib_attribute_id &&
 			MAX_MAC_SEC_PIB_ATTRIBUTE_ID >= pib_attribute_id) {
 		return(PGM_READ_BYTE(&mac_sec_pib_size[pib_attribute_id -
 		       MIN_MAC_SEC_PIB_ATTRIBUTE_ID]));
 	}
 
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 	if (MIN_PRIVATE_PIB_ATTRIBUTE_ID <= pib_attribute_id) {
 		return(PGM_READ_BYTE(&private_pib_size[pib_attribute_id -

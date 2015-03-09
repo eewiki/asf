@@ -52,6 +52,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
 #include "pal.h"
 #include "return_val.h"
 #include "tal.h"
@@ -209,8 +210,10 @@ retval_t tal_init(void)
 	 * rare case that such an address is randomly
 	 * generated again, we must repeat this.
 	 */
+	uint64_t invalid_ieee_address;
+	memset((uint8_t *)&invalid_ieee_address, 0xFF, sizeof(invalid_ieee_address));
 	while ((tal_pib.IeeeAddress == 0x0000000000000000) ||
-			(tal_pib.IeeeAddress == 0xFFFFFFFFFFFFFFFF)) {
+	(tal_pib.IeeeAddress == invalid_ieee_address)){
 		/*
 		 * In case no valid IEEE address is available, a random
 		 * IEEE address will be generated to be able to run the
@@ -222,22 +225,22 @@ retval_t tal_init(void)
 		 * The proper seed for function rand() has already been
 		 *generated
 		 * in function tal_generate_rand_seed().
-		 */
+		 */		
 		uint8_t *ptr_pib = (uint8_t *)&tal_pib.IeeeAddress;
 
 		for (uint8_t i = 0; i < 8; i++) {
-			*ptr_pib++ = (uint8_t)rand();
+			*ptr_pib++ = rand();
 
 			/*
 			 * Note:
 			 * Even if casting the 16 bit rand value back to 8 bit,
 			 * and running the loop 8 timers (instead of only 4
-			 *times)
+			 * times)
 			 * may look cumbersome, it turns out that the code gets
 			 * smaller using 8-bit here.
 			 * And timing is not an issue at this place...
 			 */
-		}
+		}	
 	}
 #endif  /* #ifndef DISABLE_IEEE_ADDR_CHECK */
 #ifdef ENABLE_STACK_NVM
@@ -259,7 +262,7 @@ retval_t tal_init(void)
 #endif
 
 	/* Initialize the buffer management module and get a buffer to store
-	 *reveived frames. */
+	 *received frames. */
 	bmm_buffer_init();
 	tal_rx_buffer = bmm_buffer_alloc(LARGE_BUFFER_SIZE);
 #if _DEBUG_ > 0
@@ -333,7 +336,7 @@ static retval_t trx_init(void)
 		/* Wait a short time interval. */
 		pal_timer_delay(TRX_POLL_WAIT_TIME_US);
 
-		trx_status = (tal_trx_status_t)pal_trx_bit_read(SR_TRX_STATUS);
+		trx_status = /*(tal_trx_status_t)*/pal_trx_bit_read(SR_TRX_STATUS);
 
 		/* Wait not more than max. value of TR15. */
 		if (poll_counter == P_ON_TO_TRX_OFF_ATTEMPTS) {
@@ -492,15 +495,6 @@ static retval_t trx_reset(void)
 {
 	tal_trx_status_t trx_status;
 	uint8_t poll_counter = 0;
-#if (EXTERN_EEPROM_AVAILABLE == 1)
-	uint8_t xtal_trim_value;
-#endif
-
-	/* Get trim value for 16 MHz xtal; needs to be done before reset due to
-	 *board constraints. */
-#if (EXTERN_EEPROM_AVAILABLE == 1)
-	pal_ps_get(EXTERN_EEPROM, EE_XTAL_TRIM_ADDR, 1, &xtal_trim_value);
-#endif
 
 	/* trx might sleep, so wake it up */
 	PAL_SLP_TR_LOW();
@@ -516,7 +510,7 @@ static retval_t trx_reset(void)
 		/* Wait a short time interval. */
 		pal_timer_delay(TRX_POLL_WAIT_TIME_US);
 
-		trx_status = (tal_trx_status_t)pal_trx_bit_read(SR_TRX_STATUS);
+		trx_status = /*(tal_trx_status_t)*/pal_trx_bit_read(SR_TRX_STATUS);
 
 		/* Wait not more than max. value of TR2. */
 		if (poll_counter == SLEEP_TO_TRX_OFF_ATTEMPTS) {
@@ -533,16 +527,7 @@ static retval_t trx_reset(void)
 
 	tal_trx_status = TRX_OFF;
 
-	/*
-	 * Write 16MHz xtal trim value to trx.
-	 * It's only necessary if it differs from the reset value.
-	 */
-#if (EXTERN_EEPROM_AVAILABLE == 1)
-	if (xtal_trim_value != 0x00) {
-		pal_trx_bit_write(SR_XTAL_TRIM, xtal_trim_value);
-	}
 
-#endif
 
 #ifdef STB_ON_SAL
 #if (SAL_TYPE == AT86RF2xx)

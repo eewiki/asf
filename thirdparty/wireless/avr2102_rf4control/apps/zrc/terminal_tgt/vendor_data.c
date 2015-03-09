@@ -68,7 +68,9 @@ extern void vendor_data_confirm(nwk_enum_t Status, uint8_t PairingRef,
 		profile_id_t ProfileId,
 		uint8_t Handle
 		);
+#ifndef RF4CE_TARGET
 static uint16_t get_batmon_voltage(void);
+#endif
 
 #else /* RF4CE_TARGET */
 extern void nlme_rx_enable_confirm(nwk_enum_t Status);
@@ -110,7 +112,7 @@ void vendor_data_ind(uint8_t PairingRef, uint16_t VendorId,
 		switch (nsdu[0]) { /* vendor-specific command id */
 		case BATTERY_STATUS_REQ:
 		{
-			uint16_t voltage = get_batmon_voltage();
+			uint16_t voltage = GET_BATTERY_VOLTAGE();
 			nsdu[0] = BATTERY_STATUS_RESP;
 			nsdu[1] = (uint8_t)voltage; /* LSB */
 			nsdu[2] = (uint8_t)(voltage >> 8); /* MSB */
@@ -198,6 +200,7 @@ static void vendor_data_confirm(nwk_enum_t Status, uint8_t PairingRef,
 }
 
 #endif
+#ifndef RF4CE_TARGET
 static uint16_t get_batmon_voltage(void)
 {
 	uint16_t voltage;
@@ -211,5 +214,5 @@ static uint16_t get_batmon_voltage(void)
 #endif
 	return voltage;
 }
-
+#endif
 #endif  /* #ifdef VENDOR_DATA */

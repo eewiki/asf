@@ -1,13 +1,16 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.sercom.spi" name="config.sam0.drivers.sercom.spi" caption="SERCOM SPI - Serial Peripheral Interface" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20 SERCOM SPI module. Provides a unified interface for the configuration and management of the SERCOM module in SPI mode.
-		</info>
-		<info type="keyword" value="technology">
-			<keyword value="Communication"/>
+			Driver for the SAM D20 SERCOM SPI module. Provides a unified
+			interface for the configuration and management of the SERCOM module
+			in SPI mode.
 		</info>
 
-		<module type="driver" id="sam0.drivers.sercom.spi#polled" caption="SERCOM SPI - Serial Peripheral Interface (Polled Mode)">
+		<module type="driver" id="sam0.drivers.sercom.spi#polled" caption="SERCOM SPI - Serial Peripheral Interface (Polled APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+
 			<build type="c-source" value="spi.c"/>
 			<build type="header-file" subtype="api" value="spi.h"/>
 			<build type="header-file" value="quick_start_slave/qs_spi_slave_basic.h"/>
@@ -16,6 +19,7 @@
 			<build type="doxygen-entry-point" value="asfdoc_samd20_sercom_spi_group"/>
 			<build type="doxygen-example-path" value="quick_start_master"/>
 			<build type="doxygen-example-path" value="quick_start_slave"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_spi_exqsg"/>
 
 			<build type="define" name="SPI_CALLBACK_MODE" value="false"/>
 
@@ -30,7 +34,11 @@
 			<generator value="doxygen-module-v2" default-mcu="unspecified-samd20"/>
 		</module>
 
-		<module type="driver" id="sam0.drivers.sercom.spi#callback" caption="SERCOM SPI - Serial Peripheral Interface (Callback Mode)">
+		<module type="driver" id="sam0.drivers.sercom.spi#callback" caption="SERCOM SPI - Serial Peripheral Interface (Callback APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+
 			<info type="appnote" value="AT03255"/>
 			<info type="keyword" value="pdf">
 				<keyword value="SPI"/>
@@ -41,9 +49,11 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the Serial Peripheral Interface in master mode on the SAM D20, both the ASF driver and the peripheral itself.
+				This document describes how to use the Serial Peripheral
+				Interface in master mode on the SAM D20, both the ASF driver
+				and the peripheral itself.
 			</info>
-			
+
 			<build type="c-source" value="spi.c"/>
 			<build type="c-source" value="spi_interrupt.c"/>
 			<build type="header-file" subtype="api" value="spi.h"/>
@@ -58,6 +68,7 @@
 			<build type="doxygen-example-path" value="quick_start_slave_callback"/>
 			<build type="doxygen-example-path" value="quick_start_master"/>
 			<build type="doxygen-example-path" value="quick_start_slave"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_spi_exqsg"/>
 
 			<build type="define" name="SPI_CALLBACK_MODE" value="true"/>
 			<build type="doxygen-enable-section" value="SPI_CALLBACK_MODE"/>

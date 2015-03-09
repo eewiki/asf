@@ -78,14 +78,14 @@
  * \param param_type    Parameter type to be set
  * \param param_value   Pointer to the parameter value to be set
  */
-void perf_set_req(uint8_t param_type, param_value_t *param_value);
+void perf_set_req(uint8_t set_param_type, param_value_t *param_value);
 
 /**
  * \brief Function to get the various configuaration paramters for PER Test
  *
  * \param param_type    Parameter type to be read
  */
-void perf_get_req(uint8_t param_type);
+void perf_get_req(uint8_t param_type_data);
 
 /**
  * \brief Initiates the test procedure
@@ -219,7 +219,7 @@ uint8_t check_error_conditions(void);
  *
  * \param param_type Paramter type
  */
-uint8_t get_param_length(uint8_t param_type);
+uint8_t get_param_length(uint8_t parameter_type);
 
 /* ! \} */
 
@@ -382,8 +382,8 @@ void usr_sensor_data_get_confirm(uint8_t status, float bat_voltage,
  * \return void
  */
 void usr_identify_board_confirm(uint8_t status, uint8_t ic_type,
-		char *mcu_soc_name, char *trx_name,
-		char *board_name, uint64_t mac_address,
+		const char *mcu_soc_name, const char *trx_name,
+		const char *board_name, uint64_t mac_address,
 		float fw_version, uint32_t fw_feature_mask);
 
 /**
@@ -517,7 +517,7 @@ void usr_set_default_config_confirm(uint8_t status,
  * \return void
  */
 void usr_get_current_config_confirm(uint8_t status,
-		trx_config_params_t *curr_trx_config_params);
+		trx_config_params_t *curr_trx_conf_params);
 
 /* ! \} */
 /* ! \} */

@@ -1,0 +1,11 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.samg51.include" caption="SAMG51 part definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAMG51
+		</info>
+		<build type="header-file" value="samg51.h"/>
+		<build type="header-file" value="samg51g18.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samg51"/>
+	</module>
+</asf>

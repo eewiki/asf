@@ -3,23 +3,39 @@
 		<info type="description" value="summary">
 		The Serial I/O - Host (SIO2HOST) module enable serial io communication  between the device and the Host(To be Used in Host device for 2p approach for to/fro communication with  PC , NCP device  for to/from communication with  Host device and for device in 1p approach for communication with Pc ).
 		</info>
-		<module type="component" id="thirdparty.wireless.addons.sio2host#uart"     caption="Serial I/O - Host using UART">
-			<info type="description" value="summary">
-			Enables Support for  UART communication
-			</info>
-			<require idref="common.utils.stdio.stdio_serial"/>
-			<build type="c-source"      value="uart/sio2host.c"/>
-			<build type="header-file"   value="uart/sio2host.h"/>
-			<build type="include-path"  value="uart/"/>
-			<build type="module-config" subtype="required-header-file" value="conf_sio2host.h"/>
-			<build type="module-config" subtype="path" value="module_config"/>
-			<device-support value="xmega"/>
-			<device-support value="uc3"/>
-			<device-support value="megarf"/>
-			<device-support value="sam3"/>
-			<device-support value="sam4"/>
-			<build type="doxygen-entry-point" value="group_sio2host_uart"/>
-		</module>
+		<select-by-device id="thirdparty.wireless.addons.sio2host#uart">	
+			<module type="component" id="thirdparty.wireless.addons.sio2host#uart#0"     caption="Serial I/O - Host using UART">
+				<info type="description" value="summary">
+				Enables Support for  UART communication
+				</info>
+				<require idref="common.utils.stdio.stdio_serial"/>
+				<build type="c-source"      value="uart/sio2host.c"/>
+				<build type="header-file"   value="uart/sio2host.h"/>
+				<build type="include-path"  value="uart/"/>
+				<build type="module-config" subtype="required-header-file" value="conf_sio2host.h"/>
+				<build type="module-config" subtype="path" value="module_config"/>
+				<device-support value="xmega"/>
+				<device-support value="uc3"/>
+				<device-support value="megarf"/>
+				<device-support value="sam3"/>
+				<device-support value="sam4"/>
+				<device-support value="samg"/>
+				<build type="doxygen-entry-point" value="group_sio2host_uart"/>
+			</module>
+			<module type="component" id="thirdparty.wireless.addons.sio2host#uart#samd20"     caption="Serial I/O - Host using UART">
+				<info type="description" value="summary">
+				Enables Support for  UART communication
+				</info>
+				<require idref="sam0.utils.stdio.stdio_serial"/>
+				<build type="c-source"      value="uart/sio2host.c"/>
+				<build type="header-file"   value="uart/sio2host.h"/>
+				<build type="include-path"  value="uart/"/>
+				<build type="module-config" subtype="required-header-file" value="conf_sio2host.h"/>
+				<build type="module-config" subtype="path" value="module_config"/>
+				<device-support value="samd20"/>
+				<build type="doxygen-entry-point" value="group_sio2host_uart"/>
+			</module>
+		</select-by-device>
 		<module type="component" id="thirdparty.wireless.addons.sio2host#usb"     caption="Serial I/O - Host using USB">
 			<info type="description" value="summary">
 			Enables Support for  USB communication
@@ -62,6 +78,7 @@
 			<build type="include-path"  value="usb_ftdi/"/>
 			<build type="module-config" subtype="required-header-file" value="conf_sio2host.h"/>
 			<build type="module-config" subtype="path" value="module_config"/>
+            <device-support value="atmega2564rfr2"/>
             <device-support value="atmega256rfr2"/>
             <device-support value="atmega128rfa1"/>
 		</module>

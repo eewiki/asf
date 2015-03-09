@@ -83,6 +83,7 @@
 #define MAC_START_REQUEST_CONFIRM               (1)
 #define MAC_SYNC_LOSS_INDICATION                (0)
 #define MAC_SYNC_REQUEST                        (0)
+#define MAC_GTS_REQUEST                         (0)
 
 #else   /* controller */
 
@@ -106,6 +107,7 @@
 #define MAC_START_REQUEST_CONFIRM               (0)
 #define MAC_SYNC_LOSS_INDICATION                (0)
 #define MAC_SYNC_REQUEST                        (0)
+#define MAC_GTS_REQUEST                         (0)
 
 #endif
 

@@ -107,19 +107,21 @@ uint32_t matrix_get_master_remap(void);
 
 #endif /* (SAM3XA || SAM3U || SAM4E) */
 
-#if (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
+#if (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 void matrix_set_system_io(uint32_t ul_io);
 uint32_t matrix_get_system_io(void);
 
-#endif /* (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C) */
+#endif /* (SAM3S || SAM3XA || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG) */
 
 #if (SAM3S || SAM4S || SAM4E || SAM4C)
 void matrix_set_nandflash_cs(uint32_t ul_cs);
 uint32_t matrix_get_nandflash_cs(void);
 #endif /* (SAM3S || SAM4S || SAM4E || SAM4C) */
 
+#if (!SAMG)
 void matrix_set_writeprotect(uint32_t ul_enable);
 uint32_t matrix_get_writeprotect_status(void);
+#endif
 
 /* / @cond 0 */
 /**INDENT-OFF**/

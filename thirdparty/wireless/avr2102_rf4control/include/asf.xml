@@ -11,6 +11,7 @@
 		<build type="header-file" value="nwk_msg_types.h"/>
 		<build type="header-file" value="nwk_build_config.h"/>
 		<build type="header-file" value="nwk_config.h"/>
+		<build type="distribute" subtype="user-file" value="../doc/AVR2102_User_Guide.pdf"/>
 		<build type="header-file" value="mac_user_build_config.h"/>
 		<build type="doxygen-entry-point" value="group_rf4control"/>
 		<build type="distribute" subtype="user-file" value="../doc/AVR2102_User_Guide.pdf"/>

@@ -61,6 +61,7 @@
 /**
  * PIB attribute value type
  */
+__PACK__DATA__
 typedef union {
 	/** PIB Attribute Bool */
 	bool pib_value_bool;
@@ -73,7 +74,7 @@ typedef union {
 	/** PIB Attribute 64-bit */
 	uint64_t pib_value_64bit;
 } pib_value_t;
-
+__PACK__RST_DATA__
 /* === MACROS ============================================================== */
 
 /* RF bands: */

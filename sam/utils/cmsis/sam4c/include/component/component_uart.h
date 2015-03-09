@@ -99,33 +99,33 @@ typedef struct {
 #define   UART_MR_PAR_ODD (0x1u << 9) /**< \brief (UART_MR) Odd Parity */
 #define   UART_MR_PAR_SPACE (0x2u << 9) /**< \brief (UART_MR) Space: parity forced to 0 */
 #define   UART_MR_PAR_MARK (0x3u << 9) /**< \brief (UART_MR) Mark: parity forced to 1 */
-#define   UART_MR_PAR_NO (0x4u << 9) /**< \brief (UART_MR) No Parity */
+#define   UART_MR_PAR_NO (0x4u << 9) /**< \brief (UART_MR) No parity */
 #define UART_MR_CHMODE_Pos 14
 #define UART_MR_CHMODE_Msk (0x3u << UART_MR_CHMODE_Pos) /**< \brief (UART_MR) Channel Mode */
-#define   UART_MR_CHMODE_NORMAL (0x0u << 14) /**< \brief (UART_MR) Normal Mode */
-#define   UART_MR_CHMODE_AUTOMATIC (0x1u << 14) /**< \brief (UART_MR) Automatic Echo */
-#define   UART_MR_CHMODE_LOCAL_LOOPBACK (0x2u << 14) /**< \brief (UART_MR) Local Loopback */
-#define   UART_MR_CHMODE_REMOTE_LOOPBACK (0x3u << 14) /**< \brief (UART_MR) Remote Loopback */
+#define   UART_MR_CHMODE_NORMAL (0x0u << 14) /**< \brief (UART_MR) Normal mode */
+#define   UART_MR_CHMODE_AUTOMATIC (0x1u << 14) /**< \brief (UART_MR) Automatic echo */
+#define   UART_MR_CHMODE_LOCAL_LOOPBACK (0x2u << 14) /**< \brief (UART_MR) Local loopback */
+#define   UART_MR_CHMODE_REMOTE_LOOPBACK (0x3u << 14) /**< \brief (UART_MR) Remote loopback */
 #define UART_MR_OPT_CLKDIV_Pos 16
 #define UART_MR_OPT_CLKDIV_Msk (0x1fu << UART_MR_OPT_CLKDIV_Pos) /**< \brief (UART_MR) Optical Link Clock Divider */
 #define UART_MR_OPT_CLKDIV(value) ((UART_MR_OPT_CLKDIV_Msk & ((value) << UART_MR_OPT_CLKDIV_Pos)))
 #define UART_MR_OPT_DUTY_Pos 24
 #define UART_MR_OPT_DUTY_Msk (0x7u << UART_MR_OPT_DUTY_Pos) /**< \brief (UART_MR) Optical Link Modulation Clock Duty Cycle */
-#define   UART_MR_OPT_DUTY_DUTY_50 (0x0u << 24) /**< \brief (UART_MR) Modulation Clock Duty Cycle Is 50%. */
-#define   UART_MR_OPT_DUTY_DUTY_43P75 (0x1u << 24) /**< \brief (UART_MR) Modulation Clock Duty Cycle Is 43.75%. */
-#define   UART_MR_OPT_DUTY_DUTY_37P5 (0x2u << 24) /**< \brief (UART_MR) Modulation Clock Duty Cycle Is 37.5%. */
-#define   UART_MR_OPT_DUTY_DUTY_31P25 (0x3u << 24) /**< \brief (UART_MR) Modulation Clock Duty Cycle Is 31.75%. */
-#define   UART_MR_OPT_DUTY_DUTY_25 (0x4u << 24) /**< \brief (UART_MR) Modulation Clock Duty Cycle Is 25%. */
-#define   UART_MR_OPT_DUTY_DUTY_18P75 (0x5u << 24) /**< \brief (UART_MR) Modulation Clock Duty Cycle Is 18.75%. */
-#define   UART_MR_OPT_DUTY_DUTY_12P5 (0x6u << 24) /**< \brief (UART_MR) Modulation Clock Duty Cycle Is 12.5%. */
-#define   UART_MR_OPT_DUTY_DUTY_6P25 (0x7u << 24) /**< \brief (UART_MR) Modulation Clock Duty Cycle Is 6.25%. */
+#define   UART_MR_OPT_DUTY_DUTY_50 (0x0u << 24) /**< \brief (UART_MR) Modulation clock duty cycle Is 50%. */
+#define   UART_MR_OPT_DUTY_DUTY_43P75 (0x1u << 24) /**< \brief (UART_MR) Modulation clock duty cycle Is 43.75%. */
+#define   UART_MR_OPT_DUTY_DUTY_37P5 (0x2u << 24) /**< \brief (UART_MR) Modulation clock duty cycle Is 37.5%. */
+#define   UART_MR_OPT_DUTY_DUTY_31P25 (0x3u << 24) /**< \brief (UART_MR) Modulation clock duty cycle Is 31.75%. */
+#define   UART_MR_OPT_DUTY_DUTY_25 (0x4u << 24) /**< \brief (UART_MR) Modulation clock duty cycle Is 25%. */
+#define   UART_MR_OPT_DUTY_DUTY_18P75 (0x5u << 24) /**< \brief (UART_MR) Modulation clock duty cycle Is 18.75%. */
+#define   UART_MR_OPT_DUTY_DUTY_12P5 (0x6u << 24) /**< \brief (UART_MR) Modulation clock duty cycle Is 12.5%. */
+#define   UART_MR_OPT_DUTY_DUTY_6P25 (0x7u << 24) /**< \brief (UART_MR) Modulation clock duty cycle Is 6.25%. */
 #define UART_MR_OPT_CMPTH_Pos 28
 #define UART_MR_OPT_CMPTH_Msk (0x7u << UART_MR_OPT_CMPTH_Pos) /**< \brief (UART_MR) Receive Path Comparator Threshold */
-#define   UART_MR_OPT_CMPTH_VDDIO_DIV10 (0x0u << 28) /**< \brief (UART_MR) Comparator Threshold is VDDIO/10 Volts. */
-#define   UART_MR_OPT_CMPTH_VDDIO_DIV5 (0x1u << 28) /**< \brief (UART_MR) Comparator Threshold is VDDIO/5 Volts. */
-#define   UART_MR_OPT_CMPTH_VDDIO_DIV3P3 (0x2u << 28) /**< \brief (UART_MR) Comparator Threshold is VDDIO/3.3 Volts. */
-#define   UART_MR_OPT_CMPTH_VDDIO_DIV2P5 (0x3u << 28) /**< \brief (UART_MR) Comparator Threshold is VDDIO/2.5 Volts. */
-#define   UART_MR_OPT_CMPTH_VDDIO_DIV2 (0x4u << 28) /**< \brief (UART_MR) Comparator Threshold is VDDIO/2 Volts. */
+#define   UART_MR_OPT_CMPTH_VDDIO_DIV2 (0x0u << 28) /**< \brief (UART_MR) Comparator threshold is VDDIO/2 Volts. */
+#define   UART_MR_OPT_CMPTH_VDDIO_DIV2P5 (0x1u << 28) /**< \brief (UART_MR) Comparator threshold is VDDIO/2.5 Volts. */
+#define   UART_MR_OPT_CMPTH_VDDIO_DIV3P3 (0x2u << 28) /**< \brief (UART_MR) Comparator threshold is VDDIO/3.3 Volts. */
+#define   UART_MR_OPT_CMPTH_VDDIO_DIV5 (0x3u << 28) /**< \brief (UART_MR) Comparator threshold is VDDIO/5 Volts. */
+#define   UART_MR_OPT_CMPTH_VDDIO_DIV10 (0x4u << 28) /**< \brief (UART_MR) Comparator threshold is VDDIO/10 Volts. */
 /* -------- UART_IER : (UART Offset: 0x0008) Interrupt Enable Register -------- */
 #define UART_IER_RXRDY (0x1u << 0) /**< \brief (UART_IER) Enable RXRDY Interrupt */
 #define UART_IER_TXRDY (0x1u << 1) /**< \brief (UART_IER) Enable TXRDY Interrupt */

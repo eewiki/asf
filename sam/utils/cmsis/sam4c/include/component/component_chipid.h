@@ -144,6 +144,7 @@ typedef struct {
 #define   CHIPID_CIDR_ARCH_SAM4LxB (0xB1u << 20) /**< \brief (CHIPID_CIDR) SAM4LxB Series (64-pin version) */
 #define   CHIPID_CIDR_ARCH_SAM4LxC (0xB2u << 20) /**< \brief (CHIPID_CIDR) SAM4LxC Series (100-pin version) */
 #define   CHIPID_CIDR_ARCH_AT75Cxx (0xF0u << 20) /**< \brief (CHIPID_CIDR) AT75Cxx Series */
+#define   CHIPID_CIDR_ARCH_SAM4CxxE (0x66u << 20) /**< \brief (CHIPID_CIDR) SAM4CxE (144-pin version) */
 #define CHIPID_CIDR_NVPTYP_Pos 28
 #define CHIPID_CIDR_NVPTYP_Msk (0x7u << CHIPID_CIDR_NVPTYP_Pos) /**< \brief (CHIPID_CIDR) Nonvolatile Program Memory Type */
 #define   CHIPID_CIDR_NVPTYP_ROM (0x0u << 28) /**< \brief (CHIPID_CIDR) ROM */

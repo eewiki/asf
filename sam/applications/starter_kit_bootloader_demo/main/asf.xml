@@ -11,7 +11,7 @@
 			<require idref="sam.drivers.uart"/>
 			<require idref="sam.drivers.gpbr"/>
 			<require idref="sam.drivers.supc"/>
-			<require idref="sam.drivers.adc.sam4n"/>
+			<require idref="sam.drivers.adc"/>
 			<require idref="sam.drivers.wdt"/>
 			<require idref="sam.services.flash"/>
 			<require idref="common.services.basic.clock"/>

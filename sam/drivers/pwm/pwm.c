@@ -94,16 +94,18 @@ extern "C" {
 static uint32_t pwm_clocks_generate(uint32_t ul_frequency, uint32_t ul_mck)
 {
 	uint32_t ul_divisors[PWM_CLOCK_PRE_MAX] =
-			{ 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };
+			{1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };
 	uint32_t ul_pre = 0;
 	uint32_t ul_div;
 
 	/* Find prescaler and divisor values */
-	ul_div = (ul_mck / ul_divisors[ul_pre]) / ul_frequency;
-	while ((ul_div > PWM_CLOCK_DIV_MAX) && (ul_pre < PWM_CLOCK_PRE_MAX)) {
-		ul_pre++;
+	do {
 		ul_div = (ul_mck / ul_divisors[ul_pre]) / ul_frequency;
-	}
+		if (ul_div <= PWM_CLOCK_DIV_MAX) {
+			break;
+		}
+		ul_pre++;
+	} while (ul_pre < PWM_CLOCK_PRE_MAX);
 
 	/* Return result */
 	if (ul_pre < PWM_CLOCK_PRE_MAX) {

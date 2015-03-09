@@ -55,6 +55,18 @@
 /* === Includes ============================================================ */
 #include "compiler.h"
 
+#if (SAMD20) || (SAM4L)
+ #define __PACK__RST_DATA__  COMPILER_PACK_RESET()
+ #define __PACK__DATA__		 COMPILER_PACK_SET(1)
+#ifdef SAM4L
+#define status_code_genare_t status_code_t 
+#endif
+#else
+ #define status_code_genare_t status_code_t
+ #define __PACK__RST_DATA__ 
+ #define __PACK__DATA__
+#endif 
+
 /**
  * \ingroup group_inc
  * \defgroup group_ret Return Values
@@ -125,6 +137,8 @@ typedef enum
 	MAC_BEACON_LOSS             = 0xE0, /**< Loss of beacons defined by
 	                                     *802.15.4 */
 	MAC_CHANNEL_ACCESS_FAILURE  = 0xE1, /**< Channel access failure defined
+	                                     *by 802.15.4 */
+	MAC_DENIED                  = 0xE2, /**< GTS Request denied by PANC defined
 	                                     *by 802.15.4 */
 	MAC_DISABLE_TRX_FAILURE     = 0xE3, /**< Disabling of TRX failed defined
 	                                     *by 802.15.4 */

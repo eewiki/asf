@@ -152,6 +152,21 @@
 	                                             * networks */
 #endif /* BEACON_SUPPORT / No BEACON_SUPPORT */
 
+#if (defined BEACON_SUPPORT) && (defined GTS_SUPPORT)
+
+/**
+ * FEATURE SET FOR BUILD WITH BEACON ENABLED NETWORK SUPPORT
+ */
+#define MAC_GTS_REQUEST                        (1)
+#else
+
+/**
+ * FEATURE SET FOR BUILD WITH PURE NONBEACON ONLY NETWORK SUPPORT
+ */
+#define MAC_GTS_REQUEST                        (0) 
+
+#endif /* BEACON_SUPPORT / No BEACON_SUPPORT */
+
 /*
  * Sync Loss Indication primitive is always required:
  *
@@ -334,6 +349,10 @@ extern "C" {
 	("MAC_ASSOCIATION_REQUEST_CONFIRM or MAC_SYNC_REQUEST needs to be set to 1 in \
 	user_build_config.h since MAC_PAN_ID_CONFLICT_NON_PC is 1")
 #endif
+
+#if (defined GTS_SUPPORT) && (!defined BEACON_SUPPORT)
+#error "GTS can be used along with Beacon mode only. Add BEACON_SUPPORT symbol..."
+#endif /* (defined GTS_SUPPORT) && (!defined BEACON_SUPPORT) */
 
 #endif  /* BUILD_CONFIG_H */
 /* EOF */

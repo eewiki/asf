@@ -448,6 +448,9 @@ enum status_code adc_init(
 		return STATUS_ERR_DENIED;
 	}
 
+	/* Store the selected reference for later use */
+	module_inst->reference = config->reference;
+
 #if ADC_CALLBACK_MODE == true
 	for (uint8_t i = 0; i < ADC_CALLBACK_N; i++) {
 		module_inst->callback[i] = NULL;

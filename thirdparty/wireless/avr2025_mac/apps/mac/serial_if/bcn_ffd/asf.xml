@@ -9,6 +9,7 @@
 		<build type="define" name="TEST_HARNESS" value =""/>
 		<build type="define" name="ENABLE_TSTAMP" value =""/>
 		<build type="define" name="BEACON_SUPPORT" value =""/>
+		<build type="define" name="GTS_SUPPORT" value =""/>
 
 		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if"/>
         <device-support-alias value="avr2025_mac_pal_support"/>

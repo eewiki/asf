@@ -457,14 +457,6 @@ static retval_t trx_reset(void)
 {
 	tal_trx_status_t trx_status;
 	uint8_t poll_counter = 0;
-#if (EXTERN_EEPROM_AVAILABLE == 1)
-	uint8_t xtal_trim_value;
-#endif
-
-	/* Get trim value for 16 MHz xtal; needs to be done before reset */
-#if (EXTERN_EEPROM_AVAILABLE == 1)
-	pal_ps_get(EXTERN_EEPROM, EE_XTAL_TRIM_ADDR, 1, &xtal_trim_value);
-#endif
 
 	/* trx might sleep, so wake it up */
 	PAL_SLP_TR_LOW();
@@ -496,16 +488,7 @@ static retval_t trx_reset(void)
 	} while (trx_status != TRX_OFF);
 
 	tal_trx_status = TRX_OFF;
-
-	/* Write 16MHz xtal trim value to trx. */
-	/* It's only necessary if it differs from the reset value. */
-#if (EXTERN_EEPROM_AVAILABLE == 1)
-	if (xtal_trim_value != 0x00) {
-		pal_trx_bit_write(SR_XTAL_TRIM, xtal_trim_value);
-	}
-
-#endif
-
+	
 	return MAC_SUCCESS;
 }
 

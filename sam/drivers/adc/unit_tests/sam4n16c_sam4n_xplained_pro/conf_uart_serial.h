@@ -45,5 +45,5 @@
 #define CONF_USART_SERIAL_H_INCLUDED
 
 /* Intentionally empty */
-	
+
 #endif/* CONF_USART_SERIAL_H_INCLUDED */

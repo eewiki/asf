@@ -216,6 +216,12 @@ struct port_config {
 
 	/** Port pull-up/pull-down for input pins. */
 	enum port_pin_pull input_pull;
+
+	/** Enable lowest possible powerstate on the pin
+	 *
+	 *  \note All other configurations will be ignored, the pin will be disabled
+	 */
+	bool powersave;
 };
 
 /** \name State reading/writing (physical group orientated)
@@ -346,8 +352,9 @@ static inline void port_get_config_defaults(
 	Assert(config);
 
 	/* Default configuration values */
-	config->direction = PORT_PIN_DIR_INPUT;
+	config->direction  = PORT_PIN_DIR_INPUT;
 	config->input_pull = PORT_PIN_PULL_UP;
+	config->powersave  = false;
 }
 
 void port_pin_set_config(

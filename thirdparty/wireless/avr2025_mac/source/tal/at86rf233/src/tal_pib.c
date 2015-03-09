@@ -318,7 +318,8 @@ retval_t tal_pib_get(uint8_t attribute, uint8_t *value)
 		break;
 
 	case macIeeeAddress:
-		*(uint64_t *)value = tal_pib.IeeeAddress;
+		memcpy((uint8_t *)value, (uint8_t *)&tal_pib.IeeeAddress, 
+	                  sizeof(tal_pib.IeeeAddress));
 		break;
 
 #ifdef BEACON_SUPPORT

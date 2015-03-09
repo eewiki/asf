@@ -47,6 +47,8 @@
 			<device-support value="sam4n"/>
 			<device-support value="atsam4c8c_0"/>
 			<device-support value="atsam4c16c_0"/>
+			<device-support value="atsam4c32c_0"/>
+			<device-support value="atsam4c32e_0"/>
 			<device-support value="unspecified-sam4c"/>    <!-- A workaround for Jenkin doxygen-module check -->
 		</module>
 		<!-- VFPv4 -->
@@ -61,6 +63,9 @@
 			<device-support value="sam4e"/>
 			<device-support value="atsam4c8c_1"/>
 			<device-support value="atsam4c16c_1"/>
+			<device-support value="atsam4c32c_1"/>
+			<device-support value="atsam4c32e_1"/>
+			<device-support value="samg"/>
 		</module>
 	</select-by-device>
 
@@ -213,6 +218,36 @@
 			<require idref="sam.utils.cmsis.sam4c.source.template"/>
 			<info type="gui-flag" value="hidden"/>
 			<device-support value="sam4c"/>
+		</module>
+
+		<!-- SAMG51 //-->
+		<module type="driver" id="sam.utils#10" caption="SAMG51 compiler driver">
+			<info type="description" value="summary">
+			Compiler abstraction layer and code utilities for SAMG51 devices. This module provides various abstraction layers and utilities to make code compatible between different compilers. It also contains utilities typically used while pre-processing code.
+			</info>
+			<require idref="sam.utils.common"/>
+			<require idref="sam.utils.cmsis.samg51.include"/>
+			<require idref="sam.utils.cmsis.samg51.include.component"/>
+			<require idref="sam.utils.cmsis.samg51.include.instance"/>
+			<require idref="sam.utils.cmsis.samg51.include.pio"/>
+			<require idref="sam.utils.cmsis.samg51.source.template"/>
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="samg51"/>
+		</module>
+
+		<!-- SAMG53 //-->
+		<module type="driver" id="sam.utils#11" caption="SAMG53 compiler driver">
+			<info type="description" value="summary">
+			Compiler abstraction layer and code utilities for SAMG53 devices. This module provides various abstraction layers and utilities to make code compatible between different compilers. It also contains utilities typically used while pre-processing code.
+			</info>
+			<require idref="sam.utils.common"/>
+			<require idref="sam.utils.cmsis.samg53.include"/>
+			<require idref="sam.utils.cmsis.samg53.include.component"/>
+			<require idref="sam.utils.cmsis.samg53.include.instance"/>
+			<require idref="sam.utils.cmsis.samg53.include.pio"/>
+			<require idref="sam.utils.cmsis.samg53.source.template"/>
+			<info type="gui-flag" value="hidden"/>
+			<device-support value="samg53"/>
 		</module>
 	</select-by-device>
 </asf>

@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief Unit tests for ADC driver for SAM4N.
+ * \brief Unit tests for ADC2 driver.
  *
  * Copyright (c) 2013 Atmel Corporation. All rights reserved.
  *
@@ -41,26 +41,16 @@
  *
  */
 
-#include <board.h>
-#include <sysclk.h>
-#include <delay.h>
-#include "adc_sam4n.h"
-#include "pmc.h"
-#include "tc.h"
-#include "ioport.h"
-#include <string.h>
-#include <unit_test/suite.h>
-#include <stdio_serial.h>
+#include <asf.h>
 #include <conf_test.h>
-#include <conf_board.h>
 
 /**
  * \mainpage
  *
  * \section intro Introduction
- * This is the unit test application for SAM4N ADC driver.
+ * This is the unit test application for ADC2 driver.
  * It consists of test cases for the following functionality:
- * - TC trigger test
+ * - ADC in TC trigger mode test
  *
  * \section files Main Files
  * - \ref unit_tests.c
@@ -91,7 +81,7 @@ volatile bool is_data_ready = false;
 static void adc_set_data_ready_flag(void)
 {
 	is_data_ready = true;
-	adc_disable_interrupt(ADC, ADC_INTERRUPT_EOC_11);
+	adc_disable_interrupt(ADC, ADC_INTERRUPT_EOC_1);
 	tc_stop(TC0, 0);
 }
 
@@ -130,7 +120,11 @@ static void configure_tc_trigger(void)
  */
 static void run_adc_tc_trig_test(const struct test_case *test)
 {
-	adc_set_callback(ADC, ADC_INTERRUPT_EOC_11,
+	adc_channel_enable(ADC, ADC_CHANNEL_1);
+
+	adc_set_trigger(ADC, ADC_TRIG_TIO_CH_0);
+
+	adc_set_callback(ADC, ADC_INTERRUPT_EOC_1,
 			adc_set_data_ready_flag, 1);
 
 	configure_tc_trigger();
@@ -142,7 +136,7 @@ static void run_adc_tc_trig_test(const struct test_case *test)
 }
 
 /**
- * \brief Run ADC driver unit tests.
+ * \brief Run ADC2 driver unit tests.
  */
 int main(void)
 {
@@ -165,10 +159,6 @@ int main(void)
 	adc_get_config_defaults(&adc_cfg);
 
 	adc_init(ADC, &adc_cfg);
-
-	adc_channel_enable(ADC, ADC_CHANNEL_11);
-
-	adc_set_trigger(ADC, ADC_TRIG_TIO_CH_0);
 
 #if defined(__GNUC__)
 	setbuf(stdout, NULL);

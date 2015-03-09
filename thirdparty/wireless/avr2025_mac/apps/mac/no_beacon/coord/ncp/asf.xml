@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
-	<module type="application" caption="MAC No-Beacon  Application - Coordinator" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.coord.ncp">
+	<module type="application" caption="MAC No Beacon  Application - Coordinator" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.coord.ncp">
 		<info type="description" value="summary">
-		The basic MAC Example Nobeacon Application deploys a nonbeacon-enabled network.
+		The basic MAC Example No Beacon Application deploys a No beacon-enabled network.
 		</info>
 		<build type="doxygen-entry-point" value="group_mac"/>
 		<build type="header-file" value="app_config.h"/>

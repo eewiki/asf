@@ -18,6 +18,7 @@
 		<device-support value="xmegad"/>
 		<device-support value="xmegae"/>
 		<require idref="xmega.utils"/>
+		<require idref="common.services.ioport"/>
 		<generator value="doxygen-module" default-mcu="unspecified-xmegaa1"/>
 	</module>
 </asf>

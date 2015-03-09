@@ -144,6 +144,7 @@ static peer_state_function_t const peer_search_initiator_state_table[
  */
 void peer_search_initiator_init(void *arg)
 {
+	pib_value_t pib_value_temp;
 	/* Change LED pattern */
 	app_led_event(LED_EVENT_START_PEER_SEARCH);
 
@@ -173,7 +174,8 @@ void peer_search_initiator_init(void *arg)
 	if (true == node_info.configure_mode) {
 		/* set the tx power to lowest in configuration mode */
 		uint8_t config_tx_pwr = CONFIG_MODE_TX_PWR;
-		tal_pib_set(phyTransmitPower, (pib_value_t *)&config_tx_pwr);
+		pib_value_temp.pib_value_8bit = config_tx_pwr;
+		tal_pib_set(phyTransmitPower, &pib_value_temp);
 	}
 
 	/* Keep compiler happy */
@@ -372,17 +374,17 @@ static void peer_req_send_task()
  * PEER_REQ_SEND State.
  * \param frame Pointer to received frame
  */
-static void peer_req_send_rx_cb(frame_info_t *frame_info)
+static void peer_req_send_rx_cb(frame_info_t *mac_frame_info)
 {
 	app_payload_t *msg;
 	uint16_t my_addr_from_peer;
 
-	if (*(frame_info->mpdu) == (FRAME_OVERHEAD_DST_IEEE_ADDR
+	if (*(mac_frame_info->mpdu) == (FRAME_OVERHEAD_DST_IEEE_ADDR
 			+ ((sizeof(app_payload_t)
 			- sizeof(general_pkt_t))
 			+ sizeof(peer_rsp_t)))) {
 		/* Point to the message : 1 =>size is first byte and 2=>FCS*/
-		msg = (app_payload_t *)(frame_info->mpdu + LENGTH_FIELD_LEN
+		msg = (app_payload_t *)(mac_frame_info->mpdu + LENGTH_FIELD_LEN
 				+ FRAME_OVERHEAD_DST_IEEE_ADDR - FCS_LEN);
 		if (PEER_RESPONSE == (msg->cmd_id)) {
 			my_addr_from_peer
@@ -599,13 +601,14 @@ static void peer_rsp_rcvd_tx_cb(retval_t status, frame_info_t *frame)
  */
 static void peer_rsp_rcvd_exit()
 {
+	pib_value_t pib_value_temp;
 	/* Disable the configuration mode if the peer search is failed*/
 	if (true == node_info.configure_mode) {
 		/* set the TX power to default level */
 		uint8_t config_tx_pwr = TAL_TRANSMIT_POWER_DEFAULT;
 		node_info.configure_mode = false;
-
-		tal_pib_set(phyTransmitPower, (pib_value_t *)&config_tx_pwr);
+        pib_value_temp.pib_value_8bit = config_tx_pwr;
+		tal_pib_set(phyTransmitPower, &pib_value_temp);
 	}
 }
 

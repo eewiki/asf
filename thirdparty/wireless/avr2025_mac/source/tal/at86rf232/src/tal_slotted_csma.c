@@ -265,6 +265,43 @@ static void calculate_transaction_duration(void)
     transaction_duration_periods += 2;
 }
 
+/**
+ * \brief Calculates the entire transaction duration
+ */
+#ifdef BEACON_SUPPORT
+uint16_t calc_frame_transmit_duration(uint8_t *phy_frame)
+{
+	uint8_t transaction_duration_octets;
+	uint16_t transaction_duration_sym;
+
+	/* number of octets */
+	transaction_duration_octets = (*phy_frame) + PHY_OVERHEAD;
+
+	/* Add interframe spacing - independent on ACK transmission. */
+	if (*phy_frame > aMaxSIFSFrameSize) {
+		transaction_duration_sym = macMinLIFSPeriod_def; /* symbols */
+	} else {
+		transaction_duration_sym = macMinSIFSPeriod_def; /* symbols */
+	}
+
+	/* If the frame requested an ACK, add ACK handling time. */
+	if (phy_frame[PL_POS_FCF_1] & FCF_ACK_REQUEST) {
+		/* Ensure there is room for the ACK. */
+		transaction_duration_octets += ACK_FRAME_LEN + PHY_OVERHEAD; /** octets */
+
+		/* Space is needed until the ACK is sent. */
+		transaction_duration_sym += aTurnaroundTime +
+				aUnitBackoffPeriod;                       /** symbols */
+	}
+
+	transaction_duration_sym += CONVERT_OCTETS_TO_SYM(
+			transaction_duration_octets);
+
+	transaction_duration_sym = TAL_PSDU_US_PER_OCTET(transaction_duration_sym);
+	
+	return transaction_duration_sym;
+}
+#endif /* BEACON_SUPPORT */
 
 /**
  * \brief Calculates backoff duration and handles the start of the CCA

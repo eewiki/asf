@@ -6,8 +6,9 @@
 
 		<build type="c-source"  value="src/sal.c"/>
 		<build type="doxygen-entry-point" value="sal_group"/>
-		<build type="define" name="SAL_TYPE" value ="AT86RF2xx"/>
+		<build type="define" name="SAL_TYPE" value="AT86RF2xx"/>
 			<device-support value="uc3"/>
 			<device-support value="sam4l"/>
+      <device-support value="samd20"/>
 	</module>
 </asf>

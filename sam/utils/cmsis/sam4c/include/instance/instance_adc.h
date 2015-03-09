@@ -45,8 +45,7 @@
 #if (defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__))
   #define REG_ADC_CR                       (0x40038000U) /**< \brief (ADC) Control Register */
   #define REG_ADC_MR                       (0x40038004U) /**< \brief (ADC) Mode Register */
-  #define REG_ADC_SEQR1                    (0x40038008U) /**< \brief (ADC) Channel Sequence Register 1 */
-  #define REG_ADC_SEQR2                    (0x4003800CU) /**< \brief (ADC) Channel Sequence Register 2 */
+  #define REG_ADC_SEQR1                    (0x40038008U) /**< \brief (ADC) Channel Sequence 1 Register */
   #define REG_ADC_CHER                     (0x40038010U) /**< \brief (ADC) Channel Enable Register */
   #define REG_ADC_CHDR                     (0x40038014U) /**< \brief (ADC) Channel Disable Register */
   #define REG_ADC_CHSR                     (0x40038018U) /**< \brief (ADC) Channel Status Register */
@@ -62,8 +61,8 @@
   #define REG_ADC_CWR                      (0x40038044U) /**< \brief (ADC) Compare Window Register */
   #define REG_ADC_CDR                      (0x40038050U) /**< \brief (ADC) Channel Data Register */
   #define REG_ADC_ACR                      (0x40038094U) /**< \brief (ADC) Analog Control Register */
-  #define REG_ADC_WPMR                     (0x400380E4U) /**< \brief (ADC) Write Protect Mode Register */
-  #define REG_ADC_WPSR                     (0x400380E8U) /**< \brief (ADC) Write Protect Status Register */
+  #define REG_ADC_WPMR                     (0x400380E4U) /**< \brief (ADC) Write Protection Mode Register */
+  #define REG_ADC_WPSR                     (0x400380E8U) /**< \brief (ADC) Write Protection Status Register */
   #define REG_ADC_RPR                      (0x40038100U) /**< \brief (ADC) Receive Pointer Register */
   #define REG_ADC_RCR                      (0x40038104U) /**< \brief (ADC) Receive Counter Register */
   #define REG_ADC_RNPR                     (0x40038110U) /**< \brief (ADC) Receive Next Pointer Register */
@@ -73,8 +72,7 @@
 #else
   #define REG_ADC_CR      (*(__O  uint32_t*)0x40038000U) /**< \brief (ADC) Control Register */
   #define REG_ADC_MR      (*(__IO uint32_t*)0x40038004U) /**< \brief (ADC) Mode Register */
-  #define REG_ADC_SEQR1   (*(__IO uint32_t*)0x40038008U) /**< \brief (ADC) Channel Sequence Register 1 */
-  #define REG_ADC_SEQR2   (*(__IO uint32_t*)0x4003800CU) /**< \brief (ADC) Channel Sequence Register 2 */
+  #define REG_ADC_SEQR1   (*(__IO uint32_t*)0x40038008U) /**< \brief (ADC) Channel Sequence 1 Register */
   #define REG_ADC_CHER    (*(__O  uint32_t*)0x40038010U) /**< \brief (ADC) Channel Enable Register */
   #define REG_ADC_CHDR    (*(__O  uint32_t*)0x40038014U) /**< \brief (ADC) Channel Disable Register */
   #define REG_ADC_CHSR    (*(__I  uint32_t*)0x40038018U) /**< \brief (ADC) Channel Status Register */
@@ -90,8 +88,8 @@
   #define REG_ADC_CWR     (*(__IO uint32_t*)0x40038044U) /**< \brief (ADC) Compare Window Register */
   #define REG_ADC_CDR     (*(__I  uint32_t*)0x40038050U) /**< \brief (ADC) Channel Data Register */
   #define REG_ADC_ACR     (*(__IO uint32_t*)0x40038094U) /**< \brief (ADC) Analog Control Register */
-  #define REG_ADC_WPMR    (*(__IO uint32_t*)0x400380E4U) /**< \brief (ADC) Write Protect Mode Register */
-  #define REG_ADC_WPSR    (*(__I  uint32_t*)0x400380E8U) /**< \brief (ADC) Write Protect Status Register */
+  #define REG_ADC_WPMR    (*(__IO uint32_t*)0x400380E4U) /**< \brief (ADC) Write Protection Mode Register */
+  #define REG_ADC_WPSR    (*(__I  uint32_t*)0x400380E8U) /**< \brief (ADC) Write Protection Status Register */
   #define REG_ADC_RPR     (*(__IO uint32_t*)0x40038100U) /**< \brief (ADC) Receive Pointer Register */
   #define REG_ADC_RCR     (*(__IO uint32_t*)0x40038104U) /**< \brief (ADC) Receive Counter Register */
   #define REG_ADC_RNPR    (*(__IO uint32_t*)0x40038110U) /**< \brief (ADC) Receive Next Pointer Register */

@@ -3,13 +3,12 @@
 		<info type="description" value="summary">
 
 		</info>
-		<build type="include-path" value="."/>
 		<build type="c-source" value="main.c"/>
 		<require idref="thirdparty.wireless.avr2102_rf4control.addons.serial_interface"/>
 		<require idref="thirdparty.wireless.avr2102_rf4control.include"/>
 		<require idref="thirdparty.wireless.avr2102_rf4control"/>
 		<require idref="thirdparty.wireless.addons.sio2host"/>
-		
+
 		<build type="doxygen-entry-point" value="zrc_group"/>
 		<device-support value="xmega"/>
 		<device-support value="uc3"/>

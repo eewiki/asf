@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<project caption="Chipid example for SAMG53 Xplained Pro" id="sam.drivers.chipid.example.samg53_xplained_pro">
+		<info type="description" value="summary">
+		Read chipid and dump it to debug output.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.chipid.example"/>
+		<require idref="board.samg53_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamg53n19"/>
+	</project>
+</asf>

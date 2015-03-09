@@ -254,6 +254,19 @@ void handle_rx_frame(void)
 		usr_mlme_poll_conf(*(rcv_frame_ptr + 2));
 #endif  /* (MAC_INDIRECT_DATA_BASIC == 1) */
 		break;
+#ifdef GTS_SUPPORT
+	case MLME_GTS_CONFIRM:
+#if (MAC_GTS_REQUEST == 1)
+		usr_mlme_gts_conf(*((gts_char_t *)(rcv_frame_ptr + 2)),
+			*(rcv_frame_ptr + 3));
+#endif /* (MAC_GTS_REQUEST == 1) */
+	case MLME_GTS_INDICATION:
+#if (MAC_GTS_REQUEST == 1)
+		usr_mlme_gts_ind(*((uint16_t *)(rcv_frame_ptr + 2)),
+			*((gts_char_t *)(rcv_frame_ptr + 4)));
+#endif /* (MAC_GTS_REQUEST == 1) */
+#endif /* GTS_SUPPORT */
+	break;
 
 	default:
 

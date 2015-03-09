@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="Serial Interface NoBeacon RFD AT86RF212B Zigbit(Carrier)" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.no_bcn_rfd.ncp.sam4lc4c_rf212b_zigbit_ext">
+	<project force-caption="true" force-description="true" caption="MAC Serial Interface NoBeacon RFD AT86RF212B Zigbit(Carrier)" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_rfd.ncp.sam4lc4c_rf212b_zigbit_ext">
 		<info type="description" value="summary">
 		MAC Serial Interface Application - NoBeacon RFD
 		</info>	
@@ -15,7 +15,7 @@
 		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks" value="none"/>
 		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf212b"/>
 
-		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.no_bcn_rfd.ncp"/>
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_rfd.ncp"/>
 		<require idref="board.sam4l_xplained_pro"/>
 		
 		<generator value="iarewarm"/>

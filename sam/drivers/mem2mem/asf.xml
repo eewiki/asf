@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.mem2mem" caption="MEM2MEM - Memory to Memory">
+		<info type="description" value="summary">
+			The Memory-to-Memory module allows the PDC perform memory to memory transfer without CPU intervention.
+		</info>
+		<build type="c-source" value="mem2mem.c"/>
+		<build type="header-file" subtype="api" value="mem2mem.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="samg"/>
+		<require idref="common.services.basic.clock"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samg53"/>
+		<build type="doxygen-example-path" value="."/>
+		<build type="doxygen-example-path" value="example"/>
+		<build type="doxygen-entry-point" value="sam_drivers_m2m_group"/>
+		<build type="doxygen-quick-start" value="sam_m2m_quickstart"/>
+	</module>
+</asf>

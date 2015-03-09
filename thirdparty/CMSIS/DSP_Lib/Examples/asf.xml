@@ -7,6 +7,7 @@
 		<build type="header-file" value="Common/Include/math_helper.h"/>
 		<build type="include-path" value="Common/Include"/>
 		<device-support value="sam4"/>
+		<device-support value="samg"/>
 		<require idref="thirdparty.cmsis.license"/>
 	</module>
 </asf>

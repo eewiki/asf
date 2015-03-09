@@ -56,7 +56,10 @@
  *
  * \section deviceinfo Device Info
  * All SAM series devices can be used.
- * The example has been tested on the SAM4N-XPLAINED-PRO and SAM4C-EK boards.
+ * The example has been tested on the boards:
+ *  - SAM4N Xplained Pro kit
+ *  - SAMG53 Xplained Pro kit
+ *  - SAM4C evaluation kit
  *
  * \section exampledescription Description of the example
  * The device is put to sleep in sleep modes with increasing "depth", and is
@@ -123,8 +126,9 @@ int main(void)
 
 	/* Set wakeup source to rtt_alarm */
 	pmc_set_fast_startup_input(PMC_FSMR_RTTAL);
+#if (!SAMG)
 	supc_set_wakeup_mode(SUPC, SUPC_WUMR_RTTEN_ENABLE);
-
+#endif
 	/* Initialize the sleep manager, lock initial mode. */
 	sleepmgr_init();
 	sleepmgr_lock_mode(current_sleep_mode);

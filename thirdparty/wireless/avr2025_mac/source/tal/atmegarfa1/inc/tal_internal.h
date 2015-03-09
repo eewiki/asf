@@ -55,6 +55,9 @@
 
 #include "bmm.h"
 #include "qmm.h"
+#if (defined MAC_SECURITY_ZIP || defined MAC_SECURITY_2006)
+#include "tal.h"
+#endif
 #ifdef BEACON_SUPPORT
 #include "tal_slotted_csma.h"
 #endif  /* BEACON_SUPPORT */

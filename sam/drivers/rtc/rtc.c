@@ -465,7 +465,7 @@ void rtc_clear_status(Rtc *p_rtc, uint32_t ul_clear)
 	p_rtc->RTC_SCCR = ul_clear;
 }
 
-#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4N) || (SAM4C))
+#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4N) || (SAM4C) || (SAMG))
 /**
  * \brief Set the RTC calendar mode.
  *
@@ -514,7 +514,7 @@ void rtc_set_calibration(Rtc *p_rtc, uint32_t ul_direction_ppm,
 }
 #endif
 
-#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4C))
+#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4C) || (SAMG))
 /**
  * \brief Set the RTC output waveform.
  *
@@ -551,20 +551,24 @@ void rtc_set_waveform(Rtc *p_rtc, uint32_t ul_channel, uint32_t ul_value)
 			p_rtc->RTC_MR |= RTC_MR_OUT0_FREQ512HZ;
 			break;
 
+#if (!SAMG)
 		case 5:
 			p_rtc->RTC_MR &= ~RTC_MR_OUT0_Msk;
 			p_rtc->RTC_MR |= RTC_MR_OUT0_ALARM_TOGGLE;
 			break;
+#endif
 
 		case 6:
 			p_rtc->RTC_MR &= ~RTC_MR_OUT0_Msk;
 			p_rtc->RTC_MR |= RTC_MR_OUT0_ALARM_FLAG;
 			break;
 
+#if (!SAMG)
 		case 7:
 			p_rtc->RTC_MR &= ~RTC_MR_OUT0_Msk;
 			p_rtc->RTC_MR |= RTC_MR_OUT0_PROG_PULSE;
 			break;
+#endif
 
 		default:
 			break;
@@ -597,20 +601,24 @@ void rtc_set_waveform(Rtc *p_rtc, uint32_t ul_channel, uint32_t ul_value)
 			p_rtc->RTC_MR |= RTC_MR_OUT1_FREQ512HZ;
 			break;
 
+#if (!SAMG)
 		case 5:
 			p_rtc->RTC_MR &= ~RTC_MR_OUT1_Msk;
 			p_rtc->RTC_MR |= RTC_MR_OUT1_ALARM_TOGGLE;
 			break;
+#endif
 
 		case 6:
 			p_rtc->RTC_MR &= ~RTC_MR_OUT1_Msk;
 			p_rtc->RTC_MR |= RTC_MR_OUT1_ALARM_FLAG;
 			break;
 
+#if (!SAMG)
 		case 7:
 			p_rtc->RTC_MR &= ~RTC_MR_OUT1_Msk;
 			p_rtc->RTC_MR |= RTC_MR_OUT1_PROG_PULSE;
 			break;
+#endif
 
 		default:
 			break;
@@ -619,6 +627,7 @@ void rtc_set_waveform(Rtc *p_rtc, uint32_t ul_channel, uint32_t ul_value)
 	}
 }
 
+#if ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4C))
 /**
  * \brief Set the pulse output waveform parameters.
  *
@@ -638,7 +647,9 @@ void rtc_set_pulse_parameter(Rtc *p_rtc, uint32_t ul_time_high,
 
 	p_rtc->RTC_MR = ul_temp;
 }
-#endif /* ((SAM3S8) || (SAM3SD8) || (SAM4S) || (SAM4C)) */
+#endif
+#endif
+
 
 #if ((SAM3N) || (SAM3U) || (SAM3XA))
 /**

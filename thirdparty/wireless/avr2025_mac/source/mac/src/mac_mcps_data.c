@@ -66,12 +66,30 @@
 #include "mac_internal.h"
 #include "mac.h"
 #include "mac_build_config.h"
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 #include "mac_security.h"
 #endif
 
 /* === Macros =============================================================== */
+/* Length of the MAC Aux Header Frame Counter */
+#define FRAME_COUNTER_LEN               (0x04)
 
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
+/* Security Control Field: Security Level mask */
+#define SEC_CTRL_SEC_LVL_MASK           (0x07)
+
+/* Security Control Field: Key Identifier mask */
+#define SEC_CTRL_KEY_ID_MASK            (0x03)
+
+/* Security Control Field: Key Identifier Field position */
+#define SEC_CTRL_KEY_ID_FIELD_POS       (3)
+
+#define KEY_ID_MODE_0                   (0x00)
+#define KEY_ID_MODE_1                   (0x01)
+#define KEY_ID_MODE_2                   (0x02)
+#define KEY_ID_MODE_3                   (0x03)
+
+#endif
 /* === Globals ============================================================= */
 
 /* === Prototypes ========================================================== */
@@ -146,7 +164,11 @@ void mcps_data_request(uint8_t *msg)
 	memcpy(&mdr, BMM_BUFFER_POINTER(
 			(buffer_t *)msg), sizeof(mcps_data_req_t));
 
-	if ((mdr.TxOptions & WPAN_TXOPT_INDIRECT) == 0) {
+	if ((mdr.TxOptions & WPAN_TXOPT_INDIRECT) == 0
+#ifdef GTS_SUPPORT
+		|| (mdr.TxOptions & WPAN_TXOPT_GTS) == 0
+#endif /* GTS_SUPPORT */
+	) {
 		/*
 		 * Data Requests for a coordinator using direct transmission are
 		 * accepted in all non-transient states (no polling and no
@@ -186,6 +208,24 @@ void mcps_data_request(uint8_t *msg)
 #endif  /* ENABLE_TSTAMP */
 		return;
 	}
+
+#ifdef GTS_SUPPORT
+	/* Check whether somebody requests an ACK of broadcast frames */
+	if ((mdr.TxOptions & WPAN_TXOPT_GTS) &&
+	((FCF_SHORT_ADDR != mdr.DstAddrMode) ||
+	 (FCF_SHORT_ADDR != mdr.SrcAddrMode) || 
+	 (MAC_ASSOCIATED == mac_state && mdr.DstAddr != mac_pib.mac_CoordShortAddress))) {
+		mac_gen_mcps_data_conf((buffer_t *)msg,
+		(uint8_t)MAC_INVALID_PARAMETER,
+#ifdef ENABLE_TSTAMP
+		mdr.msduHandle,
+		0);
+#else
+		mdr.msduHandle);
+#endif  /* ENABLE_TSTAMP */
+		return;
+	}
+#endif /* GTS_SUPPORT */
 
 	/* Check whether both Src and Dst Address are not present */
 	if ((FCF_NO_ADDR == mdr.SrcAddrMode) &&
@@ -230,6 +270,10 @@ void mcps_data_request(uint8_t *msg)
 	transmit_frame->indirect_in_transit = false;
 #endif  /* (MAC_INDIRECT_DATA_FFD == 1) */
 
+#ifdef GTS_SUPPORT
+	transmit_frame->gts_queue = NULL;
+#endif /* GTS_SUPPORT */
+
 	status = build_data_frame(&mdr, transmit_frame);
 
 	if (MAC_SUCCESS != status) {
@@ -251,7 +295,7 @@ void mcps_data_request(uint8_t *msg)
 	 */
 #if (MAC_START_REQUEST_CONFIRM == 1)
 #ifdef BEACON_SUPPORT
-	/*To check the broadcst address*/
+	/*To check the broadcast address*/
 	uint16_t broadcast;
 	ADDR_COPY_DST_SRC_16(broadcast, mdr.DstAddr);
 	if (
@@ -324,6 +368,12 @@ void mcps_data_request(uint8_t *msg)
 	} else
 #endif /* (MAC_INDIRECT_DATA_FFD == 1) */
 
+#ifdef GTS_SUPPORT
+	if(mdr.TxOptions & WPAN_TXOPT_GTS)
+	{
+		handle_gts_data_req(&mdr, msg);
+	} else
+#endif /* GTS_SUPPORT */
 	/*
 	 * We are NOT indirect, so we need to transmit using
 	 * CSMA_CA in the CAP (for beacon enabled) or immediately (for
@@ -336,6 +386,38 @@ void mcps_data_request(uint8_t *msg)
 
 		/* Transmission should be done with CSMA-CA and with frame
 		 *retries. */
+
+#ifdef MAC_SECURITY_ZIP
+if(transmit_frame->mpdu[1] & FCF_SECURITY_ENABLED)
+{
+	mcps_data_req_t pmdr;
+	
+	build_sec_mcps_data_frame(&pmdr, transmit_frame);
+	
+	if (pmdr.SecurityLevel > 0)
+	{
+		/* Secure the Frame */
+		retval_t build_sec = mac_secure(transmit_frame, \
+		transmit_frame->mac_payload, &pmdr);
+		
+		if (MAC_SUCCESS != build_sec)
+		{
+			/* The MAC Data Payload is encrypted based on the security level. */
+			mac_gen_mcps_data_conf((buffer_t *)msg,
+			(uint8_t)build_sec,
+			#ifdef ENABLE_TSTAMP
+			mdr.msduHandle,
+			0);
+			#else
+			mdr.msduHandle);
+			#endif  /* ENABLE_TSTAMP */
+			
+			return;
+		}
+	}
+}
+#endif
+		
 #ifdef BEACON_SUPPORT
 		csma_mode_t cur_csma_mode;
 
@@ -347,11 +429,12 @@ void mcps_data_request(uint8_t *msg)
 			/* In Beacon network the frame is sent with slotted
 			 *CSMA-CA. */
 			cur_csma_mode = CSMA_SLOTTED;
-		}
+		}		
 
 		status = tal_tx_frame(transmit_frame, cur_csma_mode, true);
+		
 #else   /* No BEACON_SUPPORT */
-		/* In Nonbeacon build the frame is sent with unslotted CSMA-CA.
+		/* In Non beacon build the frame is sent with unslotted CSMA-CA.
 		 **/
 		status = tal_tx_frame(transmit_frame, CSMA_UNSLOTTED, true);
 #endif  /* BEACON_SUPPORT / No BEACON_SUPPORT */
@@ -499,11 +582,11 @@ void mac_process_data_frame(buffer_t *buf_ptr)
 
 			mdi->mpduLinkQuality = mac_parse_data.ppdu_link_quality;
 
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 			mdi->SecurityLevel = mac_parse_data.sec_ctrl.sec_level;
 			mdi->KeyIdMode = mac_parse_data.sec_ctrl.key_id_mode;
 			mdi->KeyIndex = mac_parse_data.key_id[0];
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006)  */
 
 			mdi->msduLength = mac_parse_data.mac_payload_length;
 
@@ -515,6 +598,26 @@ void mac_process_data_frame(buffer_t *buf_ptr)
 
 			/* Append MCPS data indication to MAC-NHLE queue */
 			qmm_queue_append(&mac_nhle_q, buf_ptr);
+#ifdef GTS_SUPPORT
+#ifdef FFD
+			{
+				uint8_t loop_index;
+				for(loop_index = 0; loop_index < mac_pan_gts_table_len; loop_index++)
+				{
+					if(FCF_SHORT_ADDR == mdi->SrcAddrMode
+					&& (uint16_t)(mdi->SrcAddr) == mac_pan_gts_table[loop_index].DevShortAddr
+					&& GTS_TX_SLOT == mac_pan_gts_table[loop_index].GtsDesc.GtsDirection)
+					{   
+						#ifdef GTS_DEBUG
+						port_pin_toggle_output_level(DEBUG_PIN11);//coord rx
+						#endif
+						reset_gts_expiry(&mac_pan_gts_table[loop_index]);
+						break;
+					}
+				}
+			}
+#endif /* FFD */
+#endif /* GTS_SUPPORT */
 		} /* End of duplicate detection. */
 
 		/* Continue with checking the frame pending bit in the received
@@ -551,7 +654,7 @@ void mac_process_data_frame(buffer_t *buf_ptr)
 				 * from this data frame needs to be extracted,
 				 *and used for the
 				 * data request frame appropriately.
-				 * Use this as destination address expclitily
+				 * Use this as destination address explicitly
 				 *and
 				 * feed this to the function
 				 *mac_build_and_tx_data_req
@@ -626,22 +729,23 @@ static retval_t build_data_frame(mcps_data_req_t *pmdr,
 			LARGE_BUFFER_SIZE -
 			pmdr->msduLength - 2; /* Add 2 octets for FCS. */
 
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	uint8_t *mac_payload_ptr = frame_ptr;
 
 	/*
 	 * Note: The value of the payload_length parameter will be updated
 	 *       if security needs to be applied.
 	 */
-	if (pmdr->SecurityLevel > 0) {
+	if (pmdr->SecurityLevel > 0) {				
 		retval_t build_sec = mac_build_aux_sec_header(&frame_ptr, pmdr,
 				&frame_len);
+
 		if (MAC_SUCCESS != build_sec) {
 			return (build_sec);
 		}
 	}
 
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 	/*
 	 * Set Source Address.
@@ -712,7 +816,7 @@ static retval_t build_data_frame(mcps_data_req_t *pmdr,
 		fcf |= FCF_SET_FRAMETYPE(FCF_FRAMETYPE_DATA);
 	}
 
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	if (pmdr->SecurityLevel > 0) {
 		fcf |= FCF_SECURITY_ENABLED | FCF_FRAME_VERSION_2006;
 	}
@@ -755,15 +859,10 @@ static retval_t build_data_frame(mcps_data_req_t *pmdr,
 	/* Finished building of frame. */
 	frame->mpdu = frame_ptr;
 
-#ifdef MAC_SECURITY_ZIP
-	if (pmdr->SecurityLevel > 0) {
-		retval_t build_sec = mac_secure(frame, mac_payload_ptr, pmdr);
-		if (MAC_SUCCESS != build_sec) {
-			return (build_sec);
-		}
-	}
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
+	  frame->mac_payload = mac_payload_ptr;	
 
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 	return MAC_SUCCESS;
 } /* build_data_frame() */
@@ -1066,7 +1165,7 @@ static void handle_exp_persistence_timer(buffer_t *buf_ptr)
  */
 static bool mac_buffer_purge(uint8_t msdu_handle)
 {
-	uint8_t *buf_ptr;
+	buffer_t *buf_ptr;
 	search_t find_buf;
 	uint8_t handle = msdu_handle;
 
@@ -1080,7 +1179,7 @@ static bool mac_buffer_purge(uint8_t msdu_handle)
 	find_buf.handle = &handle;
 
 	/* Remove from indirect queue if the short address matches */
-	buf_ptr = (uint8_t *)qmm_queue_remove(&indirect_data_q, &find_buf);
+	buf_ptr = qmm_queue_remove(&indirect_data_q, &find_buf);
 
 	if (NULL != buf_ptr) {
 		/* Free the buffer allocated, after purging */
@@ -1154,6 +1253,5 @@ static uint8_t check_msdu_handle_cb(void *buf, void *handle)
 
 	return 0;
 }
-
 #endif /* ((MAC_PURGE_REQUEST_CONFIRM == 1) && (MAC_INDIRECT_DATA_FFD == 1)) */
 /* EOF */

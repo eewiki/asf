@@ -12,7 +12,6 @@
 		<build type="header-file" value="conf_usb.h"/>
         <build type="header-file" value="conf_nvm.h"/>
 		<build type="header-file" value="conf_hw_timer.h"/>
-		<build type="define" name="EXTERN_EEPROM_AVAILABLE" value ="0"/>
 
 
 		<config name="config.compiler.iarew.data_stack_size" value="0x200"/>
@@ -20,7 +19,7 @@
 		
 		<config name="config.spi_master_type" value="standard_spi"/>
 		<config name="config.thirdparty.wireless.avr2025_mac.source.tal" value="at86rf212"/>
-		<config name="config.thirdparty.wireless.avr2025_mac.source.sal" value="atxmega_sal"/>
+		
 		<config name="config.thirdparty.wireless.avr2025_mac.source.mac.api" value="no" />
 		<config name="config.thirdparty.wireless.addons.sio2host" value="usb"/>
 		<config name="config.common.services.usb.class.device" value="cdc"/>

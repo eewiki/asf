@@ -46,7 +46,7 @@
 #include <parts.h>
 #include <compiler.h>
 
-#if (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S || SAM4E || SAM4N || SAM4C)
+#if (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 # include "sam_twi/twi_slave.h"
 #elif XMEGA
 # include "xmega_twi/twi_slave.h"

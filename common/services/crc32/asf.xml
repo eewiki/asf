@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<module type="service" id="common.services.crc32" caption="CRC-32 calculation">
+		<device-support value="sam0"/>
+		<info type="description" value="summary">
+		Service for calculating 32-bit CRC according to IEEE 802.3 for either
+		single or multiple data blocks, regardless of size and address
+		alignment.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="crc32.c"/>
+		<build type="header-file" subtype="api" value="crc32.h"/>
+		<build type="doxygen-entry-point" value="common_services_crc32"/>
+		<build type="doxygen-quick-start" value="common_services_crc32_quickstart"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samd20"/>
+	</module>
+</asf>

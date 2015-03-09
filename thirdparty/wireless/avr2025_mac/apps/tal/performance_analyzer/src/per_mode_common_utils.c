@@ -86,8 +86,8 @@ void app_reset(void)
  */
 void limit_tx_power_in_ch26(uint8_t curr_chnl, uint8_t prev_chnl)
 {
-    uint8_t tx_power = 0;
-
+	pib_value_t pib_value;
+	
     /* If the cuurent channel set to 26*/
     if (curr_chnl == CHANNEL_26)
     {
@@ -99,11 +99,10 @@ void limit_tx_power_in_ch26(uint8_t curr_chnl, uint8_t prev_chnl)
         /* If the Tx power is more than 13dBm, i.e. TX_PWR < 0x0d */
         if (pal_trx_bit_read(SR_TX_PWR) <= MAX_TX_PWR_REG_VAL_CH26)
         {
-            /* Limit the tx power to 13dBm  */
-            tx_power  = DEFAULT_TX_POWER_CH26;
-            tal_pib_set(phyTransmitPower, (pib_value_t *)&tx_power);
+			pib_value.pib_value_8bit = DEFAULT_TX_POWER_CH26;
+            tal_pib_set(phyTransmitPower, &pib_value);
             curr_trx_config_params.tx_power_reg = pal_trx_bit_read(SR_TX_PWR);
-            curr_trx_config_params.tx_power_dbm = CONV_phyTransmitPower_TO_DBM(tx_power);
+            curr_trx_config_params.tx_power_dbm = CONV_phyTransmitPower_TO_DBM(pib_value.pib_value_8bit);
         }
     }
     else
@@ -113,10 +112,10 @@ void limit_tx_power_in_ch26(uint8_t curr_chnl, uint8_t prev_chnl)
         {
 
             /* Set back the tx power to default value i.e. 20dBm, TX_PWR 0x09 */
-            tx_power = prev_non_26chn_tx_power;
-            tal_pib_set(phyTransmitPower, (pib_value_t *)&tx_power);
+			pib_value.pib_value_8bit = prev_non_26chn_tx_power;
+            tal_pib_set(phyTransmitPower, &pib_value);
             curr_trx_config_params.tx_power_reg = pal_trx_bit_read(SR_TX_PWR);
-            curr_trx_config_params.tx_power_dbm = CONV_phyTransmitPower_TO_DBM(tx_power);
+            curr_trx_config_params.tx_power_dbm = CONV_phyTransmitPower_TO_DBM(pib_value.pib_value_8bit);
         }
     }
 }

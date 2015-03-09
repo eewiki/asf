@@ -26,6 +26,7 @@
 		<build type="doxygen-example-path" value="quick_start"/>
 		<build type="doxygen-image-path" value="docimg"/>
 		<build type="doxygen-entry-point" value="asfdoc_samd20_eeprom_group"/>
+		<build type="doxygen-quick-start" value="asfdoc_samd20_eeprom_exqsg"/>
 		<device-support value="samd20"/>
 		<require idref="sam0.utils"/>
 		<require idref="sam0.drivers.nvm"/>

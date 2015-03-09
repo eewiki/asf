@@ -75,10 +75,12 @@ enum slcdc_power_mode {
 };
 #endif
 
+#if (!SAMG)
 void supc_enable_backup_mode(Supc *p_supc);
-void supc_switch_sclk_to_32kxtal(Supc *p_supc, uint32_t ul_bypass);
 void supc_enable_voltage_regulator(Supc *p_supc);
 void supc_disable_voltage_regulator(Supc *p_supc);
+#endif
+void supc_switch_sclk_to_32kxtal(Supc *p_supc, uint32_t ul_bypass);
 void supc_enable_brownout_detector(Supc *p_supc);
 void supc_disable_brownout_detector(Supc *p_supc);
 void supc_enable_brownout_reset(Supc *p_supc);
@@ -89,9 +91,11 @@ void supc_enable_monitor_reset(Supc *p_supc);
 void supc_disable_monitor_reset(Supc *p_supc);
 void supc_enable_monitor_interrupt(Supc *p_supc);
 void supc_disable_monitor_interrupt(Supc *p_supc);
+#if (!SAMG)
 void supc_set_wakeup_mode(Supc *p_supc, uint32_t ul_mode);
 void supc_set_wakeup_inputs(Supc *p_supc, uint32_t ul_inputs,
 		uint32_t ul_transition);
+#endif
 uint32_t supc_get_status(Supc *p_supc);
 #if SAM4C
 void supc_enable_backup_power_on_reset(Supc *p_supc);

@@ -172,10 +172,6 @@
 #  error CONF_CLOCK_DFLL_ON_DEMAND not defined in conf_clock.h
 #endif
 
-#if !defined(CONF_CLOCK_DFLL_RUN_IN_STANDBY)
-#  error CONF_CLOCK_DFLL_RUN_IN_STANDBY not defined in conf_clock.h
-#endif
-
 #if !defined(CONF_CLOCK_DFLL_COARSE_VALUE)
 #  error CONF_CLOCK_DFLL_COARSE_VALUE not defined in conf_clock.h
 #endif

@@ -89,6 +89,7 @@ static void mac_t_rx_on_cb(void *req_buffer);
 #endif  /* BEACON_SUPPORT */
 static uint8_t mac_rx_enable(void);
 static void gen_rx_enable_conf(buffer_t *buf, uint8_t status);
+
 static void handle_rx_on(uint32_t rx_on_duration_symbols, uint8_t *m);
 
 /* === Implementation ====================================================== */

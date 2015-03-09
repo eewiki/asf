@@ -158,6 +158,9 @@ enum status_code dac_init(
 	/* Write configuration to module */
 	_dac_set_config(module_inst, config);
 
+	/* Store reference selection for later use */
+	module_inst->reference = config->reference;
+
 #if DAC_CALLBACK_MODE == true
 	for (uint8_t i = 0; i < DAC_CALLBACK_N; i++) {
 		module_inst->callback[i] = NULL;
@@ -197,7 +200,7 @@ void dac_reset(
 /**
  * \brief Enable the DAC module.
  *
- * Enables the DAC interface and the selected output.
+ * Enables the DAC interface and the selected output. If any internal reference is selected it will be enabled.
  *
  * \param[in] module_inst  Pointer to the DAC software instance struct
  *
@@ -220,6 +223,11 @@ void dac_enable(
 
 	/* Enable selected output */
 	dac_module->CTRLB.reg |= module_inst->output;
+
+	/* Enable internal bandgap reference if selected in the configuration */
+	if (module_inst->reference == DAC_REFERENCE_INT1V) {
+		system_voltage_reference_enable(SYSTEM_VOLTAGE_REFERENCE_BANDGAP);
+	}
 
 #if DAC_CALLBACK_MODE == true
 	system_interrupt_enable(SYSTEM_INTERRUPT_MODULE_DAC);

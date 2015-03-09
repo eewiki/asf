@@ -5,13 +5,14 @@
 			the configuration and management of the Watchdog module, including
 			timeout period, window period and early warning indications.
 		</info>
-		<info type="keyword" value="technology">
-			<keyword value="Timers" />
-			<keyword value="Clocks" />
-			<keyword value="CPU" />
-		</info>
 
 		<module type="driver" id="sam0.drivers.wdt#polled" caption="WDT - Watchdog Timer (Polled APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Timers" />
+				<keyword value="Clocks" />
+				<keyword value="CPU" />
+			</info>
+
 			<build type="include-path" value="."/>
 
 			<build type="c-source" value="wdt.c"/>
@@ -23,6 +24,7 @@
 
 			<build type="doxygen-entry-point" value="asfdoc_samd20_wdt_group"/>
 			<build type="doxygen-example-path" value="quick_start"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_wdt_exqsg"/>
 
 			<device-support value="samd20"/>
 
@@ -33,6 +35,12 @@
 		</module>
 
 		<module type="driver" id="sam0.drivers.wdt#callback" caption="WDT - Watchdog Timer (Callback APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Timers" />
+				<keyword value="Clocks" />
+				<keyword value="CPU" />
+			</info>
+
 			<info type="appnote" value="AT03264"/>
 			<info type="keyword" value="pdf">
 				<keyword value="Timers"/>
@@ -43,7 +51,8 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the Watchdog Timer on the SAM D20, both the ASF driver and the peripheral itself.
+				This document describes how to use the Watchdog Timer on the
+				SAM D20, both the ASF driver and the peripheral itself.
 			</info>
 
 			<build type="include-path" value="."/>
@@ -62,6 +71,7 @@
 			<build type="doxygen-entry-point" value="asfdoc_samd20_wdt_group"/>
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-example-path" value="quick_start_callback"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_wdt_exqsg"/>
 
 			<device-support value="samd20"/>
 

@@ -64,6 +64,8 @@
 # include "sam4l/sysclk.h"
 #elif SAM4N
 # include "sam4n/sysclk.h"
+#elif SAMG
+# include "samg/sysclk.h"
 #elif (UC3A0 || UC3A1)
 # include "uc3a0_a1/sysclk.h"
 #elif UC3A3

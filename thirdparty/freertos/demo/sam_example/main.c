@@ -158,7 +158,7 @@ static void task_monitor(void *pvParameters)
 }
 
 /**
- * \brief This task, when activated, send every ten seconds on debug UART the whole report of free heap and total tasks status
+ * \brief This task, when activated, make LED blink at a fixed rate
  */
 static void task_led(void *pvParameters)
 {
@@ -199,7 +199,7 @@ static void configure_console(void)
 }
 
 /**
- *  \brief getting-started Application entry point.
+ *  \brief FreeRTOS Real Time Kernel example entry point.
  *
  *  \return Unused (ANSI-C compatibility).
  */

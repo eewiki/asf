@@ -3,6 +3,12 @@
 		<info type="description" value="summary">
 		I2C Slave Bootloader for SAM D20.
 		</info>
+
+		<info type="keyword" value="technology">
+			<keyword value="Communication"/>
+			<keyword value="Memory"/>
+		</info>
+
 		<info type="gui-flag" value="move-to-root"/>
 		<build type="c-source" value="i2c_slave_bootloader.c"/>
 		<build type="include-path" value="."/>

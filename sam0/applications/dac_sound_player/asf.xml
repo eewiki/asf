@@ -3,9 +3,14 @@
 		<info type="description" value="summary">
 		Plays a embedded raw sound recording using the DAC of the SAM D20 devices.
 		</info>
+
 		<info type="keyword" value="technology">
 			<keyword value="Analog Conversion"/>
+			<keyword value="Audio"/>
+			<keyword value="Timers"/>
+			<keyword value="Peripheral Event System"/>
 		</info>
+
 		<info type="gui-flag" value="move-to-root"/>
 
 		<build type="c-source" value="dac_sound_player.c"/>

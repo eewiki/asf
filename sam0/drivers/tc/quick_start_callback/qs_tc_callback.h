@@ -69,6 +69,9 @@
  * There are no prerequisites for this use case.
  *
  * \subsection asfdoc_samd20_tc_callback_use_case_setup_code Code
+ * Add to the main application source file, before any functions:
+ * \snippet conf_quick_start_callback.h definition_pwm
+ *
  * Add to the main application source file, outside of any functions:
  * \snippet qs_tc_callback.c module_inst
  *

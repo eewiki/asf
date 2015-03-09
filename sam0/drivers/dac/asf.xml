@@ -5,11 +5,12 @@
 			interface for the configuration and management of the DAC in the
 			device, including channel configuration and conversions.
 		</info>
-		<info type="keyword" value="technology">
-			<keyword value="Analog Conversion"/>
-		</info>
 
 		<module type="driver" id="sam0.drivers.dac#polled" caption="DAC - Digital-to-Analog Converter (Polled APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>
+
 			<build type="include-path" value="."/>
 			<build type="header-file" subtype="api" value="dac.h"/>
 			<build type="c-source" value="dac.c"/>
@@ -21,6 +22,7 @@
 			<build type="doxygen-entry-point" value="asfdoc_samd20_dac_group"/>
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-image-path" value="docimg"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_dac_exqsg"/>
 
 			<device-support value="samd20"/>
 
@@ -31,6 +33,10 @@
 		</module>
 
 		<module type="driver" id="sam0.drivers.dac#callback" caption="DAC - Digital-to-Analog Converter (Callback APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>
+
 			<info type="appnote" value="AT03244"/>
 			<info type="keyword" value="pdf">
 				<keyword value="DAC"/>
@@ -39,7 +45,9 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the Digital to Analog Converter on the SAM D20, both the ASF driver and the peripheral itself.
+				This document describes how to use the Digital-to-Analog
+				Converter on the SAM D20, both the ASF driver and the
+				peripheral itself.
 			</info>
 
 			<build type="include-path" value="."/>
@@ -56,6 +64,7 @@
 			<build type="doxygen-entry-point" value="asfdoc_samd20_dac_group"/>
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-image-path" value="docimg"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_dac_exqsg"/>
 
 			<device-support value="samd20"/>
 

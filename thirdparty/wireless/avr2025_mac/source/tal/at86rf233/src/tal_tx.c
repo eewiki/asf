@@ -79,6 +79,9 @@
 
 /* === GLOBALS ============================================================= */
 
+static uint8_t tal_sw_retry_count;
+static bool tal_sw_retry_no_csma_ca;
+
 static trx_trac_status_t trx_trac_status;
 
 /* === PROTOTYPES ========================================================== */
@@ -117,7 +120,7 @@ retval_t tal_tx_frame(frame_info_t *tx_frame, csma_mode_t csma_mode,
 
 	/* Set pointer to actual mpdu to be downloaded to the transceiver. */
 	tal_frame_to_tx = tx_frame->mpdu;
-
+    last_frame_length = tal_frame_to_tx[0] - 1;
 	/*
 	 * In case the frame is too large, return immediately indicating
 	 * invalid status.
@@ -262,7 +265,8 @@ void tx_done_handling(void)
 
 	retval_t status;
 
-	switch (trx_trac_status) {
+	switch (trx_trac_status) 
+	{
 	case TRAC_SUCCESS:
 		status = MAC_SUCCESS;
 		break;
@@ -320,6 +324,11 @@ void send_frame(csma_mode_t csma_mode, bool tx_retries)
 	if ((csma_mode == NO_CSMA_NO_IFS) || (csma_mode == NO_CSMA_WITH_IFS)) {
 		pal_trx_bit_write(SR_MAX_CSMA_RETRIES, 7); /* immediate
 		                                            * transmission */
+		if(tx_retries)
+		{
+			tal_sw_retry_count = tal_pib.MaxFrameRetries;
+			tal_sw_retry_no_csma_ca = true;
+		}
 	} else {
 		pal_trx_bit_write(SR_MAX_CSMA_RETRIES, tal_pib.MaxCSMABackoffs);
 	}
@@ -337,11 +346,13 @@ void send_frame(csma_mode_t csma_mode, bool tx_retries)
 					macMinLIFSPeriod_def)
 					- TRX_IRQ_DELAY_US -
 					PRE_TX_DURATION_US);
-		} else {
+			last_frame_length = 0;
+		} else if(last_frame_length > 0 ) {
 			pal_timer_delay(TAL_CONVERT_SYMBOLS_TO_US(
 					macMinSIFSPeriod_def)
 					- TRX_IRQ_DELAY_US -
 					PRE_TX_DURATION_US);
+			last_frame_length = 0;
 		}
 	}
 
@@ -405,7 +416,11 @@ void handle_tx_end_irq(bool underrun_occured)
 		 */
 		mac_frame_ptr->time_stamp = tal_timestamp;
 #else
-		pal_trx_read_timestamp(&mac_frame_ptr->time_stamp);
+		{
+			uint32_t time_stamp_temp = 0;
+			pal_trx_read_timestamp(&time_stamp_temp);
+			mac_frame_ptr->time_stamp = time_stamp_temp;
+		}
 #endif
 #endif  /* #if (defined BEACON_SUPPORT) || (defined ENABLE_TSTAMP) */
 
@@ -413,7 +428,7 @@ void handle_tx_end_irq(bool underrun_occured)
 		if (underrun_occured) {
 			trx_trac_status = TRAC_INVALID;
 		} else {
-			trx_trac_status = (trx_trac_status_t)pal_trx_bit_read(
+			trx_trac_status = /*(trx_trac_status_t)*/pal_trx_bit_read(
 					SR_TRAC_STATUS);
 		}
 
@@ -459,8 +474,26 @@ void handle_tx_end_irq(bool underrun_occured)
 #endif  /* BEACON_SUPPORT */
 		/* Trx has handled the entire transmission incl. CSMA */
 		{
-			tal_state = TAL_TX_DONE; /* Further handling is done by
-			                          * tx_done_handling() */
+			if(tal_sw_retry_no_csma_ca && tal_sw_retry_count && TRAC_NO_ACK == trx_trac_status)
+			{
+				tal_trx_status_t trx_status;
+				do {
+					trx_status = set_trx_state(CMD_TX_ARET_ON);
+				} while (trx_status != TX_ARET_ON);
+				/* Toggle the SLP_TR pin triggering transmission. */
+				PAL_SLP_TR_HIGH();
+				PAL_WAIT_65_NS();
+				PAL_SLP_TR_LOW();
+				if(--tal_sw_retry_count == 0)
+				{
+					tal_sw_retry_no_csma_ca = false;
+				}
+			}
+			else
+			{
+				tal_state = TAL_TX_DONE; /* Further handling is done by
+			                        * tx_done_handling() */
+			}
 		}
 	}
 

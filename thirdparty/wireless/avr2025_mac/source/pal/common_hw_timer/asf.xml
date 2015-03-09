@@ -95,8 +95,25 @@
             <require idref="thirdparty.wireless.avr2025_mac.source.pal.mega.drivers.tc"/>
             <require idref="common.services.basic.clock"/>
             <device-support-alias value="megarfa1_hw_timer_support"/>
-		</module>		
-    </select-by-device>
+		</module>
+
+		<module type="meta" id="thirdparty.wireless.avr2025_mac.source.pal.common_hw_timer#5" caption="Common HW Timer - SAM0 implementation">
+            <build type="header-file"   value="common_hw_timer.h"/>
+            <build type="include-path"  value="."/>
+
+            <build type="c-source"      value="sam0/hw_timer.c"/>
+            <build type="header-file"   value="sam0/hw_timer.h"/>
+            <build type="include-path"  value="sam0/"/>
+            <build type="library" subtype="user" value="sam0/lib/libsam0_lib_hw_timer.a" toolchain="armgcc"/>
+            <build type="library" subtype="user" value="sam0/lib/sam0_lib_hw_timer.a" toolchain="iarewarm"/>
+            <build type="module-config" subtype="required-header-file" value="conf_hw_timer.h"/>
+            <build type="module-config" subtype="path" value="module_config"/>
+            <build type="doxygen-entry-point" value="common_hw_timer_group"/>
+			<require idref="sam0.drivers.tc"/>
+			<require idref="sam0.utils"/>
+            <require idref="sam0.drivers.system.clock"/>
+            <device-support-alias value="sam0_hw_timer_support"/>
+		</module>    </select-by-device>
 
     <device-alias-map name="xmega_hw_timer_support">
         <device-support value="atxmega256a3"/>
@@ -109,7 +126,10 @@
     <device-alias-map name="sam_hw_timer_support">
         <device-support value="sam4l"/>
     </device-alias-map>
-    <device-alias-map name="megarfr2_hw_timer_support">
+    <device-alias-map name="sam0_hw_timer_support">
+        <device-support value="samd20"/>
+    </device-alias-map>    
+	<device-alias-map name="megarfr2_hw_timer_support">
         <device-support value="atmega256rfr2"/>
         <device-support value="atmega2564rfr2"/>
     </device-alias-map>

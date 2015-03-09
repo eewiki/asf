@@ -59,7 +59,10 @@
 #include "app_frame_format.h"
 #include "app_per_mode.h"
 #include "conf_board.h"
+#if !SAMD20
 #include "led.h"
+#endif
+
 
 /**
  * \addtogroup group_per_mode_receptor
@@ -78,6 +81,7 @@
 
 /* At every LED_TOGGLE_COUNT_FOR_PER count the Led toggles when PER test
  * is in progress */
+#define LED_BLINK_RATE_IN_MICRO_SEC           (50000)
 #define DELAY_BEFORE_APP_RESET_IN_MICRO_SEC   (5000)
 
 /* === PROTOTYPES ========================================================== */
@@ -99,7 +103,7 @@ static bool send_range_test_marker_cmd(void);
 
 #ifdef CRC_SETTING_ON_REMOTE_NODE
 static void send_crc_status_rsp(void);
-static bool crc_check_ok(frame_info_t *frame_info);
+static bool crc_check_ok(frame_info_t *mac_frame_info);
 static uint16_t crc_test(uint16_t crc, uint8_t data);
 
 #endif /* End of CRC_SETTING_ON_REMOTE_NODE */
@@ -128,7 +132,7 @@ void per_mode_receptor_init(void *parameter)
 {
   
 #ifdef EXT_RF_FRONT_END_CTRL
-    uint8_t config_tx_pwr;
+pib_value_t pib_value;
 #endif  
 	/* PER TEST Receptor sequence number */
 	seq_num_receptor = rand();
@@ -139,8 +143,8 @@ void per_mode_receptor_init(void *parameter)
     /* Enable RF front end control in PER Measurement mode*/
     pal_trx_bit_write(SR_PA_EXT_EN, PA_EXT_ENABLE);
     /* set the TX power to default level */
-    config_tx_pwr = TAL_TRANSMIT_POWER_DEFAULT;
-    tal_pib_set(phyTransmitPower, (pib_value_t *)&config_tx_pwr);
+	pib_value.pib_value_8bit = TAL_TRANSMIT_POWER_DEFAULT;
+    tal_pib_set(phyTransmitPower,&pib_value);
 #endif
     
 	/* keep the compiler happy */
@@ -235,7 +239,7 @@ void per_mode_receptor_tx_done_cb(retval_t status, frame_info_t *frame)
  * PER Measurement mode Receptor
  * \param frame Pointer to received frame
  */
-void per_mode_receptor_rx_cb(frame_info_t *frame_info)
+void per_mode_receptor_rx_cb(frame_info_t *mac_frame_info)
 {
 	app_payload_t *msg;
 	static uint8_t rx_count;
@@ -243,25 +247,28 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 
 	/* Point to the message : 1 =>size is first byte and 2=>FCS*/
 	msg
-		= (app_payload_t *)(frame_info->mpdu + LENGTH_FIELD_LEN +
+		= (app_payload_t *)(mac_frame_info->mpdu + LENGTH_FIELD_LEN +
 			FRAME_OVERHEAD - FCS_LEN);
 
 #ifdef CRC_SETTING_ON_REMOTE_NODE
 	/* If counting of wrong CRC packets is enabled on receptor node */
 	if (manual_crc) {
+		uint32_t my_addr_temp;
 		uint16_t my_addr;
 		uint16_t dest_addr;
-		memcpy(&dest_addr, &frame_info->mpdu[PL_POS_DST_ADDR_START],
+		memcpy(&dest_addr, &mac_frame_info->mpdu[PL_POS_DST_ADDR_START],
 				SHORT_ADDR_LEN);
-		tal_pib_get(macShortAddress, (uint8_t *)&my_addr);
+		tal_pib_get(macShortAddress, (uint8_t *)&my_addr_temp);
+        
+		my_addr = (uint16_t)my_addr_temp;
 		/* Check the destination address of the packet is my address  */
-		if (dest_addr != my_addr) {
+		if (dest_addr != (uint16_t)my_addr) {
 			return;
 		}
 
 		/* Counting of wrong crc packets option enabled and received crc
 		 * is not OK */
-		if (false == crc_check_ok(frame_info)) {
+		if (false == crc_check_ok(mac_frame_info)) {
 			if (msg->cmd_id != PER_TEST_PKT) {
 				/* Don't let in any packets with wrong CRC
 				 * unless it is a PER
@@ -282,7 +289,7 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 			= (FRAME_OVERHEAD + ((sizeof(app_payload_t) -
 				sizeof(general_pkt_t)) +
 				sizeof(set_parm_req_t)));
-		if (*(frame_info->mpdu) == expected_frame_size) {
+		if (*(mac_frame_info->mpdu) == expected_frame_size) {
 			/* Extract and process the cmd received */
 			set_paramter_on_recptor_node(msg);
 		}
@@ -300,31 +307,31 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 		if (number_rx_frames == 0) {
 			printf("\r\nReceiving..");
 			aver_lqi
-				+= frame_info->mpdu[frame_info->mpdu[0] +
+				+= mac_frame_info->mpdu[mac_frame_info->mpdu[0]
+					+
 					LQI_LEN];
 			aver_rssi
-				+= frame_info->mpdu[frame_info->mpdu[0] +
-					LQI_LEN + 1];
+				+= mac_frame_info->mpdu[mac_frame_info->mpdu[0]
+					+ LQI_LEN + 1];
 #ifdef CRC_SETTING_ON_REMOTE_NODE
 			frames_with_wrong_crc = 0;
 #endif /* #ifdef CRC_SETTING_ON_REMOTE_NODE */
 			number_rx_frames++;
 			/* Get the seq no. of the first packet */
-			prev_seq_no = frame_info->mpdu[PL_POS_SEQ_NUM];
+			prev_seq_no = mac_frame_info->mpdu[PL_POS_SEQ_NUM];
 		} else {
-			cur_seq_no = frame_info->mpdu[PL_POS_SEQ_NUM];
+			cur_seq_no = mac_frame_info->mpdu[PL_POS_SEQ_NUM];
 			/* Check for the duplicate packets */
 			if (prev_seq_no != cur_seq_no) {
 				number_rx_frames++;
 				prev_seq_no = cur_seq_no;
 				/* Extract LQI and  RSSI */
 				aver_lqi
-					+= frame_info->mpdu[frame_info->mpdu[0]
-						+
-						LQI_LEN];
+					+= mac_frame_info->mpdu[mac_frame_info->
+						mpdu[0] + LQI_LEN];
 				aver_rssi
-					+= frame_info->mpdu[frame_info->mpdu[0]
-						+ LQI_LEN + 1];
+					+= mac_frame_info->mpdu[mac_frame_info->
+						mpdu[0] + LQI_LEN + 1];
 			}
 		}
 
@@ -350,7 +357,7 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 			=  (FRAME_OVERHEAD + ((sizeof(app_payload_t) -
 				sizeof(general_pkt_t)) +
 				sizeof(result_req_t)));
-		if (*(frame_info->mpdu) == expected_frame_size) {
+		if (*(mac_frame_info->mpdu) == expected_frame_size) {
 			if (number_rx_frames != 0) {
 				aver_lqi = aver_lqi / number_rx_frames;
 				aver_rssi = aver_rssi / number_rx_frames;
@@ -404,7 +411,7 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 			= (FRAME_OVERHEAD + ((sizeof(app_payload_t) -
 				sizeof(general_pkt_t)) +
 				sizeof(div_stat_req_t)));
-		if (*(frame_info->mpdu) == expected_frame_size) {
+		if (*(mac_frame_info->mpdu) == expected_frame_size) {
 			send_diversity_status_rsp();
 		}
 
@@ -419,7 +426,7 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 			= (FRAME_OVERHEAD + ((sizeof(app_payload_t) -
 				sizeof(general_pkt_t)) +
 				sizeof(div_set_req_t)));
-		if (*(frame_info->mpdu) == expected_frame_size) {
+		if (*(mac_frame_info->mpdu) == expected_frame_size) {
 			/* Antenna diversity need to be enabled */
 			if (msg->payload.div_set_req_data.status) {
 				tal_ant_div_config(ANT_DIVERSITY_ENABLE,
@@ -457,7 +464,7 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 			=  (FRAME_OVERHEAD + ((sizeof(app_payload_t) -
 				sizeof(general_pkt_t)) +
 				sizeof(crc_stat_req_t)));
-		if (*(frame_info->mpdu) == expected_frame_size) {
+		if (*(mac_frame_info->mpdu) == expected_frame_size) {
 			send_crc_status_rsp();
 		}
 
@@ -472,7 +479,7 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 			= (FRAME_OVERHEAD + ((sizeof(app_payload_t) -
 				sizeof(general_pkt_t)) +
 				sizeof(crc_set_req_t)));
-		if (*(frame_info->mpdu) == expected_frame_size) {
+		if (*(mac_frame_info->mpdu) == expected_frame_size) {
 			if (msg->payload.crc_set_req_data.status) {
 				/* Enable the Promiscuous Mode */
 				tal_rxaack_prom_mode_ctrl(AACK_PROM_ENABLE);
@@ -553,7 +560,7 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 		 * lqi values of
 		 * the received pkt and add it as the payload of the response
 		 * frame*/
-		uint8_t phy_frame_len = frame_info->mpdu[0];
+		uint8_t phy_frame_len = mac_frame_info->mpdu[0];
 		uint32_t frame_count;
 		/* Get the frame count in correct format */
 		frame_count
@@ -564,7 +571,7 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 		app_led_event(LED_EVENT_RX_FRAME);
 		/* Map the register ed value to dbm values */
 		ed_value
-			= frame_info->mpdu[phy_frame_len + LQI_LEN +
+			= mac_frame_info->mpdu[phy_frame_len + LQI_LEN +
 				ED_VAL_LEN] + rssi_base_val;
 
 		/* Send Response cmd to the received Range Test packet with the
@@ -572,13 +579,13 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 		send_range_test_rsp(msg->seq_num,
 				msg->payload.range_tx_data.frame_count,	\
 				ed_value,
-				frame_info->mpdu[phy_frame_len +
+				mac_frame_info->mpdu[phy_frame_len +
 				LQI_LEN]);
 		/* Print the received values to the terminal */
 		printf(
 				"\r\nRange Test Packet Received...\tFrame No : %" PRIu32 "\tLQI : %d\tED : %d",
 				frame_count,
-				frame_info->mpdu[phy_frame_len + LQI_LEN],
+				mac_frame_info->mpdu[phy_frame_len + LQI_LEN],
 				ed_value);
 	}
 	break;
@@ -589,13 +596,13 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 		 * get the lqi and ed values and print it on the terminsl */
 		int8_t rssi_base_val, ed_value;
 		rssi_base_val = tal_get_rssi_base_val();
-		uint8_t phy_frame_len = frame_info->mpdu[0];
+		uint8_t phy_frame_len = mac_frame_info->mpdu[0];
 		/* Map the register ed value to dbm values */
 		ed_value
-			= frame_info->mpdu[phy_frame_len + LQI_LEN +
+			= mac_frame_info->mpdu[phy_frame_len + LQI_LEN +
 				ED_VAL_LEN] + rssi_base_val;
 		printf("\r\nMarker Response Received... LQI : %d\t ED %d \n",
-				frame_info->mpdu[phy_frame_len + LQI_LEN],
+				mac_frame_info->mpdu[phy_frame_len + LQI_LEN],
 				ed_value);
 		/* Timer for LED Blink for Reception of Marker Response*/
 		sw_timer_start(T_APP_TIMER,
@@ -625,6 +632,7 @@ void per_mode_receptor_rx_cb(frame_info_t *frame_info)
 static void set_paramter_on_recptor_node(app_payload_t *msg)
 {
 	uint8_t param_val;
+	pib_value_t pib_value;
 
 	switch (msg->payload.set_parm_req_data.param_type) {
 	case CHANNEL: /* Parameter = channel */
@@ -638,8 +646,9 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
 #if (TAL_TYPE == AT86RF233)
 		tal_set_frequency_regs(CC_BAND_0, CC_NUMBER_0);
 #endif
+        pib_value.pib_value_8bit = param_val;
 		/* set the channel on receptor with the received value */
-		tal_pib_set(phyCurrentChannel, (pib_value_t *)&param_val);
+		tal_pib_set(phyCurrentChannel, &pib_value);
 
 		printf("\r\n Channel changed to %d", param_val);
 #ifdef EXT_RF_FRONT_END_CTRL
@@ -677,8 +686,9 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
 	case CHANNEL_PAGE:
 	{
 		param_val = msg->payload.set_parm_req_data.param_value;
+		pib_value.pib_value_8bit = param_val;
 		retval_t status  = tal_pib_set(phyCurrentPage,
-				(pib_value_t *)&param_val);
+				 &pib_value);
 		if (status == MAC_SUCCESS) {
 			printf("\r\n Channel page changed to %d", param_val);
 		} else {
@@ -706,7 +716,8 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
 
 		tal_rpc_mode_config(DISABLE_ALL_RPC_MODES);
 #endif
-		tal_pib_set(phyTransmitPower, (pib_value_t *)&temp_var);
+        pib_value.pib_value_8bit = temp_var;
+		tal_pib_set(phyTransmitPower, &pib_value);
 #if (TAL_TYPE == AT86RF233)
 		/* Restore RPC settings. */
 		tal_trx_reg_write(RG_TRX_RPC, previous_RPC_value);
@@ -768,7 +779,8 @@ static void set_paramter_on_recptor_node(app_payload_t *msg)
 
 			tal_rpc_mode_config(DISABLE_ALL_RPC_MODES);
 #endif
-			tal_pib_set(phyTransmitPower, (pib_value_t *)&temp_var);
+			pib_value.pib_value_8bit = temp_var;
+			tal_pib_set(phyTransmitPower, &pib_value);
 			tal_set_tx_pwr(REGISTER_VALUE, param_val);
 
 #if (TAL_TYPE == AT86RF233)
@@ -943,17 +955,18 @@ static uint16_t crc_test(uint16_t crc, uint8_t data)
  * \brief Calculates CRC manually and compares with the received
  * and returns true if both are same,false otherwise.
  */
-static bool crc_check_ok(frame_info_t *frame_info)
+static bool crc_check_ok(frame_info_t *mac_frame_info)
 {
 	/* Calculate CRC manually since we are bypassing hardware CRC */
-	uint8_t number_of_bytes_rec = (frame_info->mpdu)[0];
+	uint8_t number_of_bytes_rec = (mac_frame_info->mpdu)[0];
 	uint16_t cal_crc = 0;
-	uint16_t *rec_crc_ptr
-		= (uint16_t *)&(frame_info->mpdu)[number_of_bytes_rec - 1 ];
-	uint16_t rec_crc = CCPU_ENDIAN_TO_LE16(*rec_crc_ptr);
+	uint8_t *rec_crc_ptr
+		= (uint8_t *)&(mac_frame_info->mpdu)[number_of_bytes_rec - 1 ];
+	uint16_t rec_crc;
+	memcpy((uint8_t *)&rec_crc, rec_crc_ptr, sizeof(rec_crc));
 	uint8_t i;
 	for (i = 1; i <= (number_of_bytes_rec - FCS_LEN); i++) {
-		cal_crc = crc_test(cal_crc, (frame_info->mpdu)[i]);
+		cal_crc = crc_test(cal_crc, (mac_frame_info->mpdu)[i]);
 	}
 	if (rec_crc != cal_crc) {
 		return(false);
@@ -1090,18 +1103,22 @@ static void send_range_test_rsp(uint8_t seq_num, uint32_t frame_count,
 static void set_default_configuration_peer_node(void)
 {
 	uint8_t temp;
+	pib_value_t pib_value;
 
 	/* Channel default configuration  */
 	temp = DEFAULT_CHANNEL;
-	tal_pib_set(phyCurrentChannel, (pib_value_t *)&temp);
+	pib_value.pib_value_8bit = temp;
+	tal_pib_set(phyCurrentChannel, &pib_value);
 
 	/* Channel page default configuration*/
 	temp = TAL_CURRENT_PAGE_DEFAULT;
-	tal_pib_set(phyCurrentPage, (pib_value_t *)&temp);
+	pib_value.pib_value_8bit = temp;
+	tal_pib_set(phyCurrentPage, &pib_value);
 
 	/* Tx power default configurations */
 	temp = TAL_TRANSMIT_POWER_DEFAULT;
-	tal_pib_set(phyTransmitPower, (pib_value_t *)&temp);
+	pib_value.pib_value_8bit = temp;
+	tal_pib_set(phyTransmitPower, &pib_value);
 
 	/* antenna diversity default configurations */
 #if (ANTENNA_DIVERSITY == 1)

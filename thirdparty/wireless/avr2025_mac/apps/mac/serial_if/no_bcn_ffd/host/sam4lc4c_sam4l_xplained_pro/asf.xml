@@ -1,5 +1,5 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC Serial Interface NoBeacon FFD Host-SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.no_bcn_ffd.host.sam4lc4c_sam4l_xplained_pro">
+	<project force-caption="true" force-description="true" caption="MAC Serial Interface NoBeacon FFD Host-SAM4L Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_ffd.host.sam4lc4c_sam4l_xplained_pro">
 		<info type="description" value="summary">
 		MAC Serial Interface Host Application - NoBeacon FFD
 		</info>	
@@ -11,7 +11,7 @@
 		<build type="header-file" value="conf_sio2ncp.h"/>
 		<build type="header-file" value="conf_hw_timer.h"/>
 
-		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.no_bcn_ffd.host"/>
+		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.nobcn_ffd.host"/>
 		<require idref="board.sam4l_xplained_pro"/>
 
         <config name="config.thirdparty.wireless.avr2025_mac" value="api_parser"/>

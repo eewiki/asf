@@ -7,6 +7,7 @@
 		<build type="header-file" value="app_config.h"/>
 		<build type="include-path" value="."/>
 		<require idref="thirdparty.wireless.avr2025_mac.apps.mac.serial_if.bcn_ffd"/>
+		<require idref="common.services.delay"/>
 		<device-support-alias value="avr2025_mac_api_parser_support"/>
 		<info type="gui-flag" value="move-to-root"/>
 	</module>

@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC NoBeacon Application Device AT86RF212-XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.dev.ncp.xmega_a3bu_xplained_rz600rf212">
+	<project caption="MAC No Beacon Application Device AT86RF212-XMEGA-A3BU Xplained" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.dev.ncp.xmega_a3bu_xplained_rz600rf212" force-caption="true" force-description="true">
 		<info type="description" value="summary">
-		The basic MAC Example Nobeacon Application deploys a nonbeacon-enabled network.
+		The basic MAC Example No Beacon Application deploys a no beacon-enabled network with star topology.
 		</info>
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_board.h"/>
@@ -9,8 +9,8 @@
 		<build type="header-file" value="conf_spi_master.h"/>
 		<build type="header-file" value="conf_sleepmgr.h"/>
 		<build type="header-file" value="conf_hw_timer.h"/>
-		<build type="header-file" value="conf_sio2host.h"/>
 		<build type="header-file" value="conf_usb.h"/>
+		<build type="header-file" value="conf_sio2host.h"/>
 
 		<config name="config.compiler.iarew.data_stack_size" value="0x300"/>
 		<config name="config.compiler.iarew.near_heap_size" value="0x40"/>

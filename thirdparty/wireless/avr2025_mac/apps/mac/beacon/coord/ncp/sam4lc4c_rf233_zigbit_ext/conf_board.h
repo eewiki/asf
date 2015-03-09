@@ -47,5 +47,5 @@
 /** Enable Com Port. */
 #define CONF_BOARD_COM_PORT
 #define CONF_BOARD_AT86RFX
-
+#define AT86RFX_SPI_BAUDRATE		 4000000UL
 #endif  /* CONF_BOARD_H_INCLUDED */

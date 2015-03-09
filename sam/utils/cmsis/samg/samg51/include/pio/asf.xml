@@ -1,0 +1,10 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.samg51.include.pio" caption="SAMG51 PIO definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAMG51 PIO
+		</info>
+		<build type="header-file" value="pio_samg51g18.h"/>
+		<device-support value="samg51"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

@@ -98,4 +98,8 @@ uint8_t sio2host_getchar(void);
  */
 int sio2host_getchar_nowait(void);
 
+#if SAMD20
+void USART_HOST_ISR_VECT(uint8_t instance);
+#endif
+
 #endif /* SIO2HOST_H */

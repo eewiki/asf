@@ -5,6 +5,7 @@
 			the configuration and management of the physical device GPIO pins,
 			including input/output state control.
 		</info>
+
 		<info type="keyword" value="technology">
 			<keyword value="I/O" />
 		</info>
@@ -18,7 +19,8 @@
 		</info>
 
 		<info type="description" value="pdf">
-			This document describes how to use the Port Controller on the SAM D20, both the ASF driver and the peripheral itself.
+			This document describes how to use the Port Controller on the
+			SAM D20, both the ASF driver and the peripheral itself.
 		</info>
 
 		<build type="include-path" value="."/>
@@ -29,6 +31,7 @@
 
 		<build type="doxygen-entry-point" value="asfdoc_samd20_port_group"/>
 		<build type="doxygen-example-path" value="quick_start"/>
+		<build type="doxygen-quick-start" value="asfdoc_samd20_port_exqsg"/>
 
 		<device-support value="samd20"/>
 

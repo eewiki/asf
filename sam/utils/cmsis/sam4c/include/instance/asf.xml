@@ -46,6 +46,10 @@
 		<build type="header-file" value="instance_usart3.h"/>
 		<build type="header-file" value="instance_usart4.h"/>
 		<build type="header-file" value="instance_wdt.h"/>
+		<build type="header-file" value="instance_uotghs.h"/>
+		<build type="header-file" value="instance_piod.h"/>
+		<build type="header-file" value="instance_efc0.h"/>
+		<build type="header-file" value="instance_efc1.h"/>
 		<device-support value="sam4c"/>
 		<info type="gui-flag" value="hidden"/>
 	</module>

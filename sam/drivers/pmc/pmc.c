@@ -57,6 +57,10 @@
 # define MAX_PERIPH_ID    31
 #elif (SAM4C)
 # define MAX_PERIPH_ID    43
+#elif (SAMG51)
+# define MAX_PERIPH_ID    47
+#elif (SAMG53)
+# define MAX_PERIPH_ID    47
 #endif
 
 /// @cond 0
@@ -529,12 +533,12 @@ void pmc_enable_pllack(uint32_t mula, uint32_t pllacount, uint32_t diva)
 	/* first disable the PLL to unlock the lock */
 	pmc_disable_pllack();
 
-#if (SAM4C)
-	PMC->CKGR_PLLAR = diva |
+#if (SAM4C || SAMG)
+	PMC->CKGR_PLLAR = CKGR_PLLAR_PLLAEN(diva) |
 			CKGR_PLLAR_PLLACOUNT(pllacount) | CKGR_PLLAR_MULA(mula);
 #else
 	PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | CKGR_PLLAR_DIVA(diva) |
-		CKGR_PLLAR_PLLACOUNT(pllacount) | CKGR_PLLAR_MULA(mula);
+			CKGR_PLLAR_PLLACOUNT(pllacount) | CKGR_PLLAR_MULA(mula);
 #endif
 	while ((PMC->PMC_SR & PMC_SR_LOCKA) == 0);
 }
@@ -544,7 +548,7 @@ void pmc_enable_pllack(uint32_t mula, uint32_t pllacount, uint32_t diva)
  */
 void pmc_disable_pllack(void)
 {
-#if (SAM4C)
+#if (SAM4C || SAMG)
 	PMC->CKGR_PLLAR = CKGR_PLLAR_MULA(0);
 #else
 	PMC->CKGR_PLLAR = CKGR_PLLAR_ONE | CKGR_PLLAR_MULA(0);
@@ -1205,6 +1209,7 @@ void pmc_cp_clr_fast_startup_input(uint32_t ul_inputs)
 }
 #endif
 
+#if (!SAMG)
 /**
  * \brief Enable Sleep Mode.
  * Enter condition: (WFE or WFI) + (SLEEPDEEP bit = 0) + (LPM bit = 0)
@@ -1231,8 +1236,9 @@ void pmc_enable_sleepmode(uint8_t uc_type)
 	}
 #endif
 }
+#endif
 
-#if (SAM4S || SAM4E || SAM4N || SAM4C)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 static uint32_t ul_flash_in_wait_mode = PMC_WAIT_MODE_FLASH_DEEP_POWERDOWN;
 /**
  * \brief Set the embedded flash state in wait mode
@@ -1262,6 +1268,25 @@ void pmc_enable_waitmode(void)
 	/* Clear SLEEPDEEP bit */
 	SCB->SCR &= (uint32_t) ~ SCB_SCR_SLEEPDEEP_Msk;
 
+	/* Backup FWS setting and set Flash Wait State at 0 */
+#if (!SAMG)
+#if defined(ID_EFC)
+	uint32_t fmr_backup;
+	fmr_backup = EFC->EEFC_FMR;
+	EFC->EEFC_FMR &= (uint32_t) ~ EEFC_FMR_FWS_Msk;
+#endif
+#if defined(ID_EFC0)
+	uint32_t fmr0_backup;
+	fmr0_backup = EFC0->EEFC_FMR;
+	EFC0->EEFC_FMR &= (uint32_t) ~ EEFC_FMR_FWS_Msk;
+#endif
+#if defined(ID_EFC1)
+	uint32_t fmr1_backup;
+	fmr1_backup = EFC1->EEFC_FMR;
+	EFC1->EEFC_FMR &= (uint32_t) ~ EEFC_FMR_FWS_Msk;
+#endif
+#endif
+
 	/* Set the WAITMODE bit = 1 */
 	PMC->CKGR_MOR |= CKGR_MOR_KEY_PASSWD | CKGR_MOR_WAITMODE;
 
@@ -1276,11 +1301,13 @@ void pmc_enable_waitmode(void)
 	}
 	while (!(PMC->CKGR_MOR & CKGR_MOR_MOSCRCEN));
 
+#if (!SAMG)
 	/* Restore Flash in idle mode */
 	i = PMC->PMC_FSMR;
 	i &= ~PMC_FSMR_FLPM_Msk;
 	i |= PMC_WAIT_MODE_FLASH_IDLE;
 	PMC->PMC_FSMR = i;
+#endif
 }
 #else
 /**
@@ -1307,6 +1334,7 @@ void pmc_enable_waitmode(void)
 }
 #endif
 
+#if (!SAMG)
 /**
  * \brief Enable Backup Mode. Enter condition: WFE/(VROFF bit = 1) +
  * (SLEEPDEEP bit = 1)
@@ -1325,6 +1353,7 @@ void pmc_enable_backupmode(void)
 	__WFE();
 #endif
 }
+#endif
 
 /**
  * \brief Enable Clock Failure Detector.
@@ -1392,6 +1421,80 @@ uint32_t pmc_get_writeprotect_status(void)
 {
 	return PMC->PMC_WPMR & PMC_WPMR_WPEN;
 }
+
+#if (SAMG53)
+/**
+ * \brief Enable the specified peripheral clock.
+ *
+ * \note The ID must NOT be shifted (i.e., 1 << ID_xxx).
+ *
+ * \param ul_id Peripheral ID (ID_xxx).
+ *
+ * \retval 0 Success.
+ * \retval 1 Fail.
+ */
+uint32_t pmc_enable_sleepwalking(uint32_t ul_id)
+{
+	uint32_t temp;
+
+	if ((8 <= ul_id) && (ul_id<= 29)) {
+		temp = pmc_get_active_status();
+		if (temp & (1 << ul_id)) {
+			return 1;
+		}
+		PMC->PMC_SLPWK_ER = 1 << ul_id;
+		temp = pmc_get_active_status();
+		if (temp & (1 << ul_id)) {
+			pmc_disable_sleepwalking(ul_id);
+			return 1;
+		}
+		return 0;
+	} else {
+		return 1;
+	}
+}
+
+/**
+ * \brief Disable the sleepwalking of specified peripheral.
+ *
+ * \note The ID must NOT be shifted (i.e., 1 << ID_xxx).
+ *
+ * \param ul_id Peripheral ID (ID_xxx).
+ *
+ * \retval 0 Success.
+ * \retval 1 Invalid parameter.
+ */
+uint32_t pmc_disable_sleepwalking(uint32_t ul_id)
+{
+	if ((8 <= ul_id) && (ul_id<= 29)) {
+		PMC->PMC_SLPWK_DR = 1 << ul_id;
+		return 0;
+	} else {
+		return 1;
+	}
+}
+
+/**
+ * \brief Return peripheral sleepwalking enable status.
+ *
+ * \return the status register value.
+ */
+uint32_t pmc_get_sleepwalking_status(void)
+{
+	return PMC->PMC_SLPWK_SR;
+}
+
+/**
+ * \brief Return peripheral active status.
+ *
+ * \return the status register value.
+ */
+uint32_t pmc_get_active_status(void)
+{
+	return PMC->PMC_SLPWK_ASR;
+}
+
+#endif
 
 /// @cond 0
 /**INDENT-OFF**/

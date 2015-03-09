@@ -7,27 +7,7 @@
 			<build type="header-file" value="FreeRTOSConfig.h"/>
 			<build type="c-source" value="main.c"/>
 			<build type="include-path" value="."/>
-			<device-support value="sam3"/>
-			<device-support value="sam4s"/>
-			<require idref="sam.drivers.pmc"/>
-			<require idref="sam.drivers.uart"/>
-			<require idref="sam.utils.syscalls"/>
-			<require idref="common.services.basic.clock"/>
-			<require idref="common.services.os.freertos"/>
-			<require idref="common.utils.stdio.stdio_serial"/>
-			<info type="gui-flag" value="move-to-root"/>
-		</module>
-		<module type="application" id="common.services.freertos.sam_example#1" caption="FreeRTOS Basic Example on SAM4L">
-			<info type="description" value="summary">
-			Default FreeRTOS.org demo application creating several tasks to showcase the use of the FreeRTOS API.
-			</info>
-			<build type="header-file" value="FreeRTOSConfig.h"/>
-			<build type="c-source" value="main.c"/>
-			<build type="include-path" value="."/>
-			<device-support value="sam4l"/>
-			<device-support value="sam4e"/>
-			<device-support value="sam4n"/>
-			<device-support value="sam4c"/>
+			<device-support value="sam"/>
 			<require idref="common.services.basic.clock"/>
 			<require idref="common.services.os.freertos"/>
 			<require idref="common.utils.stdio.stdio_serial"/>

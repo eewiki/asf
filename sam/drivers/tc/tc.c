@@ -55,7 +55,7 @@ extern "C" {
 #ifndef TC_WPMR_WPKEY_PASSWD
 #define TC_WPMR_WPKEY_PASSWD TC_WPMR_WPKEY((uint32_t)0x54494D)
 #endif
-  
+
 /**
  * \defgroup sam_drivers_tc_group Timer Counter (TC)
  *
@@ -490,7 +490,7 @@ uint32_t tc_find_mck_divisor(uint32_t ul_freq, uint32_t ul_mck,
 
 #endif
 
-#if (!SAM4L)
+#if (!SAM4L && !SAMG)
 
 /**
  * \brief Enable TC QDEC interrupts.

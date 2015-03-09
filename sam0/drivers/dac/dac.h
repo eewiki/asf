@@ -104,6 +104,9 @@
  * \li Internal 1V reference (INT1V)
  * \li External voltage reference (AREF)
  *
+ * \note Internal references will be enabled by the driver, but not disabled. Any reference not used by 
+ *       the application should be disabled by the application.
+ *
  * The output voltage from a DAC channel is given as:
  * \f[
  *    V_{OUT} = \frac{DATA}{0x3FF} \times VREF
@@ -382,6 +385,8 @@ struct dac_module {
 	Dac *hw;
 	/** DAC output selection */
 	enum dac_output output;
+	/** Reference selection */
+	enum dac_reference reference;
 	/** DAC event selection */
 	bool start_on_event;
 #  if DAC_CALLBACK_MODE == true

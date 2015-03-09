@@ -5,6 +5,7 @@
 		</info>
 		<build type="c-source" value="main.c"/>
 		<device-support value="sam4"/>
+		<device-support value="samg"/>
 		<require idref="common.services.basic.clock"/>
 		<info type="gui-flag" value="move-to-root"/>
 	</module>

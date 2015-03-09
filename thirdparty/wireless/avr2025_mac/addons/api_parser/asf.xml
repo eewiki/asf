@@ -7,6 +7,7 @@
         <build type="c-source" value="src/api_decoder.c"/>
         <build type="header-file" value="inc/api_parser.h"/>
         <build type="include-path" value="inc/"/>
+		<build type="define" name="HIGHEST_STACK_LAYER" value="MAC"/>
         <require idref="thirdparty.wireless.avr2025_mac.includes"/>
         <require idref="thirdparty.wireless.avr2025_mac.source.mac.inc"/>
         <require idref="thirdparty.wireless.avr2025_mac.source.pal.common_sw_timer"/>

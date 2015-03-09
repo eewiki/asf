@@ -1,0 +1,20 @@
+<asf xmlversion="1.0">
+	<project caption="TWI SLAVE Example for SAMG53 Xplained Pro" id="sam.drivers.twi.twi_slave_example.samg53_xplained_pro">
+		<info type="description" value="summary">
+		The application demonstrates how to use use the SAM TWI peripheral in slave mode.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_twi_slave_example.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<require idref="sam.drivers.twi.twi_slave_example"/>
+		<require idref="board.samg53_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamg53n19"/>
+	</project>
+</asf>

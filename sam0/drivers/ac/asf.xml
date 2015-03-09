@@ -5,11 +5,12 @@
 		  interface for the configuration and management of the device's
 		  hardware analog comparators.
 		</info>
-		<info type="keyword" value="technology">
-			<keyword value="Analog Conversion"/>
-		</info>
 
-		<module caption="AC - Analog Comparator" id="sam0.drivers.ac#polled" type="driver">
+		<module caption="AC - Analog Comparator (Polled APIs)" id="sam0.drivers.ac#polled" type="driver">
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>
+
 			<build type="include-path" value="." />
 
 			<build name="AC_CALLBACK_MODE" type="define" value="false" />
@@ -21,6 +22,7 @@
 
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-entry-point" value="asfdoc_samd20_ac_group" />
+			<build type="doxygen-quick-start" value="asfdoc_samd20_ac_exqsg"/>
 
 			<device-support value="samd20" />
 
@@ -29,7 +31,12 @@
 
 			<generator default-mcu="unspecified-samd20" value="doxygen-module-v2" />
 		</module>
-		<module caption="AC - Analog Comparator" id="sam0.drivers.ac#callback" type="driver">
+
+		<module caption="AC - Analog Comparator (Callback APIs)" id="sam0.drivers.ac#callback" type="driver">
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>
+
 			<info type="appnote" value="AT03242"/>
 			<info type="keyword" value="pdf">
 				<keyword value="AC"/>
@@ -37,7 +44,8 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the Analog Comparator on the SAM D20, both the ASF driver and the peripheral itself.
+				This document describes how to use the Analog Comparator on the
+				SAM D20, both the ASF driver and the peripheral itself.
 			</info>
 
 			<build type="include-path" value="." />
@@ -55,6 +63,7 @@
 			<build type="doxygen-example-path" value="quick_start"/>
 			<build type="doxygen-example-path" value="quick_start_callback"/>
 			<build type="doxygen-entry-point" value="asfdoc_samd20_ac_group" />
+			<build type="doxygen-quick-start" value="asfdoc_samd20_ac_exqsg"/>
 
 			<device-support value="samd20" />
 

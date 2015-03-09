@@ -1,8 +1,8 @@
 <asf xmlversion="1.0">
-		<select-by-config id="config.board.sam4n_xplained_pro.led" name="config.board.sam4n_xplained_pro.led" caption="SAM4N Xplained Pro LED support" default="yes">
+	<select-by-config id="config.board.sam4n_xplained_pro.led" name="config.board.sam4n_xplained_pro.led" caption="SAM4N Xplained Pro LED support" default="yes">
 		<module type="meta" id="config.board.sam4n_xplained_pro.led#no" caption="SAM4N Xplained Pro LED support disabled">
 		</module>
-		<module type="meta" id="config.board.sam4n_xplained_pro.led#yes" caption="SSAM4N Xplained Pro LED support enabled">
+		<module type="meta" id="config.board.sam4n_xplained_pro.led#yes" caption="SAM4N Xplained Pro LED support enabled">
 			<build type="header-file" subtype="api" value="led.h"/>
 			<build type="include-path" value="."/>
 			<require idref="common.services.ioport"/>

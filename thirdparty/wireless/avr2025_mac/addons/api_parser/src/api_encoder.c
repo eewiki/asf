@@ -421,7 +421,6 @@ bool wpan_mlme_rx_enable_req(bool DeferPermit,
 	sio2ncp_tx(tx_buffer, length);
 	return true;
 }
-
 #endif  /* (MAC_RX_ENABLE_SUPPORT == 1) */
 
 #if ((MAC_SCAN_ED_REQUEST_CONFIRM == 1)      ||	\
@@ -507,8 +506,29 @@ bool wpan_mlme_sync_req(uint8_t LogicalChannel,
 	sio2ncp_tx(tx_buffer, length);
 	return true;
 }
-
 #endif /* (MAC_SYNC_REQUEST == 1) */
+
+#ifdef GTS_SUPPORT
+#if (MAC_GTS_REQUEST == 1) || defined(__DOXYGEN__)
+bool wpan_mlme_gts_req(uint16_t DevShortAddr, gts_char_t GtsChar)
+{
+	length = 0;
+	tx_buff_ptr = &tx_buffer[CMD_POS];
+
+	*tx_buff_ptr++ = MLME_GTS_REQUEST;
+	*tx_buff_ptr++ = (uint8_t)DevShortAddr;
+	*tx_buff_ptr++ = (uint8_t)DevShortAddr >> 8;
+	*tx_buff_ptr++ = *((uint8_t*)&GtsChar);
+	*tx_buff_ptr++ = EOT;
+
+	length = tx_buff_ptr - (uint8_t *)&tx_buffer[0];
+	tx_buffer[LEN_POS] = length - 3;
+	sio2ncp_tx(tx_buffer, length);
+	return true;
+}
+#endif /* (MAC_GTS_REQUEST == 1) */
+#endif /* GTS_SUPPORT */
+
 
 uint8_t mac_get_pib_attribute_size(uint8_t pib_attribute_id)
 {

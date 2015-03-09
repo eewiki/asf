@@ -1,0 +1,22 @@
+<asf xmlversion="1.0">
+	<module type="application" id="xmega.applications.xmega_dac_calibration" caption="DAC calibration example application" >
+		<info type="description" value="summary">
+		DAC calibration example application for XMEGA.It shows how to calibrate the DAC by using the internal ADC.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="c-source" value="main.c"/>
+		<build type="include-path" value="./user_board"/>
+		<build type="c-source" value="user_board/init.c"/>
+		<build type="header-file" value="user_board/user_board.h"/>
+		<device-support value="atxmega32a4u"/>
+		<require idref="xmega.drivers.adc"/>
+		<require idref="xmega.drivers.dac"/>
+		<require idref="xmega.drivers.nvm"/>
+		<require idref="xmega.drivers.pmic"/>
+		<require idref="xmega.drivers.ioport"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.ioport"/>
+		
+		<require idref="common.services.delay"/>
+		</module>
+</asf>

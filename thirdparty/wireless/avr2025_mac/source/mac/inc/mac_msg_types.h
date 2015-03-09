@@ -77,6 +77,7 @@
  * needs to be aligned to at list of wpan_pandescriptor_t.
  * This has no impact for 8-bit platforms.
  */
+__PACK__DATA__
 typedef union {
 	uint8_t ed_value[1];
 	wpan_pandescriptor_t wpan_pan_desc;
@@ -135,7 +136,7 @@ typedef struct mcps_data_req_tag {
 	 * 0 x 04 = indirect transmission.
 	 */
 	uint8_t TxOptions;
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 
 	/**
 	 * The security level to be used.
@@ -146,12 +147,15 @@ typedef struct mcps_data_req_tag {
 	 * The mode used to identify the key to be used.
 	 */
 	uint8_t KeyIdMode;
-
+    /**
+     * The KeySource to find the key.
+     */
+    uint8_t *KeySource;
 	/**
 	 * The index of the key to be used.
 	 */
 	uint8_t KeyIndex;
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* ((MAC_SECURITY_ZIP)  || (MAC_SECURITY_2006)) */
 
 	/**
 	 * The number of octets contained in the MSDU to be transmitted by the
@@ -252,7 +256,7 @@ typedef struct mlme_associate_req_tag {
 	address_field_t CoordAddress;
 	/** Specifies the operational capabilities of the associating device. */
 	uint8_t CapabilityInformation;
-} mlme_associate_req_t;
+} mlme_associate_req_t; 
 
 /**
  * @brief This is the MLME-ASSOCIATE.indication message structure.
@@ -478,11 +482,11 @@ typedef struct mlme_get_req_tag {
 	enum msg_code cmdcode;
 	/**< The identifier of the MAC PIB attribute to get. */
 	uint8_t PIBAttribute;
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	/**< The index within the table of the specified MAC PIB attribute to
 	 *set. */
 	uint8_t PIBAttributeIndex;
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 } mlme_get_req_t;
 
 /**
@@ -495,11 +499,11 @@ typedef struct mlme_get_conf_tag {
 	uint8_t status;
 	/**< The identifier of the MAC PIB attribute to get. */
 	uint8_t PIBAttribute;
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	/**< The index within the table of the specified MAC PIB attribute to
 	 *set. */
 	uint8_t PIBAttributeIndex;
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 	/**< The value of the indicated MAC PIB attribute that was read. */
 	pib_value_t PIBAttributeValue;
 } mlme_get_conf_t;
@@ -514,11 +518,11 @@ typedef struct mlme_set_req_tag {
 	enum msg_code cmdcode;
 	/**< The identifier of the MAC PIB attribute to set. */
 	uint8_t PIBAttribute;
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	/**< The index within the table of the specified MAC PIB attribute to
 	 *set. */
 	uint8_t PIBAttributeIndex;
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 	/**< The value to write to the indicated MAC PIB attribute. */
 	pib_value_t PIBAttributeValue;
 } mlme_set_req_t;
@@ -536,11 +540,11 @@ typedef struct mlme_set_conf_tag {
 	uint8_t status;
 	/**< The identifier of the MAC PIB attribute that was written. */
 	uint8_t PIBAttribute;
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 	/**< The index within the table of the specified MAC PIB attribute to
 	 *set. */
 	uint8_t PIBAttributeIndex;
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 } mlme_set_conf_t;
 #endif /* (HIGHEST_STACK_LAYER == MAC) */
 
@@ -716,6 +720,7 @@ typedef struct mlme_comm_status_ind_tag {
 	uint8_t status;
 } mlme_comm_status_ind_t;
 
+
 /**
  * @brief This is the MLME-START.request message structure.
  */
@@ -777,7 +782,66 @@ typedef struct mlme_start_req_tag {
 	 *to
 	 * changing the superframe configuration or FALSE otherwise.
 	 */
-	uint8_t CoordRealignment;
+	uint8_t CoordRealignment;	
+
+#ifdef MAC_SECURITY_BEACON	
+	/**
+	 * The security level to be used for coordinator realignment command
+	 * frames (see Table95 in 7.6.2.2.1).
+	 * Valid values are 0x00–0x07
+	 */
+	 uint8_t CoordRealignSecurityLevel;
+	 
+	 /**
+	  * The mode used to identify the key to be used (see Table 96 in 7.6.2.2.2).
+	  * This parameter is ignored if the CoordRealignSecurityLevel parameter 
+	  * is set to 0x00.
+	  */
+	 uint8_t CoordRealignKeyIdMode;
+	 
+	 /**
+	  * The originator of the key to be used (see 7.6.2.4.1). This parameter is
+	  * ignored if the CoordRealignKeyIdMode parameter is ignored or set to
+	  * 0x00.
+	  */
+	 uint8_t *CoordRealignKeySource;
+	 
+	 /**
+	  * The index of the key to be used (see 7.6.2.4.2). This parameter is 
+	  * ignored if the CoordRealignKeyIdMode
+	  * parameter is ignored or set to 0x00.
+	  */
+	 uint8_t CoordRealignKeyIndex;
+	 
+	 /**
+	  * The security level to be used for beacon frames (see Table 95 in
+	  * 7.6.2.2.1).
+	  */
+	 uint8_t BeaconSecurityLevel;
+	 
+	 /**
+	  * The mode used to identify the key to be used 
+	  * (see Table 96 in 7.6.2.2.2). This parameter is ignored
+	  * if the BeaconSecurityLevel parameter is set
+	  * to 0x00.
+	  */
+	 uint8_t BeaconKeyIdMode;
+	 
+	 /**
+	  * The originator of the key to be used (see 7.6.2.4.1). 
+	  * This parameter is ignored if the BeaconKeyIdMode
+	  * parameter is ignored or set to 0x00.
+	  */
+	 uint8_t *BeaconKeySource;
+	 
+	 /**
+	  * The index of the key to be used (see 7.6.2.4.2). 
+	  * This parameter is ignored if the BeaconKeyIdMode 
+	  * parameter is ignored or set to 0x00.
+	  */
+	 uint8_t BeaconKeyIndex;
+#endif 
+	 
 } mlme_start_req_t;
 
 /**
@@ -811,7 +875,7 @@ typedef struct mlme_sync_req_tag {
 	 *only
 	 * the next beacon.
 	 */
-	uint8_t TrackBeacon;
+	bool TrackBeacon;
 } mlme_sync_req_t;
 
 /**
@@ -869,6 +933,41 @@ typedef struct mlme_poll_conf_tag {
 	/** The status of the data request. */
 	uint8_t status;
 } mlme_poll_conf_t;
+
+#ifdef GTS_SUPPORT
+/**
+ * @brief This is the MLME-GTS.request message structure.
+ */
+typedef struct mlme_gts_req_tag {
+	/** This identifies the message as \ref MLME_GTS_REQUEST */
+	enum msg_code cmdcode;
+	uint16_t DeviceShortAddr;
+	gts_char_t GtsChar;
+} mlme_gts_req_t;
+
+/**
+ * @brief This is the MLME-GTS.confirm message structure.
+ */
+typedef struct mlme_gts_conf_tag {
+	/** This identifies the message as \ref MLME_GTS_CONFIRM */
+	enum msg_code cmdcode;
+	gts_char_t GtsChar;
+	/** The status of the data request. */
+	uint8_t status;
+} mlme_gts_conf_t;
+
+/**
+ * @brief This is the MLME-GTS.indication message structure.
+ */
+typedef struct mlme_gts_ind_tag {
+	/** This identifies the message as \ref MLME_GTS_INDICATION */
+	enum msg_code cmdcode;
+	uint16_t DeviceAddr;
+	/** The status of the data request. */
+	gts_char_t GtsChar;
+} mlme_gts_ind_t;
+#endif /* GTS_SUPPORT */
+__PACK__RST_DATA__
 /* ! @} */
 /* === Externals ============================================================ */
 

@@ -77,8 +77,8 @@
  *----------------------------------------------------------*/
 
 /* Scheduler includes. */
-#include "FreeRTOS.h"
-#include "task.h"
+#include "../../../include/FreeRTOS.h"
+#include "../../../include/task.h"
 
 /* Constants required to manipulate the NVIC. */
 #define portNVIC_SYSTICK_CTRL		( ( volatile unsigned long *) 0xe000e010 )
@@ -104,7 +104,7 @@ static unsigned portBASE_TYPE uxCriticalNesting = 0xaaaaaaaa;
 /*
  * Setup the timer to generate the tick interrupts.
  */
-static void prvSetupTimerInterrupt( void );
+void vPortSetupTimerInterrupt( void );
 
 /*
  * Exception handlers.
@@ -191,7 +191,7 @@ portBASE_TYPE xPortStartScheduler( void )
 
 	/* Start the timer that generates the tick ISR.  Interrupts are disabled
 	here already. */
-	prvSetupTimerInterrupt();
+	vPortSetupTimerInterrupt();
 
 	/* Initialise the critical nesting count ready for the first task. */
 	uxCriticalNesting = 0;
@@ -311,7 +311,7 @@ unsigned long ulDummy;
  * Setup the systick timer to generate the tick interrupts at the required
  * frequency.
  */
-void prvSetupTimerInterrupt( void )
+__attribute__(( weak )) void vPortSetupTimerInterrupt( void )
 {
 	/* Configure SysTick to interrupt at the requested rate. */
 	*(portNVIC_SYSTICK_VAL)  = 0; /* Load the SysTick Counter Value */

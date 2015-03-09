@@ -51,14 +51,14 @@
 #ifndef MAC_SECURITY_H
 #define MAC_SECURITY_H
 
-#ifdef MAC_SECURITY_ZIP
+#if ((defined MAC_SECURITY_ZIP)  || (defined MAC_SECURITY_2006))
 
 /* === Includes ============================================================= */
 
 #include "mac_api.h"
 
 /* === Macros =============================================================== */
- *    /**
+     /**
  * \addtogroup group_mac_def
  * @{
  */
@@ -109,6 +109,10 @@
 extern mac_sec_pib_t mac_sec_pib;
 
 /* === Prototypes =========================================================== */
+/* Finding the Key Identifier Length field */
+uint8_t get_key_id_field_len(uint8_t key_id_mode);
+
+bool build_sec_mcps_data_frame(mcps_data_req_t *mpdr, frame_info_t *mframe);
 
 #ifdef __cplusplus
 extern "C" {
@@ -121,7 +125,7 @@ extern "C" {
 } /* extern "C" */
 #endif
 
-#endif  /* MAC_SECURITY_ZIP */
+#endif  /* (MAC_SECURITY_ZIP || MAC_SECURITY_2006) */
 
 #endif /* MAC_SECURITY_H */
 /* EOF */

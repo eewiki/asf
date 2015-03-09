@@ -70,6 +70,9 @@
  * There are no prerequisites for this use case.
  *
  * \subsection asfdoc_samd20_tc_basic_use_case_setup_code Code
+ * Add to the main application source file, before any functions:
+ * \snippet conf_quick_start.h definition_pwm
+ *
  * Add to the main application source file, outside of any functions:
  * \snippet qs_tc_basic.c module_inst
  *

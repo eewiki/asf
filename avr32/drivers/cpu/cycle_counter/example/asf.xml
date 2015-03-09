@@ -1,7 +1,7 @@
 <asf xmlversion="1.0">
 	<module type="application" id="avr32.drivers.cpu.cc.example" caption="CPU Cycle Counter Example">
 		<info type="description" value="summary">
- 		Use the CPU cycle counter COUNT &amp; COMPARE registers.
+		Example Application to use CPU cycle counter COUNT and COMPARE registers.
 		</info>
 		<info type="keyword" value="technology">
 			<keyword value="CPU"/>
@@ -13,10 +13,10 @@
 		<device-support value="uc3c"/>
 		<device-support value="uc3d"/>
 		<device-support value="uc3l"/>
+		<require idref="common.services.basic.clock"/>
 		<require idref="avr32.drivers.cpu.cycle_counter"/>
 		<require idref="avr32.drivers.gpio"/>
-		<require idref="avr32.drivers.intc"/>
-		<require idref="avr32.drivers.pm"/>
+		<require idref="avr32.utils"/>
 		<require idref="avr32.utils.print_funcs"/>
 		<info type="gui-flag" value="move-to-root"/>
 	</module>

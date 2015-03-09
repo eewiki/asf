@@ -75,7 +75,12 @@
 
 #if (MAC_START_REQUEST_CONFIRM == 1) || defined(__DOXYGEN__)
 
+#ifdef MAC_SECURITY_BEACON
+mlme_start_req_t msr_params;    /* Intermediate start parameters */
+#else
 static mlme_start_req_t msr_params;    /* Intermediate start parameters */
+#endif
+
 
 /* === Prototypes =========================================================== */
 

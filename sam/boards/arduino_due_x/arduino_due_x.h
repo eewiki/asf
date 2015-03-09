@@ -69,7 +69,7 @@
 #define BOARD_MCK                       CHIP_FREQ_CPU_MAX
 #define BOARD_NO_32K_XTAL
 
-/** board main clock xtal statup time */
+/** board main clock xtal startup time */
 #define BOARD_OSC_STARTUP_US   15625
 
 /* ------------------------------------------------------------------------ */

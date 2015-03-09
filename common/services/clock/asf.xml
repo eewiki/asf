@@ -529,5 +529,30 @@
 			<require idref="sam.drivers.pmc"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam4c"/>
 		</module>
+		<module type="service" id="common.services.basic.clock#21" caption="System Clock Control - SAMG implementation">
+			<info type="description" value="summary">
+			Driver for clock control (sysclk). Provides functions for accessing, configuring, enabling and disabling clocks. Common API.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Clocks"/>
+			</info>
+			<build type="header-file" value="genclk.h"/>
+			<build type="header-file" value="osc.h"/>
+			<build type="header-file" value="pll.h"/>
+			<build type="header-file" subtype="api" value="sysclk.h"/>
+			<build type="header-file" value="samg/genclk.h"/>
+			<build type="header-file" value="samg/osc.h"/>
+			<build type="header-file" value="samg/pll.h"/>
+			<build type="c-source" value="samg/sysclk.c"/>
+			<build type="header-file" value="samg/sysclk.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="required-header-file" value="conf_clock.h"/>
+			<build type="module-config" subtype="path" value="samg/module_config"/>
+			<build type="doxygen-entry-point" value="clk_group"/>
+			<build type="doxygen-quick-start" value="sysclk_quickstart"/>
+			<device-support value="samg"/>
+			<require idref="sam.drivers.pmc"/>
+			<generator value="doxygen-module" default-mcu="unspecified-samg53"/>
+		</module>
 	</select-by-device>
 </asf>

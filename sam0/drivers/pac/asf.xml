@@ -6,6 +6,7 @@
 			the device peripheral busses, to protect them against inadvertent
 			writes due to application errors.
 		</info>
+
 		<info type="keyword" value="technology">
 			<keyword value="CPU"/>
 		</info>
@@ -32,6 +33,7 @@
 
 		<build type="doxygen-entry-point" value="asfdoc_samd20_pac_group"/>
 		<build type="doxygen-example-path" value="quick_start"/>
+		<build type="doxygen-quick-start" value="asfdoc_samd20_pac_exqsg"/>
 
 		<device-support value="samd20"/>
 

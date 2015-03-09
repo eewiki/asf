@@ -84,6 +84,8 @@ extern "C" {
 #define TWI_WP_KEY_VALUE TWI_WPROT_MODE_SECURITY_CODE((uint32_t)0x545749)
 #elif SAM4C
 #define TWI_WP_KEY_VALUE TWI_WPMR_WPKEY_PASSWD
+#elif SAMG
+#define TWI_WP_KEY_VALUE TWI_WPROT_MODE_WPKEY_PASSWD
 #endif
 
 /**
@@ -450,7 +452,7 @@ void twi_enable_slave_mode(Twi *p_twi)
 	p_twi->TWI_CR = TWI_CR_MSDIS;
 	p_twi->TWI_CR = TWI_CR_SVDIS;
 
-	/* Set Master Enable bit */
+	/* Set Slave Enable bit */
 	p_twi->TWI_CR = TWI_CR_SVEN;
 }
 
@@ -584,21 +586,21 @@ void twi_reset(Twi *p_twi)
 Pdc *twi_get_pdc_base(Twi *p_twi)
 {
 	Pdc *p_pdc_base = NULL;
-
+#if !SAMG
 	if (p_twi == TWI0) {
 		p_pdc_base = PDC_TWI0;
-	}
+	} else
+#endif
 #ifdef PDC_TWI1
-	else if (p_twi == TWI1) {
+	 if (p_twi == TWI1) {
 		p_pdc_base = PDC_TWI1;
-	}
+	} else
 #endif
 #ifdef PDC_TWI2
-		else if (p_twi == TWI2) {
-			p_pdc_base = PDC_TWI2;
-		}
+	if (p_twi == TWI2) {
+		p_pdc_base = PDC_TWI2;
+	} else
 #endif
-	else
 	{
 		Assert(false);
 	}
@@ -606,7 +608,7 @@ Pdc *twi_get_pdc_base(Twi *p_twi)
 	return p_pdc_base;
 }
 
-#if (SAM4E || SAM4C)
+#if (SAM4E || SAM4C || SAMG)
 /**
  * \brief Enables/Disables write protection mode.
  *
@@ -615,7 +617,7 @@ Pdc *twi_get_pdc_base(Twi *p_twi)
  */
 void twi_set_write_protection(Twi *p_twi, bool flag)
 {
-#if SAM4E
+#if (SAM4E || SAMG)
 	p_twi->TWI_WPROT_MODE = TWI_WP_KEY_VALUE |
 		(flag ? TWI_WPROT_MODE_WPROT : 0);
 #else
@@ -631,7 +633,7 @@ void twi_set_write_protection(Twi *p_twi, bool flag)
  */
 void twi_read_write_protection_status(Twi *p_twi, uint32_t *p_status)
 {
-#if SAM4E
+#if (SAM4E || SAMG)
 	*p_status = p_twi->TWI_WPROT_STATUS;
 #else
 	*p_status = p_twi->TWI_WPSR;

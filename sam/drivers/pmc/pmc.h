@@ -95,7 +95,7 @@ extern "C" {
 #define PMC_PCK_1               1 /* PCK1 ID */
 #define PMC_PCK_2               2 /* PCK2 ID */
 
-#if SAM4S || SAM4E || SAM4N || SAM4C
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 /** Flash state in Wait Mode */
 #define PMC_WAIT_MODE_FLASH_STANDBY         PMC_FSMR_FLPM_FLASH_STANDBY
 #define PMC_WAIT_MODE_FLASH_DEEP_POWERDOWN  PMC_FSMR_FLPM_FLASH_DEEP_POWERDOWN
@@ -126,7 +126,7 @@ uint32_t pmc_switch_mck_to_pllbck(uint32_t ul_pres);
 #if (SAM3XA || SAM3U)
 uint32_t pmc_switch_mck_to_upllck(uint32_t ul_pres);
 #endif
-#if (SAM4S || SAM4E || SAM4N || SAM4C)
+#if (SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 void pmc_set_flash_in_wait_mode(uint32_t ul_flash_state);
 #endif
 
@@ -291,10 +291,13 @@ void pmc_clr_fast_startup_input(uint32_t ul_inputs);
 void pmc_cp_set_fast_startup_input(uint32_t ul_inputs);
 void pmc_cp_clr_fast_startup_input(uint32_t ul_inputs);
 #endif
+#if (!SAMG)
 void pmc_enable_sleepmode(uint8_t uc_type);
+#endif
 void pmc_enable_waitmode(void);
+#if (!SAMG)
 void pmc_enable_backupmode(void);
-
+#endif
 //@}
 
 /**
@@ -331,6 +334,21 @@ void pmc_set_writeprotect(uint32_t ul_enable);
 uint32_t pmc_get_writeprotect_status(void);
 
 //@}
+
+#if (SAMG53)
+/**
+ * \name Sleepwalking configuration
+ *
+ */
+//@{
+
+uint32_t pmc_enable_sleepwalking(uint32_t ul_id);
+uint32_t pmc_disable_sleepwalking(uint32_t ul_id);
+uint32_t pmc_get_sleepwalking_status(void);
+uint32_t pmc_get_active_status(void);
+
+//@}
+#endif
 
 /// @cond 0
 /**INDENT-OFF**/

@@ -19,7 +19,7 @@
             <require idref="common.services.basic.spi_master"/>
             <require idref="common.services.ioport"/>
             <require idref="common.utils"/>
-            <device-support-alias value="avr2025_mac_pal_spi_support"/>
+            <device-support-alias value="avr2025_mac_pal_spi_common_support"/>
 		</module>
 
 		<module type="meta" id="thirdparty.wireless.avr2025_mac.source.pal#2"     caption="PAL access for SoC">
@@ -37,6 +37,32 @@
             <require idref="thirdparty.wireless.avr2025_mac.source.pal.inc"/>
             <require idref="common.services.delay"/>
             <device-support-alias value="avr2025_mac_pal_soc_support"/>
+		</module>
+
+		<module type="driver" id="thirdparty.wireless.avr2025_mac.source.pal#3"     caption="PAL SPI access (SAMD) for external transceivers">
+            <info type="description" value="summary">
+            This module includes PAL wrapper files for boards with External Transceivers
+            </info>
+			<build type="doxygen-entry-point" value="group_pal"/>
+			<info type="gui-flag" value="hidden"/>
+            <build type="include-path"  value="."/>
+            <build type="c-source"      value="pal.c"/>
+            <build type="header-file"   subtype="api" value="pal.h"/>
+            <build type="header-file"   value="pal_ext_trx.h"/>
+            <build type="c-source"      value="pal_ext_trx.c"/>
+            <build type="doxygen-entry-point" value="group_pal"/>
+			<build type="module-config" subtype="required-header-file" value="conf_pal.h"/>
+			<build type="module-config" subtype="path" value="module_config"/>
+
+            <require idref="thirdparty.wireless.avr2025_mac.source.pal.common_sw_timer"/>
+            <require idref="thirdparty.wireless.avr2025_mac.source.pal.inc"/>
+            <require idref="common2.services.delay"/>
+            <require idref="sam0.drivers.sercom.spi"/>
+			<require idref="sam0.drivers.extint"/>
+			<require idref="sam0.drivers.tc"/>
+            <require idref="sam0.drivers.port"/>
+            <require idref="sam0.utils"/>
+            <device-support-alias value="avr2025_mac_pal_spi_sam0_support"/>
 		</module>
     </select-by-device>
 
@@ -56,6 +82,7 @@
         <device-support value="atxmega256a3"/>
         <device-support value="uc3a3_a4"/>
         <device-support value="sam4l"/>
+		<device-support value="samd20"/>
         <device-support value="atmega256rfr2"/>
         <device-support value="atmega2564rfr2"/>
         <device-support value="atmega128rfa1"/>
@@ -65,11 +92,23 @@
         <device-support value="atxmega256a3bu"/>
         <device-support value="atxmega256a3"/>
         <device-support value="uc3a3_a4"/>
-        <device-support value="sam4l"/>
+		<device-support value="sam4l"/>
+        <device-support value="samd20"/>
+    </device-alias-map>
+    <device-alias-map name="avr2025_mac_pal_spi_common_support">
+        <device-support value="atxmega256a3u"/>
+        <device-support value="atxmega256a3bu"/>
+        <device-support value="atxmega256a3"/>
+        <device-support value="uc3a3_a4"/>
+		<device-support value="sam4l"/>
+    </device-alias-map>
+	<device-alias-map name="avr2025_mac_pal_spi_sam0_support">
+        <device-support value="samd20"/>
     </device-alias-map>
     <device-alias-map name="avr2025_mac_pal_soc_support">
-        <device-support value="atmega256rfr2"/>
-        <device-support value="atmega2564rfr2"/>
         <device-support value="atmega128rfa1"/>
+        <device-support value="atmega256rfr2"/>
+		<device-support value="atmega128rfa1"/>		
+        <device-support value="atmega2564rfr2"/>
     </device-alias-map>
 </asf>

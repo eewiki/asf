@@ -1,21 +1,40 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam.drivers.adc.adc_temp_sensor_example" caption="ADC Temperature Sensor Example">
-		<info type="description" value="summary">
-		This example demonstrates how to configure the temperature sensor feature inside the microcontroller.
-		</info>
-		<info type="keyword" value="technology">
-			<keyword value="Analog Conversion"/>
-		</info>
-		<build type="c-source" value="adc_temp_sensor_example.c"/>
-		<build type="include-path" value="."/>
-		<device-support value="sam"/>
-		<require idref="sam.drivers.adc"/>
-		<require idref="sam.drivers.pio"/>
-		<require idref="sam.drivers.pmc"/>
-		<require idref="sam.drivers.uart"/>
-		<require idref="common.services.basic.gpio"/>
-		<require idref="common.services.basic.clock"/>
-		<require idref="common.utils.stdio.stdio_serial"/>
-		<info type="gui-flag" value="move-to-root"/>
-	</module>
+	<select-by-device id="sam.drivers.adc.adc_temp_sensor_example" caption="ADC Temperature Sensor Example">
+		<module type="application" id="sam.drivers.adc.adc_temp_sensor_example#1" caption="ADC Temperature Sensor Example">
+			<info type="description" value="summary">
+			This example demonstrates how to configure the temperature sensor feature inside the microcontroller.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>
+			<build type="c-source" value="adc_temp_sensor_example.c"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam3"/>
+			<device-support value="sam4s"/>
+			<device-support value="sam4c"/>
+			<require idref="sam.drivers.adc"/>
+			<require idref="sam.drivers.pio"/>
+			<require idref="sam.drivers.pmc"/>
+			<require idref="sam.drivers.uart"/>
+			<require idref="common.services.basic.gpio"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+		<module type="application" id="sam.drivers.adc.adc_temp_sensor_example#2" caption="ADC Temperature Sensor Example">
+			<info type="description" value="summary">
+			This example demonstrates how to configure the temperature sensor feature inside the microcontroller.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Analog Conversion"/>
+			</info>
+			<build type="c-source" value="adc2_temp_sensor_example.c"/>
+			<build type="include-path" value="."/>
+			<device-support value="sam4n"/>
+			<require idref="sam.drivers.adc"/>
+			<require idref="common.services.delay"/>
+			<require idref="common.utils.stdio.stdio_serial"/>
+			<info type="gui-flag" value="move-to-root"/>
+		</module>
+	</select-by-device>
 </asf>

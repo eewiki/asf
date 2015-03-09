@@ -189,6 +189,8 @@ void sw_timer_service(void);
  */
 void sw_timer_init(void);
 
+uint32_t sw_timer_get_residual_time(uint8_t timer_id);
+
 /* ! @} */
 #endif /* COMMON_SW_TIMER_H */
 /* EOF */

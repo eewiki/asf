@@ -74,8 +74,8 @@
  *-----------------------------------------------------------
  */
 #include <avr32/io.h>
-#include "intc.h"
-#include "compiler.h"
+#include <intc.h>
+#include <compiler.h>
 
 #ifdef __cplusplus
 extern "C" {

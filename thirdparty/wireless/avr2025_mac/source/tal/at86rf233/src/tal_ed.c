@@ -178,7 +178,7 @@ static void trx_ed_irq_handler_cb(void)
 	uint8_t ed_value;
 	trx_irq_reason_t trx_irq_cause;
 
-	trx_irq_cause = (trx_irq_reason_t)pal_trx_reg_read(RG_IRQ_STATUS);
+	trx_irq_cause = /* (trx_irq_reason_t)*/ pal_trx_reg_read(RG_IRQ_STATUS);
 
 	if (trx_irq_cause & TRX_IRQ_4_CCA_ED_DONE) {
 		/* Read the ED Value. */

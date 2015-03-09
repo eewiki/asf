@@ -189,6 +189,12 @@ static FLASH_DECLARE(handler_t dispatch_table[LAST_MESSAGE + 1]) = {
 #if (MAC_INDIRECT_DATA_BASIC == 1)
 	[MLME_POLL_CONFIRM]                   = mlme_poll_conf,
 #endif /* (MAC_INDIRECT_DATA_BASIC == 1) */
+
+#ifdef GTS_SUPPORT
+	[MLME_GTS_REQUEST]                    = mlme_gts_request,
+	[MLME_GTS_CONFIRM]                    = mlme_gts_conf,
+	[MLME_GTS_INDICATION]                 = mlme_gts_ind,
+#endif /* GTS_SUPPORT */
 };
 #else
 static FLASH_DECLARE(handler_t dispatch_table[LAST_MESSAGE + 1]) = {
@@ -242,6 +248,12 @@ static FLASH_DECLARE(handler_t dispatch_table[LAST_MESSAGE + 1]) = {
 #endif /* ((MAC_PURGE_REQUEST_CONFIRM == 1) && (MAC_INDIRECT_DATA_BASIC == 1))
 	 **/
 
+#ifdef GTS_SUPPORT
+	[MLME_GTS_REQUEST]                    = mlme_gts_request,
+	[MLME_GTS_CONFIRM]                    = mlme_gts_conf,
+	[MLME_GTS_INDICATION]                 = mlme_gts_ind,
+#endif /* GTS_SUPPORT */
+
 	[TAL_DATA_INDICATION]                 = mac_process_tal_data_ind,
 };
 #endif /* #if (HIGHEST_STACK_LAYER == MAC) */
@@ -266,7 +278,7 @@ void dispatch_event(uint8_t *event)
 	 *the
 	 * received header.
 	 */
-	uint8_t *buffer_body = BMM_BUFFER_POINTER((buffer_t *)event);
+	uint8_t *buffer_body = (uint8_t *)BMM_BUFFER_POINTER((buffer_t *)event);
 
 	/* Check is done to see if the message type is valid */
 

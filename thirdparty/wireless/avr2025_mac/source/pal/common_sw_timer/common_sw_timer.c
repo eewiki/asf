@@ -42,6 +42,9 @@
 #include "conf_common_sw_timer.h"
 #include "common_hw_timer.h"
 #include "common_sw_timer.h"
+#if SAMD20
+#include "system.h"
+#endif /* SAMD20 */
 #include "board.h"
 
 #if (TOTAL_NUMBER_OF_SW_TIMERS > 0)
@@ -52,6 +55,8 @@
  * to know about this value as well.
  */
 volatile uint16_t sys_time;
+extern void wakeup_cb(void *parameter);
+extern bool sys_sleep;
 
 /*
  * This is the timer array.
@@ -87,6 +92,7 @@ static void start_absolute_timer(uint8_t timer_id,
 		FUNC_PTR handler_cb,
 		void *parameter);
 static inline uint32_t gettime(void);
+
 static void internal_timer_handler(void);
 static inline bool compare_time(uint32_t t1, uint32_t t2);
 static void load_hw_timer(uint8_t timer_id);
@@ -160,7 +166,14 @@ status_code_t sw_timer_start(uint8_t timer_id,
 	start_absolute_timer(timer_id, point_in_time, timer_cb, param_cb);
 	return STATUS_OK;
 }
-
+uint32_t sw_timer_get_residual_time(uint8_t timer_id)
+{
+	uint32_t res_time;
+	uint32_t current_time;
+	current_time = gettime();
+	res_time = timer_array[timer_id].abs_exp_timer-current_time;
+	return res_time;
+}
 static void start_absolute_timer(uint8_t timer_id,
 		uint32_t point_in_time,
 		FUNC_PTR handler_cb,
@@ -535,12 +548,30 @@ void hw_overflow_cb(void)
 	/*	ioport_toggle_pin(J2_PIN3); */
 	sys_time++;
 	prog_ocr();
+	#ifdef ENABLE_SLEEP
+	if(sys_sleep ==true)
+	{
+		sys_sleep = true;
+		system_set_sleepmode(SYSTEM_SLEEPMODE_IDLE_2);
+
+		/* Enter into sleep*/
+		system_sleep();
+	}
+	#endif
+	
 }
 
 void hw_expiry_cb(void)
 {
 	if (running_timers > 0) {
 		timer_trigger = true;
+	#ifdef ENABLE_SLEEP
+		if(sys_sleep ==true)
+		{   
+			sys_sleep = false;
+			sw_timer_service();
+		}
+	#endif
 	}
 }
 
@@ -596,7 +627,7 @@ void sw_timer_service(void)
 
 		/* Expired timer if any will be processed here */
 		while (NO_TIMER != expired_timer_queue_head) {
-			uint8_t flags = cpu_irq_save();
+			  flags = cpu_irq_save();
 
 			next_expired_timer
 				= timer_array[expired_timer_queue_head].

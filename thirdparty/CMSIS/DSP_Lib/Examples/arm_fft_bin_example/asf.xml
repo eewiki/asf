@@ -7,6 +7,7 @@
 		<build type="c-source" value="arm_fft_bin_example_f32.c"/>
 		<build type="header-file" value="documentation.h"/>
 		<device-support value="sam4"/>
+		<device-support value="samg"/>
 		<require idref="thirdparty.cmsis.license"/>
 		<info type="gui-flag" value="move-to-root"/>
 	</module>

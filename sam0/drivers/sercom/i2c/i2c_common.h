@@ -422,6 +422,11 @@ struct i2c_packet {
  *		<th>Changelog</th>
  *	</tr>
  *	<tr>
+ *		<td>Fixed incorrect logical mask for determining if a bus error has
+ *          occurred in I2C Slave mode.
+ *      </td>
+ *	</tr>
+ *	<tr>
  *		<td>Initial Release</td>
  *	</tr>
  * </table>

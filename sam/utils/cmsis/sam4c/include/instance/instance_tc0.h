@@ -82,7 +82,7 @@
   #define REG_TC0_QIDR                   (0x400100CCU) /**< \brief (TC0) QDEC Interrupt Disable Register */
   #define REG_TC0_QIMR                   (0x400100D0U) /**< \brief (TC0) QDEC Interrupt Mask Register */
   #define REG_TC0_QISR                   (0x400100D4U) /**< \brief (TC0) QDEC Interrupt Status Register */
-  #define REG_TC0_WPMR                   (0x400100E4U) /**< \brief (TC0) Write Protect Mode Register */
+  #define REG_TC0_WPMR                   (0x400100E4U) /**< \brief (TC0) Write Protection Mode Register */
 #else
   #define REG_TC0_CCR0  (*(__O  uint32_t*)0x40010000U) /**< \brief (TC0) Channel Control Register (channel = 0) */
   #define REG_TC0_CMR0  (*(__IO uint32_t*)0x40010004U) /**< \brief (TC0) Channel Mode Register (channel = 0) */
@@ -123,7 +123,7 @@
   #define REG_TC0_QIDR  (*(__O  uint32_t*)0x400100CCU) /**< \brief (TC0) QDEC Interrupt Disable Register */
   #define REG_TC0_QIMR  (*(__I  uint32_t*)0x400100D0U) /**< \brief (TC0) QDEC Interrupt Mask Register */
   #define REG_TC0_QISR  (*(__I  uint32_t*)0x400100D4U) /**< \brief (TC0) QDEC Interrupt Status Register */
-  #define REG_TC0_WPMR  (*(__IO uint32_t*)0x400100E4U) /**< \brief (TC0) Write Protect Mode Register */
+  #define REG_TC0_WPMR  (*(__IO uint32_t*)0x400100E4U) /**< \brief (TC0) Write Protection Mode Register */
 #endif /* (defined(__ASSEMBLY__) || defined(__IAR_SYSTEMS_ASM__)) */
 
 #endif /* _SAM4C_TC0_INSTANCE_ */

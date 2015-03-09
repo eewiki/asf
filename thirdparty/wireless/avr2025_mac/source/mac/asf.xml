@@ -4,8 +4,6 @@
 			<info type="description" value="summary">
 			All the callbacks from the MAC is included in separate files for ease of implementation.
 			</info>
-            <device-support-alias value="avr2025_mac_pal_support"/>
-            <device-support-alias value="avr2025_mac_pal_soc_support"/>
 			<build type="c-source"      value="src/usr_mcps_data_conf.c"/>
 			<build type="c-source"      value="src/usr_mcps_data_ind.c"/>
 			<build type="c-source"      value="src/usr_mcps_purge_conf.c"/>
@@ -24,13 +22,13 @@
 			<build type="c-source"      value="src/usr_mlme_set_conf.c"/>
 			<build type="c-source"      value="src/usr_mlme_start_conf.c"/>
 			<build type="c-source"      value="src/usr_mlme_sync_loss_ind.c"/>
+            <device-support-alias value="avr2025_mac_pal_support"/>
 		</module>
 		<module type="meta" id="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks#none" caption="All Files are Supported">
 			<info type="description" value="summary">
 			Callbacks are expected to be included in the application itself.
 			</info>
             <device-support-alias value="avr2025_mac_pal_support"/>
-            <device-support-alias value="avr2025_mac_pal_soc_support"/>
 		</module>
 	</select-by-config>
 
@@ -43,16 +41,14 @@
 			<build type="c-source"      value="src/mac_api.c"/>
 			<build type="c-source"      value="src/mac_callback_wrapper.c"/>
 			<require idref="config.thirdparty.wireless.avr2025_mac.source.mac.callbacks"/>
-            <device-support-alias value="avr2025_mac_pal_spi_support"/>
-            <device-support-alias value="avr2025_mac_pal_soc_support"/>
+            <device-support-alias value="avr2025_mac_pal_support"/>
 		</module>
-		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.mac.api#no" caption="MAC Api support disabled">
+		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.mac.api#no" caption="MAC API support disabled">
 			<info type="description" value="summary">
 			MAC API Support disabled (Disabled if NWK Layer(RF4CE) is included)
 			</info>
 			<info type="gui-flag" value="hidden"/>
-            <device-support-alias value="avr2025_mac_pal_spi_support"/>
-            <device-support-alias value="avr2025_mac_pal_soc_support"/>
+            <device-support-alias value="avr2025_mac_pal_support"/>
 		</module>
 	</select-by-config>
 
@@ -73,6 +69,7 @@
 		<build type="c-source"      value="src/mac_misc.c"/>
 		<build type="c-source"      value="src/mac_orphan.c"/>
 		<build type="c-source"      value="src/mac_pib.c"/>
+		<build type="c-source"      value="src/mac_gts.c"/>
 		<build type="c-source"      value="src/mac_poll.c"/>
 		<build type="c-source"      value="src/mac_process_beacon_frame.c"/>
 		<build type="c-source"      value="src/mac_process_tal_tx_frame_status.c"/>
@@ -85,16 +82,17 @@
     	<build type="header-file"   value="inc/mac_data_structures.h"/>
 		<build type="header-file"   value="inc/mac_internal.h"/>
 		<build type="header-file"   value="inc/mac_config.h"/>
-
 		<build type="header-file"   value="inc/mac_security.h"/>
 		<build type="include-path"  value="inc/"/>
+
 		<build type="doxygen-entry-point" value="group_mac"/>
 		<require idref="config.thirdparty.wireless.avr2025_mac.source.mac.api"/>
 		<require idref="thirdparty.wireless.avr2025_mac.includes"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.tal"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.sal"/>
+		<require idref="thirdparty.wireless.avr2025_mac.source.stb"/>
 		<require idref="thirdparty.wireless.avr2025_mac.source.mac.inc"/>
-        <device-support-alias value="avr2025_mac_pal_spi_support"/>
-        <device-support-alias value="avr2025_mac_pal_soc_support"/>
+		<device-support-alias value="avr2025_mac_pal_support"/>
 	</module>
 	
 	<module type="meta" id="thirdparty.wireless.avr2025_mac.source.mac.inc" caption="MAC Includes">
@@ -109,7 +107,6 @@
 		<build type="header-file"	value="inc/mac_msg_type_data_ind.h"/>
 		<build type="include-path"  value="inc/"/>
 		<build type="doxygen-entry-point" value="group_mac"/>
-        <device-support-alias value="avr2025_mac_pal_spi_support"/>
-        <device-support-alias value="avr2025_mac_pal_soc_support"/>
+        <device-support-alias value="avr2025_mac_pal_support"/>
 	</module>
 </asf>

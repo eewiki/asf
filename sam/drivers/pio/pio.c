@@ -102,7 +102,7 @@ void pio_pull_up(Pio *p_pio, const uint32_t ul_mask,
 void pio_set_debounce_filter(Pio *p_pio, const uint32_t ul_mask,
 		const uint32_t ul_cut_off)
 {
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 	/* Set Debouncing, 0 bit field no effect */
 	p_pio->PIO_IFSCER = ul_mask;
 #elif (SAM3XA || SAM3U)
@@ -194,7 +194,7 @@ void pio_set_peripheral(Pio *p_pio, const pio_type_t ul_type,
 	/* Disable interrupts on the pin(s) */
 	p_pio->PIO_IDR = ul_mask;
 
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 	switch (ul_type) {
 	case PIO_PERIPH_A:
 		ul_sr = p_pio->PIO_ABCDSR[0];
@@ -211,7 +211,7 @@ void pio_set_peripheral(Pio *p_pio, const pio_type_t ul_type,
 		ul_sr = p_pio->PIO_ABCDSR[1];
 		p_pio->PIO_ABCDSR[1] &= (~ul_mask & ul_sr);
 		break;
-
+#if (!SAMG)
 	case PIO_PERIPH_C:
 		ul_sr = p_pio->PIO_ABCDSR[0];
 		p_pio->PIO_ABCDSR[0] &= (~ul_mask & ul_sr);
@@ -227,7 +227,7 @@ void pio_set_peripheral(Pio *p_pio, const pio_type_t ul_type,
 		ul_sr = p_pio->PIO_ABCDSR[1];
 		p_pio->PIO_ABCDSR[1] = (ul_mask | ul_sr);
 		break;
-
+#endif
 		/* Other types are invalid in this function */
 	case PIO_INPUT:
 	case PIO_OUTPUT_0:
@@ -284,7 +284,7 @@ void pio_set_input(Pio *p_pio, const uint32_t ul_mask,
 		p_pio->PIO_IFDR = ul_mask;
 	}
 
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 	/* Enable de-glitch or de-bounce if necessary */
 	if (ul_attribute & PIO_DEGLITCH) {
 		p_pio->PIO_IFSCDR = ul_mask;
@@ -448,7 +448,7 @@ uint32_t pio_get_multi_driver_status(const Pio *p_pio)
 }
 
 
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 /**
  * \brief Configure PIO pin internal pull-down.
  *
@@ -516,7 +516,7 @@ void pio_sync_output_write(Pio *p_pio, const uint32_t ul_mask)
 	p_pio->PIO_ODSR = ul_mask;
 }
 
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 /**
  * \brief Configure PIO pin schmitt trigger. By default the Schmitt trigger is
  * active.

@@ -163,8 +163,9 @@ __attribute__((section(".bootloader"), noinline));
 #  define SPM_PAGESIZE  256
 # endif
 #endif
-
+# ifndef FLASH_PAGE_SIZE
 #define FLASH_PAGE_SIZE      (SPM_PAGESIZE)
+#endif
 #define FLASH_SIZE                       (FLASHEND + 1)
 
 #endif

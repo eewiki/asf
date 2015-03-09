@@ -10,7 +10,6 @@
 		<build type="header-file" value="conf_sio2host.h"/>		
 		<build type="header-file" value="conf_uart_serial.h"/>
         <build type="header-file" value="conf_hw_timer.h"/>
-		<build type="define" name="EXTERN_EEPROM_AVAILABLE" value ="0"/>
 
 		<config name="config.thirdparty.wireless.avr2102_rf4control" value="api_parser"/>
 		<config name="config.thirdparty.wireless.addons.sio2host" value="uart"/>

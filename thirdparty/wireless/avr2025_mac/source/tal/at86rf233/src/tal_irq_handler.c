@@ -88,7 +88,7 @@ void trx_irq_handler_cb(void)
 {
 	trx_irq_reason_t trx_irq_cause;
 
-	trx_irq_cause = (trx_irq_reason_t)pal_trx_reg_read(RG_IRQ_STATUS);
+	trx_irq_cause = /* (trx_irq_reason_t)*/pal_trx_reg_read(RG_IRQ_STATUS);
 
 #if (defined BEACON_SUPPORT) || (defined ENABLE_TSTAMP)
 #if (DISABLE_TSTAMP_IRQ == 1)
@@ -168,7 +168,7 @@ void trx_irq_timestamp_handler_cb(void)
  */
 void trx_irq_awake_handler_cb(void)
 {
-	trx_irq_reason_t trx_irq_cause = (trx_irq_reason_t)pal_trx_reg_read(
+	trx_irq_reason_t trx_irq_cause = /*(trx_irq_reason_t)*/pal_trx_reg_read(
 			RG_IRQ_STATUS);
 
 	if (trx_irq_cause & TRX_IRQ_4_CCA_ED_DONE) {

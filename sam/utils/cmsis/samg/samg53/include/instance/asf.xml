@@ -1,0 +1,39 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.samg53.include.instance" caption="SAMG53 instance definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAMG53 peripherals 
+		</info>
+		<!--
+		<build type="include-path" value="."/>
+		-->
+		<build type="header-file" value="instance_adc.h"/>
+		<build type="header-file" value="instance_chipid.h"/>
+		<build type="header-file" value="instance_efc.h"/>
+		<build type="header-file" value="instance_gpbr.h"/>
+		<build type="header-file" value="instance_i2sc0.h"/>
+		<build type="header-file" value="instance_i2sc1.h"/>
+		<build type="header-file" value="instance_matrix.h"/>
+		<build type="header-file" value="instance_mem2mem.h"/>
+		<build type="header-file" value="instance_pdmic0.h"/>
+		<build type="header-file" value="instance_pdmic1.h"/>
+		<build type="header-file" value="instance_pioa.h"/>
+		<build type="header-file" value="instance_piob.h"/>
+		<build type="header-file" value="instance_pmc.h"/>
+		<build type="header-file" value="instance_rstc.h"/>
+		<build type="header-file" value="instance_rtc.h"/>
+		<build type="header-file" value="instance_rtt.h"/>
+		<build type="header-file" value="instance_spi.h"/>
+		<build type="header-file" value="instance_supc.h"/>
+		<build type="header-file" value="instance_tc0.h"/>
+		<build type="header-file" value="instance_tc1.h"/>
+		<build type="header-file" value="instance_twi0.h"/>
+		<build type="header-file" value="instance_twi1.h"/>
+		<build type="header-file" value="instance_twi2.h"/>
+		<build type="header-file" value="instance_uart0.h"/>
+		<build type="header-file" value="instance_uart1.h"/>
+		<build type="header-file" value="instance_usart.h"/>
+		<build type="header-file" value="instance_wdt.h"/>
+		<device-support value="samg53"/>
+		<info type="gui-flag" value="hidden"/>
+	</module>
+</asf>

@@ -1,13 +1,16 @@
 <asf xmlversion="1.0">
 	<select-by-config id="sam0.drivers.sercom.i2c.master" name="config.sam0.drivers.sercom.i2c.master" caption="SERCOM I2C - Master Mode I2C" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20 SERCOM I2C module in Master Mode. Provides a unified interface for the configuration and management of the SERCOM module in I2C mode.
-		</info>
-		<info type="keyword" value="technology">
-			<keyword value="Communication"/>
+			Driver for the SAM D20 SERCOM I2C module in Master Mode. Provides a
+			unified interface for the configuration and management of the
+			SERCOM module in I2C mode.
 		</info>
 
 		<module type="driver" id="sam0.drivers.sercom.i2c.master#polled" caption="SERCOM I2C - Master Mode I2C (Polled APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+
 			<build type="include-path" value="." />
 			<build type="header-file" subtype="api" value="i2c_master.h"/>
 			<build type="header-file" subtype="api" value="i2c_common.h"/>
@@ -21,6 +24,7 @@
 			<build type="doxygen-entry-point" value="asfdoc_samd20_sercom_i2c_group"/>
 			<build type="doxygen-example-path" value="quick_start_master"/>
 			<build type="doxygen-image-path" value="docimg"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_i2c_exqsg"/>
 
 			<device-support value="samd20"/>
 
@@ -32,6 +36,10 @@
 		</module>
 
 		<module type="driver" id="sam0.drivers.sercom.i2c.master#callback" caption="SERCOM I2C - Master Mode I2C (Callback APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+
 			<info type="appnote" value="AT03250"/>
 			<info type="keyword" value="pdf">
 				<keyword value="I2C"/>
@@ -46,7 +54,8 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the I2C in master mode on the SAM D20, both the ASF driver and the peripheral itself.
+				This document describes how to use the I2C in master mode on
+				the SAM D20, both the ASF driver and the peripheral itself.
 			</info>
 
 			<build type="include-path" value="." />
@@ -67,6 +76,7 @@
 			<build type="doxygen-example-path" value="quick_start_master"/>
 			<build type="doxygen-example-path" value="quick_start_master_callback"/>
 			<build type="doxygen-image-path" value="docimg"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_i2c_exqsg"/>
 
 			<device-support value="samd20"/>
 
@@ -80,13 +90,16 @@
 
 	<select-by-config id="sam0.drivers.sercom.i2c.slave" name="config.sam0.drivers.sercom.i2c.slave" caption="SERCOM I2C - Slave Mode I2C" default="callback">
 		<info type="description" value="summary">
-			Driver for the SAM D20 SERCOM I2C module in Slave Mode. Provides a unified interface for the configuration and management of the SERCOM module in I2C mode.
-		</info>
-		<info type="keyword" value="technology">
-			<keyword value="Communication"/>
+			Driver for the SAM D20 SERCOM I2C module in Slave Mode. Provides a
+			unified interface for the configuration and management of the
+			SERCOM module in I2C mode.
 		</info>
 
 		<module type="driver" id="sam0.drivers.sercom.i2c.slave#polled" caption="SERCOM I2C - Slave Mode I2C (Polled APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+
 			<build type="include-path" value="." />
 			<build type="header-file" subtype="api" value="i2c_slave.h"/>
 			<build type="header-file" subtype="api" value="i2c_common.h"/>
@@ -100,6 +113,7 @@
 			<build type="doxygen-entry-point" value="asfdoc_samd20_sercom_i2c_group"/>
 			<build type="doxygen-example-path" value="quick_start_slave"/>
 			<build type="doxygen-image-path" value="docimg"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_i2c_exqsg"/>
 
 			<device-support value="samd20"/>
 
@@ -111,6 +125,10 @@
 		</module>
 
 		<module type="driver" id="sam0.drivers.sercom.i2c.slave#callback" caption="SERCOM I2C - Slave Mode I2C (Callback APIs)">
+			<info type="keyword" value="technology">
+				<keyword value="Communication"/>
+			</info>
+
 			<info type="appnote" value="AT03254"/>
 			<info type="keyword" value="pdf">
 				<keyword value="I2C"/>
@@ -125,7 +143,8 @@
 			</info>
 
 			<info type="description" value="pdf">
-				This document describes how to use the I2C in slave mode on the SAM D20, both the ASF driver and the peripheral itself.
+				This document describes how to use the I2C in slave mode on the
+				SAM D20, both the ASF driver and the peripheral itself.
 			</info>
 
 			<build type="include-path" value="." />
@@ -146,6 +165,7 @@
 			<build type="doxygen-example-path" value="quick_start_slave"/>
 			<build type="doxygen-example-path" value="quick_start_slave_callback"/>
 			<build type="doxygen-image-path" value="docimg"/>
+			<build type="doxygen-quick-start" value="asfdoc_samd20_sercom_i2c_exqsg"/>
 
 			<device-support value="samd20"/>
 

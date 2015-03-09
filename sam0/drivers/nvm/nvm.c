@@ -120,9 +120,9 @@ enum status_code nvm_set_config(
 
 	/* Writing configuration to the CTRLB register */
 	nvm_module->CTRLB.reg =
-			NVMCTRL_CTRLB_SLEEPPRM(config->sleep_power_mode)               |
+			NVMCTRL_CTRLB_SLEEPPRM(config->sleep_power_mode) |
 			((config->manual_page_write & 0x01) << NVMCTRL_CTRLB_MANW_Pos) |
-			NVMCTRL_CTRLB_RWS(config->wait_states)                         |
+			NVMCTRL_CTRLB_RWS(config->wait_states) |
 			((config->disable_cache & 0x01) << NVMCTRL_CTRLB_CACHEDIS_Pos) |
 			NVMCTRL_CTRLB_READMODE(config->cache_readmode);
 
@@ -173,6 +173,8 @@ enum status_code nvm_execute_command(
 		const uint32_t address,
 		const uint32_t parameter)
 {
+	uint32_t temp;
+
 	/* Check that the address given is valid  */
 	if (address > ((uint32_t)_nvm_dev.page_size * _nvm_dev.number_of_pages)){
 		return STATUS_ERR_BAD_ADDRESS;
@@ -180,6 +182,10 @@ enum status_code nvm_execute_command(
 
 	/* Get a pointer to the module hardware instance */
 	Nvmctrl *const nvm_module = NVMCTRL;
+
+	/* turn off cache before issuing flash commands */
+	temp = nvm_module->CTRLB.reg;
+	nvm_module->CTRLB.reg = temp | NVMCTRL_CTRLB_CACHEDIS;
 
 	/* Clear error flags */
 	nvm_module->STATUS.reg &= ~NVMCTRL_STATUS_MASK;
@@ -227,6 +233,13 @@ enum status_code nvm_execute_command(
 
 	/* Set command */
 	nvm_module->CTRLA.reg = command | NVMCTRL_CTRLA_CMDEX_KEY;
+
+	/* Wait for the nvm controller to become ready */
+	while (!nvm_is_ready()) {
+	}
+
+	/* restore the setting */
+	nvm_module->CTRLB.reg = temp;
 
 	return STATUS_OK;
 }
@@ -849,6 +862,11 @@ enum status_code nvm_set_fuses(
 	uint8_t state = _NVM_SET_FUSES_STATE_ERASE_ROW;
 	uint32_t raw_fusebits[2];
 	enum status_code err = STATUS_OK;
+	uint32_t temp;
+
+	/* turn off cache before issuing flash commands */
+	temp = nvm_module->CTRLB.reg;
+	nvm_module->CTRLB.reg = temp | NVMCTRL_CTRLB_CACHEDIS;
 
 	/* If the security bit is set, the auxiliary space cannot be written */
 	if (nvm_module->STATUS.reg & NVMCTRL_STATUS_SB) {
@@ -912,6 +930,9 @@ enum status_code nvm_set_fuses(
 	} while (state != _NVM_SET_FUSES_STATE_END);
 
 	system_interrupt_leave_critical_section();
+
+	/* restore the setting */
+	nvm_module->CTRLB.reg = temp;
 
 	return err;
 }

@@ -431,7 +431,9 @@ void mac_process_disassociate_notification(buffer_t *msg)
 	 * Once a device is disassociated from a coordinator, the coordinator's
 	 * address info should be cleared.
 	 */
-	mac_pib.mac_CoordExtendedAddress = CLEAR_ADDR_64;
+	memset((uint8_t *)&mac_pib.mac_CoordExtendedAddress, 0,
+	        sizeof(mac_pib.mac_CoordExtendedAddress));	
+	//mac_pib.mac_CoordExtendedAddress = (uint64_t)CLEAR_ADDR_64;
 
 	/* The default short address is 0xFFFF. */
 	mac_pib.mac_CoordShortAddress = INVALID_SHORT_ADDRESS;

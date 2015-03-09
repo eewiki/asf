@@ -93,7 +93,7 @@
 /* Matrix slave number */
 #if (SAM3S || SAM4S)
 #define MATRIX_SLAVE_NUM    5
-#elif (SAM3N)
+#elif (SAM3N || SAM4N || SAMG)
 #define MATRIX_SLAVE_NUM    4
 #elif (SAM3XA)
 #define MATRIX_SLAVE_NUM    9
@@ -101,8 +101,6 @@
 #define MATRIX_SLAVE_NUM    10
 #elif (SAM4E)
 #define MATRIX_SLAVE_NUM    6
-#elif (SAM4N)
-#define MATRIX_SLAVE_NUM    4
 #elif (SAM4C)
 #define MATRIX_SLAVE_NUM    8
 #else

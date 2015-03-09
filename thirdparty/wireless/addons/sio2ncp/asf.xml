@@ -3,21 +3,36 @@
 	<info type="description" value="summary">
 		The Serial I/O - NCP (SIO2NCP) is used by the Host Device in a 2p approach for  enabling serial io communication  between the host and the ncp .
 		</info>
-		<module type="component" id="thirdparty.wireless.addons.sio2ncp#uart"     caption="Serial I/O - NCP Using UART">
-			<info type="description" value="summary">
-			Enables Support for  UART communication
-			</info>			
-			<require idref="common.services.basic.serial"/>
-			<build type="c-source"      value="uart/sio2ncp.c"/>
-			<build type="header-file"   value="uart/sio2ncp.h"/>
-			<build type="include-path"  value="uart/"/>
-            <build type="module-config" subtype="required-header-file" value="conf_sio2ncp.h"/>
-            <build type="module-config" subtype="path" value="module_config"/>
-			<device-support value="xmega"/>
-			<device-support value="uc3"/>
-            <device-support value="sam4l"/>
-            <device-support value="megarf"/>
-            <build type="doxygen-entry-point" value="group_sio2ncp_uart"/>			
-		</module>
+		<select-by-device id="thirdparty.wireless.addons.sio2ncp#uart">	
+			<module type="component" id="thirdparty.wireless.addons.sio2ncp#uart#0"     caption="Serial I/O - NCP Using UART">
+				<info type="description" value="summary">
+				Enables Support for  UART communication
+				</info>			
+				<require idref="common.services.basic.serial"/>
+				<build type="c-source"      value="uart/sio2ncp.c"/>
+				<build type="header-file"   value="uart/sio2ncp.h"/>
+				<build type="include-path"  value="uart/"/>
+				<build type="module-config" subtype="required-header-file" value="conf_sio2ncp.h"/>
+				<build type="module-config" subtype="path" value="module_config"/>
+				<device-support value="xmega"/>
+				<device-support value="uc3"/>
+				<device-support value="sam4l"/>
+				<device-support value="megarf"/>
+				<build type="doxygen-entry-point" value="group_sio2ncp_uart"/>			
+			</module>
+			<module type="component" id="thirdparty.wireless.addons.sio2ncp#uart#1"     caption="Serial I/O - NCP Using UART">
+				<info type="description" value="summary">
+				Enables Support for  UART communication
+				</info>			
+				<require idref="sam0.utils.stdio.stdio_serial"/>
+				<build type="c-source"      value="uart/sio2ncp.c"/>
+				<build type="header-file"   value="uart/sio2ncp.h"/>
+				<build type="include-path"  value="uart/"/>
+				<build type="module-config" subtype="required-header-file" value="conf_sio2ncp.h"/>
+				<build type="module-config" subtype="path" value="module_config"/>
+				<device-support value="samd20"/>
+				<build type="doxygen-entry-point" value="group_sio2ncp_uart"/>			
+			</module>
+		</select-by-device>
 	</select-by-config>
 </asf>

@@ -6,6 +6,7 @@
 			the device, including the enabling, disabling and routing to and
 			from various modules within the device.
 		</info>
+
 		<info type="keyword" value="technology">
 			<keyword value="Peripheral Event System"/>
 		</info>
@@ -17,8 +18,9 @@
 		</info>
 
 		<info type="description" value="pdf">
-			This document describes how to use the Peripheral Event System on the SAM D20, both the ASF driver and the peripheral itself.
-		</info>		
+			This document describes how to use the Peripheral Event System on
+			the SAM D20, both the ASF driver and the peripheral itself.
+		</info>
 
 		<build type="include-path" value="."/>
 		<build type="header-file" subtype="api" value="events.h"/>
@@ -28,6 +30,7 @@
 
 		<build type="doxygen-entry-point" value="asfdoc_samd20_events_group"/>
 		<build type="doxygen-example-path" value="quick_start"/>
+		<build type="doxygen-quick-start" value="asfdoc_samd20_events_exqsg"/>
 
 		<device-support value="samd20"/>
 

@@ -76,9 +76,9 @@
  * Setting the time, date and time alarm is done by using Menu option, and
  * the display is updated accordingly.
  *
- * The time alarm is triggered only when the second, minute and hour match the
- * preset values; the date alarm is triggered only when the month and date match
- * the preset values.
+ * The time alarm is triggered only when the second, minute and hour match the 
+ * preset values; the date alarm is triggered only when the month and date
+ * match the preset values. 
  *
  * Generating waveform is done by using Menu option "w" and a menu to perform
  * the following:
@@ -95,10 +95,10 @@
  *     8 - Quit
  *     \endcode
  *
- * \note The example is using RC oscillator by default. This would generate an accuracy
- * problem for the RTC if not calibrated. It is recommended to use an external 32KHz
- * crystal to get high accuracy. How to initialize RTC with external 32KHz crystal can be
- * referred at \ref sam_rtc_quickstart.
+ * \note The example is using RC oscillator by default. This would generate an
+ * accuracy problem for the RTC if not calibrated. It is recommended to use an
+ * external 32KHz crystal to get high accuracy. How to initialize RTC with
+ * external 32KHz crystal can be referred at \ref sam_rtc_quickstart.
  *
  * \note In sam4c_ek board, please use SWD instead of JTAG because RTCOUT share pin with
  * JTAG interface. Otherwise there is a debug issue when enable wave output.
@@ -126,8 +126,9 @@
  *     i - Set time alarm
  *     m - Set date alarm
  *    \endcode
- * -# Press one of the keys listed in the menu to perform the corresponding action.
- *
+ * -# Press one of the keys listed in the menu to perform the corresponding
+ * action.
+ * 
  */
 
 #include "asf.h"
@@ -254,14 +255,18 @@ static uint32_t get_new_time(void)
 				--i;
 
 				/* Delimiter ':' for time is uneditable */
-				if (!((gs_uc_rtc_time[i]) >= '0' && (gs_uc_rtc_time[i]) <= '9') && i > 0) {
+				if (!((gs_uc_rtc_time[i]) >= '0' && (gs_uc_rtc_time[i]) <= '9')
+						&& i > 0) {
 					puts("\b \b");
 					--i;
 				}
 			}
 		}
 
-		/* End of gs_uc_rtc_time[], no more input except the above DEL/BS, or enter to end. */
+		/*
+		 * End of gs_uc_rtc_time[], no more input except the above DEL/BS,
+		 * or enter to end.
+		 */
 		if (!gs_uc_rtc_time[i]) {
 			continue;
 		}
@@ -350,14 +355,18 @@ static uint32_t get_new_date(void)
 				--i;
 
 				/* Delimiter '/' for date is uneditable */
-				if (!((gs_uc_date[i]) >= '0' && (gs_uc_date[i]) <='9') && i > 0) {
+				if (!((gs_uc_date[i]) >= '0' && (gs_uc_date[i]) <='9')
+						&& i > 0) {
 					puts("\b \b");
 					--i;
 				}
 			}
 		}
 
-		/* End of gs_uc_rtc_time[], no more input except the above DEL/BS, or enter to end. */
+		/*
+		 * End of gs_uc_rtc_time[], no more input except the above DEL/BS,
+		 * or enter to end.
+		 */
 		if (!gs_uc_date[i]) {
 			continue;
 		}
@@ -377,18 +386,24 @@ static uint32_t get_new_date(void)
 	}
 
 	/* MM-DD-YY */
-	gs_ul_new_month = char_to_digit(gs_uc_date[0]) * 10 + char_to_digit(gs_uc_date[1]);
-	gs_ul_new_day = char_to_digit(gs_uc_date[3]) * 10 + char_to_digit(gs_uc_date[4]);
+	gs_ul_new_month = char_to_digit(gs_uc_date[0]) * 10
+			+ char_to_digit(gs_uc_date[1]);
+	gs_ul_new_day = char_to_digit(gs_uc_date[3]) * 10
+			+ char_to_digit(gs_uc_date[4]);
 	if (i != 6) {
 		/* For 'Set Date' option, get the input new year and new week. */
 		gs_ul_new_year = char_to_digit(gs_uc_date[6]) * 1000 +
 				char_to_digit(gs_uc_date[7]) * 100 +
 				char_to_digit(gs_uc_date[8]) * 10 +
 				char_to_digit(gs_uc_date[9]);
-		gs_ul_new_week = calculate_week(gs_ul_new_year, gs_ul_new_month, gs_ul_new_day);
+		gs_ul_new_week = calculate_week(gs_ul_new_year, gs_ul_new_month,
+				gs_ul_new_day);
 	}
 
-	/* Success input. Verification of data is left to RTC internal Error Checking. */
+	/*
+	 * Success input. Verification of data is left to RTC internal Error
+	 * Checking.
+	 */
 	return 0;
 }
 
@@ -555,7 +570,8 @@ int main(void)
 			}
 
 			/* Only 'mm/dd' is input. */
-			if (gs_ul_new_month != 0xFFFFFFFF && gs_ul_new_year == 0xFFFFFFFF) {
+			if (gs_ul_new_month != 0xFFFFFFFF &&
+						gs_ul_new_year == 0xFFFFFFFF) {
 				puts("\n\r Not Set for no year field!\r");
 			}
 
@@ -607,7 +623,8 @@ int main(void)
 
 			if (gs_ul_new_year != 0xFFFFFFFF && (gs_uc_date[2] == '/')
 					&& (gs_uc_date[5] == '/')) {
-				if (rtc_set_date_alarm(RTC, 1, gs_ul_new_month, 1, gs_ul_new_day)) {
+				if (rtc_set_date_alarm(RTC, 1, gs_ul_new_month, 1,
+						gs_ul_new_day)) {
 					puts("\n\r Date alarm not set, invalid input!\r");
 				} else {
 					printf("\n\r Date alarm is set on %02u/%02u/%4u!",

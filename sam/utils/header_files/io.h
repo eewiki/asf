@@ -97,4 +97,14 @@
 #  include "sam4c.h"
 #endif
 
+/* SAMG51 series */
+#if (SAMG51)
+#  include "samg51.h"
+#endif
+
+/* SAMG53 series */
+#if (SAMG53)
+#  include "samg53.h"
+#endif
+
 #endif /* _SAM_IO_ */

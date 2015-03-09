@@ -4,12 +4,14 @@
 		This file defines all structures and symbols for SAM4C
 		</info>
 		<build type="header-file" value="sam4c.h"/>
-		<build type="header-file" value="sam4c_0.h"/>
-		<build type="header-file" value="sam4c_1.h"/>
 		<build type="header-file" value="sam4c8c_0.h"/>
 		<build type="header-file" value="sam4c8c_1.h"/>
 		<build type="header-file" value="sam4c16c_0.h"/>
 		<build type="header-file" value="sam4c16c_1.h"/>
+		<build type="header-file" value="sam4c32c_0.h"/>
+		<build type="header-file" value="sam4c32c_1.h"/>
+		<build type="header-file" value="sam4c32e_0.h"/>
+		<build type="header-file" value="sam4c32e_1.h"/>
 		<build type="header-file" value="system_sam4c.h"/>
 		<build type="include-path" value="."/>
 		<info type="gui-flag" value="hidden"/>

@@ -69,6 +69,7 @@
 /**
  * @brief Structure to search for a buffer to be removed from a queue
  */
+__PACK__DATA__
 typedef struct
 #if !defined(__DOXYGEN__)
 		search_tag
@@ -113,7 +114,7 @@ typedef struct
 	 */
 	uint8_t size;
 } queue_t;
-
+__PACK__RST_DATA__
 /* === Externals =========================================================== */
 
 /* === Prototypes ========================================================== */

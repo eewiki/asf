@@ -1,8 +1,8 @@
 <asf xmlversion="1.0">
-	<project force-caption="true" force-description="true" caption="MAC NoBeacon Application Coordinator ATmegarfr2-ATmega256RFR2 Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.coord.ncp.atmega256rfr2_xplained_pro">
+	<project caption="MAC No Beacon Application Coordinator ATmegarfr2-ATmega256RFR2 Xplained Pro" id="thirdparty.wireless.avr2025_mac.apps.mac.no_beacon.coord.ncp.atmega256rfr2_xplained_pro" force-caption="true" force-description="true">
 		<info type="description" value="summary">
-		The basic MAC Example Nobeacon Application deploys a nonbeacon-enabled network.
-		</info>	
+		The basic MAC Example No Beacon Application deploys a No beacon-enabled network with star topology.
+		</info>
 		<build type="include-path" value="."/>
 		<build type="header-file" value="conf_board.h"/>
 		<build type="header-file" value="conf_clock.h"/>

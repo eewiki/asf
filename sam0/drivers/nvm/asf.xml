@@ -6,6 +6,7 @@
 			and from the various non-volatile memories of the device, including
 			executable FLASH memory and user configuration pages.
 		</info>
+
 		<info type="keyword" value="technology">
 			<keyword value="Memory" />
 		</info>
@@ -17,7 +18,9 @@
 		</info>
 
 		<info type="description" value="pdf">
-			This document describes how to use the Non-Volatile Memory Controller on the SAM D20, both the ASF driver and the peripheral itself.
+			This document describes how to use the Non-Volatile Memory
+			Controller on the SAM D20, both the ASF driver and the peripheral
+			itself.
 		</info>
 
 		<build type="include-path" value="."/>
@@ -29,6 +32,7 @@
 
 		<build type="doxygen-entry-point" value="asfdoc_samd20_nvm_group"/>
 		<build type="doxygen-example-path" value="quick_start_basic"/>
+		<build type="doxygen-quick-start" value="asfdoc_samd20_nvm_exqsg"/>
 
 		<device-support value="samd20"/>
 

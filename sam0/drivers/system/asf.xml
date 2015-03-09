@@ -5,6 +5,7 @@
 			interface for the configuration and management of the core device
 			functionality required for a functional system.
 		</info>
+
 		<info type="keyword" value="technology">
 			<keyword value="I/O" />
 			<keyword value="CPU" />
@@ -20,7 +21,8 @@
 		</info>
 
 		<info type="description" value="pdf">
-			This document describes how to use the core system modules on the SAM D20, both the ASF driver and the peripheral itself.
+			This document describes how to use the core system modules on the
+			SAM D20, both the ASF driver and the peripheral itself.
 		</info>
 
 		<build type="include-path" value="."/>

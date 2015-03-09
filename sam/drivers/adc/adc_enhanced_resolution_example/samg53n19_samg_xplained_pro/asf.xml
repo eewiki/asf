@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="ADC Enhanced Resolution Example on SAMG53 Xplained Pro" id="sam.drivers.adc.adc_enhanced_resolution_example.samg53n19_samg_xplained_pro">
+		<info type="description" value="summary">
+		Enhanced resolution example of ADC on SAMG53 Xplained Pro.
+		</info>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<build type="header-file" value="conf_uart_serial.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<require idref="sam.drivers.adc.adc_enhanced_resolution_example"/>
+		<require idref="board.samg53_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="doxygen"/>
+		<device-support value="atsamg53n19"/>
+	</project>
+</asf>

@@ -1604,6 +1604,27 @@ enum status_code spi_select_slave(
   * </table>
   *
   * <i>\b (1) Not available in all silicon revisions.</i>
+  *
+  *
+  * \page asfdoc_samd20_sercom_spi_document_revision_history Document Revision History
+  *
+  * <table>
+  *	<tr>
+  *		<th>Doc. Rev.</td>
+  *		<th>Date</td>
+  *		<th>Comments</td>
+  *	</tr>
+  *	<tr>
+  *		<td>B</td>
+  *		<td>11/2013</td>
+  *		<td>Replaced the pad multiplexing documentation with a condensed table.</td>
+  *	</tr>
+  *	<tr>
+  *		<td>A</td>
+  *		<td>06/2013</td>
+  *		<td>Initial release</td>
+  *	</tr>
+  * </table>
   */
 
 #endif /* SPI_H_INCLUDED */

@@ -301,7 +301,7 @@ uint8_t tfa_ed_sample(void)
 	pal_timer_delay(TAL_CONVERT_SYMBOLS_TO_US(ED_SAMPLE_DURATION_SYM));
 	do {
 		trx_irq_cause
-			= (trx_irq_reason_t)pal_trx_reg_read(RG_IRQ_STATUS);
+			= pal_trx_reg_read(RG_IRQ_STATUS);
 	} while ((trx_irq_cause & TRX_IRQ_4_CCA_ED_DONE) !=
 			TRX_IRQ_4_CCA_ED_DONE);
 

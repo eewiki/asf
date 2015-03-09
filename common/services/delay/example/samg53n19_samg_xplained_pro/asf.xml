@@ -1,0 +1,14 @@
+<asf xmlversion="1.0">
+	<project caption="SAMG53-Xplained-Pro Common Delay Service Example" id="common.services.delay.example.samg53_xplained_pro">
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_board.h"/>
+		<build type="header-file" value="conf_clock.h"/>
+		<require idref="common.services.delay.example"/>
+		<require idref="common.services.basic.gpio"/>
+		<require idref="board.samg53_xplained_pro"/>
+		<generator value="iarewarm"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<device-support value="atsamg53n19"/>
+	</project>
+</asf>

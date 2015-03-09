@@ -145,6 +145,12 @@
 #define BUTTON_0_ACTIVE           SW0_ACTIVE
 #define BUTTON_0_INACTIVE         SW0_INACTIVE
 #define BUTTON_0_SUPC_INPUT       SW0_SUPC_INPUT
+
+#define PIN_PUSHBUTTON_0_MASK     PIO_PA2
+#define PIN_PUSHBUTTON_0_PIO      PIOA
+#define PIN_PUSHBUTTON_0_ID       ID_PIOA
+#define PIN_PUSHBUTTON_0_TYPE     PIO_INPUT
+#define PIN_PUSHBUTTON_0_ATTR     (PIO_PULLUP | PIO_DEBOUNCE | PIO_IT_RISE_EDGE)
 //@}
 
 //! Number of on-board buttons
@@ -467,7 +473,7 @@
 
 
 
-//! \name IO1 led definitions */
+//! \name OLED Xplained Pro LED definitions */
 //@{
 #define IO1_LED1_PIN                  EXT3_PIN_7
 #define IO1_LED1_ACTIVE               false
@@ -482,7 +488,7 @@
 #define IO1_LED3_INACTIVE             !IO1_LED3_ACTIVE
 //@}
 
-//! \name IO1 button definitions */
+//! \name OLED Xplained Pro button definitions */
 //@{
 /** Push button #1 definition. Attributes = pull-up + debounce + interrupt on rising edge. */
 #define PUSHBUTTON_1_NAME    "BUTTON 1"

@@ -90,6 +90,10 @@
  */
 #define GET_FINAL_CAP(spec)             (((spec) & 0x0F00) >> 8)
 
+/*
+ * Extract the GTS permit from GTS Spec.
+ */
+#define GET_GTS_PERMIT(spec)            (((spec) & 0x80) >> 7)
 /* === Globals ============================================================= */
 
 /* === Prototypes ========================================================== */
@@ -184,7 +188,7 @@ void mac_process_beacon_frame(buffer_t *beacon)
 					mac_parse_data.mac_payload_data.beacon_data.superframe_spec);
 
 			/*
-			 * In a beacon-enabled network with the batterylife
+			 * In a beacon-enabled network with the battery life
 			 *extension
 			 * enabled, the first backoff slot boundary is computed
 			 *after the
@@ -224,6 +228,37 @@ void mac_process_beacon_frame(buffer_t *beacon)
 					+= mac_pib.mac_BattLifeExtPeriods *
 						aUnitBackoffPeriod;
 			}
+#ifdef GTS_SUPPORT
+			mac_pib.mac_GTSPermit = GET_GTS_PERMIT(mac_parse_data.mac_payload_data.beacon_data.gts_spec);
+
+			if(mac_parse_data.mac_payload_data.beacon_data.gts_spec & 0x07)
+			{
+				mac_parse_bcn_gts_info(mac_parse_data.mac_payload_data.beacon_data.gts_spec & 0x07,
+									   mac_parse_data.mac_payload_data.beacon_data.gts_direction,
+									   mac_parse_data.mac_payload_data.beacon_data.gts_list);
+			}
+			{
+				uint8_t table_index;
+				gts_char_t gts_char;
+				for(table_index = 0; table_index < MAX_GTS_ON_DEV; table_index++)
+				{
+					if(GTS_STATE_REQ_SENT == mac_dev_gts_table[table_index].GtsState
+					&& 0 < mac_dev_gts_table[table_index].GtsPersistCount
+					&& 0 == --mac_dev_gts_table[table_index].GtsPersistCount)
+					{
+						gts_char.GtsCharType = GTS_ALLOCATE;
+						gts_char.GtsDirection = table_index & 0x01;
+						gts_char.GtsLength = mac_dev_gts_table[table_index].GtsLength;
+						gts_char.Reserved = 0;
+						mac_dev_gts_table[table_index].GtsState = GTS_STATE_IDLE;
+						mac_dev_gts_table[table_index].GtsLength = 0;
+						mac_gen_mlme_gts_conf((buffer_t *)mac_dev_gts_table[table_index].
+						GtsReq_ptr, MAC_NO_DATA, gts_char);
+					}
+				}
+			}
+
+#endif /* GTS_SUPPORT */
 		} /* (MAC_PAN_COORD_STARTED != mac_state) */
 	} /* (MAC_SCAN_IDLE == mac_scan_state) */
 

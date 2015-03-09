@@ -1,13 +1,13 @@
 <asf xmlversion="1.0">
-	<module type="application" id="sam.drivers.adc.sam4n.unit_tests" caption="Unit tests for SAM4N driver">
+	<module type="application" id="sam.drivers.adc.unit_tests" caption="Unit tests for SAM ADC driver">
 		<info type="description" value="summary">
-		Unit test for SAM4N ADC driver.
+		Unit test for SAM ADC driver.
 		</info>
 		<build type="c-source" value="unit_tests.c"/>
 		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
 		<build type="include-path" value="."/>
 		<device-support value="sam4n"/>
-		<require idref="sam.drivers.adc.sam4n"/>
+		<require idref="sam.drivers.adc"/>
 		<require idref="sam.drivers.tc"/>
 		<require idref="sam.drivers.pmc"/>
 		<require idref="common.services.delay"/>

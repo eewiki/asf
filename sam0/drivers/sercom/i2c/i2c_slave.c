@@ -417,8 +417,8 @@ enum status_code i2c_slave_write_packet_wait(
 	}
 
 	/* Check if there was an error in last transfer */
-	if (i2c_hw->STATUS.reg & (SERCOM_I2CS_STATUS_BUSERR ||
-			SERCOM_I2CS_STATUS_COLL || SERCOM_I2CS_STATUS_LOWTOUT)) {
+	if (i2c_hw->STATUS.reg & (SERCOM_I2CS_STATUS_BUSERR |
+			SERCOM_I2CS_STATUS_COLL | SERCOM_I2CS_STATUS_LOWTOUT)) {
 		return STATUS_ERR_IO;
 	}
 
@@ -536,8 +536,8 @@ enum status_code i2c_slave_read_packet_wait(
 	}
 
 	/* Check if there was an error in the last transfer */
-	if (i2c_hw->STATUS.reg & (SERCOM_I2CS_STATUS_BUSERR ||
-			SERCOM_I2CS_STATUS_COLL || SERCOM_I2CS_STATUS_LOWTOUT)) {
+	if (i2c_hw->STATUS.reg & (SERCOM_I2CS_STATUS_BUSERR |
+			SERCOM_I2CS_STATUS_COLL | SERCOM_I2CS_STATUS_LOWTOUT)) {
 		return STATUS_ERR_IO;
 	}
 	/* Check direction */

@@ -52,13 +52,16 @@
 /* === PROTOTYPES ========================================================== */
 
 /* === GLOBALS ========================================================== */
+#if SAMD20
+static struct usart_module cdc_uart_module;
+#else
 static usart_serial_options_t usart_serial_options = {
 	.baudrate     = USART_HOST_BAUDRATE,
 	.charlength   = USART_HOST_CHAR_LENGTH,
 	.paritytype   = USART_HOST_PARITY,
 	.stopbits     = USART_HOST_STOP_BITS
 };
-
+#endif
 /**
  * Receive buffer
  * The buffer size is defined in sio2host.h
@@ -84,17 +87,39 @@ static uint8_t serial_rx_count;
 
 void sio2host_init(void)
 {
+#if SAMD20
+	struct usart_config cdc_uart_config;
+    /* Configure USART for unit test output */
+    usart_get_config_defaults(&cdc_uart_config);
+    cdc_uart_config.mux_setting     = EDBG_CDC_SERCOM_MUX_SETTING; 
+    cdc_uart_config.pinmux_pad3     = EDBG_CDC_SERCOM_PINMUX_PAD3; 
+    cdc_uart_config.pinmux_pad2     = EDBG_CDC_SERCOM_PINMUX_PAD2; 
+    cdc_uart_config.baudrate        = USART_HOST_BAUDRATE;
+    stdio_serial_init(&cdc_uart_module, USART_HOST,&cdc_uart_config);
+    usart_enable(&cdc_uart_module);
+    /* Enable transceivers */
+    usart_enable_transceiver(&cdc_uart_module, USART_TRANSCEIVER_TX);
+    usart_enable_transceiver(&cdc_uart_module, USART_TRANSCEIVER_RX);
+#else
 	stdio_serial_init(USART_HOST, &usart_serial_options);
+#endif
 	USART_HOST_RX_ISR_ENABLE();
 }
 
 uint8_t sio2host_tx(uint8_t *data, uint8_t length)
 {
+#if SAMD20
+	status_code_genare_t status;
+#else
 	status_code_t status;
+#endif /* SAMD20 */
+
 	do {
-		status = usart_serial_write_packet(USART_HOST,
-				(const uint8_t *)data,
-				length);
+#if SAMD20
+status = usart_serial_write_packet(&cdc_uart_module,(const uint8_t *)data,length);
+#else 
+status = usart_serial_write_packet(USART_HOST,(const uint8_t *)data,length);
+#endif
 	} while (status != STATUS_OK);
 	return length;
 }
@@ -179,11 +204,19 @@ int sio2host_getchar_nowait(void)
 	}
 }
 
+#if SAMD20
+void USART_HOST_ISR_VECT(uint8_t instance)
+#else 
 USART_HOST_ISR_VECT()
+#endif
 {
 	uint8_t temp;
-
+#if SAMD20
+ 	usart_serial_read_packet(&cdc_uart_module, &temp, 1);
+#else 
 	usart_serial_read_packet(USART_HOST, &temp, 1);
+#endif
+
 	/* Introducing critical section to avoid buffer corruption. */
 	cpu_irq_disable();
 

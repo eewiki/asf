@@ -1,0 +1,18 @@
+<asf xmlversion="1.0">
+	<module type="application" id="sam.drivers.i2sc.unit_tests" caption="Set of unit tests for I2SC - Inter-IC Sound Controller">
+		<info type="description" value="summary">
+		Unit test for the I2SC - Inter-IC Sound Controller module.
+		</info>
+		<build type="c-source" value="unit_tests.c"/>
+		<build type="module-config" subtype="required-header-file" value="conf_test.h"/>
+		<build type="include-path" value="."/>
+		<device-support value="samg53"/>
+		<require idref="sam.drivers.i2sc"/>
+		<require idref="sam.drivers.pdc"/>
+		<require idref="common.services.delay"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.utils.stdio.stdio_serial"/>
+		<require idref="common.utils.unit_test"/>
+		<info type="gui-flag" value="move-to-root"/>
+	</module>
+</asf>

@@ -1,0 +1,12 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.utils.cmsis.samg53.include" caption="SAMG53 part definitions">
+		<info type="description" value="summary">
+		This file defines all structures and symbols for SAMG53
+		</info>
+		<build type="header-file" value="samg53.h"/>
+		<build type="header-file" value="samg53g19.h"/>
+		<build type="header-file" value="samg53n19.h"/>
+		<info type="gui-flag" value="hidden"/>
+		<device-support value="samg53"/>
+	</module>
+</asf>

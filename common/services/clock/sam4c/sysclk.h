@@ -211,6 +211,14 @@ extern "C" {
 #define CPCLK_SRC_MCK            4   //!< Use PLLBCK as coprocessor master source clock
 //@}
 
+/**
+ * \name External Crystal Oscillator
+ *
+ * It depends on the actual XTAL used on the board. 
+ * On SAM4C-EK, it is 8M oscilator in used. 
+ */
+#define CHIP_FREQ_XTAL_8M               (8000000UL)
+
 //! \name Coprocessor Master Clock Prescalers (CPMCK)
 //@{
 #define CPCLK_PRES_MIN          1     //!< Minimal value for coprocessor master clock prescaler

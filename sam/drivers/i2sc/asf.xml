@@ -1,0 +1,17 @@
+<asf xmlversion="1.0">
+	<module type="driver" id="sam.drivers.i2sc" caption="I2SC - Inter-IC Sound Controller">
+		<info type="description" value="summary">
+		Driver for the I2SC - Inter-IC Sound Controller module.
+		I2SC provides a 5-wire, bidirectional, synchronous, digital audio link with off-chip audio devices: ISDI, ISDO, IWS, ISCK and IMCK pins.
+		</info>
+		<build type="c-source" value="i2sc.c"/>
+		<build type="header-file" subtype="api" value="i2sc.h"/>
+		<build type="include-path" value="."/>
+		<build type="doxygen-entry-point" value="group_sam_drivers_i2sc"/>
+		<device-support value="samg53"/>
+		<require idref="sam.utils"/>
+		<require idref="common.services.basic.clock"/>
+		<require idref="common.services.basic.sleepmgr"/>
+		<generator value="doxygen-module" default-mcu="unspecified-samg53"/>
+	</module>
+</asf>

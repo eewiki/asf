@@ -51,9 +51,9 @@
 #define USART_HOST_CHAR_LENGTH    USART_CHSIZE_8BIT_gc
 #define USART_HOST_PARITY         USART_PMODE_DISABLED_gc
 #define USART_HOST_STOP_BITS      1
-/* ! @} */
 
 #define USART_HOST_RX_ISR_ENABLE() usart_rx_complete_interrupt_enable(USART_HOST)
-#define USART_HOST_ISR_VECT()     ISR(USART1_RX_vect)
+#define USART_HOST_ISR_VECT()      ISR(USART1_RX_vect)
+/* ! @} */
 
 #endif /* CONF_SIO2HOST_H_INCLUDED */

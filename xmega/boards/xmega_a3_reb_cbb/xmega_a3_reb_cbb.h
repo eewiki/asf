@@ -1,12 +1,12 @@
 /**
  * \file
  *
- * \brief XMEGA-A3BU-XPLAINED board header file.
+ * \brief XMEGA_A3_REB_CBB board header file.
  *
  * This file contains definitions and services related to the features of the
- * XMEGA-A3BU Xplained board.
+ * REB Controller Base Board.
  *
- * To use this board define BOARD=XMEGA_A3BU_XPLAINED.
+ * To use this board define BOARD=XMEGA_A3_REB_CBB.
  *
  * Copyright (c) 2011 - 2013 Atmel Corporation. All rights reserved.
  *
@@ -144,7 +144,7 @@
  */
 
 /**
- * \defgroup xmega_a3bu_xplained_config_group Configuration options
+ * \defgroup xmega_a3_reb_config_group Configuration options
  * @{
  */
 

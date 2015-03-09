@@ -232,15 +232,45 @@
 		<generator value="doxygen"/>
 		<device-support value="sam4s"/>
 	</project>
-	<project id="common.applications.user_application.user_board.sam4e" caption="User board project template for SAM4E" type="template" default-mcu="unspecified-sam4e">
+	<project id="common.applications.user_application.user_board.sam4e8c" caption="User board project template for SAM4E8C" type="template">
 		<info type="description" value="summary">
-		User board project template for SAM4E.
+		User board project template for SAM4E8C.
 		</info>
 		<require idref="common.applications.user_application.user_board.common"/>
 		<require idref="board.user_board.sam4e"/>
 		<generator value="as5_arm_template"/>
 		<generator value="doxygen"/>
-		<device-support value="sam4e"/>
+		<device-support value="atsam4e8c"/>
+	</project>
+	<project id="common.applications.user_application.user_board.sam4e8e" caption="User board project template for SAM4E8E" type="template">
+		<info type="description" value="summary">
+		User board project template for SAM4E8E.
+		</info>
+		<require idref="common.applications.user_application.user_board.common"/>
+		<require idref="board.user_board.sam4e"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4e8e"/>
+	</project>
+	<project id="common.applications.user_application.user_board.sam4e16c" caption="User board project template for SAM4E16C" type="template">
+		<info type="description" value="summary">
+		User board project template for SAM4E16C.
+		</info>
+		<require idref="common.applications.user_application.user_board.common"/>
+		<require idref="board.user_board.sam4e"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4e16c"/>
+	</project>
+	<project id="common.applications.user_application.user_board.sam4e16e" caption="User board project template for SAM4E16E" type="template">
+		<info type="description" value="summary">
+		User board project template for SAM4E16E.
+		</info>
+		<require idref="common.applications.user_application.user_board.common"/>
+		<require idref="board.user_board.sam4e"/>
+		<generator value="as5_arm_template"/>
+		<generator value="doxygen"/>
+		<device-support value="atsam4e16e"/>
 	</project>
 	<project id="common.applications.user_application.user_board.sam4lc4a" caption="User board project template for SAM4LC4A" type="template">
 		<info type="description" value="summary">

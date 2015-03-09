@@ -78,16 +78,16 @@
   #define REG_PIOC_OWDR                     (0x4800C0A4U) /**< \brief (PIOC) Output Write Disable */
   #define REG_PIOC_OWSR                     (0x4800C0A8U) /**< \brief (PIOC) Output Write Status Register */
   #define REG_PIOC_AIMER                    (0x4800C0B0U) /**< \brief (PIOC) Additional Interrupt Modes Enable Register */
-  #define REG_PIOC_AIMDR                    (0x4800C0B4U) /**< \brief (PIOC) Additional Interrupt Modes Disables Register */
+  #define REG_PIOC_AIMDR                    (0x4800C0B4U) /**< \brief (PIOC) Additional Interrupt Modes Disable Register */
   #define REG_PIOC_AIMMR                    (0x4800C0B8U) /**< \brief (PIOC) Additional Interrupt Modes Mask Register */
   #define REG_PIOC_ESR                      (0x4800C0C0U) /**< \brief (PIOC) Edge Select Register */
   #define REG_PIOC_LSR                      (0x4800C0C4U) /**< \brief (PIOC) Level Select Register */
   #define REG_PIOC_ELSR                     (0x4800C0C8U) /**< \brief (PIOC) Edge/Level Status Register */
-  #define REG_PIOC_FELLSR                   (0x4800C0D0U) /**< \brief (PIOC) Falling Edge/Low Level Select Register */
-  #define REG_PIOC_REHLSR                   (0x4800C0D4U) /**< \brief (PIOC) Rising Edge/ High Level Select Register */
+  #define REG_PIOC_FELLSR                   (0x4800C0D0U) /**< \brief (PIOC) Falling Edge/Low-Level Select Register */
+  #define REG_PIOC_REHLSR                   (0x4800C0D4U) /**< \brief (PIOC) Rising Edge/ High-Level Select Register */
   #define REG_PIOC_FRLHSR                   (0x4800C0D8U) /**< \brief (PIOC) Fall/Rise - Low/High Status Register */
-  #define REG_PIOC_WPMR                     (0x4800C0E4U) /**< \brief (PIOC) Write Protect Mode Register */
-  #define REG_PIOC_WPSR                     (0x4800C0E8U) /**< \brief (PIOC) Write Protect Status Register */
+  #define REG_PIOC_WPMR                     (0x4800C0E4U) /**< \brief (PIOC) Write Protection Mode Register */
+  #define REG_PIOC_WPSR                     (0x4800C0E8U) /**< \brief (PIOC) Write Protection Status Register */
   #define REG_PIOC_SCHMITT                  (0x4800C100U) /**< \brief (PIOC) Schmitt Trigger Register */
   #define REG_PIOC_DRIVER1                  (0x4800C118U) /**< \brief (PIOC) I/O Drive Register 1 */
   #define REG_PIOC_DRIVER2                  (0x4800C11CU) /**< \brief (PIOC) I/O Drive Register 2 */
@@ -127,16 +127,16 @@
   #define REG_PIOC_OWDR    (*(__O  uint32_t*)0x4800C0A4U) /**< \brief (PIOC) Output Write Disable */
   #define REG_PIOC_OWSR    (*(__I  uint32_t*)0x4800C0A8U) /**< \brief (PIOC) Output Write Status Register */
   #define REG_PIOC_AIMER   (*(__O  uint32_t*)0x4800C0B0U) /**< \brief (PIOC) Additional Interrupt Modes Enable Register */
-  #define REG_PIOC_AIMDR   (*(__O  uint32_t*)0x4800C0B4U) /**< \brief (PIOC) Additional Interrupt Modes Disables Register */
+  #define REG_PIOC_AIMDR   (*(__O  uint32_t*)0x4800C0B4U) /**< \brief (PIOC) Additional Interrupt Modes Disable Register */
   #define REG_PIOC_AIMMR   (*(__I  uint32_t*)0x4800C0B8U) /**< \brief (PIOC) Additional Interrupt Modes Mask Register */
   #define REG_PIOC_ESR     (*(__O  uint32_t*)0x4800C0C0U) /**< \brief (PIOC) Edge Select Register */
   #define REG_PIOC_LSR     (*(__O  uint32_t*)0x4800C0C4U) /**< \brief (PIOC) Level Select Register */
   #define REG_PIOC_ELSR    (*(__I  uint32_t*)0x4800C0C8U) /**< \brief (PIOC) Edge/Level Status Register */
-  #define REG_PIOC_FELLSR  (*(__O  uint32_t*)0x4800C0D0U) /**< \brief (PIOC) Falling Edge/Low Level Select Register */
-  #define REG_PIOC_REHLSR  (*(__O  uint32_t*)0x4800C0D4U) /**< \brief (PIOC) Rising Edge/ High Level Select Register */
+  #define REG_PIOC_FELLSR  (*(__O  uint32_t*)0x4800C0D0U) /**< \brief (PIOC) Falling Edge/Low-Level Select Register */
+  #define REG_PIOC_REHLSR  (*(__O  uint32_t*)0x4800C0D4U) /**< \brief (PIOC) Rising Edge/ High-Level Select Register */
   #define REG_PIOC_FRLHSR  (*(__I  uint32_t*)0x4800C0D8U) /**< \brief (PIOC) Fall/Rise - Low/High Status Register */
-  #define REG_PIOC_WPMR    (*(__IO uint32_t*)0x4800C0E4U) /**< \brief (PIOC) Write Protect Mode Register */
-  #define REG_PIOC_WPSR    (*(__I  uint32_t*)0x4800C0E8U) /**< \brief (PIOC) Write Protect Status Register */
+  #define REG_PIOC_WPMR    (*(__IO uint32_t*)0x4800C0E4U) /**< \brief (PIOC) Write Protection Mode Register */
+  #define REG_PIOC_WPSR    (*(__I  uint32_t*)0x4800C0E8U) /**< \brief (PIOC) Write Protection Status Register */
   #define REG_PIOC_SCHMITT (*(__IO uint32_t*)0x4800C100U) /**< \brief (PIOC) Schmitt Trigger Register */
   #define REG_PIOC_DRIVER1 (*(__IO uint32_t*)0x4800C118U) /**< \brief (PIOC) I/O Drive Register 1 */
   #define REG_PIOC_DRIVER2 (*(__IO uint32_t*)0x4800C11CU) /**< \brief (PIOC) I/O Drive Register 2 */

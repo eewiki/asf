@@ -68,7 +68,7 @@ extern "C" {
 //! @{
 #define EVK1100                     1  //!< AT32UC3A EVK1100 board.
 #define EVK1101                     2  //!< AT32UC3B EVK1101 board.
-#define UC3C_EK                     3  //!< AT32UC3C UC3C_EK board.
+#define UC3C_EK                     3  //!< AT32UC3C UC3C-EK board.
 #define EVK1104                     4  //!< AT32UC3A3 EVK1104 board.
 #define EVK1105                     5  //!< AT32UC3A EVK1105 board.
 #define STK600_RCUC3L0              6  //!< STK600 RCUC3L0 board.
@@ -117,18 +117,19 @@ extern "C" {
 #define SAM4S_XPLAINED_PRO         53  //!< SAM4S Xplained Pro board.
 #define SAM4L_XPLAINED_PRO         54  //!< SAM4L Xplained Pro board.
 #define ATMEGA256RFR2_ZIGBIT       55  //!< ATmega256RFR2 zigbit
-#define XMEGA_RF233_ZIGBIT         56  //!< ATxmega256A3U with AT86RF233 zigbit
-#define XMEGA_RF212B_ZIGBIT        57  //!< ATxmega256A3U with AT86RF212B zigbit
+#define XMEGA_RF233_ZIGBIT         56  //!< ATxmega256A3U with AT86RF233 Zigbit
+#define XMEGA_RF212B_ZIGBIT        57  //!< ATxmega256A3U with AT86RF212B Zigbit
 #define SAM4S_WPIR_RD              58  //!< SAM4S-WPIR-RD board.
-#define SAMD20_XPLAINED_PRO        59  //!< SAMD20 Xplained PRO board
+#define SAMD20_XPLAINED_PRO        59  //!< SAMD20 Xplained Pro board
 #define SAM4L8_XPLAINED_PRO        60  //!< SAM4L8 Xplained Pro board.
-#define SAM4N_XPLAINED_PRO         61  //!< SAM4N-XPLAINED-PRO board.
-#define XMEGA_A3_REB_CBB           62  //!< SAM4L8 Xplained Pro board.
-#define ATMEGARFX_RCB          	   63  //!< RFR2 & RFA1 RCB
+#define SAM4N_XPLAINED_PRO         61  //!< SAM4N Xplained Pro board.
+#define XMEGA_A3_REB_CBB           62  //!< XMEGA REB Controller Base board.
+#define ATMEGARFX_RCB              63  //!< RFR2 & RFA1 RCB
 #define SAM4C_EK                   64  //!< SAM4C-EK board.
-#define RCB256RFR2_XPRO        	   65  //!< RFR2 RCB Xpro board.
+#define RCB256RFR2_XPRO            65  //!< RFR2 RCB Xplained Pro board.
+#define SAMG53_XPLAINED_PRO        66  //!< SAMG53 Xplained Pro board.
 #define SIMULATOR_XMEGA_A1         97  //!< Simulator for XMEGA A1 devices
-#define AVR_SIMULATOR_UC3          98  //!< AVR SIMULATOR for AVR UC3 device family.
+#define AVR_SIMULATOR_UC3          98  //!< Simulator for the AVR UC3 device family.
 #define USER_BOARD                 99  //!< User-reserved board (if any).
 #define DUMMY_BOARD               100  //!< Dummy board to support board-independent applications (e.g. bootloader)
 //! @}
@@ -195,6 +196,8 @@ extern "C" {
 #  include "stk600/rcuc3d/stk600_rcuc3d.h"
 #elif BOARD == STK600_RCUC3C0
 #  include "stk600/rcuc3c0/stk600_rcuc3c0.h"
+#elif BOARD == SAMG53_XPLAINED_PRO
+#  include "samg53_xplained_pro/samg53_xplained_pro.h"
 #elif BOARD == XMEGA_B1_XPLAINED
 #  include "xmega_b1_xplained/xmega_b1_xplained.h"
 #elif BOARD == STK600_RC064X_LCDX

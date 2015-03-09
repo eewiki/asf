@@ -67,6 +67,10 @@
 #include "mac.h"
 #include "mac_build_config.h"
 
+#ifdef MAC_SECURITY_ZIP
+#include "mac_security.h"
+#endif  /* MAC_SECURITY_ZIP */
+
 #if (MAC_INDIRECT_DATA_BASIC == 1)
 
 /* === Macros =============================================================== */
@@ -92,7 +96,7 @@ static uint8_t find_short_buffer(void *buf, void *short_addr);
 /**
  * @brief Build and transmits data request command frame
  *
- * This function builds and tranmits a data request command frame.
+ * This function builds and transmits a data request command frame.
  *
  *
  * @param expl_poll Data request due to explicit MLME poll request
@@ -140,8 +144,7 @@ bool mac_build_and_tx_data_req(bool expl_poll,
 		return false;
 	}
 
-	frame_info_t *transmit_frame = (frame_info_t *)BMM_BUFFER_POINTER(
-			buf_ptr);
+	frame_info_t *transmit_frame = (frame_info_t *)BMM_BUFFER_POINTER(buf_ptr);
 
 	/*
 	 * If this data request cmd frame was initiated by a device due to
@@ -650,6 +653,28 @@ void mac_process_data_request(buffer_t *msg)
 			}
 		}
 
+#ifdef MAC_SECURITY_ZIP
+if(transmit_frame->mpdu[1] & FCF_SECURITY_ENABLED)
+{
+	mcps_data_req_t pmdr;
+	
+	build_sec_mcps_data_frame(&pmdr, transmit_frame);
+	
+	if (pmdr.SecurityLevel > 0)
+	{
+		/* Secure the Frame */
+		retval_t build_sec = mac_secure(transmit_frame, \
+		transmit_frame->mac_payload, &pmdr);
+		
+		if (MAC_SUCCESS != build_sec)
+		{
+			/* The MAC Data Payload is encrypted based on the security level. */
+			transmit_frame->indirect_in_transit = false;
+			return;
+		}
+	}
+}
+#endif
 		/*
 		 * Transmission should be done with CSMA-CA or
 		 * quickly after the ACK of the data request command.
@@ -728,6 +753,9 @@ void mac_handle_tx_null_data_frame(void)
 static uint8_t find_short_buffer(void *buf, void *short_addr)
 {
 	frame_info_t *data = (frame_info_t *)buf;
+	uint16_t short_addr_temp = 0;
+	memcpy((uint8_t *)&short_addr_temp, (uint8_t *)short_addr, \
+										sizeof(short_addr_temp));
 
 	if (!data->indirect_in_transit) {
 		/*
@@ -743,7 +771,7 @@ static uint8_t find_short_buffer(void *buf, void *short_addr)
 		 * with short address passed.
 		 */
 		if ((dst_addr_mode == FCF_SHORT_ADDR) &&
-				(*(uint16_t *)short_addr ==
+				(short_addr_temp ==
 				convert_byte_array_to_16_bit(&data->mpdu[
 					PL_POS_DST_ADDR_START]))
 				) {
@@ -769,6 +797,9 @@ static uint8_t find_short_buffer(void *buf, void *short_addr)
 static uint8_t find_long_buffer(void *buf, void *long_addr)
 {
 	frame_info_t *data = (frame_info_t *)buf;
+	uint64_t long_addr_temp = 0;
+	memcpy((uint8_t *)&long_addr_temp, (uint8_t *)long_addr, \
+										sizeof(long_addr_temp));
 
 	if (!data->indirect_in_transit) {
 		/*
@@ -784,7 +815,7 @@ static uint8_t find_long_buffer(void *buf, void *long_addr)
 		 * with the exended address passed.
 		 */
 		if ((dst_addr_mode == FCF_LONG_ADDR) &&
-				(*(uint64_t *)long_addr ==
+				(long_addr_temp ==
 				convert_byte_array_to_64_bit(&data->mpdu[
 					PL_POS_DST_ADDR_START]))
 				) {

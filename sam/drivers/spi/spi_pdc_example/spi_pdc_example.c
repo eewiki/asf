@@ -46,8 +46,9 @@
  *
  * \par Purpose
  *
- * This example uses Serial Peripheral Interface (SPI) of one EK board in slave mode to
- * communicate with another EK board's SPI in master mode by PDC function.
+ * This example uses Serial Peripheral Interface (SPI) of one EK board in
+ * slave mode to communicate with another EK board's SPI in master mode
+ * by PDC function.
  *
  * \par Requirements
  *
@@ -69,13 +70,15 @@
  * - sam4sd32c_sam4s_ek2
  * - sam4n16c_sam4n_xplained_pro
  * - sam4c16c_sam4c_ek
+ * - samg53n19_samg_xplained_pro
  *
  * The code can be roughly broken down as follows:
  * <ul>
  * <li> 't' will start SPI transfer test.
  * <ol>
  * <li>Configure SPI as master, and set up SPI clock.
- * <li>Send 64-byte data and receive data from slave at same time, after that compare the result.
+ * <li>Send 64-byte data and receive data from slave at same time, after that
+ * compare the result.
  * </ol>
  * <li>Setup SPI clock for master.
  * </ul>
@@ -93,8 +96,9 @@
  *     -- xxxxxx-xx
  *     -- Compiled: xxx xx xxxx xx:xx:xx --
  *    \endcode
- * -# The following traces detail operations on the SPI PDC example, displaying success
- *    or error messages depending on the results of the commands.
+ * -# The following traces detail operations on the SPI PDC example,
+ *  displaying success or error messages depending on the results of the
+ *  commands.
  *
  */
 
@@ -180,7 +184,8 @@ static void display_menu(void)
  * \param p_buf Pointer to buffer to transfer.
  * \param size Size of the buffer. 
  */
-static void spi_slave_transfer(void *p_tbuf, uint32_t tsize, void *p_rbuf, uint32_t rsize)
+static void spi_slave_transfer(void *p_tbuf, uint32_t tsize, void *p_rbuf,
+		uint32_t rsize)
 {
 	uint32_t spi_ier;
 	pdc_packet_t pdc_spi_packet;
@@ -212,7 +217,8 @@ void SPI_Handler(void)
 
 	if(status & SPI_SR_NSSR) {
 		if ( status & SPI_SR_RXBUFF ) {
-			spi_slave_transfer(gs_uc_spi_s_tbuffer, COMM_BUFFER_SIZE, gs_uc_spi_s_rbuffer, COMM_BUFFER_SIZE);
+			spi_slave_transfer(gs_uc_spi_s_tbuffer, COMM_BUFFER_SIZE,
+					gs_uc_spi_s_rbuffer, COMM_BUFFER_SIZE);
 		}
 	}
 }
@@ -238,15 +244,17 @@ static void spi_slave_initialize(void)
 	spi_reset(SPI_SLAVE_BASE);
 	spi_set_slave_mode(SPI_SLAVE_BASE);
 	spi_disable_mode_fault_detect(SPI_SLAVE_BASE);
-	spi_set_peripheral_chip_select_value(SPI_SLAVE_BASE,
-		spi_get_pcs(SPI_CHIP_SEL));
+	spi_set_peripheral_chip_select_value(SPI_SLAVE_BASE, SPI_CHIP_SEL);
 	spi_set_clock_polarity(SPI_SLAVE_BASE, SPI_CHIP_SEL, SPI_CLK_POLARITY);
 	spi_set_clock_phase(SPI_SLAVE_BASE, SPI_CHIP_SEL, SPI_CLK_PHASE);
-	spi_set_bits_per_transfer(SPI_SLAVE_BASE, SPI_CHIP_SEL, SPI_CSR_BITS_8_BIT);
+	spi_set_bits_per_transfer(SPI_SLAVE_BASE, SPI_CHIP_SEL,
+			SPI_CSR_BITS_8_BIT);
 	spi_enable(SPI_SLAVE_BASE);
 	
-	pdc_disable_transfer(g_p_spis_pdc, PERIPH_PTCR_RXTDIS | PERIPH_PTCR_TXTDIS);
-	spi_slave_transfer(gs_uc_spi_s_tbuffer, COMM_BUFFER_SIZE, gs_uc_spi_s_rbuffer, COMM_BUFFER_SIZE);
+	pdc_disable_transfer(g_p_spis_pdc, PERIPH_PTCR_RXTDIS |
+			PERIPH_PTCR_TXTDIS);
+	spi_slave_transfer(gs_uc_spi_s_tbuffer, COMM_BUFFER_SIZE,
+			gs_uc_spi_s_rbuffer, COMM_BUFFER_SIZE);
 }
 
 /**
@@ -272,16 +280,19 @@ static void spi_master_initialize(void)
 	spi_set_lastxfer(SPI_MASTER_BASE);
 	spi_set_master_mode(SPI_MASTER_BASE);
 	spi_disable_mode_fault_detect(SPI_MASTER_BASE);
-	spi_set_peripheral_chip_select_value(SPI_MASTER_BASE,
-		spi_get_pcs(SPI_CHIP_SEL));
+	spi_set_peripheral_chip_select_value(SPI_MASTER_BASE, SPI_CHIP_SEL);
 	spi_set_clock_polarity(SPI_MASTER_BASE, SPI_CHIP_SEL, SPI_CLK_POLARITY);
 	spi_set_clock_phase(SPI_MASTER_BASE, SPI_CHIP_SEL, SPI_CLK_PHASE);
-	spi_set_bits_per_transfer(SPI_MASTER_BASE, SPI_CHIP_SEL, SPI_CSR_BITS_8_BIT);
-	spi_set_baudrate_div(SPI_MASTER_BASE, SPI_CHIP_SEL, (sysclk_get_cpu_hz() / gs_ul_spi_clock));
-	spi_set_transfer_delay(SPI_MASTER_BASE, SPI_CHIP_SEL, SPI_DLYBS, SPI_DLYBCT);
+	spi_set_bits_per_transfer(SPI_MASTER_BASE, SPI_CHIP_SEL,
+			SPI_CSR_BITS_8_BIT);
+	spi_set_baudrate_div(SPI_MASTER_BASE, SPI_CHIP_SEL,
+			(sysclk_get_cpu_hz() / gs_ul_spi_clock));
+	spi_set_transfer_delay(SPI_MASTER_BASE, SPI_CHIP_SEL, SPI_DLYBS,
+			SPI_DLYBCT);
 	spi_enable(SPI_MASTER_BASE);
 	
-	pdc_disable_transfer(g_p_spim_pdc, PERIPH_PTCR_RXTDIS | PERIPH_PTCR_TXTDIS);
+	pdc_disable_transfer(g_p_spim_pdc, PERIPH_PTCR_RXTDIS |
+			PERIPH_PTCR_TXTDIS);
 }
 
 /**
@@ -293,7 +304,8 @@ static void spi_set_clock_configuration(uint8_t configuration)
 {
 	gs_ul_spi_clock = gs_ul_clock_configurations[configuration];
 	printf("Setting SPI clock #%lu ... \n\r", (unsigned long)gs_ul_spi_clock);
-	spi_set_baudrate_div(SPI_MASTER_BASE, SPI_CHIP_SEL, (sysclk_get_cpu_hz() / gs_ul_spi_clock));
+	spi_set_baudrate_div(SPI_MASTER_BASE, SPI_CHIP_SEL,
+			(sysclk_get_cpu_hz() / gs_ul_spi_clock));
 }
 
 /**
@@ -302,7 +314,8 @@ static void spi_set_clock_configuration(uint8_t configuration)
  * \param pbuf Pointer to buffer to transfer.
  * \param size Size of the buffer. 
  */
-static void spi_master_transfer(void *p_tbuf, uint32_t tsize, void *p_rbuf, uint32_t rsize)
+static void spi_master_transfer(void *p_tbuf, uint32_t tsize, void *p_rbuf,
+		uint32_t rsize)
 {
 	pdc_packet_t pdc_spi_packet;
 
@@ -321,7 +334,8 @@ static void spi_master_transfer(void *p_tbuf, uint32_t tsize, void *p_rbuf, uint
 	while((spi_read_status(SPI_MASTER_BASE) & SPI_SR_RXBUFF) == 0);
 	
 	/* Disable the RX and TX PDC transfer requests */
-	pdc_disable_transfer(g_p_spim_pdc, PERIPH_PTCR_RXTDIS | PERIPH_PTCR_TXTDIS);
+	pdc_disable_transfer(g_p_spim_pdc, PERIPH_PTCR_RXTDIS |
+			PERIPH_PTCR_TXTDIS);
 }
 
 
@@ -334,7 +348,8 @@ static void spi_master_go(void)
         /* Configure SPI as master, set up SPI clock. */
 	spi_master_initialize();
 
-	spi_master_transfer(gs_uc_spi_m_tbuffer, COMM_BUFFER_SIZE, gs_uc_spi_m_rbuffer, COMM_BUFFER_SIZE);
+	spi_master_transfer(gs_uc_spi_m_tbuffer, COMM_BUFFER_SIZE,
+			gs_uc_spi_m_rbuffer, COMM_BUFFER_SIZE);
 	for (i = 0; i < COMM_BUFFER_SIZE; i++) {
 		if(gs_uc_spi_m_rbuffer[i] !=gs_uc_spi_m_tbuffer[i]) {
 			break;
@@ -364,7 +379,7 @@ static void configure_console(void)
 
 
 /**
- * \brief Application entry point for spi_slave example.
+ * \brief Application entry point for SPI PDC example.
  *
  * \return Unused (ANSI-C compatibility).
  */

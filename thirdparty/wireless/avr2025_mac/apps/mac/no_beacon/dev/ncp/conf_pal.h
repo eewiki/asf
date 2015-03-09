@@ -43,4 +43,5 @@
 #ifndef CONF_PAL_H_INCLUDED
 #define CONF_PAL_H_INCLUDED
 
+
 #endif /* CONF_PAL_H_INCLUDED */

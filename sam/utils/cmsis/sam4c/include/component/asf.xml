@@ -33,6 +33,7 @@
 		<build type="header-file" value="component_uart.h"/>
 		<build type="header-file" value="component_usart.h"/>
 		<build type="header-file" value="component_wdt.h"/>
+		<build type="header-file" value="component_uotghs.h"/>
 		<device-support value="sam4c"/>
 		<info type="gui-flag" value="hidden"/>
 	</module>

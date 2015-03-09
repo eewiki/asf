@@ -152,7 +152,7 @@ void pio_set_multi_driver(Pio *p_pio, const uint32_t ul_mask,
 		const uint32_t ul_multi_driver_enable);
 uint32_t pio_get_multi_driver_status(const Pio *p_pio);
 
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 void pio_pull_down(Pio *p_pio, const uint32_t ul_mask,
 		const uint32_t ul_pull_down_enable);
 #endif
@@ -162,7 +162,7 @@ void pio_disable_output_write(Pio *p_pio, const uint32_t ul_mask);
 uint32_t pio_get_output_write_status(const Pio *p_pio);
 void pio_sync_output_write(Pio *p_pio, const uint32_t ul_mask);
 
-#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C)
+#if (SAM3S || SAM3N || SAM4S || SAM4E || SAM4N || SAM4C || SAMG)
 void pio_set_schmitt_trigger(Pio *p_pio, const uint32_t ul_mask);
 uint32_t pio_get_schmitt_trigger(const Pio *p_pio);
 #endif

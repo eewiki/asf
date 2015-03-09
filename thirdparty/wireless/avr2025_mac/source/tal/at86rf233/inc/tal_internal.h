@@ -55,6 +55,9 @@
 
 #include "bmm.h"
 #include "qmm.h"
+#if (defined MAC_SECURITY_ZIP || defined MAC_SECURITY_2006)
+#include "tal.h"
+#endif
 #ifdef BEACON_SUPPORT
 #include "tal_slotted_csma.h"
 #endif  /* BEACON_SUPPORT */
@@ -62,7 +65,9 @@
 #include "pal_config.h"
 #endif
 #include "mac_build_config.h"
-
+#if (defined MAC_SECURITY_ZIP || defined MAC_SECURITY_2006)
+#include "tal.h"
+#endif
 /**
  * \ingroup group_tal
  * \defgroup group_tal_233 AT86RF233 Transceiver Abstraction Layer
@@ -215,11 +220,11 @@ extern bool tal_beacon_transmission;
 #ifdef HIGH_DATA_RATE_SUPPORT
 #define TAL_PSDU_US_PER_OCTET(octets) \
 	( \
-		tal_pib_CurrentPage == 0 ? ((uint16_t)(octets) * 32) : \
+		tal_pib.CurrentPage == 0 ? ((uint16_t)(octets) * 32) : \
 		( \
-			tal_pib_CurrentPage == 2 ? ((uint16_t)(octets) * 16) : \
+			tal_pib.CurrentPage == 2 ? ((uint16_t)(octets) * 16) : \
 			( \
-				tal_pib_CurrentPage == \
+				tal_pib.CurrentPage == \
 				16 ? ((uint16_t)(octets) * \
 				8) : ((uint16_t)(octets) * 4) \
 			) \
