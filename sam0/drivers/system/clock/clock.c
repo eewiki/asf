@@ -659,10 +659,11 @@ bool system_clock_source_is_ready(
  */
 void system_clock_init(void)
 {
-        /* Workaround for errata 10558 */
-        SYSCTRL->INTFLAG.reg = SYSCTRL_INTFLAG_BOD12RDY | SYSCTRL_INTFLAG_BOD33RDY |
-                        SYSCTRL_INTFLAG_BOD12DET | SYSCTRL_INTFLAG_BOD33DET |
-                        SYSCTRL_INTFLAG_DFLLRDY;
+	/* Various bits in the INTFLAG register can be set to one at startup.
+	   This will ensure that these bits are cleared */
+	SYSCTRL->INTFLAG.reg = SYSCTRL_INTFLAG_BOD12RDY | SYSCTRL_INTFLAG_BOD33RDY |
+			SYSCTRL_INTFLAG_BOD12DET | SYSCTRL_INTFLAG_BOD33DET |
+			SYSCTRL_INTFLAG_DFLLRDY;
 
 	system_flash_set_waitstates(CONF_CLOCK_FLASH_WAIT_STATES);
 
@@ -721,7 +722,7 @@ void system_clock_init(void)
 #endif
 
 
-	/* DFLL (Open and Closed Loop) */
+	/* DFLL Config (Open and Closed Loop) */
 #if CONF_CLOCK_DFLL_ENABLE == true
 	struct system_clock_source_dfll_config dfll_conf;
 	system_clock_source_dfll_get_config_defaults(&dfll_conf);
@@ -767,7 +768,6 @@ void system_clock_init(void)
 	dfll_conf.fine_max_step   = CONF_CLOCK_DFLL_MAX_FINE_STEP_SIZE;
 
 	system_clock_source_dfll_set_config(&dfll_conf);
-	system_clock_source_enable(SYSTEM_CLOCK_SOURCE_DFLL);
 #endif
 
 
@@ -791,7 +791,7 @@ void system_clock_init(void)
 	 * is configured later after all other clock systems are set up */
 	MREPEAT(GCLK_GEN_NUM_MSB, _CONF_CLOCK_GCLK_CONFIG_NONMAIN, ~);
 
-#  if (CONF_CLOCK_DFLL_ENABLE)
+#  if CONF_CLOCK_DFLL_ENABLE == true
 	/* Enable DFLL reference clock if in closed loop mode */
 	if (CONF_CLOCK_DFLL_LOOP_MODE == SYSTEM_CLOCK_DFLL_LOOP_MODE_CLOSED) {
 		struct system_gclk_chan_config dfll_gclk_chan_conf;
@@ -802,7 +802,17 @@ void system_clock_init(void)
 		system_gclk_chan_enable(SYSCTRL_GCLK_ID_DFLL48);
 	}
 #  endif
+#endif
 
+
+	/* DFLL Enable (Open and Closed Loop) */
+#if CONF_CLOCK_DFLL_ENABLE == true
+	system_clock_source_enable(SYSTEM_CLOCK_SOURCE_DFLL);
+#endif
+
+
+	/* GCLK 0 */
+#if CONF_CLOCK_CONFIGURE_GCLK == true
 	/* Configure the main GCLK last as it might depend on other generators */
 	_CONF_CLOCK_GCLK_CONFIG(0, ~);
 #endif

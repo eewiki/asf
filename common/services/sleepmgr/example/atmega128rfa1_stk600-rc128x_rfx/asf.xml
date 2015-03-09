@@ -1,0 +1,19 @@
+<asf xmlversion="1.0">
+	<project caption="Common API for Sleep Management / Example for ATmega128RFA1-EK1" id="common.services.basic.sleepmgr.example.atmega128rfa1_stk600-rc128x_rfx">
+		<info type="description" value="summary">
+		This example shows how to use the Common API for Sleep Management on Atmega128RFA1 devices.
+		</info>
+		<build type="header-file" value="conf_board.h" />
+		<build type="header-file" value="conf_clock.h" />
+		<build type="header-file" value="conf_example.h"/>
+		<build type="header-file" value="conf_sleepmgr.h"/>
+		<build type="include-path" value="."/>
+		<require idref="common.services.basic.sleepmgr.example"/>
+		<require idref="board.stk600-mega.atmega128rfa1" />
+		<generator value="iarew"/>
+		<generator value="avrgcc" />
+		<generator value="as5_8" />
+		<generator value="doxygen" />
+		<device-support value="atmega128rfa1"/>
+	</project>
+</asf>

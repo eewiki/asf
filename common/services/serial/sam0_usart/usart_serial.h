@@ -50,26 +50,23 @@
 #include "status_codes.h"
 #include "usart.h"
 
-/*! \name Serial Management Configuration
- */
-//! @{
-//#include "conf_usart_serial.h"
-//! @}
+/** \name Serial Management Configuration */
 
 typedef Sercom * usart_inst_t;
 
-struct usart_module usart;
-
-/*! \brief Initializes the Usart in master mode.
+/** \brief Initializes the USART in master mode.
  *
- * \param usart       Base address of the USART instance.
- * \param options     Options needed to set up RS232 communication (see \ref usart_serial_options_t).
+ * \param[in,out] module  Software instance of the USART to initialize.
+ * \param[in]     hw      Base address of the hardware USART.
+ * \param[in]     config  Configuration settings for the USART.
  *
  * \retval true if the initialization was successful
  * \retval false if initialization failed (error in baud rate calculation)
  */
-static inline bool usart_serial_init(struct usart_module *const module,
-		usart_inst_t const hw, const struct usart_config *const config)
+static inline bool usart_serial_init(
+		struct usart_module *const module,
+		usart_inst_t const hw,
+		const struct usart_config *const config)
 {
 	if (usart_init(module, hw, config) == STATUS_OK) {
 		return true;
@@ -79,25 +76,27 @@ static inline bool usart_serial_init(struct usart_module *const module,
 	}
 }
 
-/*! \brief Sends a character with the USART.
+/** \brief Sends a character with the USART.
  *
- * \param usart   Base address of the USART instance.
- * \param c       Character to write.
+ * \param[in,out] module  Software instance of the USART.
+ * \param[in]     c       Character to write.
  *
  * \return Status code
  */
-static inline enum status_code usart_serial_putchar(struct usart_module *const module,
+static inline enum status_code usart_serial_putchar(
+		struct usart_module *const module,
 		uint8_t c)
 {
 	return usart_write_wait(module, c);
 }
-/*! \brief Waits until a character is received, and returns it.
+
+/** \brief Waits until a character is received, and returns it.
  *
- * \param usart   Base address of the USART instance.
- * \param data   Data to read
- *
+ * \param[in,out] module  Software instance of the USART.
+ * \param[out]    c       Destination for the read character.
  */
-static inline void usart_serial_getchar(struct usart_module *const module,
+static inline void usart_serial_getchar(
+		struct usart_module *const module,
 		uint8_t *c)
 {
 	uint16_t temp;
@@ -110,13 +109,14 @@ static inline void usart_serial_getchar(struct usart_module *const module,
 /**
  * \brief Send a sequence of bytes to USART device
  *
- * \param usart  Base address of the USART instance.
- * \param data   Data buffer to read
- * \param len    Length of data
- *
+ * \param[in,out] module   Software instance of the USART.
+ * \param[in]     tx_data  Data buffer to read the data to write from.
+ * \param[in]     length   Length of data to write.
  */
-static inline enum status_code usart_serial_write_packet(struct usart_module *const module,
-		const uint8_t *tx_data, uint16_t length)
+static inline enum status_code usart_serial_write_packet(
+		struct usart_module *const module,
+		const uint8_t *tx_data,
+		uint16_t length)
 {
 	return usart_write_buffer_wait(module, tx_data, length);
 }
@@ -124,13 +124,14 @@ static inline enum status_code usart_serial_write_packet(struct usart_module *co
 /**
  * \brief Receive a sequence of bytes from USART device
  *
- * \param usart  Base address of the USART instance.
- * \param data   Data buffer to write
- * \param len    Length of data
- *
+ * \param[in,out] module   Software instance of the USART.
+ * \param[out]    rx_data  Data buffer to store the read data into.
+ * \param[in]     length   Length of data to read.
  */
-static inline enum status_code usart_serial_read_packet(struct usart_module *const module,
-		uint8_t *rx_data, uint16_t length)
+static inline enum status_code usart_serial_read_packet(
+		struct usart_module *const module,
+		uint8_t *rx_data,
+		uint16_t length)
 {
 	return usart_read_buffer_wait(module, rx_data, length);
 }

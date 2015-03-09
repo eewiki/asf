@@ -66,7 +66,7 @@ typedef struct
     uint8_t val;
 } mem_test_t;
 
-static board_t board_type;
+
 
 
 #define NUM_CHECK 10

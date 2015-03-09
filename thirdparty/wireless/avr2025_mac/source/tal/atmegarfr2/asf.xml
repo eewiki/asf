@@ -29,5 +29,6 @@
 		<build type="doxygen-entry-point" value="group_tal_rfr2"/>
 		<build type="define" name="TAL_TYPE" value ="ATMEGARFR2"/>
 		<device-support value="atmega256rfr2"/>
+		<device-support value="atmega2564rfr2"/>
 	</module>
 </asf>

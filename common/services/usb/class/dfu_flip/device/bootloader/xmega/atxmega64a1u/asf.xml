@@ -11,7 +11,8 @@
 		<config name="config.common.services.usb.class.dfu.device.atmel.optimization" value="size_optimization"/>
 		<require idref="common.services.usb.class.dfu_atmel.device.bootloader.xmega.small"/>
 		<require idref="board.dummy.atxmega64a1u"/>
-		<generator value="iarew"/>
+		<!-- See JIRA issue ASFP-4191 for reason this project has been disabled. -->
+		<!--generator value="iarew"/-->
 		<device-support value="atxmega64a1u"/>
 	</project>
 </asf>

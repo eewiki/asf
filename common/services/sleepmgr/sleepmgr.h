@@ -54,6 +54,8 @@
 # include "uc3/sleepmgr.h"
 #elif SAM4L
 # include "sam4l/sleepmgr.h"
+#elif MEGA
+# include "mega/sleepmgr.h"
 #else
 # error Unsupported device.
 #endif

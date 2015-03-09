@@ -400,10 +400,11 @@ static void run_ecb_mode_test_pdc(const struct test_case *test)
 	/* Wait for the end of the decryption process. */
 	delay_ms(30);
 
-	pdc_tx_init(g_p_aes_pdc, &g_pdc_tx_packet, NULL);
-	pdc_rx_init(g_p_aes_pdc, &g_pdc_rx_packet, NULL);
 	pdc_disable_transfer(g_p_aes_pdc,
 			PERIPH_PTCR_RXTDIS | PERIPH_PTCR_TXTDIS);
+	pdc_tx_init(g_p_aes_pdc, &g_pdc_tx_packet, NULL);
+	pdc_rx_init(g_p_aes_pdc, &g_pdc_rx_packet, NULL);
+
 
 	if ((ref_cipher_text_ecb[0] != output_data[0]) ||
 			(ref_cipher_text_ecb[1] != output_data[1]) ||

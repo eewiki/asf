@@ -3,7 +3,7 @@
  *
  * \brief USB Host Controller (UHC)
  *
- * Copyright (C) 2011 - 2012 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2011 - 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -579,7 +579,8 @@ static void uhc_enumeration_step13(
 		uhd_trans_status_t status,
 		uint16_t payload_trans)
 {
-	uint8_t conf_num, conf_size;
+	uint8_t conf_num;
+	uint16_t conf_size;
 	uint16_t bus_power = 0;
 	usb_setup_req_t req;
 	UNUSED(add);

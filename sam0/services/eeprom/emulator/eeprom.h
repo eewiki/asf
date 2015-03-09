@@ -481,6 +481,17 @@ enum status_code eeprom_emulator_read_buffer(
  *		<th>Date</td>
  *		<th>Comments</td>
  *	</tr>
+ *  <tr>
+ *	   <td>B</td>
+ *	   <td>11/2013</td>
+ *     <td>
+ *        ASF 3.13: Fixed bugs related to eeprom_emulator_write_buffer() and
+ *        eeprom_emulator_read_buffer(). The functions now handle offsets that
+ *        are multiples of 60. The length can now be smaller than one page without
+ *        risking corruption. Addresses that are multiples of 60 will be written
+ *        correctly.
+ *     </td>
+ *	</tr>
  *	<tr>
  *		<td>B</td>
  *		<td>06/2013</td>

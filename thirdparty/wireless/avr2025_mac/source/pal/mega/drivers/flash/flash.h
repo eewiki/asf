@@ -154,8 +154,15 @@ __attribute__((section(".bootloader"), noinline));
 #endif
 
 /** Page size */
-#if     AVR8_PART_IS_DEFINED(ATmega128RFA1) | \
-	AVR8_PART_IS_DEFINED(ATmega256RFR2)
+#if     AVR8_PART_IS_DEFINED(ATmega128RFA1) || \
+	AVR8_PART_IS_DEFINED(ATmega256RFR2) || \
+	AVR8_PART_IS_DEFINED(ATmega2564RFR2)
+
+#ifdef __ICCAVR__
+# ifndef SPM_PAGESIZE
+#  define SPM_PAGESIZE  256
+# endif
+#endif
 
 #define FLASH_PAGE_SIZE      (SPM_PAGESIZE)
 #define FLASH_SIZE                       (FLASHEND + 1)

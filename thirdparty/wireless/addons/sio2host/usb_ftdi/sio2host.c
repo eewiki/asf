@@ -523,7 +523,8 @@ int _write (char c, int *f);
 
 int _write (char c, int *f)
 {
- sio2host_tx(&c,1);
+ sio2host_tx((uint8_t *)&c,1);
+ return 1;
 }
 
 int _read (int *f); // Remove GCC compiler warning
@@ -531,7 +532,7 @@ int _read (int *f); // Remove GCC compiler warning
 int _read (int *f)
 {
 	char c;
-	sio2host_rx(&c,1);
+	sio2host_rx((uint8_t *)&c,1);
 	return c;
 }
 

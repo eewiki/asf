@@ -1,13 +1,11 @@
 /**
  * \file
  *
- * \brief Serial USART service configuration.
+ * \brief Board configuration for clock example 1
  *
- * Copyright (C) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
- *
- * \page License
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -40,15 +38,9 @@
  * \asf_license_stop
  *
  */
+#ifndef CONF_BOARD_H
+#define CONF_BOARD_H
 
-#ifndef CONF_USART_SERIAL_H
-#define CONF_USART_SERIAL_H
+/* Intentionally empty */
 
-/** UART Interface */
-#define CONF_UART            CONSOLE_UART
-/** Baudrate setting */
-#define CONF_UART_BAUDRATE   115200
-/** Parity setting */
-#define CONF_UART_PARITY     UART_MR_PAR_NO
-
-#endif/* CONF_USART_SERIAL_H_INCLUDED */
+#endif /* CONF_BOARD_H */

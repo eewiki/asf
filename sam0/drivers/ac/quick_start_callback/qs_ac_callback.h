@@ -148,7 +148,7 @@
  * -# Trigger the first comparison on the comparator channel.
  *  \snippet qs_ac_callback.c main_1
  * -# Create a local variable to maintain the current comparator state. Since no
- *    comparison has taken place, it is initialized to \ref AC_CHAN_STATE_UNKNOWN.
+ *    comparison has taken place, it is initialized to \ref AC_CHAN_STATUS_UNKNOWN.
  *  \snippet qs_ac_callback.c main_2
  * -# Make the application loop infinitely, while performing triggered
  *    comparisons.

@@ -128,12 +128,6 @@
 /** The ADC Start Up Time value */
 #define ADC_TRANSFER_SETTING 0x1u
 
-/** ACC configuration value */
-#define ACC_SELPLUS_AD5  0x5u
-#define ACC_SELMINUS_DAC0  0x2u
-#define ACC_EDGETYP_ANY  0x2u
-#define ACC_INVERT_NO 0x0u
-
 #define STRING_EOL    "\r"
 #define STRING_HEADER "-- ACC IRQ Example  --\r\n" \
 		"-- "BOARD_NAME" --\r\n" \
@@ -338,8 +332,8 @@ int main(void)
 	/* Enable clock for ACC */
 	pmc_enable_periph_clk(ID_ACC);
 	/* Initialize ACC */
-	acc_init(ACC, ACC_SELPLUS_AD5, ACC_SELMINUS_DAC0,
-			ACC_EDGETYP_ANY, ACC_INVERT_NO);
+	acc_init(ACC, ACC_MR_SELPLUS_AD5, ACC_MR_SELMINUS_DAC0,
+			ACC_MR_EDGETYP_ANY, ACC_MR_INV_DIS);
 
 	/* Enable ACC interrupt */
 	NVIC_EnableIRQ(ACC_IRQn);

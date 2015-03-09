@@ -53,20 +53,6 @@
 #include "spi.h"
 
 /**
- * Enum for the possible types of SPI asynchronous jobs that may be issued to
- * the driver.
- */
-enum spi_job_type {
-	/** Asynchronous SPI read into a user provided buffer */
-	SPI_JOB_READ_BUFFER,
-	/** Asynchronous SPI write from a user provided buffer */
-	SPI_JOB_WRITE_BUFFER,
-	/** Asynchronous SPI transceive from user provided buffers */
-	SPI_JOB_TRANSCEIVE_BUFFER,
-};
-
-
-/**
  * \name Callback Management
  * @{
  */
@@ -146,12 +132,43 @@ enum status_code spi_transceive_buffer_job(
 		uint16_t length);
 
 void spi_abort_job(
-		struct spi_module *const module,
-		enum spi_job_type job_type);
+		struct spi_module *const module);
 
-enum status_code spi_get_job_status(
-		const struct spi_module *const module,
-		enum spi_job_type job_type);
+/**
+ * \brief Retrieves the current status of a job.
+ *
+ * Retrieves the current statue of a job that was previously issued.
+ *
+ * \param[in]  module    Pointer to SPI software instance struct
+ *
+ * \return Current job status.
+ */
+static inline enum status_code spi_get_job_status(
+		const struct spi_module *const module)
+{
+	return module->status;
+}
+
+/**
+ * \brief Retrieves the status of job once it ends.
+ *
+ * Waits for current job status to become non-busy, then returns its value.
+ *
+ * \param[in]  module    Pointer to SPI software instance struct
+ *
+ * \return Current non-busy job status.
+ */
+static inline enum status_code spi_get_job_status_wait(
+		const struct spi_module *const module)
+{
+	enum status_code status;
+
+	do {
+		status = spi_get_job_status(module);
+	} while (status == STATUS_BUSY);
+
+	return status;
+}
 
 /** @} */
 

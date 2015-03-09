@@ -112,6 +112,12 @@ void spi_disable_clock(Spi *p_spi)
  *
  * \param p_spi Pointer to an SPI instance.
  * \param ul_value Peripheral Chip Select value.
+ *                 If PCS decode mode is not used, use \ref spi_get_pcs to build
+ *                 the value to use.
+ *                 On reset the decode mode is not enabled.
+ *                 The decode mode can be enabled/disabled by follow functions:
+ *                 \ref spi_enable_peripheral_select_decode,
+ *                 \ref spi_disable_peripheral_select_decode.
  */
 void spi_set_peripheral_chip_select_value(Spi *p_spi, uint32_t ul_value)
 {

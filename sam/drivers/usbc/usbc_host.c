@@ -1861,6 +1861,7 @@ static void uhd_pipe_interrupt(uint8_t pipe)
  */
 static void uhd_ep_abort_pipe(uint8_t pipe, uhd_trans_status_t status)
 {
+	bool old_toggle = uhd_data_toggle(pipe);
 	uint32_t config;
 
 	// Reset pipe but keep configuration
@@ -1868,6 +1869,16 @@ static void uhd_ep_abort_pipe(uint8_t pipe, uhd_trans_status_t status)
 	uhd_disable_pipe(pipe);
 	uhd_enable_pipe(pipe);
 	USBC_ARRAY(USBC_UPCFG0,pipe) = config;
+	// Setup the data toggle
+	switch(status) {
+	// Restore data toggle
+	case UHD_TRANS_TIMEOUT:
+		if (old_toggle) {
+			uhd_set_data_toggle(pipe);
+		}
+		break;
+	// Reverse data toggle
+	}
 
 	// Interrupts has been reseted, then renable it
 	uhd_enable_stall_interrupt(pipe);

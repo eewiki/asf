@@ -693,13 +693,49 @@ __no_inline enum status_code system_peripheral_unlock(
  *		<th>Acronym</td>
  *		<th>Description</td>
  *	</tr>
+ *  <tr>
+ *		<td>AC</td>
+ *		<td>Analog Comparator</td>
+ *	</tr>
+ *	<tr>
+ *		<td>ADC</td>
+ *		<td>Analog-to-Digital Converter</td>
+ *	</tr>
+ *	<tr>
+ *		<td>EVSYS</td>
+ *		<td>Event System</td>
+ *	</tr>
  *	<tr>
  *		<td>NMI</td>
  *		<td>Non-Maskable Interrupt</td>
  *	</tr>
  *	<tr>
+ *		<td>NVMCTRL</td>
+ *		<td>Non-Volatile Memory Controller</td>
+ *	</tr>
+ *	<tr>
  *		<td>PAC</td>
  *		<td>Peripheral Access Controller</td>
+ *	</tr>
+  *	<tr>
+ *		<td>PM</td>
+ *		<td>Power Manager</td>
+ *	</tr>
+ *	<tr>
+ *		<td>RTC</td>
+ *		<td>Real-Time Counter</td>
+ *	</tr>
+ *	<tr>
+ *		<td>SERCOM</td>
+ *		<td>Serial Communication Interface</td>
+ *	</tr>
+ *	<tr>
+ *		<td>SYSCTRL</td>
+ *		<td>System Controller</td>
+ *	</tr>
+ *	<tr>
+ *		<td>TC</td>
+ *		<td>Timer/Counter</td>
  *	</tr>
  *	<tr>
  *		<td>WDT</td>
@@ -855,15 +891,6 @@ __no_inline enum status_code system_peripheral_unlock(
  *	</tr>
  *	<tr><td colspan="2"/></tr>
  *	<tr>
- *		<td>TCE</td>
- *		<td>INTFLAG</td>
- *	</tr>
- *	<tr>
- *		<td></td>
- *		<td>STATUS</td>
- *	</tr>
- *	<tr><td colspan="2"/></tr>
- *	<tr>
  *		<td>WDT</td>
  *		<td>INTFLAG</td>
  *	</tr>
@@ -884,6 +911,11 @@ __no_inline enum status_code system_peripheral_unlock(
  *		<th>Doc. Rev.</td>
  *		<th>Date</td>
  *		<th>Comments</td>
+ *	</tr>
+ *	<tr>
+ *		<td>C</td>
+ *		<td>10/2013</td>
+ *		<td>Extended acronyms list</td>
  *	</tr>
  *	<tr>
  *		<td>B</td>

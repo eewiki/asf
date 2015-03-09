@@ -6,6 +6,11 @@
 		<!--
 		<build type="include-path" value="cmsis/sam3n/include/pio"/>
 		-->
+		<build type="header-file" value="pio_sam3n00a.h"/>
+		<build type="header-file" value="pio_sam3n00b.h"/>
+		<build type="header-file" value="pio_sam3n0a.h"/>
+		<build type="header-file" value="pio_sam3n0b.h"/>
+		<build type="header-file" value="pio_sam3n0c.h"/>
 		<build type="header-file" value="pio_sam3n1a.h"/>
 		<build type="header-file" value="pio_sam3n1b.h"/>
 		<build type="header-file" value="pio_sam3n1c.h"/>

@@ -121,6 +121,11 @@
 		<require idref="common.boards.user_board.common"/>
 		<device-support value="megarf"/>
 	</board>
+	
+	<board id="board.user_board.mega" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<device-support value="mega"/>
+	</board>	
 
 	<board id="board.user_board.sam4lc4a" caption="User Board template">
 		<require idref="common.boards.user_board.common"/>
@@ -193,6 +198,43 @@
 		<require idref="sam.utils.linker_scripts"/>
 		<device-support value="atsam4ls2c"/>
 	</board>
+	
+	<board id="board.user_board.sam4lc8a" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4lc8a"/>
+	</board>
+
+	<board id="board.user_board.sam4lc8b" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4lc8b"/>
+	</board>
+
+	<board id="board.user_board.sam4lc8c" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4lc8c"/>
+	</board>
+
+	<board id="board.user_board.sam4ls8a" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4ls8a"/>
+	</board>
+
+	<board id="board.user_board.sam4ls8b" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4ls8b"/>
+	</board>
+
+	<board id="board.user_board.sam4ls8c" caption="User Board template">
+		<require idref="common.boards.user_board.common"/>
+		<require idref="sam.utils.linker_scripts"/>
+		<device-support value="atsam4ls8c"/>
+	</board>	
+	
 
 	<board id="board.user_board.sam4e8e" caption="User Board template">
 		<require idref="common.boards.user_board.common"/>

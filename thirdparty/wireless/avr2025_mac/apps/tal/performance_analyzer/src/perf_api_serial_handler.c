@@ -1226,7 +1226,7 @@ void usr_perf_start_confirm(uint8_t status,
 	                                    * transceiver */
 #endif
 
-#if (TAL_TYPE == AT86RF233)
+#if ((TAL_TYPE == AT86RF233) || (TAL_TYPE == ATMEGARFR2))
 	*msg_buf++ = (uint8_t)trx_config_params->rpc_enable;
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /*Filled with 0xff to indicate this
@@ -2102,7 +2102,7 @@ void usr_set_default_config_confirm(uint8_t status,
 	                                    * transceiver */
 #endif
 
-#if (TAL_TYPE == AT86RF233)
+#if ((TAL_TYPE == AT86RF233) || (TAL_TYPE == ATMEGARFR2))
 	*msg_buf++ = (uint8_t)default_trx_config_params->rpc_enable;
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /*Filled with 0xff to indicate this
@@ -2296,7 +2296,7 @@ void usr_get_current_config_confirm(uint8_t status,
 	                                    * transceiver */
 #endif
 
-#if (TAL_TYPE == AT86RF233)
+#if ((TAL_TYPE == AT86RF233) || (TAL_TYPE == ATMEGARFR2))
 	*msg_buf++ = (uint8_t)curr_trx_config_params->rpc_enable;
 #else
 	*msg_buf++ = FIELD_DOES_NOT_EXIST; /*Filled with 0xff to indicate this

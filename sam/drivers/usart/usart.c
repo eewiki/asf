@@ -390,9 +390,11 @@ uint32_t usart_init_modem(Usart *p_usart,
 	 * SAM3U and SAM4L series support MODEM mode only on USART0.
 	 */
 #if (SAM3S || SAM4S || SAM4E)
+#ifdef USART1
 	if (p_usart != USART1) {
 		return 1;
 	}
+#endif
 #elif (SAM3U || SAM4L)
 	if (p_usart != USART0) {
 		return 1;

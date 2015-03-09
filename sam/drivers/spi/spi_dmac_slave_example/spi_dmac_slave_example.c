@@ -410,7 +410,8 @@ static void spi_slave_initialize(void)
 	spi_reset(SPI_SLAVE_BASE);
 	spi_set_slave_mode(SPI_SLAVE_BASE);
 	spi_disable_mode_fault_detect(SPI_SLAVE_BASE);
-	spi_set_peripheral_chip_select_value(SPI_SLAVE_BASE, SPI_CHIP_SEL);
+	spi_set_peripheral_chip_select_value(SPI_SLAVE_BASE,
+		spi_get_pcs(SPI_CHIP_SEL));
 	spi_set_clock_polarity(SPI_SLAVE_BASE, SPI_CHIP_SEL, SPI_CLK_POLARITY);
 	spi_set_clock_phase(SPI_SLAVE_BASE, SPI_CHIP_SEL, SPI_CLK_PHASE);
 	spi_set_bits_per_transfer(SPI_SLAVE_BASE, SPI_CHIP_SEL,
@@ -441,7 +442,8 @@ static void spi_master_initialize(void)
 	spi_set_lastxfer(SPI_MASTER_BASE);
 	spi_set_master_mode(SPI_MASTER_BASE);
 	spi_disable_mode_fault_detect(SPI_MASTER_BASE);
-	spi_set_peripheral_chip_select_value(SPI_MASTER_BASE, SPI_CHIP_SEL);
+	spi_set_peripheral_chip_select_value(SPI_MASTER_BASE,
+		spi_get_pcs(SPI_CHIP_SEL));
 	spi_set_clock_polarity(SPI_MASTER_BASE, SPI_CHIP_SEL, SPI_CLK_POLARITY);
 	spi_set_clock_phase(SPI_MASTER_BASE, SPI_CHIP_SEL, SPI_CLK_PHASE);
 	spi_set_bits_per_transfer(SPI_MASTER_BASE, SPI_CHIP_SEL,

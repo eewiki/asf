@@ -54,13 +54,33 @@
 */
 static inline void _adc_configure_ain_pin(uint32_t pin)
 {
-	struct system_pinmux_config config;
-	system_pinmux_get_config_defaults(&config);
-
-	config.input_pull = SYSTEM_PINMUX_PIN_PULL_NONE;
+#define PIN_INVALID_ADC_AIN    0xFFFFUL
 
 	/* Pinmapping table for AINxx -> GPIO pin number */
-	const uint32_t pinmapping[ADC_INPUTCTRL_MUXPOS_PIN20] = {
+	const uint32_t pinmapping[] = {
+#if (SAMD20E)
+			PIN_PA02B_ADC_AIN0,  PIN_PA03B_ADC_AIN1,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_PA04B_ADC_AIN4,  PIN_PA05B_ADC_AIN5,
+			PIN_PA06B_ADC_AIN6,  PIN_PA07B_ADC_AIN7,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_PA08B_ADC_AIN16, PIN_PA09B_ADC_AIN17,
+			PIN_PA10B_ADC_AIN18, PIN_PA11B_ADC_AIN19,
+#elif (SAMD20G)
+			PIN_PA02B_ADC_AIN0,  PIN_PA03B_ADC_AIN1,
+			PIN_PB08B_ADC_AIN2,  PIN_PB09B_ADC_AIN3,
+			PIN_PA04B_ADC_AIN4,  PIN_PA05B_ADC_AIN5,
+			PIN_PA06B_ADC_AIN6,  PIN_PA07B_ADC_AIN7,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_PB02B_ADC_AIN10, PIN_PB03B_ADC_AIN11,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_INVALID_ADC_AIN, PIN_INVALID_ADC_AIN,
+			PIN_PA08B_ADC_AIN16, PIN_PA09B_ADC_AIN17,
+			PIN_PA10B_ADC_AIN18, PIN_PA11B_ADC_AIN19,
+#elif (SAMD20J)
 			PIN_PA02B_ADC_AIN0,  PIN_PA03B_ADC_AIN1,
 			PIN_PB08B_ADC_AIN2,  PIN_PB09B_ADC_AIN3,
 			PIN_PA04B_ADC_AIN4,  PIN_PA05B_ADC_AIN5,
@@ -71,13 +91,26 @@ static inline void _adc_configure_ain_pin(uint32_t pin)
 			PIN_PB06B_ADC_AIN14, PIN_PB07B_ADC_AIN15,
 			PIN_PA08B_ADC_AIN16, PIN_PA09B_ADC_AIN17,
 			PIN_PA10B_ADC_AIN18, PIN_PA11B_ADC_AIN19,
+#else
+#  error ADC pin mappings are not defined for this device.
+#endif
 		};
 
-	/* Analog functions are at mux setting B */
-	config.mux_position = 1;
+	uint32_t pin_map_result = PIN_INVALID_ADC_AIN;
 
-	if (pin <= ADC_INPUTCTRL_MUXPOS_PIN20) {
-		system_pinmux_pin_set_config(pinmapping[pin], &config);
+	if (pin <= ADC_EXTCHANNEL_MSB) {
+		pin_map_result = pinmapping[pin >> ADC_INPUTCTRL_MUXPOS_Pos];
+
+		Assert(pin_map_result != PIN_INVALID_ADC_AIN);
+
+		struct system_pinmux_config config;
+		system_pinmux_get_config_defaults(&config);
+
+		/* Analog functions are all on MUX setting B */
+		config.input_pull   = SYSTEM_PINMUX_PIN_PULL_NONE;
+		config.mux_position = 1;
+
+		system_pinmux_pin_set_config(pin_map_result, &config);
 	}
 }
 
@@ -113,11 +146,15 @@ static enum status_code _adc_set_config(
 
 	/* Setup pinmuxing for analog inputs */
 	if (config->pin_scan.inputs_to_scan != 0) {
-		uint8_t start_pin = config->pin_scan.offset_start_scan +
+		uint8_t start_pin =
+				config->pin_scan.offset_start_scan +
 				(uint8_t)config->positive_input;
-		uint8_t end_pin = start_pin + config->pin_scan.inputs_to_scan;
-		for (; start_pin < end_pin; start_pin++) {
+		uint8_t end_pin =
+				start_pin + config->pin_scan.inputs_to_scan;
+
+		while (start_pin < end_pin) {
 			_adc_configure_ain_pin(start_pin);
+			start_pin++;
 		}
 		_adc_configure_ain_pin(config->negative_input);
 	} else {

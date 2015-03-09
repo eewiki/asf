@@ -80,6 +80,14 @@ typedef enum spi_cs_behavior {
 } spi_cs_behavior_t;
 
 /**
+ * \brief Generate Peripheral Chip Select Value from Chip Select ID
+ * \note When chip select n is working, PCS bit n is set to low level.
+ *
+ * \param chip_sel_id The chip select number used
+ */
+#define spi_get_pcs(chip_sel_id) ((~(1u<<(chip_sel_id)))&0xF)
+
+/**
  * \brief Reset SPI and set it to Slave mode.
  *
  * \param p_spi Pointer to an SPI instance.
@@ -578,7 +586,8 @@ uint32_t spi_get_writeprotect_status(Spi *p_spi);
  *       spi_set_master_mode(p_spi);
  *       spi_disable_mode_fault_detect(p_spi);
  *       spi_disable_loopback(p_spi);
- *       spi_set_peripheral_chip_select_value(p_spi, DEFAULT_CHIP_ID);
+ *       spi_set_peripheral_chip_select_value(p_spi,
+ *                                            spi_get_pcs(DEFAULT_CHIP_ID));
  *       spi_set_fixed_peripheral_select(p_spi);
  *       spi_disable_peripheral_select_decode(p_spi);
  *       spi_set_delay_between_chip_select(p_spi, CONFIG_SPI_MASTER_DELAY_BCS);

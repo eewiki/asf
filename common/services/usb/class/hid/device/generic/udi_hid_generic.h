@@ -3,7 +3,7 @@
  *
  * \brief USB Device Human Interface Device (HID) generic interface.
  *
- * Copyright (c) 2009-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2009 - 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -115,13 +115,13 @@ typedef struct {
    .ep_in.bEndpointAddress    = UDI_HID_GENERIC_EP_IN,\
    .ep_in.bmAttributes        = USB_EP_TYPE_INTERRUPT,\
    .ep_in.wMaxPacketSize      = LE16(UDI_HID_GENERIC_EP_SIZE),\
-   .ep_in.bInterval           = 20,\
+   .ep_in.bInterval           = 4,\
    .ep_out.bLength            = sizeof(usb_ep_desc_t),\
    .ep_out.bDescriptorType    = USB_DT_ENDPOINT,\
    .ep_out.bEndpointAddress   = UDI_HID_GENERIC_EP_OUT,\
    .ep_out.bmAttributes       = USB_EP_TYPE_INTERRUPT,\
    .ep_out.wMaxPacketSize     = LE16(UDI_HID_GENERIC_EP_SIZE),\
-   .ep_out.bInterval          = 20,\
+   .ep_out.bInterval          = 4,\
    }
 //@}
 

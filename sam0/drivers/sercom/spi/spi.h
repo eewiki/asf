@@ -276,9 +276,6 @@
  *   </tr>
  * </table>
  *
- * For SERCOM pad multiplexer position documentation, see
- * \ref asfdoc_samd20_sercom_spi_mux_settings.
- *
  * \subsection asfdoc_samd20_sercom_spi_sleep_modes Operation in Sleep Modes
  * The SPI module can operate in all sleep modes by setting the run_in_standby
  * option in the \ref spi_config struct. The operation in slave and master mode
@@ -328,6 +325,7 @@
  * @{
  */
 
+#include <compiler.h>
 #include <port.h>
 #include <sercom.h>
 #include <pinmux.h>
@@ -454,109 +452,71 @@ enum spi_frame_format {
  * As not all settings can be used in different modes of operation, proper
  * settings must be chosen according to the rest of the configuration.
  *
+ * See \ref asfdoc_samd20_sercom_spi_mux_settings for a description of the
+ * various MUX setting options.
  */
 enum spi_signal_mux_setting {
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting A */
 	SPI_SIGNAL_MUX_SETTING_A =
 			(0x0 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x0 << SERCOM_SPI_CTRLA_DIPO_Pos),
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting B */
 	SPI_SIGNAL_MUX_SETTING_B =
 			(0x0 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x1 << SERCOM_SPI_CTRLA_DIPO_Pos),
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting C */
 	SPI_SIGNAL_MUX_SETTING_C =
 			(0x0 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x2 << SERCOM_SPI_CTRLA_DIPO_Pos),
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting D */
 	SPI_SIGNAL_MUX_SETTING_D =
 			(0x0 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x3 << SERCOM_SPI_CTRLA_DIPO_Pos),
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting E */
 	SPI_SIGNAL_MUX_SETTING_E =
 			(0x1 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x0 << SERCOM_SPI_CTRLA_DIPO_Pos),
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting F */
 	SPI_SIGNAL_MUX_SETTING_F =
 			(0x1 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x1 << SERCOM_SPI_CTRLA_DIPO_Pos),
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting G */
 	SPI_SIGNAL_MUX_SETTING_G =
 			(0x1 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x2 << SERCOM_SPI_CTRLA_DIPO_Pos),
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting H */
 	SPI_SIGNAL_MUX_SETTING_H =
 			(0x1 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x3 << SERCOM_SPI_CTRLA_DIPO_Pos),
-
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting I */
 	SPI_SIGNAL_MUX_SETTING_I =
 			(0x2 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x0 << SERCOM_SPI_CTRLA_DIPO_Pos),
-
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting J */
 	SPI_SIGNAL_MUX_SETTING_J =
 			(0x2 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x1 << SERCOM_SPI_CTRLA_DIPO_Pos),
-
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting K */
 	SPI_SIGNAL_MUX_SETTING_K =
 			(0x2 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x2 << SERCOM_SPI_CTRLA_DIPO_Pos),
-
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting L */
 	SPI_SIGNAL_MUX_SETTING_L =
 			(0x2 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x3 << SERCOM_SPI_CTRLA_DIPO_Pos),
-
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting M */
 	SPI_SIGNAL_MUX_SETTING_M =
 			(0x3 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x0 << SERCOM_SPI_CTRLA_DIPO_Pos),
-
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting N */
 	SPI_SIGNAL_MUX_SETTING_N =
 			(0x3 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x1 << SERCOM_SPI_CTRLA_DIPO_Pos),
-
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting O */
 	SPI_SIGNAL_MUX_SETTING_O =
 			(0x3 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x2 << SERCOM_SPI_CTRLA_DIPO_Pos),
-
-	/**
-	 * See \ref asfdoc_samd20_sercom_spi_mux_settings.
-	 */
+	/** SPI MUX setting P */
 	SPI_SIGNAL_MUX_SETTING_P =
 			(0x3 << SERCOM_SPI_CTRLA_DOPO_Pos) |
 			(0x3 << SERCOM_SPI_CTRLA_DIPO_Pos),
@@ -641,6 +601,8 @@ struct spi_module {
 #if !defined(__DOXYGEN__)
 	/** SERCOM hardware module */
 	Sercom *hw;
+	/** Module lock */
+	volatile bool locked;
 	/** SPI mode */
 	enum spi_mode mode;
 	/** SPI character size */
@@ -831,7 +793,7 @@ static inline bool spi_is_syncing(
  *  \li Master mode enabled
  *  \li MSB of the data is transmitted first
  *  \li Transfer mode 0
- *  \li \ref asfdoc_samd20_sercom_spi_mux_setting_d
+ *  \li MUX Setting D
  *  \li Character size 8 bit
  *  \li Not enabled in sleep mode
  *  \li Receiver enabled
@@ -999,6 +961,62 @@ static inline void spi_disable(
 
 void spi_reset(
 		struct spi_module *const module);
+
+/** @} */
+
+/**
+ * \name Lock/Unlock
+ * @{
+ */
+
+/**
+ * \brief Attempt to get lock on driver instance
+ *
+ * This function checks the instance's lock, which indicates whether or not it
+ * is currently in use, and sets the lock if it was not already set.
+ *
+ * The purpose of this is to enable exclusive access to driver instances, so
+ * that, e.g., transactions by different services will not interfere with each
+ * other.
+ *
+ * \param[in,out] module Pointer to the driver instance to lock.
+ *
+ * \retval STATUS_OK if the module was locked.
+ * \retval STATUS_BUSY if the module was already locked.
+ */
+static inline enum status_code spi_lock(struct spi_module *const module)
+{
+	enum status_code status;
+
+	system_interrupt_enter_critical_section();
+
+	if (module->locked) {
+		status = STATUS_BUSY;
+	} else {
+		module->locked = true;
+		status = STATUS_OK;
+	}
+
+	system_interrupt_leave_critical_section();
+
+	return status;
+}
+
+/**
+ * \brief Unlock driver instance
+ *
+ * This function clears the instance lock, indicating that it is available for
+ * use.
+ *
+ * \param[in,out] module Pointer to the driver instance to lock.
+ *
+ * \retval STATUS_OK if the module was locked.
+ * \retval STATUS_BUSY if the module was already locked.
+ */
+static inline void spi_unlock(struct spi_module *const module)
+{
+	module->locked = false;
+}
 
 /** @} */
 

@@ -68,23 +68,30 @@ static void _dac_set_config(
 	module_inst->output = config->output;
 	module_inst->start_on_event = false;
 
-	uint32_t new_config = 0;
-
-	/* Set reference voltage */
-	new_config |= config->reference;
-
-	/* Left adjust data if configured */
-	if (config->left_adjust) {
-		new_config |= DAC_CTRLB_LEFTADJ;
-	}
+	uint32_t new_ctrla = 0;
+	uint32_t new_ctrlb = 0;
 
 	/* Enable DAC in standby sleep mode if configured */
 	if (config->run_in_standby) {
-		new_config |= DAC_CTRLA_RUNSTDBY;
+		new_ctrla |= DAC_CTRLA_RUNSTDBY;
+	}
+
+	/* Set reference voltage */
+	new_ctrlb |= config->reference;
+
+	/* Left adjust data if configured */
+	if (config->left_adjust) {
+		new_ctrlb |= DAC_CTRLB_LEFTADJ;
 	}
 
 	/* Apply the new configuration to the hardware module */
-	dac_module->CTRLA.reg = new_config;
+	dac_module->CTRLA.reg = new_ctrla;
+
+	while (dac_is_syncing(module_inst)) {
+		/* Wait until the synchronization is complete */
+	}
+
+	dac_module->CTRLB.reg = new_ctrlb;
 }
 
 /**

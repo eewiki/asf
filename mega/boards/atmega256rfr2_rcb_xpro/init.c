@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief Board configuration.
+ * \brief ATMEGA256RFR2-Zigbit board initialization.
  *
- * Copyright (c) 2011 - 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,22 +40,17 @@
  * \asf_license_stop
  *
  */
+#include <conf_board.h>
+#include <board.h>
+#include <ioport.h>
 
-#ifndef CONF_BOARD_H_INCLUDED
-#define CONF_BOARD_H_INCLUDED
+void board_init(void)
+{
 
-#include "system_sam3u.h"
+	ioport_configure_pin(LED0_GPIO, IOPORT_DIR_OUTPUT | IOPORT_INIT_HIGH);
+	ioport_configure_pin(LED1_GPIO, IOPORT_DIR_OUTPUT | IOPORT_INIT_HIGH);
+	ioport_configure_pin(LED2_GPIO, IOPORT_DIR_OUTPUT | IOPORT_INIT_HIGH);
+	gpio_configure_pin(GPIO_PUSH_BUTTON_0,IOPORT_DIR_INPUT | IOPORT_PULL_UP);
 
-/** Enable Com Port. */
-#define CONF_BOARD_UART_CONSOLE
 
-#define LED0_PIO		PIOB
-#define LED0_MASK		(0x01 << 0)
-
-/** Pins description corresponding to Rxd,Txd, (UART pins) */
-#define CONSOLE_PINS        {PINS_UART}
-
-/** Usart Hw ID used by the console (UART0). */
-#define CONSOLE_UART_ID          ID_UART
-
-#endif /* CONF_BOARD_H_INCLUDED */
+}

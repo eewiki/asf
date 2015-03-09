@@ -91,5 +91,22 @@
 			<require idref="common.services.basic.sleepmgr"/>
 			<info type="gui-flag" value="move-to-root"/>
 		</module>
+		<module type="application" id="common.services.basic.sleepmgr.example#5" caption="Common API for Sleep Management / Example">
+			<info type="description" value="summary">
+			This example shows how to use the Common API for Sleep Management on MEGA RF devices.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management" />
+			</info>
+			<build type="c-source" value="sleepmgr_example_megarf.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_example.h"/>			
+			<device-support value="megarf"/>
+			<require idref="common.services.basic.clock"/>
+			<require idref="common.services.basic.sleepmgr"/>
+			<require idref="common.services.delay" />
+			<require idref="mega.drivers.cpu"/>
+			<require idref="mega.drivers.ioport"/>
+			<require idref="mega.drivers.sleep"/>
+		</module>
 	</select-by-device>
 </asf>

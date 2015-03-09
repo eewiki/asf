@@ -152,9 +152,7 @@ int main(void)
 	system_init();
 	configure_ac();
 	configure_ac_channel();
-	//! [setup_16]
 	configure_ac_callback();
-	//! [setup_16]
 
 	//! [setup_17]
 	ac_enable(&ac_instance);

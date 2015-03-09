@@ -49,7 +49,7 @@
  * - Master Mode enabled
  * - MSB of the data is transmitted first
  * - Transfer mode 0
- * - \ref asfdoc_samd20_sercom_spi_mux_setting_e
+ * - SPI MUX Setting E (see \ref asfdoc_samd20_sercom_spi_mux_settings_master)
  *   - MOSI on pad 2, extension header 1, pin 16
  *   - MISO on pad 0, extension header 1, pin 17
  *   - SCK on pad 3, extension header 1, pin 18

@@ -15,6 +15,7 @@
             </info>
             <require idref="config.thirdparty.wireless.avr2025_mac.source.tal.atmegarfr2"/>
             <device-support value="atmega256rfr2"/>
+            <device-support value="atmega2564rfr2"/>
             <build type="doxygen-entry-point" value="group_tal_rfr2"/>
 		</module>
 		<module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tal#3"     caption="atmegarfa1 tal support enabled">
@@ -156,6 +157,7 @@
         <require idref="thirdparty.wireless.avr2025_mac.source.resources"/>
         <build type="doxygen-entry-point" value="group_tal_rfr2"/>
         <device-support value="atmega256rfr2"/>
+        <device-support value="atmega2564rfr2"/>
     </module>
 	
 	 <module type="driver" id="config.thirdparty.wireless.avr2025_mac.source.tal.atmegarfa1"     caption="atmegarfa1 tal support enabled">

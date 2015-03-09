@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief Clock configuration.
+ * \brief Chip-specific system clock manager configuration
  *
- * Copyright (c) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -40,37 +40,24 @@
  * \asf_license_stop
  *
  */
+#ifndef CONF_CLOCK_H_INCLUDED
+#define CONF_CLOCK_H_INCLUDED
 
-#ifndef CONF_CLOCK_H
-#define CONF_CLOCK_H
+/* ===== System Clock Source Options */
+#define SYSCLK_SRC_RC16MHZ    0
+#define SYSCLK_SRC_RC128KHZ   1
+#define SYSCLK_SRC_TRS16MHZ   2
+#define SYSCLK_SRC_RC32KHZ    3
+#define SYSCLK_SRC_XOC16MHZ   4
+#define SYSCLK_SRC_EXTERNAL   5
 
-// ===== System Clock (MCK) Source Options
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_SLCK_RC
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_SLCK_XTAL
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_SLCK_BYPASS
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_4M_RC
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_8M_RC
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_12M_RC
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_XTAL
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_BYPASS
-#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_PLLACK
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_UPLLCK
+#define  SYSCLK_SOURCE         SYSCLK_SRC_RC16MHZ
+/* #define SYSCLK_SOURCE        SYSCLK_SRC_RC128KHZ */
+/* #define SYSCLK_SOURCE        SYSCLK_SRC_TRS16MHZ */
+/* #define SYSCLK_SOURCE        SYSCLK_SRC_XOC16MHZ */
 
-// ===== System Clock (MCK) Prescaler Options   (Fmck = Fsys / (SYSCLK_PRES))
-#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_1
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_2
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_4
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_8
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_16
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_32
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_64
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_3
+/* ===== System Clock Bus Division Options */
 
-// ===== PLL0 (A) Options   (Fpll = (Fclk * PLL_mul) / PLL_div)
-#define CONFIG_PLL0_SOURCE          PLL_SRC_MAINCK_XTAL
-#define CONFIG_PLL0_MUL             16
-#define CONFIG_PLL0_DIV             2
+#define CONFIG_SYSCLK_PSDIV         SYSCLK_PSDIV_1
 
-// ===== UPLL (UTMI) Hardware fixed at 480 Mhz.
-
-#endif /* CONF_CLOCK_H */
+#endif /* CONF_CLOCK_H_INCLUDED */

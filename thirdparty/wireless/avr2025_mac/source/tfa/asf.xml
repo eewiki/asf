@@ -16,6 +16,7 @@
 			<require idref="thirdparty.wireless.avr2025_mac.source.tfa.atmegarfr2"/>
 			<require idref="config.thirdparty.wireless.avr2025_mac.source.tal.atmegarfr2"/>
             <device-support value="atmega256rfr2"/>
+            <device-support value="atmega2564rfr2"/>
 			<build type="doxygen-entry-point" value="group_tfa"/>
 		</module>	
 		

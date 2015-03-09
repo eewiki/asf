@@ -50,11 +50,15 @@
 #include "conf_board.h"
 # include "helper.h"
 
+
+static board_t board_type;
+
 /**
  * \brief Read XRAM
  *
  * \param
  */
+
 uint8_t xram_read(uint16_t addr)
 {
     uint8_t data;
@@ -241,6 +245,7 @@ switch (board_type)
 
 void led_ctrl(led_id_t led_no, led_action_t led_setting)
 {
+	static uint8_t led_state = 0x00;
   switch (board_type)
     {
 case SENSOR_TERM_BOARD:

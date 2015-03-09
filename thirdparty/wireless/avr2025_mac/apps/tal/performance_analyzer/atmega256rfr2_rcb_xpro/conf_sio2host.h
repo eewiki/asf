@@ -1,9 +1,9 @@
 /**
- * \file
+ * \file *********************************************************************
  *
- * \brief Serial USART service configuration.
+ * \brief Serial Input & Output configuration
  *
- * Copyright (C) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -38,17 +38,22 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * \asf_license_stop
- *
  */
 
-#ifndef CONF_USART_SERIAL_H
-#define CONF_USART_SERIAL_H
+#ifndef CONF_SIO2HOST_H_INCLUDED
+#define CONF_SIO2HOST_H_INCLUDED
 
-/** UART Interface */
-#define CONF_UART            CONSOLE_UART
-/** Baudrate setting */
-#define CONF_UART_BAUDRATE   115200
-/** Parity setting */
-#define CONF_UART_PARITY     UART_MR_PAR_NO
+/*! \name Configuration
+ */
+/* ! @{ */
+#define USART_HOST                (&USARTA1)
+#define USART_HOST_BAUDRATE       9600
+#define USART_HOST_CHAR_LENGTH    USART_CHSIZE_8BIT_gc
+#define USART_HOST_PARITY         USART_PMODE_DISABLED_gc
+#define USART_HOST_STOP_BITS       1
+/* ! @} */
 
-#endif/* CONF_USART_SERIAL_H_INCLUDED */
+#define USART_HOST_RX_ISR_ENABLE() usart_rx_complete_interrupt_enable(USART_HOST)
+#define USART_HOST_ISR_VECT()     ISR(USART1_RX_vect)
+
+#endif /* CONF_SIO2HOST_H_INCLUDED */

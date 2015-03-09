@@ -351,10 +351,10 @@ retval_t tal_dump_registers(uint16_t start_addr, uint16_t end_addr,
  * \return MAC_SUCCESS if the register is written correctly
  *         FAILURE otherwise
  */
-#if (TAL_TYPE == AT86RF233)
+#if ((TAL_TYPE == AT86RF233) || (TAL_TYPE == ATMEGARFR2))
 retval_t tal_rpc_mode_config(uint8_t rpc_mode_sel);
 
-#endif /* End of TAL_TYPE = AT86RF233 */
+#endif /* End of ((TAL_TYPE == AT86RF233) || (TAL_TYPE == ATMEGARFR2))*/
 
 /*
  * \brief This function is called to get the base RSSI value for repective

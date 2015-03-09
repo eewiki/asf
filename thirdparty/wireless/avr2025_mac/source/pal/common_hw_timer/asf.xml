@@ -111,6 +111,7 @@
     </device-alias-map>
     <device-alias-map name="megarfr2_hw_timer_support">
         <device-support value="atmega256rfr2"/>
+        <device-support value="atmega2564rfr2"/>
     </device-alias-map>
     <device-alias-map name="megarfa1_hw_timer_support">
         <device-support value="atmega128rfa1"/>

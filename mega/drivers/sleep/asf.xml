@@ -1,20 +1,18 @@
 <asf xmlversion="1.0">
-	<select-by-device id="mega.drivers.sleep" caption="Sleep Controller driver">
-		<module type="driver" id="mega.drivers.sleep#0" caption="Sleep Controller driver">
-			<info type="description" value="summary">
-			Driver for the sleep controller. Provides functions to configure the sleep mode used, enable and disable sleep functionality, and enter sleep mode. To enter any of the sleep modes the sleep functionality needs to be enabled.
-			</info>
-			<info type="keyword" value="technology">
-				<keyword value="Power Management" />
-			</info>
-			<build type="header-file" subtype="api" value="sleep.h"/>
-			<build type="header-file" subtype="api" value="sleep_megarf.h"/>
-			<build type="include-path" value="."/>
-			<require idref="mega.utils"/>
-			<device-support value="megarf"/>		
-			<build type="doxygen-entry-point" value="sleep_group"/>
-			<build type="doxygen-quick-start" value="mega_sleep_quickstart"/>
-			<generator value="doxygen-module" default-mcu="atmega128rfa1"/>
-		</module>
-	</select-by-device>
+	<module type="driver" id="mega.drivers.sleep" caption="Sleep Controller driver">
+		<info type="description" value="summary">
+		Driver for the sleep controller. Provides functions to configure the sleep mode used, enable and disable sleep functionality, and enter sleep mode. To enter any of the sleep modes the sleep functionality needs to be enabled.
+		</info>
+		<info type="keyword" value="technology">
+			<keyword value="Power Management" />
+		</info>
+		<build type="header-file" subtype="api" value="sleep.h"/>
+		<build type="header-file" subtype="api" value="sleep_megarf.h"/>
+		<build type="include-path" value="."/>
+		<require idref="mega.utils"/>
+		<device-support value="megarf"/>		
+		<build type="doxygen-entry-point" value="sleep_group"/>
+		<build type="doxygen-quick-start" value="mega_sleep_quickstart"/>
+		<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+	</module>
 </asf>

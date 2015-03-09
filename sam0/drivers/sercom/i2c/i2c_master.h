@@ -165,6 +165,8 @@ struct i2c_master_module {
 #if !defined(__DOXYGEN__)
 	/** Hardware instance initialized for the struct */
 	Sercom *hw;
+	/** Module lock */
+	volatile bool locked;
 	/** Unknown bus state timeout */
 	uint16_t unknown_bus_state_timeout;
 	/** Buffer write timeout value */
@@ -221,6 +223,63 @@ struct i2c_master_config {
 	/** PAD1 (SCL) pinmux */
 	uint32_t pinmux_pad1;
 };
+
+/**
+ * \name Lock/Unlock
+ * @{
+ */
+
+/**
+ * \brief Attempt to get lock on driver instance
+ *
+ * This function checks the instance's lock, which indicates whether or not it
+ * is currently in use, and sets the lock if it was not already set.
+ *
+ * The purpose of this is to enable exclusive access to driver instances, so
+ * that, e.g., transactions by different services will not interfere with each
+ * other.
+ *
+ * \param[in,out] module Pointer to the driver instance to lock.
+ *
+ * \retval STATUS_OK if the module was locked.
+ * \retval STATUS_BUSY if the module was already locked.
+ */
+static inline enum status_code i2c_master_lock(
+		struct i2c_master_module *const module)
+{
+	enum status_code status;
+
+	system_interrupt_enter_critical_section();
+
+	if (module->locked) {
+		status = STATUS_BUSY;
+	} else {
+		module->locked = true;
+		status = STATUS_OK;
+	}
+
+	system_interrupt_leave_critical_section();
+
+	return status;
+}
+
+/**
+ * \brief Unlock driver instance
+ *
+ * This function clears the instance lock, indicating that it is available for
+ * use.
+ *
+ * \param[in,out] module Pointer to the driver instance to lock.
+ *
+ * \retval STATUS_OK if the module was locked.
+ * \retval STATUS_BUSY if the module was already locked.
+ */
+static inline void i2c_master_unlock(struct i2c_master_module *const module)
+{
+	module->locked = false;
+}
+
+/** @} */
 
 /**
  * \name Configuration and Initialization

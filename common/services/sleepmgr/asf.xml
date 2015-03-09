@@ -84,5 +84,23 @@
 			<require idref="sam.drivers.bpm"/>
 			<generator value="doxygen-module" default-mcu="unspecified-sam4l"/>
 		</module>
+				<module type="service" id="common.services.basic.sleepmgr#4" caption="Sleep manager - MEGARF implementation">
+			<info type="description" value="summary">
+			The sleep manager provides functions for centralized management of sleep modes. Common API for MEGA RF.
+			</info>
+			<info type="keyword" value="technology">
+				<keyword value="Power Management" />
+			</info>
+			<build type="header-file" subtype="api" value="sleepmgr.h"/>
+			<build type="header-file" subtype="api" value="mega/sleepmgr.h"/>
+			<build type="c-source" value="mega/sleepmgr.c"/>
+			<build type="module-config" subtype="required-header-file" value="conf_sleepmgr.h"/>
+			<build type="include-path" value="."/>
+			<build type="module-config" subtype="path" value="mega/module_config"/>
+			<build type="doxygen-entry-point" value="sleepmgr_group"/>
+			<device-support value="megarf"/>
+			<require idref="mega.drivers.sleep"/>
+			<generator value="doxygen-module" default-mcu="unspecified-mega"/>
+		</module>	
 	</select-by-device>
 </asf>

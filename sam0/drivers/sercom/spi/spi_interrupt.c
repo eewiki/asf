@@ -383,11 +383,9 @@ enum status_code spi_transceive_buffer_job(
  * This function will abort the specified job type.
  *
  * \param[in]  module    Pointer to SPI software instance struct
- * \param[in]  job_type  Type of job to abort
  */
 void spi_abort_job(
-		struct spi_module *const module,
-		enum spi_job_type job_type)
+		struct spi_module *const module)
 {
 	/* Pointer to the hardware module instance */
 	SercomSpi *const spi_hw
@@ -406,24 +404,6 @@ void spi_abort_job(
 	module->remaining_tx_buffer_length = 0;
 
 	module->dir = SPI_DIRECTION_IDLE;
-}
-
-/**
- * \brief Retrieves the current status of a job.
- *
- * Retrieves the current statue of a job that was previously issued.
- *
- * \param[in]  module    Pointer to SPI software instance struct
- * \param[in]  job_type  Type of job to check
- *
- * \return Current job status
- */
-enum status_code spi_get_job_status(
-		const struct spi_module *const module,
-		enum spi_job_type job_type)
-{
-	return module->status;
-
 }
 
 /**

@@ -109,15 +109,18 @@
 #define MIN_ISM_FREQUENCY_MHZ               (2322)
 #define MAX_ISM_FREQUENCY_MHZ               (2527)
 #define MID_ISM_FREQUENCY_MHZ               (2434)
-
-#define ENABLE_ALL_RPC_MODES                (0xff)
-#define DISABLE_ALL_RPC_MODES               (0xC1)
 #define CC_BAND_0                           (0x00)
 #define CC_BAND_8                           (0x08)
 #define CC_BAND_9                           (0x09)
 #define CC_NUMBER_0                         (0x00)
 #endif
 
+#if ((TAL_TYPE == AT86RF233) || (TAL_TYPE == ATMEGARFR2))
+#define ENABLE_ALL_RPC_MODES                     (0xff)
+#define DISABLE_ALL_RPC_MODES                    (0xC1)
+#define ENABLE_RX_SAFE_MODE                      (0xA0)
+#define DISABLE_RX_SAFE_MODE                     (0x60)
+#endif
 /**
  * \addtogroup group_per_mode
  * \{
@@ -175,7 +178,7 @@ typedef struct {
 	bool crc_settings_on_peer;
 #endif
 
-#if (TAL_TYPE == AT86RF233)
+#if ((TAL_TYPE == AT86RF233) || (TAL_TYPE == ATMEGARFR2))
 	bool rpc_enable;
 #endif
 

@@ -440,7 +440,7 @@ void _usart_interrupt_handler(
 	_usart_wait_for_sync(module);
 
 	/* Read and mask interrupt flag register */
-	interrupt_status = usart_hw->INTFLAG.reg;
+	interrupt_status = usart_hw->INTFLAG.reg & usart_hw->INTENSET.reg;
 	callback_status = module->callback_reg_mask
 			&module->callback_enable_mask;
 
@@ -475,6 +475,7 @@ void _usart_interrupt_handler(
 	/* Check if the Transmission Complete interrupt has occurred and
 	 * that the transmit buffer is empty */
 	}
+
 	if (interrupt_status & SERCOM_USART_INTFLAG_TXC) {
 
 		/* Disable TX Complete Interrupt, and set STATUS_OK */
@@ -489,6 +490,7 @@ void _usart_interrupt_handler(
 	/* Check if the Receive Complete interrupt has occurred, and that
 	 * there's more data to receive */
 	}
+
 	if (interrupt_status & SERCOM_USART_INTFLAG_RXC) {
 
 		if (module->remaining_rx_buffer_length) {

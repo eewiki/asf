@@ -51,7 +51,7 @@
 
 #include "helper.h"
 
-static uint8_t led_state = 0x00;
+
 
 typedef enum led_id_tag
 {

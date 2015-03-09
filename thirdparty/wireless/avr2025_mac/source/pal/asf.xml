@@ -57,6 +57,7 @@
         <device-support value="uc3a3_a4"/>
         <device-support value="sam4l"/>
         <device-support value="atmega256rfr2"/>
+        <device-support value="atmega2564rfr2"/>
         <device-support value="atmega128rfa1"/>
     </device-alias-map>
     <device-alias-map name="avr2025_mac_pal_spi_support">
@@ -68,6 +69,7 @@
     </device-alias-map>
     <device-alias-map name="avr2025_mac_pal_soc_support">
         <device-support value="atmega256rfr2"/>
+        <device-support value="atmega2564rfr2"/>
         <device-support value="atmega128rfa1"/>
     </device-alias-map>
 </asf>

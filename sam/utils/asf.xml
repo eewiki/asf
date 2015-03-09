@@ -14,6 +14,7 @@
 		<require idref="sam.utils.syscalls"/>
 		<require idref="sam.utils.fpu"/>
 		<require idref="sam.utils.printf"/>
+		<require idref="sam.utils.scanf"/>
 		<require idref="common.utils.interrupt"/>
 		<require idref="common.utils.part_macros"/>
 		<info type="gui-flag" value="hidden"/>
@@ -23,8 +24,16 @@
 	<!-- GCC printf configuration -->
 	<select-by-config id="sam.utils.printf" name="config.compiler.armgcc.printf" caption="SAM printf selection" default="iprintf">
 		<module type="meta" id="sam.utils.printf#printf" caption="Full printf for SAM"/>
-		<module type="meta" id="sam.utils.printf#iprintf" caption="Integer iprintf for SAM">
+		<module type="meta" id="sam.utils.printf#iprintf" caption="Integer printf for SAM">
 			<build type="define" name="printf" value="iprintf" toolchain="armgcc"/>
+		</module>
+	</select-by-config>
+
+	<!-- GCC scanf configuration -->
+	<select-by-config id="sam.utils.scanf" name="config.compiler.armgcc.scanf" caption="SAM scanf selection" default="iscanf">
+		<module type="meta" id="sam.utils.scanf#scanf" caption="Full scanf for SAM"/>
+		<module type="meta" id="sam.utils.scanf#iscanf" caption="Integer scanf for SAM">
+			<build type="define" name="scanf" value="iscanf" toolchain="armgcc"/>
 		</module>
 	</select-by-config>
 
@@ -45,9 +54,9 @@
 			<info type="gui-flag" value="hidden"/>
 			<build type="include-path" value="fpu/"/>
 			<build type="header-file" subtype="api" value="fpu/fpu.h"/>
-			<build type="build-config" subtype="assembler-flags" value="-mfpu=vfpv4" toolchain="armgcc"/>
-			<build type="build-config" subtype="c-compiler-flags" value="-mfpu=vfpv4" toolchain="armgcc"/>
-			<build type="build-config" subtype="c++-compiler-flags" value="-mfpu=vfpv4" toolchain="armgcc"/>
+			<build type="build-config" subtype="assembler-flags" value="-mfpu=fpv4-sp-d16" toolchain="armgcc"/>
+			<build type="build-config" subtype="c-compiler-flags" value="-mfpu=fpv4-sp-d16" toolchain="armgcc"/>
+			<build type="build-config" subtype="c++-compiler-flags" value="-mfpu=fpv4-sp-d16" toolchain="armgcc"/>
 			<require idref="sam.utils.fpu_used"/>
 			<device-support value="sam4e"/>
 			<device-support value="atsam4c8c_1"/>

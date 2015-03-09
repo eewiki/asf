@@ -134,6 +134,7 @@ static void run_flash_configure_test(const struct test_case *test)
 {
 	uint32_t ul_default_ws;
 	uint32_t ul_tmp_ws;
+	uint32_t ul_mck = sysclk_get_cpu_hz();
 
 	/* Backup default wait state */
 	ul_default_ws = flash_get_wait_state(IFLASH_ADDR);
@@ -164,20 +165,20 @@ static void run_flash_configure_test(const struct test_case *test)
 	/* Validate the adaptively set wait state function, get the wait state and
 	 * check with the default>
 	 */
-	if (SystemCoreClock < CHIP_FREQ_FWS_0) {
+	if (ul_mck < CHIP_FREQ_FWS_0) {
 		ul_tmp_ws =  flash_get_wait_state(IFLASH_ADDR);
 		test_assert_true(test, ul_tmp_ws == 0,
 				"Test flash configure:adaptively set wait state error!");
-	} else if (SystemCoreClock < CHIP_FREQ_FWS_1) {
+	} else if (ul_mck < CHIP_FREQ_FWS_1) {
 		ul_tmp_ws =  flash_get_wait_state(IFLASH_ADDR);
 		test_assert_true(test, ul_tmp_ws == 1,
 				"Test flash configure:adaptively set wait state error!");
-	} else if (SystemCoreClock < CHIP_FREQ_FWS_2) {
+	} else if (ul_mck < CHIP_FREQ_FWS_2) {
 		ul_tmp_ws =  flash_get_wait_state(IFLASH_ADDR);
 		test_assert_true(test, ul_tmp_ws == 2,
 				"Test flash configure:adaptively set wait state error!");
 #if (SAM3XA || SAM3U)
-	} else if (SystemCoreClock < CHIP_FREQ_FWS_3) {
+	} else if (ul_mck < CHIP_FREQ_FWS_3) {
 		ul_tmp_ws =  flash_get_wait_state(IFLASH_ADDR);
 		test_assert_true(test, ul_tmp_ws == 3,
 				"Test flash configure:adaptively set wait state error!");
@@ -187,11 +188,11 @@ static void run_flash_configure_test(const struct test_case *test)
 				"Test flash configure:adaptively set wait state error!");
 	}
 #elif (SAM4S || SAM4E || SAM4N || SAM4C)
-	} else if (SystemCoreClock < CHIP_FREQ_FWS_3) {
+	} else if (ul_mck < CHIP_FREQ_FWS_3) {
 		ul_tmp_ws =  flash_get_wait_state(IFLASH_ADDR);
 		test_assert_true(test, ul_tmp_ws == 3,
 				"Test flash configure:adaptively set wait state error!");
-	} else if (SystemCoreClock < CHIP_FREQ_FWS_4) {
+	} else if (ul_mck < CHIP_FREQ_FWS_4) {
 		ul_tmp_ws =  flash_get_wait_state(IFLASH_ADDR);
 		test_assert_true(test, ul_tmp_ws == 4,
 				"Test flash configure:adaptively set wait state error!");

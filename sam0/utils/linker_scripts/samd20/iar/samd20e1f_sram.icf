@@ -1,9 +1,9 @@
 /**
  * \file
  *
- * \brief Clock configuration.
+ * \brief Linker script for running in internal SRAM on the SAMD20E1F
  *
- * Copyright (c) 2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2013 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
  *
@@ -41,37 +41,32 @@
  *
  */
 
-#ifndef CONF_CLOCK_H
-#define CONF_CLOCK_H
+/*###ICF### Section handled by ICF editor, don't touch! ****/
+/*-Editor annotation file-*/
+/* IcfEditorFile="$TOOLKIT_DIR$\config\ide\IcfEditor\cortex_v1_0.xml" */
+/*-Specials-*/
+define symbol __ICFEDIT_intvec_start__     = 0x20000000;
+/*-Memory Regions-*/
+define symbol __ICFEDIT_region_RAM_start__ = 0x20000000;
+define symbol __ICFEDIT_region_RAM_end__   = 0x20008000;
+/*-Sizes-*/
+if (!isdefinedsymbol(__ICFEDIT_size_cstack__)) {
+  define symbol __ICFEDIT_size_cstack__    = 0x2000;
+}
+if (!isdefinedsymbol(__ICFEDIT_size_heap__)) {
+  define symbol __ICFEDIT_size_heap__      = 0x200;
+}
+/**** End of ICF editor section. ###ICF###*/
 
-// ===== System Clock (MCK) Source Options
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_SLCK_RC
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_SLCK_XTAL
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_SLCK_BYPASS
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_4M_RC
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_8M_RC
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_12M_RC
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_XTAL
-//#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_MAINCK_BYPASS
-#define CONFIG_SYSCLK_SOURCE        SYSCLK_SRC_PLLACK
+define memory mem with size = 4G;
+define region RAM_region    = mem:[from __ICFEDIT_region_RAM_start__ to __ICFEDIT_region_RAM_end__];
 
-// ===== System Clock (MCK) Prescaler Options   (Fmck = Fsys / (SYSCLK_PRES))
-#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_1
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_2
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_4
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_8
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_16
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_32
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_64
-//#define CONFIG_SYSCLK_PRES          SYSCLK_PRES_3
+define block CSTACK with alignment = 8, size = __ICFEDIT_size_cstack__ { };
+define block HEAP   with alignment = 8, size = __ICFEDIT_size_heap__   { };
 
-// ===== PLL0 (A) Options   (Fpll = (Fclk * PLL_mul) / PLL_div)
-#define CONFIG_PLL0_SOURCE          PLL_SRC_MAINCK_XTAL
-#define CONFIG_PLL0_MUL             4
-#define CONFIG_PLL0_DIV             1
+initialize by copy with packing=none { readwrite };
+do not initialize  { section .noinit };
 
-// ===== USB Clock Source Options   (Fusb = FpllX / USB_div)
-//#define CONFIG_USBCLK_SOURCE        USBCLK_SRC_PLL0
-//#define CONFIG_USBCLK_DIV           1
-
-#endif /* CONF_CLOCK_H */
+place at address mem:__ICFEDIT_intvec_start__ { readonly section .intvec };
+place in RAM_region                           { readonly };
+place in RAM_region                           { readwrite, block CSTACK, block HEAP };

@@ -647,7 +647,7 @@ void system_clock_source_xosc_set_config(
  * external 32KHz oscillator module:
  *   - External Crystal
  *   - Start-up time of 16384 external clock cycles
- *   - Automatic crystal gain control mode enabled
+ *   - Automatic crystal gain control mode disabled
  *   - Frequency of 32.768KHz
  *   - 1KHz clock output disabled
  *   - 32KHz clock output enabled
@@ -663,7 +663,7 @@ static inline void system_clock_source_xosc32k_get_config_defaults(
 
 	config->external_clock      = SYSTEM_CLOCK_EXTERNAL_CRYSTAL;
 	config->startup_time        = SYSTEM_XOSC32K_STARTUP_16384;
-	config->auto_gain_control   = true;
+	config->auto_gain_control   = false;
 	config->frequency           = 32768UL;
 	config->enable_1khz_output  = false;
 	config->enable_32khz_output = true;
@@ -1215,25 +1215,25 @@ static inline void system_flash_set_waitstates(uint8_t wait_states)
  *	<tr>
  *		<th>Changelog</th>
  *	</tr>
+ *  <tr>
+ *		<td>Fixed \c system_gclk_chan_disable() deadlocking if a channel is enabled
+ *		    and configured to a failed/not running clock generator.</td>
+ *  </tr>
  *	<tr>
  *		<td>
+ *			\li Changed default value for CONF_CLOCK_DFLL_ON_DEMAND from \c true to \c false.
  *			\li Fixed system_flash_set_waitstates() failing with an assertion
- *              if an odd number of wait states provided.
+ *			    if an odd number of wait states provided.
  *		</td>
  *	</tr>
  *	<tr>
  *		<td>
- *			\li Changed default value for CONF_CLOCK_DFLL_ON_DEMAND from true
- *              to false
- *		</td>
- *	</tr>
- *	<tr>
- *		<td>\li Updated dfll configuration function to implement workaround for
- *              errata 9905 in the DFLL module.
- *		    \li Updated \c system_clock_init() to reset interrupt flags before
- *              they are used, errata 10558.
- *		    \li Fixed \c system_clock_source_get_hz() to return correcy DFLL
- *              frequency number.
+ *			\li Updated dfll configuration function to implement workaround for
+ *			    errata 9905 in the DFLL module.
+ *			\li Updated \c system_clock_init() to reset interrupt flags before
+ *			    they are used, errata 10558.
+ *			\li Fixed \c system_clock_source_get_hz() to return correcy DFLL
+ *			    frequency number.
  *		</td>
  *	</tr>
  *	<tr>
@@ -1243,7 +1243,10 @@ static inline void system_flash_set_waitstates(uint8_t wait_states)
  *              functions to \c system_clock_source_*_get_config_defaults() to
  *              match the remainder of ASF.
  *          \li Added OSC8M calibration constant loading from the device signature
- *              row when the oscillator is initialized.</td>
+ *              row when the oscillator is initialized.
+ *          \li Updated default configuration of the XOSC32 to disable Automatic
+ *              Gain Control due to silicon errata.
+ *      </td>
  *	</tr>
  *	<tr>
  *		<td>Initial Release</td>

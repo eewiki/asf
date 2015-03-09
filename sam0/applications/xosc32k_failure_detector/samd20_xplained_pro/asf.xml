@@ -1,0 +1,16 @@
+<asf xmlversion="1.0">
+	<project caption="XOSC32K Failure Detector for the SAM D20 Xplained PRO" id="sam0.applications.xosc32k_fail_detector.samd20_xplained_pro">
+		<info type="gui-flag" value="move-to-root"/>
+		<build type="include-path" value="."/>
+		<build type="header-file" value="conf_clocks.h"/>
+		<build type="header-file" value="conf_board.h"/>
+		<require idref="board.samd20_xplained_pro"/>
+		<require idref="sam0.applications.xosc32k_fail_detector"/>
+		<config name="config.compiler.armgcc.create_aux" value="no"/>
+		<generator value="armgcc"/>
+		<generator value="as5_arm"/>
+		<generator value="iarewarm"/>
+		<generator value="doxygen-v2"/>
+		<device-support value="atsamd20j18"/>
+	</project>
+</asf>

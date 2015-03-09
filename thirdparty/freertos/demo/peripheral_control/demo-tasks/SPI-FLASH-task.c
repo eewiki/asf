@@ -85,7 +85,7 @@
 
 /* Max number when the chip selects are directly connected to peripheral device.
  **/
-#define NONE_CHIP_SELECT_ID     0x0f
+#define NONE_CHIP_SELECT_VALUE     0x0f
 
 /* Instructions/commands that can be sent to the flash. */
 /** Write status register command code */
@@ -276,7 +276,7 @@ void create_spi_flash_test_task(Spi *spi_base, uint16_t stack_depth_words,
 			DELAY_BETWEEN);
 	spi_configure_cs_behavior(spi_base, CHIP_SELECT, SPI_CS_KEEP_LOW);
 
-	spi_set_peripheral_chip_select_value(spi_base, CHIP_SELECT);
+	spi_set_peripheral_chip_select_value(spi_base, spi_get_pcs(CHIP_SELECT));
 
 	spi_enable(spi_base);
 
@@ -375,7 +375,7 @@ static void at25dfx_send_command(freertos_spi_if freertos_spi,
 	}
 
 	/* Deselect the AT25 chip - assert all lines; no peripheral is selected. */
-	spi_set_peripheral_chip_select_value(freertos_spi, NONE_CHIP_SELECT_ID);
+	spi_set_peripheral_chip_select_value(freertos_spi, NONE_CHIP_SELECT_VALUE);
 	/* Last transfer, so de-assert the current NPCS if CSAAT is set. */
 	spi_set_lastxfer(freertos_spi);
 }
